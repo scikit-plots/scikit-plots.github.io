@@ -380,7 +380,7 @@
         chat:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="12" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="0.8" fill="currentColor" stroke="none"/></svg>',
         // ── v0.3 additions — mirror _ICON_META in _static/__init__.py ──────────
         newChat:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>',
-        exportTxt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+        exportTxt:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
         copyAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
         privacy:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
         // ── Listen / Text-to-Speech ───────────────────────────────────────────
@@ -404,10 +404,15 @@
         share:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
         menu:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
         info:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
-        chevronDown: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
+        chevronDown: '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
         // ── UI-improvement additions ──────────────────────────────────────────
         plus:        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
         overflowH:   '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
+        // ── Export format icons (v2 multi-format export) ──────────────────────
+        // JSON file icon: document with code-like decoration (file + data nodes).
+        exportJson:  '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13a2 2 0 0 1 0 4"/><path d="M14 13c1.1 0 2 .9 2 2s-.9 2-2 2"/></svg>',
+        // HTML icon: angled brackets — the universal HTML/code symbol.
+        exportHtml:  '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
         // ── Project links additions ───────────────────────────────────────────
         // GitHub mark (official path — monochromatic, works on any background).
         github:      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>',
@@ -1775,6 +1780,38 @@
     var _feedbackGivenSet = new Set();
 
     /**
+     * Feedback submitted this session, keyed by answer index (0-based).
+     *
+     * Written by _buildFeedbackBlock submit handler when the user rates an answer.
+     * Read by export functions (JSON/HTML) and by _shareAnswer to enrich payloads.
+     *
+     * Cleared by clearConversation() alongside _feedbackGivenSet.
+     *
+     * Schema per entry:
+     *   { ratingValue: number, ratingLabel: string, message: string, ts: number }
+     *
+     * @type {Object<number, {ratingValue:number, ratingLabel:string, message:string, ts:number}>}
+     */
+    var _feedbackStore = {};
+
+    /**
+     * Unique session id — stable across this page visit, new on reload.
+     * Falls back to a timestamp+random id when crypto.randomUUID is unavailable
+     * (HTTP origins, old browsers, restricted iframes).
+     *
+     * @type {string}
+     */
+    var _sessionId = (function () {
+        try {
+            if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                return window.crypto.randomUUID();
+            }
+        } catch (_) {}
+        return 'sess-' + Date.now().toString(36) + '-' +
+               Math.random().toString(36).slice(2, 9);
+    }());
+
+    /**
      * Whether transcript persistence is enabled (config-driven, default on).
      * @returns {boolean}
      */
@@ -1820,25 +1857,49 @@
     }
 
     /**
-     * Record a message in the single source of truth and persist.
+     * Record a message in the single source of truth (_transcript) and persist.
      *
-     * Enforces a configurable maximum turn count to prevent unbounded
-     * sessionStorage growth and JSON serialisation slowdown.  Oldest turns
-     * are evicted from the head when the cap is exceeded.
+     * Transcript entry schema v2:
+     *   { role: string, text: string, ts: number, model: Object|null }
      *
-     * @param {string} role  'user' | 'assistant' | 'error'
-     * @param {string} text
+     * The ``model`` field is non-null only for ``'assistant'`` entries and carries:
+     *   { id: string, provider: string, model: string }
+     *
+     * Old entries loaded from sessionStorage may lack ``model`` — export treats
+     * null/undefined as the unknown-model case without throwing.
+     *
+     * Parameters
+     * ----------
+     * role : string
+     *     ``'user'`` | ``'assistant'`` | ``'error'``
+     * text : string
+     *     Message body (plain markdown for assistant, plain text for user/error).
+     * modelInfo : Object|null, optional
+     *     Active model descriptor from _getActiveModel().  Only meaningful for
+     *     assistant messages; ignored for user/error.
+     *
+     * Notes
+     * -----
+     * Developer: Pass modelInfo from _appendPanelMessage (non-streaming path) or
+     *   from _panelApiCallStreaming (streaming path) so every transcript entry
+     *   carries the model that generated it.  Callers that cannot resolve the model
+     *   (stub mode, error path) pass null or omit the argument.
      */
-    function _recordMessage(role, text) {
+    function _recordMessage(role, text, modelInfo) {
         var cfg = window.AI_ASSISTANT_CONFIG || {};
         var maxTurns = (typeof cfg.panelMaxTranscriptTurns === 'number' &&
                         cfg.panelMaxTranscriptTurns > 0)
             ? Math.floor(cfg.panelMaxTranscriptTurns)
             : _TRANSCRIPT_MAX_TURNS_DEFAULT;
 
-        _transcript.push({ role: role, text: text, ts: Date.now() });
+        _transcript.push({
+            role:  role,
+            text:  text,
+            ts:    Date.now(),
+            model: (role === 'assistant' && modelInfo) ? modelInfo : null
+        });
 
-        // Trim head (oldest entries) when cap is exceeded.
+        // Trim head (oldest entries) when the cap is exceeded.
         // Removing pairs (user + assistant) keeps conversations coherent, but
         // a simple slice from the left is safe — the welcome screen is not in
         // the transcript array, only actual message turns.
@@ -1864,8 +1925,9 @@
      *   reappears every time the user starts a new chat session.
      */
     function clearConversation() {
-        _transcript = [];
+        _transcript       = [];
         _feedbackGivenSet = new Set();
+        _feedbackStore    = {};                  // v2 — clears all submitted ratings
         _ssDel(_TRANSCRIPT_KEY);
         var body = document.getElementById('ai-assistant-panel-body');
         if (!body) return;
@@ -1882,10 +1944,30 @@
     }
 
     /**
-     * R4 — Export the conversation as a plain-text download.
-     * Reads ONLY `_transcript` (the single source of truth).
+     * R4 — Dispatch to the requested export format.
+     *
+     * Parameters
+     * ----------
+     * format : string, optional
+     *     ``'json'`` | ``'html'`` | ``'txt'`` (default ``'txt'`` for back-compat).
      */
-    function exportConversation() {
+    function exportConversation(format) {
+        var fmt = (typeof format === 'string') ? format : 'txt';
+        if (fmt === 'json') { exportConversationJSON(); }
+        else if (fmt === 'html') { exportConversationHTML(); }
+        else { exportConversationTxt(); }
+    }
+
+    /**
+     * Export the conversation as plain-text (.txt download).  Equivalent to the
+     * v1 exportConversation() — preserved for back-compat and user familiarity.
+     *
+     * Notes
+     * -----
+     * User: Output is human-readable but not machine-parseable.  Use JSON export
+     *   for analytics / ML pipelines.
+     */
+    function exportConversationTxt() {
         if (_transcript.length === 0) {
             showNotification('Nothing to export yet', true);
             return;
@@ -1894,33 +1976,757 @@
         var title = cfg.panelTitle || 'AI Assistant';
         var lines = [
             title + ' — conversation export',
-            'Page: ' + (location ? location.href : ''),
+            'Page: ' + ((typeof location !== 'undefined') ? location.href : ''),
             'Exported: ' + new Date().toISOString(),
             '',
             '----------------------------------------',
             '',
         ];
         _transcript.forEach(function (m) {
-            var who = m.role === 'user' ? 'You'
-                : m.role === 'assistant' ? title
-                : 'Error';
-            // ISO 8601 tag appended when available — enables unambiguous
-            // chronological attribution in feedback reports, diffs, and imports.
-            var tsTag = m.ts ? '  [' + new Date(m.ts).toISOString() + ']' : '';
-            lines.push('[' + who + ']' + tsTag);
+            var who  = m.role === 'user' ? 'You' : m.role === 'assistant' ? title : 'Error';
+            var ts   = m.ts ? '  [' + new Date(m.ts).toISOString() + ']' : '';
+            var mdl  = (m.role === 'assistant' && m.model)
+                ? '  [' + (m.model.model || m.model.id) + ' \u00b7 ' + m.model.provider + ']'
+                : '';
+            lines.push('[' + who + ']' + ts + mdl);
             lines.push(m.text);
             lines.push('');
         });
-        var blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+        _downloadBlob(
+            lines.join('\n'),
+            'text/plain;charset=utf-8',
+            'ai-conversation-' + _isoFileStamp() + '.txt'
+        );
+    }
+
+    /**
+     * Build the flat ``records`` array — one row per message, all columns present.
+     *
+     * Direct pandas load (zero preprocessing):
+     *
+     * .. code-block:: python
+     *
+     *     import json, pandas as pd
+     *     with open('ai-conversation.json') as f:
+     *         data = json.load(f)
+     *     df = pd.DataFrame(data['records'])
+     *
+     * @returns {Array<Object>}  Flat row objects, one per message.
+     */
+    function _buildExportRecords() {
+        var cfg     = window.AI_ASSISTANT_CONFIG || {};
+        var pageUrl = (typeof location !== 'undefined') ? location.href : '';
+        var sid     = _sessionId;
+
+        var records      = [];
+        var turnIndex    = -1;
+        var answerIndex  = 0;   // increments on each assistant|error entry
+        var messageIndex = 0;
+
+        _transcript.forEach(function (m) {
+            if (m.role === 'user') { turnIndex++; }
+
+            var model = m.model || null;
+            var fb    = (m.role === 'assistant' || m.role === 'error')
+                ? (_feedbackStore[answerIndex] || null)
+                : null;
+
+            records.push({
+                // ── position ─────────────────────────────────────────────────
+                turn_index:            turnIndex,
+                message_index:         messageIndex,
+                role:                  m.role,
+                // ── content ──────────────────────────────────────────────────
+                text:                  m.text,
+                ts:                    m.ts   || null,
+                ts_iso:                m.ts   ? new Date(m.ts).toISOString() : null,
+                // ── model attribution (assistant only; null for user/error) ──
+                model_id:              model  ? model.id       : null,
+                model_provider:        model  ? model.provider : null,
+                model_name:            model  ? model.model    : null,
+                // ── feedback (assistant/error only; null if not submitted) ────
+                feedback_rating_value: fb     ? fb.ratingValue : null,
+                feedback_rating_label: fb     ? fb.ratingLabel : null,
+                feedback_message:      fb     ? (fb.message || null) : null,
+                // ── session context ───────────────────────────────────────────
+                session_id:            sid,
+                page_url:              pageUrl,
+            });
+
+            if (m.role === 'assistant' || m.role === 'error') { answerIndex++; }
+            messageIndex++;
+        });
+
+        return records;
+    }
+
+    /**
+     * Export the conversation as a pandas-ready JSON file.
+     *
+     * Output schema (``schema_version: "2.0"``):
+     *
+     * .. code-block:: text
+     *
+     *     {
+     *       "schema_version": "2.0",
+     *       "session":  { id, page_url, page_title, assistant_name,
+     *                     exported_at, exported_at_iso },
+     *       "turns":    [{ turn_index, user: {...}, assistant: {...} }],
+     *       "records":  [flat rows — direct pd.DataFrame() input]
+     *     }
+     *
+     * Notes
+     * -----
+     * User: Open the downloaded .json, then in Python:
+     *   ``df = pd.DataFrame(json.load(open(f))['records'])`` — zero preprocessing.
+     *
+     * Developer: ``records`` is the canonical flat format.  ``turns`` is a human-
+     *   friendly nested view of the same data for manual inspection.
+     */
+    function exportConversationJSON() {
+        if (_transcript.length === 0) {
+            showNotification('Nothing to export yet', true);
+            return;
+        }
+        var cfg       = window.AI_ASSISTANT_CONFIG || {};
+        var aiName    = cfg.panelTitle || 'AI Assistant';
+        var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
+        var pageTitle = (typeof document !== 'undefined') ? document.title : '';
+        var now       = Date.now();
+
+        // ── Build nested turns (human-readable companion to flat records) ─────
+        var turns   = [];
+        var turnIdx = -1;
+        var aIdx    = 0;
+        var i       = 0;
+
+        while (i < _transcript.length) {
+            var m = _transcript[i];
+            if (m.role === 'user') {
+                turnIdx++;
+                var turn = {
+                    turn_index: turnIdx,
+                    user: {
+                        text:   m.text,
+                        ts:     m.ts || null,
+                        ts_iso: m.ts ? new Date(m.ts).toISOString() : null,
+                    },
+                    assistant: null,
+                };
+
+                // Pair with following assistant message, if present
+                if (i + 1 < _transcript.length &&
+                        _transcript[i + 1].role === 'assistant') {
+                    var a  = _transcript[i + 1];
+                    var fb = _feedbackStore[aIdx] || null;
+                    var am = a.model || null;
+                    turn.assistant = {
+                        text:                  a.text,
+                        ts:                    a.ts   || null,
+                        ts_iso:                a.ts   ? new Date(a.ts).toISOString() : null,
+                        model_id:              am     ? am.id       : null,
+                        model_provider:        am     ? am.provider : null,
+                        model_name:            am     ? am.model    : null,
+                        feedback_rating_value: fb     ? fb.ratingValue : null,
+                        feedback_rating_label: fb     ? fb.ratingLabel : null,
+                        feedback_message:      fb     ? (fb.message || null) : null,
+                    };
+                    aIdx++;
+                    i += 2;
+                } else {
+                    i += 1;
+                }
+                turns.push(turn);
+            } else {
+                // Orphan assistant or error message (no preceding user message)
+                if (m.role === 'assistant' || m.role === 'error') { aIdx++; }
+                i++;
+            }
+        }
+
+        var payload = {
+            schema_version:  '2.0',
+            session: {
+                id:              _sessionId,
+                page_url:        pageUrl,
+                page_title:      pageTitle,
+                assistant_name:  aiName,
+                exported_at:     now,
+                exported_at_iso: new Date(now).toISOString(),
+            },
+            turns:   turns,
+            records: _buildExportRecords(),
+        };
+
+        _downloadBlob(
+            JSON.stringify(payload, null, 2),
+            'application/json;charset=utf-8',
+            'ai-conversation-' + _isoFileStamp() + '.json'
+        );
+        showNotification(
+            'JSON exported \u2014 load with pd.DataFrame(data[\u201crecords\u201d])',
+            false
+        );
+    }
+
+    /**
+     * Export the conversation as a self-contained HTML file.
+     *
+     * The generated file:
+     *   - Zero external dependencies — CSS is inlined.
+     *   - Supports light and dark mode via prefers-color-scheme.
+     *   - Renders user bubbles right, assistant bubbles left.
+     *   - Shows model badge + rating chip below each assistant message.
+     *   - Embeds the full JSON payload in a
+     *     ``<script type="application/json" id="export-data">`` block.
+     *
+     * Notes
+     * -----
+     * User: Download the file and open it in any browser — works fully offline.
+     *   To extract data: ``JSON.parse(document.getElementById('export-data').textContent)``
+     *
+     * Developer: _mdToHtml is called at export time to pre-render markdown to HTML.
+     *   The output is a static snapshot — not a live document.
+     */
+    function exportConversationHTML() {
+        if (_transcript.length === 0) {
+            showNotification('Nothing to export yet', true);
+            return;
+        }
+
+        var cfg         = window.AI_ASSISTANT_CONFIG || {};
+        var aiName      = cfg.panelTitle || 'AI Assistant';
+        var pageUrl     = (typeof location !== 'undefined') ? location.href : '';
+        var pageTitle   = (typeof document !== 'undefined') ? document.title : '';
+        var now         = new Date();
+        var exportedIso = now.toISOString();
+        var exportedFmt = now.toLocaleString(
+            (typeof navigator !== 'undefined' && navigator.language) || 'en',
+            { dateStyle: 'long', timeStyle: 'short' }
+        );
+
+        // ── 1. Build per-turn HTML ────────────────────────────────────────────
+        var turnsHtml   = '';
+        var answerIndex = 0;
+        var i           = 0;
+
+        while (i < _transcript.length) {
+            var m = _transcript[i];
+
+            if (m.role === 'user') {
+                var tsUser = m.ts ? _htmlTimeFmt(m.ts) : '';
+                turnsHtml +=
+                    '<article class="msg msg--user">' +
+                        '<div class="msg__bubble">' + _escapeHtml(m.text) + '</div>' +
+                        (tsUser ? '<footer class="msg__meta"><time>' + tsUser + '</time></footer>' : '') +
+                    '</article>';
+                i++;
+            } else if (m.role === 'assistant' || m.role === 'error') {
+                var tsAI     = m.ts ? _htmlTimeFmt(m.ts) : '';
+                var am       = m.model || null;
+                var fb       = _feedbackStore[answerIndex] || null;
+                var rendered = (m.role === 'assistant')
+                    ? _mdToHtml(m.text)
+                    : _escapeHtml(m.text);
+
+                // Model badge
+                var modelBadge = '';
+                if (am) {
+                    var provColor = _providerColor(am.provider) || '#888';
+                    modelBadge =
+                        '<span class="badge badge--model">' +
+                            '<span class="badge__dot" style="background:' + _escapeHtml(provColor) + '"></span>' +
+                            _escapeHtml(am.model || am.id) +
+                            ' <span class="badge__provider">\u00b7 ' + _escapeHtml(am.provider) + '</span>' +
+                        '</span>';
+                }
+
+                // Rating chip
+                var ratingChip = '';
+                if (fb) {
+                    var ratingInfo = _ratingDisplay(fb.ratingLabel, fb.ratingValue);
+                    ratingChip =
+                        '<span class="badge badge--rating badge--' + _escapeHtml(fb.ratingLabel) + '">' +
+                            ratingInfo.emoji + ' ' + _escapeHtml(fb.ratingLabel) +
+                            (fb.message
+                                ? ' \u2014 \u201c' + _escapeHtml(fb.message.slice(0, 120)) + '\u201d'
+                                : '') +
+                        '</span>';
+                }
+
+                var aiClass = m.role === 'error' ? 'msg msg--ai msg--error' : 'msg msg--ai';
+                turnsHtml +=
+                    '<article class="' + aiClass + '">' +
+                        '<div class="msg__avatar" aria-hidden="true">AI</div>' +
+                        '<div class="msg__body">' +
+                            '<div class="msg__bubble">' + rendered + '</div>' +
+                            '<footer class="msg__meta">' +
+                                (tsAI ? '<time>' + tsAI + '</time>' : '') +
+                                modelBadge +
+                                ratingChip +
+                            '</footer>' +
+                        '</div>' +
+                    '</article>';
+
+                answerIndex++;
+                i++;
+            } else {
+                i++;
+            }
+        }
+
+        // ── 2. Build embedded JSON payload ────────────────────────────────────
+        var jsonPayload = JSON.stringify({
+            schema_version:  '2.0',
+            session: {
+                id:              _sessionId,
+                page_url:        pageUrl,
+                page_title:      pageTitle,
+                assistant_name:  aiName,
+                exported_at:     now.getTime(),
+                exported_at_iso: exportedIso,
+            },
+            records: _buildExportRecords(),
+        }, null, 2);
+
+        // ── 3. Assemble the complete HTML document ────────────────────────────
+        var msgCount = _transcript.filter(function (m) {
+            return m.role === 'user';
+        }).length;
+        var html = _buildExportHtmlDoc({
+            aiName:      aiName,
+            pageUrl:     pageUrl,
+            pageTitle:   pageTitle,
+            exportedFmt: exportedFmt,
+            exportedIso: exportedIso,
+            turnsHtml:   turnsHtml,
+            msgCount:    msgCount,
+            jsonPayload: jsonPayload,
+        });
+
+        _downloadBlob(
+            html,
+            'text/html;charset=utf-8',
+            'ai-conversation-' + _isoFileStamp() + '.html'
+        );
+        showNotification(
+            'HTML exported \u2014 open in any browser to share the conversation',
+            false
+        );
+    }
+
+    /**
+     * Assemble the complete self-contained HTML document string.
+     *
+     * Parameters
+     * ----------
+     * opts : Object
+     *     All named substitution values for the template.
+     *
+     * Returns
+     * -------
+     * string  Complete HTML document as a UTF-8 string.
+     *
+     * Notes
+     * -----
+     * Developer: All user-controlled text (aiName, turnsHtml content) is passed
+     *   through _escapeHtml before being embedded.  turnsHtml is built by callers
+     *   that escape each message independently — it is trusted HTML at this point.
+     */
+    function _buildExportHtmlDoc(opts) {
+        return (
+'<!DOCTYPE html>\n' +
+'<html lang="en">\n' +
+'<head>\n' +
+'<meta charset="utf-8">\n' +
+'<meta name="viewport" content="width=device-width,initial-scale=1">\n' +
+'<meta name="generator" content="ai-assistant-export/2.0">\n' +
+'<meta name="exported-at" content="' + opts.exportedIso + '">\n' +
+'<title>' + _escapeHtml(opts.aiName) + ' \u2014 Conversation</title>\n' +
+'<style>\n' +
+_exportCss() +
+'</style>\n' +
+'</head>\n' +
+'<body>\n' +
+'<div class="wrap">\n' +
+
+'<header class="chat-header">\n' +
+    '<div class="chat-meta">\n' +
+        '<div class="chat-meta-row">\n' +
+            '<span class="chat-meta-label">' + _escapeHtml(opts.aiName) + '</span>\n' +
+            '<span class="chat-meta-sep">\u00b7</span>\n' +
+            '<span class="chat-meta-turns">' + opts.msgCount +
+                ' turn' + (opts.msgCount !== 1 ? 's' : '') + '</span>\n' +
+            '<span class="chat-meta-sep">\u00b7</span>\n' +
+            '<time class="chat-meta-date">' + _escapeHtml(opts.exportedFmt) + '</time>\n' +
+        '</div>\n' +
+        (opts.pageUrl
+            ? '<a class="chat-meta-url" href="' + _escapeHtml(opts.pageUrl) +
+              '" rel="noopener noreferrer">' +
+              _escapeHtml(opts.pageTitle || opts.pageUrl) + '</a>\n'
+            : '') +
+    '</div>\n' +
+'</header>\n' +
+
+'<main class="messages" role="log" aria-label="Conversation">\n' +
+opts.turnsHtml +
+'</main>\n' +
+
+'<footer class="chat-footer">\n' +
+    '<p>Generated by <strong>' + _escapeHtml(opts.aiName) + '</strong> \u00b7 ' +
+    '<a href="' + _escapeHtml(opts.pageUrl) + '" rel="noopener noreferrer">' +
+    _escapeHtml(opts.pageUrl) + '</a></p>\n' +
+    '<p class="chat-footer-hint">Extract data: ' +
+        '<code>JSON.parse(document.getElementById(&quot;export-data&quot;).textContent)</code></p>\n' +
+'</footer>\n' +
+
+'</div>\n' +
+
+'<script type="application/json" id="export-data">\n' +
+opts.jsonPayload + '\n' +
+'</script>\n' +
+'</body>\n' +
+'</html>'
+        );
+    }
+
+    /**
+     * Return the CSS string embedded in the HTML export.
+     * Self-contained, zero external deps, dark-mode aware via prefers-color-scheme.
+     *
+     * @returns {string}
+     */
+    function _exportCss() {
+        return (
+'*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\n' +
+':root{\n' +
+'  --bg:#f9fafb;--surface:#fff;--border:#e5e7eb;\n' +
+'  --tx:#111827;--tx2:#6b7280;--tx3:#9ca3af;\n' +
+'  --user-bg:#2563eb;--user-tx:#fff;\n' +
+'  --ai-bg:#fff;--ai-border:#e5e7eb;\n' +
+'  --code-bg:#f3f4f6;--code-tx:#1f2937;\n' +
+'  --model-bg:#eff6ff;--model-tx:#1d4ed8;--model-dot:#2563eb;\n' +
+'  --rate-pos-bg:#f0fdf4;--rate-pos-tx:#166534;\n' +
+'  --rate-neg-bg:#fef2f2;--rate-neg-tx:#991b1b;\n' +
+'  --rate-neu-bg:#f9fafb;--rate-neu-tx:#374151;\n' +
+'  --r:1rem;--rs:.5rem;\n' +
+'  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,ui-sans-serif,sans-serif;\n' +
+'  font-size:16px;line-height:1.6;color:var(--tx);background:var(--bg);\n' +
+'}\n' +
+'@media(prefers-color-scheme:dark){\n' +
+'  :root{\n' +
+'    --bg:#09090b;--surface:#18181b;--border:#27272a;\n' +
+'    --tx:#f4f4f5;--tx2:#a1a1aa;--tx3:#71717a;\n' +
+'    --user-bg:#1d4ed8;\n' +
+'    --ai-bg:#18181b;--ai-border:#27272a;\n' +
+'    --code-bg:#0f0f11;--code-tx:#e4e4e7;\n' +
+'    --model-bg:#1e3a5f;--model-tx:#93c5fd;\n' +
+'    --rate-pos-bg:#052e16;--rate-pos-tx:#86efac;\n' +
+'    --rate-neg-bg:#450a0a;--rate-neg-tx:#fca5a5;\n' +
+'    --rate-neu-bg:#18181b;--rate-neu-tx:#a1a1aa;\n' +
+'  }\n' +
+'}\n' +
+'.wrap{max-width:780px;margin:0 auto;padding:1.5rem 1rem 3rem}\n' +
+'.chat-header{padding:1.25rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem}\n' +
+'.chat-meta-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-size:.8rem;color:var(--tx2);margin-bottom:.35rem}\n' +
+'.chat-meta-label{font-weight:600;color:var(--tx)}\n' +
+'.chat-meta-sep{opacity:.4}\n' +
+'.chat-meta-url{font-size:.8rem;color:var(--tx2);text-decoration:none;word-break:break-all}\n' +
+'.chat-meta-url:hover{text-decoration:underline}\n' +
+'.messages{display:flex;flex-direction:column;gap:1.25rem}\n' +
+'.msg--user{align-self:flex-end;max-width:82%;display:flex;flex-direction:column;align-items:flex-end}\n' +
+'.msg--user .msg__bubble{background:var(--user-bg);color:var(--user-tx);border-radius:var(--r) var(--r) .25rem var(--r);padding:.75rem 1rem;white-space:pre-wrap;word-break:break-word;font-size:.9375rem}\n' +
+'.msg--user .msg__meta{margin-top:.25rem;font-size:.75rem;color:var(--tx3)}\n' +
+'.msg--ai{display:flex;gap:.75rem;align-self:flex-start;max-width:90%;width:100%}\n' +
+'.msg__avatar{flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--tx2);margin-top:.15rem;letter-spacing:.03em}\n' +
+'.msg__body{flex:1;min-width:0}\n' +
+'.msg--ai .msg__bubble{background:var(--ai-bg);border:1px solid var(--ai-border);border-radius:.25rem var(--r) var(--r) var(--r);padding:.875rem 1rem;font-size:.9375rem;word-break:break-word}\n' +
+'.msg--error .msg__bubble{border-color:#ef4444;background:#fef2f2;color:#991b1b}\n' +
+'.msg__meta{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;font-size:.75rem;color:var(--tx3)}\n' +
+'.badge{display:inline-flex;align-items:center;gap:.3rem;padding:.15rem .55rem;border-radius:99px;font-size:.7rem;font-weight:500;white-space:nowrap}\n' +
+'.badge--model{background:var(--model-bg);color:var(--model-tx)}\n' +
+'.badge__dot{width:.45rem;height:.45rem;border-radius:50%;flex-shrink:0}\n' +
+'.badge__provider{opacity:.65;font-weight:400}\n' +
+'.badge--positive{background:var(--rate-pos-bg);color:var(--rate-pos-tx)}\n' +
+'.badge--negative{background:var(--rate-neg-bg);color:var(--rate-neg-tx)}\n' +
+'.badge--rating{background:var(--rate-neu-bg);color:var(--rate-neu-tx)}\n' +
+'h1,h2,h3,h4{margin:.85rem 0 .4rem;font-weight:600;line-height:1.3}\n' +
+'h1{font-size:1.25rem}h2{font-size:1.1rem}h3{font-size:1rem}\n' +
+'p{margin:.4rem 0}\n' +
+'ul,ol{margin:.4rem 0 .4rem 1.4rem;padding:0}\n' +
+'li{margin:.15rem 0}\n' +
+'pre.ai-md-codeblock{background:var(--code-bg);color:var(--code-tx);border-radius:var(--rs);padding:.75rem 1rem;overflow-x:auto;margin:.6rem 0;font-size:.8125rem;font-family:ui-monospace,"SF Mono","Fira Code","Cascadia Code",Consolas,monospace;border:1px solid var(--border)}\n' +
+'code{font-family:ui-monospace,"SF Mono","Fira Code",Consolas,monospace;font-size:.875em;background:var(--code-bg);padding:.1em .35em;border-radius:.25rem}\n' +
+'pre code{background:none;padding:0;font-size:inherit}\n' +
+'table{border-collapse:collapse;width:100%;margin:.6rem 0;font-size:.875rem}\n' +
+'th{background:var(--code-bg);font-weight:600;text-align:left;padding:.5rem .75rem;border:1px solid var(--border)}\n' +
+'td{padding:.4rem .75rem;border:1px solid var(--border)}\n' +
+'tr:nth-child(even) td{background:var(--code-bg)}\n' +
+'strong{font-weight:600}\n' +
+'em{font-style:italic}\n' +
+'blockquote{border-left:3px solid var(--border);margin:.6rem 0;padding:.3rem .75rem;color:var(--tx2)}\n' +
+'a{color:var(--model-tx);text-decoration:none}a:hover{text-decoration:underline}\n' +
+'.chat-footer{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--tx3);display:flex;flex-direction:column;gap:.4rem}\n' +
+'.chat-footer a{color:var(--tx3)}\n' +
+'.chat-footer code{font-size:.7rem}\n' +
+'.chat-footer-hint{opacity:.6}\n'
+        );
+    }
+
+    /**
+     * Rating label → display emoji.
+     *
+     * Parameters
+     * ----------
+     * label : string
+     * value : number  Signed integer rating value.
+     *
+     * Returns
+     * -------
+     * Object  ``{ emoji: string }``
+     */
+    function _ratingDisplay(label, value) {
+        var map = {
+            positive:  { emoji: '\ud83d\udc4d' },
+            negative:  { emoji: '\ud83d\udc4e' },
+            neutral:   { emoji: '\ud83d\ude10' },
+            helpful:   { emoji: '\u2705' },
+            unhelpful: { emoji: '\u274c' },
+            great:     { emoji: '\ud83c\udf1f' },
+            wrong:     { emoji: '\u26a0\ufe0f' },
+        };
+        if (map[label]) return map[label];
+        // Fallback: sign-based
+        if (typeof value === 'number') {
+            if (value > 0) return { emoji: '\u2b50' };
+            if (value < 0) return { emoji: '\ud83d\udc4e' };
+        }
+        return { emoji: '\ud83d\udfe1' };
+    }
+
+    /**
+     * Format a Unix timestamp as HH:mm for the HTML export.
+     *
+     * Parameters
+     * ----------
+     * ts : number  Milliseconds since epoch.
+     *
+     * Returns
+     * -------
+     * string  ``"HH:mm"`` or ``''`` for missing/non-finite input.
+     */
+    function _htmlTimeFmt(ts) {
+        if (!ts || !isFinite(ts)) return '';
+        var d  = new Date(ts);
+        var hh = ('0' + d.getHours()).slice(-2);
+        var mm = ('0' + d.getMinutes()).slice(-2);
+        return hh + ':' + mm;
+    }
+
+    /**
+     * Create a Blob, trigger a browser download, revoke the object URL.
+     *
+     * Parameters
+     * ----------
+     * content : string   UTF-8 text content.
+     * mimeType : string  e.g. ``'application/json;charset=utf-8'``
+     * filename : string  Suggested download filename.
+     */
+    function _downloadBlob(content, mimeType, filename) {
+        var blob = new Blob([content], { type: mimeType });
         var url  = URL.createObjectURL(blob);
         var a    = document.createElement('a');
-        a.href = url;
-        a.download = 'ai-conversation-' +
-            new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-') + '.txt';
+        a.href     = url;
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    }
+
+    /**
+     * ISO 8601 timestamp string safe for use in filenames.
+     *
+     * Returns
+     * -------
+     * string  e.g. ``"2026-06-06T06-17-48"``
+     */
+    function _isoFileStamp() {
+        return new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
+    }
+
+    /**
+     * Build the "Export ▾" header button with a 3-option dropdown.
+     *
+     * Format options (in display order):
+     *   1. JSON — pandas-ready (primary, most useful)
+     *   2. HTML — shareable page
+     *   3. TXT  — plain text (back-compat)
+     *
+     * Behaviour mirrors _buildBubbleMore: the dropdown opens on click of the main
+     * button, closes on outside click, and is keyboard-accessible via tabindex.
+     *
+     * Returns
+     * -------
+     * HTMLElement  A wrapper div containing trigger button + dropdown menu.
+     */
+    function _buildExportDropdownBtn() {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'ai-assistant-export-dropdown';
+
+        // ── Trigger button ────────────────────────────────────────────────────
+        var trigger = document.createElement('button');
+        trigger.className = 'ai-assistant-panel-icon-btn ai-assistant-export-trigger';
+        trigger.type = 'button';
+        trigger.setAttribute('aria-label', 'Export conversation');
+        trigger.setAttribute('aria-haspopup', 'true');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.title = 'Export conversation';
+        // Wrap the main icon SVG in a span[aria-hidden] so the CSS three-layer
+        // size-defence rule  `.ai-assistant-export-trigger > span:first-child svg`
+        // (specificity 0,2,2) can apply and the 16px overflow:hidden container
+        // hard-clips any SVG that escapes the min/max clamp.  Without this span,
+        // the SVG is a bare flex-child of the button and an ID-anchored cloud-theme
+        // rule like  `#main-content svg { max-width:100% !important }`  (specificity
+        // 1,0,1) beats our class-chain rule (0,1,1) in the !important cascade tier,
+        // making the icon render at full viewBox size when hosted.
+        var iconSpan = document.createElement('span');
+        iconSpan.setAttribute('aria-hidden', 'true');
+        iconSpan.innerHTML = ICONS.exportTxt;
+        trigger.appendChild(iconSpan);
+        var triggerLbl = document.createElement('span');
+        triggerLbl.className = 'ai-assistant-export-trigger-chevron';
+        triggerLbl.innerHTML = ICONS.chevronDown;
+        triggerLbl.setAttribute('aria-hidden', 'true');
+        trigger.appendChild(triggerLbl);
+
+        // ── Dropdown menu ─────────────────────────────────────────────────────
+        var menu = document.createElement('div');
+        menu.className = 'ai-assistant-export-menu';
+        menu.setAttribute('role', 'menu');
+        menu.setAttribute('data-open', 'false');
+
+        var formats = [
+            {
+                fmt:   'json',
+                label: 'JSON',
+                hint:  'Pandas-ready \u00b7 model + ratings',
+                icon:  ICONS.exportJson,
+            },
+            {
+                fmt:   'html',
+                label: 'HTML',
+                hint:  'Shareable page \u00b7 open in browser',
+                icon:  ICONS.exportHtml,
+            },
+            {
+                fmt:   'txt',
+                label: 'Plain text',
+                hint:  'Simple \u00b7 human-readable',
+                icon:  ICONS.exportTxt,
+            },
+        ];
+
+        formats.forEach(function (opt) {
+            var item = document.createElement('button');
+            item.className = 'ai-assistant-export-menu-item';
+            item.type = 'button';
+            item.setAttribute('role', 'menuitem');
+            item.setAttribute('tabindex', '-1');
+
+            var icon = document.createElement('span');
+            icon.setAttribute('aria-hidden', 'true');
+            icon.innerHTML = opt.icon;
+            item.appendChild(icon);
+
+            var textBlock = document.createElement('span');
+            textBlock.className = 'ai-assistant-export-menu-text';
+
+            var labelEl = document.createElement('span');
+            labelEl.className = 'ai-assistant-export-menu-label';
+            labelEl.textContent = opt.label;
+
+            var hintEl = document.createElement('span');
+            hintEl.className = 'ai-assistant-export-menu-hint';
+            hintEl.textContent = opt.hint;
+
+            textBlock.appendChild(labelEl);
+            textBlock.appendChild(hintEl);
+            item.appendChild(textBlock);
+
+            // Prevent mousedown from moving keyboard focus away from the trigger.
+            // Without this, Safari and Firefox fire focusout on the trigger before
+            // the click event reaches the item (because tabindex="-1" items do not
+            // receive focus on mouse-click in those browsers).  The focusout handler
+            // then calls _closeExportMenu → display:none → browser cancels the click
+            // (element hidden between mousedown and mouseup).  preventDefault keeps
+            // focus on the trigger, no focusout fires, and the click lands correctly.
+            item.addEventListener('mousedown', function (e) { e.preventDefault(); });
+
+            (function (fmt) {
+                item.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    _closeExportMenu(menu, trigger);
+                    exportConversation(fmt);
+                });
+            }(opt.fmt));
+
+            menu.appendChild(item);
+        });
+
+        // ── Toggle open/close ─────────────────────────────────────────────────
+        trigger.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
+        trigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = menu.getAttribute('data-open') === 'true';
+            _closeExportMenu(menu, trigger);
+            if (!isOpen) {
+                menu.setAttribute('data-open', 'true');
+                trigger.setAttribute('aria-expanded', 'true');
+                // Focus first menu item for keyboard navigation.
+                var firstItem = menu.querySelector('.ai-assistant-export-menu-item');
+                if (firstItem) { firstItem.setAttribute('tabindex', '0'); firstItem.focus(); }
+            }
+        });
+
+        // ── Close on focus-out ────────────────────────────────────────────────
+        wrapper.addEventListener('focusout', function (e) {
+            if (!wrapper.contains(e.relatedTarget)) {
+                _closeExportMenu(menu, trigger);
+            }
+        });
+
+        // ── Close on outside mousedown (non-focusable-element guard) ─────────
+        // focusout only fires when focus moves, which does NOT happen when the
+        // user clicks on a non-interactive element (e.g. panel body text, a
+        // message bubble, a scroll area).  This capture-phase handler closes the
+        // menu in those cases.  Capture fires before any bubble-phase
+        // stopPropagation so the guard is reliable across the whole document.
+        document.addEventListener('mousedown', function (e) {
+            if (menu.getAttribute('data-open') !== 'true') return;
+            if (wrapper.contains(e.target)) return;
+            _closeExportMenu(menu, trigger);
+        }, true /* capture */);
+
+        wrapper.appendChild(trigger);
+        wrapper.appendChild(menu);
+        return wrapper;
+    }
+
+    /**
+     * Close the export dropdown menu and restore trigger state.
+     *
+     * Parameters
+     * ----------
+     * menu : HTMLElement
+     * trigger : HTMLElement
+     */
+    function _closeExportMenu(menu, trigger) {
+        menu.setAttribute('data-open', 'false');
+        trigger.setAttribute('aria-expanded', 'false');
+        menu.querySelectorAll('.ai-assistant-export-menu-item').forEach(function (it) {
+            it.setAttribute('tabindex', '-1');
+        });
     }
 
     /**
@@ -1936,65 +2742,93 @@
     }
 
     /**
-     * Share a single answer — with its paired question for recipient context.
+     * Share a single Q&A pair with model and rating context.
      *
-     * Delivery tiers (tried in order, first available wins):
+     * Share payload (text format):
      *
-     * 1. Web Share API — native share sheet on Android, iOS, and Chromium
-     *    desktop (Windows / macOS).  Lets the user pick their own target
-     *    (messaging app, email, notes, …).
-     * 2. Async Clipboard API — modern browsers, same-origin HTTPS or localhost.
-     * 3. ``execCommand('copy')`` — legacy fallback (older browsers, HTTP).
-     *
-     * Payload format
-     * --------------
-     * ::
+     * .. code-block:: text
      *
      *     Q: <question>
+     *     Model: <model-name> · <provider>
      *
-     *     A: <answer (plain markdown)>
+     *     A: <answer>
+     *
+     *     Rating: <emoji> <label> — "<message>"   (if submitted)
      *
      *     — AI Assistant · https://docs.example.com/page
      *
-     * The question prefix and attribution footer are omitted when unavailable.
-     * Using raw markdown (``data-raw``) keeps the payload clean and re-usable
-     * outside the panel — no HTML entities or render artefacts.
+     * Delivery tiers (first available wins):
+     *   1. Web Share API  — native share sheet (Android, iOS, Chromium desktop)
+     *   2. Clipboard API  — modern browsers on HTTPS/localhost
+     *   3. execCommand    — legacy fallback
      *
      * Parameters
      * ----------
      * answerText : string
-     *     The exact bubble text from ``_transcript``.
+     *     Exact bubble text from _transcript.
      * questionText : string | null
-     *     The paired user question, or ``null`` when unavailable.
+     *     Paired user question, or null.
      * bubbleEl : HTMLElement | null
-     *     The assistant bubble element; used to read ``data-raw``.
+     *     Assistant bubble element; used to read data-raw markdown.
      * btn : HTMLElement | null
-     *     The Share button; its label is flashed ("Shared!" / "Copied!") for
-     *     1.6 s as a visual confirmation then restored.
+     *     Share button element; label is briefly changed for visual confirmation.
+     * answerIndex : number, optional
+     *     0-based index of this answer in _feedbackStore.  Passed from callers
+     *     that have already computed it (see _renderBubble and streaming path).
      *
      * Notes
      * -----
-     * User: On mobile the native share sheet appears immediately.  On desktop
-     *   without Web Share API the Q+A block is placed on the clipboard and a
-     *   brief toast confirms it.  Paste anywhere to share.
+     * User: On mobile the native share sheet appears.  On desktop without Web
+     *   Share API the payload is placed on the clipboard — paste to share.
      *
-     * Developer: ``writeClipboard`` and ``execCmdCopy`` are nested closures —
-     *   they capture ``payload``, ``flash``, and ``showNotification`` from the
-     *   enclosing scope.  No module-level state is written.  ``AbortError`` /
-     *   ``NotAllowedError`` from ``navigator.share`` are intentionally silent
-     *   (user cancelled — no error toast needed).
+     * Developer: AbortError / NotAllowedError from navigator.share are silently
+     *   swallowed (user cancelled share sheet — no error toast needed).
      */
-    function _shareAnswer(answerText, questionText, bubbleEl, btn) {
-        var raw     = (bubbleEl && bubbleEl.getAttribute('data-raw')) || answerText;
-        var cfg     = window.AI_ASSISTANT_CONFIG || {};
-        var aiName  = cfg.panelTitle || 'AI Assistant';
+    function _shareAnswer(answerText, questionText, bubbleEl, btn, answerIndex) {
+        var raw    = (bubbleEl && bubbleEl.getAttribute('data-raw')) || answerText;
+        var cfg    = window.AI_ASSISTANT_CONFIG || {};
+        var aiName = cfg.panelTitle || 'AI Assistant';
         var pageUrl = (typeof location !== 'undefined') ? location.href : '';
 
-        // Self-contained Q+A payload — recipient reads it without the source page.
-        var payload = (questionText ? 'Q: ' + questionText + '\n\nA: ' : '') + raw;
-        if (pageUrl) payload += '\n\n\u2014 ' + aiName + ' \u00b7 ' + pageUrl;
+        // ── Resolve model attribution from transcript ─────────────────────────
+        var modelLine = '';
+        if (typeof answerIndex === 'number' && answerIndex >= 0) {
+            // Walk transcript to find the nth assistant entry
+            var ai = 0;
+            for (var t = 0; t < _transcript.length; t++) {
+                if (_transcript[t].role === 'assistant' || _transcript[t].role === 'error') {
+                    if (ai === answerIndex) {
+                        var mdl = _transcript[t].model;
+                        if (mdl) {
+                            modelLine = '\nModel: ' +
+                                (mdl.model || mdl.id) + ' \u00b7 ' + mdl.provider;
+                        }
+                        break;
+                    }
+                    ai++;
+                }
+            }
+        }
 
-        // Flash button label for 1.6 s then restore — primary visual confirmation.
+        // ── Resolve rating from feedback store ────────────────────────────────
+        var ratingLine = '';
+        if (typeof answerIndex === 'number') {
+            var fb = _feedbackStore[answerIndex];
+            if (fb) {
+                var rdisp = _ratingDisplay(fb.ratingLabel, fb.ratingValue);
+                ratingLine = '\n\nRating: ' + rdisp.emoji + ' ' + fb.ratingLabel;
+                if (fb.message) { ratingLine += ' \u2014 \u201c' + fb.message + '\u201d'; }
+            }
+        }
+
+        // ── Compose payload ───────────────────────────────────────────────────
+        var questionPart = questionText
+            ? 'Q: ' + questionText + modelLine + '\n\nA: '
+            : '';
+        var payload = questionPart + raw + ratingLine;
+        if (pageUrl) { payload += '\n\n\u2014 ' + aiName + ' \u00b7 ' + pageUrl; }
+
+        // ── Flash button label (visual confirmation) ──────────────────────────
         function flash(label) {
             if (!btn) return;
             var lbl = btn.querySelector('span');
@@ -2014,7 +2848,7 @@
             ta.select();
             try {
                 document.execCommand('copy');
-                showNotification('Q & A copied \u2014 ready to share.');
+                showNotification('Q \u0026 A copied \u2014 ready to share.');
                 flash('Copied!');
             } catch (_) {
                 showNotification('Could not copy \u2014 please try again.', true);
@@ -2028,7 +2862,7 @@
                     navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(payload)
                     .then(function () {
-                        showNotification('Q & A copied \u2014 ready to share.');
+                        showNotification('Q \u0026 A copied \u2014 ready to share.');
                         flash('Copied!');
                     })
                     .catch(function () { execCmdCopy(); });
@@ -3005,6 +3839,14 @@
                 console.log('[ai-assistant] feedback', detail);
             }
             _feedbackGivenSet.add(answerIndex);
+            // v2: Write to feedback store for JSON/HTML export and share payload
+            // enrichment.  Schema: { ratingValue, ratingLabel, message, ts }.
+            _feedbackStore[answerIndex] = {
+                ratingValue: chosen.value,
+                ratingLabel: chosen.label,
+                message:     ta.value.trim(),
+                ts:          Date.now(),
+            };
             wrap.innerHTML = '';
             var done = document.createElement('p');
             done.className = 'ai-assistant-panel-feedback-thanks';
@@ -5356,15 +6198,11 @@
         newChatBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         newChatBtn.addEventListener('click', clearConversation);
 
-        // R4: export the conversation as a plain-text download.
-        var exportBtn = _createIconBtn(
-            'export', 'Export AI conversation as txt', ICONS.exportTxt);
-        exportBtn.title = 'Export AI conversation as txt';
-        exportBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
-        exportBtn.addEventListener('click', exportConversation);
+        // R4 v2: multi-format export dropdown (JSON · HTML · TXT).
+        var exportDropdown = _buildExportDropdownBtn();
 
         headerActions.appendChild(newChatBtn);
-        headerActions.appendChild(exportBtn);
+        headerActions.appendChild(exportDropdown);
         headerActions.appendChild(minimizeBtn);
         headerActions.appendChild(maximizeBtn);
         headerActions.appendChild(closeBtn);
@@ -6368,12 +7206,23 @@
         panel.addEventListener('keydown', function (e) {
             // Phase B: Escape closes the topmost overlay first, then the panel.
             // Priority (highest first):
-            //   1. Hamburger popover (lightest overlay)
+            //   0. Export dropdown  (lightest floating overlay — no focus trap)
+            //   1. Hamburger popover
             //   2. Any open sheet (privacy / model / terms / share)
             //   3. The panel itself
             // The "any sheet" branch checks each in turn; only one is open
             // at a time per the _openSheet invariant, so the check is O(4).
             if (e.key !== 'Escape') return;
+            // 0. Export dropdown: query from the known exportDropdown wrapper so
+            //    we do not need a module-level variable.
+            var exportMenuEl = exportDropdown &&
+                               exportDropdown.querySelector('.ai-assistant-export-menu');
+            if (exportMenuEl && exportMenuEl.getAttribute('data-open') === 'true') {
+                var exportTriggerEl = exportDropdown.querySelector('.ai-assistant-export-trigger');
+                _closeExportMenu(exportMenuEl, exportTriggerEl);
+                if (exportTriggerEl) exportTriggerEl.focus();
+                return;
+            }
             if (hamburgerMenuEl &&
                 hamburgerMenuEl.getAttribute('data-open') === 'true') {
                 hamburgerMenuEl.setAttribute('data-open', 'false');
@@ -9894,6 +10743,12 @@
             // Payload = "Q: <question>\n\nA: <answer>\n\n— AI · <url>"
             // so the recipient receives full context without visiting the source.
             // retryQ already resolved above; direct closure is safe (no loop).
+            //
+            // Hoist answerIndex before share button so its closure captures the
+            // correct value — _shareAnswer uses it to look up _feedbackStore[answerIndex]
+            // and to find model attribution in _transcript.
+            var answerIndex = body.querySelectorAll(
+                '.ai-assistant-panel-feedback').length;
             var shareBtn = document.createElement('button');
             shareBtn.className = 'ai-assistant-panel-bubble-action';
             shareBtn.type = 'button';
@@ -9903,7 +10758,7 @@
             var shareLbl = document.createElement('span');
             shareLbl.textContent = 'Share';
             shareBtn.appendChild(shareLbl);
-            shareBtn.addEventListener('click', function () { _shareAnswer(text, retryQ, bubble, shareBtn); });
+            shareBtn.addEventListener('click', function () { _shareAnswer(text, retryQ, bubble, shareBtn, answerIndex); });
             actions.appendChild(shareBtn);
 
             // Retry button — re-submits the paired user question.
@@ -9941,8 +10796,9 @@
             // Pass the answer text (this bubble) and the paired user question
             // (retryQ, resolved a few lines above) so the dispatched event
             // payload is a complete (q, a, rating, message) training tuple.
-            var answerIndex = body.querySelectorAll(
-                '.ai-assistant-panel-feedback').length;
+            //
+            // Note: answerIndex is hoisted above the share button so the share
+            // closure captures the same stable value — no recount needed here.
             var fb = _buildFeedbackBlock(answerIndex, text, retryQ);
             if (fb) body.appendChild(fb);
         }
@@ -10011,7 +10867,14 @@
         var suggestions = body.querySelector('.ai-assistant-panel-suggestions');
         if (suggestions) suggestions.remove();
 
-        _recordMessage(role, text);   // single source of truth
+        // Capture active model for assistant messages.
+        // Each transcript entry carries the model that generated it — enables
+        // per-model analytics in JSON exports and DataFrame groupby operations.
+        var modelInfo = (role === 'assistant')
+            ? _getActiveModel(window.AI_ASSISTANT_CONFIG || {})
+            : null;
+
+        _recordMessage(role, text, modelInfo);   // v2: includes modelInfo
         // Read the timestamp just stored — _recordMessage always pushes before
         // returning and JS is single-threaded, so the last entry is ours.
         _renderBubble(body, text, role, undefined, _transcript[_transcript.length - 1].ts);
@@ -10468,7 +11331,10 @@
         }
 
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
-        _recordMessage('assistant', accumulated || '(no response)');
+        // v2: capture model info before _recordMessage so it is stored in
+        // the transcript entry for export and share-payload attribution.
+        var _streamModelInfo = _getActiveModel(window.AI_ASSISTANT_CONFIG || {});
+        _recordMessage('assistant', accumulated || '(no response)', _streamModelInfo);
         // Read the timestamp just stored — same single-threaded guarantee as
         // _appendPanelMessage: the last _transcript entry is this streamed reply.
         var streamTs = _transcript[_transcript.length - 1].ts;
@@ -10488,6 +11354,11 @@
             var _lastUser = _transcript.findLast(function (m) { return m.role === 'user'; });
             var retryQ2 = _lastUser ? _lastUser.text : null;
 
+            // Hoist fbIdx2 before share button so its IIFE closure captures
+            // the value and _shareAnswer can look up _feedbackStore[fbIdx2]
+            // and model attribution in _transcript.
+            var fbIdx2 = panelBody.querySelectorAll('.ai-assistant-panel-feedback').length;
+
             // Copy button
             var cb2 = document.createElement('button');
             cb2.className = 'ai-assistant-panel-bubble-action';
@@ -10505,7 +11376,7 @@
             // Share button — between Copy and Retry (OpenAI-inspired).
             // Payload = "Q: <question>\n\nA: <answer>\n\n— AI · <url>"
             // so the recipient receives full context without visiting the source.
-            (function (ans, q, bbl) {
+            (function (and, q, bbl) {
                 var sb2 = document.createElement('button');
                 sb2.className = 'ai-assistant-panel-bubble-action';
                 sb2.type = 'button';
@@ -10514,7 +11385,7 @@
                 sb2.innerHTML = ICONS.shareAns;
                 var sl2 = document.createElement('span'); sl2.textContent = 'Share';
                 sb2.appendChild(sl2);
-                sb2.addEventListener('click', function () { _shareAnswer(ans, q, bbl, sb2); });
+                sb2.addEventListener('click', function () { _shareAnswer(and, q, bbl, sb2, fbIdx2); });
                 acts.appendChild(sb2);
             }(accumulated, retryQ2, streamBubble));
 
@@ -10546,7 +11417,7 @@
 
             panelBody.appendChild(acts);
 
-            var fbIdx2 = panelBody.querySelectorAll('.ai-assistant-panel-feedback').length;
+            // fbIdx2 is hoisted before the share button above — reuse here.
             var fb2 = _buildFeedbackBlock(fbIdx2, accumulated, retryQ2);
             if (fb2) panelBody.appendChild(fb2);
         }

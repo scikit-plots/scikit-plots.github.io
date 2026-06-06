@@ -346,6 +346,12 @@
 
 .ai-assistant-panel {
     /* resize: both; overflow: auto; */
+    /* overflow:visible is the CSS default but stated explicitly so a cloud
+     * theme rule (e.g. .bd-main .ai-assistant-panel { overflow:hidden }) cannot
+     * silently clip the absolutely-positioned export dropdown that lives inside
+     * the panel header.  The panel-body child manages its own scroll via
+     * overflow-y:auto and is unaffected by this declaration.              */
+    overflow: visible;
     position: fixed;
     bottom: 0.3rem;
     right: 0.3rem;
@@ -429,6 +435,9 @@
     );
     flex-shrink: 0;
     gap: 0.5rem;
+    /* Explicitly visible so the absolutely-positioned export dropdown menu
+     * is not clipped when a Sphinx theme injects overflow:hidden here.    */
+    overflow: visible;
 }
 
 .ai-assistant-panel-header-title {
@@ -465,6 +474,8 @@
     align-items: center;
     gap: 0.15rem;
     flex-shrink: 0;
+    /* overflow:visible ensures no ancestor clip reaches the absolute menu.  */
+    overflow: visible;
 }
 
 .ai-assistant-panel-icon-btn {
@@ -486,8 +497,13 @@
 }
 
 .ai-assistant-panel-icon-btn svg {
-    width: 14px;
-    height: 14px;
+    display: block       !important;
+    width: 14px          !important;
+    height: 14px         !important;
+    min-width: 14px      !important;
+    max-width: 14px      !important;
+    min-height: 14px     !important;
+    max-height: 14px     !important;
     stroke: currentColor;
     fill: none;
     flex-shrink: 0;
@@ -768,11 +784,15 @@
 }
 
 .ai-assistant-panel-footer-btn svg {
-    width: 15px;
-    height: 15px;
+    display: block       !important;
+    width: 15px          !important;
+    height: 15px         !important;
+    min-width: 15px      !important;
+    max-width: 15px      !important;
+    min-height: 15px     !important;
+    max-height: 15px     !important;
     stroke: currentColor;
     fill: none;
-    display: block;
     flex-shrink: 0;
 }
 
@@ -963,8 +983,13 @@
 }
 
 .ai-assistant-panel-trigger svg {
-    width: 16px;
-    height: 16px;
+    display: block       !important;
+    width: 16px          !important;
+    height: 16px         !important;
+    min-width: 16px      !important;
+    max-width: 16px      !important;
+    min-height: 16px     !important;
+    max-height: 16px     !important;
     stroke: currentColor;
     fill: none;
     flex-shrink: 0;
@@ -1913,6 +1938,9 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 .ai-assistant-searchbar:focus-within {
     border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    /* Fallback: rgba ring for browsers without color-mix() (Safari < 16.2, Chrome < 111). */
+    box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.28);
+    /* color-mix() version — wins in modern browsers (last valid wins in cascade). */
     box-shadow: 0 0 0 2px
         color-mix(in srgb,
             var(--pst-color-primary, var(--color-brand-primary, #2980b9)) 25%,
@@ -5310,13 +5338,15 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 
 .ai-assistant-panel-filter-search-wrap:focus-within {
     border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    /* Fallback for browsers without color-mix() — must come FIRST so modern
+       browsers keep reading and apply the color-mix() version instead.       */
+    box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.18);
+    /* color-mix() version wins in modern browsers (last valid wins). */
     box-shadow: 0 0 0 2px
         color-mix(in srgb,
             var(--pst-color-primary, #2980b9) 15%,
             transparent
         );
-    /* Fallback for browsers that don't support color-mix */
-    box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.18);
 }
 
 [data-bs-theme="dark"] .ai-assistant-panel-filter-search-wrap {
@@ -6065,6 +6095,7 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 }
 .ai-assistant-panel-site-btn:hover {
     color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    background: rgba(37, 99, 235, 0.10);
     background: color-mix(
         in srgb,
         var(--pst-color-primary, var(--color-brand-primary, #2563eb)) 10%,
@@ -6132,6 +6163,8 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     width: 36px;
     height: 36px;
     border-radius: 8px;
+    /* Fallback for browsers without color-mix() (Safari < 16.2, Chrome < 111). */
+    background: rgba(37, 99, 235, 0.12);
     background: color-mix(
         in srgb,
         var(--ai-link-card-accent,
@@ -6258,5 +6291,405 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     .ai-assistant-panel-link-card-icon svg {
         width: 15px;
         height: 15px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   v2 ADDITIONS — Multi-format export dropdown (JSON · HTML · TXT)
+   Corresponds to patch sections D, J, K, L from ai-assistant-export-v2.js.
+
+   DOM hierarchy (built by _buildExportDropdownBtn):
+
+     .ai-assistant-export-dropdown                  ← stacking-context wrapper
+       button.ai-assistant-panel-icon-btn
+              .ai-assistant-export-trigger           ← trigger (icon + chevron)
+         <svg>                                       ← exportTxt (14×14 via base)
+         span.ai-assistant-export-trigger-chevron   ← animated chevron
+           <svg>                                     ← chevronDown (10×10)
+       div.ai-assistant-export-menu
+          [role="menu"][data-open="false|true"]      ← visibility via data-attr
+         button.ai-assistant-export-menu-item
+                [role="menuitem"][tabindex="-1|0"]
+           span[aria-hidden="true"]                  ← format icon
+             <svg>                                   ← exportJson/Html/Txt
+           span.ai-assistant-export-menu-text
+             span.ai-assistant-export-menu-label     ← "JSON" / "HTML" / "TXT"
+             span.ai-assistant-export-menu-hint      ← hint line
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Wrapper ─────────────────────────────────────────────────────────────── */
+/*
+ * position:relative is the stacking context for the absolutely-positioned
+ * menu.  inline-flex keeps the wrapper from stretching in the header-actions
+ * flex row.  overflow:visible (explicit) prevents any theme rule targeting
+ * this element from clipping the menu that extends beyond the wrapper's box.
+ */
+.ai-assistant-export-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: visible;
+}
+
+/* ─── Trigger button ──────────────────────────────────────────────────────────
+ * Extends .ai-assistant-panel-icon-btn (background, border, cursor, color,
+ * transition, focus-visible ring — all inherited; no duplication here).
+ *
+ * Override rationale:
+ *   The base class fixes width/height to 28×28 for single-icon buttons.
+ *   The export trigger holds a 14×14 download SVG plus a 10×10 chevron, so
+ *   width must flex to auto.  Horizontal padding is tightened to 0.3 rem to
+ *   stay compact in the header without crowding the neighbouring buttons.
+ */
+.ai-assistant-export-trigger {
+    width: auto;
+    padding: 0.25rem 0.3rem;
+    gap: 2px;
+}
+
+/* Chevron rotates 180° while the menu is open. */
+.ai-assistant-export-trigger[aria-expanded="true"]
+    .ai-assistant-export-trigger-chevron svg {
+    transform: rotate(180deg);
+}
+
+/* ─── Trigger chevron span ────────────────────────────────────────────────── */
+/*
+ * Rendered as a secondary affordance (smaller than the main icon) so the
+ * user's eye reads: "export icon → dropdown available".
+ * Explicit 12×12 container prevents cloud theme flex-stretch on the SVG.
+ */
+.ai-assistant-export-trigger-chevron {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 12px   !important;
+    height: 12px  !important;
+    overflow: hidden !important;  /* hard clip — matches icon-span pattern */
+    line-height: 0;
+}
+
+.ai-assistant-export-trigger-chevron svg {
+    display: block       !important;
+    width: 10px          !important;  /* beat cloud max-width:100% / width:auto resets */
+    height: 10px         !important;
+    min-width: 10px      !important;
+    max-width: 10px      !important;
+    min-height: 10px     !important;
+    max-height: 10px     !important;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+    transition: transform 0.18s ease;
+}
+
+/* ─── Dropdown menu ───────────────────────────────────────────────────────────
+ * Visibility contract (mirrors .ai-assistant-panel-bubble-action-more-menu):
+ *   [data-open="false"]  →  display:none   (JS default)
+ *   [data-open="true"]   →  display:flex   (JS sets after click)
+ *
+ * Right-aligned (right:0; left:auto) so the menu never clips beyond the
+ * panel's right edge, regardless of panel width.  z-index 99999 matches all
+ * other floating surfaces in this stylesheet.
+ */
+.ai-assistant-export-menu {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    top: calc(100% + 0.3rem);
+    right: 0;
+    left: auto;
+    min-width: 196px;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.3rem;
+    background: var(--pst-color-surface,
+                    var(--color-background-primary, #fff));
+    border: 1px solid var(--pst-color-border,
+                          var(--color-foreground-border, #e1e4e5));
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.13),
+                0 2px  6px rgba(0, 0, 0, 0.07);
+}
+
+.ai-assistant-export-menu[data-open="true"] {
+    display: flex;
+}
+
+/* ─── Individual format items ─────────────────────────────────────────────── */
+/*
+ * Full-width buttons with icon + text-block layout.
+ * tabindex management is done by JS (–1 default, 0 on focused item).
+ */
+.ai-assistant-export-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.42rem 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Explicit normalization — cloud themes (Bootstrap, PyData, RTD) inject
+     * font-family, line-height, and appearance on <button> that fight layout.
+     * These properties are NOT inherited from panel-icon-btn because menu
+     * items are a separate element type (full-width row vs icon button).      */
+    font-family: inherit;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    -webkit-appearance: none;
+    appearance: none;
+    /* overflow: visible prevents cloud themes from clipping icon/text. */
+    overflow: visible;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch */
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    text-align: left;
+    transition: background-color 0.13s ease, color 0.13s ease;
+}
+
+.ai-assistant-export-menu-item:hover {
+    background: rgba(0, 0, 0, 0.055);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #111827));
+}
+
+.ai-assistant-export-menu-item:active {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+.ai-assistant-export-menu-item:focus         { outline: none; }
+.ai-assistant-export-menu-item:focus-visible {
+    outline: 2px solid var(--pst-color-primary,
+                           var(--color-brand-primary, #2563eb));
+    outline-offset: -2px;
+}
+
+/* ─── SVG format icons inside menu items ──────────────────────────────────────
+ * The icon span is always the first child (aria-hidden="true") — no class.
+ * Selector: .ai-assistant-export-menu-item > span:first-child
+ *
+ * Why icons render at full/viewBox size in cloud environments
+ * ────────────────────────────────────────────────────────────
+ * SVGs with viewBox="0 0 24 24" but no HTML width/height attributes are
+ * "replaced elements" whose intrinsic size is determined at render time:
+ *
+ *   1. No HTML width/height attrs  →  CSS controls size
+ *   2. Cloud themes (Bootstrap, RTD, PyData) inject:
+ *        img, svg { max-width: 100%; height: auto; }
+ *      or reboot:
+ *        svg { overflow: hidden; }  ←  no size constraint
+ *      These override or ignore our plain width/height rules in cascade.
+ *   3. The wrapper <span> has no explicit pixel size → no hard container.
+ *      Inside the flex row, the SVG stretches to fill available width.
+ *
+ * Three-layer fix
+ * ───────────────
+ * Layer 1 — Span: explicit 16×16 pixel box + overflow:hidden hard-clips any
+ *           overflow regardless of what the SVG wants to do.
+ * Layer 2 — SVG min/max clamp: min-width + max-width + min-height + max-height
+ *           all set to 14px — together they form a constraint that width:auto,
+ *           max-width:100%, and height:auto cannot escape.
+ * Layer 3 — !important on width/height: wins over cloud theme resets that use
+ *           !important themselves (Bootstrap 5 reboot, some RTD builds).
+ *           Justified here: this is a leaf-level pixel-precision visual rule.
+ */
+.ai-assistant-export-menu-item > span:first-child {
+    /* Hard container — the SVG cannot grow beyond this.
+     * !important on display/width/height/overflow: an ID-selector host rule
+     * like  #main-content svg { width:100% !important }  has specificity
+     * (1,0,1) which beats our class-chain (0,2,2) even in the !important tier.
+     * Hardening the SPAN stops the container from widening, so overflow:hidden
+     * clips any SVG that somehow still escapes the SVG-level constraints.     */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px  !important;
+    height: 16px !important;
+    overflow: hidden !important;  /* Layer 1: hard clip even if SVG ignores CSS */
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #6a737d));
+}
+
+.ai-assistant-export-menu-item > span:first-child svg {
+    /* Layer 2: min/max clamp — all six dimension properties carry !important
+     * so that a host ID-selector rule (specificity 1,0,1) cannot override
+     * any of them, even in the !important cascade tier.                     */
+    display: block       !important;  /* exit replaced-element inline-sizing */
+    width: 14px          !important;  /* Layer 3: beat cloud !important resets */
+    height: 14px         !important;
+    min-width: 14px      !important;  /* clamp: survives width:auto resets */
+    max-width: 14px      !important;  /* clamp: survives max-width:100% resets */
+    min-height: 14px     !important;
+    max-height: 14px     !important;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+}
+
+/* Brighten icon colour on hover to match label. */
+.ai-assistant-export-menu-item:hover > span:first-child {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #374151));
+}
+
+/* ─── Text block ─────────────────────────────────────────────────────────── */
+
+.ai-assistant-export-menu-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.ai-assistant-export-menu-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    line-height: 1.3;
+}
+
+.ai-assistant-export-menu-hint {
+    font-size: 0.69rem;
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #6a737d));
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+/* ─── Dark-mode overrides ─────────────────────────────────────────────────── */
+
+[data-bs-theme="dark"] .ai-assistant-export-menu,
+.dark .ai-assistant-export-menu {
+    background: var(--pst-color-surface,
+                    var(--color-background-primary, #1b1e21));
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45),
+                0 2px  6px rgba(0, 0, 0, 0.28);
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-item,
+.dark .ai-assistant-export-menu-item {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e2e8f0));
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-item:hover,
+.dark .ai-assistant-export-menu-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f0f1f3;
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-item:active,
+.dark .ai-assistant-export-menu-item:active {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-item > span:first-child,
+.dark .ai-assistant-export-menu-item > span:first-child {
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #8b949e));
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-item:hover > span:first-child,
+.dark .ai-assistant-export-menu-item:hover > span:first-child {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #c9d1d9));
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-hint,
+.dark .ai-assistant-export-menu-hint {
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #8b949e));
+}
+
+/* ─── Reduced-motion: disable chevron rotation animation ──────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-export-trigger-chevron svg {
+        transition: none;
+    }
+}
+
+/* ─── Trigger icon span ───────────────────────────────────────────────────────
+ * Three-layer SVG-size defence for the trigger's main icon.
+ *
+ * Root cause of the "icon renders full-size when hosted" bug
+ * ──────────────────────────────────────────────────────────
+ * When the trigger is built via  trigger.innerHTML = ICONS.exportTxt  the
+ * download SVG becomes a bare flex-child of the button with no wrapping span.
+ * CSS specificity rules inside the !important cascade tier mean an ID-anchored
+ * cloud theme rule such as
+ *
+ *   #main-content svg { max-width: 100% !important }   ← specificity 1,0,1
+ *
+ * beats our own rule
+ *
+ *   .ai-assistant-panel-icon-btn svg { width: 14px !important }  ← 0,1,1
+ *
+ * because 1,0,1 > 0,1,1 even when both declarations carry !important.
+ *
+ * Fix (three layers — same pattern as .ai-assistant-export-menu-item icons):
+ *   Layer 1 — 16×16 overflow:hidden span  → hard pixel box; the SVG cannot
+ *             grow beyond 16px regardless of how the SVG's own rules resolve.
+ *   Layer 2 — min/max clamp on SVG        → survives max-width:100% and
+ *             height:auto resets used by Bootstrap / PyData reboot CSS.
+ *   Layer 3 — !important on all six dimension properties → beats any cloud
+ *             !important reset whose selector has lower specificity.
+ *
+ * The JS side of this fix wraps the ICONS.exportTxt SVG in a
+ *   span[aria-hidden="true"]
+ * before appending it to the trigger button (see _buildExportDropdownBtn).
+ */
+.ai-assistant-export-trigger > span:first-child {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px   !important;
+    height: 16px  !important;
+    overflow: hidden !important;   /* Layer 1: hard clip even if SVG escapes CSS */
+}
+
+.ai-assistant-export-trigger > span:first-child svg {
+    display: block    !important;  /* exit replaced-element inline sizing */
+    width: 14px       !important;  /* Layer 3: beat cloud !important resets */
+    height: 14px      !important;
+    min-width: 14px   !important;  /* Layer 2: clamp survives width:auto */
+    max-width: 14px   !important;  /* Layer 2: clamp survives max-width:100% */
+    min-height: 14px  !important;
+    max-height: 14px  !important;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+}
+
+/* Keep the icon at the muted colour used by sibling header buttons. */
+.ai-assistant-export-trigger > span:first-child {
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #6a737d));
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-trigger > span:first-child,
+.dark .ai-assistant-export-trigger > span:first-child {
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #8b949e));
+}
+
+/* ─── Mobile / narrow viewport adjustments ─────────────────────────────────── */
+/*
+ * On very narrow screens:
+ *   - Shrink min-width to prevent clipping at panel edges.
+ *   - Hide the hint line to keep items compact (label alone is sufficient).
+ */
+@media (max-width: 480px) {
+    .ai-assistant-export-menu {
+        min-width: 168px;
+    }
+    .ai-assistant-export-menu-item {
+        padding: 0.38rem 0.45rem;
+        gap: 0.5rem;
+    }
+    .ai-assistant-export-menu-hint {
+        display: none;
     }
 }
