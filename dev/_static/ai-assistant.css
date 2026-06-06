@@ -7079,3 +7079,285 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
         transition: none;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * FORMAT-SPECIFIC SHARE SHEETS  (_buildFmtShareSheet)
+ * ───────────────────────────────────────────────────────────────────────────
+ * Each sheet is produced by the _buildFmtShareSheet(fmt) factory.
+ * The sheet element already carries .ai-assistant-panel-privacy which handles
+ * slide-in, z-index, focus management, and dark-mode background.  Only the
+ * new inner layout, format badge, and permanent-storage section need styling.
+ *
+ * Naming convention
+ * ─────────────────
+ *   -head-left      flex container inside the header for title + badge
+ *   -fmt-badge      coloured pill showing the active format (JSON / HTML / Text)
+ *   -fmt-{json,html,txt}   per-format accent colour overrides
+ *   -perm           section block for IndexedDB permanent-storage controls
+ *   -perm-head      flex row: label + hint inside the permanent section
+ *   -perm-lbl       "Permanent link" bold label
+ *   -perm-hint      muted caveat ("Saved in this browser until deleted")
+ *   -perm-link-row  input + Copy + Delete row (same flex as -link-row)
+ *   -perm-input     modifier on -link-input (no additional spacing needed)
+ *   -perm-delete    danger-coloured Delete button modifier on -action-btn
+ *   -perm-note      modifier on -session-note for the permanent-scope caveat
+ *   -perm-save-btn  "Save permanently" CTA button
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Header left (title + format badge grouped) ──────────────────────────── */
+
+.ai-assistant-conv-share-head-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+/* ── Format badge pill ───────────────────────────────────────────────────── */
+/*
+ * Sits inline with the "Share conversation" heading.
+ * Each format gets a distinct hue so users immediately know which sheet is
+ * open when toggling between them via the export dropdown.
+ *
+ * Colour semantics (chosen for legibility at both light and dark):
+ *   JSON  → amber  — data / structured format
+ *   HTML  → blue   — web / browser format
+ *   Text  → slate  — plain / neutral
+ */
+
+.ai-assistant-conv-share-fmt-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    flex-shrink: 0;
+    /* Base neutral — overridden by format modifiers below */
+    color:            #5a6270;
+    background-color: rgba(90, 98, 112, 0.12);
+    border:           1px solid rgba(90, 98, 112, 0.22);
+}
+
+/* JSON — amber */
+.ai-assistant-conv-share-fmt-json {
+    color:            #955c00;
+    background-color: rgba(237, 162, 0, 0.13);
+    border-color:     rgba(237, 162, 0, 0.35);
+}
+
+/* HTML — blue */
+.ai-assistant-conv-share-fmt-html {
+    color:            #0858b7;
+    background-color: rgba(9, 105, 218, 0.1);
+    border-color:     rgba(9, 105, 218, 0.28);
+}
+
+/* Text — slate */
+.ai-assistant-conv-share-fmt-txt {
+    color:            #4a5568;
+    background-color: rgba(74, 85, 104, 0.1);
+    border-color:     rgba(74, 85, 104, 0.25);
+}
+
+/* Dark-mode badge overrides */
+[data-bs-theme="dark"] .ai-assistant-conv-share-fmt-badge,
+.dark .ai-assistant-conv-share-fmt-badge {
+    color:            #8b949e;
+    background-color: rgba(139, 148, 158, 0.12);
+    border-color:     rgba(139, 148, 158, 0.2);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-fmt-json,
+.dark .ai-assistant-conv-share-fmt-json {
+    color:            #e3a846;
+    background-color: rgba(227, 168, 70, 0.12);
+    border-color:     rgba(227, 168, 70, 0.28);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-fmt-html,
+.dark .ai-assistant-conv-share-fmt-html {
+    color:            #58a6ff;
+    background-color: rgba(88, 166, 255, 0.1);
+    border-color:     rgba(88, 166, 255, 0.25);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-fmt-txt,
+.dark .ai-assistant-conv-share-fmt-txt {
+    color:            #8b949e;
+    background-color: rgba(139, 148, 158, 0.1);
+    border-color:     rgba(139, 148, 158, 0.22);
+}
+
+/* ── Permanent-storage section container ─────────────────────────────────── */
+/*
+ * A visually separated card beneath the session-link section.
+ * The top border and tinted background signal a distinct feature tier.
+ */
+
+.ai-assistant-conv-share-perm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px 12px;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.025);
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm,
+.dark .ai-assistant-conv-share-perm {
+    border-color: var(--pst-color-border, #30363d);
+    background:   rgba(255, 255, 255, 0.03);
+}
+
+/* ── Permanent-section header row (label + hint) ─────────────────────────── */
+
+.ai-assistant-conv-share-perm-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ai-assistant-conv-share-perm-lbl {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-lbl,
+.dark .ai-assistant-conv-share-perm-lbl {
+    color: var(--pst-color-text-base, #e4e6ea);
+}
+
+.ai-assistant-conv-share-perm-hint {
+    font-size: 0.75rem;
+    color: var(--color-foreground-secondary, #586069);
+    flex: 1;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-hint,
+.dark .ai-assistant-conv-share-perm-hint {
+    color: var(--pst-color-text-muted, #8b949e);
+}
+
+/* ── Permanent link row (input + Copy + Delete) ──────────────────────────── */
+/*
+ * Reuses the same flex pattern as .ai-assistant-conv-share-link-row so
+ * the input and buttons are always vertically centred and wrap gracefully.
+ */
+
+.ai-assistant-conv-share-perm-link-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* .ai-assistant-conv-share-perm-input is applied alongside
+   .ai-assistant-conv-share-link-input; no extra layout overrides needed. */
+
+/* Delete button — danger colour modifier on top of -action-btn */
+.ai-assistant-conv-share-perm-delete {
+    color:        #cf222e !important;
+    border-color: rgba(207, 34, 46, 0.35) !important;
+    transition:
+        background-color 0.12s ease,
+        color            0.12s ease,
+        border-color     0.12s ease;
+}
+
+.ai-assistant-conv-share-perm-delete:hover {
+    background-color: rgba(207, 34, 46, 0.08) !important;
+    border-color:     rgba(207, 34, 46, 0.55) !important;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-delete,
+.dark .ai-assistant-conv-share-perm-delete {
+    color:        #ff7b72 !important;
+    border-color: rgba(255, 123, 114, 0.3) !important;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-delete:hover,
+.dark .ai-assistant-conv-share-perm-delete:hover {
+    background-color: rgba(255, 123, 114, 0.1) !important;
+    border-color:     rgba(255, 123, 114, 0.5) !important;
+}
+
+/* ── Permanent section note ──────────────────────────────────────────────── */
+/*
+ * Applied alongside .ai-assistant-conv-share-session-note.
+ * Extra bottom margin keeps the "Save permanently" button visually separated.
+ */
+
+.ai-assistant-conv-share-perm-note {
+    margin-bottom: 2px;
+}
+
+/* ── "Save permanently" CTA button ──────────────────────────────────────── */
+/*
+ * Visually secondary to the "Create share link" primary CTA — uses the
+ * surface tint + border style instead of a filled accent background so the
+ * hierarchy is clear at a glance.
+ */
+
+.ai-assistant-conv-share-perm-save-btn {
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border, #d0d7de);
+    background: var(--color-background-primary, #ffffff);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.12s ease,
+        border-color     0.12s ease,
+        color            0.12s ease;
+    /* Ensure disabled state is still legible */
+    line-height: 1.4;
+}
+
+.ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
+    background-color: var(--color-background-secondary, #f3f4f6);
+    border-color:     var(--color-foreground-secondary, #7a8390);
+}
+
+.ai-assistant-conv-share-perm-save-btn:active:not(:disabled) {
+    opacity: 0.8;
+}
+
+.ai-assistant-conv-share-perm-save-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-save-btn,
+.dark .ai-assistant-conv-share-perm-save-btn {
+    background:   var(--pst-color-surface, #21262d);
+    border-color: var(--pst-color-border,  #30363d);
+    color:        var(--pst-color-text-base, #e4e6ea);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled),
+.dark .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
+    background-color: var(--pst-color-on-surface, #2d333b);
+    border-color:     var(--pst-color-text-muted, #8b949e);
+}
+
+/* ── Reduced-motion additions ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-conv-share-perm-save-btn,
+    .ai-assistant-conv-share-perm-delete,
+    .ai-assistant-conv-share-fmt-badge {
+        transition: none;
+    }
+}

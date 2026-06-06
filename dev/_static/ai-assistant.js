@@ -2347,6 +2347,140 @@
     }
 
     /**
+     * Build the conversation as a plain-text string.
+     *
+     * Extracted parallel to ``_buildConvHtmlString`` so both the download path
+     * (``exportConversationTxt``) and the per-format share sheet
+     * (``_buildFmtShareSheet('txt')``) operate on exactly the same rendered
+     * output — single source of truth, no duplication.
+     *
+     * Returns
+     * -------
+     * string
+     *     Complete UTF-8 plain-text document.  Returns ``''`` when the
+     *     transcript is empty.
+     *
+     * Notes
+     * -----
+     * Developer: Call the ``_transcript.length === 0`` guard in callers; the
+     *   empty-string return is a safety net, not the primary check.
+     */
+    function _buildConvTxtString() {
+        if (_transcript.length === 0) return '';
+        var cfg   = window.AI_ASSISTANT_CONFIG || {};
+        var title = cfg.panelTitle || 'AI Assistant';
+        var lines = [
+            title + ' \u2014 conversation export',
+            'Page: ' + ((typeof location !== 'undefined') ? location.href : ''),
+            'Exported: ' + new Date().toISOString(),
+            '',
+            '----------------------------------------',
+            '',
+        ];
+        _transcript.forEach(function (m) {
+            var who = m.role === 'user' ? 'You'
+                    : m.role === 'assistant' ? title
+                    : 'Error';
+            var ts  = m.ts ? '  [' + new Date(m.ts).toISOString() + ']' : '';
+            var mdl = (m.role === 'assistant' && m.model)
+                ? '  [' + (m.model.model || m.model.id) +
+                  ' \u00b7 ' + m.model.provider + ']'
+                : '';
+            lines.push('[' + who + ']' + ts + mdl);
+            lines.push(m.text);
+            lines.push('');
+        });
+        return lines.join('\n');
+    }
+
+    /**
+     * Build the conversation as a pandas-ready JSON string.
+     *
+     * Extracted parallel to ``_buildConvHtmlString`` so both the download path
+     * (``exportConversationJSON``) and the per-format share sheet
+     * (``_buildFmtShareSheet('json')``) use exactly the same payload.
+     *
+     * Returns
+     * -------
+     * string
+     *     Complete UTF-8 JSON document (schema_version 2.0).
+     *     Returns ``''`` when the transcript is empty.
+     *
+     * Notes
+     * -----
+     * Developer: Direct pandas load:
+     *   ``df = pd.DataFrame(json.loads(s)['records'])`` — zero preprocessing.
+     */
+    function _buildConvJsonString() {
+        if (_transcript.length === 0) return '';
+        var cfg       = window.AI_ASSISTANT_CONFIG || {};
+        var aiName    = cfg.panelTitle || 'AI Assistant';
+        var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
+        var pageTitle = (typeof document !== 'undefined') ? document.title : '';
+        var now       = Date.now();
+
+        var turns   = [];
+        var turnIdx = -1;
+        var aIdx    = 0;
+        var i       = 0;
+
+        while (i < _transcript.length) {
+            var m = _transcript[i];
+            if (m.role === 'user') {
+                turnIdx++;
+                var turn = {
+                    turn_index: turnIdx,
+                    user: {
+                        text:   m.text,
+                        ts:     m.ts || null,
+                        ts_iso: m.ts ? new Date(m.ts).toISOString() : null,
+                    },
+                    assistant: null,
+                };
+                if (i + 1 < _transcript.length &&
+                        _transcript[i + 1].role === 'assistant') {
+                    var a  = _transcript[i + 1];
+                    var fb = _feedbackStore[aIdx] || null;
+                    var am = a.model || null;
+                    turn.assistant = {
+                        text:                  a.text,
+                        ts:                    a.ts || null,
+                        ts_iso:                a.ts ? new Date(a.ts).toISOString() : null,
+                        model_id:              am ? am.id       : null,
+                        model_provider:        am ? am.provider : null,
+                        model_name:            am ? am.model    : null,
+                        feedback_rating_value: fb ? fb.ratingValue : null,
+                        feedback_rating_label: fb ? fb.ratingLabel : null,
+                        feedback_message:      fb ? (fb.message || null) : null,
+                    };
+                    aIdx++;
+                    i += 2;
+                } else {
+                    i += 1;
+                }
+                turns.push(turn);
+            } else {
+                if (m.role === 'assistant' || m.role === 'error') { aIdx++; }
+                i++;
+            }
+        }
+
+        return JSON.stringify({
+            schema_version: '2.0',
+            session: {
+                id:              _sessionId,
+                page_url:        pageUrl,
+                page_title:      pageTitle,
+                assistant_name:  aiName,
+                exported_at:     now,
+                exported_at_iso: new Date(now).toISOString(),
+            },
+            turns:   turns,
+            records: _buildExportRecords(),
+        }, null, 2);
+    }
+
+    /**
      * Export the conversation as a self-contained HTML file.
      *
      * The generated file:
@@ -5746,81 +5880,163 @@ opts.jsonPayload + '\n' +
     }
 
 
-    // ── Conversation share sheet ───────────────────────────────────────────────
+    // ── Conversation share sheets (format-specific) ───────────────────────────
+    // Three sheets produced by _buildFmtShareSheet below — one per export format.
+    // Replaces the former single _buildConvShareSheet (HTML-only, session-only).
 
     /**
-     * Build the "Share conversation" slide-over sheet.
+     * Build a format-specific "Share conversation" slide-over sheet.
      *
-     * Opened when the export dropdown is in share-link mode and any format
-     * item is clicked.  Generates a self-contained HTML blob URL the user
-     * can copy or open in a new tab — no server or backend required.
+     * Factory function that produces one sheet per export format (JSON, HTML,
+     * TXT).  Each sheet carries format-specific metadata, description, and
+     * content-building logic so the user always sees exactly what they are
+     * sharing and can use the right tool for the job.
      *
-     * Visibility modes
-     * ----------------
-     * Keep private
-     *     Creates a session-local blob URL.  The URL is shown in a read-only
-     *     input so the user can copy it manually or click "Open" to preview.
-     * Create public link
-     *     Same blob URL generation, plus automatic clipboard copy and the
-     *     conversation opens in a new tab immediately.
+     * Design
+     * ──────
+     * The sheet follows the exact ``ai-assistant-panel-privacy`` structure
+     * (``data-open`` contract, header + body layout, close-button id pattern)
+     * so it integrates transparently with the existing sheet management system
+     * in ``createAIPanel``:
      *
-     * Notes
-     * -----
-     * User: Blob URLs are valid only for the current browser session.  To
-     *   share permanently, save the opened page (Ctrl+S / Cmd+S) and host
-     *   the resulting HTML file.
+     *   • ``_openSheet`` — mutual-exclusion open/close sweep
+     *   • Close-button re-wire loop — focus restoration on ×
+     *   • Escape-key handler — keyboard close
      *
-     * Developer: HTML content is produced by ``_buildConvHtmlString()`` —
-     *   identical to the download path — so share-link and download output
-     *   are always in sync.  Call ``_setExportLinkMode(true)`` to activate
-     *   share-link mode and route format-item clicks to ``_openSheet(convShareSheet)``.
+     * Two sharing modes are provided per sheet:
+     *
+     * 1. **Session link** (``Create share link`` button)
+     *    Builds the content string, creates a ``blob:`` URL, and shows it in a
+     *    readonly input.  The link is valid only while the browser tab is open.
+     *    Revoked on mode change or re-generation to prevent memory leaks.
+     *
+     * 2. **Permanent link** (``Save permanently`` button)
+     *    Stores the content in IndexedDB under a UUID key.  Generates a hash
+     *    URL (``#ai-share-{uuid}-{fmt}``) that calls ``_checkShareHash()`` on
+     *    subsequent page loads, reads from IDB, and opens the content as a
+     *    fresh blob URL.  The entry can be deleted at any time from the sheet.
+     *
+     * Parameters
+     * ----------
+     * fmt : string
+     *     Format key: ``'json'`` | ``'html'`` | ``'txt'``.
      *
      * Returns
      * -------
      * HTMLElement
-     *     The assembled sheet element (``data-open="false"`` initially).
+     *     Assembled sheet element (``data-open="false"`` initially).
+     *
+     * Notes
+     * -----
+     * User: Session links close when you close the tab.  Use "Save permanently"
+     *   for links that work across restarts.  Permanent links are stored in
+     *   this browser only — they will not work on other devices.
+     *
+     * Developer: The three sheet instances produced for 'json', 'html', and
+     *   'txt' must ALL be registered in the panel management arrays inside
+     *   ``createAIPanel``:
+     *
+     *     _openSheet([..., convShareSheetJson, convShareSheetHtml, convShareSheetTxt])
+     *     Close-button re-wire loop: same list
+     *     Escape handler openSheets list: same list
+     *
+     *   The ``_buildExportDropdownBtn`` ``onLinkMode`` callback dispatches to
+     *   the correct sheet by ``fmt`` so the dropdown and the sheets are
+     *   decoupled — neither knows the other's DOM reference directly.
      */
-    function _buildConvShareSheet() {
+    function _buildFmtShareSheet(fmt) {
+
+        // ── Per-format metadata ────────────────────────────────────────────────
+        var _fmtMeta = {
+            json: {
+                label:    'JSON',
+                mime:     'application/json;charset=utf-8',
+                ext:      '.json',
+                desc:     'Share this conversation as a structured JSON file ' +
+                          '(schema v2.0 \u00b7 pandas-ready). ' +
+                          'Load with: pd.DataFrame(data[\u201crecords\u201d]).',
+                buildStr: function () { return _buildConvJsonString(); },
+            },
+            html: {
+                label:    'HTML',
+                mime:     'text/html;charset=utf-8',
+                ext:      '.html',
+                desc:     'Share as a self-contained web page with inline CSS. ' +
+                          'Works fully offline \u2014 open in any browser, ' +
+                          'no server required.',
+                buildStr: function () { return _buildConvHtmlString(); },
+            },
+            txt: {
+                label:    'Text',
+                mime:     'text/plain;charset=utf-8',
+                ext:      '.txt',
+                desc:     'Share as plain human-readable text. ' +
+                          'Opens in any text editor or email client ' +
+                          'without additional software.',
+                buildStr: function () { return _buildConvTxtString(); },
+            },
+        };
+        var meta = _fmtMeta[fmt] || _fmtMeta.html;
+
         // ── Sheet-level state ─────────────────────────────────────────────────
         var _shareMode    = 'private';   // 'private' | 'public'
-        var _activeBlobUrl = null;
+        var _activeBlobUrl = null;       // current session blob URL (revoke on reset)
+        var _permUuid     = null;        // UUID of current permanent save (if any)
 
         // ── Sheet container ───────────────────────────────────────────────────
         var sheet = document.createElement('div');
         sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-conv-share';
-        sheet.id = 'ai-assistant-panel-conv-share-sheet';
+        sheet.id        = 'ai-assistant-panel-conv-share-sheet-' + fmt;
         sheet.setAttribute('data-open', 'false');
+        sheet.setAttribute('data-fmt',  fmt);
 
         // ── Header ────────────────────────────────────────────────────────────
         var head = document.createElement('div');
         head.className = 'ai-assistant-panel-privacy-head';
 
+        var headLeft = document.createElement('div');
+        headLeft.className = 'ai-assistant-conv-share-head-left';
+
         var hStrong = document.createElement('strong');
         hStrong.textContent = 'Share conversation';
 
-        var hClose = _createIconBtn('conv-share-close', 'Close', ICONS.close);
+        var fmtBadge = document.createElement('span');
+        fmtBadge.className =
+            'ai-assistant-conv-share-fmt-badge ' +
+            'ai-assistant-conv-share-fmt-' + fmt;
+        fmtBadge.setAttribute('aria-label', meta.label + ' format');
+        fmtBadge.textContent = meta.label;
+
+        headLeft.appendChild(hStrong);
+        headLeft.appendChild(fmtBadge);
+
+        // Close button — id follows the `*-close` convention so the
+        // createAIPanel close-button re-wire loop picks it up automatically.
+        var hClose = _createIconBtn(
+            'conv-share-' + fmt + '-close', 'Close', ICONS.close);
         hClose.addEventListener('click', function () {
             sheet.setAttribute('data-open', 'false');
         });
 
-        head.appendChild(hStrong);
+        head.appendChild(headLeft);
         head.appendChild(hClose);
         sheet.appendChild(head);
 
         // ── Body ──────────────────────────────────────────────────────────────
         var body = document.createElement('div');
-        body.className = 'ai-assistant-panel-privacy-body ai-assistant-conv-share-body';
+        body.className =
+            'ai-assistant-panel-privacy-body ai-assistant-conv-share-body';
 
-        // Subtext note
-        var subNote = document.createElement('p');
-        subNote.className = 'ai-assistant-conv-share-subnote';
-        subNote.textContent =
-            'Share this conversation as a self-contained HTML page.';
-        body.appendChild(subNote);
+        // Format description
+        var descEl = document.createElement('p');
+        descEl.className  = 'ai-assistant-conv-share-subnote';
+        descEl.textContent = meta.desc;
+        body.appendChild(descEl);
 
-        // ── Visibility options ────────────────────────────────────────────────
-        // Two mutually-exclusive option buttons styled like Claude's share
-        // dialog: icon + label/desc + checkmark (visible when selected).
+        // ── Visibility option buttons ─────────────────────────────────────────
+        // Claude-inspired: icon block → text block → checkmark.
+        // aria-pressed drives checkmark opacity via CSS — no JS needed per
+        // selection; only the mode variable and aria-pressed are managed.
         var optWrap = document.createElement('div');
         optWrap.className = 'ai-assistant-conv-share-opts';
 
@@ -5839,26 +6055,21 @@ opts.jsonPayload + '\n' +
 
             var textW = document.createElement('span');
             textW.className = 'ai-assistant-conv-share-opt-text';
-
             var lbl = document.createElement('span');
             lbl.className = 'ai-assistant-conv-share-opt-lbl';
             lbl.textContent = label;
-
             var dsc = document.createElement('span');
             dsc.className = 'ai-assistant-conv-share-opt-dsc';
             dsc.textContent = desc;
-
             textW.appendChild(lbl);
             textW.appendChild(dsc);
             b.appendChild(textW);
 
-            // Check icon — in DOM always; opacity toggled via aria-pressed CSS rule.
             var chkW = document.createElement('span');
             chkW.className = 'ai-assistant-conv-share-opt-chk';
             chkW.setAttribute('aria-hidden', 'true');
             chkW.innerHTML = ICONS.convCheck;
             b.appendChild(chkW);
-
             return b;
         }
 
@@ -5870,12 +6081,11 @@ opts.jsonPayload + '\n' +
             'public', ICONS.convGlobe,
             'Create public link', 'Anyone with the link can view'
         );
-
         optWrap.appendChild(privOpt);
         optWrap.appendChild(pubOpt);
         body.appendChild(optWrap);
 
-        // ── Generated link row (hidden until link is created) ─────────────────
+        // ── Session link row (blob URL — tab lifetime) ────────────────────────
         var linkRow = document.createElement('div');
         linkRow.className = 'ai-assistant-conv-share-link-row';
         linkRow.setAttribute('aria-live', 'polite');
@@ -5885,7 +6095,7 @@ opts.jsonPayload + '\n' +
         linkInput.type = 'text';
         linkInput.readOnly = true;
         linkInput.className = 'ai-assistant-conv-share-link-input';
-        linkInput.setAttribute('aria-label', 'Share link URL');
+        linkInput.setAttribute('aria-label', 'Session share link');
         linkInput.addEventListener('focus', function () { linkInput.select(); });
 
         var copyBtn = document.createElement('button');
@@ -5903,7 +6113,7 @@ opts.jsonPayload + '\n' +
         openBtn.setAttribute('aria-label', 'Open in new tab');
         openBtn.textContent = 'Open';
         openBtn.addEventListener('click', function () {
-            if (!linkInput.value) { return; }
+            if (!linkInput.value) return;
             try {
                 var w = window.open(linkInput.value, '_blank', 'noopener,noreferrer');
                 if (w) { try { w.opener = null; } catch (_e) {} }
@@ -5915,15 +6125,158 @@ opts.jsonPayload + '\n' +
         linkRow.appendChild(openBtn);
         body.appendChild(linkRow);
 
-        // Session-only note — always visible below the link row.
+        // Session-only explanatory note (always visible once link row appears)
         var sessionNote = document.createElement('p');
         sessionNote.className = 'ai-assistant-conv-share-session-note';
         sessionNote.textContent =
-            'Link is valid for this browser session only. ' +
-            'Save the opened page to share it permanently.';
+            'Session link is valid while this browser tab is open. ' +
+            'Use \u201cSave permanently\u201d below for a lasting link.';
         body.appendChild(sessionNote);
 
-        // ── Action row ────────────────────────────────────────────────────────
+        // ── Permanent storage section (IndexedDB) ─────────────────────────────
+        //
+        // Saves the conversation content to IndexedDB under a UUID.
+        // Generates a hash URL (#ai-share-{uuid}-{fmt}) that the page script
+        // detects on load and re-opens from storage — permanent within this
+        // browser until the user deletes it or clears browser data.
+        var permSection = document.createElement('div');
+        permSection.className = 'ai-assistant-conv-share-perm';
+
+        var permHead = document.createElement('div');
+        permHead.className = 'ai-assistant-conv-share-perm-head';
+
+        var permLbl = document.createElement('span');
+        permLbl.className   = 'ai-assistant-conv-share-perm-lbl';
+        permLbl.textContent = 'Permanent link';
+
+        var permHint = document.createElement('span');
+        permHint.className   = 'ai-assistant-conv-share-perm-hint';
+        permHint.textContent = 'Saved in this browser until deleted';
+
+        permHead.appendChild(permLbl);
+        permHead.appendChild(permHint);
+        permSection.appendChild(permHead);
+
+        // Permanent link input + Copy + Delete — hidden until first save
+        var permLinkRow = document.createElement('div');
+        permLinkRow.className   = 'ai-assistant-conv-share-perm-link-row';
+        permLinkRow.style.display = 'none';
+
+        var permInput = document.createElement('input');
+        permInput.type     = 'text';
+        permInput.readOnly = true;
+        permInput.className =
+            'ai-assistant-conv-share-link-input ai-assistant-conv-share-perm-input';
+        permInput.setAttribute('aria-label', 'Permanent share link');
+        permInput.addEventListener('focus', function () { permInput.select(); });
+
+        var permCopyBtn = document.createElement('button');
+        permCopyBtn.type = 'button';
+        permCopyBtn.className = 'ai-assistant-conv-share-action-btn';
+        permCopyBtn.setAttribute('aria-label', 'Copy permanent link');
+        permCopyBtn.textContent = 'Copy';
+        permCopyBtn.addEventListener('click', function () {
+            if (permInput.value) { copyToClipboard(permInput.value, false); }
+        });
+
+        var permDeleteBtn = document.createElement('button');
+        permDeleteBtn.type = 'button';
+        permDeleteBtn.className =
+            'ai-assistant-conv-share-action-btn ai-assistant-conv-share-perm-delete';
+        permDeleteBtn.setAttribute('aria-label', 'Delete permanent link');
+        permDeleteBtn.textContent = 'Delete';
+        permDeleteBtn.addEventListener('click', function () {
+            if (!_permUuid) return;
+            var uuidToDelete = _permUuid;
+            _idbDeleteShare(uuidToDelete, function (ok, _err) {
+                if (ok) {
+                    _permUuid           = null;
+                    permLinkRow.style.display = 'none';
+                    permInput.value     = '';
+                    permSaveBtn.style.display = '';
+                    showNotification('Permanent link deleted', false);
+                } else {
+                    showNotification('Delete failed \u2014 check console', true);
+                }
+            });
+        });
+
+        permLinkRow.appendChild(permInput);
+        permLinkRow.appendChild(permCopyBtn);
+        permLinkRow.appendChild(permDeleteBtn);
+        permSection.appendChild(permLinkRow);
+
+        // Permanent note — scope and limitation explanation
+        var permNote = document.createElement('p');
+        permNote.className =
+            'ai-assistant-conv-share-session-note ai-assistant-conv-share-perm-note';
+        permNote.textContent =
+            'Works in this browser until deleted or storage is cleared. ' +
+            'Not accessible from other devices or browsers.';
+        permSection.appendChild(permNote);
+
+        // "Save permanently" action button
+        var permSaveBtn = document.createElement('button');
+        permSaveBtn.type = 'button';
+        permSaveBtn.className = 'ai-assistant-conv-share-perm-save-btn';
+        permSaveBtn.textContent = 'Save permanently';
+
+        permSaveBtn.addEventListener('click', function () {
+            if (_transcript.length === 0) {
+                showNotification('Nothing to save yet', true);
+                return;
+            }
+            var content = meta.buildStr();
+            if (!content) { showNotification('Nothing to save yet', true); return; }
+
+            var cfg = window.AI_ASSISTANT_CONFIG || {};
+            var uuid = _idbGenUuid();
+            var entry = {
+                uuid:     uuid,
+                fmt:      fmt,
+                content:  content,
+                mimeType: meta.mime,
+                ext:      meta.ext,
+                title:    (cfg.panelTitle || 'AI Assistant') + ' \u2014 ' +
+                          new Date().toLocaleDateString(),
+                pageUrl:  (typeof location !== 'undefined')
+                          ? location.href.split('#')[0] : '',
+                ts:       Date.now(),
+            };
+
+            permSaveBtn.disabled  = true;
+            permSaveBtn.textContent = 'Saving\u2026';
+
+            _idbSaveShare(entry, function (savedUuid, err) {
+                permSaveBtn.disabled    = false;
+                permSaveBtn.textContent = 'Save permanently';
+                if (err || !savedUuid) {
+                    showNotification(
+                        'Storage failed \u2014 ' + (err ? err.message : 'unknown'),
+                        true
+                    );
+                    return;
+                }
+                _permUuid = savedUuid;
+                var url   = _idbShareUrl(savedUuid, fmt);
+                permInput.value         = url;
+                permLinkRow.style.display = '';
+                permSaveBtn.style.display = 'none';
+
+                if (_shareMode === 'public') {
+                    copyToClipboard(url, false);
+                    showNotification(
+                        'Permanent link saved \u2014 copied to clipboard', false);
+                } else {
+                    showNotification('Permanent link saved', false);
+                }
+            });
+        });
+
+        permSection.appendChild(permSaveBtn);
+        body.appendChild(permSection);
+
+        // ── Action row — Create share link (session blob) ─────────────────────
         var actionRow = document.createElement('div');
         actionRow.className = 'ai-assistant-conv-share-actions';
 
@@ -5937,19 +6290,20 @@ opts.jsonPayload + '\n' +
                 showNotification('Nothing to share yet', true);
                 return;
             }
-            // Revoke previous blob to release memory before creating a new one.
+            // Revoke previous blob before creating a new one (prevent leaks).
             if (_activeBlobUrl) {
                 try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
                 _activeBlobUrl = null;
             }
-            var html = _buildConvHtmlString();
-            var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            var content = meta.buildStr();
+            if (!content) { showNotification('Nothing to share yet', true); return; }
+
+            var blob = new Blob([content], { type: meta.mime });
             _activeBlobUrl = URL.createObjectURL(blob);
-            linkInput.value = _activeBlobUrl;
-            linkRow.style.display = '';
+            linkInput.value        = _activeBlobUrl;
+            linkRow.style.display  = '';
 
             if (_shareMode === 'public') {
-                // Auto-copy + open for "public" mode.
                 copyToClipboard(_activeBlobUrl, false);
                 try {
                     var wp = window.open(_activeBlobUrl, '_blank', 'noopener,noreferrer');
@@ -5966,14 +6320,16 @@ opts.jsonPayload + '\n' +
         body.appendChild(actionRow);
         sheet.appendChild(body);
 
-        // ── Option selection (declared after all DOM refs are built) ──────────
+        // ── Option selection ──────────────────────────────────────────────────
+        // Selecting a new visibility mode resets any existing session link so
+        // the user always generates a fresh link for the chosen visibility.
         function _selectMode(key) {
             _shareMode = key;
             privOpt.setAttribute('aria-pressed', key === 'private' ? 'true' : 'false');
             pubOpt.setAttribute('aria-pressed',  key === 'public'  ? 'true' : 'false');
-            // Reset any previously generated link when visibility changes.
+            // Reset session link
             linkRow.style.display = 'none';
-            linkInput.value = '';
+            linkInput.value       = '';
             if (_activeBlobUrl) {
                 try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
                 _activeBlobUrl = null;
@@ -5981,7 +6337,7 @@ opts.jsonPayload + '\n' +
         }
 
         privOpt.addEventListener('click', function () { _selectMode('private'); });
-        pubOpt.addEventListener('click',  function () { _selectMode('public'); });
+        pubOpt.addEventListener('click',  function () { _selectMode('public');  });
 
         return sheet;
     }
@@ -6573,13 +6929,19 @@ opts.jsonPayload + '\n' +
         newChatBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         newChatBtn.addEventListener('click', clearConversation);
 
-        // R4 v2: multi-format export dropdown (JSON · HTML · TXT).
-        // In share-link mode (toggle ON) format items open convShareSheet
-        // instead of downloading; the callback is a closure over convShareSheet
-        // which is var-hoisted in createAIPanel and assigned later below.
+        // R4 v3: multi-format export dropdown (JSON · HTML · TXT).
+        // In share-link mode (toggle ON) each format item opens its OWN
+        // format-specific share sheet so the user always shares the exact format
+        // they selected — JSON as JSON blob, HTML as HTML page, TXT as text file.
+        // The onLinkMode callback dispatches by fmt to the correct sheet.
+        // convShareSheetJson / Html / Txt are var-hoisted in createAIPanel and
+        // assigned below — the closures are safe because no user interaction
+        // can fire before the assignments are reached.
         var exportDropdown = _buildExportDropdownBtn({
-            onLinkMode: function () {
-                _openSheet(convShareSheet);
+            onLinkMode: function (fmt) {
+                if (fmt === 'json')       { _openSheet(convShareSheetJson); }
+                else if (fmt === 'html')  { _openSheet(convShareSheetHtml); }
+                else                      { _openSheet(convShareSheetTxt);  }
             },
         });
 
@@ -7202,11 +7564,16 @@ opts.jsonPayload + '\n' +
         var linksSheet = (cfgRef.panelLinks !== false) ? _buildLinksSheet() : null;
         if (linksSheet) panel.appendChild(linksSheet);
 
-        // "Share conversation" sheet — opened by the export dropdown's share-link
-        // mode toggle.  Always built (it is cheap) so _openSheet() can include it
+        // "Share conversation" sheets — one per export format (JSON, HTML, TXT).
+        // Opened by the export dropdown's onLinkMode dispatch when share-link mode
+        // is active.  All three are always built so _openSheet() can include them
         // in its close-all sweep even when the toggle has never been used.
-        var convShareSheet = _buildConvShareSheet();
-        panel.appendChild(convShareSheet);
+        var convShareSheetJson = _buildFmtShareSheet('json');
+        var convShareSheetHtml = _buildFmtShareSheet('html');
+        var convShareSheetTxt  = _buildFmtShareSheet('txt');
+        panel.appendChild(convShareSheetJson);
+        panel.appendChild(convShareSheetHtml);
+        panel.appendChild(convShareSheetTxt);
 
         /**
          * Open exactly one sheet at a time.  Pass null to close all.
@@ -7241,7 +7608,8 @@ opts.jsonPayload + '\n' +
          *   _closeSheet which restores focus to the originating button.
          */
         function _openSheet(target) {
-            [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet, convShareSheet].forEach(function (s) {
+            [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet,
+             convShareSheetJson, convShareSheetHtml, convShareSheetTxt].forEach(function (s) {
                 if (!s) return;
                 s.setAttribute('data-open', (s === target) ? 'true' : 'false');
             });
@@ -7542,7 +7910,10 @@ opts.jsonPayload + '\n' +
         // registered inside each sheet builder call sheet.setAttribute directly
         // (they run before _closeSheet exists); we add a second listener here
         // which performs the focus restoration after the flag is already 'false'.
-        [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet, convShareSheet].forEach(function (s) {
+        // convShareSheet replaced by three format-specific sheets; all three
+        // must appear here so _closeSheet restores focus for every variant.
+        [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet,
+         convShareSheetJson, convShareSheetHtml, convShareSheetTxt].forEach(function (s) {
             if (!s) return;
             var closeBtn = s.querySelector('button[id$="-close"]');
             if (!closeBtn) return;
@@ -7616,7 +7987,9 @@ opts.jsonPayload + '\n' +
                 hamburgerMenuEl.setAttribute('data-open', 'false');
                 return;
             }
-            var openSheets = [privacySheet, modelSheet, termsSheet, shareSheet, linksSheet, convShareSheet]
+            // convShareSheet replaced by three format-specific sheets.
+            var openSheets = [privacySheet, modelSheet, termsSheet, shareSheet, linksSheet,
+                              convShareSheetJson, convShareSheetHtml, convShareSheetTxt]
                 .filter(function (s) {
                     return s && s.getAttribute('data-open') === 'true';
                 });
@@ -8170,6 +8543,296 @@ opts.jsonPayload + '\n' +
             toggle.setAttribute('aria-pressed', _exportLinkMode ? 'true' : 'false');
             toggle.setAttribute('title',
                 _exportLinkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
+        }
+    }
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // PERMANENT SHARE STORAGE — IndexedDB module
+    //
+    // Purpose
+    // ───────
+    // Blob URLs created by URL.createObjectURL() are ephemeral: they are tied
+    // to the browser tab session and evicted when the tab closes.  The IndexedDB
+    // module provides truly persistent storage so share links survive page
+    // reloads indefinitely (until the user explicitly deletes them or clears
+    // browser data).
+    //
+    // Storage scheme
+    // ──────────────
+    //   Database : 'ai-assistant-shares'   (version 1)
+    //   Store    : 'conversations'          (keyPath: uuid)
+    //   Indices  : ts (timestamp), fmt (format string)
+    //
+    //   Entry schema
+    //   ────────────
+    //   {
+    //     uuid:     string   — crypto UUID (keyPath)
+    //     fmt:      string   — 'json' | 'html' | 'txt'
+    //     content:  string   — serialised conversation payload
+    //     mimeType: string   — MIME type for Blob creation
+    //     ext:      string   — file extension (e.g. '.html')
+    //     title:    string   — human-readable label for the share
+    //     pageUrl:  string   — origin page URL (without hash)
+    //     ts:       number   — Unix timestamp (ms) of creation
+    //   }
+    //
+    // URL scheme
+    // ──────────
+    //   page.html#ai-share-{uuid}-{fmt}
+    //
+    //   On page load the _checkShareHash() function detects this pattern,
+    //   reads the entry from IndexedDB, creates a fresh Blob URL, and opens
+    //   the content in a new tab.  The hash is the "address"; IndexedDB is
+    //   the content store.  Content is never embedded in the URL itself —
+    //   the URL stays short and shareable.
+    //
+    // Cross-device limitation
+    // ───────────────────────
+    //   IndexedDB is browser-local.  A link generated on device A is only
+    //   functional on that same browser on device A.  For cross-device or
+    //   cross-user sharing, the user should use the download option (which
+    //   produces a self-contained file) or the session blob URL (valid only
+    //   while the tab is open).  Both the permanent-link note and the session-
+    //   note in the share sheet make this distinction explicit.
+    // ══════════════════════════════════════════════════════════════════════════
+
+    /** IndexedDB database name for all share entries. @type {string} */
+    var _IDB_SHARE_NAME    = 'ai-assistant-shares';
+
+    /** Object store name within _IDB_SHARE_NAME. @type {string} */
+    var _IDB_SHARE_STORE   = 'conversations';
+
+    /** Schema version — bump when adding new indices. @type {number} */
+    var _IDB_SHARE_VERSION = 1;
+
+    /**
+     * Open (and if necessary create) the share IndexedDB database.
+     *
+     * The store schema is created in ``onupgradeneeded`` when the database
+     * does not yet exist or when the version number is bumped.
+     *
+     * Parameters
+     * ----------
+     * callback : function(IDBDatabase|null, Error|null)
+     *     Called with the open database or an error.  ``db`` is null on error.
+     *
+     * Notes
+     * -----
+     * Developer: Always check the ``err`` argument before using ``db``.
+     *   IndexedDB is unavailable in some private-browsing modes, sandboxed
+     *   iframes, and when the user has blocked storage entirely.
+     */
+    function _idbOpen(callback) {
+        try {
+            if (!window.indexedDB) {
+                callback(null, new Error('IndexedDB unavailable'));
+                return;
+            }
+            var req = window.indexedDB.open(_IDB_SHARE_NAME, _IDB_SHARE_VERSION);
+            req.onupgradeneeded = function (e) {
+                var db = e.target.result;
+                if (!db.objectStoreNames.contains(_IDB_SHARE_STORE)) {
+                    var store = db.createObjectStore(
+                        _IDB_SHARE_STORE, { keyPath: 'uuid' });
+                    store.createIndex('ts',  'ts',  { unique: false });
+                    store.createIndex('fmt', 'fmt', { unique: false });
+                }
+            };
+            req.onsuccess = function (e) { callback(e.target.result, null); };
+            req.onerror   = function (e) { callback(null, e.target.error);  };
+        } catch (err) { callback(null, err); }
+    }
+
+    /**
+     * Save a conversation entry to the share store.
+     *
+     * Uses ``IDBObjectStore.put()`` (upsert) so calling with the same UUID
+     * replaces an existing entry — idempotent and safe to retry.
+     *
+     * Parameters
+     * ----------
+     * data : Object
+     *     Entry matching the store schema (must include ``uuid``).
+     * callback : function(string|null, Error|null)
+     *     Called with the saved UUID on success, or null + error on failure.
+     *
+     * Notes
+     * -----
+     * Developer: Generate the UUID before calling this function using
+     *   ``_idbGenUuid()`` so the caller has it available immediately without
+     *   waiting for the async callback.
+     */
+    function _idbSaveShare(data, callback) {
+        _idbOpen(function (db, err) {
+            if (err || !db) {
+                if (callback) callback(null, err || new Error('IDB open failed'));
+                return;
+            }
+            try {
+                var tx    = db.transaction(_IDB_SHARE_STORE, 'readwrite');
+                var store = tx.objectStore(_IDB_SHARE_STORE);
+                var req   = store.put(data);
+                req.onsuccess = function () {
+                    if (callback) callback(data.uuid, null);
+                };
+                req.onerror = function (e) {
+                    if (callback) callback(null, e.target.error);
+                };
+            } catch (e2) { if (callback) callback(null, e2); }
+        });
+    }
+
+    /**
+     * Load a single share entry from IndexedDB by its UUID.
+     *
+     * Parameters
+     * ----------
+     * uuid : string
+     *     Key of the entry to retrieve.
+     * callback : function(Object|null, Error|null)
+     *     Called with the entry object or ``null`` when not found, plus any error.
+     *
+     * Notes
+     * -----
+     * Developer: A missing key returns ``null`` entry with no error.  Treat
+     *   ``entry === null`` as "not found" and ``err !== null`` as a storage fault.
+     */
+    function _idbLoadShare(uuid, callback) {
+        _idbOpen(function (db, err) {
+            if (err || !db) { callback(null, err || new Error('IDB open failed')); return; }
+            try {
+                var tx    = db.transaction(_IDB_SHARE_STORE, 'readonly');
+                var store = tx.objectStore(_IDB_SHARE_STORE);
+                var req   = store.get(uuid);
+                req.onsuccess = function (e) { callback(e.target.result || null, null); };
+                req.onerror   = function (e) { callback(null, e.target.error); };
+            } catch (e2) { callback(null, e2); }
+        });
+    }
+
+    /**
+     * Delete a single share entry from IndexedDB by its UUID.
+     *
+     * Idempotent — deleting a non-existent key succeeds silently.
+     *
+     * Parameters
+     * ----------
+     * uuid : string
+     *     Key of the entry to delete.
+     * callback : function(boolean, Error|null)
+     *     Called with ``true`` on success, ``false`` + error on failure.
+     */
+    function _idbDeleteShare(uuid, callback) {
+        _idbOpen(function (db, err) {
+            if (err || !db) {
+                if (callback) callback(false, err || new Error('IDB open failed'));
+                return;
+            }
+            try {
+                var tx    = db.transaction(_IDB_SHARE_STORE, 'readwrite');
+                var store = tx.objectStore(_IDB_SHARE_STORE);
+                var req   = store.delete(uuid);
+                req.onsuccess = function () { if (callback) callback(true,  null); };
+                req.onerror   = function (e) { if (callback) callback(false, e.target.error); };
+            } catch (e2) { if (callback) callback(false, e2); }
+        });
+    }
+
+    /**
+     * Build the permanent share URL for a given UUID + format pair.
+     *
+     * Scheme: ``{pageOrigin+path}#ai-share-{uuid}-{fmt}``
+     *
+     * The URL is deterministic given the same inputs, so it can be
+     * recomputed without touching IndexedDB (e.g. for display after save).
+     *
+     * Parameters
+     * ----------
+     * uuid : string
+     *     UUID of the stored share entry.
+     * fmt : string
+     *     Format string ('json' | 'html' | 'txt').
+     *
+     * Returns
+     * -------
+     * string
+     *     Absolute URL including hash fragment.
+     */
+    function _idbShareUrl(uuid, fmt) {
+        var base = (typeof location !== 'undefined')
+            ? location.href.split('#')[0]
+            : '';
+        return base + '#ai-share-' + uuid + '-' + fmt;
+    }
+
+    /**
+     * Generate a cryptographically random UUID for a new share entry.
+     *
+     * Prefers ``crypto.randomUUID()`` (Web Crypto API — Chromium 92+,
+     * Firefox 95+, Safari 15.4+) and falls back to a timestamp+random string
+     * that is collision-resistant for the expected usage volume (<<10^6 entries).
+     *
+     * Returns
+     * -------
+     * string
+     *     Unique identifier string safe for use as an IndexedDB key and
+     *     URL hash fragment component.
+     */
+    function _idbGenUuid() {
+        try {
+            if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                return window.crypto.randomUUID();
+            }
+        } catch (_e) {}
+        return 'shr-' + Date.now().toString(36) +
+               '-' + Math.random().toString(36).slice(2, 10);
+    }
+
+    /**
+     * Detect a permanent share URL hash and open the stored content.
+     *
+     * Hash pattern: ``#ai-share-{uuid}-{fmt}``
+     *
+     * When detected, loads the entry from IndexedDB, creates a Blob URL,
+     * and opens it in a new tab.  Silently does nothing when the hash is
+     * absent or the entry has been deleted.
+     *
+     * Called once on script load (deferred 200 ms) and wired to ``hashchange``
+     * so in-page navigation triggers it automatically.
+     *
+     * Notes
+     * -----
+     * Developer: The hash is NOT cleared after detection because the user
+     *   may want to bookmark or share the URL.  Clearing it would make the
+     *   URL stop working on subsequent visits.
+     */
+    function _checkShareHash() {
+        var hash = (typeof location !== 'undefined') ? location.hash : '';
+        var m    = hash.match(/^#ai-share-([A-Za-z0-9_-]+)-(json|html|txt)$/i);
+        if (!m) return;
+        var uuid = m[1];
+        var fmt  = m[2].toLowerCase();
+        _idbLoadShare(uuid, function (entry, err) {
+            if (err || !entry) return;   // deleted or IDB unavailable — silent
+            var mime = entry.mimeType || (
+                fmt === 'json' ? 'application/json;charset=utf-8' :
+                fmt === 'txt'  ? 'text/plain;charset=utf-8'       :
+                'text/html;charset=utf-8'
+            );
+            try {
+                var blob = new Blob([entry.content], { type: mime });
+                var url  = URL.createObjectURL(blob);
+                var w    = window.open(url, '_blank', 'noopener,noreferrer');
+                if (w) { try { w.opener = null; } catch (_e) {} }
+            } catch (_e) {}
+        });
+    }
+
+    // Wire hash routing: fires on direct navigation and in-page hash changes.
+    if (typeof window !== 'undefined') {
+        window.addEventListener('hashchange', _checkShareHash);
+        if (typeof setTimeout !== 'undefined') {
+            setTimeout(_checkShareHash, 200);
         }
     }
 
