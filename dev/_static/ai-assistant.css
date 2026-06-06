@@ -6693,3 +6693,389 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
         display: none;
     }
 }
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+ * Export dropdown — mode-toggle row (download ↔ share-link)
+ * Mirrors the mic hold-toggle row in the voice popup: icon + label + pill.
+ * The pill reuses .ai-assistant-mic-toggle-track / -thumb so the visual is
+ * identical with zero extra CSS for the pill itself.
+ * ════════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-export-menu-sep {
+    height: 1px;
+    background: var(--color-border, #e1e4e8);
+    margin: 4px 0;
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-sep,
+.dark .ai-assistant-export-menu-sep {
+    background: var(--pst-color-border, #30363d);
+}
+
+.ai-assistant-export-menu-mode-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px 6px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    user-select: none;
+    color: var(--color-foreground-secondary, #586069);
+    transition: background 0.12s;
+    outline: none;
+}
+
+.ai-assistant-export-menu-mode-row:hover {
+    background: var(--color-background-hover, rgba(0, 0, 0, 0.05));
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-mode-row:hover,
+.dark .ai-assistant-export-menu-mode-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ai-assistant-export-menu-mode-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: inherit;
+}
+
+.ai-assistant-export-menu-mode-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.ai-assistant-export-menu-mode-label {
+    flex: 1;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: inherit;
+    white-space: nowrap;
+}
+
+/* When share-link is ON: tint icon + label with accent colour so the active
+ * state is immediately readable without opening the menu. */
+.ai-assistant-export-menu-mode-row:has(
+    #ai-assistant-export-link-toggle[aria-pressed="true"]
+) .ai-assistant-export-menu-mode-icon,
+.ai-assistant-export-menu-mode-row:has(
+    #ai-assistant-export-link-toggle[aria-pressed="true"]
+) .ai-assistant-export-menu-mode-label {
+    color: var(--color-accent, #0969da);
+}
+
+[data-bs-theme="dark"]
+.ai-assistant-export-menu-mode-row:has(
+    #ai-assistant-export-link-toggle[aria-pressed="true"]
+) .ai-assistant-export-menu-mode-icon,
+.dark
+.ai-assistant-export-menu-mode-row:has(
+    #ai-assistant-export-link-toggle[aria-pressed="true"]
+) .ai-assistant-export-menu-mode-icon,
+[data-bs-theme="dark"]
+.ai-assistant-export-menu-mode-row:has(
+    #ai-assistant-export-link-toggle[aria-pressed="true"]
+) .ai-assistant-export-menu-mode-label,
+.dark
+.ai-assistant-export-menu-mode-row:has(
+    #ai-assistant-export-link-toggle[aria-pressed="true"]
+) .ai-assistant-export-menu-mode-label {
+    color: var(--pst-color-primary, #58a6ff);
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+ * "Share conversation" slide-over sheet
+ * The sheet element uses .ai-assistant-panel-privacy which already handles
+ * absolute positioning, slide-in animation (data-open), z-index, and focus
+ * trapping.  Only the new inner layout needs styling here.
+ * ════════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-conv-share-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Subtext above the options */
+.ai-assistant-conv-share-subnote {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--color-foreground-secondary, #586069);
+    line-height: 1.45;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-subnote,
+.dark .ai-assistant-conv-share-subnote {
+    color: var(--pst-color-text-muted, #8b949e);
+}
+
+/* ── Visibility option buttons ──────────────────────────────────────────── */
+
+.ai-assistant-conv-share-opts {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opts,
+.dark .ai-assistant-conv-share-opts {
+    border-color: var(--pst-color-border, #30363d);
+}
+
+.ai-assistant-conv-share-opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.12s;
+    font-family: inherit;
+    color: var(--color-foreground-primary, #24292f);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opt,
+.dark .ai-assistant-conv-share-opt {
+    color: var(--pst-color-text-base, #c9d1d9);
+}
+
+.ai-assistant-conv-share-opt:not(:last-child) {
+    border-bottom: 1px solid var(--color-border, #d0d7de);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opt:not(:last-child),
+.dark .ai-assistant-conv-share-opt:not(:last-child) {
+    border-bottom-color: var(--pst-color-border, #30363d);
+}
+
+.ai-assistant-conv-share-opt:hover {
+    background: var(--color-background-hover, rgba(0, 0, 0, 0.04));
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opt:hover,
+.dark .ai-assistant-conv-share-opt:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.ai-assistant-conv-share-opt-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-foreground-secondary, #586069);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opt-icon,
+.dark .ai-assistant-conv-share-opt-icon {
+    color: var(--pst-color-text-muted, #8b949e);
+}
+
+.ai-assistant-conv-share-opt-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.ai-assistant-conv-share-opt-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.ai-assistant-conv-share-opt-lbl {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.ai-assistant-conv-share-opt-dsc {
+    font-size: 0.77rem;
+    color: var(--color-foreground-secondary, #586069);
+    line-height: 1.3;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opt-dsc,
+.dark .ai-assistant-conv-share-opt-dsc {
+    color: var(--pst-color-text-muted, #8b949e);
+}
+
+/* Check icon — always in the DOM but transparent unless option is selected */
+.ai-assistant-conv-share-opt-chk {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-accent, #0969da);
+    opacity: 0;
+    transition: opacity 0.1s;
+    pointer-events: none;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-opt-chk,
+.dark .ai-assistant-conv-share-opt-chk {
+    color: var(--pst-color-primary, #58a6ff);
+}
+
+.ai-assistant-conv-share-opt-chk svg {
+    width: 18px;
+    height: 18px;
+}
+
+.ai-assistant-conv-share-opt[aria-pressed="true"] .ai-assistant-conv-share-opt-chk {
+    opacity: 1;
+}
+
+/* ── Generated link row ──────────────────────────────────────────────────── */
+
+.ai-assistant-conv-share-link-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ai-assistant-conv-share-link-input {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    font-family: var(--font-monospace, monospace);
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 6px;
+    background: var(--color-background-secondary, #f6f8fa);
+    color: var(--color-foreground-primary, #24292f);
+    outline: none;
+    transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.ai-assistant-conv-share-link-input:focus {
+    border-color: var(--color-accent, #0969da);
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-link-input,
+.dark .ai-assistant-conv-share-link-input {
+    background: var(--pst-color-background, #161b22);
+    border-color: var(--pst-color-border, #30363d);
+    color: var(--pst-color-text-base, #c9d1d9);
+}
+
+.ai-assistant-conv-share-action-btn {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 6px;
+    background: var(--color-background-primary, #ffffff);
+    color: var(--color-foreground-primary, #24292f);
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.ai-assistant-conv-share-action-btn:hover {
+    background: var(--color-background-hover, #f3f4f6);
+    border-color: var(--color-border-active, #a0aab3);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-action-btn,
+.dark .ai-assistant-conv-share-action-btn {
+    background: var(--pst-color-background, #161b22);
+    border-color: var(--pst-color-border, #30363d);
+    color: var(--pst-color-text-base, #c9d1d9);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-action-btn:hover,
+.dark .ai-assistant-conv-share-action-btn:hover {
+    background: var(--pst-color-background-secondary, #21262d);
+}
+
+/* ── Session-only note ───────────────────────────────────────────────────── */
+
+.ai-assistant-conv-share-session-note {
+    margin: 0;
+    font-size: 0.74rem;
+    color: var(--color-foreground-muted, #8c959f);
+    line-height: 1.45;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-session-note,
+.dark .ai-assistant-conv-share-session-note {
+    color: var(--pst-color-text-muted, #6e7681);
+}
+
+/* ── Action row (Create share link button) ───────────────────────────────── */
+
+.ai-assistant-conv-share-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+}
+
+.ai-assistant-conv-share-generate-btn {
+    padding: 7px 16px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-accent, #0969da);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.12s, opacity 0.12s;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.ai-assistant-conv-share-generate-btn:hover {
+    background: var(--color-accent-hover, #0857b8);
+}
+
+.ai-assistant-conv-share-generate-btn:active {
+    opacity: 0.85;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-generate-btn,
+.dark .ai-assistant-conv-share-generate-btn {
+    background: var(--pst-color-primary, #1f6feb);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-generate-btn:hover,
+.dark .ai-assistant-conv-share-generate-btn:hover {
+    background: var(--pst-color-primary-highlight, #388bfd);
+}
+
+/* ── Reduced-motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-conv-share-opt,
+    .ai-assistant-conv-share-action-btn,
+    .ai-assistant-conv-share-generate-btn,
+    .ai-assistant-conv-share-link-input,
+    .ai-assistant-conv-share-opt-chk,
+    .ai-assistant-export-menu-sep,
+    .ai-assistant-export-menu-mode-row {
+        transition: none;
+    }
+}

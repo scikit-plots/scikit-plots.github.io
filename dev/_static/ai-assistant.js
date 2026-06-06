@@ -97,6 +97,39 @@
     }());
 
     /**
+     * sessionStorage key for export share-link mode persistence.
+     *
+     * When ``true``, the export dropdown opens a "Share conversation" sheet
+     * (blob URL opened in new tab) instead of triggering a file download.
+     * Persisted in localStorage so the preference survives page reloads.
+     * Falls back gracefully when storage is unavailable.
+     *
+     * @type {string}
+     */
+    var _EXPORT_LINK_MODE_KEY = 'ai-assistant-export-link-mode';
+
+    /**
+     * Whether export share-link mode is active.
+     *
+     * ``false`` (default) → clicking an export format downloads the file.
+     * ``true``            → clicking opens the "Share conversation" sheet,
+     *                       which generates a blob URL the user can copy/open.
+     *
+     * Persisted in localStorage so the preference survives page reloads.
+     * Falls back gracefully when storage is unavailable (private mode,
+     * storage quota exceeded, cross-origin iframe, etc.).
+     *
+     * @type {boolean}
+     */
+    var _exportLinkMode = (function () {
+        try {
+            return localStorage.getItem(_EXPORT_LINK_MODE_KEY) === 'true';
+        } catch (_) {
+            return false;
+        }
+    }());
+
+    /**
      * Selected microphone device ID.
      *
      * The Web Speech API exposes no direct device-selection parameter.
@@ -420,6 +453,15 @@
         globe:       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
         // External-link arrow — shown inside link cards as a launch indicator.
         externalLink:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>',
+        // ── Share conversation sheet icons ────────────────────────────────────
+        // Lock icon: used for "Keep private" option (Claude-inspired share modal).
+        convLock:    '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a4 4 0 0 1 4 4v2h1.5A1.5 1.5 0 0 1 17 9.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 16.5v-7A1.5 1.5 0 0 1 4.5 8H6V6a4 4 0 0 1 4-4zm0 9.25a1.25 1.25 0 0 0-.589 2.352L9 15h2l-.41-1.648A1.25 1.25 0 0 0 10 11.25zM10 3.5A2.5 2.5 0 0 0 7.5 6v2h5V6A2.5 2.5 0 0 0 10 3.5z"/></svg>',
+        // Globe icon: used for "Create public link" option.
+        convGlobe:   '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 1 1 0 16A8 8 0 0 1 10 2zm0 1.5c-.52 0-1.2.48-1.78 1.55-.36.67-.65 1.52-.82 2.45h5.2c-.17-.93-.46-1.78-.82-2.45C11.2 3.98 10.52 3.5 10 3.5zm2.78 1.17A6.52 6.52 0 0 1 15.9 7h-2a9.6 9.6 0 0 0-.82-1.7 6.8 6.8 0 0 0-.3-.63zm-5.56 0c-.1.2-.2.41-.3.63A9.6 9.6 0 0 0 6.1 7h-2a6.52 6.52 0 0 1 3.12-2.33zM3 8.5h2.6C5.53 9 5.5 9.5 5.5 10s.03 1 .1 1.5H3a6.5 6.5 0 0 1 0-3zm3.1 0h7.8c.07.48.1.98.1 1.5s-.03 1.02-.1 1.5H6.1C6.03 11.02 6 10.52 6 10s.03-1.02.1-1.5zm8.3 0H17a6.5 6.5 0 0 1 0 3h-2.6c.07-.48.1-.98.1-1.5s-.03-1.02-.1-1.5zm-9.5 3h2c.17.93.46 1.78.82 2.45C8.8 16.02 9.48 16.5 10 16.5s1.2-.48 1.78-1.55c.36-.67.65-1.52.82-2.45h2A6.52 6.52 0 0 1 12.78 16l-.3.63A9.6 9.6 0 0 0 13.9 15H4.1a9.6 9.6 0 0 0 .82 1.63c-.1-.2-.2-.41-.3-.63A6.52 6.52 0 0 1 4.1 14.5H4a6.52 6.52 0 0 1-1.1-1h3.1z"/></svg>',
+        // Checkmark icon: appears on the currently selected share-visibility option.
+        convCheck:   '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M15.188 5.11a.5.5 0 0 1 .752.626l-.056.084-7.5 9a.5.5 0 0 1-.738.033l-3.5-3.5-.064-.078a.501.501 0 0 1 .693-.693l.078.064 3.113 3.113 7.15-8.58.07-.057z" clip-rule="evenodd"/></svg>',
+        // Link-chain icon: shown on the export mode toggle row (share-link mode).
+        linkChain:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
     };
 
     // ── Provider accent colours (mirrors _PROVIDER_COLORS in __init__.py) ──────
@@ -2170,29 +2212,28 @@
     }
 
     /**
-     * Export the conversation as a self-contained HTML file.
+     * Build the complete self-contained HTML export string from the current
+     * ``_transcript``.
      *
-     * The generated file:
-     *   - Zero external dependencies — CSS is inlined.
-     *   - Supports light and dark mode via prefers-color-scheme.
-     *   - Renders user bubbles right, assistant bubbles left.
-     *   - Shows model badge + rating chip below each assistant message.
-     *   - Embeds the full JSON payload in a
-     *     ``<script type="application/json" id="export-data">`` block.
+     * Extracted from ``exportConversationHTML`` so ``exportConversationHTML``
+     * (file download) and ``_buildConvShareSheet`` (blob-URL share link) both
+     * operate on exactly the same rendered output — no duplication, single
+     * source of truth.
+     *
+     * Returns
+     * -------
+     * string
+     *     Complete UTF-8 HTML document ready for Blob creation or download.
+     *     Returns ``''`` when the transcript is empty.
      *
      * Notes
      * -----
-     * User: Download the file and open it in any browser — works fully offline.
-     *   To extract data: ``JSON.parse(document.getElementById('export-data').textContent)``
-     *
-     * Developer: _mdToHtml is called at export time to pre-render markdown to HTML.
-     *   The output is a static snapshot — not a live document.
+     * Developer: Call ``_transcript.length === 0`` check in callers before
+     *   invoking this function; the empty-string return is a safety net, not
+     *   the primary guard.
      */
-    function exportConversationHTML() {
-        if (_transcript.length === 0) {
-            showNotification('Nothing to export yet', true);
-            return;
-        }
+    function _buildConvHtmlString() {
+        if (_transcript.length === 0) return '';
 
         var cfg         = window.AI_ASSISTANT_CONFIG || {};
         var aiName      = cfg.panelTitle || 'AI Assistant';
@@ -2205,7 +2246,7 @@
             { dateStyle: 'long', timeStyle: 'short' }
         );
 
-        // ── 1. Build per-turn HTML ────────────────────────────────────────────
+        // ── Build per-turn HTML ────────────────────────────────────────────────
         var turnsHtml   = '';
         var answerIndex = 0;
         var i           = 0;
@@ -2275,7 +2316,7 @@
             }
         }
 
-        // ── 2. Build embedded JSON payload ────────────────────────────────────
+        // ── Build embedded JSON payload ────────────────────────────────────────
         var jsonPayload = JSON.stringify({
             schema_version:  '2.0',
             session: {
@@ -2289,11 +2330,11 @@
             records: _buildExportRecords(),
         }, null, 2);
 
-        // ── 3. Assemble the complete HTML document ────────────────────────────
         var msgCount = _transcript.filter(function (m) {
             return m.role === 'user';
         }).length;
-        var html = _buildExportHtmlDoc({
+
+        return _buildExportHtmlDoc({
             aiName:      aiName,
             pageUrl:     pageUrl,
             pageTitle:   pageTitle,
@@ -2303,7 +2344,33 @@
             msgCount:    msgCount,
             jsonPayload: jsonPayload,
         });
+    }
 
+    /**
+     * Export the conversation as a self-contained HTML file.
+     *
+     * The generated file:
+     *   - Zero external dependencies — CSS is inlined.
+     *   - Supports light and dark mode via prefers-color-scheme.
+     *   - Renders user bubbles right, assistant bubbles left.
+     *   - Shows model badge + rating chip below each assistant message.
+     *   - Embeds the full JSON payload in a
+     *     ``<script type="application/json" id="export-data">`` block.
+     *
+     * Notes
+     * -----
+     * User: Download the file and open it in any browser — works fully offline.
+     *   To extract data: ``JSON.parse(document.getElementById('export-data').textContent)``
+     *
+     * Developer: HTML content is built by ``_buildConvHtmlString()`` (shared
+     *   with the share-link sheet) — edit that function to change export output.
+     */
+    function exportConversationHTML() {
+        if (_transcript.length === 0) {
+            showNotification('Nothing to export yet', true);
+            return;
+        }
+        var html = _buildConvHtmlString();
         _downloadBlob(
             html,
             'text/html;charset=utf-8',
@@ -2570,7 +2637,10 @@ opts.jsonPayload + '\n' +
      * -------
      * HTMLElement  A wrapper div containing trigger button + dropdown menu.
      */
-    function _buildExportDropdownBtn() {
+    function _buildExportDropdownBtn(opts) {
+        var options    = (typeof opts === 'object' && opts !== null) ? opts : {};
+        var onLinkMode = typeof options.onLinkMode === 'function' ? options.onLinkMode : null;
+
         var wrapper = document.createElement('div');
         wrapper.className = 'ai-assistant-export-dropdown';
 
@@ -2667,12 +2737,79 @@ opts.jsonPayload + '\n' +
                 item.addEventListener('click', function (e) {
                     e.stopPropagation();
                     _closeExportMenu(menu, trigger);
-                    exportConversation(fmt);
+                    if (_exportLinkMode && onLinkMode) {
+                        onLinkMode(fmt);
+                    } else {
+                        exportConversation(fmt);
+                    }
                 });
             }(opt.fmt));
 
             menu.appendChild(item);
         });
+
+        // ── Mode-toggle row (download ↔ share-link) ───────────────────────────
+        // Mirrors the mic hold-toggle pattern: a row with icon + label +
+        // pill toggle.  Clicking the row or just the toggle both call
+        // _setExportLinkMode so the mode state, localStorage, and the
+        // aria-pressed attribute are always in sync.
+        var modeSep = document.createElement('div');
+        modeSep.className = 'ai-assistant-export-menu-sep';
+        menu.appendChild(modeSep);
+
+        var modeRow = document.createElement('div');
+        modeRow.className = 'ai-assistant-export-menu-mode-row';
+        modeRow.setAttribute('role', 'button');
+        modeRow.setAttribute('tabindex', '-1');
+        modeRow.setAttribute('aria-label', 'Toggle share-link mode');
+
+        var modeIcon = document.createElement('span');
+        modeIcon.className = 'ai-assistant-export-menu-mode-icon';
+        modeIcon.setAttribute('aria-hidden', 'true');
+        modeIcon.innerHTML = ICONS.linkChain;
+
+        var modeLbl = document.createElement('span');
+        modeLbl.className = 'ai-assistant-export-menu-mode-label';
+        modeLbl.textContent = 'Share link';
+
+        // Reuse the mic toggle pill CSS classes so the visual is consistent.
+        var modeToggle = document.createElement('button');
+        modeToggle.className = 'ai-assistant-mic-popup-toggle';
+        modeToggle.id = 'ai-assistant-export-link-toggle';
+        modeToggle.type = 'button';
+        modeToggle.setAttribute('aria-pressed', _exportLinkMode ? 'true' : 'false');
+        modeToggle.setAttribute('aria-label', 'Share-link mode');
+        modeToggle.setAttribute('title',
+            _exportLinkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
+
+        var modeTrack = document.createElement('span');
+        modeTrack.className = 'ai-assistant-mic-toggle-track';
+        var modeThumb = document.createElement('span');
+        modeThumb.className = 'ai-assistant-mic-toggle-thumb';
+        modeTrack.appendChild(modeThumb);
+        modeToggle.appendChild(modeTrack);
+
+        // Prevent mousedown from blurring the trigger (matches format items).
+        modeToggle.addEventListener('mousedown', function (e) { e.preventDefault(); });
+
+        modeToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _setExportLinkMode(!_exportLinkMode);
+        });
+
+        // Clicking the row label/icon (but NOT the toggle pill) also toggles.
+        // stopPropagation on the toggle click normally prevents double-fire, but
+        // the guard here makes the behaviour deterministic even if that ever
+        // changes (e.g. AT synthetic click, keyboard dispatch on role="button").
+        modeRow.addEventListener('click', function (e) {
+            if (modeToggle.contains(e.target)) { return; }
+            _setExportLinkMode(!_exportLinkMode);
+        });
+
+        modeRow.appendChild(modeIcon);
+        modeRow.appendChild(modeLbl);
+        modeRow.appendChild(modeToggle);
+        menu.appendChild(modeRow);
 
         // ── Toggle open/close ─────────────────────────────────────────────────
         trigger.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
@@ -5609,7 +5746,245 @@ opts.jsonPayload + '\n' +
     }
 
 
-    // ── Project Links sheet ───────────────────────────────────────────────────
+    // ── Conversation share sheet ───────────────────────────────────────────────
+
+    /**
+     * Build the "Share conversation" slide-over sheet.
+     *
+     * Opened when the export dropdown is in share-link mode and any format
+     * item is clicked.  Generates a self-contained HTML blob URL the user
+     * can copy or open in a new tab — no server or backend required.
+     *
+     * Visibility modes
+     * ----------------
+     * Keep private
+     *     Creates a session-local blob URL.  The URL is shown in a read-only
+     *     input so the user can copy it manually or click "Open" to preview.
+     * Create public link
+     *     Same blob URL generation, plus automatic clipboard copy and the
+     *     conversation opens in a new tab immediately.
+     *
+     * Notes
+     * -----
+     * User: Blob URLs are valid only for the current browser session.  To
+     *   share permanently, save the opened page (Ctrl+S / Cmd+S) and host
+     *   the resulting HTML file.
+     *
+     * Developer: HTML content is produced by ``_buildConvHtmlString()`` —
+     *   identical to the download path — so share-link and download output
+     *   are always in sync.  Call ``_setExportLinkMode(true)`` to activate
+     *   share-link mode and route format-item clicks to ``_openSheet(convShareSheet)``.
+     *
+     * Returns
+     * -------
+     * HTMLElement
+     *     The assembled sheet element (``data-open="false"`` initially).
+     */
+    function _buildConvShareSheet() {
+        // ── Sheet-level state ─────────────────────────────────────────────────
+        var _shareMode    = 'private';   // 'private' | 'public'
+        var _activeBlobUrl = null;
+
+        // ── Sheet container ───────────────────────────────────────────────────
+        var sheet = document.createElement('div');
+        sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-conv-share';
+        sheet.id = 'ai-assistant-panel-conv-share-sheet';
+        sheet.setAttribute('data-open', 'false');
+
+        // ── Header ────────────────────────────────────────────────────────────
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-privacy-head';
+
+        var hStrong = document.createElement('strong');
+        hStrong.textContent = 'Share conversation';
+
+        var hClose = _createIconBtn('conv-share-close', 'Close', ICONS.close);
+        hClose.addEventListener('click', function () {
+            sheet.setAttribute('data-open', 'false');
+        });
+
+        head.appendChild(hStrong);
+        head.appendChild(hClose);
+        sheet.appendChild(head);
+
+        // ── Body ──────────────────────────────────────────────────────────────
+        var body = document.createElement('div');
+        body.className = 'ai-assistant-panel-privacy-body ai-assistant-conv-share-body';
+
+        // Subtext note
+        var subNote = document.createElement('p');
+        subNote.className = 'ai-assistant-conv-share-subnote';
+        subNote.textContent =
+            'Share this conversation as a self-contained HTML page.';
+        body.appendChild(subNote);
+
+        // ── Visibility options ────────────────────────────────────────────────
+        // Two mutually-exclusive option buttons styled like Claude's share
+        // dialog: icon + label/desc + checkmark (visible when selected).
+        var optWrap = document.createElement('div');
+        optWrap.className = 'ai-assistant-conv-share-opts';
+
+        function _mkOpt(key, svgIcon, label, desc) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'ai-assistant-conv-share-opt';
+            b.setAttribute('data-key', key);
+            b.setAttribute('aria-pressed', key === _shareMode ? 'true' : 'false');
+
+            var iconW = document.createElement('span');
+            iconW.className = 'ai-assistant-conv-share-opt-icon';
+            iconW.setAttribute('aria-hidden', 'true');
+            iconW.innerHTML = svgIcon;
+            b.appendChild(iconW);
+
+            var textW = document.createElement('span');
+            textW.className = 'ai-assistant-conv-share-opt-text';
+
+            var lbl = document.createElement('span');
+            lbl.className = 'ai-assistant-conv-share-opt-lbl';
+            lbl.textContent = label;
+
+            var dsc = document.createElement('span');
+            dsc.className = 'ai-assistant-conv-share-opt-dsc';
+            dsc.textContent = desc;
+
+            textW.appendChild(lbl);
+            textW.appendChild(dsc);
+            b.appendChild(textW);
+
+            // Check icon — in DOM always; opacity toggled via aria-pressed CSS rule.
+            var chkW = document.createElement('span');
+            chkW.className = 'ai-assistant-conv-share-opt-chk';
+            chkW.setAttribute('aria-hidden', 'true');
+            chkW.innerHTML = ICONS.convCheck;
+            b.appendChild(chkW);
+
+            return b;
+        }
+
+        var privOpt = _mkOpt(
+            'private', ICONS.convLock,
+            'Keep private', 'Only you have access'
+        );
+        var pubOpt = _mkOpt(
+            'public', ICONS.convGlobe,
+            'Create public link', 'Anyone with the link can view'
+        );
+
+        optWrap.appendChild(privOpt);
+        optWrap.appendChild(pubOpt);
+        body.appendChild(optWrap);
+
+        // ── Generated link row (hidden until link is created) ─────────────────
+        var linkRow = document.createElement('div');
+        linkRow.className = 'ai-assistant-conv-share-link-row';
+        linkRow.setAttribute('aria-live', 'polite');
+        linkRow.style.display = 'none';
+
+        var linkInput = document.createElement('input');
+        linkInput.type = 'text';
+        linkInput.readOnly = true;
+        linkInput.className = 'ai-assistant-conv-share-link-input';
+        linkInput.setAttribute('aria-label', 'Share link URL');
+        linkInput.addEventListener('focus', function () { linkInput.select(); });
+
+        var copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'ai-assistant-conv-share-action-btn';
+        copyBtn.setAttribute('aria-label', 'Copy share link');
+        copyBtn.textContent = 'Copy';
+        copyBtn.addEventListener('click', function () {
+            if (linkInput.value) { copyToClipboard(linkInput.value, false); }
+        });
+
+        var openBtn = document.createElement('button');
+        openBtn.type = 'button';
+        openBtn.className = 'ai-assistant-conv-share-action-btn';
+        openBtn.setAttribute('aria-label', 'Open in new tab');
+        openBtn.textContent = 'Open';
+        openBtn.addEventListener('click', function () {
+            if (!linkInput.value) { return; }
+            try {
+                var w = window.open(linkInput.value, '_blank', 'noopener,noreferrer');
+                if (w) { try { w.opener = null; } catch (_e) {} }
+            } catch (_e) {}
+        });
+
+        linkRow.appendChild(linkInput);
+        linkRow.appendChild(copyBtn);
+        linkRow.appendChild(openBtn);
+        body.appendChild(linkRow);
+
+        // Session-only note — always visible below the link row.
+        var sessionNote = document.createElement('p');
+        sessionNote.className = 'ai-assistant-conv-share-session-note';
+        sessionNote.textContent =
+            'Link is valid for this browser session only. ' +
+            'Save the opened page to share it permanently.';
+        body.appendChild(sessionNote);
+
+        // ── Action row ────────────────────────────────────────────────────────
+        var actionRow = document.createElement('div');
+        actionRow.className = 'ai-assistant-conv-share-actions';
+
+        var generateBtn = document.createElement('button');
+        generateBtn.type = 'button';
+        generateBtn.className = 'ai-assistant-conv-share-generate-btn';
+        generateBtn.textContent = 'Create share link';
+
+        generateBtn.addEventListener('click', function () {
+            if (_transcript.length === 0) {
+                showNotification('Nothing to share yet', true);
+                return;
+            }
+            // Revoke previous blob to release memory before creating a new one.
+            if (_activeBlobUrl) {
+                try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
+                _activeBlobUrl = null;
+            }
+            var html = _buildConvHtmlString();
+            var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            _activeBlobUrl = URL.createObjectURL(blob);
+            linkInput.value = _activeBlobUrl;
+            linkRow.style.display = '';
+
+            if (_shareMode === 'public') {
+                // Auto-copy + open for "public" mode.
+                copyToClipboard(_activeBlobUrl, false);
+                try {
+                    var wp = window.open(_activeBlobUrl, '_blank', 'noopener,noreferrer');
+                    if (wp) { try { wp.opener = null; } catch (_e) {} }
+                } catch (_e) {}
+                showNotification(
+                    'Share link created \u2014 copied to clipboard', false);
+            } else {
+                showNotification('Share link created', false);
+            }
+        });
+
+        actionRow.appendChild(generateBtn);
+        body.appendChild(actionRow);
+        sheet.appendChild(body);
+
+        // ── Option selection (declared after all DOM refs are built) ──────────
+        function _selectMode(key) {
+            _shareMode = key;
+            privOpt.setAttribute('aria-pressed', key === 'private' ? 'true' : 'false');
+            pubOpt.setAttribute('aria-pressed',  key === 'public'  ? 'true' : 'false');
+            // Reset any previously generated link when visibility changes.
+            linkRow.style.display = 'none';
+            linkInput.value = '';
+            if (_activeBlobUrl) {
+                try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
+                _activeBlobUrl = null;
+            }
+        }
+
+        privOpt.addEventListener('click', function () { _selectMode('private'); });
+        pubOpt.addEventListener('click',  function () { _selectMode('public'); });
+
+        return sheet;
+    }
 
     /**
      * Build the "Project Links" slide-over sheet.
@@ -6199,7 +6574,14 @@ opts.jsonPayload + '\n' +
         newChatBtn.addEventListener('click', clearConversation);
 
         // R4 v2: multi-format export dropdown (JSON · HTML · TXT).
-        var exportDropdown = _buildExportDropdownBtn();
+        // In share-link mode (toggle ON) format items open convShareSheet
+        // instead of downloading; the callback is a closure over convShareSheet
+        // which is var-hoisted in createAIPanel and assigned later below.
+        var exportDropdown = _buildExportDropdownBtn({
+            onLinkMode: function () {
+                _openSheet(convShareSheet);
+            },
+        });
 
         headerActions.appendChild(newChatBtn);
         headerActions.appendChild(exportDropdown);
@@ -6820,6 +7202,12 @@ opts.jsonPayload + '\n' +
         var linksSheet = (cfgRef.panelLinks !== false) ? _buildLinksSheet() : null;
         if (linksSheet) panel.appendChild(linksSheet);
 
+        // "Share conversation" sheet — opened by the export dropdown's share-link
+        // mode toggle.  Always built (it is cheap) so _openSheet() can include it
+        // in its close-all sweep even when the toggle has never been used.
+        var convShareSheet = _buildConvShareSheet();
+        panel.appendChild(convShareSheet);
+
         /**
          * Open exactly one sheet at a time.  Pass null to close all.
          * @param {HTMLElement|null} target
@@ -6853,7 +7241,7 @@ opts.jsonPayload + '\n' +
          *   _closeSheet which restores focus to the originating button.
          */
         function _openSheet(target) {
-            [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet].forEach(function (s) {
+            [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet, convShareSheet].forEach(function (s) {
                 if (!s) return;
                 s.setAttribute('data-open', (s === target) ? 'true' : 'false');
             });
@@ -7154,7 +7542,7 @@ opts.jsonPayload + '\n' +
         // registered inside each sheet builder call sheet.setAttribute directly
         // (they run before _closeSheet exists); we add a second listener here
         // which performs the focus restoration after the flag is already 'false'.
-        [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet].forEach(function (s) {
+        [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet, convShareSheet].forEach(function (s) {
             if (!s) return;
             var closeBtn = s.querySelector('button[id$="-close"]');
             if (!closeBtn) return;
@@ -7228,7 +7616,7 @@ opts.jsonPayload + '\n' +
                 hamburgerMenuEl.setAttribute('data-open', 'false');
                 return;
             }
-            var openSheets = [privacySheet, modelSheet, termsSheet, shareSheet]
+            var openSheets = [privacySheet, modelSheet, termsSheet, shareSheet, linksSheet, convShareSheet]
                 .filter(function (s) {
                     return s && s.getAttribute('data-open') === 'true';
                 });
@@ -7746,6 +8134,44 @@ opts.jsonPayload + '\n' +
     }
 
     // ── Mic device management ─────────────────────────────────────────────────
+
+    /**
+     * Set export share-link mode on or off.
+     *
+     * When enabled (``aria-pressed="true"``), clicking any format item in the
+     * export dropdown opens the "Share conversation" sheet instead of
+     * triggering a file download.  The preference is persisted to
+     * ``localStorage`` so it survives page reloads.
+     *
+     * Parameters
+     * ----------
+     * enabled : boolean
+     *     ``true`` → share-link mode ON; ``false`` → download mode (default).
+     *
+     * Notes
+     * -----
+     * Developer: This function is the single source of truth for
+     *   ``_exportLinkMode``.  Always call it instead of mutating the variable
+     *   directly so localStorage, the toggle's ``aria-pressed``, and the
+     *   title tooltip stay in sync.
+     */
+    function _setExportLinkMode(enabled) {
+        _exportLinkMode = !!enabled;
+
+        // Persist preference.
+        try {
+            localStorage.setItem(
+                _EXPORT_LINK_MODE_KEY, _exportLinkMode ? 'true' : 'false');
+        } catch (_e) {}
+
+        // Sync toggle pill in the export dropdown menu.
+        var toggle = document.getElementById('ai-assistant-export-link-toggle');
+        if (toggle) {
+            toggle.setAttribute('aria-pressed', _exportLinkMode ? 'true' : 'false');
+            toggle.setAttribute('title',
+                _exportLinkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
+        }
+    }
 
     /**
      * Stop and release the device-pin MediaStreamTrack.
