@@ -8417,7 +8417,11 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.75rem;
-    table-layout: auto;
+    /* fixed: column widths are set by the first row's cells, giving equal-width
+       profile columns regardless of badge or label length.  The feature column
+       receives an explicit width (ep-grid-th--feature) so the remaining space
+       is shared evenly among all profile columns. */
+    table-layout: fixed;
 }
 
 /* Header cells. */
@@ -8426,7 +8430,10 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     text-align: center;
     font-weight: 600;
     font-size: 0.7rem;
-    white-space: nowrap;
+    /* white-space handled per-element inside .ep-grid-th-inner; removing it
+       from the <th> itself allows the flex-column wrapper to stack the name
+       and badges without overflow.                                          */
+    vertical-align: top;
     border-bottom: 1px solid var(
         --pst-color-border,
         var(--color-foreground-border, #e1e4e5)
@@ -8447,6 +8454,9 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 /* Feature-name header (leftmost column). */
 .ai-assistant-panel-ep-grid-th--feature {
     text-align: left;
+    /* width drives the column in table-layout:fixed; min-width guards
+       against very narrow containers where the table would still compress. */
+    width: 7rem;
     min-width: 7rem;
 }
 
@@ -8490,16 +8500,16 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     margin-top: 0.05rem;
 }
 
-/* Active-profile data column highlight. */
+/* Active-profile data column highlight.
+   Uses a hardcoded primary-colour tint (same strategy as ep-badge--active)
+   because --pst-color-on-background resolves to secondary-grey in PST and
+   would mask the intended visual distinction.                               */
 .ai-assistant-panel-ep-grid-td--active {
-    background: var(
-        --pst-color-on-background,
-        var(--color-background-secondary, rgba(37, 99, 235, 0.04))
-    );
+    background: rgba(37, 99, 235, 0.05);
 }
 
 [data-bs-theme="dark"] .ai-assistant-panel-ep-grid-td--active {
-    background: rgba(77, 144, 254, 0.06);
+    background: rgba(77, 144, 254, 0.07);
 }
 
 /* Check icons within data cells. */
@@ -8513,6 +8523,35 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 
 [data-bs-theme="dark"] .ai-assistant-panel-ep-grid-check--on  { color: #4ade80; }
 [data-bs-theme="dark"] .ai-assistant-panel-ep-grid-check--off { color: rgba(255, 255, 255, 0.2); }
+
+/* Remove border-bottom from the last data row.
+   The scroll wrapper (.ep-compare-scroll) already has its own bottom border;
+   a second border on the last <td> creates an ugly double line.             */
+.ai-assistant-panel-ep-compare-grid tbody tr:last-child .ai-assistant-panel-ep-grid-td {
+    border-bottom: none;
+}
+
+/* Inner flex-column wrapper injected by JS inside every profile <th>.
+   Using a child <div> (rather than display:flex on the <th> itself) keeps
+   the cell in the table formatting context — applying display:flex directly
+   to a <th> evicts it from the table layout in all current browsers.        */
+.ai-assistant-panel-ep-grid-th-inner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.18rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Profile-name span inside the inner wrapper: single-line with ellipsis. */
+.ai-assistant-panel-ep-grid-th-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -9439,159 +9478,19 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   §Q  Profile compare grid
-   ═══════════════════════════════════════════════════════════════════════════
+/* ── §Q removed ─────────────────────────────────────────────────────────────
+   The §Q "Profile compare grid" section (display:grid override) was deleted.
 
-   A Feature × Profile matrix showing which profiles cover which capabilities.
-   Layout: CSS grid with auto columns (one per profile + label column).
-   ═══════════════════════════════════════════════════════════════════════════ */
+   Root cause: §Q re-declared .ai-assistant-panel-ep-compare-grid with
+   display:grid, overriding the §S table definition.  The JS in
+   _rebuildCompareGrid() creates a semantic <table> and assigns ep-grid-*
+   classes (defined in §S); the ep-compare-cell / ep-compare-head /
+   ep-compare-check / ep-compare-cross classes from §Q were never referenced
+   by any JS, making §Q entirely dead CSS whose only effect was to break the
+   table via the display:grid override cascade.
 
-.ai-assistant-panel-ep-compare-grid {
-    display: grid;
-    /* One label column (auto) + N profile columns (1fr each).
-       JS sets --ep-compare-cols via style property before render.       */
-    grid-template-columns: auto repeat(var(--ep-compare-cols, 1), 1fr);
-    gap: 0;
-    border: 1px solid var(
-        --pst-color-border,
-        var(--color-background-border, rgba(0, 0, 0, 0.14))
-    );
-    border-radius: 6px;
-    overflow: hidden;
-    font-size: 0.72rem;
-    margin-top: 0.4rem;
-}
-
-.ai-assistant-panel-ep-compare-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.35rem 0.5rem;
-    border-bottom: 1px solid var(
-        --pst-color-border,
-        var(--color-background-border, rgba(0, 0, 0, 0.10))
-    );
-    border-right: 1px solid var(
-        --pst-color-border,
-        var(--color-background-border, rgba(0, 0, 0, 0.10))
-    );
-    text-align: center;
-}
-
-/* Remove border from last column. */
-.ai-assistant-panel-ep-compare-cell:last-child,
-.ai-assistant-panel-ep-compare-row:last-child .ai-assistant-panel-ep-compare-cell {
-    border-right: none;
-}
-
-/* Remove border from last row. */
-.ai-assistant-panel-ep-compare-row:last-child .ai-assistant-panel-ep-compare-cell {
-    border-bottom: none;
-}
-
-/* Header row: profile names. */
-.ai-assistant-panel-ep-compare-head {
-    display: contents; /* Each cell becomes a direct grid item. */
-}
-
-.ai-assistant-panel-ep-compare-cell--head {
-    background: var(
-        --pst-color-surface,
-        var(--color-background-secondary, rgba(0, 0, 0, 0.04))
-    );
-    font-weight: 700;
-    font-size: 0.70rem;
-    color: var(
-        --pst-color-text-base,
-        var(--color-foreground-primary, #1a1a1a)
-    );
-    /* Truncate long profile names. */
-    max-width: 5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Feature label column: left-aligned. */
-.ai-assistant-panel-ep-compare-cell--label {
-    justify-content: flex-start;
-    font-weight: 600;
-    color: var(
-        --pst-color-text-muted,
-        var(--color-foreground-secondary, #6b7280)
-    );
-    white-space: nowrap;
-    padding-right: 0.75rem;
-}
-
-/* Active-profile column highlight. */
-.ai-assistant-panel-ep-compare-cell--active-col {
-    background: var(
-        --pst-color-primary,
-        var(--color-brand-primary, #2563eb)
-    );
-    background: color-mix(
-        in srgb,
-        var(--pst-color-primary, #2563eb) 8%,
-        transparent
-    );
-}
-
-/* Capability check mark (✓). */
-.ai-assistant-panel-ep-compare-check {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: var(
-        --pst-color-success,
-        var(--color-announcement-background, #16a34a)
-    );
-    color: #fff;
-    font-size: 0.58rem;
-    font-weight: 900;
-    line-height: 1rem;
-    text-align: center;
-}
-
-/* Capability cross (—). */
-.ai-assistant-panel-ep-compare-cross {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: var(
-        --pst-color-border,
-        var(--color-background-border, rgba(0, 0, 0, 0.14))
-    );
-    color: var(
-        --pst-color-text-muted,
-        var(--color-foreground-secondary, #9ca3af)
-    );
-    font-size: 0.65rem;
-    font-weight: 700;
-    line-height: 1rem;
-    text-align: center;
-}
-
-[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cell--head {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--pst-color-text-base, #e2e8f0);
-}
-
-[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cell {
-    border-color: rgba(255, 255, 255, 0.08);
-}
-
-[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cell--label {
-    color: var(--pst-color-text-muted, #94a3b8);
-}
-
-[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cross {
-    background: rgba(255, 255, 255, 0.10);
-    color: #64748b;
-}
+   Fix: §S + JS (inner div wrapper) is the authoritative implementation.
+   ── ────────────────────────────────────────────────────────────────────── */
 
 
 /* ═══════════════════════════════════════════════════════════════════════════

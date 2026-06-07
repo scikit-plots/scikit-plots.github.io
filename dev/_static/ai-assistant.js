@@ -6690,21 +6690,34 @@ opts.jsonPayload + '\n' +
                 th.className = 'ai-assistant-panel-ep-grid-th' +
                     (_hp.key === activeKey ? ' ai-assistant-panel-ep-grid-th--active' : '');
                 th.setAttribute('scope', 'col');
+
+                /* Inner wrapper enables flex-column badge stacking without
+                   evicting the <th> from the table formatting context.
+                   Applying display:flex directly to a <th> removes it from
+                   the table layout in all current engines; a child <div>
+                   avoids that entirely while still giving flex behaviour
+                   to the label + badge children.                            */
+                var thWrap = document.createElement('div');
+                thWrap.className = 'ai-assistant-panel-ep-grid-th-inner';
+
                 var thLbl = document.createElement('span');
+                thLbl.className   = 'ai-assistant-panel-ep-grid-th-name';
                 thLbl.textContent = _hp.label;
-                th.appendChild(thLbl);
+                thWrap.appendChild(thLbl);
+
                 if (_hp.key === activeKey) {
                     var thAct = document.createElement('span');
                     thAct.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--active';
                     thAct.textContent = 'Active';
-                    th.appendChild(thAct);
+                    thWrap.appendChild(thAct);
                 }
                 if (_hp.source === 'custom' || _hp.source === 'imported') {
                     var thSrc = document.createElement('span');
                     thSrc.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--runtime';
                     thSrc.textContent = _hp.source === 'imported' ? 'Imported' : 'Custom';
-                    th.appendChild(thSrc);
+                    thWrap.appendChild(thSrc);
                 }
+                th.appendChild(thWrap);
                 hrow.appendChild(th);
             }
             thead.appendChild(hrow);
