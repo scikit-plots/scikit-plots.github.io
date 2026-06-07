@@ -1864,6 +1864,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0.25rem;       /* breathing room between hamburger · title · close */
     padding: 0.75rem 1rem;
     border-bottom: 1px solid
         var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
@@ -1872,6 +1873,14 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 .ai-assistant-panel-privacy-head strong {
     font-size: 0.95rem;
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    /* When hamburger + close buttons flank the title, space-between with equal
+       28 px side icons centres the strong automatically.  flex: 1 prevents the
+       title from collapsing on very narrow panels. */
+    flex: 1 1 auto;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ai-assistant-panel-privacy-body {
     overflow-y: auto;
@@ -2431,12 +2440,22 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     flex-shrink: 0;
 }
 
-/* Hamburger overflow popover — positioned absolute relative to panel. */
+/* Hamburger overflow popover — positioned absolute relative to panel.
+ *
+ * z-index rationale (100001):
+ *   All slide-over sheets use z-index: 99999 within the panel stacking
+ *   context.  The hamburger button in each sheet header opens this same
+ *   popover without closing the sheet first, so the popover must paint on
+ *   top of an open sheet.  100001 > 99999 guarantees that ordering for every
+ *   sheet without any DOM reordering.  The legacy value (5) was chosen when
+ *   the sheet was always dismissed before the popover appeared; 100001 is
+ *   the minimum value that preserves the same visual result after the
+ *   "stay on current page" fix. */
 .ai-assistant-panel-hamburger {
     position: absolute;
     top: 3.3rem;            /* below the header (0.75 + 1.75 content + 0.75 + 1px border) */
     left: 1rem;             /* aligns with header-title left edge (header padding-left) */
-    z-index: 5;
+    z-index: 100001;        /* above sheets (99999); was 5 when sheet was pre-dismissed */
     display: none;
     flex-direction: column;
     gap: 0.15rem;
@@ -7111,6 +7130,12 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     align-items: center;
     gap: 8px;
     min-width: 0;
+    /* When the sheet hamburger button is present on the left and the close
+       button on the right, flex:1 lets this cluster fill the centre slot so
+       the title + format badge remain visually centred (space-between on the
+       parent distributes space evenly between the three flex children). */
+    flex: 1 1 auto;
+    justify-content: center;
 }
 
 /* ── Format badge pill ───────────────────────────────────────────────────── */

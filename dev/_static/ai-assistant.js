@@ -5249,6 +5249,94 @@ opts.jsonPayload + '\n' +
         return wrap;
     }
 
+    // ── Sheet hamburger helper ────────────────────────────────────────────────
+    /**
+     * Build a hamburger icon button for a slide-over sheet header.
+     *
+     * Clicking the button opens the shared main-panel hamburger popover
+     * **without closing the current sheet**.  The popover renders on top of
+     * the sheet because its CSS ``z-index`` (100001) exceeds every sheet's
+     * ``z-index`` (99999) within the same panel stacking context.
+     *
+     * The button is omitted when ``cfg.panelHamburger`` is ``false``,
+     * mirroring the same opt-out flag used in the main panel header.
+     *
+     * Parameters
+     * ----------
+     * sheet : HTMLElement
+     *     The slide-over sheet root element.  The sheet is **not** closed
+     *     by this button — it remains visible behind the popover overlay.
+     * idSuffix : string
+     *     Unique suffix appended to ``'sheet-ham-'`` to form the button id.
+     * closeExtra : function | null, optional
+     *     **Deprecated / ignored.**  Previously called before the sheet was
+     *     hidden; kept in the signature so existing call-sites (e.g. the EP
+     *     sheet's ``_unsubscribe`` guard) compile without change.  Because
+     *     the sheet no longer closes on hamburger click, no pre-close teardown
+     *     is required.  The EP sheet's DOM-removal ``MutationObserver`` and
+     *     its explicit ``hClose`` handler are the correct teardown paths.
+     *
+     * Returns
+     * -------
+     * HTMLElement | null
+     *     The configured icon button, or ``null`` when hamburger is disabled.
+     *
+     * Notes
+     * -----
+     * Developer — selector rationale:
+     *   ``_createIconBtn('hamburger', ...)`` gives the header button
+     *   ``id="ai-assistant-panel-hamburger"`` — identical to the popover div id
+     *   set by ``_buildHamburgerMenu``.  ``getElementById`` returns the button
+     *   (first match in DOM order), not the popover.  We therefore use the
+     *   class+role selector ``'.ai-assistant-panel-hamburger[role="menu"]'``
+     *   which uniquely identifies the popover div and never matches the button
+     *   (class ``ai-assistant-panel-icon-btn``).
+     *
+     * Developer — z-index rationale:
+     *   Sheets: ``z-index: 99999``.  Hamburger popover: ``z-index: 100001``
+     *   (raised from the legacy value of 5 — see CSS).  Both are
+     *   ``position: absolute`` children of the same panel stacking context, so
+     *   100001 > 99999 guarantees the popover is always painted above an open
+     *   sheet without any DOM re-ordering or sheet dismissal.
+     *
+     * User — expected interaction:
+     *   1. Click ☰ in any sheet header → hamburger menu appears on top of the
+     *      sheet; the sheet content remains visible behind it.
+     *   2. Click a menu item (e.g. "Privacy") → ``_openSheet`` closes this
+     *      sheet and opens the target sheet.
+     *   3. Click outside the menu / press Escape → menu closes; the sheet that
+     *      was already open is still the active view (no navigation side-effect).
+     */
+    function _buildSheetHamburgerBtn(sheet, idSuffix, closeExtra) {  // closeExtra retained for call-site compat; not invoked
+        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        if (cfg.panelHamburger === false) return null;
+        var btn = _createIconBtn('sheet-ham-' + idSuffix, 'Open menu', ICONS.menu);
+        btn.title = 'Open menu';
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            // ── Do NOT close the sheet. ───────────────────────────────────────
+            // Previous code called closeExtra() then sheet.setAttribute('data-open',
+            // 'false') here, which dismissed the sheet before showing the popover.
+            // That caused the "navigate to main page" side-effect the user reported.
+            // The fix: keep the sheet open; the hamburger popover's elevated
+            // z-index (100001 > sheets' 99999) makes it paint on top naturally.
+            //
+            // ── Locate the popover by class+role, NOT getElementById. ─────────
+            // _createIconBtn('hamburger') gives the header button the same id
+            // as the popover div ('ai-assistant-panel-hamburger').  getElementById
+            // returns the button (first in DOM order) which has no data-open and
+            // shows nothing.  The class+role selector is unambiguous: the popover
+            // div carries class 'ai-assistant-panel-hamburger' and role 'menu';
+            // the button carries class 'ai-assistant-panel-icon-btn'.
+            var pop = document.querySelector(
+                '.ai-assistant-panel-hamburger[role="menu"]');
+            if (!pop) return;
+            pop.setAttribute('data-anchor', 'left');
+            pop.setAttribute('data-open', 'true');
+        });
+        return btn;
+    }
+
     // ── R2: privacy / responsibility sheet ────────────────────────────────────
 
     /**
@@ -5337,6 +5425,13 @@ opts.jsonPayload + '\n' +
             if (typeof _closeSheet === 'function') { _closeSheet(sheet); }
             else { sheet.setAttribute('data-open', 'false'); }
         });
+        // Hamburger — left of title, mirrors main panel header placement.
+        // closeExtra forwards the _unsubscribe teardown so the observer is
+        // detached before the sheet hides (same contract as hClose above).
+        var _epSheetHamBtn = _buildSheetHamburgerBtn(sheet, 'ep', function () {
+            if (_unsubscribe) { _unsubscribe(); _unsubscribe = null; }
+        });
+        if (_epSheetHamBtn) { head.appendChild(_epSheetHamBtn); }
         head.appendChild(hTitle);
         head.appendChild(hClose);
         sheet.appendChild(head);
@@ -7289,6 +7384,8 @@ opts.jsonPayload + '\n' +
         hClose.addEventListener('click', function () {
             sheet.setAttribute('data-open', 'false');
         });
+        var _privHamBtn = _buildSheetHamburgerBtn(sheet, 'privacy');
+        if (_privHamBtn) { head.appendChild(_privHamBtn); }
         head.appendChild(hStrong);
         head.appendChild(hClose);
         sheet.appendChild(head);
@@ -7925,6 +8022,8 @@ opts.jsonPayload + '\n' +
         hClose.addEventListener('click', function () {
             sheet.setAttribute('data-open', 'false');
         });
+        var _modelHamBtn = _buildSheetHamburgerBtn(sheet, 'model');
+        if (_modelHamBtn) { head.appendChild(_modelHamBtn); }
         head.appendChild(hStrong);
         head.appendChild(hClose);
         sheet.appendChild(head);
@@ -8870,6 +8969,8 @@ opts.jsonPayload + '\n' +
         hClose.addEventListener('click', function () {
             sheet.setAttribute('data-open', 'false');
         });
+        var _termsHamBtn = _buildSheetHamburgerBtn(sheet, 'terms');
+        if (_termsHamBtn) { head.appendChild(_termsHamBtn); }
         head.appendChild(hStrong);
         head.appendChild(hClose);
         sheet.appendChild(head);
@@ -8945,6 +9046,8 @@ opts.jsonPayload + '\n' +
         hClose.addEventListener('click', function () {
             sheet.setAttribute('data-open', 'false');
         });
+        var _shareHamBtn = _buildSheetHamburgerBtn(sheet, 'share');
+        if (_shareHamBtn) { head.appendChild(_shareHamBtn); }
         head.appendChild(hStrong);
         head.appendChild(hClose);
         sheet.appendChild(head);
@@ -9155,6 +9258,8 @@ opts.jsonPayload + '\n' +
             sheet.setAttribute('data-open', 'false');
         });
 
+        var _fmtHamBtn = _buildSheetHamburgerBtn(sheet, 'conv-share-' + fmt);
+        if (_fmtHamBtn) { head.appendChild(_fmtHamBtn); }
         head.appendChild(headLeft);
         head.appendChild(hClose);
         sheet.appendChild(head);
@@ -9759,6 +9864,8 @@ opts.jsonPayload + '\n' +
         hClose.addEventListener('click', function () {
             sheet.setAttribute('data-open', 'false');
         });
+        var _linksHamBtn = _buildSheetHamburgerBtn(sheet, 'links');
+        if (_linksHamBtn) { head.appendChild(_linksHamBtn); }
         head.appendChild(hStrong);
         head.appendChild(hClose);
         sheet.appendChild(head);
