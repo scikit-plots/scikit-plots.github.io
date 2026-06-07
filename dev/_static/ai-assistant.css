@@ -2434,8 +2434,8 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 /* Hamburger overflow popover — positioned absolute relative to panel. */
 .ai-assistant-panel-hamburger {
     position: absolute;
-    top: 4.5rem;            /* below the sub-bar */
-    left: 2rem;
+    top: 3.3rem;            /* below the header (0.75 + 1.75 content + 0.75 + 1px border) */
+    left: 1rem;             /* aligns with header-title left edge (header padding-left) */
     z-index: 5;
     display: none;
     flex-direction: column;
@@ -7358,6 +7358,3099 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     .ai-assistant-conv-share-perm-save-btn,
     .ai-assistant-conv-share-perm-delete,
     .ai-assistant-conv-share-fmt-badge {
+        transition: none;
+    }
+}
+/*
+ * patch_ep_subbar_css.css — Endpoint Configuration Sheet Styles
+ * ==============================================================
+ *
+ * APPLY INSTRUCTIONS
+ * ------------------
+ * Append the entire contents of this file to the END of ai-assistant.css.
+ * No existing rules are modified — this file is purely additive.
+ *
+ *   cat patch_ep_subbar_css.css >> _static/ai-assistant.css
+ *
+ * ARCHITECTURE
+ * ------------
+ * All selectors follow the `.ai-assistant-panel-ep-*` namespace to avoid
+ * any collision with existing rules.
+ *
+ * Three-layer CSS variable fallback chain (same as the rest of the sheet):
+ *   1. --pst-color-*     (PyData Sphinx Theme — auto dark-mode)
+ *   2. --color-*         (Furo theme compatibility)
+ *   3. Hardcoded value   (last-resort baseline for CDN/standalone deployments)
+ *
+ * Dark mode uses [data-bs-theme="dark"] (Bootstrap 5 / PyData convention).
+ *
+ * COMPONENT MAP
+ * -------------
+ *   §A  Sheet root       .ai-assistant-panel-ep-sheet
+ *   §B  Body             .ai-assistant-panel-ep-body
+ *   §C  Hint text        .ai-assistant-panel-ep-hint
+ *   §D  Profile cards    .ai-assistant-panel-ep-cards / -card / -radio / etc.
+ *   §E  Capability caps  .ai-assistant-panel-ep-cap / --on / --off
+ *   §F  Status badges    .ai-assistant-panel-ep-badge / --active / --runtime
+ *   §G  Mode toggle      .ai-assistant-panel-ep-mode-row / -mode-btn / --active
+ *   §H  URL section      .ai-assistant-panel-ep-simple-wrap / -adv-wrap
+ *   §I  Resolved display .ai-assistant-panel-ep-url-display / -resolved-row
+ *   §J  URL inputs       .ai-assistant-panel-ep-input / -url-row / -url-label
+ *   §K  Status message   .ai-assistant-panel-ep-status / --error
+ *   §L  Add profile form .ai-assistant-panel-ep-add-toggle / -add-form / etc.
+ *   §M  (Endpoint left-cluster btn removed — entry lives in hamburger menu)
+ *   §N  Right-cluster btn .ai-assistant-panel-ep-right-btn
+ * ==============================================================
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §A  Sheet root
+   Inherits transition, position, and flex layout from .ai-assistant-panel-privacy.
+   Only structural overrides are declared here.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* No additional root overrides needed — .ai-assistant-panel-privacy covers
+   position, z-index, background, border-radius, transition, and open/close
+   states.  The ep-sheet class exists only as a scoping hook for JS. */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §B  Body
+   Inherits overflow-y, padding, font-size, line-height, and color from
+   .ai-assistant-panel-privacy-body.  Adds bottom padding so the last section
+   is not clipped by the panel border-radius.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-body {
+    /* Extra bottom clearance for the last form row. */
+    padding-bottom: 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §C  Hint / description text
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-hint {
+    margin: 0.3rem 0 0.6rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-hint {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §D  Profile card grid
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-top: 0.4rem;
+}
+
+/* Individual profile card — label element wrapping a hidden radio + content. */
+.ai-assistant-panel-ep-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.ai-assistant-panel-ep-card:hover {
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, rgba(37, 99, 235, 0.04))
+    );
+}
+
+/* Active (selected) card. */
+.ai-assistant-panel-ep-card--active {
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, rgba(37, 99, 235, 0.06))
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-card {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: transparent;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-card:hover,
+[data-bs-theme="dark"] .ai-assistant-panel-ep-card--active {
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #4d90fe)
+    );
+    background: rgba(77, 144, 254, 0.08);
+}
+
+/* Visually-hidden radio (accessible: still keyboard-focusable and screen-reader
+   readable; only the card ring itself shows the selection state). */
+.ai-assistant-panel-ep-radio {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+/* Focus-visible ring on the card when the radio gains keyboard focus. */
+.ai-assistant-panel-ep-radio:focus-visible + .ai-assistant-panel-ep-card-content,
+.ai-assistant-panel-ep-card:focus-within {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+}
+
+/* Card content area (grows to fill label). */
+.ai-assistant-panel-ep-card-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+/* Label row: profile name + badges. */
+.ai-assistant-panel-ep-card-label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.ai-assistant-panel-ep-card-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 14ch;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-card-label {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §E  Capability badges (Chat / Share / Feedback / Training)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-caps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.ai-assistant-panel-ep-cap {
+    display: inline-block;
+    padding: 0.05rem 0.32rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    cursor: default;
+}
+
+/* Enabled: green tint. */
+.ai-assistant-panel-ep-cap--on {
+    color: #1a7340;
+    background: rgba(26, 115, 64, 0.10);
+    border: 1px solid rgba(26, 115, 64, 0.20);
+}
+
+/* Disabled: neutral grey. */
+.ai-assistant-panel-ep-cap--off {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #8c9198));
+    background: var(--pst-color-on-background, rgba(127, 127, 127, 0.07));
+    border: 1px solid rgba(127, 127, 127, 0.12);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-cap--on {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.10);
+    border-color: rgba(74, 222, 128, 0.20);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-cap--off {
+    color: rgba(255, 255, 255, 0.30);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §F  Status badges (Active / Custom)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-badge {
+    display: inline-block;
+    padding: 0.05rem 0.35rem;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* "Active" — primary brand colour. */
+.ai-assistant-panel-ep-badge--active {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(37, 99, 235, 0.20);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-badge--active {
+    color: #93c5fd;
+    background: rgba(147, 197, 253, 0.10);
+    border-color: rgba(147, 197, 253, 0.20);
+}
+
+/* "Custom" — amber, indicating a runtime-only profile. */
+.ai-assistant-panel-ep-badge--runtime {
+    color: #92400e;
+    background: rgba(146, 64, 14, 0.10);
+    border: 1px solid rgba(146, 64, 14, 0.20);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-badge--runtime {
+    color: #fcd34d;
+    background: rgba(252, 211, 77, 0.10);
+    border-color: rgba(252, 211, 77, 0.20);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §G  Mode toggle row (Simple / Advanced)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-mode-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.ai-assistant-panel-ep-mode-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    white-space: nowrap;
+}
+
+.ai-assistant-panel-ep-mode-btn {
+    padding: 0.18rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d7de)
+    );
+    background: transparent;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+.ai-assistant-panel-ep-mode-btn:hover {
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+}
+
+.ai-assistant-panel-ep-mode-btn--active {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: #fff;
+    cursor: default;
+}
+
+.ai-assistant-panel-ep-mode-btn:focus         { outline: none; }
+.ai-assistant-panel-ep-mode-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-mode-btn {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.55);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-mode-btn:hover {
+    border-color: rgba(147, 197, 253, 0.50);
+    color: #93c5fd;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-mode-btn--active {
+    background: var(--pst-color-primary, var(--color-brand-primary, #3b82f6));
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #3b82f6));
+    color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §H  URL input wrappers
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-simple-wrap,
+.ai-assistant-panel-ep-adv-wrap {
+    margin-bottom: 0.6rem;
+}
+
+/* Per-feature URL row in advanced mode. */
+.ai-assistant-panel-ep-url-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 0.55rem;
+}
+
+.ai-assistant-panel-ep-url-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+/* Route suffix indicator (e.g. "/v1/feedback") — dim mono text beside the label. */
+.ai-assistant-panel-ep-url-suffix {
+    font-size: 0.68rem;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #8c9198));
+    margin-left: 0.2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §I  Resolved URL display
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-url-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+/* One row per feature: [dot] [label] [resolved URL]. */
+.ai-assistant-panel-ep-resolved-row {
+    display: grid;
+    grid-template-columns: 8px 5.5rem 1fr;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0;
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(0, 0, 0, 0.06))
+    );
+}
+
+.ai-assistant-panel-ep-resolved-row:last-child {
+    border-bottom: none;
+}
+
+/* Status dot — 8 px circle. */
+.ai-assistant-panel-ep-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-indicator--on {
+    background: #22c55e;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.18);
+}
+
+.ai-assistant-panel-ep-indicator--off {
+    background: var(--pst-color-border, rgba(127, 127, 127, 0.35));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-indicator--on {
+    background: #4ade80;
+    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.15);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-indicator--off {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* Feature label column (fixed width for alignment). */
+.ai-assistant-panel-ep-resolved-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    white-space: nowrap;
+}
+
+/* URL column — monospace, truncated with ellipsis. */
+.ai-assistant-panel-ep-resolved-url {
+    font-size: 0.68rem;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #2a2a2a));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+/* Dim the URL in a disabled row. */
+.ai-assistant-panel-ep-resolved-row--off .ai-assistant-panel-ep-resolved-url {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #8c9198));
+    font-style: italic;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-resolved-url {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #c9d1d9));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-resolved-row {
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §J  Text inputs (URL / password fields)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.35rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d7de)
+    );
+    background: var(
+        --pst-color-surface,
+        var(--color-background-primary, #fff)
+    );
+    font: inherit;
+    font-size: 0.78rem;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ai-assistant-panel-ep-input:focus {
+    outline: none;
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.ai-assistant-panel-ep-input[readonly] {
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+    cursor: default;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    font-style: normal;
+}
+
+.ai-assistant-panel-ep-input::placeholder {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #adb5bd));
+    font-family: inherit;
+    font-style: italic;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-input {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-input:focus {
+    border-color: var(--pst-color-primary, #4d90fe);
+    box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.18);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-input[readonly] {
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §K  Status / error message
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-status {
+    margin: 0.4rem 0 0;
+    font-size: 0.74rem;
+    line-height: 1.4;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-ep-status--error {
+    color: #c0392b;
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.18);
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-status--error {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.08);
+    border-color: rgba(248, 113, 113, 0.20);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §L  Add Profile collapsible form
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Toggle button — text link style (no box). */
+.ai-assistant-panel-ep-add-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0.3rem 0;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.15s ease;
+}
+
+.ai-assistant-panel-ep-add-toggle:hover {
+    text-decoration-color: currentColor;
+}
+
+.ai-assistant-panel-ep-add-toggle:focus         { outline: none; }
+.ai-assistant-panel-ep-add-toggle:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-add-toggle {
+    color: #93c5fd;
+}
+
+/* Form container. */
+.ai-assistant-panel-ep-add-form {
+    margin-top: 0.5rem;
+    padding: 0.75rem 0.75rem 0.5rem;
+    border: 1px dashed var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d7de)
+    );
+    border-radius: 8px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, rgba(127, 127, 127, 0.03))
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-add-form {
+    border-color: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Form field rows. */
+.ai-assistant-panel-ep-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 0.55rem;
+}
+
+/* Submit button. */
+.ai-assistant-panel-ep-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    padding: 0.38rem 0.85rem;
+    border-radius: 6px;
+    border: none;
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: #fff;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ai-assistant-panel-ep-add-btn:hover {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #1d4ed8)
+    );
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.30);
+}
+
+.ai-assistant-panel-ep-add-btn:active {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #1e40af)
+    );
+    box-shadow: none;
+}
+
+.ai-assistant-panel-ep-add-btn:focus         { outline: none; }
+.ai-assistant-panel-ep-add-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-add-btn {
+    background: var(--pst-color-primary, var(--color-brand-primary, #3b82f6));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-add-btn:hover {
+    background: var(--pst-color-primary, var(--color-brand-primary, #60a5fa));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §N  Right-cluster endpoint pill button
+   Inherits pill geometry, border, transitions from .ai-assistant-panel-model-link.
+   Only icon-specific overrides added here.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Endpoint icon in the right-cluster button: stroke-based, not fill. */
+.ai-assistant-panel-ep-right-btn svg:first-of-type {
+    fill: none !important;
+    stroke: currentColor;
+    stroke-width: 2;
+    opacity: 0.70;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-right-btn svg:first-of-type {
+    opacity: 0.80;
+}
+
+.ai-assistant-panel-ep-right-btn:hover svg:first-of-type {
+    opacity: 1;
+}
+
+/* Active profile name label — same truncation behaviour as model-link-label. */
+.ai-assistant-panel-ep-btn-label {
+    /* Inherited by .ai-assistant-panel-model-link-label styles. */
+    max-width: 10ch;
+}
+
+/* Narrow panel: collapse label, keep icon + chevron. */
+[data-narrow] .ai-assistant-panel-ep-btn-label {
+    display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Reduced-motion: disable transitions for both buttons.
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-ep-card,
+    .ai-assistant-panel-ep-mode-btn,
+    .ai-assistant-panel-ep-input,
+    .ai-assistant-panel-ep-add-btn,
+    .ai-assistant-panel-ep-right-btn {
+        transition: none;
+    }
+}
+
+
+/* patch_ep_v2 appended */
+/* =============================================================================
+   patch_ep_v2_final_combined.css
+   =============================================================================
+   HOW TO APPLY
+   ------------
+   Append this file to  _static/ai-assistant.css:
+
+       cat patch_ep_v2_final_combined.css >> _static/ai-assistant.css
+
+   COMPOSITION
+   -----------
+   PART 1  (patch_ep_v2_2_css_additions.css)
+     · Styles for all new selectors introduced by patch_ep_v2_2_build_sheet
+     · §P  Status bar          .ai-assistant-panel-ep-status-bar*
+     · §Q  Risk badges         .ai-assistant-panel-ep-risk-badge*
+     · §R  Health check        .ai-assistant-panel-ep-health-*
+     · §S  Compare grid        .ai-assistant-panel-ep-compare-* / ep-grid-*
+     · §T  Info card           .ai-assistant-panel-ep-info-*
+     · §U  I/O buttons         .ai-assistant-panel-ep-io-*
+     · §V  conf.py snippet     .ai-assistant-panel-ep-snippet-*
+     · §W  Copy / delete btns  .ai-assistant-panel-ep-copy-btn / ep-delete-btn
+     · §X  Form components     .ai-assistant-panel-ep-add-btn / ep-char-counter*
+     · §Y  Test connectivity   .ai-assistant-panel-ep-test-btn / ep-test-results
+     · §Z  Card enhancements   .ai-assistant-panel-ep-card-key / ep-card-detail*
+     · §AA Indicators          .ai-assistant-panel-ep-indicator* / ep-profile-count
+
+   PART 2  (patch_ep_v2_3_css.css) — forward-compat additions
+     · Ten overlapping selectors naturally override PART 1 via CSS cascade
+     · Adds: ep-del-btn, ep-copy-toast, ep-audit-*, ep-ping-*, ep-spin
+     · ep-audit-* enables the audit-log panel in a future build-sheet version
+     · ep-ping-* and ep-spin support animated health-check indicators
+
+   CSS variable fallback convention (same as existing sheet):
+     1. --pst-color-*     PyData Sphinx Theme (auto dark-mode)
+     2. --color-*         Furo theme compatibility
+     3. Hardcoded value   CDN / standalone deployments
+   Dark mode selector: [data-bs-theme="dark"]
+   ============================================================================= */
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   PART 1  —  patch_ep_v2_2_css_additions.css
+   Selectors required by patch_ep_v2_2_build_sheet_combined.js
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §P  Status bar
+   Active-profile name + relative switch time; pinned below the sheet header.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-status-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.73rem;
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    flex-wrap: wrap;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-status-bar {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+.ai-assistant-panel-ep-status-bar-label {
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-status-bar-name {
+    font-weight: 700;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 18ch;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-status-bar-name {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+.ai-assistant-panel-ep-status-bar-time {
+    margin-left: auto;
+    font-size: 0.69rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §Q  Risk badges (SSRF-block / HTTP-only warnings on URL inputs)
+   Inline badges rendered next to URL fields by _makeRiskBadgeEl().
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-risk-badge {
+    display: none;             /* hidden until _wireUrlRisk() activates it */
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    line-height: 1.4;
+    user-select: none;
+}
+
+.ai-assistant-panel-ep-risk-badge--error {
+    display: inline-flex;
+    background: #fff0f0;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+}
+
+.ai-assistant-panel-ep-risk-badge--warn {
+    display: inline-flex;
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-risk-badge--error {
+    background: rgba(185, 28, 28, 0.15);
+    color: #fca5a5;
+    border-color: rgba(185, 28, 28, 0.4);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-risk-badge--warn {
+    background: rgba(146, 64, 14, 0.15);
+    color: #fcd34d;
+    border-color: rgba(146, 64, 14, 0.4);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §R  Health check — "Test All Connectivity" row and inline per-URL checks
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Container row for the test button and its results. */
+.ai-assistant-panel-ep-health-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+}
+
+/* Result rows produced per feature after a connectivity test. */
+.ai-assistant-panel-ep-health-result {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-health-result {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* Coloured dot — shared shape, state colours below. */
+.ai-assistant-panel-ep-health-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-health-dot--pending {
+    background: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    animation: ep-pulse 1s ease-in-out infinite;
+}
+
+.ai-assistant-panel-ep-health-dot--ok {
+    background: #16a34a;
+}
+
+.ai-assistant-panel-ep-health-dot--err {
+    background: #dc2626;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-health-dot--ok {
+    background: #4ade80;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-health-dot--err {
+    background: #f87171;
+}
+
+@keyframes ep-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+}
+
+/* Status text after the dot (latency or error message). */
+.ai-assistant-panel-ep-health-status {
+    font-size: 0.72rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+/* Inline per-URL health-check button (⬤) shown in advanced URL display rows. */
+.ai-assistant-panel-ep-health-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.6rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    transition: color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-health-btn:hover {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+}
+
+.ai-assistant-panel-ep-health-btn--off {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    cursor: default;
+    opacity: 0.5;
+}
+
+.ai-assistant-panel-ep-health-btn--checking {
+    color: #ca8a04;
+    animation: ep-pulse 0.8s ease-in-out infinite;
+}
+
+.ai-assistant-panel-ep-health-btn--ok {
+    color: #16a34a;
+}
+
+.ai-assistant-panel-ep-health-btn--err {
+    color: #dc2626;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-health-btn--ok  { color: #4ade80; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-health-btn--err { color: #f87171; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §S  Compare grid — §3 scrollable capability comparison table
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-compare-wrap {
+    margin-top: 0.5rem;
+}
+
+.ai-assistant-panel-ep-compare-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 6px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-scroll {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.ai-assistant-panel-ep-compare-grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    table-layout: auto;
+}
+
+/* Header cells. */
+.ai-assistant-panel-ep-grid-th {
+    padding: 0.35rem 0.55rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-grid-th {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* Feature-name header (leftmost column). */
+.ai-assistant-panel-ep-grid-th--feature {
+    text-align: left;
+    min-width: 7rem;
+}
+
+/* Active-profile header highlight. */
+.ai-assistant-panel-ep-grid-th--active {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    border-bottom-color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+}
+
+/* Data cells. */
+.ai-assistant-panel-ep-grid-td {
+    padding: 0.28rem 0.55rem;
+    text-align: center;
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e8eaed)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-grid-td {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Feature-name cell (leftmost column). */
+.ai-assistant-panel-ep-grid-feature {
+    text-align: left;
+    font-weight: 500;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-grid-feature {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* Priority sub-label inside feature cell. */
+.ai-assistant-panel-ep-grid-priority {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 400;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    margin-top: 0.05rem;
+}
+
+/* Active-profile data column highlight. */
+.ai-assistant-panel-ep-grid-td--active {
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, rgba(37, 99, 235, 0.04))
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-grid-td--active {
+    background: rgba(77, 144, 254, 0.06);
+}
+
+/* Check icons within data cells. */
+.ai-assistant-panel-ep-grid-check {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.ai-assistant-panel-ep-grid-check--on  { color: #16a34a; }
+.ai-assistant-panel-ep-grid-check--off { color: var(--pst-color-text-muted, var(--color-foreground-muted, #d0d0d0)); }
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-grid-check--on  { color: #4ade80; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-grid-check--off { color: rgba(255, 255, 255, 0.2); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §T  Info card — §2 active-profile detail (key / source / last-switched)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-info-card {
+    padding: 0.5rem 0.65rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 6px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.22rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-info-card {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ai-assistant-panel-ep-info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+}
+
+.ai-assistant-panel-ep-info-label {
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 6.5rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+.ai-assistant-panel-ep-info-value {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.71rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    word-break: break-all;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-info-value {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §U  I/O buttons — Export / Import / Clear row (§4)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-io-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    margin-top: 0.3rem;
+}
+
+.ai-assistant-panel-ep-io-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.28rem 0.65rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+    border-radius: 5px;
+    background: transparent;
+    font-size: 0.74rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+.ai-assistant-panel-ep-io-btn:hover {
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f0f0)
+    );
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+}
+
+.ai-assistant-panel-ep-io-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    outline-offset: 2px;
+}
+
+/* Danger variant (Clear All). */
+.ai-assistant-panel-ep-io-btn--danger {
+    color: #b91c1c;
+    border-color: #fca5a5;
+}
+
+.ai-assistant-panel-ep-io-btn--danger:hover {
+    background: #fff0f0;
+    border-color: #dc2626;
+}
+
+/* Confirm state (double-click guard). */
+.ai-assistant-panel-ep-io-btn--confirm {
+    background: #fff0f0;
+    border-color: #dc2626;
+    color: #b91c1c;
+    font-weight: 700;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #4d90fe));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn--danger {
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.4);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn--danger:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: #f87171;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn--confirm {
+    background: rgba(220, 38, 38, 0.15);
+    border-color: #f87171;
+}
+
+/* Separator line between I/O subsections. */
+.ai-assistant-panel-ep-io-sep {
+    border: none;
+    border-top: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    margin: 0.5rem 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-sep {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §V  conf.py snippet — §5 promote-to-build-time generator
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-snippet-pre {
+    margin: 0.4rem 0 0.3rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 6px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 14rem;
+    overflow-y: auto;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-snippet-pre {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.ai-assistant-panel-ep-snippet-code {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    white-space: pre;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-snippet-code {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §W  Copy and delete buttons
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Copy-to-clipboard button (inline, next to read-only input). */
+.ai-assistant-panel-ep-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.45rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+    border-radius: 4px;
+    background: transparent;
+    font-size: 0.7rem;
+    cursor: pointer;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-copy-btn:hover {
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f0f0)
+    );
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-ep-copy-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    outline-offset: 1px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-copy-btn {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-copy-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* Delete profile button (red, inline on profile card). */
+.ai-assistant-panel-ep-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem 0.35rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: transparent;
+    font-size: 0.68rem;
+    cursor: pointer;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-delete-btn:hover {
+    color: #dc2626;
+    border-color: #fca5a5;
+    background: #fff0f0;
+}
+
+.ai-assistant-panel-ep-delete-btn--confirm {
+    color: #b91c1c;
+    border-color: #dc2626;
+    background: #fff0f0;
+    font-weight: 700;
+}
+
+.ai-assistant-panel-ep-delete-btn:focus-visible {
+    outline: 2px solid #dc2626;
+    outline-offset: 1px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-delete-btn:hover {
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.4);
+    background: rgba(248, 113, 113, 0.1);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-delete-btn--confirm {
+    color: #f87171;
+    border-color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §X  Form components (Add Profile form enhancements)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Submit / Import button — primary action in the add form. */
+.ai-assistant-panel-ep-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.32rem 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.ai-assistant-panel-ep-add-btn:hover {
+    opacity: 0.88;
+}
+
+.ai-assistant-panel-ep-add-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.ai-assistant-panel-ep-add-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    outline-offset: 2px;
+}
+
+/* Character counter for the profile-name input. */
+.ai-assistant-panel-ep-char-counter {
+    font-size: 0.67rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    text-align: right;
+    margin-top: 0.1rem;
+}
+
+/* Key preview (auto-derived key shown below name input). */
+.ai-assistant-panel-ep-key-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    margin-top: 0.15rem;
+    flex-wrap: wrap;
+}
+
+.ai-assistant-panel-ep-key-preview-label {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    flex-shrink: 0;
+}
+
+.ai-assistant-panel-ep-key-preview-value {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.69rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f0f0)
+    );
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+    border-radius: 3px;
+    padding: 0.05rem 0.28rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-key-preview-value {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* Key availability status indicator. */
+.ai-assistant-panel-ep-key-status {
+    font-size: 0.68rem;
+    margin-top: 0.1rem;
+    min-height: 1rem;
+}
+
+.ai-assistant-panel-ep-key-status--ok {
+    color: #16a34a;
+}
+
+.ai-assistant-panel-ep-key-status--err {
+    color: #dc2626;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-key-status--ok  { color: #4ade80; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-key-status--err { color: #f87171; }
+
+/* Token show/hide toggle button. */
+.ai-assistant-panel-ep-showhide-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.18rem 0.4rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+    border-radius: 4px;
+    background: transparent;
+    font-size: 0.68rem;
+    cursor: pointer;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    flex-shrink: 0;
+    transition: background 0.12s ease;
+}
+
+.ai-assistant-panel-ep-showhide-btn:hover {
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f0f0)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-showhide-btn {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+/* Warning variant of the hint text (token security warning, cap warning). */
+.ai-assistant-panel-ep-hint--warn {
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 4px;
+    padding: 0.25rem 0.45rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-hint--warn {
+    color: #fcd34d;
+    background: rgba(146, 64, 14, 0.15);
+    border-color: rgba(252, 211, 77, 0.3);
+}
+
+/* Key input (manual override field — monospace). */
+.ai-assistant-panel-ep-input--key {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.01em;
+}
+
+/* URL validation error message. */
+.ai-assistant-panel-ep-url-err {
+    font-size: 0.7rem;
+    color: #dc2626;
+    margin-top: 0.15rem;
+    min-height: 1rem;
+    line-height: 1.4;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-url-err {
+    color: #f87171;
+}
+
+/* URL suffix label (feature path suffix, e.g. /v1/chat/completions). */
+.ai-assistant-panel-ep-url-suffix {
+    font-size: 0.67rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Row containing resolved URL + copy button. */
+.ai-assistant-panel-ep-url-copy-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    margin-top: 0.2rem;
+    min-width: 0;
+}
+
+/* Action cluster next to an advanced URL input (copy, health-check, risk badge). */
+.ai-assistant-panel-ep-url-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §Y  Test connectivity — "Test All" button and result panel
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-test-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+    border-radius: 5px;
+    background: transparent;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    transition: background 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+}
+
+.ai-assistant-panel-ep-test-btn:hover {
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, rgba(37, 99, 235, 0.04))
+    );
+}
+
+.ai-assistant-panel-ep-test-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    outline-offset: 2px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-test-btn {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-test-btn:hover {
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #4d90fe));
+    background: rgba(77, 144, 254, 0.06);
+}
+
+.ai-assistant-panel-ep-test-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.35rem;
+    padding: 0.4rem 0.55rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 5px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+    font-size: 0.73rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-test-results {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Feature label inside a test result row. */
+.ai-assistant-panel-ep-resolved-label {
+    font-weight: 600;
+    font-size: 0.72rem;
+    min-width: 5rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-resolved-label {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §Z  Card enhancements (key display, expandable detail, built-in badge)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Profile-key text below card label. */
+.ai-assistant-panel-ep-card-key {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.63rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+/* Expand/collapse toggle for per-card URL detail. */
+.ai-assistant-panel-ep-card-detail-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.68rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.1rem 0.2rem;
+    border-radius: 3px;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    transition: color 0.12s ease;
+    margin-top: 0.15rem;
+}
+
+.ai-assistant-panel-ep-card-detail-toggle:hover {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+}
+
+/* Collapsible detail panel. */
+.ai-assistant-panel-ep-card-detail {
+    display: none;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.3rem 0.35rem;
+    margin-top: 0.2rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e8eaed)
+    );
+    border-radius: 4px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f6f8fa)
+    );
+}
+
+.ai-assistant-panel-ep-card-detail[aria-expanded="true"],
+.ai-assistant-panel-ep-card-detail.ep-open {
+    display: flex;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-card-detail {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* Row within card detail. */
+.ai-assistant-panel-ep-card-detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+    font-size: 0.68rem;
+}
+
+/* Label column in card detail row. */
+.ai-assistant-panel-ep-card-detail-label {
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 4.5rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+/* URL value in card detail row. */
+.ai-assistant-panel-ep-card-detail-url {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.65rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    word-break: break-all;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-card-detail-url {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #e4e6ea));
+}
+
+/* Built-in profile badge (distinct from runtime / active). */
+.ai-assistant-panel-ep-badge--builtin {
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f0f0)
+    );
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #5a6370));
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-badge--builtin {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §AA  Indicators and profile count
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Colour-coded capability dot in the resolved-URL display. */
+.ai-assistant-panel-ep-indicator {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 0.15rem;
+    vertical-align: middle;
+}
+
+.ai-assistant-panel-ep-indicator--on  { background: #16a34a; }
+.ai-assistant-panel-ep-indicator--off { background: var(--pst-color-text-muted, var(--color-foreground-muted, #d0d0d0)); }
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-indicator--on  { background: #4ade80; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-indicator--off { background: rgba(255, 255, 255, 0.2); }
+
+/* Custom profile count badge (shown near the "Add profile" section header). */
+.ai-assistant-panel-ep-profile-count {
+    display: inline-block;
+    padding: 0.05rem 0.38rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #e8eaed)
+    );
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #5a6370));
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d0d0)
+    );
+    margin-left: 0.3rem;
+    vertical-align: middle;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-profile-count {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ─── end patch_ep_v2_2_css_additions.css ──────────────────────────────── */
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   PART 2  —  patch_ep_v2_3_css.css  (forward-compat / override layer)
+   Ten selectors shared with PART 1 are intentionally overridden here;
+   all other selectors (ep-audit-*, ep-ping-*, ep-spin, ep-copy-toast,
+   ep-del-btn) are additive and do not conflict with PART 1.
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §O  Delete button for runtime-added (custom) profile cards
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Positioned in the top-right corner of each custom profile card.
+   Visible only when the card is hovered or focused-within (CSS :has workaround
+   uses opacity/pointer-events instead of display so transitions work).
+
+   Security note: The button is only rendered for runtime-custom profiles
+   (isCustom === true). Build-time profiles cannot be deleted from the UI.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-del-btn {
+    /* Placed inside the card-label-row as the rightmost flex child.     */
+    /* Margin-left: auto pushes it to the far right of the label row.   */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    /* Hidden by default; shown on card hover via .ai-assistant-panel-ep-card:hover */
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity       0.15s ease,
+        background    0.15s ease,
+        border-color  0.15s ease;
+}
+
+/* Show delete button when parent card is hovered or focus is within. */
+.ai-assistant-panel-ep-card:hover       .ai-assistant-panel-ep-del-btn,
+.ai-assistant-panel-ep-card:focus-within .ai-assistant-panel-ep-del-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ai-assistant-panel-ep-del-btn:hover {
+    background: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    border-color: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    color: #fff;
+}
+
+.ai-assistant-panel-ep-del-btn:active {
+    opacity: 0.80;
+}
+
+.ai-assistant-panel-ep-del-btn:focus         { outline: none; }
+.ai-assistant-panel-ep-del-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    outline-offset: 2px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-del-btn {
+    color: var(--pst-color-danger, #f87171);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-del-btn:hover {
+    background: var(--pst-color-danger, #ef4444);
+    border-color: var(--pst-color-danger, #ef4444);
+    color: #fff;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §P  Copy-to-clipboard button on resolved-URL rows
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Each resolved URL row in the §I block gets a small copy icon button.
+   A floating toast confirms the copy action.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Resolved row: make it position:relative so the copy button can be
+   absolutely positioned, and allow the row to show/hide the button
+   using the same hover trick as the delete button above.              */
+.ai-assistant-panel-ep-resolved-row {
+    /* Augment existing rule — add position without overriding flex.    */
+    position: relative;
+}
+
+.ai-assistant-panel-ep-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Right-aligned inside the flex row via margin-left: auto.         */
+    flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    padding: 0.1rem;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.ai-assistant-panel-ep-copy-btn svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    fill: currentColor;
+}
+
+/* Show copy button on row hover / focus. */
+.ai-assistant-panel-ep-resolved-row:hover       .ai-assistant-panel-ep-copy-btn,
+.ai-assistant-panel-ep-resolved-row:focus-within .ai-assistant-panel-ep-copy-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ai-assistant-panel-ep-copy-btn:hover {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.06))
+    );
+    color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+}
+
+.ai-assistant-panel-ep-copy-btn:focus         { outline: none; }
+.ai-assistant-panel-ep-copy-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 1px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Copy confirmation toast — absolute overlay, fades out automatically. */
+.ai-assistant-panel-ep-copy-toast {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: var(
+        --pst-color-success,
+        var(--color-announcement-background, #16a34a)
+    );
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    /* Animated with a JS-toggled class. */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+}
+
+.ai-assistant-panel-ep-copy-toast--visible {
+    opacity: 1;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-copy-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--pst-color-primary, #60a5fa);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §Q  Profile compare grid
+   ═══════════════════════════════════════════════════════════════════════════
+
+   A Feature × Profile matrix showing which profiles cover which capabilities.
+   Layout: CSS grid with auto columns (one per profile + label column).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-compare-grid {
+    display: grid;
+    /* One label column (auto) + N profile columns (1fr each).
+       JS sets --ep-compare-cols via style property before render.       */
+    grid-template-columns: auto repeat(var(--ep-compare-cols, 1), 1fr);
+    gap: 0;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.14))
+    );
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.72rem;
+    margin-top: 0.4rem;
+}
+
+.ai-assistant-panel-ep-compare-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.10))
+    );
+    border-right: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.10))
+    );
+    text-align: center;
+}
+
+/* Remove border from last column. */
+.ai-assistant-panel-ep-compare-cell:last-child,
+.ai-assistant-panel-ep-compare-row:last-child .ai-assistant-panel-ep-compare-cell {
+    border-right: none;
+}
+
+/* Remove border from last row. */
+.ai-assistant-panel-ep-compare-row:last-child .ai-assistant-panel-ep-compare-cell {
+    border-bottom: none;
+}
+
+/* Header row: profile names. */
+.ai-assistant-panel-ep-compare-head {
+    display: contents; /* Each cell becomes a direct grid item. */
+}
+
+.ai-assistant-panel-ep-compare-cell--head {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.04))
+    );
+    font-weight: 700;
+    font-size: 0.70rem;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #1a1a1a)
+    );
+    /* Truncate long profile names. */
+    max-width: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Feature label column: left-aligned. */
+.ai-assistant-panel-ep-compare-cell--label {
+    justify-content: flex-start;
+    font-weight: 600;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+    white-space: nowrap;
+    padding-right: 0.75rem;
+}
+
+/* Active-profile column highlight. */
+.ai-assistant-panel-ep-compare-cell--active-col {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    background: color-mix(
+        in srgb,
+        var(--pst-color-primary, #2563eb) 8%,
+        transparent
+    );
+}
+
+/* Capability check mark (✓). */
+.ai-assistant-panel-ep-compare-check {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(
+        --pst-color-success,
+        var(--color-announcement-background, #16a34a)
+    );
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 900;
+    line-height: 1rem;
+    text-align: center;
+}
+
+/* Capability cross (—). */
+.ai-assistant-panel-ep-compare-cross {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.14))
+    );
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #9ca3af)
+    );
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1rem;
+    text-align: center;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cell--head {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--pst-color-text-base, #e2e8f0);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cell {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cell--label {
+    color: var(--pst-color-text-muted, #94a3b8);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-compare-cross {
+    background: rgba(255, 255, 255, 0.10);
+    color: #64748b;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §R  Health-check UI
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Per-feature ping row appended below each resolved URL in §I.
+   The JS calls a /health or /v1/models route (GET HEAD if CORS allows)
+   and shows latency + status colour.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-health-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.1rem;
+}
+
+.ai-assistant-panel-ep-ping-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 5px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.20))
+    );
+    background: transparent;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #374151)
+    );
+    font: inherit;
+    font-size: 0.70rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.14s ease, border-color 0.14s ease;
+}
+
+.ai-assistant-panel-ep-ping-btn:hover {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.05))
+    );
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+}
+
+.ai-assistant-panel-ep-ping-btn:focus         { outline: none; }
+.ai-assistant-panel-ep-ping-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+}
+
+.ai-assistant-panel-ep-ping-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Ping spinner: rotated inline block. */
+.ai-assistant-panel-ep-ping-spinner {
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ep-spin 0.7s linear infinite;
+}
+
+@keyframes ep-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Ping result badge. */
+.ai-assistant-panel-ep-ping-result {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.12rem 0.4rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.ai-assistant-panel-ep-ping-result--ok {
+    background: color-mix(in srgb, #16a34a 12%, transparent);
+    color: var(--pst-color-success, #15803d);
+    border: 1px solid color-mix(in srgb, #16a34a 30%, transparent);
+}
+
+.ai-assistant-panel-ep-ping-result--err {
+    background: color-mix(in srgb, #dc2626 10%, transparent);
+    color: var(--pst-color-danger, #b91c1c);
+    border: 1px solid color-mix(in srgb, #dc2626 25%, transparent);
+}
+
+.ai-assistant-panel-ep-ping-result--warn {
+    background: color-mix(in srgb, #d97706 12%, transparent);
+    color: var(--pst-color-warning, #b45309);
+    border: 1px solid color-mix(in srgb, #d97706 30%, transparent);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ping-btn {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--pst-color-text-base, #cbd5e1);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ping-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--pst-color-primary, #60a5fa);
+    color: var(--pst-color-primary, #60a5fa);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ping-result--ok {
+    background: rgba(22, 163, 74, 0.15);
+    color: #4ade80;
+    border-color: rgba(22, 163, 74, 0.30);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ping-result--err {
+    background: rgba(220, 38, 38, 0.15);
+    color: #f87171;
+    border-color: rgba(220, 38, 38, 0.30);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ping-result--warn {
+    background: rgba(217, 119, 6, 0.15);
+    color: #fbbf24;
+    border-color: rgba(217, 119, 6, 0.30);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §S  Import / Export / Clear section
+   ═══════════════════════════════════════════════════════════════════════════
+
+   A collapsible section (same pattern as §L Add Profile form) containing:
+   - Export button → downloads custom profiles as JSON (triggers JS blob)
+   - Import textarea → paste JSON to load profiles
+   - Clear-all button → removes all custom profiles (with confirm dialog)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-io-toggle {
+    /* Inherits all layout / typography from ep-add-toggle. */
+    display: block;
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px dashed var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.18))
+    );
+    background: transparent;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+    font: inherit;
+    font-size: 0.75rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.14s ease, border-color 0.14s ease;
+}
+
+.ai-assistant-panel-ep-io-toggle:hover {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.04))
+    );
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+}
+
+.ai-assistant-panel-ep-io-toggle:focus         { outline: none; }
+.ai-assistant-panel-ep-io-toggle:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-toggle {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--pst-color-text-muted, #94a3b8);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--pst-color-primary, #60a5fa);
+    color: var(--pst-color-primary, #60a5fa);
+}
+
+/* Import/Export form container — same collapsible pattern as ep-add-form. */
+.ai-assistant-panel-ep-io-form {
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.025))
+    );
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.10))
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-form {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Row inside the I/O form (button row, textarea row). */
+.ai-assistant-panel-ep-io-row {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.55rem;
+    align-items: flex-start;
+}
+
+.ai-assistant-panel-ep-io-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Import textarea. */
+.ai-assistant-panel-ep-io-textarea {
+    display: block;
+    width: 100%;
+    min-height: 5rem;
+    padding: 0.45rem 0.55rem;
+    border-radius: 5px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.20))
+    );
+    background: var(
+        --pst-color-background,
+        var(--color-background-primary, #ffffff)
+    );
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #1a1a1a)
+    );
+    font: inherit;
+    font-size: 0.70rem;
+    font-family: var(--pst-font-family-monospace, monospace);
+    resize: vertical;
+    transition: border-color 0.14s ease, box-shadow 0.14s ease;
+    box-sizing: border-box;
+}
+
+.ai-assistant-panel-ep-io-textarea:focus {
+    outline: none;
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    box-shadow: 0 0 0 2px color-mix(
+        in srgb,
+        var(--pst-color-primary, #2563eb) 20%,
+        transparent
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-textarea {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: var(--pst-color-text-base, #e2e8f0);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-textarea:focus {
+    border-color: var(--pst-color-primary, #60a5fa);
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.18);
+}
+
+/* I/O action buttons — shared base. */
+.ai-assistant-panel-ep-io-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.32rem 0.7rem;
+    border-radius: 5px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.20))
+    );
+    background: transparent;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #374151)
+    );
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.13s ease, border-color 0.13s ease, color 0.13s ease;
+}
+
+.ai-assistant-panel-ep-io-btn:hover {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.05))
+    );
+    border-color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+}
+
+.ai-assistant-panel-ep-io-btn:focus         { outline: none; }
+.ai-assistant-panel-ep-io-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2563eb)
+    );
+    outline-offset: 2px;
+}
+
+/* Danger variant: used for "Clear all" button. */
+.ai-assistant-panel-ep-io-btn--danger {
+    border-color: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    color: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+}
+
+.ai-assistant-panel-ep-io-btn--danger:hover {
+    background: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    border-color: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+    color: #fff;
+}
+
+.ai-assistant-panel-ep-io-btn--danger:focus-visible {
+    outline-color: var(
+        --pst-color-danger,
+        var(--color-problematic, #dc2626)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn {
+    border-color: rgba(255, 255, 255, 0.14);
+    color: var(--pst-color-text-base, #cbd5e1);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--pst-color-primary, #60a5fa);
+    color: var(--pst-color-primary, #60a5fa);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn--danger {
+    border-color: rgba(239, 68, 68, 0.50);
+    color: #f87171;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-btn--danger:hover {
+    background: rgba(220, 38, 38, 0.30);
+    border-color: #ef4444;
+    color: #fff;
+}
+
+/* I/O status message below the textarea. */
+.ai-assistant-panel-ep-io-status {
+    font-size: 0.70rem;
+    font-weight: 600;
+    padding: 0.2rem 0;
+    display: none;
+}
+
+.ai-assistant-panel-ep-io-status--ok {
+    color: var(--pst-color-success, #15803d);
+    display: block;
+}
+
+.ai-assistant-panel-ep-io-status--err {
+    color: var(--pst-color-danger, #dc2626);
+    display: block;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-status--ok  { color: #4ade80; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-io-status--err { color: #f87171; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §T  Warning / risk badge
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Amber badge — rendered beside profile label when the Python-side
+   validation emitted a private-IP / SSRF warning for this profile.
+   Only build-time profiles can have this badge (runtime-added profiles
+   are validated by JS _EP.addCustomProfile which already rejects them).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-badge--warn {
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    background: color-mix(in srgb, #d97706 15%, transparent);
+    color: var(--pst-color-warning, #92400e);
+    border: 1px solid color-mix(in srgb, #d97706 35%, transparent);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    cursor: help;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-badge--warn {
+    background: rgba(217, 119, 6, 0.18);
+    color: #fbbf24;
+    border-color: rgba(217, 119, 6, 0.35);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §U  Profile count badge in the §1 Profiles section header
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.2rem;
+    height: 1.2rem;
+    padding: 0 0.3rem;
+    border-radius: 0.6rem;
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.08))
+    );
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+    font-size: 0.65rem;
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 0.35rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-count {
+    background: rgba(255, 255, 255, 0.09);
+    color: #94a3b8;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §V  Character counter for profile label input
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-char-count {
+    font-size: 0.65rem;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #9ca3af)
+    );
+    text-align: right;
+    display: block;
+    margin-top: 0.1rem;
+    transition: color 0.12s ease;
+}
+
+/* Warn when approaching the limit (JS toggles this class). */
+.ai-assistant-panel-ep-char-count--warn {
+    color: var(--pst-color-warning, #d97706);
+}
+
+/* Error when at/over the limit. */
+.ai-assistant-panel-ep-char-count--over {
+    color: var(--pst-color-danger, #dc2626);
+    font-weight: 700;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-char-count        { color: #64748b; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-char-count--warn  { color: #fbbf24; }
+[data-bs-theme="dark"] .ai-assistant-panel-ep-char-count--over  { color: #f87171; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §W  Auto-generated profile key preview
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Shows the storage key that will be generated from the user's label,
+   e.g. "Key: custom_my_cf_worker_1685432100000".
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-key-preview {
+    display: block;
+    font-size: 0.67rem;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #9ca3af)
+    );
+    font-family: var(--pst-font-family-monospace, monospace);
+    margin-top: 0.15rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.04))
+    );
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-key-preview {
+    background: rgba(255, 255, 255, 0.04);
+    color: #64748b;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §X  Inline URL security validation feedback
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Each URL input in the Add-Profile form shows an inline feedback line
+   that updates on input: green for valid, red for invalid / blocked.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-url-ok,
+.ai-assistant-panel-ep-url-bad {
+    display: block;
+    font-size: 0.67rem;
+    font-weight: 600;
+    margin-top: 0.1rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+}
+
+.ai-assistant-panel-ep-url-ok {
+    color: var(--pst-color-success, #15803d);
+    background: color-mix(in srgb, #16a34a 8%, transparent);
+}
+
+.ai-assistant-panel-ep-url-bad {
+    color: var(--pst-color-danger, #dc2626);
+    background: color-mix(in srgb, #dc2626 8%, transparent);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-url-ok  {
+    color: #4ade80;
+    background: rgba(22, 163, 74, 0.12);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-url-bad {
+    color: #f87171;
+    background: rgba(220, 38, 38, 0.12);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §Y  Audit / event log
+   ═══════════════════════════════════════════════════════════════════════════
+
+   A lightweight, fixed-height scrollable log showing the last N profile-
+   switch, add, delete, import, and health-check events with ISO timestamps.
+   Shown only in Advanced mode (toggled by JS aria-expanded check).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-panel-ep-audit-log {
+    display: block;
+    max-height: 6rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.12))
+    );
+    background: var(
+        --pst-color-surface,
+        var(--color-background-secondary, rgba(0, 0, 0, 0.025))
+    );
+    font-family: var(--pst-font-family-monospace, monospace);
+    font-size: 0.67rem;
+    line-height: 1.4;
+}
+
+/* Scrollbar styling (Webkit). */
+.ai-assistant-panel-ep-audit-log::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ai-assistant-panel-ep-audit-log::-webkit-scrollbar-thumb {
+    background: var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.20))
+    );
+    border-radius: 2px;
+}
+
+/* Single log entry. */
+.ai-assistant-panel-ep-audit-entry {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    padding: 0.05rem 0;
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-background-border, rgba(0, 0, 0, 0.07))
+    );
+}
+
+.ai-assistant-panel-ep-audit-entry:last-child {
+    border-bottom: none;
+}
+
+/* Timestamp column — fixed-width monospace. */
+.ai-assistant-panel-ep-audit-time {
+    flex-shrink: 0;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #9ca3af)
+    );
+    white-space: nowrap;
+    font-size: 0.63rem;
+}
+
+/* Message column — fills remaining width. */
+.ai-assistant-panel-ep-audit-msg {
+    flex: 1;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #374151)
+    );
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Semantic colour variants for audit entries. */
+.ai-assistant-panel-ep-audit-entry--switch .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-primary, #2563eb);
+}
+
+.ai-assistant-panel-ep-audit-entry--add .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-success, #15803d);
+}
+
+.ai-assistant-panel-ep-audit-entry--del .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-danger, #dc2626);
+}
+
+.ai-assistant-panel-ep-audit-entry--import .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-warning, #d97706);
+}
+
+.ai-assistant-panel-ep-audit-entry--health-ok .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-success, #15803d);
+}
+
+.ai-assistant-panel-ep-audit-entry--health-err .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-danger, #dc2626);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-log {
+    background: rgba(0, 0, 0, 0.20);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-log::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-time { color: #475569; }
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-text-base, #cbd5e1);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry--switch .ai-assistant-panel-ep-audit-msg {
+    color: var(--pst-color-primary, #60a5fa);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry--add .ai-assistant-panel-ep-audit-msg {
+    color: #4ade80;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry--del .ai-assistant-panel-ep-audit-msg {
+    color: #f87171;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry--import .ai-assistant-panel-ep-audit-msg {
+    color: #fbbf24;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry--health-ok .ai-assistant-panel-ep-audit-msg {
+    color: #4ade80;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-entry--health-err .ai-assistant-panel-ep-audit-msg {
+    color: #f87171;
+}
+
+/* "No events yet" placeholder inside the audit log. */
+.ai-assistant-panel-ep-audit-empty {
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #9ca3af)
+    );
+    font-size: 0.67rem;
+    font-style: italic;
+    text-align: center;
+    padding: 0.25rem 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-audit-empty { color: #475569; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §Z  Reduced-motion: disable all new transitions
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-ep-del-btn,
+    .ai-assistant-panel-ep-copy-btn,
+    .ai-assistant-panel-ep-copy-toast,
+    .ai-assistant-panel-ep-ping-btn,
+    .ai-assistant-panel-ep-ping-result,
+    .ai-assistant-panel-ep-io-toggle,
+    .ai-assistant-panel-ep-io-btn,
+    .ai-assistant-panel-ep-io-textarea,
+    .ai-assistant-panel-ep-char-count,
+    .ai-assistant-panel-ep-url-ok,
+    .ai-assistant-panel-ep-url-bad {
+        transition: none;
+    }
+
+    .ai-assistant-panel-ep-ping-spinner {
+        animation: none;
+        /* Show a static indicator instead of a spinner. */
+        border-color: currentColor;
+        border-top-color: currentColor;
+        opacity: 0.5;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §BB  Profile group headers — §1 Built-in / Custom section separators
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Rendered by _renderGroup() in _buildEndpointConfigSheet.
+   One <h4 class="ai-assistant-panel-ep-prof-group-header"> precedes each
+   non-empty partition (Built-in, Custom) of the profile card list.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.ai-assistant-panel-ep-prof-group-header {
+    /* Typography */
+    margin: 0.65rem 0 0.25rem;
+    padding: 0;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-muted, #6a737d)
+    );
+    /* Underline rule reinforces group boundary without heavy visual weight. */
+    border-bottom: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    padding-bottom: 0.2rem;
+    /* Suppress default <h4> margins that would create uneven spacing. */
+    line-height: 1.2;
+}
+
+/* First group header needs no extra top clearance — the parent .ep-cards gap
+   already provides visual separation from the hint paragraph above it. */
+.ai-assistant-panel-ep-cards
+    > .ai-assistant-panel-ep-prof-group-header:first-child {
+    margin-top: 0.2rem;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-prof-group-header {
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-muted, #9aa0a6)
+    );
+    border-bottom-color: rgba(255, 255, 255, 0.10);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   §BC  SSRF advisory badge — profile cards with private-host URL fields
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Rendered by _appendProfileCard() when capData._warn is non-empty.
+   Class: ai-assistant-panel-ep-ssrf-warn
+   ─────────────────────────────────────────────────────────────────────── */
+
+.ai-assistant-panel-ep-ssrf-warn {
+    /* Layout: sits below capability pills, full-width of card-content. */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: fit-content;
+    max-width: 100%;
+
+    /* Visual: amber / warning palette matching badge--warn tone. */
+    padding: 0.12rem 0.42rem;
+    border-radius: 3px;
+    background: color-mix(in srgb, #d97706 12%, transparent);
+    color: var(--pst-color-warning, #92400e);
+    border: 1px solid color-mix(in srgb, #d97706 30%, transparent);
+
+    /* Typography */
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    /* The title attribute carries the full advisory detail; cursor indicates it. */
+    cursor: help;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ssrf-warn {
+    background: rgba(217, 119, 6, 0.18);
+    color: #fbbf24;
+    border-color: rgba(217, 119, 6, 0.35);
+}
+
+/* ── profile-health-badge — extra selector on connectivity-test dot ────────
+   The JS adds ai-assistant-panel-ep-profile-health-badge alongside the
+   existing health-dot classes.  This rule is intentionally minimal — the
+   dot already gets its colour from --ok / --err / --pending modifiers; this
+   selector exists purely so external CSS overrides or snapshot tests can
+   target the health badge independently from generic health dots.         */
+
+.ai-assistant-panel-ep-profile-health-badge {
+    /* No additional visual rules — inherits fully from ep-health-dot.
+       Sentinel selector: confirms the badge class landed in the stylesheet. */
+    outline-offset: 1px;   /* visible on :focus-visible only */
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-ep-profile-health-badge {
+    /* Preserve dark-mode override chain without adding new styles. */
+}
+
+/* Reduced-motion: disable prof-group-header and ssrf-warn transitions. */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-ep-prof-group-header,
+    .ai-assistant-panel-ep-ssrf-warn {
         transition: none;
     }
 }

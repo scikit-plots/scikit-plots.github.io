@@ -462,6 +462,9 @@
         convCheck:   '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M15.188 5.11a.5.5 0 0 1 .752.626l-.056.084-7.5 9a.5.5 0 0 1-.738.033l-3.5-3.5-.064-.078a.501.501 0 0 1 .693-.693l.078.064 3.113 3.113 7.15-8.58.07-.057z" clip-rule="evenodd"/></svg>',
         // Link-chain icon: shown on the export mode toggle row (share-link mode).
         linkChain:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+        // ── Endpoint registry icon — server/network node ─────────────────────
+        // Three-tier stack: represents layered proxy backends (DMR / CF / HF).
+        endpoint:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
     };
 
     // ── Provider accent colours (mirrors _PROVIDER_COLORS in __init__.py) ──────
@@ -1784,6 +1787,1096 @@
             el.classList.remove('show');
             setTimeout(function () { el.remove(); }, 300);
         }, 3000);
+    }
+
+    /**
+     * Fire-and-forget authenticated JSON POST.
+     *
+     * @param {string}   url             Remote endpoint URL.  No-op when empty.
+     * @param {string}   token           Bearer token, or '' for no auth header.
+     * @param {Object}   body            JSON-serialisable payload.
+     * @param {Object}   [opts]          Options.
+     * @param {boolean}  [opts.keepalive=true]  Survive page-unload races.
+     * @param {Function} [opts.onSuccess]       Called with parsed JSON on 2xx.
+     * @param {Function} [opts.onError]         Called with {status, message} on failure.
+     * @returns {void}  Never throws.
+     *
+     * @remarks
+     * Developer: keepalive:true is the only mechanism that survives page-unload
+     * for fire-and-forget POSTs (feedback).  It has a ~64 KB body limit in some
+     * browsers — callers must ensure payloads stay within this bound.  A typical
+     * feedback detail object is ~2 KB; this is never a concern in practice.
+     *
+     * Developer: keepalive:false is correct for interactive calls (global share,
+     * training contribution) where the UI shows a spinner awaiting the response.
+     * Using keepalive:true for those would mask connection errors.
+     *
+     * Developer: This function is intentionally silent on failure — it emits a
+     * console.warn only.  It must never disrupt the user's UI flow on error.
+     */
+
+    // ── Endpoint Profile Registry ────────────────────────────────────────────
+    /**
+     * Runtime-switchable proxy endpoint registry — Security-hardened v2.
+     *
+     * SECURITY CHANGES FROM v1
+     * ========================
+     * V-01 Null-prototype registry eliminates prototype-pollution via crafted keys.
+     * V-02 All profile keys are validated against _SAFE_KEY_RE before any write.
+     * V-03 localStorage reads go through a schema-versioned validator.
+     * V-04 Runtime-added URLs are checked against _isBlockedHost (SSRF guard).
+     * V-05 Custom profile count is capped at _MAX_CUSTOM_PROFILES (20).
+     * V-07 ai-assistant:profile-changed CustomEvent dispatched on every setActive.
+     * V-09 _appendProfileCard now reads _EP.getProfile() instead of raw global.
+     *
+     * PUBLIC API (backward-compatible; new additions marked +)
+     * ========================================================
+     * getActive()                     → string   (active profile key)
+     * resolve(feature)                → string   (BASE URL, trailing / stripped)
+     * resolveToken(tokenKey)          → string
+     * resolveTtlDays(cfg)             → number
+     * setActive(profileKey)           → boolean
+     * list()                          → [{key, label, isBuiltin}]
+     * listBuiltin()               [+] → [{key, label}]
+     * listCustom()                [+] → [{key, label, createdAt}]
+     * hasProfiles()                   → boolean
+     * getProfile(key)             [+] → frozen copy of profile or null
+     * getMetadata(key)            [+] → {isBuiltin, createdAt, lastActivated} | null
+     * addProfile(key, profile)    [+] → {ok: boolean, error?: string}
+     * removeProfile(key)          [+] → {ok: boolean, error?: string}
+     * exportCustom()              [+] → JSON string (tokens OMITTED)
+     * countCustom()               [+] → number
+     * validateUrl(raw)            [+] → {ok, url, error?}
+     * MAX_CUSTOM_PROFILES         [+] constant
+     *
+     * EVENTS
+     * ======
+     * document fires 'ai-assistant:profile-changed' after every setActive().
+     * detail: { activeKey, activeLabel, isBuiltin }
+     *
+     * @namespace _EP
+     */
+    var _EP = (function () {
+        'use strict';
+
+        // ── Storage keys ─────────────────────────────────────────────────────
+        var _STORAGE_KEY        = 'ai-assistant-ep';
+        var _STORAGE_CUSTOM_KEY = 'ai-assistant-ep-custom';
+
+        // ── Limits ───────────────────────────────────────────────────────────
+        var _SCHEMA_VER          = 1;    // localStorage schema version
+        var _MAX_CUSTOM_PROFILES = 20;   // hard cap on runtime-added profiles
+        var _MAX_LABEL_LEN       = 80;   // max profile label length (display)
+        var _MAX_URL_LEN         = 2048; // max URL length per field
+
+        // ── Profile key allowlist ─────────────────────────────────────────────
+        // Must start with a letter; only [a-z0-9_-].  This blocks __proto__,
+        // constructor, toString, and any other prototype-chain attack string.
+        var _SAFE_KEY_RE = /^[a-z][a-z0-9_-]{0,63}$/;
+
+        // ── Null-prototype registries (V-01) ──────────────────────────────────
+        // Using Object.create(null) ensures no inherited prototype keys exist,
+        // so 'toString' in _profiles is always false, eliminating pollution.
+        var _profiles = Object.create(null); // key → validated profile object
+        var _builtin  = Object.create(null); // key → true for build-time profiles
+        var _metadata = Object.create(null); // key → {isBuiltin, createdAt, lastActivated}
+
+        // In-memory cache avoids repeated localStorage reads on hot paths.
+        var _activeCache = null;
+
+        // Build-time default key (injected by Python at page render time).
+        var _defaultKey = (typeof window.AI_ASSISTANT_ENDPOINT_DEFAULT === 'string')
+            ? window.AI_ASSISTANT_ENDPOINT_DEFAULT : '';
+
+        // ── SSRF host blocklist (V-04) ────────────────────────────────────────
+        /**
+         * Return true when the hostname must not be accepted as a proxy target.
+         *
+         * Covers: loopback, wildcard, cloud metadata services, RFC-1918 private
+         * ranges (A/B/C), link-local, CGNAT (RFC-6598), IPv6 ULA (fc00::/7),
+         * and bare hostnames (no dot = internal DNS / Docker service names).
+         *
+         * Applied only to runtime-added profiles.  Build-time profiles are
+         * already validated by _validate_profile() in __init__.py.
+         *
+         * @param {string} hostname   Lower-cased, brackets stripped for IPv6.
+         * @returns {boolean}
+         */
+        function _isBlockedHost(hostname) {
+            var h = hostname.toLowerCase().replace(/^\[|\]$/g, '');
+            // Loopback
+            if (h === 'localhost') return true;
+            if (/^127\./.test(h)) return true;
+            if (h === '::1') return true;
+            // Wildcard / unspecified bind addresses
+            if (h === '0.0.0.0' || h === '::') return true;
+            // Cloud metadata services (AWS, GCP, Azure IMDS)
+            if (h === '169.254.169.254') return true;
+            if (h === 'metadata.google.internal') return true;
+            if (h === 'metadata.internal') return true;
+            // RFC-1918 private ranges
+            if (/^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(h)) return true;
+            if (/^172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}$/.test(h)) return true;
+            if (/^192\.168\.\d{1,3}\.\d{1,3}$/.test(h)) return true;
+            // Link-local (169.254.0.0/16)
+            if (/^169\.254\.\d{1,3}\.\d{1,3}$/.test(h)) return true;
+            // CGNAT (100.64.0.0/10)
+            if (/^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\.\d{1,3}\.\d{1,3}$/.test(h)) return true;
+            // IPv6 ULA (fc00::/7 → fc/fd prefix)
+            if (/^f[cd][0-9a-f]{2}:/i.test(h)) return true;
+            // Bare hostname (no dot) = internal DNS / Docker / k8s service name.
+            // Exception: already handled localhost above.
+            if (h.indexOf('.') === -1) return true;
+            return false;
+        }
+
+        // ── Runtime URL sanitiser (V-04, public via validateUrl) ─────────────
+        /**
+         * Validate and normalise a URL for a runtime-added profile field.
+         *
+         * @param {string} raw   Raw user input.
+         * @returns {{ok: boolean, url: string, error?: string}}
+         *   ok=true, url=normalised string (may be '')
+         *   ok=false, error=user-facing message, url=''
+         */
+        function _sanitizeRuntimeUrl(raw) {
+            if (!raw || typeof raw !== 'string') return { ok: true, url: '' };
+            var url = raw.trim().replace(/\/$/, '');
+            if (!url) return { ok: true, url: '' };
+            if (url.length > _MAX_URL_LEN) {
+                return { ok: false, url: '',
+                    error: 'URL exceeds ' + _MAX_URL_LEN + ' characters.' };
+            }
+            // Scheme check.
+            if (!/^https:\/\//i.test(url)) {
+                // Allow http:// but warn.
+                if (!/^http:\/\//i.test(url)) {
+                    return { ok: false, url: '',
+                        error: 'URL must start with https:// (or http:// for non-production). Got: ' +
+                               url.slice(0, 40) };
+                }
+            }
+            // Extract and validate hostname via URL constructor.
+            var hostname = '';
+            try {
+                hostname = new URL(url).hostname;
+            } catch (_) {
+                return { ok: false, url: '', error: 'Malformed URL: ' + url.slice(0, 40) };
+            }
+            if (!hostname) {
+                return { ok: false, url: '', error: 'URL has no hostname: ' + url.slice(0, 40) };
+            }
+            if (_isBlockedHost(hostname)) {
+                return {
+                    ok: false, url: '',
+                    error: 'Rejected: "' + hostname + '" is a private/reserved host. ' +
+                           'Only public endpoints are accepted. See SSRF protection docs.'
+                };
+            }
+            return { ok: true, url: url };
+        }
+
+        // ── Profile shape validator for localStorage reads (V-03) ─────────────
+        function _isValidProfileShape(obj) {
+            if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return false;
+            var url_keys = ['chat', 'share', 'feedback', 'training'];
+            for (var i = 0; i < url_keys.length; i++) {
+                var v = obj[url_keys[i]];
+                if (typeof v === 'string' && v) return true;
+            }
+            return typeof obj.label === 'string' && !!obj.label;
+        }
+
+        // ── Bootstrap: load build-time profiles (V-01, V-02) ─────────────────
+        (function _loadBuiltin() {
+            var raw = window.AI_ASSISTANT_ENDPOINTS;
+            if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return;
+            var keys = Object.keys(raw);
+            for (var i = 0; i < keys.length; i++) {
+                var k = keys[i];
+                if (!Object.prototype.hasOwnProperty.call(raw, k)) continue;
+                if (typeof k !== 'string' || !k) continue;
+                // Build-time keys are already validated by Python; copy as-is.
+                _profiles[k] = raw[k];
+                _builtin[k]  = true;
+                _metadata[k] = { isBuiltin: true, createdAt: null, lastActivated: null };
+            }
+        }());
+// =============================================================================
+// ██████╗  █████╗ ██████╗ ████████╗ ██████╗
+// ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝ ██╔══██╗
+// ██████╔╝███████║██████╔╝   ██║    ██████╔╝
+// ██╔═══╝ ██╔══██║██╔══██╗   ██║    ██╔══██╗
+// ██║     ██║  ██║██║  ██║   ██║    ██████╔╝
+// ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝
+//
+
+        // ── Bootstrap: restore custom profiles from localStorage (V-03) ───────
+        (function _loadCustom() {
+            var raw = null;
+            try { raw = localStorage.getItem(_STORAGE_CUSTOM_KEY); } catch (_) { return; }
+            if (!raw) return;
+
+            var parsed;
+            try { parsed = JSON.parse(raw); } catch (_) { return; }
+
+            // V-03: must be a plain non-array object.
+            if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return;
+
+            // Schema version gate.
+            var schemaVer = parsed._v;
+            var profilesObj, metaObj;
+
+            if (typeof schemaVer === 'number' && schemaVer === _SCHEMA_VER) {
+                // New versioned format: { _v: 1, profiles: {…}, meta: {…} }
+                profilesObj = parsed.profiles;
+                metaObj     = parsed.meta;
+            } else if (typeof schemaVer === 'undefined') {
+                // Backward-compat: old format was a flat { key: profile } object.
+                profilesObj = parsed;
+                metaObj     = {};
+            } else {
+                // Future schema version — do not attempt to read.
+                return;
+            }
+
+            if (!profilesObj || typeof profilesObj !== 'object' || Array.isArray(profilesObj)) return;
+
+            var keys = Object.keys(profilesObj);
+            for (var i = 0; i < keys.length; i++) {
+                var k = keys[i];
+                if (!Object.prototype.hasOwnProperty.call(profilesObj, k)) continue;
+
+                // V-02: key safety.
+                if (!_SAFE_KEY_RE.test(k)) continue;
+
+                // Never overwrite build-time profiles with custom ones.
+                if (_builtin[k]) continue;
+
+                var p = profilesObj[k];
+                if (!_isValidProfileShape(p)) continue;
+
+                // V-05: cap custom profile count.
+                var customCount = _countCustomOwn();
+                if (customCount >= _MAX_CUSTOM_PROFILES) break;
+
+                _profiles[k] = p;
+                var metaEntry = (metaObj && metaObj[k]) || {};
+                _metadata[k] = {
+                    isBuiltin:     false,
+                    createdAt:     typeof metaEntry.createdAt === 'number' ? metaEntry.createdAt : null,
+                    lastActivated: typeof metaEntry.lastActivated === 'number' ? metaEntry.lastActivated : null,
+                };
+            }
+        }());
+
+        // ── Internal helpers ──────────────────────────────────────────────────
+
+        function _countCustomOwn() {
+            var count = 0;
+            var keys = Object.keys(_profiles);
+            for (var i = 0; i < keys.length; i++) {
+                if (!_builtin[keys[i]]) count++;
+            }
+            return count;
+        }
+
+        function _getStoredKey() {
+            var stored = null;
+            try { stored = localStorage.getItem(_STORAGE_KEY); } catch (_) {}
+            return (typeof stored === 'string') ? stored : null;
+        }
+
+        /** Persist custom profiles + metadata to localStorage. */
+        function _persistCustom() {
+            try {
+                var profiles = {};
+                var meta     = {};
+                var keys     = Object.keys(_profiles);
+                for (var i = 0; i < keys.length; i++) {
+                    var k = keys[i];
+                    if (_builtin[k]) continue;
+                    // Omit token values from persisted profiles (V-06 mitigation).
+                    // Tokens survive only for the current page session; users are
+                    // warned in the UI.  The conf.py snippet also excludes tokens.
+                    var p = _profiles[k];
+                    profiles[k] = {
+                        label:         p.label         || '',
+                        chat:          p.chat          || '',
+                        share:         p.share         || '',
+                        feedback:      p.feedback      || '',
+                        training:      p.training      || '',
+                        shareToken:    p.shareToken    || '',
+                        feedbackToken: p.feedbackToken || '',
+                        ttlDays:       p.ttlDays       || 30,
+                    };
+                    if (_metadata[k]) {
+                        meta[k] = {
+                            createdAt:     _metadata[k].createdAt,
+                            lastActivated: _metadata[k].lastActivated,
+                        };
+                    }
+                }
+                var payload = { _v: _SCHEMA_VER, profiles: profiles, meta: meta };
+                localStorage.setItem(_STORAGE_CUSTOM_KEY, JSON.stringify(payload));
+            } catch (_) {}
+        }
+
+        /** Dispatch ai-assistant:profile-changed on document (V-07). */
+        function _dispatchProfileChange(key) {
+            try {
+                var label = (_profiles[key] && _profiles[key].label) || key;
+                var ev = new CustomEvent('ai-assistant:profile-changed', {
+                    bubbles: true, cancelable: false,
+                    detail: { activeKey: key, activeLabel: label, isBuiltin: !!_builtin[key] }
+                });
+                document.dispatchEvent(ev);
+            } catch (_) {}
+        }
+
+        // ── Public: getActive ─────────────────────────────────────────────────
+        /**
+         * Return the currently-active profile key.
+         *
+         * Priority: in-memory cache → localStorage → build-time default → first key.
+         *
+         * @returns {string}  Profile key, or '' when no profiles are defined.
+         */
+        function getActive() {
+            if (_activeCache && _profiles[_activeCache]) return _activeCache;
+            var stored = _getStoredKey();
+            if (stored && _profiles[stored]) { _activeCache = stored; return stored; }
+            if (_defaultKey && _profiles[_defaultKey]) { _activeCache = _defaultKey; return _defaultKey; }
+            var keys = Object.keys(_profiles);
+            var first = keys.length ? keys[0] : '';
+            _activeCache = first;
+            return first;
+        }
+
+        // ── Public: resolve ───────────────────────────────────────────────────
+        /**
+         * Resolve the BASE URL for a feature from the active profile.
+         *
+         * @param {('chat'|'share'|'feedback'|'training')} feature
+         * @returns {string}  Base URL (trailing slash stripped), or ''.
+         */
+        function resolve(feature) {
+            var key = getActive();
+            if (!key) return '';
+            var profile = _profiles[key];
+            if (!profile) return '';
+            return (profile[feature] || '').replace(/\/$/, '');
+        }
+
+        // ── Public: resolveToken ──────────────────────────────────────────────
+        function resolveToken(tokenKey) {
+            var key = getActive();
+            if (!key) return '';
+            var profile = _profiles[key];
+            return (profile && profile[tokenKey]) || '';
+        }
+
+        // ── Public: resolveTtlDays ────────────────────────────────────────────
+        function resolveTtlDays(cfg) {
+            var key = getActive();
+            if (key) {
+                var profile = _profiles[key];
+                if (profile && profile.ttlDays && profile.ttlDays > 0) return profile.ttlDays;
+            }
+            var globalTtl = cfg && cfg.panelGlobalShareTtlDays;
+            return (globalTtl && globalTtl > 0) ? globalTtl : 30;
+        }
+
+        // ── Public: setActive ─────────────────────────────────────────────────
+        /**
+         * Persist a profile key and update the in-memory cache.
+         *
+         * Dispatches 'ai-assistant:profile-changed' on success.
+         *
+         * @param {string} profileKey
+         * @returns {boolean}  true when the key exists in the registry.
+         */
+        function setActive(profileKey) {
+            if (!_profiles[profileKey]) return false;
+            _activeCache = profileKey;
+            try { localStorage.setItem(_STORAGE_KEY, profileKey); } catch (_) {}
+            if (_metadata[profileKey]) {
+                _metadata[profileKey].lastActivated = Date.now();
+                if (!_builtin[profileKey]) _persistCustom();
+            }
+            _dispatchProfileChange(profileKey);
+            return true;
+        }
+
+        // ── Public: list / listBuiltin / listCustom ───────────────────────────
+        function list() {
+            return Object.keys(_profiles).map(function (k) {
+                var isB = !!_builtin[k];
+                return {
+                    key:      k,
+                    label:    (_profiles[k] && _profiles[k].label) || k,
+                    isBuiltin: isB,
+                    source:   isB ? 'build' : 'custom',
+                };
+            });
+        }
+
+        function listBuiltin() {
+            return Object.keys(_profiles)
+                .filter(function (k) { return !!_builtin[k]; })
+                .map(function (k) { return { key: k, label: (_profiles[k] && _profiles[k].label) || k }; });
+        }
+
+        function listCustom() {
+            return Object.keys(_profiles)
+                .filter(function (k) { return !_builtin[k]; })
+                .map(function (k) {
+                    var m = _metadata[k] || {};
+                    return { key: k, label: (_profiles[k] && _profiles[k].label) || k, createdAt: m.createdAt || null };
+                });
+        }
+
+        // ── Public: hasProfiles ───────────────────────────────────────────────
+        function hasProfiles() {
+            return Object.keys(_profiles).length > 0;
+        }
+
+        // ── Public: getProfile (V-09) ─────────────────────────────────────────
+        /**
+         * Return a safe, frozen shallow copy of the profile.
+         *
+         * Always returns from the internal validated registry, never from the
+         * raw window.AI_ASSISTANT_ENDPOINTS global (V-09 fix).
+         *
+         * @param {string} key
+         * @returns {Object|null}  Frozen profile copy, or null if not found.
+         */
+        function getProfile(key) {
+            var p = _profiles[key];
+            if (!p) return null;
+            var copy = {
+                label:         p.label         !== undefined ? String(p.label)         : '',
+                chat:          p.chat          !== undefined ? String(p.chat)          : '',
+                share:         p.share         !== undefined ? String(p.share)         : '',
+                feedback:      p.feedback      !== undefined ? String(p.feedback)      : '',
+                training:      p.training      !== undefined ? String(p.training)      : '',
+                shareToken:    p.shareToken    !== undefined ? String(p.shareToken)    : '',
+                feedbackToken: p.feedbackToken !== undefined ? String(p.feedbackToken) : '',
+                ttlDays:       typeof p.ttlDays === 'number' ? p.ttlDays : 30,
+                // _warn: build-time SSRF advisory list (array of field names).
+                // Copied defensively so the caller cannot mutate the registry's list.
+                _warn:         Array.isArray(p._warn) ? p._warn.slice() : [],
+            };
+            try { Object.freeze(copy); } catch (_) {}
+            return copy;
+        }
+
+        // ── Public: getMetadata ───────────────────────────────────────────────
+        function getMetadata(key) {
+            var m = _metadata[key];
+            if (!m) return null;
+            return { isBuiltin: !!m.isBuiltin, createdAt: m.createdAt, lastActivated: m.lastActivated };
+        }
+
+        // ── Public: addProfile (V-02, V-04, V-05) ────────────────────────────
+        /**
+         * Validate and add a custom profile to the registry.
+         *
+         * All URL fields go through the SSRF guard (_sanitizeRuntimeUrl).
+         * The profile key must pass _SAFE_KEY_RE.
+         *
+         * @param {string} key     Profile identifier.
+         * @param {Object} profile Raw profile object from the user.
+         * @returns {{ok: boolean, error?: string}}
+         */
+        function addProfile(key, profile) {
+            if (typeof key !== 'string' || !_SAFE_KEY_RE.test(key)) {
+                return { ok: false,
+                    error: 'Profile key must match [a-z][a-z0-9_-]{0,63}. Got: ' + String(key).slice(0, 30) };
+            }
+            if (_builtin[key]) {
+                return { ok: false, error: 'Cannot overwrite a built-in profile: ' + key };
+            }
+            var isUpdate = !!_profiles[key];
+            if (!isUpdate && _countCustomOwn() >= _MAX_CUSTOM_PROFILES) {
+                return { ok: false, error: 'Maximum custom profiles (' + _MAX_CUSTOM_PROFILES + ') reached.' };
+            }
+            if (!profile || typeof profile !== 'object' || Array.isArray(profile)) {
+                return { ok: false, error: 'Profile must be a plain object.' };
+            }
+            var url_keys = ['chat', 'share', 'feedback', 'training'];
+            var sanitized = {
+                label:    profile.label ? String(profile.label).slice(0, _MAX_LABEL_LEN) : key,
+                ttlDays:  (typeof profile.ttlDays === 'number' && profile.ttlDays > 0)
+                              ? Math.floor(profile.ttlDays) : 30,
+            };
+            for (var i = 0; i < url_keys.length; i++) {
+                var field  = url_keys[i];
+                var result = _sanitizeRuntimeUrl(profile[field]);
+                if (!result.ok) return { ok: false, error: field + ': ' + result.error };
+                sanitized[field] = result.url;
+            }
+            // Token fields: strip control characters only; never validate URL.
+            var tok_keys = ['shareToken', 'feedbackToken'];
+            for (var j = 0; j < tok_keys.length; j++) {
+                var tok = profile[tok_keys[j]];
+                sanitized[tok_keys[j]] = (typeof tok === 'string')
+                    ? tok.trim().replace(/[\x00-\x1f\x7f]/g, '') : '';
+            }
+            _profiles[key] = sanitized;
+            _builtin[key]  = false;
+            if (!isUpdate) {
+                _metadata[key] = { isBuiltin: false, createdAt: Date.now(), lastActivated: null };
+            }
+            _persistCustom();
+            return { ok: true };
+        }
+
+        // ── Public: removeProfile ─────────────────────────────────────────────
+        /**
+         * Remove a custom profile from the registry.
+         *
+         * Built-in profiles cannot be removed at runtime.
+         *
+         * @param {string} key
+         * @returns {{ok: boolean, error?: string}}
+         */
+        function removeProfile(key) {
+            if (!_profiles[key]) return { ok: false, error: 'Profile not found: ' + key };
+            if (_builtin[key]) return { ok: false, error: 'Built-in profiles cannot be removed at runtime.' };
+            delete _profiles[key];
+            delete _metadata[key];
+            if (_activeCache === key) {
+                _activeCache = null;
+                try { localStorage.removeItem(_STORAGE_KEY); } catch (_) {}
+            }
+            _persistCustom();
+            return { ok: true };
+        }
+
+        // ── Public: exportCustom ──────────────────────────────────────────────
+        /**
+         * Serialise all custom profiles to a JSON string for user download.
+         *
+         * Token values are OMITTED from the export (V-06 mitigation).
+         * The exported object is suitable for pasting into conf.py after
+         * removing the token placeholder fields.
+         *
+         * @returns {string}  Pretty-printed JSON.
+         */
+        function exportCustom() {
+            var out = {};
+            var keys = Object.keys(_profiles);
+            for (var i = 0; i < keys.length; i++) {
+                var k = keys[i];
+                if (_builtin[k]) continue;
+                var p = _profiles[k];
+                out[k] = {
+                    label:    p.label    || k,
+                    chat:     p.chat     || '',
+                    share:    p.share    || '',
+                    feedback: p.feedback || '',
+                    training: p.training || '',
+                    // Tokens intentionally excluded.
+                    ttlDays:  p.ttlDays  || 30,
+                };
+            }
+            try { return JSON.stringify(out, null, 2); } catch (_) { return '{}'; }
+        }
+
+        // ── Public: countCustom ───────────────────────────────────────────────
+        function countCustom() { return _countCustomOwn(); }
+
+        // ── Public: validateUrl (exposed for the config sheet) ────────────────
+        function validateUrl(raw) { return _sanitizeRuntimeUrl(raw); }
+
+        // ── Public API ────────────────────────────────────────────────────────
+        return {
+            getActive:           getActive,
+            resolve:             resolve,
+            resolveToken:        resolveToken,
+            resolveTtlDays:      resolveTtlDays,
+            setActive:           setActive,
+            list:                list,
+            listBuiltin:         listBuiltin,
+            listCustom:          listCustom,
+            hasProfiles:         hasProfiles,
+            getProfile:          getProfile,
+            getMetadata:         getMetadata,
+            addProfile:          addProfile,
+            removeProfile:       removeProfile,
+            exportCustom:        exportCustom,
+            countCustom:         countCustom,
+            validateUrl:         validateUrl,
+            MAX_CUSTOM_PROFILES: _MAX_CUSTOM_PROFILES,
+        };
+    }());
+
+// PART A — _EP Compatibility Shim
+// INSERT after the closing }()); of the _EP IIFE
+// =============================================================================
+
+// =============================================================================
+// _EP Compatibility Shim  (bridges existing IIFE → patch_ep_v2_1 API surface)
+// =============================================================================
+//
+// HOW TO APPLY
+// ------------
+// File: _static/ai-assistant.js
+//
+// Find the closing line of the _EP IIFE — it looks like:
+//     }());
+// immediately followed by a blank line and then:
+//     // ── Subbar helpers  (or similar section comment)
+//
+// Insert this entire block AFTER that }()); line.
+//
+// WHY THIS IS NEEDED
+// ------------------
+// patch_ep_v2_2_build_sheet_combined.js calls 15+ methods that were added in
+// patch_ep_v2_1_ep_iife_combined.js.  If you have an earlier _EP IIFE variant
+// that lacks those methods, this shim provides them by delegating to the
+// methods that ARE present (addProfile, removeProfile, countCustom, etc.).
+//
+// The shim is fully idempotent: it checks for each method before adding it,
+// so it is safe to apply even when patch_ep_v2_1 is later applied on top.
+//
+// PUBLIC API ADDED
+// ----------------
+//   _EP.addCustomProfile(data)           → {ok, key} | {ok:false, error}
+//   _EP.deleteCustomProfile(key)         → boolean
+//   _EP.customCount()                    → number
+//   _EP.clearCustom()                    → number  (removed count)
+//   _EP.importProfile(key, data)         → {ok, key} | {ok:false, error}
+//   _EP.register(key, data, active)      → string | null
+//   _EP.exportCustom()          OVERRIDE → Object  (was string in older IIFEs)
+//   _EP.exportCustomJson()               → string  (preserves old behaviour)
+//   _EP.onChange(cb)                     → unsubscribe function
+//   _EP.auditLog()                       → Array  (stub; returns [])
+//   _EP.resolveFor(feature, profileKey)  → string
+//   _EP.isPrivateUrl(url)                → boolean
+//   _EP.isHttpUrl(url)                   → boolean
+//   _EP.isKeyAvailable(key)              → boolean
+//   _EP.VERSION                          → '2.0-compat'
+//   _EP.MAX_CUSTOM                       → 20 (or MAX_CUSTOM_PROFILES)
+// =============================================================================
+
+    /* jshint esversion:5 */
+    if (typeof _EP !== 'undefined' && _EP &&
+            typeof _EP.resolve === 'function' &&
+            typeof _EP.addCustomProfile !== 'function') {
+
+        (function (_ep) {
+            'use strict';
+
+            // ── internal helpers ───────────────────────────────────────────
+
+            /** Convert a human label into a safe profile key string. */
+            function _keyFromLabel(label) {
+                var base = 'custom_' + String(label || 'profile')
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '_')
+                    .replace(/^_+|_+$/g, '')
+                    .slice(0, 50);
+                return (/^[a-z]/.test(base)) ? base
+                     : 'custom_' + base.replace(/^[^a-z]+/, '');
+            }
+
+            /**
+             * Snapshot of the last active key — used to synthesise the
+             * {from, to} payload that onChange callbacks expect.
+             */
+            var _prevKey = (typeof _ep.getActive === 'function')
+                ? (_ep.getActive() || '') : '';
+
+            // ── exportCustom / exportCustomJson ────────────────────────────
+
+            /**
+             * Preserve the original serialiser under a new name before
+             * overriding exportCustom to return an Object (v2.1 contract).
+             * The build sheet uses:
+             *   Object.keys(_ep.exportCustom()).length === 0   ← needs Object
+             *   JSON.stringify(_ep.exportCustomJson())         ← needs string
+             */
+            _ep.exportCustomJson = (typeof _ep.exportCustom === 'function')
+                ? _ep.exportCustom.bind(_ep)
+                : function () { return '{}'; };
+
+            _ep.exportCustom = function () {
+                var json = _ep.exportCustomJson();
+                try { return JSON.parse(json) || {}; } catch (_) { return {}; }
+            };
+
+            // ── addCustomProfile ───────────────────────────────────────────
+
+            /**
+             * Add a new custom profile, auto-deriving a unique key from the
+             * profile's label field.
+             *
+             * Parameters
+             * ----------
+             * data : Object
+             *     Profile descriptor {label, chat, share, feedback, …}.
+             *
+             * Returns
+             * -------
+             * {ok: true, key: string} | {ok: false, error: string}
+             */
+            _ep.addCustomProfile = function (data) {
+                if (!data || typeof data !== 'object' || Array.isArray(data)) {
+                    return { ok: false, error: 'Profile data must be a plain object.' };
+                }
+                var key = _keyFromLabel(data.label || '');
+                var r = _ep.addProfile(key, data);
+                return (r && r.ok) ? { ok: true, key: key }
+                                   : (r || { ok: false, error: 'addProfile returned falsy.' });
+            };
+
+            // ── deleteCustomProfile ────────────────────────────────────────
+
+            /**
+             * Remove a custom profile by key.
+             *
+             * Parameters
+             * ----------
+             * key : string
+             *
+             * Returns
+             * -------
+             * boolean   true if removed, false if not found or built-in.
+             */
+            _ep.deleteCustomProfile = function (key) {
+                var r = _ep.removeProfile(key);
+                return !!(r && r.ok);
+            };
+
+            // ── customCount ────────────────────────────────────────────────
+
+            /**
+             * Return the count of currently registered custom profiles.
+             *
+             * Returns
+             * -------
+             * number
+             */
+            _ep.customCount = function () {
+                return (typeof _ep.countCustom === 'function') ? _ep.countCustom() : 0;
+            };
+
+            // ── clearCustom ────────────────────────────────────────────────
+
+            /**
+             * Remove all custom profiles from the registry and localStorage.
+             *
+             * Returns
+             * -------
+             * number   Count of profiles that were removed.
+             */
+            _ep.clearCustom = function () {
+                var list = (typeof _ep.listCustom === 'function') ? _ep.listCustom() : [];
+                var removed = 0;
+                for (var i = 0; i < list.length; i++) {
+                    var r = _ep.removeProfile(list[i].key);
+                    if (r && r.ok) { removed++; }
+                }
+                return removed;
+            };
+
+            // ── importProfile ──────────────────────────────────────────────
+
+            /**
+             * Import a profile under an explicit key (e.g. restored from JSON).
+             *
+             * Parameters
+             * ----------
+             * key  : string
+             * data : Object
+             *
+             * Returns
+             * -------
+             * {ok: true, key: string} | {ok: false, error: string}
+             */
+            _ep.importProfile = function (key, data) {
+                var r = _ep.addProfile(key, data);
+                return (r && r.ok) ? { ok: true, key: key }
+                                   : (r || { ok: false, error: 'addProfile returned falsy.' });
+            };
+
+            // ── register ──────────────────────────────────────────────────
+
+            /**
+             * Register a profile and optionally activate it immediately.
+             *
+             * Parameters
+             * ----------
+             * key    : string
+             * data   : Object
+             * active : boolean   If true, call setActive(key) on success.
+             *
+             * Returns
+             * -------
+             * string | null   The registered key on success; null on failure.
+             */
+            _ep.register = function (key, data, active) {
+                var r = _ep.addProfile(key, data);
+                if (!r || !r.ok) { return null; }
+                if (active) { _ep.setActive(key); }
+                return key;
+            };
+
+            // ── onChange ───────────────────────────────────────────────────
+
+            /**
+             * Subscribe to profile-switch events.
+             *
+             * The callback receives a payload:
+             *   { from: string, to: string, profile: Object|null }
+             *
+             * This matches the v2.1 IIFE _notify() contract.
+             *
+             * Parameters
+             * ----------
+             * cb : Function   Receives the payload object on each switch.
+             *
+             * Returns
+             * -------
+             * Function   Unsubscribe function — call it to detach the listener.
+             */
+            _ep.onChange = function (cb) {
+                if (typeof cb !== 'function') { return function () {}; }
+
+                var handler = function (evt) {
+                    var d      = (evt && evt.detail) || {};
+                    var newKey = d.activeKey ||
+                        (typeof _ep.getActive === 'function' ? _ep.getActive() : '');
+                    var payload = {
+                        from:    _prevKey,
+                        to:      newKey,
+                        profile: (typeof _ep.getProfile === 'function')
+                                 ? _ep.getProfile(newKey) : null,
+                    };
+                    _prevKey = newKey;
+                    try { cb(payload); } catch (_err) { /* isolate subscriber errors */ }
+                };
+
+                document.addEventListener('ai-assistant:profile-changed', handler);
+                return function unsubscribe() {
+                    document.removeEventListener('ai-assistant:profile-changed', handler);
+                };
+            };
+
+            // ── auditLog ───────────────────────────────────────────────────
+
+            /**
+             * Return the profile-switch audit log.
+             *
+             * This IIFE variant does not maintain a persistent audit log.
+             * Returns an empty array for forward compatibility with callers
+             * that render the log in the UI (§3 info card "Last switched").
+             *
+             * Returns
+             * -------
+             * Array<{ts: number, from: string, to: string, label: string}>
+             */
+            _ep.auditLog = function () { return []; };
+
+            // ── resolveFor ─────────────────────────────────────────────────
+
+            /**
+             * Resolve a feature URL for an arbitrary profile key without
+             * changing the currently active profile.
+             *
+             * Parameters
+             * ----------
+             * feature    : string   Feature key ('chat', 'share', 'feedback').
+             * profileKey : string   Target profile key.
+             *
+             * Returns
+             * -------
+             * string   URL with trailing slash removed, or '' if not found.
+             */
+            _ep.resolveFor = function (feature, profileKey) {
+                if (typeof _ep.getProfile !== 'function') { return ''; }
+                var profile = _ep.getProfile(profileKey);
+                if (!profile) { return ''; }
+                return String(profile[feature] || '').replace(/\/$/, '');
+            };
+
+            // ── isPrivateUrl ───────────────────────────────────────────────
+
+            /**
+             * Returns true if the URL would be blocked by the SSRF guard
+             * (loopback, RFC-1918, link-local, metadata endpoints, etc.).
+             *
+             * Parameters
+             * ----------
+             * url : string
+             *
+             * Returns
+             * -------
+             * boolean
+             */
+            _ep.isPrivateUrl = function (url) {
+                if (typeof _ep.validateUrl !== 'function') { return false; }
+                var r = _ep.validateUrl(url);
+                return !!(r && !r.ok && r.error &&
+                    /private|reserved|blocked|loopback|local|metadata|internal/i
+                        .test(r.error));
+            };
+
+            // ── isHttpUrl ──────────────────────────────────────────────────
+
+            /**
+             * Returns true if the URL uses the plain http: scheme.
+             * Used to render the SSRF-downgrade badge in the UI.
+             *
+             * Parameters
+             * ----------
+             * url : string
+             *
+             * Returns
+             * -------
+             * boolean
+             */
+            _ep.isHttpUrl = function (url) {
+                return typeof url === 'string' &&
+                       /^http:\/\//i.test(url.trim());
+            };
+
+            // ── isKeyAvailable ─────────────────────────────────────────────
+
+            /**
+             * Returns true if the given key is not yet registered in the
+             * profile registry (safe to use for a new addProfile call).
+             *
+             * Parameters
+             * ----------
+             * key : string
+             *
+             * Returns
+             * -------
+             * boolean
+             */
+            _ep.isKeyAvailable = function (key) {
+                if (typeof _ep.getProfile !== 'function') { return true; }
+                return _ep.getProfile(key) === null;
+            };
+
+            // ── VERSION / MAX_CUSTOM ───────────────────────────────────────
+
+            if (!_ep.VERSION) {
+                _ep.VERSION = '2.0-compat';
+            }
+            if (!_ep.MAX_CUSTOM) {
+                _ep.MAX_CUSTOM = _ep.MAX_CUSTOM_PROFILES || 20;
+            }
+
+        }(_EP));
+    }
+    // ── end _EP Compatibility Shim ─────────────────────────────────────────
+
+
+
+
+    function _remotePost(url, token, body, opts) {
+        if (!url) { return; }
+        opts = opts || {};
+        var keepalive = opts.keepalive !== false;
+        var headers = { 'Content-Type': 'application/json' };
+        if (token) { headers['Authorization'] = 'Bearer ' + token; }
+        var payload;
+        try {
+            payload = JSON.stringify(body);
+        } catch (e) {
+            console.warn('[ai-assistant] _remotePost: serialisation failed', e);
+            return;
+        }
+        try {
+            fetch(url, {
+                method:    'POST',
+                headers:   headers,
+                body:      payload,
+                keepalive: keepalive,
+            }).then(function (r) {
+                if (r.ok && typeof opts.onSuccess === 'function') {
+                    r.json().then(opts.onSuccess).catch(function () {});
+                } else if (!r.ok) {
+                    console.warn('[ai-assistant] _remotePost HTTP', r.status, url);
+                    if (typeof opts.onError === 'function') {
+                        opts.onError({ status: r.status, message: r.statusText });
+                    }
+                }
+            }).catch(function (e) {
+                console.warn('[ai-assistant] _remotePost fetch error', url, e);
+                if (typeof opts.onError === 'function') {
+                    opts.onError({ status: 0, message: String(e) });
+                }
+            });
+        } catch (e) {
+            console.warn('[ai-assistant] _remotePost sync error', e);
+        }
+    }
+
+    /**
+     * POST a single feedback record to the configured feedback endpoint.
+     *
+     * @param {string} url    Endpoint URL from cfg.panelFeedbackEndpoint.
+     * @param {string} token  Bearer token from cfg.panelFeedbackToken ('' for none).
+     * @param {Object} detail Complete feedback detail object (schemaVersion 1).
+     * @returns {void}
+     *
+     * @remarks
+     * Developer: keepalive:true is intentional.  A user who rates the last
+     * answer then navigates away triggers page unload.  Without keepalive the
+     * fetch is cancelled and the rating is lost.  The detail payload is ~2 KB —
+     * well within the browser's keepalive body size limit (~64 KB).
+     */
+    function _postFeedback(url, token, detail) {
+        _remotePost(url, token, detail, { keepalive: true });
+    }
+
+    /**
+     * POST a share payload to the global share endpoint and await the UUID response.
+     *
+     * @param {string}   url       cfg.panelGlobalShareEndpoint.
+     * @param {string}   token     cfg.panelGlobalShareToken ('' for none).
+     * @param {Object}   entry     {content, mimeType, ext, title, ttlDays}.
+     * @param {Function} onSuccess Called with {uuid, url, expiresAt} on success.
+     * @param {Function} onError   Called with {status, message} on failure.
+     * @returns {void}
+     *
+     * @remarks
+     * Developer: keepalive:false is intentional.  The caller shows a spinner
+     * and must receive the UUID to display the resulting link.  keepalive:true
+     * would suppress connection errors and leave the UI spinning forever.
+     */
+    function _postGlobalShare(url, token, entry, onSuccess, onError) {
+        _remotePost(url, token, entry, {
+            keepalive: false,
+            onSuccess: onSuccess,
+            onError:   onError,
+        });
+    }
+
+    /**
+     * POST a training contribution payload to the configured training endpoint.
+     *
+     * @param {string}   url       cfg.panelTrainingEndpoint.
+     * @param {Object}   payload   Contribution payload (schemaVersion 1, consentFlag: true).
+     * @param {Function} onSuccess Called with {contributed, rows} on success.
+     * @param {Function} onError   Called with {status, message} on failure.
+     * @returns {void}
+     *
+     * @remarks
+     * Developer: No auth token — the HF proxy uses its own HF_TOKEN server-side.
+     * keepalive:false because the UI shows a spinner and must receive the response.
+     */
+    function _postTrainingContribution(url, payload, onSuccess, onError) {
+        _remotePost(url, '', payload, {
+            keepalive: false,
+            onSuccess: onSuccess,
+            onError:   onError,
+        });
     }
 
     function _escapeHtml(str) {
@@ -4105,18 +5198,45 @@ opts.jsonPayload + '\n' +
                 document.dispatchEvent(new CustomEvent(
                     'ai-assistant-feedback', { detail: detail }));
             } catch (_) {}
+            // HTTP persistence — fires only when endpoint is configured.
+            // CustomEvent always dispatches first to preserve backward
+            // compatibility for doc authors' custom listeners.
+            // ── HTTP feedback persistence ─────────────────────────────────
+            // Profile-aware: _EP.resolve('feedback') wins when profiles are
+            // defined.  Falls back to legacy cfg.panelFeedbackEndpoint so
+            // deployments that have not migrated to profiles work unchanged.
+            var _fbBase  = _EP.hasProfiles()
+                ? _EP.resolve('feedback')
+                : (cfg.panelFeedbackEndpoint || '');
+            var _fbToken = _EP.hasProfiles()
+                ? _EP.resolveToken('feedbackToken')
+                : (cfg.panelFeedbackToken || '');
+            if (_fbBase) {
+                _postFeedback(
+                    _fbBase + '/v1/feedback',
+                    _fbToken,
+                    detail
+                );
+            }
             if (cfg.panelFeedbackLog) {
                 // eslint-disable-next-line no-console
                 console.log('[ai-assistant] feedback', detail);
             }
             _feedbackGivenSet.add(answerIndex);
-            // v2: Write to feedback store for JSON/HTML export and share payload
-            // enrichment.  Schema: { ratingValue, ratingLabel, message, ts }.
+            // v3: persist the full detail schema so share export enrichment,
+            // feedback POST, and training contribution all read a complete tuple.
+            // query/answer/model/sessionId/page were previously dropped here.
             _feedbackStore[answerIndex] = {
                 ratingValue: chosen.value,
                 ratingLabel: chosen.label,
                 message:     ta.value.trim(),
                 ts:          Date.now(),
+                // Added — required for POST /v1/feedback and training contribution:
+                query:       detail.query,
+                answer:      detail.answer,
+                model:       detail.model,
+                sessionId:   detail.sessionId,
+                page:        detail.page,
             };
             wrap.innerHTML = '';
             var done = document.createElement('p');
@@ -4141,7 +5261,2017 @@ opts.jsonPayload + '\n' +
      *
      * @returns {HTMLElement}
      */
-    function _buildPrivacySheet() {
+
+    // ── Endpoint Configuration Sheet ─────────────────────────────────────────
+    /**
+     * Build the endpoint-configuration slide-in sheet.
+     *
+     * ARCHITECTURE
+     * ════════════
+     * §0  Overview bar      — registry summary (built-in N, custom N/20, active label)
+     * §1  Profile selector  — radio cards grouped: Built-in / Custom
+     *                         each card shows capability pills + metadata
+     *                         custom cards have a Delete button
+     * §2  Active inspector  — Simple/Advanced mode toggle; per-feature URLs with
+     *                         copy-to-clipboard; protocol badge; optional health check
+     * §3  Add profile form  — security notice; Simple/Advanced mode; per-field
+     *                         blur validation via _EP.validateUrl; submit rate-limit
+     * §4  Manage            — export JSON (tokens omitted); import from JSON paste;
+     *                         clear-all-custom button
+     * §5  conf.py snippet   — dynamically generated Python dict for the active
+     *                         profile; copy button; tokens excluded
+     *
+     * SECURITY
+     * ════════
+     * • All user-supplied strings written via textContent, never innerHTML (XSS).
+     * • Profile addition goes through _EP.addProfile() which runs _sanitizeRuntimeUrl
+     *   (SSRF) + _SAFE_KEY_RE (prototype-pollution) + count-limit.
+     * • Profile deletion goes through _EP.removeProfile() (built-ins protected).
+     * • Import validates each entry through _EP.addProfile() individually.
+     * • conf.py snippet omits token values (V-06 mitigation).
+     *
+     * @returns {HTMLElement}  The sheet root element.
+     */
+    function _buildEndpointConfigSheet() {
+        'use strict';
+
+        // ── Safety guard ──────────────────────────────────────────────────────
+        var _epSafe = (typeof _EP !== 'undefined' && _EP &&
+                       typeof _EP.resolve === 'function') ? _EP : null;
+
+        // ── Shared constants ──────────────────────────────────────────────────
+        var _FEATURE_DEFS = [
+            { key: 'chat',     label: 'Chat',     suffix: '/v1/chat/completions', priority: 'P0' },
+            { key: 'share',    label: 'Share',    suffix: '/v1/share',            priority: 'P1' },
+            { key: 'feedback', label: 'Feedback', suffix: '/v1/feedback',         priority: 'P3' },
+            { key: 'training', label: 'Training', suffix: '/v1/contribute',       priority: 'P2' },
+        ];
+        var _MAX_LABEL   = 100;
+        var _MAX_CUSTOM  = (_epSafe && _epSafe.MAX_CUSTOM_PROFILES) ? _epSafe.MAX_CUSTOM_PROFILES : 20;
+
+        // ── Root sheet ────────────────────────────────────────────────────────
+        var sheet = document.createElement('div');
+        sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-ep-sheet';
+        sheet.id        = 'ai-assistant-panel-ep-sheet';
+        sheet.setAttribute('data-open',  'false');
+        sheet.setAttribute('role',       'dialog');
+        sheet.setAttribute('aria-modal', 'true');
+        sheet.setAttribute('aria-label', 'Endpoint Configuration');
+
+        // ARIA live region — screen readers announce profile switches
+        var _liveRegion = document.createElement('div');
+        _liveRegion.setAttribute('aria-live',   'polite');
+        _liveRegion.setAttribute('aria-atomic', 'true');
+        _liveRegion.className = 'ai-assistant-visually-hidden';
+        sheet.appendChild(_liveRegion);
+
+        // ── Header ────────────────────────────────────────────────────────────
+        var head   = document.createElement('div');
+        head.className = 'ai-assistant-panel-privacy-head';
+        var hTitle = document.createElement('strong');
+        hTitle.textContent = 'Endpoint Configuration';
+        var hClose = _createIconBtn('ep-sheet-close', 'Close Endpoint Configuration', ICONS.close);
+        hClose.addEventListener('click', function () {
+            // Detach observer before closing so no callbacks fire on dead DOM
+            if (_unsubscribe) { _unsubscribe(); _unsubscribe = null; }
+            if (typeof _closeSheet === 'function') { _closeSheet(sheet); }
+            else { sheet.setAttribute('data-open', 'false'); }
+        });
+        head.appendChild(hTitle);
+        head.appendChild(hClose);
+        sheet.appendChild(head);
+
+        // ── Status bar ────────────────────────────────────────────────────────
+        var _statusBar  = document.createElement('div');
+        _statusBar.className = 'ai-assistant-panel-ep-status-bar';
+        var _statusLbl  = document.createElement('span');
+        _statusLbl.className  = 'ai-assistant-panel-ep-status-bar-label';
+        _statusLbl.textContent = 'Active:';
+        var _statusName = document.createElement('span');
+        _statusName.className = 'ai-assistant-panel-ep-status-bar-name';
+        var _statusTime = document.createElement('span');
+        _statusTime.className = 'ai-assistant-panel-ep-status-bar-time';
+        _statusBar.appendChild(_statusLbl);
+        _statusBar.appendChild(_statusName);
+        _statusBar.appendChild(_statusTime);
+        sheet.appendChild(_statusBar);
+
+        // ── Body ──────────────────────────────────────────────────────────────
+        var bodyEl = document.createElement('div');
+        bodyEl.className = 'ai-assistant-panel-privacy-body ai-assistant-panel-ep-body';
+
+        // ── Shared closure state ──────────────────────────────────────────────
+        var _cardsWrap   = null;
+        var _profileHint = null;
+        var _unsubscribe = null;
+        var _lastSwitchTs = 0;
+
+        // §2 DOM refs populated during construction, read by _refreshUrls
+        var _simpleInp  = null;
+        var _advInputs  = {};  // key → HTMLInputElement (read-only, advanced mode)
+        var _urlDisplay = null;
+        var _infoCard   = null;
+        var _compareWrap = null;
+        var _countBadge = null;
+
+        // ══════════════════════════════════════════════════════════════════════
+        // §1  PROFILE SELECTOR
+        // ══════════════════════════════════════════════════════════════════════
+        var profileSection = _buildSheetSection('Profiles');
+        bodyEl.appendChild(profileSection);
+
+        // Count badge injected next to section heading
+        _countBadge = document.createElement('span');
+        _countBadge.className = 'ai-assistant-panel-ep-profile-count';
+        var _countHeadEl = profileSection.querySelector(
+            '.ai-assistant-panel-sheet-section-label'
+        );
+        if (_countHeadEl) { _countHeadEl.appendChild(_countBadge); }
+
+        if (!_epSafe || !_epSafe.hasProfiles()) {
+            _profileHint = document.createElement('p');
+            _profileHint.className  = 'ai-assistant-panel-ep-hint';
+            _profileHint.textContent =
+                'No profiles configured. Add one below, or set ' +
+                'ai_assistant_endpoint_profiles in conf.py for persistent profiles.';
+            profileSection.appendChild(_profileHint);
+        } else {
+            _profileHint = document.createElement('p');
+            _profileHint.className  = 'ai-assistant-panel-ep-hint';
+            _profileHint.textContent =
+                'Select a proxy backend. Switching is instant — no page reload needed.';
+            profileSection.appendChild(_profileHint);
+
+            _cardsWrap = document.createElement('div');
+            _cardsWrap.className = 'ai-assistant-panel-ep-cards';
+
+            var _initList   = _epSafe.list();
+            var _initActive = _epSafe.getActive();
+
+            // Partition into built-in (shipped in conf.py) and custom/imported.
+            var _builtinProfiles = _initList.filter(function (p) { return  p.isBuiltin; });
+            var _customProfiles  = _initList.filter(function (p) { return !p.isBuiltin; });
+
+            // Helper: render a labelled group of profile cards under a header.
+            // Groups with zero profiles emit nothing (no orphan header).
+            function _renderGroup(groupLabel, groupProfiles) {
+                if (!groupProfiles.length) { return; }
+                var hdr = document.createElement('h4');
+                hdr.className   = 'ai-assistant-panel-ep-prof-group-header';
+                hdr.textContent = groupLabel;
+                _cardsWrap.appendChild(hdr);
+                for (var _gi = 0; _gi < groupProfiles.length; _gi++) {
+                    var _gp = groupProfiles[_gi];
+                    _appendProfileCard(_cardsWrap, _gp.key, _gp.label,
+                                       _gp.source, _initActive);
+                }
+            }
+
+            _renderGroup('Built-in', _builtinProfiles);
+            _renderGroup('Custom',   _customProfiles);
+            profileSection.appendChild(_cardsWrap);
+        }
+
+        // ══════════════════════════════════════════════════════════════════════
+        // §2  ACTIVE PROFILE DETAILS
+        // ══════════════════════════════════════════════════════════════════════
+        var detailSection = _buildSheetSection('Active Profile');
+        bodyEl.appendChild(detailSection);
+
+        // Info card: name / key / source / last switched
+        _infoCard = document.createElement('div');
+        _infoCard.className = 'ai-assistant-panel-ep-info-card';
+        detailSection.appendChild(_infoCard);
+
+        // Mode toggle row (Simple / Advanced)
+        var modeRow = document.createElement('div');
+        modeRow.className = 'ai-assistant-panel-ep-mode-row';
+        var modeLbl = document.createElement('span');
+        modeLbl.className   = 'ai-assistant-panel-ep-mode-label';
+        modeLbl.textContent = 'Display:';
+        var _simpleModeBtn  = document.createElement('button');
+        _simpleModeBtn.type      = 'button';
+        _simpleModeBtn.className = 'ai-assistant-panel-ep-mode-btn ai-assistant-panel-ep-mode-btn--active';
+        _simpleModeBtn.textContent = 'Simple';
+        _simpleModeBtn.setAttribute('aria-pressed', 'true');
+        var _advModeBtn = document.createElement('button');
+        _advModeBtn.type      = 'button';
+        _advModeBtn.className = 'ai-assistant-panel-ep-mode-btn';
+        _advModeBtn.textContent = 'Advanced';
+        _advModeBtn.setAttribute('aria-pressed', 'false');
+        modeRow.appendChild(modeLbl);
+        modeRow.appendChild(_simpleModeBtn);
+        modeRow.appendChild(_advModeBtn);
+        detailSection.appendChild(modeRow);
+
+        // Simple mode: base URL + copy btn
+        var _simpleWrap = document.createElement('div');
+        _simpleWrap.className = 'ai-assistant-panel-ep-simple-wrap';
+        var _simpleHint = document.createElement('p');
+        _simpleHint.className   = 'ai-assistant-panel-ep-hint';
+        _simpleHint.textContent = 'Chat base URL (route suffixes appended automatically).';
+        _simpleWrap.appendChild(_simpleHint);
+        var _simpleRow  = document.createElement('div');
+        _simpleRow.className = 'ai-assistant-panel-ep-url-copy-row';
+        _simpleInp = document.createElement('input');
+        _simpleInp.type      = 'url';
+        _simpleInp.className = 'ai-assistant-panel-ep-input ai-assistant-panel-ep-input--copy';
+        _simpleInp.readOnly  = true;
+        _simpleInp.setAttribute('aria-label', 'Chat base URL — read-only');
+        _simpleInp.setAttribute('aria-readonly', 'true');
+        _simpleRow.appendChild(_simpleInp);
+        _simpleRow.appendChild(_makeCopyBtn(_simpleInp));
+        _simpleWrap.appendChild(_simpleRow);
+        detailSection.appendChild(_simpleWrap);
+
+        // Advanced mode: per-feature URL rows + copy btn + inline health btn
+        var _advWrap = document.createElement('div');
+        _advWrap.className    = 'ai-assistant-panel-ep-adv-wrap';
+        _advWrap.style.display = 'none';
+
+        for (var _fi = 0; _fi < _FEATURE_DEFS.length; _fi++) {
+            (function (fd) {
+                var row = document.createElement('div');
+                row.className = 'ai-assistant-panel-ep-url-row';
+
+                var rowLbl = document.createElement('span');
+                rowLbl.className   = 'ai-assistant-panel-ep-url-label';
+                rowLbl.textContent = fd.label;
+
+                var suffixSpan = document.createElement('span');
+                suffixSpan.className   = 'ai-assistant-panel-ep-url-suffix';
+                suffixSpan.textContent = fd.suffix;
+                suffixSpan.setAttribute('aria-hidden', 'true');
+
+                var inp = document.createElement('input');
+                inp.type      = 'url';
+                inp.className = 'ai-assistant-panel-ep-input ai-assistant-panel-ep-input--copy';
+                inp.readOnly  = true;
+                inp.setAttribute('aria-label', fd.label + ' base URL — read-only');
+                inp.setAttribute('aria-readonly', 'true');
+                _advInputs[fd.key] = inp;
+
+                var actions = document.createElement('div');
+                actions.className = 'ai-assistant-panel-ep-url-actions';
+                actions.appendChild(_makeCopyBtn(inp));
+                actions.appendChild(_makeHealthBtn(inp, fd.label));
+
+                row.appendChild(rowLbl);
+                row.appendChild(suffixSpan);
+                row.appendChild(inp);
+                row.appendChild(actions);
+                _advWrap.appendChild(row);
+            }(_FEATURE_DEFS[_fi]));
+        }
+        detailSection.appendChild(_advWrap);
+
+        // Resolved URL display — colour-coded capability indicators
+        _urlDisplay = document.createElement('div');
+        _urlDisplay.className = 'ai-assistant-panel-ep-url-display';
+        detailSection.appendChild(_urlDisplay);
+
+        // "Test All Connectivity" button (pings every configured URL at once)
+        var testRow = document.createElement('div');
+        testRow.className = 'ai-assistant-panel-ep-health-row';
+        var testBtn = document.createElement('button');
+        testBtn.type      = 'button';
+        testBtn.className = 'ai-assistant-panel-ep-test-btn';
+        testBtn.textContent = 'Test All Connectivity';
+        var testResultsEl = document.createElement('div');
+        testResultsEl.className    = 'ai-assistant-panel-ep-test-results';
+        testResultsEl.style.display = 'none';
+        testRow.appendChild(testBtn);
+        testRow.appendChild(testResultsEl);
+        detailSection.appendChild(testRow);
+
+        testBtn.addEventListener('click', function () {
+            testResultsEl.style.display = '';
+            while (testResultsEl.firstChild) {
+                testResultsEl.removeChild(testResultsEl.firstChild);
+            }
+            var tested = 0;
+            for (var _ti = 0; _ti < _FEATURE_DEFS.length; _ti++) {
+                var _tfd = _FEATURE_DEFS[_ti];
+                var _turl = _epSafe ? _epSafe.resolve(_tfd.key) : '';
+                if (!_turl) { continue; }
+                tested++;
+                (function (label, url) {
+                    var rRow = document.createElement('div');
+                    rRow.className = 'ai-assistant-panel-ep-health-result';
+                    var rDot = document.createElement('span');
+                    rDot.className = 'ai-assistant-panel-ep-health-dot ai-assistant-panel-ep-health-dot--pending ai-assistant-panel-ep-profile-health-badge';
+                    rDot.setAttribute('aria-hidden', 'true');
+                    var rLbl = document.createElement('span');
+                    rLbl.className   = 'ai-assistant-panel-ep-resolved-label';
+                    rLbl.textContent = label;
+                    var rSt = document.createElement('span');
+                    rSt.className   = 'ai-assistant-panel-ep-health-status';
+                    rSt.textContent = 'Pinging…';
+                    rRow.appendChild(rDot);
+                    rRow.appendChild(rLbl);
+                    rRow.appendChild(rSt);
+                    testResultsEl.appendChild(rRow);
+                    _pingUrl(url, function (result) {
+                        if (result.ok) {
+                            rDot.className = 'ai-assistant-panel-ep-health-dot ai-assistant-panel-ep-health-dot--ok ai-assistant-panel-ep-profile-health-badge';
+                            rSt.textContent = 'Reachable';
+                        } else {
+                            rDot.className = 'ai-assistant-panel-ep-health-dot ai-assistant-panel-ep-health-dot--err ai-assistant-panel-ep-profile-health-badge';
+                            rSt.textContent = result.status === 'timeout' ? 'Timeout (5 s)' : 'Unreachable';
+                        }
+                    });
+                }(_tfd.label, _turl));
+            }
+            if (!tested) {
+                var noUrl = document.createElement('p');
+                noUrl.className   = 'ai-assistant-panel-ep-hint';
+                noUrl.textContent = 'No endpoints configured for the active profile.';
+                testResultsEl.appendChild(noUrl);
+            }
+        });
+
+        // Mode toggle handlers
+        _simpleModeBtn.addEventListener('click', function () {
+            _simpleModeBtn.classList.add('ai-assistant-panel-ep-mode-btn--active');
+            _advModeBtn.classList.remove('ai-assistant-panel-ep-mode-btn--active');
+            _simpleModeBtn.setAttribute('aria-pressed', 'true');
+            _advModeBtn.setAttribute('aria-pressed', 'false');
+            _simpleWrap.style.display = '';
+            _advWrap.style.display    = 'none';
+        });
+        _advModeBtn.addEventListener('click', function () {
+            _advModeBtn.classList.add('ai-assistant-panel-ep-mode-btn--active');
+            _simpleModeBtn.classList.remove('ai-assistant-panel-ep-mode-btn--active');
+            _advModeBtn.setAttribute('aria-pressed', 'true');
+            _simpleModeBtn.setAttribute('aria-pressed', 'false');
+            _advWrap.style.display    = '';
+            _simpleWrap.style.display = 'none';
+        });
+
+        // ══════════════════════════════════════════════════════════════════════
+        // §3  ADD CUSTOM PROFILE
+        // ══════════════════════════════════════════════════════════════════════
+        var addSection = _buildSheetSection('Add Custom Profile');
+        bodyEl.appendChild(addSection);
+
+        // Cap warning banner (shown at the limit)
+        var _addCapWarn = document.createElement('p');
+        _addCapWarn.className    = 'ai-assistant-panel-ep-hint ai-assistant-panel-ep-hint--warn';
+        _addCapWarn.style.display = 'none';
+        addSection.appendChild(_addCapWarn);
+
+        // Collapsible toggle
+        var addToggleBtn = document.createElement('button');
+        addToggleBtn.type      = 'button';
+        addToggleBtn.className = 'ai-assistant-panel-ep-add-toggle';
+        addToggleBtn.setAttribute('aria-expanded', 'false');
+        addToggleBtn.textContent = '+ Add custom profile';
+        addSection.appendChild(addToggleBtn);
+
+        // Collapsible form container
+        var addForm = document.createElement('div');
+        addForm.className    = 'ai-assistant-panel-ep-add-form';
+        addForm.style.display = 'none';
+
+        // Form mode row (Simple / Advanced)
+        var fModeRow   = document.createElement('div');
+        fModeRow.className = 'ai-assistant-panel-ep-mode-row';
+        var fModeLbl   = document.createElement('span');
+        fModeLbl.className   = 'ai-assistant-panel-ep-mode-label';
+        fModeLbl.textContent = 'Input mode:';
+        var fSimpleBtn = document.createElement('button');
+        fSimpleBtn.type      = 'button';
+        fSimpleBtn.className = 'ai-assistant-panel-ep-mode-btn ai-assistant-panel-ep-mode-btn--active';
+        fSimpleBtn.textContent = 'Simple';
+        fSimpleBtn.setAttribute('aria-pressed', 'true');
+        var fAdvBtn = document.createElement('button');
+        fAdvBtn.type      = 'button';
+        fAdvBtn.className = 'ai-assistant-panel-ep-mode-btn';
+        fAdvBtn.textContent = 'Advanced';
+        fAdvBtn.setAttribute('aria-pressed', 'false');
+        fModeRow.appendChild(fModeLbl);
+        fModeRow.appendChild(fSimpleBtn);
+        fModeRow.appendChild(fAdvBtn);
+        addForm.appendChild(fModeRow);
+
+        // Profile name + char counter + auto-generated key preview
+        var fNameRow = document.createElement('div');
+        fNameRow.className = 'ai-assistant-panel-ep-form-row';
+        var fNameLbl = document.createElement('label');
+        fNameLbl.className   = 'ai-assistant-panel-ep-url-label';
+        fNameLbl.textContent = 'Profile name *';
+        fNameLbl.setAttribute('for', 'ep-add-name');
+        var fNameInp = document.createElement('input');
+        fNameInp.type        = 'text';
+        fNameInp.id          = 'ep-add-name';
+        fNameInp.className   = 'ai-assistant-panel-ep-input';
+        fNameInp.placeholder = 'e.g. CF Worker (Production)';
+        fNameInp.maxLength   = _MAX_LABEL;
+        fNameInp.required    = true;
+        fNameInp.setAttribute('aria-label', 'Profile display name (required)');
+        fNameInp.setAttribute('autocomplete', 'off');
+        var fNameCounter = document.createElement('span');
+        fNameCounter.className   = 'ai-assistant-panel-ep-char-counter';
+        fNameCounter.textContent = '0 / ' + _MAX_LABEL;
+        // Key preview
+        var fKeyPreview = document.createElement('div');
+        fKeyPreview.className = 'ai-assistant-panel-ep-key-preview';
+        var fKeyPreviewLbl = document.createElement('span');
+        fKeyPreviewLbl.className   = 'ai-assistant-panel-ep-key-preview-label';
+        fKeyPreviewLbl.textContent = 'Auto-key: ';
+        var fKeyPreviewVal = document.createElement('code');
+        fKeyPreviewVal.className   = 'ai-assistant-panel-ep-key-preview-value';
+        fKeyPreviewVal.textContent = '(enter a name)';
+        fKeyPreview.appendChild(fKeyPreviewLbl);
+        fKeyPreview.appendChild(fKeyPreviewVal);
+        fNameRow.appendChild(fNameLbl);
+        fNameRow.appendChild(fNameInp);
+        fNameRow.appendChild(fNameCounter);
+        fNameRow.appendChild(fKeyPreview);
+        addForm.appendChild(fNameRow);
+
+        // Manual key override (advanced mode only)
+        var fKeyRow = document.createElement('div');
+        fKeyRow.className    = 'ai-assistant-panel-ep-form-row';
+        fKeyRow.style.display = 'none';  // hidden in simple mode
+        var fKeyLbl = document.createElement('label');
+        fKeyLbl.className   = 'ai-assistant-panel-ep-url-label';
+        fKeyLbl.textContent = 'Key override (optional)';
+        fKeyLbl.setAttribute('for', 'ep-add-key');
+        var fKeyInp = document.createElement('input');
+        fKeyInp.type        = 'text';
+        fKeyInp.id          = 'ep-add-key';
+        fKeyInp.className   = 'ai-assistant-panel-ep-input ai-assistant-panel-ep-input--key';
+        fKeyInp.placeholder = 'auto-generated from name';
+        fKeyInp.setAttribute('aria-label', 'Profile key override (optional)');
+        fKeyInp.setAttribute('maxlength', '64');
+        fKeyInp.setAttribute('pattern', '[a-zA-Z0-9][a-zA-Z0-9_-]*');
+        fKeyInp.setAttribute('autocomplete', 'off');
+        var fKeyStatus = document.createElement('span');
+        fKeyStatus.className = 'ai-assistant-panel-ep-key-status';
+        fKeyRow.appendChild(fKeyLbl);
+        fKeyRow.appendChild(fKeyInp);
+        fKeyRow.appendChild(fKeyStatus);
+        addForm.appendChild(fKeyRow);
+
+        // Live name → key-preview + counter update (debounced)
+        var _nameDebounce = null;
+        fNameInp.addEventListener('input', function () {
+            fNameCounter.textContent = fNameInp.value.length + ' / ' + _MAX_LABEL;
+            clearTimeout(_nameDebounce);
+            _nameDebounce = setTimeout(function () {
+                var slug = fNameInp.value.trim()
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '_')
+                    .replace(/^_+|_+$/g, '')
+                    .slice(0, 40);
+                fKeyPreviewVal.textContent = slug ? 'custom_' + slug : '(enter a name)';
+            }, 200);
+        });
+
+        // Key override live validation
+        fKeyInp.addEventListener('input', function () {
+            var k = fKeyInp.value.trim();
+            if (!k) { fKeyStatus.textContent = ''; return; }
+            var avail = _epSafe ? _epSafe.isKeyAvailable(k) : true;
+            fKeyStatus.className = 'ai-assistant-panel-ep-key-status ' +
+                (avail ? 'ai-assistant-panel-ep-key-status--ok'
+                        : 'ai-assistant-panel-ep-key-status--err');
+            fKeyStatus.textContent = avail ? '✓ available' : '✗ taken or invalid';
+        });
+
+        // Simple mode: single base URL
+        var fSimpleWrap = document.createElement('div');
+        var fSimpleHint = document.createElement('p');
+        fSimpleHint.className   = 'ai-assistant-panel-ep-hint';
+        fSimpleHint.textContent = 'One base URL applied to all features.';
+        fSimpleWrap.appendChild(fSimpleHint);
+        var fBaseRow = document.createElement('div');
+        fBaseRow.className = 'ai-assistant-panel-ep-form-row';
+        var fBaseLbl = document.createElement('label');
+        fBaseLbl.className   = 'ai-assistant-panel-ep-url-label';
+        fBaseLbl.textContent = 'Base URL *';
+        fBaseLbl.setAttribute('for', 'ep-add-base');
+        var fBaseInp = document.createElement('input');
+        fBaseInp.type        = 'url';
+        fBaseInp.id          = 'ep-add-base';
+        fBaseInp.className   = 'ai-assistant-panel-ep-input';
+        fBaseInp.placeholder = 'https://your-proxy.example.com';
+        fBaseInp.required    = true;
+        fBaseInp.setAttribute('aria-label', 'Base URL for all features (required)');
+        fBaseInp.setAttribute('autocomplete', 'off');
+        var fBaseRisk = _makeRiskBadgeEl();
+        var fBaseErr  = document.createElement('span');
+        fBaseErr.className    = 'ai-assistant-panel-ep-url-err';
+        fBaseErr.style.display = 'none';
+        fBaseRow.appendChild(fBaseLbl);
+        fBaseRow.appendChild(fBaseInp);
+        fBaseRow.appendChild(fBaseRisk);
+        fBaseRow.appendChild(fBaseErr);
+        fSimpleWrap.appendChild(fBaseRow);
+        addForm.appendChild(fSimpleWrap);
+        _wireUrlRisk(fBaseInp, fBaseRisk);
+        _wireUrlValidation(fBaseInp, fBaseErr);
+
+        // Advanced mode: per-feature URLs + tokens
+        var fAdvWrap = document.createElement('div');
+        fAdvWrap.style.display = 'none';
+
+        // Token security warning (advanced only)
+        var fTokenNote = document.createElement('p');
+        fTokenNote.className   = 'ai-assistant-panel-ep-hint ai-assistant-panel-ep-hint--warn';
+        fTokenNote.textContent =
+            '⚠ Token values entered here are stored in localStorage. ' +
+            'For production deployments, prefer server-side token injection ' +
+            'via conf.py (see §5 snippet generator) — tokens never leave the ' +
+            'server side that way.';
+        fAdvWrap.appendChild(fTokenNote);
+
+        var _ADV_FIELDS = [
+            { key: 'chat',          label: 'Chat URL',       type: 'url',      ph: 'https://proxy.example.com' },
+            { key: 'share',         label: 'Share URL',      type: 'url',      ph: 'https://cf.workers.dev'    },
+            { key: 'feedback',      label: 'Feedback URL',   type: 'url',      ph: 'https://proxy.example.com' },
+            { key: 'training',      label: 'Training URL',   type: 'url',      ph: 'https://hf.space'          },
+            { key: 'shareToken',    label: 'Share token',    type: 'password', ph: '(optional Bearer token)'   },
+            { key: 'feedbackToken', label: 'Feedback token', type: 'password', ph: '(optional Bearer token)'   },
+        ];
+        var fAdvInputs = {};
+
+        for (var _ai = 0; _ai < _ADV_FIELDS.length; _ai++) {
+            (function (afd) {
+                var arow = document.createElement('div');
+                arow.className = 'ai-assistant-panel-ep-form-row';
+                var albl = document.createElement('label');
+                albl.className   = 'ai-assistant-panel-ep-url-label';
+                albl.textContent = afd.label;
+                var inputId = 'ep-add-adv-' + afd.key;
+                albl.setAttribute('for', inputId);
+                var ainp = document.createElement('input');
+                ainp.type        = afd.type;
+                ainp.id          = inputId;
+                ainp.className   = 'ai-assistant-panel-ep-input';
+                ainp.placeholder = afd.ph;
+                ainp.setAttribute('aria-label', afd.label);
+                ainp.setAttribute('autocomplete', 'off');
+                fAdvInputs[afd.key] = ainp;
+                arow.appendChild(albl);
+                arow.appendChild(ainp);
+                if (afd.type === 'url') {
+                    var arisk = _makeRiskBadgeEl();
+                    var aerr  = document.createElement('span');
+                    aerr.className    = 'ai-assistant-panel-ep-url-err';
+                    aerr.style.display = 'none';
+                    arow.appendChild(arisk);
+                    arow.appendChild(aerr);
+                    _wireUrlRisk(ainp, arisk);
+                    _wireUrlValidation(ainp, aerr);
+                } else {
+                    // Password field: show/hide toggle
+                    arow.appendChild(_makeShowHideBtn(ainp));
+                }
+                fAdvWrap.appendChild(arow);
+            }(_ADV_FIELDS[_ai]));
+        }
+        addForm.appendChild(fAdvWrap);
+
+        // Form error message
+        var fError = document.createElement('p');
+        fError.className    = 'ai-assistant-panel-ep-status ai-assistant-panel-ep-status--error';
+        fError.style.display = 'none';
+        addForm.appendChild(fError);
+
+        // Submit button
+        var fSubmitBtn = document.createElement('button');
+        fSubmitBtn.type      = 'button';
+        fSubmitBtn.className = 'ai-assistant-panel-ep-add-btn';
+        fSubmitBtn.textContent = 'Add Profile';
+        addForm.appendChild(fSubmitBtn);
+        addSection.appendChild(addForm);
+
+        // ── Add form event wiring ─────────────────────────────────────────────
+
+        addToggleBtn.addEventListener('click', function () {
+            var isOpen = addForm.style.display !== 'none';
+            addForm.style.display = isOpen ? 'none' : '';
+            addToggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            addToggleBtn.textContent = isOpen ? '+ Add custom profile' : '− Cancel';
+        });
+
+        fSimpleBtn.addEventListener('click', function () {
+            fSimpleBtn.classList.add('ai-assistant-panel-ep-mode-btn--active');
+            fAdvBtn.classList.remove('ai-assistant-panel-ep-mode-btn--active');
+            fSimpleBtn.setAttribute('aria-pressed', 'true');
+            fAdvBtn.setAttribute('aria-pressed', 'false');
+            fSimpleWrap.style.display = '';
+            fAdvWrap.style.display    = 'none';
+            fKeyRow.style.display     = 'none';
+        });
+        fAdvBtn.addEventListener('click', function () {
+            fAdvBtn.classList.add('ai-assistant-panel-ep-mode-btn--active');
+            fSimpleBtn.classList.remove('ai-assistant-panel-ep-mode-btn--active');
+            fAdvBtn.setAttribute('aria-pressed', 'true');
+            fSimpleBtn.setAttribute('aria-pressed', 'false');
+            fAdvWrap.style.display    = '';
+            fSimpleWrap.style.display = 'none';
+            fKeyRow.style.display     = '';  // show key override in advanced mode
+        });
+
+        fSubmitBtn.addEventListener('click', function () {
+            fError.style.display = 'none';
+
+            var label = fNameInp.value.trim().slice(0, _MAX_LABEL);
+            if (!label) {
+                fError.textContent = 'Profile name is required.';
+                fError.style.display = '';
+                fNameInp.focus();
+                return;
+            }
+
+            var isSimpleMode  = (fSimpleWrap.style.display !== 'none');
+            var profileData;
+
+            if (isSimpleMode) {
+                var base = fBaseInp.value.trim().replace(/\/+$/, '');
+                if (!base) {
+                    fError.textContent = 'Base URL is required.';
+                    fError.style.display = '';
+                    fBaseInp.focus();
+                    return;
+                }
+                var bv = _epSafe
+                    ? _epSafe.validateUrl(base)
+                    : { ok: /^https?:\/\//i.test(base), reason: 'Must start with https://' };
+                if (!bv.ok) {
+                    fError.textContent = bv.reason;
+                    fError.style.display = '';
+                    fBaseInp.focus();
+                    return;
+                }
+                profileData = {
+                    label: label, chat: base, share: base,
+                    feedback: base, training: base,
+                    shareToken: '', feedbackToken: '', ttlDays: 30,
+                };
+            } else {
+                var aC  = fAdvInputs.chat     ? fAdvInputs.chat.value.trim().replace(/\/+$/, '')     : '';
+                var aSh = fAdvInputs.share    ? fAdvInputs.share.value.trim().replace(/\/+$/, '')    : '';
+                var aFb = fAdvInputs.feedback ? fAdvInputs.feedback.value.trim().replace(/\/+$/, '') : '';
+                var aTr = fAdvInputs.training ? fAdvInputs.training.value.trim().replace(/\/+$/, '') : '';
+                if (!aC && !aSh && !aFb && !aTr) {
+                    fError.textContent = 'At least one URL field is required.';
+                    fError.style.display = '';
+                    return;
+                }
+                var urlPairs = [
+                    ['chat', aC], ['share', aSh], ['feedback', aFb], ['training', aTr]
+                ];
+                var urlErr = '';
+                for (var _vi = 0; _vi < urlPairs.length && !urlErr; _vi++) {
+                    var _pair = urlPairs[_vi];
+                    if (_pair[1]) {
+                        var _vr = _epSafe
+                            ? _epSafe.validateUrl(_pair[1])
+                            : { ok: /^https?:\/\//i.test(_pair[1]), reason: 'Invalid URL' };
+                        if (!_vr.ok) { urlErr = _pair[0] + ': ' + _vr.reason; }
+                    }
+                }
+                if (urlErr) {
+                    fError.textContent = urlErr;
+                    fError.style.display = '';
+                    return;
+                }
+                profileData = {
+                    label: label, chat: aC, share: aSh, feedback: aFb, training: aTr,
+                    shareToken:    fAdvInputs.shareToken    ? fAdvInputs.shareToken.value.trim()    : '',
+                    feedbackToken: fAdvInputs.feedbackToken ? fAdvInputs.feedbackToken.value.trim() : '',
+                    ttlDays: 30,
+                };
+            }
+
+            if (!_epSafe) {
+                fError.textContent = 'Endpoint registry not initialised.';
+                fError.style.display = '';
+                return;
+            }
+
+            // Use manual key override when provided; auto-generate otherwise
+            var manualKey  = fKeyInp.value.trim();
+            var addResult;
+            if (manualKey) {
+                // register() = importProfile() + optional setActive()
+                var regKey = _epSafe.register(manualKey, profileData, true);
+                addResult  = regKey
+                    ? { ok: true, key: regKey }
+                    : { ok: false, error: 'Key "' + manualKey + '" is invalid, already taken, or limit reached.' };
+            } else {
+                addResult = _epSafe.addCustomProfile(profileData);
+                if (addResult.ok) { _epSafe.setActive(addResult.key); }
+            }
+
+            if (!addResult.ok) {
+                fError.textContent = addResult.error;
+                fError.style.display = '';
+                return;
+            }
+
+            var newKey = addResult.key;
+
+            // Ensure the cards wrapper exists
+            if (!_cardsWrap) {
+                var _oldHint = profileSection.querySelector('.ai-assistant-panel-ep-hint');
+                if (_oldHint) { profileSection.removeChild(_oldHint); }
+                _cardsWrap = document.createElement('div');
+                _cardsWrap.className = 'ai-assistant-panel-ep-cards';
+                profileSection.appendChild(_cardsWrap);
+            }
+
+            _deactivateAllCards(_cardsWrap);
+            _appendProfileCard(_cardsWrap, newKey, label, 'custom', newKey);
+            _refreshAll();
+            _updateAddCapWarning();
+
+            // Update sub-bar pill label
+            var _epLbl = document.querySelector('.ai-assistant-panel-ep-btn-label');
+            if (_epLbl) { _epLbl.textContent = label; }
+
+            // Brief success state, then reset
+            fSubmitBtn.textContent = '✓ Profile added';
+            setTimeout(function () {
+                fSubmitBtn.textContent = 'Add Profile';
+                addForm.style.display = 'none';
+                addToggleBtn.setAttribute('aria-expanded', 'false');
+                addToggleBtn.textContent = '+ Add custom profile';
+                // Reset form fields
+                fNameInp.value = '';
+                fNameCounter.textContent = '0 / ' + _MAX_LABEL;
+                fKeyPreviewVal.textContent = '(enter a name)';
+                fKeyInp.value = '';
+                fKeyStatus.textContent = '';
+                fBaseInp.value = '';
+                var _afKeys = Object.keys(fAdvInputs);
+                for (var _rk = 0; _rk < _afKeys.length; _rk++) {
+                    if (fAdvInputs[_afKeys[_rk]]) { fAdvInputs[_afKeys[_rk]].value = ''; }
+                }
+                fError.style.display = 'none';
+            }, 1800);
+        });
+
+        // ══════════════════════════════════════════════════════════════════════
+        // §4  COMPARE PROFILES (always visible, scroll-wrapped)
+        // ══════════════════════════════════════════════════════════════════════
+        var compareSection = _buildSheetSection('Compare Profiles');
+        bodyEl.appendChild(compareSection);
+
+        _compareWrap = document.createElement('div');
+        _compareWrap.className = 'ai-assistant-panel-ep-compare-wrap';
+        compareSection.appendChild(_compareWrap);
+
+        // ══════════════════════════════════════════════════════════════════════
+        // §5  IMPORT / EXPORT / CONF.PY SNIPPET
+        // ══════════════════════════════════════════════════════════════════════
+        var ioSection = _buildSheetSection('Import / Export');
+        bodyEl.appendChild(ioSection);
+
+        // ── Export ────────────────────────────────────────────────────────────
+        var exportHint = document.createElement('p');
+        exportHint.className   = 'ai-assistant-panel-ep-hint';
+        exportHint.textContent = 'Export custom profiles as JSON (tokens are excluded for security).';
+        ioSection.appendChild(exportHint);
+
+        var exportBtnsRow = document.createElement('div');
+        exportBtnsRow.className = 'ai-assistant-panel-ep-io-row';
+
+        var exportClipBtn = document.createElement('button');
+        exportClipBtn.type      = 'button';
+        exportClipBtn.className = 'ai-assistant-panel-ep-io-btn';
+        exportClipBtn.textContent = '⎘ Copy JSON to clipboard';
+
+        var exportFileBtn = document.createElement('button');
+        exportFileBtn.type      = 'button';
+        exportFileBtn.className = 'ai-assistant-panel-ep-io-btn';
+        exportFileBtn.textContent = '↓ Download JSON file';
+
+        var exportStatus = document.createElement('p');
+        exportStatus.className    = 'ai-assistant-panel-ep-hint';
+        exportStatus.style.display = 'none';
+
+        exportBtnsRow.appendChild(exportClipBtn);
+        exportBtnsRow.appendChild(exportFileBtn);
+        ioSection.appendChild(exportBtnsRow);
+        ioSection.appendChild(exportStatus);
+
+        function _getExportJson() {
+            if (!_epSafe) { return null; }
+            var data = _epSafe.exportCustom();  // returns Object (no tokens)
+            if (Object.keys(data).length === 0) { return null; }
+            return _epSafe.exportCustomJson();  // returns indented JSON string
+        }
+
+        exportClipBtn.addEventListener('click', function () {
+            var json = _getExportJson();
+            if (!json) {
+                exportStatus.textContent   = 'No custom profiles to export.';
+                exportStatus.style.display = '';
+                setTimeout(function () { exportStatus.style.display = 'none'; }, 3000);
+                return;
+            }
+            _fallbackCopy(json,
+                function () {
+                    exportStatus.textContent   = '✓ Copied to clipboard.';
+                    exportStatus.style.display = '';
+                    setTimeout(function () { exportStatus.style.display = 'none'; }, 2500);
+                },
+                function () {
+                    exportStatus.textContent   = '✗ Copy failed — see browser permissions.';
+                    exportStatus.style.display = '';
+                }
+            );
+        });
+
+        exportFileBtn.addEventListener('click', function () {
+            var json = _getExportJson();
+            if (!json) {
+                exportStatus.textContent   = 'No custom profiles to export.';
+                exportStatus.style.display = '';
+                setTimeout(function () { exportStatus.style.display = 'none'; }, 3000);
+                return;
+            }
+            try {
+                var blob = new Blob([json], { type: 'application/json' });
+                var url  = URL.createObjectURL(blob);
+                var a    = document.createElement('a');
+                var date = new Date().toISOString().slice(0, 10);
+                a.href     = url;
+                a.download = 'ep-profiles-' + date + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(function () { URL.revokeObjectURL(url); }, 30000);
+                exportStatus.textContent   = '✓ Download started.';
+                exportStatus.style.display = '';
+                setTimeout(function () { exportStatus.style.display = 'none'; }, 2500);
+            } catch (_e) {
+                exportStatus.textContent   = '✗ Download failed.';
+                exportStatus.style.display = '';
+            }
+        });
+
+        // ── Import ────────────────────────────────────────────────────────────
+        var ioSep1 = document.createElement('hr');
+        ioSep1.className = 'ai-assistant-panel-ep-io-sep';
+        ioSection.appendChild(ioSep1);
+
+        var importToggle = document.createElement('button');
+        importToggle.type      = 'button';
+        importToggle.className = 'ai-assistant-panel-ep-add-toggle';
+        importToggle.setAttribute('aria-expanded', 'false');
+        importToggle.textContent = '↑ Import profiles from JSON';
+        ioSection.appendChild(importToggle);
+
+        var importFormWrap = document.createElement('div');
+        importFormWrap.style.display = 'none';
+
+        var importHint = document.createElement('p');
+        importHint.className   = 'ai-assistant-panel-ep-hint';
+        importHint.textContent =
+            'Paste JSON exported from this tool. Build-time profiles cannot be ' +
+            'overwritten. Tokens are excluded from exports and must be re-entered. ' +
+            'Each entry is individually validated — invalid entries are skipped and reported.';
+        importFormWrap.appendChild(importHint);
+
+        var importTA = document.createElement('textarea');
+        importTA.className   = 'ai-assistant-panel-ep-import-ta';
+        importTA.rows        = 5;
+        importTA.placeholder = '{ "my_profile": { "label": "My Proxy", "chat": "https://..." } }';
+        importTA.setAttribute('aria-label', 'JSON for endpoint profile import');
+        importTA.setAttribute('spellcheck', 'false');
+        importFormWrap.appendChild(importTA);
+
+        var importStatus = document.createElement('p');
+        importStatus.className    = 'ai-assistant-panel-ep-hint';
+        importStatus.style.display = 'none';
+        importFormWrap.appendChild(importStatus);
+
+        var importBtn = document.createElement('button');
+        importBtn.type      = 'button';
+        importBtn.className = 'ai-assistant-panel-ep-add-btn';
+        importBtn.textContent = '↑ Import';
+        importFormWrap.appendChild(importBtn);
+        ioSection.appendChild(importFormWrap);
+
+        importToggle.addEventListener('click', function () {
+            var isOpen = importFormWrap.style.display !== 'none';
+            importFormWrap.style.display = isOpen ? 'none' : '';
+            importToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+
+        importBtn.addEventListener('click', function () {
+            importStatus.style.display = 'none';
+            var raw = importTA.value.trim();
+            if (!raw) {
+                importStatus.textContent   = 'Paste JSON first.';
+                importStatus.style.display = '';
+                return;
+            }
+            var parsed = null;
+            try { parsed = JSON.parse(raw); } catch (_e) {
+                importStatus.textContent   = 'Invalid JSON: ' + _e.message;
+                importStatus.style.display = '';
+                return;
+            }
+            if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+                importStatus.textContent   = 'JSON must be an object { key: profile, … }';
+                importStatus.style.display = '';
+                return;
+            }
+            if (!_epSafe) {
+                importStatus.textContent   = 'Endpoint registry not initialised.';
+                importStatus.style.display = '';
+                return;
+            }
+            var iKeys    = Object.keys(parsed);
+            var imported = 0;
+            var errors   = [];
+            for (var _ik = 0; _ik < iKeys.length; _ik++) {
+                var _ky  = iKeys[_ik];
+                var _res = _epSafe.importProfile(_ky, parsed[_ky]);
+                if (_res.ok) {
+                    imported++;
+                    // Add card if not already present
+                    var _iProf = _epSafe.getProfile(_ky);
+                    if (_iProf && _cardsWrap) {
+                        var _existCard = _cardsWrap.querySelector(
+                            '[data-ep-key="' + _ky + '"]'
+                        );
+                        if (!_existCard) {
+                            if (!_cardsWrap.parentNode) {
+                                profileSection.appendChild(_cardsWrap);
+                            }
+                            _appendProfileCard(_cardsWrap, _ky, _iProf.label,
+                                               _iProf.source, _epSafe.getActive());
+                        }
+                    }
+                } else {
+                    errors.push(_ky + ': ' + _res.error);
+                }
+            }
+            _refreshAll();
+            _updateAddCapWarning();
+
+            var msg = '✓ Imported ' + imported + ' profile' + (imported === 1 ? '' : 's') + '.';
+            if (errors.length > 0) {
+                msg += ' Skipped:\n' + errors.join('\n');
+            }
+            importStatus.textContent   = msg;
+            importStatus.style.display = '';
+        });
+
+        // ── Clear all custom ──────────────────────────────────────────────────
+        var ioSep2 = document.createElement('hr');
+        ioSep2.className = 'ai-assistant-panel-ep-io-sep';
+        ioSection.appendChild(ioSep2);
+
+        var clearHintP = document.createElement('p');
+        clearHintP.className   = 'ai-assistant-panel-ep-hint';
+        clearHintP.textContent = 'Remove all custom profiles (built-in conf.py profiles are kept).';
+        ioSection.appendChild(clearHintP);
+
+        var _clearConfirm = false;
+        var clearBtn = document.createElement('button');
+        clearBtn.type      = 'button';
+        clearBtn.className = 'ai-assistant-panel-ep-io-btn ai-assistant-panel-ep-io-btn--danger';
+        clearBtn.textContent = '✕ Clear all custom profiles';
+        var clearResult = document.createElement('p');
+        clearResult.className    = 'ai-assistant-panel-ep-hint';
+        clearResult.style.display = 'none';
+        ioSection.appendChild(clearBtn);
+        ioSection.appendChild(clearResult);
+
+        clearBtn.addEventListener('click', function () {
+            if (!_clearConfirm) {
+                _clearConfirm = true;
+                clearBtn.textContent = '⚠ Click again to confirm deletion';
+                clearBtn.classList.add('ai-assistant-panel-ep-io-btn--confirm');
+                setTimeout(function () {
+                    _clearConfirm = false;
+                    clearBtn.textContent = '✕ Clear all custom profiles';
+                    clearBtn.classList.remove('ai-assistant-panel-ep-io-btn--confirm');
+                }, 4000);
+                return;
+            }
+            _clearConfirm = false;
+            clearBtn.classList.remove('ai-assistant-panel-ep-io-btn--confirm');
+            if (!_epSafe) { return; }
+            var n = _epSafe.clearCustom();
+            // Remove custom/imported cards from DOM
+            if (_cardsWrap) {
+                var custCards = _cardsWrap.querySelectorAll(
+                    '[data-profile-source="custom"],[data-profile-source="imported"]'
+                );
+                for (var _cc = 0; _cc < custCards.length; _cc++) {
+                    _cardsWrap.removeChild(custCards[_cc]);
+                }
+            }
+            _refreshAll();
+            _updateAddCapWarning();
+            clearBtn.textContent      = '✕ Clear all custom profiles';
+            clearResult.textContent   = '✓ Removed ' + n + ' custom profile' + (n === 1 ? '' : 's') + '.';
+            clearResult.style.display = '';
+            setTimeout(function () { clearResult.style.display = 'none'; }, 3000);
+        });
+
+        // ── conf.py snippet generator ─────────────────────────────────────────
+        // Promotes the active custom profile to a build-time profile by generating
+        // the conf.py block the user can copy into their Sphinx configuration.
+        var ioSep3 = document.createElement('hr');
+        ioSep3.className = 'ai-assistant-panel-ep-io-sep';
+        ioSection.appendChild(ioSep3);
+
+        var snippetToggle = document.createElement('button');
+        snippetToggle.type      = 'button';
+        snippetToggle.className = 'ai-assistant-panel-ep-add-toggle';
+        snippetToggle.setAttribute('aria-expanded', 'false');
+        snippetToggle.textContent = '{ } Generate conf.py snippet';
+        ioSection.appendChild(snippetToggle);
+
+        var snippetWrap = document.createElement('div');
+        snippetWrap.style.display = 'none';
+        ioSection.appendChild(snippetWrap);
+
+        var snippetHint = document.createElement('p');
+        snippetHint.className   = 'ai-assistant-panel-ep-hint';
+        snippetHint.textContent =
+            'Copy this block into your conf.py to make the active profile ' +
+            'persistent across Sphinx builds. Tokens are intentionally excluded — ' +
+            'set them server-side or via environment variables in conf.py.';
+        snippetWrap.appendChild(snippetHint);
+
+        var snippetPre = document.createElement('pre');
+        snippetPre.className = 'ai-assistant-panel-ep-snippet-pre';
+        var snippetCode = document.createElement('code');
+        snippetCode.className = 'ai-assistant-panel-ep-snippet-code';
+        snippetPre.appendChild(snippetCode);
+        snippetWrap.appendChild(snippetPre);
+
+        var snippetCopyRow = document.createElement('div');
+        snippetCopyRow.className = 'ai-assistant-panel-ep-io-row';
+        var snippetCopyBtn = document.createElement('button');
+        snippetCopyBtn.type      = 'button';
+        snippetCopyBtn.className = 'ai-assistant-panel-ep-io-btn';
+        snippetCopyBtn.textContent = '⎘ Copy snippet';
+        var snippetCopyStatus = document.createElement('span');
+        snippetCopyStatus.className = 'ai-assistant-panel-ep-hint';
+        snippetCopyRow.appendChild(snippetCopyBtn);
+        snippetCopyRow.appendChild(snippetCopyStatus);
+        snippetWrap.appendChild(snippetCopyRow);
+
+        function _buildSnippet() {
+            if (!_epSafe) { return '# _EP not available'; }
+            var key  = _epSafe.getActive();
+            var prof = key ? _epSafe.getProfile(key) : null;
+            if (!prof) { return '# No active profile'; }
+            var lines = [
+                '# conf.py — add or merge this block',
+                'ai_assistant_endpoint_profiles = {',
+                '    "' + key + '": {',
+                '        "label":    "' + prof.label.replace(/"/g, '\\"') + '",',
+            ];
+            var urlFields = ['chat', 'share', 'feedback', 'training'];
+            for (var _si = 0; _si < urlFields.length; _si++) {
+                var _sf = urlFields[_si];
+                if (prof[_sf]) {
+                    lines.push('        "' + _sf + '": "' + prof[_sf].replace(/"/g, '\\"') + '",');
+                }
+            }
+            if (prof.ttlDays > 0) {
+                lines.push('        "ttlDays": ' + prof.ttlDays + ',');
+            }
+            lines.push(
+                '        # shareToken:    os.environ.get("SHARE_TOKEN", ""),',
+                '        # feedbackToken: os.environ.get("FEEDBACK_TOKEN", ""),',
+                '    },',
+                '}'
+            );
+            return lines.join('\n');
+        }
+
+        snippetToggle.addEventListener('click', function () {
+            var isOpen = snippetWrap.style.display !== 'none';
+            snippetWrap.style.display = isOpen ? 'none' : '';
+            snippetToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            if (!isOpen) { snippetCode.textContent = _buildSnippet(); }
+        });
+
+        snippetCopyBtn.addEventListener('click', function () {
+            _fallbackCopy(
+                snippetCode.textContent,
+                function () {
+                    snippetCopyStatus.textContent = '✓ Copied';
+                    setTimeout(function () { snippetCopyStatus.textContent = ''; }, 2000);
+                },
+                function () { snippetCopyStatus.textContent = '✗ Copy failed'; }
+            );
+        });
+
+        // ══════════════════════════════════════════════════════════════════════
+        // MOUNT + SUBSCRIBE
+        // ══════════════════════════════════════════════════════════════════════
+        sheet.appendChild(bodyEl);
+
+        // Initial render of all dynamic sections
+        _updateAddCapWarning();
+        _refreshAll();
+
+        // Subscribe to _EP.onChange so the sheet self-updates whenever any
+        // other code calls _EP.setActive() (keyboard shortcuts, other widgets, etc.)
+        if (_epSafe && typeof _epSafe.onChange === 'function') {
+            _unsubscribe = _epSafe.onChange(function (payload) {
+                _lastSwitchTs = Date.now();
+                _refreshAll();
+                // Sync card highlight states
+                if (_cardsWrap) {
+                    _deactivateAllCards(_cardsWrap);
+                    var _nc = _cardsWrap.querySelector(
+                        '[data-ep-key="' + payload.to + '"]'
+                    );
+                    if (_nc) {
+                        _nc.classList.add('ai-assistant-panel-ep-card--active');
+                        var _nr = _nc.querySelector('input[type="radio"]');
+                        if (_nr) { _nr.checked = true; }
+                        var _nb = _nc.querySelector('.ai-assistant-panel-ep-badge--active');
+                        if (_nb) { _nb.style.display = ''; }
+                    }
+                }
+                // Update ARIA live region
+                if (_liveRegion) {
+                    var _ap = payload.profile;
+                    _liveRegion.textContent = 'Profile switched to ' +
+                        (_ap ? _ap.label : payload.to);
+                    setTimeout(function () { _liveRegion.textContent = ''; }, 3000);
+                }
+                // Update conf.py snippet if it's open
+                if (snippetWrap.style.display !== 'none') {
+                    snippetCode.textContent = _buildSnippet();
+                }
+            });
+        }
+
+        // Automatic cleanup when the sheet is removed from the DOM — prevents
+        // memory leaks when the sheet element is replaced by a new build
+        var _domObserver = (typeof MutationObserver !== 'undefined')
+            ? new MutationObserver(function (muts) {
+                for (var _mi = 0; _mi < muts.length; _mi++) {
+                    var _rn = muts[_mi].removedNodes;
+                    for (var _ri = 0; _ri < _rn.length; _ri++) {
+                        if (_rn[_ri] === sheet) {
+                            if (_unsubscribe) { _unsubscribe(); _unsubscribe = null; }
+                            _domObserver.disconnect();
+                        }
+                    }
+                }
+            }) : null;
+        if (_domObserver && sheet.parentNode) {
+            _domObserver.observe(sheet.parentNode, { childList: true });
+        }
+
+        return sheet;
+
+        // ══════════════════════════════════════════════════════════════════════
+        // RENDER FUNCTIONS
+        // JS function declarations are hoisted — these are visible above despite
+        // being placed after the return for readability.
+        // ══════════════════════════════════════════════════════════════════════
+
+        /**
+         * Full re-render of info card, URL display, compare grid, and status bar.
+         * Call this after any profile switch or registry mutation.
+         */
+        function _refreshAll() {
+            _refreshInfoCard();
+            _refreshUrls();
+            _rebuildCompareGrid();
+            _refreshStatus();
+            _updateProfileCount();
+        }
+
+        /**
+         * Rebuild the §2 info card showing metadata for the active profile.
+         */
+        function _refreshInfoCard() {
+            while (_infoCard.firstChild) { _infoCard.removeChild(_infoCard.firstChild); }
+            if (!_epSafe || !_epSafe.hasProfiles()) {
+                var emptyP = document.createElement('p');
+                emptyP.className   = 'ai-assistant-panel-ep-hint';
+                emptyP.textContent = 'No active profile.';
+                _infoCard.appendChild(emptyP);
+                return;
+            }
+            var activeKey = _epSafe.getActive();
+            var prof      = activeKey ? _epSafe.getProfile(activeKey) : null;
+            if (!prof) { return; }
+
+            var makeInfoRow = function (lText, vText) {
+                var r = document.createElement('div');
+                r.className = 'ai-assistant-panel-ep-info-row';
+                var l = document.createElement('span');
+                l.className   = 'ai-assistant-panel-ep-info-label';
+                l.textContent = lText;
+                var v = document.createElement('span');
+                v.className   = 'ai-assistant-panel-ep-info-value';
+                v.textContent = vText;
+                r.appendChild(l);
+                r.appendChild(v);
+                return r;
+            };
+
+            _infoCard.appendChild(makeInfoRow('Name',   prof.label));
+            _infoCard.appendChild(makeInfoRow('Key',    activeKey));
+            _infoCard.appendChild(makeInfoRow('Source',
+                prof.source === 'custom'   ? 'Runtime (custom, localStorage)' :
+                prof.source === 'imported' ? 'Runtime (imported, localStorage)' :
+                                             'Build-time (conf.py)'
+            ));
+            if (prof.ttlDays > 0) {
+                _infoCard.appendChild(makeInfoRow('Share TTL', prof.ttlDays + ' days'));
+            }
+            // Last-switched from auditLog
+            var log = _epSafe.auditLog();
+            if (log.length > 0 && log[0].to === activeKey) {
+                var ts  = new Date(log[0].ts);
+                var rel = _relativeTime(log[0].ts);
+                _infoCard.appendChild(makeInfoRow(
+                    'Last switched',
+                    rel + ' (' + ts.toLocaleTimeString() + ')'
+                ));
+            }
+        }
+
+        /**
+         * Rebuild all URL display rows and read-only inputs from the active profile.
+         */
+        function _refreshUrls() {
+            while (_urlDisplay.firstChild) { _urlDisplay.removeChild(_urlDisplay.firstChild); }
+            var chatBase = '';
+            for (var _ri = 0; _ri < _FEATURE_DEFS.length; _ri++) {
+                var _rfd     = _FEATURE_DEFS[_ri];
+                var resolved = (_epSafe ? _epSafe.resolve(_rfd.key) : '') || '';
+                var fullUrl  = resolved ? (resolved + _rfd.suffix) : '';
+                if (_rfd.key === 'chat') { chatBase = resolved; }
+
+                if (_advInputs[_rfd.key]) { _advInputs[_rfd.key].value = resolved; }
+
+                var row = document.createElement('div');
+                row.className = 'ai-assistant-panel-ep-resolved-row ' +
+                    (resolved ? 'ai-assistant-panel-ep-resolved-row--on'
+                              : 'ai-assistant-panel-ep-resolved-row--off');
+
+                var dot = document.createElement('span');
+                dot.className = 'ai-assistant-panel-ep-indicator ' +
+                    (resolved ? 'ai-assistant-panel-ep-indicator--on'
+                              : 'ai-assistant-panel-ep-indicator--off');
+                dot.setAttribute('aria-hidden', 'true');
+
+                var lbl = document.createElement('span');
+                lbl.className   = 'ai-assistant-panel-ep-resolved-label';
+                lbl.textContent = _rfd.label;
+
+                var urlTxt = document.createElement('span');
+                urlTxt.className   = 'ai-assistant-panel-ep-resolved-url';
+                urlTxt.textContent = fullUrl || 'Not configured';
+                if (fullUrl) {
+                    urlTxt.setAttribute('title', fullUrl);
+                    urlTxt.appendChild(_makeCopyBtn(function (u) {
+                        return function () { return u; };
+                    }(fullUrl)));
+                }
+
+                row.appendChild(dot);
+                row.appendChild(lbl);
+                row.appendChild(urlTxt);
+                _urlDisplay.appendChild(row);
+            }
+            _simpleInp.value       = chatBase;
+            _simpleInp.placeholder = chatBase ? '' : 'No endpoint configured';
+        }
+
+        /**
+         * Rebuild the §4 compare grid (always visible, horizontally scrollable).
+         * Feature rows × profile columns; active column and custom badges highlighted.
+         */
+        function _rebuildCompareGrid() {
+            while (_compareWrap.firstChild) { _compareWrap.removeChild(_compareWrap.firstChild); }
+
+            if (!_epSafe || !_epSafe.hasProfiles()) {
+                var noP = document.createElement('p');
+                noP.className   = 'ai-assistant-panel-ep-hint';
+                noP.textContent = 'No profiles to compare.';
+                _compareWrap.appendChild(noP);
+                return;
+            }
+
+            var allProfiles = _epSafe.list();
+            var activeKey   = _epSafe.getActive();
+
+            var scrollBox = document.createElement('div');
+            scrollBox.className = 'ai-assistant-panel-ep-compare-scroll';
+
+            var table = document.createElement('table');
+            table.className = 'ai-assistant-panel-ep-compare-grid';
+            table.setAttribute('role', 'grid');
+            table.setAttribute('aria-label', 'Profile capability comparison');
+
+            // Header row
+            var thead = document.createElement('thead');
+            var hrow  = document.createElement('tr');
+            var thFeat = document.createElement('th');
+            thFeat.className   = 'ai-assistant-panel-ep-grid-th ai-assistant-panel-ep-grid-th--feature';
+            thFeat.textContent = 'Feature';
+            thFeat.setAttribute('scope', 'col');
+            hrow.appendChild(thFeat);
+
+            for (var _hi = 0; _hi < allProfiles.length; _hi++) {
+                var _hp = allProfiles[_hi];
+                var th  = document.createElement('th');
+                th.className = 'ai-assistant-panel-ep-grid-th' +
+                    (_hp.key === activeKey ? ' ai-assistant-panel-ep-grid-th--active' : '');
+                th.setAttribute('scope', 'col');
+                var thLbl = document.createElement('span');
+                thLbl.textContent = _hp.label;
+                th.appendChild(thLbl);
+                if (_hp.key === activeKey) {
+                    var thAct = document.createElement('span');
+                    thAct.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--active';
+                    thAct.textContent = 'Active';
+                    th.appendChild(thAct);
+                }
+                if (_hp.source === 'custom' || _hp.source === 'imported') {
+                    var thSrc = document.createElement('span');
+                    thSrc.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--runtime';
+                    thSrc.textContent = _hp.source === 'imported' ? 'Imported' : 'Custom';
+                    th.appendChild(thSrc);
+                }
+                hrow.appendChild(th);
+            }
+            thead.appendChild(hrow);
+            table.appendChild(thead);
+
+            // Body — one row per feature
+            var tbody = document.createElement('tbody');
+            for (var _gi = 0; _gi < _FEATURE_DEFS.length; _gi++) {
+                var _gfd  = _FEATURE_DEFS[_gi];
+                var grow  = document.createElement('tr');
+
+                var ftd = document.createElement('td');
+                ftd.className = 'ai-assistant-panel-ep-grid-td ai-assistant-panel-ep-grid-feature';
+                ftd.setAttribute('scope', 'row');
+                var ftdLbl = document.createElement('span');
+                ftdLbl.textContent = _gfd.label;
+                var ftdPri = document.createElement('span');
+                ftdPri.className   = 'ai-assistant-panel-ep-grid-priority';
+                ftdPri.textContent = _gfd.priority;
+                ftd.appendChild(ftdLbl);
+                ftd.appendChild(ftdPri);
+                grow.appendChild(ftd);
+
+                for (var _gp = 0; _gp < allProfiles.length; _gp++) {
+                    var _gpk = allProfiles[_gp];
+                    var url  = _epSafe.resolveFor(_gfd.key, _gpk.key);
+                    var td   = document.createElement('td');
+                    td.className = 'ai-assistant-panel-ep-grid-td ai-assistant-panel-ep-grid-cell' +
+                        (_gpk.key === activeKey ? ' ai-assistant-panel-ep-grid-td--active' : '');
+                    if (url) { td.setAttribute('title', url + _gfd.suffix); }
+
+                    var icon = document.createElement('span');
+                    icon.className = url
+                        ? 'ai-assistant-panel-ep-grid-check ai-assistant-panel-ep-grid-check--on'
+                        : 'ai-assistant-panel-ep-grid-check ai-assistant-panel-ep-grid-check--off';
+                    icon.textContent = url ? '✓' : '✗';
+                    icon.setAttribute('aria-label',
+                        _gfd.label + ' for ' + _gpk.label + ': ' +
+                        (url ? 'configured' : 'not configured'));
+                    td.appendChild(icon);
+                    grow.appendChild(td);
+                }
+                tbody.appendChild(grow);
+            }
+            table.appendChild(tbody);
+            scrollBox.appendChild(table);
+            _compareWrap.appendChild(scrollBox);
+        }
+
+        /** Update the status bar (active label + relative switch time). */
+        function _refreshStatus() {
+            if (!_epSafe) { _statusName.textContent = 'None'; _statusTime.textContent = ''; return; }
+            var _ak  = _epSafe.getActive();
+            var _ap  = _ak ? _epSafe.getProfile(_ak) : null;
+            _statusName.textContent = _ap ? _ap.label : (_ak || 'None');
+            _statusTime.textContent = _lastSwitchTs ? _relativeTime(_lastSwitchTs) : '';
+        }
+
+        /** Update the profile count badge in the §1 heading. */
+        function _updateProfileCount() {
+            if (!_countBadge) { return; }
+            var n = _epSafe ? _epSafe.list().length : 0;
+            _countBadge.textContent = n ? ' (' + n + ')' : '';
+        }
+
+        /** Show or hide the cap warning and disable Add toggle when at limit. */
+        function _updateAddCapWarning() {
+            if (!_epSafe) { return; }
+            var n = _epSafe.countCustom();
+            if (n >= _MAX_CUSTOM) {
+                _addCapWarn.textContent   =
+                    'Maximum ' + _MAX_CUSTOM + ' custom profiles reached. ' +
+                    'Delete one to add another.';
+                _addCapWarn.style.display = '';
+                addToggleBtn.disabled     = true;
+            } else {
+                _addCapWarn.style.display = 'none';
+                addToggleBtn.disabled     = false;
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════════════
+        // PRIVATE HELPERS
+        // ══════════════════════════════════════════════════════════════════════
+
+        /**
+         * Append a radio-card for a single profile to *container*.
+         *
+         * Parameters
+         * ----------
+         * container     : HTMLElement
+         * key           : string   Profile key in the _EP registry.
+         * label         : string   Human-readable display name.
+         * source        : string   'build' | 'custom' | 'imported'
+         * currentActive : string   Key of the currently-active profile (for initial state).
+         */
+        function _appendProfileCard(container, key, label, source, currentActive) {
+            var isActive  = (key === currentActive);
+            var isRuntime = (source === 'custom' || source === 'imported');
+
+            var card = document.createElement('label');
+            card.className = 'ai-assistant-panel-ep-card' +
+                (isActive ? ' ai-assistant-panel-ep-card--active' : '');
+            card.setAttribute('data-ep-key',        key);
+            card.setAttribute('data-profile-source', source || 'build');
+
+            var radio = document.createElement('input');
+            radio.type      = 'radio';
+            radio.name      = 'ai-assistant-ep-profile';
+            radio.value     = key;
+            radio.checked   = isActive;
+            radio.className = 'ai-assistant-panel-ep-radio';
+            radio.setAttribute('aria-label', 'Select profile: ' + label);
+
+            var content = document.createElement('div');
+            content.className = 'ai-assistant-panel-ep-card-content';
+
+            // Label row: name + key code + badges
+            var labelRow = document.createElement('div');
+            labelRow.className = 'ai-assistant-panel-ep-card-label-row';
+
+            var labelSpan = document.createElement('span');
+            labelSpan.className   = 'ai-assistant-panel-ep-card-label';
+            labelSpan.textContent = label;
+
+            var keySpan = document.createElement('code');
+            keySpan.className   = 'ai-assistant-panel-ep-card-key';
+            keySpan.textContent = key;
+
+            var activeBadge = document.createElement('span');
+            activeBadge.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--active';
+            activeBadge.textContent = 'Active';
+            activeBadge.style.display = isActive ? '' : 'none';
+
+            labelRow.appendChild(labelSpan);
+            labelRow.appendChild(keySpan);
+            labelRow.appendChild(activeBadge);
+
+            if (!isRuntime) {
+                var builtinBadge = document.createElement('span');
+                builtinBadge.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--builtin';
+                builtinBadge.textContent = 'Built-in';
+                labelRow.appendChild(builtinBadge);
+            } else {
+                var runtimeBadge = document.createElement('span');
+                runtimeBadge.className   = 'ai-assistant-panel-ep-badge ai-assistant-panel-ep-badge--runtime';
+                runtimeBadge.textContent = source === 'imported' ? 'Imported' : 'Custom';
+                labelRow.appendChild(runtimeBadge);
+
+                // Delete button with two-step confirm
+                var delBtn = document.createElement('button');
+                delBtn.type      = 'button';
+                delBtn.className = 'ai-assistant-panel-ep-delete-btn';
+                delBtn.setAttribute('aria-label', 'Delete profile: ' + label);
+                delBtn.title       = 'Delete this profile';
+                delBtn.textContent = '×';
+
+                var _delConfirm = false;
+                delBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (!_delConfirm) {
+                        _delConfirm = true;
+                        delBtn.textContent = '⚠ Sure?';
+                        delBtn.classList.add('ai-assistant-panel-ep-delete-btn--confirm');
+                        setTimeout(function () {
+                            _delConfirm = false;
+                            delBtn.textContent = '×';
+                            delBtn.classList.remove('ai-assistant-panel-ep-delete-btn--confirm');
+                        }, 3000);
+                        return;
+                    }
+                    if (!_epSafe) { return; }
+                    var deleted = _epSafe.deleteCustomProfile(key);
+                    if (deleted && container.contains(card)) {
+                        container.removeChild(card);
+                        _refreshAll();
+                        _updateAddCapWarning();
+                        // Update sub-bar pill
+                        var _nowActive = _epSafe.getActive();
+                        var _epLbl4 = document.querySelector('.ai-assistant-panel-ep-btn-label');
+                        if (_epLbl4) {
+                            var _nowProf = _nowActive ? _epSafe.getProfile(_nowActive) : null;
+                            _epLbl4.textContent = _nowProf ? _nowProf.label : 'Endpoints';
+                        }
+                    }
+                });
+                labelRow.appendChild(delBtn);
+            }
+            content.appendChild(labelRow);
+
+            // Capability badges row — reads from validated registry only (B-03 fix)
+            var capRow = document.createElement('div');
+            capRow.className = 'ai-assistant-panel-ep-caps';
+            var capData = (_epSafe ? _epSafe.getProfile(key) : null) || {};
+            var _capDefs = [
+                { key: 'chat',     label: 'Chat'     },
+                { key: 'share',    label: 'Share'    },
+                { key: 'feedback', label: 'Feedback' },
+                { key: 'training', label: 'Training' },
+            ];
+            for (var _ci = 0; _ci < _capDefs.length; _ci++) {
+                var _cd  = _capDefs[_ci];
+                var _has = !!(capData[_cd.key]);
+                var cap  = document.createElement('span');
+                cap.className   = 'ai-assistant-panel-ep-cap ' +
+                    (_has ? 'ai-assistant-panel-ep-cap--on' : 'ai-assistant-panel-ep-cap--off');
+                cap.textContent = _cd.label;
+                cap.setAttribute('title', _cd.label + ': ' + (_has ? 'configured' : 'not configured'));
+                capRow.appendChild(cap);
+            }
+            content.appendChild(capRow);
+
+            // SSRF advisory badge — rendered only when the Python build flagged
+            // one or more URL fields as targeting a private/reserved host.
+            // _warn is a string array of field names, e.g. ["chat", "share"].
+            // Reads exclusively via getProfile() (V-09 safe path, never raw global).
+            var _warnList = Array.isArray(capData._warn) ? capData._warn : [];
+            if (_warnList.length > 0) {
+                var ssrfBadge = document.createElement('span');
+                ssrfBadge.className   = 'ai-assistant-panel-ep-ssrf-warn';
+                ssrfBadge.textContent = '\u26a0 SSRF advisory';
+                ssrfBadge.setAttribute(
+                    'title',
+                    'Private/reserved host detected in: ' + _warnList.join(', ') +
+                    '. Local-dev only \u2014 do not use in production.'
+                );
+                ssrfBadge.setAttribute(
+                    'aria-label',
+                    'SSRF advisory: private host in fields ' + _warnList.join(', ')
+                );
+                content.appendChild(ssrfBadge);
+            }
+
+            // Expandable per-card URL detail rows (lazy-built on first open)
+            var detailToggle = document.createElement('button');
+            detailToggle.type      = 'button';
+            detailToggle.className = 'ai-assistant-panel-ep-card-detail-toggle';
+            detailToggle.textContent = 'Show URLs';
+            detailToggle.setAttribute('aria-expanded', 'false');
+
+            var detailWrap = document.createElement('div');
+            detailWrap.className    = 'ai-assistant-panel-ep-card-detail';
+            detailWrap.style.display = 'none';
+
+            detailToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var _isOpen = detailWrap.style.display !== 'none';
+                detailWrap.style.display = _isOpen ? 'none' : '';
+                detailToggle.textContent = _isOpen ? 'Show URLs' : 'Hide URLs';
+                detailToggle.setAttribute('aria-expanded', _isOpen ? 'false' : 'true');
+                if (!_isOpen && !detailWrap.firstChild) {
+                    // Lazy-build detail rows on first expand
+                    for (var _dfi = 0; _dfi < _FEATURE_DEFS.length; _dfi++) {
+                        var _dfd = _FEATURE_DEFS[_dfi];
+                        var resolved = _epSafe ? _epSafe.resolveFor(_dfd.key, key) : '';
+                        var fullUrl  = resolved ? (resolved + _dfd.suffix) : '';
+
+                        var dRow = document.createElement('div');
+                        dRow.className = 'ai-assistant-panel-ep-card-detail-row';
+
+                        var dLbl = document.createElement('span');
+                        dLbl.className   = 'ai-assistant-panel-ep-card-detail-label';
+                        dLbl.textContent = _dfd.label + ':';
+
+                        var dUrl = document.createElement('span');
+                        dUrl.className   = 'ai-assistant-panel-ep-card-detail-url';
+                        dUrl.textContent = fullUrl || 'Not configured';
+                        if (fullUrl) { dUrl.setAttribute('title', fullUrl); }
+
+                        dRow.appendChild(dLbl);
+                        dRow.appendChild(dUrl);
+                        if (fullUrl) {
+                            dRow.appendChild(_makeCopyBtn(function (u) {
+                                return function () { return u; };
+                            }(fullUrl)));
+                        }
+                        detailWrap.appendChild(dRow);
+                    }
+                }
+            });
+            content.appendChild(detailToggle);
+            content.appendChild(detailWrap);
+
+            card.appendChild(radio);
+            card.appendChild(content);
+            container.appendChild(card);
+
+            // Profile switch handler
+            radio.addEventListener('change', function () {
+                if (!radio.checked || !_epSafe) { return; }
+                var switched = _epSafe.setActive(key);
+                if (!switched) { return; }
+                _deactivateAllCards(container);
+                card.classList.add('ai-assistant-panel-ep-card--active');
+                activeBadge.style.display = '';
+                radio.checked = true;
+
+                var _epLbl5 = document.querySelector('.ai-assistant-panel-ep-btn-label');
+                if (_epLbl5) { _epLbl5.textContent = label; }
+
+                if (_profileHint) {
+                    _profileHint.textContent = '✓ Switched to: ' + label;
+                    setTimeout(function () {
+                        if (_profileHint) {
+                            _profileHint.textContent =
+                                'Select a proxy backend. Switching is instant — no page reload needed.';
+                        }
+                    }, 2500);
+                }
+                // _refreshAll() is also called via the onChange observer, but
+                // calling it here gives zero-latency feedback if the observer
+                // is not yet registered.
+                _lastSwitchTs = Date.now();
+                _refreshAll();
+            });
+        }
+
+        /**
+         * Clear active-state CSS and aria from all cards in *container*.
+         *
+         * Parameters
+         * ----------
+         * container : HTMLElement
+         */
+        function _deactivateAllCards(container) {
+            if (!container) { return; }
+            var cards = container.querySelectorAll('.ai-assistant-panel-ep-card');
+            for (var _di = 0; _di < cards.length; _di++) {
+                cards[_di].classList.remove('ai-assistant-panel-ep-card--active');
+                var _r = cards[_di].querySelector('input[type="radio"]');
+                if (_r) { _r.checked = false; }
+                var _b = cards[_di].querySelector('.ai-assistant-panel-ep-badge--active');
+                if (_b) { _b.style.display = 'none'; }
+            }
+        }
+
+        /**
+         * Create a copy-to-clipboard button.
+         *
+         * Parameters
+         * ----------
+         * source : Function | HTMLInputElement
+         *     If a Function, called on each click to get the string to copy.
+         *     If an HTMLInputElement, reads .value on each click.
+         *     This unified signature combines Source A's function-getter and
+         *     Source B's input-element patterns.
+         *
+         * Returns
+         * -------
+         * HTMLButtonElement
+         */
+        function _makeCopyBtn(source) {
+            var btn = document.createElement('button');
+            btn.type      = 'button';
+            btn.className = 'ai-assistant-panel-ep-copy-btn';
+            btn.setAttribute('aria-label', 'Copy to clipboard');
+            btn.setAttribute('title', 'Copy');
+            btn.textContent = '⎘';
+            var _cTimer = null;
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var val = (typeof source === 'function')
+                    ? source()
+                    : (source && typeof source.value === 'string' ? source.value : '');
+                if (!val) { return; }
+                _fallbackCopy(
+                    val,
+                    function () {
+                        btn.textContent = '✓';
+                        clearTimeout(_cTimer);
+                        _cTimer = setTimeout(function () { btn.textContent = '⎘'; }, 1500);
+                    },
+                    function () {
+                        btn.textContent = '✗';
+                        clearTimeout(_cTimer);
+                        _cTimer = setTimeout(function () { btn.textContent = '⎘'; }, 1500);
+                    }
+                );
+            });
+            return btn;
+        }
+
+        /**
+         * Create an inline health-check button (⬤) for a URL input row.
+         * Pings the URL with fetch HEAD / no-cors; 5-second AbortController timeout.
+         * Shows result for 8 seconds then resets to neutral.
+         *
+         * Parameters
+         * ----------
+         * inp      : HTMLInputElement   Read-only URL input to read from.
+         * fdLabel  : string             Feature label for aria text.
+         *
+         * Returns
+         * -------
+         * HTMLButtonElement
+         */
+        function _makeHealthBtn(inp, fdLabel) {
+            var btn = document.createElement('button');
+            btn.type      = 'button';
+            btn.className = 'ai-assistant-panel-ep-health-btn';
+            btn.setAttribute('aria-label', 'Check ' + fdLabel + ' endpoint health');
+            btn.textContent = '⬤';
+            btn.title       = 'Ping endpoint';
+            var _busy = false;
+
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (_busy) { return; }
+                var url = inp.value || '';
+                if (!url) {
+                    btn.className = 'ai-assistant-panel-ep-health-btn ai-assistant-panel-ep-health-btn--off';
+                    btn.title     = 'No URL configured';
+                    return;
+                }
+                _busy = true;
+                btn.className = 'ai-assistant-panel-ep-health-btn ai-assistant-panel-ep-health-btn--checking';
+                btn.title     = 'Checking…';
+
+                _pingUrl(url, function (result) {
+                    var ts = new Date().toLocaleTimeString();
+                    btn.className = 'ai-assistant-panel-ep-health-btn ' +
+                        (result.ok
+                            ? 'ai-assistant-panel-ep-health-btn--ok'
+                            : 'ai-assistant-panel-ep-health-btn--err');
+                    btn.title = result.ok
+                        ? 'Reachable (' + ts + ')'
+                        : (result.status === 'timeout' ? 'Timeout (5 s)' : 'Unreachable');
+                    _busy = false;
+                    setTimeout(function () {
+                        btn.className = 'ai-assistant-panel-ep-health-btn';
+                        btn.title     = 'Ping endpoint';
+                    }, 8000);
+                });
+            });
+            return btn;
+        }
+
+        /**
+         * Create a hidden risk-badge element (shown by _wireUrlRisk on blur).
+         *
+         * Returns
+         * -------
+         * HTMLElement
+         */
+        function _makeRiskBadgeEl() {
+            var el = document.createElement('span');
+            el.className    = 'ai-assistant-panel-ep-risk-badge';
+            el.style.display = 'none';
+            return el;
+        }
+
+        /**
+         * Wire a URL input to its risk badge element.
+         * On blur: shows SSRF-block badge (error) or HTTP-only badge (warning).
+         * On focus: hides badge and clears risk CSS classes.
+         *
+         * Parameters
+         * ----------
+         * inp   : HTMLInputElement
+         * badge : HTMLElement   Created by _makeRiskBadgeEl().
+         */
+        function _wireUrlRisk(inp, badge) {
+            inp.addEventListener('blur', function () {
+                var val = inp.value.trim();
+                if (!val) { badge.style.display = 'none'; return; }
+                if (_epSafe && _epSafe.isPrivateUrl(val)) {
+                    badge.textContent = '🚫 Private / loopback address blocked (SSRF guard)';
+                    badge.className   = 'ai-assistant-panel-ep-risk-badge ai-assistant-panel-ep-risk-badge--error';
+                    badge.style.display = '';
+                    inp.classList.add('ai-assistant-panel-ep-input--risk-error');
+                    inp.classList.remove('ai-assistant-panel-ep-input--risk-warn');
+                } else if (_epSafe && _epSafe.isHttpUrl(val)) {
+                    badge.textContent = '⚠ HTTP (not HTTPS) — traffic is unencrypted';
+                    badge.className   = 'ai-assistant-panel-ep-risk-badge ai-assistant-panel-ep-risk-badge--warn';
+                    badge.style.display = '';
+                    inp.classList.add('ai-assistant-panel-ep-input--risk-warn');
+                    inp.classList.remove('ai-assistant-panel-ep-input--risk-error');
+                } else {
+                    badge.style.display = 'none';
+                    inp.classList.remove('ai-assistant-panel-ep-input--risk-error',
+                                        'ai-assistant-panel-ep-input--risk-warn');
+                }
+            });
+            inp.addEventListener('focus', function () {
+                badge.style.display = 'none';
+                inp.classList.remove('ai-assistant-panel-ep-input--risk-error',
+                                     'ai-assistant-panel-ep-input--risk-warn');
+            });
+        }
+
+        /**
+         * Wire a URL input to a validation-error span.
+         * Error shown on blur (not on every keystroke to avoid noise).
+         * Clears on focus (fresh start while typing).
+         *
+         * Parameters
+         * ----------
+         * inp   : HTMLInputElement
+         * errEl : HTMLElement   Element that shows the error string.
+         */
+        function _wireUrlValidation(inp, errEl) {
+            inp.addEventListener('blur', function () {
+                var val = inp.value.trim();
+                if (!val) {
+                    errEl.style.display = 'none';
+                    inp.classList.remove('ai-assistant-panel-ep-input--err');
+                    return;
+                }
+                var vr = _epSafe
+                    ? _epSafe.validateUrl(val)
+                    : { ok: /^https?:\/\//i.test(val), reason: 'Must start with https://' };
+                if (!vr.ok) {
+                    errEl.textContent  = vr.reason;
+                    errEl.style.display = '';
+                    inp.classList.add('ai-assistant-panel-ep-input--err');
+                } else {
+                    errEl.style.display = 'none';
+                    inp.classList.remove('ai-assistant-panel-ep-input--err');
+                }
+            });
+            inp.addEventListener('focus', function () {
+                errEl.style.display = 'none';
+                inp.classList.remove('ai-assistant-panel-ep-input--err');
+            });
+        }
+
+        /**
+         * Create a show/hide toggle button for a password input.
+         *
+         * Parameters
+         * ----------
+         * inp : HTMLInputElement   type="password" input to toggle.
+         *
+         * Returns
+         * -------
+         * HTMLButtonElement
+         */
+        function _makeShowHideBtn(inp) {
+            var btn = document.createElement('button');
+            btn.type      = 'button';
+            btn.className = 'ai-assistant-panel-ep-showhide-btn';
+            btn.textContent = 'Show';
+            btn.setAttribute('aria-label', 'Show token');
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var isHidden = inp.type === 'password';
+                inp.type = isHidden ? 'text' : 'password';
+                btn.textContent = isHidden ? 'Hide' : 'Show';
+                btn.setAttribute('aria-label', isHidden ? 'Hide token' : 'Show token');
+            });
+            return btn;
+        }
+
+        /**
+         * Ping a URL with a 5-second timeout.
+         * Uses mode:'no-cors' so fetch resolves on any HTTP response (opaque);
+         * rejects only on genuine network failure (DNS, TCP, abort).
+         *
+         * Parameters
+         * ----------
+         * url : string
+         * cb  : (result: {ok: boolean, status: string}) => void
+         */
+        function _pingUrl(url, cb) {
+            var done = false;
+            var tid  = null;
+            function _finish(result) {
+                if (done) { return; }
+                done = true;
+                clearTimeout(tid);
+                cb(result);
+            }
+            try {
+                var ac = (typeof AbortController !== 'undefined')
+                    ? new AbortController() : null;
+                tid = setTimeout(function () {
+                    if (ac) { try { ac.abort(); } catch (_) {} }
+                    _finish({ ok: false, status: 'timeout' });
+                }, 5000);
+                fetch(url, {
+                    method: 'HEAD',
+                    mode:   'no-cors',
+                    cache:  'no-store',
+                    signal: ac ? ac.signal : undefined,
+                }).then(
+                    function () { _finish({ ok: true, status: 'ok' }); },
+                    function (e) {
+                        var isAbort = e && e.name === 'AbortError';
+                        _finish({ ok: false, status: isAbort ? 'timeout' : 'error' });
+                    }
+                );
+            } catch (e) {
+                _finish({ ok: false, status: 'error' });
+            }
+        }
+
+        /**
+         * Copy *text* to the clipboard; calls onSuccess or onFail.
+         * Tries navigator.clipboard.writeText first, falls back to
+         * document.execCommand('copy') via a temporary off-screen textarea.
+         *
+         * Parameters
+         * ----------
+         * text      : string
+         * onSuccess : Function
+         * onFail    : Function
+         */
+        function _fallbackCopy(text, onSuccess, onFail) {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(onSuccess, function () {
+                        _execCopy(text, onSuccess, onFail);
+                    });
+                    return;
+                }
+            } catch (_) {}
+            _execCopy(text, onSuccess, onFail);
+        }
+
+        function _execCopy(text, onSuccess, onFail) {
+            try {
+                var ta = document.createElement('textarea');
+                ta.value    = text;
+                ta.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                var ok = document.execCommand('copy');
+                document.body.removeChild(ta);
+                if (ok) { onSuccess(); } else { onFail(); }
+            } catch (_) { onFail(); }
+        }
+
+        /**
+         * Return a human-readable relative time string for a timestamp.
+         *
+         * Parameters
+         * ----------
+         * ts : number   Milliseconds since epoch.
+         *
+         * Returns
+         * -------
+         * string   e.g. 'just now', '43 seconds ago', '2 minutes ago'
+         */
+        function _relativeTime(ts) {
+            var diff = Math.floor((Date.now() - ts) / 1000);
+            if (diff < 5)    { return 'just now'; }
+            if (diff < 60)   { return diff + ' seconds ago'; }
+            if (diff < 3600) {
+                var m = Math.floor(diff / 60);
+                return m + ' minute' + (m === 1 ? '' : 's') + ' ago';
+            }
+            var h = Math.floor(diff / 3600);
+            return h + ' hour' + (h === 1 ? '' : 's') + ' ago';
+        }
+    }
+
+        function _buildPrivacySheet() {
         var cfg = window.AI_ASSISTANT_CONFIG || {};
         var title = (typeof cfg.panelPrivacyTitle === 'string' &&
             cfg.panelPrivacyTitle) || 'Privacy & Responsibility';
@@ -5945,6 +9075,13 @@ opts.jsonPayload + '\n' +
      *   decoupled — neither knows the other's DOM reference directly.
      */
     function _buildFmtShareSheet(fmt) {
+        // Read config once at build-time (window.AI_ASSISTANT_CONFIG is set by
+        // the Python-injected inline script before this file runs and does not
+        // change at runtime). Hoisted here so every code path — including the
+        // conditional global-share and training tiers below — can access it
+        // without a ReferenceError (BUG-FIX: cfg was only declared inside the
+        // permSaveBtn click closure, making it invisible at function-body scope).
+        var cfg = window.AI_ASSISTANT_CONFIG || {};
 
         // ── Per-format metadata ────────────────────────────────────────────────
         var _fmtMeta = {
@@ -6229,7 +9366,7 @@ opts.jsonPayload + '\n' +
             var content = meta.buildStr();
             if (!content) { showNotification('Nothing to save yet', true); return; }
 
-            var cfg = window.AI_ASSISTANT_CONFIG || {};
+            // cfg is read from function-body scope (hoisted above _fmtMeta).
             var uuid = _idbGenUuid();
             var entry = {
                 uuid:     uuid,
@@ -6275,6 +9412,241 @@ opts.jsonPayload + '\n' +
 
         permSection.appendChild(permSaveBtn);
         body.appendChild(permSection);
+
+        // ── Global share tier (Option B: third card, conditional) ─────────────
+        // Rendered only when cfg.panelGlobalShareEndpoint is configured.
+        // The existing session-blob and IDB-permanent tiers are unchanged.
+        // ── Global share endpoint — profile-aware ──────────────────────
+        var _shBase  = _EP.hasProfiles()
+            ? _EP.resolve('share')
+            : (cfg.panelGlobalShareEndpoint || '');
+        var _shToken = _EP.hasProfiles()
+            ? _EP.resolveToken('shareToken')
+            : (cfg.panelGlobalShareToken || '');
+        var _shTtl   = _EP.resolveTtlDays(cfg);
+
+        if (_shBase) {
+            var globalSep = document.createElement('hr');
+            globalSep.className = 'ai-assistant-conv-share-sep';
+            body.appendChild(globalSep);
+
+            var globalWrap = document.createElement('div');
+            globalWrap.className = 'ai-assistant-conv-share-global';
+
+            var globalHead = document.createElement('div');
+            globalHead.className = 'ai-assistant-conv-share-perm-head';
+
+            var globalLbl = document.createElement('span');
+            globalLbl.className   = 'ai-assistant-conv-share-perm-lbl';
+            globalLbl.textContent = 'Global link';
+
+            var gTtlDays = _shTtl;  // resolved above (profile-aware)
+            var globalHint = document.createElement('span');
+            globalHint.className   = 'ai-assistant-conv-share-perm-hint';
+            globalHint.textContent = 'Any device · expires in ' + gTtlDays + ' day' + (gTtlDays === 1 ? '' : 's');
+
+            globalHead.appendChild(globalLbl);
+            globalHead.appendChild(globalHint);
+
+            var globalLinkRow = document.createElement('div');
+            globalLinkRow.className    = 'ai-assistant-conv-share-perm-link';
+            globalLinkRow.style.display = 'none';
+            var globalInput = document.createElement('input');
+            globalInput.type      = 'text';
+            globalInput.readOnly  = true;
+            globalInput.className = 'ai-assistant-conv-share-perm-input';
+            var globalCopyBtn = document.createElement('button');
+            globalCopyBtn.type      = 'button';
+            globalCopyBtn.className = 'ai-assistant-conv-share-perm-copy-btn';
+            globalCopyBtn.textContent = 'Copy';
+            globalCopyBtn.addEventListener('click', function () {
+                navigator.clipboard && navigator.clipboard.writeText(globalInput.value).catch(function () {});
+                globalCopyBtn.textContent = 'Copied!';
+                setTimeout(function () { globalCopyBtn.textContent = 'Copy'; }, 2000);
+            });
+            globalLinkRow.appendChild(globalInput);
+            globalLinkRow.appendChild(globalCopyBtn);
+
+            var globalExpiry = document.createElement('p');
+            globalExpiry.className    = 'ai-assistant-conv-share-perm-note';
+            globalExpiry.style.display = 'none';
+
+            var globalSaveBtn = document.createElement('button');
+            globalSaveBtn.type      = 'button';
+            globalSaveBtn.className = 'ai-assistant-conv-share-perm-save-btn';
+            globalSaveBtn.textContent = 'Save globally';
+
+            var globalStatus = document.createElement('p');
+            globalStatus.className    = 'ai-assistant-conv-share-perm-note';
+            globalStatus.style.display = 'none';
+
+            globalSaveBtn.addEventListener('click', function () {
+                var gContent = meta.buildStr ? meta.buildStr() : '';
+                if (!gContent) {
+                    globalStatus.textContent = 'Nothing to save yet.';
+                    globalStatus.style.display = '';
+                    return;
+                }
+                globalSaveBtn.disabled    = true;
+                globalSaveBtn.textContent = 'Saving…';
+                globalStatus.style.display = 'none';
+                _postGlobalShare(
+                    _shBase + '/v1/share',
+                    _shToken,
+                    {
+                        content:  gContent,
+                        mimeType: meta.mime || 'text/html;charset=utf-8',
+                        ext:      meta.ext  || '.html',
+                        title:    (cfg.panelTitle || 'AI Assistant') + ' — ' +
+                                  new Date().toLocaleDateString(),
+                        ttlDays:  gTtlDays,
+                    },
+                    function onGlobalShareSuccess(result) {
+                        globalSaveBtn.disabled    = false;
+                        globalSaveBtn.textContent = 'Save globally';
+                        globalInput.value         = result.url || '';
+                        globalLinkRow.style.display = '';
+                        globalSaveBtn.style.display  = 'none';
+                        globalExpiry.textContent = 'Expires ' + (result.expiresAt
+                            ? new Date(result.expiresAt).toLocaleDateString() : 'in ' + gTtlDays + ' days');
+                        globalExpiry.style.display = '';
+                    },
+                    function onGlobalShareError(err) {
+                        globalSaveBtn.disabled    = false;
+                        globalSaveBtn.textContent = 'Save globally';
+                        var gMsg = err.status === 429
+                            ? 'Rate limit reached — try again in an hour.'
+                            : err.status === 401
+                            ? 'Not authorized. Check endpoint configuration.'
+                            : 'Global save failed — try again or save locally.';
+                        globalStatus.textContent   = gMsg;
+                        globalStatus.style.display = '';
+                    }
+                );
+            });
+
+            globalWrap.appendChild(globalHead);
+            globalWrap.appendChild(globalSaveBtn);
+            globalWrap.appendChild(globalLinkRow);
+            globalWrap.appendChild(globalExpiry);
+            globalWrap.appendChild(globalStatus);
+            body.appendChild(globalWrap);
+        }
+
+        // ── Training contribution tier (P3, conditional) ──────────────────────
+        // ── Training contribution endpoint — profile-aware ────────────
+        var _trBase = _EP.hasProfiles()
+            ? _EP.resolve('training')
+            : (cfg.panelTrainingEndpoint || '');
+
+        if (_trBase) {
+            var CONSENT_VERSION = 'v1.0';
+
+            var trainSep = document.createElement('hr');
+            trainSep.className = 'ai-assistant-conv-share-sep';
+            body.appendChild(trainSep);
+
+            var trainWrap = document.createElement('div');
+            trainWrap.className = 'ai-assistant-conv-share-training';
+
+            var trainHead = document.createElement('div');
+            trainHead.className = 'ai-assistant-conv-share-perm-head';
+            var trainLbl = document.createElement('span');
+            trainLbl.className   = 'ai-assistant-conv-share-perm-lbl';
+            trainLbl.textContent = 'Contribute to training';
+            var trainHint = document.createElement('span');
+            trainHint.className   = 'ai-assistant-conv-share-perm-hint';
+            trainHint.textContent = 'Help improve the model';
+            trainHead.appendChild(trainLbl);
+            trainHead.appendChild(trainHint);
+
+            var consentRow = document.createElement('label');
+            consentRow.className = 'ai-assistant-conv-share-consent';
+            var consentChk = document.createElement('input');
+            consentChk.type = 'checkbox';
+            var consentTxt = document.createElement('span');
+            consentTxt.textContent = 'I consent to this conversation being used to improve the model';
+            consentRow.appendChild(consentChk);
+            consentRow.appendChild(consentTxt);
+
+            var trainBtn = document.createElement('button');
+            trainBtn.type      = 'button';
+            trainBtn.className = 'ai-assistant-conv-share-perm-save-btn';
+            trainBtn.textContent = 'Contribute';
+            trainBtn.disabled    = true;   // gated on consent checkbox
+
+            consentChk.addEventListener('change', function () {
+                trainBtn.disabled = !consentChk.checked;
+            });
+
+            var trainStatus = document.createElement('p');
+            trainStatus.className    = 'ai-assistant-conv-share-perm-note';
+            trainStatus.style.display = 'none';
+
+            trainBtn.addEventListener('click', function () {
+                if (!consentChk.checked) { return; }
+                var tRecords = [];
+                // Build records from _feedbackStore (BUG-01 fix ensures query/answer present)
+                for (var ti = 0; ti < _answerCount; ti++) {
+                    var tfb = _feedbackStore[ti] || {};
+                    if (!tfb.query && !tfb.answer) { continue; }
+                    tRecords.push({
+                        answerIndex: ti,
+                        query:       tfb.query       || '',
+                        answer:      tfb.answer      || '',
+                        ratingValue: tfb.ratingValue != null ? tfb.ratingValue : null,
+                        ratingLabel: tfb.ratingLabel || '',
+                        message:     tfb.message     || '',
+                        ts:          tfb.ts          || Date.now(),
+                    });
+                }
+                if (!tRecords.length) {
+                    trainStatus.textContent   = 'No rated answers to contribute yet.';
+                    trainStatus.style.display = '';
+                    return;
+                }
+                trainBtn.disabled    = true;
+                trainBtn.textContent = 'Contributing…';
+                trainStatus.style.display = 'none';
+                _postTrainingContribution(
+                    _trBase + '/v1/contribute',
+                    {
+                        schemaVersion:  1,
+                        consentFlag:    true,
+                        consentVersion: CONSENT_VERSION,
+                        sessionId:      _sessionId,
+                        page:           location ? location.href : '',
+                        model:          _getActiveModel ? _getActiveModel(cfg) : null,
+                        records:        tRecords,
+                    },
+                    function onContributeSuccess(result) {
+                        trainBtn.disabled    = false;
+                        trainBtn.textContent = 'Contribute';
+                        consentChk.checked   = false;
+                        trainBtn.disabled    = true;
+                        trainStatus.textContent   = 'Thank you! ' + (result.rows || 0) + ' record(s) contributed.';
+                        trainStatus.style.display = '';
+                    },
+                    function onContributeError(err) {
+                        trainBtn.disabled    = false;
+                        trainBtn.textContent = 'Contribute';
+                        var tMsg = err.status === 429
+                            ? 'Rate limit reached — try again in an hour.'
+                            : err.status === 422
+                            ? 'Contribution rejected: check consent version.'
+                            : 'Contribution failed. Please try again.';
+                        trainStatus.textContent   = tMsg;
+                        trainStatus.style.display = '';
+                    }
+                );
+            });
+
+            trainWrap.appendChild(trainHead);
+            trainWrap.appendChild(consentRow);
+            trainWrap.appendChild(trainBtn);
+            trainWrap.appendChild(trainStatus);
+            body.appendChild(trainWrap);
+        }
 
         // ── Action row — Create share link (session blob) ─────────────────────
         var actionRow = document.createElement('div');
@@ -6510,7 +9882,7 @@ opts.jsonPayload + '\n' +
      * item is a real button — clicking it triggers the same handler as the
      * underlying control.  Closing happens on outside-click or Escape.
      *
-     * @param {object} hooks  { onPrivacy, onTerms, onShare, onModel }
+     * @param {object} hooks  { onPrivacy, onTerms, onShare, onModel, onEndpoints }
      *                        Click handlers, each optional.
      * @returns {HTMLElement}
      */
@@ -6542,6 +9914,7 @@ opts.jsonPayload + '\n' +
         }
 
         addItem(ICONS.model,    'Choose a model',            hooks && hooks.onModel);
+        addItem(ICONS.endpoint, 'Endpoints',                 hooks && hooks.onEndpoints);
         addItem(ICONS.privacy,  'Privacy & Responsibility',  hooks && hooks.onPrivacy);
         addItem(ICONS.terms,    'Terms of Service',          hooks && hooks.onTerms);
         addItem(ICONS.share,    'Share',                     hooks && hooks.onShare);
@@ -6549,7 +9922,8 @@ opts.jsonPayload + '\n' +
 
         // Keyboard shortcut hint row — shown at the bottom of the menu when a
         // shortcut is configured.  Now interactive: left-click = minimize,
-        // right-click = close (same contract as the header minimize icon-btn).
+        // right-click = close · Shift+right-click = browser native menu
+        // (same contract as the subbar kbd-hint and header minimize button).
         var kbdHintLabel = _shortcutLabel();
         if (kbdHintLabel) {
             var sep = document.createElement('hr');
@@ -6561,8 +9935,8 @@ opts.jsonPayload + '\n' +
             kbdRow.className = 'ai-assistant-panel-hamburger-kbd-row';
             kbdRow.setAttribute('role', 'menuitem');
             kbdRow.setAttribute('tabindex', '0');
-            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click to close)');
-            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close';
+            kbdRow.setAttribute('aria-label', 'Minimize panel \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
+            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
 
             var kbdIcon = document.createElement('span');
             kbdIcon.setAttribute('aria-hidden', 'true');
@@ -6585,7 +9959,10 @@ opts.jsonPayload + '\n' +
                 minimizeAIPanel();
             });
             // Right-click: close hamburger menu then fully close panel.
+            // Shift+Right-click: pass through to the browser's native context menu
+            // (unlocks browser/OS quick actions without triggering a panel close).
             kbdRow.addEventListener('contextmenu', function (e) {
+                if (e.shiftKey) { return; }   // Shift held — let browser menu appear.
                 e.preventDefault();
                 pop.setAttribute('data-open', 'false');
                 closeAIPanel();
@@ -6912,6 +10289,17 @@ opts.jsonPayload + '\n' +
         var titleSpan = document.createElement('span');
         titleSpan.textContent = title;
 
+        // ── Hamburger button — lives in the header-title, before the logo ──────
+        // Declared here (not in the subbar section) so all downstream wiring
+        // (click handler, outside-click closer, Escape handler) can reference
+        // the same variable without any hoisting gap.
+        var hamburgerBtn = null;
+        if (cfg.panelHamburger !== false) {
+            hamburgerBtn = _createIconBtn('hamburger', 'Open menu', ICONS.menu);
+            hamburgerBtn.title = 'Open menu';
+            headerTitle.appendChild(hamburgerBtn);
+        }
+
         headerTitle.appendChild(logo);
         headerTitle.appendChild(titleSpan);
 
@@ -6954,76 +10342,31 @@ opts.jsonPayload + '\n' +
         header.appendChild(headerTitle);
         header.appendChild(headerActions);
 
-        // ── Sub-bar: hamburger (Phase B) + keyboard hint (R7) + privacy link (R2) ──
+        // ── Sub-bar: keyboard hint (R7) + privacy link (R2) ──────────────────
         //
         // Layout (left → right):
         //
-        //    [☰ hamburger]  [⌨ kbd-hint]   . . .   [Privacy] [Terms] [model ▾] [↗ Share]
+        //    [☰ hamburger ← now in header-title]
+        //    [Source ▸] [⌨ kbd-hint]  . . .  [Model ▾] [Endpoints ▾] [Privacy] [Terms] [↗ Share]
         //
-        // The hamburger button is ADDITIVE: it duplicates each sheet entry-
-        // point in a single popover so narrow viewports can collapse the
-        // right-hand cluster gracefully via CSS without losing access to
-        // any control.  The pre-existing sub-bar layout is preserved
-        // exactly when ``cfg.panelHamburger === false``.
+        // The hamburger popover is still opened by the header button and wired
+        // below.  The right overflow button (⋯) shares the same popover for
+        // narrow viewports.
         var cfgRef = window.AI_ASSISTANT_CONFIG || {};
         var subbar = document.createElement('div');
         subbar.className = 'ai-assistant-panel-subbar';
 
-        // ── Left cluster: hamburger (optional) + keyboard hint ──
+        // ── Left cluster ──────────────────────────────────────────────────────
+        // Note: hamburger button is in div.ai-assistant-panel-header-title now.
+        // The subbar left cluster holds only the Source button and the kbd hint.
         var leftCluster = document.createElement('div');
         leftCluster.className = 'ai-assistant-panel-subbar-left';
-
-        var hamburgerBtn = null;
-        var hamburgerMenu = null;
-        if (cfgRef.panelHamburger !== false) {
-            hamburgerBtn = _createIconBtn(
-                'hamburger', 'Open menu', ICONS.menu);
-            hamburgerBtn.title = 'Open menu';
-            leftCluster.appendChild(hamburgerBtn);
-        }
-
-        var kbdLabel = _shortcutLabel();
-        if (kbdLabel) {
-            var hint = document.createElement('span');
-            hint.className = 'ai-assistant-panel-kbd-hint';
-            hint.setAttribute('role', 'button');
-            hint.setAttribute('tabindex', '0');
-            hint.setAttribute('aria-label', 'Minimize panel (right-click to close)');
-            hint.title = 'Left-click: minimize  \u00b7  Right-click: close';
-            var hIcon = document.createElement('span');
-            hIcon.setAttribute('aria-hidden', 'true');
-            hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
-            hint.appendChild(hIcon);
-            // Render each chord token as its own <kbd>.
-            kbdLabel.split('+').forEach(function (tok, i, arr) {
-                var k = document.createElement('kbd');
-                k.textContent = tok.trim();
-                hint.appendChild(k);
-                if (i < arr.length - 1) {
-                    hint.appendChild(document.createTextNode('+'));
-                }
-            });
-            // Left-click: minimize panel.
-            hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
-            // Right-click: fully close panel.
-            hint.addEventListener('contextmenu', function (e) {
-                e.preventDefault();
-                closeAIPanel();
-            });
-            // Keyboard: Enter / Space mirrors the left-click action.
-            hint.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    minimizeAIPanel();
-                }
-            });
-            leftCluster.appendChild(hint);
-        }
 
         // ── Left cluster: Source (GitHub) button ──────────────────────────────
         // Shown when panelSource !== false AND panelSourceUrl is a valid URL.
         // Clicking opens the Links sheet (same _openSheet contract as all other
         // sheets).  Built here so the element is available to wire() below.
+        // Order: [☰ hamburger] [Source] [kbd-hint]
         var sourceBtn = null;
         if (cfgRef.panelSource !== false) {
             sourceBtn = document.createElement('button');
@@ -7045,6 +10388,50 @@ opts.jsonPayload + '\n' +
             sourceBtn.title = 'View project source & links';
             leftCluster.appendChild(sourceBtn);
         }
+
+        var kbdLabel = _shortcutLabel();
+        if (kbdLabel) {
+            var hint = document.createElement('span');
+            hint.className = 'ai-assistant-panel-kbd-hint';
+            hint.setAttribute('role', 'button');
+            hint.setAttribute('tabindex', '0');
+            hint.setAttribute('aria-label', 'Minimize panel \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
+            hint.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
+            var hIcon = document.createElement('span');
+            hIcon.setAttribute('aria-hidden', 'true');
+            hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
+            hint.appendChild(hIcon);
+            // Render each chord token as its own <kbd>.
+            kbdLabel.split('+').forEach(function (tok, i, arr) {
+                var k = document.createElement('kbd');
+                k.textContent = tok.trim();
+                hint.appendChild(k);
+                if (i < arr.length - 1) {
+                    hint.appendChild(document.createTextNode('+'));
+                }
+            });
+            // Left-click: minimize panel.
+            hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
+            // Right-click: fully close panel.
+            // Shift+Right-click: pass through to the browser's native context menu
+            // (unlocks browser/OS quick actions without triggering a panel close).
+            hint.addEventListener('contextmenu', function (e) {
+                if (e.shiftKey) { return; }   // Shift held — let browser menu appear.
+                e.preventDefault();
+                closeAIPanel();
+            });
+            // Keyboard: Enter / Space mirrors the left-click action.
+            hint.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    minimizeAIPanel();
+                }
+            });
+            leftCluster.appendChild(hint);
+        }
+
+
+        // Endpoint config button moved to hamburger menu (onEndpoints hook).
 
         subbar.appendChild(leftCluster);
 
@@ -7128,9 +10515,55 @@ opts.jsonPayload + '\n' +
         }
 
         // Append right-cluster items in visual left→right order:
-        //   Model | Privacy | Terms | Share | Site | ⋯
+        //   Model | Endpoints | Privacy | Terms | Share | Site | ⋯
         // Items that are null (feature-flagged off) are silently skipped.
+
+        // ── Right-cluster: Endpoint config pill button ────────────────────────
+        // Pill-style button (matching modelLink pattern).  Shows the active
+        // profile label so the user always knows which proxy backend is live.
+        // Placed AFTER modelLink so model selection comes first, then config.
+        var epRightBtn = document.createElement('button');
+        epRightBtn.type      = 'button';
+        epRightBtn.className =
+            'ai-assistant-panel-privacy-link ai-assistant-panel-model-link ai-assistant-panel-ep-right-btn';
+        epRightBtn.setAttribute('aria-label', 'Open Endpoint Configuration');
+        epRightBtn.setAttribute('aria-haspopup', 'dialog');
+        epRightBtn.setAttribute('aria-expanded', 'false');
+        epRightBtn.setAttribute('aria-controls', 'ai-assistant-panel-ep-sheet');
+
+        var epRightIc = document.createElement('span');
+        epRightIc.setAttribute('aria-hidden', 'true');
+        epRightIc.innerHTML = ICONS.endpoint;  // ICONS constant — safe.
+        epRightBtn.appendChild(epRightIc);
+
+        var epRightLbl = document.createElement('span');
+        epRightLbl.className  = 'ai-assistant-panel-model-link-label ai-assistant-panel-ep-btn-label';
+        // Resolve the active profile label for the initial button text.
+        (function () {
+            var _epBtnLabel = 'Endpoints';
+            if (typeof _EP !== 'undefined' && _EP && _EP.hasProfiles && _EP.hasProfiles()) {
+                var _activeProfiles = _EP.list();
+                var _activeKey      = _EP.getActive();
+                for (var _pi = 0; _pi < _activeProfiles.length; _pi++) {
+                    if (_activeProfiles[_pi].key === _activeKey) {
+                        _epBtnLabel = _activeProfiles[_pi].label;
+                        break;
+                    }
+                }
+            }
+            epRightLbl.textContent = _epBtnLabel;
+        }());
+        epRightBtn.appendChild(epRightLbl);
+
+        var epRightChev = document.createElement('span');
+        epRightChev.setAttribute('aria-hidden', 'true');
+        epRightChev.innerHTML = ICONS.chevronDown;  // ICONS constant — safe.
+        epRightBtn.appendChild(epRightChev);
+
+        epRightBtn.title = 'Endpoint Configuration';
+
         if (modelLink)  rightCluster.appendChild(modelLink);
+        rightCluster.appendChild(epRightBtn);
         rightCluster.appendChild(privacyLink);
         if (termsLink)  rightCluster.appendChild(termsLink);
         if (shareLink)  rightCluster.appendChild(shareLink);
@@ -7575,6 +11008,12 @@ opts.jsonPayload + '\n' +
         panel.appendChild(convShareSheetHtml);
         panel.appendChild(convShareSheetTxt);
 
+        // ── Endpoint Configuration Sheet ──────────────────────────────────────
+        // Always built and appended so _openSheet() can include it in its
+        // close-all sweep.  Content adapts gracefully to zero/one/many profiles.
+        var epSheet = _buildEndpointConfigSheet();
+        panel.appendChild(epSheet);
+
         /**
          * Open exactly one sheet at a time.  Pass null to close all.
          * @param {HTMLElement|null} target
@@ -7609,7 +11048,7 @@ opts.jsonPayload + '\n' +
          */
         function _openSheet(target) {
             [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet,
-             convShareSheetJson, convShareSheetHtml, convShareSheetTxt].forEach(function (s) {
+             convShareSheetJson, convShareSheetHtml, convShareSheetTxt, epSheet].forEach(function (s) {
                 if (!s) return;
                 s.setAttribute('data-open', (s === target) ? 'true' : 'false');
             });
@@ -7688,6 +11127,33 @@ opts.jsonPayload + '\n' +
                 _openSheet(modelSheet);
             });
         }
+
+        // ── Endpoint sheet click handlers ─────────────────────────────────────
+        // The left-cluster entry-point is the hamburger menu (onEndpoints hook).
+        // The right-cluster pill button also opens the same sheet.
+        // aria-expanded mirrors the open state so screen readers announce it.
+        if (epRightBtn && epSheet) {
+            epRightBtn.setAttribute('aria-expanded', 'false');
+            epRightBtn.addEventListener('click', function () {
+                _openSheet(epSheet);
+            });
+        }
+        // Keep aria-expanded on epRightBtn in sync with the sheet's open state.
+        // Observing data-open via MutationObserver is cleaner than hooking every
+        // _openSheet / _closeSheet call site.
+        (function () {
+            if (!epRightBtn || !epSheet) return;
+            var _epObs = new MutationObserver(function (mutations) {
+                mutations.forEach(function (m) {
+                    if (m.attributeName === 'data-open') {
+                        var isOpen = epSheet.getAttribute('data-open') === 'true';
+                        epRightBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    }
+                });
+            });
+            _epObs.observe(epSheet, { attributes: true, attributeFilter: ['data-open'] });
+        }());
+
         privacyLink.addEventListener('click', function () { _openSheet(privacySheet); });
         if (termsLink && termsSheet) {
             termsLink.addEventListener('click', function () { _openSheet(termsSheet); });
@@ -7749,11 +11215,12 @@ opts.jsonPayload + '\n' +
         var hamburgerMenuEl = null;
         if (hamburgerBtn) {
             hamburgerMenuEl = _buildHamburgerMenu({
-                onModel:   modelLink   ? function () { _openSheet(modelSheet); }   : null,
-                onPrivacy: function () { _openSheet(privacySheet); },
-                onTerms:   termsSheet  ? function () { _openSheet(termsSheet); }   : null,
-                onShare:   shareSheet  ? function () { _openSheet(shareSheet); }   : null,
-                onLinks:   linksSheet  ? function () { _openSheet(linksSheet); }   : null,
+                onModel:     modelLink   ? function () { _openSheet(modelSheet); }   : null,
+                onEndpoints: epSheet     ? function () { _openSheet(epSheet); }      : null,
+                onPrivacy:   function () { _openSheet(privacySheet); },
+                onTerms:     termsSheet  ? function () { _openSheet(termsSheet); }   : null,
+                onShare:     shareSheet  ? function () { _openSheet(shareSheet); }   : null,
+                onLinks:     linksSheet  ? function () { _openSheet(linksSheet); }   : null,
             });
             panel.appendChild(hamburgerMenuEl);
 
@@ -7805,10 +11272,11 @@ opts.jsonPayload + '\n' +
              * of collapsing the entire cluster at once.  Priority order (first
              * to last to hide):
              *
-             *   modelLink    575 px
-             *   privacyLink  475 px
-             *   termsLink    350 px
-             *   shareLink    300 px
+             *   modelLink        575 px
+             *   epRightBtn       525 px
+             *   privacyLink      475 px
+             *   termsLink        350 px
+             *   shareLink        300 px
              *
              * Sets [data-overflow-hidden] on each item so CSS max-width + opacity
              * transitions can animate the collapse.  Sets [data-overflow-visible]
@@ -7822,8 +11290,9 @@ opts.jsonPayload + '\n' +
             function _updateSubbarOverflow(w) {
                 var slots = [
                     // Hide order: rightmost carriage departs first.
-                    // Visual order left→right: Model | Privacy | Terms | Share
+                    // Visual order left→right: Model | Endpoints | Privacy | Terms | Share
                     { el: modelLink,   px: 575 },   /* leftmost  — exits last   */
+                    { el: epRightBtn,  px: 525 },
                     { el: privacyLink, px: 475 },
                     { el: termsLink,   px: 350 },
                     { el: shareLink,   px: 300 },   /* rightmost — exits first  */
@@ -7862,8 +11331,13 @@ opts.jsonPayload + '\n' +
         closeBtn.addEventListener('click', closeAIPanel);
 
         minimizeBtn.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
-        // Right-click on the minimize button: fully close (mirrors kbd-hint / kbd-row contract).
+        // Right-click: fully close panel (mirrors kbd-hint / kbd-row contract).
+        // Shift+Right-click: pass through to the browser's native context menu
+        // (unlocks browser/OS quick actions without triggering a panel close).
+        minimizeBtn.setAttribute('aria-label', 'Minimize panel \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
+        minimizeBtn.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
         minimizeBtn.addEventListener('contextmenu', function (e) {
+            if (e.shiftKey) { return; }   // Shift held — let browser menu appear.
             e.preventDefault();
             closeAIPanel();
         });
@@ -12106,9 +15580,14 @@ opts.jsonPayload + '\n' +
         if (activeModel) {
             // Per-model endpoint wins; falls back to shared panelApiUrl so
             // the convenient list[str] config shape still works.
-            endpoint  = (activeModel.endpoint || '').trim() ||
-                        (typeof cfg.panelApiUrl === 'string'
-                            ? cfg.panelApiUrl.trim() : '');
+            // Endpoint resolution priority:
+            // 1. Per-model endpoint field in panelApiModels (most specific)
+            // 2. Active _EP profile chat base (profile-level override)
+            // 3. Legacy shared panelApiUrl (backward compat)
+            var _epChatBase = _EP.hasProfiles() ? _EP.resolve('chat') : '';
+            endpoint = (activeModel.endpoint || '').trim()
+                || (_epChatBase ? _epChatBase + '/v1/chat/completions' : '')
+                || (typeof cfg.panelApiUrl === 'string' ? cfg.panelApiUrl.trim() : '');
             modelName = activeModel.model || activeModel.id;
             provider  = (activeModel.provider || 'custom').toLowerCase();
         } else {
