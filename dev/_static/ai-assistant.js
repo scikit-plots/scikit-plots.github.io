@@ -9384,8 +9384,9 @@ opts.jsonPayload + '\n' +
         var sessionNote = document.createElement('p');
         sessionNote.className = 'ai-assistant-conv-share-session-note';
         sessionNote.textContent =
-            'Session link is valid while this browser tab is open. ' +
-            'Use \u201cSave permanently\u201d below for a lasting link.';
+            '\u26A0\uFE0F Session link \u2014 valid only while this browser tab is open. ' +
+            'Close this tab and the link stops working. ' +
+            'Use \u201cSave permanently\u201d or \u201cSave globally\u201d below for a lasting link.';
         body.appendChild(sessionNote);
 
         // ── Permanent storage section (IndexedDB) ─────────────────────────────
@@ -9402,11 +9403,11 @@ opts.jsonPayload + '\n' +
 
         var permLbl = document.createElement('span');
         permLbl.className   = 'ai-assistant-conv-share-perm-lbl';
-        permLbl.textContent = 'Permanent link';
+        permLbl.textContent = '\uD83D\uDCBE Permanent link';
 
         var permHint = document.createElement('span');
         permHint.className   = 'ai-assistant-conv-share-perm-hint';
-        permHint.textContent = 'Saved in this browser until deleted';
+        permHint.textContent = 'This device only \u00B7 works offline until deleted';
 
         permHead.appendChild(permLbl);
         permHead.appendChild(permHint);
@@ -9466,8 +9467,8 @@ opts.jsonPayload + '\n' +
         permNote.className =
             'ai-assistant-conv-share-session-note ai-assistant-conv-share-perm-note';
         permNote.textContent =
-            'Works in this browser until deleted or storage is cleared. ' +
-            'Not accessible from other devices or browsers.';
+            'Works in this browser until deleted or browser data is cleared. ' +
+            'Does not work on other devices or browsers.';
         permSection.appendChild(permNote);
 
         // "Save permanently" action button
@@ -9532,13 +9533,23 @@ opts.jsonPayload + '\n' +
         body.appendChild(permSection);
 
         // ── Global share tier (Option B: third card, conditional) ─────────────
-        // Rendered only when cfg.panelGlobalShareEndpoint is configured.
-        // The existing session-blob and IDB-permanent tiers are unchanged.
-        // ── Global share endpoint — profile-aware ──────────────────────
-        var _shBase  = _EP.hasProfiles()
-            ? _EP.resolve('share')
-            : (cfg.panelGlobalShareEndpoint || '');
-        var _shToken = _EP.hasProfiles()
+        // Rendered only when a share endpoint is reachable from the active
+        // configuration — via a profile or the legacy flat key.
+        //
+        // ── Global share endpoint — profile-aware with legacy fallback ──
+        //
+        // Resolution priority (first non-empty wins):
+        //   1. Active profile's `share` URL  (_EP.resolve('share'))
+        //   2. cfg.panelGlobalShareEndpoint  (legacy flat key)
+        //
+        // When a profile exists but its `share` field is '' (e.g. an
+        // Advanced-mode custom profile where "Share URL" was left blank,
+        // or a conf.py profile with "share": ""), the active profile's URL
+        // is empty and we fall through to the legacy key — the "Save
+        // globally" button still appears without a rebuild or profile re-add.
+        var _profileShareUrl = _EP.hasProfiles() ? _EP.resolve('share') : '';
+        var _shBase  = _profileShareUrl || (cfg.panelGlobalShareEndpoint || '');
+        var _shToken = _profileShareUrl
             ? _EP.resolveToken('shareToken')
             : (cfg.panelGlobalShareToken || '');
         var _shTtl   = _EP.resolveTtlDays(cfg);
@@ -9556,7 +9567,7 @@ opts.jsonPayload + '\n' +
 
             var globalLbl = document.createElement('span');
             globalLbl.className   = 'ai-assistant-conv-share-perm-lbl';
-            globalLbl.textContent = 'Global link';
+            globalLbl.textContent = '\uD83C\uDF10 Global link';
 
             var gTtlDays = _shTtl;  // resolved above (profile-aware)
             var globalHint = document.createElement('span');
@@ -9652,10 +9663,16 @@ opts.jsonPayload + '\n' +
         }
 
         // ── Training contribution tier (P3, conditional) ──────────────────────
-        // ── Training contribution endpoint — profile-aware ────────────
-        var _trBase = _EP.hasProfiles()
-            ? _EP.resolve('training')
-            : (cfg.panelTrainingEndpoint || '');
+        //
+        // Resolution priority (first non-empty wins):
+        //   1. Active profile's `training` URL  (_EP.resolve('training'))
+        //   2. cfg.panelTrainingEndpoint         (legacy flat key)
+        //
+        // Same graceful fallback as _shBase: an Advanced-mode profile with
+        // training: '' falls through to the legacy key so the training section
+        // renders without requiring the user to delete and re-add the profile.
+        var _profileTrainingUrl = _EP.hasProfiles() ? _EP.resolve('training') : '';
+        var _trBase = _profileTrainingUrl || (cfg.panelTrainingEndpoint || '');
 
         if (_trBase) {
             var CONSENT_VERSION = 'v1.0';
@@ -9671,10 +9688,10 @@ opts.jsonPayload + '\n' +
             trainHead.className = 'ai-assistant-conv-share-perm-head';
             var trainLbl = document.createElement('span');
             trainLbl.className   = 'ai-assistant-conv-share-perm-lbl';
-            trainLbl.textContent = 'Contribute to training';
+            trainLbl.textContent = '\uD83C\uDF93 Contribute to training';
             var trainHint = document.createElement('span');
             trainHint.className   = 'ai-assistant-conv-share-perm-hint';
-            trainHint.textContent = 'Help improve the model';
+            trainHint.textContent = 'Only rated answers (\uD83D\uDC4D/\uD83D\uDC4E) are included';
             trainHead.appendChild(trainLbl);
             trainHead.appendChild(trainHint);
 
@@ -9683,7 +9700,7 @@ opts.jsonPayload + '\n' +
             var consentChk = document.createElement('input');
             consentChk.type = 'checkbox';
             var consentTxt = document.createElement('span');
-            consentTxt.textContent = 'I consent to this conversation being used to improve the model';
+            consentTxt.textContent = 'I consent to this conversation being used to train the AI';
             consentRow.appendChild(consentChk);
             consentRow.appendChild(consentTxt);
 
@@ -9704,12 +9721,25 @@ opts.jsonPayload + '\n' +
             trainBtn.addEventListener('click', function () {
                 if (!consentChk.checked) { return; }
                 var tRecords = [];
-                // Build records from _feedbackStore (BUG-01 fix ensures query/answer present)
-                for (var ti = 0; ti < _answerCount; ti++) {
-                    var tfb = _feedbackStore[ti] || {};
+                // BUG-02 FIX: _answerCount was never declared anywhere in this file,
+                // causing a ReferenceError on every Contribute button click.
+                //
+                // Root cause: the loop was intended to enumerate rated answers by
+                // their 0-based answerIndex, but the upper-bound variable was never
+                // introduced alongside _feedbackStore (declared at module level as {}).
+                //
+                // Correct fix: iterate Object.keys(_feedbackStore) directly.
+                // _feedbackStore is keyed by answerIndex (integer-valued), so its
+                // keys are exactly the set of answers the user has rated — no need
+                // for a separate counter.  Sort numerically so records are emitted
+                // in ascending transcript order, matching the server's expected schema.
+                var tFbKeys = Object.keys(_feedbackStore).sort(function (a, b) { return a - b; });
+                for (var ti = 0; ti < tFbKeys.length; ti++) {
+                    var tidx = parseInt(tFbKeys[ti], 10);
+                    var tfb  = _feedbackStore[tidx] || {};
                     if (!tfb.query && !tfb.answer) { continue; }
                     tRecords.push({
-                        answerIndex: ti,
+                        answerIndex: tidx,
                         query:       tfb.query       || '',
                         answer:      tfb.answer      || '',
                         ratingValue: tfb.ratingValue != null ? tfb.ratingValue : null,
@@ -9807,7 +9837,11 @@ opts.jsonPayload + '\n' +
         });
 
         actionRow.appendChild(generateBtn);
-        body.appendChild(actionRow);
+        // Primary action at the top of the save-tier list — insert before the
+        // session link row (which is hidden until the button is clicked) so the
+        // user sees the button first rather than scrolling past all three save
+        // tiers to find it at the bottom.
+        body.insertBefore(actionRow, linkRow);
         sheet.appendChild(body);
 
         // ── Option selection ──────────────────────────────────────────────────
