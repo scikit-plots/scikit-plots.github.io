@@ -130,6 +130,29 @@
     }());
 
     /**
+     * Whether thumbs-up / thumbs-down ratings are persisted to the
+     * HuggingFace training dataset (durable, survives server restarts) or
+     * kept in-memory only (lost on Space restart).
+     *
+     * Mirrors the server-side ``FEEDBACK_PERSIST_ENABLED`` flag.  The client
+     * toggle lets the end-user override the server default for their session.
+     *
+     * Storage: localStorage key ``'ai-assistant-feedback-persist'``.
+     * Absence of the key → default ``true`` (persist ON).
+     * The string ``'false'`` (written by ``_setFeedbackPersistMode``) → OFF.
+     * Any other stored value → treat as ON (fail-safe to durable).
+     *
+     * @type {boolean}
+     */
+    var _feedbackPersistEnabled = (function () {
+        try {
+            return localStorage.getItem('ai-assistant-feedback-persist') !== 'false';
+        } catch (_) {
+            return true;
+        }
+    }());
+
+    /**
      * Selected microphone device ID.
      *
      * The Web Speech API exposes no direct device-selection parameter.
@@ -4504,7 +4527,26 @@ opts.jsonPayload + '\n' +
         return el;
     }
 
-    function _buildBubbleMore(answerText) {
+    /**
+     * Build the expandable "⋯ More ▾" action-row menu button and its submenu.
+     *
+     * Parameters
+     * ----------
+     * answerText : string
+     *     Plain-text answer for TTS playback (Listen button).
+     * shareOpts : object | null
+     *     Optional. When provided, a Share menu item is rendered inside the
+     *     dropdown (below Listen). Shape:
+     *       { text: string, question: string|null, bubble: HTMLElement, answerIndex: number }
+     *     Moved here from the flat action row so the visible row stays compact:
+     *     time | copy | 👍👎 | retry | more.
+     *
+     * Returns
+     * -------
+     * HTMLElement
+     *     The wrapper element (relative-positioned anchor).
+     */
+    function _buildBubbleMore(answerText, shareOpts) {
         var wrapper = document.createElement('div');
         wrapper.className = 'ai-assistant-panel-bubble-action-more';
 
@@ -4551,6 +4593,30 @@ opts.jsonPayload + '\n' +
                 });
             }(listenBtn, answerText));
             menu.appendChild(listenBtn);
+        }
+
+        // ── Share button (moved from flat action row into menu) ───────────
+        // Placed directly after Listen so the row order stays:
+        //   time | copy | 👍👎 | retry | [more → listen, share]
+        // shareOpts is null for legacy/streaming paths that don't pass it.
+        if (shareOpts && shareOpts.text !== undefined) {
+            (function (opts) {
+                var shareMenuBtn = document.createElement('button');
+                shareMenuBtn.className = 'ai-assistant-panel-bubble-action';
+                shareMenuBtn.type = 'button';
+                shareMenuBtn.setAttribute('role', 'menuitem');
+                shareMenuBtn.setAttribute('aria-label', 'Share this answer');
+                shareMenuBtn.title = 'Share Q \u0026 A \u2014 send question + answer to another app or clipboard';
+                shareMenuBtn.innerHTML = ICONS.shareAns;
+                var shareMenuLbl = document.createElement('span');
+                shareMenuLbl.textContent = 'Share';
+                shareMenuBtn.appendChild(shareMenuLbl);
+                shareMenuBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    _shareAnswer(opts.text, opts.question, opts.bubble, shareMenuBtn, opts.answerIndex);
+                });
+                menu.appendChild(shareMenuBtn);
+            }(shareOpts));
         }
 
         // ── Toggle click handler ──────────────────────────────────────────
@@ -5012,6 +5078,302 @@ opts.jsonPayload + '\n' +
      *                                 answerIndex) keeps working unchanged.
      * @returns {HTMLElement|null}
      */
+    // ══════════════════════════════════════════════════════════════════════════
+    // FLOATING QUICK-RATE BUTTON — per-answer action row
+    // Renders as: [👍] [👎] | [⌃ expand] — slides in on action-row hover.
+    // Pattern mirrors .ai-assistant-mic-expand-btn (see CSS D4-b/c/d).
+    // ══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Build the floating quick-rate expander for a single answer bubble.
+     *
+     * Renders as a right-anchored slide-in control on the action row:
+     *   [👍]  [👎]  |  [⌃ expand popup]
+     *
+     * Clicking 👍 or 👎 fires an immediate quick-rate without requiring the
+     * full feedback form.  Clicking ⌃ reveals a compact popup with a persist
+     * mini-toggle and a link to open the full inline feedback block.
+     *
+     * Parameters
+     * ----------
+     * answerIndex : number
+     *     Zero-based stable index of the answer bubble.
+     * answerText : string
+     *     Full answer text carried in the feedback payload.
+     * questionText : string | null
+     *     The paired user question; may be null for the first turn.
+     *
+     * Returns
+     * -------
+     * HTMLElement | null
+     *     ``.ai-assistant-fbk-float-wrapper`` ready to append to the action
+     *     row.  Returns null when ``cfg.panelFeedback === false`` or when
+     *     quick-rate has already been given for this answer index.
+     *
+     * Notes
+     * -----
+     * Developer: The popup is appended to the float-wrapper (position:relative
+     *   ancestor) so it floats above the action row without displacing layout.
+     * Developer: Mini persist toggle inside the popup mirrors the §6 main
+     *   toggle.  Both call ``_setFeedbackPersistMode()`` to stay in sync.
+     * Developer: The full feedback form (``_buildFeedbackBlock``) is not
+     *   duplicated — the expand button toggles
+     *   ``.ai-assistant-panel-feedback--revealed`` on the existing block.
+     */
+    function _buildFbkFloat(answerIndex, answerText, questionText) {
+        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        if (cfg.panelFeedback === false) return null;
+        if (_feedbackGivenSet.has(answerIndex)) return null;
+
+        var popupId = 'ai-assistant-fbk-popup-' + answerIndex;
+
+        // ── Outer wrapper (position:relative anchor for popup) ────────────
+        var wrapper = document.createElement('div');
+        wrapper.className = 'ai-assistant-fbk-float-wrapper';
+
+        // ── Quick-rate pill: 👍 | 👎 | sep | expand chevron ──────────────
+        var quick = document.createElement('div');
+        quick.className = 'ai-assistant-fbk-quick';
+
+        var _quickOpts = [
+            { emoji: '\uD83D\uDC4D', sentiment: 'positive', value: 1,  title: 'Helpful' },
+            { emoji: '\uD83D\uDC4E', sentiment: 'negative', value: -1, title: 'Not helpful' },
+        ];
+
+        _quickOpts.forEach(function (opt) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'ai-assistant-fbk-quick-btn';
+            btn.setAttribute('data-sentiment', opt.sentiment);
+            btn.setAttribute('aria-pressed', 'false');
+            btn.setAttribute('aria-label', opt.title + ' (' +
+                (opt.value > 0 ? '+' : '') + opt.value + ')');
+            btn.title = opt.title;
+            btn.textContent = opt.emoji;
+
+            btn.addEventListener('click', function () {
+                if (_feedbackGivenSet.has(answerIndex)) return;
+
+                // Visual: toggle pressed state
+                quick.querySelectorAll('.ai-assistant-fbk-quick-btn').forEach(function (x) {
+                    x.setAttribute('aria-pressed', 'false');
+                });
+                btn.setAttribute('aria-pressed', 'true');
+
+                var detail = {
+                    schemaVersion:  1,
+                    ratingValue:    opt.value,
+                    ratingLabel:    opt.title,
+                    rating:         opt.title,
+                    message:        '',
+                    query:          (typeof questionText === 'string') ? questionText : '',
+                    answer:         (typeof answerText === 'string')   ? answerText   : '',
+                    model:          null,
+                    answerIndex:    answerIndex,
+                    page:           (typeof location !== 'undefined') ? location.href : '',
+                    ts:             Date.now(),
+                    sessionId:      _sessionId + '-quick-' + answerIndex,
+                    conversationId: _sessionId,
+                };
+
+                try {
+                    document.dispatchEvent(new CustomEvent(
+                        'ai-assistant-feedback', { detail: detail }));
+                } catch (_) {}
+
+                var _fbBase = _EP.hasProfiles()
+                    ? _EP.resolve('feedback')
+                    : (cfg.panelFeedbackEndpoint || '');
+                var _fbToken = _EP.hasProfiles()
+                    ? _EP.resolveToken('feedbackToken')
+                    : (cfg.panelFeedbackToken || '');
+                if (_fbBase && _feedbackPersistEnabled) {
+                    _postFeedback(_fbBase + '/v1/feedback', _fbToken, detail);
+                }
+
+                _feedbackGivenSet.add(answerIndex);
+                _feedbackStore[answerIndex] = {
+                    ratingValue:    opt.value,
+                    ratingLabel:    opt.title,
+                    message:        '',
+                    ts:             Date.now(),
+                    query:          detail.query,
+                    answer:         detail.answer,
+                    model:          null,
+                    sessionId:      detail.sessionId,
+                    conversationId: detail.conversationId,
+                    page:           detail.page,
+                };
+
+                // Replace the full feedback block with a thank-you note
+                var fbBlock = document.querySelector(
+                    '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
+                );
+                if (fbBlock) {
+                    fbBlock.innerHTML = '';
+                    var doneP = document.createElement('p');
+                    doneP.className = 'ai-assistant-panel-feedback-thanks';
+                    doneP.textContent =
+                        (typeof cfg.panelFeedbackThanks === 'string' &&
+                            cfg.panelFeedbackThanks) ||
+                        'Thanks for your feedback!';
+                    fbBlock.appendChild(doneP);
+                    fbBlock.classList.add('ai-assistant-panel-feedback--revealed');
+                }
+            });
+
+            quick.appendChild(btn);
+        });
+
+        // Separator between 👎 and expand chevron
+        var sep = document.createElement('span');
+        sep.className = 'ai-assistant-fbk-sep';
+        sep.setAttribute('aria-hidden', 'true');
+        quick.appendChild(sep);
+
+        // Expand chevron wrapper + button
+        var expWrap = document.createElement('div');
+        expWrap.className = 'ai-assistant-fbk-expand-wrapper';
+
+        var expBtn = document.createElement('button');
+        expBtn.type = 'button';
+        expBtn.className = 'ai-assistant-fbk-expand-btn';
+        expBtn.setAttribute('aria-expanded', 'false');
+        expBtn.setAttribute('aria-controls', popupId);
+        expBtn.setAttribute('aria-label', 'Feedback options');
+        expBtn.title = 'Feedback options';
+        expBtn.innerHTML =
+            '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+            '<polyline points="18 15 12 9 6 15"/></svg>';
+
+        expWrap.appendChild(expBtn);
+        quick.appendChild(expWrap);
+        wrapper.appendChild(quick);
+
+        // ── Popup ─────────────────────────────────────────────────────────
+        var popup = document.createElement('div');
+        popup.className = 'ai-assistant-fbk-popup';
+        popup.id = popupId;
+        popup.setAttribute('data-pinned', 'false');
+        popup.setAttribute('role', 'dialog');
+        popup.setAttribute('aria-label', 'Feedback options');
+
+        // Row 1: Persist toggle
+        var persistRow = document.createElement('div');
+        persistRow.className = 'ai-assistant-fbk-popup-row';
+
+        var persistIcon = document.createElement('span');
+        persistIcon.className = 'ai-assistant-fbk-popup-icon';
+        persistIcon.textContent = '\uD83D\uDCBE';
+        persistIcon.setAttribute('aria-hidden', 'true');
+
+        var persistLabel = document.createElement('span');
+        persistLabel.className = 'ai-assistant-fbk-popup-label';
+        persistLabel.textContent = 'Save to dataset';
+
+        var miniPill = document.createElement('button');
+        miniPill.type = 'button';
+        miniPill.className = 'ai-assistant-fbk-popup-mini-pill';
+        miniPill.setAttribute('role', 'switch');
+        miniPill.setAttribute('aria-checked', _feedbackPersistEnabled ? 'true' : 'false');
+        miniPill.setAttribute('aria-label', 'Save ratings to HuggingFace dataset');
+        var miniThumb = document.createElement('span');
+        miniThumb.className = 'ai-assistant-fbk-popup-mini-pill-thumb';
+        miniPill.appendChild(miniThumb);
+        miniPill.addEventListener('click', function () {
+            _setFeedbackPersistMode(!_feedbackPersistEnabled);
+        });
+
+        persistRow.appendChild(persistIcon);
+        persistRow.appendChild(persistLabel);
+        persistRow.appendChild(miniPill);
+        popup.appendChild(persistRow);
+
+        var popSep1 = document.createElement('div');
+        popSep1.className = 'ai-assistant-fbk-popup-sep';
+        popSep1.setAttribute('aria-hidden', 'true');
+        popup.appendChild(popSep1);
+
+        // Row 2: Toggle full feedback form
+        var formRow = document.createElement('div');
+        formRow.className = 'ai-assistant-fbk-popup-row';
+        formRow.style.cursor = 'pointer';
+        formRow.setAttribute('role', 'button');
+        formRow.setAttribute('tabindex', '0');
+        formRow.setAttribute('aria-label', 'Open detailed feedback form');
+
+        var formIcon = document.createElement('span');
+        formIcon.className = 'ai-assistant-fbk-popup-icon';
+        formIcon.textContent = '\uD83D\uDCAC';
+        formIcon.setAttribute('aria-hidden', 'true');
+
+        var formLabel = document.createElement('span');
+        formLabel.className = 'ai-assistant-fbk-popup-label';
+        formLabel.textContent = 'Detailed feedback \u2193';
+
+        formRow.appendChild(formIcon);
+        formRow.appendChild(formLabel);
+
+        function _toggleFullForm() {
+            var fbBlock = document.querySelector(
+                '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
+            );
+            if (!fbBlock) return;
+            fbBlock.classList.toggle('ai-assistant-panel-feedback--revealed');
+            formLabel.textContent = fbBlock.classList.contains(
+                'ai-assistant-panel-feedback--revealed'
+            ) ? 'Detailed feedback \u2191' : 'Detailed feedback \u2193';
+        }
+        formRow.addEventListener('click', _toggleFullForm);
+        formRow.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _toggleFullForm(); }
+        });
+        popup.appendChild(formRow);
+
+        var popSep2 = document.createElement('div');
+        popSep2.className = 'ai-assistant-fbk-popup-sep';
+        popSep2.setAttribute('aria-hidden', 'true');
+        popup.appendChild(popSep2);
+
+        // Row 3: Future features placeholder
+        var futureRow = document.createElement('div');
+        futureRow.className = 'ai-assistant-fbk-popup-future';
+        futureRow.setAttribute('aria-hidden', 'true');
+        futureRow.textContent = '\uD83D\uDD2E Coming soon: Flag \u00B7 Correct \u00B7 Bookmark';
+        popup.appendChild(futureRow);
+
+        wrapper.appendChild(popup);
+
+        // ── Expand button wiring ──────────────────────────────────────────
+        expBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isPinned = popup.getAttribute('data-pinned') === 'true';
+            popup.setAttribute('data-pinned', isPinned ? 'false' : 'true');
+            expBtn.setAttribute('aria-expanded', isPinned ? 'false' : 'true');
+            wrapper.setAttribute('data-active', isPinned ? 'false' : 'true');
+        });
+
+        // Close popup on outside click
+        document.addEventListener('click', function _fbkOutsideClick(e) {
+            if (!wrapper.contains(e.target)) {
+                popup.setAttribute('data-pinned', 'false');
+                expBtn.setAttribute('aria-expanded', 'false');
+                wrapper.removeAttribute('data-active');
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function _fbkEsc(e) {
+            if (e.key === 'Escape' && popup.getAttribute('data-pinned') === 'true') {
+                popup.setAttribute('data-pinned', 'false');
+                expBtn.setAttribute('aria-expanded', 'false');
+                expBtn.focus();
+            }
+        });
+
+        return wrapper;
+    }
+
     function _buildFeedbackBlock(answerIndex, answerText, questionText) {
         var cfg = window.AI_ASSISTANT_CONFIG || {};
         if (cfg.panelFeedback === false) return null;     // opt-out
@@ -5225,11 +5587,17 @@ opts.jsonPayload + '\n' +
                 ? _EP.resolveToken('feedbackToken')
                 : (cfg.panelFeedbackToken || '');
             if (_fbBase) {
-                _postFeedback(
-                    _fbBase + '/v1/feedback',
-                    _fbToken,
-                    detail
-                );
+                // Gate: only POST to the server when persist is enabled.
+                // The CustomEvent above has already fired unconditionally so
+                // doc-author listeners and the _feedbackStore update (below)
+                // are never skipped — only the durable HF write is suppressed.
+                if (_feedbackPersistEnabled) {
+                    _postFeedback(
+                        _fbBase + '/v1/feedback',
+                        _fbToken,
+                        detail
+                    );
+                }
             }
             if (cfg.panelFeedbackLog) {
                 // eslint-disable-next-line no-console
@@ -6484,6 +6852,212 @@ opts.jsonPayload + '\n' +
                 function () { snippetCopyStatus.textContent = '✗ Copy failed'; }
             );
         });
+
+        // ══════════════════════════════════════════════════════════════════════
+        // §6  EXTENDED SETTINGS
+        // Four sub-sections: Chat · Share · Feedback · Training
+        // CSS: .ai-assistant-panel-ep-ext-* (see ai-assistant.css D4-a block).
+        // All toggles are localStorage-backed or read-only server-state mirrors.
+        // ══════════════════════════════════════════════════════════════════════
+        var extSection = _buildSheetSection('Extended Settings');
+        bodyEl.appendChild(extSection);
+
+        var extBody = document.createElement('div');
+        extBody.className = 'ai-assistant-panel-ep-ext-section';
+
+        // ── Inner helpers (closure-scoped — only used in this block) ──────
+        function _buildExtSub(title) {
+            var sub = document.createElement('div');
+            sub.className = 'ai-assistant-panel-ep-ext-sub';
+            var head = document.createElement('p');
+            head.className = 'ai-assistant-panel-ep-ext-sub-head';
+            head.textContent = title;
+            sub.appendChild(head);
+            return sub;
+        }
+
+        function _buildExtToggleRow(title, desc, isOn, pillId) {
+            var row = document.createElement('div');
+            row.className = 'ai-assistant-panel-ep-ext-toggle-row';
+            var labelWrap = document.createElement('div');
+            labelWrap.className = 'ai-assistant-panel-ep-ext-toggle-label';
+            var titleEl = document.createElement('span');
+            titleEl.className = 'ai-assistant-panel-ep-ext-toggle-title';
+            titleEl.textContent = title;
+            var descEl = document.createElement('span');
+            descEl.className = 'ai-assistant-panel-ep-ext-toggle-desc';
+            descEl.textContent = desc;
+            labelWrap.appendChild(titleEl);
+            labelWrap.appendChild(descEl);
+            var pill = document.createElement('button');
+            pill.type = 'button';
+            pill.className = 'ai-assistant-panel-ep-ext-pill';
+            pill.setAttribute('role', 'switch');
+            pill.setAttribute('aria-checked', isOn ? 'true' : 'false');
+            if (pillId) pill.id = pillId;
+            var thumb = document.createElement('span');
+            thumb.className = 'ai-assistant-panel-ep-ext-pill-thumb';
+            pill.appendChild(thumb);
+            row.appendChild(labelWrap);
+            row.appendChild(pill);
+            return { row: row, pill: pill };
+        }
+
+        function _buildExtInfoRow(label, valueText, badgeText, badgeOk) {
+            var row = document.createElement('div');
+            row.className = 'ai-assistant-panel-ep-ext-info-row';
+            var lbl = document.createElement('span');
+            lbl.className = 'ai-assistant-panel-ep-ext-info-label';
+            lbl.textContent = label;
+            var val = document.createElement('span');
+            val.className = 'ai-assistant-panel-ep-ext-info-value';
+            val.textContent = valueText || '\u2014';
+            row.appendChild(lbl);
+            row.appendChild(val);
+            if (badgeText) {
+                var badge = document.createElement('span');
+                badge.className = 'ai-assistant-panel-ep-ext-info-badge ' +
+                    (badgeOk
+                        ? 'ai-assistant-panel-ep-ext-info-badge--ok'
+                        : 'ai-assistant-panel-ep-ext-info-badge--off');
+                badge.textContent = badgeText;
+                row.appendChild(badge);
+            }
+            return row;
+        }
+
+        function _buildExtFutureRow(icon, text) {
+            var row = document.createElement('div');
+            row.className = 'ai-assistant-panel-ep-ext-future-row';
+            row.setAttribute('aria-hidden', 'true');
+            row.innerHTML =
+                '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"' +
+                ' stroke-linejoin="round" aria-hidden="true">' +
+                '<circle cx="12" cy="12" r="10"/>' +
+                '<line x1="12" y1="8" x2="12" y2="12"/>' +
+                '<line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+                icon + '\u2009' + text + ' \u2014 coming soon';
+            return row;
+        }
+
+        // ── A: Chat Configuration ─────────────────────────────────────────
+        var chatSub = _buildExtSub('Chat Configuration');
+
+        var _STREAMING_KEY = 'ai-assistant-streaming-on';
+        var _streamingOn = (function () {
+            try { return localStorage.getItem(_STREAMING_KEY) !== 'false'; } catch (_) { return true; }
+        }());
+
+        var streamToggle = _buildExtToggleRow(
+            'Streaming responses',
+            'Responses appear word-by-word as the model generates them. ' +
+            'Disable to wait for the complete answer \u2014 useful on slow ' +
+            'connections where partial text can be confusing.',
+            _streamingOn,
+            null
+        );
+        streamToggle.pill.setAttribute('aria-label', 'Streaming responses');
+        streamToggle.pill.addEventListener('click', function () {
+            _streamingOn = !_streamingOn;
+            streamToggle.pill.setAttribute('aria-checked', _streamingOn ? 'true' : 'false');
+            try { localStorage.setItem(_STREAMING_KEY, _streamingOn ? 'true' : 'false'); } catch (_) {}
+        });
+        chatSub.appendChild(streamToggle.row);
+        chatSub.appendChild(_buildExtFutureRow('\uD83C\uDF21\uFE0F', 'Temperature'));
+        chatSub.appendChild(_buildExtFutureRow('\uD83D\uDCDD', 'System prompt'));
+        extBody.appendChild(chatSub);
+
+        // ── B: Share Configuration ────────────────────────────────────────
+        var shareSub = _buildExtSub('Share Configuration');
+
+        var shareLinkToggle = _buildExtToggleRow(
+            'Share-link mode',
+            'When ON, the export button creates a shareable blob URL (or ' +
+            'server-side share link when a Share endpoint is configured) ' +
+            'instead of downloading a file.',
+            _exportLinkMode,
+            null
+        );
+        shareLinkToggle.pill.setAttribute('aria-label', 'Share-link mode');
+        shareLinkToggle.pill.addEventListener('click', function () {
+            _setExportLinkMode(!_exportLinkMode);
+            shareLinkToggle.pill.setAttribute(
+                'aria-checked', _exportLinkMode ? 'true' : 'false');
+        });
+        shareSub.appendChild(shareLinkToggle.row);
+        shareSub.appendChild(_buildExtFutureRow('\u23F1\uFE0F', 'Share TTL (days)'));
+        shareSub.appendChild(_buildExtFutureRow('\uD83D\uDCC4', 'Default export format'));
+        extBody.appendChild(shareSub);
+
+        // ── C: Feedback Configuration ─────────────────────────────────────
+        var fbkSub = _buildExtSub('Feedback Configuration');
+
+        var fbkIntro = document.createElement('p');
+        fbkIntro.className = 'ai-assistant-panel-ep-hint';
+        fbkIntro.textContent =
+            'The \uD83D\uDC4D / \uD83D\uDC4E buttons on each answer collect your rating. ' +
+            'When \u201CStore ratings permanently\u201D is ON and the server is ' +
+            'configured, each rating writes a JSON record to the HuggingFace ' +
+            'training dataset. When OFF, ratings stay in-memory only ' +
+            'and are lost on page refresh.';
+        fbkSub.appendChild(fbkIntro);
+
+        // THE missing DOM element — _setFeedbackPersistMode() targets this id.
+        var persistToggle = _buildExtToggleRow(
+            'Store ratings permanently',
+            'Writes \uD83D\uDC4D / \uD83D\uDC4E ratings to the HuggingFace dataset ' +
+            '(durable, survives server restarts). ' +
+            'Requires TRAINING_DATASET_REPO and HF_DATASET_TOKEN on the server. ' +
+            'The server\u2019s FEEDBACK_PERSIST_ENABLED flag is the authoritative ' +
+            'default; this toggle lets you override it for your browser session.',
+            _feedbackPersistEnabled,
+            'ai-assistant-feedback-persist-toggle'
+        );
+        persistToggle.pill.setAttribute('aria-label', 'Store ratings permanently');
+        persistToggle.pill.addEventListener('click', function () {
+            _setFeedbackPersistMode(!_feedbackPersistEnabled);
+            // aria-checked is synced inside _setFeedbackPersistMode
+        });
+        fbkSub.appendChild(persistToggle.row);
+
+        var _fbkServerRow = document.createElement('div');
+        _fbkServerRow.id = 'ai-assistant-ep-ext-fbk-server-info';
+        fbkSub.appendChild(_fbkServerRow);
+
+        fbkSub.appendChild(_buildExtFutureRow('\uD83D\uDCCA', 'Rating scale selector'));
+        fbkSub.appendChild(_buildExtFutureRow('\u2753', 'Feedback question text'));
+        extBody.appendChild(fbkSub);
+
+        // ── D: Training Configuration ─────────────────────────────────────
+        var trainSub = _buildExtSub('Training Configuration');
+
+        var trainIntro = document.createElement('p');
+        trainIntro.className = 'ai-assistant-panel-ep-hint';
+        trainIntro.textContent =
+            'Training data is collected via POST /v1/contribute when you export ' +
+            'a conversation. Each record carries (question, answer, rating) tuples ' +
+            'from your session\u2019s feedback. The server deduplicates on ' +
+            'conversationId so exporting twice is safe.';
+        trainSub.appendChild(trainIntro);
+
+        var contributeUrl = (_epSafe && typeof _epSafe.resolve === 'function')
+            ? (_epSafe.resolve('training') || '') : '';
+        trainSub.appendChild(_buildExtInfoRow(
+            'Contribute URL',
+            contributeUrl || '(not configured)',
+            contributeUrl ? 'Configured' : 'Not set',
+            !!contributeUrl
+        ));
+
+        var _trainServerRow = document.createElement('div');
+        _trainServerRow.id = 'ai-assistant-ep-ext-train-server-info';
+        trainSub.appendChild(_trainServerRow);
+
+        trainSub.appendChild(_buildExtFutureRow('\uD83E\uDD16', 'Auto-contribute on close'));
+        trainSub.appendChild(_buildExtFutureRow('\uD83D\uDD12', 'GDPR consent gate'));
+        extBody.appendChild(trainSub);
+
+        extSection.appendChild(extBody);
 
         // ══════════════════════════════════════════════════════════════════════
         // MOUNT + SUBSCRIBE
@@ -12199,6 +12773,59 @@ opts.jsonPayload + '\n' +
         }
     }
 
+    /**
+     * Enable or disable persistent feedback storage and keep all dependents in sync.
+     *
+     * This is the single source of truth for ``_feedbackPersistEnabled``.
+     * Always call this function instead of mutating the variable directly so
+     * that localStorage, the privacy-sheet toggle's ``aria-pressed``, and the
+     * hint text all stay consistent.
+     *
+     * Parameters
+     * ----------
+     * enabled : boolean
+     *     ``true``  → ratings POSTed to the HF dataset (durable).
+     *     ``false`` → ratings discarded after the CustomEvent dispatch (in-memory only).
+     *
+     * Notes
+     * -----
+     * Developer: Does NOT contact the server.  The server-side flag
+     *   (``FEEDBACK_PERSIST_ENABLED``) is authoritative at startup; this client
+     *   flag governs subsequent in-session behaviour and survives page reloads
+     *   via localStorage.
+     *
+     * Developer: localStorage access is always wrapped in try/catch because it
+     *   may throw in Safari private mode, cross-origin iframes, and when storage
+     *   quota is exceeded.
+     */
+    function _setFeedbackPersistMode(enabled) {
+        _feedbackPersistEnabled = !!enabled;
+
+        // Persist preference across page reloads.
+        try {
+            localStorage.setItem(
+                'ai-assistant-feedback-persist',
+                _feedbackPersistEnabled ? 'true' : 'false'
+            );
+        } catch (_e) {}
+
+        // Sync the main persist pill in §6 Extended Settings (role="switch"
+        // uses aria-checked, not aria-pressed — ARIA 1.2 §5.3.22).
+        var toggle = document.getElementById('ai-assistant-feedback-persist-toggle');
+        if (toggle) {
+            toggle.setAttribute('aria-checked', _feedbackPersistEnabled ? 'true' : 'false');
+        }
+
+        // Sync all mini persist pills inside quick-rate popups.
+        var miniPills = document.querySelectorAll('.ai-assistant-fbk-popup-mini-pill');
+        for (var _mp = 0; _mp < miniPills.length; _mp++) {
+            miniPills[_mp].setAttribute(
+                'aria-checked',
+                _feedbackPersistEnabled ? 'true' : 'false'
+            );
+        }
+    }
+
     // ══════════════════════════════════════════════════════════════════════════
     // PERMANENT SHARE STORAGE — IndexedDB module
     //
@@ -15481,27 +16108,18 @@ opts.jsonPayload + '\n' +
             copyBtn.addEventListener('click', function () { copyAnswer(text, bubble); });
             actions.appendChild(copyBtn);
 
-            // Share button — between Copy and Retry (OpenAI-inspired).
-            // Payload = "Q: <question>\n\nA: <answer>\n\n— AI · <url>"
-            // so the recipient receives full context without visiting the source.
-            // retryQ already resolved above; direct closure is safe (no loop).
-            //
-            // Hoist answerIndex before share button so its closure captures the
-            // correct value — _shareAnswer uses it to look up _feedbackStore[answerIndex]
-            // and to find model attribution in _transcript.
+            // Hoist answerIndex before the quick-rate block so its closure captures
+            // the correct value — _shareAnswer (in the More menu) and _buildFbkFloat
+            // both look up _feedbackStore[answerIndex] and _transcript model info.
             var answerIndex = body.querySelectorAll(
                 '.ai-assistant-panel-feedback').length;
-            var shareBtn = document.createElement('button');
-            shareBtn.className = 'ai-assistant-panel-bubble-action';
-            shareBtn.type = 'button';
-            shareBtn.setAttribute('aria-label', 'Share this answer');
-            shareBtn.title = 'Share Q \u0026 A \u2014 send question + answer to another app or clipboard';
-            shareBtn.innerHTML = ICONS.shareAns;   // ICONS constant — safe.
-            var shareLbl = document.createElement('span');
-            shareLbl.textContent = 'Share';
-            shareBtn.appendChild(shareLbl);
-            shareBtn.addEventListener('click', function () { _shareAnswer(text, retryQ, bubble, shareBtn, answerIndex); });
-            actions.appendChild(shareBtn);
+
+            // ── Quick-rate 👍 👎 (slides in on hover — see CSS D4-b/c/d) ──
+            // Inserted between Copy and Retry so the visible row is:
+            //   time | copy | 👍👎⌃ | retry | more
+            // Share has moved inside the More submenu (under Listen).
+            var fbkFloat = _buildFbkFloat(answerIndex, text, retryQ);
+            if (fbkFloat) actions.appendChild(fbkFloat);
 
             // Retry button — re-submits the paired user question.
             // retryQ resolved above (hoisted so Share can use it too).
@@ -15525,8 +16143,15 @@ opts.jsonPayload + '\n' +
                 actions.appendChild(retryBtn);
             }
 
-            // ── "⋯ More ▾" expandable submenu (contains Listen and future actions)
-            var moreWrapper = _buildBubbleMore(text);
+            // ── "⋯ More ▾" expandable submenu (Listen + Share + future actions)
+            // Share is passed as shareOpts so it appears inside the menu under
+            // Listen rather than in the flat action row.
+            var moreWrapper = _buildBubbleMore(text, {
+                text:        text,
+                question:    retryQ,
+                bubble:      bubble,
+                answerIndex: answerIndex,
+            });
             actions.appendChild(moreWrapper);
 
             body.appendChild(actions);
@@ -15542,7 +16167,10 @@ opts.jsonPayload + '\n' +
             // Note: answerIndex is hoisted above the share button so the share
             // closure captures the same stable value — no recount needed here.
             var fb = _buildFeedbackBlock(answerIndex, text, retryQ);
-            if (fb) body.appendChild(fb);
+            if (fb) {
+                fb.setAttribute('data-answer-index', String(answerIndex));
+                body.appendChild(fb);
+            }
         }
     }
 
@@ -16120,21 +16748,13 @@ opts.jsonPayload + '\n' +
             }(accumulated, streamBubble));
             acts.appendChild(cb2);
 
-            // Share button — between Copy and Retry (OpenAI-inspired).
-            // Payload = "Q: <question>\n\nA: <answer>\n\n— AI · <url>"
-            // so the recipient receives full context without visiting the source.
-            (function (and, q, bbl) {
-                var sb2 = document.createElement('button');
-                sb2.className = 'ai-assistant-panel-bubble-action';
-                sb2.type = 'button';
-                sb2.setAttribute('aria-label', 'Share this answer');
-                sb2.title = 'Share Q \u0026 A \u2014 send question + answer to another app or clipboard';
-                sb2.innerHTML = ICONS.shareAns;
-                var sl2 = document.createElement('span'); sl2.textContent = 'Share';
-                sb2.appendChild(sl2);
-                sb2.addEventListener('click', function () { _shareAnswer(and, q, bbl, sb2, fbIdx2); });
-                acts.appendChild(sb2);
-            }(accumulated, retryQ2, streamBubble));
+            // ── Quick-rate 👍 👎 (slides in on hover — see CSS D4-b/c/d) ──
+            // Order: time | copy | 👍👎⌃ | retry | more
+            // Share moved to More submenu (under Listen) via shareOpts below.
+            (function (idx, txt, q) {
+                var fbkF2 = _buildFbkFloat(idx, txt, q);
+                if (fbkF2) acts.appendChild(fbkF2);
+            }(fbIdx2, accumulated, retryQ2));
 
             // Retry button — retryQ2 hoisted above so Share can use it too.
             if (retryQ2) {
@@ -16158,15 +16778,23 @@ opts.jsonPayload + '\n' +
                 acts.appendChild(rb2);
             }
 
-            // "⋯ More ▾" — extensible submenu (contains Listen + future actions)
-            var moreW2 = _buildBubbleMore(accumulated);
+            // "⋯ More ▾" — extensible submenu (Listen + Share + future actions)
+            var moreW2 = _buildBubbleMore(accumulated, {
+                text:        accumulated,
+                question:    retryQ2,
+                bubble:      streamBubble,
+                answerIndex: fbIdx2,
+            });
             acts.appendChild(moreW2);
 
             panelBody.appendChild(acts);
 
             // fbIdx2 is hoisted before the share button above — reuse here.
             var fb2 = _buildFeedbackBlock(fbIdx2, accumulated, retryQ2);
-            if (fb2) panelBody.appendChild(fb2);
+            if (fb2) {
+                fb2.setAttribute('data-answer-index', String(fbIdx2));
+                panelBody.appendChild(fb2);
+            }
         }
         if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
     }

@@ -10663,3 +10663,437 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
         transition: none;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   D4-a — §6 EXTENDED SETTINGS  (endpoint config sheet sub-sections)
+   Classes: .ai-assistant-panel-ep-ext-*
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ai-assistant-panel-ep-ext-section {
+    padding: 0;
+}
+.ai-assistant-panel-ep-ext-sub {
+    margin-bottom: 1.1rem;
+}
+.ai-assistant-panel-ep-ext-sub-head {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
+    margin: 0 0 0.5rem 0;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+}
+/* Toggle row: label block (flex:1) + pill (flex-shrink:0) */
+.ai-assistant-panel-ep-ext-toggle-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+}
+.ai-assistant-panel-ep-ext-toggle-label {
+    flex: 1 1 0;
+    min-width: 0;
+}
+.ai-assistant-panel-ep-ext-toggle-title {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    margin-bottom: 0.18rem;
+}
+.ai-assistant-panel-ep-ext-toggle-desc {
+    display: block;
+    font-size: 0.73rem;
+    line-height: 1.45;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
+}
+/* Pill toggle (role="switch") */
+.ai-assistant-panel-ep-ext-pill {
+    flex-shrink: 0;
+    position: relative;
+    width: 2.4rem;
+    height: 1.3rem;
+    border-radius: 0.65rem;
+    border: none;
+    cursor: pointer;
+    background: var(--pst-color-border, var(--color-foreground-border, #c8cbd0));
+    transition: background-color 0.18s ease;
+    padding: 0;
+    margin-top: 0.1rem;
+}
+.ai-assistant-panel-ep-ext-pill[aria-checked="true"] {
+    background: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+.ai-assistant-panel-ep-ext-pill-thumb {
+    position: absolute;
+    top: 0.15rem;
+    left: 0.15rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 0.18s ease;
+    pointer-events: none;
+}
+.ai-assistant-panel-ep-ext-pill[aria-checked="true"] .ai-assistant-panel-ep-ext-pill-thumb {
+    transform: translateX(1.1rem);
+}
+.ai-assistant-panel-ep-ext-pill:focus         { outline: none; }
+.ai-assistant-panel-ep-ext-pill:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 2px;
+}
+/* Read-only info rows */
+.ai-assistant-panel-ep-ext-info-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.78rem;
+}
+.ai-assistant-panel-ep-ext-info-label {
+    flex-shrink: 0;
+    font-weight: 500;
+    min-width: 7rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
+}
+.ai-assistant-panel-ep-ext-info-value {
+    flex: 1;
+    font-family: var(--font-stack-monospace, monospace);
+    font-size: 0.72rem;
+    word-break: break-all;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+.ai-assistant-panel-ep-ext-info-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.3rem;
+    white-space: nowrap;
+}
+.ai-assistant-panel-ep-ext-info-badge--ok  {
+    background: rgba(34, 197, 94, 0.12);
+    color: #16a34a;
+}
+.ai-assistant-panel-ep-ext-info-badge--off {
+    background: rgba(156, 163, 175, 0.15);
+    color: #6b7280;
+}
+/* "Coming soon" future-feature placeholder rows */
+.ai-assistant-panel-ep-ext-future-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.76rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #aaa));
+    opacity: 0.7;
+}
+.ai-assistant-panel-ep-ext-future-row svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+}
+/* Dark mode overrides */
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ext-sub-head {
+    color: var(--pst-color-text-muted, #9ca3af);
+    border-bottom-color: var(--pst-color-border, #374151);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ext-toggle-title {
+    color: var(--pst-color-text-base, #e4e6ea);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ext-toggle-desc {
+    color: var(--pst-color-text-muted, #9ca3af);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ext-info-value {
+    color: var(--pst-color-text-base, #e4e6ea);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-ep-ext-pill {
+    background: var(--pst-color-border, #4b5563);
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   D4-b  —  FLOATING QUICK-RATE WRAPPER  (.ai-assistant-fbk-float-wrapper)
+   Mirrors the .ai-assistant-mic-expand-wrapper / .ai-assistant-mic-expand-btn
+   pattern so the row-level hover mechanics work identically.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ai-assistant-fbk-float-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: visible;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   D4-c  —  QUICK-RATE PILL  (.ai-assistant-fbk-quick + children)
+   Slides in from right on action-row hover.
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* Quick-rate pill: 👍 | 👎 | divider | expand chevron */
+.ai-assistant-fbk-quick {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transition:
+        max-width  0.18s ease-out,
+        opacity    0.14s ease-out;
+}
+/* Reveal on action-row hover OR when wrapper has data-active="true" (pinned popup) */
+.ai-assistant-panel-bubble-actions:hover .ai-assistant-fbk-quick,
+.ai-assistant-fbk-float-wrapper[data-active="true"] .ai-assistant-fbk-quick {
+    max-width: 8rem;
+    opacity: 1;
+}
+/* Thumb buttons — 👍 / 👎 */
+.ai-assistant-fbk-quick-btn {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 0.88rem;
+    line-height: 1;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
+    transition:
+        background-color 0.12s ease,
+        color            0.12s ease,
+        transform        0.1s ease;
+    padding: 0;
+}
+.ai-assistant-fbk-quick-btn:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    transform: scale(1.15);
+}
+[data-bs-theme="dark"] .ai-assistant-fbk-quick-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+/* Pressed states — sentiment colours */
+.ai-assistant-fbk-quick-btn[data-sentiment="positive"][aria-pressed="true"] {
+    color: #16a34a;
+    background-color: rgba(34, 197, 94, 0.12);
+}
+.ai-assistant-fbk-quick-btn[data-sentiment="negative"][aria-pressed="true"] {
+    color: #dc2626;
+    background-color: rgba(239, 68, 68, 0.10);
+}
+.ai-assistant-fbk-quick-btn:focus         { outline: none; }
+.ai-assistant-fbk-quick-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: -2px;
+    border-radius: 0.4rem;
+}
+/* 1 px vertical separator between 👎 and the expand chevron */
+.ai-assistant-fbk-sep {
+    width: 1px;
+    height: 0.9rem;
+    background: var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+    flex-shrink: 0;
+    margin: 0 0.1rem;
+}
+/* Expand chevron wrapper — collapses to width:0 when action row not hovered */
+.ai-assistant-fbk-expand-wrapper {
+    overflow: hidden;
+    width: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: width 0.15s ease-out;
+}
+.ai-assistant-panel-bubble-actions:hover .ai-assistant-fbk-expand-wrapper,
+.ai-assistant-fbk-float-wrapper[data-active="true"] .ai-assistant-fbk-expand-wrapper {
+    width: 1.75rem;
+}
+/* Expand chevron button — mirrors .ai-assistant-mic-expand-btn */
+.ai-assistant-fbk-expand-btn {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
+    opacity: 0;
+    padding: 0;
+    transition:
+        opacity          0.15s ease,
+        background-color 0.12s ease,
+        color            0.12s ease;
+}
+.ai-assistant-panel-bubble-actions:hover .ai-assistant-fbk-expand-btn,
+.ai-assistant-fbk-float-wrapper[data-active="true"] .ai-assistant-fbk-expand-btn {
+    opacity: 1;
+}
+.ai-assistant-fbk-expand-btn:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+[data-bs-theme="dark"] .ai-assistant-fbk-expand-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.ai-assistant-fbk-expand-btn svg {
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.15s ease;
+}
+.ai-assistant-fbk-expand-btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+.ai-assistant-fbk-expand-btn:focus         { outline: none; }
+.ai-assistant-fbk-expand-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: -2px;
+    border-radius: 0.4rem;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   D4-d  —  FEEDBACK POPUP  (.ai-assistant-fbk-popup)
+   Floats above the action row on expand-btn click.
+   Pattern mirrors .ai-assistant-mic-popup.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ai-assistant-fbk-popup {
+    position: absolute;
+    bottom: calc(100% + 0.45rem);
+    right: 0;
+    z-index: 99998;   /* one below mic popup — no overlap */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 230px;
+    padding: 0.35rem;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+    border-radius: 10px;
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.13),
+        0 2px  6px rgba(0, 0, 0, 0.07);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(6px) translateY(3px);
+    transition:
+        opacity   0.14s ease,
+        transform 0.14s ease;
+}
+.ai-assistant-fbk-popup[data-pinned="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) translateY(0);
+}
+[data-bs-theme="dark"] .ai-assistant-fbk-popup {
+    background: var(--pst-color-surface, #1e2330);
+    border-color: var(--pst-color-border, #374151);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 2px  6px rgba(0, 0, 0, 0.25);
+}
+/* Popup rows */
+.ai-assistant-fbk-popup-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.45rem;
+    border-radius: 0.45rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    font-size: 0.78rem;
+    cursor: default;
+}
+.ai-assistant-fbk-popup-row[role="button"] {
+    cursor: pointer;
+}
+.ai-assistant-fbk-popup-row:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+[data-bs-theme="dark"] .ai-assistant-fbk-popup-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+.ai-assistant-fbk-popup-icon {
+    width: 1.1rem;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+}
+.ai-assistant-fbk-popup-label {
+    flex: 1;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+/* Hairline separator between rows */
+.ai-assistant-fbk-popup-sep {
+    height: 1px;
+    background: var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+    margin: 0.15rem 0;
+}
+/* Mini persist pill (smaller than the §6 main pill) */
+.ai-assistant-fbk-popup-mini-pill {
+    flex-shrink: 0;
+    position: relative;
+    width: 1.8rem;
+    height: 0.95rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    background: var(--pst-color-border, #c8cbd0);
+    transition: background-color 0.18s ease;
+    padding: 0;
+}
+.ai-assistant-fbk-popup-mini-pill[aria-checked="true"] {
+    background: var(--pst-color-primary, #2980b9);
+}
+.ai-assistant-fbk-popup-mini-pill-thumb {
+    position: absolute;
+    top: 0.1rem;
+    left: 0.1rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: transform 0.18s ease;
+    pointer-events: none;
+}
+.ai-assistant-fbk-popup-mini-pill[aria-checked="true"]
+    .ai-assistant-fbk-popup-mini-pill-thumb {
+    transform: translateX(0.85rem);
+}
+/* Future features placeholder row */
+.ai-assistant-fbk-popup-future {
+    opacity: 0.45;
+    cursor: default;
+    font-size: 0.70rem;
+    padding: 0.25rem 0.45rem;
+    color: var(--pst-color-text-muted, #888);
+}
+/* Existing inline feedback block: hidden by default, revealed by expand btn */
+.ai-assistant-panel-feedback--inline:not(.ai-assistant-panel-feedback--revealed) {
+    display: none;
+}
+/* Reduced-motion: disable all fbk slide/fade transitions */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-fbk-quick,
+    .ai-assistant-fbk-expand-wrapper,
+    .ai-assistant-fbk-expand-btn,
+    .ai-assistant-fbk-popup {
+        transition: none;
+    }
+}
