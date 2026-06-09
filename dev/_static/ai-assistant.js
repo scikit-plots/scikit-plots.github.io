@@ -5179,18 +5179,31 @@ opts.jsonPayload + '\n' +
             }
 
             var detail = {
-                schemaVersion: 1,
-                ratingValue:   chosen.value,        // SIGNED INT
-                ratingLabel:   chosen.label,        // string
-                rating:        chosen.label,        // legacy alias (back-compat)
-                message:       ta.value.trim(),
-                query:         (typeof questionText === 'string') ? questionText : '',
-                answer:        (typeof answerText === 'string') ? answerText : '',
-                model:         modelInfo,
-                answerIndex:   answerIndex,
-                page:          location ? location.href : '',
-                ts:            Date.now(),
-                sessionId:     sid,
+                schemaVersion:  1,
+                ratingValue:    chosen.value,        // SIGNED INT
+                ratingLabel:    chosen.label,        // string
+                rating:         chosen.label,        // legacy alias (back-compat)
+                message:        ta.value.trim(),
+                query:          (typeof questionText === 'string') ? questionText : '',
+                answer:         (typeof answerText === 'string') ? answerText : '',
+                model:          modelInfo,
+                answerIndex:    answerIndex,
+                page:           location ? location.href : '',
+                ts:             Date.now(),
+                // ``sessionId`` is a per-click idempotency UUID (regenerated on
+                // every submit click to guard against double-sends).  Back-compat
+                // field; new consumers should prefer ``conversationId``.
+                sessionId:      sid,
+                // ``conversationId`` is the stable per-page-load session UUID
+                // (``_sessionId``, set once at module load, never re-generated).
+                // The server (POST /v1/feedback) uses this as the first component
+                // of ``_dedup_key = "{conversationId}:{answerIndex}"`` so that
+                // feedback records can be matched against contribution records
+                // (which use the same key format via ``payload.sessionId``).
+                // Without this field the server falls back to ``""`` and all
+                // feedback dedup keys collapse to ``":{answerIndex}"`` — making
+                // cross-conversation deduplication impossible.
+                conversationId: _sessionId,
             };
 
             // Dev-friendly hook — doc authors attach their own analytics.
@@ -5227,16 +5240,20 @@ opts.jsonPayload + '\n' +
             // feedback POST, and training contribution all read a complete tuple.
             // query/answer/model/sessionId/page were previously dropped here.
             _feedbackStore[answerIndex] = {
-                ratingValue: chosen.value,
-                ratingLabel: chosen.label,
-                message:     ta.value.trim(),
-                ts:          Date.now(),
+                ratingValue:    chosen.value,
+                ratingLabel:    chosen.label,
+                message:        ta.value.trim(),
+                ts:             Date.now(),
                 // Added — required for POST /v1/feedback and training contribution:
-                query:       detail.query,
-                answer:      detail.answer,
-                model:       detail.model,
-                sessionId:   detail.sessionId,
-                page:        detail.page,
+                query:          detail.query,
+                answer:         detail.answer,
+                model:          detail.model,
+                sessionId:      detail.sessionId,
+                // Added — stable per-page-load conversation UUID; needed so that
+                // training contribution records are self-describing and consistent
+                // with the dedup key written by POST /v1/feedback.
+                conversationId: detail.conversationId,
+                page:           detail.page,
             };
             wrap.innerHTML = '';
             var done = document.createElement('p');
@@ -9746,6 +9763,14 @@ opts.jsonPayload + '\n' +
                         ratingLabel: tfb.ratingLabel || '',
                         message:     tfb.message     || '',
                         ts:          tfb.ts          || Date.now(),
+                        // Self-describing provenance tag.  The server overwrites
+                        // this with the same value (``_source: "contribution"``)
+                        // when writing the JSONL record, so the payload and the
+                        // stored record are always consistent.  Training pipelines
+                        // must prefer "contribution" over "feedback" when both
+                        // sources carry the same _dedup_key.  See
+                        // DATASET_COLLECTION_GUIDANCE.md for the canonical rule.
+                        _source:     'contribution',
                     });
                 }
                 if (!tRecords.length) {
