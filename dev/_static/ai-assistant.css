@@ -7386,6 +7386,291 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
         transition: none;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * patch_conv_share_tiers.css — Share-Panel Tier Styles
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * APPLY INSTRUCTIONS
+ * ──────────────────
+ * Append the entire contents of this file immediately after the existing
+ * @media (prefers-reduced-motion) block that closes the .perm section
+ * (≈ line 7388 of ai-assistant.css).  No existing rules are modified.
+ *
+ *   cat patch_conv_share_tiers.css >> _static/ai-assistant.css
+ *
+ * WHAT THIS FILE COVERS
+ * ─────────────────────
+ * Six class groups that the JS builds but that had no CSS yet:
+ *
+ *   §A  .ai-assistant-conv-share-sep          <hr> divider between tiers
+ *   §B  .ai-assistant-conv-share-global        🌐 Global-link card wrapper
+ *   §C  .ai-assistant-conv-share-training      🎓 Training-contribution card wrapper
+ *   §D  .ai-assistant-conv-share-perm-link     Link row inside the global card
+ *                                              (JS uses "perm-link", not "perm-link-row")
+ *   §E  .ai-assistant-conv-share-perm-copy-btn Copy button inside the global link row
+ *   §F  .ai-assistant-conv-share-consent       Consent checkbox label (training card)
+ *
+ * Plus per-section accent overrides (§G) that tint the shared inner-utility
+ * classes (.perm-lbl, .perm-save-btn hover) to match each card's identity.
+ *
+ * DESIGN LANGUAGE
+ * ───────────────
+ * Both new cards mirror the .ai-assistant-conv-share-perm flex-column card
+ * pattern exactly and reuse all its inner utility classes unchanged.
+ * Each section is differentiated by three coordinated accent touches:
+ *
+ *   💾 Permanent  (perm)     neutral / blue   — existing, unchanged
+ *   🌐 Global     (global)   teal  #0d9488    — conveys reach, connectivity
+ *   🎓 Training   (training) violet #7c3aed   — conveys knowledge, AI learning
+ *
+ * Dark-mode selectors: [data-bs-theme="dark"] … / .dark … (matches sheet)
+ * Variable fallback chain: --pst-color-* → --color-* → hardcoded baseline
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── §A  Tier separator ──────────────────────────────────────────────────── */
+/*
+ * Gradient fade instead of a plain border-top: the line softly emerges from
+ * the card edges rather than spanning the full panel width, giving a more
+ * considered separation between tiers.
+ */
+
+.ai-assistant-conv-share-sep {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent  0%,
+        var(--color-border, #d0d7de) 18%,
+        var(--color-border, #d0d7de) 82%,
+        transparent 100%
+    );
+    margin: 2px 0;
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-sep,
+.dark                  .ai-assistant-conv-share-sep {
+    background: linear-gradient(
+        to right,
+        transparent  0%,
+        var(--pst-color-border, #30363d) 18%,
+        var(--pst-color-border, #30363d) 82%,
+        transparent 100%
+    );
+}
+
+/* ── §B  Card wrappers — global & training ───────────────────────────────── */
+/*
+ * Both wrappers get the same flex-column layout as .ai-assistant-conv-share-perm.
+ * The only structural deviation is border-left-width: 3px — the "accent stripe"
+ * whose colour is set per-section below.  All three remaining border sides
+ * keep the neutral --color-border value.
+ *
+ * box-shadow on :focus-within gives a subtle lift when the user is interacting
+ * with an input or button inside the card — no motion on idle state.
+ */
+
+.ai-assistant-conv-share-global,
+.ai-assistant-conv-share-training {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px 12px;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 8px;
+    border-left-width: 3px;        /* accent stripe; colour overridden below */
+    flex-shrink: 0;
+    transition: box-shadow 0.15s ease;
+}
+
+.ai-assistant-conv-share-global:focus-within,
+.ai-assistant-conv-share-training:focus-within {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+/* ── §B-1  Global — teal / emerald accent ────────────────────────────────── */
+
+.ai-assistant-conv-share-global {
+    background:        rgba(13, 148, 136, 0.03);
+    border-left-color: #0d9488;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-global,
+.dark                  .ai-assistant-conv-share-global {
+    background:        rgba(45, 212, 191, 0.04);
+    border-color:      var(--pst-color-border, #30363d);   /* reset three sides */
+    border-left-color: #2dd4bf;
+}
+
+/* ── §B-2  Training — violet / purple accent ─────────────────────────────── */
+
+.ai-assistant-conv-share-training {
+    background:        rgba(124, 58, 237, 0.03);
+    border-left-color: #7c3aed;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-training,
+.dark                  .ai-assistant-conv-share-training {
+    background:        rgba(167, 139, 250, 0.04);
+    border-color:      var(--pst-color-border, #30363d);   /* reset three sides */
+    border-left-color: #a78bfa;
+}
+
+/* ── §D  Global section — link row ──────────────────────────────────────── */
+/*
+ * JS assigns className 'ai-assistant-conv-share-perm-link' (no "-row" suffix)
+ * to globalLinkRow.  Mirror the flex pattern of .ai-assistant-conv-share-perm-link-row
+ * so the URL input and copy button sit on one line and wrap gracefully.
+ */
+
+.ai-assistant-conv-share-perm-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* ── §E  Global section — copy button ───────────────────────────────────── */
+/*
+ * Matches the sizing and resting appearance of .ai-assistant-conv-share-action-btn.
+ * Hover adopts the global section's teal accent so the interaction feels native
+ * to its card without requiring an extra class in the JS.
+ */
+
+.ai-assistant-conv-share-perm-copy-btn {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border, #d0d7de);
+    background: var(--color-background-primary, #ffffff);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.4;
+    transition:
+        background-color 0.12s ease,
+        border-color     0.12s ease,
+        color            0.12s ease;
+}
+
+.ai-assistant-conv-share-perm-copy-btn:hover {
+    background-color: rgba(13, 148, 136, 0.07);
+    border-color:     rgba(13, 148, 136, 0.55);
+    color:            #0d9488;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-copy-btn,
+.dark                  .ai-assistant-conv-share-perm-copy-btn {
+    background:   var(--pst-color-surface,   #21262d);
+    border-color: var(--pst-color-border,    #30363d);
+    color:        var(--pst-color-text-base,  #e4e6ea);
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-perm-copy-btn:hover,
+.dark                  .ai-assistant-conv-share-perm-copy-btn:hover {
+    background-color: rgba(45, 212, 191, 0.10);
+    border-color:     rgba(45, 212, 191, 0.50);
+    color:            #2dd4bf;
+}
+
+/* ── §F  Training section — consent checkbox label ──────────────────────── */
+
+.ai-assistant-conv-share-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    cursor: pointer;
+    user-select: none;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-consent,
+.dark                  .ai-assistant-conv-share-consent {
+    color: var(--pst-color-text-base, #e4e6ea);
+}
+
+.ai-assistant-conv-share-consent input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;       /* optically align with the first text line */
+    accent-color: #7c3aed; /* violet checkbox matches the training accent stripe */
+    cursor: pointer;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-consent input[type="checkbox"],
+.dark                  .ai-assistant-conv-share-consent input[type="checkbox"] {
+    accent-color: #a78bfa;
+}
+
+/* ── §G  Per-section accent overrides ───────────────────────────────────── */
+/*
+ * Tint the shared .perm-lbl and .perm-save-btn hover state inside each new
+ * card using descendant selectors.  The existing base rules are untouched;
+ * these rules only add specificity within the new wrapper scopes.
+ *
+ * Why tint .perm-lbl?
+ *   The emoji alone isn't enough at 0.82 rem — a matching label colour gives
+ *   each tier an unambiguous visual identity even in peripheral vision.
+ *
+ * Why tint only the hover state of .perm-save-btn?
+ *   The resting and disabled states should remain neutral so the hierarchy
+ *   between sections is clear; accent colour on hover rewards the action
+ *   without cluttering the idle UI.
+ */
+
+/* Label tints */
+
+.ai-assistant-conv-share-global   .ai-assistant-conv-share-perm-lbl { color: #0d9488; }
+.ai-assistant-conv-share-training .ai-assistant-conv-share-perm-lbl { color: #7c3aed; }
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-global   .ai-assistant-conv-share-perm-lbl,
+.dark                  .ai-assistant-conv-share-global   .ai-assistant-conv-share-perm-lbl { color: #2dd4bf; }
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-training .ai-assistant-conv-share-perm-lbl,
+.dark                  .ai-assistant-conv-share-training .ai-assistant-conv-share-perm-lbl { color: #a78bfa; }
+
+/* Save-button hover tints */
+
+.ai-assistant-conv-share-global .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
+    border-color:     rgba(13, 148, 136, 0.55);
+    background-color: rgba(13, 148, 136, 0.06);
+    color:            #0d9488;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-global .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled),
+.dark                  .ai-assistant-conv-share-global .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
+    border-color:     rgba(45, 212, 191, 0.50);
+    background-color: rgba(45, 212, 191, 0.08);
+    color:            #2dd4bf;
+}
+
+.ai-assistant-conv-share-training .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
+    border-color:     rgba(124, 58, 237, 0.50);
+    background-color: rgba(124, 58, 237, 0.06);
+    color:            #7c3aed;
+}
+
+[data-bs-theme="dark"] .ai-assistant-conv-share-training .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled),
+.dark                  .ai-assistant-conv-share-training .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
+    border-color:     rgba(167, 139, 250, 0.50);
+    background-color: rgba(167, 139, 250, 0.08);
+    color:            #a78bfa;
+}
+
+/* ── Reduced-motion additions ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-conv-share-global,
+    .ai-assistant-conv-share-training,
+    .ai-assistant-conv-share-perm-copy-btn {
+        transition: none;
+    }
+}
 /*
  * patch_ep_subbar_css.css — Endpoint Configuration Sheet Styles
  * ==============================================================
