@@ -1754,6 +1754,47 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: var(--pst-color-success, #2e7d32);
 }
 
+/* "Edit feedback" inline link shown after any feedback submission.
+   Appears below the thank-you paragraph for both quick-rate and
+   detailed-form submissions so the user can always correct a mistake.
+   Intentionally minimal: no border, ghost-style, muted colour so it
+   does not compete visually with the confirmation message.
+   The hover/focus states use the brand accent so it is clearly
+   interactive while remaining lightweight.                          */
+.ai-assistant-panel-feedback-edit-btn {
+    display:          inline-block;
+    margin:           0.25rem 0 0;
+    padding:          0;
+    background:       none;
+    border:           none;
+    cursor:           pointer;
+    font-size:        0.75rem;
+    /* Muted brand colour — lighter than the success green above */
+    color:            var(--pst-color-muted,
+                          var(--color-foreground-muted, #6a737d));
+    text-decoration:  underline;
+    text-underline-offset: 2px;
+    line-height:      1.4;
+    transition:       color 0.15s ease, opacity 0.15s ease;
+}
+.ai-assistant-panel-feedback-edit-btn:hover,
+.ai-assistant-panel-feedback-edit-btn:focus-visible {
+    color:   var(--pst-color-primary,
+                 var(--color-brand-primary, #0969da));
+    opacity: 1;
+    outline: none;
+}
+/* Dark-mode override: muted text is lighter than the default */
+[data-bs-theme="dark"] .ai-assistant-panel-feedback-edit-btn {
+    color: var(--pst-color-muted,
+               var(--color-foreground-muted, #8b949e));
+}
+[data-bs-theme="dark"] .ai-assistant-panel-feedback-edit-btn:hover,
+[data-bs-theme="dark"] .ai-assistant-panel-feedback-edit-btn:focus-visible {
+    color: var(--pst-color-primary,
+               var(--color-brand-primary, #58a6ff));
+}
+
 /* ─── R7: keyboard-shortcut hint chip ───────────────────────────────────────
    A subtle "kbd" pill shown in the panel header sub-bar; config-driven.
    The keyboard SVG (ICONS.keyboard) carries no width/height attrs — only a
@@ -6865,11 +6906,15 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     text-align: left;
     transition: background 0.12s;
     font-family: inherit;
-    color: var(--color-foreground-primary, #24292f);
+    /* color: var(--color-foreground-primary, #24292f); */
 }
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-opt,
 .dark .ai-assistant-conv-share-opt {
+    /* Direct hardcoded fallback — no --bs-body-color intermediate.
+       Bootstrap's --bs-body-color is only redefined inside [data-bs-theme="dark"]
+       scopes; under .dark-class activation it inherits :root's #212529 (near-
+       black), making text invisible on dark surfaces.  Skip that hop entirely. */
     color: var(--pst-color-text-base, #c9d1d9);
 }
 
@@ -6889,6 +6934,7 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 [data-bs-theme="dark"] .ai-assistant-conv-share-opt:hover,
 .dark .ai-assistant-conv-share-opt:hover {
     background: rgba(255, 255, 255, 0.05);
+    color: var(--pst-color-text-base, #c9d1d9);
 }
 
 .ai-assistant-conv-share-opt-icon {
@@ -7020,14 +7066,20 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-action-btn,
 .dark .ai-assistant-conv-share-action-btn {
-    background: var(--pst-color-background, #161b22);
+    background:   var(--pst-color-surface, #21262d);
     border-color: var(--pst-color-border, #30363d);
+    /* Explicit fallback #c9d1d9 guarantees light text on dark surface even
+       when --pst-color-text-base is not overridden in the dark-mode scope. */
     color: var(--pst-color-text-base, #c9d1d9);
 }
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-action-btn:hover,
 .dark .ai-assistant-conv-share-action-btn:hover {
-    background: var(--pst-color-background-secondary, #21262d);
+    /* --pst-color-background-secondary can resolve to a LIGHT colour in some
+       PST versions; always set color explicitly so text stays readable
+       regardless of which background value the theme variable resolves to. */
+    background: var(--pst-color-on-surface, var(--pst-color-background-secondary, #2d333b));
+    color: var(--pst-color-text-base, #c9d1d9);
 }
 
 /* ── Session-only note ───────────────────────────────────────────────────── */
@@ -7337,10 +7389,12 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     padding: 6px 14px;
     border-radius: 6px;
     border: 1px solid var(--color-border, #d0d7de);
-    background: var(--color-background-primary, #ffffff);
+    /* background: var(--color-background-primary, #ffffff); */
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
     font-size: 0.82rem;
     font-weight: 600;
+    font-family: inherit;    /* prevents system-UI fallback on Safari/Firefox */
+    white-space: nowrap;     /* label must never wrap inside its flex container */
     cursor: pointer;
     transition:
         background-color 0.12s ease,
@@ -7368,13 +7422,19 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 .dark .ai-assistant-conv-share-perm-save-btn {
     background:   var(--pst-color-surface, #21262d);
     border-color: var(--pst-color-border,  #30363d);
-    color:        var(--pst-color-text-base, #e4e6ea);
+    /* Direct hardcoded fallback — no --bs-body-color intermediate.
+       Bootstrap's --bs-body-color is only redefined inside [data-bs-theme="dark"]
+       scopes; under .dark-class activation it inherits :root's #212529 (near-
+       black), making button text invisible on dark surfaces.  Skip that hop. */
+    color: var(--pst-color-text-base, #c9d1d9);
 }
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled),
 .dark .ai-assistant-conv-share-perm-save-btn:hover:not(:disabled) {
     background-color: var(--pst-color-on-surface, #2d333b);
     border-color:     var(--pst-color-text-muted, #8b949e);
+    /* Mirror the idle rule's fix — drop --bs-body-color for the same reason. */
+    color: var(--pst-color-text-base, #c9d1d9);
 }
 
 /* ── Reduced-motion additions ────────────────────────────────────────────── */
@@ -7546,6 +7606,7 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
     font-size: 0.78rem;
     font-weight: 500;
+    font-family: inherit;    /* prevents system-UI fallback on Safari/Firefox */
     cursor: pointer;
     white-space: nowrap;
     line-height: 1.4;
@@ -7565,7 +7626,11 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 .dark                  .ai-assistant-conv-share-perm-copy-btn {
     background:   var(--pst-color-surface,   #21262d);
     border-color: var(--pst-color-border,    #30363d);
-    color:        var(--pst-color-text-base,  #e4e6ea);
+    /* Direct hardcoded fallback — no --bs-body-color intermediate.
+       Matches the fix applied to action-btn, perm-save-btn, and conv-share-opt.
+       Bootstrap's --bs-body-color under .dark-class activation inherits
+       :root's #212529, rendering text invisible on dark surfaces. */
+    color: var(--pst-color-text-base, #c9d1d9);
 }
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-perm-copy-btn:hover,
@@ -10831,34 +10896,25 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 }
 /* ═══════════════════════════════════════════════════════════════════════════
    D4-c  —  QUICK-RATE PILL  (.ai-assistant-fbk-quick + children)
-   Slides in from right on action-row hover.
+   Always visible — mobile-first, no hover dependency.
    ═══════════════════════════════════════════════════════════════════════════ */
-/* Quick-rate pill: 👍 | 👎 | divider | expand chevron */
+/* Quick-rate pill: 👍 | 👎 | divider | expand chevron
+   Always visible — no hover required, works on touch/mobile devices. */
 .ai-assistant-fbk-quick {
     display: flex;
     align-items: center;
     gap: 0.15rem;
-    overflow: hidden;
-    max-width: 0;
-    opacity: 0;
-    transition:
-        max-width  0.18s ease-out,
-        opacity    0.14s ease-out;
-}
-/* Reveal on action-row hover OR when wrapper has data-active="true" (pinned popup) */
-.ai-assistant-panel-bubble-actions:hover .ai-assistant-fbk-quick,
-.ai-assistant-fbk-float-wrapper[data-active="true"] .ai-assistant-fbk-quick {
-    max-width: 8rem;
-    opacity: 1;
+    flex-shrink: 0;
 }
 /* Thumb buttons — 👍 / 👎 */
 .ai-assistant-fbk-quick-btn {
     flex-shrink: 0;
-    width: 1.75rem;
+    min-width: 1.75rem;
     height: 1.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.1rem;
     background: transparent;
     border: none;
     border-radius: 0.4rem;
@@ -10869,7 +10925,8 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     transition:
         background-color 0.12s ease,
         color            0.12s ease,
-        transform        0.1s ease;
+        transform        0.1s  ease,
+        padding          0.15s ease;
     padding: 0;
 }
 .ai-assistant-fbk-quick-btn:hover {
@@ -10883,16 +10940,22 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 .ai-assistant-fbk-quick-btn[data-sentiment="positive"][aria-pressed="true"] {
     color: #16a34a;
     background-color: rgba(34, 197, 94, 0.12);
+    padding: 0 0.3rem;
 }
 .ai-assistant-fbk-quick-btn[data-sentiment="negative"][aria-pressed="true"] {
     color: #dc2626;
     background-color: rgba(239, 68, 68, 0.10);
+    padding: 0 0.3rem;
 }
 .ai-assistant-fbk-quick-btn:focus         { outline: none; }
 .ai-assistant-fbk-quick-btn:focus-visible {
     outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
     outline-offset: -2px;
     border-radius: 0.4rem;
+}
+/* Score chip revealed on selection — mirrors .ai-assistant-panel-feedback-btn */
+.ai-assistant-fbk-quick-btn[aria-pressed="true"] .ai-fbk-score {
+    display: inline;
 }
 /* 1 px vertical separator between 👎 and the expand chevron */
 .ai-assistant-fbk-sep {
@@ -10902,20 +10965,15 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     flex-shrink: 0;
     margin: 0 0.1rem;
 }
-/* Expand chevron wrapper — collapses to width:0 when action row not hovered */
+/* Expand chevron wrapper — always visible, no width animation needed */
 .ai-assistant-fbk-expand-wrapper {
-    overflow: hidden;
-    width: 0;
+    overflow: visible;
+    width: 1.75rem;
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    transition: width 0.15s ease-out;
 }
-.ai-assistant-panel-bubble-actions:hover .ai-assistant-fbk-expand-wrapper,
-.ai-assistant-fbk-float-wrapper[data-active="true"] .ai-assistant-fbk-expand-wrapper {
-    width: 1.75rem;
-}
-/* Expand chevron button — mirrors .ai-assistant-mic-expand-btn */
+/* Expand chevron button — always visible, no opacity animation */
 .ai-assistant-fbk-expand-btn {
     flex-shrink: 0;
     width: 1.75rem;
@@ -10928,16 +10986,10 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     border-radius: 0.4rem;
     cursor: pointer;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
-    opacity: 0;
     padding: 0;
     transition:
-        opacity          0.15s ease,
         background-color 0.12s ease,
         color            0.12s ease;
-}
-.ai-assistant-panel-bubble-actions:hover .ai-assistant-fbk-expand-btn,
-.ai-assistant-fbk-float-wrapper[data-active="true"] .ai-assistant-fbk-expand-btn {
-    opacity: 1;
 }
 .ai-assistant-fbk-expand-btn:hover {
     background-color: rgba(0, 0, 0, 0.06);
@@ -11088,10 +11140,9 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 .ai-assistant-panel-feedback--inline:not(.ai-assistant-panel-feedback--revealed) {
     display: none;
 }
-/* Reduced-motion: disable all fbk slide/fade transitions */
+/* Reduced-motion: fbk-quick/expand-wrapper are now static;
+   only disable remaining animations for expand-btn and popup. */
 @media (prefers-reduced-motion: reduce) {
-    .ai-assistant-fbk-quick,
-    .ai-assistant-fbk-expand-wrapper,
     .ai-assistant-fbk-expand-btn,
     .ai-assistant-fbk-popup {
         transition: none;

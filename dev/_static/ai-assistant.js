@@ -2859,6 +2859,387 @@
     }
 
     /**
+     * POST a retraction tombstone for a previously submitted feedback record.
+     *
+     * When a user edits their feedback the original record must be invalidated
+     * before the replacement is written so the training pipeline never sees two
+     * live, contradictory ratings for the same ``(conversationId, answerIndex)``
+     * pair.
+     *
+     * Parameters
+     * ----------
+     * url : string
+     *     Endpoint URL — the same ``/v1/feedback`` path used by
+     *     ``_postFeedback``.
+     * token : string
+     *     Bearer token (empty string for none).
+     * prevSessionId : string
+     *     The ``sessionId`` of the original record to retract.  The server
+     *     MUST mark any record whose ``sessionId`` matches a retraction's
+     *     ``prevSessionId`` as ``status: 'retracted'`` and exclude it from
+     *     every downstream training-dataset build.
+     * answerIndex : number
+     *     Zero-based answer position — lets the server narrow its lookup
+     *     without a full-table scan.
+     * conversationId : string
+     *     Stable per-page-load UUID for cross-record correlation.
+     *
+     * Returns
+     * -------
+     * void
+     *
+     * Notes
+     * -----
+     * Developer: The retraction is fire-and-forget (``keepalive: true``).
+     * Both the retraction and the new record are POSTed in sequence; a
+     * short server-side race is acceptable because the two records carry
+     * distinct ``sessionId`` values and the server deduplicates on
+     * ``conversationId:answerIndex``.  Do NOT add a delay between the two
+     * POSTs — the keepalive budget is shared and a forced pause would block
+     * the new record on slow connections.
+     *
+     * Server contract (``action: 'retract'`` record schema):
+     *   {
+     *     action:         'retract',      // discriminator
+     *     schemaVersion:  1,
+     *     prevSessionId:  '<uuid>',       // the record to invalidate
+     *     answerIndex:    <number>,
+     *     conversationId: '<uuid>',
+     *     ts:             <ms-epoch>,
+     *   }
+     */
+    function _postFeedbackRetract(url, token, prevSessionId, answerIndex, conversationId) {
+        if (!url || !prevSessionId) { return; }
+        _remotePost(url, token, {
+            action:         'retract',
+            schemaVersion:  1,
+            prevSessionId:  prevSessionId,
+            answerIndex:    answerIndex,
+            conversationId: conversationId,
+            ts:             Date.now(),
+        }, { keepalive: true });
+    }
+
+    /**
+     * Render the post-submission thank-you state into ``container``.
+     *
+     * Appends a thank-you paragraph and an "Edit feedback" button to
+     * ``container`` (whose ``innerHTML`` must be cleared by the caller first).
+     * The Edit button:
+     *   1. Marks ``_feedbackStore[answerIndex]._pendingRetract = true`` so the
+     *      next submit handler knows to retract the current record before
+     *      persisting the replacement.
+     *   2. Removes ``answerIndex`` from ``_feedbackGivenSet`` so the detailed
+     *      form's submit handler can run again.
+     *   3. Clears ``container.innerHTML`` and calls ``_rebuildFeedbackFormIn``
+     *      to re-render the form pre-filled with the previously submitted values.
+     *
+     * Parameters
+     * ----------
+     * container : HTMLElement
+     *     DOM element to populate.  Caller MUST clear ``innerHTML`` first.
+     * answerIndex : number
+     *     Zero-based answer position.
+     * answerText : string
+     *     Full text of the assistant answer — forwarded to the re-render.
+     * questionText : string
+     *     The paired user query — forwarded to the re-render.
+     * cfg : Object
+     *     ``window.AI_ASSISTANT_CONFIG`` snapshot from the caller's scope.
+     *
+     * Returns
+     * -------
+     * void
+     *
+     * Notes
+     * -----
+     * User: The "Edit feedback" button appears after every submission (quick
+     *   or detailed) so mistakes can always be corrected.  The form is
+     *   pre-filled with the previous emoji selection and message text.
+     * Developer: This function intentionally does NOT clear ``container``
+     *   before appending so callers control the rendering moment.  Always
+     *   call ``container.innerHTML = ''`` immediately before this call.
+     */
+    function _showFeedbackThanks(container, answerIndex, answerText, questionText, cfg) {
+        cfg = cfg || (window.AI_ASSISTANT_CONFIG || {});
+        var thanks = (typeof cfg.panelFeedbackThanks === 'string' &&
+            cfg.panelFeedbackThanks) || 'Thanks for your feedback!';
+
+        var done = document.createElement('p');
+        done.className = 'ai-assistant-panel-feedback-thanks';
+        done.textContent = thanks;
+        container.appendChild(done);
+
+        // "Edit feedback" — retracts the previous record and reopens the form.
+        var editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.className = 'ai-assistant-panel-feedback-edit-btn';
+        editBtn.textContent = 'Edit feedback';
+        editBtn.setAttribute('aria-label', 'Edit your feedback submission');
+        editBtn.addEventListener('click', function () {
+            // Flag the stored entry for retraction on next submit.
+            // Must happen BEFORE _feedbackGivenSet.delete so the submit handler
+            // can read the existing sessionId for the retraction payload.
+            if (_feedbackStore[answerIndex]) {
+                _feedbackStore[answerIndex]._pendingRetract = true;
+            }
+            // Re-open the form.  Remove the guard so the submit handler runs.
+            _feedbackGivenSet.delete(answerIndex);
+            container.innerHTML = '';
+            _rebuildFeedbackFormIn(container, answerIndex, answerText, questionText);
+        });
+        container.appendChild(editBtn);
+    }
+
+    /**
+     * Build and inject the detailed feedback form into ``container``.
+     *
+     * Used both for the initial build (via ``_buildFeedbackBlock``) and when
+     * the user edits a previously submitted rating via the "Edit feedback"
+     * button rendered by ``_showFeedbackThanks``.  When editing, the form
+     * is pre-filled from ``_feedbackStore[answerIndex]`` so the user can
+     * correct their previous selection without starting over.
+     *
+     * Parameters
+     * ----------
+     * container : HTMLElement
+     *     DOM element to populate.  Caller is responsible for clearing
+     *     ``innerHTML`` before calling when re-rendering on edit.
+     * answerIndex : number
+     *     Zero-based answer position; key into ``_feedbackStore``.
+     * answerText : string
+     *     Full text of the assistant answer.
+     * questionText : string
+     *     The paired user query.
+     *
+     * Returns
+     * -------
+     * void
+     *
+     * Notes
+     * -----
+     * Developer: ``_feedbackStore[answerIndex]._pendingRetract`` is the
+     *   signal that this is an edit pass.  The submit handler reads the
+     *   stored ``sessionId``, fires ``_postFeedbackRetract``, clears the
+     *   flag, then fires ``_postFeedback`` with the new record.  The flag
+     *   is cleared immediately before both POSTs to prevent double-retraction
+     *   on rapid re-submit.
+     * Developer: The ``chosen`` closure tracks the currently selected option
+     *   across button clicks; it is pre-seeded when editing so the user can
+     *   submit immediately without re-selecting if only the message changed.
+     * User: When editing, the previously chosen emoji is pre-selected and
+     *   the previous message text is pre-filled in the textarea.
+     */
+    function _rebuildFeedbackFormIn(container, answerIndex, answerText, questionText) {
+        var cfg = window.AI_ASSISTANT_CONFIG || {};
+
+        var question = (typeof cfg.panelFeedbackQuestion === 'string' &&
+            cfg.panelFeedbackQuestion) || 'Was this helpful?';
+
+        var opts = Array.isArray(cfg.panelFeedbackOptions) &&
+            cfg.panelFeedbackOptions.length >= 2
+            ? cfg.panelFeedbackOptions.slice()
+            : _FEEDBACK_DEFAULTS;
+
+        var scale;
+        if (Array.isArray(cfg.panelFeedbackScale) &&
+            cfg.panelFeedbackScale.length === opts.length &&
+            cfg.panelFeedbackScale.every(function (v) { return typeof v === 'number'; })) {
+            scale = cfg.panelFeedbackScale.slice();
+        } else {
+            scale = _deriveDefaultScale(opts.length);
+        }
+
+        // Pre-fill state when editing a previously submitted rating.
+        var prevEntry = (_feedbackStore[answerIndex] && _feedbackStore[answerIndex]._pendingRetract)
+            ? _feedbackStore[answerIndex]
+            : null;
+        var prevValue   = prevEntry ? prevEntry.ratingValue : null;
+        var prevMessage = prevEntry ? (prevEntry.message || '') : '';
+
+        // chosen tracks the currently selected option across button clicks.
+        // Pre-seed from prevEntry so the user can submit immediately if only
+        // changing the message text without re-selecting an emoji.
+        var chosen = { label: null, value: null };
+        if (prevEntry && prevValue !== null) {
+            // Reverse-lookup the label for the previously submitted value.
+            opts.forEach(function (o, idx) {
+                if (scale[idx] === prevValue) {
+                    chosen.label = o.value || o.title || o.emoji;
+                    chosen.value = prevValue;
+                }
+            });
+        }
+
+        var q = document.createElement('p');
+        q.className = 'ai-assistant-panel-feedback-q';
+        q.textContent = question;
+        container.appendChild(q);
+
+        var optRow = document.createElement('div');
+        optRow.className = 'ai-assistant-panel-feedback-options';
+        optRow.setAttribute('data-count', String(opts.length));
+        optRow.setAttribute('data-tier',  String(_getFeedbackTier(opts.length)));
+
+        opts.forEach(function (o, idx) {
+            var b = document.createElement('button');
+            b.className = 'ai-assistant-panel-feedback-btn';
+            b.type = 'button';
+
+            var num = scale[idx];
+            var sentiment = num > 0 ? 'positive' : (num < 0 ? 'negative' : 'neutral');
+            b.setAttribute('data-sentiment', sentiment);
+
+            var emojiSpan = document.createElement('span');
+            emojiSpan.setAttribute('aria-hidden', 'true');
+            emojiSpan.textContent = o.emoji || '\u2753';
+
+            var scoreSpan = document.createElement('span');
+            scoreSpan.className = 'ai-fbk-score';
+            scoreSpan.textContent = num > 0 ? ('+' + num) : String(num);
+            scoreSpan.setAttribute('aria-hidden', 'true');
+
+            b.appendChild(emojiSpan);
+            b.appendChild(scoreSpan);
+
+            var sign = num > 0 ? '+' + num : (num === 0 ? ' 0' : String(num));
+            var tip = o.title ? (o.title + ' (' + sign + ')') : ('(' + sign + ')');
+            b.title = tip;
+            b.setAttribute('aria-label', tip);
+            b.setAttribute('data-value', String(num));
+
+            // Pre-select the previously submitted option when editing.
+            b.setAttribute('aria-pressed',
+                (prevValue !== null && num === prevValue) ? 'true' : 'false');
+
+            b.addEventListener('click', function () {
+                chosen.label = o.value || o.title || o.emoji;
+                chosen.value = num;
+                optRow.querySelectorAll('button').forEach(function (x) {
+                    x.setAttribute('aria-pressed', 'false');
+                });
+                b.setAttribute('aria-pressed', 'true');
+            });
+            optRow.appendChild(b);
+        });
+        container.appendChild(optRow);
+
+        var ta = document.createElement('textarea');
+        ta.className = 'ai-assistant-panel-feedback-text';
+        ta.placeholder = (typeof cfg.panelFeedbackPlaceholder === 'string' &&
+            cfg.panelFeedbackPlaceholder) ||
+            'Optional: tell us more (what worked, what didn\u2019t)\u2026';
+        ta.setAttribute('aria-label', 'Feedback details');
+        ta.value = prevMessage;  // Pre-fill message when editing.
+        container.appendChild(ta);
+
+        var submit = document.createElement('button');
+        submit.className = 'ai-assistant-panel-feedback-submit';
+        submit.type = 'button';
+        submit.textContent = (typeof cfg.panelFeedbackSubmit === 'string' &&
+            cfg.panelFeedbackSubmit) || 'Send feedback';
+
+        submit.addEventListener('click', function () {
+            var sid;
+            try {
+                if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                    sid = window.crypto.randomUUID();
+                }
+            } catch (_) {}
+            if (!sid) {
+                sid = 'fb-' + (location ? location.pathname : 'p') +
+                      '-' + answerIndex + '-' + Date.now();
+            }
+
+            var modelInfo = null;
+            var activeModel = _getActiveModel(cfg);
+            if (activeModel) {
+                modelInfo = {
+                    id:       activeModel.id,
+                    provider: activeModel.provider || 'custom',
+                    model:    activeModel.model || activeModel.id,
+                };
+            } else if (typeof cfg.panelApiModel === 'string' && cfg.panelApiModel) {
+                modelInfo = {
+                    id:       cfg.panelApiModel,
+                    provider: 'anthropic',
+                    model:    cfg.panelApiModel,
+                };
+            }
+
+            var detail = {
+                schemaVersion:  1,
+                ratingValue:    chosen.value,
+                ratingLabel:    chosen.label,
+                rating:         chosen.label,
+                message:        ta.value.trim(),
+                query:          (typeof questionText === 'string') ? questionText : '',
+                answer:         (typeof answerText === 'string') ? answerText : '',
+                model:          modelInfo,
+                answerIndex:    answerIndex,
+                page:           location ? location.href : '',
+                ts:             Date.now(),
+                sessionId:      sid,
+                conversationId: _sessionId,
+            };
+
+            // CustomEvent fires unconditionally (doc-author listeners must not be
+            // skipped regardless of persist mode).
+            try {
+                document.dispatchEvent(new CustomEvent(
+                    'ai-assistant-feedback', { detail: detail }));
+            } catch (_) {}
+
+            var _fbBase  = _EP.hasProfiles()
+                ? _EP.resolve('feedback')
+                : (cfg.panelFeedbackEndpoint || '');
+            var _fbToken = _EP.hasProfiles()
+                ? _EP.resolveToken('feedbackToken')
+                : (cfg.panelFeedbackToken || '');
+
+            if (_fbBase && _feedbackPersistEnabled) {
+                // Retract the previous entry before posting the new one so the
+                // training pipeline never sees two live records for the same
+                // (conversationId, answerIndex) pair.  The _pendingRetract flag
+                // is set by _showFeedbackThanks's Edit button handler.
+                var _curEntry = _feedbackStore[answerIndex];
+                if (_curEntry && _curEntry._pendingRetract && _curEntry.sessionId) {
+                    _postFeedbackRetract(
+                        _fbBase + '/v1/feedback', _fbToken,
+                        _curEntry.sessionId, answerIndex, _curEntry.conversationId
+                    );
+                    // Clear immediately — defensive against rapid double-submit.
+                    _curEntry._pendingRetract = false;
+                }
+                _postFeedback(_fbBase + '/v1/feedback', _fbToken, detail);
+            }
+
+            if (cfg.panelFeedbackLog) {
+                // eslint-disable-next-line no-console
+                console.log('[ai-assistant] feedback (via _rebuildFeedbackFormIn)', detail);
+            }
+
+            _feedbackGivenSet.add(answerIndex);
+            _feedbackStore[answerIndex] = {
+                ratingValue:    chosen.value,
+                ratingLabel:    chosen.label,
+                message:        ta.value.trim(),
+                ts:             Date.now(),
+                query:          detail.query,
+                answer:         detail.answer,
+                model:          detail.model,
+                sessionId:      detail.sessionId,
+                conversationId: detail.conversationId,
+                page:           detail.page,
+            };
+
+            container.innerHTML = '';
+            _showFeedbackThanks(container, answerIndex, answerText, questionText, cfg);
+        });
+        container.appendChild(submit);
+    }
+
+    /**
      * POST a share payload to the global share endpoint and await the UUID response.
      *
      * @param {string}   url       cfg.panelGlobalShareEndpoint.
@@ -4546,7 +4927,7 @@ opts.jsonPayload + '\n' +
      * HTMLElement
      *     The wrapper element (relative-positioned anchor).
      */
-    function _buildBubbleMore(answerText, shareOpts) {
+    function _buildBubbleMore(answerText, shareOpts, retryOpts) {
         var wrapper = document.createElement('div');
         wrapper.className = 'ai-assistant-panel-bubble-action-more';
 
@@ -4569,6 +4950,33 @@ opts.jsonPayload + '\n' +
         menu.className = 'ai-assistant-panel-bubble-action-more-menu';
         menu.setAttribute('role', 'menu');
         menu.setAttribute('data-open', 'false');
+
+        // ── Retry — FIRST item in the menu (re-submits the paired question) ─────
+        if (retryOpts && retryOpts.question) {
+            (function (q) {
+                var retryMenuBtn = document.createElement('button');
+                retryMenuBtn.className =
+                    'ai-assistant-panel-bubble-action ' +
+                    'ai-assistant-panel-bubble-action--retry';
+                retryMenuBtn.type = 'button';
+                retryMenuBtn.setAttribute('role', 'menuitem');
+                retryMenuBtn.setAttribute('aria-label', 'Retry this answer');
+                retryMenuBtn.title = 'Retry — re-send the same question';
+                retryMenuBtn.innerHTML = ICONS.retry;
+                var retryMenuLbl = document.createElement('span');
+                retryMenuLbl.textContent = 'Retry';
+                retryMenuBtn.appendChild(retryMenuLbl);
+                retryMenuBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var panelInput = document.getElementById('ai-assistant-panel-input');
+                    if (!panelInput) return;
+                    panelInput.value = q;
+                    _updateSendBtnState();
+                    handleAIPanelSubmit();
+                });
+                menu.appendChild(retryMenuBtn);
+            }(retryOpts.question));
+        }
 
         // ── Listen (TTS) button inside the menu ───────────────────────────
         // Only rendered when the Web Speech Synthesis API is available.
@@ -4596,8 +5004,8 @@ opts.jsonPayload + '\n' +
         }
 
         // ── Share button (moved from flat action row into menu) ───────────
-        // Placed directly after Listen so the row order stays:
-        //   time | copy | 👍👎 | retry | [more → listen, share]
+        // Menu order: retry (first) | listen | share
+        // Row order:  time | copy | 👍👎⌃ | more
         // shareOpts is null for legacy/streaming paths that don't pass it.
         if (shareOpts && shareOpts.text !== undefined) {
             (function (opts) {
@@ -5136,8 +5544,8 @@ opts.jsonPayload + '\n' +
         quick.className = 'ai-assistant-fbk-quick';
 
         var _quickOpts = [
-            { emoji: '\uD83D\uDC4D', sentiment: 'positive', value: 1,  title: 'Helpful' },
             { emoji: '\uD83D\uDC4E', sentiment: 'negative', value: -1, title: 'Not helpful' },
+            { emoji: '\uD83D\uDC4D', sentiment: 'positive', value: 1,  title: 'Helpful' },
         ];
 
         _quickOpts.forEach(function (opt) {
@@ -5145,16 +5553,56 @@ opts.jsonPayload + '\n' +
             btn.type = 'button';
             btn.className = 'ai-assistant-fbk-quick-btn';
             btn.setAttribute('data-sentiment', opt.sentiment);
+            btn.setAttribute('data-value', String(opt.value));
             btn.setAttribute('aria-pressed', 'false');
-            btn.setAttribute('aria-label', opt.title + ' (' +
-                (opt.value > 0 ? '+' : '') + opt.value + ')');
-            btn.title = opt.title;
-            btn.textContent = opt.emoji;
+            var _btnLabel = opt.title + ' (' + (opt.value > 0 ? '+' : '') + String(opt.value) + ')';
+            btn.setAttribute('aria-label', _btnLabel);
+            btn.title = _btnLabel;
+
+            // Emoji + score chip — same structure as .ai-assistant-panel-feedback-btn
+            // so .ai-fbk-score CSS rules apply without duplication.
+            var emojiSpan = document.createElement('span');
+            emojiSpan.setAttribute('aria-hidden', 'true');
+            emojiSpan.textContent = opt.emoji;
+            btn.appendChild(emojiSpan);
+
+            // Score label hidden until aria-pressed="true" (revealed via CSS).
+            var scoreSpan = document.createElement('span');
+            scoreSpan.className = 'ai-fbk-score';
+            scoreSpan.setAttribute('aria-hidden', 'true');
+            scoreSpan.textContent = (opt.value > 0 ? '+' : '') + String(opt.value);
+            btn.appendChild(scoreSpan);
 
             btn.addEventListener('click', function () {
-                if (_feedbackGivenSet.has(answerIndex)) return;
+                // ── Edit path ────────────────────────────────────────────────
+                // If feedback was already given for this answer:
+                //   • Same button (aria-pressed="true") → no-op (nothing changed).
+                //   • Different button → the user is correcting their rating;
+                //     retract the previous submission so it is excluded from
+                //     training data, then proceed with the new selection.
+                if (_feedbackGivenSet.has(answerIndex)) {
+                    if (btn.getAttribute('aria-pressed') === 'true') { return; }
 
-                // Visual: toggle pressed state
+                    var _prevQEntry = _feedbackStore[answerIndex];
+                    var _fbBaseQ  = _EP.hasProfiles()
+                        ? _EP.resolve('feedback')
+                        : (cfg.panelFeedbackEndpoint || '');
+                    var _fbTokenQ = _EP.hasProfiles()
+                        ? _EP.resolveToken('feedbackToken')
+                        : (cfg.panelFeedbackToken || '');
+                    if (_fbBaseQ && _feedbackPersistEnabled &&
+                            _prevQEntry && _prevQEntry.sessionId) {
+                        _postFeedbackRetract(
+                            _fbBaseQ + '/v1/feedback', _fbTokenQ,
+                            _prevQEntry.sessionId, answerIndex,
+                            _prevQEntry.conversationId
+                        );
+                    }
+                    // Remove the guard so the normal submit block runs below.
+                    _feedbackGivenSet.delete(answerIndex);
+                }
+
+                // Visual: toggle pressed state on quick buttons.
                 quick.querySelectorAll('.ai-assistant-fbk-quick-btn').forEach(function (x) {
                     x.setAttribute('aria-pressed', 'false');
                 });
@@ -5172,10 +5620,15 @@ opts.jsonPayload + '\n' +
                     answerIndex:    answerIndex,
                     page:           (typeof location !== 'undefined') ? location.href : '',
                     ts:             Date.now(),
-                    sessionId:      _sessionId + '-quick-' + answerIndex,
+                    // Append Date.now() so the sessionId is unique on every click
+                    // (including edits) — the server can deduplicate on
+                    // conversationId:answerIndex, so the uniqueness here is only
+                    // needed for the retraction prevSessionId lookup.
+                    sessionId:      _sessionId + '-quick-' + answerIndex + '-' + Date.now(),
                     conversationId: _sessionId,
                 };
 
+                // CustomEvent fires unconditionally for doc-author listeners.
                 try {
                     document.dispatchEvent(new CustomEvent(
                         'ai-assistant-feedback', { detail: detail }));
@@ -5187,7 +5640,19 @@ opts.jsonPayload + '\n' +
                 var _fbToken = _EP.hasProfiles()
                     ? _EP.resolveToken('feedbackToken')
                     : (cfg.panelFeedbackToken || '');
+
                 if (_fbBase && _feedbackPersistEnabled) {
+                    // Also retract any pending entry set by the detailed-block's
+                    // Edit button (covers: quick → fbBlock Edit → click quick).
+                    var _pendQEntry = _feedbackStore[answerIndex];
+                    if (_pendQEntry && _pendQEntry._pendingRetract && _pendQEntry.sessionId) {
+                        _postFeedbackRetract(
+                            _fbBase + '/v1/feedback', _fbToken,
+                            _pendQEntry.sessionId, answerIndex,
+                            _pendQEntry.conversationId
+                        );
+                        _pendQEntry._pendingRetract = false;
+                    }
                     _postFeedback(_fbBase + '/v1/feedback', _fbToken, detail);
                 }
 
@@ -5205,19 +5670,14 @@ opts.jsonPayload + '\n' +
                     page:           detail.page,
                 };
 
-                // Replace the full feedback block with a thank-you note
+                // Update the detailed feedback block: show thank-you + Edit button
+                // so the user can correct this submission at any time.
                 var fbBlock = document.querySelector(
                     '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
                 );
                 if (fbBlock) {
                     fbBlock.innerHTML = '';
-                    var doneP = document.createElement('p');
-                    doneP.className = 'ai-assistant-panel-feedback-thanks';
-                    doneP.textContent =
-                        (typeof cfg.panelFeedbackThanks === 'string' &&
-                            cfg.panelFeedbackThanks) ||
-                        'Thanks for your feedback!';
-                    fbBlock.appendChild(doneP);
+                    _showFeedbackThanks(fbBlock, answerIndex, answerText, questionText, cfg);
                     fbBlock.classList.add('ai-assistant-panel-feedback--revealed');
                 }
             });
@@ -5381,8 +5841,7 @@ opts.jsonPayload + '\n' +
 
         var question = (typeof cfg.panelFeedbackQuestion === 'string' &&
             cfg.panelFeedbackQuestion) || 'Was this helpful?';
-        var thanks = (typeof cfg.panelFeedbackThanks === 'string' &&
-            cfg.panelFeedbackThanks) || 'Thanks for your feedback!';
+        // Note: `thanks` text is rendered by _showFeedbackThanks — not inlined here.
 
         var opts = Array.isArray(cfg.panelFeedbackOptions) &&
             cfg.panelFeedbackOptions.length >= 2
@@ -5592,6 +6051,25 @@ opts.jsonPayload + '\n' +
                 // doc-author listeners and the _feedbackStore update (below)
                 // are never skipped — only the durable HF write is suppressed.
                 if (_feedbackPersistEnabled) {
+                    // Retract any earlier submission flagged by the Edit button
+                    // before writing the new record.  This path is reached when
+                    // a quick-rate click shows _showFeedbackThanks on this block,
+                    // the user clicks "Edit feedback", and then re-submits via
+                    // the form that _showFeedbackThanks re-renders with
+                    // _rebuildFeedbackFormIn — BUT in theory _buildFeedbackBlock
+                    // itself can also be re-entered if _feedbackGivenSet was
+                    // cleared and the original wrap element is still live.
+                    // Guard defensively so neither path double-posts.
+                    var _bfbEntry = _feedbackStore[answerIndex];
+                    if (_bfbEntry && _bfbEntry._pendingRetract && _bfbEntry.sessionId) {
+                        _postFeedbackRetract(
+                            _fbBase + '/v1/feedback', _fbToken,
+                            _bfbEntry.sessionId, answerIndex,
+                            _bfbEntry.conversationId
+                        );
+                        // Clear immediately — defensive against rapid double-submit.
+                        _bfbEntry._pendingRetract = false;
+                    }
                     _postFeedback(
                         _fbBase + '/v1/feedback',
                         _fbToken,
@@ -5623,11 +6101,11 @@ opts.jsonPayload + '\n' +
                 conversationId: detail.conversationId,
                 page:           detail.page,
             };
+            // Delegate thank-you rendering to _showFeedbackThanks so the
+            // "Edit feedback" button is appended automatically.  This replaces
+            // the old bare paragraph that had no way to re-open the form.
             wrap.innerHTML = '';
-            var done = document.createElement('p');
-            done.className = 'ai-assistant-panel-feedback-thanks';
-            done.textContent = thanks;
-            wrap.appendChild(done);
+            _showFeedbackThanks(wrap, answerIndex, answerText, questionText, cfg);
         });
         wrap.appendChild(submit);
 
@@ -9781,6 +10259,58 @@ opts.jsonPayload + '\n' +
      *   the correct sheet by ``fmt`` so the dropdown and the sheets are
      *   decoupled — neither knows the other's DOM reference directly.
      */
+
+    // ── Data-URI builder ─────────────────────────────────────────────────────
+    /**
+     * Convert a UTF-8 string to a base64 data URI.
+     *
+     * The resulting URL is fully self-contained: it embeds the entire content
+     * inside the URL string itself, requiring no server, no browser storage,
+     * and no open tab.  It can be copied, bookmarked, or sent to any browser
+     * and will always open the same content.
+     *
+     * Encoding chain: JS UTF-16 string
+     *   → encodeURIComponent  (percent-encode every non-ASCII byte)
+     *   → unescape            (collapse %XX sequences back to Latin-1 bytes)
+     *   → btoa                (base64-encode the now-Latin-1 byte string)
+     *
+     * This is the well-known "UTF-8 safe btoa" pattern.  The unescape step is
+     * intentionally used instead of decodeURIComponent so the output is always
+     * a plain Latin-1 byte string that btoa can accept without a DOMException.
+     *
+     * Parameters
+     * ----------
+     * content : string
+     *     Arbitrary UTF-8 string (conversation JSON, HTML, plain text, etc.).
+     * mime : string
+     *     MIME type for the data URI (e.g. ``'text/html;charset=utf-8'``).
+     *
+     * Returns
+     * -------
+     * string
+     *     A ``data:{mime};base64,{b64}`` URI or a percent-encoded fallback.
+     *
+     * Notes
+     * -----
+     * User: Paste the returned URL into any browser's address bar to view the
+     *   content.  For HTML format, Chrome blocks ``window.open()`` with a data
+     *   URI (security policy); always use paste-in-address-bar for HTML.
+     *
+     * Developer: ``URL.revokeObjectURL(dataUri)`` is a no-op and safe to call
+     *   even though the URL is not a blob: URI.  The callers in this file share
+     *   the ``_activeBlobUrl`` variable for both blob: and data: URLs; the
+     *   revoke call at mode-switch time is intentionally harmless on data URIs.
+     */
+    function _buildDataUri(content, mime) {
+        try {
+            return 'data:' + mime + ';base64,' + btoa(unescape(encodeURIComponent(content)));
+        } catch (_e) {
+            // btoa fallback: percent-encode the content (no base64, larger URL
+            // but UTF-8 safe and supported by all modern browsers).
+            return 'data:' + mime + ',' + encodeURIComponent(content);
+        }
+    }
+
     function _buildFmtShareSheet(fmt) {
         // Read config once at build-time (window.AI_ASSISTANT_CONFIG is set by
         // the Python-injected inline script before this file runs and does not
@@ -9960,8 +10490,42 @@ opts.jsonPayload + '\n' +
         openBtn.textContent = 'Open';
         openBtn.addEventListener('click', function () {
             if (!linkInput.value) return;
+            var urlToOpen = linkInput.value;
+
+            // Chrome, Firefox, and Safari block navigation to data: URIs via
+            // window.open() (data-URI navigation security policy, enforced since
+            // ~2019). In public mode _activeBlobUrl is a data: URI — calling
+            // window.open() on it opens an empty tab.
+            //
+            // Fix: when the active URL is a data: URI, rebuild the conversation
+            // content as a fresh Blob URL solely for this open action.  The Blob
+            // URL is never stored in _activeBlobUrl so the data: URI in the input
+            // field is preserved for copy / share / bookmarking purposes.
+            // The Blob URL is revoked after 30 s — enough for any browser to
+            // start loading the content; it does NOT close the tab.
+            if (urlToOpen.startsWith('data:')) {
+                try {
+                    var content = meta.buildStr();
+                    if (!content) {
+                        showNotification('Nothing to open yet', true);
+                        return;
+                    }
+                    var openBlob   = new Blob([content], { type: meta.mime });
+                    var openBlobUrl = URL.createObjectURL(openBlob);
+                    var w = window.open(openBlobUrl, '_blank', 'noopener,noreferrer');
+                    if (w) { try { w.opener = null; } catch (_oe) {} }
+                    // Schedule revocation — a no-op if the browser already
+                    // navigated; safe to call on any Blob URL after use.
+                    setTimeout(function () {
+                        try { URL.revokeObjectURL(openBlobUrl); } catch (_re) {}
+                    }, 30000);
+                } catch (_e) {}
+                return;
+            }
+
+            // Private mode: linkInput holds a blob: URL — window.open works.
             try {
-                var w = window.open(linkInput.value, '_blank', 'noopener,noreferrer');
+                var w = window.open(urlToOpen, '_blank', 'noopener,noreferrer');
                 if (w) { try { w.opener = null; } catch (_e) {} }
             } catch (_e) {}
         });
@@ -9978,6 +10542,11 @@ opts.jsonPayload + '\n' +
             '\u26A0\uFE0F Session link \u2014 valid only while this browser tab is open. ' +
             'Close this tab and the link stops working. ' +
             'Use \u201cSave permanently\u201d or \u201cSave globally\u201d below for a lasting link.';
+        // Hidden until the session link row is shown — displaying the warning
+        // before any link exists confuses users who have not yet clicked
+        // "Create share link".  Revealed alongside linkRow in generateBtn's
+        // click handler below.
+        sessionNote.style.display = 'none';
         body.appendChild(sessionNote);
 
         // ── Permanent storage section (IndexedDB) ─────────────────────────────
@@ -10058,8 +10627,9 @@ opts.jsonPayload + '\n' +
         permNote.className =
             'ai-assistant-conv-share-session-note ai-assistant-conv-share-perm-note';
         permNote.textContent =
-            'Works in this browser until deleted or browser data is cleared. ' +
-            'Does not work on other devices or browsers.';
+            'Self-contained link \u2014 full conversation embedded in the URL. ' +
+            'Works in any browser on any device without a server. ' +
+            'Bookmark it for quick access; same-browser visits also reopen via local storage.';
         permSection.appendChild(permNote);
 
         // "Save permanently" action button
@@ -10105,17 +10675,25 @@ opts.jsonPayload + '\n' +
                     return;
                 }
                 _permUuid = savedUuid;
-                var url   = _idbShareUrl(savedUuid, fmt);
-                permInput.value         = url;
+
+                // Build a data URI — embeds the full conversation content directly
+                // in the URL so it works in any browser on any device without
+                // needing this browser's local IndexedDB.
+                // The IDB entry is kept alongside for same-browser convenience:
+                // _checkShareHash() detects the hash fragment on revisit and
+                // reopens the content without requiring the user to navigate the
+                // long data URI again.
+                var dataUrl = _buildDataUri(content, meta.mime);
+                permInput.value         = dataUrl;
                 permLinkRow.style.display = '';
                 permSaveBtn.style.display = 'none';
 
                 if (_shareMode === 'public') {
-                    copyToClipboard(url, false);
+                    copyToClipboard(dataUrl, false);
                     showNotification(
-                        'Permanent link saved \u2014 copied to clipboard', false);
+                        'Link saved \u2014 copied to clipboard. Works in any browser.', false);
                 } else {
-                    showNotification('Permanent link saved', false);
+                    showNotification('Link saved \u2014 works in any browser', false);
                 }
             });
         });
@@ -10175,12 +10753,22 @@ opts.jsonPayload + '\n' +
             globalInput.type      = 'text';
             globalInput.readOnly  = true;
             globalInput.className = 'ai-assistant-conv-share-perm-input';
+            globalInput.setAttribute('aria-label', 'Global share link');
+            globalInput.addEventListener('focus', function () { globalInput.select(); });
             var globalCopyBtn = document.createElement('button');
             globalCopyBtn.type      = 'button';
             globalCopyBtn.className = 'ai-assistant-conv-share-perm-copy-btn';
             globalCopyBtn.textContent = 'Copy';
             globalCopyBtn.addEventListener('click', function () {
-                navigator.clipboard && navigator.clipboard.writeText(globalInput.value).catch(function () {});
+                if (!globalInput.value) { return; }
+                // Use the module-level copyToClipboard helper for consistent
+                // clipboard behaviour, fallback handling, and notification
+                // integration — matches permCopyBtn, copyBtn, and every other
+                // copy action in this file.  The raw navigator.clipboard path
+                // was incorrect here: it set textContent = 'Copied!' synchronously
+                // before the async write resolved, so the label appeared even
+                // when the clipboard write failed silently.
+                copyToClipboard(globalInput.value, false);
                 globalCopyBtn.textContent = 'Copied!';
                 setTimeout(function () { globalCopyBtn.textContent = 'Copy'; }, 2000);
             });
@@ -10211,7 +10799,7 @@ opts.jsonPayload + '\n' +
                 globalSaveBtn.textContent = 'Saving…';
                 globalStatus.style.display = 'none';
                 _postGlobalShare(
-                    _shBase + '/v1/share',
+                    _shBase.replace(/\/$/, '') + '/v1/share',
                     _shToken,
                     {
                         content:  gContent,
@@ -10356,7 +10944,7 @@ opts.jsonPayload + '\n' +
                 trainBtn.textContent = 'Contributing…';
                 trainStatus.style.display = 'none';
                 _postTrainingContribution(
-                    _trBase + '/v1/contribute',
+                    _trBase.replace(/\/$/, '') + '/v1/contribute',
                     {
                         schemaVersion:  1,
                         consentFlag:    true,
@@ -10409,29 +10997,51 @@ opts.jsonPayload + '\n' +
                 showNotification('Nothing to share yet', true);
                 return;
             }
-            // Revoke previous blob before creating a new one (prevent leaks).
-            if (_activeBlobUrl) {
+            // Revoke previous blob URL only (data: URIs are not registered with
+            // the Blob URL store; revokeObjectURL on them is a no-op but guard
+            // explicitly so browser devtools show clean resource lifetimes).
+            if (_activeBlobUrl && _activeBlobUrl.startsWith('blob:')) {
                 try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
-                _activeBlobUrl = null;
             }
+            _activeBlobUrl = null;
             var content = meta.buildStr();
             if (!content) { showNotification('Nothing to share yet', true); return; }
 
-            var blob = new Blob([content], { type: meta.mime });
-            _activeBlobUrl = URL.createObjectURL(blob);
-            linkInput.value        = _activeBlobUrl;
-            linkRow.style.display  = '';
-
             if (_shareMode === 'public') {
+                // ── Public mode: data URI ──────────────────────────────────────
+                // Embed the full conversation content in the URL itself so the
+                // link works in any browser on any device without a server or
+                // local browser storage (no Blob URL, no IndexedDB required).
+                _activeBlobUrl = _buildDataUri(content, meta.mime);
+                linkInput.value       = _activeBlobUrl;
+                linkRow.style.display = '';
+                sessionNote.textContent =
+                    '\u2139\uFE0F Public link \u2014 conversation content embedded in the URL. ' +
+                    'Copy and paste into any browser\u2019s address bar, or use the Open button. ' +
+                    'No server required.';
+                sessionNote.style.display = '';
                 copyToClipboard(_activeBlobUrl, false);
-                try {
-                    var wp = window.open(_activeBlobUrl, '_blank', 'noopener,noreferrer');
-                    if (wp) { try { wp.opener = null; } catch (_e) {} }
-                } catch (_e) {}
+                // Do NOT call window.open here — generating and displaying the
+                // link is the sole job of this button.  Opening is handled by
+                // the dedicated "Open" button in the link row, which also shows
+                // a format-aware message when the browser restricts navigation.
                 showNotification(
-                    'Share link created \u2014 copied to clipboard', false);
+                    'Public link created \u2014 copied to clipboard. Works in any browser.', false);
             } else {
-                showNotification('Share link created', false);
+                // ── Private mode: blob URL ─────────────────────────────────────
+                // Blob URL is session-scoped: valid only while this browser tab
+                // is open.  Memory is released when the tab is closed or the
+                // mode is changed.  Use "Save permanently" for a lasting link.
+                var blob = new Blob([content], { type: meta.mime });
+                _activeBlobUrl = URL.createObjectURL(blob);
+                linkInput.value       = _activeBlobUrl;
+                linkRow.style.display = '';
+                sessionNote.textContent =
+                    '\u26A0\uFE0F Session link \u2014 valid only while this browser tab is open. ' +
+                    'Close this tab and the link stops working. ' +
+                    'Use \u201cSave permanently\u201d or \u201cSave globally\u201d below for a lasting link.';
+                sessionNote.style.display = '';
+                showNotification('Share link created \u2014 valid while this tab is open', false);
             }
         });
 
@@ -10450,13 +11060,17 @@ opts.jsonPayload + '\n' +
             _shareMode = key;
             privOpt.setAttribute('aria-pressed', key === 'private' ? 'true' : 'false');
             pubOpt.setAttribute('aria-pressed',  key === 'public'  ? 'true' : 'false');
-            // Reset session link
-            linkRow.style.display = 'none';
-            linkInput.value       = '';
-            if (_activeBlobUrl) {
+            // Reset session link row, note, and any active URL.
+            linkRow.style.display         = 'none';
+            sessionNote.style.display     = 'none';
+            linkInput.value               = '';
+            // Revoke blob URLs only (data: URIs are not registered with the
+            // Blob URL store — revokeObjectURL is a safe no-op on them, but
+            // explicitly guard to avoid confusion in profilers/devtools).
+            if (_activeBlobUrl && _activeBlobUrl.startsWith('blob:')) {
                 try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
-                _activeBlobUrl = null;
             }
+            _activeBlobUrl = null;
         }
 
         privOpt.addEventListener('click', function () { _selectMode('private'); });
@@ -16114,43 +16728,20 @@ opts.jsonPayload + '\n' +
             var answerIndex = body.querySelectorAll(
                 '.ai-assistant-panel-feedback').length;
 
-            // ── Quick-rate 👍 👎 (slides in on hover — see CSS D4-b/c/d) ──
-            // Inserted between Copy and Retry so the visible row is:
-            //   time | copy | 👍👎⌃ | retry | more
-            // Share has moved inside the More submenu (under Listen).
+            // ── Quick-rate 👍 👎 (always visible — mobile-first, see CSS D4-c) ──
+            // Row order: time | copy | 👍👎⌃ | more(retry | listen | share)
             var fbkFloat = _buildFbkFloat(answerIndex, text, retryQ);
             if (fbkFloat) actions.appendChild(fbkFloat);
 
-            // Retry button — re-submits the paired user question.
-            // retryQ resolved above (hoisted so Share can use it too).
-            if (retryQ) {
-                var retryBtn = document.createElement('button');
-                retryBtn.className = 'ai-assistant-panel-bubble-action';
-                retryBtn.type = 'button';
-                retryBtn.setAttribute('aria-label', 'Retry this answer');
-                retryBtn.title = 'Retry — re-send the same question';
-                retryBtn.innerHTML = ICONS.retry;  // ICONS constant — safe.
-                var retryLbl = document.createElement('span');
-                retryLbl.textContent = 'Retry';
-                retryBtn.appendChild(retryLbl);
-                retryBtn.addEventListener('click', function () {
-                    var panelInput = document.getElementById('ai-assistant-panel-input');
-                    if (!panelInput) return;
-                    panelInput.value = retryQ;
-                    _updateSendBtnState();
-                    handleAIPanelSubmit();
-                });
-                actions.appendChild(retryBtn);
-            }
-
-            // ── "⋯ More ▾" expandable submenu (Listen + Share + future actions)
-            // Share is passed as shareOpts so it appears inside the menu under
-            // Listen rather than in the flat action row.
+            // ── "⋯ More ▾" expandable submenu (Retry + Listen + Share)
+            // Retry is the first menu item — flat row stays compact on all devices.
             var moreWrapper = _buildBubbleMore(text, {
                 text:        text,
                 question:    retryQ,
                 bubble:      bubble,
                 answerIndex: answerIndex,
+            }, {
+                question: retryQ,
             });
             actions.appendChild(moreWrapper);
 
@@ -16748,42 +17339,22 @@ opts.jsonPayload + '\n' +
             }(accumulated, streamBubble));
             acts.appendChild(cb2);
 
-            // ── Quick-rate 👍 👎 (slides in on hover — see CSS D4-b/c/d) ──
-            // Order: time | copy | 👍👎⌃ | retry | more
-            // Share moved to More submenu (under Listen) via shareOpts below.
+            // ── Quick-rate 👍 👎 (always visible — mobile-first, see CSS D4-c) ──
+            // Row order: time | copy | 👍👎⌃ | more(retry | listen | share)
             (function (idx, txt, q) {
                 var fbkF2 = _buildFbkFloat(idx, txt, q);
                 if (fbkF2) acts.appendChild(fbkF2);
             }(fbIdx2, accumulated, retryQ2));
 
-            // Retry button — retryQ2 hoisted above so Share can use it too.
-            if (retryQ2) {
-                var rb2 = document.createElement('button');
-                rb2.className = 'ai-assistant-panel-bubble-action';
-                rb2.type = 'button';
-                rb2.setAttribute('aria-label', 'Retry this answer');
-                rb2.title = 'Retry \u2014 re-send the same question';
-                rb2.innerHTML = ICONS.retry;
-                var rl2 = document.createElement('span'); rl2.textContent = 'Retry';
-                rb2.appendChild(rl2);
-                (function (q) {
-                    rb2.addEventListener('click', function () {
-                        var pi = document.getElementById('ai-assistant-panel-input');
-                        if (!pi) return;
-                        pi.value = q;
-                        _updateSendBtnState();
-                        handleAIPanelSubmit();
-                    });
-                }(retryQ2));
-                acts.appendChild(rb2);
-            }
-
-            // "⋯ More ▾" — extensible submenu (Listen + Share + future actions)
+            // "⋯ More ▾" — extensible submenu (Retry + Listen + Share)
+            // Retry is the first menu item — flat row stays compact on all devices.
             var moreW2 = _buildBubbleMore(accumulated, {
                 text:        accumulated,
                 question:    retryQ2,
                 bubble:      streamBubble,
                 answerIndex: fbIdx2,
+            }, {
+                question: retryQ2,
             });
             acts.appendChild(moreW2);
 
