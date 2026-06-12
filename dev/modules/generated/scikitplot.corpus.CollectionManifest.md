@@ -1,6 +1,6 @@
 # CollectionManifest[#](#collectionmanifest "Link to this heading")
 
-class scikitplot.corpus.CollectionManifest(**collection\_id**, **title=None**, **author=None**, **source\_date=None**, **language=None**, **description=''**, **source\_type=None**, **file\_provenance=<factory>**, **tags=<factory>**, **expected\_file\_count=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest "Link to this definition")
+class scikitplot.corpus.CollectionManifest(**collection\_id**, **title=None**, **author=None**, **source\_date=None**, **language=None**, **description=''**, **source\_type=None**, **file\_provenance=<factory>**, **tags=<factory>**, **expected\_file\_count=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest "Link to this definition")
 :   Descriptor for a named corpus collection.
 
     A `CollectionManifest` holds corpus-level provenance metadata
@@ -83,7 +83,7 @@ class scikitplot.corpus.CollectionManifest(**collection\_id**, **title=None**, *
 
     author: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CollectionManifest.author "Link to this definition")
 
-    check\_completeness(**actual\_file\_count**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L199)[#](#scikitplot.corpus.CollectionManifest.check_completeness "Link to this definition")
+    check\_completeness(**actual\_file\_count**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L199)[#](#scikitplot.corpus.CollectionManifest.check_completeness "Link to this definition")
     :   Return `True` if the actual file count matches `expected_file_count`.
 
         Parameters:
@@ -100,17 +100,17 @@ class scikitplot.corpus.CollectionManifest(**collection\_id**, **title=None**, *
         Return type:
         :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
 
-    collection\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest.collection_id "Link to this definition")
+    collection\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest.collection_id "Link to this definition")
 
     description: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = ''[#](#scikitplot.corpus.CollectionManifest.description "Link to this definition")
 
     expected\_file\_count: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CollectionManifest.expected_file_count "Link to this definition")
 
-    file\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]][[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest.file_provenance "Link to this definition")
+    file\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest.file_provenance "Link to this definition")
 
     language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CollectionManifest.language "Link to this definition")
 
-    provenance\_for\_file(**filename**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L166)[#](#scikitplot.corpus.CollectionManifest.provenance_for_file "Link to this definition")
+    provenance\_for\_file(**filename**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L166)[#](#scikitplot.corpus.CollectionManifest.provenance_for_file "Link to this definition")
     :   Return merged provenance for a specific file.
 
         Starts with collection-level defaults, then applies per-file
@@ -151,11 +151,11 @@ class scikitplot.corpus.CollectionManifest(**collection\_id**, **title=None**, *
 
     source\_type: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CollectionManifest.source_type "Link to this definition")
 
-    tags: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest.tags "Link to this definition")
+    tags: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L48)[#](#scikitplot.corpus.CollectionManifest.tags "Link to this definition")
 
     title: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CollectionManifest.title "Link to this definition")
 
-    to\_provenance()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L143)[#](#scikitplot.corpus.CollectionManifest.to_provenance "Link to this definition")
+    to\_provenance()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L143)[#](#scikitplot.corpus.CollectionManifest.to_provenance "Link to this definition")
     :   Return a provenance dict suitable for
         `create`.
 
@@ -168,7 +168,7 @@ class scikitplot.corpus.CollectionManifest(**collection\_id**, **title=None**, *
         Return type:
         :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_metadata/_metadata.py#L122)[#](#scikitplot.corpus.CollectionManifest.validate "Link to this definition")
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L122)[#](#scikitplot.corpus.CollectionManifest.validate "Link to this definition")
     :   Assert that all invariants hold.
 
         Raises:

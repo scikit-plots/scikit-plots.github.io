@@ -1633,12 +1633,12 @@ functions or non-estimator constructors.
     between ConvergenceWarning and max\_iter.
 
 `memory`[#](#term-memory "Link to this term")
-:   Some estimators make use of [`joblib.Memory`](https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory "(in joblib v1.6.dev0)") to
+:   Some estimators make use of [`joblib.Memory`](https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory "(in joblib v1.6)") to
     store partial solutions during fitting. Thus when `fit` is called
     again, those partial solutions have been memoized and can be reused.
 
     A `memory` parameter can be specified as a string with a path to a
-    directory, or a [`joblib.Memory`](https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory "(in joblib v1.6.dev0)") instance (or an object with a
+    directory, or a [`joblib.Memory`](https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory "(in joblib v1.6)") instance (or an object with a
     similar interface, i.e. a `cache` method) can be used.
 
     `memory` values are validated and interpreted with
@@ -1679,7 +1679,7 @@ functions or non-estimator constructors.
 
     `n_jobs` is `None` by default, which means **unset**; it will
     generally be interpreted as `n_jobs=1`, unless the current
-    [`joblib.Parallel`](https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel "(in joblib v1.6.dev0)") backend context specifies otherwise.
+    [`joblib.Parallel`](https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel "(in joblib v1.6)") backend context specifies otherwise.
 
     Note that even if `n_jobs=1`, low-level parallelism (via Numpy and OpenMP)
     might be used in some configuration.

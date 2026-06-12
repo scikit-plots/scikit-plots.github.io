@@ -1,6 +1,6 @@
 # set\_project\_markers[#](#set-project-markers "Link to this heading")
 
-scikitplot.mlflow.set\_project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/mlflow/_project.py#L236)[#](#scikitplot.mlflow.set_project_markers "Link to this definition")
+scikitplot.mlflow.set\_project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/mlflow/_project.py#L236)[#](#scikitplot.mlflow.set_project_markers "Link to this definition")
 :   Set the module default markers.
 
     Parameters:

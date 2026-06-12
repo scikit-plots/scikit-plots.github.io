@@ -173,7 +173,7 @@ If you need a backend-stability check for SVG serialization,
 compare ****normalized**** SVG output rather than byte-for-byte equality.
 
 > **See also**
-> * [`matplotlib.figure.Figure.savefig`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig "(in Matplotlib v3.12.0.dev211+gf50181855)")
+> * [`matplotlib.figure.Figure.savefig`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig "(in Matplotlib v3.12.0.dev263+g0677cc8c1)")
 * `scikitplot._logo.create`
 * `scikitplot._logo.save`
 * `scikitplot._logo.list_variants`

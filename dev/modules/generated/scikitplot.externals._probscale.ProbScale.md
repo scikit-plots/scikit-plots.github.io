@@ -1,6 +1,6 @@
 # ProbScale[#](#probscale "Link to this heading")
 
-class scikitplot.externals.\_probscale.ProbScale(**axis**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/externals/_probscale/probscale.py#L76)[#](#scikitplot.externals._probscale.ProbScale "Link to this definition")
+class scikitplot.externals.\_probscale.ProbScale(**axis**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/externals/_probscale/probscale.py#L76)[#](#scikitplot.externals._probscale.ProbScale "Link to this definition")
 :   A probability scale for matplotlib Axes.
 
     Parameters:
@@ -33,15 +33,23 @@ class scikitplot.externals.\_probscale.ProbScale(**axis**, **\*\*kwargs**)[[sour
     ![ProbScale](../../_images/scikitplot-externals-_probscale-ProbScale-1.png)
     Go BackOpen In Tab
 
-    get\_transform()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/externals/_probscale/probscale.py#L158)[#](#scikitplot.externals._probscale.ProbScale.get_transform "Link to this definition")
-    :   Return a [`Transform`](https://matplotlib.org/devdocs/api/transformations.html#matplotlib.transforms.Transform "(in Matplotlib v3.12.0.dev211+gf50181855)") instance
+    get\_transform()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/externals/_probscale/probscale.py#L158)[#](#scikitplot.externals._probscale.ProbScale.get_transform "Link to this definition")
+    :   Return a [`Transform`](https://matplotlib.org/devdocs/api/transformations.html#matplotlib.transforms.Transform "(in Matplotlib v3.12.0.dev263+g0677cc8c1)") instance
         appropriate for the given logarithm base.
 
-    limit\_range\_for\_scale(**vmin**, **vmax**, **minpos**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/externals/_probscale/probscale.py#L165)[#](#scikitplot.externals._probscale.ProbScale.limit_range_for_scale "Link to this definition")
+    limit\_range\_for\_scale(**vmin**, **vmax**, **minpos**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/externals/_probscale/probscale.py#L165)[#](#scikitplot.externals._probscale.ProbScale.limit_range_for_scale "Link to this definition")
     :   Limit the domain to positive values.
 
     name = 'prob'[#](#scikitplot.externals._probscale.ProbScale.name "Link to this definition")
 
-    set\_default\_locators\_and\_formatters(**axis**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/externals/_probscale/probscale.py#L144)[#](#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters "Link to this definition")
+    set\_default\_locators\_and\_formatters(**axis**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/externals/_probscale/probscale.py#L144)[#](#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters "Link to this definition")
     :   Set the locators and formatters to specialized versions for
         log scaling.
+
+    val\_in\_range(**val**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/../matplotlib/scale.py#L117)[#](#scikitplot.externals._probscale.ProbScale.val_in_range "Link to this definition")
+    :   Return whether the value(s) are within the valid range for this scale.
+
+        Accepts a scalar or array-like `val`. For a scalar, returns a
+        Python `bool`. For an array, returns a bool ndarray of the same
+        shape. This is a generic implementation, and subclasses may implement
+        more efficient solutions for their domain.

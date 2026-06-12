@@ -486,7 +486,7 @@ Pipeline(steps=[('columntransformer',
                                                                  unknown_value=-1),
                                                   Index(['make', 'body_type', 'fuel_category'], dtype='object')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=<function <lambda> at 0x7252fb4fd440>,
+                                                  DummyCodeEncoder(sep=<function <lambda> at 0x7b3bb2565d00>,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -502,7 +502,7 @@ Parameters
 
 |  |  |  |
 | --- | --- | --- |
-|  | [steps steps: list of tuples](https://scikit-learn.org/1.9/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=steps,-list%20of%20tuples) | [('columntransformer', ...), ('histgradientboostingregressor', ...)] |
+|  | [steps steps: list of tuples  List of (name of step, estimator) tuples that are to be chained in sequential order. To be compatible with the scikit-learn API, all steps must define `fit`. All non-last steps must also define `transform`. See :ref:`Combining Estimators <combining\_estimators>` for more details.](https://scikit-learn.org/1.9/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=steps,-list%20of%20tuples) | [('columntransformer', ...), ('histgradientboostingregressor', ...)] |
 |  | [transform\_input transform\_input: list of str, default=None  The names of the :term:`metadata` parameters that should be transformed by the pipeline before passing it to the step consuming it.  This enables transforming some input arguments to ``fit`` (other than ``X``) to be transformed by the steps of the pipeline up to the step which requires them. Requirement is defined via :ref:`metadata routing <metadata\_routing>`. For instance, this can be used to pass a validation set through the pipeline.  You can only set this if metadata routing is enabled, which you can enable using ``sklearn.set\_config(enable\_metadata\_routing=True)``.  .. versionadded:: 1.6](https://scikit-learn.org/1.9/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=transform_input,-list%20of%20str%2C%20default%3DNone) | None |
 |  | [memory memory: str or object with the joblib.Memory interface, default=None  Used to cache the fitted transformers of the pipeline. The last step will never be cached, even if it is a transformer. By default, no caching is performed. If a string is given, it is the path to the caching directory. Enabling caching triggers a clone of the transformers before fitting. Therefore, the transformer instance given to the pipeline cannot be inspected directly. Use the attribute ``named\_steps`` or ``steps`` to inspect estimators within the pipeline. Caching the transformers is advantageous when fitting is time consuming. See :ref:`sphx\_glr\_auto\_examples\_neighbors\_plot\_caching\_nearest\_neighbors.py` for an example on how to enable caching.](https://scikit-learn.org/1.9/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=memory,-str%20or%20object%20with%20the%20joblib.Memory%20interface%2C%20default%3DNone) | None |
 |  | [verbose verbose: bool, default=False  If True, the time elapsed while fitting each step will be printed as it is completed.](https://scikit-learn.org/1.9/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=verbose,-bool%2C%20default%3DFalse) | False |
@@ -566,7 +566,7 @@ Parameters
 
 |  |  |  |
 | --- | --- | --- |
-|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x7252fb4fd440> |
+|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x7b3bb2565d00> |
 |  | [sparse\_output sparse\_output: bool, default=True  When ``True``, it returns a :class:`scipy.sparse.csr\_matrix`, i.e. a sparse matrix in "Compressed Sparse Row" (CSR) format.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sparse_output,-bool%2C%20default%3DTrue) | False |
 |  | [columns columns: list-like, default=None  Column names in the DataFrame to be encoded. If `columns` is None then all the columns with `object`, `string`, or `category` dtype will be converted.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=columns,-list-like%2C%20default%3DNone) | None |
 |  | [regex regex: bool, default=True  Use regex to split on (e.g., "a,b|C;") by ``sep`` like:  - ``pattern=r'\s\*[,;|]\s\*'``](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=regex,-bool%2C%20default%3DTrue) | False |
@@ -692,7 +692,7 @@ can be explained as follows:
   encoding and binning works as a good regularizing strategy against
   overfitting while not limiting the expressiveness of the pipeline too much.
 
-****Total running time of the script:**** (0 minutes 5.850 seconds)
+****Total running time of the script:**** (0 minutes 6.463 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)
 

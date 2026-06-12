@@ -1,6 +1,6 @@
 # resolve\_profile[#](#resolve-profile "Link to this heading")
 
-scikitplot.cython.resolve\_profile(**profile**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/cython/_profiles.py#L91)[#](#scikitplot.cython.resolve_profile "Link to this definition")
+scikitplot.cython.resolve\_profile(**profile**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/cython/_profiles.py#L91)[#](#scikitplot.cython.resolve_profile "Link to this definition")
 :   Resolve a profile name to deterministic defaults.
 
     Parameters:

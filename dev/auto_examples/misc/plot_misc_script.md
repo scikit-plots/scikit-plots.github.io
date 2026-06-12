@@ -47,7 +47,7 @@ fig = plot_overlapping_colors()
 
 Tags: [plot-type: barh](../../_tags/plot-type-barh.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.709 seconds)
+****Total running time of the script:**** (0 minutes 1.220 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo10.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/misc/plot_misc_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo10.svg)](../../lite/lab/index.html?path=auto_examples/misc/plot_misc_script.ipynb)
 

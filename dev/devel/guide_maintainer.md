@@ -552,7 +552,7 @@ Suppose that we are preparing the release `0.4.1`.
 
 ## Updating Authors List[#](#updating-authors-list "Link to this heading")
 
-This section is about updating [Sphinx authors](https://www.sphinx-doc.org/en/master/authors.html#authors "(in Sphinx v9.1.0)"). First create a [classic token on GitHub](https://github.com/settings/tokens/new) with the `read:org` permission. Then run the
+This section is about updating [Sphinx authors](https://www.sphinx-doc.org/en/master/authors.html#authors "(in Sphinx v9.1.1)"). First create a [classic token on GitHub](https://github.com/settings/tokens/new) with the `read:org` permission. Then run the
 following script and enter the token when prompted:
 
 ```

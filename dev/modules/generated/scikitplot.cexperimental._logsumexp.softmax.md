@@ -1,6 +1,6 @@
 # softmax[#](#softmax "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/cexperimental/_logsumexp.py#L288)[#](#scikitplot.cexperimental._logsumexp.softmax "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/cexperimental/_logsumexp.py#L288)[#](#scikitplot.cexperimental._logsumexp.softmax "Link to this definition")
 :   Compute the softmax function.
 
     The softmax function transforms each element of a collection by

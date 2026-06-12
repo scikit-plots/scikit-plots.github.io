@@ -1,6 +1,6 @@
 # plot\_profit[#](#plot-profit "Link to this heading")
 
-scikitplot.decile.plot\_profit(**plot\_input**, **\***, **fixed\_costs**, **currency='€'**, **variable\_costs\_per\_unit**, **profit\_per\_unit**, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/decile/_decile_modelplotpy.py#L3810)[#](#scikitplot.decile.plot_profit "Link to this definition")
+scikitplot.decile.plot\_profit(**plot\_input**, **\***, **fixed\_costs**, **currency='€'**, **variable\_costs\_per\_unit**, **profit\_per\_unit**, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/decile/_decile_modelplotpy.py#L3810)[#](#scikitplot.decile.plot_profit "Link to this definition")
 :   Plot profit curve.
 
     Parameters:
@@ -101,7 +101,7 @@ scikitplot.decile.plot\_profit(**plot\_input**, **\***, **fixed\_costs**, **curr
         * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
     Return type:
-    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev211+gf50181855)")
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev263+g0677cc8c1)")
 
     > **See also**
     > [`plot_costsrevs`](scikitplot.decile.plot_costsrevs.html#scikitplot.decile.plot_costsrevs "scikitplot.decile.plot_costsrevs"), [`plot_roi`](scikitplot.decile.plot_roi.html#scikitplot.decile.plot_roi "scikitplot.decile.plot_roi")

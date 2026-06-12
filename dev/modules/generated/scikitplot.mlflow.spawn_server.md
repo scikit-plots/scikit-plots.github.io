@@ -1,6 +1,6 @@
 # spawn\_server[#](#spawn-server "Link to this heading")
 
-scikitplot.mlflow.spawn\_server(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/mlflow/_server.py#L309)[#](#scikitplot.mlflow.spawn_server "Link to this definition")
+scikitplot.mlflow.spawn\_server(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/mlflow/_server.py#L309)[#](#scikitplot.mlflow.spawn_server "Link to this definition")
 :   Spawn an MLflow server subprocess.
 
     Parameters:

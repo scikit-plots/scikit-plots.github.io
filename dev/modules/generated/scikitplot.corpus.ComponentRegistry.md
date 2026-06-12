@@ -1,6 +1,6 @@
 # ComponentRegistry[#](#componentregistry "Link to this heading")
 
-class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L95)[#](#scikitplot.corpus.ComponentRegistry "Link to this definition")
+class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L95)[#](#scikitplot.corpus.ComponentRegistry "Link to this definition")
 :   Central look-up table for corpus pipeline components.
 
     Stores class references (not instances) for four component types:
@@ -25,7 +25,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
     ```
     Go BackOpen In Tab
 
-    build\_chunker(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L427)[#](#scikitplot.corpus.ComponentRegistry.build_chunker "Link to this definition")
+    build\_chunker(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L427)[#](#scikitplot.corpus.ComponentRegistry.build_chunker "Link to this definition")
     :   Instantiate the chunker registered under `name`.
 
         Parameters:
@@ -58,7 +58,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         ```
         Go BackOpen In Tab
 
-    build\_filter(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L453)[#](#scikitplot.corpus.ComponentRegistry.build_filter "Link to this definition")
+    build\_filter(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L453)[#](#scikitplot.corpus.ComponentRegistry.build_filter "Link to this definition")
     :   Instantiate the filter registered under `name`.
 
         Parameters:
@@ -77,7 +77,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    build\_normalizer(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L468)[#](#scikitplot.corpus.ComponentRegistry.build_normalizer "Link to this definition")
+    build\_normalizer(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L468)[#](#scikitplot.corpus.ComponentRegistry.build_normalizer "Link to this definition")
     :   Instantiate the normalizer registered under `name`.
 
         Parameters:
@@ -96,7 +96,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    get\_chunker(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L246)[#](#scikitplot.corpus.ComponentRegistry.get_chunker "Link to this definition")
+    get\_chunker(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L246)[#](#scikitplot.corpus.ComponentRegistry.get_chunker "Link to this definition")
     :   Return the chunker class registered under `name`.
 
         Parameters:
@@ -117,7 +117,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
 
-    get\_filter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L296)[#](#scikitplot.corpus.ComponentRegistry.get_filter "Link to this definition")
+    get\_filter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L296)[#](#scikitplot.corpus.ComponentRegistry.get_filter "Link to this definition")
     :   Return the filter class registered under `name`.
 
         Parameters:
@@ -136,7 +136,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
 
-    get\_normalizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L394)[#](#scikitplot.corpus.ComponentRegistry.get_normalizer "Link to this definition")
+    get\_normalizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L394)[#](#scikitplot.corpus.ComponentRegistry.get_normalizer "Link to this definition")
     :   Return the normalizer class registered under `name`.
 
         Parameters:
@@ -155,7 +155,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
 
-    get\_reader(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L346)[#](#scikitplot.corpus.ComponentRegistry.get_reader "Link to this definition")
+    get\_reader(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L346)[#](#scikitplot.corpus.ComponentRegistry.get_reader "Link to this definition")
     :   Return the reader class registered under `name`.
 
         Parameters:
@@ -174,31 +174,31 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
 
-    list\_chunkers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L273)[#](#scikitplot.corpus.ComponentRegistry.list_chunkers "Link to this definition")
+    list\_chunkers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L273)[#](#scikitplot.corpus.ComponentRegistry.list_chunkers "Link to this definition")
     :   Return sorted list of registered chunker names.
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    list\_filters()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L321)[#](#scikitplot.corpus.ComponentRegistry.list_filters "Link to this definition")
+    list\_filters()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L321)[#](#scikitplot.corpus.ComponentRegistry.list_filters "Link to this definition")
     :   Return sorted list of registered filter names.
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    list\_normalizers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L419)[#](#scikitplot.corpus.ComponentRegistry.list_normalizers "Link to this definition")
+    list\_normalizers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L419)[#](#scikitplot.corpus.ComponentRegistry.list_normalizers "Link to this definition")
     :   Return sorted list of registered normalizer names.
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    list\_readers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L371)[#](#scikitplot.corpus.ComponentRegistry.list_readers "Link to this definition")
+    list\_readers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L371)[#](#scikitplot.corpus.ComponentRegistry.list_readers "Link to this definition")
     :   Return sorted list of registered reader names / extensions.
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    classmethod load\_from\_snapshot(**snapshot**, **\***, **allowed\_module\_prefixes='scikitplot.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L508)[#](#scikitplot.corpus.ComponentRegistry.load_from_snapshot "Link to this definition")
+    classmethod load\_from\_snapshot(**snapshot**, **\***, **allowed\_module\_prefixes='scikitplot.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L508)[#](#scikitplot.corpus.ComponentRegistry.load_from_snapshot "Link to this definition")
     :   Reconstruct a registry from a snapshot.
 
         Parameters:
@@ -231,7 +231,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   [**ComponentRegistry**](#scikitplot.corpus.ComponentRegistry "scikitplot.corpus._registry._registry.ComponentRegistry")
 
-    register\_builtins()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L129)[#](#scikitplot.corpus.ComponentRegistry.register_builtins "Link to this definition")
+    register\_builtins()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L129)[#](#scikitplot.corpus.ComponentRegistry.register_builtins "Link to this definition")
     :   Register all built-in corpus pipeline components.
 
         Safe to call multiple times — subsequent calls are no-ops.
@@ -247,7 +247,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    register\_chunker(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L215)[#](#scikitplot.corpus.ComponentRegistry.register_chunker "Link to this definition")
+    register\_chunker(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L215)[#](#scikitplot.corpus.ComponentRegistry.register_chunker "Link to this definition")
     :   Register a chunker class under `name`.
 
         Parameters:
@@ -273,7 +273,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    register\_filter(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L281)[#](#scikitplot.corpus.ComponentRegistry.register_filter "Link to this definition")
+    register\_filter(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L281)[#](#scikitplot.corpus.ComponentRegistry.register_filter "Link to this definition")
     :   Register a filter class under `name`.
 
         Parameters:
@@ -291,7 +291,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    register\_normalizer(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L379)[#](#scikitplot.corpus.ComponentRegistry.register_normalizer "Link to this definition")
+    register\_normalizer(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L379)[#](#scikitplot.corpus.ComponentRegistry.register_normalizer "Link to this definition")
     :   Register a normalizer class under `name`.
 
         Parameters:
@@ -309,7 +309,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    register\_reader(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L329)[#](#scikitplot.corpus.ComponentRegistry.register_reader "Link to this definition")
+    register\_reader(**name**, **cls**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L329)[#](#scikitplot.corpus.ComponentRegistry.register_reader "Link to this definition")
     :   Register a reader class under `name` (typically a file extension).
 
         Parameters:
@@ -328,7 +328,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    snapshot()[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_registry/_registry.py#L487)[#](#scikitplot.corpus.ComponentRegistry.snapshot "Link to this definition")
+    snapshot()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_registry/_registry.py#L487)[#](#scikitplot.corpus.ComponentRegistry.snapshot "Link to this definition")
     :   Return a JSON-safe snapshot of all registered components.
 
         Returns:

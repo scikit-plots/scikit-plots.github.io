@@ -1,6 +1,6 @@
 # SectionType[#](#sectiontype "Link to this heading")
 
-class scikitplot.corpus.SectionType(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L219)[#](#scikitplot.corpus.SectionType "Link to this definition")
+class scikitplot.corpus.SectionType(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L219)[#](#scikitplot.corpus.SectionType "Link to this definition")
 :   Semantic label for the role of a text chunk within its source document.
 
     Notes
@@ -34,64 +34,64 @@ class scikitplot.corpus.SectionType(**value**)[[source]](https://github.com/scik
     ```
     Go BackOpen In Tab
 
-    ABSTRACT = 'abstract'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ABSTRACT "Link to this definition")
+    ABSTRACT = 'abstract'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ABSTRACT "Link to this definition")
     :   Research-paper abstract — distinguishable from body for citation matching.
 
-    ACKNOWLEDGEMENTS = 'acknowledgements'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ACKNOWLEDGEMENTS "Link to this definition")
+    ACKNOWLEDGEMENTS = 'acknowledgements'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ACKNOWLEDGEMENTS "Link to this definition")
     :   Acknowledgements section — typically excluded from content matching.
 
-    CAPTION = 'caption'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CAPTION "Link to this definition")
+    CAPTION = 'caption'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CAPTION "Link to this definition")
     :   Caption attached to a non-figure element (table caption, etc.).
 
-    CODE = 'code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CODE "Link to this definition")
+    CODE = 'code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CODE "Link to this definition")
     :   Source-code or pre-formatted block.
 
-    DIALOGUE = 'dialogue'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.DIALOGUE "Link to this definition")
+    DIALOGUE = 'dialogue'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.DIALOGUE "Link to this definition")
     :   Speaker turn in a dramatic or screenplay source.
 
-    FIGURE = 'figure'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FIGURE "Link to this definition")
+    FIGURE = 'figure'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FIGURE "Link to this definition")
     :   Figure caption or alt-text associated with an image.
 
-    FOOTNOTE = 'footnote'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FOOTNOTE "Link to this definition")
+    FOOTNOTE = 'footnote'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FOOTNOTE "Link to this definition")
     :   Footnote content extracted below the main body.
 
-    HEADER = 'header'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.HEADER "Link to this definition")
+    HEADER = 'header'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.HEADER "Link to this definition")
     :   Page or section header (running head, masthead, etc.).
 
-    LIST\_ITEM = 'list\_item'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LIST_ITEM "Link to this definition")
+    LIST\_ITEM = 'list\_item'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LIST_ITEM "Link to this definition")
     :   Bullet-list or numbered-list item — distinct from paragraph prose.
 
-    LYRICS = 'lyrics'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LYRICS "Link to this definition")
+    LYRICS = 'lyrics'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LYRICS "Link to this definition")
     :   Song lyrics line from an LRC or lyrics file — distinct from prose.
 
-    METADATA = 'metadata'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.METADATA "Link to this definition")
+    METADATA = 'metadata'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.METADATA "Link to this definition")
     :   Document-level metadata (author, date, abstract, etc.).
 
-    REFERENCES = 'references'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.REFERENCES "Link to this definition")
+    REFERENCES = 'references'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.REFERENCES "Link to this definition")
     :   Reference list — should typically be excluded from semantic matching.
 
-    SIDEBAR = 'sidebar'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.SIDEBAR "Link to this definition")
+    SIDEBAR = 'sidebar'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.SIDEBAR "Link to this definition")
     :   Editorial pull-quote, sidebar, or callout box.
 
-    STAGE\_DIRECTION = 'stage\_direction'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.STAGE_DIRECTION "Link to this definition")
+    STAGE\_DIRECTION = 'stage\_direction'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.STAGE_DIRECTION "Link to this definition")
     :   Dramatic stage direction, e.g. `[Enter Hamlet]` — not narrative content.
 
-    TABLE = 'table'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TABLE "Link to this definition")
+    TABLE = 'table'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TABLE "Link to this definition")
     :   Tabular data rendered as a text chunk.
 
-    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TEXT "Link to this definition")
+    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TEXT "Link to this definition")
     :   Body text — the primary content of the document.
 
-    TITLE = 'title'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TITLE "Link to this definition")
+    TITLE = 'title'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TITLE "Link to this definition")
     :   Document or section title / heading.
 
-    TRANSCRIPT = 'transcript'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TRANSCRIPT "Link to this definition")
+    TRANSCRIPT = 'transcript'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TRANSCRIPT "Link to this definition")
     :   Machine-generated ASR transcription (Whisper, etc.) — not human-written.
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.UNKNOWN "Link to this definition")
     :   Section type could not be determined.
 
-    VERSE = 'verse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.VERSE "Link to this definition")
+    VERSE = 'verse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.VERSE "Link to this definition")
     :   Poetic line or stanza — metric/phonetic matching differs from prose.
 
     capitalize(**/**)[#](#scikitplot.corpus.SectionType.capitalize "Link to this definition")

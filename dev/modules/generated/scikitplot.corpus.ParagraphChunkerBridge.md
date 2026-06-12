@@ -1,12 +1,12 @@
 # ParagraphChunkerBridge[#](#paragraphchunkerbridge "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_chunker_bridge.py#L294)[#](#scikitplot.corpus.ParagraphChunkerBridge "Link to this definition")
+class scikitplot.corpus.ParagraphChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_chunkers/_chunker_bridge.py#L294)[#](#scikitplot.corpus.ParagraphChunkerBridge "Link to this definition")
 :   Bridge for `ParagraphChunker` → `ChunkerBase` contract.
 
     Parameters:
     :   ****inner**** (**Any**)
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.ParagraphChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.ParagraphChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return a `ChunkResult`.
 
         ****CRITICAL-02 (Phase 2):**** Returns `ChunkResult` directly.
@@ -39,4 +39,4 @@ class scikitplot.corpus.ParagraphChunkerBridge(**inner**)[[source]](https://gith
         Use `_to_tuples` to convert to the legacy
         `list[tuple[int, str]]` format if needed for backward compat.
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ParagraphChunkerBridge.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ParagraphChunkerBridge.strategy "Link to this definition")

@@ -1,6 +1,6 @@
 # process\_html\_directory[#](#process-html-directory "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.process\_html\_directory(**input\_dir**, **\***, **output\_dir=None**, **selectors=None**, **theme\_preset=None**, **exclude\_patterns=None**, **strip\_tags=None**, **max\_workers=None**, **recursive=True**, **generate\_llms=False**, **base\_url=''**, **llms\_txt\_max\_entries=None**, **llms\_txt\_full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L2699)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.process\_html\_directory(**input\_dir**, **\***, **output\_dir=None**, **selectors=None**, **theme\_preset=None**, **exclude\_patterns=None**, **strip\_tags=None**, **max\_workers=None**, **recursive=True**, **generate\_llms=False**, **base\_url=''**, **llms\_txt\_max\_entries=None**, **llms\_txt\_full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L2848)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory "Link to this definition")
 :   Walk any HTML directory tree and convert pages to Markdown.
 
     This function is entirely ****Sphinx-free**** and works with any
