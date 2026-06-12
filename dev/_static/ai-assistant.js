@@ -66,6 +66,23 @@
     var _PDF_MODE_KEY = 'ai-assistant-pdf-mode';
 
     /**
+     * Module-level fetch alias that delegates to AI_COMPAT.safeFetch when the
+     * compat layer is present, or falls back to the native fetch.
+     * Strips unsupported keepalive, removes AbortController.signal in environments
+     * that lack AbortController, and falls back to XHR in IE11.
+     *
+     * @type {function(string, Object=): Promise}
+     */
+    var _fetch = (window.AI_COMPAT && typeof window.AI_COMPAT.safeFetch === 'function')
+        ? window.AI_COMPAT.safeFetch.bind(window.AI_COMPAT)
+        : function _fetchFallback(url, opts) {
+            if (typeof fetch !== 'function') {
+                return Promise.reject(new Error('fetch is not available'));
+            }
+            return fetch(url, opts);
+        };
+
+    /**
      * Stable radio-group name for the model sheet.
      *
      * Using a deterministic constant (not Math.random) so:
@@ -880,13 +897,18 @@
             _cancelTimer();
         }
 
+        // Delegate to the compat layer when available — it includes Touch
+        // Events and Mouse Events fallbacks below the Pointer Events path.
+        if (window.AI_COMPAT && typeof window.AI_COMPAT.attachLongPress === 'function') {
+            return window.AI_COMPAT.attachLongPress(element, onShortTap, onLongPress, opts);
+        }
+
+        // Own implementation: Pointer Events only (iOS 13+, Chrome 55+, Firefox 59+).
         element.addEventListener('pointerdown',   _onPointerDown);
         element.addEventListener('pointermove',   _onPointerMove);
         element.addEventListener('pointerup',     _onPointerUp);
         element.addEventListener('pointercancel', _onPointerCancel);
 
-        // Return a cleanup handle so the caller can remove listeners if the
-        // element is ever detached (prevents ghost-listener accumulation).
         return function cleanup() {
             _cancelTimer();
             if (_captureHandle) {
@@ -3224,7 +3246,7 @@
             return;
         }
         try {
-            fetch(url, {
+            _fetch(url, {
                 method:    opts.method || 'POST',
                 headers:   headers,
                 body:      payload,
@@ -4704,15 +4726,30 @@ opts.jsonPayload + '\n' +
      * filename : string  Suggested download filename.
      */
     function _downloadBlob(content, mimeType, filename) {
-        var blob = new Blob([content], { type: mimeType });
-        var url  = URL.createObjectURL(blob);
-        var a    = document.createElement('a');
-        a.href     = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        // Delegate to the compat layer when available — it handles iOS Safari
+        // (where <a download> navigates the tab) and ultra-legacy fallbacks.
+        if (window.AI_COMPAT && typeof window.AI_COMPAT.downloadBlob === 'function') {
+            window.AI_COMPAT.downloadBlob(content, mimeType, filename);
+            return;
+        }
+        // Own fallback (non-iOS, modern desktop browsers only):
+        try {
+            var blob = new Blob([content], { type: mimeType });
+            var url  = URL.createObjectURL(blob);
+            var a    = document.createElement('a');
+            a.href     = url;
+            a.download = filename || 'download';
+            a.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none';
+            document.body.appendChild(a);
+            a.click();
+        } catch (blobErr) {
+            console.warn('[ai-assistant] _downloadBlob failed', blobErr);
+        } finally {
+            try { document.body.removeChild(a); } catch (_) {}
+            setTimeout(function () {
+                try { URL.revokeObjectURL(url); } catch (_) {}
+            }, 1500);
+        }
     }
 
     /**
@@ -8147,7 +8184,7 @@ opts.jsonPayload + '\n' +
                 _fail('timeout');
             }, 5000);
             try {
-                fetch(proxyBase + '/', {
+                _fetch(proxyBase + '/', {
                     method:  'GET',
                     mode:    'cors',
                     cache:   'no-store',
@@ -9295,7 +9332,7 @@ opts.jsonPayload + '\n' +
                     if (ac) { try { ac.abort(); } catch (_) {} }
                     _finish({ ok: false, status: 'timeout' });
                 }, 5000);
-                fetch(url, {
+                _fetch(url, {
                     method: 'HEAD',
                     mode:   'no-cors',
                     cache:  'no-store',
@@ -12693,7 +12730,7 @@ opts.jsonPayload + '\n' +
             // field is preserved for copy / share / bookmarking purposes.
             // The Blob URL is revoked after 30 s — enough for any browser to
             // start loading the content; it does NOT close the tab.
-            if (urlToOpen.startsWith('data:')) {
+            if (urlToOpen.indexOf('data:') === 0) {
                 try {
                     var content = meta.buildStr();
                     if (!content) {
@@ -13337,7 +13374,7 @@ opts.jsonPayload + '\n' +
             // Revoke previous blob URL only (data: URIs are not registered with
             // the Blob URL store; revokeObjectURL on them is a no-op but guard
             // explicitly so browser devtools show clean resource lifetimes).
-            if (_activeBlobUrl && _activeBlobUrl.startsWith('blob:')) {
+            if (_activeBlobUrl && _activeBlobUrl.indexOf('blob:') === 0) {
                 try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
             }
             _activeBlobUrl = null;
@@ -13404,7 +13441,7 @@ opts.jsonPayload + '\n' +
             // Revoke blob URLs only (data: URIs are not registered with the
             // Blob URL store — revokeObjectURL is a safe no-op on them, but
             // explicitly guard to avoid confusion in profilers/devtools).
-            if (_activeBlobUrl && _activeBlobUrl.startsWith('blob:')) {
+            if (_activeBlobUrl && _activeBlobUrl.indexOf('blob:') === 0) {
                 try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
             }
             _activeBlobUrl = null;
@@ -19400,7 +19437,9 @@ opts.jsonPayload + '\n' +
         if (_fetchAbortController) {
             _fetchAbortController.abort();
         }
-        _fetchAbortController = new AbortController();
+        _fetchAbortController = (window.AI_COMPAT && typeof window.AI_COMPAT.createAbortController === 'function')
+            ? window.AI_COMPAT.createAbortController()
+            : (typeof AbortController !== 'undefined' ? new AbortController() : null);
 
         // Stop speech if active
         _stopSpeechRecognition();
@@ -19652,7 +19691,7 @@ opts.jsonPayload + '\n' +
         }
 
         // ── 6. Non-streaming path ─────────────────────────────────────────
-        var response = await fetch(endpoint, {
+        var response = await _fetch(endpoint, {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    body,
@@ -19703,7 +19742,7 @@ opts.jsonPayload + '\n' +
     }
 
     async function _panelApiCallStreaming(endpoint, bodyStr, provider) {
-        var response = await fetch(endpoint, {
+        var response = await _fetch(endpoint, {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    bodyStr,
@@ -19756,7 +19795,22 @@ opts.jsonPayload + '\n' +
         if (panelBody) panelBody.appendChild(streamBubble);
 
         var accumulated = '';
-        var reader = response.body.getReader();
+        var reader;
+        try {
+            reader = response.body.getReader();
+        } catch (readerErr) {
+            // Some browsers (iOS Safari 14.0, partial ReadableStream) report a
+            // non-null body but throw on getReader(). Fall back to JSON parsing.
+            console.warn('[ai-assistant] ReadableStream.getReader() failed; JSON fallback', readerErr);
+            try {
+                var fbData = await response.clone().json().catch(function () { return {}; });
+                var fbReply = (fbData && (fbData.reply || fbData.answer || fbData.text)) || '';
+                _appendPanelMessage(fbReply || '(no response)', 'assistant');
+            } catch (_fbErr) {
+                _appendPanelMessage('(streaming unavailable in this browser)', 'assistant');
+            }
+            return;
+        }
         var decoder = new TextDecoder();
         var sseBuf = '';
         // Track the current SSE event type (RFC 6455 §10.1):
@@ -19779,7 +19833,7 @@ opts.jsonPayload + '\n' +
                         continue;
                     }
                     // Track event: field (sets type for subsequent data:)
-                    if (ln.startsWith('event: ')) {
+                    if (ln.indexOf('event: ') === 0) {
                         sseEventType = ln.slice(7).trim();
                         continue;
                     }
@@ -19787,7 +19841,7 @@ opts.jsonPayload + '\n' +
                         sseEventType = 'message';
                         continue;
                     }
-                    if (ln.startsWith('data: ')) {
+                    if (ln.indexOf('data: ') === 0) {
                         // Server-sent event: error — surface message to user.
                         // Some SSE servers emit "event: error\ndata: {...}" on
                         // rate-limit, auth failure, or upstream API errors.
@@ -19852,7 +19906,16 @@ opts.jsonPayload + '\n' +
             // Array.findLast (ES2023): declarative reverse scan — no mutable
             // sentinel, no manual break — semantically identical to the IIFE
             // used in the non-streaming _renderBubble path above.
-            var _lastUser = _transcript.findLast(function (m) { return m.role === 'user'; });
+            // findLast (ES2023) — polyfilled by ai-assistant-compat.js v1.1.0+.
+            // Inline fallback for defence-in-depth when compat load order is uncertain.
+            var _lastUser = (typeof _transcript.findLast === 'function')
+                ? _transcript.findLast(function (m) { return m.role === 'user'; })
+                : (function () {
+                    for (var _fi = _transcript.length - 1; _fi >= 0; _fi--) {
+                        if (_transcript[_fi].role === 'user') { return _transcript[_fi]; }
+                    }
+                    return undefined;
+                }());
             var retryQ2 = _lastUser ? _lastUser.text : null;
 
             // Hoist fbIdx2 before share button so its IIFE closure captures
