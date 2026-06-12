@@ -290,6 +290,16 @@
     /* Dropdown tuned right side on title */
     .ai-assistant-dropdown { left: auto; right: 0; min-width: 222px; /*transform: translate(0, 0);*/ }
     .ai-assistant-notification { left: 1rem; right: 1rem; text-align: center; }
+
+    /* BUG-5 fix: iOS Safari auto-zoom prevention.
+     * When any input/textarea has font-size < 16px (1rem), iOS Safari
+     * automatically zooms the viewport on focus — causing jarring layout shifts
+     * every time the user taps the chat input.
+     * Setting font-size to 1rem (16px) on mobile ONLY prevents the zoom while
+     * preserving the 0.875rem desktop size.                                     */
+    .ai-assistant-panel-input {
+        font-size: 1rem;
+    }
 }
 
 /* ─── Furo ──────────────────────────────────────────────────────────────── */
@@ -360,7 +370,13 @@
     /* height: min(520px, calc(100vh - 1rem)); */
 
     /* Default (normal) state height */
+    /* BUG-3 fix: iOS Safari 100vh bug — Safari's 100vh includes space BEHIND
+     * the address bar and bottom navigation bar, so the panel footer (input)
+     * is hidden under the browser chrome on iOS.
+     * dvh (dynamic viewport height, iOS 15.4+) uses the ACTUAL visible area,
+     * excluding browser chrome.  100vh stays as the universal fallback.      */
     max-height: calc(100vh - 1rem);
+    max-height: calc(100dvh - 1rem);
     max-width: calc(100vw - 1rem);
 
     display: none;          /* JS sets display:flex when open */
@@ -412,8 +428,11 @@
     /* Actual height (not just max-height) so the panel fills the viewport
        vertically regardless of message count — the body flex-child absorbs
        the remaining space. */
+    /* iOS Safari dvh fix: same 100vh bug applies to explicit height. */
     height: calc(100vh - 1rem);
+    height: calc(100dvh - 1rem);
     max-height: calc(100vh - 1rem);   /* keep as guard for safe measure */
+    max-height: calc(100dvh - 1rem);  /* dvh wins on iOS 15.4+ */
     /* Expand width significantly on maximize — was 520px, now uses most of
        the viewport so both X and Y grow on maximize. */
     width: min(960px, calc(100vw - 1rem));
@@ -742,6 +761,11 @@
 .ai-assistant-panel-input {
     flex: 1 1 auto;
     resize: none;
+    /* BUG-4 fix: -webkit-appearance: none removes iOS Safari's default system
+     * styling (rounded corners, platform-native look) so the panel's own border
+     * and background take full effect.                                         */
+    -webkit-appearance: none;
+    appearance: none;
     font-size: 0.875rem;
     line-height: 1.4;
     padding: 0.6rem 0.65rem 0.35rem 0.65rem;  /* tighter bottom — action bar follows */
@@ -1017,11 +1041,16 @@
         width: 100%;
         max-width: 100%;
         border-radius: 12px 12px 0 0;
+        /* BUG-6 fix: same iOS Safari 100vh bug at mobile breakpoint.
+         * 75dvh uses the true visible viewport on iOS 15.4+.           */
         max-height: 75vh;
+        max-height: 75dvh;
     }
 
     .ai-assistant-panel[data-maximized="true"] {
+        /* BUG-6 fix continued: maximized mobile also needs dvh.        */
         max-height: 95vh;
+        max-height: 95dvh;
         border-radius: 12px 12px 0 0;
     }
 

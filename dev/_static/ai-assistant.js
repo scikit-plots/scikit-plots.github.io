@@ -1594,8 +1594,13 @@
         if (dropdownButton) {
             dropdownButton.addEventListener('click', function (e) {
                 e.stopPropagation();
-                // var isOpen = dropdown.style.display !== 'block';
-                var isOpen = window.getComputedStyle(dropdown).display !== 'none';
+                // BUG-2 fix: window.getComputedStyle() returns the CSS-declared
+                // value on iOS Safari when the element was recently toggled via
+                // style.display — the layout may not yet have been recalculated.
+                // Reading dropdown.style.display is a direct property access that
+                // always returns the current inline-style value: reliable on all
+                // browsers including iOS Safari.
+                var isOpen = dropdown.style.display === 'block';
                 if (isOpen) {
                     dropdown.style.display = 'none';
                     dropdownButton.setAttribute('aria-expanded', 'false');
@@ -15409,9 +15414,22 @@ opts.jsonPayload + '\n' +
         }
         _aiPanelEl.removeAttribute('data-minimized');
         _aiPanelEl.style.display = 'flex';
-        requestAnimationFrame(function () {
-            _aiPanelEl.classList.add('ai-assistant-panel--open');
-        });
+
+        // iOS Safari fix (BUG-1): A single requestAnimationFrame is coalesced
+        // with the display:flex assignment into ONE paint frame on iOS Safari.
+        // When both happen in the same frame the browser has no "before" state
+        // for the CSS transition, so opacity stays at 0 and pointer-events
+        // remains none — the panel is invisible and completely unclickable.
+        //
+        // Solution: force a SYNCHRONOUS reflow by reading offsetHeight.
+        // This compels iOS Safari to commit the display:flex change, record the
+        // current opacity:0 / pointer-events:none as the transition start state,
+        // THEN apply the --open class so the transition fires correctly.
+        //
+        // Do NOT remove this line — it is the canonical iOS Safari animation fix.
+        void _aiPanelEl.offsetHeight; // eslint-disable-line no-void
+        _aiPanelEl.classList.add('ai-assistant-panel--open');
+
         var inp = document.getElementById('ai-assistant-panel-input');
         if (inp) setTimeout(function () {
             inp.focus();
