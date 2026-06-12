@@ -1034,26 +1034,68 @@
 
     // ── Initialisation ────────────────────────────────────────────────────────
 
+    /** In-flight loadTurndown() callbacks; null when no load is pending. */
+    var _turndownLoadQueue = null;
+
+    /**
+     * Ensure ``TurndownService`` is available, loading it on demand.
+     *
+     * Parameters
+     * ----------
+     * callback : function()
+     *     Invoked exactly once when the load attempt is *settled* — either
+     *     because ``TurndownService`` is now defined, or because every CDN
+     *     attempt failed. Callers MUST check ``typeof TurndownService``
+     *     after this fires; this function does not itself report
+     *     success/failure, so concurrent callers share one network request.
+     *
+     * Notes
+     * -----
+     * Root-cause fix (blank UI on iOS Safari): this function used to gate
+     * ALL UI creation (``initAIAssistant`` -> ``createAIAssistantUI``), and
+     * its ``onerror`` fallback never invoked ``callback`` on total failure.
+     * When a content blocker, Private Relay, or restrictive network blocked
+     * both ``cdn.jsdelivr.net`` and ``unpkg.com`` — common on iOS Safari,
+     * rare on desktop — the callback never fired, so the entire widget
+     * (button, dropdown, panel, trigger pill) silently never appeared.
+     * Turndown is now loaded lazily, only when ``convertToMarkdown()``
+     * actually needs it, and ``callback`` is guaranteed to fire on every
+     * path so the caller can report a real error instead of hanging.
+     */
     function loadTurndown(callback) {
         if (typeof TurndownService !== 'undefined') { callback(); return; }
+        if (_turndownLoadQueue) { _turndownLoadQueue.push(callback); return; }
+        _turndownLoadQueue = [callback];
+        function settle() {
+            var queue = _turndownLoadQueue || [];
+            _turndownLoadQueue = null;
+            queue.forEach(function (cb) { cb(); });
+        }
         var script = document.createElement('script');
         // Primary CDN
         script.src = 'https://cdn.jsdelivr.net/npm/turndown@7.1.2/dist/turndown.min.js';
-        script.onload  = callback;
+        script.onload  = settle;
         script.onerror = function () {
             console.warn('AI Assistant: Primary CDN failed, attempting fallback...');
-            // Fallback to another CDN or a local path
+            // Fallback to another CDN
             var fallback = document.createElement('script');
             fallback.src = 'https://unpkg.com/turndown@7.1.2/dist/turndown.js';
-            fallback.onload = callback;
-            fallback.onerror = function() { console.error('AI Assistant: Critical failure loading Turndown'); };
+            fallback.onload = settle;
+            fallback.onerror = function () {
+                console.error('AI Assistant: Critical failure loading Turndown (both CDNs unreachable).');
+                settle();
+            };
             document.head.appendChild(fallback);
         };
         document.head.appendChild(script);
     }
 
     function initAIAssistant() {
-        loadTurndown(function () { createAIAssistantUI(); });
+        // UI construction must never depend on a third-party CDN — build it
+        // immediately and unconditionally. Turndown (needed only for
+        // "Copy/View page as Markdown") is lazy-loaded on first use inside
+        // convertToMarkdown().
+        createAIAssistantUI();
     }
 
     // ── DOM construction ──────────────────────────────────────────────────────
@@ -1584,20 +1626,29 @@
             cloned.querySelectorAll(sel).forEach(function (el) { el.remove(); });
         });
 
-        var ts = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', emDelimiter: '*' });
-        ts.addRule('preserveCodeBlocks', {
-            filter: ['pre'],
-            replacement: function (content, node) {
-                var code = node.querySelector('code');
-                if (code) {
-                    var langMatch = code.className.match(/language-(\w+)/);
-                    return '\n\n```' + (langMatch ? langMatch[1] : '') + '\n' + code.textContent + '\n```\n\n';
+        // Turndown is loaded lazily (see loadTurndown) — this is the only
+        // call site that needs it, so the rest of the UI never blocks on it.
+        return new Promise(function (resolve, reject) {
+            loadTurndown(function () {
+                if (typeof TurndownService === 'undefined') {
+                    reject(new Error('Markdown converter failed to load (check your network connection or content-blocker settings, then try again).'));
+                    return;
                 }
-                return '\n\n```\n' + content + '\n```\n\n';
-            },
+                var ts = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', emDelimiter: '*' });
+                ts.addRule('preserveCodeBlocks', {
+                    filter: ['pre'],
+                    replacement: function (content, node) {
+                        var code = node.querySelector('code');
+                        if (code) {
+                            var langMatch = code.className.match(/language-(\w+)/);
+                            return '\n\n```' + (langMatch ? langMatch[1] : '') + '\n' + code.textContent + '\n```\n\n';
+                        }
+                        return '\n\n```\n' + content + '\n```\n\n';
+                    },
+                });
+                resolve(ts.turndown(cloned.innerHTML));
+            });
         });
-
-        return Promise.resolve(ts.turndown(cloned.innerHTML));
     }
 
     function getMarkdownUrl() {
