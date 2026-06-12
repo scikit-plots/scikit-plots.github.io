@@ -1077,6 +1077,7 @@
    transition does not fight the live drag and text selection is suppressed. */
 body.ai-assistant-resizing,
 body.ai-assistant-resizing * {
+    -webkit-user-select: none !important;
     user-select: none !important;
 }
 /* Per-axis cursor — applied alongside .ai-assistant-resizing */
@@ -1240,6 +1241,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     font-variant-numeric: tabular-nums; /* fixed-width digits — no layout jitter */
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
     opacity: 0.70;
+    -webkit-user-select: none;
     user-select: none;
     cursor: default;
     flex-shrink: 0;
@@ -1811,6 +1813,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     /* Interactive: left-click = minimize, right-click = close. */
     cursor: pointer;
     touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
+    -webkit-user-select: none;
     user-select: none;
     border-radius: 4px;
     gap: 0.03rem;
@@ -2691,6 +2694,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
     /* Interactive: left-click = minimize, right-click = close. */
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
     border-radius: 4px;
     white-space: nowrap;
@@ -3581,6 +3585,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     gap: 0.25rem;
     opacity: 0.5;
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -4061,6 +4066,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     gap: 0.2rem;
     padding: 0.35rem 0.55rem;
     cursor: grab;        /* drag-handle affordance for the movable popup    */
+    -webkit-user-select: none;
     user-select: none;   /* prevent text selection while dragging           */
 }
 
@@ -4153,6 +4159,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 
 .ai-assistant-mic-popup-row--hold {
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -4348,6 +4355,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     gap: 0.3rem;
     padding: 0.3rem 0.55rem 0.15rem;
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -4426,6 +4434,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     padding: 0.28rem 0.55rem;
     border-radius: 6px;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
     outline: none;
     transition: background-color 0.1s ease;
@@ -4584,6 +4593,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     );
     white-space: nowrap;
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -4965,6 +4975,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
         --pst-color-text-muted,
         var(--color-foreground-secondary, #888)
     );
+    -webkit-user-select: none;
     user-select: none;
     pointer-events: none;
 }
@@ -6038,8 +6049,8 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     font-size: 0.875rem;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
     cursor: default;
-    user-select: none;
     -webkit-user-select: none;
+    user-select: none;
 }
 
 /* ── Reduced-motion: disable all filter animations and transitions ─────────── */
@@ -6782,6 +6793,7 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     padding: 6px 10px 6px 8px;
     cursor: pointer;
     border-radius: 4px;
+    -webkit-user-select: none;
     user-select: none;
     color: var(--color-foreground-secondary, #586069);
     transition: background 0.12s;
@@ -7651,6 +7663,7 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     line-height: 1.45;
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -8617,6 +8630,7 @@ a.ai-assistant-panel-ep-resolved-url:focus-visible {
     letter-spacing: 0.01em;
     white-space: nowrap;
     line-height: 1.4;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -11081,6 +11095,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     flex-shrink: 0;
     font-size: 0.9rem;
     line-height: 1;
+    -webkit-user-select: none;
     user-select: none;
 }
 .ai-assistant-panel-ep-ext-dataset-card-text {
@@ -11797,6 +11812,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     color: #fff;
     opacity: 0.82;
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -11889,6 +11905,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     padding: 0.38rem 0.5rem 0.38rem 0.5rem;
     cursor: pointer;
     border-radius: 5px;
+    -webkit-user-select: none;
     user-select: none;
     color: var(--pst-color-text-muted,
                var(--color-foreground-secondary, #586069));
@@ -12036,6 +12053,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
         font-style: italic;
         letter-spacing: 0.01em;
         pointer-events: none;
+        -webkit-user-select: none;
         user-select: none;
     }
 
