@@ -3672,7 +3672,9 @@
             _feedbackGivenSet.add(answerIndex);
             _feedbackStore[answerIndex] = {
                 ratingValue:    chosen.value,
-                ratingLabel:    chosen.label,
+                ratingLabel:    chosen.label,   // snake_case slug ("mostly_positive")
+                ratingTitle:    chosen.title,   // human display string ("Mostly yes")
+                ratingMode:     'panel',
                 message:        ta.value.trim(),
                 ts:             Date.now(),
                 query:          detail.query,
@@ -6139,6 +6141,17 @@ opts.jsonPayload + '\n' +
                 });
                 btn.setAttribute('aria-pressed', 'true');
 
+                // Model info for quick feedback — same slim 3-key shape as panel
+                // feedback so every rated record has model attribution regardless
+                // of rating mode.  _getActiveModel reads cfg.panelApiModels; null
+                // is returned when no model is configured (graceful degradation).
+                var _quickActiveModel = _getActiveModel ? _getActiveModel(cfg) : null;
+                var _quickModelInfo   = _quickActiveModel ? {
+                    id:       _quickActiveModel.id,
+                    provider: _quickActiveModel.provider || 'custom',
+                    model:    _quickActiveModel.model || _quickActiveModel.id,
+                } : null;
+
                 var detail = {
                     schemaVersion:  1,
                     ratingValue:    opt.value,
@@ -6154,7 +6167,7 @@ opts.jsonPayload + '\n' +
                     message:        '',
                     query:          (typeof questionText === 'string') ? questionText : '',
                     answer:         (typeof answerText === 'string')   ? answerText   : '',
-                    model:          null,
+                    model:          _quickModelInfo,
                     answerIndex:    answerIndex,
                     page:           (typeof location !== 'undefined') ? location.href : '',
                     ts:             Date.now(),
@@ -6197,12 +6210,14 @@ opts.jsonPayload + '\n' +
                 _feedbackGivenSet.add(answerIndex);
                 _feedbackStore[answerIndex] = {
                     ratingValue:    opt.value,
-                    ratingLabel:    opt.title,
+                    ratingLabel:    opt.slug,       // canonical slug (matches detail.ratingLabel)
+                    ratingTitle:    opt.title,       // human display string for dashboards
+                    ratingMode:     'quick',
                     message:        '',
                     ts:             Date.now(),
                     query:          detail.query,
                     answer:         detail.answer,
-                    model:          null,
+                    model:          _quickModelInfo, // populated so contributions carry model attr
                     sessionId:      detail.sessionId,
                     conversationId: detail.conversationId,
                     page:           detail.page,
@@ -6625,7 +6640,9 @@ opts.jsonPayload + '\n' +
             // query/answer/model/sessionId/page were previously dropped here.
             _feedbackStore[answerIndex] = {
                 ratingValue:    chosen.value,
-                ratingLabel:    chosen.label,
+                ratingLabel:    chosen.label,   // snake_case slug ("mostly_positive")
+                ratingTitle:    chosen.title,   // human display string ("Mostly yes")
+                ratingMode:     'panel',
                 message:        ta.value.trim(),
                 ts:             Date.now(),
                 // Added — required for POST /v1/feedback and training contribution:
@@ -13322,6 +13339,8 @@ opts.jsonPayload + '\n' +
                         answer:      tfb.answer      || '',
                         ratingValue: tfb.ratingValue != null ? tfb.ratingValue : null,
                         ratingLabel: tfb.ratingLabel || '',
+                        ratingTitle: tfb.ratingTitle || null,  // "Helpful" / "Mostly yes"
+                        ratingMode:  tfb.ratingMode  || null,  // "quick" | "panel"
                         message:     tfb.message     || '',
                         ts:          tfb.ts          || Date.now(),
                         // Self-describing provenance tag.  The server overwrites
