@@ -3615,8 +3615,13 @@
             var detail = {
                 schemaVersion:  1,
                 ratingValue:    chosen.value,
+                // ratingLabel is the snake_case slug (e.g. "mostly_positive").
+                // ratingTitle carries the human-readable string ("Mostly yes").
+                // rating is kept as a deprecated alias of ratingLabel.
                 ratingLabel:    chosen.label,
-                rating:         chosen.label,
+                ratingTitle:    chosen.title,
+                ratingMode:     'panel',
+                rating:         chosen.label,  // @deprecated: alias of ratingLabel
                 message:        ta.value.trim(),
                 query:          (typeof questionText === 'string') ? questionText : '',
                 answer:         (typeof answerText === 'string') ? answerText : '',
@@ -6070,8 +6075,8 @@ opts.jsonPayload + '\n' +
         quick.className = 'ai-assistant-fbk-quick';
 
         var _quickOpts = [
-            { emoji: '\uD83D\uDC4E', sentiment: 'negative', value: -1, title: 'Not helpful' },
-            { emoji: '\uD83D\uDC4D', sentiment: 'positive', value: 1,  title: 'Helpful' },
+            { emoji: '\uD83D\uDC4E', sentiment: 'negative', value: -1, title: 'Not helpful', slug: 'not_helpful' },
+            { emoji: '\uD83D\uDC4D', sentiment: 'positive', value: 1,  title: 'Helpful',     slug: 'helpful'     },
         ];
 
         _quickOpts.forEach(function (opt) {
@@ -6137,8 +6142,15 @@ opts.jsonPayload + '\n' +
                 var detail = {
                     schemaVersion:  1,
                     ratingValue:    opt.value,
-                    ratingLabel:    opt.title,
-                    rating:         opt.title,
+                    // ratingLabel is now always a snake_case slug matching the
+                    // panel feedback vocabulary (e.g. "not_helpful", "helpful").
+                    // ratingTitle carries the human-readable display string.
+                    // rating is kept as a deprecated alias of ratingLabel for
+                    // server-side back-compat; new consumers should use ratingSlug.
+                    ratingLabel:    opt.slug,
+                    ratingTitle:    opt.title,
+                    ratingMode:     'quick',
+                    rating:         opt.slug,   // @deprecated: alias of ratingLabel
                     message:        '',
                     query:          (typeof questionText === 'string') ? questionText : '',
                     answer:         (typeof answerText === 'string')   ? answerText   : '',
