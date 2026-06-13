@@ -991,14 +991,23 @@
 
         // ── 7.5. Auto-link bare http/https URLs ───────────────────────────
         // Runs after explicit markdown links (step 7) are already wrapped in
-        // <a href="…">…</a>.  The negative lookbehind (?<!href=") ensures
-        // this pass never re-wraps the href attribute value those anchors
-        // already hold.  _escapeHtml (step 2) encoded & → &amp;, so
-        // query-param separators in plain URLs appear as &amp; in the working
-        // string and are safely matched by [^\s<>"].  Trailing prose
-        // punctuation (., ) ] ; ! ?) is stripped before the anchor is built
-        // so "Visit https://example.com." renders the period outside the link.
-        result = result.replace(/(?<!href=")https?:\/\/[^\s<>"]+/g, function (match) {
+        // <a href="…">…</a>.  The alternation (href="URL") | bare-URL is used
+        // instead of a negative lookbehind (?<!href=") because iOS Safari
+        // before version 16.4 (March 2023) does not support lookbehind
+        // assertions — encountering the regex literal at parse time throws a
+        // SyntaxError that aborts the entire IIFE, leaving no buttons or panel
+        // visible at all.  The alternation achieves identical behaviour:
+        //   • Group 1 matches the full href="URL" token → return it unchanged.
+        //   • No group 1 → bare URL → auto-link it.
+        // _escapeHtml (step 2) encoded & → &amp;, so query-param separators
+        // in plain URLs appear as &amp; in the working string and are safely
+        // matched by [^\s<>"].  Trailing prose punctuation (., ) ] ; ! ?) is
+        // stripped before the anchor is built so "Visit https://example.com."
+        // renders the period outside the link.
+        result = result.replace(/(href="https?:\/\/[^"]*")|https?:\/\/[^\s<>"]+/g, function (match, hrefAttr) {
+            // Group 1 matched: already inside href="…" — leave the attribute untouched.
+            if (hrefAttr !== undefined) { return hrefAttr; }
+            // Bare URL: strip trailing prose punctuation, then wrap in <a>.
             var trailingM = match.match(/[.,)\];!?]+$/);
             var trailing  = trailingM ? trailingM[0] : '';
             if (trailing) { match = match.slice(0, -trailing.length); }
