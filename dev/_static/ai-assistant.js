@@ -6107,6 +6107,18 @@ opts.jsonPayload + '\n' +
             btn.appendChild(scoreSpan);
 
             btn.addEventListener('click', function () {
+                // ── Edit-chain bookkeeping ──────────────────────────────────────
+                // Capture BEFORE any retraction/overwrite below: if this answer
+                // already has a stored rating (quick re-toggle, or panel rating
+                // marked _pendingRetract via the Edit button), this click
+                // SUPERSEDES it.  _supersededFeedbackId becomes
+                // detail.prevFeedbackId (sent to /v1/feedback) and is forwarded
+                // into _feedbackStore so /v1/contribute's tRecords can carry it
+                // too.  null on a first-time rating for this answer.
+                var _priorQEntry          = _feedbackStore[answerIndex] || null;
+                var _supersededFeedbackId = (_priorQEntry && _priorQEntry.sessionId) || null;
+                var _supersededEditCount  = (_priorQEntry && _priorQEntry.editCount) || 0;
+
                 // ── Edit path ────────────────────────────────────────────────
                 // If feedback was already given for this answer:
                 //   • Same button (aria-pressed="true") → no-op (nothing changed).
@@ -6116,7 +6128,7 @@ opts.jsonPayload + '\n' +
                 if (_feedbackGivenSet.has(answerIndex)) {
                     if (btn.getAttribute('aria-pressed') === 'true') { return; }
 
-                    var _prevQEntry = _feedbackStore[answerIndex];
+                    var _prevQEntry = _priorQEntry;
                     var _fbBaseQ  = _EP.hasProfiles()
                         ? _EP.resolve('feedback')
                         : (cfg.panelFeedbackEndpoint || '');
@@ -6141,16 +6153,10 @@ opts.jsonPayload + '\n' +
                 });
                 btn.setAttribute('aria-pressed', 'true');
 
-                // Model info for quick feedback — same slim 3-key shape as panel
-                // feedback so every rated record has model attribution regardless
-                // of rating mode.  _getActiveModel reads cfg.panelApiModels; null
-                // is returned when no model is configured (graceful degradation).
-                var _quickActiveModel = _getActiveModel ? _getActiveModel(cfg) : null;
-                var _quickModelInfo   = _quickActiveModel ? {
-                    id:       _quickActiveModel.id,
-                    provider: _quickActiveModel.provider || 'custom',
-                    model:    _quickActiveModel.model || _quickActiveModel.id,
-                } : null;
+                // Model info — canonical 8-key shape shared with panel feedback
+                // and contributions (see _buildModelInfo).  null when no model
+                // is configured (graceful degradation).
+                var _quickModelInfo = _buildModelInfo(cfg);
 
                 var detail = {
                     schemaVersion:  1,
@@ -6164,6 +6170,10 @@ opts.jsonPayload + '\n' +
                     ratingTitle:    opt.title,
                     ratingMode:     'quick',
                     rating:         opt.slug,   // @deprecated: alias of ratingLabel
+                    // prevFeedbackId / editCount: edit-chain linkage (see top of
+                    // this handler).  null / 0 for a first-time rating.
+                    prevFeedbackId: _supersededFeedbackId,
+                    editCount:      _supersededFeedbackId ? (_supersededEditCount + 1) : 0,
                     message:        '',
                     query:          (typeof questionText === 'string') ? questionText : '',
                     answer:         (typeof answerText === 'string')   ? answerText   : '',
@@ -9611,6 +9621,59 @@ opts.jsonPayload + '\n' +
             cfg.panelApiModels.length === 0) return null;
         var id = _getActiveModelId(cfg.panelApiModels);
         return _findModel(cfg.panelApiModels, id);
+    }
+
+    /**
+     * Build the canonical 8-key model-attribution object stored in
+     * ``detail.model`` (POST /v1/feedback) and the contribute envelope's
+     * ``model`` (POST /v1/contribute).
+     *
+     * Single source of truth: previously, quick feedback, panel feedback (x2
+     * call sites), and the contribution envelope each built their OWN model
+     * object — with DIFFERENT shapes (3-key slim vs full cfg.panelApiModels
+     * entry vs nothing for quick).  That meant `feedback/*.jsonl` rows often
+     * had `model: {..., label: null, endpoint: null, info_url: null,
+     * description: null, default: null}` even though the SAME activeModel
+     * config had all of those fields populated (visible in `contributions/`
+     * rows for the identical conversation).  This function is now the ONLY
+     * place that builds a model object, called from all four sites, so every
+     * rated record — quick or panel, feedback or contribution — carries the
+     * SAME 8 keys with the SAME values.
+     *
+     * Resolution order (mirrors the original per-call-site logic):
+     *   1. cfg.panelApiModels (multi-model contract) via _getActiveModel —
+     *      returns the full config entry, so label/endpoint/info_url/
+     *      description/default come through as configured.
+     *   2. Legacy single-string cfg.panelApiModel — only id/provider/model
+     *      are knowable; the other 5 keys are explicitly null.
+     *   3. null when neither is configured (stub-mode reply).
+     *
+     * @param {object} cfg  window.AI_ASSISTANT_CONFIG
+     * @returns {object|null}  {id, provider, model, label, endpoint,
+     *                          info_url, description, default} or null.
+     */
+    function _buildModelInfo(cfg) {
+        var activeModel = _getActiveModel ? _getActiveModel(cfg) : null;
+        if (activeModel) {
+            return {
+                id:          activeModel.id,
+                provider:    activeModel.provider || 'custom',
+                model:       activeModel.model || activeModel.id,
+                label:       (activeModel.label       != null) ? activeModel.label       : null,
+                endpoint:    (activeModel.endpoint    != null) ? activeModel.endpoint    : null,
+                info_url:    (activeModel.info_url    != null) ? activeModel.info_url    : null,
+                description: (activeModel.description != null) ? activeModel.description : null,
+                default:     (activeModel.default     != null) ? activeModel.default     : null,
+            };
+        }
+        if (typeof cfg.panelApiModel === 'string' && cfg.panelApiModel) {
+            // Legacy single-model config: only id/provider/model are knowable.
+            return {
+                id: cfg.panelApiModel, provider: 'anthropic', model: cfg.panelApiModel,
+                label: null, endpoint: null, info_url: null, description: null, default: null,
+            };
+        }
+        return null;
     }
 
     // ── Phase C: Effort level, extended-thinking, and coming-soon features ──────
