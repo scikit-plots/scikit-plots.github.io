@@ -6166,6 +6166,41 @@ opts.jsonPayload + '\n' +
                 // is configured (graceful degradation).
                 var _quickModelInfo = _buildModelInfo(cfg);
 
+                // sessionId is THIS submission's own idempotency identifier,
+                // stored as `feedbackId` in the dataset (see
+                // _dataset_schema.CANONICAL_COLUMNS).  Also used as the
+                // prevSessionId/prevFeedbackId target if a later edit
+                // retracts/supersedes THIS record.
+                //
+                // Historically this was
+                //   _sessionId + '-quick-' + answerIndex + '-' + Date.now()
+                // — a composite string redundantly re-encoding ratingMode,
+                // answerIndex, and ts, which are now ALL separately-stored
+                // canonical fields (since schema v2).  That made feedbackId's
+                // FORMAT differ by ratingMode — a composite string for quick,
+                // a plain UUID for panel (see the `sid` computation in the
+                // panel submit handler below) — even though
+                // DATASET_COLLECTION_GUIDANCE.md §6 documents feedbackId as a
+                // plain "per-rating event UUID".  A bare UUID is globally
+                // unique on its own, so it satisfies the original "unique on
+                // every click, including edits" requirement without the
+                // redundant suffix, and matches panel's format.
+                //
+                // To reinstate the composite format (e.g. if a future
+                // consumer needs ratingMode/answerIndex/ts recoverable from
+                // feedbackId alone, without a dataset join), restore:
+                //   sid = _sessionId + '-quick-' + answerIndex + '-' + Date.now();
+                var sid;
+                try {
+                    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                        sid = window.crypto.randomUUID();
+                    }
+                } catch (_) {}
+                if (!sid) {
+                    sid = 'fb-' + (location ? location.pathname : 'p') +
+                          '-' + answerIndex + '-' + Date.now();
+                }
+
                 var detail = {
                     schemaVersion:  2,
                     ratingValue:    opt.value,
@@ -6189,11 +6224,7 @@ opts.jsonPayload + '\n' +
                     answerIndex:    answerIndex,
                     page:           (typeof location !== 'undefined') ? location.href : '',
                     ts:             Date.now(),
-                    // Append Date.now() so the sessionId is unique on every click
-                    // (including edits) — the server can deduplicate on
-                    // conversationId:answerIndex, so the uniqueness here is only
-                    // needed for the retraction prevSessionId lookup.
-                    sessionId:      _sessionId + '-quick-' + answerIndex + '-' + Date.now(),
+                    sessionId:      sid,
                     conversationId: _sessionId,
                 };
 
