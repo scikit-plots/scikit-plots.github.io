@@ -3505,12 +3505,13 @@
         // chosen tracks the currently selected option across button clicks.
         // Pre-seed from prevEntry so the user can submit immediately if only
         // changing the message text without re-selecting an emoji.
-        var chosen = { label: null, value: null };
+        var chosen = { label: null, value: null, title: null };
         if (prevEntry && prevValue !== null) {
             // Reverse-lookup the label for the previously submitted value.
             opts.forEach(function (o, idx) {
                 if (scale[idx] === prevValue) {
                     chosen.label = o.value || o.title || o.emoji;
+                    chosen.title = o.title || o.value || o.emoji;
                     chosen.value = prevValue;
                 }
             });
@@ -3559,6 +3560,7 @@
 
             b.addEventListener('click', function () {
                 chosen.label = o.value || o.title || o.emoji;
+                chosen.title = o.title || o.value || o.emoji;
                 chosen.value = num;
                 optRow.querySelectorAll('button').forEach(function (x) {
                     x.setAttribute('aria-pressed', 'false');
@@ -3596,21 +3598,13 @@
                       '-' + answerIndex + '-' + Date.now();
             }
 
-            var modelInfo = null;
-            var activeModel = _getActiveModel(cfg);
-            if (activeModel) {
-                modelInfo = {
-                    id:       activeModel.id,
-                    provider: activeModel.provider || 'custom',
-                    model:    activeModel.model || activeModel.id,
-                };
-            } else if (typeof cfg.panelApiModel === 'string' && cfg.panelApiModel) {
-                modelInfo = {
-                    id:       cfg.panelApiModel,
-                    provider: 'anthropic',
-                    model:    cfg.panelApiModel,
-                };
-            }
+            var modelInfo = _buildModelInfo(cfg);
+
+            // Edit-chain linkage: prevEntry (above) is the rating being
+            // replaced, if any (gated on _pendingRetract — set by the Edit
+            // button).  null/0 for a first-time rating.
+            var _supersededFeedbackId = (prevEntry && prevEntry.sessionId) || null;
+            var _supersededEditCount  = (prevEntry && prevEntry.editCount) || 0;
 
             var detail = {
                 schemaVersion:  1,
@@ -3622,6 +3616,9 @@
                 ratingTitle:    chosen.title,
                 ratingMode:     'panel',
                 rating:         chosen.label,  // @deprecated: alias of ratingLabel
+                // prevFeedbackId / editCount: edit-chain linkage (see above).
+                prevFeedbackId: _supersededFeedbackId,
+                editCount:      _supersededFeedbackId ? (_supersededEditCount + 1) : 0,
                 message:        ta.value.trim(),
                 query:          (typeof questionText === 'string') ? questionText : '',
                 answer:         (typeof answerText === 'string') ? answerText : '',
@@ -3675,6 +3672,10 @@
                 ratingLabel:    chosen.label,   // snake_case slug ("mostly_positive")
                 ratingTitle:    chosen.title,   // human display string ("Mostly yes")
                 ratingMode:     'panel',
+                // Edit-chain linkage — forwarded into tRecords by
+                // /v1/contribute (see _supersededFeedbackId above).
+                prevFeedbackId: detail.prevFeedbackId,
+                editCount:      detail.editCount,
                 message:        ta.value.trim(),
                 ts:             Date.now(),
                 query:          detail.query,
@@ -4299,9 +4300,14 @@
                 var ratingChip = '';
                 if (fb) {
                     var ratingInfo = _ratingDisplay(fb.ratingLabel, fb.ratingValue);
+                    // Display text uses ratingTitle ("Helpful", "Mostly yes") for
+                    // humans; the CSS class keeps the snake_case slug
+                    // (ratingLabel) for stable styling hooks. Falls back to the
+                    // slug if ratingTitle is unavailable (very old records).
+                    var ratingDisplayText = fb.ratingTitle || fb.ratingLabel;
                     ratingChip =
                         '<span class="badge badge--rating badge--' + _escapeHtml(fb.ratingLabel) + '">' +
-                            ratingInfo.emoji + ' ' + _escapeHtml(fb.ratingLabel) +
+                            ratingInfo.emoji + ' ' + _escapeHtml(ratingDisplayText) +
                             (fb.message
                                 ? ' \u2014 \u201c' + _escapeHtml(fb.message.slice(0, 120)) + '\u201d'
                                 : '') +
@@ -5117,7 +5123,9 @@ opts.jsonPayload + '\n' +
             var fb = _feedbackStore[answerIndex];
             if (fb) {
                 var rdisp = _ratingDisplay(fb.ratingLabel, fb.ratingValue);
-                ratingLine = '\n\nRating: ' + rdisp.emoji + ' ' + fb.ratingLabel;
+                // ratingTitle ("Helpful", "Mostly yes") is the human-readable
+                // form; ratingLabel is the snake_case slug used for CSS/training.
+                ratingLine = '\n\nRating: ' + rdisp.emoji + ' ' + (fb.ratingTitle || fb.ratingLabel);
                 if (fb.message) { ratingLine += ' \u2014 \u201c' + fb.message + '\u201d'; }
             }
         }
@@ -6223,6 +6231,11 @@ opts.jsonPayload + '\n' +
                     ratingLabel:    opt.slug,       // canonical slug (matches detail.ratingLabel)
                     ratingTitle:    opt.title,       // human display string for dashboards
                     ratingMode:     'quick',
+                    // Edit-chain linkage — forwarded into tRecords by
+                    // /v1/contribute so contributions can also carry the
+                    // supersession chain (see _priorQEntry above).
+                    prevFeedbackId: detail.prevFeedbackId,
+                    editCount:      detail.editCount,
                     message:        '',
                     ts:             Date.now(),
                     query:          detail.query,
@@ -6438,7 +6451,7 @@ opts.jsonPayload + '\n' +
 
         // Track BOTH the label (legacy) and the numeric value.  The numeric
         // value is the training signal; the label is for humans.
-        var chosen = { label: null, value: null };
+        var chosen = { label: null, value: null, title: null };
         opts.forEach(function (o, idx) {
             var b = document.createElement('button');
             b.className = 'ai-assistant-panel-feedback-btn';
@@ -6483,6 +6496,7 @@ opts.jsonPayload + '\n' +
 
             b.addEventListener('click', function () {
                 chosen.label = o.value || o.title || o.emoji;
+                chosen.title = o.title || o.value || o.emoji;
                 chosen.value = num;
                 optRow.querySelectorAll('button').forEach(function (x) {
                     x.setAttribute('aria-pressed', 'false');
@@ -6546,27 +6560,37 @@ opts.jsonPayload + '\n' +
             // The training pipeline reads ``model.id`` and ``model.provider``
             // to group ratings per model; the ``answerIndex`` + ``sessionId``
             // pair below is the idempotency key.
-            var modelInfo = null;
-            var activeModel = _getActiveModel(cfg);
-            if (activeModel) {
-                modelInfo = {
-                    id:       activeModel.id,
-                    provider: activeModel.provider || 'custom',
-                    model:    activeModel.model || activeModel.id,
-                };
-            } else if (typeof cfg.panelApiModel === 'string' && cfg.panelApiModel) {
-                modelInfo = {
-                    id:       cfg.panelApiModel,
-                    provider: 'anthropic',      // legacy single-model assumption
-                    model:    cfg.panelApiModel,
-                };
-            }
+            var modelInfo = _buildModelInfo(cfg);
+
+            // Edit-chain linkage.  Normally an edit goes through
+            // _rebuildFeedbackFormIn (Edit button -> _pendingRetract=true ->
+            // re-render -> that function's prevEntry).  This function is the
+            // INITIAL render and is only defensively re-entered (see the
+            // _bfbEntry comment below), so gate on _pendingRetract: only claim
+            // supersession when an edit was actually flagged for this answer.
+            var _priorBfbEntry        = _feedbackStore[answerIndex] || null;
+            var _supersededFeedbackId = (_priorBfbEntry && _priorBfbEntry._pendingRetract && _priorBfbEntry.sessionId)
+                ? _priorBfbEntry.sessionId
+                : null;
+            var _supersededEditCount  = (_priorBfbEntry && _priorBfbEntry._pendingRetract)
+                ? (_priorBfbEntry.editCount || 0)
+                : 0;
 
             var detail = {
                 schemaVersion:  1,
                 ratingValue:    chosen.value,        // SIGNED INT
-                ratingLabel:    chosen.label,        // string
+                // ratingLabel is the snake_case slug (e.g. "mostly_positive");
+                // ratingTitle is the human-readable string (e.g. "Mostly yes").
+                // Both were previously MISSING from this code path's detail
+                // object (only present in the _feedbackStore write below),
+                // forcing the server to re-derive them from the slug alone.
+                ratingLabel:    chosen.label,        // snake_case slug
+                ratingTitle:    chosen.title,        // human display string
+                ratingMode:     'panel',
                 rating:         chosen.label,        // legacy alias (back-compat)
+                // prevFeedbackId / editCount: edit-chain linkage (see above).
+                prevFeedbackId: _supersededFeedbackId,
+                editCount:      _supersededFeedbackId ? (_supersededEditCount + 1) : 0,
                 message:        ta.value.trim(),
                 query:          (typeof questionText === 'string') ? questionText : '',
                 answer:         (typeof answerText === 'string') ? answerText : '',
@@ -6623,7 +6647,10 @@ opts.jsonPayload + '\n' +
                     // itself can also be re-entered if _feedbackGivenSet was
                     // cleared and the original wrap element is still live.
                     // Guard defensively so neither path double-posts.
-                    var _bfbEntry = _feedbackStore[answerIndex];
+                    // _priorBfbEntry (computed above, before `detail`, for
+                    // prevFeedbackId/editCount) is the SAME entry — reuse it
+                    // rather than re-reading _feedbackStore[answerIndex].
+                    var _bfbEntry = _priorBfbEntry;
                     if (_bfbEntry && _bfbEntry._pendingRetract && _bfbEntry.sessionId) {
                         _postFeedbackRetract(
                             _fbBase + '/v1/feedback', _fbToken,
@@ -6653,6 +6680,10 @@ opts.jsonPayload + '\n' +
                 ratingLabel:    chosen.label,   // snake_case slug ("mostly_positive")
                 ratingTitle:    chosen.title,   // human display string ("Mostly yes")
                 ratingMode:     'panel',
+                // Edit-chain linkage — forwarded into tRecords by
+                // /v1/contribute (see _supersededFeedbackId above).
+                prevFeedbackId: detail.prevFeedbackId,
+                editCount:      detail.editCount,
                 message:        ta.value.trim(),
                 ts:             Date.now(),
                 // Added — required for POST /v1/feedback and training contribution:
@@ -13322,7 +13353,15 @@ opts.jsonPayload + '\n' +
         var _trBase = _profileTrainingUrl || (cfg.panelTrainingEndpoint || '');
 
         if (_trBase) {
-            var CONSENT_VERSION = 'v1.0';
+            // Reserved for future use: consent-version tracking is not yet
+            // enforced server-side (dataset_schema.py CONSENT_VERSION_ENABLED
+            // is False, so consentVersion is always normalised to null
+            // regardless of what is sent here).  When that flag is flipped to
+            // True, uncomment the line below, set RESERVED_CONSENT_VERSION in
+            // dataset_schema.py to match, and change `consentVersion: null`
+            // to `consentVersion: CONSENT_VERSION` in the /v1/contribute
+            // payload a few lines down.
+            // var CONSENT_VERSION = '1.0.0';
 
             var trainSep = document.createElement('hr');
             trainSep.className = 'ai-assistant-conv-share-sep';
@@ -13404,6 +13443,17 @@ opts.jsonPayload + '\n' +
                         ratingLabel: tfb.ratingLabel || '',
                         ratingTitle: tfb.ratingTitle || null,  // "Helpful" / "Mostly yes"
                         ratingMode:  tfb.ratingMode  || null,  // "quick" | "panel"
+                        // feedbackId: links this contribution row back to the
+                        // per-answer feedback event (POST /v1/feedback) that
+                        // produced this rating, if the user rated this answer
+                        // individually before contributing.  null if they
+                        // contributed without ever rating this specific answer.
+                        feedbackId:     tfb.sessionId      || null,
+                        // prevFeedbackId / editCount: edit-chain linkage,
+                        // forwarded unchanged from the feedback event (see
+                        // ai-assistant-feedback handlers for how these are set).
+                        prevFeedbackId: tfb.prevFeedbackId || null,
+                        editCount:      tfb.editCount      || 0,
                         message:     tfb.message     || '',
                         ts:          tfb.ts          || Date.now(),
                         // Self-describing provenance tag.  The server overwrites
@@ -13429,10 +13479,15 @@ opts.jsonPayload + '\n' +
                     {
                         schemaVersion:  1,
                         consentFlag:    true,
-                        consentVersion: CONSENT_VERSION,
+                        consentVersion: null,  // reserved — see CONSENT_VERSION comment above
                         sessionId:      _sessionId,
                         page:           location ? location.href : '',
-                        model:          _getActiveModel ? _getActiveModel(cfg) : null,
+                        // _buildModelInfo gives the same canonical 8-key shape
+                        // as feedback's detail.model (see definition near
+                        // _getActiveModel) — was previously the raw
+                        // _getActiveModel(cfg) object (8 keys but NOT
+                        // normalised: missing keys were absent rather than null).
+                        model:          _buildModelInfo(cfg),
                         records:        tRecords,
                     },
                     function onContributeSuccess(result) {
