@@ -3290,7 +3290,7 @@
      *
      * @param {string} url    Endpoint URL from cfg.panelFeedbackEndpoint.
      * @param {string} token  Bearer token from cfg.panelFeedbackToken ('' for none).
-     * @param {Object} detail Complete feedback detail object (schemaVersion 1).
+     * @param {Object} detail Complete feedback detail object (schemaVersion 2).
      * @returns {void}
      *
      * @remarks
@@ -3357,7 +3357,7 @@
         if (!url || !prevSessionId) { return; }
         _remotePost(url, token, {
             action:         'retract',
-            schemaVersion:  1,
+            schemaVersion:  2,
             prevSessionId:  prevSessionId,
             answerIndex:    answerIndex,
             conversationId: conversationId,
@@ -3607,7 +3607,7 @@
             var _supersededEditCount  = (prevEntry && prevEntry.editCount) || 0;
 
             var detail = {
-                schemaVersion:  1,
+                schemaVersion:  2,
                 ratingValue:    chosen.value,
                 // ratingLabel is the snake_case slug (e.g. "mostly_positive").
                 // ratingTitle carries the human-readable string ("Mostly yes").
@@ -3759,7 +3759,7 @@
      * POST a training contribution payload to the configured training endpoint.
      *
      * @param {string}   url       cfg.panelTrainingEndpoint.
-     * @param {Object}   payload   Contribution payload (schemaVersion 1, consentFlag: true).
+     * @param {Object}   payload   Contribution payload (schemaVersion 2, consentFlag: true).
      * @param {Function} onSuccess Called with {contributed, rows} on success.
      * @param {Function} onError   Called with {status, message} on failure.
      * @returns {void}
@@ -5988,10 +5988,10 @@ opts.jsonPayload + '\n' +
      * console-logged.  Doc authors hook the event for their own analytics —
      * the extension itself stores nothing and sends nothing.
      *
-     * The event payload (``event.detail``) shape — version 1:
+     * The event payload (``event.detail``) shape — version 2:
      *
      *     {
-     *       schemaVersion : 1,                  // for forward compatibility
+     *       schemaVersion : 2,                  // for forward compatibility
      *       ratingValue   : -1 | 0 | +1 | ...,  // SIGNED INT (training signal)
      *       ratingLabel   : "negative" | ...,   // string (humans / dashboards)
      *       rating        : "negative" | ...,   // legacy alias = ratingLabel
@@ -6167,7 +6167,7 @@ opts.jsonPayload + '\n' +
                 var _quickModelInfo = _buildModelInfo(cfg);
 
                 var detail = {
-                    schemaVersion:  1,
+                    schemaVersion:  2,
                     ratingValue:    opt.value,
                     // ratingLabel is now always a snake_case slug matching the
                     // panel feedback vocabulary (e.g. "not_helpful", "helpful").
@@ -6577,7 +6577,7 @@ opts.jsonPayload + '\n' +
                 : 0;
 
             var detail = {
-                schemaVersion:  1,
+                schemaVersion:  2,
                 ratingValue:    chosen.value,        // SIGNED INT
                 // ratingLabel is the snake_case slug (e.g. "mostly_positive");
                 // ratingTitle is the human-readable string (e.g. "Mostly yes").
@@ -13477,7 +13477,7 @@ opts.jsonPayload + '\n' +
                 _postTrainingContribution(
                     _trBase.replace(/\/$/, '') + '/v1/contribute',
                     {
-                        schemaVersion:  1,
+                        schemaVersion:  2,
                         consentFlag:    true,
                         consentVersion: null,  // reserved — see CONSENT_VERSION comment above
                         sessionId:      _sessionId,
