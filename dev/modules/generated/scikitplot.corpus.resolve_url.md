@@ -1,6 +1,6 @@
 # resolve\_url[#](#resolve-url "Link to this heading")
 
-scikitplot.corpus.resolve\_url(**url**, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_url_handler.py#L761)[#](#scikitplot.corpus.resolve_url "Link to this definition")
+scikitplot.corpus.resolve\_url(**url**, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_url_handler.py#L761)[#](#scikitplot.corpus.resolve_url "Link to this definition")
 :   Resolve a provider-specific URL to a direct-download URL.
 
     Parameters:

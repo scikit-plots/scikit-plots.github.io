@@ -1,6 +1,6 @@
 # akaike\_info\_criterion[#](#akaike-info-criterion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/cexternals/_astropy/stats/info_theory.py#L218)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cexternals/_astropy/stats/info_theory.py#L218)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion "Link to this definition")
 :   Computes the Akaike Information Criterion (AIC).
 
     Like the Bayesian Information Criterion, the AIC is a measure of

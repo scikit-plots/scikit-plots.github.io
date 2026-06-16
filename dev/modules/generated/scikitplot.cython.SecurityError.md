@@ -1,6 +1,6 @@
 # SecurityError[#](#securityerror "Link to this heading")
 
-exception scikitplot.cython.SecurityError(**message**, **\***, **field=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/cython/_security.py#L139)[#](#scikitplot.cython.SecurityError "Link to this definition")
+exception scikitplot.cython.SecurityError(**message**, **\***, **field=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cython/_security.py#L139)[#](#scikitplot.cython.SecurityError "Link to this definition")
 :   Raised when a build input violates the active [`SecurityPolicy`](scikitplot.cython.SecurityPolicy.html#scikitplot.cython.SecurityPolicy "scikitplot.cython.SecurityPolicy").
 
     Inherits from [`ValueError`](https://docs.python.org/3/library/exceptions.html#ValueError "(in Python v3.14)") so callers that catch `ValueError`

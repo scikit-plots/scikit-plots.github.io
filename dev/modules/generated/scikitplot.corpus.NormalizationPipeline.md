@@ -1,6 +1,6 @@
 # NormalizationPipeline[#](#normalizationpipeline "Link to this heading")
 
-class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_normalizers/_normalizer.py#L648)[#](#scikitplot.corpus.NormalizationPipeline "Link to this definition")
+class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_normalizers/_normalizer.py#L648)[#](#scikitplot.corpus.NormalizationPipeline "Link to this definition")
 :   Apply a sequence of normalisers in order.
 
     Each normaliser in the pipeline receives the output of the previous
@@ -34,7 +34,7 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
     ```
     Go BackOpen In Tab
 
-    normalize\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_normalizers/_normalizer.py#L707)[#](#scikitplot.corpus.NormalizationPipeline.normalize_batch "Link to this definition")
+    normalize\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_normalizers/_normalizer.py#L707)[#](#scikitplot.corpus.NormalizationPipeline.normalize_batch "Link to this definition")
     :   Apply the pipeline to a list of documents.
 
         Parameters:
@@ -49,7 +49,7 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")]
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_normalizers/_normalizer.py#L689)[#](#scikitplot.corpus.NormalizationPipeline.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_normalizers/_normalizer.py#L689)[#](#scikitplot.corpus.NormalizationPipeline.normalize_doc "Link to this definition")
     :   Apply all normalisers in order.
 
         Parameters:

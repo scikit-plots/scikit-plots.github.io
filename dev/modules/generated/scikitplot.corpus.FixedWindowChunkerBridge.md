@@ -1,12 +1,12 @@
 # FixedWindowChunkerBridge[#](#fixedwindowchunkerbridge "Link to this heading")
 
-class scikitplot.corpus.FixedWindowChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_chunkers/_chunker_bridge.py#L307)[#](#scikitplot.corpus.FixedWindowChunkerBridge "Link to this definition")
+class scikitplot.corpus.FixedWindowChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_chunker_bridge.py#L307)[#](#scikitplot.corpus.FixedWindowChunkerBridge "Link to this definition")
 :   Bridge for `FixedWindowChunker` → `ChunkerBase` contract.
 
     Parameters:
     :   ****inner**** (**Any**)
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.FixedWindowChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.FixedWindowChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return a `ChunkResult`.
 
         ****CRITICAL-02 (Phase 2):**** Returns `ChunkResult` directly.
@@ -39,4 +39,4 @@ class scikitplot.corpus.FixedWindowChunkerBridge(**inner**)[[source]](https://gi
         Use `_to_tuples` to convert to the legacy
         `list[tuple[int, str]]` format if needed for backward compat.
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'fixed\_window'[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.FixedWindowChunkerBridge.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'fixed\_window'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.FixedWindowChunkerBridge.strategy "Link to this definition")

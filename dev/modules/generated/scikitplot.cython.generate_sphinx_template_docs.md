@@ -1,6 +1,6 @@
 # generate\_sphinx\_template\_docs[#](#generate-sphinx-template-docs "Link to this heading")
 
-scikitplot.cython.generate\_sphinx\_template\_docs(**output\_dir**, **\***, **title='Cython templates'**, **include\_python=True**, **include\_cython=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/cython/_templates_api.py#L957)[#](#scikitplot.cython.generate_sphinx_template_docs "Link to this definition")
+scikitplot.cython.generate\_sphinx\_template\_docs(**output\_dir**, **\***, **title='Cython templates'**, **include\_python=True**, **include\_cython=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cython/_templates_api.py#L957)[#](#scikitplot.cython.generate_sphinx_template_docs "Link to this definition")
 :   Generate Sphinx `.rst` pages listing templates and their usage.
 
     This function does ****not**** import any `.pyx` code. It uses metadata files

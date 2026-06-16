@@ -1,6 +1,6 @@
 # get\_template\_path[#](#get-template-path "Link to this heading")
 
-scikitplot.cython.get\_template\_path(**template\_id**, **\***, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/cython/_templates_api.py#L342)[#](#scikitplot.cython.get_template_path "Link to this definition")
+scikitplot.cython.get\_template\_path(**template\_id**, **\***, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cython/_templates_api.py#L342)[#](#scikitplot.cython.get_template_path "Link to this definition")
 :   Resolve a template ID to an on-disk path.
 
     Parameters:

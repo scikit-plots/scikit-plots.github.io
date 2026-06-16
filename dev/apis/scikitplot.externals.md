@@ -48,6 +48,15 @@ Extra array functions built on top of the array API standard.
 
 Real probability scales for matplotlib.
 
+Registering this module (via `import`) adds a `'prob'` scale to
+matplotlib that is available to all Axes in the process.
+
+Notes
+
+`scale.register_scale(ProbScale)` is called ****once**** at import time.
+Re-importing the module is safe: matplotlib’s `_scale_mapping` is a
+plain dict and repeated registration simply overwrites the same entry.
+
 ****User guide.**** See the [Probability Plots (experimental)](../user_guide/externals/_probscale/index.html#externals-probscale-index) section for further details.
 
 |  |  |

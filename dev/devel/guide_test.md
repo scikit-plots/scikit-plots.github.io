@@ -191,7 +191,7 @@ You can also include other `pytest` options as needed.
 > * `Test` prefixed classes (without an `__init__` method)
 > * `test_` prefixed functions and methods
 
-Consult the [test discovery rules](https://pytest.org/en/stable/explanation/goodpractices.html#python-test-discovery "(in pytest v9.0.3)")
+Consult the [test discovery rules](https://pytest.org/en/stable/explanation/goodpractices.html#python-test-discovery "(in pytest v9.1.0)")
 for detailed information on how to name files and tests so that they are
 automatically discovered by [pytest](https://docs.pytest.org/en/stable/).
 
@@ -356,7 +356,7 @@ for the duration of the test run via [Environment variables](https://docs.astrop
 ### Tests that create files[#](#tests-that-create-files "Link to this heading")
 
 Some tests involve writing files. These files should not be saved permanently.
-The [pytest ‘tmp\_path’ fixture](https://pytest.org/en/stable/how-to/tmp_path.html#tmp-path "(in pytest v9.0.3)") allows for the
+The [pytest ‘tmp\_path’ fixture](https://pytest.org/en/stable/how-to/tmp_path.html#tmp-path "(in pytest v9.1.0)") allows for the
 convenient creation of temporary directories, which ensures test files will be
 cleaned up. Temporary directories can also be helpful in the case where the
 tests are run in an environment where `pytest` would otherwise not have write
@@ -613,7 +613,7 @@ transforms).
 In order to test that warnings are triggered as expected in certain
 situations,
 [pytest](https://docs.pytest.org/en/stable/) provides its own context manager
-[pytest.warns](https://pytest.org/en/stable/how-to/capture-warnings.html#warns "(in pytest v9.0.3)") that, completely
+[pytest.warns](https://pytest.org/en/stable/how-to/capture-warnings.html#warns "(in pytest v9.1.0)") that, completely
 analogously to `pytest.raises` (see below) allows to probe explicitly
 for specific warning classes and, through the optional `match` argument,
 messages. Note that when no warning of the specified type is
@@ -623,7 +623,7 @@ inspect them.
 
 > **Note**
 > With [pytest](https://docs.pytest.org/en/stable/) there is also the option of using the
-[recwarn](https://pytest.org/en/stable/how-to/capture-warnings.html#recwarn "(in pytest v9.0.3)") function argument to test that
+[recwarn](https://pytest.org/en/stable/how-to/capture-warnings.html#recwarn "(in pytest v9.1.0)") function argument to test that
 warnings are triggered within the entire embedding function.
 This method has been found to be problematic in at least one case
 ([pull request 1174](https://github.com/astropy/astropy/pull/1174#issuecomment-20249309)).
@@ -634,7 +634,7 @@ Just like the handling of warnings described above, tests that are
 designed to trigger certain errors should verify that an exception of
 the expected type is raised in the expected place. This is efficiently
 done by running the tested code inside the
-[pytest.raises](https://pytest.org/en/stable/how-to/assert.html#assertraises "(in pytest v9.0.3)")
+[pytest.raises](https://pytest.org/en/stable/how-to/assert.html#assertraises "(in pytest v9.1.0)")
 context manager. Its optional `match` argument allows to check the
 error message for any patterns using `regex` syntax. For example the
 matches `pytest.raises(OSError, match=r'^No such file')` and

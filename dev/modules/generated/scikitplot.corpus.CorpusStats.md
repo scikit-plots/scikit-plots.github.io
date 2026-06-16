@@ -1,6 +1,6 @@
 # CorpusStats[#](#corpusstats "Link to this heading")
 
-class scikitplot.corpus.CorpusStats(**n\_documents**, **n\_tokens**, **n\_chars**, **mean\_tokens**, **median\_tokens**, **min\_tokens**, **max\_tokens**, **language\_counts**, **section\_type\_counts**, **source\_type\_counts**, **source\_file\_counts**, **collection\_ids**, **has\_embeddings**, **date\_range**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats "Link to this definition")
+class scikitplot.corpus.CorpusStats(**n\_documents**, **n\_tokens**, **n\_chars**, **mean\_tokens**, **median\_tokens**, **min\_tokens**, **max\_tokens**, **language\_counts**, **section\_type\_counts**, **source\_type\_counts**, **source\_file\_counts**, **collection\_ids**, **has\_embeddings**, **date\_range**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats "Link to this definition")
 :   Aggregate statistics over a
     [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") collection.
 
@@ -66,35 +66,35 @@ class scikitplot.corpus.CorpusStats(**n\_documents**, **n\_tokens**, **n\_chars*
         * ****has\_embeddings**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****date\_range**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
 
-    collection\_ids: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.collection_ids "Link to this definition")
+    collection\_ids: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.collection_ids "Link to this definition")
 
-    date\_range: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.date_range "Link to this definition")
+    date\_range: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.date_range "Link to this definition")
 
-    has\_embeddings: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.has_embeddings "Link to this definition")
+    has\_embeddings: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.has_embeddings "Link to this definition")
 
-    language\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.language_counts "Link to this definition")
+    language\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.language_counts "Link to this definition")
 
-    max\_tokens: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.max_tokens "Link to this definition")
+    max\_tokens: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.max_tokens "Link to this definition")
 
-    mean\_tokens: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.mean_tokens "Link to this definition")
+    mean\_tokens: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.mean_tokens "Link to this definition")
 
-    median\_tokens: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.median_tokens "Link to this definition")
+    median\_tokens: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.median_tokens "Link to this definition")
 
-    min\_tokens: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.min_tokens "Link to this definition")
+    min\_tokens: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.min_tokens "Link to this definition")
 
-    n\_chars: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.n_chars "Link to this definition")
+    n\_chars: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.n_chars "Link to this definition")
 
-    n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.n_documents "Link to this definition")
+    n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.n_documents "Link to this definition")
 
-    n\_tokens: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.n_tokens "Link to this definition")
+    n\_tokens: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.n_tokens "Link to this definition")
 
-    section\_type\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.section_type_counts "Link to this definition")
+    section\_type\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.section_type_counts "Link to this definition")
 
-    source\_file\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.source_file_counts "Link to this definition")
+    source\_file\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.source_file_counts "Link to this definition")
 
-    source\_type\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.source_type_counts "Link to this definition")
+    source\_type\_counts: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L239)[#](#scikitplot.corpus.CorpusStats.source_type_counts "Link to this definition")
 
-    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L320)[#](#scikitplot.corpus.CorpusStats.summary "Link to this definition")
+    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L320)[#](#scikitplot.corpus.CorpusStats.summary "Link to this definition")
     :   Return a human-readable one-page summary string.
 
         Returns:
@@ -103,7 +103,7 @@ class scikitplot.corpus.CorpusStats(**n\_documents**, **n\_tokens**, **n\_chars*
         Return type:
         :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/corpus/_metadata/_metadata.py#L295)[#](#scikitplot.corpus.CorpusStats.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_metadata/_metadata.py#L295)[#](#scikitplot.corpus.CorpusStats.to_dict "Link to this definition")
     :   Return a JSON-safe dictionary representation of the stats.
 
         Returns:

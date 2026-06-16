@@ -1,6 +1,6 @@
 # binary\_ks\_curve[#](#binary-ks-curve "Link to this heading")
 
-scikitplot.api.\_utils.binary\_ks\_curve(**y\_true**, **y\_probas**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/576badd/scikitplot/api/_utils/_helpers.py#L251)[#](#scikitplot.api._utils.binary_ks_curve "Link to this definition")
+scikitplot.api.\_utils.binary\_ks\_curve(**y\_true**, **y\_probas**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/api/_utils/_helpers.py#L251)[#](#scikitplot.api._utils.binary_ks_curve "Link to this definition")
 :   Generate the data points necessary to plot the Kolmogorov-Smirnov (KS)
     curve for binary classification tasks.
 
