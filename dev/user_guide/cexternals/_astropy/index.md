@@ -1,6 +1,6 @@
 # Astropy (experimental)[#](#astropy-experimental "Link to this heading")
 
-This module contains some functions related to [`_astropy`](../../../modules/generated/scikitplot.cexternals._astropy.html#module-scikitplot.cexternals._astropy "scikitplot.cexternals._astropy") under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats").
+This module contains some functions related to [`_astropy`](../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._astropy "scikitplot.cexternals._astropy") under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats").
 
 > **Important**
 > Module also available under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats") library.

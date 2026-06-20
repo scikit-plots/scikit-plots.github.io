@@ -76,7 +76,7 @@ Log the message at a predefined logging level.
 | [`log_if`](../modules/generated/scikitplot.logging.log_if.html#scikitplot.logging.log_if "scikitplot.logging.log_if") | Log only if a condition is True. |
 | [`vlog`](../modules/generated/scikitplot.logging.vlog.html#scikitplot.logging.vlog "scikitplot.logging.vlog") | Log a message at the specified log level. |
 | [`debug`](../modules/generated/debug-func.html#scikitplot.logging.debug "scikitplot.logging.debug") | Log a message at the DEBUG log level. |
-| [`info`](../modules/generated/scikitplot.logging.info.html#scikitplot.logging.info "scikitplot.logging.info") | Log a message at the INFO log level. |
+| [`info`](../modules/generated/info-func.html#scikitplot.logging.info "scikitplot.logging.info") | Log a message at the INFO log level. |
 | [`warning`](../modules/generated/warning-func.html#scikitplot.logging.warning "scikitplot.logging.warning") | Log a message at the WARNING log level. |
 | [`warn`](../modules/generated/warn-func.html#scikitplot.logging.warn "scikitplot.logging.warn") | Log a message at the WARN -> WARNING log level. |
 | [`error`](../modules/generated/error-func.html#scikitplot.logging.error "scikitplot.logging.error") | Log a message at the ERROR log level. |

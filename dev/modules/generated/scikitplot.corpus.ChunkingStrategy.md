@@ -1,6 +1,6 @@
 # ChunkingStrategy[#](#chunkingstrategy "Link to this heading")
 
-class scikitplot.corpus.ChunkingStrategy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L319)[#](#scikitplot.corpus.ChunkingStrategy "Link to this definition")
+class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L319)[#](#scikitplot.corpus.ChunkingStrategy "Link to this definition")
 :   Describes how a [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") was segmented from raw text.
 
     Notes
@@ -21,28 +21,28 @@ class scikitplot.corpus.ChunkingStrategy(**value**)[[source]](https://github.com
     ```
     Go BackOpen In Tab
 
-    BLOCK = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.BLOCK "Link to this definition")
+    BLOCK = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.BLOCK "Link to this definition")
     :   Format-native block unit (ALTO TextBlock, TEI <p>, HTML <div>, etc.).
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.CUSTOM "Link to this definition")
     :   User-supplied chunking logic; opaque to the standard pipeline.
 
-    FIXED\_WINDOW = 'fixed\_window'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW "Link to this definition")
+    FIXED\_WINDOW = 'fixed\_window'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW "Link to this definition")
     :   Sliding window of fixed token/character count with configurable overlap.
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.NONE "Link to this definition")
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.NONE "Link to this definition")
     :   No chunking applied — the whole document is one chunk.
 
-    PAGE = 'page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PAGE "Link to this definition")
+    PAGE = 'page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PAGE "Link to this definition")
     :   One page per chunk, as determined by the source format (PDF, ALTO).
 
-    PARAGRAPH = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PARAGRAPH "Link to this definition")
+    PARAGRAPH = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PARAGRAPH "Link to this definition")
     :   One paragraph per chunk, split on blank lines (`\n\n`).
 
-    SEMANTIC = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SEMANTIC "Link to this definition")
+    SEMANTIC = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SEMANTIC "Link to this definition")
     :   Boundary detected by semantic similarity shift (topic segmentation).
 
-    SENTENCE = 'sentence'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SENTENCE "Link to this definition")
+    SENTENCE = 'sentence'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SENTENCE "Link to this definition")
     :   One sentence per chunk, produced by a language-model segmenter.
 
     capitalize(**/**)[#](#scikitplot.corpus.ChunkingStrategy.capitalize "Link to this definition")
@@ -159,10 +159,9 @@ class scikitplot.corpus.ChunkingStrategy(**value**)[[source]](https://github.com
         least one character in the string.
 
     isprintable(**/**)[#](#scikitplot.corpus.ChunkingStrategy.isprintable "Link to this definition")
-    :   Return True if the string is printable, False otherwise.
+    :   Return True if all characters in the string are printable, False otherwise.
 
-        A string is printable if all of its characters are considered printable in
-        repr() or if it is empty.
+        A character is printable if repr() may use it in its output.
 
     isspace(**/**)[#](#scikitplot.corpus.ChunkingStrategy.isspace "Link to this definition")
     :   Return True if the string is a whitespace string, False otherwise.

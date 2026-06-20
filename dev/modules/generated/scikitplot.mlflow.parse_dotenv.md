@@ -1,6 +1,6 @@
 # parse\_dotenv[#](#parse-dotenv "Link to this heading")
 
-scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/mlflow/_env.py#L69)[#](#scikitplot.mlflow.parse_dotenv "Link to this definition")
+scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/mlflow/_env.py#L69)[#](#scikitplot.mlflow.parse_dotenv "Link to this definition")
 :   Parse a minimal `.env` file containing KEY=VALUE assignments.
 
     Parameters:
@@ -27,7 +27,7 @@ scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-pl
 
     * Empty lines and comments beginning with `#` are ignored
     * No shell expansion is performed
-    * Optional leading [`](#id1)export ` is supported
+    * Optional leading `export` is supported
     * Surrounding matching-pair quotes are stripped from values
       (`"value"` → `value`, `'value'` → `value`,
       but `"value'` is left unchanged — mismatched quotes are not stripped)

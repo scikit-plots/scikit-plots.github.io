@@ -10,28 +10,37 @@ Imagine you have a scatter plot of data and you can see a few separate
 clusters. A Gaussian Mixture Model (GMM) formalises that intuition: it
 assumes the data came from K overlapping “blobs”, each shaped like a
 multivariate Gaussian (bell curve). We do not know K ahead of time —
-that is the whole point of this example.
+that is the whole point of this example. [[1]](#id6) [[2]](#id7) [[3]](#id8) [[4]](#id9) [[5]](#id10)
 
 Mathematically, the model says:
 
-> p(x | θ) = Σ\_j α\_j · N(x | μ\_j, Σ\_j) for j = 1 … K
+```
+p(x | θ) = Σ_j  α_j · N(x | μ_j, Σ_j)    for j = 1 … K
+
+```
 
 where:
-:   K — number of blobs (unknown, to be selected)
-    α\_j — how big / common blob j is (all α\_j sum to 1)
-    μ\_j — centre of blob j
-    Σ\_j — shape and orientation of blob j (covariance matrix)
-    θ — shorthand for all of {α\_j, μ\_j, Σ\_j} together
+
+```
+K    — number of blobs (unknown, to be selected)
+α_j  — how big / common blob j is          (all α_j sum to 1)
+μ_j  — centre of blob j
+Σ_j  — shape and orientation of blob j (covariance matrix)
+θ    — shorthand for all of {α_j, μ_j, Σ_j} together
+
+```
 
 ## How does sklearn fit the model? (Expectation–Maximisation, EM)[#](#how-does-sklearn-fit-the-model-expectationmaximisation-em "Link to this heading")
 
 EM is an iterative two-step algorithm:
 
-> E-step For each data point, calculate how likely it is that each
-> :   blob generated it. These are called “responsibilities”.
->
-> M-step Update α, μ, Σ so that the model better explains those
-> :   responsibilities.
+```
+E-step  For each data point, calculate how likely it is that each
+        blob generated it.  These are called "responsibilities".
+M-step  Update α, μ, Σ so that the model better explains those
+        responsibilities.
+
+```
 
 EM repeats until the improvement per iteration falls below a threshold
 (`tol` in sklearn, default 1e-3).
@@ -47,69 +56,77 @@ That is what AIC, AICc, and BIC do.
 
 All three are computed from the same two ingredients:
 
-> * ln L\* the log-likelihood after EM has converged
->   :   (bigger = the model explains the data better)
-> * p the number of free parameters in the model
->   :   (bigger = the model is more complex)
+```
+- ln L*   the log-likelihood after EM has converged
+          (bigger = the model explains the data better)
+- p       the number of free parameters in the model
+          (bigger = the model is more complex)
+
+```
 
 The formulas:
 
-> AIC = -2 ln L\* + 2p
-> AICc = -2 ln L\* + 2p + 2p(p+1) / (N - p - 1)
-> BIC = -2 ln L\* + p · ln N
+```
+AIC  = -2 ln L*  +  2p
+AICc = -2 ln L*  +  2p  +  2p(p+1) / (N - p - 1)
+BIC  = -2 ln L*  +  p · ln N
+
+```
 
 All three are ****lower-is-better****. The -2 ln L\* term rewards a good fit;
 the second term penalises complexity. The penalties differ:
 
-> AIC penalises each parameter by exactly 2.
-> AICc is AIC plus a small extra correction for small sample sizes.
->
-> > When N is large the correction shrinks to zero and AICc ≈ AIC.
-> > When N is small (rough rule: N/p < 40) the correction matters.
->
-> BIC penalises each parameter by ln N, which is > 2 for N > 7.
-> :   This makes BIC prefer sparser (fewer components) models.
+```
+AIC   penalises each parameter by exactly 2.
+AICc  is AIC plus a small extra correction for small sample sizes.
+      When N is large the correction shrinks to zero and AICc ≈ AIC.
+      When N is small (rough rule: N/p < 40) the correction matters.
+BIC   penalises each parameter by ln N, which is > 2 for N > 7.
+      This makes BIC prefer sparser (fewer components) models.
+
+```
 
 ## When should I use each?[#](#when-should-i-use-each "Link to this heading")
 
-> AIC — your goal is **prediction**. You are building a generative model
-> :   and you want the best out-of-sample log-likelihood. AIC’s
->     softer penalty lets you keep richer structure when the data
->     support it.
->
-> AICc — same goal as AIC but your dataset is small or the number of
-> :   parameters p is large relative to N. Use AICc by default if
->     you are unsure; for large N it converges to AIC anyway.
->
-> BIC — your goal is **structure recovery**: you want to know the true
-> :   number of clusters, not just predict well. BIC’s stronger
->     penalty makes it more likely to land on the right K when one
->     exists. This example uses BIC to pick the final model.
->
-> Practical tip: always plot all three. If they all agree on K, you can
-> be confident. If they disagree, the difference is usually just ±1 and
-> you can inspect both models visually.
+* AIC — your goal is **prediction**. You are building a generative model
+  :   and you want the best out-of-sample log-likelihood. AIC’s
+      softer penalty lets you keep richer structure when the data
+      support it.
+* AICc — same goal as AIC but your dataset is small or the number of
+  :   parameters p is large relative to N. Use AICc by default if
+      you are unsure; for large N it converges to AIC anyway.
+* BIC — your goal is **structure recovery**: you want to know the true
+  :   number of clusters, not just predict well. BIC’s stronger
+      penalty makes it more likely to land on the right K when one
+      exists. This example uses BIC to pick the final model.
+
+  Practical tip: always plot all three. If they all agree on K, you can
+  be confident. If they disagree, the difference is usually just ±1 and
+  you can inspect both models visually.
 
 ## How to read the AIC / AICc / BIC curves[#](#how-to-read-the-aic-aicc-bic-curves "Link to this heading")
 
-> 1. Plot score (y-axis) vs K (x-axis).
-> 2. The best K is at the minimum of the curve.
-> 3. A sharp dip → the data strongly prefer that K.
-> 4. A flat plateau → nearby K values are nearly equivalent;
->    :   pick the smaller K (simpler is safer).
-> 5. BIC minimum ≤ AIC minimum — BIC always penalises more,
->    so its minimum shifts left. This is expected, not a bug.
+1. Plot score (y-axis) vs K (x-axis).
+2. The best K is at the minimum of the curve.
+3. A sharp dip → the data strongly prefer that K.
+4. A flat plateau → nearby K values are nearly equivalent;
+   :   pick the smaller K (simpler is safer).
+5. BIC minimum ≤ AIC minimum — BIC always penalises more,
+   so its minimum shifts left. This is expected, not a bug.
 
 ## Free parameter count for a full-covariance GMM on d-dimensional data[#](#free-parameter-count-for-a-full-covariance-gmm-on-d-dimensional-data "Link to this heading")
 
-> means : K × d
-> covariances: K × d(d+1)/2 (symmetric matrix, upper triangle only)
-> weights : K - 1 (K weights constrained to sum to 1)
->
-> Total p = K × d + K × d(d+1)/2 + (K - 1)
->
-> For d=2 (this example): p = 2K + 3K + K - 1 = 6K - 1
-> For K=5: p = 29
+```
+means      :  K × d
+covariances:  K × d(d+1)/2    (symmetric matrix, upper triangle only)
+weights    :  K - 1           (K weights constrained to sum to 1)
+
+Total  p = K × d  +  K × d(d+1)/2  +  (K - 1)
+
+For d=2 (this example):  p = 2K + 3K + K - 1 = 6K - 1
+For K=5:                 p = 29
+
+```
 
 ## This example[#](#this-example "Link to this heading")
 
@@ -117,45 +134,49 @@ We generate a 2-D dataset from K\_true = 5 known Gaussian blobs. Having
 a ground truth lets us check whether the criteria recover the right K.
 
 Steps:
-:   1. Generate 2 000 points from 5 blobs with different spreads.
-    2. Fit GMMs for K = 1 … 13.
-    3. Compute AIC, AICc, and BIC for each K.
-    4. Pick K\_best = argmin(BIC).
-    5. Produce four plots:
-       :   1. raw 2-D data density (observed histogram)
-           2. AIC / AICc / BIC curves with minima marked
-           3. best-fit GMM density with component ellipses
-           4. side-by-side: observed density vs. recovered density
+
+```
+1.  Generate 2 000 points from 5 blobs with different spreads.
+2.  Fit GMMs for K = 1 … 13.
+3.  Compute AIC, AICc, and BIC for each K.
+4.  Pick K_best = argmin(BIC).
+5.  Produce four plots:
+      (a) raw 2-D data density (observed histogram)
+      (b) AIC / AICc / BIC curves with minima marked
+      (c) best-fit GMM density with component ellipses
+      (d) side-by-side: observed density vs. recovered density
+
+```
 
 Dependencies: NumPy, matplotlib, scikit-learn. Nothing else.
 
 ## References[#](#references "Link to this heading")
 
-[1]
+[[1](#id1)]
 
 Akaike, H. (1974). A new look at the statistical model
 identification. IEEE Trans. Autom. Control, 19(6), 716-723.
 
 
-[2]
+[[2](#id2)]
 
 Schwarz, G. (1978). Estimating the dimension of a model.
 Ann. Stat., 6(2), 461-464.
 
 
-[3]
+[[3](#id3)]
 
 Hurvich, C. M., & Tsai, C.-L. (1989). Regression and time series
 model selection in small samples. Biometrika, 76(2), 297-307.
 
 
-[4]
+[[4](#id4)]
 
 McLachlan, G. J., & Peel, D. (2000). Finite Mixture Models.
 Wiley-Interscience.
 
 
-[5]
+[[5](#id5)]
 
 scikit-learn GaussianMixture docs:
 <https://scikit-learn.org/stable/modules/mixture.html>
@@ -830,7 +851,7 @@ plt.show()
 
 Tags: [model-type: clustering](../../_tags/model-type-clustering.html) [model-workflow: model-selection](../../_tags/model-workflow-model-selection.html) [plot-type: density](../../_tags/plot-type-density.html) [plot-type: line](../../_tags/plot-type-line.html) [domain: statistics](../../_tags/domain-statistics.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.776 seconds)
+****Total running time of the script:**** (0 minutes 1.446 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/stats/plot_gaussian_mixture_models.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/stats/plot_gaussian_mixture_models.ipynb)
 

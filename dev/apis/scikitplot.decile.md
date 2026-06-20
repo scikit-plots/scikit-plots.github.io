@@ -47,7 +47,7 @@ online at <https://modelplot.github.io/>.
 | --- | --- |
 | [`modelplotpy.ModelPlotPy`](../modules/generated/scikitplot.decile.modelplotpy.ModelPlotPy.html#scikitplot.decile.modelplotpy.ModelPlotPy "scikitplot.decile.modelplotpy.ModelPlotPy") | ModelPlotPy decile analysis. |
 
-## ModelPlotPy Initializer object[#](#id1 "Link to this heading")
+## ModelPlotPy Initializer object[#](#decile-ref-modelplotpy-initializer-object-2 "Link to this heading")
 
 The [`decile`](#module-scikitplot.decile "scikitplot.decile") and (⚠️ alternative legacy [`scikitplot.decile.modelplotpy`](#module-scikitplot.decile.modelplotpy "scikitplot.decile.modelplotpy")) module.
 

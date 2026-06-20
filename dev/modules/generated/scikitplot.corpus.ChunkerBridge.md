@@ -1,6 +1,6 @@
 # ChunkerBridge[#](#chunkerbridge "Link to this heading")
 
-class scikitplot.corpus.ChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_chunker_bridge.py#L121)[#](#scikitplot.corpus.ChunkerBridge "Link to this definition")
+class scikitplot.corpus.ChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_chunker_bridge.py#L121)[#](#scikitplot.corpus.ChunkerBridge "Link to this definition")
 :   Adapter that wraps a new-style chunker as a `ChunkerBase`-
     compatible object.
 
@@ -34,7 +34,7 @@ class scikitplot.corpus.ChunkerBridge(**inner**)[[source]](https://github.com/sc
     This bridge satisfies both without touching `ChunkerBase` or
     the new chunkers.
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.ChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.ChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return a `ChunkResult`.
 
         ****CRITICAL-02 (Phase 2):**** Returns `ChunkResult` directly.

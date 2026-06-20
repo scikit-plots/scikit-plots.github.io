@@ -5,7 +5,7 @@ scikitplot.logging.CRITICAL = 50[#](#scikitplot.logging.CRITICAL "Link to this d
     int(x, base=10) -> integer
 
     Convert a number or string to an integer, or return 0 if no arguments
-    are given. If x is a number, return x.\_\_int\_\_(). For floating point
+    are given. If x is a number, return x.\_\_int\_\_(). For floating-point
     numbers, this truncates towards zero.
 
     If x is not a number or if base is given, then x must be a string,

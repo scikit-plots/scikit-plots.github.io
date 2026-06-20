@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-16T02:22:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-20T15:42:46Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -219,8 +219,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
   </a>
 </li>
 
@@ -233,8 +233,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../cheatsheet/index.html">
-    Cheatsheet
+  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
@@ -270,13 +270,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
     Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../resources/index.html">
-    Resources
   </a>
 </li>
 
@@ -463,15 +456,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../cheatsheet/index.html">
-    Cheatsheet
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
@@ -507,13 +500,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
     Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../resources/index.html">
-    Resources
   </a>
 </li>
 
@@ -971,7 +957,7 @@ command can be written more succinctly as:</p>
 </pre></div>
 </div>
 <p>If it doesn’t look good you may need to have a look at
-<a class="reference internal" href="#recovering-from-mess-up"><span class="std std-ref">Recovering from mess-ups</span></a>.</p>
+<a class="reference internal" href="guide_devel_workflow.html#recovering-from-mess-up"><span class="std std-ref">Recover from mistakes</span></a> or <a class="reference internal" href="#recovering-from-mess-up-git"><span class="std std-ref">Recovering from mess-ups</span></a>.</p>
 <p>If you have made changes to files that have also changed in main, this may
 generate merge conflicts that you need to resolve - see the <a class="reference external" href="http://schacon.github.io/git/git-rebase.html">git rebase</a> man
 page for some instructions at the end of the “Description” section. There is
@@ -990,7 +976,7 @@ to force push to the main astropy repo (typically called <code class="docutils l
 this would re-write commit history and thus cause problems for all others.</p>
 </section>
 <section id="recovering-from-mess-ups">
-<span id="recovering-from-mess-up"></span><h3>Recovering from mess-ups<a class="headerlink" href="#recovering-from-mess-ups" title="Link to this heading">#</a></h3>
+<span id="recovering-from-mess-up-git"></span><h3>Recovering from mess-ups<a class="headerlink" href="#recovering-from-mess-ups" title="Link to this heading">#</a></h3>
 <p>Sometimes, you mess up merges or rebases. Luckily, in git it is relatively
 straightforward to recover from such mistakes.</p>
 <p>If you mess up during a rebase:</p>
@@ -1017,7 +1003,7 @@ straightforward to recover from such mistakes.</p>
 </div>
 </section>
 <section id="rewriting-commit-history">
-<span id="id1"></span><h3>Rewriting commit history<a class="headerlink" href="#rewriting-commit-history" title="Link to this heading">#</a></h3>
+<span id="rewriting-commit-history-git"></span><h3>Rewriting commit history<a class="headerlink" href="#rewriting-commit-history" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Do this only for your own feature branches.</p>
@@ -1094,10 +1080,10 @@ After revising it, we get the output:</p>
 <span class="mi">6</span><span class="n">ad92e5</span> <span class="o">*</span> <span class="n">masked</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">a</span> <span class="n">new</span> <span class="nb">object</span><span class="p">,</span> <span class="n">MaskedConstant</span>
 </pre></div>
 </div>
-<p>If it went wrong, recovery is again possible as explained <a class="reference internal" href="#recovering-from-mess-up"><span class="std std-ref">above</span></a>.</p>
+<p>If it went wrong, recovery is again possible as explained <a class="reference internal" href="guide_devel_workflow.html#recovering-from-mess-up"><span class="std std-ref">above</span></a> or <a class="reference internal" href="#recovering-from-mess-up-git"><span class="std std-ref">Recovering from mess-ups</span></a>.</p>
 </section>
 <section id="merge-commits-and-cherry-picks">
-<span id="id2"></span><h3>Merge commits and cherry picks<a class="headerlink" href="#merge-commits-and-cherry-picks" title="Link to this heading">#</a></h3>
+<span id="id1"></span><h3>Merge commits and cherry picks<a class="headerlink" href="#merge-commits-and-cherry-picks" title="Link to this heading">#</a></h3>
 <p>Let’s say that you have a fork (origin) on GitHub of the main Astropy
 repository (upstream).  Your fork is up to date with upstream’s main branch
 and you’ve made some commits branching off from it on your own branch:</p>
@@ -1304,7 +1290,7 @@ your edit is correct, and you only appear in the list once.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260616.2eeb508 2026-06-16T02:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260620.f06fe30 2026-06-20T15:23Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # median\_absolute\_deviation[#](#median-absolute-deviation "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
 :   Calculate the median absolute deviation (MAD).
 
     The MAD is defined as `median(abs(a - median(a)))`.
@@ -30,7 +30,7 @@ scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **ax
             `~numpy.ndarray` will be returned.
 
     Parameters:
-    :   * ****data**** (**\_Buffer** **|** **\_SupportsArray****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]** **|** **\_NestedSequence****[****\_SupportsArray****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]****]** **|** [**complex**](https://docs.python.org/3/library/functions.html#complex "(in Python v3.14)") **|** [**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **\_NestedSequence****[**[**complex**](https://docs.python.org/3/library/functions.html#complex "(in Python v3.14)") **|** [**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+    :   * ****data**** (**ArrayLike**)
         * ****axis**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** **...****]** **|** **None**)
         * ****func**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.14)") **|** **None**)
         * ****ignore\_nan**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)

@@ -475,10 +475,10 @@ neighbors, distances
 
 ```
 ```
-/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/sphinx_gallery/gen_rst.py:891: FutureWarning: The default metric will be removed in a future version. Please pass metric='angular' explicitly.
+/home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/sphinx_gallery/gen_rst.py:891: FutureWarning: The default metric will be removed in a future version. Please pass metric='angular' explicitly.
   exec(self.code, self.fake_main.__dict__)
 
-([0, 497, 457, 871, 851, 540, 17, 528, 573, 733], [0.0, 1.2616784572601318, 1.2859315872192383, 1.2985471487045288, 1.3030308485031128, 1.3081791400909424, 1.3223450183868408, 1.3267792463302612, 1.3276535272598267, 1.3277515172958374])
+([0, 18, 420, 247, 108, 338, 261, 239, 171, 482], [0.0, 1.2075551748275757, 1.2382924556732178, 1.2466440200805664, 1.2629756927490234, 1.2638288736343384, 1.2652111053466797, 1.270764708518982, 1.2716395854949951, 1.276166558265686])
 
 ```
 ```
@@ -518,7 +518,7 @@ with index.clone() as idx:
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.038 seconds)
+****Total running time of the script:**** (0 minutes 0.041 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_cython_api.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_cython_api.ipynb)
 

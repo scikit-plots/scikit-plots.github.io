@@ -1,6 +1,6 @@
 # f2py (experimental)[#](#f2py-experimental "Link to this heading")
 
-Fortran to Python Interface Generator [`_f2py`](../../../modules/generated/scikitplot.cexternals._f2py.html#module-scikitplot.cexternals._f2py "scikitplot.cexternals._f2py").
+Fortran to Python Interface Generator [`_f2py`](../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._f2py "scikitplot.cexternals._f2py").
 
 > **See also**
 > * <https://stdlib.fortran-lang.org/lists/modules.html>

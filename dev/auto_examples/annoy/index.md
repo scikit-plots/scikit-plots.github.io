@@ -2,7 +2,7 @@
 
 ## ANNoy Vector Index DB[#](#annoy-vector-index-db "Link to this heading")
 
-Examples related to the [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy") and [`_annoy`](../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy") submodule instance.
+Examples related to the [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy") and [`_annoy`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy") submodule instance.
 
 > **See also**
 > * [Houses Prices Tree Based Models (pickling ANNImputer)](https://www.kaggle.com/code/clkmuhammed/houses-prices-tree-based-models)

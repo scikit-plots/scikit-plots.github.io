@@ -486,7 +486,7 @@ Pipeline(steps=[('columntransformer',
                                                                  unknown_value=-1),
                                                   Index(['make', 'body_type', 'fuel_category'], dtype='object')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=<function <lambda> at 0x77832d794e00>,
+                                                  DummyCodeEncoder(sep=<function <lambda> at 0x735089f77c40>,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -566,7 +566,7 @@ Parameters
 
 |  |  |  |
 | --- | --- | --- |
-|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x77832d794e00> |
+|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x735089f77c40> |
 |  | [sparse\_output sparse\_output: bool, default=True  When ``True``, it returns a :class:`scipy.sparse.csr\_matrix`, i.e. a sparse matrix in "Compressed Sparse Row" (CSR) format.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sparse_output,-bool%2C%20default%3DTrue) | False |
 |  | [columns columns: list-like, default=None  Column names in the DataFrame to be encoded. If `columns` is None then all the columns with `object`, `string`, or `category` dtype will be converted.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=columns,-list-like%2C%20default%3DNone) | None |
 |  | [regex regex: bool, default=True  Use regex to split on (e.g., "a,b|C;") by ``sep`` like:  - ``pattern=r'\s\*[,;|]\s\*'``](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=regex,-bool%2C%20default%3DTrue) | False |
@@ -692,7 +692,7 @@ can be explained as follows:
   encoding and binning works as a good regularizing strategy against
   overfitting while not limiting the expressiveness of the pipeline too much.
 
-****Total running time of the script:**** (0 minutes 5.756 seconds)
+****Total running time of the script:**** (0 minutes 4.656 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)
 

@@ -18,9 +18,8 @@ as a real-world text corpus. We will:
 
 Why Annoy?
 
-Feature | Value |
-
-[|---|](#id21)—|
+| Feature | Value |
+| --- | --- |
 | Algorithm | Random-projection forest + priority search |
 | Index types | `int8` → `uint64` (any item-ID width) |
 | Data types | `float16`, `float32`, `float64`, `float128` |
@@ -56,7 +55,7 @@ print(f"Index class: {Index}")
 
 ```
 ```
-Python 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+Python 3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]
 Index class: <class 'scikitplot.annoy._annoy.Index'>
 
 ```
@@ -67,21 +66,17 @@ We use the full text of **Hamlet** (public domain, ~1600) and segment it into
 ****speech blocks**** — each block is one character’s consecutive lines within a scene.
 This gives us ~300–600 passages, each with enough text for meaningful similarity.
 
-[``](#id1)`
-download\_hamlet()
+```
+download_hamlet()
+      │
+      ├─ success → use Gutenberg full text
+      │
+      └─ failure → use embedded excerpt
+              │
+              ▼
+          raw_text
 
-> │
-> ├─ success → use Gutenberg full text
-> │
-> └─ failure → use embedded excerpt
->
-> > > │
-> > > ▼
-> >
-> > raw\_text
-
-[``](#id3)[`](#id5)
-
+```
 ```
 # ---------------------------------------------------------------------------
 # Option A: Download from Project Gutenberg (if network available)
@@ -451,27 +446,20 @@ Contents
  Scene II. Elsinore. A room of state in the Ca
 
 ```
-
-[``](#id7)`
-raw\_text
-
-> ↓
-
-clean\_text()
-:   ↓
-
+```
+raw_text
+↓
+clean_text()
+↓
 tokenize()
-:   ↓
-
-chunk\_text()
-:   ↓
-
+↓
+chunk_text()
+↓
 vectorize()
-:   ↓
-
+↓
 Annoy index
-[``](#id9)[`](#id11)
 
+```
 ```
 # ---------------------------------------------------------------------------
 # Parse into passages: (character, act_scene, text)
@@ -797,14 +785,14 @@ Num passages    : 792
 
 The `Index` class is the main entry point. Here’s the lifecycle:
 
-``python
-idx = Index(f=64, metric='angular', dtype='float32')  # 1. Create
-idx.add_item(0, vector)                                # 2. Add items
-idx.build(n_trees=10)                                  # 3. Build forest
-neighbors = idx.get_nns_by_item(0, 5)                  # 4. Query
-idx.save('index.ann')                                  # 5. Persist
-``
+```
+idx = Index(f=64, metric='angular', dtype='float32')   # 1. Create
+idx.add_item(0, vector)                                # 2. Add items
+idx.build(n_trees=10)                                  # 3. Build forest
+neighbors = idx.get_nns_by_item(0, 5)                  # 4. Query
+idx.save('index.ann')                                  # 5. Persist
 
+```
 ```
 # ---------------------------------------------------------------------------
 # 3a. Basic Index — angular metric, float32 (default)
@@ -963,10 +951,10 @@ Query: [327] Hamlet (SCENE I. A room in the Castle)
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
 1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
-2     181     1.0547 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
-3     308     1.0994 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
-4     577     1.1258 Ophelia        There's fennel for you, and columbines. There's ru...
-5     324     1.1273 Polonius       Ophelia, walk you here.—Gracious, so please you, W...
+2     181     1.0674 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
+3     523     1.0797 King           I have sent to seek him and to find the body. How ...
+4     308     1.1349 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
+5     415     1.1441 Horatio        You might have rhymed....
 
 ```
 ```
@@ -1025,11 +1013,11 @@ QUERY BY VECTOR: average of 'To be' + 'Alas poor Yorick'
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     661     0.7753 Hamlet         Let me see. [_Takes the skull._] Alas, poor Yorick. I k...
-2     308     1.0890 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a rogue a...
-3     464     1.1421 Hamlet         Mother, you have my father much offended....
-4     672     1.1581 Laertes        O, treble woe Fall ten times treble on that cursed head...
-5     353     1.1592 First Player   I hope we have reform'd that indifferently with us, sir...
+1     327     0.6815 Hamlet         To be, or not to be, that is the question: Whether 'tis...
+2     661     0.6815 Hamlet         Let me see. [_Takes the skull._] Alas, poor Yorick. I k...
+3     672     1.0985 Laertes        O, treble woe Fall ten times treble on that cursed head...
+4     592     1.1036 King           O, for two special reasons, Which may to you, perhaps, ...
+5     722     1.1124 Osric          The King, sir, hath wager'd with him six Barbary horses...
 
 ```
 
@@ -1044,9 +1032,8 @@ The `float16` dtype stores each embedding dimension in ****2 bytes**** instead o
 
 ### Trade-offs
 
-Aspect | float16 | float32 | float64 |
-
-[|---|](#id23)—[|---|](#id25)—|
+| Aspect | float16 | float32 | float64 |
+| --- | --- | --- | --- |
 | Bytes/dimension | 2 | 4 | 8 |
 | Precision (decimal digits) | ~3.3 | ~7.2 | ~15.9 |
 | Range | ±65504 | ±3.4×10³⁸ | ±1.8×10³⁰⁸ |
@@ -1096,10 +1083,10 @@ Query: [327] Hamlet (SCENE I. A room in the Castle)
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
 1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
-2     468     1.0967 Hamlet         What's the matter now? No, by the rood, not so. Yo...
-3     408     1.1299 Hamlet         It would cost you a groaning to take off my edge....
-4     92      1.1318 Laertes        O, fear me not. I stay too long. But here my fathe...
-5     442     1.1436 Hamlet         Why, look you now, how unworthy a thing you make o...
+2     680     1.0244 Hamlet         I lov'd Ophelia; forty thousand brothers Could not...
+3     550     1.0996 King           Conceit upon her father....
+4     722     1.1182 Osric          The King, sir, hath wager'd with him six Barbary h...
+5     413     1.1357 King           Give me some light. Away. All. Lights, lights, lig...
 
 ```
 ```
@@ -1179,13 +1166,13 @@ print(f"Overlap float32 ∩ float64 (top-10): {len(f32_set & f64_set)}/10")
 ```
 dtype       Build(ms)  Query(μs)   Disk(KB) Top-5 IDs
 ----------------------------------------------------------------------
-float16         133.1       73.6      201.3 [327, 181, 468, 324, 408]
-float32           4.2       23.8      296.3 [327, 181, 308, 577, 324]
-float64           7.2       27.0      496.1 [327, 181, 468, 308, 163]
+float16         126.5       67.4      198.3 [327, 680, 523, 464, 550]
+float32           3.8       15.3      296.9 [327, 181, 523, 308, 415]
+float64           6.7       19.9      495.1 [327, 680, 181, 464, 722]
 
-Overlap float16 ∩ float32 (top-10): 6/10
-Overlap float16 ∩ float64 (top-10): 5/10
-Overlap float32 ∩ float64 (top-10): 4/10
+Overlap float16 ∩ float32 (top-10): 3/10
+Overlap float16 ∩ float64 (top-10): 7/10
+Overlap float32 ∩ float64 (top-10): 5/10
 
 ```
 
@@ -1193,9 +1180,8 @@ Overlap float32 ∩ float64 (top-10): 4/10
 
 Annoy supports several metrics, each suited to different data:
 
-Metric | Formula | Best for |
-
-[|---|](#id27)—[|---|](#id29)
+| Metric | Formula | Best for |
+| --- | --- | --- |
 | `angular` | 1 − cos(u, v) | Normalized embeddings, text similarity |
 | `euclidean` | ‖u − v‖₂ | Spatial data, un-normalized vectors |
 | `manhattan` | ‖u − v‖₁ | Sparse features, robust to outliers |
@@ -1228,37 +1214,37 @@ for metric in ['angular', 'euclidean', 'manhattan', 'dot']:
 Metric: angular
 ============================================================
   1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [181] d=1.0547  King         Welcome, dear Rosencrantz and Guildenstern. M...
-  3. [308] d=1.0994  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
-  4. [577] d=1.1258  Ophelia      There's fennel for you, and columbines. There...
-  5. [324] d=1.1273  Polonius     Ophelia, walk you here.—Gracious, so please y...
+  2. [181] d=1.0674  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [523] d=1.0797  King         I have sent to seek him and to find the body....
+  4. [308] d=1.1349  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
+  5. [415] d=1.1441  Horatio      You might have rhymed....
 
 ============================================================
 Metric: euclidean
 ============================================================
   1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [132] d=1.0916  Ghost        So art thou to revenge, when thou shalt hear....
-  3. [577] d=1.1258  Ophelia      There's fennel for you, and columbines. There...
-  4. [267] d=1.1518  Hamlet       What, are they children? Who maintains 'em? H...
-  5. [306] d=1.1530  Hamlet       God's bodikin, man, much better. Use every ma...
+  2. [523] d=1.0797  King         I have sent to seek him and to find the body....
+  3. [308] d=1.1349  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
+  4. [740] d=1.1856  Hamlet       I do not think so. Since he went into France,...
+  5. [487] d=1.2042  Ghost        Do not forget. This visitation Is but to whet...
 
 ============================================================
 Metric: manhattan
 ============================================================
   1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [132] d=6.8681  Ghost        So art thou to revenge, when thou shalt hear....
-  3. [680] d=7.0966  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
-  4. [577] d=7.1815  Ophelia      There's fennel for you, and columbines. There...
-  5. [415] d=7.3009  Horatio      You might have rhymed....
+  2. [680] d=6.5124  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
+  3. [130] d=6.7378  Ghost        My hour is almost come, When I to sulph'rous ...
+  4. [464] d=7.0712  Hamlet       Mother, you have my father much offended....
+  5. [ 82] d=7.2376  Horatio      It would have much amaz'd you....
 
 ============================================================
 Metric: dot
 ============================================================
   1. [327] d=1.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [181] d=0.4438  King         Welcome, dear Rosencrantz and Guildenstern. M...
-  3. [468] d=0.3982  Hamlet       What's the matter now? No, by the rood, not s...
-  4. [308] d=0.3956  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
-  5. [324] d=0.3646  Polonius     Ophelia, walk you here.—Gracious, so please y...
+  2. [181] d=0.4304  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [413] d=0.3543  King         Give me some light. Away. All. Lights, lights...
+  4. [377] d=0.3026  Hamlet       So long? Nay then, let the devil wear black, ...
+  5. [ 46] d=0.3023  King         Take thy fair hour, Laertes; time be thine, A...
 
 ```
 
@@ -1266,9 +1252,8 @@ Metric: dot
 
 The `index_dtype` parameter controls the width of item IDs:
 
-`index_dtype` | Max items | Memory/ID | Use case |
-
-[|---|](#id31)—[|---|](#id33)—|
+| `index_dtype` | Max items | Memory/ID | Use case |
+| --- | --- | --- | --- |
 | `int8` | 127 | 1 byte | Tiny prototype indexes |
 | `int16` | 32,767 | 2 bytes | Small datasets |
 | `int32` | ~2.1B | 4 bytes | Standard (default) |
@@ -1396,10 +1381,10 @@ Hamming index built: 792 items
 Rank  ID     Hamming Character      Passage excerpt
 --------------------------------------------------------------------------------
 1     327          0 Hamlet         To be, or not to be, that is the question: Wheth...
-2     306         19 Hamlet         God's bodikin, man, much better. Use every man a...
-3     577         22 Ophelia        There's fennel for you, and columbines. There's ...
-4     664         23 Horatio        'Twere to consider too curiously to consider so....
-5     504         24 Hamlet         There's letters seal'd: and my two schoolfellows...
+2     442         20 Hamlet         Why, look you now, how unworthy a thing you make...
+3     507         21 King           What, Gertrude? How does Hamlet?...
+4     671         21 Queen          [_Scattering flowers._] Sweets to the sweet. Far...
+5     621         22 Second Clown   I tell thee she is, and therefore make her grave...
 
 ```
 
@@ -1444,16 +1429,16 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
 ```
 ```
-float16    saved:    201.3 KB  (/tmp/tmpzwaq7yc_/hamlet_float16.ann)
-float32    saved:    296.3 KB  (/tmp/tmpzwaq7yc_/hamlet_float32.ann)
-float64    saved:    496.1 KB  (/tmp/tmpzwaq7yc_/hamlet_float64.ann)
+float16    saved:    198.3 KB  (/tmp/tmp1ntd2ews/hamlet_float16.ann)
+float32    saved:    296.9 KB  (/tmp/tmp1ntd2ews/hamlet_float32.ann)
+float64    saved:    495.1 KB  (/tmp/tmp1ntd2ews/hamlet_float64.ann)
 
 Loaded float16 index from disk, queried [327]:
   [327] Hamlet       To be, or not to be, that is the question: Whether 'tis...
-  [468] Hamlet       What's the matter now? No, by the rood, not so. You are...
-  [408] Hamlet       It would cost you a groaning to take off my edge....
-  [ 92] Laertes      O, fear me not. I stay too long. But here my father com...
-  [442] Hamlet       Why, look you now, how unworthy a thing you make of me!...
+  [680] Hamlet       I lov'd Ophelia; forty thousand brothers Could not, wit...
+  [550] King         Conceit upon her father....
+  [722] Osric        The King, sir, hath wager'd with him six Barbary horses...
+  [413] King         Give me some light. Away. All. Lights, lights, lights. ...
 
 ```
 
@@ -1504,10 +1489,10 @@ except Exception as exc:
 ```
 float128 euclidean index — results:
   1. [327] d=0.0000000000  Hamlet       To be, or not to be, that is the questio...
-  2. [181] d=1.0546713370  King         Welcome, dear Rosencrantz and Guildenste...
-  3. [308] d=1.0994327571  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O...
-  4. [577] d=1.1257730433  Ophelia      There's fennel for you, and columbines. ...
-  5. [324] d=1.1272905354  Polonius     Ophelia, walk you here.—Gracious, so ple...
+  2. [464] d=1.0832667213  Hamlet       Mother, you have my father much offended...
+  3. [722] d=1.1176965860  Osric        The King, sir, hath wager'd with him six...
+  4. [413] d=1.1364157466  King         Give me some light. Away. All. Lights, l...
+  5. [130] d=1.1372939951  Ghost        My hour is almost come, When I to sulph'...
 
 ```
 
@@ -1609,59 +1594,55 @@ Characters most similar to HAMLET in speech:
 Rank  Character         Distance   Passages
 ---------------------------------------------
 1     Hamlet              0.0000        247 ←
-2     King                0.6899         83
+2     King                0.6831         83
 
 ```
 
 ## 11. API Quick Reference
 
-[``](#id13)[`](#id15)python
-from scikitplot.annoy.\_annoy import Index
+```
+from scikitplot.annoy._annoy import Index
 
 # ── Construction ──────────────────────────────────────────────
 idx = Index(
-
-> f=128, # embedding dimension
-> metric=’angular’, # angular|euclidean|manhattan|dot|hamming
-> dtype=’float16’, # float16|float32|float64|float128
-> index\_dtype=’int32’, # int8|int16|int32|int64|uint8|uint16|uint32|uint64
-> seed=42, # reproducible builds
-
+    f=128,                  # embedding dimension
+    metric='angular',       # angular|euclidean|manhattan|dot|hamming
+    dtype='float16',        # float16|float32|float64|float128
+    index_dtype='int32',    # int8|int16|int32|int64|uint8|uint16|uint32|uint64
+    seed=42,                # reproducible builds
 )
 
 # ── Adding items ──────────────────────────────────────────────
-idx.add\_item(item\_id, vector) # vector: list[float] of length f
+idx.add_item(item_id, vector)    # vector: list[float] of length f
 
 # ── Building ──────────────────────────────────────────────────
-idx.build(n\_trees=10) # more trees → better recall
+idx.build(n_trees=10)            # more trees → better recall
 
 # ── Querying ──────────────────────────────────────────────────
-ids = idx.get\_nns\_by\_item(id, n=10) # by item ID
-ids = idx.get\_nns\_by\_vector(vec, n=10) # by vector
-ids, dists = idx.get\_nns\_by\_item(id, 10, # with distances
-
-> include\_distances=True)
+ids = idx.get_nns_by_item(id, n=10)                    # by item ID
+ids = idx.get_nns_by_vector(vec, n=10)                  # by vector
+ids, dists = idx.get_nns_by_item(id, 10,                # with distances
+                                include_distances=True)
 
 # ── Inspection ────────────────────────────────────────────────
-idx.get\_n\_items() # number of items
-idx.get\_n\_trees() # number of trees
-idx.get\_item(id) # retrieve stored vector
-idx.get\_distance(i, j) # distance between two items
+idx.get_n_items()                # number of items
+idx.get_n_trees()                # number of trees
+idx.get_item(id)                 # retrieve stored vector
+idx.get_distance(i, j)           # distance between two items
 
 # ── Persistence ───────────────────────────────────────────────
-idx.save(‘index.ann’) # save to disk
-idx.load(‘index.ann’) # load (mmap-based, instant)
-idx.unload() # release memory
+idx.save('index.ann')            # save to disk
+idx.load('index.ann')            # load (mmap-based, instant)
+idx.unload()                     # release memory
 
 # ── Context manager ───────────────────────────────────────────
-with Index(f=128, metric=’angular’) as idx:
-
-> idx.add\_item(0, vec)
-> idx.build(10)
-> result = idx.get\_nns\_by\_item(0, 5)
-
+with Index(f=128, metric='angular') as idx:
+    idx.add_item(0, vec)
+    idx.build(10)
+    result = idx.get_nns_by_item(0, 5)
 # auto-cleanup on exit
-[``](#id17)[`](#id19)
+
+```
 
 ## 12. Key Takeaways
 
@@ -1675,7 +1656,7 @@ with Index(f=128, metric=’angular’) as idx:
 - Maximum numerical precision for sensitive distance computations
 - Native `__float128` on GCC/Clang, `long double` fallback on MSVC
 
-****Extended index types (`int8` → `uint64`):****
+****Extended index types (``int8`` → ``uint64``):****
 - Match ID width to your dataset size
 - Smaller IDs = less memory per tree node
 
@@ -1686,7 +1667,7 @@ with Index(f=128, metric=’angular’) as idx:
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 9.910 seconds)
+****Total running time of the script:**** (0 minutes 1.259 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_cython_hamlet_example.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_cython_hamlet_example.ipynb)
 

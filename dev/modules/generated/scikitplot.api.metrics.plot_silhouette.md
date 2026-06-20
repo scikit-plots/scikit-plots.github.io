@@ -1,6 +1,6 @@
 # plot\_silhouette[#](#plot-silhouette "Link to this heading")
 
-scikitplot.api.metrics.plot\_silhouette(**X**, **cluster\_labels**, **\***, **metric='euclidean'**, **title='Silhouette Analysis'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **digits=4**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/api/metrics/_clustering/_silhouette.py#L40)[#](#scikitplot.api.metrics.plot_silhouette "Link to this definition")
+scikitplot.api.metrics.plot\_silhouette(**X**, **cluster\_labels**, **\***, **metric='euclidean'**, **title='Silhouette Analysis'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **digits=4**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/api/metrics/_clustering/_silhouette.py#L40)[#](#scikitplot.api.metrics.plot_silhouette "Link to this definition")
 :   Plots silhouette analysis of clusters provided.
 
     Silhouette analysis is a method of interpreting and validating the consistency

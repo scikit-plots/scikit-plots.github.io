@@ -1,6 +1,6 @@
 # plot\_learning\_curve[#](#plot-learning-curve "Link to this heading")
 
-scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\***, **train\_sizes=None**, **cv=None**, **scoring=None**, **n\_jobs=None**, **verbose=0**, **shuffle=False**, **random\_state=None**, **fit\_params=None**, **title='Learning Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/api/estimators/_classifier/_learning_curve.py#L41)[#](#scikitplot.api.estimators.plot_learning_curve "Link to this definition")
+scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\***, **train\_sizes=None**, **cv=None**, **scoring=None**, **n\_jobs=None**, **verbose=0**, **shuffle=False**, **random\_state=None**, **fit\_params=None**, **title='Learning Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/api/estimators/_classifier/_learning_curve.py#L41)[#](#scikitplot.api.estimators.plot_learning_curve "Link to this definition")
 :   Generates a plot of the train and test learning curves for a classifier.
 
     The learning curves plot the performance of a classifier as a function of the number of
@@ -30,7 +30,7 @@ scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\
             Possible inputs for cv are:
             - None, to use the default 5-fold cross validation,
             - integer, to specify the number of folds.
-            - [CV splitter](../../project/glossary/_glossary_sklearn.html#term-CV-splitter),
+            - [CV splitter](../../learn/glossary/_glossary_sklearn.html#term-CV-splitter),
             - An iterable that generates (train, test) splits as arrays of indices.
 
             For integer/None inputs, if classifier is True and `y` is either
@@ -49,7 +49,7 @@ scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\
         :   Number of jobs to run in parallel. Training the estimator and computing
             the score are parallelized over the different training and test sets.
             `None` means 1 unless in a [`joblib.parallel_backend`](https://joblib.readthedocs.io/en/latest/generated/joblib.parallel_backend.html#joblib.parallel_backend "(in joblib v1.6)") context.
-            `-1` means using all processors. See [Glossary](../../project/glossary/_glossary_sklearn.html#term-n_jobs)
+            `-1` means using all processors. See [Glossary](../../learn/glossary/_glossary_sklearn.html#term-n_jobs)
             for more details.
 
         ****verbose****int, default=0

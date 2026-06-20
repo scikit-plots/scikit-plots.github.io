@@ -1,6 +1,6 @@
 # FilterBase[#](#filterbase "Link to this heading")
 
-class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_base.py#L431)[#](#scikitplot.corpus.FilterBase "Link to this definition")
+class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L431)[#](#scikitplot.corpus.FilterBase "Link to this definition")
 :   Abstract base class for corpus document filters.
 
     A filter receives a fully-constructed [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
@@ -43,7 +43,7 @@ class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/sci
     ```
     Go BackOpen In Tab
 
-    abstractmethod include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_base.py#L466)[#](#scikitplot.corpus.FilterBase.include "Link to this definition")
+    abstractmethod include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L466)[#](#scikitplot.corpus.FilterBase.include "Link to this definition")
     :   Return `True` if `doc` should be included in the corpus.
 
         Parameters:

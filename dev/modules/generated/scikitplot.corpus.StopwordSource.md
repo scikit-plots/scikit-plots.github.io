@@ -1,15 +1,15 @@
 # StopwordSource[#](#stopwordsource "Link to this heading")
 
-class scikitplot.corpus.StopwordSource(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L280)[#](#scikitplot.corpus.StopwordSource "Link to this definition")
+class scikitplot.corpus.StopwordSource(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L280)[#](#scikitplot.corpus.StopwordSource "Link to this definition")
 :   Stopword list source.
 
-    BUILTIN = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.BUILTIN "Link to this definition")
+    BUILTIN = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.BUILTIN "Link to this definition")
 
-    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NLTK "Link to this definition")
+    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NLTK "Link to this definition")
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NONE "Link to this definition")
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NONE "Link to this definition")
 
-    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.SPACY "Link to this definition")
+    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.SPACY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.StopwordSource.capitalize "Link to this definition")
     :   Return a capitalized version of the string.
@@ -125,10 +125,9 @@ class scikitplot.corpus.StopwordSource(**value**)[[source]](https://github.com/s
         least one character in the string.
 
     isprintable(**/**)[#](#scikitplot.corpus.StopwordSource.isprintable "Link to this definition")
-    :   Return True if the string is printable, False otherwise.
+    :   Return True if all characters in the string are printable, False otherwise.
 
-        A string is printable if all of its characters are considered printable in
-        repr() or if it is empty.
+        A character is printable if repr() may use it in its output.
 
     isspace(**/**)[#](#scikitplot.corpus.StopwordSource.isspace "Link to this definition")
     :   Return True if the string is a whitespace string, False otherwise.

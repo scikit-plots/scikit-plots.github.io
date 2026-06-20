@@ -15,7 +15,7 @@ the ****nearest neighbors**** (the most similar vectors).
 
 This page documents the Annoy [[1]](#id2) user guide integration shipped with scikit-plots.
 
-* Low-level bindings C-API: [`_annoy`](../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
+* Low-level bindings C-API: [`_annoy`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
 * High-level Python-API: [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy")
 
 ****VectorDB****
@@ -57,7 +57,7 @@ High-level Python interface for the C++ Annoy backend.
 
 This page documents [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy"). It provides a stable import path
 and a small, user-facing API built on the low-level bindings in
-[`_annoy`](../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy").
+[`_annoy`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy").
 
 ## Workflow[#](#workflow "Link to this heading")
 

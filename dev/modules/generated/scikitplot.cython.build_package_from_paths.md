@@ -1,6 +1,6 @@
 # build\_package\_from\_paths[#](#build-package-from-paths "Link to this heading")
 
-scikitplot.cython.build\_package\_from\_paths(**modules**, **\***, **package\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cython/_public.py#L926)[#](#scikitplot.cython.build_package_from_paths "Link to this definition")
+scikitplot.cython.build\_package\_from\_paths(**modules**, **\***, **package\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/cython/_public.py#L926)[#](#scikitplot.cython.build_package_from_paths "Link to this definition")
 :   Build and import a multi-module extension package and return loaded modules.
 
     Parameters:

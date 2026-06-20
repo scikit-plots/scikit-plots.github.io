@@ -1,6 +1,6 @@
 # validate\_build\_inputs[#](#validate-build-inputs "Link to this heading")
 
-scikitplot.cython.validate\_build\_inputs(**\***, **policy=None**, **source=None**, **define\_macros=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **include\_dirs=None**, **libraries=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cython/_security.py#L463)[#](#scikitplot.cython.validate_build_inputs "Link to this definition")
+scikitplot.cython.validate\_build\_inputs(**\***, **policy=None**, **source=None**, **define\_macros=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **include\_dirs=None**, **libraries=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/cython/_security.py#L463)[#](#scikitplot.cython.validate_build_inputs "Link to this definition")
 :   Validate build inputs against a [`SecurityPolicy`](scikitplot.cython.SecurityPolicy.html#scikitplot.cython.SecurityPolicy "scikitplot.cython.SecurityPolicy").
 
     Raises [`SecurityError`](scikitplot.cython.SecurityError.html#scikitplot.cython.SecurityError "scikitplot.cython.SecurityError") on the ****first**** violation found. All

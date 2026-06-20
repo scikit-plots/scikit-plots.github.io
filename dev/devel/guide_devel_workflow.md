@@ -367,7 +367,7 @@ and now, the history looks like this:
 
 ```
 
-If it went wrong, recovery is again possible as explained [above](guide_git_resources.html#recovering-from-mess-up).
+If it went wrong, recovery is again possible as explained [above](#recovering-from-mess-up) or [Recovering from mess-ups](guide_git_resources.html#recovering-from-mess-up-git).
 
 If you have not yet pushed this branch to github, you can carry on as normal,
 however if you **have** already pushed this commit see [Push with force](#force-push) for how
@@ -440,7 +440,7 @@ git branch -D tmp
 ```
 
 If it doesn’t look good you may need to have a look at
-[Recovering from mess-ups](guide_git_resources.html#recovering-from-mess-up).
+[Recover from mistakes](#recovering-from-mess-up) or [Recovering from mess-ups](guide_git_resources.html#recovering-from-mess-up-git).
 
 If you have made changes to files that have also changed in `main`, this may
 generate merge conflicts that you need to resolve - see the [git rebase](https://git-scm.com/docs/git-rebase) man
@@ -454,7 +454,7 @@ to replace your already published commits with the new ones.
 ### Push with force[#](#push-with-force "Link to this heading")
 
 If you have in some way re-written already pushed history (e.g. via
-[Rewriting commit history](guide_git_resources.html#rewriting-commit-history) or [Rebase onto upstream/main](#rebase-on-main)) leaving you with
+[Rewrite commit history](#rewriting-commit-history) or [Rebase onto upstream/main](#rebase-on-main)) leaving you with
 a git history that looks something like
 
 ```
@@ -531,7 +531,7 @@ pull request.
 
 | Name | Check | Tips for finding cause of failure |
 | --- | --- | --- |
-| Linting | [code style](guide_code_style_write.html#code-style) | Errors are displayed as annotations on the pull request diff. |
+| Linting | [code style](guide_code.html#code-style) or [PEP8, as enforced by flake8](guide_code_style_write.html#code-style-write) | Errors are displayed as annotations on the pull request diff. |
 | MypyStubtest | [static type hints](guide_code_style_write.html#type-hints) | Errors are displayed as annotations on the pull request diff. |
 | CircleCI | [documentation build](guide_document_write.html#writing-rest-pages) | Search the CircleCI log for `WARNING`. |
 | GitHub ActionsAppVeyorAzure pipelines | [tests](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.4.0)") | Search the log for `FAILURES`. Subsequent section should contain information on failed tests. On Azure, find the images as **artifacts** of the Azure job:1. Click **Details** on the check on the GitHub PR page.2. Click **View more details on Azure Pipelines** to go to Azure.3. On the overview page **artifacts** are listed in the section **Related**. |

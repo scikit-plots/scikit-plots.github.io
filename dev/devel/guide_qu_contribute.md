@@ -77,7 +77,7 @@ cd scikit-plots
 ```
 > **Tip**
 > Actually we run below scripts step-by-step in following Documentation.
-(See Also: [`https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt`\_\_](#id1))
+(See Also: [bash-first-run-notice.txt](https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt))
 
 ```
 bash docker/scripts/post_create_commands.sh
@@ -160,6 +160,9 @@ bash-first-run-notice.txt[#](#bash-first-run-notice.txt "Link to this dropdown")
   $ conda info -e
 
 • Activate environments (depending on tool):
+
+root@sp-docker /work/docs (subpackage-bug-fix)
+  $ micromamba --version
   $ micromamba activate $(micromamba info -e | grep py312)
   $ micromamba activate /root/micromamba/envs/py312
   $ micromamba activate py311
@@ -544,7 +547,7 @@ code or documentation! At a high level this breaks into a few parts:
   [Add a changelog entry](guide_devel_details.html#add-changelog).
 
 > **Tip**
-> For more information and examples see [The editing workflow](guide_devel_workflow.html#edit-flow) section.
+> For more information and examples see [The editing workflow](guide_devel_details.html#edit-flow) or [The editing workflow](guide_devel_workflow.html#edit-flow-work) section.
 
 You can see a summary of the changes you’ve currently made by running:
 

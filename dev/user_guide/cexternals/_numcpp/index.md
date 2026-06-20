@@ -1,6 +1,6 @@
 # NumCpp Header Only C++ (experimental)[#](#numcpp-header-only-c-experimental "Link to this heading")
 
-This module contains some functions related to [`nc`](../../../apis/scikitplot.nc.html#module-scikitplot.nc "scikitplot.nc"), [`_numcpp`](../../../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp "scikitplot.cexternals._numcpp") under [`cexternals`](../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals "scikitplot.cexternals").
+This module contains some functions related to [`nc`](../../../apis/scikitplot.nc.html#module-scikitplot.nc "scikitplot.nc"), [`_numcpp`](../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._numcpp "scikitplot.cexternals._numcpp") under [`cexternals`](../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals "scikitplot.cexternals").
 
 NumCpp: A Templatized Header Only C++ Library with Implementation of the Python NumPy-Compatible API.
 

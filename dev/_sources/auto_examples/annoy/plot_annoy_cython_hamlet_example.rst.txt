@@ -23,35 +23,44 @@ Approximate Nearest Neighbors with Annoy — A Hamlet Example
 
 An example showing the :py:class:`~scikitplot.annoy._annoy.Index` class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-37
+.. GENERATED FROM PYTHON SOURCE LINES 12-46
 
 This notebook demonstrates the **scikitplot Annoy** library using Shakespeare's *Hamlet*
 as a real-world text corpus. We will:
 
 1. **Parse** Hamlet into passages (speech blocks per character per scene)
 2. **Embed** passages into dense vectors using TF-IDF → truncated SVD
-3. **Build** Annoy indexes across multiple `dtype` / `metric` combinations
+3. **Build** Annoy indexes across multiple ``dtype`` / ``metric`` combinations
    — including **float16** for half-precision (TensorFlow/PyTorch style)
 4. **Query** for the most similar passages and compare results
 5. **Benchmark** disk usage and build time across dtypes
 
 Why Annoy?
 
-| Feature | Value |
-|---|---|
-| Algorithm | Random-projection forest + priority search |
-| Index types | `int8` → `uint64` (any item-ID width) |
-| Data types | `float16`, `float32`, `float64`, `float128` |
-| Metrics | `angular`, `euclidean`, `manhattan`, `dot`, `hamming` |
-| Thread-safety | Concurrent reads after build (GIL released) |
-| Memory-map | `mmap`-based — indexes larger than RAM |
++---------------+--------------------------------------------------+
+| Feature       | Value                                            |
++===============+==================================================+
+| Algorithm     | Random-projection forest + priority search       |
++---------------+--------------------------------------------------+
+| Index types   | ``int8`` → ``uint64`` (any item-ID width)        |
++---------------+--------------------------------------------------+
+| Data types    | ``float16``, ``float32``, ``float64``,           |
+|               | ``float128``                                     |
++---------------+--------------------------------------------------+
+| Metrics       | ``angular``, ``euclidean``, ``manhattan``,       |
+|               | ``dot``, ``hamming``                             |
++---------------+--------------------------------------------------+
+| Thread-safety | Concurrent reads after build (GIL released)      |
++---------------+--------------------------------------------------+
+| Memory-map    | ``mmap``-based — indexes larger than RAM         |
++---------------+--------------------------------------------------+
 
 **float16** stores each dimension in 2 bytes instead of 4 (float32) or 8 (float64).
 For large-scale embeddings (millions of items × hundreds of dimensions),
 this halves disk and memory usage with minimal accuracy loss — the same
-trade-off used by PyTorch's `torch.float16` and TensorFlow's `tf.float16`.
+trade-off used by PyTorch's ``torch.float16`` and TensorFlow's ``tf.float16``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-58
+.. GENERATED FROM PYTHON SOURCE LINES 46-67
 
 .. code-block:: Python
 
@@ -84,13 +93,13 @@ trade-off used by PyTorch's `torch.float16` and TensorFlow's `tf.float16`.
 
  .. code-block:: none
 
-    Python 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+    Python 3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]
     Index class: <class 'scikitplot.annoy._annoy.Index'>
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-75
+.. GENERATED FROM PYTHON SOURCE LINES 68-84
 
 1. Load & Parse Hamlet
 
@@ -98,18 +107,18 @@ We use the full text of *Hamlet* (public domain, ~1600) and segment it into
 **speech blocks** — each block is one character's consecutive lines within a scene.
 This gives us ~300–600 passages, each with enough text for meaningful similarity.
 
-```
-download_hamlet()
+::
+
+  download_hamlet()
         │
         ├─ success → use Gutenberg full text
         │
         └─ failure → use embedded excerpt
-                 │
-                 ▼
-             raw_text
-```
+                │
+                ▼
+            raw_text
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-423
+.. GENERATED FROM PYTHON SOURCE LINES 84-432
 
 .. code-block:: Python
 
@@ -490,23 +499,23 @@ download_hamlet()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 424-437
+.. GENERATED FROM PYTHON SOURCE LINES 433-446
 
-```
-raw_text
-   ↓
-clean_text()
-   ↓
-tokenize()
-   ↓
-chunk_text()
-   ↓
-vectorize()
-   ↓
-Annoy index
-```
+::
 
-.. GENERATED FROM PYTHON SOURCE LINES 437-571
+    raw_text
+    ↓
+    clean_text()
+    ↓
+    tokenize()
+    ↓
+    chunk_text()
+    ↓
+    vectorize()
+    ↓
+    Annoy index
+
+.. GENERATED FROM PYTHON SOURCE LINES 446-580
 
 .. code-block:: Python
 
@@ -680,7 +689,7 @@ Annoy index
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 572-580
+.. GENERATED FROM PYTHON SOURCE LINES 581-589
 
 ## 2. Build TF-IDF Embeddings (Pure Python)
 
@@ -691,7 +700,7 @@ semantic content relative to the corpus.
 For production use, you would replace this with sentence-transformers,
 OpenAI embeddings, or any other embedding model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 580-721
+.. GENERATED FROM PYTHON SOURCE LINES 589-730
 
 .. code-block:: Python
 
@@ -852,21 +861,21 @@ OpenAI embeddings, or any other embedding model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 722-733
+.. GENERATED FROM PYTHON SOURCE LINES 731-742
 
 ## 3. Build Annoy Indexes — Core API Walkthrough
 
-The `Index` class is the main entry point. Here's the lifecycle:
+The ``Index`` class is the main entry point. Here's the lifecycle:
 
-```python
-idx = Index(f=64, metric='angular', dtype='float32')  # 1. Create
-idx.add_item(0, vector)                                # 2. Add items
-idx.build(n_trees=10)                                  # 3. Build forest
-neighbors = idx.get_nns_by_item(0, 5)                  # 4. Query
-idx.save('index.ann')                                  # 5. Persist
-```
+::
 
-.. GENERATED FROM PYTHON SOURCE LINES 733-758
+    idx = Index(f=64, metric='angular', dtype='float32')   # 1. Create
+    idx.add_item(0, vector)                                # 2. Add items
+    idx.build(n_trees=10)                                  # 3. Build forest
+    neighbors = idx.get_nns_by_item(0, 5)                  # 4. Query
+    idx.save('index.ann')                                  # 5. Persist
+
+.. GENERATED FROM PYTHON SOURCE LINES 742-767
 
 .. code-block:: Python
 
@@ -910,7 +919,7 @@ idx.save('index.ann')                                  # 5. Persist
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 759-857
+.. GENERATED FROM PYTHON SOURCE LINES 768-866
 
 .. code-block:: Python
 
@@ -1019,13 +1028,13 @@ idx.save('index.ann')                                  # 5. Persist
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 858-861
+.. GENERATED FROM PYTHON SOURCE LINES 867-870
 
 Find the canonical soliloquy "To be or not to be"
 tobe_id = find_passage_by_text(passages, "To be or not to be")
 Now the soliloquy should be found reliably
 
-.. GENERATED FROM PYTHON SOURCE LINES 861-871
+.. GENERATED FROM PYTHON SOURCE LINES 870-880
 
 .. code-block:: Python
 
@@ -1056,15 +1065,15 @@ Now the soliloquy should be found reliably
     Rank  ID        Dist Character      Passage excerpt
     ------------------------------------------------------------------------------------------
     1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
-    2     181     1.0547 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
-    3     308     1.0994 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
-    4     577     1.1258 Ophelia        There's fennel for you, and columbines. There's ru...
-    5     324     1.1273 Polonius       Ophelia, walk you here.—Gracious, so please you, W...
+    2     181     1.0674 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
+    3     523     1.0797 King           I have sent to seek him and to find the body. How ...
+    4     308     1.1349 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
+    5     415     1.1441 Horatio        You might have rhymed....
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 872-920
+.. GENERATED FROM PYTHON SOURCE LINES 881-929
 
 .. code-block:: Python
 
@@ -1130,41 +1139,61 @@ Now the soliloquy should be found reliably
 
     Rank  ID        Dist Character      Passage excerpt
     ------------------------------------------------------------------------------------------
-    1     661     0.7753 Hamlet         Let me see. [_Takes the skull._] Alas, poor Yorick. I k...
-    2     308     1.0890 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a rogue a...
-    3     464     1.1421 Hamlet         Mother, you have my father much offended....
-    4     672     1.1581 Laertes        O, treble woe Fall ten times treble on that cursed head...
-    5     353     1.1592 First Player   I hope we have reform'd that indifferently with us, sir...
+    1     327     0.6815 Hamlet         To be, or not to be, that is the question: Whether 'tis...
+    2     661     0.6815 Hamlet         Let me see. [_Takes the skull._] Alas, poor Yorick. I k...
+    3     672     1.0985 Laertes        O, treble woe Fall ten times treble on that cursed head...
+    4     592     1.1036 King           O, for two special reasons, Which may to you, perhaps, ...
+    5     722     1.1124 Osric          The King, sir, hath wager'd with him six Barbary horses...
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 921-943
+.. GENERATED FROM PYTHON SOURCE LINES 930-972
 
 ## 4. float16 — Half-Precision for Fast & Compact Indexes
 
-The `float16` dtype stores each embedding dimension in **2 bytes** instead of
+The ``float16`` dtype stores each embedding dimension in **2 bytes** instead of
 4 (float32) or 8 (float64). This is the same half-precision format used by:
 
-- **PyTorch**: `torch.float16` / `torch.half`
-- **TensorFlow**: `tf.float16`
-- **NumPy**: `np.float16`
+- **PyTorch**: ``torch.float16`` / ``torch.half``
+- **TensorFlow**: ``tf.float16``
+- **NumPy**: ``np.float16``
 
 ### Trade-offs
 
-| Aspect | float16 | float32 | float64 |
-|---|---|---|---|
-| Bytes/dimension | 2 | 4 | 8 |
-| Precision (decimal digits) | ~3.3 | ~7.2 | ~15.9 |
-| Range | ±65504 | ±3.4×10³⁸ | ±1.8×10³⁰⁸ |
-| Typical use case | Storage, inference | Training, general | Scientific computing |
-| Disk for 1M × 128-d | ~244 MB | ~488 MB | ~976 MB |
+.. list-table::
+   :header-rows: 1
+
+   * - Aspect
+     - float16
+     - float32
+     - float64
+   * - Bytes/dimension
+     - 2
+     - 4
+     - 8
+   * - Precision (decimal digits)
+     - ~3.3
+     - ~7.2
+     - ~15.9
+   * - Range
+     - ±65504
+     - ±3.4×10³⁸
+     - ±1.8×10³⁰⁸
+   * - Typical use case
+     - Storage, inference
+     - Training, general
+     - Scientific computing
+   * - Disk for 1M × 128-d
+     - ~244 MB
+     - ~488 MB
+     - ~976 MB
 
 For ANN search, the **distance ranking** (which neighbor is closest) is far
 more important than the exact distance value. float16 preserves ranking
 for well-separated vectors while halving storage.
 
-.. GENERATED FROM PYTHON SOURCE LINES 947-973
+.. GENERATED FROM PYTHON SOURCE LINES 976-1002
 
 .. code-block:: Python
 
@@ -1213,15 +1242,15 @@ for well-separated vectors while halving storage.
     Rank  ID        Dist Character      Passage excerpt
     ------------------------------------------------------------------------------------------
     1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
-    2     468     1.0967 Hamlet         What's the matter now? No, by the rood, not so. Yo...
-    3     408     1.1299 Hamlet         It would cost you a groaning to take off my edge....
-    4     92      1.1318 Laertes        O, fear me not. I stay too long. But here my fathe...
-    5     442     1.1436 Hamlet         Why, look you now, how unworthy a thing you make o...
+    2     680     1.0244 Hamlet         I lov'd Ophelia; forty thousand brothers Could not...
+    3     550     1.0996 King           Conceit upon her father....
+    4     722     1.1182 Osric          The King, sir, hath wager'd with him six Barbary h...
+    5     413     1.1357 King           Give me some light. Away. All. Lights, lights, lig...
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 974-1047
+.. GENERATED FROM PYTHON SOURCE LINES 1003-1076
 
 .. code-block:: Python
 
@@ -1308,32 +1337,46 @@ for well-separated vectors while halving storage.
 
     dtype       Build(ms)  Query(μs)   Disk(KB) Top-5 IDs
     ----------------------------------------------------------------------
-    float16         133.1       73.6      201.3 [327, 181, 468, 324, 408]
-    float32           4.2       23.8      296.3 [327, 181, 308, 577, 324]
-    float64           7.2       27.0      496.1 [327, 181, 468, 308, 163]
+    float16         126.5       67.4      198.3 [327, 680, 523, 464, 550]
+    float32           3.8       15.3      296.9 [327, 181, 523, 308, 415]
+    float64           6.7       19.9      495.1 [327, 680, 181, 464, 722]
 
-    Overlap float16 ∩ float32 (top-10): 6/10
-    Overlap float16 ∩ float64 (top-10): 5/10
-    Overlap float32 ∩ float64 (top-10): 4/10
-
-
+    Overlap float16 ∩ float32 (top-10): 3/10
+    Overlap float16 ∩ float64 (top-10): 7/10
+    Overlap float32 ∩ float64 (top-10): 5/10
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1048-1059
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 1077-1102
 
 ## 5. Multiple Distance Metrics
 
 Annoy supports several metrics, each suited to different data:
 
-| Metric | Formula | Best for |
-|---|---|---|
-| `angular` | 1 − cos(u, v) | Normalized embeddings, text similarity |
-| `euclidean` | ‖u − v‖₂ | Spatial data, un-normalized vectors |
-| `manhattan` | ‖u − v‖₁ | Sparse features, robust to outliers |
-| `dot` | −u·v (negated) | Recommendation scores, un-normalized |
-| `hamming` | popcount(u ⊕ v) | Binary features, hash codes |
+.. list-table::
+   :header-rows: 1
 
-.. GENERATED FROM PYTHON SOURCE LINES 1059-1079
+   * - Metric
+     - Formula
+     - Best for
+   * - ``angular``
+     - 1 − cos(u, v)
+     - Normalized embeddings, text similarity
+   * - ``euclidean``
+     - ‖u − v‖₂
+     - Spatial data, un-normalized vectors
+   * - ``manhattan``
+     - ‖u − v‖₁
+     - Sparse features, robust to outliers
+   * - ``dot``
+     - −u·v (negated)
+     - Recommendation scores, un-normalized
+   * - ``hamming``
+     - popcount(u ⊕ v)
+     - Binary features, hash codes
+
+.. GENERATED FROM PYTHON SOURCE LINES 1102-1122
 
 .. code-block:: Python
 
@@ -1370,59 +1413,68 @@ Annoy supports several metrics, each suited to different data:
     Metric: angular
     ============================================================
       1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-      2. [181] d=1.0547  King         Welcome, dear Rosencrantz and Guildenstern. M...
-      3. [308] d=1.0994  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
-      4. [577] d=1.1258  Ophelia      There's fennel for you, and columbines. There...
-      5. [324] d=1.1273  Polonius     Ophelia, walk you here.—Gracious, so please y...
+      2. [181] d=1.0674  King         Welcome, dear Rosencrantz and Guildenstern. M...
+      3. [523] d=1.0797  King         I have sent to seek him and to find the body....
+      4. [308] d=1.1349  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
+      5. [415] d=1.1441  Horatio      You might have rhymed....
 
     ============================================================
     Metric: euclidean
     ============================================================
       1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-      2. [132] d=1.0916  Ghost        So art thou to revenge, when thou shalt hear....
-      3. [577] d=1.1258  Ophelia      There's fennel for you, and columbines. There...
-      4. [267] d=1.1518  Hamlet       What, are they children? Who maintains 'em? H...
-      5. [306] d=1.1530  Hamlet       God's bodikin, man, much better. Use every ma...
+      2. [523] d=1.0797  King         I have sent to seek him and to find the body....
+      3. [308] d=1.1349  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
+      4. [740] d=1.1856  Hamlet       I do not think so. Since he went into France,...
+      5. [487] d=1.2042  Ghost        Do not forget. This visitation Is but to whet...
 
     ============================================================
     Metric: manhattan
     ============================================================
       1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-      2. [132] d=6.8681  Ghost        So art thou to revenge, when thou shalt hear....
-      3. [680] d=7.0966  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
-      4. [577] d=7.1815  Ophelia      There's fennel for you, and columbines. There...
-      5. [415] d=7.3009  Horatio      You might have rhymed....
+      2. [680] d=6.5124  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
+      3. [130] d=6.7378  Ghost        My hour is almost come, When I to sulph'rous ...
+      4. [464] d=7.0712  Hamlet       Mother, you have my father much offended....
+      5. [ 82] d=7.2376  Horatio      It would have much amaz'd you....
 
     ============================================================
     Metric: dot
     ============================================================
       1. [327] d=1.0000  Hamlet       To be, or not to be, that is the question: Wh...
-      2. [181] d=0.4438  King         Welcome, dear Rosencrantz and Guildenstern. M...
-      3. [468] d=0.3982  Hamlet       What's the matter now? No, by the rood, not s...
-      4. [308] d=0.3956  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
-      5. [324] d=0.3646  Polonius     Ophelia, walk you here.—Gracious, so please y...
+      2. [181] d=0.4304  King         Welcome, dear Rosencrantz and Guildenstern. M...
+      3. [413] d=0.3543  King         Give me some light. Away. All. Lights, lights...
+      4. [377] d=0.3026  Hamlet       So long? Nay then, let the devil wear black, ...
+      5. [ 46] d=0.3023  King         Take thy fair hour, Laertes; time be thine, A...
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1080-1094
+.. GENERATED FROM PYTHON SOURCE LINES 1123-1146
 
 ## 6. Extended Index Types
 
-The `index_dtype` parameter controls the width of item IDs:
+The ``index_dtype`` parameter controls the width of item IDs:
 
-| `index_dtype` | Max items | Memory/ID | Use case |
-|---|---|---|---|
-| `int8` | 127 | 1 byte | Tiny prototype indexes |
-| `int16` | 32,767 | 2 bytes | Small datasets |
-| `int32` | ~2.1B | 4 bytes | Standard (default) |
-| `int64` | ~9.2×10¹⁸ | 8 bytes | Large-scale production |
-| `uint8` | 255 | 1 byte | Labels, categories |
-| `uint16` | 65,535 | 2 bytes | Medium catalogs |
-| `uint32` | ~4.3B | 4 bytes | Very large datasets |
-| `uint64` | ~9.2×10¹⁸ | 8 bytes | Maximum capacity |
++----------------+----------------+-----------+-------------------------+
+| ``index_dtype``| Max items      | Memory/ID | Use case                |
++================+================+===========+=========================+
+| ``int8``       | 127            | 1 byte    | Tiny prototype indexes  |
++----------------+----------------+-----------+-------------------------+
+| ``int16``      | 32,767         | 2 bytes   | Small datasets          |
++----------------+----------------+-----------+-------------------------+
+| ``int32``      | ~2.1B          | 4 bytes   | Standard (default)      |
++----------------+----------------+-----------+-------------------------+
+| ``int64``      | ~9.2×10¹⁸      | 8 bytes   | Large-scale production  |
++----------------+----------------+-----------+-------------------------+
+| ``uint8``      | 255            | 1 byte    | Labels, categories      |
++----------------+----------------+-----------+-------------------------+
+| ``uint16``     | 65,535         | 2 bytes   | Medium catalogs         |
++----------------+----------------+-----------+-------------------------+
+| ``uint32``     | ~4.3B          | 4 bytes   | Very large datasets     |
++----------------+----------------+-----------+-------------------------+
+| ``uint64``     | ~9.2×10¹⁸      | 8 bytes   | Maximum capacity        |
++----------------+----------------+-----------+-------------------------+
 
-.. GENERATED FROM PYTHON SOURCE LINES 1094-1125
+.. GENERATED FROM PYTHON SOURCE LINES 1146-1177
 
 .. code-block:: Python
 
@@ -1473,14 +1525,14 @@ The `index_dtype` parameter controls the width of item IDs:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1126-1130
+.. GENERATED FROM PYTHON SOURCE LINES 1178-1182
 
 ## 7. Hamming Distance — Binary Embeddings
 
 Hamming distance counts the number of differing bits between two binary vectors.
 This is useful for locality-sensitive hashing (LSH) or binary feature vectors.
 
-.. GENERATED FROM PYTHON SOURCE LINES 1130-1196
+.. GENERATED FROM PYTHON SOURCE LINES 1182-1248
 
 .. code-block:: Python
 
@@ -1563,15 +1615,15 @@ This is useful for locality-sensitive hashing (LSH) or binary feature vectors.
     Rank  ID     Hamming Character      Passage excerpt
     --------------------------------------------------------------------------------
     1     327          0 Hamlet         To be, or not to be, that is the question: Wheth...
-    2     306         19 Hamlet         God's bodikin, man, much better. Use every man a...
-    3     577         22 Ophelia        There's fennel for you, and columbines. There's ...
-    4     664         23 Horatio        'Twere to consider too curiously to consider so....
-    5     504         24 Hamlet         There's letters seal'd: and my two schoolfellows...
+    2     442         20 Hamlet         Why, look you now, how unworthy a thing you make...
+    3     507         21 King           What, Gertrude? How does Hamlet?...
+    4     671         21 Queen          [_Scattering flowers._] Sweets to the sweet. Far...
+    5     621         22 Second Clown   I tell thee she is, and therefore make her grave...
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1197-1203
+.. GENERATED FROM PYTHON SOURCE LINES 1249-1255
 
 ## 8. Save, Load & Memory-Mapped Queries
 
@@ -1580,7 +1632,7 @@ Annoy indexes can be saved to disk and memory-mapped for:
 - Sharing across processes
 - Indexes larger than available RAM
 
-.. GENERATED FROM PYTHON SOURCE LINES 1203-1235
+.. GENERATED FROM PYTHON SOURCE LINES 1255-1287
 
 .. code-block:: Python
 
@@ -1624,35 +1676,35 @@ Annoy indexes can be saved to disk and memory-mapped for:
 
  .. code-block:: none
 
-    float16    saved:    201.3 KB  (/tmp/tmpzwaq7yc_/hamlet_float16.ann)
-    float32    saved:    296.3 KB  (/tmp/tmpzwaq7yc_/hamlet_float32.ann)
-    float64    saved:    496.1 KB  (/tmp/tmpzwaq7yc_/hamlet_float64.ann)
+    float16    saved:    198.3 KB  (/tmp/tmp1ntd2ews/hamlet_float16.ann)
+    float32    saved:    296.9 KB  (/tmp/tmp1ntd2ews/hamlet_float32.ann)
+    float64    saved:    495.1 KB  (/tmp/tmp1ntd2ews/hamlet_float64.ann)
 
     Loaded float16 index from disk, queried [327]:
       [327] Hamlet       To be, or not to be, that is the question: Whether 'tis...
-      [468] Hamlet       What's the matter now? No, by the rood, not so. You are...
-      [408] Hamlet       It would cost you a groaning to take off my edge....
-      [ 92] Laertes      O, fear me not. I stay too long. But here my father com...
-      [442] Hamlet       Why, look you now, how unworthy a thing you make of me!...
+      [680] Hamlet       I lov'd Ophelia; forty thousand brothers Could not, wit...
+      [550] King         Conceit upon her father....
+      [722] Osric        The King, sir, hath wager'd with him six Barbary horses...
+      [413] King         Give me some light. Away. All. Lights, lights, lights. ...
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1236-1247
+.. GENERATED FROM PYTHON SOURCE LINES 1288-1299
 
 ## 9. float128 — Extended Precision for Scientific Workloads
 
 For scenarios requiring maximum numerical fidelity (scientific computing,
 high-dimensional geometry, accumulation-sensitive distance computations),
-`float128` provides 128-bit storage:
+``float128`` provides 128-bit storage:
 
-- On GCC/Clang (x86): native `__float128` (33 decimal digits)
-- On MSVC / other: falls back to `long double` (≥80-bit extended)
+- On GCC/Clang (x86): native ``__float128`` (33 decimal digits)
+- On MSVC / other: falls back to ``long double`` (≥80-bit extended)
 
 This is the counterpart to float16's "trade accuracy for size" —
 float128 trades size for accuracy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 1247-1278
+.. GENERATED FROM PYTHON SOURCE LINES 1299-1330
 
 .. code-block:: Python
 
@@ -1697,22 +1749,22 @@ float128 trades size for accuracy.
 
     float128 euclidean index — results:
       1. [327] d=0.0000000000  Hamlet       To be, or not to be, that is the questio...
-      2. [181] d=1.0546713370  King         Welcome, dear Rosencrantz and Guildenste...
-      3. [308] d=1.0994327571  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O...
-      4. [577] d=1.1257730433  Ophelia      There's fennel for you, and columbines. ...
-      5. [324] d=1.1272905354  Polonius     Ophelia, walk you here.—Gracious, so ple...
+      2. [464] d=1.0832667213  Hamlet       Mother, you have my father much offended...
+      3. [722] d=1.1176965860  Osric        The King, sir, hath wager'd with him six...
+      4. [413] d=1.1364157466  King         Give me some light. Away. All. Lights, l...
+      5. [130] d=1.1372939951  Ghost        My hour is almost come, When I to sulph'...
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1279-1283
+.. GENERATED FROM PYTHON SOURCE LINES 1331-1335
 
 ## 10. Putting It All Together — Character Similarity Analysis
 
 Let's use Annoy to find which *characters* speak most similarly,
 by averaging their passage embeddings and querying.
 
-.. GENERATED FROM PYTHON SOURCE LINES 1283-1343
+.. GENERATED FROM PYTHON SOURCE LINES 1335-1395
 
 .. code-block:: Python
 
@@ -1815,59 +1867,59 @@ by averaging their passage embeddings and querying.
     Rank  Character         Distance   Passages
     ---------------------------------------------
     1     Hamlet              0.0000        247 ←
-    2     King                0.6899         83
+    2     King                0.6831         83
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 1344-1388
+.. GENERATED FROM PYTHON SOURCE LINES 1396-1440
 
 ## 11. API Quick Reference
 
-```python
-from scikitplot.annoy._annoy import Index
+::
 
-# ── Construction ──────────────────────────────────────────────
-idx = Index(
-    f=128,                  # embedding dimension
-    metric='angular',       # angular|euclidean|manhattan|dot|hamming
-    dtype='float16',        # float16|float32|float64|float128
-    index_dtype='int32',    # int8|int16|int32|int64|uint8|uint16|uint32|uint64
-    seed=42,                # reproducible builds
-)
+    from scikitplot.annoy._annoy import Index
 
-# ── Adding items ──────────────────────────────────────────────
-idx.add_item(item_id, vector)    # vector: list[float] of length f
+    # ── Construction ──────────────────────────────────────────────
+    idx = Index(
+        f=128,                  # embedding dimension
+        metric='angular',       # angular|euclidean|manhattan|dot|hamming
+        dtype='float16',        # float16|float32|float64|float128
+        index_dtype='int32',    # int8|int16|int32|int64|uint8|uint16|uint32|uint64
+        seed=42,                # reproducible builds
+    )
 
-# ── Building ──────────────────────────────────────────────────
-idx.build(n_trees=10)            # more trees → better recall
+    # ── Adding items ──────────────────────────────────────────────
+    idx.add_item(item_id, vector)    # vector: list[float] of length f
 
-# ── Querying ──────────────────────────────────────────────────
-ids = idx.get_nns_by_item(id, n=10)                    # by item ID
-ids = idx.get_nns_by_vector(vec, n=10)                  # by vector
-ids, dists = idx.get_nns_by_item(id, 10,                # with distances
-                                  include_distances=True)
+    # ── Building ──────────────────────────────────────────────────
+    idx.build(n_trees=10)            # more trees → better recall
 
-# ── Inspection ────────────────────────────────────────────────
-idx.get_n_items()                # number of items
-idx.get_n_trees()                # number of trees
-idx.get_item(id)                 # retrieve stored vector
-idx.get_distance(i, j)           # distance between two items
+    # ── Querying ──────────────────────────────────────────────────
+    ids = idx.get_nns_by_item(id, n=10)                    # by item ID
+    ids = idx.get_nns_by_vector(vec, n=10)                  # by vector
+    ids, dists = idx.get_nns_by_item(id, 10,                # with distances
+                                    include_distances=True)
 
-# ── Persistence ───────────────────────────────────────────────
-idx.save('index.ann')            # save to disk
-idx.load('index.ann')            # load (mmap-based, instant)
-idx.unload()                     # release memory
+    # ── Inspection ────────────────────────────────────────────────
+    idx.get_n_items()                # number of items
+    idx.get_n_trees()                # number of trees
+    idx.get_item(id)                 # retrieve stored vector
+    idx.get_distance(i, j)           # distance between two items
 
-# ── Context manager ───────────────────────────────────────────
-with Index(f=128, metric='angular') as idx:
-    idx.add_item(0, vec)
-    idx.build(10)
-    result = idx.get_nns_by_item(0, 5)
-# auto-cleanup on exit
-```
+    # ── Persistence ───────────────────────────────────────────────
+    idx.save('index.ann')            # save to disk
+    idx.load('index.ann')            # load (mmap-based, instant)
+    idx.unload()                     # release memory
 
-.. GENERATED FROM PYTHON SOURCE LINES 1390-1410
+    # ── Context manager ───────────────────────────────────────────
+    with Index(f=128, metric='angular') as idx:
+        idx.add_item(0, vec)
+        idx.build(10)
+        result = idx.get_nns_by_item(0, 5)
+    # auto-cleanup on exit
+
+.. GENERATED FROM PYTHON SOURCE LINES 1442-1462
 
 ## 12. Key Takeaways
 
@@ -1879,18 +1931,18 @@ with Index(f=128, metric='angular') as idx:
 
 **float128 for scientific computing:**
 - Maximum numerical precision for sensitive distance computations
-- Native `__float128` on GCC/Clang, `long double` fallback on MSVC
+- Native ``__float128`` on GCC/Clang, ``long double`` fallback on MSVC
 
-**Extended index types (`int8` → `uint64`):**
+**Extended index types (``int8`` → ``uint64``):**
 - Match ID width to your dataset size
 - Smaller IDs = less memory per tree node
 
 **Platform compatibility:**
 - All features work on x86, x64, ARM (Apple Silicon, Android, RPi)
 - Windows (MSVC), macOS (Clang), Linux (GCC) all supported
-- The fixed `annoylib.h` handles all platform differences via compile-time detection
+- The fixed ``annoylib.h`` handles all platform differences via compile-time detection
 
-.. GENERATED FROM PYTHON SOURCE LINES 1412-1417
+.. GENERATED FROM PYTHON SOURCE LINES 1464-1469
 
 .. tags::
 
@@ -1901,7 +1953,7 @@ with Index(f=128, metric='angular') as idx:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.910 seconds)
+   **Total running time of the script:** (0 minutes 1.259 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_annoy_cython_hamlet_example.py:

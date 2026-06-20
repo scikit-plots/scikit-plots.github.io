@@ -1,6 +1,6 @@
 # SourceKind[#](#sourcekind "Link to this heading")
 
-class scikitplot.corpus.SourceKind(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_sources/_source.py#L89)[#](#scikitplot.corpus.SourceKind "Link to this definition")
+class scikitplot.corpus.SourceKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_sources/_source.py#L89)[#](#scikitplot.corpus.SourceKind "Link to this definition")
 :   Discriminant for the kind of source an entry represents.
 
     Attributes:
@@ -17,13 +17,13 @@ class scikitplot.corpus.SourceKind(**value**)[[source]](https://github.com/sciki
         ****MANIFEST****
         :   A text file containing one URL or file path per line.
 
-    DIRECTORY = 'directory'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.DIRECTORY "Link to this definition")
+    DIRECTORY = 'directory'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.DIRECTORY "Link to this definition")
 
-    FILE = 'file'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.FILE "Link to this definition")
+    FILE = 'file'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.FILE "Link to this definition")
 
-    MANIFEST = 'manifest'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.MANIFEST "Link to this definition")
+    MANIFEST = 'manifest'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.MANIFEST "Link to this definition")
 
-    URL = 'url'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.URL "Link to this definition")
+    URL = 'url'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.URL "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.SourceKind.capitalize "Link to this definition")
     :   Return a capitalized version of the string.
@@ -139,10 +139,9 @@ class scikitplot.corpus.SourceKind(**value**)[[source]](https://github.com/sciki
         least one character in the string.
 
     isprintable(**/**)[#](#scikitplot.corpus.SourceKind.isprintable "Link to this definition")
-    :   Return True if the string is printable, False otherwise.
+    :   Return True if all characters in the string are printable, False otherwise.
 
-        A string is printable if all of its characters are considered printable in
-        repr() or if it is empty.
+        A character is printable if repr() may use it in its output.
 
     isspace(**/**)[#](#scikitplot.corpus.SourceKind.isspace "Link to this definition")
     :   Return True if the string is a whitespace string, False otherwise.

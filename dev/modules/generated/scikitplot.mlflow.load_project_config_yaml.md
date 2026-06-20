@@ -1,6 +1,6 @@
 # load\_project\_config\_yaml[#](#load-project-config-yaml "Link to this heading")
 
-scikitplot.mlflow.load\_project\_config\_yaml(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/mlflow/_project.py#L803)[#](#scikitplot.mlflow.load_project_config_yaml "Link to this definition")
+scikitplot.mlflow.load\_project\_config\_yaml(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/mlflow/_project.py#L803)[#](#scikitplot.mlflow.load_project_config_yaml "Link to this definition")
 :   Load project MLflow config from a YAML file.
 
     Parameters:

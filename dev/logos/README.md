@@ -1,3 +1,5 @@
+:orphan:
+
 # scikit-learn Brand Guidelines[#](#scikit-learn-brand-guidelines "Link to this heading")
 
 This section contains information around scikit-learn’s brand standards and the use of scikit-learn assets. The purpose of these guidelines are to ensure the scikit-learn logo remains consistent and recognizable across all uses and communications. These guidelines also provide a common language for referring to the logos and their components.
@@ -8,7 +10,7 @@ File types:
 * `ICO` file format refers to an image file format that contains small size computer icon images
 * `SVG` Scalable Vector Graphics (SVG) are an XML-based markup language for describing two-dimensional based vector graphics. They can be created and edited with any text editor or with drawing software.
 
-[Brand Name](#/docs/logos/README.md#brand-name) | [Color Palette](#/docs/logos/README.md#color-palette) | [Typography](#/docs/logos/README.md#typography) | [Logos](#/docs/logos/README.md#logos)
+[Brand Name](#brand-name) | [Color Palette](#color-palette) | [Typography](#typography) | [Logos](#logos)
 
 ---
 
@@ -20,11 +22,11 @@ The official name of the package is ****scikit-learn****. Do not abbreviate or o
 
 ## Color Palette[#](#color-palette "Link to this heading")
 
-![#29ABE2 Cyan](logos/brand_colors/colorswatch_29ABE2_cyan.png) `RGB 41/171/226 | HEX #29ABE2 | scikit-learn Cyan` | More info: [#29ABE2](https://www.color-hex.com/color/29abe2)
+![#29ABE2 Cyan](../_images/colorswatch_29ABE2_cyan.png) `RGB 41/171/226 | HEX #29ABE2 | scikit-learn Cyan` | More info: [#29ABE2](https://www.color-hex.com/color/29abe2)
 
-![#F7931E Orange](logos/brand_colors/colorswatch_F7931E_orange.png) `RGB 247/147/30 | HEX #F7931E | scikit-learn Orange` | More info: [#F7931E](https://www.color-hex.com/color/f7931e)
+![#F7931E Orange](../_images/colorswatch_F7931E_orange.png) `RGB 247/147/30 | HEX #F7931E | scikit-learn Orange` | More info: [#F7931E](https://www.color-hex.com/color/f7931e)
 
-![#9B4600 Brown](logos/brand_colors/colorswatch_9B4600_brown.png) `RGB 155/70/0| HEX #9B4600 | scikit-learn Brown` | More info: [#9B4600](https://www.color-hex.com/color/9b4600)
+![#9B4600 Brown](../_images/colorswatch_9B4600_brown.png) `RGB 155/70/0| HEX #9B4600 | scikit-learn Brown` | More info: [#9B4600](https://www.color-hex.com/color/9b4600)
 
 ## Typography[#](#typography "Link to this heading")
 

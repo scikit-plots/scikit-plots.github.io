@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask Us","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-16T02:22:18Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-20T15:42:33Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Approximate Nearest Neighbors with Annoy — A Hamlet Example — scikit-plots 0.5.dev0 documentation</title>
@@ -147,8 +147,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 <li class="nav-item dropdown">
@@ -157,8 +157,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 </button>
 <ul class="dropdown-menu" id="pst-nav-more-links">
 <li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+<a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="">
@@ -184,11 +184,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 <li class="">
@@ -292,13 +287,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="nav-item">
@@ -324,11 +319,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="nav-item">
 <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 <li class="nav-item">
@@ -563,16 +553,36 @@ as a real-world text corpus. We will:</p>
 <li><p><strong>Benchmark</strong> disk usage and build time across dtypes</p></li>
 </ol>
 <p>Why Annoy?</p>
-<div class="line-block">
-<div class="line">Feature | Value |</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Algorithm</p></td>
+<td><p>Random-projection forest + priority search</p></td>
+</tr>
+<tr class="row-odd"><td><p>Index types</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int8</span></code> → <code class="docutils literal notranslate"><span class="pre">uint64</span></code> (any item-ID width)</p></td>
+</tr>
+<tr class="row-even"><td><p>Data types</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float16</span></code>, <code class="docutils literal notranslate"><span class="pre">float32</span></code>, <code class="docutils literal notranslate"><span class="pre">float64</span></code>,
+<code class="docutils literal notranslate"><span class="pre">float128</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Metrics</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">angular</span></code>, <code class="docutils literal notranslate"><span class="pre">euclidean</span></code>, <code class="docutils literal notranslate"><span class="pre">manhattan</span></code>,
+<code class="docutils literal notranslate"><span class="pre">dot</span></code>, <code class="docutils literal notranslate"><span class="pre">hamming</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Thread-safety</p></td>
+<td><p>Concurrent reads after build (GIL released)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory-map</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mmap</span></code>-based — indexes larger than RAM</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><a href="#id21"><span class="problematic" id="id22">|---|</span></a>—|
-| Algorithm | Random-projection forest + priority search |
-| Index types | <code class="docutils literal notranslate"><span class="pre">int8</span></code> → <code class="docutils literal notranslate"><span class="pre">uint64</span></code> (any item-ID width) |
-| Data types | <code class="docutils literal notranslate"><span class="pre">float16</span></code>, <code class="docutils literal notranslate"><span class="pre">float32</span></code>, <code class="docutils literal notranslate"><span class="pre">float64</span></code>, <code class="docutils literal notranslate"><span class="pre">float128</span></code> |
-| Metrics | <code class="docutils literal notranslate"><span class="pre">angular</span></code>, <code class="docutils literal notranslate"><span class="pre">euclidean</span></code>, <code class="docutils literal notranslate"><span class="pre">manhattan</span></code>, <code class="docutils literal notranslate"><span class="pre">dot</span></code>, <code class="docutils literal notranslate"><span class="pre">hamming</span></code> |
-| Thread-safety | Concurrent reads after build (GIL released) |
-| Memory-map | <code class="docutils literal notranslate"><span class="pre">mmap</span></code>-based — indexes larger than RAM |</p>
 <p><strong>float16</strong> stores each dimension in 2 bytes instead of 4 (float32) or 8 (float64).
 For large-scale embeddings (millions of items × hundreds of dimensions),
 this halves disk and memory usage with minimal accuracy loss — the same
@@ -598,7 +608,7 @@ trade-off used by PyTorch’s <code class="docutils literal notranslate"><span c
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Index class: </span><span class="si">{</span><a class="sphx-glr-backref-module-scikitplot-annoy-_annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index" title="scikitplot.annoy._annoy.Index"><span class="n">Index</span></a><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Python 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Python 3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]
 Index class: &lt;class 'scikitplot.annoy._annoy.Index'&gt;
 </pre></div>
 </div>
@@ -608,22 +618,16 @@ Index class: &lt;class 'scikitplot.annoy._annoy.Index'&gt;
 <p>We use the full text of <em>Hamlet</em> (public domain, ~1600) and segment it into
 <strong>speech blocks</strong> — each block is one character’s consecutive lines within a scene.
 This gives us ~300–600 passages, each with enough text for meaningful similarity.</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
-download_hamlet()</p>
-<blockquote>
-<div><p>│
-├─ success → use Gutenberg full text
-│
-└─ failure → use embedded excerpt</p>
-<blockquote>
-<div><blockquote>
-<div><p>│
-▼</p>
-</div></blockquote>
-<p>raw_text</p>
-</div></blockquote>
-</div></blockquote>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>download_hamlet()
+      │
+      ├─ success → use Gutenberg full text
+      │
+      └─ failure → use embedded excerpt
+              │
+              ▼
+          raw_text
+</pre></div>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
 <span class="c1"># Option A: Download from Project Gutenberg (if network available)</span>
 <span class="c1"># Option B: Use bundled excerpt below</span>
@@ -991,23 +995,19 @@ Contents
  Scene II. Elsinore. A room of state in the Ca
 </pre></div>
 </div>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a>`
-raw_text</p>
-<blockquote>
-<div><p>↓</p>
-</div></blockquote>
-<dl class="simple">
-<dt>clean_text()</dt><dd><p>↓</p>
-</dd>
-<dt>tokenize()</dt><dd><p>↓</p>
-</dd>
-<dt>chunk_text()</dt><dd><p>↓</p>
-</dd>
-<dt>vectorize()</dt><dd><p>↓</p>
-</dd>
-</dl>
-<p>Annoy index
-<a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>raw_text
+↓
+clean_text()
+↓
+tokenize()
+↓
+chunk_text()
+↓
+vectorize()
+↓
+Annoy index
+</pre></div>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
 <span class="c1"># Parse into passages: (character, act_scene, text)</span>
 <span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1322,13 +1322,13 @@ Num passages    : 792
 </div>
 <p>## 3. Build Annoy Indexes — Core API Walkthrough</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Index</span></code> class is the main entry point. Here’s the lifecycle:</p>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span>
-<span class="pre">idx</span> <span class="pre">=</span> <span class="pre">Index(f=64,</span> <span class="pre">metric='angular',</span> <span class="pre">dtype='float32')</span>  <span class="pre">#</span> <span class="pre">1.</span> <span class="pre">Create</span>
-<span class="pre">idx.add_item(0,</span> <span class="pre">vector)</span>                                <span class="pre">#</span> <span class="pre">2.</span> <span class="pre">Add</span> <span class="pre">items</span>
-<span class="pre">idx.build(n_trees=10)</span>                                  <span class="pre">#</span> <span class="pre">3.</span> <span class="pre">Build</span> <span class="pre">forest</span>
-<span class="pre">neighbors</span> <span class="pre">=</span> <span class="pre">idx.get_nns_by_item(0,</span> <span class="pre">5)</span>                  <span class="pre">#</span> <span class="pre">4.</span> <span class="pre">Query</span>
-<span class="pre">idx.save('index.ann')</span>                                  <span class="pre">#</span> <span class="pre">5.</span> <span class="pre">Persist</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy-_annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index" title="scikitplot.annoy._annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'float32'</span><span class="p">)</span>   <span class="c1"># 1. Create</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>                                <span class="c1"># 2. Add items</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>                                  <span class="c1"># 3. Build forest</span>
+<span class="n">neighbors</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                  <span class="c1"># 4. Query</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'index.ann'</span><span class="p">)</span>                                  <span class="c1"># 5. Persist</span>
+</pre></div>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
 <span class="c1"># 3a. Basic Index — angular metric, float32 (default)</span>
 <span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1480,10 +1480,10 @@ Query: [327] Hamlet (SCENE I. A room in the Castle)
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
 1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
-2     181     1.0547 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
-3     308     1.0994 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
-4     577     1.1258 Ophelia        There's fennel for you, and columbines. There's ru...
-5     324     1.1273 Polonius       Ophelia, walk you here.—Gracious, so please you, W...
+2     181     1.0674 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
+3     523     1.0797 King           I have sent to seek him and to find the body. How ...
+4     308     1.1349 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
+5     415     1.1441 Horatio        You might have rhymed....
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1540,11 +1540,11 @@ QUERY BY VECTOR: average of 'To be' + 'Alas poor Yorick'
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     661     0.7753 Hamlet         Let me see. [_Takes the skull._] Alas, poor Yorick. I k...
-2     308     1.0890 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a rogue a...
-3     464     1.1421 Hamlet         Mother, you have my father much offended....
-4     672     1.1581 Laertes        O, treble woe Fall ten times treble on that cursed head...
-5     353     1.1592 First Player   I hope we have reform'd that indifferently with us, sir...
+1     327     0.6815 Hamlet         To be, or not to be, that is the question: Whether 'tis...
+2     661     0.6815 Hamlet         Let me see. [_Takes the skull._] Alas, poor Yorick. I k...
+3     672     1.0985 Laertes        O, treble woe Fall ten times treble on that cursed head...
+4     592     1.1036 King           O, for two special reasons, Which may to you, perhaps, ...
+5     722     1.1124 Osric          The King, sir, hath wager'd with him six Barbary horses...
 </pre></div>
 </div>
 <p>## 4. float16 — Half-Precision for Fast &amp; Compact Indexes</p>
@@ -1556,15 +1556,43 @@ Rank  ID        Dist Character      Passage excerpt
 <li><p><strong>NumPy</strong>: <code class="docutils literal notranslate"><span class="pre">np.float16</span></code></p></li>
 </ul>
 <p>### Trade-offs</p>
-<div class="line-block">
-<div class="line">Aspect | float16 | float32 | float64 |</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>float16</p></th>
+<th class="head"><p>float32</p></th>
+<th class="head"><p>float64</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bytes/dimension</p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Precision (decimal digits)</p></td>
+<td><p>~3.3</p></td>
+<td><p>~7.2</p></td>
+<td><p>~15.9</p></td>
+</tr>
+<tr class="row-even"><td><p>Range</p></td>
+<td><p>±65504</p></td>
+<td><p>±3.4×10³⁸</p></td>
+<td><p>±1.8×10³⁰⁸</p></td>
+</tr>
+<tr class="row-odd"><td><p>Typical use case</p></td>
+<td><p>Storage, inference</p></td>
+<td><p>Training, general</p></td>
+<td><p>Scientific computing</p></td>
+</tr>
+<tr class="row-even"><td><p>Disk for 1M × 128-d</p></td>
+<td><p>~244 MB</p></td>
+<td><p>~488 MB</p></td>
+<td><p>~976 MB</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><a href="#id23"><span class="problematic" id="id24">|---|</span></a>—<a href="#id25"><span class="problematic" id="id26">|---|</span></a>—|
-| Bytes/dimension | 2 | 4 | 8 |
-| Precision (decimal digits) | ~3.3 | ~7.2 | ~15.9 |
-| Range | ±65504 | ±3.4×10³⁸ | ±1.8×10³⁰⁸ |
-| Typical use case | Storage, inference | Training, general | Scientific computing |
-| Disk for 1M × 128-d | ~244 MB | ~488 MB | ~976 MB |</p>
 <p>For ANN search, the <strong>distance ranking</strong> (which neighbor is closest) is far
 more important than the exact distance value. float16 preserves ranking
 for well-separated vectors while halving storage.</p>
@@ -1605,10 +1633,10 @@ Query: [327] Hamlet (SCENE I. A room in the Castle)
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
 1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
-2     468     1.0967 Hamlet         What's the matter now? No, by the rood, not so. Yo...
-3     408     1.1299 Hamlet         It would cost you a groaning to take off my edge....
-4     92      1.1318 Laertes        O, fear me not. I stay too long. But here my fathe...
-5     442     1.1436 Hamlet         Why, look you now, how unworthy a thing you make o...
+2     680     1.0244 Hamlet         I lov'd Ophelia; forty thousand brothers Could not...
+3     550     1.0996 King           Conceit upon her father....
+4     722     1.1182 Osric          The King, sir, hath wager'd with him six Barbary h...
+5     413     1.1357 King           Give me some light. Away. All. Lights, lights, lig...
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1686,26 +1714,48 @@ Rank  ID        Dist Character      Passage excerpt
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>dtype       Build(ms)  Query(μs)   Disk(KB) Top-5 IDs
 ----------------------------------------------------------------------
-float16         133.1       73.6      201.3 [327, 181, 468, 324, 408]
-float32           4.2       23.8      296.3 [327, 181, 308, 577, 324]
-float64           7.2       27.0      496.1 [327, 181, 468, 308, 163]
+float16         126.5       67.4      198.3 [327, 680, 523, 464, 550]
+float32           3.8       15.3      296.9 [327, 181, 523, 308, 415]
+float64           6.7       19.9      495.1 [327, 680, 181, 464, 722]
 
-Overlap float16 ∩ float32 (top-10): 6/10
-Overlap float16 ∩ float64 (top-10): 5/10
-Overlap float32 ∩ float64 (top-10): 4/10
+Overlap float16 ∩ float32 (top-10): 3/10
+Overlap float16 ∩ float64 (top-10): 7/10
+Overlap float32 ∩ float64 (top-10): 5/10
 </pre></div>
 </div>
 <p>## 5. Multiple Distance Metrics</p>
 <p>Annoy supports several metrics, each suited to different data:</p>
-<div class="line-block">
-<div class="line">Metric | Formula | Best for |</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Formula</p></th>
+<th class="head"><p>Best for</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">angular</span></code></p></td>
+<td><p>1 − cos(u, v)</p></td>
+<td><p>Normalized embeddings, text similarity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">euclidean</span></code></p></td>
+<td><p>‖u − v‖₂</p></td>
+<td><p>Spatial data, un-normalized vectors</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">manhattan</span></code></p></td>
+<td><p>‖u − v‖₁</p></td>
+<td><p>Sparse features, robust to outliers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dot</span></code></p></td>
+<td><p>−u·v (negated)</p></td>
+<td><p>Recommendation scores, un-normalized</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hamming</span></code></p></td>
+<td><p>popcount(u ⊕ v)</p></td>
+<td><p>Binary features, hash codes</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><a href="#id27"><span class="problematic" id="id28">|---|</span></a>—<a href="#id29"><span class="problematic" id="id30">|---|</span></a>
-| <code class="docutils literal notranslate"><span class="pre">angular</span></code> | 1 − cos(u, v) | Normalized embeddings, text similarity |
-| <code class="docutils literal notranslate"><span class="pre">euclidean</span></code> | ‖u − v‖₂ | Spatial data, un-normalized vectors |
-| <code class="docutils literal notranslate"><span class="pre">manhattan</span></code> | ‖u − v‖₁ | Sparse features, robust to outliers |
-| <code class="docutils literal notranslate"><span class="pre">dot</span></code> | −u·v (negated) | Recommendation scores, un-normalized |
-| <code class="docutils literal notranslate"><span class="pre">hamming</span></code> | popcount(u ⊕ v) | Binary features, hash codes |</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
 <span class="c1"># 5a. Compare metrics on the same query</span>
 <span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1730,53 +1780,93 @@ Overlap float32 ∩ float64 (top-10): 4/10
 Metric: angular
 ============================================================
   1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [181] d=1.0547  King         Welcome, dear Rosencrantz and Guildenstern. M...
-  3. [308] d=1.0994  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
-  4. [577] d=1.1258  Ophelia      There's fennel for you, and columbines. There...
-  5. [324] d=1.1273  Polonius     Ophelia, walk you here.—Gracious, so please y...
+  2. [181] d=1.0674  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [523] d=1.0797  King         I have sent to seek him and to find the body....
+  4. [308] d=1.1349  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
+  5. [415] d=1.1441  Horatio      You might have rhymed....
 
 ============================================================
 Metric: euclidean
 ============================================================
   1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [132] d=1.0916  Ghost        So art thou to revenge, when thou shalt hear....
-  3. [577] d=1.1258  Ophelia      There's fennel for you, and columbines. There...
-  4. [267] d=1.1518  Hamlet       What, are they children? Who maintains 'em? H...
-  5. [306] d=1.1530  Hamlet       God's bodikin, man, much better. Use every ma...
+  2. [523] d=1.0797  King         I have sent to seek him and to find the body....
+  3. [308] d=1.1349  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
+  4. [740] d=1.1856  Hamlet       I do not think so. Since he went into France,...
+  5. [487] d=1.2042  Ghost        Do not forget. This visitation Is but to whet...
 
 ============================================================
 Metric: manhattan
 ============================================================
   1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [132] d=6.8681  Ghost        So art thou to revenge, when thou shalt hear....
-  3. [680] d=7.0966  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
-  4. [577] d=7.1815  Ophelia      There's fennel for you, and columbines. There...
-  5. [415] d=7.3009  Horatio      You might have rhymed....
+  2. [680] d=6.5124  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
+  3. [130] d=6.7378  Ghost        My hour is almost come, When I to sulph'rous ...
+  4. [464] d=7.0712  Hamlet       Mother, you have my father much offended....
+  5. [ 82] d=7.2376  Horatio      It would have much amaz'd you....
 
 ============================================================
 Metric: dot
 ============================================================
   1. [327] d=1.0000  Hamlet       To be, or not to be, that is the question: Wh...
-  2. [181] d=0.4438  King         Welcome, dear Rosencrantz and Guildenstern. M...
-  3. [468] d=0.3982  Hamlet       What's the matter now? No, by the rood, not s...
-  4. [308] d=0.3956  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
-  5. [324] d=0.3646  Polonius     Ophelia, walk you here.—Gracious, so please y...
+  2. [181] d=0.4304  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [413] d=0.3543  King         Give me some light. Away. All. Lights, lights...
+  4. [377] d=0.3026  Hamlet       So long? Nay then, let the devil wear black, ...
+  5. [ 46] d=0.3023  King         Take thy fair hour, Laertes; time be thine, A...
 </pre></div>
 </div>
 <p>## 6. Extended Index Types</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">index_dtype</span></code> parameter controls the width of item IDs:</p>
-<div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">index_dtype</span></code> | Max items | Memory/ID | Use case |</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">index_dtype</span></code></p></th>
+<th class="head"><p>Max items</p></th>
+<th class="head"><p>Memory/ID</p></th>
+<th class="head"><p>Use case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int8</span></code></p></td>
+<td><p>127</p></td>
+<td><p>1 byte</p></td>
+<td><p>Tiny prototype indexes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int16</span></code></p></td>
+<td><p>32,767</p></td>
+<td><p>2 bytes</p></td>
+<td><p>Small datasets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int32</span></code></p></td>
+<td><p>~2.1B</p></td>
+<td><p>4 bytes</p></td>
+<td><p>Standard (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int64</span></code></p></td>
+<td><p>~9.2×10¹⁸</p></td>
+<td><p>8 bytes</p></td>
+<td><p>Large-scale production</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>255</p></td>
+<td><p>1 byte</p></td>
+<td><p>Labels, categories</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>65,535</p></td>
+<td><p>2 bytes</p></td>
+<td><p>Medium catalogs</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uint32</span></code></p></td>
+<td><p>~4.3B</p></td>
+<td><p>4 bytes</p></td>
+<td><p>Very large datasets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>~9.2×10¹⁸</p></td>
+<td><p>8 bytes</p></td>
+<td><p>Maximum capacity</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><a href="#id31"><span class="problematic" id="id32">|---|</span></a>—<a href="#id33"><span class="problematic" id="id34">|---|</span></a>—|
-| <code class="docutils literal notranslate"><span class="pre">int8</span></code> | 127 | 1 byte | Tiny prototype indexes |
-| <code class="docutils literal notranslate"><span class="pre">int16</span></code> | 32,767 | 2 bytes | Small datasets |
-| <code class="docutils literal notranslate"><span class="pre">int32</span></code> | ~2.1B | 4 bytes | Standard (default) |
-| <code class="docutils literal notranslate"><span class="pre">int64</span></code> | ~9.2×10¹⁸ | 8 bytes | Large-scale production |
-| <code class="docutils literal notranslate"><span class="pre">uint8</span></code> | 255 | 1 byte | Labels, categories |
-| <code class="docutils literal notranslate"><span class="pre">uint16</span></code> | 65,535 | 2 bytes | Medium catalogs |
-| <code class="docutils literal notranslate"><span class="pre">uint32</span></code> | ~4.3B | 4 bytes | Very large datasets |
-| <code class="docutils literal notranslate"><span class="pre">uint64</span></code> | ~9.2×10¹⁸ | 8 bytes | Maximum capacity |</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
 <span class="c1"># 6a. int8 index — tiny item IDs for small datasets (max 127 items)</span>
 <span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1888,10 +1978,10 @@ This is useful for locality-sensitive hashing (LSH) or binary feature vectors.</
 Rank  ID     Hamming Character      Passage excerpt
 --------------------------------------------------------------------------------
 1     327          0 Hamlet         To be, or not to be, that is the question: Wheth...
-2     306         19 Hamlet         God's bodikin, man, much better. Use every man a...
-3     577         22 Ophelia        There's fennel for you, and columbines. There's ...
-4     664         23 Horatio        'Twere to consider too curiously to consider so....
-5     504         24 Hamlet         There's letters seal'd: and my two schoolfellows...
+2     442         20 Hamlet         Why, look you now, how unworthy a thing you make...
+3     507         21 King           What, Gertrude? How does Hamlet?...
+4     671         21 Queen          [_Scattering flowers._] Sweets to the sweet. Far...
+5     621         22 Second Clown   I tell thee she is, and therefore make her grave...
 </pre></div>
 </div>
 <p>## 8. Save, Load &amp; Memory-Mapped Queries</p>
@@ -1931,16 +2021,16 @@ Rank  ID     Hamming Character      Passage excerpt
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">nid</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'character'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;12s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">55</span><span class="p">]</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float16    saved:    201.3 KB  (/tmp/tmpzwaq7yc_/hamlet_float16.ann)
-float32    saved:    296.3 KB  (/tmp/tmpzwaq7yc_/hamlet_float32.ann)
-float64    saved:    496.1 KB  (/tmp/tmpzwaq7yc_/hamlet_float64.ann)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float16    saved:    198.3 KB  (/tmp/tmp1ntd2ews/hamlet_float16.ann)
+float32    saved:    296.9 KB  (/tmp/tmp1ntd2ews/hamlet_float32.ann)
+float64    saved:    495.1 KB  (/tmp/tmp1ntd2ews/hamlet_float64.ann)
 
 Loaded float16 index from disk, queried [327]:
   [327] Hamlet       To be, or not to be, that is the question: Whether 'tis...
-  [468] Hamlet       What's the matter now? No, by the rood, not so. You are...
-  [408] Hamlet       It would cost you a groaning to take off my edge....
-  [ 92] Laertes      O, fear me not. I stay too long. But here my father com...
-  [442] Hamlet       Why, look you now, how unworthy a thing you make of me!...
+  [680] Hamlet       I lov'd Ophelia; forty thousand brothers Could not, wit...
+  [550] King         Conceit upon her father....
+  [722] Osric        The King, sir, hath wager'd with him six Barbary horses...
+  [413] King         Give me some light. Away. All. Lights, lights, lights. ...
 </pre></div>
 </div>
 <p>## 9. float128 — Extended Precision for Scientific Workloads</p>
@@ -1986,10 +2076,10 @@ float128 trades size for accuracy.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float128 euclidean index — results:
   1. [327] d=0.0000000000  Hamlet       To be, or not to be, that is the questio...
-  2. [181] d=1.0546713370  King         Welcome, dear Rosencrantz and Guildenste...
-  3. [308] d=1.0994327571  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O...
-  4. [577] d=1.1257730433  Ophelia      There's fennel for you, and columbines. ...
-  5. [324] d=1.1272905354  Polonius     Ophelia, walk you here.—Gracious, so ple...
+  2. [464] d=1.0832667213  Hamlet       Mother, you have my father much offended...
+  3. [722] d=1.1176965860  Osric        The King, sir, hath wager'd with him six...
+  4. [413] d=1.1364157466  King         Give me some light. Away. All. Lights, l...
+  5. [130] d=1.1372939951  Ghost        My hour is almost come, When I to sulph'...
 </pre></div>
 </div>
 <p>## 10. Putting It All Together — Character Similarity Analysis</p>
@@ -2086,51 +2176,52 @@ Characters most similar to HAMLET in speech:
 Rank  Character         Distance   Passages
 ---------------------------------------------
 1     Hamlet              0.0000        247 ←
-2     King                0.6899         83
+2     King                0.6831         83
 </pre></div>
 </div>
 <p>## 11. API Quick Reference</p>
-<p><a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a>python
-from scikitplot.annoy._annoy import Index</p>
-<p># ── Construction ──────────────────────────────────────────────
-idx = Index(</p>
-<blockquote>
-<div><p>f=128,                  # embedding dimension
-metric=’angular’,       # angular|euclidean|manhattan|dot|hamming
-dtype=’float16’,        # float16|float32|float64|float128
-index_dtype=’int32’,    # int8|int16|int32|int64|uint8|uint16|uint32|uint64
-seed=42,                # reproducible builds</p>
-</div></blockquote>
-<p>)</p>
-<p># ── Adding items ──────────────────────────────────────────────
-idx.add_item(item_id, vector)    # vector: list[float] of length f</p>
-<p># ── Building ──────────────────────────────────────────────────
-idx.build(n_trees=10)            # more trees → better recall</p>
-<p># ── Querying ──────────────────────────────────────────────────
-ids = idx.get_nns_by_item(id, n=10)                    # by item ID
-ids = idx.get_nns_by_vector(vec, n=10)                  # by vector
-ids, dists = idx.get_nns_by_item(id, 10,                # with distances</p>
-<blockquote>
-<div><p>include_distances=True)</p>
-</div></blockquote>
-<p># ── Inspection ────────────────────────────────────────────────
-idx.get_n_items()                # number of items
-idx.get_n_trees()                # number of trees
-idx.get_item(id)                 # retrieve stored vector
-idx.get_distance(i, j)           # distance between two items</p>
-<p># ── Persistence ───────────────────────────────────────────────
-idx.save(‘index.ann’)            # save to disk
-idx.load(‘index.ann’)            # load (mmap-based, instant)
-idx.unload()                     # release memory</p>
-<p># ── Context manager ───────────────────────────────────────────
-with Index(f=128, metric=’angular’) as idx:</p>
-<blockquote>
-<div><p>idx.add_item(0, vec)
-idx.build(10)
-result = idx.get_nns_by_item(0, 5)</p>
-</div></blockquote>
-<p># auto-cleanup on exit
-<a href="#id17"><span class="problematic" id="id18">``</span></a><a href="#id19"><span class="problematic" id="id20">`</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy._annoy</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-annoy-_annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index" title="scikitplot.annoy._annoy.Index"><span class="n">Index</span></a>
+
+<span class="c1"># ── Construction ──────────────────────────────────────────────</span>
+<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy-_annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index" title="scikitplot.annoy._annoy.Index"><span class="n">Index</span></a><span class="p">(</span>
+    <span class="n">f</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>                  <span class="c1"># embedding dimension</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">,</span>       <span class="c1"># angular|euclidean|manhattan|dot|hamming</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s1">'float16'</span><span class="p">,</span>        <span class="c1"># float16|float32|float64|float128</span>
+    <span class="n">index_dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">,</span>    <span class="c1"># int8|int16|int32|int64|uint8|uint16|uint32|uint64</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>                <span class="c1"># reproducible builds</span>
+<span class="p">)</span>
+
+<span class="c1"># ── Adding items ──────────────────────────────────────────────</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>    <span class="c1"># vector: list[float] of length f</span>
+
+<span class="c1"># ── Building ──────────────────────────────────────────────────</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>            <span class="c1"># more trees → better recall</span>
+
+<span class="c1"># ── Querying ──────────────────────────────────────────────────</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>                    <span class="c1"># by item ID</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_nns_by_vector</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>                  <span class="c1"># by vector</span>
+<span class="n">ids</span><span class="p">,</span> <span class="n">dists</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>                <span class="c1"># with distances</span>
+                                <span class="n">include_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># ── Inspection ────────────────────────────────────────────────</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">()</span>                <span class="c1"># number of items</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">get_n_trees</span><span class="p">()</span>                <span class="c1"># number of trees</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>                 <span class="c1"># retrieve stored vector</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>           <span class="c1"># distance between two items</span>
+
+<span class="c1"># ── Persistence ───────────────────────────────────────────────</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'index.ann'</span><span class="p">)</span>            <span class="c1"># save to disk</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'index.ann'</span><span class="p">)</span>            <span class="c1"># load (mmap-based, instant)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">unload</span><span class="p">()</span>                     <span class="c1"># release memory</span>
+
+<span class="c1"># ── Context manager ───────────────────────────────────────────</span>
+<span class="k">with</span> <a class="sphx-glr-backref-module-scikitplot-annoy-_annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index" title="scikitplot.annoy._annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">)</span> <span class="k">as</span> <span class="n">idx</span><span class="p">:</span>
+    <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
+    <span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1"># auto-cleanup on exit</span>
+</pre></div>
+</div>
 <p>## 12. Key Takeaways</p>
 <p><strong>float16 for production ANN search:</strong>
 - Halves disk and memory usage vs float32
@@ -2140,7 +2231,7 @@ result = idx.get_nns_by_item(0, 5)</p>
 <p><strong>float128 for scientific computing:</strong>
 - Maximum numerical precision for sensitive distance computations
 - Native <code class="docutils literal notranslate"><span class="pre">__float128</span></code> on GCC/Clang, <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> fallback on MSVC</p>
-<p><strong>Extended index types (`int8` → `uint64`):</strong>
+<p><strong>Extended index types (``int8`` → ``uint64``):</strong>
 - Match ID width to your dataset size
 - Smaller IDs = less memory per tree node</p>
 <p><strong>Platform compatibility:</strong>
@@ -2148,7 +2239,7 @@ result = idx.get_nns_by_item(0, 5)</p>
 - Windows (MSVC), macOS (Clang), Linux (GCC) all supported
 - The fixed <code class="docutils literal notranslate"><span class="pre">annoylib.h</span></code> handles all platform differences via compile-time detection</p>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.910 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.259 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_cython_api_thumb.png"/>
@@ -2255,7 +2346,7 @@ result = idx.get_nns_by_item(0, 5)</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260616.2eeb508 2026-06-16T02:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260620.f06fe30 2026-06-20T15:23Z.
       <br/>
 </p>
 </div>

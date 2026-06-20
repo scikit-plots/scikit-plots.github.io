@@ -16,7 +16,7 @@ availability across environments, without relying on separate system installs.
 
 High-level Python interface for the C++ ANNoy backend.
 
-Spotify ANNoy [[1]](../modules/generated/scikitplot.cexternals._annoy.html#r1d6a7aea0162-1) (Approximate Nearest Neighbors Oh Yeah).
+Spotify ANNoy [[1]](#r1d6a7aea0162-1) (Approximate Nearest Neighbors Oh Yeah).
 
 Exports:
 
@@ -60,7 +60,6 @@ Go BackOpen In Tab
 
 |  |  |
 | --- | --- |
-| [`_annoy`](../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy") | High-level Python interface for the C++ ANNoy backend. |
 | [`_annoy.annoylib`](../modules/generated/scikitplot.cexternals._annoy.annoylib.html#module-scikitplot.cexternals._annoy.annoylib "scikitplot.cexternals._annoy.annoylib") | Compiled with GCC/Clang(Using 512-bit AVX instructions). |
 | [`_annoy.Annoy`](../modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy "scikitplot.cexternals._annoy.Annoy") | Compiled with GCC/Clang. |
 | [`_annoy.AnnoyIndex`](../modules/generated/scikitplot.cexternals._annoy.AnnoyIndex.html#scikitplot.cexternals._annoy.AnnoyIndex "scikitplot.cexternals._annoy.AnnoyIndex") |  |
@@ -79,7 +78,6 @@ online at <https://www.astropy.org/>.
 
 |  |  |
 | --- | --- |
-| [`_astropy`](../modules/generated/scikitplot.cexternals._astropy.html#module-scikitplot.cexternals._astropy "scikitplot.cexternals._astropy") | Astropy is a package intended to contain core functionality and some common tools needed for performing astronomy and astrophysics research with Python. |
 | [`_astropy.stats`](../modules/generated/scikitplot.cexternals._astropy.stats.html#module-scikitplot.cexternals._astropy.stats "scikitplot.cexternals._astropy.stats") | This subpackage contains statistical tools provided for or used by Astropy. |
 
 ## NumPy f2py as submodule.[#](#module-scikitplot.cexternals._f2py "Link to this heading")
@@ -104,13 +102,8 @@ NO WARRANTY IS EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
 
 |  |  |
 | --- | --- |
-| [`_f2py`](../modules/generated/scikitplot.cexternals._f2py.html#module-scikitplot.cexternals._f2py "scikitplot.cexternals._f2py") | Fortran to Python Interface Generator. |
 | [`_f2py.get_include`](../modules/generated/scikitplot.cexternals._f2py.get_include.html#scikitplot.cexternals._f2py.get_include "scikitplot.cexternals._f2py.get_include") | Return the directory that contains the `fortranobject.c` and `.h` files. |
 
 ## NumCpp header’s as submodule.[#](#module-scikitplot.cexternals._numcpp "Link to this heading")
 
 ****User guide.**** See the [NumCpp Header Only C++ (experimental)](../user_guide/cexternals/_numcpp/index.html#cexternals-numcpp-index) section for further details.
-
-|  |  |
-| --- | --- |
-| [`_numcpp`](../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp "scikitplot.cexternals._numcpp") |  |

@@ -1,6 +1,6 @@
 # Nc (NumCpp)[#](#nc-numcpp "Link to this heading")
 
-Examples relevant to the [`nc`](../../apis/scikitplot.nc.html#module-scikitplot.nc "scikitplot.nc") module with [`_numcpp`](../../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp "scikitplot.cexternals._numcpp").
+Examples relevant to the [`nc`](../../apis/scikitplot.nc.html#module-scikitplot.nc "scikitplot.nc") module with [`_numcpp`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._numcpp "scikitplot.cexternals._numcpp").
 
 [`nc`](../../apis/scikitplot.nc.html#module-scikitplot.nc "scikitplot.nc") is a Python module that provides high-performance numerical functions by exposing the C++ header-only library NumCpp, allowing seamless use of NumPy arrays in Python.
 

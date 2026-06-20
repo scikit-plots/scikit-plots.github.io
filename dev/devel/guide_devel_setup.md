@@ -270,7 +270,7 @@ pre-commit install
 ```
 
 Hooks are run automatically after the `git commit` stage of the
-[editing workflow](guide_devel_workflow.html#edit-flow). When a hook has found and fixed an error in a
+[editing workflow](guide_devel_details.html#edit-flow) or [The editing workflow](guide_devel_workflow.html#edit-flow-work). When a hook has found and fixed an error in a
 file, that file must be **staged and committed** again.
 
 Hooks can also be run manually. All the hooks can be run, in order as

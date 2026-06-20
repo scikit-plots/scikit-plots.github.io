@@ -143,7 +143,7 @@ img_encoder
 ```
 ![plot dl cnn autoencoder](../../_images/sphx_glr_plot_dl_cnn_autoencoder_001.png)
 ```
-<matplotlib.image.AxesImage object at 0x77822c07af90>
+<matplotlib.image.AxesImage object at 0x735061f7dbe0>
 
 ```
 ```
@@ -158,7 +158,7 @@ img_autoencoder
 ```
 ![plot dl cnn autoencoder](../../_images/sphx_glr_plot_dl_cnn_autoencoder_002.png)
 ```
-<matplotlib.image.AxesImage object at 0x77822deef290>
+<matplotlib.image.AxesImage object at 0x73506045dee0>
 
 ```
 ```
@@ -184,15 +184,15 @@ img_autoencoder_text
 ```
 ![plot dl cnn autoencoder](../../_images/sphx_glr_plot_dl_cnn_autoencoder_003.png)
 ```
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/autoencoder_text_20260616_021701Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/autoencoder_text_20260620_153736Z.png
 
-<matplotlib.image.AxesImage object at 0x77822c5e2a10>
+<matplotlib.image.AxesImage object at 0x7350602b1340>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.539 seconds)
+****Total running time of the script:**** (0 minutes 1.340 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_autoencoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_autoencoder.ipynb)
 

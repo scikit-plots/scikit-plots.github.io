@@ -1,3 +1,5 @@
+:orphan:
+
 # Documentation for scikit-plots[#](#documentation-for-scikit-plots "Link to this heading")
 
 This directory contains the full manual and website as displayed at

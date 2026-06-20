@@ -2,7 +2,7 @@
 
 ## Array API compatibility library[#](#array-api-compatibility-library "Link to this heading")
 
-This module contains functions related to [`array_api_compat`](../../../modules/generated/scikitplot.externals.array_api_compat.html#module-scikitplot.externals.array_api_compat "scikitplot.externals.array_api_compat").
+This module contains functions related to [`array_api_compat`](../../../apis/scikitplot.externals.html#module-scikitplot.externals.array_api_compat "scikitplot.externals.array_api_compat").
 
 Compatibility layer for common array libraries to support the Array API.
 

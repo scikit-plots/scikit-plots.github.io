@@ -1,5 +1,7 @@
 # scikitplot.\_externals[#](#module-scikitplot._externals "Link to this heading")
 
+Externals.
+
 ****User guide.**** See the [Externals (experimental)](../user_guide/_externals/index.html#externals-index) section for further details.
 
 ## Sphinx Extensions[#](#module-scikitplot._externals._sphinx_ext "Link to this heading")
@@ -58,15 +60,11 @@ Go BackOpen In Tab
 
 ****User guide.**** See the [Sphinx Ext (experimental)](../user_guide/_externals/_sphinx_ext/index.html#externals-sphinx-ext-index) section for further details.
 
-|  |  |
-| --- | --- |
-| [`_sphinx_ext._sphinx_ai_assistant`](../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html#module-scikitplot._externals._sphinx_ext._sphinx_ai_assistant "scikitplot._externals._sphinx_ext._sphinx_ai_assistant") | A Sphinx extension that adds AI-assistant features to documentation pages, including one-click Markdown export, AI chat deep-links, MCP tool integration, and automated `llms.txt` generation. |
-
 ## Sphinx AI Extension[#](#module-scikitplot._externals._sphinx_ext._sphinx_ai_assistant "Link to this heading")
 
 A Sphinx extension that adds AI-assistant features to documentation pages,
 including one-click Markdown export, AI chat deep-links, MCP tool
-integration, and automated `llms.txt` generation. [[1]](../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html#r6581310ff70c-1) [[2]](../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html#r6581310ff70c-2) [[3]](../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html#r6581310ff70c-3)
+integration, and automated `llms.txt` generation. [[1]](#r6581310ff70c-1) [[2]](#r6581310ff70c-2) [[3]](#r6581310ff70c-3)
 
 The module has ****two distinct layers****:
 

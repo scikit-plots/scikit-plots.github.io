@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask Us","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-16T02:22:24Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-20T15:42:41Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Gaussian Mixture Models — AIC, AICc, and BIC Model Selection — scikit-plots 0.5.dev0 documentation</title>
@@ -147,8 +147,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 <li class="nav-item dropdown">
@@ -157,8 +157,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 </button>
 <ul class="dropdown-menu" id="pst-nav-more-links">
 <li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+<a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="">
@@ -184,11 +184,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 <li class="">
@@ -292,13 +287,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="nav-item">
@@ -324,11 +319,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="nav-item">
 <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 <li class="nav-item">
@@ -557,31 +547,29 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 clusters.  A Gaussian Mixture Model (GMM) formalises that intuition: it
 assumes the data came from K overlapping “blobs”, each shaped like a
 multivariate Gaussian (bell curve).  We do not know K ahead of time —
-that is the whole point of this example.</p>
+that is the whole point of this example. <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
 <p>Mathematically, the model says:</p>
-<blockquote>
-<div><p>p(x | θ) = Σ_j  α_j · N(x | μ_j, Σ_j)    for j = 1 … K</p>
-</div></blockquote>
-<dl class="simple">
-<dt>where:</dt><dd><p>K    — number of blobs (unknown, to be selected)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>p(x | θ) = Σ_j  α_j · N(x | μ_j, Σ_j)    for j = 1 … K
+</pre></div>
+</div>
+<p>where:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>K    — number of blobs (unknown, to be selected)
 α_j  — how big / common blob j is          (all α_j sum to 1)
 μ_j  — centre of blob j
 Σ_j  — shape and orientation of blob j (covariance matrix)
-θ    — shorthand for all of {α_j, μ_j, Σ_j} together</p>
-</dd>
-</dl>
+θ    — shorthand for all of {α_j, μ_j, Σ_j} together
+</pre></div>
+</div>
 </section>
 <section id="how-does-sklearn-fit-the-model-expectationmaximisation-em">
 <h2>How does sklearn fit the model?  (Expectation–Maximisation, EM)<a class="headerlink" href="#how-does-sklearn-fit-the-model-expectationmaximisation-em" title="Link to this heading">#</a></h2>
 <p>EM is an iterative two-step algorithm:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>E-step  For each data point, calculate how likely it is that each</dt><dd><p>blob generated it.  These are called “responsibilities”.</p>
-</dd>
-<dt>M-step  Update α, μ, Σ so that the model better explains those</dt><dd><p>responsibilities.</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="o">-</span><span class="n">step</span>  <span class="n">For</span> <span class="n">each</span> <span class="n">data</span> <span class="n">point</span><span class="p">,</span> <span class="n">calculate</span> <span class="n">how</span> <span class="n">likely</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">that</span> <span class="n">each</span>
+        <span class="n">blob</span> <span class="n">generated</span> <span class="n">it</span><span class="o">.</span>  <span class="n">These</span> <span class="n">are</span> <span class="n">called</span> <span class="s2">"responsibilities"</span><span class="o">.</span>
+<span class="n">M</span><span class="o">-</span><span class="n">step</span>  <span class="n">Update</span> <span class="n">α</span><span class="p">,</span> <span class="n">μ</span><span class="p">,</span> <span class="n">Σ</span> <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">model</span> <span class="n">better</span> <span class="n">explains</span> <span class="n">those</span>
+        <span class="n">responsibilities</span><span class="o">.</span>
+</pre></div>
+</div>
 <p>EM repeats until the improvement per iteration falls below a threshold
 (<code class="docutils literal notranslate"><span class="pre">tol</span></code> in sklearn, default 1e-3).</p>
 </section>
@@ -595,52 +583,46 @@ That is what AIC, AICc, and BIC do.</p>
 <section id="the-three-criteria">
 <h2>The three criteria<a class="headerlink" href="#the-three-criteria" title="Link to this heading">#</a></h2>
 <p>All three are computed from the same two ingredients:</p>
-<blockquote>
-<div><ul class="simple">
-<li><dl class="simple">
-<dt>ln L*   the log-likelihood after EM has converged</dt><dd><p>(bigger = the model explains the data better)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>p       the number of free parameters in the model</dt><dd><p>(bigger = the model is more complex)</p>
-</dd>
-</dl>
-</li>
-</ul>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">ln</span> <span class="n">L</span><span class="o">*</span>   <span class="n">the</span> <span class="n">log</span><span class="o">-</span><span class="n">likelihood</span> <span class="n">after</span> <span class="n">EM</span> <span class="n">has</span> <span class="n">converged</span>
+          <span class="p">(</span><span class="n">bigger</span> <span class="o">=</span> <span class="n">the</span> <span class="n">model</span> <span class="n">explains</span> <span class="n">the</span> <span class="n">data</span> <span class="n">better</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">p</span>       <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">free</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">model</span>
+          <span class="p">(</span><span class="n">bigger</span> <span class="o">=</span> <span class="n">the</span> <span class="n">model</span> <span class="ow">is</span> <span class="n">more</span> <span class="nb">complex</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>The formulas:</p>
-<blockquote>
-<div><p>AIC  = -2 ln L*  +  2p
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AIC  = -2 ln L*  +  2p
 AICc = -2 ln L*  +  2p  +  2p(p+1) / (N - p - 1)
-BIC  = -2 ln L*  +  p · ln N</p>
-</div></blockquote>
+BIC  = -2 ln L*  +  p · ln N
+</pre></div>
+</div>
 <p>All three are <strong>lower-is-better</strong>.  The -2 ln L* term rewards a good fit;
 the second term penalises complexity.  The penalties differ:</p>
-<blockquote>
-<div><p>AIC   penalises each parameter by exactly 2.
-AICc  is AIC plus a small extra correction for small sample sizes.</p>
-<blockquote>
-<div><p>When N is large the correction shrinks to zero and AICc ≈ AIC.
-When N is small (rough rule: N/p &lt; 40) the correction matters.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>BIC   penalises each parameter by ln N, which is &gt; 2 for N &gt; 7.</dt><dd><p>This makes BIC prefer sparser (fewer components) models.</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AIC   penalises each parameter by exactly 2.
+AICc  is AIC plus a small extra correction for small sample sizes.
+      When N is large the correction shrinks to zero and AICc ≈ AIC.
+      When N is small (rough rule: N/p &lt; 40) the correction matters.
+BIC   penalises each parameter by ln N, which is &gt; 2 for N &gt; 7.
+      This makes BIC prefer sparser (fewer components) models.
+</pre></div>
+</div>
 </section>
 <section id="when-should-i-use-each">
 <h2>When should I use each?<a class="headerlink" href="#when-should-i-use-each" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><dl class="simple">
+<ul>
+<li><dl class="simple">
 <dt>AIC   — your goal is <em>prediction</em>.  You are building a generative model</dt><dd><p>and you want the best out-of-sample log-likelihood.  AIC’s
 softer penalty lets you keep richer structure when the data
 support it.</p>
 </dd>
+</dl>
+</li>
+<li><dl class="simple">
 <dt>AICc  — same goal as AIC but your dataset is small or the number of</dt><dd><p>parameters p is large relative to N.  Use AICc by default if
 you are unsure; for large N it converges to AIC anyway.</p>
 </dd>
+</dl>
+</li>
+<li><dl class="simple">
 <dt>BIC   — your goal is <em>structure recovery</em>: you want to know the true</dt><dd><p>number of clusters, not just predict well.  BIC’s stronger
 penalty makes it more likely to land on the right K when one
 exists.  This example uses BIC to pick the final model.</p>
@@ -649,12 +631,12 @@ exists.  This example uses BIC to pick the final model.</p>
 <p>Practical tip: always plot all three.  If they all agree on K, you can
 be confident.  If they disagree, the difference is usually just ±1 and
 you can inspect both models visually.</p>
-</div></blockquote>
+</li>
+</ul>
 </section>
 <section id="how-to-read-the-aic-aicc-bic-curves">
 <h2>How to read the AIC / AICc / BIC curves<a class="headerlink" href="#how-to-read-the-aic-aicc-bic-curves" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic simple">
 <li><p>Plot score (y-axis) vs K (x-axis).</p></li>
 <li><p>The best K is at the minimum of the curve.</p></li>
 <li><p>A sharp dip    → the data strongly prefer that K.</p></li>
@@ -666,69 +648,63 @@ you can inspect both models visually.</p>
 <li><p>BIC minimum ≤ AIC minimum — BIC always penalises more,
 so its minimum shifts left.  This is expected, not a bug.</p></li>
 </ol>
-</div></blockquote>
 </section>
 <section id="free-parameter-count-for-a-full-covariance-gmm-on-d-dimensional-data">
 <h2>Free parameter count for a full-covariance GMM on d-dimensional data<a class="headerlink" href="#free-parameter-count-for-a-full-covariance-gmm-on-d-dimensional-data" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><p>means      :  K × d
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>means      :  K × d
 covariances:  K × d(d+1)/2    (symmetric matrix, upper triangle only)
-weights    :  K - 1           (K weights constrained to sum to 1)</p>
-<p>Total  p = K × d  +  K × d(d+1)/2  +  (K - 1)</p>
-<p>For d=2 (this example):  p = 2K + 3K + K - 1 = 6K - 1
-For K=5:                 p = 29</p>
-</div></blockquote>
+weights    :  K - 1           (K weights constrained to sum to 1)
+
+Total  p = K × d  +  K × d(d+1)/2  +  (K - 1)
+
+For d=2 (this example):  p = 2K + 3K + K - 1 = 6K - 1
+For K=5:                 p = 29
+</pre></div>
+</div>
 </section>
 <section id="this-example">
 <h2>This example<a class="headerlink" href="#this-example" title="Link to this heading">#</a></h2>
 <p>We generate a 2-D dataset from K_true = 5 known Gaussian blobs.  Having
 a ground truth lets us check whether the criteria recover the right K.</p>
-<dl class="simple">
-<dt>Steps:</dt><dd><ol class="arabic simple">
-<li><p>Generate 2 000 points from 5 blobs with different spreads.</p></li>
-<li><p>Fit GMMs for K = 1 … 13.</p></li>
-<li><p>Compute AIC, AICc, and BIC for each K.</p></li>
-<li><p>Pick K_best = argmin(BIC).</p></li>
-<li><dl class="simple">
-<dt>Produce four plots:</dt><dd><ol class="loweralpha simple">
-<li><p>raw 2-D data density (observed histogram)</p></li>
-<li><p>AIC / AICc / BIC curves with minima marked</p></li>
-<li><p>best-fit GMM density with component ellipses</p></li>
-<li><p>side-by-side: observed density vs. recovered density</p></li>
-</ol>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
+<p>Steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.  Generate 2 000 points from 5 blobs with different spreads.
+2.  Fit GMMs for K = 1 … 13.
+3.  Compute AIC, AICc, and BIC for each K.
+4.  Pick K_best = argmin(BIC).
+5.  Produce four plots:
+      (a) raw 2-D data density (observed histogram)
+      (b) AIC / AICc / BIC curves with minima marked
+      (c) best-fit GMM density with component ellipses
+      (d) side-by-side: observed density vs. recovered density
+</pre></div>
+</div>
 <p>Dependencies: NumPy, matplotlib, scikit-learn.  Nothing else.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id1" role="doc-backlink">1</a><span class="fn-bracket">]</span></span>
 <p>Akaike, H. (1974). A new look at the statistical model
 identification. IEEE Trans. Autom. Control, 19(6), 716-723.</p>
 </aside>
-<aside class="footnote brackets" id="id2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id2" role="doc-backlink">2</a><span class="fn-bracket">]</span></span>
 <p>Schwarz, G. (1978). Estimating the dimension of a model.
 Ann. Stat., 6(2), 461-464.</p>
 </aside>
-<aside class="footnote brackets" id="id3" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id3" role="doc-backlink">3</a><span class="fn-bracket">]</span></span>
 <p>Hurvich, C. M., &amp; Tsai, C.-L. (1989). Regression and time series
 model selection in small samples.  Biometrika, 76(2), 297-307.</p>
 </aside>
-<aside class="footnote brackets" id="id4" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id4" role="doc-backlink">4</a><span class="fn-bracket">]</span></span>
 <p>McLachlan, G. J., &amp; Peel, D. (2000). Finite Mixture Models.
 Wiley-Interscience.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id5" role="doc-backlink">5</a><span class="fn-bracket">]</span></span>
 <p>scikit-learn GaussianMixture docs:
 <a class="reference external" href="https://scikit-learn.org/stable/modules/mixture.html">https://scikit-learn.org/stable/modules/mixture.html</a></p>
 </aside>
@@ -1376,7 +1352,7 @@ differences reveal where the model is wrong.</p>
 </pre></div>
 </div>
 <img alt="Observed data (left) vs. GMM recovery (right) K_true = 5,  BIC-selected K = 5" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_gaussian_mixture_models_004.png" srcset="../../_images/sphx_glr_plot_gaussian_mixture_models_004.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-clustering.html"><span class="doc">model-type: clustering</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-selection.html"><span class="doc">model-workflow: model-selection</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-density.html"><span class="doc">plot-type: density</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-statistics.html"><span class="doc">domain: statistics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.776 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.446 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1516,7 +1492,7 @@ differences reveal where the model is wrong.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260616.2eeb508 2026-06-16T02:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260620.f06fe30 2026-06-20T15:23Z.
       <br/>
 </p>
 </div>

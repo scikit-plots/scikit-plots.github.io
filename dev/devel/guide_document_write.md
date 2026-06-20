@@ -17,14 +17,14 @@ restructuredtext References:[#](#restructuredtext-references: "Link to this drop
 
 ### General file structure[#](#general-file-structure "Link to this heading")
 
-All documentation is built from the `doc/`. The `doc/`
+All documentation is built from the `docs/`. The `docs/`
 directory contains configuration files for Sphinx and reStructuredText
 ([docutils](https://docutils.sourceforge.io/rst.html); `.rst`) files that are rendered to documentation pages.
 
 Documentation is created in three ways. First, API documentation
-(`doc/api`) is created by [sphinx](https://pypi.org/project/Sphinx/) from
+(`docs/source/apis`) is created by [sphinx](https://pypi.org/project/Sphinx/) from
 the docstrings of the classes in the Matplotlib library. Except for
-`doc/api/api_changes/`, `.rst` files in `doc/api` are created
+`docs/source/whats_new/`, `.rst` files in `docs/source/apis` are created
 when the documentation is built. See [Write docstrings](#writing-docstrings) below.
 
 Second, our example pages, tutorials, and some of the narrative documentation
@@ -234,7 +234,7 @@ Do not describe ``argument`` like this.
 
 ### Refer to other documents and sections[#](#refer-to-other-documents-and-sections "Link to this heading")
 
-[sphinx](https://pypi.org/project/Sphinx/) supports internal [`https://www.sphinx-doc.org/en/stable/usage/restructuredtext/roles.html`\_\_](#id3):
+[sphinx](https://pypi.org/project/Sphinx/) supports internal [roles](https://www.sphinx-doc.org/en/stable/usage/restructuredtext/roles.html):
 
 | Role | Links target | Representation in rendered HTML |
 | --- | --- | --- |
@@ -258,7 +258,7 @@ will render as:
 >
 > See the tutorial [Quick Start Guide](../introduction/quick_start.html#quick-start)
 >
-> See the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev272+gfe7830972)")
+> See the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)")
 
 Sections can also be given reference labels. For instance from the
 [Installation](../install/index.html) link:
@@ -410,7 +410,7 @@ In rare cases we want the rendering of the mathematical text in the
 documentation html to exactly match with the rendering of the mathematical
 expression in the Matplotlib figure. In these cases, you can use the
 `matplotlib.sphinxext.mathmpl` Sphinx extension (See also the
-[Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html "(in Matplotlib v3.12.0.dev272+gfe7830972)") tutorial.)
+[Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)") tutorial.)
 
 ## Write docstrings[#](#write-docstrings "Link to this heading")
 
@@ -474,7 +474,7 @@ def hlines(self, y, xmin, xmax, colors=None, linestyles='solid',
 
 See the `~.Axes.hlines` documentation for how this renders.
 
-The [sphinx](https://pypi.org/project/Sphinx/) website also contains plenty of [`https://www.sphinx-doc.org/en/master/contents.html`\_\_](#id3) concerning ReST
+The [sphinx](https://pypi.org/project/Sphinx/) website also contains plenty of [contents](https://www.sphinx-doc.org/en/master/contents.html) concerning ReST
 markup and working with Sphinx in general.
 
 ### Formatting conventions[#](#formatting-conventions "Link to this heading")
@@ -514,10 +514,9 @@ consistent with Python’s documentation:
 ```
 If *linestyles* is *None*, the default is 'solid'.
 
+Do not use the ```default role``` or the ````literal```` role:
+
 ```
-
-Do not use the ``default role`` or the ```literal``` role:
-
 ```
 Neither `argument` nor ``argument`` should be used.
 
@@ -590,12 +589,12 @@ list of `.Artist`
 
 Generally, the rules from [referring-to-other-code](#referring-to-other-code) apply. More specifically:
 
-Use full references ``~matplotlib.colors.Normalize`` with an
+Use full references `~matplotlib.colors.Normalize` with an
 abbreviation tilde in parameter types. While the full name helps the
 reader of plain text docstrings, the HTML does not need to show the full
 name as it links to it. Hence, the `~`-shortening keeps it more readable.
 
-Use abbreviated links ``.Normalize`` in the text.
+Use abbreviated links `.Normalize` in the text.
 
 ```
 norm : `~matplotlib.colors.Normalize`, optional
@@ -868,7 +867,7 @@ Note that `examples/text_labels_and_annotations/legend.py` has been mapped to
 fixed in future re-organization of the docs.
 
 Plots can also be directly placed inside docstrings. Details are in
-[matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.12.0.dev272+gfe7830972)"). A short example is:
+[matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)"). A short example is:
 
 ```
 """
@@ -919,7 +918,7 @@ displayed, and figures are put into the built page. Matplotlib uses the
 `# %%` section separator so that IDEs will identify “code cells” to make
 it easy to re-run sub-sections of the example.
 
-For instance the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev272+gfe7830972)")
+For instance the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)")
 example is generated from
 `/galleries/examples/lines_bars_and_markers/simple_plot.py`, which looks
 like:
@@ -952,7 +951,7 @@ plt.show()
 ```
 
 The first comment block is treated as [docutils](https://docutils.sourceforge.io/rst.html) text. The other comment blocks
-render as comments in [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev272+gfe7830972)").
+render as comments in [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)").
 
 Tutorials are made with the exact same mechanism, except they are longer and
 typically have more than one comment block (i.e. [Quick Start Guide](../introduction/quick_start.html#quick-start)). The
@@ -1030,7 +1029,7 @@ reference should always be the second to mention; see the example above.
 
 ### Order examples[#](#order-examples "Link to this heading")
 
-The order of the sections of the [Tutorials](https://matplotlib.org/devdocs/tutorials/index.html#tutorials "(in Matplotlib v3.12.0.dev272+gfe7830972)") and the [Examples](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.12.0.dev272+gfe7830972)"), as
+The order of the sections of the [Tutorials](https://matplotlib.org/devdocs/tutorials/index.html#tutorials "(in Matplotlib v3.12.0.dev283+g91f9a9d16)") and the [Examples](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.12.0.dev283+g91f9a9d16)"), as
 well as the order of the examples within each section are determined in a
 two step process from within the `/doc/sphinxext/gallery_order.py`:
 
@@ -1055,7 +1054,7 @@ should ideally be named similar to `imshow_mynewexample.py`.
 Python source files that are then translated to an `index.rst` file and a
 series of `example_name.rst` files in the `doc/` subdirectories.
 However, Sphinx Gallery also allows raw `*.rst` files to be passed through a
-gallery (see [`https://sphinx-gallery.github.io/stable/configuration.html#manually-passing-files`\_\_](#id3)
+gallery (see [manually-passing-files](https://sphinx-gallery.github.io/stable/configuration.html#manually-passing-files)
 in the Sphinx Gallery documentation). We
 use this feature in `galleries/users_explain`, where, for instance,
 `galleries/users_explain/colors` is a regular Sphinx Gallery
@@ -1108,15 +1107,15 @@ Code:
     doing. When more context or explanation is required, add a text paragraph before
     the code example.
 
-[Identify whether artists intersect](https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html "(in Matplotlib v3.12.0.dev272+gfe7830972)") demonstrates the point of visual examples.
+[Identify whether artists intersect](https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)") demonstrates the point of visual examples.
 This example is “messy” in that it’s hard to categorize, but the gallery is the right
 spot for it because it makes sense to find it by visual search
 
-[Interactive adjustment of colormap range](https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html "(in Matplotlib v3.12.0.dev272+gfe7830972)") is an
+[Interactive adjustment of colormap range](https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)") is an
 example of a good descriptive title that briefly summarizes how the showcased
 library features are used to implement the demonstrated visualization technique.
 
-[Lines with a ticked patheffect](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html "(in Matplotlib v3.12.0.dev272+gfe7830972)") is an example of having a
+[Lines with a ticked patheffect](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)") is an example of having a
 minimal amount of code necessary to showcase the feature. The lack of extraneous code
 makes it easier for the reader to map which parts of code correspond to which parts of
 the plot.

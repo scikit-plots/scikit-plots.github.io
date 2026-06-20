@@ -2,7 +2,7 @@ Release:
 :   0.5
 
 Date:
-:   June 16, 2026 02:01 UTC
+:   June 20, 2026 15:23 UTC
 
 # Scikit-plots Enhancement Proposals[#](#scikit-plots-enhancement-proposals "Link to this heading")
 

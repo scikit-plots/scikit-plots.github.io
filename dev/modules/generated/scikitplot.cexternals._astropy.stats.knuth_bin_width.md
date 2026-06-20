@@ -1,6 +1,6 @@
 # knuth\_bin\_width[#](#knuth-bin-width "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.knuth\_bin\_width(**data**, **return\_bins=False**, **quiet=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cexternals/_astropy/stats/histogram.py#L313)[#](#scikitplot.cexternals._astropy.stats.knuth_bin_width "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.knuth\_bin\_width(**data**, **return\_bins=False**, **quiet=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/cexternals/_astropy/stats/histogram.py#L313)[#](#scikitplot.cexternals._astropy.stats.knuth_bin_width "Link to this definition")
 :   Return the optimal histogram bin width using Knuth’s rule.
 
     Knuth’s rule is a fixed-width, Bayesian approach to determining
@@ -24,7 +24,7 @@ scikitplot.cexternals.\_astropy.stats.knuth\_bin\_width(**data**, **return\_bins
         :   bin edges: returned if `return_bins` is True
 
     Parameters:
-    :   * ****data**** (**\_Buffer** **|** **\_SupportsArray****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]** **|** **\_NestedSequence****[****\_SupportsArray****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]****]** **|** [**complex**](https://docs.python.org/3/library/functions.html#complex "(in Python v3.14)") **|** [**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **\_NestedSequence****[**[**complex**](https://docs.python.org/3/library/functions.html#complex "(in Python v3.14)") **|** [**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+    :   * ****data**** (**ArrayLike**)
         * ****return\_bins**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
         * ****quiet**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
 

@@ -27,13 +27,14 @@ Imagine you have a scatter plot of data and you can see a few separate
 clusters.  A Gaussian Mixture Model (GMM) formalises that intuition: it
 assumes the data came from K overlapping "blobs", each shaped like a
 multivariate Gaussian (bell curve).  We do not know K ahead of time —
-that is the whole point of this example.
+that is the whole point of this example. [1]_ [2]_ [3]_ [4]_ [5]_
 
-Mathematically, the model says:
+Mathematically, the model says::
 
     p(x | θ) = Σ_j  α_j · N(x | μ_j, Σ_j)    for j = 1 … K
 
-where:
+where::
+
   K    — number of blobs (unknown, to be selected)
   α_j  — how big / common blob j is          (all α_j sum to 1)
   μ_j  — centre of blob j
@@ -42,7 +43,7 @@ where:
 
 How does sklearn fit the model?  (Expectation–Maximisation, EM)
 ----------------------------------------------------------------
-EM is an iterative two-step algorithm:
+EM is an iterative two-step algorithm::
 
   E-step  For each data point, calculate how likely it is that each
           blob generated it.  These are called "responsibilities".
@@ -61,21 +62,21 @@ That is what AIC, AICc, and BIC do.
 
 The three criteria
 ------------------
-All three are computed from the same two ingredients:
+All three are computed from the same two ingredients::
 
   - ln L*   the log-likelihood after EM has converged
             (bigger = the model explains the data better)
   - p       the number of free parameters in the model
             (bigger = the model is more complex)
 
-The formulas:
+The formulas::
 
   AIC  = -2 ln L*  +  2p
   AICc = -2 ln L*  +  2p  +  2p(p+1) / (N - p - 1)
   BIC  = -2 ln L*  +  p · ln N
 
 All three are **lower-is-better**.  The -2 ln L* term rewards a good fit;
-the second term penalises complexity.  The penalties differ:
+the second term penalises complexity.  The penalties differ::
 
   AIC   penalises each parameter by exactly 2.
   AICc  is AIC plus a small extra correction for small sample sizes.
@@ -86,19 +87,19 @@ the second term penalises complexity.  The penalties differ:
 
 When should I use each?
 -----------------------
-  AIC   — your goal is *prediction*.  You are building a generative model
-          and you want the best out-of-sample log-likelihood.  AIC's
-          softer penalty lets you keep richer structure when the data
-          support it.
+* AIC   — your goal is *prediction*.  You are building a generative model
+        and you want the best out-of-sample log-likelihood.  AIC's
+        softer penalty lets you keep richer structure when the data
+        support it.
 
-  AICc  — same goal as AIC but your dataset is small or the number of
-          parameters p is large relative to N.  Use AICc by default if
-          you are unsure; for large N it converges to AIC anyway.
+* AICc  — same goal as AIC but your dataset is small or the number of
+        parameters p is large relative to N.  Use AICc by default if
+        you are unsure; for large N it converges to AIC anyway.
 
-  BIC   — your goal is *structure recovery*: you want to know the true
-          number of clusters, not just predict well.  BIC's stronger
-          penalty makes it more likely to land on the right K when one
-          exists.  This example uses BIC to pick the final model.
+* BIC   — your goal is *structure recovery*: you want to know the true
+        number of clusters, not just predict well.  BIC's stronger
+        penalty makes it more likely to land on the right K when one
+        exists.  This example uses BIC to pick the final model.
 
   Practical tip: always plot all three.  If they all agree on K, you can
   be confident.  If they disagree, the difference is usually just ±1 and
@@ -106,16 +107,18 @@ When should I use each?
 
 How to read the AIC / AICc / BIC curves
 -----------------------------------------
-  1.  Plot score (y-axis) vs K (x-axis).
-  2.  The best K is at the minimum of the curve.
-  3.  A sharp dip    → the data strongly prefer that K.
-  4.  A flat plateau → nearby K values are nearly equivalent;
-                       pick the smaller K (simpler is safer).
-  5.  BIC minimum ≤ AIC minimum — BIC always penalises more,
-      so its minimum shifts left.  This is expected, not a bug.
+1.  Plot score (y-axis) vs K (x-axis).
+2.  The best K is at the minimum of the curve.
+3.  A sharp dip    → the data strongly prefer that K.
+4.  A flat plateau → nearby K values are nearly equivalent;
+                    pick the smaller K (simpler is safer).
+5.  BIC minimum ≤ AIC minimum — BIC always penalises more,
+    so its minimum shifts left.  This is expected, not a bug.
 
 Free parameter count for a full-covariance GMM on d-dimensional data
 ---------------------------------------------------------------------
+::
+
   means      :  K × d
   covariances:  K × d(d+1)/2    (symmetric matrix, upper triangle only)
   weights    :  K - 1           (K weights constrained to sum to 1)
@@ -130,7 +133,8 @@ This example
 We generate a 2-D dataset from K_true = 5 known Gaussian blobs.  Having
 a ground truth lets us check whether the criteria recover the right K.
 
-Steps:
+Steps::
+
   1.  Generate 2 000 points from 5 blobs with different spreads.
   2.  Fit GMMs for K = 1 … 13.
   3.  Compute AIC, AICc, and BIC for each K.
@@ -171,7 +175,7 @@ Import individual helpers inside a notebook::
 
     from plot_gaussian_mixture_models import fit_gmm_range, draw_ellipse
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-159
+.. GENERATED FROM PYTHON SOURCE LINES 159-163
 
 .. code-block:: Python
 
@@ -186,13 +190,13 @@ Import individual helpers inside a notebook::
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-163
+.. GENERATED FROM PYTHON SOURCE LINES 164-167
 
 ---------------------------------------------------------------------------
 Section 1 — Imports
 ---------------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-175
+.. GENERATED FROM PYTHON SOURCE LINES 167-179
 
 .. code-block:: Python
 
@@ -215,13 +219,13 @@ Section 1 — Imports
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-179
+.. GENERATED FROM PYTHON SOURCE LINES 180-183
 
 ---------------------------------------------------------------------------
 Section 2 — Utility functions
 ---------------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-545
+.. GENERATED FROM PYTHON SOURCE LINES 183-549
 
 .. code-block:: Python
 
@@ -598,7 +602,7 @@ Section 2 — Utility functions
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 546-555
+.. GENERATED FROM PYTHON SOURCE LINES 550-559
 
 ---------------------------------------------------------------------------
 Section 3 — Generate synthetic 2-D data
@@ -610,7 +614,7 @@ equal-variance blobs.
 K_TRUE is used only for validation at the end.  The GMM fitting loop
 below never sees this value — it has to figure out K on its own.
 
-.. GENERATED FROM PYTHON SOURCE LINES 555-567
+.. GENERATED FROM PYTHON SOURCE LINES 559-571
 
 .. code-block:: Python
 
@@ -633,7 +637,7 @@ below never sees this value — it has to figure out K on its own.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 568-573
+.. GENERATED FROM PYTHON SOURCE LINES 572-577
 
 ---------------------------------------------------------------------------
 Section 4 — Fit GMMs for K = 1 … 13; collect AIC, AICc, BIC
@@ -641,7 +645,7 @@ Section 4 — Fit GMMs for K = 1 … 13; collect AIC, AICc, BIC
 We fit all models upfront so Sections 5–10 are just reads — no recomputation.
 max_iter=300 is generous for a 2-D problem; lower values are fine too.
 
-.. GENERATED FROM PYTHON SOURCE LINES 573-584
+.. GENERATED FROM PYTHON SOURCE LINES 577-588
 
 .. code-block:: Python
 
@@ -663,7 +667,7 @@ max_iter=300 is generous for a 2-D problem; lower values are fine too.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 585-590
+.. GENERATED FROM PYTHON SOURCE LINES 589-594
 
 ---------------------------------------------------------------------------
 Section 5 — Pick the best model (minimum BIC)
@@ -671,7 +675,7 @@ Section 5 — Pick the best model (minimum BIC)
 BIC is preferred here because our goal is recovering the true K, not
 maximising predictive accuracy.  AICc is printed for comparison.
 
-.. GENERATED FROM PYTHON SOURCE LINES 590-613
+.. GENERATED FROM PYTHON SOURCE LINES 594-617
 
 .. code-block:: Python
 
@@ -722,13 +726,13 @@ maximising predictive accuracy.  AICc is printed for comparison.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 614-617
+.. GENERATED FROM PYTHON SOURCE LINES 618-621
 
 ---------------------------------------------------------------------------
 Section 6 — Build observed density (histogram) and GMM density grid
 ---------------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 617-634
+.. GENERATED FROM PYTHON SOURCE LINES 621-638
 
 .. code-block:: Python
 
@@ -756,14 +760,14 @@ Section 6 — Build observed density (histogram) and GMM density grid
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 635-639
+.. GENERATED FROM PYTHON SOURCE LINES 639-643
 
 ---------------------------------------------------------------------------
 Section 7 — Plot: raw observed density (what the data look like)
 ---------------------------------------------------------------------------
 This is the "before" panel — purely the data, no model involved.
 
-.. GENERATED FROM PYTHON SOURCE LINES 639-653
+.. GENERATED FROM PYTHON SOURCE LINES 643-657
 
 .. code-block:: Python
 
@@ -793,7 +797,7 @@ This is the "before" panel — purely the data, no model involved.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 654-663
+.. GENERATED FROM PYTHON SOURCE LINES 658-667
 
 ---------------------------------------------------------------------------
 Section 8 — Plot: AIC, AICc, and BIC curves
@@ -805,7 +809,7 @@ Reading guide (printed in the title too):
   • AICc ≈ AIC when N is large (lines nearly overlap in that case).
   • A flat region means the data cannot distinguish those K values well.
 
-.. GENERATED FROM PYTHON SOURCE LINES 663-698
+.. GENERATED FROM PYTHON SOURCE LINES 667-702
 
 .. code-block:: Python
 
@@ -856,7 +860,7 @@ Reading guide (printed in the title too):
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 699-707
+.. GENERATED FROM PYTHON SOURCE LINES 703-711
 
 ---------------------------------------------------------------------------
 Section 9 — Plot: best-fit GMM density + component ellipses
@@ -867,7 +871,7 @@ roughly where 74 % of that component's probability mass sits.
 If the ellipses align with the visible blobs, the model has captured
 the data structure well.
 
-.. GENERATED FROM PYTHON SOURCE LINES 707-732
+.. GENERATED FROM PYTHON SOURCE LINES 711-736
 
 .. code-block:: Python
 
@@ -908,7 +912,7 @@ the data structure well.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 733-740
+.. GENERATED FROM PYTHON SOURCE LINES 737-744
 
 ---------------------------------------------------------------------------
 Section 10 — Side-by-side: observed density vs. recovered density
@@ -918,7 +922,7 @@ Right panel: the GMM density — what the model learned.
 Good agreement means the model captured the real structure; systematic
 differences reveal where the model is wrong.
 
-.. GENERATED FROM PYTHON SOURCE LINES 740-777
+.. GENERATED FROM PYTHON SOURCE LINES 744-781
 
 .. code-block:: Python
 
@@ -971,7 +975,7 @@ differences reveal where the model is wrong.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 778-787
+.. GENERATED FROM PYTHON SOURCE LINES 782-791
 
 .. tags::
 
@@ -986,7 +990,7 @@ differences reveal where the model is wrong.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.776 seconds)
+   **Total running time of the script:** (0 minutes 1.446 seconds)
 
 
 .. _sphx_glr_download_auto_examples_stats_plot_gaussian_mixture_models.py:

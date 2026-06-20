@@ -13,7 +13,7 @@ Each file should be named like `<PULL REQUEST>.<TYPE>.rst`, where
 * `enhancement`
 * `fix`
 * `api`
-* `other` (see [`custom-top-level-folder`](#custom-top-level-folder))
+* `other` (🔗 see [Jump](#custom-top-level-folder))
 
 See [this](https://github.com/scikit-learn/scikit-learn/blob/main/doc/whats_new/changelog_legend.inc)
 for more details about the meaning of each type.

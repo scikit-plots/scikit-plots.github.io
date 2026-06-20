@@ -7,7 +7,7 @@ the ****nearest neighbors**** (the most similar vectors).
 
 This page documents the Annoy [[1]](#id31) user guide integration shipped with scikit-plots.
 
-* Low-level bindings C-API: [`_annoy`](../../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
+* Low-level bindings C-API: [`_annoy`](../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
 * High-level Python-API: [`annoy`](../../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy")
 
 ## Python API[#](#python-api "Link to this heading")

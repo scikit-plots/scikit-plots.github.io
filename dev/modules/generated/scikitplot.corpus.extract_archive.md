@@ -1,6 +1,6 @@
 # extract\_archive[#](#extract-archive "Link to this heading")
 
-scikitplot.corpus.extract\_archive(**archive\_path**, **output\_path**, **\***, **supported\_extensions=None**, **max\_files=10000**, **max\_total\_bytes=2147483648**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_archive_handler.py#L156)[#](#scikitplot.corpus.extract_archive "Link to this definition")
+scikitplot.corpus.extract\_archive(**archive\_path**, **output\_path**, **\***, **supported\_extensions=None**, **max\_files=10000**, **max\_total\_bytes=2147483648**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_archive_handler.py#L156)[#](#scikitplot.corpus.extract_archive "Link to this definition")
 :   Extract an archive to a destination directory.
 
     Parameters:

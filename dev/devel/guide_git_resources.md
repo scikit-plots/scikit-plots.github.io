@@ -241,7 +241,7 @@ git branch -D tmp
 ```
 
 If it doesn’t look good you may need to have a look at
-[Recovering from mess-ups](#recovering-from-mess-up).
+[Recover from mistakes](guide_devel_workflow.html#recovering-from-mess-up) or [Recovering from mess-ups](#recovering-from-mess-up-git).
 
 If you have made changes to files that have also changed in main, this may
 generate merge conflicts that you need to resolve - see the [git rebase](http://schacon.github.io/git/git-rebase.html) man
@@ -398,7 +398,7 @@ and the history looks now like this:
 
 ```
 
-If it went wrong, recovery is again possible as explained [above](#recovering-from-mess-up).
+If it went wrong, recovery is again possible as explained [above](guide_devel_workflow.html#recovering-from-mess-up) or [Recovering from mess-ups](#recovering-from-mess-up-git).
 
 ### Merge commits and cherry picks[#](#merge-commits-and-cherry-picks "Link to this heading")
 

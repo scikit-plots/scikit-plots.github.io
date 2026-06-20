@@ -1,6 +1,6 @@
 # to\_tensorflow\_dataset[#](#to-tensorflow-dataset "Link to this heading")
 
-scikitplot.corpus.to\_tensorflow\_dataset(**documents**, **\***, **text\_feature=True**, **raw\_tensor\_feature=False**, **embedding\_feature=False**, **label\_field=None**, **label\_map=None**, **batch\_size=32**, **shuffle=False**, **shuffle\_seed=None**, **dtype\_map=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_adapters.py#L893)[#](#scikitplot.corpus.to_tensorflow_dataset "Link to this definition")
+scikitplot.corpus.to\_tensorflow\_dataset(**documents**, **\***, **text\_feature=True**, **raw\_tensor\_feature=False**, **embedding\_feature=False**, **label\_field=None**, **label\_map=None**, **batch\_size=32**, **shuffle=False**, **shuffle\_seed=None**, **dtype\_map=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_adapters.py#L893)[#](#scikitplot.corpus.to_tensorflow_dataset "Link to this definition")
 :   Convert documents to a `tf.data.Dataset`.
 
     Parameters:

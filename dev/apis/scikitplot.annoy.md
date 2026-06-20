@@ -30,7 +30,7 @@ or matplotlib imports).
 * [spotify/annoy](https://github.com/spotify/annoy)
 * <https://pypi.org/project/annoy>
 > **See also**
-> [`scikitplot.cexternals._annoy`](../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
+> [`scikitplot.cexternals._annoy`](scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
 :   Low-level C-extension backend.
 
 [`scikitplot.annoy.Index`](../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index")

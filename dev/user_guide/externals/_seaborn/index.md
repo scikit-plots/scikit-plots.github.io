@@ -1,6 +1,6 @@
 # Seaborn (experimental)[#](#seaborn-experimental "Link to this heading")
 
-This module contains functions related to [`_seaborn`](../../../modules/generated/scikitplot.externals._seaborn.html#module-scikitplot.externals._seaborn "scikitplot.externals._seaborn").
+This module contains functions related to [`_seaborn`](../../../apis/scikitplot.externals.html#module-scikitplot.externals._seaborn "scikitplot.externals._seaborn").
 For Seaborn: statistical data visualization.
 
 > **Important**

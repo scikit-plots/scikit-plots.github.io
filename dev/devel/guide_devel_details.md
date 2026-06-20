@@ -8,7 +8,7 @@ topics covered in the [Quickstart Contributing Guidelines](guide_qu_contribute.h
 
 ## Pre-commit[#](#pre-commit "Link to this heading")
 
-All of the coding style checks described in [PEP8, as enforced by flake8](guide_code_style_write.html#code-style) can be performed automatically
+All of the coding style checks described in [Coding Style/Conventions](guide_code.html#code-style) or [PEP8, as enforced by flake8](guide_code_style_write.html#code-style-write) can be performed automatically
 when you make a git commit using our provided [pre-commit hook](https://pre-commit.com/)
 for git, for more information see
 [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_git_hooks).
@@ -54,7 +54,7 @@ git commit --no-verify
 ```
 
 If you do not want to use `pre-commit` as part of your git workflow, you can
-still run the checks manually (see, [PEP8, as enforced by flake8](guide_code_style_write.html#code-style)) using:
+still run the checks manually (see, [Coding Style/Conventions](guide_code.html#code-style) or [PEP8, as enforced by flake8](guide_code_style_write.html#code-style-write)) using:
 
 ```
 tox -e codestyle

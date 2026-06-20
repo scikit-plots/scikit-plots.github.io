@@ -1,6 +1,6 @@
 # set\_config[#](#set-config "Link to this heading")
 
-scikitplot.set\_config(**assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/config/_config.py#L141)[#](#scikitplot.set_config "Link to this definition")
+scikitplot.set\_config(**assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/config/_config.py#L141)[#](#scikitplot.set_config "Link to this definition")
 :   Set global scikit-plots configuration.
 
     Added in version 0.19.

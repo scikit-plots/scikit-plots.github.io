@@ -11,7 +11,7 @@ online at <https://www.astropy.org/>.
 
 ## Tweedie Distribution (generalized family)[#](#tweedie-distribution-generalized-family "Link to this heading")
 
-Examples relevant to the [`_tweedie`](../../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie "scikitplot.externals._tweedie") module.
+Examples relevant to the [`_tweedie`](../../apis/scikitplot.externals.html#module-scikitplot.externals._tweedie "scikitplot.externals._tweedie") module.
 
 Tweedie distributions are a very general family of distributions
 that includes the Gaussian, Poisson, and Gamma (among many others)

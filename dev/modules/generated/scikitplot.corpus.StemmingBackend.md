@@ -1,6 +1,6 @@
 # StemmingBackend[#](#stemmingbackend "Link to this heading")
 
-class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L228)[#](#scikitplot.corpus.StemmingBackend "Link to this definition")
+class scikitplot.corpus.StemmingBackend(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L228)[#](#scikitplot.corpus.StemmingBackend "Link to this definition")
 :   Stemming algorithm.
 
     Attributes:
@@ -24,15 +24,15 @@ class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/
             `Callable[[str], str]` stored in
             [`WordChunkerConfig.custom_stemmer`](scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig.custom_stemmer "scikitplot.corpus.WordChunkerConfig.custom_stemmer").
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.CUSTOM "Link to this definition")
 
-    LANCASTER = 'lancaster'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.LANCASTER "Link to this definition")
+    LANCASTER = 'lancaster'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.LANCASTER "Link to this definition")
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.NONE "Link to this definition")
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.NONE "Link to this definition")
 
-    PORTER = 'porter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.PORTER "Link to this definition")
+    PORTER = 'porter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.PORTER "Link to this definition")
 
-    SNOWBALL = 'snowball'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.SNOWBALL "Link to this definition")
+    SNOWBALL = 'snowball'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.SNOWBALL "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.StemmingBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.
@@ -148,10 +148,9 @@ class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/
         least one character in the string.
 
     isprintable(**/**)[#](#scikitplot.corpus.StemmingBackend.isprintable "Link to this definition")
-    :   Return True if the string is printable, False otherwise.
+    :   Return True if all characters in the string are printable, False otherwise.
 
-        A string is printable if all of its characters are considered printable in
-        repr() or if it is empty.
+        A character is printable if repr() may use it in its output.
 
     isspace(**/**)[#](#scikitplot.corpus.StemmingBackend.isspace "Link to this definition")
     :   Return True if the string is a whitespace string, False otherwise.

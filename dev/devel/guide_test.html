@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-16T02:22:31Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-20T15:42:48Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -219,8 +219,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
   </a>
 </li>
 
@@ -233,8 +233,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../cheatsheet/index.html">
-    Cheatsheet
+  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
@@ -270,13 +270,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
     Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../resources/index.html">
-    Resources
   </a>
 </li>
 
@@ -463,15 +456,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../cheatsheet/index.html">
-    Cheatsheet
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
@@ -507,13 +500,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
     Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../resources/index.html">
-    Resources
   </a>
 </li>
 
@@ -924,7 +910,7 @@ from any directory other than an <code class="docutils literal notranslate"><spa
 <li><p><code class="docutils literal notranslate"><span class="pre">test_</span></code> prefixed functions and methods</p></li>
 </ul>
 </div></blockquote>
-<p>Consult the <a class="reference external" href="https://pytest.org/en/stable/explanation/goodpractices.html#python-test-discovery" title="(in pytest v9.1.0)"><span class="xref std std-ref">test discovery rules</span></a>
+<p>Consult the <a class="reference external" href="https://pytest.org/en/stable/explanation/goodpractices.html#python-test-discovery" title="(in pytest v9.1.1)"><span class="xref std std-ref">test discovery rules</span></a>
 for detailed information on how to name files and tests so that they are
 automatically discovered by <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a>.</p>
 <section id="simple-example">
@@ -1068,7 +1054,7 @@ for the duration of the test run via <a class="reference external" href="https:/
 <section id="tests-that-create-files">
 <h3>Tests that create files<a class="headerlink" href="#tests-that-create-files" title="Link to this heading">#</a></h3>
 <p>Some tests involve writing files. These files should not be saved permanently.
-The <a class="reference external" href="https://pytest.org/en/stable/how-to/tmp_path.html#tmp-path" title="(in pytest v9.1.0)"><span class="xref std std-ref">pytest ‘tmp_path’ fixture</span></a> allows for the
+The <a class="reference external" href="https://pytest.org/en/stable/how-to/tmp_path.html#tmp-path" title="(in pytest v9.1.1)"><span class="xref std std-ref">pytest ‘tmp_path’ fixture</span></a> allows for the
 convenient creation of temporary directories, which ensures test files will be
 cleaned up. Temporary directories can also be helpful in the case where the
 tests are run in an environment where <code class="docutils literal notranslate"><span class="pre">pytest</span></code> would otherwise not have write
@@ -1298,7 +1284,7 @@ transforms).</p>
 <p>In order to test that warnings are triggered as expected in certain
 situations,
 <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> provides its own context manager
-<a class="reference external" href="https://pytest.org/en/stable/how-to/capture-warnings.html#warns" title="(in pytest v9.1.0)"><span class="xref std std-ref">pytest.warns</span></a> that, completely
+<a class="reference external" href="https://pytest.org/en/stable/how-to/capture-warnings.html#warns" title="(in pytest v9.1.1)"><span class="xref std std-ref">pytest.warns</span></a> that, completely
 analogously to <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code> (see below) allows to probe explicitly
 for specific warning classes and, through the optional <code class="docutils literal notranslate"><span class="pre">match</span></code> argument,
 messages. Note that when no warning of the specified type is
@@ -1308,7 +1294,7 @@ inspect them.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>With <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> there is also the option of using the
-<a class="reference external" href="https://pytest.org/en/stable/how-to/capture-warnings.html#recwarn" title="(in pytest v9.1.0)"><span class="xref std std-ref">recwarn</span></a> function argument to test that
+<a class="reference external" href="https://pytest.org/en/stable/how-to/capture-warnings.html#recwarn" title="(in pytest v9.1.1)"><span class="xref std std-ref">recwarn</span></a> function argument to test that
 warnings are triggered within the entire embedding function.
 This method has been found to be problematic in at least one case
 (<a class="reference external" href="https://github.com/astropy/astropy/pull/1174#issuecomment-20249309">pull request 1174</a>).</p>
@@ -1320,7 +1306,7 @@ This method has been found to be problematic in at least one case
 designed to trigger certain errors should verify that an exception of
 the expected type is raised in the expected place.  This is efficiently
 done by running the tested code inside the
-<a class="reference external" href="https://pytest.org/en/stable/how-to/assert.html#assertraises" title="(in pytest v9.1.0)"><span class="xref std std-ref">pytest.raises</span></a>
+<a class="reference external" href="https://pytest.org/en/stable/how-to/assert.html#assertraises" title="(in pytest v9.1.1)"><span class="xref std std-ref">pytest.raises</span></a>
 context manager.  Its optional <code class="docutils literal notranslate"><span class="pre">match</span></code> argument allows to check the
 error message for any patterns using <code class="docutils literal notranslate"><span class="pre">regex</span></code> syntax.  For example the
 matches <code class="docutils literal notranslate"><span class="pre">pytest.raises(OSError,</span> <span class="pre">match=r'^No</span> <span class="pre">such</span> <span class="pre">file')</span></code> and
@@ -1811,7 +1797,7 @@ idea of the performance impact of a pull request.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260616.2eeb508 2026-06-16T02:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260620.f06fe30 2026-06-20T15:23Z.
       <br/>
     
   </p>

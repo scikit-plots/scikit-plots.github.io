@@ -2,7 +2,7 @@
 
 ## Sphinx extensions for embedded plots, math and more[#](#sphinx-extensions-for-embedded-plots-math-and-more "Link to this heading")
 
-This module contains functions related to [`_sphinxext`](../../../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext "scikitplot.externals._sphinxext").
+This module contains functions related to [`_sphinxext`](../../../apis/scikitplot.externals.html#module-scikitplot.externals._sphinxext "scikitplot.externals._sphinxext").
 
 A directive for including a Matplotlib plot in a Sphinx document
 

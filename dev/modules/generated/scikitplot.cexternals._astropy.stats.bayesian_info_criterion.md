@@ -1,6 +1,6 @@
 # bayesian\_info\_criterion[#](#bayesian-info-criterion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cexternals/_astropy/stats/info_theory.py#L24)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/cexternals/_astropy/stats/info_theory.py#L24)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "Link to this definition")
 :   Computes the Bayesian Information Criterion (BIC) given the log of the
     likelihood function evaluated at the estimated (or analytically derived)
     parameters, the number of parameters, and the number of samples.

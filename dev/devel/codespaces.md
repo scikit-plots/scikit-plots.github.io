@@ -1,3 +1,5 @@
+:orphan:
+
 # Contributing to scikit-plots using GitHub codespaces[#](#contributing-to-scikit-plots-using-github-codespaces "Link to this heading")
 
 * For a general overview of contributing to scikit-plots, see https://scikit-plots.github.io/dev/devel/index.html

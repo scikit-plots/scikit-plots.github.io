@@ -99,40 +99,40 @@ else:
 ```
 ```
 BuildResult:
-  module_name: scikitplot_cython_3464939529e20b40
-  key        : 3464939529e20b40db9cd23e32e1a086bba1f8ab1eaa338e87a105f0aba359c0
-  artifact   : /home/circleci/.cache/scikitplot/cython/3464939529e20b40db9cd23e32e1a086bba1f8ab1eaa338e87a105f0aba359c0/scikitplot_cython_3464939529e20b40.cpython-311-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_656531d56d99fd16
+  key        : 656531d56d99fd167e91566432a5570157584e35a850733651fcb637cd261c0a
+  artifact   : /home/circleci/.cache/scikitplot/cython/656531d56d99fd167e91566432a5570157584e35a850733651fcb637cd261c0a/scikitplot_cython_656531d56d99fd16.cpython-312-x86_64-linux-gnu.so
   used_cache : True
 Cache entries: 6
 Last 5 entries:
-  - key: 1b5e70054f7239efd161cddf35228e0ef380164fbe5a129b9318c601baaff1ff
-    module_name: scikitplot_cython_1b5e70054f7239ef
-    artifact_path: /home/circleci/.cache/scikitplot/cython/1b5e70054f7239efd161cddf35228e0ef380164fbe5a129b9318c601baaff1ff/scikitplot_cython_1b5e70054f7239ef.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-06-16T02:09:42Z
-  - key: 21cc42f98ad1851f5ecdf14b0b8c5d154b6690477858a0fea4ff22b986f088b8
-    module_name: scikitplot_cython_21cc42f98ad1851f
-    artifact_path: /home/circleci/.cache/scikitplot/cython/21cc42f98ad1851f5ecdf14b0b8c5d154b6690477858a0fea4ff22b986f088b8/scikitplot_cython_21cc42f98ad1851f.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-06-16T02:09:37Z
-  - key: 3464939529e20b40db9cd23e32e1a086bba1f8ab1eaa338e87a105f0aba359c0
-    module_name: scikitplot_cython_3464939529e20b40
-    artifact_path: /home/circleci/.cache/scikitplot/cython/3464939529e20b40db9cd23e32e1a086bba1f8ab1eaa338e87a105f0aba359c0/scikitplot_cython_3464939529e20b40.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-06-16T02:09:36Z
-  - key: 68b614f33cf06682779d8522862b78a78f2d47e77d9673e8bde32c03209daf6b
-    module_name: scikitplot_cython_68b614f33cf06682
-    artifact_path: /home/circleci/.cache/scikitplot/cython/68b614f33cf06682779d8522862b78a78f2d47e77d9673e8bde32c03209daf6b/scikitplot_cython_68b614f33cf06682.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-06-16T02:09:39Z
-  - key: 721b1483cfa67e066e832793599b70857e6a51e00d0daea856e0a96f9c1276ad
-    module_name: scikitplot_cython_721b1483cfa67e06
-    artifact_path: /home/circleci/.cache/scikitplot/cython/721b1483cfa67e066e832793599b70857e6a51e00d0daea856e0a96f9c1276ad/scikitplot_cython_721b1483cfa67e06.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-06-16T02:09:36Z
+  - key: 4d6aa1f5100dccacb316caa182bf6be5ebd5c2e8e5dc99a1081fbd9b84299c31
+    module_name: scikitplot_cython_4d6aa1f5100dccac
+    artifact_path: /home/circleci/.cache/scikitplot/cython/4d6aa1f5100dccacb316caa182bf6be5ebd5c2e8e5dc99a1081fbd9b84299c31/scikitplot_cython_4d6aa1f5100dccac.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-06-20T15:30:32Z
+  - key: 656531d56d99fd167e91566432a5570157584e35a850733651fcb637cd261c0a
+    module_name: scikitplot_cython_656531d56d99fd16
+    artifact_path: /home/circleci/.cache/scikitplot/cython/656531d56d99fd167e91566432a5570157584e35a850733651fcb637cd261c0a/scikitplot_cython_656531d56d99fd16.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-06-20T15:30:26Z
+  - key: 7e9b775086488785c50863529b8b5a72f585435ef5af48071c366666490cbea0
+    module_name: scikitplot_cython_7e9b775086488785
+    artifact_path: /home/circleci/.cache/scikitplot/cython/7e9b775086488785c50863529b8b5a72f585435ef5af48071c366666490cbea0/scikitplot_cython_7e9b775086488785.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-06-20T15:30:32Z
+  - key: 8da62475fc1c388f0140250398325365fc30f6c147cb29340d853aa285d6547a
+    module_name: scikitplot_cython_8da62475fc1c388f
+    artifact_path: /home/circleci/.cache/scikitplot/cython/8da62475fc1c388f0140250398325365fc30f6c147cb29340d853aa285d6547a/scikitplot_cython_8da62475fc1c388f.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-06-20T15:30:26Z
+  - key: a810680c2269c463bf93abe510f5c8f8979285b1796eb20acb079428df2b2c0e
+    module_name: scikitplot_cython_a810680c2269c463
+    artifact_path: /home/circleci/.cache/scikitplot/cython/a810680c2269c463bf93abe510f5c8f8979285b1796eb20acb079428df2b2c0e/scikitplot_cython_a810680c2269c463.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-06-20T15:30:27Z
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4065583, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-06-16T02:09:44Z', oldest_mtime_utc='2026-06-16T02:09:36Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4315023, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-06-20T15:30:34Z', oldest_mtime_utc='2026-06-20T15:30:26Z')
 
 Imported from cache (result API):
-  module_name: scikitplot_cython_3464939529e20b40
+  module_name: scikitplot_cython_656531d56d99fd16
   used_cache : True
-  artifact   : /home/circleci/.cache/scikitplot/cython/3464939529e20b40db9cd23e32e1a086bba1f8ab1eaa338e87a105f0aba359c0/scikitplot_cython_3464939529e20b40.cpython-311-x86_64-linux-gnu.so
+  artifact   : /home/circleci/.cache/scikitplot/cython/656531d56d99fd167e91566432a5570157584e35a850733651fcb637cd261c0a/scikitplot_cython_656531d56d99fd16.cpython-312-x86_64-linux-gnu.so
 import_cached(key).f(11) = 121
 Expected: 121
 Correct: True
@@ -141,7 +141,7 @@ Correct: True
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.017 seconds)
+****Total running time of the script:**** (0 minutes 0.013 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb)
 

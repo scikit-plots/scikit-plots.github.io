@@ -152,7 +152,7 @@ sp.__version__
 
 ```
 ```
-'0.5.dev0+git.20260616.2eeb508'
+'0.5.dev0+git.20260620.f06fe30'
 
 ```
 
@@ -225,18 +225,18 @@ with Timer("CatBoostClassifier"):
 
 ```
 ```
-[0]     validation_0-logloss:0.29786
-[100]   validation_0-logloss:0.18396
-[200]   validation_0-logloss:0.18875
-[300]   validation_0-logloss:0.19339
-[400]   validation_0-logloss:0.19815
-[499]   validation_0-logloss:0.20117
-0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 52.2ms   remaining: 26s
-100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 379ms    remaining: 1.5s
-200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 710ms    remaining: 1.06s
-300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.05s    remaining: 693ms
-400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.4s     remaining: 345ms
-499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 1.74s    remaining: 0us
+[0]     validation_0-logloss:0.29779
+[100]   validation_0-logloss:0.18010
+[200]   validation_0-logloss:0.18471
+[300]   validation_0-logloss:0.18854
+[400]   validation_0-logloss:0.19232
+[499]   validation_0-logloss:0.19573
+0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 52.1ms   remaining: 26s
+100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 413ms    remaining: 1.63s
+200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 757ms    remaining: 1.13s
+300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.14s    remaining: 757ms
+400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.6s     remaining: 395ms
+499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 1.95s    remaining: 0us
 
 bestTest = 0.1810643099
 bestIteration = 134
@@ -327,7 +327,7 @@ Length: 28831, dtype: int64, 19607    0
 Length: 12357, dtype: int64], 'dataset_labels': ['train data', 'test data'], 'models': [RandomForestClassifier(), LogisticRegression(max_iter=100000, random_state=0), XGBClassifier(base_score=None, booster=None, callbacks=None,
               colsample_bylevel=None, colsample_bynode=None,
               colsample_bytree=None, device=None, early_stopping_rounds=None,
-              enable_categorical=False, eval_metric=None, feature_types=None,
+              enable_categorical=True, eval_metric=None, feature_types=None,
               feature_weights=None, gamma=None, grow_policy=None,
               importance_type=None, interaction_constraints=None,
               learning_rate=0.15, max_bin=None, max_cat_threshold=None,
@@ -392,11 +392,11 @@ ax = mp.plot_cumgains(
 ![Cumulative Gains, scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_001.png)
 ```
 CumGains 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=86.32% — pos/tot=1,193 / 1,382
-CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=82.63% — pos/tot=1,142 / 1,382
+CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=84.23% — pos/tot=1,164 / 1,382
 CumGains 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=76.34% — pos/tot=1,055 / 1,382
 CumGains 1..decile 2 | model=random forest | dataset=test data | target=1 | value=81.98% — pos/tot=1,133 / 1,382
 CumGains 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=96.02% — pos/tot=1,327 / 1,382
-CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=94.72% — pos/tot=1,309 / 1,382
+CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=95.51% — pos/tot=1,320 / 1,382
 CumGains 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=88.71% — pos/tot=1,226 / 1,382
 CumGains 1..decile 3 | model=random forest | dataset=test data | target=1 | value=94.07% — pos/tot=1,300 / 1,382
 
@@ -422,11 +422,11 @@ ax = mp.plot_cumlift(
 ![Cumulative Lift, scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_002.png)
 ```
 CumLift 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=4.32x — pos/tot=1,193 / 2,472
-CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.13x — pos/tot=1,142 / 2,472
+CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.21x — pos/tot=1,164 / 2,472
 CumLift 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=3.82x — pos/tot=1,055 / 2,472
 CumLift 1..decile 2 | model=random forest | dataset=test data | target=1 | value=4.10x — pos/tot=1,133 / 2,472
 CumLift 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=3.20x — pos/tot=1,327 / 3,708
-CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.16x — pos/tot=1,309 / 3,708
+CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.18x — pos/tot=1,320 / 3,708
 CumLift 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=2.96x — pos/tot=1,226 / 3,708
 CumLift 1..decile 3 | model=random forest | dataset=test data | target=1 | value=3.13x — pos/tot=1,300 / 3,708
 
@@ -457,11 +457,11 @@ ax = mp.plot_response(
 ![Response, scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_003.png)
 ```
 Response @ decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=33.01% — pos/tot=408 / 1,236
-Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=31.96% — pos/tot=395 / 1,236
+Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=34.63% — pos/tot=428 / 1,236
 Response @ decile 2 | model=multinomial logit | dataset=test data | target=1 | value=27.75% — pos/tot=343 / 1,236
 Response @ decile 2 | model=random forest | dataset=test data | target=1 | value=34.14% — pos/tot=422 / 1,236
 Response @ decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=10.84% — pos/tot=134 / 1,236
-Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
+Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=12.62% — pos/tot=156 / 1,236
 Response @ decile 3 | model=multinomial logit | dataset=test data | target=1 | value=13.83% — pos/tot=171 / 1,236
 Response @ decile 3 | model=random forest | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
 
@@ -483,11 +483,11 @@ ax = mp.plot_cumresponse(ps, highlight_ntile=[2,3], save_fig=True)
 ![Cumulative Response, scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_004.png)
 ```
 CumResponse 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=48.26% — pos/tot=1,193 / 2,472
-CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=46.20% — pos/tot=1,142 / 2,472
+CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=47.09% — pos/tot=1,164 / 2,472
 CumResponse 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=42.68% — pos/tot=1,055 / 2,472
 CumResponse 1..decile 2 | model=random forest | dataset=test data | target=1 | value=45.83% — pos/tot=1,133 / 2,472
 CumResponse 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=35.79% — pos/tot=1,327 / 3,708
-CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.30% — pos/tot=1,309 / 3,708
+CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.60% — pos/tot=1,320 / 3,708
 CumResponse 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=33.06% — pos/tot=1,226 / 3,708
 CumResponse 1..decile 3 | model=random forest | dataset=test data | target=1 | value=35.06% — pos/tot=1,300 / 3,708
 
@@ -513,67 +513,67 @@ ax = mp.plot_all(
 ![scope: comparing models & dataset: test data & target class: 1, Cumulative Gains scope: comparing models & dataset: test data & target class: 1, Cumulative Lift scope: comparing models & dataset: test data & target class: 1, Response scope: comparing models & dataset: test data & target class: 1, Cumulative Response scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_005.png)
 ```
 CumGains 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=86.32% — pos/tot=1,193 / 1,382
-CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=82.63% — pos/tot=1,142 / 1,382
+CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=84.23% — pos/tot=1,164 / 1,382
 CumGains 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=76.34% — pos/tot=1,055 / 1,382
 CumGains 1..decile 2 | model=random forest | dataset=test data | target=1 | value=81.98% — pos/tot=1,133 / 1,382
 CumGains 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=96.02% — pos/tot=1,327 / 1,382
-CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=94.72% — pos/tot=1,309 / 1,382
+CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=95.51% — pos/tot=1,320 / 1,382
 CumGains 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=88.71% — pos/tot=1,226 / 1,382
 CumGains 1..decile 3 | model=random forest | dataset=test data | target=1 | value=94.07% — pos/tot=1,300 / 1,382
 CumLift 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=4.32x — pos/tot=1,193 / 2,472
-CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.13x — pos/tot=1,142 / 2,472
+CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.21x — pos/tot=1,164 / 2,472
 CumLift 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=3.82x — pos/tot=1,055 / 2,472
 CumLift 1..decile 2 | model=random forest | dataset=test data | target=1 | value=4.10x — pos/tot=1,133 / 2,472
 CumLift 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=3.20x — pos/tot=1,327 / 3,708
-CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.16x — pos/tot=1,309 / 3,708
+CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.18x — pos/tot=1,320 / 3,708
 CumLift 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=2.96x — pos/tot=1,226 / 3,708
 CumLift 1..decile 3 | model=random forest | dataset=test data | target=1 | value=3.13x — pos/tot=1,300 / 3,708
 Response @ decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=33.01% — pos/tot=408 / 1,236
-Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=31.96% — pos/tot=395 / 1,236
+Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=34.63% — pos/tot=428 / 1,236
 Response @ decile 2 | model=multinomial logit | dataset=test data | target=1 | value=27.75% — pos/tot=343 / 1,236
 Response @ decile 2 | model=random forest | dataset=test data | target=1 | value=34.14% — pos/tot=422 / 1,236
 Response @ decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=10.84% — pos/tot=134 / 1,236
-Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
+Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=12.62% — pos/tot=156 / 1,236
 Response @ decile 3 | model=multinomial logit | dataset=test data | target=1 | value=13.83% — pos/tot=171 / 1,236
 Response @ decile 3 | model=random forest | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
 CumResponse 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=48.26% — pos/tot=1,193 / 2,472
-CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=46.20% — pos/tot=1,142 / 2,472
+CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=47.09% — pos/tot=1,164 / 2,472
 CumResponse 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=42.68% — pos/tot=1,055 / 2,472
 CumResponse 1..decile 2 | model=random forest | dataset=test data | target=1 | value=45.83% — pos/tot=1,133 / 2,472
 CumResponse 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=35.79% — pos/tot=1,327 / 3,708
-CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.30% — pos/tot=1,309 / 3,708
+CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.60% — pos/tot=1,320 / 3,708
 CumResponse 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=33.06% — pos/tot=1,226 / 3,708
 CumResponse 1..decile 3 | model=random forest | dataset=test data | target=1 | value=35.06% — pos/tot=1,300 / 3,708
 CumGains 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=86.32% — pos/tot=1,193 / 1,382
-CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=82.63% — pos/tot=1,142 / 1,382
+CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=84.23% — pos/tot=1,164 / 1,382
 CumGains 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=76.34% — pos/tot=1,055 / 1,382
 CumGains 1..decile 2 | model=random forest | dataset=test data | target=1 | value=81.98% — pos/tot=1,133 / 1,382
 CumGains 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=96.02% — pos/tot=1,327 / 1,382
-CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=94.72% — pos/tot=1,309 / 1,382
+CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=95.51% — pos/tot=1,320 / 1,382
 CumGains 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=88.71% — pos/tot=1,226 / 1,382
 CumGains 1..decile 3 | model=random forest | dataset=test data | target=1 | value=94.07% — pos/tot=1,300 / 1,382
 CumLift 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=4.32x — pos/tot=1,193 / 2,472
-CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.13x — pos/tot=1,142 / 2,472
+CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.21x — pos/tot=1,164 / 2,472
 CumLift 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=3.82x — pos/tot=1,055 / 2,472
 CumLift 1..decile 2 | model=random forest | dataset=test data | target=1 | value=4.10x — pos/tot=1,133 / 2,472
 CumLift 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=3.20x — pos/tot=1,327 / 3,708
-CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.16x — pos/tot=1,309 / 3,708
+CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.18x — pos/tot=1,320 / 3,708
 CumLift 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=2.96x — pos/tot=1,226 / 3,708
 CumLift 1..decile 3 | model=random forest | dataset=test data | target=1 | value=3.13x — pos/tot=1,300 / 3,708
 Response @ decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=33.01% — pos/tot=408 / 1,236
-Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=31.96% — pos/tot=395 / 1,236
+Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=34.63% — pos/tot=428 / 1,236
 Response @ decile 2 | model=multinomial logit | dataset=test data | target=1 | value=27.75% — pos/tot=343 / 1,236
 Response @ decile 2 | model=random forest | dataset=test data | target=1 | value=34.14% — pos/tot=422 / 1,236
 Response @ decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=10.84% — pos/tot=134 / 1,236
-Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
+Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=12.62% — pos/tot=156 / 1,236
 Response @ decile 3 | model=multinomial logit | dataset=test data | target=1 | value=13.83% — pos/tot=171 / 1,236
 Response @ decile 3 | model=random forest | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
 CumResponse 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=48.26% — pos/tot=1,193 / 2,472
-CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=46.20% — pos/tot=1,142 / 2,472
+CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=47.09% — pos/tot=1,164 / 2,472
 CumResponse 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=42.68% — pos/tot=1,055 / 2,472
 CumResponse 1..decile 2 | model=random forest | dataset=test data | target=1 | value=45.83% — pos/tot=1,133 / 2,472
 CumResponse 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=35.79% — pos/tot=1,327 / 3,708
-CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.30% — pos/tot=1,309 / 3,708
+CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.60% — pos/tot=1,320 / 3,708
 CumResponse 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=33.06% — pos/tot=1,226 / 3,708
 CumResponse 1..decile 3 | model=random forest | dataset=test data | target=1 | value=35.06% — pos/tot=1,300 / 3,708
 
@@ -586,7 +586,7 @@ mp.summarize_selection(ps, ntile=2)
 |  | model\_label | dataset\_label | target\_class | ntile | tot | pos | pct | cumtot | cumpos | cumpct | cumlift | cumgain |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | CatBoostClassifier | test data | 1 | 2 | 1236 | 408 | 0.330097 | 2472.0 | 1193.0 | 0.482605 | 4.315161 | 0.863242 |
-| 1 | XGBClassifier | test data | 1 | 2 | 1236 | 395 | 0.319579 | 2472.0 | 1142.0 | 0.461974 | 4.130690 | 0.826339 |
+| 1 | XGBClassifier | test data | 1 | 2 | 1236 | 428 | 0.346278 | 2472.0 | 1164.0 | 0.470874 | 4.210266 | 0.842258 |
 | 2 | multinomial logit | test data | 1 | 2 | 1236 | 343 | 0.277508 | 2472.0 | 1055.0 | 0.426780 | 3.816006 | 0.763386 |
 | 3 | random forest | test data | 1 | 2 | 1236 | 422 | 0.341424 | 2472.0 | 1133.0 | 0.458333 | 4.098137 | 0.819826 |
 
@@ -600,7 +600,7 @@ mp.summarize_selection(ps, ntile=3)
 |  | model\_label | dataset\_label | target\_class | ntile | tot | pos | pct | cumtot | cumpos | cumpct | cumlift | cumgain |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | CatBoostClassifier | test data | 1 | 3 | 1236 | 134 | 0.108414 | 3708.0 | 1327.0 | 0.357875 | 3.199898 | 0.960203 |
-| 1 | XGBClassifier | test data | 1 | 3 | 1236 | 167 | 0.135113 | 3708.0 | 1309.0 | 0.353020 | 3.156494 | 0.947178 |
+| 1 | XGBClassifier | test data | 1 | 3 | 1236 | 156 | 0.126214 | 3708.0 | 1320.0 | 0.355987 | 3.183019 | 0.955137 |
 | 2 | multinomial logit | test data | 1 | 3 | 1236 | 171 | 0.138350 | 3708.0 | 1226.0 | 0.330636 | 2.956349 | 0.887120 |
 | 3 | random forest | test data | 1 | 3 | 1236 | 167 | 0.135113 | 3708.0 | 1300.0 | 0.350593 | 3.134791 | 0.940666 |
 
@@ -626,11 +626,11 @@ ax = mp.plot_cumresponse(ps2, highlight_ntile=[2,3], save_fig=True)
 ![Cumulative Response, scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_006.png)
 ```
 CumResponse 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=48.26% — pos/tot=1,193 / 2,472
-CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=46.20% — pos/tot=1,142 / 2,472
+CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=47.09% — pos/tot=1,164 / 2,472
 CumResponse 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=42.68% — pos/tot=1,055 / 2,472
 CumResponse 1..decile 2 | model=random forest | dataset=test data | target=1 | value=45.83% — pos/tot=1,133 / 2,472
 CumResponse 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=35.79% — pos/tot=1,327 / 3,708
-CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.30% — pos/tot=1,309 / 3,708
+CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.60% — pos/tot=1,320 / 3,708
 CumResponse 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=33.06% — pos/tot=1,226 / 3,708
 CumResponse 1..decile 3 | model=random forest | dataset=test data | target=1 | value=35.06% — pos/tot=1,300 / 3,708
 
@@ -670,11 +670,11 @@ ax = mp.plot_roi(
 ![Return on Investment (ROI), scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_007.png)
 ```
 ROI 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=131.92% — pos/tot=1,193 / 2,472
-ROI 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=122.01% — pos/tot=1,142 / 2,472
+ROI 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=126.28% — pos/tot=1,164 / 2,472
 ROI 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=105.09% — pos/tot=1,055 / 2,472
 ROI 1..decile 2 | model=random forest | dataset=test data | target=1 | value=120.26% — pos/tot=1,133 / 2,472
 ROI 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=74.24% — pos/tot=1,327 / 3,708
-ROI 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=71.88% — pos/tot=1,309 / 3,708
+ROI 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=73.32% — pos/tot=1,320 / 3,708
 ROI 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=60.98% — pos/tot=1,226 / 3,708
 ROI 1..decile 3 | model=random forest | dataset=test data | target=1 | value=70.69% — pos/tot=1,300 / 3,708
 
@@ -706,8 +706,8 @@ ax = mp.plot_costsrevs(
 ```
 Revenues 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=€59,650 — pos/tot=1,193 / 2,472
 Revenues 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=€66,350 — pos/tot=1,327 / 3,708
-Revenues 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=€57,100 — pos/tot=1,142 / 2,472
-Revenues 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=€65,450 — pos/tot=1,309 / 3,708
+Revenues 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=€58,200 — pos/tot=1,164 / 2,472
+Revenues 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=€66,000 — pos/tot=1,320 / 3,708
 Revenues 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=€52,750 — pos/tot=1,055 / 2,472
 Revenues 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=€61,300 — pos/tot=1,226 / 3,708
 Revenues 1..decile 2 | model=random forest | dataset=test data | target=1 | value=€56,650 — pos/tot=1,133 / 2,472
@@ -740,11 +740,11 @@ ax = mp.plot_profit(
 ![Profit, scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_009.png)
 ```
 Profit 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=$33,930 — pos/tot=1,193 / 2,472
-Profit 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=$31,380 — pos/tot=1,142 / 2,472
+Profit 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=$32,480 — pos/tot=1,164 / 2,472
 Profit 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=$27,030 — pos/tot=1,055 / 2,472
 Profit 1..decile 2 | model=random forest | dataset=test data | target=1 | value=$30,930 — pos/tot=1,133 / 2,472
 Profit 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=$28,270 — pos/tot=1,327 / 3,708
-Profit 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=$27,370 — pos/tot=1,309 / 3,708
+Profit 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=$27,920 — pos/tot=1,320 / 3,708
 Profit 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=$23,220 — pos/tot=1,226 / 3,708
 Profit 1..decile 3 | model=random forest | dataset=test data | target=1 | value=$26,920 — pos/tot=1,300 / 3,708
 
@@ -772,67 +772,67 @@ ax = mp.plot_all(
 ![scope: comparing models & dataset: test data & target class: 1, Cumulative Gains scope: comparing models & dataset: test data & target class: 1, Cumulative Lift scope: comparing models & dataset: test data & target class: 1, Response scope: comparing models & dataset: test data & target class: 1, Cumulative Response scope: comparing models & dataset: test data & target class: 1](../../_images/sphx_glr_plot_modelplotpy_script_010.png)
 ```
 CumGains 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=86.32% — pos/tot=1,193 / 1,382
-CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=82.63% — pos/tot=1,142 / 1,382
+CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=84.23% — pos/tot=1,164 / 1,382
 CumGains 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=76.34% — pos/tot=1,055 / 1,382
 CumGains 1..decile 2 | model=random forest | dataset=test data | target=1 | value=81.98% — pos/tot=1,133 / 1,382
 CumGains 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=96.02% — pos/tot=1,327 / 1,382
-CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=94.72% — pos/tot=1,309 / 1,382
+CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=95.51% — pos/tot=1,320 / 1,382
 CumGains 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=88.71% — pos/tot=1,226 / 1,382
 CumGains 1..decile 3 | model=random forest | dataset=test data | target=1 | value=94.07% — pos/tot=1,300 / 1,382
 CumLift 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=4.32x — pos/tot=1,193 / 2,472
-CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.13x — pos/tot=1,142 / 2,472
+CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.21x — pos/tot=1,164 / 2,472
 CumLift 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=3.82x — pos/tot=1,055 / 2,472
 CumLift 1..decile 2 | model=random forest | dataset=test data | target=1 | value=4.10x — pos/tot=1,133 / 2,472
 CumLift 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=3.20x — pos/tot=1,327 / 3,708
-CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.16x — pos/tot=1,309 / 3,708
+CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.18x — pos/tot=1,320 / 3,708
 CumLift 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=2.96x — pos/tot=1,226 / 3,708
 CumLift 1..decile 3 | model=random forest | dataset=test data | target=1 | value=3.13x — pos/tot=1,300 / 3,708
 Response @ decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=33.01% — pos/tot=408 / 1,236
-Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=31.96% — pos/tot=395 / 1,236
+Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=34.63% — pos/tot=428 / 1,236
 Response @ decile 2 | model=multinomial logit | dataset=test data | target=1 | value=27.75% — pos/tot=343 / 1,236
 Response @ decile 2 | model=random forest | dataset=test data | target=1 | value=34.14% — pos/tot=422 / 1,236
 Response @ decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=10.84% — pos/tot=134 / 1,236
-Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
+Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=12.62% — pos/tot=156 / 1,236
 Response @ decile 3 | model=multinomial logit | dataset=test data | target=1 | value=13.83% — pos/tot=171 / 1,236
 Response @ decile 3 | model=random forest | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
 CumResponse 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=48.26% — pos/tot=1,193 / 2,472
-CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=46.20% — pos/tot=1,142 / 2,472
+CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=47.09% — pos/tot=1,164 / 2,472
 CumResponse 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=42.68% — pos/tot=1,055 / 2,472
 CumResponse 1..decile 2 | model=random forest | dataset=test data | target=1 | value=45.83% — pos/tot=1,133 / 2,472
 CumResponse 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=35.79% — pos/tot=1,327 / 3,708
-CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.30% — pos/tot=1,309 / 3,708
+CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.60% — pos/tot=1,320 / 3,708
 CumResponse 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=33.06% — pos/tot=1,226 / 3,708
 CumResponse 1..decile 3 | model=random forest | dataset=test data | target=1 | value=35.06% — pos/tot=1,300 / 3,708
 CumGains 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=86.32% — pos/tot=1,193 / 1,382
-CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=82.63% — pos/tot=1,142 / 1,382
+CumGains 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=84.23% — pos/tot=1,164 / 1,382
 CumGains 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=76.34% — pos/tot=1,055 / 1,382
 CumGains 1..decile 2 | model=random forest | dataset=test data | target=1 | value=81.98% — pos/tot=1,133 / 1,382
 CumGains 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=96.02% — pos/tot=1,327 / 1,382
-CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=94.72% — pos/tot=1,309 / 1,382
+CumGains 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=95.51% — pos/tot=1,320 / 1,382
 CumGains 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=88.71% — pos/tot=1,226 / 1,382
 CumGains 1..decile 3 | model=random forest | dataset=test data | target=1 | value=94.07% — pos/tot=1,300 / 1,382
 CumLift 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=4.32x — pos/tot=1,193 / 2,472
-CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.13x — pos/tot=1,142 / 2,472
+CumLift 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=4.21x — pos/tot=1,164 / 2,472
 CumLift 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=3.82x — pos/tot=1,055 / 2,472
 CumLift 1..decile 2 | model=random forest | dataset=test data | target=1 | value=4.10x — pos/tot=1,133 / 2,472
 CumLift 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=3.20x — pos/tot=1,327 / 3,708
-CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.16x — pos/tot=1,309 / 3,708
+CumLift 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=3.18x — pos/tot=1,320 / 3,708
 CumLift 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=2.96x — pos/tot=1,226 / 3,708
 CumLift 1..decile 3 | model=random forest | dataset=test data | target=1 | value=3.13x — pos/tot=1,300 / 3,708
 Response @ decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=33.01% — pos/tot=408 / 1,236
-Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=31.96% — pos/tot=395 / 1,236
+Response @ decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=34.63% — pos/tot=428 / 1,236
 Response @ decile 2 | model=multinomial logit | dataset=test data | target=1 | value=27.75% — pos/tot=343 / 1,236
 Response @ decile 2 | model=random forest | dataset=test data | target=1 | value=34.14% — pos/tot=422 / 1,236
 Response @ decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=10.84% — pos/tot=134 / 1,236
-Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
+Response @ decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=12.62% — pos/tot=156 / 1,236
 Response @ decile 3 | model=multinomial logit | dataset=test data | target=1 | value=13.83% — pos/tot=171 / 1,236
 Response @ decile 3 | model=random forest | dataset=test data | target=1 | value=13.51% — pos/tot=167 / 1,236
 CumResponse 1..decile 2 | model=CatBoostClassifier | dataset=test data | target=1 | value=48.26% — pos/tot=1,193 / 2,472
-CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=46.20% — pos/tot=1,142 / 2,472
+CumResponse 1..decile 2 | model=XGBClassifier | dataset=test data | target=1 | value=47.09% — pos/tot=1,164 / 2,472
 CumResponse 1..decile 2 | model=multinomial logit | dataset=test data | target=1 | value=42.68% — pos/tot=1,055 / 2,472
 CumResponse 1..decile 2 | model=random forest | dataset=test data | target=1 | value=45.83% — pos/tot=1,133 / 2,472
 CumResponse 1..decile 3 | model=CatBoostClassifier | dataset=test data | target=1 | value=35.79% — pos/tot=1,327 / 3,708
-CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.30% — pos/tot=1,309 / 3,708
+CumResponse 1..decile 3 | model=XGBClassifier | dataset=test data | target=1 | value=35.60% — pos/tot=1,320 / 3,708
 CumResponse 1..decile 3 | model=multinomial logit | dataset=test data | target=1 | value=33.06% — pos/tot=1,226 / 3,708
 CumResponse 1..decile 3 | model=random forest | dataset=test data | target=1 | value=35.06% — pos/tot=1,300 / 3,708
 
@@ -856,7 +856,7 @@ or [jurriaan.nagelkerke](mailto:jurriaan.nagelkerke%40gmail.com).
 
 Happy modelplotting!
 
-****Total running time of the script:**** (0 minutes 16.735 seconds)
+****Total running time of the script:**** (0 minutes 17.580 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_script.ipynb)
 

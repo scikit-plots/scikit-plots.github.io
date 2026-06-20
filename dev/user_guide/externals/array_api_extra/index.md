@@ -2,7 +2,7 @@
 
 ## Array API compatibility library[#](#array-api-compatibility-library "Link to this heading")
 
-This module contains functions related to [`array_api_extra`](../../../modules/generated/scikitplot.externals.array_api_extra.html#module-scikitplot.externals.array_api_extra "scikitplot.externals.array_api_extra").
+This module contains functions related to [`array_api_extra`](../../../apis/scikitplot.externals.html#module-scikitplot.externals.array_api_extra "scikitplot.externals.array_api_extra").
 
 Extra array functions built on top of the array API standard.
 

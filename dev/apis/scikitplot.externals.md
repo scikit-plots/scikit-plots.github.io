@@ -30,19 +30,11 @@ this implementation for the default when working with NumPy arrays.
 
 ****User guide.**** See the [Python Data API Standards: array\_api\_compat (experimental)](../user_guide/externals/array_api_compat/index.html#externals-array-api-compat-index) section for further details.
 
-|  |  |
-| --- | --- |
-| [`array_api_compat`](../modules/generated/scikitplot.externals.array_api_compat.html#module-scikitplot.externals.array_api_compat "scikitplot.externals.array_api_compat") | NumPy Array API compatibility library |
-
 ## data-apis array\_api\_extra as submodule.[#](#module-scikitplot.externals.array_api_extra "Link to this heading")
 
 Extra array functions built on top of the array API standard.
 
 ****User guide.**** See the [Python Data API Standards: array\_api\_extra (experimental)](../user_guide/externals/array_api_extra/index.html#externals-array-api-extra-index) section for further details.
-
-|  |  |
-| --- | --- |
-| [`array_api_extra`](../modules/generated/scikitplot.externals.array_api_extra.html#module-scikitplot.externals.array_api_extra "scikitplot.externals.array_api_extra") | Extra array functions built on top of the array API standard. |
 
 ## Real probability scales for matplotlib.[#](#module-scikitplot.externals._probscale "Link to this heading")
 
@@ -70,10 +62,6 @@ plain dict and repeated registration simply overwrites the same entry.
 
 ****User guide.**** See the [Seaborn (experimental)](../user_guide/externals/_seaborn/index.html#externals-seaborn-index) section for further details.
 
-|  |  |
-| --- | --- |
-| [`_seaborn`](../modules/generated/scikitplot.externals._seaborn.html#module-scikitplot.externals._seaborn "scikitplot.externals._seaborn") |  |
-
 ## Matplotlib Sphinxext Ext.[#](#module-scikitplot.externals._sphinxext "Link to this heading")
 
 sphinxext.
@@ -86,7 +74,6 @@ Notes
 
 |  |  |
 | --- | --- |
-| [`_sphinxext`](../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext "scikitplot.externals._sphinxext") | sphinxext. |
 | [`_sphinxext.figmpl_directive`](../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html#module-scikitplot.externals._sphinxext.figmpl_directive "scikitplot.externals._sphinxext.figmpl_directive") | Add a `figure-mpl` directive that is a responsive version of `figure`. |
 | [`_sphinxext.mathmpl`](../modules/generated/scikitplot.externals._sphinxext.mathmpl.html#module-scikitplot.externals._sphinxext.mathmpl "scikitplot.externals._sphinxext.mathmpl") | A role and directive to display mathtext in Sphinx. |
 | [`_sphinxext.plot_directive`](../modules/generated/scikitplot.externals._sphinxext.plot_directive.html#module-scikitplot.externals._sphinxext.plot_directive "scikitplot.externals._sphinxext.plot_directive") | A directive for including a Matplotlib plot in a Sphinx document. |
@@ -112,6 +99,5 @@ However, it supports calculations for all valid values of the shape parameter `p
 
 |  |  |
 | --- | --- |
-| [`_tweedie`](../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie "scikitplot.externals._tweedie") | Tweedie Distribution Module. |
 | [`_tweedie.tweedie`](../modules/generated/scikitplot.externals._tweedie.tweedie.html#scikitplot.externals._tweedie.tweedie "scikitplot.externals._tweedie.tweedie") | An instance of `tweedie_gen`, providing Tweedie distribution functionality. |
 | [`_tweedie.tweedie_gen`](../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen "scikitplot.externals._tweedie.tweedie_gen") | A Tweedie continuous random variable inherited [`scipy.stats.rv_continuous`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous "(in SciPy v1.19.0.dev)"). |

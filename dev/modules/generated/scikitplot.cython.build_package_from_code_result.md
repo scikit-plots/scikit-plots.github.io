@@ -1,6 +1,6 @@
 # build\_package\_from\_code\_result[#](#build-package-from-code-result "Link to this heading")
 
-scikitplot.cython.build\_package\_from\_code\_result(**modules**, **\***, **package\_name**, **profile=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/cython/_public.py#L822)[#](#scikitplot.cython.build_package_from_code_result "Link to this definition")
+scikitplot.cython.build\_package\_from\_code\_result(**modules**, **\***, **package\_name**, **profile=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/cython/_public.py#L822)[#](#scikitplot.cython.build_package_from_code_result "Link to this definition")
 :   Build and import a multi-module extension package from code strings.
 
     Parameters:
@@ -13,7 +13,7 @@ scikitplot.cython.build\_package\_from\_code\_result(**modules**, **\***, **pack
         ****profile****{‘fast-debug’, ‘release’, ‘annotate’} or None, default=None
         :   Optional build profile preset.
 
-        ****\*\*kwargs****
+        ****\*\*kwargs****dict
         :   Passed to the underlying builder.
 
     Returns:

@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-16T02:22:16Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-20T15:42:31Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -226,8 +226,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 
@@ -240,8 +240,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+  <a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
@@ -277,13 +277,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 
@@ -466,15 +459,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
@@ -510,13 +503,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 
@@ -778,7 +764,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <!-- src="https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20numpy%20as%20np" -->
   <iframe
     class="numpy-shell-frame"
-    src=https://jupyterlite.github.io/demo/repl?toolbar=1&execute=1&kernel=python&code=import+micropip%0Afrom+itertools+import+combinations%2C+product%0AVERSIONS+++%3D+%5B%220.5.dev0%22%2C+%220.4.0.post12%22%5D%0AWASM_TAGS+%3D+%5B%0A++++%22pyemscripten%22%2C++%23+%E2%9C%85+PyPI+supported%0A++++%22pyodide%22%2C+++++++%23+%E2%9D%8C+PyPI+supported%0A++++%23+%22emscripten%22%2C++%23+%E2%9D%8C+PyPI+supported%0A%5D%0ABUILD_TAGS+%3D+%5B%0A++++%22cp314-cp314-%7B%7D_2026_0_wasm32%22%2C%0A++++%22cp313-cp313-%7B%7D_2025_0_wasm32%22%2C%0A++++%22cp312-cp312-%7B%7D_2024_0_wasm32%22%2C%0A++++%22cp311-cp311-%7B%7D_2024_0_wasm32%22%2C%0A%5D%0ABUILD_TAGS+%3D+%5Bb.format%28w%29+for+w+in+WASM_TAGS+for+b+in+BUILD_TAGS%5D%0AURL_TEMPLATE+%3D+%28%0A++++%23+%22https%3A%2F%2Fanaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fscikit-plots%2F%7Bv%7D%2Fdownload%2F%22%0A++++%22https%3A%2F%2Fpypi.anaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fsimple%2Fscikit-plots%2F%7Bv%7D%2F%22%0A++++%22scikit_plots-%7Bv%7D-%7Btag%7D.whl%22%0A%29%0Afor+v%2C+tag+in+product%28VERSIONS%2C+BUILD_TAGS%29%3A%0A++++url+%3D+URL_TEMPLATE.format%28v%3Dv%2C+tag%3Dtag%29%0A++++try%3A%0A++++++++await+micropip.install%28url%2C+keep_going%3DTrue%29%0A++++++++break++%23+success+-%3E+stop+trying%0A++++except+Exception+as+e%3A%0A++++++++print%28f%22install+failed+for+%7Bv%7D+%7Btag%7D%3A+%7Be%7D%22%29%0Aelse%3A%0A++++%23+Pure+python+runs+only+if+the+loop+never+hit+%27break%27+%28i.e.%2C+all+installs+failed%29%0A++++await+micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C+keep_going%3DTrue%29%0Aimport+scikitplot+as+sp%0Aprint%28%22scikit-plots+version%3A%22%2C+sp.__version__%29%0Asp.show_versions%28%29%0A
+    src=https://jupyterlite.github.io/demo/repl?toolbar=1&execute=1&kernel=python&code=import+micropip%3B+from+itertools+import+combinations%2C+product%0AVERSIONS+++%3D+%5B%220.5.dev0%22%2C+%220.4.0.post12%22%5D%0AWASM_TAGS+%3D+%5B%0A++++%22pyemscripten%22%2C++%23+PyPI+%E2%9C%85+pyodide%2Fv314.0.0+Emscripten-5.0.3-wasm32%0A++++%22pyodide%22%2C+++++++%23+PyPI+%E2%9D%8C+pyodide%2Fv0.29.4++Emscripten-4.0.9-wasm32%0A%5D%0ABUILD_TAGS+%3D+%5B%0A++++%22cp314-cp314-%7B%7D_2026_0_wasm32%22%2C%0A++++%22cp313-cp313-%7B%7D_2025_0_wasm32%22%2C%0A++++%22cp312-cp312-%7B%7D_2024_0_wasm32%22%2C%0A%5D%0ABUILD_TAGS+%3D+%5Bb.format%28w%29+for+w+in+WASM_TAGS+for+b+in+BUILD_TAGS%5D%0AURL_TEMPLATE+%3D+%28%0A++++%23+%22https%3A%2F%2Fanaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fscikit-plots%2F%7Bv%7D%2Fdownload%2F%22%0A++++%22https%3A%2F%2Fpypi.anaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fsimple%2Fscikit-plots%2F%7Bv%7D%2F%22%0A++++%22scikit_plots-%7Bv%7D-%7Btag%7D.whl%22%0A%29%0Afor+v%2C+tag+in+product%28VERSIONS%2C+BUILD_TAGS%29%3A%0A++++url+%3D+URL_TEMPLATE.format%28v%3Dv%2C+tag%3Dtag%29%0A++++try%3A%0A++++++++await+micropip.install%28url%2C+keep_going%3DTrue%29%0A++++++++break++%23+success+-%3E+stop+trying%0A++++except+Exception+as+e%3A%0A++++++++print%28f%22install+failed+for+%7Bv%7D+%7Btag%7D%3A+%7Be%7D%22%29%0Aelse%3A%0A++++%23+Pure+python+runs+only+if+the+loop+never+hit+%27break%27+%28i.e.%2C+all+installs+failed%29%0A++++await+micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C+keep_going%3DTrue%29%0Aimport+scikitplot+as+sp%0Aprint%28%22scikit-plots+version%3A%22%2C+sp.__version__%29%0Asp.show_versions%28%29%0A%23+https%3A%2F%2Fpyodide.org%2Fen%2Fstable%2Fusage%2Fpackages-in-pyodide.html%23packages-in-pyodide%0A
     width="100%" height="auto"
   >Try the REPL!
   </iframe>
@@ -840,7 +826,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260616.2eeb508 2026-06-16T02:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260620.f06fe30 2026-06-20T15:23Z.
       <br/>
     
   </p>

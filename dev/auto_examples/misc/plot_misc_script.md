@@ -47,7 +47,7 @@ fig = plot_overlapping_colors()
 
 Tags: [plot-type: barh](../../_tags/plot-type-barh.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.196 seconds)
+****Total running time of the script:**** (0 minutes 1.193 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo10.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/misc/plot_misc_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo10.svg)](../../lite/lab/index.html?path=auto_examples/misc/plot_misc_script.ipynb)
 
@@ -63,15 +63,15 @@ Related examples
 
 [corpus WHO European Region YouTube shorts with examples](../corpus/plot_corpus_who_youtube_shorts_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
-
-[Simple annoy.AnnoyIndex with examples](../annoy/plot_simple_script.html)
-
-Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [corpus WHO European Region local or url per file with examples](../corpus/plot_corpus_who_per_file_script.html)
 
-corpus WHO European Region local or url per file with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+corpus WHO European Region local or url per file with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+
+[Simple annoy.AnnoyIndex with examples](../annoy/plot_simple_script.html)
+
+Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
 
 [Mmap annoy.AnnoyIndex with examples](../annoy/plot_mmap_script.html)
 

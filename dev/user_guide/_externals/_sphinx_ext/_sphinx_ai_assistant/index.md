@@ -2,4 +2,4 @@
 
 ## Sphinx ai extensions for generated websites[#](#sphinx-ai-extensions-for-generated-websites "Link to this heading")
 
-This module contains functions related to [`_sphinx_ai_assistant`](../../../../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html#module-scikitplot._externals._sphinx_ext._sphinx_ai_assistant "scikitplot._externals._sphinx_ext._sphinx_ai_assistant").
+This module contains functions related to [`_sphinx_ai_assistant`](../../../../apis/scikitplot._externals.html#module-scikitplot._externals._sphinx_ext._sphinx_ai_assistant "scikitplot._externals._sphinx_ext._sphinx_ai_assistant").

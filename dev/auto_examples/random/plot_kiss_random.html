@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask Us","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-16T02:22:23Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-20T15:42:40Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Enhanced KISS Random Generator - Complete Usage Examples — scikit-plots 0.5.dev0 documentation</title>
@@ -147,8 +147,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 <li class="nav-item dropdown">
@@ -157,8 +157,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 </button>
 <ul class="dropdown-menu" id="pst-nav-more-links">
 <li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+<a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="">
@@ -184,11 +184,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 <li class="">
@@ -292,13 +287,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../cheatsheet/index.html">
-    Cheatsheet
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="nav-item">
@@ -324,11 +319,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="nav-item">
 <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
-  </a>
-</li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../resources/index.html">
-    Resources
   </a>
 </li>
 <li class="nav-item">
@@ -695,37 +685,37 @@ ENHANCED KISS RANDOM - NEW FEATURES DEMONSTRATION
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0037469239978236146,
- 'time_mean': 0.005003532399132382,
- 'time_max': 0.005910161999054253,
- 'time_std': 0.0011382872285266093,
+ 'time_min': 0.0036353509999571543,
+ 'time_mean': 0.003666242799954489,
+ 'time_max': 0.0036927779997313337,
+ 'time_std': 2.429179169873796e-05,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.012621722999028862,
- 'time_mean': 0.013389784797618631,
- 'time_max': 0.014871968996885698,
- 'time_std': 0.001007135902988388,
+ 'time_min': 0.011951517999932548,
+ 'time_mean': 0.012106206000044039,
+ 'time_max': 0.012585802000103286,
+ 'time_std': 0.00027072140166885977,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.00485465899691917,
- 'time_mean': 0.0051741973977186715,
- 'time_max': 0.006048591996659525,
- 'time_std': 0.0004957000558059052,
+ 'time_min': 0.004816776999632566,
+ 'time_mean': 0.0048523413998736945,
+ 'time_max': 0.0049023350002244115,
+ 'time_std': 3.601654318843952e-05,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.015531468001427129,
- 'time_mean': 0.016290601599030195,
- 'time_max': 0.01770910599589115,
- 'time_std': 0.0010360744564321814,
+ 'time_min': 0.01382180900009189,
+ 'time_mean': 0.014168362200052798,
+ 'time_max': 0.014673216000119282,
+ 'time_std': 0.00040681358731833314,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 </pre></div>
@@ -938,13 +928,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.30090648 0.53886687 0.90829551 0.64605566 0.78933692]
-  integers(0, 100):  [42 37 48 68 69]
-  normal(0, 1):      [ 0.82488016  0.63111088 -1.03035179 -0.01806797 -1.27506944]
-  uniform(10, 20):   [13.84403819 15.54935944 12.81306559 11.50565673 11.92705039]
-  choice(['A','B','C']): ['A' 'B' 'C' 'B' 'C' 'B' 'B' 'B' 'B' 'B']
-  Weighted choice A: 46% (✅ expected ~50%)
-  shuffle([0..9]):   [8 2 9 3 4 1 5 0 6 7]
+  random(5):         [0.79804384 0.3821509  0.69684731 0.97903377 0.13463616]
+  integers(0, 100):  [35 61  1  0 82]
+  normal(0, 1):      [ 1.32082687 -0.08951206 -0.18218736 -1.43254953 -0.04301257]
+  uniform(10, 20):   [10.19188406 12.33485892 19.54150017 13.80886474 10.58539019]
+  choice(['A','B','C']): ['B' 'A' 'C' 'B' 'B' 'C' 'B' 'C' 'A' 'C']
+  Weighted choice A: 52% (✅ expected ~50%)
+  shuffle([0..9]):   [8 1 3 0 7 4 2 6 9 5]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1203,8 +1193,8 @@ Chi-square uniformity test:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [1.17119059 1.64361149 1.30358942 1.14446728 0.28960799]
-Beta(2, 5):           [0.29072991 0.33258856 0.41928267 0.32067455 0.1883023 ]
+Exponential(scale=2): [0.02122442 2.55330597 1.35522672 1.64607402 5.90087758]
+Beta(2, 5):           [0.18824942 0.07457008 0.47305573 0.07900876 0.14102946]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1441,7 +1431,7 @@ RECOMMENDED USAGE:
 ======================================================================
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.534 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.270 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1450,7 +1440,7 @@ RECOMMENDED USAGE:
 </div><div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category."><img alt="" src="../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png"/>
 <p><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html"><span class="doc">Comparing DummyCode Encoder with Other Encoders</span></a></p>
 <div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip='What is a Gaussian Mixture Model? ---------------------------------- Imagine you have a scatter plot of data and you can see a few separate clusters.  A Gaussian Mixture Model (GMM) formalises that intuition: it assumes the data came from K overlapping "blobs", each shaped like a multivariate Gaussian (bell curve).  We do not know K ahead of time — that is the whole point of this example.'><img alt="" src="../../_images/sphx_glr_plot_gaussian_mixture_models_thumb.png"/>
+</div><div class="sphx-glr-thumbcontainer" tooltip='What is a Gaussian Mixture Model? ---------------------------------- Imagine you have a scatter plot of data and you can see a few separate clusters.  A Gaussian Mixture Model (GMM) formalises that intuition: it assumes the data came from K overlapping "blobs", each shaped like a multivariate Gaussian (bell curve).  We do not know K ahead of time — that is the whole point of this example. [1]_ [2]_ [3]_ [4]_ [5]_'><img alt="" src="../../_images/sphx_glr_plot_gaussian_mixture_models_thumb.png"/>
 <p><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html"><span class="doc">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</span></a></p>
 <div class="sphx-glr-thumbnail-title">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates a minimal C++-mode build using:"><img alt="" src="../../_images/sphx_glr_plot_07_cpp_mode_basics_thumb.png"/>
@@ -1548,7 +1538,7 @@ RECOMMENDED USAGE:
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260616.2eeb508 2026-06-16T02:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260620.f06fe30 2026-06-20T15:23Z.
       <br/>
 </p>
 </div>

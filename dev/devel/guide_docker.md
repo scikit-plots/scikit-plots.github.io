@@ -203,6 +203,9 @@ bash-first-run-notice.txt[#](#bash-first-run-notice.txt "Link to this dropdown")
   $ conda info -e
 
 • Activate environments (depending on tool):
+
+root@sp-docker /work/docs (subpackage-bug-fix)
+  $ micromamba --version
   $ micromamba activate $(micromamba info -e | grep py312)
   $ micromamba activate /root/micromamba/envs/py312
   $ micromamba activate py311

@@ -1,6 +1,6 @@
 # Tweedie Family[#](#tweedie-family "Link to this heading")
 
-This module contains functions related to [`_tweedie`](../../../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie "scikitplot.externals._tweedie") under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats").
+This module contains functions related to [`_tweedie`](../../../apis/scikitplot.externals.html#module-scikitplot.externals._tweedie "scikitplot.externals._tweedie") under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats").
 
 > **Important**
 > Module also available under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats") punlic library.

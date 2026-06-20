@@ -1,6 +1,6 @@
 # ModelPlotPy[#](#modelplotpy "Link to this heading")
 
-class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**, **dataset\_labels=None**, **models=None**, **model\_labels=None**, **ntiles=10**, **seed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L362)[#](#scikitplot.decile.ModelPlotPy "Link to this definition")
+class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**, **dataset\_labels=None**, **models=None**, **model\_labels=None**, **ntiles=10**, **seed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L362)[#](#scikitplot.decile.ModelPlotPy "Link to this definition")
 :   Decile/ntile analysis for sklearn classifiers.
 
     Parameters:
@@ -79,7 +79,7 @@ class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**
     ```
     Go BackOpen In Tab
 
-    aggregate\_over\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L722)[#](#scikitplot.decile.ModelPlotPy.aggregate_over_ntiles "Link to this definition")
+    aggregate\_over\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L722)[#](#scikitplot.decile.ModelPlotPy.aggregate_over_ntiles "Link to this definition")
     :   Aggregate counts and lift/gain metrics per ntile.
 
         Parameters:
@@ -115,7 +115,7 @@ class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**
         ```
         Go BackOpen In Tab
 
-    get\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L527)[#](#scikitplot.decile.ModelPlotPy.get_params "Link to this definition")
+    get\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L527)[#](#scikitplot.decile.ModelPlotPy.get_params "Link to this definition")
     :   Get parameters (sklearn-style API).
 
         Parameters:
@@ -148,7 +148,7 @@ class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**
         ```
         Go BackOpen In Tab
 
-    plotting\_scope(**scope='auto'**, **select\_model\_label=None**, **select\_dataset\_label=None**, **select\_targetclass=None**, **select\_smallest\_targetclass=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L861)[#](#scikitplot.decile.ModelPlotPy.plotting_scope "Link to this definition")
+    plotting\_scope(**scope='auto'**, **select\_model\_label=None**, **select\_dataset\_label=None**, **select\_targetclass=None**, **select\_smallest\_targetclass=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L861)[#](#scikitplot.decile.ModelPlotPy.plotting_scope "Link to this definition")
     :   Build `plot_input` subset according to a strict scope contract.
 
         Parameters:
@@ -240,7 +240,7 @@ class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**
         ```
         Go BackOpen In Tab
 
-    prepare\_scores\_and\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L639)[#](#scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles "Link to this definition")
+    prepare\_scores\_and\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L639)[#](#scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles "Link to this definition")
     :   Compute per-row class probabilities and deterministic ntiles.
 
         Parameters:
@@ -280,7 +280,7 @@ class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**
         ```
         Go BackOpen In Tab
 
-    reset\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L603)[#](#scikitplot.decile.ModelPlotPy.reset_params "Link to this definition")
+    reset\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L603)[#](#scikitplot.decile.ModelPlotPy.reset_params "Link to this definition")
     :   Reset all parameters to a default empty state.
 
         Parameters:
@@ -311,7 +311,7 @@ class scikitplot.decile.ModelPlotPy(**feature\_data=None**, **label\_data=None**
         ```
         Go BackOpen In Tab
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2eeb508/scikitplot/decile/_decile_modelplotpy.py#L567)[#](#scikitplot.decile.ModelPlotPy.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/_decile_modelplotpy.py#L567)[#](#scikitplot.decile.ModelPlotPy.set_params "Link to this definition")
     :   Set parameters (sklearn-style API) and re-validate.
 
         Parameters:
