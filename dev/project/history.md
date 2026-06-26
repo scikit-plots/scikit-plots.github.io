@@ -5,7 +5,7 @@ This project was started in 2024.
 scikit-plots logo (2024 - ).
 
 > **See also**
-> [Logo API](../user_guide/_logo.html#logo-index)
+> [Logo API](../user_guide/_brand/_logo.html#logo-index)
 ```
 import matplotlib.pyplot as plt
 import numpy as np

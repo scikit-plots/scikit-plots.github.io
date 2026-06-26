@@ -22,7 +22,7 @@ mailing list (please do not post git problems to the [users list](https://mail.p
 
 Of course, you will want to clearly describe your problem, what you
 are expecting and what you are getting, but often a clean build and
-install will help. See also [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.12.0.dev283+g91f9a9d16)").
+install will help. See also [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.12.0.dev302+g06ff6e0b9)").
 
 ## Unlink of file `*/_c_internal_utils.cp311-win_amd64.pyd` failed[#](#unlink-of-file-c-internal-utils-cp311-win-amd64-pyd-failed "Link to this heading")
 

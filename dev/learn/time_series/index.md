@@ -1,0 +1,5 @@
+⏱️ Time Series
+  
+ Modelling and forecasting data that arrives in order
+  
+ 0.5.dev0+git.20260626.e137512 - June 26, 2026 18:41 UTC

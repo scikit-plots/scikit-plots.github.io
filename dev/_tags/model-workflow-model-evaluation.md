@@ -22,3 +22,4 @@ With this tag
 * [plot\_decileplot\_script with examples](../auto_examples/seaborn/plot_decileplot_script.html)
 * [plot\_evalplot\_script with examples](../auto_examples/seaborn/plot_evalplot_script.html)
 * [plot\_residuals\_distribution with examples](../auto_examples/stats/plot_residuals_distribution_script.html)
+* [Data Preparation & Analysis](../learn/data_preparation_and_analysis/index.html)

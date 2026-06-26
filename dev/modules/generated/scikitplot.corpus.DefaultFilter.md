@@ -1,6 +1,6 @@
 # DefaultFilter[#](#defaultfilter "Link to this heading")
 
-class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L490)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
+class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_base.py#L490)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
 :   Standard noise filter ported and improved from remarx’s `include_sentence`.
 
     Rejects a document when ****any**** of the following is true:
@@ -42,7 +42,7 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
     ```
     Go BackOpen In Tab
 
-    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L547)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
+    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_base.py#L547)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
     :   Return `True` if `doc` passes all noise checks.
 
         Parameters:

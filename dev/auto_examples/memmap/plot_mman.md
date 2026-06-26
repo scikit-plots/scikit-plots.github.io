@@ -288,15 +288,15 @@ print("[ADVANCED] done.\n")
 [ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only
 [ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.
 [ADVANCED] 200 iterations over 1.0 MB:
-           .read()     : 0.0751 s  (2.79 GB/s)
-           arr.copy()  : 0.0349 s  (6.01 GB/s)
+           .read()     : 0.0828 s  (2.53 GB/s)
+           arr.copy()  : 0.0386 s  (5.43 GB/s)
 [ADVANCED] done.
 
 ```
 
 Tags: [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.039 seconds)
+****Total running time of the script:**** (0 minutes 1.076 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo9.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/memmap/plot_mman.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo9.svg)](../../lite/lab/index.html?path=auto_examples/memmap/plot_mman.ipynb)
 

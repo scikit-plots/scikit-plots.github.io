@@ -1,6 +1,6 @@
 # build\_server\_args[#](#build-server-args "Link to this heading")
 
-scikitplot.mlflow.build\_server\_args(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/mlflow/_server.py#L70)[#](#scikitplot.mlflow.build_server_args "Link to this definition")
+scikitplot.mlflow.build\_server\_args(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/mlflow/_server.py#L70)[#](#scikitplot.mlflow.build_server_args "Link to this definition")
 :   Build the CLI args for `mlflow server` from a ServerConfig.
 
     Parameters:

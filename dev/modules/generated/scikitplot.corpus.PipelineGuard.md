@@ -1,6 +1,6 @@
 # PipelineGuard[#](#pipelineguard "Link to this heading")
 
-class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L2729)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
+class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_base.py#L2729)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
 :   Wrap any document stream with resilience, deduplication, and checkpointing.
 
     [`PipelineGuard`](#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard") is a thin, composable layer you place around
@@ -106,7 +106,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     ```
     Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L2979)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_base.py#L2979)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
     :   Flush and close the checkpoint file handle.
 
         Notes
@@ -117,7 +117,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         Return type:
         :   None
 
-    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_base.py#L2878)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
+    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_base.py#L2878)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
     :   Iterate **source** with resilience, dedup, and checkpoint.
 
         Parameters:

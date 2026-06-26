@@ -1,6 +1,6 @@
 # export\_builtin\_config[#](#export-builtin-config "Link to this heading")
 
-scikitplot.mlflow.export\_builtin\_config(**\***, **fmt='toml'**, **dest\_path=None**, **project\_root=None**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/mlflow/_workflow.py#L133)[#](#scikitplot.mlflow.export_builtin_config "Link to this definition")
+scikitplot.mlflow.export\_builtin\_config(**\***, **fmt='toml'**, **dest\_path=None**, **project\_root=None**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/mlflow/_workflow.py#L133)[#](#scikitplot.mlflow.export_builtin_config "Link to this definition")
 :   Export the built-in demo config into the current project.
 
     Parameters:

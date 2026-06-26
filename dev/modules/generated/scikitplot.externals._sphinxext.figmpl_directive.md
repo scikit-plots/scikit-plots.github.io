@@ -7,7 +7,7 @@ This implementation is very similar to `.. figure::`, except it also allows a
 resolution images.
 
 There is no particular reason this could not be used standalone, but is meant
-to be used with [matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.12.0.dev283+g91f9a9d16)").
+to be used with [matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.12.0.dev302+g06ff6e0b9)").
 
 Note that the directory organization is a bit different than `.. figure::`.
 See the **FigureMpl** documentation below.

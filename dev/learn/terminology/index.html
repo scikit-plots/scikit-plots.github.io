@@ -1,0 +1,2363 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Terminology" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/learn/terminology/index.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="📖 Terminology Reference Your complete guide to ML &amp; Data Science concepts in scikit-plots 0.5.dev0+git.20260626.e137512- June 26, 2026 18:41 UTC This reference organises every machine-learning ..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="📖 Terminology Reference Your complete guide to ML &amp; Data Science concepts in scikit-plots 0.5.dev0+git.20260626.e137512- June 26, 2026 18:41 UTC This reference organises every machine-learning ..." />
+
+<script>
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+</script>
+
+<script>
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:01:53Z"}};
+window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
+</script>
+
+    <title>Terminology &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=10a0cd3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/terminology/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/learn/terminology/index.html" />
+    <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Preparation &amp; Analysis" href="../data_preparation_and_analysis/index.html" />
+    <link rel="prev" title="Learn" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Terminology</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_preparation_and_analysis/index.html">Data Preparation &amp; Analysis</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bayesian_data_analysis/index.html">Bayesian Data Analysis</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../time_series/index.html">Time Series</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/index.html">Deep Learning</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../resources/data_resources.html">Data Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/examples.html">Model Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/external_resources.html">External Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/youtube.html">Youtube</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cheatsheet/index.html">Cheatsheet</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cheatsheet/cheatsheet_md.html">Md Cheatsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cheatsheet/cheatsheet_rst.html">RST Cheatsheet</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../glossary/index.html">Glossary</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://scikit-learn.org/stable/glossary.html">https://scikit-learn.org/stable/glossary.html</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://ml-cheatsheet.readthedocs.io/en/latest/glossary.html">https://ml-cheatsheet.readthedocs.io/en/latest/glossary.html</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+  
+  
+  
+
+  
+  
+  
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Learn</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Terminology</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p id="terminology-index"><span class="raw-html"><div style="text-align:center"><strong></span>
+📖 Terminology Reference <span class="raw-html"><br/></span>
+Your complete guide to ML &amp; Data Science concepts in scikit-plots
+<br/> 0.5.dev0+git.20260626.e137512 - June 26, 2026 18:41 UTC
+<span class="raw-html"></strong></div></span></p>
+<section id="terminology">
+<h1>Terminology<a class="headerlink" href="#terminology" title="Link to this heading">#</a></h1>
+<p>This reference organises every machine-learning and data-science term
+you will encounter when using <strong>scikit-plots</strong> — from the most
+elementary ideas (What is a True Positive?) to expert-level subtleties
+(Macro-averaged AUROC in imbalanced multiclass problems).</p>
+<p>Each entry answers four questions concisely:</p>
+<ul class="simple">
+<li><p><strong>What is it?</strong> — a plain-English definition.</p></li>
+<li><p><strong>Formula / Key Relationship</strong> — the exact mathematical statement.</p></li>
+<li><p><strong>When to use it</strong> — the right context.</p></li>
+<li><p><strong>scikit-plots / scikit-learn connection</strong> — the API call that
+produces or consumes this concept.</p></li>
+</ul>
+<p>Use the level tabs below to start at the depth that suits you, then
+follow cross-references to go deeper.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Terms are grouped by <strong>domain</strong>, not alphabetically, so that related
+concepts appear together.  Use your browser’s
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">F</kbd> or the Sphinx search to jump to a specific
+term.</p>
+</div>
+<hr class="docutils" />
+<section id="discovery-at-a-glance">
+<span id="terminology-discovery"></span><h2>Discovery at a Glance<a class="headerlink" href="#discovery-at-a-glance" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set sd-width-100 docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="level-foundations" for="sd-tab-item-0">
+🟢 Start Here — Foundations</label><div class="sd-tab-content docutils">
+<p>Core building blocks every practitioner must know.
+No formulas required — just intuition.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-3 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📋 Confusion Matrix</div>
+<p class="sd-card-text">The 2×2 (or K×K) table that underpins every classification
+metric. Start here.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-confusion-matrix"><span class="std std-ref">Domain 1 — Confusion Matrix &amp; Core Metrics</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🎯 Precision &amp; Recall</div>
+<p class="sd-card-text">The fundamental trade-off: catching more positives vs.
+trusting your predictions.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-precision-recall"><span class="std std-ref">Precision (Positive Predictive Value)</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+⚖️ F1 Score</div>
+<p class="sd-card-text">The harmonic mean of precision and recall — a single number
+that balances both.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-f-scores"><span class="std std-ref">F1 Score</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🏷️ Classification Types</div>
+<p class="sd-card-text">Binary, multiclass, multi-label — which problem are you
+actually solving?</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-classification-types"><span class="std std-ref">Binary · Multiclass · Multi-label Classification</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📉 Data Imbalance</div>
+<p class="sd-card-text">When one class dominates — oversampling, undersampling, and
+class weighting.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-data-imbalance"><span class="std std-ref">Domain 4 — Class Imbalance &amp; Sampling Strategies</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📈 ROC Curve</div>
+<p class="sd-card-text">The performance landscape across every classification
+threshold at once.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-roc-auroc"><span class="std std-ref">Domain 2 — ROC Curve &amp; AUROC</span></a></div>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="level-metrics" for="sd-tab-item-1">
+🔵 Go Deeper — Metrics</label><div class="sd-tab-content docutils">
+<p>Intermediate concepts for practitioners building and evaluating
+real models.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-3 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📐 Averaging Strategies</div>
+<p class="sd-card-text">Macro vs. Micro vs. Weighted — how single numbers are
+derived from per-class scores.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-averaging"><span class="std std-ref">Domain 3 — Averaging Strategies &amp; Multiclass Metrics</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🔢 Multiclass AUROC</div>
+<p class="sd-card-text">Extending the ROC framework from two classes to K classes
+with OvR and OvO strategies.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-multiclass-auroc"><span class="std std-ref">Domain 3 — Averaging Strategies &amp; Multiclass Metrics</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🧪 SMOTE &amp; Sampling</div>
+<p class="sd-card-text">Synthetic minority oversampling, NearMiss, cluster-based
+strategies — when and how.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-sampling"><span class="std std-ref">Oversampling</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📊 Statistical Tests</div>
+<p class="sd-card-text">Bootstrap CIs, Mann-Whitney U, and other tools for
+comparing models rigorously.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-statistics"><span class="std std-ref">Domain 5 — Statistical Foundations</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🎛️ Calibration</div>
+<p class="sd-card-text">Does P̂ = 0.8 really mean 80 % likely? Reliability diagrams
+and calibration curves.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-calibration"><span class="std std-ref">Domain 7 — Calibration</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+⚡ Signal Processing</div>
+<p class="sd-card-text">Subsampling, downsampling, aliasing, low-pass filtering —
+for time-series and DSP work.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-signal-timeseries"><span class="std std-ref">Domain 8 — Signal Processing &amp; Time Series</span></a></div>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="level-advanced" for="sd-tab-item-2">
+🔴 Expert — Advanced Concepts</label><div class="sd-tab-content docutils">
+<p>Nuanced topics for senior practitioners, researchers, and
+contributors.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-3 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+⚖️ Fairness Metrics</div>
+<p class="sd-card-text">Demographic parity, equal opportunity, equalized odds,
+predictive parity — choosing the right fairness criterion.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-fairness"><span class="std std-ref">Domain 6 — Fairness &amp; Bias Metrics</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🔄 OvR vs. OvO</div>
+<p class="sd-card-text">One-vs-Rest and One-vs-One decomposition strategies and
+their impact on AUROC computation.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-ovr-ovo"><span class="std std-ref">One-vs-Rest (OvR) and One-vs-One (OvO)</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📉 Gini Coefficient</div>
+<p class="sd-card-text">The relationship between Gini index and AUROC — and when
+Gini is the preferred reporting metric.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-gini"><span class="std std-ref">Gini Coefficient (in ML context)</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🧬 Bootstrap CIs</div>
+<p class="sd-card-text">Constructing confidence intervals for any metric without
+parametric assumptions.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-bootstrap"><span class="std std-ref">Bootstrap Confidence Intervals</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+🔬 Imbalance + Fairness</div>
+<p class="sd-card-text">When class imbalance interacts with group fairness — the
+hidden pitfalls.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-imbalance-fairness"><span class="std std-ref">Domain 6 — Fairness &amp; Bias Metrics</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-border-1 docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+📡 Aliasing &amp; Nyquist</div>
+<p class="sd-card-text">Why subsampling without a low-pass filter corrupts signals
+— the Nyquist-Shannon theorem.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#terminology-aliasing"><span class="std std-ref">Aliasing &amp; the Nyquist-Shannon Theorem</span></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="domain-1-confusion-matrix-core-metrics">
+<span id="terminology-confusion-matrix"></span><h2>Domain 1 — Confusion Matrix &amp; Core Metrics<a class="headerlink" href="#domain-1-confusion-matrix-core-metrics" title="Link to this heading">#</a></h2>
+<p>The confusion matrix is the single most important data structure in
+classification evaluation.  All threshold-based metrics derive from
+its four cells.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-confusion-matrix-entry" open="open">
+<span id="confusion-matrix"></span><summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-table" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path></svg></span><span class="sd-summary-text">Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>What is it?</strong></p>
+<p class="sd-card-text">A square table that tallies the agreement and disagreement between
+a classifier’s predicted labels and the true labels on a held-out
+dataset.  For a binary problem it has four cells:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 37.0%" />
+<col style="width: 38.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Cell</p></th>
+<th class="head"><p class="sd-card-text">Full Name</p></th>
+<th class="head"><p class="sd-card-text">Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text"><strong>TP</strong></p></td>
+<td><p class="sd-card-text">True Positive</p></td>
+<td><p class="sd-card-text">Predicted positive, actually positive</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text"><strong>TN</strong></p></td>
+<td><p class="sd-card-text">True Negative</p></td>
+<td><p class="sd-card-text">Predicted negative, actually negative</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text"><strong>FP</strong></p></td>
+<td><p class="sd-card-text">False Positive (Type I error)</p></td>
+<td><p class="sd-card-text">Predicted positive, actually negative</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text"><strong>FN</strong></p></td>
+<td><p class="sd-card-text">False Negative (Type II error)</p></td>
+<td><p class="sd-card-text">Predicted negative, actually positive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text">For a K-class problem the matrix is K×K: row <code class="docutils literal notranslate"><span class="pre">i</span></code>, column <code class="docutils literal notranslate"><span class="pre">j</span></code>
+counts samples with true label <code class="docutils literal notranslate"><span class="pre">i</span></code> predicted as label <code class="docutils literal notranslate"><span class="pre">j</span></code>.
+The diagonal contains correct predictions.</p>
+<p class="sd-card-text"><strong>scikit-plots connection</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">skplt</span>
+
+<span class="c1"># Plot normalised confusion matrix</span>
+<span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text"><strong>When to use it</strong></p>
+<p class="sd-card-text">Always — it is the foundation for every derived metric.  Inspect
+the raw counts before trusting any single-number summary.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-tp-tn-fp-fn">
+<span id="true-positive-·-true-negative-·-false-positive-·-false-negative"></span><summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check-circle" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm1.5 0a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm10.28-1.72-4.5 4.5a.75.75 0 0 1-1.06 0l-2-2a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l1.47 1.47 3.97-3.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">True Positive · True Negative · False Positive · False Negative<a class="headerlink" href="#true-positive-·-true-negative-·-false-positive-·-false-negative" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definitions</strong></p>
+<p class="sd-card-text">These four quantities are the atoms of classification evaluation.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 42.0%" />
+<col style="width: 43.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Symbol</p></th>
+<th class="head"><p class="sd-card-text">Intuition</p></th>
+<th class="head"><p class="sd-card-text">Domain example (disease screening)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text"><strong>TP</strong></p></td>
+<td><p class="sd-card-text">Correct positive detection</p></td>
+<td><p class="sd-card-text">Test says “sick”, patient is sick ✅</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text"><strong>TN</strong></p></td>
+<td><p class="sd-card-text">Correct negative detection</p></td>
+<td><p class="sd-card-text">Test says “healthy”, patient is healthy ✅</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text"><strong>FP</strong></p></td>
+<td><p class="sd-card-text">False alarm</p></td>
+<td><p class="sd-card-text">Test says “sick”, patient is healthy ❌</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text"><strong>FN</strong></p></td>
+<td><p class="sd-card-text">Missed detection</p></td>
+<td><p class="sd-card-text">Test says “healthy”, patient is sick ❌</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text">The cost of FP and FN is <strong>domain-specific</strong> — in fraud detection,
+FN (missed fraud) is often far costlier than FP (flagging a
+legitimate transaction).  Always decide which error is worse <em>before</em>
+selecting a threshold.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="accuracy">
+<summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path></svg></span><span class="sd-summary-text">Accuracy<a class="headerlink" href="#accuracy" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}\]</div>
+<p class="sd-card-text"><strong>Intuition</strong> — the fraction of all predictions that are correct.</p>
+<p class="sd-card-text"><strong>When NOT to use it</strong></p>
+<p class="sd-card-text">Accuracy is misleading for <strong>imbalanced datasets</strong>.  A model that
+predicts the majority class for every sample achieves high accuracy
+while being completely useless.  Prefer F1, balanced accuracy,
+AUROC, or class-specific metrics when class frequencies differ
+substantially.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span>
+
+<span class="n">acc</span>    <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">b_acc</span>  <span class="o">=</span> <span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  <span class="c1"># better for imbalance</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-precision-recall">
+<span id="precision-(positive-predictive-value)"></span><summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-goal" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.637 2.363h-.001l1.676.335c.09.018.164.084.19.173a.25.25 0 0 1-.062.249l-1.373 1.374a.876.876 0 0 1-.619.256H12.31L9.45 7.611A1.5 1.5 0 1 1 6.5 8a1.501 1.501 0 0 1 1.889-1.449l2.861-2.862V2.552c0-.232.092-.455.256-.619L12.88.559a.25.25 0 0 1 .249-.062c.089.026.155.1.173.19Z"></path><path d="M2 8a6 6 0 1 0 11.769-1.656.751.751 0 1 1 1.442-.413 7.502 7.502 0 0 1-12.513 7.371A7.501 7.501 0 0 1 10.069.789a.75.75 0 0 1-.413 1.442A6.001 6.001 0 0 0 2 8Z"></path><path d="M5 8a3.002 3.002 0 0 0 4.699 2.476 3 3 0 0 0 1.28-2.827.748.748 0 0 1 1.045-.782.75.75 0 0 1 .445.61A4.5 4.5 0 1 1 8.516 3.53a.75.75 0 1 1-.17 1.49A3 3 0 0 0 5 8Z"></path></svg></span><span class="sd-summary-text">Precision (Positive Predictive Value)<a class="headerlink" href="#precision-(positive-predictive-value)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{Precision} = \frac{TP}{TP + FP}\]</div>
+<p class="sd-card-text"><strong>Intuition</strong> — “Of everything I labelled positive, what fraction
+really was positive?”  High precision means few false alarms.</p>
+<p class="sd-card-text"><strong>Trade-off</strong> — raising the classification threshold raises precision
+but typically lowers recall.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">precision_score</span>
+
+<span class="c1"># binary</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="c1"># multiclass (macro)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="recall-(sensitivity-·-true-positive-rate)">
+<summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-search" viewBox="0 0 16 16" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></span><span class="sd-summary-text">Recall (Sensitivity · True Positive Rate)<a class="headerlink" href="#recall-(sensitivity-·-true-positive-rate)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{Recall} = \frac{TP}{TP + FN}\]</div>
+<p class="sd-card-text"><strong>Aliases</strong> — Sensitivity, True Positive Rate (TPR), Hit Rate.</p>
+<p class="sd-card-text"><strong>Intuition</strong> — “Of everything that really was positive, what
+fraction did I catch?”  High recall means few missed detections.</p>
+<p class="sd-card-text"><strong>Trade-off</strong> — lowering the threshold increases recall but
+typically reduces precision (more false alarms).</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">recall_score</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>  <span class="c1"># multiclass</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="specificity-(true-negative-rate)">
+<summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-shield-check" viewBox="0 0 16 16" aria-hidden="true"><path d="m8.533.133 5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667l5.25-1.68a1.748 1.748 0 0 1 1.066 0Zm-.61 1.429.001.001-5.25 1.68a.251.251 0 0 0-.174.237V7c0 1.36.275 2.666 1.057 3.859.784 1.194 2.121 2.342 4.366 3.298a.196.196 0 0 0 .154 0c2.245-.957 3.582-2.103 4.366-3.297C13.225 9.666 13.5 8.358 13.5 7V3.48a.25.25 0 0 0-.174-.238l-5.25-1.68a.25.25 0 0 0-.153 0ZM11.28 6.28l-3.5 3.5a.75.75 0 0 1-1.06 0l-1.5-1.5a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l.97.97 2.97-2.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">Specificity (True Negative Rate)<a class="headerlink" href="#specificity-(true-negative-rate)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{Specificity} = \frac{TN}{TN + FP} = 1 - \text{FPR}\]</div>
+<p class="sd-card-text"><strong>Intuition</strong> — “Of everything that really was negative, what
+fraction did I correctly label as negative?”  Closely related to
+the x-axis of the ROC curve.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> does not have a standalone <code class="docutils literal notranslate"><span class="pre">specificity_score</span></code>.
+Use <code class="docutils literal notranslate"><span class="pre">recall_score(y_true,</span> <span class="pre">y_pred,</span> <span class="pre">pos_label=0)</span></code> to compute it
+for the negative class in a binary problem.</p>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-f-scores">
+<span id="f1-score"></span><summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">F1 Score<a class="headerlink" href="#f1-score" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}
+                   {\text{Precision} + \text{Recall}}\]</div>
+<p class="sd-card-text">The F1 is the <strong>harmonic mean</strong> of precision and recall.  The
+harmonic mean penalises extreme imbalances between the two: a
+model with precision = 1.0 and recall = 0.0 gets F1 = 0.0.</p>
+<p class="sd-card-text"><strong>When to use it</strong> — when both false positives and false negatives
+matter, and you want a single summary number.</p>
+<p class="sd-card-text"><strong>When NOT to use it</strong> — when true negatives matter (e.g. spam
+filtering, where correctly rejecting spam is also valuable).
+Use the Matthews Correlation Coefficient (MCC) instead.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">f1_score</span>
+
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>  <span class="c1"># multiclass</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="f-beta-score">
+<summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-sliders" viewBox="0 0 16 16" aria-hidden="true"><path d="M15 2.75a.75.75 0 0 1-.75.75h-4a.75.75 0 0 1 0-1.5h4a.75.75 0 0 1 .75.75Zm-8.5.75v1.25a.75.75 0 0 0 1.5 0v-4a.75.75 0 0 0-1.5 0V2H1.75a.75.75 0 0 0 0 1.5H6.5Zm1.25 5.25a.75.75 0 0 0 0-1.5h-6a.75.75 0 0 0 0 1.5h6ZM15 8a.75.75 0 0 1-.75.75H11.5V10a.75.75 0 1 1-1.5 0V6a.75.75 0 0 1 1.5 0v1.25h2.75A.75.75 0 0 1 15 8Zm-9 5.25v-2a.75.75 0 0 0-1.5 0v1.25H1.75a.75.75 0 0 0 0 1.5H4.5v1.25a.75.75 0 0 0 1.5 0v-2Zm9 0a.75.75 0 0 1-.75.75h-6a.75.75 0 0 1 0-1.5h6a.75.75 0 0 1 .75.75Z"></path></svg></span><span class="sd-summary-text">F-beta Score<a class="headerlink" href="#f-beta-score" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<div class="math notranslate nohighlight">
+\[F_\beta = (1 + \beta^2) \cdot
+          \frac{\text{Precision} \cdot \text{Recall}}
+               {(\beta^2 \cdot \text{Precision}) + \text{Recall}}\]</div>
+<p class="sd-card-text">The scalar <span class="math notranslate nohighlight">\(\beta\)</span> controls the relative weight of recall:</p>
+<ul class="simple">
+<li><p class="sd-card-text"><span class="math notranslate nohighlight">\(\beta &lt; 1\)</span> → precision-heavy  (F0.5 emphasises precision)</p></li>
+<li><p class="sd-card-text"><span class="math notranslate nohighlight">\(\beta = 1\)</span> → balanced F1</p></li>
+<li><p class="sd-card-text"><span class="math notranslate nohighlight">\(\beta &gt; 1\)</span> → recall-heavy  (F2 emphasises recall)</p></li>
+</ul>
+<p class="sd-card-text"><strong>Use case</strong> — information retrieval, medical screening where
+missing a positive is far costlier than a false alarm.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">fbeta_score</span>
+
+<span class="n">f2</span> <span class="o">=</span> <span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-2-roc-curve-auroc">
+<span id="terminology-roc-auroc"></span><h2>Domain 2 — ROC Curve &amp; AUROC<a class="headerlink" href="#domain-2-roc-curve-auroc" title="Link to this heading">#</a></h2>
+<p>The Receiver Operating Characteristic curve and the Area Under it are
+the standard threshold-independent evaluation framework for
+classification models.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="roc-curve" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">ROC Curve<a class="headerlink" href="#roc-curve" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>What is it?</strong></p>
+<p class="sd-card-text">A plot of <strong>True Positive Rate (Recall)</strong> on the y-axis against
+<strong>False Positive Rate (1 − Specificity)</strong> on the x-axis, traced
+by sweeping the classification threshold from 1.0 down to 0.0.</p>
+<ul class="simple">
+<li><p class="sd-card-text">Bottom-left corner (0, 0) — threshold = 1.0, predict everything
+negative.</p></li>
+<li><p class="sd-card-text">Top-right corner (1, 1) — threshold = 0.0, predict everything
+positive.</p></li>
+<li><p class="sd-card-text"><strong>Diagonal</strong> — random classifier (AUROC = 0.5).</p></li>
+<li><p class="sd-card-text"><strong>Top-left corner</strong> (0, 1) — perfect classifier (AUROC = 1.0).</p></li>
+</ul>
+<p class="sd-card-text"><strong>Key insight</strong> — the shape of the curve exposes the trade-off
+across <em>all</em> thresholds simultaneously, so you can pick the right
+operating point for your application <em>after</em> training.</p>
+<p class="sd-card-text"><strong>scikit-plots</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">skplt</span>
+
+<span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_roc</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span>
+    <span class="n">y_probas</span><span class="p">,</span>       <span class="c1"># shape (n_samples, n_classes)</span>
+    <span class="n">plot_macro</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_micro</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="auroc-(area-under-the-roc-curve)">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-meter" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 6.016 4.035.75.75 0 0 1 1.388-.57 8 8 0 1 1-4.37-4.37.75.75 0 1 1-.569 1.389A6.473 6.473 0 0 0 8 1.5Zm6.28.22a.75.75 0 0 1 0 1.06l-4.063 4.064a2.5 2.5 0 1 1-1.06-1.06L13.22 1.72a.75.75 0 0 1 1.06 0ZM7 8a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z"></path></svg></span><span class="sd-summary-text">AUROC (Area Under the ROC Curve)<a class="headerlink" href="#auroc-(area-under-the-roc-curve)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Formula</strong></p>
+<p class="sd-card-text">The AUROC equals the <strong>probability</strong> that the model assigns a
+higher score to a randomly chosen positive example than to a
+randomly chosen negative example:</p>
+<div class="math notranslate nohighlight">
+\[\text{AUROC} = P\!\bigl(\hat{s}_{\text{pos}} &gt; \hat{s}_{\text{neg}}\bigr)\]</div>
+<p class="sd-card-text">This interpretation, due to Bamber (1975), makes AUROC a purely
+<strong>rank-based</strong> measure — it is invariant to monotone score
+transformations.</p>
+<p class="sd-card-text"><strong>Interpretation scale</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">AUROC</p></th>
+<th class="head"><p class="sd-card-text">Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">0.50</p></td>
+<td><p class="sd-card-text">Random guessing — no discriminative power</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.70 – 0.80</p></td>
+<td><p class="sd-card-text">Acceptable discrimination</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">0.80 – 0.90</p></td>
+<td><p class="sd-card-text">Good discrimination</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.90 – 1.00</p></td>
+<td><p class="sd-card-text">Excellent / near-perfect discrimination</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">1.00</p></td>
+<td><p class="sd-card-text">Perfect ranking (no real problem is this clean)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text"><strong>Limitation</strong> — AUROC can be optimistic on highly imbalanced
+datasets because it counts TN (the large negative class) heavily.
+Consider the PR-AUC in that scenario.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+<span class="c1"># binary</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+<span class="c1"># multiclass (macro OvR)</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_score_matrix</span><span class="p">,</span>
+    <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="precision-recall-curve-&amp;-pr-auc">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">Precision-Recall Curve &amp; PR-AUC<a class="headerlink" href="#precision-recall-curve-&-pr-auc" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>What is it?</strong></p>
+<p class="sd-card-text">A plot of <strong>Precision</strong> on the y-axis against <strong>Recall</strong> on the
+x-axis as the threshold varies.  The <strong>Average Precision (AP)</strong>,
+or the area under this curve, summarises performance.</p>
+<p class="sd-card-text"><strong>When to prefer PR-AUC over AUROC</strong></p>
+<p class="sd-card-text">In severely imbalanced datasets (e.g., rare-event detection,
+fraud, medical screening where positives are &lt; 5 % of data),
+the PR curve exposes model weaknesses that the ROC curve can hide —
+because the ROC curve’s x-axis (FPR) is diluted by the enormous
+TN pool.</p>
+<p class="sd-card-text"><strong>scikit-plots</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_precision_recall</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">,</span> <span class="n">plot_micro</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-gini">
+<span id="gini-coefficient-(in-ml-context)"></span><summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-number" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 4.75A.75.75 0 0 1 9.75 4h4a.75.75 0 0 1 .53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.751.751 0 0 1 .822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 0 1-.53-1.28l1.72-1.72H9.75A.75.75 0 0 1 9 4.75Zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 1 1-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737ZM5.604.089A.75.75 0 0 1 6 .75v4.77h.711a.75.75 0 0 1 0 1.5H3.759a.75.75 0 0 1 0-1.5H4.5V2.15l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037Z"></path></svg></span><span class="sd-summary-text">Gini Coefficient (in ML context)<a class="headerlink" href="#gini-coefficient-(in-ml-context)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Relationship to AUROC</strong></p>
+<p class="sd-card-text">In machine learning (particularly credit scoring and finance),
+the Gini coefficient is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\text{Gini} = 2 \cdot \text{AUROC} - 1\]</div>
+<p class="sd-card-text">It maps the AUROC from the range [0.5, 1.0] to the range [0.0, 1.0]:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">AUROC</p></th>
+<th class="head"><p class="sd-card-text">Gini</p></th>
+<th class="head"><p class="sd-card-text">Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">0.50</p></td>
+<td><p class="sd-card-text">0.00</p></td>
+<td><p class="sd-card-text">Random</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">0.75</p></td>
+<td><p class="sd-card-text">0.50</p></td>
+<td><p class="sd-card-text">Good</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">1.00</p></td>
+<td><p class="sd-card-text">1.00</p></td>
+<td><p class="sd-card-text">Perfect</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text"><strong>When you will see it</strong> — credit risk models, insurance, any
+domain that adopted the Gini metric before AUROC became standard.
+The two metrics are equivalent information.</p>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-3-averaging-strategies-multiclass-metrics">
+<span id="terminology-multiclass-auroc"></span><span id="terminology-averaging"></span><h2>Domain 3 — Averaging Strategies &amp; Multiclass Metrics<a class="headerlink" href="#domain-3-averaging-strategies-multiclass-metrics" title="Link to this heading">#</a></h2>
+<p>When K &gt; 2, every binary metric must be extended to the multi-class
+case.  The choice of averaging strategy changes the answer.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-classification-types" open="open">
+<span id="binary-·-multiclass-·-multi-label-classification"></span><summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-tag" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path></svg></span><span class="sd-summary-text">Binary · Multiclass · Multi-label Classification<a class="headerlink" href="#binary-·-multiclass-·-multi-label-classification" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Binary</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Definition</strong> — exactly two mutually exclusive classes:
+positive (1) and negative (0).</p>
+<p class="sd-card-text"><strong>Output</strong> — a single probability score per sample, or a
+binary label.</p>
+<p class="sd-card-text"><strong>Example</strong> — spam vs. not-spam; disease positive vs. negative.</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Multiclass (Single-label)</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Definition</strong> — K &gt; 2 mutually exclusive classes.  Each
+sample belongs to exactly one class.</p>
+<p class="sd-card-text"><strong>Output</strong> — a probability vector of length K; the argmax
+is the predicted class.</p>
+<p class="sd-card-text"><strong>Example</strong> — MNIST digit recognition (0–9); flower species
+classification (Iris dataset).</p>
+<p class="sd-card-text"><strong>Also called</strong> — single-label classification, multi-class
+classification.</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+Multi-label</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Definition</strong> — each sample can belong to <em>multiple</em> classes
+simultaneously (classes are not mutually exclusive).</p>
+<p class="sd-card-text"><strong>Output</strong> — a binary indicator vector of length K per sample.</p>
+<p class="sd-card-text"><strong>Example</strong> — image tagging (a photo can be “dog”, “outdoor”,
+“daytime” simultaneously); document topic labelling.</p>
+<p class="sd-card-text"><strong>Key difference</strong> — the per-class AUROC and F1 are computed
+independently for each label.</p>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="macro-averaging">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-columns" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.75 0h2.5C6.216 0 7 .784 7 1.75v12.5A1.75 1.75 0 0 1 5.25 16h-2.5A1.75 1.75 0 0 1 1 14.25V1.75C1 .784 1.784 0 2.75 0Zm8 0h2.5C14.216 0 15 .784 15 1.75v12.5A1.75 1.75 0 0 1 13.25 16h-2.5A1.75 1.75 0 0 1 9 14.25V1.75C9 .784 9.784 0 10.75 0ZM2.5 1.75v12.5c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Zm8 0v12.5c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path></svg></span><span class="sd-summary-text">Macro Averaging<a class="headerlink" href="#macro-averaging" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">Compute the metric separately for each class, then take the
+<strong>unweighted (simple) mean</strong> across all K classes:</p>
+<div class="math notranslate nohighlight">
+\[\text{Metric}_{\text{macro}} = \frac{1}{K} \sum_{i=1}^{K} \text{Metric}_i\]</div>
+<p class="sd-card-text"><strong>Properties</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Each class contributes <strong>equally</strong>, regardless of how many
+samples it has.</p></li>
+<li><p class="sd-card-text">Sensitive to performance on <strong>minority classes</strong> — poor
+discrimination on a rare class lowers the macro score noticeably.</p></li>
+<li><p class="sd-card-text">Best choice when you care about <strong>per-class fairness</strong>.</p></li>
+</ul>
+<p class="sd-card-text"><strong>Example (Macro F1)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">f1_score</span>
+
+<span class="n">f1_macro</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="micro-averaging">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-rows" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 10.75v2.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25v-2.5C0 9.784.784 9 1.75 9h12.5c.966 0 1.75.784 1.75 1.75Zm0-8v2.5A1.75 1.75 0 0 1 14.25 7H1.75A1.75 1.75 0 0 1 0 5.25v-2.5C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75Zm-1.75-.25H1.75a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25Zm0 8H1.75a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25Z"></path></svg></span><span class="sd-summary-text">Micro Averaging<a class="headerlink" href="#micro-averaging" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">Aggregate the TP, TN, FP, FN counts across <em>all</em> classes into
+global totals, then compute the metric once from those totals:</p>
+<div class="math notranslate nohighlight">
+\[\text{Precision}_{\text{micro}} =
+\frac{\sum_i TP_i}{\sum_i (TP_i + FP_i)}\]</div>
+<p class="sd-card-text"><strong>Properties</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Dominated by <strong>majority classes</strong> because large classes
+contribute more counts.</p></li>
+<li><p class="sd-card-text">Equivalent to accuracy for multiclass single-label problems.</p></li>
+<li><p class="sd-card-text">Best choice when overall sample-level performance matters and
+class size differences are acceptable.</p></li>
+</ul>
+<p class="sd-card-text"><strong>Example (Micro F1)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">f1_score</span>
+
+<span class="n">f1_micro</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="weighted-averaging">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-sort-asc" viewBox="0 0 16 16" aria-hidden="true"><path d="m12.927 2.573 3 3A.25.25 0 0 1 15.75 6H13.5v6.75a.75.75 0 0 1-1.5 0V6H9.75a.25.25 0 0 1-.177-.427l3-3a.25.25 0 0 1 .354 0ZM0 12.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75Zm0-4a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5H.75A.75.75 0 0 1 0 8.25Zm0-4a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5H.75A.75.75 0 0 1 0 4.25Z"></path></svg></span><span class="sd-summary-text">Weighted Averaging<a class="headerlink" href="#weighted-averaging" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">Compute the metric per class, then take a <strong>weighted mean</strong> where
+each class’s weight equals its proportion of samples (support):</p>
+<div class="math notranslate nohighlight">
+\[\text{Metric}_{\text{weighted}} =
+\sum_{i=1}^{K} w_i \cdot \text{Metric}_i,
+\quad w_i = \frac{n_i}{\sum_j n_j}\]</div>
+<p class="sd-card-text"><strong>Properties</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Accounts for class imbalance without completely ignoring minority
+classes (unlike micro).</p></li>
+<li><p class="sd-card-text">The default in many scikit-learn reports.</p></li>
+<li><p class="sd-card-text">Can still mask poor minority-class performance if the majority
+class is large enough.</p></li>
+</ul>
+<p class="sd-card-text"><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">f1_score</span>
+
+<span class="n">f1_weighted</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="macro-auroc-(macro-averaged-auroc)">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">Macro AUROC (Macro-Averaged AUROC)<a class="headerlink" href="#macro-auroc-(macro-averaged-auroc)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">Extend binary AUROC to K classes using the <strong>One-vs-Rest (OvR)</strong>
+strategy, then average:</p>
+<div class="math notranslate nohighlight">
+\[\text{AUROC}_{\text{macro}} = \frac{1}{K}
+\sum_{i=1}^{K} \text{AUROC}(\text{class}_i \text{ vs. rest})\]</div>
+<p class="sd-card-text"><strong>Example computation</strong></p>
+<p class="sd-card-text">For a 3-class problem (A, B, C):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Binary AUROC</p></th>
+<th class="head"><p class="sd-card-text">Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">AUROC(A vs. B+C)</p></td>
+<td><p class="sd-card-text">0.85</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">AUROC(B vs. A+C)</p></td>
+<td><p class="sd-card-text">0.72</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">AUROC(C vs. A+B)</p></td>
+<td><p class="sd-card-text">0.65</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="math notranslate nohighlight">
+\[\text{AUROC}_{\text{macro}} = \frac{0.85 + 0.72 + 0.65}{3} = 0.74\]</div>
+<p class="sd-card-text">If class C is rare but performs poorly, Macro AUROC reflects this
+because every class has equal weight.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="micro-auroc">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">Micro AUROC<a class="headerlink" href="#micro-auroc" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">Flatten all one-vs-rest binary predictions into a single long
+vector of true labels and scores, then compute a single AUROC:</p>
+<div class="math notranslate nohighlight">
+\[\text{AUROC}_{\text{micro}} =
+\text{AUROC}\!\left(\,
+  \bigoplus_{i=1}^{K} y_i^{(\text{bin})},\;
+  \bigoplus_{i=1}^{K} \hat{s}_i
+\right)\]</div>
+<p class="sd-card-text"><strong>Properties</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Heavily influenced by <strong>majority classes</strong> (more samples → more
+weight).</p></li>
+<li><p class="sd-card-text">Provides an overall view of ranking quality across all decisions.</p></li>
+<li><p class="sd-card-text">Can look good even when rare classes are poorly ranked.</p></li>
+</ul>
+<p class="sd-card-text"><strong>Macro vs. Micro — when to use which</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Situation</p></th>
+<th class="head"><p class="sd-card-text">Recommended</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Classes should be treated equally</p></td>
+<td><p class="sd-card-text"><strong>Macro AUROC</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Overall sample-level ranking matters</p></td>
+<td><p class="sd-card-text"><strong>Micro AUROC</strong></p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Imbalanced and every class matters</p></td>
+<td><p class="sd-card-text"><strong>Macro AUROC</strong> (reveals minority weaknesses)</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Class sizes are acceptable to weight</p></td>
+<td><p class="sd-card-text">Weighted AUROC</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-ovr-ovo">
+<span id="one-vs-rest-(ovr)-and-one-vs-one-(ovo)"></span><summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-both" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.72 3.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.56 7h10.88l-2.22-2.22a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l3.5 3.5a.75.75 0 0 1 0 1.06l-3.5 3.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l2.22-2.22H2.56l2.22 2.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-3.5-3.5a.75.75 0 0 1 0-1.06Z"></path></svg></span><span class="sd-summary-text">One-vs-Rest (OvR) and One-vs-One (OvO)<a class="headerlink" href="#one-vs-rest-(ovr)-and-one-vs-one-(ovo)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>One-vs-Rest (OvR)</strong> — also called One-vs-All (OvA)</p>
+<p class="sd-card-text">For K classes, train K binary classifiers.  Classifier <em>i</em> treats
+class <em>i</em> as the positive class and all others as the negative class.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Property</p></th>
+<th class="head"><p class="sd-card-text">OvR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Number of classifiers</p></td>
+<td><p class="sd-card-text">K</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Training set size per classifier</p></td>
+<td><p class="sd-card-text">Full dataset (imbalanced: 1 positive class vs. K-1 negatives)</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Prediction</p></td>
+<td><p class="sd-card-text">Argmax of K confidence scores</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">AUROC computation</p></td>
+<td><p class="sd-card-text">Average of K binary AUROCs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text"><strong>One-vs-One (OvO)</strong></p>
+<p class="sd-card-text">Train one binary classifier for every pair of classes.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Property</p></th>
+<th class="head"><p class="sd-card-text">OvO</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Number of classifiers</p></td>
+<td><p class="sd-card-text">K(K−1)/2</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Training set size per classifier</p></td>
+<td><p class="sd-card-text">Only the two relevant classes (balanced)</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Prediction</p></td>
+<td><p class="sd-card-text">Majority vote over all pairwise classifiers</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">AUROC computation</p></td>
+<td><p class="sd-card-text">Average of all pairwise AUROCs (Hand &amp; Till, 2001)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+<span class="c1"># OvR macro</span>
+<span class="n">auc_ovr</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span>
+<span class="p">)</span>
+<span class="c1"># OvO macro (Hand &amp; Till)</span>
+<span class="n">auc_ovo</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovo&#39;</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-4-class-imbalance-sampling-strategies">
+<span id="terminology-data-imbalance"></span><h2>Domain 4 — Class Imbalance &amp; Sampling Strategies<a class="headerlink" href="#domain-4-class-imbalance-sampling-strategies" title="Link to this heading">#</a></h2>
+<p>Most real-world classification datasets are imbalanced.  The severity
+ranges from mildly unequal class frequencies (1:2) to extreme
+imbalance (fraud: 1:10 000).  The response strategies fall into
+three groups: <strong>re-weighting</strong>, <strong>oversampling</strong>, and <strong>undersampling</strong>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="class-imbalance-—-overview" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg></span><span class="sd-summary-text">Class Imbalance — Overview<a class="headerlink" href="#class-imbalance-—-overview" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">A dataset is <em>imbalanced</em> when the class frequencies differ
+substantially — typically taken as a ratio exceeding 1:5 (minority :
+majority).</p>
+<p class="sd-card-text"><strong>Why it matters for metrics</strong></p>
+<p class="sd-card-text">A classifier that predicts the majority class for every sample
+achieves misleadingly high accuracy.  Standard metrics (accuracy,
+Macro F1) can therefore be poor guides.</p>
+<p class="sd-card-text"><strong>Summary of strategies</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Strategy</p></th>
+<th class="head"><p class="sd-card-text">Mechanism</p></th>
+<th class="head"><p class="sd-card-text">Best when</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Class weighting</p></td>
+<td><p class="sd-card-text">Penalise majority class errors more</p></td>
+<td><p class="sd-card-text">Small to moderate imbalance</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Random oversampling</p></td>
+<td><p class="sd-card-text">Duplicate minority samples</p></td>
+<td><p class="sd-card-text">Quick baseline</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">SMOTE</p></td>
+<td><p class="sd-card-text">Synthesise minority samples</p></td>
+<td><p class="sd-card-text">Feature-space interpolation is valid</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Random undersampling</p></td>
+<td><p class="sd-card-text">Remove majority samples</p></td>
+<td><p class="sd-card-text">Very large majority class</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">NearMiss</p></td>
+<td><p class="sd-card-text">Keep majority samples closest to minority</p></td>
+<td><p class="sd-card-text">Hard-boundary learning</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Cluster-based undersampling</p></td>
+<td><p class="sd-card-text">Keep one majority representative per cluster</p></td>
+<td><p class="sd-card-text">Structured majority class</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="class-weighting">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-law" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.75.75V2h.985c.304 0 .603.08.867.231l1.29.736c.038.022.08.033.124.033h2.234a.75.75 0 0 1 0 1.5h-.427l2.111 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.006.005-.01.01-.045.04c-.21.176-.441.327-.686.45C14.556 10.78 13.88 11 13 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L12.178 4.5h-.162c-.305 0-.604-.079-.868-.231l-1.29-.736a.245.245 0 0 0-.124-.033H8.75V13h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5V3.5h-.984a.245.245 0 0 0-.124.033l-1.289.737c-.265.15-.564.23-.869.23h-.162l2.112 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.016.015-.045.04c-.21.176-.441.327-.686.45C4.556 10.78 3.88 11 3 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L2.178 4.5H1.75a.75.75 0 0 1 0-1.5h2.234a.249.249 0 0 0 .125-.033l1.288-.737c.265-.15.564-.23.869-.23h.984V.75a.75.75 0 0 1 1.5 0Zm2.945 8.477c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327Zm-10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327Z"></path></svg></span><span class="sd-summary-text">Class Weighting<a class="headerlink" href="#class-weighting" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Mechanism</strong></p>
+<p class="sd-card-text">Assign each sample a loss weight inversely proportional to its
+class frequency, so that minority-class errors are penalised more
+heavily during training:</p>
+<div class="math notranslate nohighlight">
+\[w_i = \frac{n_{\text{total}}}{K \cdot n_i}\]</div>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(n_i\)</span> is the count of class <em>i</em>.</p>
+<p class="sd-card-text"><strong>Advantages</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">No data is discarded or synthesised — uses the original
+distribution.</p></li>
+<li><p class="sd-card-text">Straightforward — most scikit-learn estimators accept
+<code class="docutils literal notranslate"><span class="pre">class_weight='balanced'</span></code>.</p></li>
+</ul>
+<p class="sd-card-text"><strong>Limitations</strong> — does not change the decision boundary in the
+input space; only adjusts the training loss.</p>
+<p class="sd-card-text"><strong>scikit-learn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils.class_weight</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_class_weight</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">weights</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span>
+    <span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-sampling">
+<span id="oversampling"></span><summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-up" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.47 7.78a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0l4.25 4.25a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018L9 4.81v7.44a.75.75 0 0 1-1.5 0V4.81L4.53 7.78a.75.75 0 0 1-1.06 0Z"></path></svg></span><span class="sd-summary-text">Oversampling<a class="headerlink" href="#oversampling" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Mechanism</strong></p>
+<p class="sd-card-text">Increase the size of the minority class by generating additional
+samples — either by <strong>random duplication</strong> or <strong>synthetic
+generation</strong> (SMOTE).</p>
+<p class="sd-card-text"><strong>Random oversampling</strong> — duplicate existing minority samples with
+replacement until the desired ratio is reached.  Risk: overfitting
+to duplicated points.</p>
+<p class="sd-card-text"><strong>When to use</strong> — when the minority class is too small to learn
+meaningful boundaries.  Always apply oversampling only to the
+training set, never to validation or test sets.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="smote-(synthetic-minority-over-sampling-technique)">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-sparkle-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.53 1.282a.5.5 0 0 1 .94 0l.478 1.306a7.492 7.492 0 0 0 4.464 4.464l1.305.478a.5.5 0 0 1 0 .94l-1.305.478a7.492 7.492 0 0 0-4.464 4.464l-.478 1.305a.5.5 0 0 1-.94 0l-.478-1.305a7.492 7.492 0 0 0-4.464-4.464L1.282 8.47a.5.5 0 0 1 0-.94l1.306-.478a7.492 7.492 0 0 0 4.464-4.464Z"></path></svg></span><span class="sd-summary-text">SMOTE (Synthetic Minority Over-sampling Technique)<a class="headerlink" href="#smote-(synthetic-minority-over-sampling-technique)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">SMOTE generates <strong>synthetic</strong> minority-class samples by
+interpolating in feature space between an existing minority sample
+and one of its k nearest minority neighbours:</p>
+<div class="math notranslate nohighlight">
+\[x_{\text{new}} = x_i + \lambda \cdot (x_{\tilde{\text{nn}}} - x_i),
+\quad \lambda \sim \mathcal{U}(0, 1)\]</div>
+<p class="sd-card-text"><strong>Properties</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Creates genuinely new points (not copies) → less overfitting
+than random oversampling.</p></li>
+<li><p class="sd-card-text">Can create noisy samples in overlapping class regions.</p></li>
+<li><p class="sd-card-text">Assumes that interpolation in feature space is meaningful
+(invalid for categorical features without encoding).</p></li>
+</ul>
+<p class="sd-card-text"><strong>Library</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+
+<span class="n">sm</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">k_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> (<code class="docutils literal notranslate"><span class="pre">imblearn</span></code>) is the standard library for
+SMOTE and related techniques.  It is not part of scikit-learn but
+shares the same API.</p>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="undersampling-strategies">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-down" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.03 8.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.47 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l2.97 2.97V3.75a.75.75 0 0 1 1.5 0v7.44l2.97-2.97a.75.75 0 0 1 1.06 0Z"></path></svg></span><span class="sd-summary-text">Undersampling Strategies<a class="headerlink" href="#undersampling-strategies" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Undersampling reduces the majority class to match the minority.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+Random Undersampling</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Mechanism</strong> — randomly remove majority-class samples.</p>
+<p class="sd-card-text"><strong>Risk</strong> — discards potentially useful information from the
+majority class.  Use stratified splits to preserve class
+proportions in validation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.under_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+
+<span class="n">rus</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">rus</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+NearMiss</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Mechanism</strong> — keep majority-class samples that are <em>closest</em>
+to minority-class samples (distance-based selection).</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>NearMiss-1</strong> — select majority samples whose average
+distance to the <em>nearest</em> minority neighbours is smallest.</p></li>
+<li><p class="sd-card-text"><strong>NearMiss-2</strong> — select majority samples whose average
+distance to the <em>farthest</em> minority neighbours is smallest.</p></li>
+<li><p class="sd-card-text"><strong>NearMiss-3</strong> — for each minority sample, keep its M nearest
+majority neighbours.</p></li>
+</ul>
+<p class="sd-card-text"><strong>When to use</strong> — when you want the majority class to
+concentrate near the decision boundary (hard-margin learning).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.under_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">NearMiss</span>
+
+<span class="n">nm</span> <span class="o">=</span> <span class="n">NearMiss</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">nm</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
+Cluster-based Undersampling</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Mechanism</strong> — cluster the majority class with k-means (or
+another algorithm), then retain one representative per cluster
+(typically the centroid or the sample closest to it).</p>
+<p class="sd-card-text"><strong>Advantages</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text">Preserves the structure of the majority class.</p></li>
+<li><p class="sd-card-text">Less information loss than random removal.</p></li>
+<li><p class="sd-card-text">Works well when the majority class has natural sub-groups.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="subsampling">
+<summary class="sd-summary-title sd-card-header sd-bg-warning sd-bg-text-warning">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-diff-removed" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.5 6.25h-6.5a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5Z"></path></svg></span><span class="sd-summary-text">Subsampling<a class="headerlink" href="#subsampling" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Dual meaning</strong> — “subsampling” appears in two completely different
+contexts:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
+In Machine Learning</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Selecting a random subset of the dataset for training or
+evaluation — analogous to random undersampling, but often
+applied for <strong>computational efficiency</strong> rather than class
+balancing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">resample</span>
+
+<span class="n">X_sub</span><span class="p">,</span> <span class="n">y_sub</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-10">
+In Signal Processing / DSP</label><div class="sd-tab-content docutils">
+<p class="sd-card-text"><strong>Reducing the sampling rate</strong> of a discrete signal.  Also
+called <strong>decimation</strong> or <strong>downsampling</strong>.</p>
+<p class="sd-card-text"><strong>Critical rule</strong> — always apply a <strong>low-pass filter before
+subsampling</strong> to prevent aliasing (see
+<a class="reference internal" href="#terminology-aliasing"><span class="std std-ref">Aliasing &amp; the Nyquist-Shannon Theorem</span></a>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.signal</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sps</span>
+
+<span class="c1"># Decimate signal by factor 4 (includes anti-aliasing filter)</span>
+<span class="n">signal_down</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-5-statistical-foundations">
+<span id="terminology-statistics"></span><h2>Domain 5 — Statistical Foundations<a class="headerlink" href="#domain-5-statistical-foundations" title="Link to this heading">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="probability-&amp;-probability-distributions" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-success sd-bg-text-success">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-number" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 4.75A.75.75 0 0 1 9.75 4h4a.75.75 0 0 1 .53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.751.751 0 0 1 .822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 0 1-.53-1.28l1.72-1.72H9.75A.75.75 0 0 1 9 4.75Zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 1 1-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737ZM5.604.089A.75.75 0 0 1 6 .75v4.77h.711a.75.75 0 0 1 0 1.5H3.759a.75.75 0 0 1 0-1.5H4.5V2.15l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037Z"></path></svg></span><span class="sd-summary-text">Probability &amp; Probability Distributions<a class="headerlink" href="#probability-&-probability-distributions" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Probability</strong> — a number in [0, 1] expressing the likelihood of
+an event.  A model’s output score is a <em>probability estimate</em>
+(not necessarily a calibrated probability — see
+<a class="reference internal" href="#terminology-calibration"><span class="std std-ref">Domain 7 — Calibration</span></a>).</p>
+<p class="sd-card-text"><strong>Key distributions in ML</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Distribution</p></th>
+<th class="head"><p class="sd-card-text">Role in ML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">Bernoulli</p></td>
+<td><p class="sd-card-text">Binary label; output of a binary classifier</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Categorical</p></td>
+<td><p class="sd-card-text">Multiclass label; output of a softmax classifier</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Gaussian (Normal)</p></td>
+<td><p class="sd-card-text">Assumption in linear discriminant analysis, GPs</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">Beta</p></td>
+<td><p class="sd-card-text">Prior / posterior for probabilities (Bayesian)</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">Dirichlet</p></td>
+<td><p class="sd-card-text">Prior over class probability vectors (Bayesian multiclass)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-bootstrap">
+<span id="bootstrap-confidence-intervals"></span><summary class="sd-summary-title sd-card-header sd-bg-success sd-bg-text-success">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">Bootstrap Confidence Intervals<a class="headerlink" href="#bootstrap-confidence-intervals" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>What is it?</strong></p>
+<p class="sd-card-text">A non-parametric resampling method to estimate the sampling
+distribution — and hence confidence intervals — of <em>any</em> statistic.</p>
+<p class="sd-card-text"><strong>Algorithm</strong></p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">Draw <em>B</em> bootstrap samples of size <em>n</em> with replacement from
+the original dataset.</p></li>
+<li><p class="sd-card-text">Compute the statistic (e.g., AUROC, F1) on each bootstrap sample.</p></li>
+<li><p class="sd-card-text">The 95 % CI is the (2.5th, 97.5th) percentile of the <em>B</em>
+computed statistics.</p></li>
+</ol>
+<p class="sd-card-text"><strong>Why it matters for scikit-plots</strong> — every metric visualised by
+scikit-plots can be accompanied by a bootstrap CI to quantify
+uncertainty.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">B</span>   <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">aucs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">roc_auc_score</span><span class="p">(</span>
+        <span class="n">y_true</span><span class="p">[</span><span class="n">idx</span> <span class="o">:=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">))],</span>
+        <span class="n">y_score</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">ci_low</span><span class="p">,</span> <span class="n">ci_high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">aucs</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUROC 95% CI: [</span><span class="si">{</span><span class="n">ci_low</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">ci_high</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mann-whitney-u-test-(wilcoxon-rank-sum-test)">
+<summary class="sd-summary-title sd-card-header sd-bg-success sd-bg-text-success">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-pulse" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2c.306 0 .582.187.696.471L10 10.731l1.304-3.26A.751.751 0 0 1 12 7h3.25a.75.75 0 0 1 0 1.5h-2.742l-1.812 4.528a.751.751 0 0 1-1.392 0L6 4.77 4.696 8.03A.75.75 0 0 1 4 8.5H.75a.75.75 0 0 1 0-1.5h2.742l1.812-4.529A.751.751 0 0 1 6 2Z"></path></svg></span><span class="sd-summary-text">Mann-Whitney U Test (Wilcoxon Rank-Sum Test)<a class="headerlink" href="#mann-whitney-u-test-(wilcoxon-rank-sum-test)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>What is it?</strong></p>
+<p class="sd-card-text">A non-parametric test for whether two independent samples were
+drawn from the same distribution.  It makes no assumptions about
+the underlying distribution (no normality required).</p>
+<p class="sd-card-text"><strong>Relationship to AUROC</strong> — remarkably, the Mann-Whitney U
+statistic is algebraically equivalent to the AUROC:</p>
+<div class="math notranslate nohighlight">
+\[\text{AUROC} = \frac{U}{n_{\text{pos}} \cdot n_{\text{neg}}}\]</div>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(U\)</span> is the Mann-Whitney statistic.  This confirms the
+AUROC’s rank-statistic interpretation.</p>
+<p class="sd-card-text"><strong>Use in model comparison</strong> — test whether model A’s AUROC is
+significantly greater than model B’s using a permutation test or
+DeLong’s method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">mannwhitneyu</span>
+
+<span class="n">stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">mannwhitneyu</span><span class="p">(</span>
+    <span class="n">scores_positive</span><span class="p">,</span> <span class="n">scores_negative</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;greater&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-6-fairness-bias-metrics">
+<span id="terminology-imbalance-fairness"></span><span id="terminology-fairness"></span><h2>Domain 6 — Fairness &amp; Bias Metrics<a class="headerlink" href="#domain-6-fairness-bias-metrics" title="Link to this heading">#</a></h2>
+<p>Fairness metrics quantify whether a model treats different demographic
+groups equitably.  <strong>No single definition of fairness is universally
+correct</strong> — the appropriate criterion depends on the application and
+its societal context.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="demographic-parity-(statistical-parity)" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-people" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path></svg></span><span class="sd-summary-text">Demographic Parity (Statistical Parity)<a class="headerlink" href="#demographic-parity-(statistical-parity)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">The positive prediction rate is equal across all demographic
+groups <em>A</em> and <em>B</em>:</p>
+<div class="math notranslate nohighlight">
+\[P(\hat{Y}=1 \mid A) = P(\hat{Y}=1 \mid B)\]</div>
+<p class="sd-card-text"><strong>Interpretation</strong> — the selection rate (e.g., loan approval,
+job interview, parole) is independent of group membership.</p>
+<p class="sd-card-text"><strong>Limitation</strong> — if the true positive rate differs between groups
+(due to legitimate factors), forcing equal selection rates may
+require ignoring relevant features.</p>
+<p class="sd-card-text"><strong>When to apply</strong> — allocation decisions where equal access is
+the primary concern (e.g., advertising, content recommendation).</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="equal-opportunity">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-verified" viewBox="0 0 16 16" aria-hidden="true"><path d="m9.585.52.929.68c.153.112.331.186.518.215l1.138.175a2.678 2.678 0 0 1 2.24 2.24l.174 1.139c.029.187.103.365.215.518l.68.928a2.677 2.677 0 0 1 0 3.17l-.68.928a1.174 1.174 0 0 0-.215.518l-.175 1.138a2.678 2.678 0 0 1-2.241 2.241l-1.138.175a1.17 1.17 0 0 0-.518.215l-.928.68a2.677 2.677 0 0 1-3.17 0l-.928-.68a1.174 1.174 0 0 0-.518-.215L3.83 14.41a2.678 2.678 0 0 1-2.24-2.24l-.175-1.138a1.17 1.17 0 0 0-.215-.518l-.68-.928a2.677 2.677 0 0 1 0-3.17l.68-.928c.112-.153.186-.331.215-.518l.175-1.14a2.678 2.678 0 0 1 2.24-2.24l1.139-.175c.187-.029.365-.103.518-.215l.928-.68a2.677 2.677 0 0 1 3.17 0ZM7.303 1.728l-.927.68a2.67 2.67 0 0 1-1.18.489l-1.137.174a1.179 1.179 0 0 0-.987.987l-.174 1.136a2.677 2.677 0 0 1-.489 1.18l-.68.928a1.18 1.18 0 0 0 0 1.394l.68.927c.256.348.424.753.489 1.18l.174 1.137c.078.509.478.909.987.987l1.136.174a2.67 2.67 0 0 1 1.18.489l.928.68c.414.305.979.305 1.394 0l.927-.68a2.67 2.67 0 0 1 1.18-.489l1.137-.174a1.18 1.18 0 0 0 .987-.987l.174-1.136a2.67 2.67 0 0 1 .489-1.18l.68-.928a1.176 1.176 0 0 0 0-1.394l-.68-.927a2.686 2.686 0 0 1-.489-1.18l-.174-1.137a1.179 1.179 0 0 0-.987-.987l-1.136-.174a2.677 2.677 0 0 1-1.18-.489l-.928-.68a1.176 1.176 0 0 0-1.394 0ZM11.28 6.78l-3.75 3.75a.75.75 0 0 1-1.06 0L4.72 8.78a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L7 8.94l3.22-3.22a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span class="sd-summary-text">Equal Opportunity<a class="headerlink" href="#equal-opportunity" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">The <strong>True Positive Rate (Recall)</strong> is equal across groups:</p>
+<div class="math notranslate nohighlight">
+\[P(\hat{Y}=1 \mid Y=1, A) = P(\hat{Y}=1 \mid Y=1, B)\]</div>
+<p class="sd-card-text"><strong>Interpretation</strong> — among truly qualified/positive individuals,
+the model identifies them at the same rate regardless of group.</p>
+<p class="sd-card-text"><strong>Use case</strong> — hiring, academic admission, loan approval —
+where it is critical that deserving applicants are equally
+detected across groups.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="equalized-odds">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-x-circle" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"></path></svg></span><span class="sd-summary-text">Equalized Odds<a class="headerlink" href="#equalized-odds" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">Both the <strong>True Positive Rate</strong> and the <strong>False Positive Rate</strong>
+are equal across groups:</p>
+<div class="math notranslate nohighlight">
+\[P(\hat{Y}=1 \mid Y=y, A) = P(\hat{Y}=1 \mid Y=y, B),
+\quad \text{for } y \in \{0, 1\}\]</div>
+<p class="sd-card-text"><strong>Interpretation</strong> — a stronger requirement than equal opportunity:
+the model must treat both positive and negative individuals equally
+across groups.</p>
+<p class="sd-card-text"><strong>Trade-off</strong> — equalized odds, equal opportunity, and demographic
+parity are mathematically incompatible in general (except in
+degenerate cases).  You must choose which criterion fits the
+application.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="predictive-parity-(calibration-fairness)">
+<summary class="sd-summary-title sd-card-header sd-bg-danger sd-bg-text-danger">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-goal" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.637 2.363h-.001l1.676.335c.09.018.164.084.19.173a.25.25 0 0 1-.062.249l-1.373 1.374a.876.876 0 0 1-.619.256H12.31L9.45 7.611A1.5 1.5 0 1 1 6.5 8a1.501 1.501 0 0 1 1.889-1.449l2.861-2.862V2.552c0-.232.092-.455.256-.619L12.88.559a.25.25 0 0 1 .249-.062c.089.026.155.1.173.19Z"></path><path d="M2 8a6 6 0 1 0 11.769-1.656.751.751 0 1 1 1.442-.413 7.502 7.502 0 0 1-12.513 7.371A7.501 7.501 0 0 1 10.069.789a.75.75 0 0 1-.413 1.442A6.001 6.001 0 0 0 2 8Z"></path><path d="M5 8a3.002 3.002 0 0 0 4.699 2.476 3 3 0 0 0 1.28-2.827.748.748 0 0 1 1.045-.782.75.75 0 0 1 .445.61A4.5 4.5 0 1 1 8.516 3.53a.75.75 0 1 1-.17 1.49A3 3 0 0 0 5 8Z"></path></svg></span><span class="sd-summary-text">Predictive Parity (Calibration Fairness)<a class="headerlink" href="#predictive-parity-(calibration-fairness)" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">The <strong>Positive Predictive Value (Precision)</strong> is equal across
+groups:</p>
+<div class="math notranslate nohighlight">
+\[P(Y=1 \mid \hat{Y}=1, A) = P(Y=1 \mid \hat{Y}=1, B)\]</div>
+<p class="sd-card-text"><strong>Interpretation</strong> — when the model predicts “positive” for a
+member of either group, the prediction is equally trustworthy.</p>
+<p class="sd-card-text"><strong>Use case</strong> — risk scoring tools (recidivism, credit risk) where
+the model score is used as a probability estimate and must be
+equally reliable for all groups.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text">Predictive parity and equalized odds cannot both be satisfied
+simultaneously unless base rates are equal across groups
+(the Chouldechova impossibility result, 2017).</p>
+</div>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-7-calibration">
+<span id="terminology-calibration"></span><h2>Domain 7 — Calibration<a class="headerlink" href="#domain-7-calibration" title="Link to this heading">#</a></h2>
+<p>A model is <em>calibrated</em> if its output probabilities match empirical
+event frequencies.  Calibration is independent of discrimination
+(AUROC): a model can rank perfectly but be poorly calibrated, or be
+well-calibrated but with low AUROC.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="calibration-&amp;-reliability-diagrams" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-goal" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.637 2.363h-.001l1.676.335c.09.018.164.084.19.173a.25.25 0 0 1-.062.249l-1.373 1.374a.876.876 0 0 1-.619.256H12.31L9.45 7.611A1.5 1.5 0 1 1 6.5 8a1.501 1.501 0 0 1 1.889-1.449l2.861-2.862V2.552c0-.232.092-.455.256-.619L12.88.559a.25.25 0 0 1 .249-.062c.089.026.155.1.173.19Z"></path><path d="M2 8a6 6 0 1 0 11.769-1.656.751.751 0 1 1 1.442-.413 7.502 7.502 0 0 1-12.513 7.371A7.501 7.501 0 0 1 10.069.789a.75.75 0 0 1-.413 1.442A6.001 6.001 0 0 0 2 8Z"></path><path d="M5 8a3.002 3.002 0 0 0 4.699 2.476 3 3 0 0 0 1.28-2.827.748.748 0 0 1 1.045-.782.75.75 0 0 1 .445.61A4.5 4.5 0 1 1 8.516 3.53a.75.75 0 1 1-.17 1.49A3 3 0 0 0 5 8Z"></path></svg></span><span class="sd-summary-text">Calibration &amp; Reliability Diagrams<a class="headerlink" href="#calibration-&-reliability-diagrams" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>What is it?</strong></p>
+<p class="sd-card-text">A <strong>reliability diagram</strong> (calibration curve) plots the mean
+predicted probability (x-axis) against the observed event rate
+(y-axis) for bins of predictions.  A perfectly calibrated model
+lies on the diagonal y = x.</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Over-confident</strong> — predicted probabilities are too high
+(curve below the diagonal).</p></li>
+<li><p class="sd-card-text"><strong>Under-confident</strong> — predicted probabilities are too low
+(curve above the diagonal).</p></li>
+</ul>
+<p class="sd-card-text"><strong>Brier Score</strong></p>
+<p class="sd-card-text">A calibration-sensitive proper scoring rule:</p>
+<div class="math notranslate nohighlight">
+\[\text{BS} = \frac{1}{n} \sum_{i=1}^{n} (\hat{p}_i - y_i)^2\]</div>
+<p class="sd-card-text">Lower is better; 0 = perfect; 0.25 = random for a balanced binary
+problem.</p>
+<p class="sd-card-text"><strong>scikit-plots</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_calibration_curve</span><span class="p">(</span>
+    <span class="n">y_true</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">y_prob_model_1</span><span class="p">,</span> <span class="n">y_prob_model_2</span><span class="p">],</span>
+    <span class="n">clf_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Model 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Model 2&#39;</span><span class="p">],</span>
+    <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text"><strong>Post-hoc calibration</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.calibration</span><span class="w"> </span><span class="kn">import</span> <span class="n">CalibratedClassifierCV</span>
+
+<span class="n">cal</span> <span class="o">=</span> <span class="n">CalibratedClassifierCV</span><span class="p">(</span><span class="n">base_clf</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;isotonic&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">cal</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">cal_probs</span> <span class="o">=</span> <span class="n">cal</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="domain-8-signal-processing-time-series">
+<span id="terminology-signal-timeseries"></span><h2>Domain 8 — Signal Processing &amp; Time Series<a class="headerlink" href="#domain-8-signal-processing-time-series" title="Link to this heading">#</a></h2>
+<p>Relevant when scikit-plots is used to evaluate models applied to
+sequential or temporal data.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="time-series" open="open">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-clock" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"></path></svg></span><span class="sd-summary-text">Time Series<a class="headerlink" href="#time-series" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">A sequence of observations ordered in time,
+<span class="math notranslate nohighlight">\(\{x_t\}_{t=1}^{T}\)</span>.  Key properties:</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Stationarity</strong> — statistical properties (mean, variance) do
+not change over time.</p></li>
+<li><p class="sd-card-text"><strong>Autocorrelation</strong> — observations at time <em>t</em> are correlated
+with observations at <span class="math notranslate nohighlight">\(t - k\)</span> (lag <em>k</em>).</p></li>
+<li><p class="sd-card-text"><strong>Seasonality</strong> — periodic patterns (daily, weekly, yearly).</p></li>
+</ul>
+<p class="sd-card-text"><strong>Evaluation difference from i.i.d. data</strong></p>
+<p class="sd-card-text">Evaluating ML models on time series requires <strong>temporal
+cross-validation</strong> (walk-forward validation), not random K-fold,
+to avoid data leakage from the future into the training set.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
+
+<span class="n">tscv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="ow">in</span> <span class="n">tscv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="signal-processing">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-broadcast" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.75 8.582v5.668a.75.75 0 0 1-1.5 0V8.582a1.75 1.75 0 1 1 1.5 0Zm3.983-7.125a.75.75 0 0 1 1.06.026A7.976 7.976 0 0 1 16 7c0 2.139-.84 4.083-2.207 5.517a.75.75 0 1 1-1.086-1.034A6.474 6.474 0 0 0 14.5 7a6.474 6.474 0 0 0-1.793-4.483.75.75 0 0 1 .026-1.06Zm-9.466 0c.3.286.312.76.026 1.06A6.474 6.474 0 0 0 1.5 7a6.47 6.47 0 0 0 1.793 4.483.75.75 0 0 1-1.086 1.034A7.973 7.973 0 0 1 0 7c0-2.139.84-4.083 2.207-5.517a.75.75 0 0 1 1.06-.026Zm8.556 2.321A4.988 4.988 0 0 1 13 7a4.988 4.988 0 0 1-1.177 3.222.75.75 0 1 1-1.146-.967A3.487 3.487 0 0 0 11.5 7c0-.86-.309-1.645-.823-2.255a.75.75 0 0 1 1.146-.967Zm-6.492.958A3.48 3.48 0 0 0 4.5 7a3.48 3.48 0 0 0 .823 2.255.75.75 0 0 1-1.146.967A4.981 4.981 0 0 1 3 7a4.982 4.982 0 0 1 1.188-3.236.75.75 0 1 1 1.143.972Z"></path></svg></span><span class="sd-summary-text">Signal Processing<a class="headerlink" href="#signal-processing" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">The analysis, synthesis, and transformation of signals —
+including audio, sensor data, EEG, accelerometers, financial
+tick data.</p>
+<p class="sd-card-text"><strong>Key concepts for ML practitioners</strong></p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Sampling rate</strong> <span class="math notranslate nohighlight">\(f_s\)</span> — how many samples per second.</p></li>
+<li><p class="sd-card-text"><strong>Nyquist frequency</strong> <span class="math notranslate nohighlight">\(f_N = f_s / 2\)</span> — the highest
+frequency representable without aliasing.</p></li>
+<li><p class="sd-card-text"><strong>Frequency domain</strong> — the Fourier transform converts a time-
+domain signal to its frequency components.</p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="low-pass-filtering">
+<summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-filter" viewBox="0 0 16 16" aria-hidden="true"><path d="M.75 3h14.5a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1 0-1.5ZM3 7.75A.75.75 0 0 1 3.75 7h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 3 7.75Zm3 4a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg></span><span class="sd-summary-text">Low-pass Filtering<a class="headerlink" href="#low-pass-filtering" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Definition</strong></p>
+<p class="sd-card-text">A filter that attenuates frequencies above a cut-off frequency
+<span class="math notranslate nohighlight">\(f_c\)</span> and passes frequencies below it.</p>
+<p class="sd-card-text"><strong>Why it is required before subsampling</strong></p>
+<p class="sd-card-text">If you reduce the sampling rate by factor <em>d</em> without filtering,
+frequency components above <span class="math notranslate nohighlight">\(f_s / (2d)\)</span> fold back into the
+representable range — this is <strong>aliasing</strong> and causes irreversible
+distortion.</p>
+<p class="sd-card-text"><strong>scikit-learn / scipy</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.signal</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sps</span>
+
+<span class="c1"># Design a Butterworth low-pass filter</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">Wn</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">)</span>
+<span class="n">filtered</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
+
+<span class="c1"># Decimate (apply anti-alias filter + downsample)</span>
+<span class="n">downsampled</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="terminology-aliasing">
+<span id="aliasing-&-the-nyquist-shannon-theorem"></span><summary class="sd-summary-title sd-card-header sd-bg-secondary sd-bg-text-secondary">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path></svg></span><span class="sd-summary-text">Aliasing &amp; the Nyquist-Shannon Theorem<a class="headerlink" href="#aliasing-&-the-nyquist-shannon-theorem" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Nyquist-Shannon Sampling Theorem</strong></p>
+<p class="sd-card-text">A continuous signal that has no frequency component above
+<span class="math notranslate nohighlight">\(f_{\max}\)</span> can be perfectly reconstructed from its samples
+if and only if the sampling rate satisfies:</p>
+<div class="math notranslate nohighlight">
+\[f_s \geq 2 f_{\max}\]</div>
+<p class="sd-card-text"><strong>Aliasing</strong> — when <span class="math notranslate nohighlight">\(f_s &lt; 2 f_{\max}\)</span>, high-frequency
+components “fold” into lower-frequency aliases, creating distortion
+that cannot be undone post-hoc.</p>
+<p class="sd-card-text"><strong>Practical rule</strong></p>
+<p class="sd-card-text">Before any downsampling by factor <em>d</em>, apply a low-pass filter
+with cut-off <span class="math notranslate nohighlight">\(f_c \leq f_s / (2d)\)</span>.  The <code class="docutils literal notranslate"><span class="pre">scipy.signal.decimate</span></code>
+function does this automatically.</p>
+</div>
+</details><hr class="docutils" />
+</section>
+<section id="quick-reference-metric-selector">
+<span id="terminology-quick-reference"></span><h2>Quick Reference — Metric Selector<a class="headerlink" href="#quick-reference-metric-selector" title="Link to this heading">#</a></h2>
+<p>Use this table to choose the right metric for your problem:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Situation</p></th>
+<th class="head"><p>Avoid</p></th>
+<th class="head"><p>Use Instead</p></th>
+<th class="head"><p>If Multiclass</p></th>
+<th class="head"><p>If Imbalanced</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Balanced binary classification</p></td>
+<td><p>—</p></td>
+<td><p>F1, AUROC</p></td>
+<td><p>Macro F1, OvR AUROC</p></td>
+<td><p>Macro F1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Severely imbalanced binary</p></td>
+<td><p>Accuracy</p></td>
+<td><p>PR-AUC, F1</p></td>
+<td><p>Macro F1</p></td>
+<td><p>PR-AUC</p></td>
+</tr>
+<tr class="row-even"><td><p>All classes equally important</p></td>
+<td><p>Micro avg.</p></td>
+<td><p><strong>Macro avg.</strong></p></td>
+<td><p>Macro AUROC</p></td>
+<td><p>Macro AUROC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Overall sample-level performance</p></td>
+<td><p>Macro avg.</p></td>
+<td><p><strong>Micro avg.</strong></p></td>
+<td><p>Micro F1</p></td>
+<td><p>Check macro too</p></td>
+</tr>
+<tr class="row-even"><td><p>Probability quality (not just ranking)</p></td>
+<td><p>AUROC alone</p></td>
+<td><p>AUROC + Brier Score</p></td>
+<td><p>Calibration curve</p></td>
+<td><p>Brier Score</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fairness audit required</p></td>
+<td><p>Global accuracy</p></td>
+<td><p>Group-level TPR/FPR</p></td>
+<td><p>Equal Opportunity</p></td>
+<td><p>Equalized Odds</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+<section id="sources">
+<span id="terminology-sources"></span><h2>Sources<a class="headerlink" href="#sources" title="Link to this heading">#</a></h2>
+<p>The following sources were consulted in preparing this page.
+All links were verified as of the documentation build date.</p>
+<p><strong>Core API &amp; Framework Documentation</strong></p>
+<ul class="simple">
+<li><p>scikit-learn — <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> module reference:
+<a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics</a></p></li>
+<li><p>imbalanced-learn — SMOTE and sampling API reference:
+<a class="reference external" href="https://imbalanced-learn.org/stable/references/index.html">https://imbalanced-learn.org/stable/references/index.html</a></p></li>
+<li><p>SciPy — <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code> for digital signal processing:
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html">https://docs.scipy.org/doc/scipy/reference/signal.html</a></p></li>
+</ul>
+<p><strong>Authoritative Papers &amp; Textbooks</strong></p>
+<ul class="simple">
+<li><p>Fawcett, T. (2006). An introduction to ROC analysis.
+<em>Pattern Recognition Letters</em>, 27(8), 861–874.
+<a class="reference external" href="https://doi.org/10.1016/j.patrec.2005.10.010">https://doi.org/10.1016/j.patrec.2005.10.010</a></p></li>
+<li><p>Bamber, D. (1975). The area above the ordinal dominance graph and the
+area below the receiver operating characteristic graph.
+<em>Journal of Mathematical Psychology</em>, 12(4), 387–415.
+<a class="reference external" href="https://doi.org/10.1016/0022-2496(75)90001-2">https://doi.org/10.1016/0022-2496(75)90001-2</a></p></li>
+<li><p>Hand, D. J., &amp; Till, R. J. (2001). A simple generalisation of the
+area under the ROC curve for multiple class classification problems.
+<em>Machine Learning</em>, 45(2), 171–186.
+<a class="reference external" href="https://doi.org/10.1023/A:1010920819831">https://doi.org/10.1023/A:1010920819831</a></p></li>
+<li><p>Chawla, N. V. et al. (2002). SMOTE: Synthetic Minority Over-sampling
+Technique. <em>Journal of Artificial Intelligence Research</em>, 16, 321–357.
+<a class="reference external" href="https://doi.org/10.1613/jair.953">https://doi.org/10.1613/jair.953</a></p></li>
+<li><p>Chouldechova, A. (2017). Fair prediction with disparate impact.
+<em>Big Data</em>, 5(2), 153–163.
+<a class="reference external" href="https://doi.org/10.1089/big.2016.0047">https://doi.org/10.1089/big.2016.0047</a></p></li>
+<li><p>Shannon, C. E. (1949). Communication in the presence of noise.
+<em>Proceedings of the IRE</em>, 37(1), 10–21.
+<a class="reference external" href="https://doi.org/10.1109/jrproc.1949.232969">https://doi.org/10.1109/jrproc.1949.232969</a></p></li>
+</ul>
+<p><strong>Learning Resources</strong></p>
+<ul class="simple">
+<li><p>Google Machine Learning Crash Course — Classification:
+<a class="reference external" href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc">https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc</a></p></li>
+<li><p>insightful-data-lab.com — Terminology category (source of context
+and domain framing for this page):
+<a class="reference external" href="https://insightful-data-lab.com/category/00terminology/">https://insightful-data-lab.com/category/00terminology/</a></p></li>
+<li><p>scikit-plots documentation — Metrics API:
+<a class="reference external" href="https://scikit-plots.github.io/dev/apis/index.html">https://scikit-plots.github.io/dev/apis/index.html</a></p></li>
+</ul>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-reference.html"><span class="doc">purpose: reference</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-statistics.html"><span class="doc">domain: statistics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-advanced.html"><span class="doc">level: advanced</span></a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Learn</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../data_preparation_and_analysis/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Preparation &amp; Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+
+  
+  
+  
+
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

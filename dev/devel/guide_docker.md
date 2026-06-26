@@ -198,18 +198,40 @@ bash-first-run-notice.txt[#](#bash-first-run-notice.txt "Link to this dropdown")
   $ conda init
 
 • See environments:
+  $ micromamba --version
   $ micromamba info -e
+  $ micromamba info -e | awk '/py312/ {print $NF}'
   $ mamba info -e
   $ conda info -e
 
 • Activate environments (depending on tool):
-
-root@sp-docker /work/docs (subpackage-bug-fix)
-  $ micromamba --version
-  $ micromamba activate $(micromamba info -e | grep py312)
-  $ micromamba activate /root/micromamba/envs/py312
+  # root@sp-docker /work/docs (subpackage-bug-fix)
   $ micromamba activate py311
+  $ mamba activate py311
   $ conda activate py311
+
+• Activate environments by path (depending on tool):
+  $ micromamba activate /root/micromamba/envs/py312
+
+  # Activate the first environment whose prefix contains py312:
+  $ micromamba activate "$(micromamba info -e | awk '/\/py312$/ {print $NF}')"
+
+  # Extract the path automatically:
+  $ micromamba activate "$(micromamba info -e | grep py312 | awk '{print $NF}')"
+
+  # Activate the first non-base environment:
+  $ micromamba activate "$( micromamba info -e | awk 'NR>2 && $1!="base" {print $NF; exit}' )"
+
+  # Newest environment directory by modification time:
+  $ micromamba activate "$( ls -td /root/micromamba/envs/* | head -n1 )"
+
+  # Test pip show:
+  $ micromamba run -p "$(ls -td /root/micromamba/envs/* | head -n1)" python -m pip show scikit-plots || echo "⚠️ 'scikit-plots' Not Found."
+  $ micromamba run -p "$(ls -td /root/micromamba/envs/* | head -n1)" python -m pip show scikit-plots 2>/dev/null | awk '/^Version:/ {print $2}' || echo "⚠️ 'scikit-plots' Not Found."
+
+  # Test pip list:
+  $ micromamba run -p "$(ls -td /root/micromamba/envs/* | head -n1)" python -m pip list --format=freeze 2>/dev/null | grep '^scikit-plots==' || echo "⚠️ 'scikit-plots' Not Found."
+  $ micromamba run -p "$(ls -td /root/micromamba/envs/* | head -n1)" python -m pip list --format=freeze 2>/dev/null | awk -F'==' '/^scikit-plots==/ {print $2}' || echo "⚠️ 'scikit-plots' Not Found."
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💡  Troubleshooting:
@@ -233,11 +255,11 @@ root@sp-docker /work/docs (subpackage-bug-fix)
 ✍  Starting Development
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌿  Create a new branch before working:
+• 🌿  Create a new branch before working:
   $ git checkout -b feature/my-new-feature
 
-✍  Proceed to create a branch if you have uncommitted changes and are beginning work on a new feature or bug fix.
-🔄  Read more: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
+• ✍  Proceed to create a branch if you have uncommitted changes and are beginning work on a new feature or bug fix.
+• 🔄  Read more: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
 
 ```
 

@@ -1,0 +1,1411 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Terminology Page — Migration & Review Guide" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/learn/terminology/TERMINOLOGY_MIGRATION_GUIDE.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="Target file: docs/source/learn/terminology/index.rst Renders at: https://scikit-plots.github.io/dev/learn/terminology/index.html Source of context: https://insightful-data-lab.com/category/00termin..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="Target file: docs/source/learn/terminology/index.rst Renders at: https://scikit-plots.github.io/dev/learn/terminology/index.html Source of context: https://insightful-data-lab.com/category/00termin..." />
+
+<script>
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+</script>
+
+<script>
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:01:53Z"}};
+window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
+</script>
+
+    <title>Terminology Page — Migration &amp; Review Guide &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=10a0cd3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/terminology/TERMINOLOGY_MIGRATION_GUIDE';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/learn/terminology/TERMINOLOGY_MIGRATION_GUIDE.html" />
+    <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+  
+  
+  
+
+  
+  
+  
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Terminology Page — Migration &amp; Review Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="terminology-page-migration-review-guide">
+<h1>Terminology Page — Migration &amp; Review Guide<a class="headerlink" href="#terminology-page-migration-review-guide" title="Link to this heading">#</a></h1>
+<p><strong>Target file:</strong> <code class="docutils literal notranslate"><span class="pre">docs/source/learn/terminology/index.rst</span></code>
+<strong>Renders at:</strong> <code class="docutils literal notranslate"><span class="pre">https://scikit-plots.github.io/dev/learn/terminology/index.html</span></code>
+<strong>Source of context:</strong> <code class="docutils literal notranslate"><span class="pre">https://insightful-data-lab.com/category/00terminology/</span></code> (431 posts)
+<strong>Status of current draft:</strong> 1717 lines, 8 domains, ~40 terms already written (uploaded <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>)</p>
+<p>This guide is the <strong>plan and rulebook</strong> for finishing the terminology hub across several
+sessions. It is deliberately a separate document because the source corpus (431 posts) and
+the RST file are both too large to process in a single pass. Read this once, then each
+follow-up session executes one <strong>Run</strong> from Section 7 against exact line numbers.</p>
+<hr class="docutils" />
+<section id="tl-dr-what-to-do-in-order">
+<h2>0. TL;DR — what to do, in order<a class="headerlink" href="#tl-dr-what-to-do-in-order" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Wire the page into navigation</strong> — it is not in the parent toctree yet (Section 8.1). One-line gap; do this first or the page never appears.</p></li>
+<li><p><strong>Adopt the per-term contract</strong> (Section 3.2) and the <strong>sphinx_design templates</strong> (Section 3.3) verbatim so every future term looks identical.</p></li>
+<li><p><strong>Fix the tag block</strong> to match the project’s controlled vocabulary and place it at the page <strong>bottom</strong> (Section 3.4). The draft currently violates the documented convention.</p></li>
+<li><p><strong>Harvest all 431 titles</strong> with the deterministic method in Section 6, producing a flat list.</p></li>
+<li><p><strong>Slot titles into the Master Taxonomy</strong> (Section 4) — extend from 8 → 15 domains so every term has a home.</p></li>
+<li><p><strong>Execute Runs 1..N</strong> (Section 7), one domain batch per session, appending terms with verified content only.</p></li>
+<li><p><strong>Keep <code class="docutils literal notranslate"><span class="pre">Sources</span></code> verified-only</strong> (Section 3.5). Never invent a citation.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="goal-non-goals">
+<h2>1. Goal &amp; non-goals<a class="headerlink" href="#goal-non-goals" title="Link to this heading">#</a></h2>
+<section id="goal">
+<h3>Goal<a class="headerlink" href="#goal" title="Link to this heading">#</a></h3>
+<p>Build a single, self-contained <strong>terminology reference hub</strong> that:</p>
+<ul class="simple">
+<li><p>categorises <strong>every</strong> ML / data-science term a scikit-plots user meets, from “what is a True Positive?” to “macro-averaged AUROC under class imbalance”;</p></li>
+<li><p>serves <strong>newbie → intermediate → senior</strong> readers through progressive disclosure (collapsed detail, level tabs, a discovery grid);</p></li>
+<li><p>is <strong>RST/Sphinx-native</strong> (the project builds with Sphinx + PyData theme), not Markdown;</p></li>
+<li><p>ends with a <strong>verified Sources</strong> section — real, resolvable links only;</p></li>
+<li><p>exposes <strong>sphinx_tags</strong> so the page is discoverable via the existing tag pages and search.</p></li>
+</ul>
+</section>
+<section id="non-goals-explicitly-out-of-scope">
+<h3>Non-goals (explicitly out of scope)<a class="headerlink" href="#non-goals-explicitly-out-of-scope" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Not</strong> a 1:1 copy of the 431 source posts. The source is <em>context and framing</em>; every definition is <strong>re-expressed in our own words</strong> to avoid copyright and licence issues (Section 3.6).</p></li>
+<li><p><strong>Not</strong> 431 separate <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files. One hub page with collapsible entries, optionally split later if it grows past a comfortable build/scroll size.</p></li>
+<li><p><strong>Not</strong> a place to fabricate terms. If a term is not in the harvested list and not standard ML canon, it does not go in.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verified-current-state-facts-fetched-not-assumed">
+<h2>2. Verified current state (facts, fetched — not assumed)<a class="headerlink" href="#verified-current-state-facts-fetched-not-assumed" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Verified value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Source platform</p></td>
+<td><p>WordPress.com site, “Your Gateway to Data Mastery” (author Ju Yeon Eum / Jenny)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Terminology category size</p></td>
+<td><p><strong>431 posts</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Source pagination</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/category/00terminology/page/2/</span></code> … (~10 posts/page → ~44 pages)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Source post URL pattern</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://insightful-data-lab.com/YYYY/MM/DD/&lt;slug&gt;/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Sibling source categories</p></td>
+<td><p>Bayesian Data Analysis (144); Data Analytics (216) — Foundations 27, Data-Driven Decisions 27, Data Preparation 25, Data cleaning &amp; preparation 32, Analyze Data 30, Data visualization 27, Data Analysis Using Python 33, Job Search 15; Data Preparation and Analysis (56); Deep Learning (17); Introduction to Time Series (18)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target path</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docs/source/learn/terminology/index.rst</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Parent <code class="docutils literal notranslate"><span class="pre">learn/index.rst</span></code> toctree</p></td>
+<td><p><strong>cheatsheet, resources, glossary</strong> — terminology is <strong>absent</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Parent layout pattern</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">grid-item-card</span></code> wrapping a <code class="docutils literal notranslate"><span class="pre">toctree</span></code> per child</p></td>
+</tr>
+<tr class="row-even"><td><p>Section underline convention</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#</span></code> part (overline) · <code class="docutils literal notranslate"><span class="pre">*</span></code> chapter (overline) · <code class="docutils literal notranslate"><span class="pre">=</span></code> section · <code class="docutils literal notranslate"><span class="pre">-</span></code> subsection · <code class="docutils literal notranslate"><span class="pre">^</span></code> subsubsection · <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> paragraph</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tag namespaces in use</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">component:</span></code>, <code class="docutils literal notranslate"><span class="pre">domain:</span></code>, <code class="docutils literal notranslate"><span class="pre">level:</span></code>, <code class="docutils literal notranslate"><span class="pre">model-type:</span></code>, <code class="docutils literal notranslate"><span class="pre">model-workflow:</span></code>, <code class="docutils literal notranslate"><span class="pre">plot-type:</span></code>, <code class="docutils literal notranslate"><span class="pre">purpose:</span></code>, <code class="docutils literal notranslate"><span class="pre">topic:</span></code>, <code class="docutils literal notranslate"><span class="pre">internal:</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Tag values seen</p></td>
+<td><p>domain: {cython, mlflow, neural network, statistics}; level: {beginner, intermediate}; model-type: {classification, clustering, regression}; purpose: {reference, showcase}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tag directive rule</p></td>
+<td><p>placed at <strong>bottom</strong> of page; form <code class="docutils literal notranslate"><span class="pre">subcategory:</span> <span class="pre">tag</span></code>; one or two words; reuse existing; avoid single-use</p></td>
+</tr>
+<tr class="row-even"><td><p>Draft size / coverage</p></td>
+<td><p>1717 lines; 8 domains; ~40 dropdown terms; Discovery tabs + Quick Reference table + Sources</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="page-1-source-titles-verified-by-fetch-the-only-titles-confirmed-so-far">
+<h3>Page-1 source titles (verified by fetch — the only titles confirmed so far)<a class="headerlink" href="#page-1-source-titles-verified-by-fetch-the-only-titles-confirmed-so-far" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Subsampling</span></code> · <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">Weighting</span></code> · <code class="docutils literal notranslate"><span class="pre">SMOTE</span> <span class="pre">(Synthetic</span> <span class="pre">Minority</span> <span class="pre">Over-sampling</span> <span class="pre">Technique)</span></code> ·
+<code class="docutils literal notranslate"><span class="pre">Oversampling</span></code> · <code class="docutils literal notranslate"><span class="pre">Low-pass</span> <span class="pre">Filtering</span></code> · <code class="docutils literal notranslate"><span class="pre">NearMiss</span> <span class="pre">(Distance-based</span> <span class="pre">Undersampling)</span></code> ·
+<code class="docutils literal notranslate"><span class="pre">Cluster-based</span> <span class="pre">undersampling</span></code> · <code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">Undersampling</span></code> · <code class="docutils literal notranslate"><span class="pre">Signal</span> <span class="pre">Processing</span></code> · <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">Series</span></code></p>
+<blockquote>
+<div><p>Everything beyond these 10 titles must come from the harvest in Section 6 before it is treated as real. Titles from prior chat summaries are <strong>leads, not facts</strong> until re-fetched.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-rules">
+<h2>3. The Rules<a class="headerlink" href="#the-rules" title="Link to this heading">#</a></h2>
+<p>These are the binding rules for every edit. They are derived from the project’s own
+conventions (fetched from the live docs) plus the constraints you set.</p>
+<section id="rst-sphinx-structural-rules">
+<h3>3.1 RST / Sphinx structural rules<a class="headerlink" href="#rst-sphinx-structural-rules" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>File is <code class="docutils literal notranslate"><span class="pre">.rst</span></code></strong>, parsed by Sphinx. No Markdown syntax in the body (MyST is enabled for <code class="docutils literal notranslate"><span class="pre">.md</span></code> files, but this page is RST — keep it RST for consistency with siblings).</p></li>
+<li><p><strong>Underline hierarchy</strong> exactly as the project uses it (table above). The hub page uses <code class="docutils literal notranslate"><span class="pre">=</span></code> (with overline) for the page title and <code class="docutils literal notranslate"><span class="pre">-</span></code> for each Domain section. Do <strong>not</strong> introduce new underline characters.</p></li>
+<li><p><strong>One H1-equivalent per page</strong>: the <code class="docutils literal notranslate"><span class="pre">=</span></code>-overlined <code class="docutils literal notranslate"><span class="pre">Terminology</span></code> title. Domains are <code class="docutils literal notranslate"><span class="pre">-</span></code> subsections.</p></li>
+<li><p><strong>Every internal anchor</strong> uses the <code class="docutils literal notranslate"><span class="pre">terminology-&lt;slug&gt;</span></code> convention, e.g. <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_terminology-roc-auroc:</span></code>. Slugs are lowercase, hyphenated, stable (used by <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> links and discovery cards).</p></li>
+<li><p><strong>Only use extensions that are enabled.</strong> Confirmed available and safe to use here: <code class="docutils literal notranslate"><span class="pre">sphinx_design</span></code> (<code class="docutils literal notranslate"><span class="pre">tab-set</span></code>, <code class="docutils literal notranslate"><span class="pre">grid</span></code>, <code class="docutils literal notranslate"><span class="pre">grid-item-card</span></code>, <code class="docutils literal notranslate"><span class="pre">dropdown</span></code>, <code class="docutils literal notranslate"><span class="pre">badge</span></code>), <code class="docutils literal notranslate"><span class="pre">sphinx_tags</span></code>, <code class="docutils literal notranslate"><span class="pre">sphinx_togglebutton</span></code>, <code class="docutils literal notranslate"><span class="pre">sphinx_copybutton</span></code>, <code class="docutils literal notranslate"><span class="pre">sphinx.ext.doctest</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span> <span class="pre">...</span> <span class="pre">plot_directive</span></code> / <code class="docutils literal notranslate"><span class="pre">mathmpl</span></code>, <code class="docutils literal notranslate"><span class="pre">IPython</span></code> directives, <code class="docutils literal notranslate"><span class="pre">sphinx_prompt</span></code>. Math via <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code> (LaTeX) is fine.</p></li>
+<li><p><strong>No raw HTML for structure.</strong> The draft’s centred title uses a <code class="docutils literal notranslate"><span class="pre">:raw-html:</span></code> block — acceptable for the banner only. Everything else must be real directives so it renders in all output formats and stays accessible.</p></li>
+</ul>
+</section>
+<section id="per-term-entry-contract-the-canonical-shape-of-one-term">
+<h3>3.2 Per-term entry contract (the canonical shape of one term)<a class="headerlink" href="#per-term-entry-contract-the-canonical-shape-of-one-term" title="Link to this heading">#</a></h3>
+<p>Every term is one <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dropdown::</span></code> (collapsed by default, except the first in a domain which
+may be <code class="docutils literal notranslate"><span class="pre">:open:</span></code>). Inside, answer these in this fixed order — this mirrors NumPyDoc ordering
+(definition → math → usage → API → references):</p>
+<ol class="arabic simple">
+<li><p><strong>What is it?</strong> — one plain-English paragraph, rewritten, no jargon dump.</p></li>
+<li><p><strong>Formula / Key Relationship</strong> — exact <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code> statement (omit only if the term is non-mathematical).</p></li>
+<li><p><strong>When to use it</strong> <em>(and when not to)</em> — the decision context.</p></li>
+<li><p><strong>scikit-plots / scikit-learn connection</strong> — the real API call that produces/consumes the concept, in a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span> <span class="pre">python</span></code>.</p></li>
+<li><p><strong>See also</strong> — <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">seealso::</span></code> with <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> cross-links to related terms (this is what creates the “nested exploration” experience).</p></li>
+</ol>
+<p><strong>Rules for the contract:</strong></p>
+<ul class="simple">
+<li><p>Sections 1, 3, 4 are <strong>mandatory</strong>. Section 2 is mandatory for any quantitative term. Section 5 is mandatory whenever ≥1 related term exists on the page.</p></li>
+<li><p>Code blocks must be <strong>runnable shape</strong> (correct imports, correct function names). If you are unsure a function exists, verify against the scikit-plots / scikit-learn API before writing it — do not guess signatures.</p></li>
+<li><p>Keep each entry <strong>self-contained</strong>: a reader who jumps straight to it via <code class="docutils literal notranslate"><span class="pre">Ctrl+F</span></code> should not need to have read earlier entries.</p></li>
+</ul>
+</section>
+<section id="sphinx-design-component-patterns-copy-paste-do-not-improvise">
+<h3>3.3 sphinx_design component patterns (copy-paste, do not improvise)<a class="headerlink" href="#sphinx-design-component-patterns-copy-paste-do-not-improvise" title="Link to this heading">#</a></h3>
+<p><strong>Domain section + first term:</strong></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_terminology-&lt;domain-slug&gt;:</span>
+
+<span class="gh">Domain N — &lt;Domain Title&gt;</span>
+<span class="gh">----------------------------------------------------------------------</span>
+
+&lt;One- or two-sentence statement of what this domain covers and why it
+matters for model evaluation in scikit-plots.&gt;
+
+<span class="p">..</span> <span class="ow">dropdown</span><span class="p">::</span> <span class="nt">&lt;Term Name&gt;</span>
+   <span class="nc">:color:</span> primary
+   <span class="nc">:icon:</span> <span class="nt">&lt;octicon-name&gt;</span>
+   <span class="nc">:name:</span> terminology-&lt;term-slug&gt;
+   <span class="nc">:open:</span>
+
+   <span class="gs">**What is it?**</span>
+
+   &lt;definition, our own words&gt;
+
+   <span class="gs">**Formula / Key Relationship**</span>
+
+<span class="p">   ..</span> <span class="ow">math</span><span class="p">::</span>
+
+      &lt;latex&gt;
+
+   <span class="gs">**When to use it**</span>
+
+   &lt;guidance, including when NOT to use it&gt;
+
+   <span class="gs">**scikit-plots / scikit-learn connection**</span>
+
+<span class="p">   ..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+      <span class="o">&lt;</span><span class="n">runnable</span> <span class="n">api</span> <span class="n">call</span><span class="o">&gt;</span>
+
+<span class="p">   ..</span> <span class="ow">seealso</span><span class="p">::</span>
+
+      <span class="na">:ref:</span><span class="nv">`terminology-&lt;related-slug&gt;`</span> · <span class="na">:ref:</span><span class="nv">`terminology-&lt;related-slug-2&gt;`</span>
+</pre></div>
+</div>
+<p><strong>Subsequent term (collapsed):</strong> identical, minus <code class="docutils literal notranslate"><span class="pre">:open:</span></code>.</p>
+<p><strong>Discovery grid card</strong> (used only in the “Discovery at a Glance” tabs near the top):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">grid-item-card</span><span class="p">::</span> <span class="nt">&lt;emoji&gt;</span> &lt;Short Label&gt;
+   <span class="nc">:link:</span> terminology-&lt;target-slug&gt;
+   <span class="nc">:link-type:</span> ref
+   <span class="nc">:class-card:</span> sd-border-1
+
+   &lt;One-line teaser that makes someone want to click.&gt;
+</pre></div>
+</div>
+<p><strong>Colour / icon convention</strong> (keep consistent so colour carries meaning):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Domain group</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">:color:</span></code></p></th>
+<th class="head"><p>Example <code class="docutils literal notranslate"><span class="pre">:icon:</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Core classification metrics</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">primary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">table</span></code>, <code class="docutils literal notranslate"><span class="pre">check-circle</span></code>, <code class="docutils literal notranslate"><span class="pre">goal</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Curves &amp; AUROC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">graph</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Averaging / multiclass</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">success</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">stack</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Imbalance / sampling</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">warning</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">git-branch</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Statistics / Bayesian</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">secondary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">beaker</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fairness / responsible AI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">danger</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">law</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Signal / time series</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">secondary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">broadcast</span></code>, <code class="docutils literal notranslate"><span class="pre">clock</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="sphinx-tags-rules-corrected-to-match-project-convention">
+<h3>3.4 sphinx_tags rules (corrected to match project convention)<a class="headerlink" href="#sphinx-tags-rules-corrected-to-match-project-convention" title="Link to this heading">#</a></h3>
+<p>The project’s documented rule: <strong>place <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tags::</span></code> at the bottom of the page</strong>, tags in the
+form <code class="docutils literal notranslate"><span class="pre">subcategory:</span> <span class="pre">tag</span></code>, one or two words, <strong>reusing the existing controlled vocabulary</strong> and
+avoiding tags that would link to only one page.</p>
+<ul>
+<li><p><strong>Move the tag block to the bottom</strong> (just above or just below <code class="docutils literal notranslate"><span class="pre">Sources</span></code>). The current draft places it near the top (≈ line 40) — that contradicts the convention. (sphinx_tags renders the badge wherever the directive sits; if you want a <em>visual</em> level indicator at the top, use <code class="docutils literal notranslate"><span class="pre">sd-badge</span></code> from sphinx_design instead of the tags directive.)</p></li>
+<li><p><strong>Use only existing namespaces/values.</strong> For this page the correct set is:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">tags</span><span class="p">::</span>
+   purpose: reference,
+   domain: statistics,
+   model-type: classification,
+   level: beginner,
+   level: intermediate,
+   level: advanced
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">purpose:</span> <span class="pre">reference</span></code> is the canonical tag for a reference page (the project’s own tagging guide page is tagged <code class="docutils literal notranslate"><span class="pre">topic:</span> <span class="pre">tagging,</span> <span class="pre">purpose:</span> <span class="pre">reference</span></code>).</p></li>
+<li><p>Do <strong>not</strong> invent <code class="docutils literal notranslate"><span class="pre">domain:</span> <span class="pre">machine-learning</span></code>, <code class="docutils literal notranslate"><span class="pre">level:</span> <span class="pre">expert</span></code>, etc. If a genuinely new value is needed (e.g. <code class="docutils literal notranslate"><span class="pre">domain:</span> <span class="pre">fairness</span></code>), it must (a) be one/two words, (b) apply to more than one page, and (c) be added deliberately, not casually.</p></li>
+</ul>
+</section>
+<section id="sources-rules-verified-only">
+<h3>3.5 Sources rules (verified-only)<a class="headerlink" href="#sources-rules-verified-only" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Sources</span></code> section lists <strong>only links that resolve and that were actually consulted.</strong> Every URL must be checkable at build time.</p></li>
+<li><p>Allowed source types: official library docs (scikit-learn, imbalanced-learn, SciPy, scikit-plots), DOI-bearing papers/textbooks, and reputable course material (e.g. Google ML Crash Course). The insightful-data-lab category link is cited once as the <em>context/framing</em> source — not as a citation for specific factual claims.</p></li>
+<li><p><strong>No fabricated DOIs, no invented author/year, no “according to X” where X was never read.</strong> If a claim needs a citation you do not have, either find a real one or soften the claim to standard textbook knowledge without a fake reference.</p></li>
+<li><p>Group sources (API docs / papers / learning resources) as the draft already does — that structure is good; keep it.</p></li>
+</ul>
+</section>
+<section id="content-integrity-rules-no-hallucination-no-copying">
+<h3>3.6 Content-integrity rules (no hallucination, no copying)<a class="headerlink" href="#content-integrity-rules-no-hallucination-no-copying" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Re-express, don’t reproduce.</strong> The source posts are framing; write every definition fresh. Do not paste source sentences.</p></li>
+<li><p><strong>Standard canon is fine without a per-term citation</strong> (e.g. the precision formula). Reserve citations for non-obvious claims, named methods (SMOTE, Hand &amp; Till AUROC), and theorems (Nyquist–Shannon).</p></li>
+<li><p><strong>If you don’t know, mark it.</strong> Pending content gets an explicit placeholder (Section 7.3), never a confident guess.</p></li>
+<li><p><strong>API calls are claims too.</strong> A wrong function name is a hallucination. Verify <code class="docutils literal notranslate"><span class="pre">skplt.metrics.*</span></code> / <code class="docutils literal notranslate"><span class="pre">sklearn.*</span></code> names before committing.</p></li>
+</ul>
+</section>
+<section id="ux-rules-discovery-at-a-glance-nested-exploration">
+<h3>3.7 UX rules (“Discovery at a glance” + nested exploration)<a class="headerlink" href="#ux-rules-discovery-at-a-glance-nested-exploration" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Top of page = a map, not a wall of text.</strong> Keep the three-level <code class="docutils literal notranslate"><span class="pre">tab-set</span></code> (Foundations / Metrics / Advanced) with discovery cards. This is the senior-friendly “glance” layer.</p></li>
+<li><p><strong>Detail is collapsed by default</strong> (<code class="docutils literal notranslate"><span class="pre">dropdown</span></code>), so a newbie is never overwhelmed; they expand what they need.</p></li>
+<li><p><strong>Cross-links create depth.</strong> Every <code class="docutils literal notranslate"><span class="pre">seealso</span></code> turns a flat glossary into a graph the reader can wander — this is the “explore even with no prior knowledge” goal.</p></li>
+<li><p><strong>A <code class="docutils literal notranslate"><span class="pre">Quick</span> <span class="pre">Reference</span></code> selector table</strong> near the end lets seniors skip straight to “which metric for which situation”. Keep/extend it.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-master-taxonomy-the-home-for-all-431-terms">
+<h2>4. The Master Taxonomy (the home for all 431 terms)<a class="headerlink" href="#the-master-taxonomy-the-home-for-all-431-terms" title="Link to this heading">#</a></h2>
+<p>The current 8 domains cover the <strong>model-evaluation core</strong> well but cannot hold the full 431,
+which span Bayesian methods, deep learning, feature engineering, EDA, etc. Extend to <strong>15
+domains</strong>. Domains 1–8 already exist in the draft; 9–15 are <strong>new buckets to add</strong>.</p>
+<blockquote>
+<div><p>Legend: ✅ in draft · ➕ new bucket · terms marked <strong>[v]</strong> are verified-by-fetch, others are standard-canon placeholders to confirm during harvest.</p>
+</div></blockquote>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Seed / verified terms</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Confusion Matrix &amp; Core Classification Metrics</p></td>
+<td><p>✅</p></td>
+<td><p>Confusion Matrix, TP/TN/FP/FN, Accuracy, Precision, Recall, Specificity, F1, F-beta</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>ROC, AUROC &amp; Threshold Curves</p></td>
+<td><p>✅</p></td>
+<td><p>ROC Curve, AUROC, PR Curve / PR-AUC, Gini</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Averaging &amp; Multiclass/Multilabel Metrics</p></td>
+<td><p>✅</p></td>
+<td><p>Binary/Multiclass/Multilabel, Macro/Micro/Weighted avg, Macro/Micro AUROC, OvR/OvO</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Class Imbalance &amp; Resampling</p></td>
+<td><p>✅</p></td>
+<td><p>Class Imbalance, Class Weighting <strong>[v]</strong>, Oversampling <strong>[v]</strong>, SMOTE <strong>[v]</strong>, Undersampling, Random Undersampling <strong>[v]</strong>, NearMiss <strong>[v]</strong>, Cluster-based undersampling <strong>[v]</strong>, Subsampling <strong>[v]</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Regression Metrics &amp; Diagnostics</p></td>
+<td><p>➕</p></td>
+<td><p>MAE, MSE, RMSE, R²/Adjusted R², residual analysis, Q–Q plot (scikit-plots has <code class="docutils literal notranslate"><span class="pre">plot_residuals_distribution</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Probability, Statistics &amp; Hypothesis Testing</p></td>
+<td><p>✅ (expand)</p></td>
+<td><p>Probability &amp; Distributions, Bootstrap CIs, Mann–Whitney U; <strong>add</strong>: KS statistic (scikit-plots <code class="docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code>), p-value, confidence vs. credible interval</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Bayesian Methods</p></td>
+<td><p>➕</p></td>
+<td><p>Prior, Posterior, Likelihood, Bayes’ theorem, MAP, conjugacy, MCMC (source has 144 Bayesian posts — large bucket)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Calibration &amp; Probability Quality</p></td>
+<td><p>✅</p></td>
+<td><p>Calibration / Reliability diagram, Brier score (scikit-plots <code class="docutils literal notranslate"><span class="pre">plot_calibration_curve</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Fairness, Bias &amp; Responsible AI</p></td>
+<td><p>✅ (was D6)</p></td>
+<td><p>Demographic Parity, Equal Opportunity, Equalized Odds, Predictive Parity</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Signal Processing &amp; Time Series</p></td>
+<td><p>✅ (was D8)</p></td>
+<td><p>Time Series <strong>[v]</strong>, Signal Processing <strong>[v]</strong>, Low-pass Filtering <strong>[v]</strong>, Aliasing / Nyquist</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Feature Engineering &amp; Data Preparation</p></td>
+<td><p>➕</p></td>
+<td><p>Scaling/standardisation, encoding, imputation, missing-data handling (source “Data cleaning &amp; preparation” = 32 posts)</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Model Selection, Validation &amp; Tuning</p></td>
+<td><p>➕</p></td>
+<td><p>Train/val/test split, cross-validation, AIC/AICc/BIC (scikit-plots GMM example), learning curve, hyperparameters</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Clustering &amp; Unsupervised Learning</p></td>
+<td><p>➕</p></td>
+<td><p>k-means, inertia/WSS, silhouette, elbow (scikit-plots <code class="docutils literal notranslate"><span class="pre">plot_elbow</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_silhouette</span></code>), PCA / explained variance</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>Deep Learning &amp; Neural Networks</p></td>
+<td><p>➕</p></td>
+<td><p>Neuron/layer, activation, loss, gradient descent, epoch/batch, over/underfitting (source “Deep Learning” = 17 posts)</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Data Analytics &amp; Visualization Foundations</p></td>
+<td><p>➕</p></td>
+<td><p>EDA, distributions, central tendency/spread, plot types (source “Foundations” = 27 posts)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Renumbering note:</strong> the draft labels Fairness as “Domain 6” and Calibration as “Domain 7”.
+The table above re-orders so related domains sit together (Calibration next to Statistics;
+Fairness later). Pick one numbering and apply it consistently — renumbering is a mechanical,
+low-risk edit best done in its own commit.</p>
+</section>
+<hr class="docutils" />
+<section id="gap-analysis">
+<h2>5. Gap analysis<a class="headerlink" href="#gap-analysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Covered now:</strong> ~40 terms across 8 domains ≈ <strong>9%</strong> of the 431 source posts (many of the remaining 391 are not yet enumerated).</p></li>
+<li><p><strong>Verified titles in hand:</strong> 10 (page 1) — all already represented in the draft’s Domain 4 / Domain 8.</p></li>
+<li><p><strong>Structural gaps:</strong> (a) page not in parent toctree; (b) tag block misplaced and missing <code class="docutils literal notranslate"><span class="pre">purpose:</span> <span class="pre">reference</span></code> + <code class="docutils literal notranslate"><span class="pre">model-type:</span> <span class="pre">classification</span></code>; (c) 7 domains (Regression, Bayesian, Feature Eng, Model Selection, Clustering, Deep Learning, EDA) have no bucket yet.</p></li>
+<li><p><strong>Biggest content debt:</strong> Bayesian (source has 144 posts) and Data Analytics (216) are huge source areas with <strong>zero</strong> coverage in the draft. These will dominate the later runs.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="title-harvest-method-deterministic-reproducible">
+<h2>6. Title harvest method (deterministic, reproducible)<a class="headerlink" href="#title-harvest-method-deterministic-reproducible" title="Link to this heading">#</a></h2>
+<p>The user wants <strong>all 431 titles explicitly listed and categorised</strong>. They cannot be invented;
+they must be pulled. Use this exact procedure — it is verified against the live site structure.</p>
+<section id="primary-method-category-pagination-confirmed-to-work">
+<h3>6.1 Primary method — category pagination (confirmed to work)<a class="headerlink" href="#primary-method-category-pagination-confirmed-to-work" title="Link to this heading">#</a></h3>
+<p>The category is paginated. Iterate pages <strong>1 → ~44</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">insightful</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">lab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">category</span><span class="o">/</span><span class="mi">00</span><span class="n">terminology</span><span class="o">/</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">insightful</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">lab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">category</span><span class="o">/</span><span class="mi">00</span><span class="n">terminology</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">insightful</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">lab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">category</span><span class="o">/</span><span class="mi">00</span><span class="n">terminology</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span>
+<span class="o">...</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">insightful</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">lab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">category</span><span class="o">/</span><span class="mi">00</span><span class="n">terminology</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">44</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>On each page, each post appears as a heading link:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [&lt;Title&gt;](https://insightful-data-lab.com/YYYY/MM/DD/&lt;slug&gt;/)</span>
+</pre></div>
+</div>
+<p>Extract the <strong>title text</strong> and the <strong>slug</strong> (the slug is the future <code class="docutils literal notranslate"><span class="pre">terminology-&lt;slug&gt;</span></code>
+anchor). Stop when “Older posts” disappears (last page).</p>
+<p><strong>Per-session budget:</strong> fetching 44 pages in one chat is heavy. Do it in <strong>harvest batches of
+~8–10 pages per session</strong> (≈ 80–100 titles), appending to a running <code class="docutils literal notranslate"><span class="pre">terminology_titles.tsv</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span><span class="n">slug</span><span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span><span class="n">source_url</span><span class="o">&lt;</span><span class="n">TAB</span><span class="o">&gt;</span><span class="n">proposed_domain</span>
+</pre></div>
+</div>
+</section>
+<section id="secondary-method-rss-feed-spot-check-freshness">
+<h3>6.2 Secondary method — RSS feed (spot-check / freshness)<a class="headerlink" href="#secondary-method-rss-feed-spot-check-freshness" title="Link to this heading">#</a></h3>
+<p>WordPress category feeds exist at <code class="docutils literal notranslate"><span class="pre">/category/00terminology/feed/</span></code>. Useful to confirm the most
+recent posts and to detect new ones later, but the feed returns a limited window — <strong>not</strong> a
+substitute for full pagination.</p>
+</section>
+<section id="optional-wordpress-rest-api-only-if-the-host-exposes-it">
+<h3>6.3 Optional — WordPress REST API (only if the host exposes it)<a class="headerlink" href="#optional-wordpress-rest-api-only-if-the-host-exposes-it" title="Link to this heading">#</a></h3>
+<p>WordPress sites often expose <code class="docutils literal notranslate"><span class="pre">/wp-json/wp/v2/posts?per_page=100&amp;categories=&lt;id&gt;</span></code>. If reachable,
+it returns titles+slugs in JSON, 100 per page — far fewer requests. Requires the numeric
+category id for <code class="docutils literal notranslate"><span class="pre">00terminology</span></code>. Treat as a nice-to-have; pagination (6.1) is the guaranteed path.</p>
+</section>
+<section id="output-of-the-harvest">
+<h3>6.4 Output of the harvest<a class="headerlink" href="#output-of-the-harvest" title="Link to this heading">#</a></h3>
+<p>A single flat list of <strong>431 rows</strong> (title, slug, url, proposed domain). This list is the
+backbone of every subsequent Run and the literal answer to “list all titles, categorised”.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="multi-run-roadmap-one-batch-per-session">
+<h2>7. Multi-run roadmap (one batch per session)<a class="headerlink" href="#multi-run-roadmap-one-batch-per-session" title="Link to this heading">#</a></h2>
+<p>Each Run is sized to fit comfortably in one session and to touch the <strong>draft <code class="docutils literal notranslate"><span class="pre">index.rst</span></code></strong> at
+<strong>known insertion points</strong> (line numbers from the uploaded 1717-line draft; re-confirm before
+editing since earlier edits shift them).</p>
+<section id="run-0-structure-hygiene-fast-do-first">
+<h3>Run 0 — Structure &amp; hygiene (fast, do first)<a class="headerlink" href="#run-0-structure-hygiene-fast-do-first" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>0a</strong> Wire page into parent toctree (Section 8.1).</p></li>
+<li><p><strong>0b</strong> Move <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tags::</span></code> block from ≈ line 40 to page bottom; add <code class="docutils literal notranslate"><span class="pre">purpose:</span> <span class="pre">reference</span></code>, <code class="docutils literal notranslate"><span class="pre">model-type:</span> <span class="pre">classification</span></code>.</p></li>
+<li><p><strong>0c</strong> Decide final domain numbering (Section 4 note) and apply.</p></li>
+<li><p><strong>0d</strong> Add empty, labelled stubs for new Domains 5, 7, 11, 12, 13, 14, 15 (placeholder per Section 7.3) so the skeleton matches the Master Taxonomy.</p></li>
+<li><p><em>Acceptance:</em> page builds clean, appears in the Learn sidebar, tag badges render on the tag index.</p></li>
+</ul>
+</section>
+<section id="run-1-harvest-batch-a-domain-4-10-reconciliation">
+<h3>Run 1 — Harvest batch A + Domain 4/10 reconciliation<a class="headerlink" href="#run-1-harvest-batch-a-domain-4-10-reconciliation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Harvest pages 1–10 (Section 6.1) → titles A.</p></li>
+<li><p>Confirm every title A is either already in the draft or appended to Domain 4 (Imbalance) / Domain 10 (Signal &amp; TS).</p></li>
+<li><p><em>Acceptance:</em> all batch-A titles accounted for in the taxonomy TSV with a domain.</p></li>
+</ul>
+</section>
+<section id="run-2-harvest-batches-bd-pages-1144">
+<h3>Run 2 — Harvest batches B–D (pages 11–44)<a class="headerlink" href="#run-2-harvest-batches-bd-pages-1144" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Complete the title harvest; finalise the 431-row TSV with <code class="docutils literal notranslate"><span class="pre">proposed_domain</span></code> for each.</p></li>
+<li><p><em>Acceptance:</em> TSV row count = 431; no row missing a domain.</p></li>
+</ul>
+</section>
+<section id="runs-39-content-fill-one-domain-per-run">
+<h3>Runs 3–9 — Content fill, one domain per run<a class="headerlink" href="#runs-39-content-fill-one-domain-per-run" title="Link to this heading">#</a></h3>
+<p>Order by value and by how much verifiable canon exists:</p>
+<ol class="arabic simple">
+<li><p><strong>Run 3</strong> — Domain 5 Regression metrics (small, high-value, scikit-plots has the plots).</p></li>
+<li><p><strong>Run 4</strong> — Domain 12 Model Selection / Validation (CV, AIC/BIC, learning curve).</p></li>
+<li><p><strong>Run 5</strong> — Domain 13 Clustering (elbow/silhouette/PCA map to scikit-plots APIs).</p></li>
+<li><p><strong>Run 6</strong> — Domain 6 Statistics expansion (KS, p-value, CI vs credible interval).</p></li>
+<li><p><strong>Run 7</strong> — Domain 7 Bayesian (largest; may itself span 2–3 sessions).</p></li>
+<li><p><strong>Run 8</strong> — Domain 14 Deep Learning.</p></li>
+<li><p><strong>Run 9</strong> — Domain 11 Feature Eng + Domain 15 EDA foundations.</p></li>
+</ol>
+<p>For each content run: take the harvested titles for that domain, write each as a per-term
+dropdown (Section 3.2/3.3), add <code class="docutils literal notranslate"><span class="pre">seealso</span></code> cross-links, and append any new verified sources.</p>
+</section>
+<section id="run-10-final-pass">
+<h3>Run 10 — Final pass<a class="headerlink" href="#run-10-final-pass" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fill Discovery grid cards for every new domain.</p></li>
+<li><p>Extend the Quick Reference selector table (regression + clustering rows).</p></li>
+<li><p>Verify all <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> targets resolve (no broken cross-links).</p></li>
+<li><p>Final Sources audit (every link resolves).</p></li>
+</ul>
+</section>
+<section id="placeholder-convention-for-not-yet-written-content">
+<h3>7.3 Placeholder convention (for not-yet-written content)<a class="headerlink" href="#placeholder-convention-for-not-yet-written-content" title="Link to this heading">#</a></h3>
+<p>Use a visible, greppable stub so nothing reads as finished when it isn’t:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_terminology-&lt;slug&gt;:</span>
+
+<span class="p">..</span> <span class="ow">dropdown</span><span class="p">::</span> <span class="nt">&lt;Term Name&gt;</span>
+   <span class="nc">:color:</span> secondary
+   <span class="nc">:icon:</span> hourglass
+
+<span class="p">   ..</span> <span class="ow">admonition</span><span class="p">::</span> Draft pending
+      <span class="nc">:class:</span> caution
+
+      Term scheduled for Run N. Source: &lt;source_url&gt;.
+      Do not cite until written and reviewed.
+</pre></div>
+</div>
+<p>Grep <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">pending</span></code> to find everything outstanding.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="integration-checklist">
+<h2>8. Integration checklist<a class="headerlink" href="#integration-checklist" title="Link to this heading">#</a></h2>
+<section id="wire-the-page-into-the-parent-toctree-required-currently-missing">
+<h3>8.1 Wire the page into the parent toctree (REQUIRED — currently missing)<a class="headerlink" href="#wire-the-page-into-the-parent-toctree-required-currently-missing" title="Link to this heading">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">docs/source/learn/index.rst</span></code>, add a <code class="docutils literal notranslate"><span class="pre">grid-item-card</span></code> mirroring the existing ones
+(cheatsheet / resources / glossary):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">    ..</span> <span class="ow">grid-item-card</span><span class="p">::</span>
+        <span class="nc">:padding:</span> 3
+
+        <span class="gs">**terminology**</span>
+        ^^^
+<span class="p">        ..</span> <span class="ow">toctree</span><span class="p">::</span>
+            <span class="nc">:maxdepth:</span> 2
+
+            Terminology &lt;terminology/index.rst&gt;
+</pre></div>
+</div>
+<p>Place it where it reads best (a sensible spot is right after <strong>glossary</strong>, since terminology
+and glossary are siblings). Without this, the page builds but is <strong>orphaned</strong> and unreachable
+from navigation.</p>
+</section>
+<section id="build-verify">
+<h3>8.2 Build &amp; verify<a class="headerlink" href="#build-verify" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Build the docs locally (the project’s standard Sphinx build).</p></li>
+<li><p>Confirm: page renders; dropdowns expand; math renders; copy buttons appear on code blocks; the three discovery tabs switch; no <code class="docutils literal notranslate"><span class="pre">WARNING:</span> <span class="pre">undefined</span> <span class="pre">label</span></code> for any <code class="docutils literal notranslate"><span class="pre">terminology-*</span></code> ref.</p></li>
+<li><p>Confirm the tag badges appear and that the page is listed under <code class="docutils literal notranslate"><span class="pre">purpose:</span> <span class="pre">reference</span></code>, <code class="docutils literal notranslate"><span class="pre">domain:</span> <span class="pre">statistics</span></code>, <code class="docutils literal notranslate"><span class="pre">model-type:</span> <span class="pre">classification</span></code>, and each <code class="docutils literal notranslate"><span class="pre">level:</span></code> page in <code class="docutils literal notranslate"><span class="pre">_tags/</span></code>.</p></li>
+</ul>
+</section>
+<section id="cross-link-hygiene">
+<h3>8.3 Cross-link hygiene<a class="headerlink" href="#cross-link-hygiene" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">:link:</span> <span class="pre">terminology-&lt;x&gt;</span></code> in a discovery card must have a matching <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_terminology-&lt;x&gt;:</span></code> target. The draft already defines most; new domains must define theirs <strong>before</strong> a card points at them.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verified-sources-consulted-for-this-guide">
+<h2>9. Verified sources (consulted for this guide)<a class="headerlink" href="#verified-sources-consulted-for-this-guide" title="Link to this heading">#</a></h2>
+<p>All links below were fetched and resolved during preparation of this guide.</p>
+<p><strong>Source corpus (context/framing only)</strong></p>
+<ul class="simple">
+<li><p>Terminology category (431 posts): https://insightful-data-lab.com/category/00terminology/</p></li>
+</ul>
+<p><strong>scikit-plots project conventions (the basis for the Rules)</strong></p>
+<ul class="simple">
+<li><p>Documentation Tagging Guidelines: https://scikit-plots.github.io/dev/devel/guide_document_tag.html</p></li>
+<li><p>Tags overview (controlled vocabulary): https://scikit-plots.github.io/dev/_tags/tagsindex.html</p></li>
+<li><p>Learn landing page source (<code class="docutils literal notranslate"><span class="pre">learn/index.rst</span></code>): https://raw.githubusercontent.com/scikit-plots/scikit-plots/refs/heads/main/docs/source/learn/index.rst</p></li>
+<li><p>Learn section (live): https://scikit-plots.github.io/dev/learn/index.html</p></li>
+</ul>
+<p><strong>Library references (for per-term API claims and citations in the page itself)</strong></p>
+<ul class="simple">
+<li><p>scikit-learn <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics</p></li>
+<li><p>imbalanced-learn API: https://imbalanced-learn.org/stable/references/index.html</p></li>
+<li><p>SciPy <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code>: https://docs.scipy.org/doc/scipy/reference/signal.html</p></li>
+</ul>
+<blockquote>
+<div><p>Note: papers/DOIs already cited inside the draft (<code class="docutils literal notranslate"><span class="pre">Fawcett</span> <span class="pre">2006</span></code>, <code class="docutils literal notranslate"><span class="pre">Hand</span> <span class="pre">&amp;</span> <span class="pre">Till</span> <span class="pre">2001</span></code>, <code class="docutils literal notranslate"><span class="pre">Chawla</span> <span class="pre">et</span> <span class="pre">al.</span> <span class="pre">2002</span></code>, <code class="docutils literal notranslate"><span class="pre">Chouldechova</span> <span class="pre">2017</span></code>, <code class="docutils literal notranslate"><span class="pre">Shannon</span> <span class="pre">1949</span></code>, etc.) were not re-verified for this guide. Re-confirm each DOI resolves during Run 10’s Sources audit before treating them as verified.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="quick-rule-card-pin-this">
+<h2>10. Quick rule card (pin this)<a class="headerlink" href="#quick-rule-card-pin-this" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>RST only</strong>, project underline hierarchy, <code class="docutils literal notranslate"><span class="pre">terminology-&lt;slug&gt;</span></code> anchors.</p></li>
+<li><p><strong>One term = one <code class="docutils literal notranslate"><span class="pre">dropdown</span></code></strong>, in the fixed 5-part order; first per domain <code class="docutils literal notranslate"><span class="pre">:open:</span></code>.</p></li>
+<li><p><strong>Colour carries meaning</strong> (Section 3.3 table); icons are octicons.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tags::</span></code> at the bottom</strong>, controlled vocabulary, <code class="docutils literal notranslate"><span class="pre">purpose:</span> <span class="pre">reference</span></code> always.</p></li>
+<li><p><strong>Sources = verified links only.</strong> No invented DOIs or function names.</p></li>
+<li><p><strong>Re-express, never copy</strong> the source posts.</p></li>
+<li><p><strong>Unknown ⇒ <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">pending</span></code> stub</strong>, never a confident guess.</p></li>
+<li><p><strong>Wire into the parent toctree</strong> or the page is invisible.</p></li>
+<li><p><strong>Harvest before you categorise</strong>; the 431 titles come from pagination, not memory.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr-what-to-do-in-order">0. TL;DR — what to do, in order</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal-non-goals">1. Goal &amp; non-goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goal">Goal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals-explicitly-out-of-scope">Non-goals (explicitly out of scope)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verified-current-state-facts-fetched-not-assumed">2. Verified current state (facts, fetched — not assumed)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-1-source-titles-verified-by-fetch-the-only-titles-confirmed-so-far">Page-1 source titles (verified by fetch — the only titles confirmed so far)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rules">3. The Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rst-sphinx-structural-rules">3.1 RST / Sphinx structural rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-term-entry-contract-the-canonical-shape-of-one-term">3.2 Per-term entry contract (the canonical shape of one term)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-design-component-patterns-copy-paste-do-not-improvise">3.3 sphinx_design component patterns (copy-paste, do not improvise)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-tags-rules-corrected-to-match-project-convention">3.4 sphinx_tags rules (corrected to match project convention)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-rules-verified-only">3.5 Sources rules (verified-only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-integrity-rules-no-hallucination-no-copying">3.6 Content-integrity rules (no hallucination, no copying)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ux-rules-discovery-at-a-glance-nested-exploration">3.7 UX rules (“Discovery at a glance” + nested exploration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-master-taxonomy-the-home-for-all-431-terms">4. The Master Taxonomy (the home for all 431 terms)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gap-analysis">5. Gap analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title-harvest-method-deterministic-reproducible">6. Title harvest method (deterministic, reproducible)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-method-category-pagination-confirmed-to-work">6.1 Primary method — category pagination (confirmed to work)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secondary-method-rss-feed-spot-check-freshness">6.2 Secondary method — RSS feed (spot-check / freshness)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-wordpress-rest-api-only-if-the-host-exposes-it">6.3 Optional — WordPress REST API (only if the host exposes it)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-of-the-harvest">6.4 Output of the harvest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-run-roadmap-one-batch-per-session">7. Multi-run roadmap (one batch per session)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-0-structure-hygiene-fast-do-first">Run 0 — Structure &amp; hygiene (fast, do first)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-1-harvest-batch-a-domain-4-10-reconciliation">Run 1 — Harvest batch A + Domain 4/10 reconciliation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-2-harvest-batches-bd-pages-1144">Run 2 — Harvest batches B–D (pages 11–44)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runs-39-content-fill-one-domain-per-run">Runs 3–9 — Content fill, one domain per run</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-10-final-pass">Run 10 — Final pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholder-convention-for-not-yet-written-content">7.3 Placeholder convention (for not-yet-written content)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-checklist">8. Integration checklist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wire-the-page-into-the-parent-toctree-required-currently-missing">8.1 Wire the page into the parent toctree (REQUIRED — currently missing)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-verify">8.2 Build &amp; verify</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-link-hygiene">8.3 Cross-link hygiene</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verified-sources-consulted-for-this-guide">9. Verified sources (consulted for this guide)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-rule-card-pin-this">10. Quick rule card (pin this)</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/learn/terminology/TERMINOLOGY_MIGRATION_GUIDE.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/learn/terminology/TERMINOLOGY_MIGRATION_GUIDE.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+
+  
+  
+  
+
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

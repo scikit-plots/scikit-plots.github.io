@@ -1,6 +1,6 @@
 # TextNormalizer[#](#textnormalizer "Link to this heading")
 
-class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_normalizers/_text_normalizer.py#L298)[#](#scikitplot.corpus.TextNormalizer "Link to this definition")
+class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_normalizers/_text_normalizer.py#L298)[#](#scikitplot.corpus.TextNormalizer "Link to this definition")
 :   Pipeline component that populates `normalized_text` on
     [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances.
 
@@ -50,7 +50,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
     ```
     Go BackOpen In Tab
 
-    normalize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_normalizers/_text_normalizer.py#L345)[#](#scikitplot.corpus.TextNormalizer.normalize "Link to this definition")
+    normalize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_normalizers/_text_normalizer.py#L345)[#](#scikitplot.corpus.TextNormalizer.normalize "Link to this definition")
     :   Normalise a single string using only the steps in `config.steps`.
 
         Unlike [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text"), this method:
@@ -92,7 +92,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
         ```
         Go BackOpen In Tab
 
-    normalize\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/corpus/_normalizers/_text_normalizer.py#L408)[#](#scikitplot.corpus.TextNormalizer.normalize_documents "Link to this definition")
+    normalize\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_normalizers/_text_normalizer.py#L408)[#](#scikitplot.corpus.TextNormalizer.normalize_documents "Link to this definition")
     :   Normalise text for a batch of `CorpusDocument` instances.
 
         Parameters:

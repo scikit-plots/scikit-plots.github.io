@@ -1,6 +1,6 @@
 # decile\_table[#](#decile-table "Link to this heading")
 
-scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=None**, **class\_index=1**, **pos\_label=None**, **change\_deciles=10**, **digits=6**, **feature\_infos=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f06fe30/scikitplot/decile/kds/_kds.py#L116)[#](#scikitplot.decile.kds.decile_table "Link to this definition")
+scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=None**, **class\_index=1**, **pos\_label=None**, **change\_deciles=10**, **digits=6**, **feature\_infos=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/decile/kds/_kds.py#L116)[#](#scikitplot.decile.kds.decile_table "Link to this definition")
 :   Generate the Decile Table from labels and probabilities.
 
     The Decile Table is creared by first sorting the customers by their predicted
