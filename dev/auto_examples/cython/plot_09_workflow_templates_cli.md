@@ -148,20 +148,20 @@ else:
 ```
 ```
 Workflows: ['churn_basic']
-Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmp6e2mx6vd/workflow_copy
+Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy
 Files: ['cli.py', 'hpo.py', 'predict.py', 'train.py']
 
 Run:
-  python /home/circleci/repo/galleries/examples/cython/tmp6e2mx6vd/workflow_copy/cli.py train --help
-  python /home/circleci/repo/galleries/examples/cython/tmp6e2mx6vd/workflow_copy/cli.py hpo --help
-  python /home/circleci/repo/galleries/examples/cython/tmp6e2mx6vd/workflow_copy/cli.py predict --help
+  python /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy/cli.py train --help
+  python /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy/cli.py hpo --help
+  python /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy/cli.py predict --help
 
 Single-module extension imported from copied folder:
   m.square(12) = 144
-Compiling /home/circleci/.cache/scikitplot/cython/c51f2cc41b1a435688df019d13988aa9946a33810462aefe4993817797a6eb15/wf_ext_pkg/alpha.pyx because it changed.
-Compiling /home/circleci/.cache/scikitplot/cython/c51f2cc41b1a435688df019d13988aa9946a33810462aefe4993817797a6eb15/wf_ext_pkg/beta.pyx because it changed.
-[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/c51f2cc41b1a435688df019d13988aa9946a33810462aefe4993817797a6eb15/wf_ext_pkg/alpha.pyx
-[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/c51f2cc41b1a435688df019d13988aa9946a33810462aefe4993817797a6eb15/wf_ext_pkg/beta.pyx
+Compiling /home/circleci/.cache/scikitplot/cython/4ecd6fed78f8993a1193241f919ce8a79e765b382690485fb3ec5020c5a29500/wf_ext_pkg/alpha.pyx because it changed.
+Compiling /home/circleci/.cache/scikitplot/cython/4ecd6fed78f8993a1193241f919ce8a79e765b382690485fb3ec5020c5a29500/wf_ext_pkg/beta.pyx because it changed.
+[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/4ecd6fed78f8993a1193241f919ce8a79e765b382690485fb3ec5020c5a29500/wf_ext_pkg/alpha.pyx
+[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/4ecd6fed78f8993a1193241f919ce8a79e765b382690485fb3ec5020c5a29500/wf_ext_pkg/beta.pyx
 
 Package extension imported from copied folder:
   alpha.inc(10) = 11
@@ -171,7 +171,7 @@ Package extension imported from copied folder:
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.403 seconds)
+****Total running time of the script:**** (0 minutes 1.388 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
 

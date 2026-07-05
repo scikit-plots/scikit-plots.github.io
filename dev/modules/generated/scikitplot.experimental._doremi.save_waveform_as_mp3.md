@@ -1,6 +1,6 @@
 # save\_waveform\_as\_mp3[#](#save-waveform-as-mp3 "Link to this heading")
 
-scikitplot.experimental.\_doremi.save\_waveform\_as\_mp3(**waveform**, **file\_path='output.mp3'**, **sample\_rate=44100**, **amplitude\_int=32767**, **bitrate='192k'**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/experimental/_doremi/note_io.py#L167)[#](#scikitplot.experimental._doremi.save_waveform_as_mp3 "Link to this definition")
+scikitplot.experimental.\_doremi.save\_waveform\_as\_mp3(**waveform**, **file\_path='output.mp3'**, **sample\_rate=44100**, **amplitude\_int=32767**, **bitrate='192k'**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/experimental/_doremi/note_io.py#L167)[#](#scikitplot.experimental._doremi.save_waveform_as_mp3 "Link to this definition")
 :   Save waveform as an MP3 file using pydub and ffmpeg, with support for mono or stereo.
 
     Parameters:

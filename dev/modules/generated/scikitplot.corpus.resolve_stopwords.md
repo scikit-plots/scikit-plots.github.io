@@ -1,6 +1,6 @@
 # resolve\_stopwords[#](#resolve-stopwords "Link to this heading")
 
-scikitplot.corpus.resolve\_stopwords(**lang**, **\***, **default='english'**, **extra=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_chunkers/_language_data.py#L1353)[#](#scikitplot.corpus.resolve_stopwords "Link to this definition")
+scikitplot.corpus.resolve\_stopwords(**lang**, **\***, **default='english'**, **extra=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_language_data.py#L1353)[#](#scikitplot.corpus.resolve_stopwords "Link to this definition")
 :   Return a frozenset of stopwords for one or more languages.
 
     Looks up each language in [`BUILTIN_LANG_STOPWORDS`](scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html#scikitplot.corpus.BUILTIN_LANG_STOPWORDS "scikitplot.corpus.BUILTIN_LANG_STOPWORDS"). Languages

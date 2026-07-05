@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:03:12Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:50:47Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1315,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>NormalizationPipeline<a class="headerlink" href="#normalizationpipeline" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.NormalizationPipeline">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">NormalizationPipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_normalizers/_normalizer.py#L648"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizationPipeline" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">NormalizationPipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_normalizers/_normalizer.py#L648"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizationPipeline" title="Link to this definition">#</a></dt>
 <dd><p>Apply a sequence of normalisers in order.</p>
 <p>Each normaliser in the pipeline receives the output of the previous
 one. Normalisers that have no effect return the document unchanged,
@@ -1338,8 +1338,8 @@ so only modified documents incur a <code class="docutils literal notranslate"><s
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="77f5c194-d171-4632-bddc-7a236082db53">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('77f5c194-d171-4632-bddc-7a236082db53','5865087f-a513-4bd3-b600-e365cff5555a','cba3dce4-66a9-4acd-a77d-dfd5db3dbbbb','../../lite/tree/../notebooks/index.html?path=42601dd8_e2c0_4b42_8e6a_950b01f8640a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1651989d-8263-442a-86c6-2cf7774d3760">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1651989d-8263-442a-86c6-2cf7774d3760','f9075c17-9dd3-4265-a89a-1c534db8fed6','3a000fb8-6eaf-4e11-aeb4-21a8bb1fa311','../../lite/tree/../notebooks/index.html?path=a2de37e1_9068_456f_8cd8_847159116397.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">NormalizationPipeline</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
 <span class="gp">... </span>        <span class="n">UnicodeNormalizer</span><span class="p">(</span><span class="n">form</span><span class="o">=</span><span class="s2">&quot;NFKC&quot;</span><span class="p">),</span>
@@ -1352,9 +1352,9 @@ so only modified documents incur a <code class="docutils literal notranslate"><s
 </div>
 </div>
 </div>
-<div id="cba3dce4-66a9-4acd-a77d-dfd5db3dbbbb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('77f5c194-d171-4632-bddc-7a236082db53','cba3dce4-66a9-4acd-a77d-dfd5db3dbbbb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('77f5c194-d171-4632-bddc-7a236082db53','cba3dce4-66a9-4acd-a77d-dfd5db3dbbbb')">Open In Tab</button></div><div id="5865087f-a513-4bd3-b600-e365cff5555a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="3a000fb8-6eaf-4e11-aeb4-21a8bb1fa311" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1651989d-8263-442a-86c6-2cf7774d3760','3a000fb8-6eaf-4e11-aeb4-21a8bb1fa311')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1651989d-8263-442a-86c6-2cf7774d3760','3a000fb8-6eaf-4e11-aeb4-21a8bb1fa311')">Open In Tab</button></div><div id="f9075c17-9dd3-4265-a89a-1c534db8fed6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.NormalizationPipeline.normalize_batch">
-<span class="sig-name descname"><span class="pre">normalize_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_normalizers/_normalizer.py#L707"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizationPipeline.normalize_batch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_normalizers/_normalizer.py#L707"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizationPipeline.normalize_batch" title="Link to this definition">#</a></dt>
 <dd><p>Apply the pipeline to a list of documents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1378,7 +1378,7 @@ so only modified documents incur a <code class="docutils literal notranslate"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.NormalizationPipeline.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_normalizers/_normalizer.py#L689"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizationPipeline.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_normalizers/_normalizer.py#L689"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizationPipeline.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Apply all normalisers in order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1530,7 +1530,7 @@ so only modified documents incur a <code class="docutils literal notranslate"><s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>

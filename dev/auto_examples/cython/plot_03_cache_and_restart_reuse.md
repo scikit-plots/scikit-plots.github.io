@@ -99,40 +99,40 @@ else:
 ```
 ```
 BuildResult:
-  module_name: scikitplot_cython_dcc07d0ff95c10ef
-  key        : dcc07d0ff95c10ef924ee02075afa890c10f71233b0ae5e57698b8cde86d0b05
-  artifact   : /home/circleci/.cache/scikitplot/cython/dcc07d0ff95c10ef924ee02075afa890c10f71233b0ae5e57698b8cde86d0b05/scikitplot_cython_dcc07d0ff95c10ef.cpython-312-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_bae8f9ef1f360390
+  key        : bae8f9ef1f360390e728e25ef38b7359e3f2f6383622b6c38939172bd86a6c80
+  artifact   : /home/circleci/.cache/scikitplot/cython/bae8f9ef1f360390e728e25ef38b7359e3f2f6383622b6c38939172bd86a6c80/scikitplot_cython_bae8f9ef1f360390.cpython-312-x86_64-linux-gnu.so
   used_cache : True
 Cache entries: 6
 Last 5 entries:
-  - key: 8c86efd9d53684b165468c85bf4fd11e1a7de61d6cdde0075a3e0507cfaf424c
-    module_name: scikitplot_cython_8c86efd9d53684b1
-    artifact_path: /home/circleci/.cache/scikitplot/cython/8c86efd9d53684b165468c85bf4fd11e1a7de61d6cdde0075a3e0507cfaf424c/scikitplot_cython_8c86efd9d53684b1.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-06-26T18:49:00Z
-  - key: cc742d2431f49ab1ce72df56914e664127f1c237962d952ff123eb13ff5555db
-    module_name: scikitplot_cython_cc742d2431f49ab1
-    artifact_path: /home/circleci/.cache/scikitplot/cython/cc742d2431f49ab1ce72df56914e664127f1c237962d952ff123eb13ff5555db/scikitplot_cython_cc742d2431f49ab1.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-06-26T18:49:01Z
-  - key: dcc07d0ff95c10ef924ee02075afa890c10f71233b0ae5e57698b8cde86d0b05
-    module_name: scikitplot_cython_dcc07d0ff95c10ef
-    artifact_path: /home/circleci/.cache/scikitplot/cython/dcc07d0ff95c10ef924ee02075afa890c10f71233b0ae5e57698b8cde86d0b05/scikitplot_cython_dcc07d0ff95c10ef.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-06-26T18:48:59Z
-  - key: f132522780a853ce622cc4e594e1d1d8a2b3000ea93ae758f274f2f3c17048ef
-    module_name: scikitplot_cython_f132522780a853ce
-    artifact_path: /home/circleci/.cache/scikitplot/cython/f132522780a853ce622cc4e594e1d1d8a2b3000ea93ae758f274f2f3c17048ef/scikitplot_cython_f132522780a853ce.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-06-26T18:49:06Z
-  - key: ffe085a82700e9551549a99938c76fa742845298370db4b9b703187ff09d8efd
-    module_name: scikitplot_cython_ffe085a82700e955
-    artifact_path: /home/circleci/.cache/scikitplot/cython/ffe085a82700e9551549a99938c76fa742845298370db4b9b703187ff09d8efd/scikitplot_cython_ffe085a82700e955.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-06-26T18:49:05Z
+  - key: 0b85c088cd1048e47059ffd9670e665f08de4b426e642aef61bd585b91c304f6
+    module_name: scikitplot_cython_0b85c088cd1048e4
+    artifact_path: /home/circleci/.cache/scikitplot/cython/0b85c088cd1048e47059ffd9670e665f08de4b426e642aef61bd585b91c304f6/scikitplot_cython_0b85c088cd1048e4.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-07-05T08:33:45Z
+  - key: 486f5673e19e02e96de72815c93b408a18af65c2ef94a7737446df21459b8ac2
+    module_name: scikitplot_cython_486f5673e19e02e9
+    artifact_path: /home/circleci/.cache/scikitplot/cython/486f5673e19e02e96de72815c93b408a18af65c2ef94a7737446df21459b8ac2/scikitplot_cython_486f5673e19e02e9.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-07-05T08:33:40Z
+  - key: 6a1b6a0cddbde637c31f6a83559f8c0096d5523568553f758710b4c838d62986
+    module_name: scikitplot_cython_6a1b6a0cddbde637
+    artifact_path: /home/circleci/.cache/scikitplot/cython/6a1b6a0cddbde637c31f6a83559f8c0096d5523568553f758710b4c838d62986/scikitplot_cython_6a1b6a0cddbde637.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-07-05T08:33:41Z
+  - key: 6e960ef041faff62c2446b4dacb74f70154663f2bd7b1db85124cd870657f002
+    module_name: scikitplot_cython_6e960ef041faff62
+    artifact_path: /home/circleci/.cache/scikitplot/cython/6e960ef041faff62c2446b4dacb74f70154663f2bd7b1db85124cd870657f002/scikitplot_cython_6e960ef041faff62.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-07-05T08:33:43Z
+  - key: bae8f9ef1f360390e728e25ef38b7359e3f2f6383622b6c38939172bd86a6c80
+    module_name: scikitplot_cython_bae8f9ef1f360390
+    artifact_path: /home/circleci/.cache/scikitplot/cython/bae8f9ef1f360390e728e25ef38b7359e3f2f6383622b6c38939172bd86a6c80/scikitplot_cython_bae8f9ef1f360390.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-07-05T08:33:40Z
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4375430, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-06-26T18:49:07Z', oldest_mtime_utc='2026-06-26T18:49:00Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4489174, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-07-05T08:33:47Z', oldest_mtime_utc='2026-07-05T08:33:40Z')
 
 Imported from cache (result API):
-  module_name: scikitplot_cython_dcc07d0ff95c10ef
+  module_name: scikitplot_cython_bae8f9ef1f360390
   used_cache : True
-  artifact   : /home/circleci/.cache/scikitplot/cython/dcc07d0ff95c10ef924ee02075afa890c10f71233b0ae5e57698b8cde86d0b05/scikitplot_cython_dcc07d0ff95c10ef.cpython-312-x86_64-linux-gnu.so
+  artifact   : /home/circleci/.cache/scikitplot/cython/bae8f9ef1f360390e728e25ef38b7359e3f2f6383622b6c38939172bd86a6c80/scikitplot_cython_bae8f9ef1f360390.cpython-312-x86_64-linux-gnu.so
 import_cached(key).f(11) = 121
 Expected: 121
 Correct: True

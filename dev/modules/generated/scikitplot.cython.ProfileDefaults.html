@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:04:01Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:51:53Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1313,20 +1313,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ProfileDefaults<a class="headerlink" href="#profiledefaults" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cython.ProfileDefaults">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">ProfileDefaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compiler_directives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cython/_profiles.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.ProfileDefaults" title="Link to this definition">#</a></dt>
-<dd><p>Normalized defaults produced by applying a profile.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">ProfileDefaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compiler_directives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_profiles.py#L70"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.ProfileDefaults" title="Link to this definition">#</a></dt>
+<dd><p>Normalized defaults produced by resolving a profile.</p>
+<p>The instance is frozen and slotted: it is immutable and rejects attribute
+injection, so a resolved profile cannot be tampered with after creation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>annotate</strong><span class="classifier">bool</span></dt><dd><p>Default for the Cython annotate flag.</p>
+<dt><strong>annotate</strong><span class="classifier">bool, default=False</span></dt><dd><p>Default for the Cython <code class="docutils literal notranslate"><span class="pre">annotate</span></code> flag.</p>
 </dd>
 <dt><strong>compiler_directives</strong><span class="classifier">Mapping[str, Any]</span></dt><dd><p>Default Cython compiler directives merged on top of the baseline.</p>
 </dd>
-<dt><strong>extra_compile_args</strong><span class="classifier">Sequence[str]</span></dt><dd><p>Default compiler flags for the C/C++ compiler.</p>
+<dt><strong>extra_compile_args</strong><span class="classifier">tuple of str</span></dt><dd><p>Default compiler flags for the C/C++ compiler. Always a tuple.</p>
 </dd>
-<dt><strong>extra_link_args</strong><span class="classifier">Sequence[str]</span></dt><dd><p>Default linker flags.</p>
+<dt><strong>extra_link_args</strong><span class="classifier">tuple of str</span></dt><dd><p>Default linker flags. Always a tuple.</p>
 </dd>
-<dt><strong>language</strong><span class="classifier">{‘c’, ‘c++’} or None</span></dt><dd><p>Optional default language, or None to leave unspecified.</p>
+<dt><strong>language</strong><span class="classifier">{‘c’, ‘c++’} or None, default=None</span></dt><dd><p>Optional default language, or <code class="docutils literal notranslate"><span class="pre">None</span></code> to leave unspecified.</p>
 </dd>
 </dl>
 </dd>
@@ -1334,12 +1336,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <dd class="field-even"><ul class="simple">
 <li><p><strong>annotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>compiler_directives</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.14)"><em>Mapping</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
-<li><p><strong>extra_compile_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>extra_link_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>extra_compile_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>...</em><em>]</em>)</p></li>
+<li><p><strong>extra_link_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>...</em><em>]</em>)</p></li>
 <li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Defaults exist only to satisfy documentation tooling that expects class
+attributes to be defaulted. The public API always returns fully-filled
+values produced by <a class="reference internal" href="scikitplot.cython.resolve_profile.html#scikitplot.cython.resolve_profile" title="scikitplot.cython.resolve_profile"><code class="xref py py-func docutils literal notranslate"><span class="pre">resolve_profile</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">slots=True</span></code> requires Python &gt;= 3.10. The project’s
+<code class="docutils literal notranslate"><span class="pre">requires-python</span></code> floor should not be lowered below that without
+removing this argument.</p>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.ProfileDefaults.annotate">
 <span class="sig-name descname"><span class="pre">annotate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#scikitplot.cython.ProfileDefaults.annotate" title="Link to this definition">#</a></dt>
@@ -1354,13 +1366,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.ProfileDefaults.extra_compile_args">
-<span class="sig-name descname"><span class="pre">extra_compile_args</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#scikitplot.cython.ProfileDefaults.extra_compile_args" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">extra_compile_args</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#scikitplot.cython.ProfileDefaults.extra_compile_args" title="Link to this definition">#</a></dt>
 <dd><p>!! processed by numpydoc !!</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.ProfileDefaults.extra_link_args">
-<span class="sig-name descname"><span class="pre">extra_link_args</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#scikitplot.cython.ProfileDefaults.extra_link_args" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">extra_link_args</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#scikitplot.cython.ProfileDefaults.extra_link_args" title="Link to this definition">#</a></dt>
 <dd><p>!! processed by numpydoc !!</p>
 </dd></dl>
 
@@ -1495,7 +1507,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>

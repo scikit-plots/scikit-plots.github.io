@@ -1,6 +1,6 @@
 # compile\_and\_load\_result[#](#compile-and-load-result "Link to this heading")
 
-scikitplot.cython.compile\_and\_load\_result(**source**, **\***, **module\_name=None**, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **annotate=False**, **view\_annotate=False**, **numpy\_support=True**, **numpy\_required=False**, **include\_dirs=None**, **library\_dirs=None**, **libraries=None**, **define\_macros=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **compiler\_directives=None**, **extra\_sources=None**, **support\_files=None**, **support\_paths=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**, **security\_policy=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cython/_public.py#L261)[#](#scikitplot.cython.compile_and_load_result "Link to this definition")
+scikitplot.cython.compile\_and\_load\_result(**source**, **\***, **module\_name=None**, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **annotate=None**, **view\_annotate=False**, **numpy\_support=True**, **numpy\_required=False**, **include\_dirs=None**, **library\_dirs=None**, **libraries=None**, **define\_macros=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **compiler\_directives=None**, **extra\_sources=None**, **support\_files=None**, **support\_paths=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**, **security\_policy=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_public.py#L261)[#](#scikitplot.cython.compile_and_load_result "Link to this definition")
 :   Compile and import a Cython extension module from source text.
 
     Parameters:
@@ -64,7 +64,7 @@ scikitplot.cython.compile\_and\_load\_result(**source**, **\***, **module\_name=
         * ****force\_rebuild**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****verbose**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****profile**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****annotate**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****annotate**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
         * ****view\_annotate**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****numpy\_support**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****numpy\_required**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))

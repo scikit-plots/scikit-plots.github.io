@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:04:07Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:52:02Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1313,40 +1313,52 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>apply_profile<a class="headerlink" href="#apply-profile" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.apply_profile">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">apply_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compiler_directives</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cython/_profiles.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.apply_profile" title="Link to this definition">#</a></dt>
-<dd><p>Apply a profile with strict precedence rules.</p>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">apply_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compiler_directives</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_profiles.py#L333"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.apply_profile" title="Link to this definition">#</a></dt>
+<dd><p>Apply a profile with strict, three-state precedence.</p>
+<p>Every field follows the same contract:</p>
 <ul class="simple">
-<li><p>If an explicit argument is provided by the user, it is kept unchanged.</p></li>
-<li><p>Otherwise, the profile default is applied.</p></li>
+<li><p>The user passed an explicit value (not <code class="docutils literal notranslate"><span class="pre">None</span></code>) -&gt; the user value wins.</p></li>
+<li><p>The user left the value unset (<code class="docutils literal notranslate"><span class="pre">None</span></code>) -&gt; the profile default applies.</p></li>
 </ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">annotate</span></code> this is the precedence fix: the parameter is <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">None</span></code>
+so “user did not specify” (<code class="docutils literal notranslate"><span class="pre">None</span></code>) is distinguishable from “user
+explicitly disabled” (<code class="docutils literal notranslate"><span class="pre">False</span></code>). Previously <code class="docutils literal notranslate"><span class="pre">annotate</span></code> was a plain
+<code class="docutils literal notranslate"><span class="pre">bool</span></code> defaulting to <code class="docutils literal notranslate"><span class="pre">False</span></code>, so the <code class="docutils literal notranslate"><span class="pre">&quot;annotate&quot;</span></code> profile – whose sole
+purpose is to enable annotation – could never take effect unless the caller
+<em>also</em> passed <code class="docutils literal notranslate"><span class="pre">annotate=True</span></code>, which defeated the profile.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>profile</strong><span class="classifier">str or None</span></dt><dd><p>Profile name.</p>
+<dt><strong>profile</strong><span class="classifier">str or None</span></dt><dd><p>Profile name, validated by <a class="reference internal" href="scikitplot.cython.resolve_profile.html#scikitplot.cython.resolve_profile" title="scikitplot.cython.resolve_profile"><code class="xref py py-func docutils literal notranslate"><span class="pre">resolve_profile</span></code></a>.</p>
 </dd>
-<dt><strong>annotate</strong><span class="classifier">bool</span></dt><dd><p>User-provided annotate flag.</p>
+<dt><strong>annotate</strong><span class="classifier">bool or None, default=None</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code> inherits the profile default; <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> are explicit
+and always win.</p>
 </dd>
-<dt><strong>compiler_directives</strong><span class="classifier">Mapping[str, Any] or None</span></dt><dd><p>User-provided compiler directives.</p>
+<dt><strong>compiler_directives</strong><span class="classifier">Mapping[str, Any] or None</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code> inherits the profile default; a mapping is merged on top of the
+profile default (user keys win).</p>
 </dd>
-<dt><strong>extra_compile_args</strong><span class="classifier">Sequence[str] or None</span></dt><dd><p>User-provided compiler args.</p>
+<dt><strong>extra_compile_args</strong><span class="classifier">Sequence[str] or None</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code> inherits the profile default; otherwise normalized to a tuple.</p>
 </dd>
-<dt><strong>extra_link_args</strong><span class="classifier">Sequence[str] or None</span></dt><dd><p>User-provided link args.</p>
+<dt><strong>extra_link_args</strong><span class="classifier">Sequence[str] or None</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code> inherits the profile default; otherwise normalized to a tuple.</p>
 </dd>
-<dt><strong>language</strong><span class="classifier">{‘c’, ‘c++’} or None</span></dt><dd><p>User-provided language.</p>
+<dt><strong>language</strong><span class="classifier">{‘c’, ‘c++’} or None</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code> inherits the profile default.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>tuple</dt><dd><p>(annotate, compiler_directives, extra_compile_args, extra_link_args, language)
-with profile defaults applied where the user did not specify a value.</p>
+<dt>AppliedProfile</dt><dd><p>Named 5-tuple <code class="docutils literal notranslate"><span class="pre">(annotate,</span> <span class="pre">compiler_directives,</span> <span class="pre">extra_compile_args,</span>
+<span class="pre">extra_link_args,</span> <span class="pre">language)</span></code>. <code class="docutils literal notranslate"><span class="pre">extra_compile_args</span></code> and
+<code class="docutils literal notranslate"><span class="pre">extra_link_args</span></code> are always tuples (empty means “no flags”, never
+<code class="docutils literal notranslate"><span class="pre">None</span></code>); <code class="docutils literal notranslate"><span class="pre">compiler_directives</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> only when neither the
+profile nor the user supplied any.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>annotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>annotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>compiler_directives</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.14)"><em>Mapping</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>extra_compile_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>extra_link_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
@@ -1354,9 +1366,15 @@ with profile defaults applied where the user did not specify a value.</p>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>] | None, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>] | None, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>] | None, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None]</p>
+<dd class="field-even"><p><em>AppliedProfile</em></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The result is an <code class="xref py py-class docutils literal notranslate"><span class="pre">AppliedProfile</span></code> (a <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>), so positional
+unpacking remains identical to the historical bare-tuple return while adding
+named access. User-supplied flag sequences are normalized to tuples but
+otherwise forwarded verbatim; argument <em>safety</em> is enforced by the security
+layer at build time, not here.</p>
 </dd></dl>
 
 </section>
@@ -1475,7 +1493,7 @@ with profile defaults applied where the user did not specify a value.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>

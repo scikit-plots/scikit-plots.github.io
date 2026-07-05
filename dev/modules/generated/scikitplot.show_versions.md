@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -56,10 +56,10 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260626.e137512
+                   scikitplot: 0.5.dev0+git.20260705.ec7d6d7
                           pip: 26.0.1
-                   setuptools: 82.0.1
-                       cython: 3.2.6
+                   setuptools: 83.0.0
+                       cython: 3.2.8
                         numpy: 2.4.6
                         scipy: 1.18.0
                       aggdraw: 1.4.1
@@ -113,10 +113,10 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260626.e137512',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260705.ec7d6d7',
       'pip': '26.0.1',
-      'setuptools': '82.0.1',
-      'cython': '3.2.6',
+      'setuptools': '83.0.0',
+      'cython': '3.2.8',
       'numpy': '2.4.6',
       'scipy': '1.18.0',
       'aggdraw': '1.4.1',
@@ -169,10 +169,10 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260626.e137512
+                   scikitplot: 0.5.dev0+git.20260705.ec7d6d7
                           pip: 26.0.1
-                   setuptools: 82.0.1
-                       cython: 3.2.6
+                   setuptools: 83.0.0
+                       cython: 3.2.8
                         numpy: 2.4.6
                         scipy: 1.18.0
                       aggdraw: 1.4.1

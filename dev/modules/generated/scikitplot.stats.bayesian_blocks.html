@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:06:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:54:17Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>bayesian_blocks<a class="headerlink" href="#bayesian-blocks" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.stats.bayesian_blocks">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.stats.bayesian_blocks" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.stats.bayesian_blocks" title="Link to this definition">#</a></dt>
 <dd><p>Compute optimal segmentation of data with Scargle’s Bayesian Blocks.</p>
 <p>This is a flexible implementation of the Bayesian Blocks algorithm
 described in Scargle 2013 <a class="reference internal" href="#refb3b6bccc47-1" id="id1">[1]</a>.</p>
@@ -1402,8 +1402,8 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c2a614f3-e09e-4cc8-a82d-dff0c51c3e28">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c2a614f3-e09e-4cc8-a82d-dff0c51c3e28','407aa94a-cef9-4ddc-8fbd-9f5065aa56f5','d1496ee5-75b5-4265-b368-41703eb4a085','../../lite/tree/../notebooks/index.html?path=12c78c74_0344_4587_881c_3998747973f4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="cbce9e38-f57a-405d-bcd5-d198f7e56ce8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cbce9e38-f57a-405d-bcd5-d198f7e56ce8','a7d6839d-979a-4c37-b94a-56999e52b9e2','3a6393fb-c5dd-42f7-b8fb-0038b0001d22','../../lite/tree/../notebooks/index.html?path=e353b7cf_99e7_4ea6_85e3_91322965267e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Event data:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="n">bayesian_blocks</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fitness</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1433,7 +1433,7 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 </div>
 </div>
 </div>
-<div id="d1496ee5-75b5-4265-b368-41703eb4a085" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c2a614f3-e09e-4cc8-a82d-dff0c51c3e28','d1496ee5-75b5-4265-b368-41703eb4a085')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c2a614f3-e09e-4cc8-a82d-dff0c51c3e28','d1496ee5-75b5-4265-b368-41703eb4a085')">Open In Tab</button></div><div id="407aa94a-cef9-4ddc-8fbd-9f5065aa56f5" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="3a6393fb-c5dd-42f7-b8fb-0038b0001d22" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cbce9e38-f57a-405d-bcd5-d198f7e56ce8','3a6393fb-c5dd-42f7-b8fb-0038b0001d22')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cbce9e38-f57a-405d-bcd5-d198f7e56ce8','3a6393fb-c5dd-42f7-b8fb-0038b0001d22')">Open In Tab</button></div><div id="a7d6839d-979a-4c37-b94a-56999e52b9e2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1551,7 +1551,7 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>

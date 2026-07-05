@@ -1,6 +1,6 @@
 # RELAXED\_SECURITY\_POLICY[#](#relaxed-security-policy "Link to this heading")
 
-scikitplot.cython.RELAXED\_SECURITY\_POLICY = SecurityPolicy(strict=False, allow\_absolute\_include\_dirs=True, allow\_shell\_metacharacters=True, allow\_reserved\_macros=True, allow\_dangerous\_compiler\_args=True, max\_source\_bytes=None, max\_extra\_compile\_args=1024, max\_extra\_link\_args=1024, max\_include\_dirs=512, max\_libraries=512)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cython/_security.py#L)[#](#scikitplot.cython.RELAXED_SECURITY_POLICY "Link to this definition")
+scikitplot.cython.RELAXED\_SECURITY\_POLICY = SecurityPolicy(strict=False, allow\_absolute\_include\_dirs=True, allow\_shell\_metacharacters=True, allow\_reserved\_macros=True, allow\_dangerous\_compiler\_args=True, max\_source\_bytes=None, max\_extra\_compile\_args=1024, max\_extra\_link\_args=1024, max\_include\_dirs=512, max\_libraries=512)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_security.py#L)[#](#scikitplot.cython.RELAXED_SECURITY_POLICY "Link to this definition")
 :   Immutable security policy applied to build inputs before compilation.
 
     Parameters:

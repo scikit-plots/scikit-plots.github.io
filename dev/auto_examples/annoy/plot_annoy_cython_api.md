@@ -478,7 +478,7 @@ neighbors, distances
 /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/sphinx_gallery/gen_rst.py:891: FutureWarning: The default metric will be removed in a future version. Please pass metric='angular' explicitly.
   exec(self.code, self.fake_main.__dict__)
 
-([0, 843, 539, 605, 505, 973, 855, 136, 653, 447], [0.0, 1.2052619457244873, 1.2373727560043335, 1.2551093101501465, 1.2584704160690308, 1.280804991722107, 1.2873821258544922, 1.2876777648925781, 1.2882052659988403, 1.29381263256073])
+([0, 480, 913, 585, 660, 667, 683, 800, 195, 664], [0.0, 1.230544090270996, 1.2389121055603027, 1.2466505765914917, 1.2581247091293335, 1.271903157234192, 1.2740341424942017, 1.2824735641479492, 1.284387469291687, 1.2907506227493286])
 
 ```
 ```
@@ -518,7 +518,7 @@ with index.clone() as idx:
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.041 seconds)
+****Total running time of the script:**** (0 minutes 0.042 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_cython_api.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_cython_api.ipynb)
 

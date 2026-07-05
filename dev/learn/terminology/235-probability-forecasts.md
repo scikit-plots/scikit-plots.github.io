@@ -1,0 +1,46 @@
+📉  ****Probability Forecasts****
+
+# Probability Forecasts[#](#probability-forecasts "Link to this heading")
+
+**Forecasts stated as probabilities of events.**
+
+## What it is[#](#what-it-is "Link to this heading")
+
+A ****probability forecast**** states the ****probability of a specific outcome or event**** rather than a single
+deterministic value — “a 70% chance of rain,” “a 4% probability of default.” It is the event-focused face of
+****probabilistic forecasting****: instead of committing to one number, it quantifies ****how likely**** each
+outcome is.
+
+## How it’s expressed[#](#how-it-s-expressed "Link to this heading")
+
+As a probability per event, or as ****certainty levels**** on a distribution — a ****P80**** forecast is 80% certain
+(a 20% chance of being exceeded), a ****P50**** is the median. A full probability forecast carries the ****whole
+distribution**** of outcomes.
+
+## Why it matters[#](#why-it-matters "Link to this heading")
+
+Probabilities are what ****risk-based decisions**** consume — a threshold on the forecast (escalate if
+\(P(\text{default}) > 5\%\)) turns uncertainty into action. They must be ****calibrated**** to be trusted,
+and are scored with ****strictly proper scoring rules**** (e.g. the log score), which reward honest
+probabilities.
+
+---
+
+****Mind map — connected ideas****
+
+> [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Classification Probability](231-classification-probability.html) · [Quantile Forecasts](232-quantile-forecasts.html) · [Prediction Intervals (PI)](253-prediction-intervals-pi.html) · [Strictly Proper Scoring Rules](234-strictly-proper-scoring-rules.html)
+
+---
+
+****More in Risk & Probabilistic Forecasting****
+
+> [Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Continuous Ranked Probability Score (CRPS)](402-continuous-ranked-probability-score-crps.html) · [Deterministic forecasts](242-deterministic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Pinball Loss (a.k.a. Quantile Loss)](404-pinball-loss-a-k-a-quantile-loss.html) · [Point Forecasts](233-point-forecasts.html) · [Predicting Percentiles](252-predicting-percentiles.html) · [Prediction Intervals (PI)](253-prediction-intervals-pi.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Probabilistic Scoring](228-probabilistic-scoring.html) · [Quantile Forecasts](232-quantile-forecasts.html) · [Quantile Level](255-quantile-level.html) · [Quantile Regression](254-quantile-regression.html) · [Return Distribution](225-return-distribution.html)
+
+---
+
+**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+
+> **See also**
+> Adapted in our own words from [Probability Forecasts](https://insightful-data-lab.com/2025/08/22/probability-forecasts/) (insightful-data-lab.com).
+
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

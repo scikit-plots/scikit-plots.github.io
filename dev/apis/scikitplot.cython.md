@@ -102,9 +102,9 @@ low-level Cython packages and modules for immediate use and testing.
 
 |  |  |
 | --- | --- |
-| [`ProfileDefaults`](../modules/generated/scikitplot.cython.ProfileDefaults.html#scikitplot.cython.ProfileDefaults "scikitplot.cython.ProfileDefaults") | Normalized defaults produced by applying a profile. |
-| [`apply_profile`](../modules/generated/scikitplot.cython.apply_profile.html#scikitplot.cython.apply_profile "scikitplot.cython.apply_profile") | Apply a profile with strict precedence rules. |
-| [`is_windows`](../modules/generated/scikitplot.cython.is_windows.html#scikitplot.cython.is_windows "scikitplot.cython.is_windows") | Return True if running on Windows. |
+| [`ProfileDefaults`](../modules/generated/scikitplot.cython.ProfileDefaults.html#scikitplot.cython.ProfileDefaults "scikitplot.cython.ProfileDefaults") | Normalized defaults produced by resolving a profile. |
+| [`apply_profile`](../modules/generated/scikitplot.cython.apply_profile.html#scikitplot.cython.apply_profile "scikitplot.cython.apply_profile") | Apply a profile with strict, three-state precedence. |
+| [`is_windows`](../modules/generated/scikitplot.cython.is_windows.html#scikitplot.cython.is_windows "scikitplot.cython.is_windows") | Return `True` if the host operating system is native Windows. |
 | [`resolve_profile`](../modules/generated/scikitplot.cython.resolve_profile.html#scikitplot.cython.resolve_profile "scikitplot.cython.resolve_profile") | Resolve a profile name to deterministic defaults. |
 
 ## Public API[#](#public-api "Link to this heading")

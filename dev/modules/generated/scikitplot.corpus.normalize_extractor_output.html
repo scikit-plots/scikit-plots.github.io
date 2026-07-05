@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:03:47Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:51:32Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>normalize_extractor_output<a class="headerlink" href="#normalize-extractor-output" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.normalize_extractor_output">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">normalize_extractor_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SourceType.UNKNOWN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SectionType.TEXT</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_readers/_custom.py#L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.normalize_extractor_output" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">normalize_extractor_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SourceType.UNKNOWN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SectionType.TEXT</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_readers/_custom.py#L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.normalize_extractor_output" title="Link to this definition">#</a></dt>
 <dd><p>Coerce an extractor return value to a list of raw chunk dicts.</p>
 <p>Every dict in the returned list is guaranteed to contain a <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code>
 key.  Missing <code class="docutils literal notranslate"><span class="pre">&quot;section_type&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;source_type&quot;</span></code> keys are filled
@@ -1384,8 +1384,8 @@ dispatch branches of <code class="xref py py-class docutils literal notranslate"
 <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioReader</span></code>, and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">VideoReader</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="392917ad-ca72-4a1c-a225-4d240cb3ed1f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('392917ad-ca72-4a1c-a225-4d240cb3ed1f','cd70adf5-4f3a-42f5-9d14-73442deb21ec','4db4912a-f0b4-4feb-92aa-f37d88a9daf3','../../lite/tree/../notebooks/index.html?path=f4cc34a4_74e9_4948_8a82_04b316bec3a2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1c2432cc-062d-4a50-a0ad-a9eb235155c2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1c2432cc-062d-4a50-a0ad-a9eb235155c2','f6ce2eb9-b08b-43fe-aae2-8d2f190b0a5b','b5390e4b-6a33-4e4e-98e2-b0b9d31c87e4','../../lite/tree/../notebooks/index.html?path=30566000_0bac_46b3_be9f_aed69b5aaef6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Single string → one-element list:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._readers._custom</span><span class="w"> </span><span class="kn">import</span> <span class="n">normalize_extractor_output</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">normalize_extractor_output</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
@@ -1404,7 +1404,7 @@ dispatch branches of <code class="xref py py-class docutils literal notranslate"
 </div>
 </div>
 </div>
-<div id="4db4912a-f0b4-4feb-92aa-f37d88a9daf3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('392917ad-ca72-4a1c-a225-4d240cb3ed1f','4db4912a-f0b4-4feb-92aa-f37d88a9daf3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('392917ad-ca72-4a1c-a225-4d240cb3ed1f','4db4912a-f0b4-4feb-92aa-f37d88a9daf3')">Open In Tab</button></div><div id="cd70adf5-4f3a-42f5-9d14-73442deb21ec" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="b5390e4b-6a33-4e4e-98e2-b0b9d31c87e4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1c2432cc-062d-4a50-a0ad-a9eb235155c2','b5390e4b-6a33-4e4e-98e2-b0b9d31c87e4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1c2432cc-062d-4a50-a0ad-a9eb235155c2','b5390e4b-6a33-4e4e-98e2-b0b9d31c87e4')">Open In Tab</button></div><div id="f6ce2eb9-b08b-43fe-aae2-8d2f190b0a5b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1522,7 +1522,7 @@ dispatch branches of <code class="xref py py-class docutils literal notranslate"
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>

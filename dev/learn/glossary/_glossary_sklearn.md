@@ -53,8 +53,8 @@ array-like[#](#term-array-like "Link to this term")
     * a numpy array
     * a list of numbers
     * a list of length-k lists of numbers for some fixed length k
-    * a [`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+974.ge652ee88a5)") with all columns numeric
-    * a numeric [`pandas.Series`](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas v3.1.0.dev0+974.ge652ee88a5)")
+    * a [`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1159.gd7b577e035)") with all columns numeric
+    * a numeric [`pandas.Series`](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas v3.1.0.dev0+1159.gd7b577e035)")
 
     It excludes:
 

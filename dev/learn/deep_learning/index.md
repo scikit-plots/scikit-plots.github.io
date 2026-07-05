@@ -1,5 +1,5 @@
 🧠 Deep Learning
   
- From a single neuron to deep architectures
+ From a single neuron to deep networks
   
- 0.5.dev0+git.20260626.e137512 - June 26, 2026 18:41 UTC
+ 0.5.dev0+git.20260705.ec7d6d7 - July 05, 2026 08:26 UTC

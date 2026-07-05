@@ -1,6 +1,6 @@
 # LemmatizerProtocol[#](#lemmatizerprotocol "Link to this heading")
 
-class scikitplot.corpus.LemmatizerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L241)[#](#scikitplot.corpus.LemmatizerProtocol "Link to this definition")
+class scikitplot.corpus.LemmatizerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L241)[#](#scikitplot.corpus.LemmatizerProtocol "Link to this definition")
 :   Structural protocol for word lemmatizers.
 
     The `pos` parameter is optional context (part-of-speech tag).
@@ -19,7 +19,7 @@ class scikitplot.corpus.LemmatizerProtocol(**\*args**, **\*\*kwargs**)[[source]]
     ```
     Go BackOpen In Tab
 
-    lemmatize(**word**, **pos=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L257)[#](#scikitplot.corpus.LemmatizerProtocol.lemmatize "Link to this definition")
+    lemmatize(**word**, **pos=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L257)[#](#scikitplot.corpus.LemmatizerProtocol.lemmatize "Link to this definition")
     :   Return the lemma of **word**.
 
         Parameters:

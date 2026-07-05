@@ -38,5 +38,3 @@ With this tag
 * [visualkeras: custom VGG example](../auto_examples/visualkeras/plot_dl_cnn_vgg.html)
 * [visualkeras: Vector Index DB](../auto_examples/visualkeras/plot_dl_nlp_vector_index_db.html)
 * [Data Preparation & Analysis](../learn/data_preparation_and_analysis/index.html)
-* [Deep Learning](../learn/deep_learning/index.html)
-* [Terminology](../learn/terminology/index.html)

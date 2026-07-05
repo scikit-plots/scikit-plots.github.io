@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:04:41Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:52:43Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1313,24 +1313,24 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>resolve_profile<a class="headerlink" href="#resolve-profile" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.resolve_profile">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">resolve_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cython/_profiles.py#L91"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.resolve_profile" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">resolve_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_profiles.py#L233"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.resolve_profile" title="Link to this definition">#</a></dt>
 <dd><p>Resolve a profile name to deterministic defaults.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>profile</strong><span class="classifier">str or None</span></dt><dd><p>One of: <code class="docutils literal notranslate"><span class="pre">&quot;fast-debug&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;release&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;annotate&quot;</span></code>, or None.</p>
+<dt><strong>profile</strong><span class="classifier">str or None</span></dt><dd><p>One of <code class="docutils literal notranslate"><span class="pre">&quot;fast-debug&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;release&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;annotate&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ProfileDefaults</dt><dd><p>Deterministic defaults for the requested profile.</p>
+<dt>ProfileDefaults</dt><dd><p>Deterministic, immutable defaults for the requested profile.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">profile</span></code> is not recognized.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">profile</span></code> is not <code class="docutils literal notranslate"><span class="pre">None</span></code> and is not a recognized name.</p>
 </dd>
 </dl>
 </dd>
@@ -1341,6 +1341,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <dd class="field-odd"><p><a class="reference internal" href="scikitplot.cython.ProfileDefaults.html#scikitplot.cython.ProfileDefaults" title="scikitplot.cython._profiles.ProfileDefaults"><em>ProfileDefaults</em></a></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Compiler-flag branches key off <code class="xref py py-func docutils literal notranslate"><span class="pre">_is_msvc</span></code> (active toolchain), not
+<a class="reference internal" href="scikitplot.cython.is_windows.html#scikitplot.cython.is_windows" title="scikitplot.cython.is_windows"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_windows</span></code></a> (host OS). This is the fix for the toolchain/OS mismatch:
+a native-Windows host using GCC (MinGW/MSYS2) now receives GCC flags instead
+of MSVC flags. On every non-Windows host, and on Windows-with-MSVC, the
+resolved flags are unchanged from the historical behaviour, so existing
+content-addressed cache keys are preserved there.</p>
+<p>Every flag below is a hard-coded literal; no user input flows into flag
+selection, so this function cannot emit an injected argument.</p>
 </dd></dl>
 
 </section>
@@ -1459,7 +1468,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>

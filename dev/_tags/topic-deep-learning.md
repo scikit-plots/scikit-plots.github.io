@@ -1,0 +1,22 @@
+# My tags: topic: deep learning[#](#my-tags-topic-deep-learning "Link to this heading")
+
+With this tag
+
+* [What is a Neural Network?](../learn/deep_learning/01-what-is-a-neural-network.html)
+* [Supervised Learning and Neural Networks](../learn/deep_learning/02-supervised-learning-and-neural-networks.html)
+* [Why Deep Learning is Taking Off](../learn/deep_learning/03-why-deep-learning-is-taking-off.html)
+* [Geoffrey Hinton Interview](../learn/deep_learning/04-geoffrey-hinton-interview.html)
+* [Binary Classification and Logistic Regression (Neural Network Basics)](../learn/deep_learning/05-binary-classification-and-logistic-regression-neural-network-basics.html)
+* [Logistic Regression (Binary Classification Model)](../learn/deep_learning/06-logistic-regression-binary-classification-model.html)
+* [Logistic Regression – Loss Function and Cost Function](../learn/deep_learning/07-logistic-regression-loss-function-and-cost-function.html)
+* [Gradient Descent in Logistic Regression](../learn/deep_learning/08-gradient-descent-in-logistic-regression.html)
+* [Derivatives](../learn/deep_learning/09-derivatives.html)
+* [More Derivative Examples](../learn/deep_learning/10-more-derivative-examples.html)
+* [Computation Graph](../learn/deep_learning/11-computation-graph.html)
+* [Derivatives with a Computation Graph](../learn/deep_learning/12-derivatives-with-a-computation-graph.html)
+* [Logistic Regression Gradient Descent](../learn/deep_learning/13-logistic-regression-gradient-descent.html)
+* [Gradient Descent on m Training Examples](../learn/deep_learning/14-gradient-descent-on-m-training-examples.html)
+* [Vectorization in Logistic Regression](../learn/deep_learning/15-vectorization-in-logistic-regression.html)
+* [More Vectorization Examples](../learn/deep_learning/16-more-vectorization-examples.html)
+* [Vectorizing Logistic Regression](../learn/deep_learning/17-vectorizing-logistic-regression.html)
+* [Deep Learning](../learn/deep_learning/index.html)

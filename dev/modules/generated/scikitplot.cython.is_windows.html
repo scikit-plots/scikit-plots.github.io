@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-06-26T19:04:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:52:27Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1313,13 +1313,41 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>is_windows<a class="headerlink" href="#is-windows" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.is_windows">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">is_windows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e137512/scikitplot/cython/_profiles.py#L86"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.is_windows" title="Link to this definition">#</a></dt>
-<dd><p>Return True if running on Windows.</p>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">is_windows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_profiles.py#L170"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.is_windows" title="Link to this definition">#</a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the host operating system is native Windows.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This detects the <strong>host OS</strong>, not the active <strong>compiler toolchain</strong>, and
+is therefore <em>not</em> the correct predicate for selecting compiler flags.
+On a native-Windows host using MinGW-w64 or an MSYS2 <code class="docutils literal notranslate"><span class="pre">MINGW64</span></code> shell,
+the active compiler is GCC, yet this function still returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+Passing MSVC flags (e.g. <code class="docutils literal notranslate"><span class="pre">/O2</span></code>) to GCC causes a build failure or a
+silently unoptimized build. Use <code class="xref py py-func docutils literal notranslate"><span class="pre">_is_msvc</span></code> to select flags.</p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">os.name</span> <span class="pre">==</span> <span class="pre">&quot;nt&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">sys.platform</span></code> starts with
+<code class="docutils literal notranslate"><span class="pre">&quot;win&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise (including WSL, Cygwin, and
+Linux-to-Windows cross-compilation).</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">_is_msvc</span></code></dt><dd><p>Toolchain predicate; the correct basis for flag selection.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Retained in the public API for backward compatibility and for callers that
+legitimately need host-OS detection (e.g. path handling). It intentionally
+no longer governs the compiler-flag branches in <a class="reference internal" href="scikitplot.cython.resolve_profile.html#scikitplot.cython.resolve_profile" title="scikitplot.cython.resolve_profile"><code class="xref py py-func docutils literal notranslate"><span class="pre">resolve_profile</span></code></a>.</p>
 </dd></dl>
 
 </section>
@@ -1438,7 +1466,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260626.e137512 2026-06-26T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
       <br/>
     
   </p>
