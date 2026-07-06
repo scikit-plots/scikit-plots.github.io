@@ -46,7 +46,7 @@ the ****uplift (Qini) curve****, its area ****AUUC****, and the ****Qini coeffic
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Uplift](https://insightful-data-lab.com/2025/08/17/uplift/) (insightful-data-lab.com).

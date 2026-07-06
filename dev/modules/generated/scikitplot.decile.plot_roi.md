@@ -1,6 +1,6 @@
 # plot\_roi[#](#plot-roi "Link to this heading")
 
-scikitplot.decile.plot\_roi(**plot\_input**, **\***, **fixed\_costs**, **variable\_costs\_per\_unit**, **profit\_per\_unit**, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/decile/_decile_modelplotpy.py#L3971)[#](#scikitplot.decile.plot_roi "Link to this definition")
+scikitplot.decile.plot\_roi(**plot\_input**, **\***, **fixed\_costs**, **variable\_costs\_per\_unit**, **profit\_per\_unit**, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/decile/_decile_modelplotpy.py#L3971)[#](#scikitplot.decile.plot_roi "Link to this definition")
 :   Plot ROI (return on investment) curve.
 
     Parameters:

@@ -58,7 +58,7 @@ At \(\alpha = 0.05\) two-tailed the critical value is \(\pm 1.96\); since
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Critical Value](https://insightful-data-lab.com/2025/08/25/critical-value/) (insightful-data-lab.com).

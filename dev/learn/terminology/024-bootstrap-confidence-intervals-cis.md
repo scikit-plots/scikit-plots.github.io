@@ -70,7 +70,7 @@ lo, hi = np.percentile(boot, [2.5, 97.5])
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Bootstrap Confidence Intervals (CIs)](https://insightful-data-lab.com/2025/08/30/bootstrap-confidence-intervals-cis/) (insightful-data-lab.com).

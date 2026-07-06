@@ -38,7 +38,7 @@ one’s, that is ****quantile crossing****, an error to constrain away.
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Quantile Level](https://insightful-data-lab.com/2025/08/22/quantile-level/) (insightful-data-lab.com).

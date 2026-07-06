@@ -37,7 +37,7 @@ the ****log-odds****, the ****sigmoid****, and the ****cross-entropy**** loss in
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Logit Space](https://insightful-data-lab.com/2025/08/21/logit-space/) (insightful-data-lab.com).

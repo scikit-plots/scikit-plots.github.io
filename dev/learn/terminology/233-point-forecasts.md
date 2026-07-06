@@ -37,7 +37,7 @@ it ****places them in context**** as one functional (mean, median, a quantile) o
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Point Forecasts](https://insightful-data-lab.com/2025/08/23/point-forecasts/) (insightful-data-lab.com).

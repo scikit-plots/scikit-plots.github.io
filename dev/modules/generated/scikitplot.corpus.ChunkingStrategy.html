@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:50:06Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:08:27Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,15 +1313,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ChunkingStrategy<a class="headerlink" href="#chunkingstrategy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ChunkingStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L319"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ChunkingStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L319"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy" title="Link to this definition">#</a></dt>
 <dd><p>Describes how a <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> was segmented from raw text.</p>
 <p class="rubric">Notes</p>
 <p>This value is written into every <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> so that downstream
 consumers can reproduce or verify segmentation without re-reading the
 source document.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="a15c174f-a967-48ab-9a1a-0f744d79a761">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a15c174f-a967-48ab-9a1a-0f744d79a761','c4219e9c-6a67-4a30-9201-96224b15fee1','23691c6d-b2e7-4d77-847e-af1ce33e8f34','../../lite/tree/../notebooks/index.html?path=eac2159b_6358_468a_abe3_52fc5c2e5ff9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e1153620-fe40-4b77-b97d-a1c1c32b57cc">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e1153620-fe40-4b77-b97d-a1c1c32b57cc','52f56792-7f3d-42e1-82af-78c1c128256a','24f374b9-4620-408c-9d18-9f9645d2dccc','../../lite/tree/../notebooks/index.html?path=a4aa7770_10b4_4ef4_8167_033a6439ee55.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ChunkingStrategy</span><span class="o">.</span><span class="n">SENTENCE</span> <span class="o">==</span> <span class="s2">&quot;sentence&quot;</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ChunkingStrategy</span><span class="o">.</span><span class="n">NONE</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span>
@@ -1330,51 +1330,51 @@ source document.</p>
 </div>
 </div>
 </div>
-<div id="23691c6d-b2e7-4d77-847e-af1ce33e8f34" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a15c174f-a967-48ab-9a1a-0f744d79a761','23691c6d-b2e7-4d77-847e-af1ce33e8f34')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a15c174f-a967-48ab-9a1a-0f744d79a761','23691c6d-b2e7-4d77-847e-af1ce33e8f34')">Open In Tab</button></div><div id="c4219e9c-6a67-4a30-9201-96224b15fee1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="24f374b9-4620-408c-9d18-9f9645d2dccc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e1153620-fe40-4b77-b97d-a1c1c32b57cc','24f374b9-4620-408c-9d18-9f9645d2dccc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e1153620-fe40-4b77-b97d-a1c1c32b57cc','24f374b9-4620-408c-9d18-9f9645d2dccc')">Open In Tab</button></div><div id="52f56792-7f3d-42e1-82af-78c1c128256a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.BLOCK">
-<span class="sig-name descname"><span class="pre">BLOCK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'block'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.BLOCK" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">BLOCK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'block'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.BLOCK" title="Link to this definition">#</a></dt>
 <dd><p>Format-native block unit (ALTO TextBlock, TEI &lt;p&gt;, HTML &lt;div&gt;, etc.).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.CUSTOM">
-<span class="sig-name descname"><span class="pre">CUSTOM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.CUSTOM" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">CUSTOM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.CUSTOM" title="Link to this definition">#</a></dt>
 <dd><p>User-supplied chunking logic; opaque to the standard pipeline.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW">
-<span class="sig-name descname"><span class="pre">FIXED_WINDOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fixed_window'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">FIXED_WINDOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fixed_window'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW" title="Link to this definition">#</a></dt>
 <dd><p>Sliding window of fixed token/character count with configurable overlap.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.NONE">
-<span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.NONE" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.NONE" title="Link to this definition">#</a></dt>
 <dd><p>No chunking applied — the whole document is one chunk.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.PAGE">
-<span class="sig-name descname"><span class="pre">PAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'page'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.PAGE" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">PAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'page'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.PAGE" title="Link to this definition">#</a></dt>
 <dd><p>One page per chunk, as determined by the source format (PDF, ALTO).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.PARAGRAPH">
-<span class="sig-name descname"><span class="pre">PARAGRAPH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'paragraph'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.PARAGRAPH" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">PARAGRAPH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'paragraph'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.PARAGRAPH" title="Link to this definition">#</a></dt>
 <dd><p>One paragraph per chunk, split on blank lines (<code class="docutils literal notranslate"><span class="pre">\n\n</span></code>).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.SEMANTIC">
-<span class="sig-name descname"><span class="pre">SEMANTIC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'semantic'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.SEMANTIC" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">SEMANTIC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'semantic'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.SEMANTIC" title="Link to this definition">#</a></dt>
 <dd><p>Boundary detected by semantic similarity shift (topic segmentation).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkingStrategy.SENTENCE">
-<span class="sig-name descname"><span class="pre">SENTENCE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sentence'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.SENTENCE" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">SENTENCE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sentence'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkingStrategy.SENTENCE" title="Link to this definition">#</a></dt>
 <dd><p>One sentence per chunk, produced by a language-model segmenter.</p>
 </dd></dl>
 
@@ -1963,7 +1963,7 @@ left untouched.  Characters mapped to None are deleted.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

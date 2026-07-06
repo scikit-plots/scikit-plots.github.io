@@ -40,7 +40,7 @@ to batch size to avoid ****alert fatigue****. KS shift complements ****PSI**** (
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [KS shift (Kolmogorov–Smirnov shift)](https://insightful-data-lab.com/2025/08/19/ks-shift-kolmogorov-smirnov-shift/) (insightful-data-lab.com).

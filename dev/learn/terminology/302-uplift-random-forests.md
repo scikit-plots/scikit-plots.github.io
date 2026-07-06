@@ -48,7 +48,7 @@ probability caused by the email — separating loyal always-signers (low uplift)
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Uplift Random Forests](https://insightful-data-lab.com/2025/08/21/uplift-random-forests/) (insightful-data-lab.com).

@@ -44,7 +44,7 @@ treatments with equal uplift are not equal if one costs far less to run.
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Revenue net of treatment cost](https://insightful-data-lab.com/2025/08/19/revenue-net-of-treatment-cost/) (insightful-data-lab.com).

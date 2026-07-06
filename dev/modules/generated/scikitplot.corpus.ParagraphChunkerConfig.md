@@ -1,6 +1,6 @@
 # ParagraphChunkerConfig[#](#paragraphchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=None**, **overlap=0**, **strip\_whitespace=True**, **include\_offsets=True**, **merge\_short=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_paragraph.py#L77)[#](#scikitplot.corpus.ParagraphChunkerConfig "Link to this definition")
+class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=None**, **overlap=0**, **strip\_whitespace=True**, **include\_offsets=True**, **merge\_short=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_chunkers/_paragraph.py#L77)[#](#scikitplot.corpus.ParagraphChunkerConfig "Link to this definition")
 :   Configuration for [`ParagraphChunker`](scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker "scikitplot.corpus.ParagraphChunker").
 
     Parameters:

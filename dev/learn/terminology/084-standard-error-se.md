@@ -63,7 +63,7 @@ t-tests), and ****A/B comparisons**** of conversion rates all run on it.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Standard Error (SE)](https://insightful-data-lab.com/2025/08/25/standard-error-se/) (insightful-data-lab.com).

@@ -36,7 +36,7 @@ Fewer needless escalations means fewer review minutes, so ****precision**** and 
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Manual review minutes](https://insightful-data-lab.com/2025/08/19/manual-review-minutes/) (insightful-data-lab.com).

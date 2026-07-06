@@ -1,6 +1,6 @@
 # collect\_header\_dirs[#](#collect-header-dirs "Link to this heading")
 
-scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffixes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_custom_compiler.py#L784)[#](#scikitplot.cython.collect_header_dirs "Link to this definition")
+scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffixes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/cython/_custom_compiler.py#L784)[#](#scikitplot.cython.collect_header_dirs "Link to this definition")
 :   Collect unique directories that contain C/C++ header files.
 
     This complements [`collect_c_api_sources`](scikitplot.cython.collect_c_api_sources.html#scikitplot.cython.collect_c_api_sources "scikitplot.cython.collect_c_api_sources"):

@@ -38,7 +38,7 @@ prevent. The ****four-fifths (80%) rule**** is a common legal threshold.
 
 ---
 
-**Theme:** Fairness & Calibration  ·  [All terminology](index.html)
+**Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Fairness parity](https://insightful-data-lab.com/2025/08/19/fairness-parity/) (insightful-data-lab.com).

@@ -66,7 +66,7 @@ data rich and the modelling continuous.
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [SaaS (Software as a Service)](https://insightful-data-lab.com/2025/08/29/saas-software-as-a-service/) (insightful-data-lab.com).

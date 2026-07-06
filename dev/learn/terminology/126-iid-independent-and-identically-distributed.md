@@ -53,7 +53,7 @@ adaptation**** exist to cope.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [IID (Independent and Identically Distributed)](https://insightful-data-lab.com/2025/08/24/iid-independent-and-identically-distributed/) (insightful-data-lab.com).

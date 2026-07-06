@@ -74,7 +74,7 @@ ax = sp.estimators.plot_elbow(
 
 Tags: [model-type: clustering](../../_tags/model-type-clustering.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: WSS (within-cluster sum of squares)](../../_tags/plot-type-wss-within-cluster-sum-of-squares.html) [plot-type: Inertia (sum of squared distances)](../../_tags/plot-type-inertia-sum-of-squared-distances.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.457 seconds)
+****Total running time of the script:**** (0 minutes 0.503 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo3.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/clustering/plot_elbow_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo3.svg)](../../lite/lab/index.html?path=auto_examples/clustering/plot_elbow_script.ipynb)
 

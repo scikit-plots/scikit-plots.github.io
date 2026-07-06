@@ -54,7 +54,7 @@ k-fold**** is the only one with both.
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Stratified Group K-Fold](https://insightful-data-lab.com/2025/08/24/stratified-group-k-fold/) (insightful-data-lab.com).

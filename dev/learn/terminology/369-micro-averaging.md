@@ -36,7 +36,7 @@ classes are being hidden.
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Micro Averaging](https://insightful-data-lab.com/2025/08/20/micro-averaging/) (insightful-data-lab.com).

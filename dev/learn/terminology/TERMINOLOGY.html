@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:49:06Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:07:26Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -78,7 +78,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1132,6 +1132,24 @@ in <strong>Python</strong>, never a bash read-loop.</p></li>
 when-to-use, ML links, mind-map).</p></li>
 </ul>
 </section>
+<section id="hub-layout-v2-filterable-browser">
+<h2>Hub layout (v2 — filterable browser)<a class="headerlink" href="#hub-layout-v2-filterable-browser" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">index.rst</span></code> is emitted as a <strong>collapsed, filterable browser</strong> instead of the original
+always-expanded card grid (431 links were visible at once; the page now loads as ~30 rows):</p>
+<ul class="simple">
+<li><p>a <strong>live filter box</strong> (small dependency-free JS, generator-emitted): typing filters every
+term by name <em>or gloss keyword</em>, auto-opens matching theme dropdowns, and shows a match
+count; with JS disabled the page degrades to plain collapsible sections;</p></li>
+<li><p>one <strong><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dropdown::</span></code> per theme</strong> (26, grouped under the three level headers), each with
+the theme blurb and a two-column <code class="docutils literal notranslate"><span class="pre">hlist</span></code> of its terms;</p></li>
+<li><p>one <strong>A–Z master dropdown</strong> listing all terms alphabetically (regenerated + sorted
+automatically);</p></li>
+<li><p><strong>anchor contract preserved</strong>: <code class="docutils literal notranslate"><span class="pre">_terminology-index:</span></code>, the legacy level anchors, and every
+<code class="docutils literal notranslate"><span class="pre">_term-theme-&lt;key&gt;:</span></code> label (externally referenced, e.g. by the Bayesian hub) still resolve.</p></li>
+</ul>
+<p>Adding a term is unchanged (inventory row + GLOSS/ENRICH entry); counts, dropdown contents
+and the A–Z list regenerate deterministically. Term pages are untouched by the redesign.</p>
+</section>
 </section>
 
 
@@ -1189,6 +1207,7 @@ when-to-use, ML links, mind-map).</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fail-fast-guard-invariants-the-safety-net">10. Fail-fast guard &amp; invariants (the safety net)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-future-work">11. Suggestions &amp; future work</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-rule-card-pin-this">12. Quick rule card (pin this)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hub-layout-v2-filterable-browser">Hub layout (v2 — filterable browser)</a></li>
 </ul>
   </nav></div>
 
@@ -1247,7 +1266,7 @@ when-to-use, ML links, mind-map).</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

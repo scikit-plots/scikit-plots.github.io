@@ -1,6 +1,6 @@
 # validate\_plotting\_kwargs[#](#validate-plotting-kwargs "Link to this heading")
 
-scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/api/_utils/validation.py#L198)[#](#scikitplot.api._utils.validate_plotting_kwargs "Link to this definition")
+scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/api/_utils/validation.py#L196)[#](#scikitplot.api._utils.validate_plotting_kwargs "Link to this definition")
 :   Validate the provided axes and figure or create new ones if needed.
 
     This function checks if valid axes and figure objects are provided. If not, it creates

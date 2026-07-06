@@ -48,7 +48,7 @@ whichever cloud an organisation already lives in.
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Vertex AI](https://insightful-data-lab.com/2025/08/24/vertex-ai/) (insightful-data-lab.com).

@@ -37,7 +37,7 @@ sense of confidence, distinct from a statistical ****confidence interval****.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Confidence Level](https://insightful-data-lab.com/2025/08/21/confidence-level/) (insightful-data-lab.com).

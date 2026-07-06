@@ -47,7 +47,7 @@ the last layers. Concretely, a spam classifier might learn a weight of ****+2.5*
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Model Weights](https://insightful-data-lab.com/2025/08/24/model-weights/) (insightful-data-lab.com).

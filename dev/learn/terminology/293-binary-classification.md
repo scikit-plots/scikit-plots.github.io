@@ -35,7 +35,7 @@ precision, recall, F1 and AUROC follow. The threshold choice moves directly alon
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Binary Classification](https://insightful-data-lab.com/2025/08/21/binary-classification/) (insightful-data-lab.com).

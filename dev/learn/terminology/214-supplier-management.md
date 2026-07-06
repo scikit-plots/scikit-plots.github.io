@@ -36,7 +36,7 @@ diversification is the standard hedge against disruption.
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Supplier Management](https://insightful-data-lab.com/2025/08/23/supplier-management/) (insightful-data-lab.com).

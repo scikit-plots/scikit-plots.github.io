@@ -60,7 +60,7 @@ odds of disease from a test result.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Likelihood Ratio (LR)](https://insightful-data-lab.com/2025/08/25/likelihood-ratio-lr/) (insightful-data-lab.com).

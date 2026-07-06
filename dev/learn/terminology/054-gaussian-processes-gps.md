@@ -71,7 +71,7 @@ with random weights **converges to a Gaussian process**.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Gaussian Processes (GPs)](https://insightful-data-lab.com/2025/08/29/gaussian-processes-gps/) (insightful-data-lab.com).

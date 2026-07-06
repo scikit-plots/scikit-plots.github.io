@@ -38,7 +38,7 @@ continuous variable, where any **exact** point has probability ****zero**** (the
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Probability Mass](https://insightful-data-lab.com/2025/08/22/probability-mass/) (insightful-data-lab.com).

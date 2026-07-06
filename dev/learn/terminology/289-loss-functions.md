@@ -36,7 +36,7 @@ and aligns with the real objective.
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Loss Functions](https://insightful-data-lab.com/2025/08/21/loss-functions/) (insightful-data-lab.com).

@@ -38,7 +38,7 @@ robust, and — for noisy or short series — surprisingly hard to beat.
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Naïve Baseline Forecast](https://insightful-data-lab.com/2025/08/22/naive-baseline-forecast/) (insightful-data-lab.com).

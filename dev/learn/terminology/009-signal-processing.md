@@ -118,7 +118,7 @@ signal-processing pipelines.
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Signal Processing](https://insightful-data-lab.com/2025/08/30/signal-processing/) (insightful-data-lab.com).

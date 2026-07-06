@@ -38,7 +38,7 @@ original scale.
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Log-Space](https://insightful-data-lab.com/2025/08/22/log-space/) (insightful-data-lab.com).

@@ -40,7 +40,7 @@ power**** on small samples — a non-significant result is weak evidence, not co
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Chi-square (χ²) Test](https://insightful-data-lab.com/2025/08/20/chi-square-%cf%87%c2%b2-test/) (insightful-data-lab.com).

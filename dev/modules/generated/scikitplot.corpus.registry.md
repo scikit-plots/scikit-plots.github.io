@@ -1,6 +1,6 @@
 # registry[#](#registry "Link to this heading")
 
-scikitplot.corpus.registry = ComponentRegistry(chunkers=0, filters=0, readers=0, normalizers=0)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_registry/_registry.py#L)[#](#scikitplot.corpus.registry "Link to this definition")
+scikitplot.corpus.registry = ComponentRegistry(chunkers=0, filters=0, readers=0, normalizers=0)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_registry/_registry.py#L)[#](#scikitplot.corpus.registry "Link to this definition")
 :   Central look-up table for corpus pipeline components.
 
     Stores class references (not instances) for four component types:

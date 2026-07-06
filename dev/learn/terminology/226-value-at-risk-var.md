@@ -42,7 +42,7 @@ Shortfall**** (CVaR) — the **average** loss ****given**** VaR is breached — 
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Value-at-Risk (VaR)](https://insightful-data-lab.com/2025/08/23/value-at-risk-var/) (insightful-data-lab.com).

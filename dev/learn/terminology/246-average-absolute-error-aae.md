@@ -38,7 +38,7 @@ for house prices, huge for temperatures). For that, switch to a ****percentage**
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Average Absolute Error (AAE)](https://insightful-data-lab.com/2025/08/22/average-absolute-error-aae/) (insightful-data-lab.com).

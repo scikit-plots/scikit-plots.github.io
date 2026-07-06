@@ -38,7 +38,7 @@ mechanically with ****K****, so always report the cutoff (Hit@5 vs [Hit@10](mail
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Hit Rate (HR)](https://insightful-data-lab.com/2025/08/19/hit-rate-hr/) (insightful-data-lab.com).

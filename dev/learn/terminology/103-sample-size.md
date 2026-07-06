@@ -59,7 +59,7 @@ the concept is one.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Sample size](https://insightful-data-lab.com/2025/08/24/sample-size-n/) (insightful-data-lab.com).

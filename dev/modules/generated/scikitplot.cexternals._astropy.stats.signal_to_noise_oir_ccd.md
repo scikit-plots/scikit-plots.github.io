@@ -1,6 +1,6 @@
 # signal\_to\_noise\_oir\_ccd[#](#signal-to-noise-oir-ccd "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **source\_eps**, **sky\_eps**, **dark\_eps**, **rd**, **npix**, **gain=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cexternals/_astropy/stats/funcs.py#L947)[#](#scikitplot.cexternals._astropy.stats.signal_to_noise_oir_ccd "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **source\_eps**, **sky\_eps**, **dark\_eps**, **rd**, **npix**, **gain=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/cexternals/_astropy/stats/funcs.py#L947)[#](#scikitplot.cexternals._astropy.stats.signal_to_noise_oir_ccd "Link to this definition")
 :   Computes the signal to noise ratio for source being observed in the
     optical/IR using a CCD.
 

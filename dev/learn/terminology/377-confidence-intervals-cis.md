@@ -37,7 +37,7 @@ tricky quantities like a ****binomial proportion**** there are several methods �
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Confidence Intervals (CIs)](https://insightful-data-lab.com/2025/08/19/confidence-intervals-cis/) (insightful-data-lab.com).

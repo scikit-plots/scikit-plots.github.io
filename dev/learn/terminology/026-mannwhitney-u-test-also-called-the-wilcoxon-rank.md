@@ -82,7 +82,7 @@ ranking power.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Mann–Whitney U Test (also called the Wilcoxon rank-sum test)](https://insightful-data-lab.com/2025/08/30/mann-whitney-u-test-also-called-the-wilcoxon-rank-sum-test/) (insightful-data-lab.com).

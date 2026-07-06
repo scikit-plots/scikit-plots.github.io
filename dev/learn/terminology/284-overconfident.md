@@ -36,7 +36,7 @@ scaling, Platt scaling or isotonic regression.
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Overconfident](https://insightful-data-lab.com/2025/08/21/overconfident/) (insightful-data-lab.com).

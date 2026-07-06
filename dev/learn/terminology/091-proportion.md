@@ -56,7 +56,7 @@ they turn yes/no data into estimable probabilities.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Proportion](https://insightful-data-lab.com/2025/08/25/proportion/) (insightful-data-lab.com).

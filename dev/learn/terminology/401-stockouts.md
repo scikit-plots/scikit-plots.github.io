@@ -35,7 +35,7 @@ level****, and sharper forecasts shrink both failure modes at once.
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Stockouts](https://insightful-data-lab.com/2025/08/19/stockouts/) (insightful-data-lab.com).

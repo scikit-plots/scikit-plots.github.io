@@ -58,7 +58,7 @@ directly to ****conversion rate**** and feeds the ****CAC**** calculation downst
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Lead-Gen Software](https://insightful-data-lab.com/2025/08/29/lead-gen-software/) (insightful-data-lab.com).

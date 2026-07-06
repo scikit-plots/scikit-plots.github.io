@@ -40,7 +40,7 @@ giving a ****0-to-1**** score where ****1**** is a perfect ranking. It is the st
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [DCG (Discounted Cumulative Gain)](https://insightful-data-lab.com/2025/08/22/dcg-discounted-cumulative-gain/) (insightful-data-lab.com).

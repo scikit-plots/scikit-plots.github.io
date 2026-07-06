@@ -40,7 +40,7 @@ points, without assuming any distribution. A caveat: fitting several quantiles i
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Pinball Loss (a.k.a. Quantile Loss)](https://insightful-data-lab.com/2025/08/19/pinball-loss-a-k-a-quantile-loss/) (insightful-data-lab.com).

@@ -52,7 +52,7 @@ scale and complexity beyond hand-coded rules.
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Machine Learning (ML)](https://insightful-data-lab.com/2025/08/24/machine-learning-ml/) (insightful-data-lab.com).

@@ -52,7 +52,7 @@ detectable ones — significance is necessary for a finding to matter, but never
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Trivial Effects](https://insightful-data-lab.com/2025/08/24/trivial-effects/) (insightful-data-lab.com).

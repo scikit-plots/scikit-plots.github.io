@@ -46,7 +46,7 @@ point for judgement, read alongside effect size and context, not a verdict on it
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Statistically Significant](https://insightful-data-lab.com/2025/08/24/statistically-significant/) (insightful-data-lab.com).

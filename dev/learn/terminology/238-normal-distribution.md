@@ -43,7 +43,7 @@ least-squares methods grow unreliable.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Normal Distribution](https://insightful-data-lab.com/2025/08/22/normal-distribution/) (insightful-data-lab.com).

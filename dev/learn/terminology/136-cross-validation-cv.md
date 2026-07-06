@@ -46,7 +46,7 @@ never shuffling a time series.
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cross-Validation (CV)](https://insightful-data-lab.com/2025/08/24/cross-validation-cv/) (insightful-data-lab.com).

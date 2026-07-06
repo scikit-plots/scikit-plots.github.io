@@ -50,7 +50,7 @@ weeks A converts 5%, B 6%, ****C 7.5%**** and D 5.2%. C is the significant winne
 
 ---
 
-**Theme:** A/B Testing & Experimentation  ·  [All terminology](index.html)
+**Theme:** [A/B Testing & Experimentation](index.html#term-theme-abtest)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [A/B/n Test](https://insightful-data-lab.com/2025/08/24/a-b-n-test/) (insightful-data-lab.com).

@@ -40,7 +40,7 @@ it adds value.
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Log Loss (also called Logarithmic Loss or Cross-Entropy Loss)](https://insightful-data-lab.com/2025/08/19/log-loss-also-called-logarithmic-loss-or-cross-entropy-loss/) (insightful-data-lab.com).

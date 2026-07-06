@@ -58,7 +58,7 @@ is ****wrong for time series****, where time-aware CV is required instead.
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [k-fold cross-validation](https://insightful-data-lab.com/2025/08/24/k-fold-cross-validation/) (insightful-data-lab.com).

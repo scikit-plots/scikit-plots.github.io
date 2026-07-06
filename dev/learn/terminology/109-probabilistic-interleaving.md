@@ -56,7 +56,7 @@ and the probability function (e.g. softmax temperature) needs careful design.
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Probabilistic Interleaving](https://insightful-data-lab.com/2025/08/24/probabilistic-interleaving/) (insightful-data-lab.com).

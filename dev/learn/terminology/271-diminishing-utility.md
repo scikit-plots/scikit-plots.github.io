@@ -37,7 +37,7 @@ are penalized.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Diminishing Utility](https://insightful-data-lab.com/2025/08/22/diminishing-utility/) (insightful-data-lab.com).

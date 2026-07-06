@@ -41,7 +41,7 @@ It is caught by comparing feature distributions per column with ****PSI**** or t
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Covariate Drift (a.k.a. Covariate Shift)](https://insightful-data-lab.com/2025/08/19/covariate-drift-a-k-a-covariate-shift/) (insightful-data-lab.com).

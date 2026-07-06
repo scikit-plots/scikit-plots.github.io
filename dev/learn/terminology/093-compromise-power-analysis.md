@@ -60,7 +60,7 @@ fixed \(\alpha = 0.05\) and depends on an assumed effect size.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Compromise Power Analysis](https://insightful-data-lab.com/2025/08/24/compromise-power-analysis/) (insightful-data-lab.com).

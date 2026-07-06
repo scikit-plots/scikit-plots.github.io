@@ -38,7 +38,7 @@ resampling to the current mix, and ****retraining**** on recent labels.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Label Drift (a.k.a. Target Drift)](https://insightful-data-lab.com/2025/08/19/label-drift-a-k-a-target-drift/) (insightful-data-lab.com).

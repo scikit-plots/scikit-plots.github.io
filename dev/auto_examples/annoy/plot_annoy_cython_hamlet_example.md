@@ -427,19 +427,23 @@ print(raw_text[:200])
 
 ```
 ```
-Download failed (<urlopen error _ssl.c:993: The handshake operation timed out>); using built-in excerpt.
-Raw text length: 9,465 chars
+Raw text length: 185,498 chars
+
+
+
 
 THE TRAGEDY OF HAMLET, PRINCE OF DENMARK
 
 by William Shakespeare
 
+
+
+
 Contents
 
-ACT I
-Scene I. Elsinore. A platform before the Castle
-Scene II. Elsinore. A room of state in the Castle
-Scene III. A room i
+ ACT I
+ Scene I. Elsinore. A platform before the Castle
+ Scene II. Elsinore. A room of state in the Ca
 
 ```
 ```
@@ -592,8 +596,8 @@ for p in passages[:7]:
 
 ```
 ```
-Extracted 43 passages
-Characters: ['Bernardo', 'Francisco', 'Ghost', 'Hamlet', 'Horatio', 'King', 'Laertes', 'Marcellus', 'Ophelia', 'Polonius', 'Queen']
+Extracted 922 passages
+Characters: ['Barnardo', 'First Ambassador', 'First Clown', 'First Player', 'First Sailor', 'Fortinbras', 'Francisco', 'Gentleman', 'Ghost', 'Guildenstern', 'Hamlet', 'Horatio', 'King', 'Laertes', 'Lord', 'Lucianus', 'Marcellus', 'Messenger', 'Ophelia', 'Osric', 'Player King', 'Player Queen', 'Polonius', 'Priest', 'Prologue', 'Queen', 'Reynaldo', 'Rosencrantz', 'Second Clown', 'Servant', 'Voltemand']
 
   [  0] Francisco    | SCENE I. Elsinore
         Nay, answer me. Stand and unfold yourself....
@@ -601,19 +605,19 @@ Characters: ['Bernardo', 'Francisco', 'Ghost', 'Hamlet', 'Horatio', 'King', 'Lae
   [  1] Francisco    | SCENE I. Elsinore
         You come most carefully upon your hour....
 
-  [  2] Bernardo     | SCENE I. Elsinore
+  [  2] Barnardo     | SCENE I. Elsinore
         'Tis now struck twelve. Get thee to bed, Francisco....
 
   [  3] Francisco    | SCENE I. Elsinore
         For this relief much thanks. 'Tis bitter cold, And I am sick at heart....
 
-  [  4] Bernardo     | SCENE I. Elsinore
+  [  4] Barnardo     | SCENE I. Elsinore
         Have you had quiet guard?...
 
   [  5] Francisco    | SCENE I. Elsinore
         Not a mouse stirring....
 
-  [  6] Bernardo     | SCENE I. Elsinore
+  [  6] Barnardo     | SCENE I. Elsinore
         Well, good night. If you do meet Horatio and Marcellus, The rivals of my watch, bid them m...
 
 ```
@@ -770,10 +774,10 @@ print(f"Num passages    : {len(embeddings)}")
 
 ```
 ```
-Vocabulary size : 529
-TF-IDF dimension: 529
+Vocabulary size : 1500
+TF-IDF dimension: 1500
 Final embedding : 64-d
-Num passages    : 33
+Num passages    : 792
 
 ```
 
@@ -816,7 +820,7 @@ print(f"Index ready for queries!")
 
 ```
 ```
-Items added: 33
+Items added: 792
 Trees built: 10
 Index ready for queries!
 
@@ -941,16 +945,16 @@ display_neighbors(idx, passages, tobe_id, n=5)
 ==========================================================================================
 QUERY: 'To be, or not to be' soliloquy
 ==========================================================================================
-Query: [25] Hamlet (ACT III. SCENE I)
-  "To be, or not to be- that is the question: Whether 'tis nobler in the mind to su..."
+Query: [327] Hamlet (SCENE I. A room in the Castle)
+  "To be, or not to be, that is the question: Whether 'tis nobler in the mind to su..."
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     25      0.0000 Hamlet         To be, or not to be- that is the question: Whether... ← query
-2     7       1.2248 Horatio        Friends to this ground....
-3     5       1.2336 Bernardo       Well, good night. If you do meet Horatio and Marce...
-4     17      1.2485 Hamlet         Ay, madam, it is common. O that this too too solid...
-5     6       1.2778 Francisco      I think I hear them. Stand, ho! Who is there?...
+1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
+2     181     1.0242 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
+3     377     1.1078 Hamlet         So long? Nay then, let the devil wear black, for I...
+4     592     1.1089 King           O, for two special reasons, Which may to you, perh...
+5     308     1.1251 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
 
 ```
 ```
@@ -1009,11 +1013,11 @@ QUERY BY VECTOR: average of 'To be' + 'Alas poor Yorick'
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     25      0.7233 Hamlet         To be, or not to be- that is the question: Whether 'tis...
-2     29      0.7233 Hamlet         Alas, poor Yorick! I knew him, Horatio. A fellow of inf...
-3     27      1.2235 Hamlet         Speak the speech, I pray you, as I pronounced it to you...
-4     21      1.2505 Horatio        It is a nipping and an eager air. I think it lacks of t...
-5     0       1.2784 Francisco      Nay, answer me. Stand and unfold yourself. You come mos...
+1     327     0.7033 Hamlet         To be, or not to be, that is the question: Whether 'tis...
+2     377     1.0090 Hamlet         So long? Nay then, let the devil wear black, for I'll h...
+3     464     1.0453 Hamlet         Mother, you have my father much offended....
+4     304     1.0741 Hamlet         'Tis well. I'll have thee speak out the rest of this so...
+5     722     1.1032 Osric          The King, sir, hath wager'd with him six Barbary horses...
 
 ```
 
@@ -1068,21 +1072,21 @@ display_neighbors(idx_f16, passages, tobe_id, n=5)
 
 ```
 ```
-float16 index built: 33 items, 10 trees
+float16 index built: 792 items, 10 trees
 
 ==========================================================================================
 float16 QUERY: 'To be, or not to be'
 ==========================================================================================
-Query: [25] Hamlet (ACT III. SCENE I)
-  "To be, or not to be- that is the question: Whether 'tis nobler in the mind to su..."
+Query: [327] Hamlet (SCENE I. A room in the Castle)
+  "To be, or not to be, that is the question: Whether 'tis nobler in the mind to su..."
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     25      0.0000 Hamlet         To be, or not to be- that is the question: Whether... ← query
-2     7       1.2256 Horatio        Friends to this ground....
-3     5       1.2334 Bernardo       Well, good night. If you do meet Horatio and Marce...
-4     17      1.2480 Hamlet         Ay, madam, it is common. O that this too too solid...
-5     6       1.2773 Francisco      I think I hear them. Stand, ho! Who is there?...
+1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
+2     92      1.0449 Laertes        O, fear me not. I stay too long. But here my fathe...
+3     722     1.1484 Osric          The King, sir, hath wager'd with him six Barbary h...
+4     726     1.1621 Hamlet         The phrase would be more german to the matter if w...
+5     162     1.1748 Horatio        O day and night, but this is wondrous strange....
 
 ```
 ```
@@ -1162,13 +1166,13 @@ print(f"Overlap float32 ∩ float64 (top-10): {len(f32_set & f64_set)}/10")
 ```
 dtype       Build(ms)  Query(μs)   Disk(KB) Top-5 IDs
 ----------------------------------------------------------------------
-float16           0.1       24.9        7.3 [25, 7, 5, 17, 6]
-float32           0.1       11.3       13.9 [25, 7, 5, 17, 6]
-float64           0.1       12.8       27.4 [25, 7, 5, 17, 6]
+float16         127.1       80.8      197.8 [327, 181, 92, 132, 64]
+float32           4.1       21.9      296.9 [327, 181, 92, 377, 592]
+float64           7.0       34.4      494.0 [327, 181, 132, 592, 581]
 
-Overlap float16 ∩ float32 (top-10): 10/10
-Overlap float16 ∩ float64 (top-10): 10/10
-Overlap float32 ∩ float64 (top-10): 10/10
+Overlap float16 ∩ float32 (top-10): 3/10
+Overlap float16 ∩ float64 (top-10): 4/10
+Overlap float32 ∩ float64 (top-10): 5/10
 
 ```
 
@@ -1209,38 +1213,38 @@ for metric in ['angular', 'euclidean', 'manhattan', 'dot']:
 ============================================================
 Metric: angular
 ============================================================
-  1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  7] d=1.2248  Horatio      Friends to this ground....
-  3. [  5] d=1.2336  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [ 17] d=1.2485  Hamlet       Ay, madam, it is common. O that this too too ...
-  5. [  6] d=1.2778  Francisco    I think I hear them. Stand, ho! Who is there?...
+  1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [181] d=1.0242  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [377] d=1.1078  Hamlet       So long? Nay then, let the devil wear black, ...
+  4. [592] d=1.1089  King         O, for two special reasons, Which may to you,...
+  5. [308] d=1.1251  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
 
 ============================================================
 Metric: euclidean
 ============================================================
-  1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  7] d=1.2248  Horatio      Friends to this ground....
-  3. [  5] d=1.2336  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [ 17] d=1.2485  Hamlet       Ay, madam, it is common. O that this too too ...
-  5. [  6] d=1.2778  Francisco    I think I hear them. Stand, ho! Who is there?...
+  1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [181] d=1.0242  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [132] d=1.0547  Ghost        So art thou to revenge, when thou shalt hear....
+  4. [ 64] d=1.1384  Hamlet       I would not hear your enemy say so; Nor shall...
+  5. [350] d=1.1573  Hamlet       Speak the speech, I pray you, as I pronounced...
 
 ============================================================
 Metric: manhattan
 ============================================================
-  1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  4] d=7.6594  Francisco    Not a mouse stirring....
-  3. [  5] d=7.7552  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [  6] d=8.1536  Francisco    I think I hear them. Stand, ho! Who is there?...
-  5. [ 14] d=8.1662  King         How is it that the clouds still hang on you?...
+  1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [181] d=6.7472  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [ 92] d=6.8933  Laertes      O, fear me not. I stay too long. But here my ...
+  4. [304] d=7.0910  Hamlet       'Tis well. I'll have thee speak out the rest ...
+  5. [672] d=7.0918  Laertes      O, treble woe Fall ten times treble on that c...
 
 ============================================================
 Metric: dot
 ============================================================
-  1. [ 25] d=1.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  7] d=0.2499  Horatio      Friends to this ground....
-  3. [  5] d=0.2392  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [ 17] d=0.2206  Hamlet       Ay, madam, it is common. O that this too too ...
-  5. [  6] d=0.1836  Francisco    I think I hear them. Stand, ho! Who is there?...
+  1. [327] d=1.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [464] d=0.4033  Hamlet       Mother, you have my father much offended....
+  3. [377] d=0.3864  Hamlet       So long? Nay then, let the devil wear black, ...
+  4. [592] d=0.3851  King         O, for two special reasons, Which may to you,...
+  5. [624] d=0.3537  First Clown  Give me leave. Here lies the water; good. Her...
 
 ```
 
@@ -1292,10 +1296,10 @@ for nid in neighbors:
 
 ```
 ```
-int8 + float16 index: 33 items
-Neighbors of [25]: [1, 0]
-  [  1] Bernardo     'Tis now struck twelve. Get thee to bed, Francisco....
+int8 + float16 index: 100 items
+Neighbors of [99]: [0, 1]
   [  0] Francisco    Nay, answer me. Stand and unfold yourself. You come most car...
+  [  1] Barnardo     'Tis now struck twelve. Get thee to bed, Francisco....
 
 ```
 
@@ -1372,15 +1376,15 @@ for rank, (nid, dist) in enumerate(zip(neighbors, distances), 1):
 
 ```
 ```
-Hamming index built: 33 items
+Hamming index built: 792 items
 
 Rank  ID     Hamming Character      Passage excerpt
 --------------------------------------------------------------------------------
-1     25           0 Hamlet         To be, or not to be- that is the question: Wheth...
-2     4           25 Francisco      Not a mouse stirring....
-3     20          27 Hamlet         The air bites shrewdly; it is very cold....
-4     15          28 Hamlet         Not so, my lord. I am too much i' the sun....
-5     21          28 Horatio        It is a nipping and an eager air. I think it lac...
+1     327          0 Hamlet         To be, or not to be, that is the question: Wheth...
+2     92          18 Laertes        O, fear me not. I stay too long. But here my fat...
+3     123         20 Horatio        He waxes desperate with imagination....
+4     82          24 Horatio        It would have much amaz'd you....
+5     782         24 Hamlet         As th'art a man, Give me the cup. Let go; by Hea...
 
 ```
 
@@ -1425,16 +1429,16 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
 ```
 ```
-float16    saved:      7.3 KB  (/tmp/tmp8nyeq96g/hamlet_float16.ann)
-float32    saved:     13.9 KB  (/tmp/tmp8nyeq96g/hamlet_float32.ann)
-float64    saved:     27.4 KB  (/tmp/tmp8nyeq96g/hamlet_float64.ann)
+float16    saved:    197.8 KB  (/tmp/tmp7cdd1_ls/hamlet_float16.ann)
+float32    saved:    296.9 KB  (/tmp/tmp7cdd1_ls/hamlet_float32.ann)
+float64    saved:    494.0 KB  (/tmp/tmp7cdd1_ls/hamlet_float64.ann)
 
-Loaded float16 index from disk, queried [25]:
-  [ 25] Hamlet       To be, or not to be- that is the question: Whether 'tis...
-  [  7] Horatio      Friends to this ground....
-  [  5] Bernardo     Well, good night. If you do meet Horatio and Marcellus,...
-  [ 17] Hamlet       Ay, madam, it is common. O that this too too solid fles...
-  [  6] Francisco    I think I hear them. Stand, ho! Who is there?...
+Loaded float16 index from disk, queried [327]:
+  [327] Hamlet       To be, or not to be, that is the question: Whether 'tis...
+  [ 92] Laertes      O, fear me not. I stay too long. But here my father com...
+  [722] Osric        The King, sir, hath wager'd with him six Barbary horses...
+  [726] Hamlet       The phrase would be more german to the matter if we cou...
+  [162] Horatio      O day and night, but this is wondrous strange....
 
 ```
 
@@ -1484,11 +1488,11 @@ except Exception as exc:
 ```
 ```
 float128 euclidean index — results:
-  1. [ 25] d=0.0000000000  Hamlet       To be, or not to be- that is the questio...
-  2. [  7] d=1.2248392606  Horatio      Friends to this ground....
-  3. [  5] d=1.2335601617  Bernardo     Well, good night. If you do meet Horatio...
-  4. [ 17] d=1.2485057051  Hamlet       Ay, madam, it is common. O that this too...
-  5. [  6] d=1.2778131994  Francisco    I think I hear them. Stand, ho! Who is t...
+  1. [327] d=0.0000000000  Hamlet       To be, or not to be, that is the questio...
+  2. [181] d=1.0241757969  King         Welcome, dear Rosencrantz and Guildenste...
+  3. [ 92] d=1.0446754133  Laertes      O, fear me not. I stay too long. But her...
+  4. [464] d=1.0924403305  Hamlet       Mother, you have my father much offended...
+  5. [377] d=1.1078282478  Hamlet       So long? Nay then, let the devil wear bl...
 
 ```
 
@@ -1559,19 +1563,38 @@ if 'Hamlet' in char_list:
 
 ```
 ```
-Characters with 2+ passages: 6
-  Hamlet          (11 passages)
+Characters with 2+ passages: 25
+  Hamlet          (247 passages)
+  King            (83 passages)
+  Horatio         (76 passages)
+  Polonius        (61 passages)
+  Queen           (56 passages)
+  Ophelia         (43 passages)
+  Laertes         (41 passages)
+  Rosencrantz     (40 passages)
+  Marcellus       (23 passages)
+  Guildenstern    (20 passages)
+  First Clown     (18 passages)
+  Osric           (18 passages)
+  Barnardo        (11 passages)
+  Ghost           (6 passages)
+  First Player    (6 passages)
+  Second Clown    (6 passages)
   Francisco       (5 passages)
-  Bernardo        (4 passages)
-  Horatio         (3 passages)
-  King            (3 passages)
-  Marcellus       (2 passages)
+  Reynaldo        (5 passages)
+  Player Queen    (5 passages)
+  Player King     (4 passages)
+  Fortinbras      (4 passages)
+  Gentleman       (2 passages)
+  Messenger       (2 passages)
+  Priest          (2 passages)
+  Lord            (2 passages)
 
 Characters most similar to HAMLET in speech:
 Rank  Character         Distance   Passages
 ---------------------------------------------
-1     Hamlet              0.0000         11 ←
-2     Francisco           1.2500          5
+1     Hamlet              0.0000        247 ←
+2     King                0.7124         83
 
 ```
 
@@ -1644,7 +1667,7 @@ with Index(f=128, metric='angular') as idx:
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 10.149 seconds)
+****Total running time of the script:**** (0 minutes 4.663 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_cython_hamlet_example.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_cython_hamlet_example.ipynb)
 

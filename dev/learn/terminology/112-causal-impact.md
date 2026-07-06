@@ -59,7 +59,7 @@ nationwide rollout prevents 10,000 hospitalisations).
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Causal Impact](https://insightful-data-lab.com/2025/08/24/causal-impact/) (insightful-data-lab.com).

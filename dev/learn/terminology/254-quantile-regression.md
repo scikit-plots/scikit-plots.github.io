@@ -55,7 +55,7 @@ upper = QuantileRegressor(quantile=0.95, alpha=0.0).fit(X_train, y_train)
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Quantile Regression](https://insightful-data-lab.com/2025/08/22/quantile-regression/) (insightful-data-lab.com).

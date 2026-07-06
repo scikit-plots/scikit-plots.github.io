@@ -36,7 +36,7 @@ that can cut cost per prediction substantially. The target is a ****declining***
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Inference Cost (Inference $)](https://insightful-data-lab.com/2025/08/19/inference/) (insightful-data-lab.com).

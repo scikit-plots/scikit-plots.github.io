@@ -48,7 +48,7 @@ change, and ****diversify data sources****. A macro shift is the broad external 
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Macro Shifts](https://insightful-data-lab.com/2025/08/23/macro-shifts/) (insightful-data-lab.com).

@@ -46,7 +46,7 @@ stopping for large ones — the ****epoch count is itself a hyperparameter****.
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Epochs](https://insightful-data-lab.com/2025/08/24/epochs/) (insightful-data-lab.com).

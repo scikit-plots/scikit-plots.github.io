@@ -36,7 +36,7 @@ information retrieval what shared benchmarks are to the rest of ML.
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [TREC (Text REtrieval Conference)](https://insightful-data-lab.com/2025/08/22/trec-text-retrieval-conference/) (insightful-data-lab.com).

@@ -35,7 +35,7 @@ set into training — the classic ****data leakage**** that makes scores look be
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Evaluation Set](https://insightful-data-lab.com/2025/08/20/evaluation-set/) (insightful-data-lab.com).

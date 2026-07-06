@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:51:34Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:09:43Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>register_bridge<a class="headerlink" href="#register-bridge" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.register_bridge">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_bridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunker_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bridge_class</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_chunker_bridge.py#L393"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_bridge" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_bridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunker_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bridge_class</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_chunkers/_chunker_bridge.py#L393"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_bridge" title="Link to this definition">#</a></dt>
 <dd><p>Register a custom bridge for a user-defined chunker class.</p>
 <p>After registration, <a class="reference internal" href="scikitplot.corpus.bridge_chunker.html#scikitplot.corpus.bridge_chunker" title="scikitplot.corpus.bridge_chunker"><code class="xref py py-func docutils literal notranslate"><span class="pre">bridge_chunker</span></code></a> will automatically wrap
 instances of <em>chunker_class</em> in <em>bridge_class</em>.</p>
@@ -1345,8 +1345,8 @@ separately if needed.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="327123e4-754b-47ba-866e-c1f0512b2adb">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('327123e4-754b-47ba-866e-c1f0512b2adb','128390b6-ffa7-46d7-873d-27c62080db78','2bb1da06-1870-4122-bf6b-21fd4253334a','../../lite/tree/../notebooks/index.html?path=f96bf815_7968_43e0_a0a8_b2454a6b0ce3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="dd4dc8ab-3dd5-47f9-b6d5-a74bd3331883">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('dd4dc8ab-3dd5-47f9-b6d5-a74bd3331883','65177ddf-beb5-426f-8c72-ae913b1b0fe8','60ed694c-6d07-49e5-a1cf-6923e3994acd','../../lite/tree/../notebooks/index.html?path=af26a842_6817_4383_8f03_08149615067e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyChunker</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">chunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">extra_metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="kn">from</span><span class="w"> </span><span class="nn">.._types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chunk</span><span class="p">,</span> <span class="n">ChunkResult</span>
@@ -1372,7 +1372,7 @@ separately if needed.</p>
 </div>
 </div>
 </div>
-<div id="2bb1da06-1870-4122-bf6b-21fd4253334a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('327123e4-754b-47ba-866e-c1f0512b2adb','2bb1da06-1870-4122-bf6b-21fd4253334a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('327123e4-754b-47ba-866e-c1f0512b2adb','2bb1da06-1870-4122-bf6b-21fd4253334a')">Open In Tab</button></div><div id="128390b6-ffa7-46d7-873d-27c62080db78" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="60ed694c-6d07-49e5-a1cf-6923e3994acd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('dd4dc8ab-3dd5-47f9-b6d5-a74bd3331883','60ed694c-6d07-49e5-a1cf-6923e3994acd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('dd4dc8ab-3dd5-47f9-b6d5-a74bd3331883','60ed694c-6d07-49e5-a1cf-6923e3994acd')">Open In Tab</button></div><div id="65177ddf-beb5-426f-8c72-ae913b1b0fe8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1490,7 +1490,7 @@ separately if needed.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

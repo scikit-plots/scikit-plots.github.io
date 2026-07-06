@@ -45,7 +45,7 @@ estimate.
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Blocked Splits (Single Holdout)](https://insightful-data-lab.com/2025/08/24/blocked-splits-single-holdout/) (insightful-data-lab.com).

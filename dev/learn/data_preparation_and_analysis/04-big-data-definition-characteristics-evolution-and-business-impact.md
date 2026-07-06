@@ -1,0 +1,43 @@
+# Big Data: Definition, Characteristics, Evolution, and Business Impact[#](#big-data-definition-characteristics-evolution-and-business-impact "Link to this heading")
+
+****Stage 1 · 📋 Foundations**** · Lesson 04 of 56 · **beginner**
+
+[◀ Previous · CRISP-DM for Data Science](03-crisp-dm-for-data-science.html) · Next · The First Step in Knowing Your Data <05-the-first-step-in-knowing-your-data> ▶
+
+## What makes data ‘big’[#](#what-makes-data-big "Link to this heading")
+
+“Big data” is not just “a lot of data” — it is data whose ****scale, speed, or messiness**** overwhelms
+the traditional tools built for tidy tables. The standard way to pin the idea down is a short list of
+characteristics, each beginning with ****V****.
+
+## The five Vs[#](#the-five-vs "Link to this heading")
+
+The canonical ****five Vs****:
+
+* ****Volume**** — the sheer ****quantity****, now measured in terabytes, petabytes and beyond;
+* ****Velocity**** — the ****speed**** at which data arrives, often as real-time streams;
+* ****Variety**** — the mix of ****types****: structured tables, semi-structured logs, and unstructured text, images and audio;
+* ****Veracity**** — the ****trustworthiness****, since large, fast, varied data is often noisy, biased or incomplete;
+* ****Value**** — the ****usefulness****, the reminder that data is only worth collecting if it can become insight.
+
+## How it grew[#](#how-it-grew "Link to this heading")
+
+The list ****grew over time****. The term surfaced in the late 1990s, but the analyst ****Doug Laney**** fixed
+the first three in a 2001 note on data’s growing ****Volume, Velocity and Variety**** — the “****3 Vs****”. As
+data quality and business worth became pressing, the industry added ****Veracity**** and ****Value****, giving
+today’s ****5 Vs****. (Some lists go further still.)
+
+## Why it matters[#](#why-it-matters "Link to this heading")
+
+The practical impact is that big data broke the ****old toolchain****. Fitting a spreadsheet or a single
+database no longer suffices; distributed storage and processing, streaming systems and new modelling
+methods appear precisely because volume, velocity and variety demand them. For analysts, the lesson is
+humility about ****veracity****: more data is not automatically better data, and the preparation stage
+ahead exists to earn that trust.
+
+> **See also**
+> ****Related lessons:**** [Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · [CRISP-DM for Data Science](03-crisp-dm-for-data-science.html)
+
+****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/big-data-definition-characteristics-evolution-and-business-impact/>
+
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

@@ -52,7 +52,7 @@ tests, clinical recovery-rate comparisons and survey yes/no contrasts alike.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Two-Proportion Z-Test](https://insightful-data-lab.com/2025/08/24/two-proportion-z-test/) (insightful-data-lab.com).

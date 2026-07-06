@@ -50,7 +50,7 @@ where gain stops rising — and lets you ****compare models**** by how much incr
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cumulative Incremental Gain (CIG)](https://insightful-data-lab.com/2025/08/23/cumulative-incremental-gain-cig/) (insightful-data-lab.com).

@@ -47,7 +47,7 @@ topic model that relied on the old representation.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Representation Shift](https://insightful-data-lab.com/2025/08/23/representation-shift/) (insightful-data-lab.com).

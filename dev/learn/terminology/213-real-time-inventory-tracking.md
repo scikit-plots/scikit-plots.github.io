@@ -36,7 +36,7 @@ It prevents ****overselling**** and ****stockouts****, keeps multi-channel stock
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Real-Time Inventory Tracking](https://insightful-data-lab.com/2025/08/23/real-time-inventory-tracking/) (insightful-data-lab.com).

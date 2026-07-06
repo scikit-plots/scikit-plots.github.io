@@ -41,7 +41,7 @@ No single metric tells the whole story — ****MAPE**** can look great while ***
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Forecast Error](https://insightful-data-lab.com/2025/08/22/forecast-error/) (insightful-data-lab.com).

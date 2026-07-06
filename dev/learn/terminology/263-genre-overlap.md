@@ -39,7 +39,7 @@ mix**** of a list is kept aligned with the user’s historical tastes.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Genre Overlap](https://insightful-data-lab.com/2025/08/22/genre-overlap/) (insightful-data-lab.com).

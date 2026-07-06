@@ -52,7 +52,7 @@ miss real ones. Always read it alongside an effect size and a confidence interva
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [P-Value (probability value)](https://insightful-data-lab.com/2025/08/24/p-value-probability-value/) (insightful-data-lab.com).

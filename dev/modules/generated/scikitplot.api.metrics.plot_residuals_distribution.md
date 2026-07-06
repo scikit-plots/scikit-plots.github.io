@@ -1,6 +1,6 @@
 # plot\_residuals\_distribution[#](#plot-residuals-distribution "Link to this heading")
 
-scikitplot.api.metrics.plot\_residuals\_distribution(**y\_true**, **y\_pred**, **\***, **dist\_type='normal'**, **var\_power=1.5**, **title='Precision-Recall AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **figsize=(10, 5)**, **nrows=1**, **ncols=3**, **index=3**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/api/metrics/_regression/_residuals.py#L55)[#](#scikitplot.api.metrics.plot_residuals_distribution "Link to this definition")
+scikitplot.api.metrics.plot\_residuals\_distribution(**y\_true**, **y\_pred**, **\***, **dist\_type='normal'**, **var\_power=1.5**, **title='Precision-Recall AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **figsize=(10, 5)**, **nrows=1**, **ncols=3**, **index=3**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/api/metrics/_regression/_residuals.py#L55)[#](#scikitplot.api.metrics.plot_residuals_distribution "Link to this definition")
 :   Plot residuals and fit various distributions to assess their goodness of fit.
 
     Parameters:

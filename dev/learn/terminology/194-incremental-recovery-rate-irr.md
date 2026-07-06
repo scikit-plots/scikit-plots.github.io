@@ -38,7 +38,7 @@ with the ****highest**** incremental recovery, not the highest raw recovery, sin
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Incremental Recovery Rate (IRR)](https://insightful-data-lab.com/2025/08/23/incremental-recovery-rate-irr/) (insightful-data-lab.com).

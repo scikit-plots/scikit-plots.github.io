@@ -35,7 +35,7 @@ the ****pinball loss**** for its level; stacking many percentiles approximates t
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Predicting Percentiles](https://insightful-data-lab.com/2025/08/22/predicting-percentiles/) (insightful-data-lab.com).

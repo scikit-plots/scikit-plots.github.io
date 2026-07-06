@@ -48,7 +48,7 @@ denying similar loans at random.
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Model Stability](https://insightful-data-lab.com/2025/08/23/model-stability/) (insightful-data-lab.com).

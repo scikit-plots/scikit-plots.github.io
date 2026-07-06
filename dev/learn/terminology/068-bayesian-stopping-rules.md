@@ -61,7 +61,7 @@ statements and peeking freedom for prior-sensitivity and compute.
 
 ---
 
-**Theme:** A/B Testing & Experimentation  ·  [All terminology](index.html)
+**Theme:** [A/B Testing & Experimentation](index.html#term-theme-abtest)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Bayesian Stopping Rules](https://insightful-data-lab.com/2025/08/25/bayesian-stopping-rules/) (insightful-data-lab.com).

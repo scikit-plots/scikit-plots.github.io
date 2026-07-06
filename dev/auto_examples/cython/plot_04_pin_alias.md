@@ -125,7 +125,7 @@ After unpin, pins: {'quickstart_g': '486f5673e19e02e96de72815c93b408a18af65c2ef9
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.532 seconds)
+****Total running time of the script:**** (0 minutes 0.609 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_04_pin_alias.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_04_pin_alias.ipynb)
 

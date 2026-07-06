@@ -36,7 +36,7 @@ imbalanced**** data the ****PR-AUC**** often tells a more honest story, since RO
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [AUC (Area Under the Curve)](https://insightful-data-lab.com/2025/08/20/auc-area-under-the-curve/) (insightful-data-lab.com).

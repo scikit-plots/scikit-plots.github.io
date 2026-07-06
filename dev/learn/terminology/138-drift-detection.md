@@ -52,7 +52,7 @@ triggering a retrain. The payoff is avoiding ****silent degradation****, protect
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Drift Detection](https://insightful-data-lab.com/2025/08/24/drift-detection/) (insightful-data-lab.com).

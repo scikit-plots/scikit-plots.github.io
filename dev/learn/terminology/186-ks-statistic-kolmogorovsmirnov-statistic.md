@@ -50,7 +50,7 @@ reports only the ****single maximum point of separation****.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [KS Statistic (Kolmogorov–Smirnov Statistic)](https://insightful-data-lab.com/2025/08/23/ks-statistic-kolmogorov-smirnov-statistic/) (insightful-data-lab.com).

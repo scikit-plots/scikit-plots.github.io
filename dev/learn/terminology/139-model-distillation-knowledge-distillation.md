@@ -48,7 +48,7 @@ similar accuracy. The catches: the student ****cannot capture everything****, \(
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Model Distillation (Knowledge Distillation)](https://insightful-data-lab.com/2025/08/24/model-distillation-knowledge-distillation/) (insightful-data-lab.com).

@@ -50,7 +50,7 @@ selecting the best subset to treat?**
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Uplift@k](https://insightful-data-lab.com/2025/08/19/upliftk/) (insightful-data-lab.com).

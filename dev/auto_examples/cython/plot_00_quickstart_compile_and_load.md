@@ -173,7 +173,7 @@ BuildResult (metadata):
   build dir   : /home/circleci/.cache/scikitplot/cython/486f5673e19e02e96de72815c93b408a18af65c2ef94a7737446df21459b8ac2
   artifact    : /home/circleci/.cache/scikitplot/cython/486f5673e19e02e96de72815c93b408a18af65c2ef94a7737446df21459b8ac2/scikitplot_cython_486f5673e19e02e9.cpython-312-x86_64-linux-gnu.so
   used_cache  : False
-  created_utc : 2026-07-05T08:33:40Z
+  created_utc : 2026-07-06T00:51:07Z
 g(10) = 11
 
 Re-imported from cache key:
@@ -190,13 +190,13 @@ Profile comparison (keys):
   keys differ: True
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=3, n_packages=0, total_bytes=2227827, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-07-05T08:33:41Z', oldest_mtime_utc='2026-07-05T08:33:40Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=3, n_packages=0, total_bytes=2227827, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-07-06T00:51:08Z', oldest_mtime_utc='2026-07-06T00:51:06Z')
 
 ```
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.665 seconds)
+****Total running time of the script:**** (0 minutes 3.448 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_00_quickstart_compile_and_load.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_00_quickstart_compile_and_load.ipynb)
 

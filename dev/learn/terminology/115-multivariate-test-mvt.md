@@ -51,7 +51,7 @@ changes.
 
 ---
 
-**Theme:** A/B Testing & Experimentation  ·  [All terminology](index.html)
+**Theme:** [A/B Testing & Experimentation](index.html#term-theme-abtest)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Multivariate Test (MVT)](https://insightful-data-lab.com/2025/08/24/multivariate-test-mvt/) (insightful-data-lab.com).

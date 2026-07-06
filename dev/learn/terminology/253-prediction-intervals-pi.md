@@ -39,7 +39,7 @@ about a **future value**, distinct from a ****confidence interval****, which is 
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Prediction Intervals (PI)](https://insightful-data-lab.com/2025/08/22/prediction-intervals-pi/) (insightful-data-lab.com).

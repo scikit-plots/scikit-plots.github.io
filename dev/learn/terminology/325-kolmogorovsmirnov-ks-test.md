@@ -39,7 +39,7 @@ underlies the ****KS statistic**** used as a drift metric.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Kolmogorov–Smirnov (KS) Test](https://insightful-data-lab.com/2025/08/20/kolmogorov-smirnov-ks-test/) (insightful-data-lab.com).

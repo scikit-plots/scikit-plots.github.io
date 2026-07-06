@@ -60,7 +60,7 @@ print("after: ", Counter(y_res))
 
 ---
 
-**Theme:** Imbalanced Learning & Resampling  ·  [All terminology](index.html)
+**Theme:** [Imbalanced Learning & Resampling](index.html#term-theme-imbalance)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [NearMiss (Distance-based Undersampling)](https://insightful-data-lab.com/2025/08/30/nearmiss-distance-based-undersampling/) (insightful-data-lab.com).

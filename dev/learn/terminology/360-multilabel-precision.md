@@ -36,7 +36,7 @@ be ****partly**** right (some labels correct, others missed). The averaging choi
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Multilabel Precision](https://insightful-data-lab.com/2025/08/20/multilabel-precision/) (insightful-data-lab.com).

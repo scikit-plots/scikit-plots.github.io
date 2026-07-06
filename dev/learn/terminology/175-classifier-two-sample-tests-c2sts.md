@@ -48,7 +48,7 @@ distinguishable — strong drift.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Classifier Two-Sample Tests (C2STs)](https://insightful-data-lab.com/2025/08/23/classifier-two-sample-tests-c2sts/) (insightful-data-lab.com).

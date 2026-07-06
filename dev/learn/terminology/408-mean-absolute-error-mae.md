@@ -38,7 +38,7 @@ across series — use ****MASE**** for that) and, being ****point-only****, it c
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Mean Absolute Error (MAE)](https://insightful-data-lab.com/2025/08/19/mean-absolute-error-mae/) (insightful-data-lab.com).

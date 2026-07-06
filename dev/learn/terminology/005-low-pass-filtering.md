@@ -71,7 +71,7 @@ clean = filtfilt(b, a, noisy)     # zero-phase filtering
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Low-pass Filtering](https://insightful-data-lab.com/2025/08/30/low-pass-filtering/) (insightful-data-lab.com).

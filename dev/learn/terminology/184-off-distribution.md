@@ -47,7 +47,7 @@ production. Off-distribution is the abrupt cousin of gradual ****data**** and **
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Off-Distribution](https://insightful-data-lab.com/2025/08/23/off-distribution/) (insightful-data-lab.com).

@@ -69,7 +69,7 @@ macro = precision_score(y_true, y_pred, average="macro")
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Micro Precision](https://insightful-data-lab.com/2025/08/30/micro-precision/) (insightful-data-lab.com).

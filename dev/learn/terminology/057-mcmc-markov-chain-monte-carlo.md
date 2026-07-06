@@ -77,7 +77,7 @@ exact but slower; VI is faster but approximate.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [MCMC (Markov Chain Monte Carlo)](https://insightful-data-lab.com/2025/08/28/mcmc-markov-chain-monte-carlo/) (insightful-data-lab.com).

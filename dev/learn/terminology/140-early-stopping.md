@@ -45,7 +45,7 @@ it too soon — which is exactly what ****patience**** is there to absorb.
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Early Stopping](https://insightful-data-lab.com/2025/08/24/early-stopping/) (insightful-data-lab.com).

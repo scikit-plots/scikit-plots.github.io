@@ -50,7 +50,7 @@ core metrics for evaluating uplift models.
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [AUUC (Area Under the Uplift Curve)](https://insightful-data-lab.com/2025/08/19/auuc-area-under-the-uplift-curve/) (insightful-data-lab.com).

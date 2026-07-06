@@ -55,7 +55,7 @@ intervals, and power**** alongside it, never significance alone.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Statistical Significance](https://insightful-data-lab.com/2025/08/24/significance/) (insightful-data-lab.com).

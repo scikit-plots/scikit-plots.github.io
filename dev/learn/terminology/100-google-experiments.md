@@ -55,7 +55,7 @@ full-site UX.
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Google Experiments](https://insightful-data-lab.com/2025/08/25/google-experiments/) (insightful-data-lab.com).

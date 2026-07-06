@@ -59,7 +59,7 @@ model.plot_components(forecast)
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Prophet — Time Series Forecasting by Facebook (Meta)](https://insightful-data-lab.com/2025/08/23/prophet-time-series-forecasting-by-facebook-meta/) (insightful-data-lab.com).

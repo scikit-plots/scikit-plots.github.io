@@ -37,7 +37,7 @@ recommendations. Because recommending popular items is often ****accurate but na
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Catalog Coverage](https://insightful-data-lab.com/2025/08/22/catalog-coverage/) (insightful-data-lab.com).

@@ -57,7 +57,7 @@ models) always as **partial** effects.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Regression Coefficient](https://insightful-data-lab.com/2025/08/25/regression-coefficient/) (insightful-data-lab.com).

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:51:26Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:09:32Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>compute_stats<a class="headerlink" href="#compute-stats" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.compute_stats">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">compute_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_metadata/_metadata.py#L355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.compute_stats" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">compute_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_metadata/_metadata.py#L355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.compute_stats" title="Link to this definition">#</a></dt>
 <dd><p>Compute aggregate statistics over a document collection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1341,8 +1341,8 @@ mutation. Safe to call from multiple threads concurrently.</p>
 <p>Median is computed without NumPy using a sort-based O(n log n)
 algorithm so that this module has zero optional dependencies.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="274d4248-2bf2-4a5f-86f7-83ea7b5805a0">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('274d4248-2bf2-4a5f-86f7-83ea7b5805a0','540355d5-2b46-4416-bd0c-8026f66b4d76','a2102b37-151f-43ca-9564-61c215893b3c','../../lite/tree/../notebooks/index.html?path=cd2bc754_4226_432f_b5b7_a98dc5dc70f2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1d1d4a5f-7f0d-43e1-a6a1-ed0507dd0b60">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1d1d4a5f-7f0d-43e1-a6a1-ed0507dd0b60','ecd1fc71-f217-4cc5-934e-8fd6cede2afc','68775030-1a04-4f0c-80a0-0927927111f7','../../lite/tree/../notebooks/index.html?path=9cdd425c_7dd4_40a3_bbaf_e4c9704bbdf4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span> <span class="o">=</span> <span class="n">compute_stats</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 <span class="go">CorpusStats</span>
@@ -1352,7 +1352,7 @@ algorithm so that this module has zero optional dependencies.</p>
 </div>
 </div>
 </div>
-<div id="a2102b37-151f-43ca-9564-61c215893b3c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('274d4248-2bf2-4a5f-86f7-83ea7b5805a0','a2102b37-151f-43ca-9564-61c215893b3c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('274d4248-2bf2-4a5f-86f7-83ea7b5805a0','a2102b37-151f-43ca-9564-61c215893b3c')">Open In Tab</button></div><div id="540355d5-2b46-4416-bd0c-8026f66b4d76" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="68775030-1a04-4f0c-80a0-0927927111f7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1d1d4a5f-7f0d-43e1-a6a1-ed0507dd0b60','68775030-1a04-4f0c-80a0-0927927111f7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1d1d4a5f-7f0d-43e1-a6a1-ed0507dd0b60','68775030-1a04-4f0c-80a0-0927927111f7')">Open In Tab</button></div><div id="ecd1fc71-f217-4cc5-934e-8fd6cede2afc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1470,7 +1470,7 @@ algorithm so that this module has zero optional dependencies.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

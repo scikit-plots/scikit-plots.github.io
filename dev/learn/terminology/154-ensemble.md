@@ -45,7 +45,7 @@ single model, and ****deployment complexity**** (several models mean more latenc
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Ensemble](https://insightful-data-lab.com/2025/08/24/ensemble/) (insightful-data-lab.com).

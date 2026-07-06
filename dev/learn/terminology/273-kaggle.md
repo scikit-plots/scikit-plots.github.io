@@ -36,7 +36,7 @@ models, so they don’t always translate to ****production****, where latency an
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Kaggle](https://insightful-data-lab.com/2025/08/22/kaggle/) (insightful-data-lab.com).

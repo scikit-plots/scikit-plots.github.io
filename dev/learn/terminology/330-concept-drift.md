@@ -37,7 +37,7 @@ reason production models need continuous ****monitoring**** and update loops.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Concept Drift](https://insightful-data-lab.com/2025/08/20/concept-drift/) (insightful-data-lab.com).

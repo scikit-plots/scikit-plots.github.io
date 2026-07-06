@@ -36,7 +36,7 @@ gets the good outcome**** without needing labels. But equal selection rates say 
 
 ---
 
-**Theme:** Fairness & Calibration  ·  [All terminology](index.html)
+**Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Selection Rate](https://insightful-data-lab.com/2025/08/19/selection-rate/) (insightful-data-lab.com).

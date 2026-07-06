@@ -1,6 +1,6 @@
 # to\_jsonl[#](#to-jsonl "Link to this heading")
 
-scikitplot.corpus.to\_jsonl(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_adapters.py#L482)[#](#scikitplot.corpus.to_jsonl "Link to this definition")
+scikitplot.corpus.to\_jsonl(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_adapters.py#L482)[#](#scikitplot.corpus.to_jsonl "Link to this definition")
 :   Yield documents as newline-delimited JSON strings.
 
     Parameters:

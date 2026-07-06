@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:49:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:07:54Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>validate_labels<a class="headerlink" href="#validate-labels" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api._utils.validate_labels">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">known_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argument_name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/api/_utils/_helpers.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_labels" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">known_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argument_name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/api/_utils/_helpers.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_labels" title="Link to this definition">#</a></dt>
 <dd><p>Validates the labels passed into arguments such as <code class="docutils literal notranslate"><span class="pre">true_labels</span></code> or <code class="docutils literal notranslate"><span class="pre">pred_labels</span></code>
 in functions like <code class="docutils literal notranslate"><span class="pre">plot_confusion_matrix</span></code>.</p>
 <p>This function checks for any duplicate labels and ensures that all passed labels
@@ -1338,8 +1338,8 @@ in <code class="docutils literal notranslate"><span class="pre">passed_labels</s
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="76795181-b3ff-416e-a0ea-9e1aa25d2138">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('76795181-b3ff-416e-a0ea-9e1aa25d2138','02ad6282-4864-4a9c-814e-53e8e660f150','6b3c18e8-7bd6-4876-a57e-29a71d7d7408','../../lite/tree/../notebooks/index.html?path=64f7d9fc_cbb8_4c14_8a6c_8f63354d51f0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="36604da9-8874-4e56-a981-a359b6837398">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('36604da9-8874-4e56-a981-a359b6837398','13167d19-93cf-482e-b189-72bf5c459cbc','2e80c825-2ca3-48ac-b098-62e9bfd61c3c','../../lite/tree/../notebooks/index.html?path=11204abd_6eeb_4056_bd39_14d262113419.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">known_classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">passed_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
@@ -1348,7 +1348,7 @@ in <code class="docutils literal notranslate"><span class="pre">passed_labels</s
 </div>
 </div>
 </div>
-<div id="6b3c18e8-7bd6-4876-a57e-29a71d7d7408" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('76795181-b3ff-416e-a0ea-9e1aa25d2138','6b3c18e8-7bd6-4876-a57e-29a71d7d7408')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('76795181-b3ff-416e-a0ea-9e1aa25d2138','6b3c18e8-7bd6-4876-a57e-29a71d7d7408')">Open In Tab</button></div><div id="02ad6282-4864-4a9c-814e-53e8e660f150" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="2e80c825-2ca3-48ac-b098-62e9bfd61c3c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('36604da9-8874-4e56-a981-a359b6837398','2e80c825-2ca3-48ac-b098-62e9bfd61c3c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('36604da9-8874-4e56-a981-a359b6837398','2e80c825-2ca3-48ac-b098-62e9bfd61c3c')">Open In Tab</button></div><div id="13167d19-93cf-482e-b189-72bf5c459cbc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1466,7 +1466,7 @@ in <code class="docutils literal notranslate"><span class="pre">passed_labels</s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

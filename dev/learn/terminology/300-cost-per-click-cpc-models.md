@@ -39,7 +39,7 @@ Under CPC you pay only when users ****act****, making it ideal for ****traffic a
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cost-Per-Click (CPC) Models](https://insightful-data-lab.com/2025/08/21/cost-per-click-cpc-models/) (insightful-data-lab.com).

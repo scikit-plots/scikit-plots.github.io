@@ -52,7 +52,7 @@ rate**** \(p\) estimated by \(\hat{p}\) — \(\mu \leftrightarrow p\),
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [True Mean (Population Mean)](https://insightful-data-lab.com/2025/08/25/true-mean-population-mean/) (insightful-data-lab.com).

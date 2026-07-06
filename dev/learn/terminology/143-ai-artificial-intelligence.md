@@ -49,7 +49,7 @@ regulation and ethics****.
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [AI (Artificial Intelligence)](https://insightful-data-lab.com/2025/08/24/ai-artificial-intelligence/) (insightful-data-lab.com).

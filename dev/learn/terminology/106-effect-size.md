@@ -57,7 +57,7 @@ detectability, effect size for meaning.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Effect Size (δ)](https://insightful-data-lab.com/2025/08/24/effect-size-%ce%b4/) (insightful-data-lab.com).

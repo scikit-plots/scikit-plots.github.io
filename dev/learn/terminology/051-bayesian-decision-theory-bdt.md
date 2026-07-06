@@ -74,7 +74,7 @@ posterior updated as rewards arrive.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Bayesian Decision Theory (BDT)](https://insightful-data-lab.com/2025/08/29/bayesian-decision-theory-bdt/) (insightful-data-lab.com).

@@ -1,6 +1,6 @@
 # plot\_lift\_decile\_wise[#](#plot-lift-decile-wise "Link to this heading")
 
-scikitplot.decile.kds.plot\_lift\_decile\_wise(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Decile-wise Lift Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/decile/kds/_kds.py#L461)[#](#scikitplot.decile.kds.plot_lift_decile_wise "Link to this definition")
+scikitplot.decile.kds.plot\_lift\_decile\_wise(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Decile-wise Lift Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/decile/kds/_kds.py#L461)[#](#scikitplot.decile.kds.plot_lift_decile_wise "Link to this definition")
 :   Generate the Decile-wise Lift Plot from labels and probabilities.
 
     The lift curve is used to determine the effectiveness of a

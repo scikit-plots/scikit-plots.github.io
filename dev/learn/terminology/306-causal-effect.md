@@ -46,7 +46,7 @@ works, and measures the real business impact of ****marketing, pricing and produ
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Causal Effect](https://insightful-data-lab.com/2025/08/21/causal-effect/) (insightful-data-lab.com).

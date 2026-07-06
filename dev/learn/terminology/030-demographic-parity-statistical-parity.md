@@ -72,7 +72,7 @@ dpr = demographic_parity_ratio(y_true, y_pred, sensitive_features=A)
 
 ---
 
-**Theme:** Fairness & Calibration  ·  [All terminology](index.html)
+**Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Demographic Parity (Statistical Parity)](https://insightful-data-lab.com/2025/08/29/demographic-parity-statistical-parity/) (insightful-data-lab.com).

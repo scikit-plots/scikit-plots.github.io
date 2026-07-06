@@ -57,7 +57,7 @@ great ratio still hurts cash flow if CAC takes too long to recover.
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [LTV:CAC Ratio](https://insightful-data-lab.com/2025/08/29/ltvcac-ratio/) (insightful-data-lab.com).

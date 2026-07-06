@@ -38,7 +38,7 @@ it with ****R²**** for a scale-free complement. Like R², it also ****falls****
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Root Mean Squared Error (RMSE)](https://insightful-data-lab.com/2025/08/17/root-mean-squared-error-rmse/) (insightful-data-lab.com).

@@ -59,7 +59,7 @@ information.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Bayes’ Theorem](https://insightful-data-lab.com/2025/08/28/bayes-theorem/) (insightful-data-lab.com).

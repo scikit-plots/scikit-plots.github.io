@@ -36,7 +36,7 @@ liked), and it is the usual kernel for computing ****intra-list similarity / div
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cosine Similarity of Item Features](https://insightful-data-lab.com/2025/08/22/cosine-similarity-of-item-features/) (insightful-data-lab.com).

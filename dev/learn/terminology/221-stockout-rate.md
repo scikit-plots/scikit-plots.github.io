@@ -46,7 +46,7 @@ fill rate****.
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Stockout Rate](https://insightful-data-lab.com/2025/08/23/stockout-rate/) (insightful-data-lab.com).

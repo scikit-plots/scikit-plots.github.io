@@ -39,7 +39,7 @@ less, ****MAE**** is preferred.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Mean Squared Error (MSE)](https://insightful-data-lab.com/2025/08/21/mean-squared-error-mse/) (insightful-data-lab.com).

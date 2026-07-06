@@ -36,7 +36,7 @@ scheduling shrink it — a direct link between prediction quality and operating 
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Crew Overtime](https://insightful-data-lab.com/2025/08/19/crew-overtime/) (insightful-data-lab.com).

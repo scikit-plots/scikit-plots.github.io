@@ -37,7 +37,7 @@ non-linear ties.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Correlation](https://insightful-data-lab.com/2025/08/21/correlation/) (insightful-data-lab.com).

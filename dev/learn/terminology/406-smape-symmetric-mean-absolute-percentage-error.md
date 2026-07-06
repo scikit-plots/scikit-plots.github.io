@@ -39,7 +39,7 @@ but avoid it on ****intermittent**** or zero-heavy demand, where ****MASE**** is
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [sMAPE (Symmetric Mean Absolute Percentage Error)](https://insightful-data-lab.com/2025/08/19/smape-symmetric-mean-absolute-percentage-error/) (insightful-data-lab.com).

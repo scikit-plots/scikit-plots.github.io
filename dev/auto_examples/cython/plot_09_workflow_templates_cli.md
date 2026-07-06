@@ -148,13 +148,13 @@ else:
 ```
 ```
 Workflows: ['churn_basic']
-Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy
+Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmptp0_d90c/workflow_copy
 Files: ['cli.py', 'hpo.py', 'predict.py', 'train.py']
 
 Run:
-  python /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy/cli.py train --help
-  python /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy/cli.py hpo --help
-  python /home/circleci/repo/galleries/examples/cython/tmppwrh_c_0/workflow_copy/cli.py predict --help
+  python /home/circleci/repo/galleries/examples/cython/tmptp0_d90c/workflow_copy/cli.py train --help
+  python /home/circleci/repo/galleries/examples/cython/tmptp0_d90c/workflow_copy/cli.py hpo --help
+  python /home/circleci/repo/galleries/examples/cython/tmptp0_d90c/workflow_copy/cli.py predict --help
 
 Single-module extension imported from copied folder:
   m.square(12) = 144
@@ -171,7 +171,7 @@ Package extension imported from copied folder:
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.388 seconds)
+****Total running time of the script:**** (0 minutes 1.608 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
 

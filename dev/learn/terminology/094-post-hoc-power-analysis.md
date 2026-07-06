@@ -54,7 +54,7 @@ the strength and precision of the result without the circularity.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Post Hoc Power Analysis](https://insightful-data-lab.com/2025/08/24/post-hoc-power-analysis/) (insightful-data-lab.com).

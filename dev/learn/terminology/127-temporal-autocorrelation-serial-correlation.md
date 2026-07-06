@@ -49,7 +49,7 @@ means high tends to follow low (****mean-reversion****). On an ACF plot, strong 
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Temporal autocorrelation (Serial Correlation)](https://insightful-data-lab.com/2025/08/24/temporal-autocorrelation-serial-correlation/) (insightful-data-lab.com).

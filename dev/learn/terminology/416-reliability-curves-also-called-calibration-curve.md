@@ -36,7 +36,7 @@ weighted gap between it and the diagonal ****is**** the ECE.
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Reliability Curves (also called Calibration Curves)](https://insightful-data-lab.com/2025/08/19/reliability-curves-also-called-calibration-curves/) (insightful-data-lab.com).

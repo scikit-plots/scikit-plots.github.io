@@ -52,7 +52,7 @@ care with ****ties and overlapping**** results.
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Team Draft Interleaving (TDI)](https://insightful-data-lab.com/2025/08/24/team-draft-interleaving-tdi/) (insightful-data-lab.com).

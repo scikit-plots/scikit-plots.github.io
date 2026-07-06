@@ -60,7 +60,7 @@ actually receive data — provided the right method preserves statistical validi
 
 ---
 
-**Theme:** Sequential Methods & Bandits  ·  [All terminology](index.html)
+**Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Sequential Settings](https://insightful-data-lab.com/2025/08/28/sequential-settings/) (insightful-data-lab.com).

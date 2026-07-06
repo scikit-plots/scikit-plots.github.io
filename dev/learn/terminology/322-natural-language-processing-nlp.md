@@ -35,7 +35,7 @@ recipe reset the field and now underlies search, chatbots, and translation.
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Natural Language Processing (NLP)](https://insightful-data-lab.com/2025/08/20/natural-language-processing-nlp/) (insightful-data-lab.com).

@@ -36,7 +36,7 @@ divides logits by T **before** softmax, which is only possible when the logits a
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Logits](https://insightful-data-lab.com/2025/08/17/logits/) (insightful-data-lab.com).

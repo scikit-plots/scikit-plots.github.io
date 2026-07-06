@@ -39,7 +39,7 @@ that doesn’t pay back. CTR must be read ****with conversion rate****: high CTR
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [CTR (Click-Through Rate)](https://insightful-data-lab.com/2025/08/17/ctr-click-through-rate/) (insightful-data-lab.com).

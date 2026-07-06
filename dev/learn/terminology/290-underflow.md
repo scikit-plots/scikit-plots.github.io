@@ -37,7 +37,7 @@ the ****LogSumExp**** trick, and why scikit-learn’s Naive Bayes works with log
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Underflow](https://insightful-data-lab.com/2025/08/21/underflow/) (insightful-data-lab.com).

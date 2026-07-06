@@ -59,7 +59,7 @@ positive-outcome rates across groups.
 
 ---
 
-**Theme:** Fairness & Calibration  ·  [All terminology](index.html)
+**Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Four-Fifths (80%) Rule](https://insightful-data-lab.com/2025/08/23/four-fifths-80-rule/) (insightful-data-lab.com).

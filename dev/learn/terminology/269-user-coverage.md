@@ -37,7 +37,7 @@ so user coverage keeps the evaluation ****honest**** about the whole population.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [User Coverage](https://insightful-data-lab.com/2025/08/22/user-coverage/) (insightful-data-lab.com).

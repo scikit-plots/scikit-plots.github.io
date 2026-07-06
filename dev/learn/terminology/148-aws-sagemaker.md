@@ -49,7 +49,7 @@ faster to start but limited to the provider’s models.
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [AWS SageMaker](https://insightful-data-lab.com/2025/08/24/aws-sagemaker/) (insightful-data-lab.com).

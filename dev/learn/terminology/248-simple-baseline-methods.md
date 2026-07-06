@@ -39,7 +39,7 @@ often improves accuracy. **KISS: keep it sophisticatedly simple.**
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Simple Baseline Methods](https://insightful-data-lab.com/2025/08/22/simple-baseline-methods/) (insightful-data-lab.com).

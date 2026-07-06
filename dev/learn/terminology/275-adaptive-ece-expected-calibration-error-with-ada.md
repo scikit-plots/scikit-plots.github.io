@@ -40,7 +40,7 @@ bins****, and neither is a ****proper scoring rule****.
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Adaptive ECE (Expected Calibration Error with Adaptive Binning)](https://insightful-data-lab.com/2025/08/22/adaptive-ece-expected-calibration-error-with-adaptive-binning/) (insightful-data-lab.com).

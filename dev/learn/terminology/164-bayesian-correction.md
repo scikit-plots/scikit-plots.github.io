@@ -47,7 +47,7 @@ Bayesian correction reasons from priors.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Bayesian Correction](https://insightful-data-lab.com/2025/08/23/bayesian-correction/) (insightful-data-lab.com).

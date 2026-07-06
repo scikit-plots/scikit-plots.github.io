@@ -48,7 +48,7 @@ generalisation, and in regulated domains like finance and healthcare it can turn
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Data Leakage](https://insightful-data-lab.com/2025/08/24/data-leakage/) (insightful-data-lab.com).

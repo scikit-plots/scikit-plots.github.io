@@ -47,7 +47,7 @@ screening show the path through these constraints.
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Medical AI](https://insightful-data-lab.com/2025/08/24/medical-ai/) (insightful-data-lab.com).

@@ -44,7 +44,7 @@ and leading indicators.
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Windows (in Time-Series)](https://insightful-data-lab.com/2025/08/23/windows-in-time-series-data-analysis/) (insightful-data-lab.com).

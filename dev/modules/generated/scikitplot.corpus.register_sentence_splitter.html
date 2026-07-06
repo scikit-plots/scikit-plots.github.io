@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:51:35Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:09:43Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>register_sentence_splitter<a class="headerlink" href="#register-sentence-splitter" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.register_sentence_splitter">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_sentence_splitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitter</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L721"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_sentence_splitter" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_sentence_splitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitter</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L721"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_sentence_splitter" title="Link to this definition">#</a></dt>
 <dd><p>Register a named <a class="reference internal" href="scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol" title="scikitplot.corpus.SentenceSplitterProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceSplitterProtocol</span></code></a> implementation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1335,8 +1335,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e6bd11bc-08ca-4c81-88de-d22a88fdb79d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e6bd11bc-08ca-4c81-88de-d22a88fdb79d','d276b28e-1fe9-49f9-9945-90cc5bacb3db','78c44c0c-eefb-4deb-a157-ba82312cab27','../../lite/tree/../notebooks/index.html?path=62665c09_c93c_4284_bb1a_73eb6ff1f7ac.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b0c08acc-0f7e-4d0a-8a24-f5ced4c7aac8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b0c08acc-0f7e-4d0a-8a24-f5ced4c7aac8','82f1b249-aef8-4bb5-b384-b51d88e3d74a','4ddb4829-00f2-40c5-81b3-89a85c9c0080','../../lite/tree/../notebooks/index.html?path=5b829b67_be1e_4555_8448_471d1eb5b42e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">register_sentence_splitter</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">&quot;pysbd_en&quot;</span><span class="p">,</span> <span class="n">FunctionSentenceSplitter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;. &quot;</span><span class="p">))</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -1344,7 +1344,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="78c44c0c-eefb-4deb-a157-ba82312cab27" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e6bd11bc-08ca-4c81-88de-d22a88fdb79d','78c44c0c-eefb-4deb-a157-ba82312cab27')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e6bd11bc-08ca-4c81-88de-d22a88fdb79d','78c44c0c-eefb-4deb-a157-ba82312cab27')">Open In Tab</button></div><div id="d276b28e-1fe9-49f9-9945-90cc5bacb3db" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="4ddb4829-00f2-40c5-81b3-89a85c9c0080" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b0c08acc-0f7e-4d0a-8a24-f5ced4c7aac8','4ddb4829-00f2-40c5-81b3-89a85c9c0080')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b0c08acc-0f7e-4d0a-8a24-f5ced4c7aac8','4ddb4829-00f2-40c5-81b3-89a85c9c0080')">Open In Tab</button></div><div id="82f1b249-aef8-4bb5-b384-b51d88e3d74a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1462,7 +1462,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

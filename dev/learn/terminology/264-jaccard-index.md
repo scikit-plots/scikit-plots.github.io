@@ -36,7 +36,7 @@ matter — only which elements are shared. Contrast with ****cosine****, which w
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Jaccard index](https://insightful-data-lab.com/2025/08/22/jaccard-index/) (insightful-data-lab.com).

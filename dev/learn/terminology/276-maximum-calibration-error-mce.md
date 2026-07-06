@@ -39,7 +39,7 @@ scoring rule**** — a model can achieve low calibration error with ****trivial*
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Maximum Calibration Error (MCE)](https://insightful-data-lab.com/2025/08/22/maximum-calibration-error-mce/) (insightful-data-lab.com).

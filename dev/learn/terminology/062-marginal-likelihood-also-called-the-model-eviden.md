@@ -60,7 +60,7 @@ exist to approximate the evidence for posterior computation and model selection.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Marginal Likelihood (also called The Model Evidence or Integrated Likelihood)](https://insightful-data-lab.com/2025/08/28/marginal-likelihood-also-called-the-model-evidence-or-integrated-likelihood/) (insightful-data-lab.com).

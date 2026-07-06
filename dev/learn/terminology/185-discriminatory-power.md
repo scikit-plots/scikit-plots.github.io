@@ -45,7 +45,7 @@ positives and negatives for fairer outcomes.
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Discriminatory Power](https://insightful-data-lab.com/2025/08/23/discriminatory-power/) (insightful-data-lab.com).

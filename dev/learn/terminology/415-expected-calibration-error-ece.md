@@ -40,7 +40,7 @@ trivial model can score low — so it is read with ****reliability curves**** an
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Expected Calibration Error (ECE)](https://insightful-data-lab.com/2025/08/19/expected-calibration-error-ece/) (insightful-data-lab.com).

@@ -40,7 +40,7 @@ never changes the ****argmax****, so the decision boundary and accuracy are unto
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Temperature Scaling](https://insightful-data-lab.com/2025/08/21/temperature-scaling/) (insightful-data-lab.com).

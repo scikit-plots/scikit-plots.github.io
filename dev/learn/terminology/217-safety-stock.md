@@ -39,7 +39,7 @@ critical or perishable items (via ABC / XYZ classing).
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Safety Stock](https://insightful-data-lab.com/2025/08/23/safety-stock/) (insightful-data-lab.com).

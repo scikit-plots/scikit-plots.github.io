@@ -58,7 +58,7 @@ clf.fit(X_train, y_train)
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Neural Networks](https://insightful-data-lab.com/2025/08/21/neural-networks/) (insightful-data-lab.com).

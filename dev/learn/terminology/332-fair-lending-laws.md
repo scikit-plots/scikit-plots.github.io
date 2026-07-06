@@ -38,7 +38,7 @@ demands ****fairness testing****, sensitivity analysis, and ongoing ****monitori
 
 ---
 
-**Theme:** Explainability & Governance  ·  [All terminology](index.html)
+**Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Fair Lending laws](https://insightful-data-lab.com/2025/08/20/fair-lending-laws/) (insightful-data-lab.com).

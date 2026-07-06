@@ -39,7 +39,7 @@ alarms.
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Precision (a.k.a. Positive Predictive Value, PPV)](https://insightful-data-lab.com/2025/08/17/precision-a-k-a-positive-predictive-value-ppv/) (insightful-data-lab.com).

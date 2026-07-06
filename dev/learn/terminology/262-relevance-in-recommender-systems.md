@@ -36,7 +36,7 @@ credited for surfacing surprising-but-useless items. The aim is ****relevant \*a
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Relevance in Recommender Systems](https://insightful-data-lab.com/2025/08/22/relevance-in-recommender-systems/) (insightful-data-lab.com).

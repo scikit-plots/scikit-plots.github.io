@@ -76,7 +76,7 @@ cluster, search or detect outliers in a fraction of the original space.
 
 ---
 
-**Theme:** Representations & Embeddings  ·  [All terminology](index.html)
+**Theme:** [Representations & Embeddings](index.html#term-theme-repr)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Autoencoder](https://insightful-data-lab.com/2025/08/23/autoencoder/) (insightful-data-lab.com).

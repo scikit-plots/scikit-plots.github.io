@@ -36,7 +36,7 @@ scoring, more for heavier recommendations — and the system is ****designed and
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Latency Guardrails](https://insightful-data-lab.com/2025/08/20/latency-guardrails/) (insightful-data-lab.com).

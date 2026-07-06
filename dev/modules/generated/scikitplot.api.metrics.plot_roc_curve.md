@@ -1,6 +1,6 @@
 # plot\_roc\_curve[#](#plot-roc-curve "Link to this heading")
 
-scikitplot.api.metrics.plot\_roc\_curve(**y\_true**, **y\_probas**, **title='ROC Curves'**, **curves=('micro', 'macro', 'each\_class')**, **ax=None**, **figsize=None**, **cmap='nipy\_spectral'**, **title\_fontsize='large'**, **text\_fontsize='medium'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/api/metrics/_classification/_roc_curve.py#L45)[#](#scikitplot.api.metrics.plot_roc_curve "Link to this definition")
+scikitplot.api.metrics.plot\_roc\_curve(**y\_true**, **y\_probas**, **title='ROC Curves'**, **curves=('micro', 'macro', 'each\_class')**, **ax=None**, **figsize=None**, **cmap='nipy\_spectral'**, **title\_fontsize='large'**, **text\_fontsize='medium'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/api/metrics/_classification/_roc_curve.py#L45)[#](#scikitplot.api.metrics.plot_roc_curve "Link to this definition")
 :   Generates the ROC curves from labels and predicted scores/probabilities
 
     Parameters:

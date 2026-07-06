@@ -68,7 +68,7 @@ print(Counter(y_dup), Counter(y_syn))
 
 ---
 
-**Theme:** Imbalanced Learning & Resampling  ·  [All terminology](index.html)
+**Theme:** [Imbalanced Learning & Resampling](index.html#term-theme-imbalance)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Oversampling](https://insightful-data-lab.com/2025/08/30/oversampling/) (insightful-data-lab.com).

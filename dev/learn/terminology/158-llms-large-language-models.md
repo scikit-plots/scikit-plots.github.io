@@ -47,7 +47,7 @@ reasoning-like behaviour.
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [LLMs (Large Language Models)](https://insightful-data-lab.com/2025/08/24/llms-large-language-models/) (insightful-data-lab.com).

@@ -38,7 +38,7 @@ Quantile forecasts are evaluated with the ****pinball (quantile) loss****, match
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Quantile Forecasts](https://insightful-data-lab.com/2025/08/23/quantile-forecasts/) (insightful-data-lab.com).

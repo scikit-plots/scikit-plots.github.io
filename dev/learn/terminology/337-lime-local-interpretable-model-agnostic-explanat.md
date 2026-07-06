@@ -67,7 +67,7 @@ exp.show_in_notebook()
 
 ---
 
-**Theme:** Explainability & Governance  ·  [All terminology](index.html)
+**Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [LIME (Local Interpretable Model-agnostic Explanations)](https://insightful-data-lab.com/2025/08/20/lime-local-interpretable-model-agnostic-explanations/) (insightful-data-lab.com).

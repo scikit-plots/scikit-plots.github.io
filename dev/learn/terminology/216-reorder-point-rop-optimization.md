@@ -38,7 +38,7 @@ stable and suppliers are reliable.
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Reorder Point (ROP) Optimization](https://insightful-data-lab.com/2025/08/23/reorder-point-rop-optimization/) (insightful-data-lab.com).

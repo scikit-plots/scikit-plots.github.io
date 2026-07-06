@@ -60,7 +60,7 @@ effect size for how much.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Hypothesis Testing](https://insightful-data-lab.com/2025/08/24/hypothesis-testing/) (insightful-data-lab.com).

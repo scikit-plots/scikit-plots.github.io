@@ -39,7 +39,7 @@ means you read it as a ****degree**** of drift, not a comparable distance.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Kullback–Leibler (KL) Divergence](https://insightful-data-lab.com/2025/08/20/kullback-leibler-kl-divergence/) (insightful-data-lab.com).

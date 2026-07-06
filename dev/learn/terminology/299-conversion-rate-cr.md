@@ -39,7 +39,7 @@ beats a high-traffic, low-CR one on profit.
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Conversion Rate (CR)](https://insightful-data-lab.com/2025/08/21/conversion-rate-cr/) (insightful-data-lab.com).

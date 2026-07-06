@@ -46,7 +46,7 @@ joined in March”); a ****segment**** is defined by ****attributes regardless o
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cohort](https://insightful-data-lab.com/2025/08/23/cohort/) (insightful-data-lab.com).

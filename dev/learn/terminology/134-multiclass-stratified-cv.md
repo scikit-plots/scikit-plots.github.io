@@ -43,7 +43,7 @@ class-C performance). Stratification makes the evaluation ****fair and stable***
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Multiclass stratified CV](https://insightful-data-lab.com/2025/08/24/multiclass-stratified-cv/) (insightful-data-lab.com).

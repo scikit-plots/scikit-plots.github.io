@@ -41,7 +41,7 @@ and recsys share this yardstick.
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [NDCG (Normalized Discounted Cumulative Gain)](https://insightful-data-lab.com/2025/08/19/ndcg-normalized-discounted-cumulative-gain/) (insightful-data-lab.com).

@@ -66,7 +66,7 @@ outputs = session.run(None, {"input": input_array})
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [ONNX (Open Neural Network Exchange)](https://insightful-data-lab.com/2025/08/20/onnx-open-neural-network-exchange/) (insightful-data-lab.com).

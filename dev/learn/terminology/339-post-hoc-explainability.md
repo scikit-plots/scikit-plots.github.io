@@ -47,7 +47,7 @@ substitute for fair training practices.
 
 ---
 
-**Theme:** Explainability & Governance  ·  [All terminology](index.html)
+**Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Post-hoc Explainability](https://insightful-data-lab.com/2025/08/20/post-hoc-explainability/) (insightful-data-lab.com).

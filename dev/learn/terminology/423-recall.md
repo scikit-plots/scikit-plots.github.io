@@ -40,7 +40,7 @@ means the model ****misses**** true positives more often for one group, a common
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Recall](https://insightful-data-lab.com/2025/08/17/recall/) (insightful-data-lab.com).

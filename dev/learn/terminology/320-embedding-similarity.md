@@ -69,7 +69,7 @@ print(f"cosine similarity: {score:.2f}")   # ~0.99  ->  very similar
 
 ---
 
-**Theme:** Representations & Embeddings  ·  [All terminology](index.html)
+**Theme:** [Representations & Embeddings](index.html#term-theme-repr)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Embedding Similarity](https://insightful-data-lab.com/2025/08/20/embedding-similarity/) (insightful-data-lab.com).

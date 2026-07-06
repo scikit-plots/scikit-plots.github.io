@@ -37,7 +37,7 @@ investigate the input–output relationship if performance drops.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Data Drift](https://insightful-data-lab.com/2025/08/20/data-drift/) (insightful-data-lab.com).

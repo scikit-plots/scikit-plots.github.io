@@ -39,7 +39,7 @@ symmetric, bounded score is wanted.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Jensen–Shannon (JS) Divergence](https://insightful-data-lab.com/2025/08/20/jensen-shannon-js-divergence/) (insightful-data-lab.com).

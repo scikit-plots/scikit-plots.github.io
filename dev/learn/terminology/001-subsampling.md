@@ -92,7 +92,7 @@ signal_sub = sps.resample(signal, len(signal) // 2)
 
 ---
 
-**Theme:** Imbalanced Learning & Resampling  ·  [All terminology](index.html)
+**Theme:** [Imbalanced Learning & Resampling](index.html#term-theme-imbalance)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Subsampling](https://insightful-data-lab.com/2025/08/30/subsampling/) (insightful-data-lab.com).

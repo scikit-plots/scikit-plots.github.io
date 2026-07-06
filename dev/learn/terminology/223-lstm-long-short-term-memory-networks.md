@@ -48,7 +48,7 @@ across ****50-100+ steps****, but they are ****computationally heavy****, slower
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [LSTM — Long Short-Term Memory Networks](https://insightful-data-lab.com/2025/08/23/lstm-long-short-term-memory-networks/) (insightful-data-lab.com).

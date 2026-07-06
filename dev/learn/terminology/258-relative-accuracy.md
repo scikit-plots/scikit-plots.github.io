@@ -39,7 +39,7 @@ hard-to-forecast series on equal footing.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Relative accuracy](https://insightful-data-lab.com/2025/08/22/relative-accuracy/) (insightful-data-lab.com).

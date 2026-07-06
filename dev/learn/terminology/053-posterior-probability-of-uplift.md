@@ -86,7 +86,7 @@ posteriors support ****always-valid**** monitoring without naive peeking penalti
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Posterior probability of uplift](https://insightful-data-lab.com/2025/08/29/posterior-probability-of-uplift/) (insightful-data-lab.com).

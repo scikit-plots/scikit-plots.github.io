@@ -36,7 +36,7 @@ accuracy is preserved.
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Isotonic Regression](https://insightful-data-lab.com/2025/08/21/isotonic-regression/) (insightful-data-lab.com).

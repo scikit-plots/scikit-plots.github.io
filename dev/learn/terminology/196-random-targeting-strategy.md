@@ -46,7 +46,7 @@ causes and do-not-disturbs, delivers lower ROI, and cannot adapt to customer het
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Random Targeting Strategy](https://insightful-data-lab.com/2025/08/23/random-targeting-strategy/) (insightful-data-lab.com).

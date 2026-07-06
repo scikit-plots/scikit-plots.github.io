@@ -36,7 +36,7 @@ classes must be weighted ****equally**** regardless of frequency.
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Weighted Averaging](https://insightful-data-lab.com/2025/08/20/weighted-averaging/) (insightful-data-lab.com).

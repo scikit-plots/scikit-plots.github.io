@@ -58,7 +58,7 @@ differs), ****position bias**** (higher slots get clicks regardless of quality),
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Ranking Algorithms](https://insightful-data-lab.com/2025/08/24/ranking-algorithms/) (insightful-data-lab.com).

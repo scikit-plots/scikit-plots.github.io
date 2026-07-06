@@ -60,7 +60,7 @@ y_pred = clf.predict(X_test)
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Support Vector Machines (SVMs)](https://insightful-data-lab.com/2025/08/21/support-vector-machines-svms/) (insightful-data-lab.com).

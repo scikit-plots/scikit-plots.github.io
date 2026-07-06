@@ -40,7 +40,7 @@ multi-class analogue is ****categorical cross-entropy**** with ****softmax****.
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Binary Cross-Entropy (BCE)](https://insightful-data-lab.com/2025/08/21/binary-cross-entropy-bce/) (insightful-data-lab.com).

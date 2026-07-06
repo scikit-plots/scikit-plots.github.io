@@ -100,7 +100,7 @@ rather than confidence bounds.
 
 ---
 
-**Theme:** Sequential Methods & Bandits  ·  [All terminology](index.html)
+**Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](https://insightful-data-lab.com/2025/08/29/thompson-sampling-ts-in-bandits/) (insightful-data-lab.com).

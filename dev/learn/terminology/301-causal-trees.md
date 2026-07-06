@@ -37,7 +37,7 @@ that return a full ****posterior**** over each unit’s effect for uncertainty-a
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Causal Trees](https://insightful-data-lab.com/2025/08/21/causal-trees/) (insightful-data-lab.com).

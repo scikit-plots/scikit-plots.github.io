@@ -37,7 +37,7 @@ about how much of the catalog ****actually**** surfaces in practice.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Item Coverage](https://insightful-data-lab.com/2025/08/22/item-coverage/) (insightful-data-lab.com).

@@ -40,7 +40,7 @@ clipped), and PSI tends to ****rise with sample size****, so thresholds may need
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [PSI (Population Stability Index)](https://insightful-data-lab.com/2025/08/19/psi-population-stability-index/) (insightful-data-lab.com).

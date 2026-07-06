@@ -40,7 +40,7 @@ cutoff (MAP@K), it is a standard top-N metric for search and recommendation.
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Mean Average Precision (MAP)](https://insightful-data-lab.com/2025/08/19/mean-average-precision-map/) (insightful-data-lab.com).

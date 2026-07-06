@@ -36,7 +36,7 @@ billion-parameter models, and serving them at scale, feasible.
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [TPU Clusters](https://insightful-data-lab.com/2025/08/20/tpu-clusters/) (insightful-data-lab.com).

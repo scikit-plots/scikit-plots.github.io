@@ -36,7 +36,7 @@ and ****self-supervised**** learning, which trade some label quality for far les
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Full Annotation](https://insightful-data-lab.com/2025/08/20/full-annotation/) (insightful-data-lab.com).

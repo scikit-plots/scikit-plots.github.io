@@ -63,7 +63,7 @@ distribution), the older, less accurate ****Hanley-McNeil**** approximation, and
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [DeLong’s Test](https://insightful-data-lab.com/2025/08/20/delongs-test/) (insightful-data-lab.com).

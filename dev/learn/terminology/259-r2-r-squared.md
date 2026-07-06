@@ -39,7 +39,7 @@ implies ****neither causation nor good out-of-sample**** performance.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [R² (R-squared)](https://insightful-data-lab.com/2025/08/22/r%c2%b2-r-squared/) (insightful-data-lab.com).

@@ -51,7 +51,7 @@ interleaving**** were developed to address exactly these weaknesses.
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Balanced Interleaving](https://insightful-data-lab.com/2025/08/24/balanced-interleaving/) (insightful-data-lab.com).

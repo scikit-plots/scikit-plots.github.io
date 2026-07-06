@@ -36,7 +36,7 @@ combined with relevance and surprise, novelty becomes ****serendipity****.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Novelty (in Recommender Systems)](https://insightful-data-lab.com/2025/08/19/novelty-in-recommender-systems/) (insightful-data-lab.com).

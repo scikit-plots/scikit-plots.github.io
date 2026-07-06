@@ -35,7 +35,7 @@ performance to show), while ****micro**** (or a ****weighted**** macro) better r
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Macro AUC](https://insightful-data-lab.com/2025/08/21/macro-auc/) (insightful-data-lab.com).

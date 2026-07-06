@@ -40,7 +40,7 @@ die, \(F(2) = 1/3\).
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cumulative Distribution Function (CDF)](https://insightful-data-lab.com/2025/08/22/cumulative-distribution-function-cdf/) (insightful-data-lab.com).

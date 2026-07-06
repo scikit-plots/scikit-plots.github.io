@@ -62,7 +62,7 @@ structure to regularise, not so much that it overrides the evidence.
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Prior Belief (or Prior Probability)](https://insightful-data-lab.com/2025/08/28/prior-belief-or-prior-probability/) (insightful-data-lab.com).

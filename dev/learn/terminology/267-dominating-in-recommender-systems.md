@@ -39,7 +39,7 @@ everyone’s lists, crowding out the long tail and harming exposure fairness.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Dominating in Recommender Systems](https://insightful-data-lab.com/2025/08/22/dominating-in-recommender-systems/) (insightful-data-lab.com).

@@ -66,7 +66,7 @@ sciences and classic A/B testing.
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Frequentist](https://insightful-data-lab.com/2025/08/28/frequentist/) (insightful-data-lab.com).

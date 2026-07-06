@@ -36,7 +36,7 @@ interesting — but there’s an ****accuracy-diversity**** trade-off, since the
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Diversity (in Recommender Systems)](https://insightful-data-lab.com/2025/08/19/diversity-in-recommender-systems/) (insightful-data-lab.com).

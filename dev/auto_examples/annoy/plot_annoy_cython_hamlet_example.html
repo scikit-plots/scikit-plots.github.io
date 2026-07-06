@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:45:56Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:03:56Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Approximate Nearest Neighbors with Annoy — A Hamlet Example — scikit-plots 0.5.dev0 documentation</title>
@@ -65,7 +65,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
 <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+<script src="../../_static/ai-assistant.js?v=4fba141c"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script>let toggleHintShow = 'Click to show';</script>
@@ -982,19 +982,23 @@ This gives us ~300–600 passages, each with enough text for meaningful similari
 <span class="nb">print</span><span class="p">(</span><span class="n">raw_text</span><span class="p">[:</span><span class="mi">200</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Download failed (&lt;urlopen error _ssl.c:993: The handshake operation timed out&gt;); using built-in excerpt.
-Raw text length: 9,465 chars
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Raw text length: 185,498 chars
+
+
+
 
 THE TRAGEDY OF HAMLET, PRINCE OF DENMARK
 
 by William Shakespeare
 
+
+
+
 Contents
 
-ACT I
-Scene I. Elsinore. A platform before the Castle
-Scene II. Elsinore. A room of state in the Castle
-Scene III. A room i
+ ACT I
+ Scene I. Elsinore. A platform before the Castle
+ Scene II. Elsinore. A room of state in the Ca
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>raw_text
@@ -1144,8 +1148,8 @@ Annoy index
     <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Extracted 43 passages
-Characters: ['Bernardo', 'Francisco', 'Ghost', 'Hamlet', 'Horatio', 'King', 'Laertes', 'Marcellus', 'Ophelia', 'Polonius', 'Queen']
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Extracted 922 passages
+Characters: ['Barnardo', 'First Ambassador', 'First Clown', 'First Player', 'First Sailor', 'Fortinbras', 'Francisco', 'Gentleman', 'Ghost', 'Guildenstern', 'Hamlet', 'Horatio', 'King', 'Laertes', 'Lord', 'Lucianus', 'Marcellus', 'Messenger', 'Ophelia', 'Osric', 'Player King', 'Player Queen', 'Polonius', 'Priest', 'Prologue', 'Queen', 'Reynaldo', 'Rosencrantz', 'Second Clown', 'Servant', 'Voltemand']
 
   [  0] Francisco    | SCENE I. Elsinore
         Nay, answer me. Stand and unfold yourself....
@@ -1153,19 +1157,19 @@ Characters: ['Bernardo', 'Francisco', 'Ghost', 'Hamlet', 'Horatio', 'King', 'Lae
   [  1] Francisco    | SCENE I. Elsinore
         You come most carefully upon your hour....
 
-  [  2] Bernardo     | SCENE I. Elsinore
+  [  2] Barnardo     | SCENE I. Elsinore
         'Tis now struck twelve. Get thee to bed, Francisco....
 
   [  3] Francisco    | SCENE I. Elsinore
         For this relief much thanks. 'Tis bitter cold, And I am sick at heart....
 
-  [  4] Bernardo     | SCENE I. Elsinore
+  [  4] Barnardo     | SCENE I. Elsinore
         Have you had quiet guard?...
 
   [  5] Francisco    | SCENE I. Elsinore
         Not a mouse stirring....
 
-  [  6] Bernardo     | SCENE I. Elsinore
+  [  6] Barnardo     | SCENE I. Elsinore
         Well, good night. If you do meet Horatio and Marcellus, The rivals of my watch, bid them m...
 </pre></div>
 </div>
@@ -1316,10 +1320,10 @@ OpenAI embeddings, or any other embedding model.</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Num passages    : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Vocabulary size : 529
-TF-IDF dimension: 529
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Vocabulary size : 1500
+TF-IDF dimension: 1500
 Final embedding : 64-d
-Num passages    : 33
+Num passages    : 792
 </pre></div>
 </div>
 <p>## 3. Build Annoy Indexes — Core API Walkthrough</p>
@@ -1356,7 +1360,7 @@ Num passages    : 33
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Index ready for queries!"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Items added: 33
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Items added: 792
 Trees built: 10
 Index ready for queries!
 </pre></div>
@@ -1476,16 +1480,16 @@ Now the soliloquy should be found reliably</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>==========================================================================================
 QUERY: 'To be, or not to be' soliloquy
 ==========================================================================================
-Query: [25] Hamlet (ACT III. SCENE I)
-  "To be, or not to be- that is the question: Whether 'tis nobler in the mind to su..."
+Query: [327] Hamlet (SCENE I. A room in the Castle)
+  "To be, or not to be, that is the question: Whether 'tis nobler in the mind to su..."
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     25      0.0000 Hamlet         To be, or not to be- that is the question: Whether... ← query
-2     7       1.2248 Horatio        Friends to this ground....
-3     5       1.2336 Bernardo       Well, good night. If you do meet Horatio and Marce...
-4     17      1.2485 Hamlet         Ay, madam, it is common. O that this too too solid...
-5     6       1.2778 Francisco      I think I hear them. Stand, ho! Who is there?...
+1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
+2     181     1.0242 King           Welcome, dear Rosencrantz and Guildenstern. Moreov...
+3     377     1.1078 Hamlet         So long? Nay then, let the devil wear black, for I...
+4     592     1.1089 King           O, for two special reasons, Which may to you, perh...
+5     308     1.1251 Hamlet         Ay, so, God b' wi' ye. Now I am alone. O what a ro...
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1542,11 +1546,11 @@ QUERY BY VECTOR: average of 'To be' + 'Alas poor Yorick'
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     25      0.7233 Hamlet         To be, or not to be- that is the question: Whether 'tis...
-2     29      0.7233 Hamlet         Alas, poor Yorick! I knew him, Horatio. A fellow of inf...
-3     27      1.2235 Hamlet         Speak the speech, I pray you, as I pronounced it to you...
-4     21      1.2505 Horatio        It is a nipping and an eager air. I think it lacks of t...
-5     0       1.2784 Francisco      Nay, answer me. Stand and unfold yourself. You come mos...
+1     327     0.7033 Hamlet         To be, or not to be, that is the question: Whether 'tis...
+2     377     1.0090 Hamlet         So long? Nay then, let the devil wear black, for I'll h...
+3     464     1.0453 Hamlet         Mother, you have my father much offended....
+4     304     1.0741 Hamlet         'Tis well. I'll have thee speak out the rest of this so...
+5     722     1.1032 Osric          The King, sir, hath wager'd with him six Barbary horses...
 </pre></div>
 </div>
 <p>## 4. float16 — Half-Precision for Fast &amp; Compact Indexes</p>
@@ -1624,21 +1628,21 @@ for well-separated vectors while halving storage.</p>
 <span class="n">display_neighbors</span><span class="p">(</span><span class="n">idx_f16</span><span class="p">,</span> <span class="n">passages</span><span class="p">,</span> <span class="n">tobe_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float16 index built: 33 items, 10 trees
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float16 index built: 792 items, 10 trees
 
 ==========================================================================================
 float16 QUERY: 'To be, or not to be'
 ==========================================================================================
-Query: [25] Hamlet (ACT III. SCENE I)
-  "To be, or not to be- that is the question: Whether 'tis nobler in the mind to su..."
+Query: [327] Hamlet (SCENE I. A room in the Castle)
+  "To be, or not to be, that is the question: Whether 'tis nobler in the mind to su..."
 
 Rank  ID        Dist Character      Passage excerpt
 ------------------------------------------------------------------------------------------
-1     25      0.0000 Hamlet         To be, or not to be- that is the question: Whether... ← query
-2     7       1.2256 Horatio        Friends to this ground....
-3     5       1.2334 Bernardo       Well, good night. If you do meet Horatio and Marce...
-4     17      1.2480 Hamlet         Ay, madam, it is common. O that this too too solid...
-5     6       1.2773 Francisco      I think I hear them. Stand, ho! Who is there?...
+1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
+2     92      1.0449 Laertes        O, fear me not. I stay too long. But here my fathe...
+3     722     1.1484 Osric          The King, sir, hath wager'd with him six Barbary h...
+4     726     1.1621 Hamlet         The phrase would be more german to the matter if w...
+5     162     1.1748 Horatio        O day and night, but this is wondrous strange....
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------------------</span>
@@ -1716,13 +1720,13 @@ Rank  ID        Dist Character      Passage excerpt
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>dtype       Build(ms)  Query(μs)   Disk(KB) Top-5 IDs
 ----------------------------------------------------------------------
-float16           0.1       24.9        7.3 [25, 7, 5, 17, 6]
-float32           0.1       11.3       13.9 [25, 7, 5, 17, 6]
-float64           0.1       12.8       27.4 [25, 7, 5, 17, 6]
+float16         127.1       80.8      197.8 [327, 181, 92, 132, 64]
+float32           4.1       21.9      296.9 [327, 181, 92, 377, 592]
+float64           7.0       34.4      494.0 [327, 181, 132, 592, 581]
 
-Overlap float16 ∩ float32 (top-10): 10/10
-Overlap float16 ∩ float64 (top-10): 10/10
-Overlap float32 ∩ float64 (top-10): 10/10
+Overlap float16 ∩ float32 (top-10): 3/10
+Overlap float16 ∩ float64 (top-10): 4/10
+Overlap float32 ∩ float64 (top-10): 5/10
 </pre></div>
 </div>
 <p>## 5. Multiple Distance Metrics</p>
@@ -1781,38 +1785,38 @@ Overlap float32 ∩ float64 (top-10): 10/10
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>============================================================
 Metric: angular
 ============================================================
-  1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  7] d=1.2248  Horatio      Friends to this ground....
-  3. [  5] d=1.2336  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [ 17] d=1.2485  Hamlet       Ay, madam, it is common. O that this too too ...
-  5. [  6] d=1.2778  Francisco    I think I hear them. Stand, ho! Who is there?...
+  1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [181] d=1.0242  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [377] d=1.1078  Hamlet       So long? Nay then, let the devil wear black, ...
+  4. [592] d=1.1089  King         O, for two special reasons, Which may to you,...
+  5. [308] d=1.1251  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
 
 ============================================================
 Metric: euclidean
 ============================================================
-  1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  7] d=1.2248  Horatio      Friends to this ground....
-  3. [  5] d=1.2336  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [ 17] d=1.2485  Hamlet       Ay, madam, it is common. O that this too too ...
-  5. [  6] d=1.2778  Francisco    I think I hear them. Stand, ho! Who is there?...
+  1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [181] d=1.0242  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [132] d=1.0547  Ghost        So art thou to revenge, when thou shalt hear....
+  4. [ 64] d=1.1384  Hamlet       I would not hear your enemy say so; Nor shall...
+  5. [350] d=1.1573  Hamlet       Speak the speech, I pray you, as I pronounced...
 
 ============================================================
 Metric: manhattan
 ============================================================
-  1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  4] d=7.6594  Francisco    Not a mouse stirring....
-  3. [  5] d=7.7552  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [  6] d=8.1536  Francisco    I think I hear them. Stand, ho! Who is there?...
-  5. [ 14] d=8.1662  King         How is it that the clouds still hang on you?...
+  1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [181] d=6.7472  King         Welcome, dear Rosencrantz and Guildenstern. M...
+  3. [ 92] d=6.8933  Laertes      O, fear me not. I stay too long. But here my ...
+  4. [304] d=7.0910  Hamlet       'Tis well. I'll have thee speak out the rest ...
+  5. [672] d=7.0918  Laertes      O, treble woe Fall ten times treble on that c...
 
 ============================================================
 Metric: dot
 ============================================================
-  1. [ 25] d=1.0000  Hamlet       To be, or not to be- that is the question: Wh...
-  2. [  7] d=0.2499  Horatio      Friends to this ground....
-  3. [  5] d=0.2392  Bernardo     Well, good night. If you do meet Horatio and ...
-  4. [ 17] d=0.2206  Hamlet       Ay, madam, it is common. O that this too too ...
-  5. [  6] d=0.1836  Francisco    I think I hear them. Stand, ho! Who is there?...
+  1. [327] d=1.0000  Hamlet       To be, or not to be, that is the question: Wh...
+  2. [464] d=0.4033  Hamlet       Mother, you have my father much offended....
+  3. [377] d=0.3864  Hamlet       So long? Nay then, let the devil wear black, ...
+  4. [592] d=0.3851  King         O, for two special reasons, Which may to you,...
+  5. [624] d=0.3537  First Clown  Give me leave. Here lies the water; good. Her...
 </pre></div>
 </div>
 <p>## 6. Extended Index Types</p>
@@ -1900,10 +1904,10 @@ Metric: dot
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">nid</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'character'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;12s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>int8 + float16 index: 33 items
-Neighbors of [25]: [1, 0]
-  [  1] Bernardo     'Tis now struck twelve. Get thee to bed, Francisco....
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>int8 + float16 index: 100 items
+Neighbors of [99]: [0, 1]
   [  0] Francisco    Nay, answer me. Stand and unfold yourself. You come most car...
+  [  1] Barnardo     'Tis now struck twelve. Get thee to bed, Francisco....
 </pre></div>
 </div>
 <p>## 7. Hamming Distance — Binary Embeddings</p>
@@ -1975,15 +1979,15 @@ This is useful for locality-sensitive hashing (LSH) or binary feature vectors.</
     <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Hamming index built: 33 items
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Hamming index built: 792 items
 
 Rank  ID     Hamming Character      Passage excerpt
 --------------------------------------------------------------------------------
-1     25           0 Hamlet         To be, or not to be- that is the question: Wheth...
-2     4           25 Francisco      Not a mouse stirring....
-3     20          27 Hamlet         The air bites shrewdly; it is very cold....
-4     15          28 Hamlet         Not so, my lord. I am too much i' the sun....
-5     21          28 Horatio        It is a nipping and an eager air. I think it lac...
+1     327          0 Hamlet         To be, or not to be, that is the question: Wheth...
+2     92          18 Laertes        O, fear me not. I stay too long. But here my fat...
+3     123         20 Horatio        He waxes desperate with imagination....
+4     82          24 Horatio        It would have much amaz'd you....
+5     782         24 Hamlet         As th'art a man, Give me the cup. Let go; by Hea...
 </pre></div>
 </div>
 <p>## 8. Save, Load &amp; Memory-Mapped Queries</p>
@@ -2023,16 +2027,16 @@ Rank  ID     Hamming Character      Passage excerpt
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">nid</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'character'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;12s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">55</span><span class="p">]</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float16    saved:      7.3 KB  (/tmp/tmp8nyeq96g/hamlet_float16.ann)
-float32    saved:     13.9 KB  (/tmp/tmp8nyeq96g/hamlet_float32.ann)
-float64    saved:     27.4 KB  (/tmp/tmp8nyeq96g/hamlet_float64.ann)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float16    saved:    197.8 KB  (/tmp/tmp7cdd1_ls/hamlet_float16.ann)
+float32    saved:    296.9 KB  (/tmp/tmp7cdd1_ls/hamlet_float32.ann)
+float64    saved:    494.0 KB  (/tmp/tmp7cdd1_ls/hamlet_float64.ann)
 
-Loaded float16 index from disk, queried [25]:
-  [ 25] Hamlet       To be, or not to be- that is the question: Whether 'tis...
-  [  7] Horatio      Friends to this ground....
-  [  5] Bernardo     Well, good night. If you do meet Horatio and Marcellus,...
-  [ 17] Hamlet       Ay, madam, it is common. O that this too too solid fles...
-  [  6] Francisco    I think I hear them. Stand, ho! Who is there?...
+Loaded float16 index from disk, queried [327]:
+  [327] Hamlet       To be, or not to be, that is the question: Whether 'tis...
+  [ 92] Laertes      O, fear me not. I stay too long. But here my father com...
+  [722] Osric        The King, sir, hath wager'd with him six Barbary horses...
+  [726] Hamlet       The phrase would be more german to the matter if we cou...
+  [162] Horatio      O day and night, but this is wondrous strange....
 </pre></div>
 </div>
 <p>## 9. float128 — Extended Precision for Scientific Workloads</p>
@@ -2077,11 +2081,11 @@ float128 trades size for accuracy.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>float128 euclidean index — results:
-  1. [ 25] d=0.0000000000  Hamlet       To be, or not to be- that is the questio...
-  2. [  7] d=1.2248392606  Horatio      Friends to this ground....
-  3. [  5] d=1.2335601617  Bernardo     Well, good night. If you do meet Horatio...
-  4. [ 17] d=1.2485057051  Hamlet       Ay, madam, it is common. O that this too...
-  5. [  6] d=1.2778131994  Francisco    I think I hear them. Stand, ho! Who is t...
+  1. [327] d=0.0000000000  Hamlet       To be, or not to be, that is the questio...
+  2. [181] d=1.0241757969  King         Welcome, dear Rosencrantz and Guildenste...
+  3. [ 92] d=1.0446754133  Laertes      O, fear me not. I stay too long. But her...
+  4. [464] d=1.0924403305  Hamlet       Mother, you have my father much offended...
+  5. [377] d=1.1078282478  Hamlet       So long? Nay then, let the devil wear bl...
 </pre></div>
 </div>
 <p>## 10. Putting It All Together — Character Similarity Analysis</p>
@@ -2147,19 +2151,38 @@ by averaging their passage embeddings and querying.</p>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">rank</span><span class="si">:</span><span class="s2">&lt;5d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;15s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">dist</span><span class="si">:</span><span class="s2">&gt;10.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">char_counts</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;10d</span><span class="si">}{</span><span class="n">marker</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Characters with 2+ passages: 6
-  Hamlet          (11 passages)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Characters with 2+ passages: 25
+  Hamlet          (247 passages)
+  King            (83 passages)
+  Horatio         (76 passages)
+  Polonius        (61 passages)
+  Queen           (56 passages)
+  Ophelia         (43 passages)
+  Laertes         (41 passages)
+  Rosencrantz     (40 passages)
+  Marcellus       (23 passages)
+  Guildenstern    (20 passages)
+  First Clown     (18 passages)
+  Osric           (18 passages)
+  Barnardo        (11 passages)
+  Ghost           (6 passages)
+  First Player    (6 passages)
+  Second Clown    (6 passages)
   Francisco       (5 passages)
-  Bernardo        (4 passages)
-  Horatio         (3 passages)
-  King            (3 passages)
-  Marcellus       (2 passages)
+  Reynaldo        (5 passages)
+  Player Queen    (5 passages)
+  Player King     (4 passages)
+  Fortinbras      (4 passages)
+  Gentleman       (2 passages)
+  Messenger       (2 passages)
+  Priest          (2 passages)
+  Lord            (2 passages)
 
 Characters most similar to HAMLET in speech:
 Rank  Character         Distance   Passages
 ---------------------------------------------
-1     Hamlet              0.0000         11 ←
-2     Francisco           1.2500          5
+1     Hamlet              0.0000        247 ←
+2     King                0.7124         83
 </pre></div>
 </div>
 <p>## 11. API Quick Reference</p>
@@ -2222,7 +2245,7 @@ Rank  Character         Distance   Passages
 - Windows (MSVC), macOS (Clang), Linux (GCC) all supported
 - The fixed <code class="docutils literal notranslate"><span class="pre">annoylib.h</span></code> handles all platform differences via compile-time detection</p>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.149 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.663 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_cython_api_thumb.png"/>
@@ -2330,7 +2353,7 @@ Rank  Character         Distance   Passages
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
 </p>
 </div>

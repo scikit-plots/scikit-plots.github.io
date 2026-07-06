@@ -1,6 +1,6 @@
 # register\_bridge[#](#register-bridge "Link to this heading")
 
-scikitplot.corpus.register\_bridge(**chunker\_class**, **bridge\_class**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_chunkers/_chunker_bridge.py#L393)[#](#scikitplot.corpus.register_bridge "Link to this definition")
+scikitplot.corpus.register\_bridge(**chunker\_class**, **bridge\_class**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_chunkers/_chunker_bridge.py#L393)[#](#scikitplot.corpus.register_bridge "Link to this definition")
 :   Register a custom bridge for a user-defined chunker class.
 
     After registration, [`bridge_chunker`](scikitplot.corpus.bridge_chunker.html#scikitplot.corpus.bridge_chunker "scikitplot.corpus.bridge_chunker") will automatically wrap

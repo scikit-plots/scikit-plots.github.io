@@ -36,7 +36,7 @@ quality differences are subtle and A/B tests would need huge traffic to detect t
 
 ---
 
-**Theme:** Ranking & Interleaving  ·  [All terminology](index.html)
+**Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Interleaving Tests](https://insightful-data-lab.com/2025/08/19/interleaving-tests/) (insightful-data-lab.com).

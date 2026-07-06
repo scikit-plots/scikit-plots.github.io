@@ -43,7 +43,7 @@ full distributions and quantiles.
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Strictly Proper Scoring Rules](https://insightful-data-lab.com/2025/08/22/strictly-proper-scoring-rules/) (insightful-data-lab.com).

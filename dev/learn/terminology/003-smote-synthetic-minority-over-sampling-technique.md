@@ -82,7 +82,7 @@ print("after: ", Counter(y_res))
 
 ---
 
-**Theme:** Imbalanced Learning & Resampling  ·  [All terminology](index.html)
+**Theme:** [Imbalanced Learning & Resampling](index.html#term-theme-imbalance)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [SMOTE (Synthetic Minority Over-sampling Technique)](https://insightful-data-lab.com/2025/08/30/smote-synthetic-minority-over-sampling-technique/) (insightful-data-lab.com).

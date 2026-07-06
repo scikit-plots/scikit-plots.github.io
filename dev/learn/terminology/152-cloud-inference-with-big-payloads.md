@@ -50,7 +50,7 @@ A 200MB ****CT scan**** goes to cloud storage, with only its reference passed to
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cloud Inference with Big Payloads](https://insightful-data-lab.com/2025/08/24/cloud-inference-with-big-payloads/) (insightful-data-lab.com).

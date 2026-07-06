@@ -45,7 +45,7 @@ effect of city on purchasing.
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cardinality in Categorical Data](https://insightful-data-lab.com/2025/08/23/cardinality-in-categorical-data/) (insightful-data-lab.com).

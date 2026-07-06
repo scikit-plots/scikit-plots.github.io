@@ -40,7 +40,7 @@ is the theoretical reason calibration metrics like ****ECE**** tell only ****hal
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Murphy’s Decomposition](https://insightful-data-lab.com/2025/08/21/murphys-decomposition/) (insightful-data-lab.com).

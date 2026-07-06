@@ -36,7 +36,7 @@ through a ****registry**** that re-evaluates it against production before it see
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Drift Guardrails](https://insightful-data-lab.com/2025/08/20/drift-guardrails/) (insightful-data-lab.com).

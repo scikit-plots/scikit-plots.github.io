@@ -49,7 +49,7 @@ never grows without limit). The cost: it can ****forget useful long-run history*
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Sliding Window (Rolling Window) Cross-Validation](https://insightful-data-lab.com/2025/08/24/sliding-window-rolling-window-cross-validation/) (insightful-data-lab.com).

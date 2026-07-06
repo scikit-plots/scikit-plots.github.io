@@ -46,7 +46,7 @@ from sure things and lost causes.
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [ROI (Return on Investment)](https://insightful-data-lab.com/2025/08/23/roi-return-on-investment/) (insightful-data-lab.com).

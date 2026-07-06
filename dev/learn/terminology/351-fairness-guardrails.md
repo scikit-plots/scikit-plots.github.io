@@ -37,7 +37,7 @@ one-time fairness check that goes stale.
 
 ---
 
-**Theme:** Fairness & Calibration  ·  [All terminology](index.html)
+**Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Fairness Guardrails](https://insightful-data-lab.com/2025/08/20/fairness-guardrails/) (insightful-data-lab.com).

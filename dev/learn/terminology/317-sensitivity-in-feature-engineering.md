@@ -39,7 +39,7 @@ features the model actually ****relies on****.
 
 ---
 
-**Theme:** Data Preparation & Features  ·  [All terminology](index.html)
+**Theme:** [Data Preparation & Features](index.html#term-theme-features)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Sensitivity in Feature Engineering](https://insightful-data-lab.com/2025/08/20/sensitivity-in-feature-engineering/) (insightful-data-lab.com).

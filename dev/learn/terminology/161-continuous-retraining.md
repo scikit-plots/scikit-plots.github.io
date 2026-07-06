@@ -47,7 +47,7 @@ labels, no retraining), and guarding against ****catastrophic forgetting**** whe
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Continuous Retraining](https://insightful-data-lab.com/2025/08/23/continuous-retraining/) (insightful-data-lab.com).

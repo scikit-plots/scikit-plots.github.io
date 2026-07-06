@@ -39,7 +39,7 @@ sharp-but-miscalibrated model and a calibrated-but-vague one can score similarly
 
 ---
 
-**Theme:** Probability Calibration  ·  [All terminology](index.html)
+**Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Brier Score](https://insightful-data-lab.com/2025/08/19/brier-score/) (insightful-data-lab.com).

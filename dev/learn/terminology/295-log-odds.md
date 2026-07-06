@@ -40,7 +40,7 @@ threshold → class.
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Log-Odds](https://insightful-data-lab.com/2025/08/21/log-odds/) (insightful-data-lab.com).

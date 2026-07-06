@@ -38,7 +38,7 @@ the speed it buys.
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Caching](https://insightful-data-lab.com/2025/08/20/caching/) (insightful-data-lab.com).

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:50:45Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:08:59Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>MatchMode<a class="headerlink" href="#matchmode" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.MatchMode">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">MatchMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L804"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">MatchMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L804"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode" title="Link to this definition">#</a></dt>
 <dd><p>Search mode for intertextual matching queries against a corpus index.</p>
 <p class="rubric">Notes</p>
 <p><code class="docutils literal notranslate"><span class="pre">MatchMode</span></code> belongs on search <em>query</em> objects, not on
@@ -1328,8 +1328,8 @@ heavy package.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">HYBRID</span></code>   — Reciprocal Rank Fusion of KEYWORD and SEMANTIC scores</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3d7c0276-81da-4c2d-b640-07fbbe2f0941">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3d7c0276-81da-4c2d-b640-07fbbe2f0941','82f9db3f-fb16-43b5-a950-db4369e25a39','483ba885-38ad-4f95-9de3-ab6d2261cf44','../../lite/tree/../notebooks/index.html?path=d2a828b6_1423_4648_927a_53d041019c04.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f6ef51a1-285d-49b6-a05f-277edad85f19">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f6ef51a1-285d-49b6-a05f-277edad85f19','1bebb7b7-39c0-4511-ad2e-0c97bb39b00f','c91c96d1-8fc6-4295-9d24-c7c1f5310d62','../../lite/tree/../notebooks/index.html?path=c9ec916b_250d_408c_887d_a7985dd4b9ef.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MatchMode</span><span class="o">.</span><span class="n">SEMANTIC</span> <span class="o">==</span> <span class="s2">&quot;semantic&quot;</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">MatchMode</span><span class="p">(</span><span class="s2">&quot;hybrid&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="n">MatchMode</span><span class="o">.</span><span class="n">HYBRID</span>
@@ -1338,27 +1338,27 @@ heavy package.</p>
 </div>
 </div>
 </div>
-<div id="483ba885-38ad-4f95-9de3-ab6d2261cf44" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3d7c0276-81da-4c2d-b640-07fbbe2f0941','483ba885-38ad-4f95-9de3-ab6d2261cf44')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3d7c0276-81da-4c2d-b640-07fbbe2f0941','483ba885-38ad-4f95-9de3-ab6d2261cf44')">Open In Tab</button></div><div id="82f9db3f-fb16-43b5-a950-db4369e25a39" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="c91c96d1-8fc6-4295-9d24-c7c1f5310d62" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f6ef51a1-285d-49b6-a05f-277edad85f19','c91c96d1-8fc6-4295-9d24-c7c1f5310d62')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f6ef51a1-285d-49b6-a05f-277edad85f19','c91c96d1-8fc6-4295-9d24-c7c1f5310d62')">Open In Tab</button></div><div id="1bebb7b7-39c0-4511-ad2e-0c97bb39b00f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.MatchMode.HYBRID">
-<span class="sig-name descname"><span class="pre">HYBRID</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hybrid'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.HYBRID" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">HYBRID</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hybrid'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.HYBRID" title="Link to this definition">#</a></dt>
 <dd><p>Reciprocal Rank Fusion of KEYWORD and SEMANTIC scores.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.MatchMode.KEYWORD">
-<span class="sig-name descname"><span class="pre">KEYWORD</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'keyword'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.KEYWORD" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">KEYWORD</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'keyword'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.KEYWORD" title="Link to this definition">#</a></dt>
 <dd><p>BM25 / TF-IDF match on <code class="docutils literal notranslate"><span class="pre">tokens</span></code> or <code class="docutils literal notranslate"><span class="pre">keywords</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.MatchMode.SEMANTIC">
-<span class="sig-name descname"><span class="pre">SEMANTIC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'semantic'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.SEMANTIC" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">SEMANTIC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'semantic'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.SEMANTIC" title="Link to this definition">#</a></dt>
 <dd><p>Approximate nearest-neighbour search on <code class="docutils literal notranslate"><span class="pre">embedding</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.MatchMode.STRICT">
-<span class="sig-name descname"><span class="pre">STRICT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'strict'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.STRICT" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">STRICT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'strict'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MatchMode.STRICT" title="Link to this definition">#</a></dt>
 <dd><p>Exact substring match within <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
 </dd></dl>
 
@@ -1943,7 +1943,7 @@ left untouched.  Characters mapped to None are deleted.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

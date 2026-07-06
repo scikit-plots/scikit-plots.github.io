@@ -37,7 +37,7 @@ alternative, ****One-vs-One****, compares class ****pairs**** and is less imbala
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [One-vs-Rest (OvR)](https://insightful-data-lab.com/2025/08/21/one-vs-rest-ovr/) (insightful-data-lab.com).

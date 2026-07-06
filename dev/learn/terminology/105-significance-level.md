@@ -51,7 +51,7 @@ significant, not ****practically**** important — for that you still need an ef
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Significance Level (α)](https://insightful-data-lab.com/2025/08/24/significance-level-%ce%b1/) (insightful-data-lab.com).

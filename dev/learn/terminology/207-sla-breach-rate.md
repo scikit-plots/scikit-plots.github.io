@@ -46,7 +46,7 @@ it is measured against are on-time delivery, fill rate and uptime.
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [SLA Breach Rate](https://insightful-data-lab.com/2025/08/23/sla-breach-rate/) (insightful-data-lab.com).

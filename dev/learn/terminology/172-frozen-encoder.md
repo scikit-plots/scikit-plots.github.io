@@ -59,7 +59,7 @@ representation and spend your limited data learning only the task-specific part.
 
 ---
 
-**Theme:** Representations & Embeddings  ·  [All terminology](index.html)
+**Theme:** [Representations & Embeddings](index.html#term-theme-repr)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Frozen Encoder](https://insightful-data-lab.com/2025/08/23/frozen-encoder/) (insightful-data-lab.com).

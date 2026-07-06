@@ -39,7 +39,7 @@ probability forecasts.
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Risk-Based Decisions](https://insightful-data-lab.com/2025/08/21/risk-based-decisions/) (insightful-data-lab.com).

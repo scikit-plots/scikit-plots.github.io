@@ -45,7 +45,7 @@ after the fact. A healthy dashboard watches both.
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Model KPIs (Key Performance Indicators)](https://insightful-data-lab.com/2025/08/23/model-kpis-key-performance-indicators/) (insightful-data-lab.com).

@@ -36,7 +36,7 @@ avoid ****leakage****, and don’t use it on ****time-series**** data, where ***
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [k-fold Stratified Cross-Validation (Stratified CV)](https://insightful-data-lab.com/2025/08/19/stratified-cross-validation-stratified-cv/) (insightful-data-lab.com).

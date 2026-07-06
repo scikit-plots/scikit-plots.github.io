@@ -36,7 +36,7 @@ trained to minimize a distance-based ****loss****. Because those errors use magn
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Regression Models](https://insightful-data-lab.com/2025/08/21/regression-models/) (insightful-data-lab.com).

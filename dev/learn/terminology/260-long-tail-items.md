@@ -37,7 +37,7 @@ and ****diversity**** metrics on top of accuracy.
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Long-Tail Items](https://insightful-data-lab.com/2025/08/22/long-tail-items/) (insightful-data-lab.com).

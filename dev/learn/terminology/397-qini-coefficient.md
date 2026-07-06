@@ -44,7 +44,7 @@ ROC-AUC is to classification what the Qini coefficient is to uplift.
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Qini Coefficient](https://insightful-data-lab.com/2025/08/19/qini-coefficient/) (insightful-data-lab.com).

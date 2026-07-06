@@ -37,7 +37,7 @@ user something ****new****.
 
 ---
 
-**Theme:** Recommender Systems  ·  [All terminology](index.html)
+**Theme:** [Recommender Systems](index.html#term-theme-recsys)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Self-Information of Popularity](https://insightful-data-lab.com/2025/08/22/self-information-of-popularity/) (insightful-data-lab.com).

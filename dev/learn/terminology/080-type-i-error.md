@@ -62,7 +62,7 @@ an α-spending design if you must look early; and ****replicate**** to confirm.
 
 ---
 
-**Theme:** Statistical Inference & Power  ·  [All terminology](index.html)
+**Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Type I Error](https://insightful-data-lab.com/2025/08/25/type-i-error/) (insightful-data-lab.com).

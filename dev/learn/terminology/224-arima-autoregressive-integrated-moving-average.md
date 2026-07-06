@@ -55,7 +55,7 @@ do better. For periodic data, the ****SARIMA**** extension adds seasonal terms, 
 
 ---
 
-**Theme:** Signal Processing & Time Series  ·  [All terminology](index.html)
+**Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [ARIMA (AutoRegressive Integrated Moving Average)](https://insightful-data-lab.com/2025/08/23/arima-autoregressive-integrated-moving-average/) (insightful-data-lab.com).

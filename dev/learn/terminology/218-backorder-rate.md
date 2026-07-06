@@ -46,7 +46,7 @@ rate 5%, the stockout rate 3%, and those 30 cancellations become ****lost sales 
 
 ---
 
-**Theme:** Operations & Supply Chain  ·  [All terminology](index.html)
+**Theme:** [Operations & Supply Chain](index.html#term-theme-ops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Backorder Rate](https://insightful-data-lab.com/2025/08/23/backorder-rate/) (insightful-data-lab.com).

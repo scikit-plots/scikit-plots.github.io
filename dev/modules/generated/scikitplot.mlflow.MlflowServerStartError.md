@@ -1,6 +1,6 @@
 # MlflowServerStartError[#](#mlflowserverstarterror "Link to this heading")
 
-exception scikitplot.mlflow.MlflowServerStartError[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/mlflow/_errors.py#L30)[#](#scikitplot.mlflow.MlflowServerStartError "Link to this definition")
+exception scikitplot.mlflow.MlflowServerStartError[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/mlflow/_errors.py#L30)[#](#scikitplot.mlflow.MlflowServerStartError "Link to this definition")
 :   Raised when the managed MLflow server fails to start or exits prematurely.
 
     Annotation:

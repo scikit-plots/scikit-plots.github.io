@@ -40,7 +40,7 @@ MAE****. So CRPS is literally MAE ****generalized**** to distributions — the n
 
 ---
 
-**Theme:** Risk & Probabilistic Forecasting  ·  [All terminology](index.html)
+**Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Continuous Ranked Probability Score (CRPS)](https://insightful-data-lab.com/2025/08/19/continuous-ranked-probability-score-crps/) (insightful-data-lab.com).

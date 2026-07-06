@@ -46,7 +46,7 @@ fast you go.
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Guardrails (in ML & Data Systems)](https://insightful-data-lab.com/2025/08/23/guardrails-in-ml-data-systems/) (insightful-data-lab.com).

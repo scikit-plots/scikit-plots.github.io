@@ -36,7 +36,7 @@ of times, which is why ****Gini**** and ****entropy**** refine it to capture how
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Coverage](https://insightful-data-lab.com/2025/08/19/coverage/) (insightful-data-lab.com).

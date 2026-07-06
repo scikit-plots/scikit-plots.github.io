@@ -44,7 +44,7 @@ The usual sources are ****retail**** (product and user IDs), ****geography**** (
 
 ---
 
-**Theme:** Distribution Shift & Drift  ·  [All terminology](index.html)
+**Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Categorical Explosions](https://insightful-data-lab.com/2025/08/23/categorical-explosions/) (insightful-data-lab.com).

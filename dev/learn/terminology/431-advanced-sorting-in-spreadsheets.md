@@ -37,7 +37,7 @@ columns****, or you’ll shuffle one field out of alignment with the rest and si
 
 ---
 
-**Theme:** Data Preparation & Features  ·  [All terminology](index.html)
+**Theme:** [Data Preparation & Features](index.html#term-theme-features)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Advanced Sorting in Spreadsheets](https://insightful-data-lab.com/2023/11/26/advanced-sorting-in-spreadsheets/) (insightful-data-lab.com).

@@ -62,7 +62,7 @@ disease given a test result).
 
 ---
 
-**Theme:** Bayesian Inference  ·  [All terminology](index.html)
+**Theme:** [Bayesian Inference](index.html#term-theme-bayes)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Posterior Probability](https://insightful-data-lab.com/2025/08/25/posterior-probability/) (insightful-data-lab.com).

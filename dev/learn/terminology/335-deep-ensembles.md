@@ -48,7 +48,7 @@ learning****.
 
 ---
 
-**Theme:** Model Training & Optimization  ·  [All terminology](index.html)
+**Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Deep Ensembles](https://insightful-data-lab.com/2025/08/20/deep-ensembles/) (insightful-data-lab.com).

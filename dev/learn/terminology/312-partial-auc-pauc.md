@@ -38,7 +38,7 @@ use case.
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Partial AUC (pAUC)](https://insightful-data-lab.com/2025/08/21/partial-auc-pauc/) (insightful-data-lab.com).

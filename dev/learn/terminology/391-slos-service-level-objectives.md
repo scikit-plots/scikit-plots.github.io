@@ -45,7 +45,7 @@ is measured uptime over the last 30 days. If uptime slips to ****99.6%****, the 
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [SLOs (Service Level Objectives)](https://insightful-data-lab.com/2025/08/19/slos-service-level-objectives/) (insightful-data-lab.com).

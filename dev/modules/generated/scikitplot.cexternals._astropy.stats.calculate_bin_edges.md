@@ -1,6 +1,6 @@
 # calculate\_bin\_edges[#](#calculate-bin-edges "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, **range=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cexternals/_astropy/stats/histogram.py#L25)[#](#scikitplot.cexternals._astropy.stats.calculate_bin_edges "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, **range=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/cexternals/_astropy/stats/histogram.py#L25)[#](#scikitplot.cexternals._astropy.stats.calculate_bin_edges "Link to this definition")
 :   Calculate histogram bin edges like `numpy.histogram_bin_edges`.
 
     Parameters:

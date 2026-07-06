@@ -53,7 +53,7 @@ randomizes but does **not** preserve class balance.
 
 ---
 
-**Theme:** Validation & Cross-Validation  ·  [All terminology](index.html)
+**Theme:** [Validation & Cross-Validation](index.html#term-theme-validation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Stratified Shuffle Split](https://insightful-data-lab.com/2025/08/24/stratified-shuffle-split/) (insightful-data-lab.com).

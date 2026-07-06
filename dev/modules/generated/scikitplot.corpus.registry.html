@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:51:42Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:09:44Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>registry<a class="headerlink" href="#registry" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.corpus.registry">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ComponentRegistry(chunkers=0,</span> <span class="pre">filters=0,</span> <span class="pre">readers=0,</span> <span class="pre">normalizers=0)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_registry/_registry.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.registry" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ComponentRegistry(chunkers=0,</span> <span class="pre">filters=0,</span> <span class="pre">readers=0,</span> <span class="pre">normalizers=0)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_registry/_registry.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.registry" title="Link to this definition">#</a></dt>
 <dd><p>Central look-up table for corpus pipeline components.</p>
 <p>Stores class references (not instances) for four component types:
 chunkers, filters, readers, and normalizers. Callers retrieve a class
@@ -1323,8 +1323,8 @@ and instantiate it with their own parameters.</p>
 built-in components via <code class="xref py py-meth docutils literal notranslate"><span class="pre">register_builtins</span></code>. Third-party
 packages can register additional components after import.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="72a88798-7dd3-48b3-93f0-0ffa8b6f2f9e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('72a88798-7dd3-48b3-93f0-0ffa8b6f2f9e','ab78cafc-0135-437a-9eb2-3ebe61a39ddb','84780d34-e620-41d7-83b2-4ccfad59855f','../../lite/tree/../notebooks/index.html?path=92b05ed1_e5eb_42c5_aff8_0c9edc747ed8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="007295e4-e693-414d-8e2f-1aa0d80aaafd">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('007295e4-e693-414d-8e2f-1aa0d80aaafd','b40b5a21-9702-4c71-9e35-23e4b7691188','e8b4cdd1-6aad-4139-926c-9f11dfa44f0a','../../lite/tree/../notebooks/index.html?path=08d0edfe_2bf1_4699_8ddb_1f2544d577e1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="o">.</span><span class="n">register_builtins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="bp">cls</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">get_chunker</span><span class="p">(</span><span class="s2">&quot;paragraph&quot;</span><span class="p">)</span>
@@ -1333,7 +1333,7 @@ packages can register additional components after import.</p>
 </div>
 </div>
 </div>
-<div id="84780d34-e620-41d7-83b2-4ccfad59855f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('72a88798-7dd3-48b3-93f0-0ffa8b6f2f9e','84780d34-e620-41d7-83b2-4ccfad59855f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('72a88798-7dd3-48b3-93f0-0ffa8b6f2f9e','84780d34-e620-41d7-83b2-4ccfad59855f')">Open In Tab</button></div><div id="ab78cafc-0135-437a-9eb2-3ebe61a39ddb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e8b4cdd1-6aad-4139-926c-9f11dfa44f0a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('007295e4-e693-414d-8e2f-1aa0d80aaafd','e8b4cdd1-6aad-4139-926c-9f11dfa44f0a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('007295e4-e693-414d-8e2f-1aa0d80aaafd','e8b4cdd1-6aad-4139-926c-9f11dfa44f0a')">Open In Tab</button></div><div id="b40b5a21-9702-4c71-9e35-23e4b7691188" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1451,7 +1451,7 @@ packages can register additional components after import.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

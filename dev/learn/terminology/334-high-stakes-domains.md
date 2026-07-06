@@ -37,7 +37,7 @@ where an error is trivial.
 
 ---
 
-**Theme:** Explainability & Governance  ·  [All terminology](index.html)
+**Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [High-Stakes Domains](https://insightful-data-lab.com/2025/08/20/high-stakes-domains/) (insightful-data-lab.com).

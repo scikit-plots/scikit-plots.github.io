@@ -58,7 +58,7 @@ environment is ****stable****; rapidly shifting preferences or delayed rewards w
 
 ---
 
-**Theme:** Sequential Methods & Bandits  ·  [All terminology](index.html)
+**Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Bandit Algorithms](https://insightful-data-lab.com/2025/08/24/bandit-algorithms/) (insightful-data-lab.com).

@@ -39,7 +39,7 @@ score well while badly missing many low-volume SKUs. It is closely related to **
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [WMAPE (Weighted Mean Absolute Percentage Error)](https://insightful-data-lab.com/2025/08/19/wmape-weighted-mean-absolute-percentage-error/) (insightful-data-lab.com).

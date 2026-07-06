@@ -36,7 +36,7 @@ than a distance. The right metric depends on ****class balance**** and error cos
 
 ---
 
-**Theme:** AI & ML Concepts  ·  [All terminology](index.html)
+**Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Classification Models](https://insightful-data-lab.com/2025/08/21/classification-models/) (insightful-data-lab.com).

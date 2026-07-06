@@ -36,7 +36,7 @@ flooding a rare positive class with false alarms. There, ****PR-AUC**** is more 
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [ROC-AUC (Receiver Operating Characteristic – Area Under Curve, = AUROC)](https://insightful-data-lab.com/2025/08/17/roc-auc-receiver-operating-characteristic-area-under-curve/) (insightful-data-lab.com).

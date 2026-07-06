@@ -50,7 +50,7 @@ gender changed”), are ****non-unique****, and need ****domain constraints**** 
 
 ---
 
-**Theme:** Explainability & Governance  ·  [All terminology](index.html)
+**Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Counterfactual Explanations](https://insightful-data-lab.com/2025/08/20/counterfactual-explanations/) (insightful-data-lab.com).

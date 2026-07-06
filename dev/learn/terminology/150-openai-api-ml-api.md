@@ -56,7 +56,7 @@ questions — sensitive data must clear HIPAA/GDPR review before it leaves your 
 
 ---
 
-**Theme:** ML Platforms & Tools  ·  [All terminology](index.html)
+**Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [OpenAI API (ML API)](https://insightful-data-lab.com/2025/08/24/openai-api-ml-api/) (insightful-data-lab.com).

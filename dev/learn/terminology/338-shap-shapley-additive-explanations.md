@@ -68,7 +68,7 @@ shap.plots.force(shap_values[0])    # local explanation for one row
 
 ---
 
-**Theme:** Explainability & Governance  ·  [All terminology](index.html)
+**Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [SHAP (SHapley Additive exPlanations)](https://insightful-data-lab.com/2025/08/20/shap-shapley-additive-explanations/) (insightful-data-lab.com).

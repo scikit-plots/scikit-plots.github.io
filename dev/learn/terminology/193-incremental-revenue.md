@@ -54,7 +54,7 @@ whose spending the action actually changes.
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Incremental Revenue](https://insightful-data-lab.com/2025/08/23/incremental-revenue/) (insightful-data-lab.com).

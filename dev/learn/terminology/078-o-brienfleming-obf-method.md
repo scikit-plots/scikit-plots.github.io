@@ -54,7 +54,7 @@ whereas Pocock fits exploratory or business A/B tests where stopping early saves
 
 ---
 
-**Theme:** Sequential Methods & Bandits  ·  [All terminology](index.html)
+**Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [O’Brien–Fleming (OBF) Method](https://insightful-data-lab.com/2025/08/25/obrien-fleming-obf-method/) (insightful-data-lab.com).

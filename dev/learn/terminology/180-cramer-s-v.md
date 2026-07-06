@@ -45,7 +45,7 @@ dropped), and testing ****feature-target association**** in classification.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Cramér’s V](https://insightful-data-lab.com/2025/08/23/cramers-v/) (insightful-data-lab.com).

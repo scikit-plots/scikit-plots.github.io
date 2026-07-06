@@ -50,7 +50,7 @@ end**** (safety-critical medicine).
 
 ---
 
-**Theme:** Sequential Methods & Bandits  ·  [All terminology](index.html)
+**Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Pocock Method](https://insightful-data-lab.com/2025/08/25/pocock-method/) (insightful-data-lab.com).

@@ -63,7 +63,7 @@ eod = equalized_odds_difference(y_true, y_pred, sensitive_features=A)  # 0 = par
 
 ---
 
-**Theme:** Fairness & Calibration  ·  [All terminology](index.html)
+**Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Equalized Odds (Fairness)](https://insightful-data-lab.com/2025/08/29/equalized-odds-fairness/) (insightful-data-lab.com).

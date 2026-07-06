@@ -45,7 +45,7 @@ workloads and costs.
 
 ---
 
-**Theme:** Business & Growth Analytics  ·  [All terminology](index.html)
+**Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [FTEs](https://insightful-data-lab.com/2025/08/24/ftes/) (insightful-data-lab.com).

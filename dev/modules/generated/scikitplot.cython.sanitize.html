@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:52:44Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:10:44Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1313,7 +1313,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>sanitize<a class="headerlink" href="#sanitize" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.sanitize">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/cython/_utils.py#L10"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.sanitize" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/cython/_utils.py#L10"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.sanitize" title="Link to this definition">#</a></dt>
 <dd><p>Convert an arbitrary string into a valid Python module name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1352,8 +1352,8 @@ underscore is prepended so that the output is always a valid identifier.</p></li
 <li><p>An empty input string returns <code class="docutils literal notranslate"><span class="pre">&quot;_&quot;</span></code> (the minimal valid identifier).</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="39b4c577-33b5-4c54-9815-79085d2a2bf9">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('39b4c577-33b5-4c54-9815-79085d2a2bf9','da7776aa-2ccf-4e7e-9b14-479a80d9548e','4a47a5ac-8045-4212-8a55-c9f628818848','../../lite/tree/../notebooks/index.html?path=ce617786_4e85_4efa_9667_4b2ba3795ec9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="22983b30-d5c4-4300-b7d9-4a4e7c65314f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('22983b30-d5c4-4300-b7d9-4a4e7c65314f','6b1287e8-6089-4ccd-9d8c-84cd0a8d706a','e5e062bc-325a-4474-b756-94870f044632','../../lite/tree/../notebooks/index.html?path=2536f42b_3434_4cae_b60f_42fabd64fe36.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize</span><span class="p">(</span><span class="s2">&quot;hello-world&quot;</span><span class="p">)</span>
 <span class="go">&#39;hello_world&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize</span><span class="p">(</span><span class="s2">&quot;123abc&quot;</span><span class="p">)</span>
@@ -1366,7 +1366,7 @@ underscore is prepended so that the output is always a valid identifier.</p></li
 </div>
 </div>
 </div>
-<div id="4a47a5ac-8045-4212-8a55-c9f628818848" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('39b4c577-33b5-4c54-9815-79085d2a2bf9','4a47a5ac-8045-4212-8a55-c9f628818848')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('39b4c577-33b5-4c54-9815-79085d2a2bf9','4a47a5ac-8045-4212-8a55-c9f628818848')">Open In Tab</button></div><div id="da7776aa-2ccf-4e7e-9b14-479a80d9548e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e5e062bc-325a-4474-b756-94870f044632" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('22983b30-d5c4-4300-b7d9-4a4e7c65314f','e5e062bc-325a-4474-b756-94870f044632')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('22983b30-d5c4-4300-b7d9-4a4e7c65314f','e5e062bc-325a-4474-b756-94870f044632')">Open In Tab</button></div><div id="6b1287e8-6089-4ccd-9d8c-84cd0a8d706a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1484,7 +1484,7 @@ underscore is prepended so that the output is always a valid identifier.</p></li
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
     
   </p>

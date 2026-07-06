@@ -40,7 +40,7 @@ oversized experiments — routinely add ****20–40%**** over the planned figure
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Compute budgets](https://insightful-data-lab.com/2025/08/19/compute-budgets/) (insightful-data-lab.com).

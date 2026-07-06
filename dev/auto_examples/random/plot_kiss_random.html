@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-05T08:46:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:04:02Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Enhanced KISS Random Generator - Complete Usage Examples — scikit-plots 0.5.dev0 documentation</title>
@@ -65,7 +65,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
 <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script src="../../_static/ai-assistant.js?v=a9fb97cb"></script>
+<script src="../../_static/ai-assistant.js?v=4fba141c"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script>let toggleHintShow = 'Click to show';</script>
@@ -691,37 +691,37 @@ ENHANCED KISS RANDOM - NEW FEATURES DEMONSTRATION
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.004214581000042017,
- 'time_mean': 0.00429841119998855,
- 'time_max': 0.004555225000103746,
- 'time_std': 0.00014499483230492034,
+ 'time_min': 0.003684562001581071,
+ 'time_mean': 0.0037049974002002274,
+ 'time_max': 0.003734291000000667,
+ 'time_std': 2.0143452996723855e-05,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.012406169000087175,
- 'time_mean': 0.012927939399969546,
- 'time_max': 0.0140136640000037,
- 'time_std': 0.0006604276741268845,
+ 'time_min': 0.01189588399938657,
+ 'time_mean': 0.012911974399685278,
+ 'time_max': 0.01651163499991526,
+ 'time_std': 0.0020137212974022252,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0053169399998296285,
- 'time_mean': 0.005416150799965181,
- 'time_max': 0.005643405000000712,
- 'time_std': 0.00013069116308963075,
+ 'time_min': 0.004867053001362365,
+ 'time_mean': 0.004882572000133223,
+ 'time_max': 0.004899376999674132,
+ 'time_std': 1.179508601981314e-05,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.01517528699991999,
- 'time_mean': 0.015364196799964702,
- 'time_max': 0.015722014999937528,
- 'time_std': 0.00022423206905219763,
+ 'time_min': 0.013884955000321497,
+ 'time_mean': 0.016879684400191764,
+ 'time_max': 0.028454098999645794,
+ 'time_std': 0.00647057778815572,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 </pre></div>
@@ -934,13 +934,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.3488494  0.20303742 0.05759016 0.14947797 0.92009197]
-  integers(0, 100):  [71 74 44 65 65]
-  normal(0, 1):      [ 0.5859086   2.23352396  1.08694986 -0.66730358  0.5077753 ]
-  uniform(10, 20):   [11.73754127 13.36576605 17.00280819 13.94253068 16.77313907]
-  choice(['A','B','C']): ['B' 'A' 'A' 'A' 'B' 'B' 'C' 'B' 'A' 'A']
-  Weighted choice A: 49% (✅ expected ~50%)
-  shuffle([0..9]):   [7 2 9 5 3 0 4 6 8 1]
+  random(5):         [0.78008257 0.07167267 0.71421342 0.94467367 0.8817974 ]
+  integers(0, 100):  [29 41 19 51 85]
+  normal(0, 1):      [ 0.88224708 -1.60282743  0.51788529  1.8930815  -1.23764073]
+  uniform(10, 20):   [19.59323542 16.95060218 17.89788954 14.42487509 17.89446913]
+  choice(['A','B','C']): ['B' 'B' 'B' 'C' 'C' 'A' 'B' 'A' 'A' 'B']
+  Weighted choice A: 44% (✅ expected ~50%)
+  shuffle([0..9]):   [7 6 8 2 3 4 0 9 1 5]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1199,8 +1199,8 @@ Chi-square uniformity test:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [4.14608926 0.25764898 0.16108229 7.8733525  1.39194352]
-Beta(2, 5):           [0.26218759 0.53195414 0.21862264 0.45252975 0.30519813]
+Exponential(scale=2): [2.84746057 1.77725205 0.12187696 1.04523615 0.7209982 ]
+Beta(2, 5):           [0.51058246 0.40057477 0.28500512 0.75233149 0.31441377]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1437,7 +1437,7 @@ RECOMMENDED USAGE:
 ======================================================================
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.449 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.397 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1545,7 +1545,7 @@ RECOMMENDED USAGE:
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.ec7d6d7 2026-07-05T08:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
       <br/>
 </p>
 </div>

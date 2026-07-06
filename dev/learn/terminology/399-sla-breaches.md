@@ -43,7 +43,7 @@ churn and inefficiency.
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [SLA Breaches](https://insightful-data-lab.com/2025/08/19/sla-breaches/) (insightful-data-lab.com).

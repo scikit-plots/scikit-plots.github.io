@@ -39,7 +39,7 @@ so equivalently \(F\) is the running integral of \(f\).
 
 ---
 
-**Theme:** Probability & Statistics Foundations  ·  [All terminology](index.html)
+**Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Probability Density](https://insightful-data-lab.com/2025/08/22/probability-density/) (insightful-data-lab.com).

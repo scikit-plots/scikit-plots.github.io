@@ -48,7 +48,7 @@ targeting everyone simply wastes resources.
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Uplift Curve](https://insightful-data-lab.com/2025/08/21/uplift-curve/) (insightful-data-lab.com).

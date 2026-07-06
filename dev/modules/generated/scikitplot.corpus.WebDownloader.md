@@ -1,6 +1,6 @@
 # WebDownloader[#](#webdownloader "Link to this heading")
 
-class scikitplot.corpus.WebDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **max\_retries=3**, **retry\_backoff=1.0**, **headers=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_downloader/_web.py#L41)[#](#scikitplot.corpus.WebDownloader "Link to this definition")
+class scikitplot.corpus.WebDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **max\_retries=3**, **retry\_backoff=1.0**, **headers=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_downloader/_web.py#L41)[#](#scikitplot.corpus.WebDownloader "Link to this definition")
 :   Generic HTTP/HTTPS file downloader.
 
     Delegates all network I/O, SSRF prevention, retry logic, and extension
@@ -114,7 +114,7 @@ class scikitplot.corpus.WebDownloader(**input\_url**, **output\_path=None**, **t
 
     block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.WebDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.WebDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.WebDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -123,7 +123,7 @@ class scikitplot.corpus.WebDownloader(**input\_url**, **output\_path=None**, **t
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_downloader/_web.py#L138)[#](#scikitplot.corpus.WebDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_downloader/_web.py#L138)[#](#scikitplot.corpus.WebDownloader.download "Link to this definition")
     :   Download the URL to a local file and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Returns:
@@ -159,7 +159,7 @@ class scikitplot.corpus.WebDownloader(**input\_url**, **output\_path=None**, **t
 
     headers: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WebDownloader.headers "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ec7d6d7/scikitplot/corpus/_downloader/_web.py#L41)[#](#scikitplot.corpus.WebDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_downloader/_web.py#L41)[#](#scikitplot.corpus.WebDownloader.input_url "Link to this definition")
 
     max\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 104857600[#](#scikitplot.corpus.WebDownloader.max_bytes "Link to this definition")
 

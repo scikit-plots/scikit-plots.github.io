@@ -73,7 +73,7 @@ ovo_macro = roc_auc_score(y_true, y_score, multi_class="ovo", average="macro")
 
 ---
 
-**Theme:** Classification & Averaging Metrics  ·  [All terminology](index.html)
+**Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Multiclass AUROC](https://insightful-data-lab.com/2025/08/30/multiclass-auroc/) (insightful-data-lab.com).

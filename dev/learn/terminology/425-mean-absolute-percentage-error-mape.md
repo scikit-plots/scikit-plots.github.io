@@ -38,7 +38,7 @@ are safer.
 
 ---
 
-**Theme:** Model Evaluation & Uncertainty  ·  [All terminology](index.html)
+**Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Mean Absolute Percentage Error (MAPE)](https://insightful-data-lab.com/2025/08/17/mean-absolute-percentage-error-mape/) (insightful-data-lab.com).

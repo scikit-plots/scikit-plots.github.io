@@ -48,7 +48,7 @@ Power BI, Looker, Qlik), ops platforms (ServiceNow, Splunk, Datadog), built-in E
 
 ---
 
-**Theme:** MLOps, Serving & Monitoring  ·  [All terminology](index.html)
+**Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Ops Health Dashboard](https://insightful-data-lab.com/2025/08/23/ops-health-dashboard/) (insightful-data-lab.com).

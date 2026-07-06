@@ -62,7 +62,7 @@ for targeting.
 
 ---
 
-**Theme:** A/B Testing & Experimentation  ·  [All terminology](index.html)
+**Theme:** [A/B Testing & Experimentation](index.html#term-theme-abtest)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Treatment Effect](https://insightful-data-lab.com/2025/08/25/treatment-effect/) (insightful-data-lab.com).

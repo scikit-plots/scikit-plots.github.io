@@ -48,7 +48,7 @@ curves**** whose quality the ****Qini coefficient**** summarises.
 
 ---
 
-**Theme:** Causal Inference & Uplift  ·  [All terminology](index.html)
+**Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
 > **See also**
 > Adapted in our own words from [Uplift Score](https://insightful-data-lab.com/2025/08/23/uplift-score/) (insightful-data-lab.com).
