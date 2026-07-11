@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 13 of 18 · **advanced**
 
-[◀ Previous · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · Next · Order Selection for Time Series Models <14-order-selection-for-time-series-models> ▶
+[◀ Previous · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [Next · Order Selection for Time Series Models ▶](14-order-selection-for-time-series-models.html)
 
 ## The goal[#](#the-goal "Link to this heading")
 

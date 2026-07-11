@@ -1,0 +1,12 @@
+# While Loops and Iteration in Python[#](#while-loops-and-iteration-in-python "Link to this heading")
+
+🐍 Data Analysis Using Python 🔀 Control Flow Lesson 013
+
+◀ [Previous](012-branching-and-conditional-statements-in-python.html) · [Next](014-for-loops-in-python.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
+
+> **Lesson in progress**
+> Full content for this lesson has not been written yet.
+
+[Source article](https://insightful-data-lab.com/2023/12/06/while-loops-and-iteration-in-pytho/)
+
+Tags: [data-analytics](../../../_tags/data-analytics.html) [python](../../../_tags/python.html) [control](../../../_tags/control.html)

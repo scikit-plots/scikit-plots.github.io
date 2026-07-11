@@ -1,6 +1,6 @@
 # cumulative\_gain\_curve[#](#cumulative-gain-curve "Link to this heading")
 
-scikitplot.api.\_utils.cumulative\_gain\_curve(**y\_true**, **y\_score**, **pos\_label=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/api/_utils/_helpers.py#L80)[#](#scikitplot.api._utils.cumulative_gain_curve "Link to this definition")
+scikitplot.api.\_utils.cumulative\_gain\_curve(**y\_true**, **y\_score**, **pos\_label=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/api/_utils/_helpers.py#L80)[#](#scikitplot.api._utils.cumulative_gain_curve "Link to this definition")
 :   Generate the data points necessary to plot the Cumulative Gain curve for binary classification tasks.
 
     The Cumulative Gain curve helps in visualizing how well a binary classifier identifies the positive class

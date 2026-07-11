@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 04 of 56 · **beginner**
 
-[◀ Previous · CRISP-DM for Data Science](03-crisp-dm-for-data-science.html) · Next · The First Step in Knowing Your Data <05-the-first-step-in-knowing-your-data> ▶
+[◀ Previous · CRISP-DM for Data Science](03-crisp-dm-for-data-science.html) · [Next · The First Step in Knowing Your Data ▶](05-the-first-step-in-knowing-your-data.html)
 
 ## What makes data ‘big’[#](#what-makes-data-big "Link to this heading")
 

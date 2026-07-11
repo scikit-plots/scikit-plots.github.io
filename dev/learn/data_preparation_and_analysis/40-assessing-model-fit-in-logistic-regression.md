@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 40 of 56 · **advanced**
 
-[◀ Previous · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · Next · Complete and Quasi-Complete Separation in Logistic Regression <41-complete-and-quasi-complete-separation-in-logistic-regression> ▶
+[◀ Previous · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · [Next · Complete and Quasi-Complete Separation in Logistic Regression ▶](41-complete-and-quasi-complete-separation-in-logistic-regression.html)
 
 ## No R² to lean on[#](#no-r2-to-lean-on "Link to this heading")
 

@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 22 of 56 · **intermediate**
 
-[◀ Previous · association\_rules: Generating Association Rules from Frequent Itemsets (mlxtend)](21-association-rules-generating-association-rules-from-frequent-itemsets-mlxtend.html) · Next · Stratified Random Sampling <23-stratified-random-sampling> ▶
+[◀ Previous · association\_rules: Generating Association Rules from Frequent Itemsets (mlxtend)](21-association-rules-generating-association-rules-from-frequent-itemsets-mlxtend.html) · [Next · Stratified Random Sampling ▶](23-stratified-random-sampling.html)
 
 ## Selling the complement[#](#selling-the-complement "Link to this heading")
 

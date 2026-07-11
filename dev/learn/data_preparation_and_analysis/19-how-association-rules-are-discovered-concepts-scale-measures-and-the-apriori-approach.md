@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 19 of 56 · **intermediate**
 
-[◀ Previous · What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · Next · Apriori: Frequent Itemsets via the Apriori Algorithm <20-apriori-frequent-itemsets-via-the-apriori-algorithm> ▶
+[◀ Previous · What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · [Next · Apriori: Frequent Itemsets via the Apriori Algorithm ▶](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html)
 
 ## Three measures of a rule[#](#three-measures-of-a-rule "Link to this heading")
 

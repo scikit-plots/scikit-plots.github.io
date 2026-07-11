@@ -1,0 +1,57 @@
+# Frequency Evaluations of Bayesian Inferences[#](#frequency-evaluations-of-bayesian-inferences "Link to this heading")
+
+****Part 1 · Stage 4 · 📏 Asymptotics & Frequentist Ties**** · Lesson 031 of 144 · **beginner**
+
+[◀ Previous · Counterexamples to large-sample (asymptotic) Bayesian theorems](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html) · [Next · Bayesian interpretations of other statistical methods ▶](032-bayesian-interpretations-of-other-statistical-methods.html)
+
+## A different question[#](#a-different-question "Link to this heading")
+
+Bayesian inference conditions on the data you have. ****Frequency evaluation**** asks a different, entirely
+legitimate question: if this procedure were applied repeatedly, across many datasets, how would it
+behave? The two views are not rivals — the frequency properties of a Bayesian method are a way of
+****checking**** it, and Gelman treats them as diagnostics rather than definitions.
+
+## Coverage[#](#coverage "Link to this heading")
+
+The headline criterion is ****calibration**** of intervals: do 95% credible intervals contain the true
+parameter 95% of the time? Bernstein–von Mises promises this ****asymptotically****. In small samples the
+answer depends on the prior — and often, informatively, in the Bayesian method’s favour: a
+weakly informative prior that shrinks noisy estimates can achieve ****better**** coverage and much smaller
+average error than an unbiased estimator, particularly in the many-parameter, small-\(n\) settings
+(the cancer-rate map) where classical methods flounder.
+
+## Simulate to check[#](#simulate-to-check "Link to this heading")
+
+The evaluation is mechanical: draw parameters from the prior, simulate data from the model, fit, and
+count. This ****simulation-based calibration**** checks the prior, the likelihood ****and**** the sampler
+together — if a 50% interval covers 70% of the time, something is wrong somewhere.
+
+```
+import numpy as np
+from scipy import stats
+rng = np.random.default_rng(0)
+n, a, b, cover = 20, 2, 8, 0
+for _ in range(2000):
+    theta = stats.beta(a, b).rvs(random_state=rng)      # draw from the prior
+    y = stats.binom(n, theta).rvs(random_state=rng)     # simulate data
+    lo, hi = stats.beta(a + y, b + n - y).interval(0.95)
+    cover += lo <= theta <= hi
+cover / 2000        # ≈ 0.95 when prior, model and computation all agree
+
+```
+
+## Bias, variance, and honesty[#](#bias-variance-and-honesty "Link to this heading")
+
+Bayesian estimators are typically ****biased**** — that is what shrinkage means — and typically achieve
+lower ****mean squared error**** for it, trading a little bias for a lot of variance. Frequency evaluation
+makes the bargain explicit rather than hiding it. Two honest limits: the calibration above averages
+over the ****prior****, so it certifies the procedure only if that prior is the one you believe; and no
+amount of frequency checking rescues a ****misspecified likelihood****. Coverage is a necessary condition
+for trust, not a sufficient one.
+
+> **See also**
+> ****Related lessons:**** [Large-Sample Theory](029-large-sample-theory.html) · [Bayesian interpretations of other statistical methods](032-bayesian-interpretations-of-other-statistical-methods.html) · [Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html) · [Posterior predictive checking](042-posterior-predictive-checking.html)
+
+****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/frequency-evaluations-of-bayesian-inferences/>
+
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

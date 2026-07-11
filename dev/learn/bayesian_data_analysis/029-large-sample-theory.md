@@ -1,0 +1,67 @@
+# Large-Sample Theory[#](#large-sample-theory "Link to this heading")
+
+****Part 1 · Stage 4 · 📏 Asymptotics & Frequentist Ties**** · Lesson 029 of 144 · **beginner**
+
+[◀ Previous · Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Next · Counterexamples to large-sample (asymptotic) Bayesian theorems ▶](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html)
+
+## What happens as data pile up[#](#what-happens-as-data-pile-up "Link to this heading")
+
+The normal approximation of the last lesson is not merely convenient — under regularity conditions it
+becomes ****exact in the limit****. Large-sample theory describes the two things a posterior does as
+\(n \to \infty\): it ****concentrates****, and its shape becomes ****normal****.
+
+## Consistency: the posterior concentrates[#](#consistency-the-posterior-concentrates "Link to this heading")
+
+If the model is correctly specified and the prior gives positive probability to a neighbourhood of the
+true value \(\theta\_0\), the posterior piles up on \(\theta\_0\): for any \(\epsilon > 0\),
+\(\Pr(|\theta - \theta\_0| > \epsilon \mid y) \to 0\). Two consequences follow, and both were
+foreshadowed in Stage 2. The ****prior washes out**** — its fixed weight \(\alpha + \beta\) is swamped
+by growing \(n\) — so analysts with different reasonable priors are driven into agreement. And a
+prior that assigns ****zero**** probability to the truth can never recover: **Cromwell’s rule**, the reason
+weakly informative beats dogmatically informative.
+
+## Bernstein–von Mises: the shape becomes normal[#](#bernsteinvon-mises-the-shape-becomes-normal "Link to this heading")
+
+More sharply, the ****Bernstein–von Mises theorem**** says the posterior converges (in total variation) to
+a normal centred at the maximum-likelihood estimator, with covariance the inverse Fisher information:
+
+\[p(\theta \mid y) \;\longrightarrow\;
+\mathrm{N}\!\left(\hat{\theta}\_{\mathrm{MLE}},\; \frac{1}{n}\, I(\theta\_0)^{-1}\right).\]
+
+The posterior standard deviation therefore shrinks like \(1/\sqrt{n}\) — halving it costs ****four
+times**** the data. The prior enters the limit ****not at all****; only the likelihood survives.
+
+## Why it matters[#](#why-it-matters "Link to this heading")
+
+Bernstein–von Mises is the bridge between the two schools: asymptotically, a Bayesian ****credible****
+interval **is** a frequentist ****confidence**** interval, with correct long-run coverage. It licenses the
+normal approximation as a fast substitute for MCMC in large, regular problems, and it explains why
+Bayesian and classical answers so often agree when data are plentiful.
+
+```
+import numpy as np
+from scipy import stats
+theta_true, a, b = 0.3, 2, 8               # informative prior, mean 0.2
+for n in (10, 100, 10_000):
+    y = stats.binom(n, theta_true).rvs(random_state=0)
+    post = stats.beta(a + y, b + n - y)
+    print(n, round(post.mean(), 3), round(post.std(), 4))
+# posterior mean -> 0.3 ; posterior sd shrinks ~ 1/sqrt(n)
+
+```
+
+## The fine print[#](#the-fine-print "Link to this heading")
+
+Every word above rests on ****regularity conditions****: the true value lies in the ****interior**** of the
+parameter space, the parameter is ****identified****, the dimension is ****fixed**** (not growing with
+\(n\)), and the model is ****correctly specified****. Under misspecification the posterior still
+becomes normal around the best-fitting parameter, but its variance is ****no longer**** the inverse Fisher
+information — so credible intervals lose their coverage guarantee. The next lesson collects the cases
+where these conditions break.
+
+> **See also**
+> ****Related lessons:**** [Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Counterexamples to large-sample (asymptotic) Bayesian theorems](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html) · [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Frequency Evaluations of Bayesian Inferences](031-frequency-evaluations-of-bayesian-inferences.html)
+
+****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/large-sample-theory/>
+
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

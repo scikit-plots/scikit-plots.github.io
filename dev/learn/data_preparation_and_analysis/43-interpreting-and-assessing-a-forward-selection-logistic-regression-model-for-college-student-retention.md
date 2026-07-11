@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 43 of 56 · **advanced**
 
-[◀ Previous · Forward Selection with Nested Models and Deviance Tests](42-forward-selection-with-nested-models-and-deviance-tests.html) · Next · Motivation of Decision Trees: An Incremental Model of Decision-Making <44-motivation-of-decision-trees-an-incremental-model-of-decision-making> ▶
+[◀ Previous · Forward Selection with Nested Models and Deviance Tests](42-forward-selection-with-nested-models-and-deviance-tests.html) · [Next · Motivation of Decision Trees: An Incremental Model of Decision-Making ▶](44-motivation-of-decision-trees-an-incremental-model-of-decision-making.html)
 
 ## A real prediction problem[#](#a-real-prediction-problem "Link to this heading")
 

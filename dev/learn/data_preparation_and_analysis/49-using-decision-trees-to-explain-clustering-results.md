@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 49 of 56 · **advanced**
 
-[◀ Previous · Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html) · Next · Assessing the Quality of Prediction Models <50-assessing-the-quality-of-prediction-models> ▶
+[◀ Previous · Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html) · [Next · Assessing the Quality of Prediction Models ▶](50-assessing-the-quality-of-prediction-models.html)
 
 ## Explaining a black box[#](#explaining-a-black-box "Link to this heading")
 

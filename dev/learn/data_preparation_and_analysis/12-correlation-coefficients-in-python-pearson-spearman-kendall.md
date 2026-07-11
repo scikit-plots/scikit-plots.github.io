@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 12 of 56 · **beginner**
 
-[◀ Previous · Measuring Associations Between Two Continuous Variables](11-measuring-associations-between-two-continuous-variables.html) · Next · Karl Pearson <13-karl-pearson> ▶
+[◀ Previous · Measuring Associations Between Two Continuous Variables](11-measuring-associations-between-two-continuous-variables.html) · [Next · Karl Pearson ▶](13-karl-pearson.html)
 
 ## Three coefficients[#](#three-coefficients "Link to this heading")
 

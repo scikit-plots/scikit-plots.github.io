@@ -1,6 +1,6 @@
 # get\_mlflow\_server\_cli\_caps[#](#get-mlflow-server-cli-caps "Link to this heading")
 
-scikitplot.mlflow.get\_mlflow\_server\_cli\_caps()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/mlflow/_cli_caps.py#L100)[#](#scikitplot.mlflow.get_mlflow_server_cli_caps "Link to this definition")
+scikitplot.mlflow.get\_mlflow\_server\_cli\_caps()[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/mlflow/_cli_caps.py#L100)[#](#scikitplot.mlflow.get_mlflow_server_cli_caps "Link to this definition")
 :   Get supported `mlflow server` flags for the installed MLflow version.
 
     Returns:

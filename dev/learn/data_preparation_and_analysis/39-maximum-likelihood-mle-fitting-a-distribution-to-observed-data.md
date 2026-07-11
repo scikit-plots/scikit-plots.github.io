@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 39 of 56 · **advanced**
 
-[◀ Previous · Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds](38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds.html) · Next · Assessing Model Fit in Logistic Regression <40-assessing-model-fit-in-logistic-regression> ▶
+[◀ Previous · Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds](38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds.html) · [Next · Assessing Model Fit in Logistic Regression ▶](40-assessing-model-fit-in-logistic-regression.html)
 
 ## What parameters best explain the data?[#](#what-parameters-best-explain-the-data "Link to this heading")
 

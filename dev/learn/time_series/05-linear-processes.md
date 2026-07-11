@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 05 of 18 · **intermediate**
 
-[◀ Previous · Weak and Strong Stationarity](04-weak-and-strong-stationarity.html) · Next · Understanding ARMA Processes <06-understanding-arma-processes> ▶
+[◀ Previous · Weak and Strong Stationarity](04-weak-and-strong-stationarity.html) · [Next · Understanding ARMA Processes ▶](06-understanding-arma-processes.html)
 
 ## What it is[#](#what-it-is "Link to this heading")
 

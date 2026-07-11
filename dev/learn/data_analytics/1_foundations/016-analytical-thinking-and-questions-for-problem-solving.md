@@ -1,0 +1,71 @@
+# Analytical Thinking and Questions for Problem Solving[#](#analytical-thinking-and-questions-for-problem-solving "Link to this heading")
+
+🌱 Foundations 🧠 Analytical Skills & Thinking Lesson 016
+
+◀ [Previous](015-analytical-thinking-and-its-core-components.html) · [Next](017-root-cause-analysis-and-business-applications-of-the-five-whys.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
+
+## Thinking as asking[#](#thinking-as-asking "Link to this heading")
+
+Analytical thinking becomes practical the moment it turns into ****questions**** —
+specific, answerable ones aimed at a problem. Experienced analysts carry a
+small battery of them and fire it at every new situation. Three question
+families do most of the work.
+
+## Root causes: asking why, five times[#](#root-causes-asking-why-five-times "Link to this heading")
+
+The first family digs for the ****root cause**** — the real reason a problem
+happens, as opposed to its symptoms. The simplest tool is the ****five whys****:
+state the problem, ask **why** it happened, then ask **why** of each answer,
+roughly five layers deep, until the answer stops changing.
+
+> Afternoon sales dropped. **Why?** Fewer customers after 2 pm. **Why?** Regulars
+> from nearby offices stopped coming. **Why?** A competitor opened with an app
+> discount. **Why does that pull our regulars?** We have no comparable loyalty
+> offer. — The fix now targets loyalty, not, say, the menu.
+
+Treating a symptom feels productive and changes nothing; the whys are cheap
+insurance against solving the wrong layer. (The next lesson gives this tool a
+fuller treatment.)
+
+## Gaps: where are we, versus where we want to be[#](#gaps-where-are-we-versus-where-we-want-to-be "Link to this heading")
+
+The second family is ****gap analysis****: examining how a process works **now**,
+specifying where it should be, and studying the distance between. Ship in five
+days but promise three? The gap is the object of analysis — where exactly do
+the two days go? Gap questions convert ambitions (“get faster”) into measurable
+targets, and they pair naturally with data: current state and desired state are
+both numbers.
+
+## The unconsidered: what have we not thought about[#](#the-unconsidered-what-have-we-not-thought-about "Link to this heading")
+
+The third family guards against blind spots: **What have we not considered? Who
+is not represented in this data? What would make this conclusion wrong?** These
+questions have no formula — they are curiosity and context, weaponised — but
+asking them routinely catches the omitted store, the unlogged failure case,
+the seasonal effect the date range happened to exclude.
+
+## A worked battery[#](#a-worked-battery "Link to this heading")
+
+Faced with “customer complaints are up,” the battery runs: **Why** (five times —
+up because response times rose, because tickets are misrouted, because the new
+category list confuses agents); **what is the gap** (current 18-hour response
+versus the 8-hour target); **what is unconsidered** (complaints arriving via
+social media are not in the ticket data at all). Three families, one problem,
+and the investigation now has direction, a measure, and a known blind spot.
+
+## The caveat[#](#the-caveat "Link to this heading")
+
+Questions structure an investigation; they do not replace evidence. A five-whys
+chain is a ****hypothesis**** about causation until data confirms each link —
+plausible chains that verify beautifully in the room and fail in the data are
+common. Ask the questions, then make the data answer them.
+
+> **See also**
+> * [Analytical Thinking and Its Core Components](015-analytical-thinking-and-its-core-components.html)
+* [Root Cause Analysis and Business Applications of the Five Whys](017-root-cause-analysis-and-business-applications-of-the-five-whys.html)
+* [Why Asking the Right Questions Matters in Data Analytics](../2_data_driven_decisions/004-why-asking-the-right-questions-matters-in-data-analytics.html)
+* [Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making](019-case-studies-in-data-analysis-and-the-practical-impact-of-data-driven-decision-making.html)
+
+[Source article](https://insightful-data-lab.com/2023/07/30/analytical-thinking-and-questions-for-problem-solving/)
+
+Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)

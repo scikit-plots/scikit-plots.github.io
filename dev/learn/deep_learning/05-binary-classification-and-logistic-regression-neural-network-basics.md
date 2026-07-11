@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔵 Logistic Regression as a Neuron**** · Lesson 05 of 17 · **beginner**
 
-[◀ Previous · Geoffrey Hinton Interview](04-geoffrey-hinton-interview.html) · Next · Logistic Regression (Binary Classification Model) <06-logistic-regression-binary-classification-model> ▶
+[◀ Previous · Geoffrey Hinton Interview](04-geoffrey-hinton-interview.html) · [Next · Logistic Regression (Binary Classification Model) ▶](06-logistic-regression-binary-classification-model.html)
 
 ## The task[#](#the-task "Link to this heading")
 

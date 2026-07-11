@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 03 of 17 · **beginner**
 
-[◀ Previous · Supervised Learning and Neural Networks](02-supervised-learning-and-neural-networks.html) · Next · Geoffrey Hinton Interview <04-geoffrey-hinton-interview> ▶
+[◀ Previous · Supervised Learning and Neural Networks](02-supervised-learning-and-neural-networks.html) · [Next · Geoffrey Hinton Interview ▶](04-geoffrey-hinton-interview.html)
 
 ## An old idea, newly working[#](#an-old-idea-newly-working "Link to this heading")
 

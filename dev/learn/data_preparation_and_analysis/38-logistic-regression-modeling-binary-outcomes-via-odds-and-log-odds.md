@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 38 of 56 · **advanced**
 
-[◀ Previous · How Shapley Values Work](37-how-shapley-values-work.html) · Next · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data <39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data> ▶
+[◀ Previous · How Shapley Values Work](37-how-shapley-values-work.html) · [Next · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data ▶](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html)
 
 ## When the outcome is yes or no[#](#when-the-outcome-is-yes-or-no "Link to this heading")
 

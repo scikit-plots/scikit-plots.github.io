@@ -1,0 +1,62 @@
+# Regression coeﬃcients exchangeable in batches[#](#regression-coefficients-exchangeable-in-batches "Link to this heading")
+
+****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 099 of 144 · **advanced**
+
+[◀ Previous · Including numerical prior information](098-including-numerical-prior-information.html) · [Next · Example: forecasting U.S. presidential elections ▶](100-example-forecasting-u-s-presidential-elections.html)
+
+## Structure among the coefficients[#](#structure-among-the-coefficients "Link to this heading")
+
+Ordinary regression treats coefficients as unrelated unknowns, each with its own flat prior. Often they
+are not unrelated: a factor with many levels produces a ****batch**** of coefficients that are
+****exchangeable**** — the fifty state effects, the coefficients for twenty indicator categories, a set of
+interactions. Treating a batch as exchangeable means giving its members a ****common prior**** whose
+parameters are estimated, which is the hierarchical idea of Stage 5 applied inside a regression.
+
+## The model[#](#the-model "Link to this heading")
+
+Partition \(\beta\) into batches. Within batch \(b\), the coefficients share a distribution:
+
+\[\beta\_j \sim \mathrm{N}(\mu\_b, \tau\_b^2) \quad \text{for } j \in \text{batch } b,
+\qquad \tau\_b \sim \text{half-normal},\]
+
+with \(\tau\_b\) — the batch’s spread — ****inferred from the data****. This is exactly a varying-intercept
+model written in regression notation: each batch is a grouping factor, and \(\tau\_b\) controls how
+much its coefficients are ****pooled**** toward the batch mean.
+
+```
+import pymc as pm
+with pm.Model():
+    # fixed effects: their own weak priors
+    gamma = pm.Normal("gamma", 0, 5, shape=n_fixed)
+    # a batch of exchangeable coefficients: shared, inferred scale
+    tau = pm.HalfNormal("tau", 1)
+    z = pm.Normal("z", 0, 1, shape=n_batch)              # non-centred
+    beta = pm.Deterministic("beta", tau * z)             # pooled toward 0
+    mu = Xf @ gamma + Xb @ beta
+    pm.Normal("y", mu, pm.HalfNormal("s", 1), observed=y)
+
+```
+
+## What the pooling buys[#](#what-the-pooling-buys "Link to this heading")
+
+The batch scale \(\tau\_b\) is learned, so the amount of shrinkage is ****adaptive****, exactly as in
+Stage 5. A batch whose coefficients genuinely vary gets a large \(\tau\_b\) and little pooling; a
+batch indistinguishable from noise gets a small \(\tau\_b\) and is shrunk hard toward its mean. The
+data decide, per batch. This is far better than the two fixed alternatives: ****no pooling**** (ordinary
+indicators, \(\tau\_b = \infty\)) overfits when levels are many and data per level are thin, while
+****complete pooling**** (\(\tau\_b = 0\)) ignores real differences.
+
+## Where it appears[#](#where-it-appears "Link to this heading")
+
+The batched view organises much of applied modelling: the levels of every categorical predictor, the
+coefficients of a spline basis (Stage 15), the many interactions in a deep model, varying slopes across
+groups. Treating each such set as an exchangeable batch with its own variance is the unifying move of
+this stage — and the varying-intercept, varying-slope, and ANOVA lessons that follow are all special
+cases of it.
+
+> **See also**
+> ****Related lessons:**** [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Example: forecasting U.S. presidential elections](100-example-forecasting-u-s-presidential-elections.html) · [Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Analysis of variance and the batching of coeﬃcients](104-analysis-of-variance-and-the-batching-of-coefficients.html)
+
+****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/24/regression-coe%ef%ac%83cients-exchangeable-in-batches/>
+
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

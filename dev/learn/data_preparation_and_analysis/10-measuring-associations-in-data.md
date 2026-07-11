@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 10 of 56 · **beginner**
 
-[◀ Previous · Objective Selection of the Bin Width for a Time Histogram](09-objective-selection-of-the-bin-width-for-a-time-histogram.html) · Next · Measuring Associations Between Two Continuous Variables <11-measuring-associations-between-two-continuous-variables> ▶
+[◀ Previous · Objective Selection of the Bin Width for a Time Histogram](09-objective-selection-of-the-bin-width-for-a-time-histogram.html) · [Next · Measuring Associations Between Two Continuous Variables ▶](11-measuring-associations-between-two-continuous-variables.html)
 
 ## One idea, many measures[#](#one-idea-many-measures "Link to this heading")
 

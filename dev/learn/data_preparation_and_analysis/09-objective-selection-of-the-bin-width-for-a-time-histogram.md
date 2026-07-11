@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 09 of 56 · **beginner**
 
-[◀ Previous · Taxi Trips – 2022 dataset from the City of Chicago open data portal](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · Next · Measuring Associations in Data <10-measuring-associations-in-data> ▶
+[◀ Previous · Taxi Trips – 2022 dataset from the City of Chicago open data portal](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · [Next · Measuring Associations in Data ▶](10-measuring-associations-in-data.html)
 
 ## The bin-width problem[#](#the-bin-width-problem "Link to this heading")
 

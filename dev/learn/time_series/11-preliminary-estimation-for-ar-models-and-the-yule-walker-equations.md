@@ -2,7 +2,7 @@
 
 ****Stage 5 · 🧮 Estimation**** · Lesson 11 of 18 · **advanced**
 
-[◀ Previous · Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · Next · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE) <12-maximum-likelihood-estimation-for-arma-models-gaussian-mle> ▶
+[◀ Previous · Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [Next · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE) ▶](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html)
 
 ## The idea[#](#the-idea "Link to this heading")
 

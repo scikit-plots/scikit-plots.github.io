@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 25 of 56 · **intermediate**
 
-[◀ Previous · Linear Congruential Random Number Generator (LCG)](24-linear-congruential-random-number-generator-lcg.html) · Next · Putting Similar Observations into Clusters <26-putting-similar-observations-into-clusters> ▶
+[◀ Previous · Linear Congruential Random Number Generator (LCG)](24-linear-congruential-random-number-generator-lcg.html) · [Next · Putting Similar Observations into Clusters ▶](26-putting-similar-observations-into-clusters.html)
 
 ## The temptation to cheat[#](#the-temptation-to-cheat "Link to this heading")
 

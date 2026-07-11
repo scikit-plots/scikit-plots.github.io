@@ -28,7 +28,7 @@ A common way to assess a classifier’s performance is through its confusion mat
 4. ****Plot the Confusion Matrix****:
    Use [`plot_classifier_eval`](../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval "scikitplot.api.metrics.plot_classifier_eval") to visualize the confusion matrix.
 5. ****Display the Plot****:
-   Optionally, use [`show`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show "(in Matplotlib v3.12.0.dev324+g9cc14f1ab)") to display the plot.
+   Optionally, use [`show`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show "(in Matplotlib v3.12.0.dev348+gbde111fb4)") to display the plot.
 
 Here’s the code to illustrate the process:
 
@@ -93,7 +93,7 @@ Although Scikit-plot is loosely based around the scikit-learn interface, you don
 
 Try Deep Learning Models like [Tensorflow](https://www.tensorflow.org) or [Pytorch](https://pytorch.org) or [🤗 Transformers](https://huggingface.co/docs/transformers/index) etc.
 
-Here’s a quick example to generate the precision-recall curves of a [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") or [`Module`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.12)") or `TFPreTrainedModel` model on a sample dataset.
+Here’s a quick example to generate the precision-recall curves of a [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") or [`Module`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.13)") or `TFPreTrainedModel` model on a sample dataset.
 
 ```
 # introduction/quick_start_tf.py

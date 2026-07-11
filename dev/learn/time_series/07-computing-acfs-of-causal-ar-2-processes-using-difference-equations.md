@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 07 of 18 · **intermediate**
 
-[◀ Previous · Understanding ARMA Processes](06-understanding-arma-processes.html) · Next · Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q) <08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q> ▶
+[◀ Previous · Understanding ARMA Processes](06-understanding-arma-processes.html) · [Next · Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q) ▶](08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html)
 
 ## The recursion[#](#the-recursion "Link to this heading")
 

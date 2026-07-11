@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 16 of 17 · **intermediate**
 
-[◀ Previous · Vectorization in Logistic Regression](15-vectorization-in-logistic-regression.html) · Next · Vectorizing Logistic Regression <17-vectorizing-logistic-regression> ▶
+[◀ Previous · Vectorization in Logistic Regression](15-vectorization-in-logistic-regression.html) · [Next · Vectorizing Logistic Regression ▶](17-vectorizing-logistic-regression.html)
 
 ## Element-wise functions[#](#element-wise-functions "Link to this heading")
 

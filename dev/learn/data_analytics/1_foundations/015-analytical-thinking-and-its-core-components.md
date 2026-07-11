@@ -1,0 +1,64 @@
+# Analytical Thinking and Its Core Components[#](#analytical-thinking-and-its-core-components "Link to this heading")
+
+🌱 Foundations 🧠 Analytical Skills & Thinking Lesson 015
+
+◀ [Previous](014-applying-analytical-skills-in-a-business-context.html) · [Next](016-analytical-thinking-and-questions-for-problem-solving.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
+
+## From skills to a way of thinking[#](#from-skills-to-a-way-of-thinking "Link to this heading")
+
+The five skills describe **capacities**; ****analytical thinking**** describes the
+way of working that deploys them: identifying and defining a problem, then
+solving it using data in an organised, step-by-step manner. The standard
+framing again names ****five key aspects**** — and they double as a checklist for
+whether an analysis is actually thought through.
+
+## The five aspects[#](#the-five-aspects "Link to this heading")
+
+* ****Visualization.**** The graphical representation of information — graphs,
+  charts, maps. Its role in **thinking** (not just presenting) is that visuals
+  let you and others grasp structure faster than words: explaining the Grand
+  Canyon verbally is hard; showing a picture is instant. Analysts plot early,
+  not only at the end.
+* ****Strategy.**** With endless data available, strategic thinking keeps the work
+  focused: what exactly do we want to achieve, and how will this data get us
+  there? Strategy also improves the **quality** of what gets collected, because
+  data gathered with a goal is data worth keeping.
+* ****Problem-orientation.**** Keeping the problem front and centre through the
+  whole effort — every query, chart, and detour judged by whether it moves the
+  actual question forward. It is the antidote to interesting-but-irrelevant
+  rabbit holes.
+* ****Correlation.**** Noticing relationships: two things rising together, one
+  metric leading another, patterns across stores or seasons. Correlations are
+  where hypotheses come from — with the permanent caution that ****correlation is
+  not causation****; ice-cream sales and sunburns rise together because of
+  summer, not each other.
+* ****Big-picture and detail-oriented thinking.**** The jigsaw-puzzle pair: seeing
+  the image on the box **and** fitting individual pieces. Big-picture thinking
+  keeps the analysis relevant to the organisation’s goals; detail thinking
+  makes the plan executable — the specifics that turn an idea into steps.
+
+## The aspects work as a system[#](#the-aspects-work-as-a-system "Link to this heading")
+
+They interlock rather than stack: strategy and problem-orientation choose
+**what** to look at; visualization and correlation are **how** patterns get
+noticed; the big-picture/detail pair keeps zooming calibrated so neither the
+goal nor the specifics get lost. An analysis weak in one aspect usually shows
+it — a beautiful dashboard with no problem behind it, or a rigorous answer to a
+question nobody strategically needed.
+
+## The caveat[#](#the-caveat "Link to this heading")
+
+Analytical thinking is **slower** than intuition on purpose — its value is
+exactly the discipline of defining before solving. The skill to build is
+knowing when the stakes justify the full apparatus and when a quick, honest
+look suffices; the next lesson sharpens the apparatus into concrete questions.
+
+> **See also**
+> * [Analytical Skills and Their Core Components](013-analytical-skills-and-their-core-components.html)
+* [Analytical Thinking and Questions for Problem Solving](016-analytical-thinking-and-questions-for-problem-solving.html)
+* [Mathematical Thinking](../2_data_driven_decisions/010-mathematical-thinking.html)
+* [Data-Driven Decision-Making](003-data-driven-decision-making.html)
+
+[Source article](https://insightful-data-lab.com/2023/07/30/analytical-thinking-and-its-core-components/)
+
+Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)

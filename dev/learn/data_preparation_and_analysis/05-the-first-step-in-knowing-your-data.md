@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 05 of 56 · **beginner**
 
-[◀ Previous · Big Data: Definition, Characteristics, Evolution, and Business Impact](04-big-data-definition-characteristics-evolution-and-business-impact.html) · Next · IEEE 754 Floating-Point Standard <06-ieee-754-floating-point-standard> ▶
+[◀ Previous · Big Data: Definition, Characteristics, Evolution, and Business Impact](04-big-data-definition-characteristics-evolution-and-business-impact.html) · [Next · IEEE 754 Floating-Point Standard ▶](06-ieee-754-floating-point-standard.html)
 
 ## Look before you model[#](#look-before-you-model "Link to this heading")
 

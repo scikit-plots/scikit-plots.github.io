@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 17 of 18 · **advanced**
 
-[◀ Previous · SARIMA Models: Seasonal ARIMA](16-sarima-models-seasonal-arima.html) · Next · Exponential Smoothing Models <18-exponential-smoothing-models> ▶
+[◀ Previous · SARIMA Models: Seasonal ARIMA](16-sarima-models-seasonal-arima.html) · [Next · Exponential Smoothing Models ▶](18-exponential-smoothing-models.html)
 
 ## Forecasting further[#](#forecasting-further "Link to this heading")
 

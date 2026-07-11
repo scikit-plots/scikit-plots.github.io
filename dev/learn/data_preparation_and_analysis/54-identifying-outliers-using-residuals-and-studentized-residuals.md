@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 54 of 56 · **advanced**
 
-[◀ Previous · Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · Next · AUC–ROC Curve: Evaluating Classification Model Performance <55-auc-roc-curve-evaluating-classification-model-performance> ▶
+[◀ Previous · Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [Next · AUC–ROC Curve: Evaluating Classification Model Performance ▶](55-auc-roc-curve-evaluating-classification-model-performance.html)
 
 ## Evaluating regression fits[#](#evaluating-regression-fits "Link to this heading")
 

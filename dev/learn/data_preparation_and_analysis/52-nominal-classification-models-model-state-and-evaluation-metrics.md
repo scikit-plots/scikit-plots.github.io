@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 52 of 56 · **advanced**
 
-[◀ Previous · Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · Next · Binary Classification Model Evaluation and Threshold Optimization <53-binary-classification-model-evaluation-and-threshold-optimization> ▶
+[◀ Previous · Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [Next · Binary Classification Model Evaluation and Threshold Optimization ▶](53-binary-classification-model-evaluation-and-threshold-optimization.html)
 
 ## Beyond two classes[#](#beyond-two-classes "Link to this heading")
 

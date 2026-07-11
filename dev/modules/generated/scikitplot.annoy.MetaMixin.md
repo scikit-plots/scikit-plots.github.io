@@ -1,16 +1,16 @@
 # MetaMixin[#](#metamixin "Link to this heading")
 
-class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L128)[#](#scikitplot.annoy.MetaMixin "Link to this definition")
+class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L127)[#](#scikitplot.annoy.MetaMixin "Link to this definition")
 :   Mixin that exports and restores index metadata.
 
     The concrete class (or its backend) must implement:
 
-    * `get_params(deep: bool = ...) -> Mapping[str, Any]`
+    * `get_params(deep: bool = ...) -> Mapping[str, any]`
     * `set_params(**params) -> Self`
 
     Optional backend methods:
 
-    * `info() -> Mapping[str, Any] | None`
+    * `info() -> Mapping[str, any] | None`
 
     The concrete class must define:
 
@@ -22,21 +22,21 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
     the `params` mapping contains `on_disk_path`. This is a deterministic
     behavior controlled only by explicit fields.
 
-    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L426)[#](#scikitplot.annoy.MetaMixin.from_json "Link to this definition")
+    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L425)[#](#scikitplot.annoy.MetaMixin.from_json "Link to this definition")
     :   Load metadata from JSON and construct an index.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**os.PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
             * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   Self
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
 
-    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L257)[#](#scikitplot.annoy.MetaMixin.from_metadata "Link to this definition")
+    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L256)[#](#scikitplot.annoy.MetaMixin.from_metadata "Link to this definition")
     :   Construct an index from a metadata payload.
 
         Parameters:
-        :   ****metadata****Mapping[str, Any]
+        :   ****metadata****Mapping[str, any]
             :   Payload as produced by [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata").
 
             ****load****bool, default=True
@@ -61,11 +61,11 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
             :   If backend `set_params`/`load` are missing when required.
 
         Parameters:
-        :   * ****metadata**** (**Mapping****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
+        :   * ****metadata**** ([**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **any****]**)
             * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   Self
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
 
         > **See also**
         > [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata")
@@ -76,17 +76,17 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
 
         [`from_yaml`](#scikitplot.annoy.MetaMixin.from_yaml "scikitplot.annoy.MetaMixin.from_yaml")
 
-    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L460)[#](#scikitplot.annoy.MetaMixin.from_yaml "Link to this definition")
+    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L459)[#](#scikitplot.annoy.MetaMixin.from_yaml "Link to this definition")
     :   Load metadata from YAML and construct an index (requires PyYAML).
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**os.PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
             * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   Self
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
 
-    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L377)[#](#scikitplot.annoy.MetaMixin.to_json "Link to this definition")
+    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L376)[#](#scikitplot.annoy.MetaMixin.to_json "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata") to JSON.
 
         Parameters:
@@ -130,7 +130,7 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
 
         [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata")
 
-    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L154)[#](#scikitplot.annoy.MetaMixin.to_metadata "Link to this definition")
+    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L153)[#](#scikitplot.annoy.MetaMixin.to_metadata "Link to this definition")
     :   Export a serializable metadata payload.
 
         Parameters:
@@ -152,7 +152,7 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
             TypeError
             :   If `get_params` does not return a mapping.
 
-            AttributeError
+            TypeError
             :   If neither the instance nor the backend implements `get_params`.
 
             TypeError
@@ -171,7 +171,7 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
 
         [`to_yaml`](#scikitplot.annoy.MetaMixin.to_yaml "scikitplot.annoy.MetaMixin.to_yaml")
 
-    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/annoy/_mixins/_meta.py#L439)[#](#scikitplot.annoy.MetaMixin.to_yaml "Link to this definition")
+    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/annoy/_mixins/_meta.py#L438)[#](#scikitplot.annoy.MetaMixin.to_yaml "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata") to YAML (requires PyYAML).
 
         Parameters:

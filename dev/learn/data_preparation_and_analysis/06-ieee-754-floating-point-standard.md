@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 06 of 56 · **beginner**
 
-[◀ Previous · The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · Next · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022) <07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022> ▶
+[◀ Previous · The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Next · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022) ▶](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html)
 
 ## Storing real numbers[#](#storing-real-numbers "Link to this heading")
 

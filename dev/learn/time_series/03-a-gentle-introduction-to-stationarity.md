@@ -2,7 +2,7 @@
 
 ****Stage 2 · 📐 Stationarity**** · Lesson 03 of 18 · **beginner**
 
-[◀ Previous · Getting Started with R](02-getting-started-with-r.html) · Next · Weak and Strong Stationarity <04-weak-and-strong-stationarity> ▶
+[◀ Previous · Getting Started with R](02-getting-started-with-r.html) · [Next · Weak and Strong Stationarity ▶](04-weak-and-strong-stationarity.html)
 
 ## What it is[#](#what-it-is "Link to this heading")
 

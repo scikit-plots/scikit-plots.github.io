@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 01 of 17 · **beginner**
 
-Next · Supervised Learning and Neural Networks <02-supervised-learning-and-neural-networks> ▶
+[Next · Supervised Learning and Neural Networks ▶](02-supervised-learning-and-neural-networks.html)
 
 ## A single neuron[#](#a-single-neuron "Link to this heading")
 

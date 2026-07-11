@@ -1,6 +1,6 @@
 # PipelineHooks[#](#pipelinehooks "Link to this heading")
 
-class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_hook=None**, **post\_filter\_hook=None**, **post\_embed\_hook=None**, **pre\_export\_hook=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_custom_hooks.py#L864)[#](#scikitplot.corpus.PipelineHooks "Link to this definition")
+class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_hook=None**, **post\_filter\_hook=None**, **post\_embed\_hook=None**, **pre\_export\_hook=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_custom_hooks.py#L864)[#](#scikitplot.corpus.PipelineHooks "Link to this definition")
 :   Lifecycle callbacks for [`HookableCorpusPipeline`](scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline "scikitplot.corpus.HookableCorpusPipeline").
 
     Every hook is optional (`None` = no-op). Hooks are called in the order
@@ -97,8 +97,9 @@ class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_ho
 
     hooks = PipelineHooks(
         pre_read_hook=lambda src: print(f"Starting: {src}"),
-        post_read_hook=lambda src, docs: log_read(src, docs)
-        or keep_research(src, docs),
+        post_read_hook=lambda src, docs: (
+            log_read(src, docs) or keep_research(src, docs)
+        ),
     )
     pipeline = HookableCorpusPipeline(hooks=hooks)
 

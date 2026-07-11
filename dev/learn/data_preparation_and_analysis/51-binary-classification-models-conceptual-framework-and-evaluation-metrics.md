@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 51 of 56 · **advanced**
 
-[◀ Previous · Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · Next · Nominal Classification Models: Model State and Evaluation Metrics <52-nominal-classification-models-model-state-and-evaluation-metrics> ▶
+[◀ Previous · Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Next · Nominal Classification Models: Model State and Evaluation Metrics ▶](52-nominal-classification-models-model-state-and-evaluation-metrics.html)
 
 ## Four kinds of outcome[#](#four-kinds-of-outcome "Link to this heading")
 

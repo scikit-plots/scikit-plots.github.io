@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 11 of 17 · **intermediate**
 
-[◀ Previous · More Derivative Examples](10-more-derivative-examples.html) · Next · Derivatives with a Computation Graph <12-derivatives-with-a-computation-graph> ▶
+[◀ Previous · More Derivative Examples](10-more-derivative-examples.html) · [Next · Derivatives with a Computation Graph ▶](12-derivatives-with-a-computation-graph.html)
 
 ## Breaking it into steps[#](#breaking-it-into-steps "Link to this heading")
 

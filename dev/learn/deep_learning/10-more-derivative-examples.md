@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 10 of 17 · **intermediate**
 
-[◀ Previous · Derivatives](09-derivatives.html) · Next · Computation Graph <11-computation-graph> ▶
+[◀ Previous · Derivatives](09-derivatives.html) · [Next · Computation Graph ▶](11-computation-graph.html)
 
 ## When the slope changes[#](#when-the-slope-changes "Link to this heading")
 

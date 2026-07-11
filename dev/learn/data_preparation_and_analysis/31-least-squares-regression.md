@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 31 of 56 · **intermediate**
 
-[◀ Previous · Creating Segments of Observations for Business Reasons (RFM)](30-creating-segments-of-observations-for-business-reasons-rfm.html) · Next · Multiple Linear Regression <32-multiple-linear-regression> ▶
+[◀ Previous · Creating Segments of Observations for Business Reasons (RFM)](30-creating-segments-of-observations-for-business-reasons-rfm.html) · [Next · Multiple Linear Regression ▶](32-multiple-linear-regression.html)
 
 ## Fitting a line[#](#fitting-a-line "Link to this heading")
 

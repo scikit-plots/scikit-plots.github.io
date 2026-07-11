@@ -125,8 +125,8 @@ def scaled_copy(double[:] x, double a):
 
 ```
 ```
-Build key: 430e3ed335a36e9fe129fdd91579ecad80968741cb6667c29d8d6cbb0f4bec37
-Artifact : /home/circleci/.cache/scikitplot/cython/430e3ed335a36e9fe129fdd91579ecad80968741cb6667c29d8d6cbb0f4bec37/memview_scale_demo.cpython-312-x86_64-linux-gnu.so
+Build key: a913df15a248c8ec3a3bdd283726007bb5607924496b2f6d784c7c6ec7fddfbe
+Artifact : /home/circleci/.cache/scikitplot/cython/a913df15a248c8ec3a3bdd283726007bb5607924496b2f6d784c7c6ec7fddfbe/memview_scale_demo.cpython-312-x86_64-linux-gnu.so
 
 Input type: array
 Typecode   : d
@@ -143,7 +143,7 @@ As expected, scale rejected array('f'):
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.130 seconds)
+****Total running time of the script:**** (0 minutes 1.749 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_08_vector_ops_without_numpy.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_08_vector_ops_without_numpy.ipynb)
 

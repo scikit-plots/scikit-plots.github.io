@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧭 Orientation**** · Lesson 01 of 18 · **beginner**
 
-Next · Getting Started with R <02-getting-started-with-r> ▶
+[Next · Getting Started with R ▶](02-getting-started-with-r.html)
 
 ## What it is[#](#what-it-is "Link to this heading")
 

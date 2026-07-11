@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 16 of 56 · **beginner**
 
-[◀ Previous · What Are Statistical Tests?](15-what-are-statistical-tests.html) · Next · Understanding Market Baskets and Ideal Customers <17-understanding-market-baskets-and-ideal-customers> ▶
+[◀ Previous · What Are Statistical Tests?](15-what-are-statistical-tests.html) · [Next · Understanding Market Baskets and Ideal Customers ▶](17-understanding-market-baskets-and-ideal-customers.html)
 
 ## How big, not just whether[#](#how-big-not-just-whether "Link to this heading")
 

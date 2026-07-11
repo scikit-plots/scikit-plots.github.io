@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 37 of 56 · **intermediate**
 
-[◀ Previous · Understanding Forward and Backward Stepwise Regression](36-understanding-forward-and-backward-stepwise-regression.html) · Next · Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds <38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds> ▶
+[◀ Previous · Understanding Forward and Backward Stepwise Regression](36-understanding-forward-and-backward-stepwise-regression.html) · [Next · Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds ▶](38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds.html)
 
 ## A fair division problem[#](#a-fair-division-problem "Link to this heading")
 

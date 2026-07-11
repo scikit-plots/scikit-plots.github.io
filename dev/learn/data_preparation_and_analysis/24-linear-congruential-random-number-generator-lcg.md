@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 24 of 56 · **intermediate**
 
-[◀ Previous · Stratified Random Sampling](23-stratified-random-sampling.html) · Next · Partitioning Observations to Train Objective Models <25-partitioning-observations-to-train-objective-models> ▶
+[◀ Previous · Stratified Random Sampling](23-stratified-random-sampling.html) · [Next · Partitioning Observations to Train Objective Models ▶](25-partitioning-observations-to-train-objective-models.html)
 
 ## Randomness you can repeat[#](#randomness-you-can-repeat "Link to this heading")
 

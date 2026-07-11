@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 14 of 18 · **advanced**
 
-[◀ Previous · Diagnostics After Fitting a Time Series Model](13-diagnostics-after-fitting-a-time-series-model.html) · Next · ARIMA Models: How Nonstationary Models Are Built from Stationary Ones <15-arima-models-how-nonstationary-models-are-built-from-stationary-ones> ▶
+[◀ Previous · Diagnostics After Fitting a Time Series Model](13-diagnostics-after-fitting-a-time-series-model.html) · [Next · ARIMA Models: How Nonstationary Models Are Built from Stationary Ones ▶](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html)
 
 ## The trade-off[#](#the-trade-off "Link to this heading")
 

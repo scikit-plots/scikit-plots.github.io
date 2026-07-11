@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 41 of 56 · **advanced**
 
-[◀ Previous · Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · Next · Forward Selection with Nested Models and Deviance Tests <42-forward-selection-with-nested-models-and-deviance-tests> ▶
+[◀ Previous · Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Next · Forward Selection with Nested Models and Deviance Tests ▶](42-forward-selection-with-nested-models-and-deviance-tests.html)
 
 ## When the fit blows up[#](#when-the-fit-blows-up "Link to this heading")
 

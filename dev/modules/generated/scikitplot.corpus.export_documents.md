@@ -1,6 +1,6 @@
 # export\_documents[#](#export-documents "Link to this heading")
 
-scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_export/_export.py#L143)[#](#scikitplot.corpus.export_documents "Link to this definition")
+scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_export/_export.py#L143)[#](#scikitplot.corpus.export_documents "Link to this definition")
 :   Export a list of documents to `output_path` in the given format.
 
     Parameters:

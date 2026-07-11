@@ -1,6 +1,6 @@
 # YouTubeReader[#](#youtubereader "Link to this heading")
 
-class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **preferred\_language=None**, **include\_auto\_generated=True**, **merge\_short\_cues=True**, **min\_cue\_chars=20**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader "Link to this definition")
+class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **preferred\_language=None**, **include\_auto\_generated=True**, **merge\_short\_cues=True**, **min\_cue\_chars=20**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader "Link to this definition")
 :   Extract the transcript of a YouTube video using `youtube-transcript-api`.
 
     Tries to retrieve manually-created captions first (preferred — often
@@ -118,7 +118,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_base.py#L1531)[#](#scikitplot.corpus.YouTubeReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L1531)[#](#scikitplot.corpus.YouTubeReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -340,7 +340,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.YouTubeReader.custom_extractor "scikitplot.corpus.YouTubeReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -363,7 +363,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     property file\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.YouTubeReader.file_name "Link to this definition")
     :   Return the URL as the effective file name.
 
-    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.file_type "Link to this definition")
+    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
         dot). E.g. `".txt"`, `".xml"`, `".zip"`.
 
@@ -386,7 +386,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.YouTubeReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_base.py#L1848)[#](#scikitplot.corpus.YouTubeReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L1848)[#](#scikitplot.corpus.YouTubeReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -513,7 +513,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_base.py#L2044)[#](#scikitplot.corpus.YouTubeReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L2044)[#](#scikitplot.corpus.YouTubeReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -614,7 +614,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.YouTubeReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.YouTubeReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -659,7 +659,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L784)[#](#scikitplot.corpus.YouTubeReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L784)[#](#scikitplot.corpus.YouTubeReader.get_raw_chunks "Link to this definition")
     :   Fetch the YouTube transcript and yield one chunk per cue.
 
         Yields:
@@ -710,7 +710,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     include\_auto\_generated: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.YouTubeReader.include_auto_generated "Link to this definition")
     :   Accept auto-generated captions as fallback.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -727,7 +727,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     preferred\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.YouTubeReader.preferred_language "Link to this definition")
     :   ISO 639-1 language code for the preferred transcript track.
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L618)[#](#scikitplot.corpus.YouTubeReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -754,7 +754,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.YouTubeReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.YouTubeReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -776,7 +776,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_base.py#L1402)[#](#scikitplot.corpus.YouTubeReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L1402)[#](#scikitplot.corpus.YouTubeReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -797,7 +797,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_readers/_web.py#L741)[#](#scikitplot.corpus.YouTubeReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_readers/_web.py#L741)[#](#scikitplot.corpus.YouTubeReader.validate_input "Link to this definition")
     :   Validate that the source URI is a recognisable YouTube URL.
 
         Raises:

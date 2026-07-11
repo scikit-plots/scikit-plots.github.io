@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 01 of 56 · **beginner**
 
-Next · The Process of Data Analysis <02-the-process-of-data-analysis> ▶
+[Next · The Process of Data Analysis ▶](02-the-process-of-data-analysis.html)
 
 ## From data to decisions[#](#from-data-to-decisions "Link to this heading")
 

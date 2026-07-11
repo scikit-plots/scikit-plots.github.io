@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 48 of 56 · **advanced**
 
-[◀ Previous · How CART Decision Trees Model Interactions](47-how-cart-decision-trees-model-interactions.html) · Next · Using Decision Trees to Explain Clustering Results <49-using-decision-trees-to-explain-clustering-results> ▶
+[◀ Previous · How CART Decision Trees Model Interactions](47-how-cart-decision-trees-model-interactions.html) · [Next · Using Decision Trees to Explain Clustering Results ▶](49-using-decision-trees-to-explain-clustering-results.html)
 
 ## Clusters without descriptions[#](#clusters-without-descriptions "Link to this heading")
 

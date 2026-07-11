@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 15 of 18 · **advanced**
 
-[◀ Previous · Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · Next · SARIMA Models: Seasonal ARIMA <16-sarima-models-seasonal-arima> ▶
+[◀ Previous · Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · [Next · SARIMA Models: Seasonal ARIMA ▶](16-sarima-models-seasonal-arima.html)
 
 ## The core idea[#](#the-core-idea "Link to this heading")
 

@@ -1,6 +1,6 @@
 # ServerConfig[#](#serverconfig "Link to this heading")
 
-class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto\_host\_in\_docker=False**, **docker\_host='0.0.0.0'**, **workers=None**, **backend\_store\_uri=None**, **registry\_store\_uri=None**, **default\_artifact\_root=None**, **serve\_artifacts=False**, **no\_serve\_artifacts=False**, **artifacts\_destination=None**, **artifacts\_only=False**, **allowed\_hosts=None**, **cors\_allowed\_origins=None**, **x\_frame\_options=None**, **disable\_security\_middleware=False**, **static\_prefix=None**, **uvicorn\_opts=None**, **gunicorn\_opts=None**, **waitress\_opts=None**, **expose\_prometheus=None**, **app\_name=None**, **dev=False**, **secrets\_cache\_ttl=None**, **secrets\_cache\_max\_size=None**, **strict\_cli\_compat=True**, **extra\_args=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/mlflow/_config.py#L125)[#](#scikitplot.mlflow.ServerConfig "Link to this definition")
+class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto\_host\_in\_docker=False**, **docker\_host='0.0.0.0'**, **workers=None**, **backend\_store\_uri=None**, **registry\_store\_uri=None**, **default\_artifact\_root=None**, **serve\_artifacts=False**, **no\_serve\_artifacts=False**, **artifacts\_destination=None**, **artifacts\_only=False**, **allowed\_hosts=None**, **cors\_allowed\_origins=None**, **x\_frame\_options=None**, **disable\_security\_middleware=False**, **static\_prefix=None**, **uvicorn\_opts=None**, **gunicorn\_opts=None**, **waitress\_opts=None**, **expose\_prometheus=None**, **app\_name=None**, **dev=False**, **secrets\_cache\_ttl=None**, **secrets\_cache\_max\_size=None**, **strict\_cli\_compat=True**, **extra\_args=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/mlflow/_config.py#L125)[#](#scikitplot.mlflow.ServerConfig "Link to this definition")
 :   Configuration that maps directly to `mlflow server` CLI flags.
 
     Parameters:
@@ -170,7 +170,7 @@ class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto
 
     uvicorn\_opts: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.uvicorn_opts "Link to this definition")
 
-    validate(**\***, **for\_managed\_tracking**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/mlflow/_config.py#L239)[#](#scikitplot.mlflow.ServerConfig.validate "Link to this definition")
+    validate(**\***, **for\_managed\_tracking**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/mlflow/_config.py#L239)[#](#scikitplot.mlflow.ServerConfig.validate "Link to this definition")
     :   Validate configuration against generic MLflow constraints.
 
         Parameters:

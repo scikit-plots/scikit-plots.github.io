@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 18 of 56 · **intermediate**
 
-[◀ Previous · Understanding Market Baskets and Ideal Customers](17-understanding-market-baskets-and-ideal-customers.html) · Next · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach <19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach> ▶
+[◀ Previous · Understanding Market Baskets and Ideal Customers](17-understanding-market-baskets-and-ideal-customers.html) · [Next · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach ▶](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html)
 
 ## If this, then that[#](#if-this-then-that "Link to this heading")
 

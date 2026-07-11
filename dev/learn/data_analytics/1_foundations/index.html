@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="🌱 Foundations" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/1_foundations/index.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="Section 1 of the Data Analytics hub — 27 of 27 lessons. The case for data, the analysis process and data life cycle, analytical thinking, and the core tools of the trade. ↑ Back to the Data Analyti..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="Section 1 of the Data Analytics hub — 27 of 27 lessons. The case for data, the analysis process and data life cycle, analytical thinking, and the core tools of the trade. ↑ Back to the Data Analyti..." />
+
+<script>
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+</script>
+
+<script>
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:34:39Z"}};
+window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
+</script>
+
+    <title>🌱 Foundations &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/ai-assistant.css?v=6ecd9b07" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/ai-assistant.js?v=4fba141c"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/data_analytics/1_foundations/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/learn/data_analytics/1_foundations/index.html" />
+    <link rel="icon" href="../../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+  
+  
+  
+
+  
+  
+  
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">🌱 Foundations</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="foundations">
+<span id="da-foundations-index"></span><h1>🌱 Foundations<a class="headerlink" href="#foundations" title="Link to this heading">#</a></h1>
+<p><em>Section 1 of the Data Analytics hub — 27 of 27 lessons.</em></p>
+<p>The case for data, the analysis process and data life cycle, analytical thinking, and the core tools of the trade.</p>
+<p><a class="reference internal" href="../index.html"><span class="doc">↑ Back to the Data Analytics hub</span></a></p>
+<input type="text" id="term-filter" placeholder="🔍 Filter this section by title or keyword…"
+       style="width:100%;padding:.6em .8em;margin:.4em 0 1em;font-size:1em;
+              border:1px solid var(--pst-color-border,#ccc);border-radius:6px;box-sizing:border-box;">
+<div id="term-filter-count" style="margin:-.6em 0 1em;font-size:.85em;opacity:.7;"></div>
+<script>
+(function(){
+  var box=document.getElementById('term-filter');
+  if(!box)return;
+  var count=document.getElementById('term-filter-count');
+  function norm(s){return (s||'').toLowerCase();}
+  function run(){
+    var q=norm(box.value), shown=0, total=0;
+    document.querySelectorAll('.da-row').forEach(function(row){
+      total++;
+      var hit=q===''||norm(row.getAttribute('data-k')).indexOf(q)>=0;
+      row.style.display=hit?'':'none';
+      if(hit)shown++;
+    });
+    document.querySelectorAll('details.sd-dropdown, details.term-az').forEach(function(d){
+      var any=d.querySelectorAll('.da-row:not([style*="none"])').length>0;
+      d.style.display=any?'':'none';
+      if(q!==''&&any)d.setAttribute('open','');
+    });
+    count.textContent=q===''?'':(shown+' of '+total+' match');
+  }
+  box.addEventListener('input',run);
+})();
+</script><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="🌟-why-data-analytics">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">🌟 Why Data Analytics<a class="headerlink" href="#🌟-why-data-analytics" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Why data matters today and how it reshapes work and decision-making.</p>
+<div class="da-row" data-k="Why Data Analytics Matters Today why organisations that decide with data outperform those that decide by instinct"><a href="001-why-data-analytics-matters-today.html">001 · Why Data Analytics Matters Today — why organisations that decide with data outperform those that decide by instinct</a></div>
+<div class="da-row" data-k="How Data Analytics Improves the Workplace where analytics pays off day to day: operations, decisions, and shared facts"><a href="002-how-data-analytics-improves-the-workplace.html">002 · How Data Analytics Improves the Workplace — where analytics pays off day to day: operations, decisions, and shared facts</a></div>
+<div class="da-row" data-k="Data-Driven Decision-Making the loop from question to data to decision, and the evidence it works"><a href="003-data-driven-decision-making.html">003 · Data-Driven Decision-Making — the loop from question to data to decision, and the evidence it works</a></div>
+<div class="da-row" data-k="Detectives and Data Analysts the investigator's mindset: questions, evidence, and conclusions that hold up"><a href="004-detectives-and-data-analysts.html">004 · Detectives and Data Analysts — the investigator's mindset: questions, evidence, and conclusions that hold up</a></div></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="🔄-the-analysis-process-&amp;-data-life-cycle">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">🔄 The Analysis Process &amp; Data Life Cycle<a class="headerlink" href="#🔄-the-analysis-process-&-data-life-cycle" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The six phases of analysis and the life cycle data moves through.</p>
+<div class="da-row" data-k="The Six Phases of the Data Analysis Process ask, prepare, process, analyze, share, act — the map for every project in this course"><a href="005-the-six-phases-of-the-data-analysis-process.html">005 · The Six Phases of the Data Analysis Process — ask, prepare, process, analyze, share, act — the map for every project in this course</a></div>
+<div class="da-row" data-k="The Origins of Data Analysis and the Many Ways to Structure It from early statistics to EDA and CRISP-DM: one process, many framings"><a href="006-the-origins-of-data-analysis-and-the-many-ways-to-structure-it.html">006 · The Origins of Data Analysis and the Many Ways to Structure It — from early statistics to EDA and CRISP-DM: one process, many framings</a></div>
+<div class="da-row" data-k="Understanding the Data Ecosystem the interlocking pieces — sources, storage, tools, people — data moves through"><a href="007-understanding-the-data-ecosystem.html">007 · Understanding the Data Ecosystem — the interlocking pieces — sources, storage, tools, people — data moves through</a></div>
+<div class="da-row" data-k="Understanding the Data Analysis Process and the Data Life Cycle two different journeys: what the analyst does vs. what happens to the data"><a href="008-understanding-the-data-analysis-process-and-the-data-life-cycle.html">008 · Understanding the Data Analysis Process and the Data Life Cycle — two different journeys: what the analyst does vs. what happens to the data</a></div>
+<div class="da-row" data-k="Understanding the Data Life Cycle plan, capture, manage, analyze, archive, destroy — the data's own biography"><a href="009-understanding-the-data-life-cycle.html">009 · Understanding the Data Life Cycle — plan, capture, manage, analyze, archive, destroy — the data's own biography</a></div>
+<div class="da-row" data-k="A Review of the Six Stages of the Data Life Cycle the six stages consolidated, with what can go wrong at each"><a href="010-a-review-of-the-six-stages-of-the-data-life-cycle.html">010 · A Review of the Six Stages of the Data Life Cycle — the six stages consolidated, with what can go wrong at each</a></div>
+<div class="da-row" data-k="The Stages of the Data Analysis Process and Their Roles what each analysis phase contributes, and what it hands to the next"><a href="011-the-stages-of-the-data-analysis-process-and-their-roles.html">011 · The Stages of the Data Analysis Process and Their Roles — what each analysis phase contributes, and what it hands to the next</a></div>
+<div class="da-row" data-k="Practical Application of the Data Analysis Process the six phases run end-to-end on a real-shaped business case"><a href="012-practical-application-of-the-data-analysis-process.html">012 · Practical Application of the Data Analysis Process — the six phases run end-to-end on a real-shaped business case</a></div></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="🧠-analytical-skills-&amp;-thinking">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">🧠 Analytical Skills &amp; Thinking<a class="headerlink" href="#🧠-analytical-skills-&-thinking" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Analytical skills, structured questioning, and root-cause methods.</p>
+<div class="da-row" data-k="Analytical Skills and Their Core Components the five skills — curiosity, context, technical mindset, data design, data strategy"><a href="013-analytical-skills-and-their-core-components.html">013 · Analytical Skills and Their Core Components — the five skills — curiosity, context, technical mindset, data design, data strategy</a></div>
+<div class="da-row" data-k="Applying Analytical Skills in a Business Context the five skills at work on a real business problem, phase by phase"><a href="014-applying-analytical-skills-in-a-business-context.html">014 · Applying Analytical Skills in a Business Context — the five skills at work on a real business problem, phase by phase</a></div>
+<div class="da-row" data-k="Analytical Thinking and Its Core Components the five aspects — visualization, strategy, problem-orientation, correlation, big picture + detail"><a href="015-analytical-thinking-and-its-core-components.html">015 · Analytical Thinking and Its Core Components — the five aspects — visualization, strategy, problem-orientation, correlation, big picture + detail</a></div>
+<div class="da-row" data-k="Analytical Thinking and Questions for Problem Solving turning the aspects into questions: root causes, gaps, and the unconsidered"><a href="016-analytical-thinking-and-questions-for-problem-solving.html">016 · Analytical Thinking and Questions for Problem Solving — turning the aspects into questions: root causes, gaps, and the unconsidered</a></div>
+<div class="da-row" data-k="Root Cause Analysis and Business Applications of the Five Whys "><a href="017-root-cause-analysis-and-business-applications-of-the-five-whys.html">017 · Root Cause Analysis and Business Applications of the Five Whys</a></div>
+<div class="da-row" data-k="Data-Driven Decision-Making and the Role of Analytical Skills "><a href="018-data-driven-decision-making-and-the-role-of-analytical-skills.html">018 · Data-Driven Decision-Making and the Role of Analytical Skills</a></div>
+<div class="da-row" data-k="Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making "><a href="019-case-studies-in-data-analysis-and-the-practical-impact-of-data-driven-decision-making.html">019 · Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making</a></div></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="🧰-tools,-applications-&amp;-ethics">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">🧰 Tools, Applications &amp; Ethics<a class="headerlink" href="#🧰-tools,-applications-&-ethics" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Spreadsheets, SQL, visualization, industry uses, and fairness.</p>
+<div class="da-row" data-k="Overview of Core Tools Used by Data Analysts "><a href="020-overview-of-core-tools-used-by-data-analysts.html">020 · Overview of Core Tools Used by Data Analysts</a></div>
+<div class="da-row" data-k="The Role of Spreadsheets in Data Analysis and Basic Concepts "><a href="021-the-role-of-spreadsheets-in-data-analysis-and-basic-concepts.html">021 · The Role of Spreadsheets in Data Analysis and Basic Concepts</a></div>
+<div class="da-row" data-k="The Concept and Basic Use of SQL (Query Language) "><a href="022-the-concept-and-basic-use-of-sql-query-language.html">022 · The Concept and Basic Use of SQL (Query Language)</a></div>
+<div class="da-row" data-k="The Role and Importance of Data Visualization "><a href="023-the-role-and-importance-of-data-visualization.html">023 · The Role and Importance of Data Visualization</a></div>
+<div class="da-row" data-k="Industries Where Data Analysts Work and How Data Is Used "><a href="024-industries-where-data-analysts-work-and-how-data-is-used.html">024 · Industries Where Data Analysts Work and How Data Is Used</a></div>
+<div class="da-row" data-k="The Role of Business Tasks in Data Analysis "><a href="025-the-role-of-business-tasks-in-data-analysis.html">025 · The Role of Business Tasks in Data Analysis</a></div>
+<div class="da-row" data-k="Fairness in Data Analysis "><a href="026-fairness-in-data-analysis.html">026 · Fairness in Data Analysis</a></div>
+<div class="da-row" data-k="Key Factors to Consider When Choosing a Data Analytics Role "><a href="027-key-factors-to-consider-when-choosing-a-data-analytics-role.html">027 · Key Factors to Consider When Choosing a Data Analytics Role</a></div></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 term-az" id="🔠-a–z-index">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">🔠 A–Z index<a class="headerlink" href="#🔠-a–z-index" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="da-row" data-k="A Review of the Six Stages of the Data Life Cycle"><a href="010-a-review-of-the-six-stages-of-the-data-life-cycle.html">A Review of the Six Stages of the Data Life Cycle</a></div>
+<div class="da-row" data-k="Analytical Skills and Their Core Components"><a href="013-analytical-skills-and-their-core-components.html">Analytical Skills and Their Core Components</a></div>
+<div class="da-row" data-k="Analytical Thinking and Its Core Components"><a href="015-analytical-thinking-and-its-core-components.html">Analytical Thinking and Its Core Components</a></div>
+<div class="da-row" data-k="Analytical Thinking and Questions for Problem Solving"><a href="016-analytical-thinking-and-questions-for-problem-solving.html">Analytical Thinking and Questions for Problem Solving</a></div>
+<div class="da-row" data-k="Applying Analytical Skills in a Business Context"><a href="014-applying-analytical-skills-in-a-business-context.html">Applying Analytical Skills in a Business Context</a></div>
+<div class="da-row" data-k="Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making"><a href="019-case-studies-in-data-analysis-and-the-practical-impact-of-data-driven-decision-making.html">Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making</a></div>
+<div class="da-row" data-k="Data-Driven Decision-Making"><a href="003-data-driven-decision-making.html">Data-Driven Decision-Making</a></div>
+<div class="da-row" data-k="Data-Driven Decision-Making and the Role of Analytical Skills"><a href="018-data-driven-decision-making-and-the-role-of-analytical-skills.html">Data-Driven Decision-Making and the Role of Analytical Skills</a></div>
+<div class="da-row" data-k="Detectives and Data Analysts"><a href="004-detectives-and-data-analysts.html">Detectives and Data Analysts</a></div>
+<div class="da-row" data-k="Fairness in Data Analysis"><a href="026-fairness-in-data-analysis.html">Fairness in Data Analysis</a></div>
+<div class="da-row" data-k="How Data Analytics Improves the Workplace"><a href="002-how-data-analytics-improves-the-workplace.html">How Data Analytics Improves the Workplace</a></div>
+<div class="da-row" data-k="Industries Where Data Analysts Work and How Data Is Used"><a href="024-industries-where-data-analysts-work-and-how-data-is-used.html">Industries Where Data Analysts Work and How Data Is Used</a></div>
+<div class="da-row" data-k="Key Factors to Consider When Choosing a Data Analytics Role"><a href="027-key-factors-to-consider-when-choosing-a-data-analytics-role.html">Key Factors to Consider When Choosing a Data Analytics Role</a></div>
+<div class="da-row" data-k="Overview of Core Tools Used by Data Analysts"><a href="020-overview-of-core-tools-used-by-data-analysts.html">Overview of Core Tools Used by Data Analysts</a></div>
+<div class="da-row" data-k="Practical Application of the Data Analysis Process"><a href="012-practical-application-of-the-data-analysis-process.html">Practical Application of the Data Analysis Process</a></div>
+<div class="da-row" data-k="Root Cause Analysis and Business Applications of the Five Whys"><a href="017-root-cause-analysis-and-business-applications-of-the-five-whys.html">Root Cause Analysis and Business Applications of the Five Whys</a></div>
+<div class="da-row" data-k="The Concept and Basic Use of SQL (Query Language)"><a href="022-the-concept-and-basic-use-of-sql-query-language.html">The Concept and Basic Use of SQL (Query Language)</a></div>
+<div class="da-row" data-k="The Origins of Data Analysis and the Many Ways to Structure It"><a href="006-the-origins-of-data-analysis-and-the-many-ways-to-structure-it.html">The Origins of Data Analysis and the Many Ways to Structure It</a></div>
+<div class="da-row" data-k="The Role and Importance of Data Visualization"><a href="023-the-role-and-importance-of-data-visualization.html">The Role and Importance of Data Visualization</a></div>
+<div class="da-row" data-k="The Role of Business Tasks in Data Analysis"><a href="025-the-role-of-business-tasks-in-data-analysis.html">The Role of Business Tasks in Data Analysis</a></div>
+<div class="da-row" data-k="The Role of Spreadsheets in Data Analysis and Basic Concepts"><a href="021-the-role-of-spreadsheets-in-data-analysis-and-basic-concepts.html">The Role of Spreadsheets in Data Analysis and Basic Concepts</a></div>
+<div class="da-row" data-k="The Six Phases of the Data Analysis Process"><a href="005-the-six-phases-of-the-data-analysis-process.html">The Six Phases of the Data Analysis Process</a></div>
+<div class="da-row" data-k="The Stages of the Data Analysis Process and Their Roles"><a href="011-the-stages-of-the-data-analysis-process-and-their-roles.html">The Stages of the Data Analysis Process and Their Roles</a></div>
+<div class="da-row" data-k="Understanding the Data Analysis Process and the Data Life Cycle"><a href="008-understanding-the-data-analysis-process-and-the-data-life-cycle.html">Understanding the Data Analysis Process and the Data Life Cycle</a></div>
+<div class="da-row" data-k="Understanding the Data Ecosystem"><a href="007-understanding-the-data-ecosystem.html">Understanding the Data Ecosystem</a></div>
+<div class="da-row" data-k="Understanding the Data Life Cycle"><a href="009-understanding-the-data-life-cycle.html">Understanding the Data Life Cycle</a></div>
+<div class="da-row" data-k="Why Data Analytics Matters Today"><a href="001-why-data-analytics-matters-today.html">Why Data Analytics Matters Today</a></div></div>
+</details></section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/learn/data_analytics/1_foundations/index.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/learn/data_analytics/1_foundations/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+
+  
+  
+  
+
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 35 of 56 · **intermediate**
 
-[◀ Previous · Forward Selection: Definition and Core Idea](34-forward-selection-definition-and-core-idea.html) · Next · Understanding Forward and Backward Stepwise Regression <36-understanding-forward-and-backward-stepwise-regression> ▶
+[◀ Previous · Forward Selection: Definition and Core Idea](34-forward-selection-definition-and-core-idea.html) · [Next · Understanding Forward and Backward Stepwise Regression ▶](36-understanding-forward-and-backward-stepwise-regression.html)
 
 ## Building the model[#](#building-the-model "Link to this heading")
 

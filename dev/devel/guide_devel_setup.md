@@ -247,7 +247,7 @@ We encourage you to run tests and build docs to verify that the code installed c
 and that the docs build cleanly, so that when you make code or document related changes
 you are aware of the existing issues beforehand.
 
-* Run test cases to verify installation [Testing your code](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.4.0)")
+* Run test cases to verify installation [Testing your code](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.7.0)")
 * Verify documentation build [Documentation Writing Guidelines](guide_document_write.html#documenting-scikit-plots)
 
 ## [Install pre-commit hooks](#id8)[#](#install-pre-commit-hooks "Link to this heading")

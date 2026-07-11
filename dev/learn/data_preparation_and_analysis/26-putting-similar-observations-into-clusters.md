@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 26 of 56 · **intermediate**
 
-[◀ Previous · Partitioning Observations to Train Objective Models](25-partitioning-observations-to-train-objective-models.html) · Next · Clustering <27-clustering> ▶
+[◀ Previous · Partitioning Observations to Train Objective Models](25-partitioning-observations-to-train-objective-models.html) · [Next · Clustering ▶](27-clustering.html)
 
 ## Grouping without labels[#](#grouping-without-labels "Link to this heading")
 

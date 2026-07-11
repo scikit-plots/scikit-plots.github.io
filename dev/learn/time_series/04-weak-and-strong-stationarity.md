@@ -2,7 +2,7 @@
 
 ****Stage 2 · 📐 Stationarity**** · Lesson 04 of 18 · **beginner**
 
-[◀ Previous · A Gentle Introduction to Stationarity](03-a-gentle-introduction-to-stationarity.html) · Next · Linear Processes <05-linear-processes> ▶
+[◀ Previous · A Gentle Introduction to Stationarity](03-a-gentle-introduction-to-stationarity.html) · [Next · Linear Processes ▶](05-linear-processes.html)
 
 ## Two definitions[#](#two-definitions "Link to this heading")
 

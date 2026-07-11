@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 33 of 56 · **intermediate**
 
-[◀ Previous · Multiple Linear Regression](32-multiple-linear-regression.html) · Next · Forward Selection: Definition and Core Idea <34-forward-selection-definition-and-core-idea> ▶
+[◀ Previous · Multiple Linear Regression](32-multiple-linear-regression.html) · [Next · Forward Selection: Definition and Core Idea ▶](34-forward-selection-definition-and-core-idea.html)
 
 ## Which features matter?[#](#which-features-matter "Link to this heading")
 

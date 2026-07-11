@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 02 of 56 · **beginner**
 
-[◀ Previous · Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · Next · CRISP-DM for Data Science <03-crisp-dm-for-data-science> ▶
+[◀ Previous · Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [Next · CRISP-DM for Data Science ▶](03-crisp-dm-for-data-science.html)
 
 ## It starts with a question[#](#it-starts-with-a-question "Link to this heading")
 

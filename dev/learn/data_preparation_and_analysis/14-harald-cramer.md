@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 14 of 56 · **beginner**
 
-[◀ Previous · Karl Pearson](13-karl-pearson.html) · Next · What Are Statistical Tests? <15-what-are-statistical-tests> ▶
+[◀ Previous · Karl Pearson](13-karl-pearson.html) · [Next · What Are Statistical Tests? ▶](15-what-are-statistical-tests.html)
 
 ## A Swedish statistician[#](#a-swedish-statistician "Link to this heading")
 

@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:03:57Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:32:26Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>plot_learning_curve with examples — scikit-plots 0.5.dev0 documentation</title>
@@ -35,14 +35,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     </style>
 </noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet"/>
+<link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
 <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
-<link href="../../_static/ai-assistant.css?v=10a0cd3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=6ecd9b07" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
@@ -55,10 +55,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
-<script defer="" src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" rel="preload"/>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" rel="preload"/>
 <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
@@ -78,7 +78,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/classification/plot_learning_curve_script';</script>
 <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -243,7 +243,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.png"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
@@ -369,7 +369,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.png"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
@@ -378,7 +378,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 <div class="sidebar-primary-items__start sidebar-primary__section">
-<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button">
+<svg aria-hidden="true" class="pst-icon" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
 </svg>
 <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
@@ -601,7 +602,7 @@ used by a scikit-learn classifier.</p>
 </pre></div>
 </div>
 <img alt="LogisticRegression Learning Curves" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_learning_curve_script_001.png" srcset="../../_images/sphx_glr_plot_learning_curve_script_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-auc.html"><span class="doc">plot-type: auc</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.807 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.340 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_precision_recall function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_precision_recall_script_thumb.png"/>
@@ -714,15 +715,15 @@ used by a scikit-learn classifier.</p>
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
 <div class="footer-items__start">
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
       <br/>
 </p>
 </div>

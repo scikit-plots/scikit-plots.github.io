@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 28 of 56 · **intermediate**
 
-[◀ Previous · Clustering](27-clustering.html) · Next · RFM Analysis <29-rfm-analysis> ▶
+[◀ Previous · Clustering](27-clustering.html) · [Next · RFM Analysis ▶](29-rfm-analysis.html)
 
 ## Three questions about a customer[#](#three-questions-about-a-customer "Link to this heading")
 

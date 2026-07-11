@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 30 of 56 · **intermediate**
 
-[◀ Previous · RFM Analysis](29-rfm-analysis.html) · Next · Least Squares Regression <31-least-squares-regression> ▶
+[◀ Previous · RFM Analysis](29-rfm-analysis.html) · [Next · Least Squares Regression ▶](31-least-squares-regression.html)
 
 ## From codes to segments[#](#from-codes-to-segments "Link to this heading")
 

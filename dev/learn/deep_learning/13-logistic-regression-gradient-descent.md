@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 13 of 17 · **intermediate**
 
-[◀ Previous · Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html) · Next · Gradient Descent on m Training Examples <14-gradient-descent-on-m-training-examples> ▶
+[◀ Previous · Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html) · [Next · Gradient Descent on m Training Examples ▶](14-gradient-descent-on-m-training-examples.html)
 
 ## The neuron’s graph[#](#the-neuron-s-graph "Link to this heading")
 

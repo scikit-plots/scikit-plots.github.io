@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 50 of 56 · **advanced**
 
-[◀ Previous · Using Decision Trees to Explain Clustering Results](49-using-decision-trees-to-explain-clustering-results.html) · Next · Binary Classification Models – Conceptual Framework and Evaluation Metrics <51-binary-classification-models-conceptual-framework-and-evaluation-metrics> ▶
+[◀ Previous · Using Decision Trees to Explain Clustering Results](49-using-decision-trees-to-explain-clustering-results.html) · [Next · Binary Classification Models – Conceptual Framework and Evaluation Metrics ▶](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html)
 
 ## The essential question[#](#the-essential-question "Link to this heading")
 

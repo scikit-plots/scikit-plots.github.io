@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 14 of 17 · **intermediate**
 
-[◀ Previous · Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · Next · Vectorization in Logistic Regression <15-vectorization-in-logistic-regression> ▶
+[◀ Previous · Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Next · Vectorization in Logistic Regression ▶](15-vectorization-in-logistic-regression.html)
 
 ## Averaging the gradient[#](#averaging-the-gradient "Link to this heading")
 

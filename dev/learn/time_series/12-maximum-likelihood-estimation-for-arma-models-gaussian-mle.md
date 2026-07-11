@@ -2,7 +2,7 @@
 
 ****Stage 5 · 🧮 Estimation**** · Lesson 12 of 18 · **advanced**
 
-[◀ Previous · Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · Next · Diagnostics After Fitting a Time Series Model <13-diagnostics-after-fitting-a-time-series-model> ▶
+[◀ Previous · Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [Next · Diagnostics After Fitting a Time Series Model ▶](13-diagnostics-after-fitting-a-time-series-model.html)
 
 ## The likelihood[#](#the-likelihood "Link to this heading")
 

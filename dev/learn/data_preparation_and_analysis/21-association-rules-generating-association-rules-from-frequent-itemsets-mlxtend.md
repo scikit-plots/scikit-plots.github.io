@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 21 of 56 · **intermediate**
 
-[◀ Previous · Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · Next · Cross-Selling <22-cross-selling> ▶
+[◀ Previous · Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [Next · Cross-Selling ▶](22-cross-selling.html)
 
 ## From itemsets to rules in code[#](#from-itemsets-to-rules-in-code "Link to this heading")
 

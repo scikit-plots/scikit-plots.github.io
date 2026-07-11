@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_preparation_and_analysis/51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Stage 8 · 📊 Model Evaluation · Lesson 51 of 56 · advanced ◀ Previous · Assessing the Quality of Prediction Models · Next · Nominal Classification Models: Model State and Evaluation Metrics &lt;52-n..." />
+<meta property="og:description" content="Stage 8 · 📊 Model Evaluation · Lesson 51 of 56 · advanced ◀ Previous · Assessing the Quality of Prediction Models · Next · Nominal Classification Models: Model State and Evaluation Metrics ▶ Four k..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Stage 8 · 📊 Model Evaluation · Lesson 51 of 56 · advanced ◀ Previous · Assessing the Quality of Prediction Models · Next · Nominal Classification Models: Model State and Evaluation Metrics &lt;52-n..." />
+<meta name="description" content="Stage 8 · 📊 Model Evaluation · Lesson 51 of 56 · advanced ◀ Previous · Assessing the Quality of Prediction Models · Next · Nominal Classification Models: Model State and Evaluation Metrics ▶ Four k..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-06T01:04:35Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:39:59Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -45,15 +45,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=10a0cd3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=6ecd9b07" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -67,10 +67,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -92,7 +92,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'learn/data_preparation_and_analysis/51-binary-classification-models-conceptual-framework-and-evaluation-metrics';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -373,7 +373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -591,7 +591,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -611,7 +611,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
   </svg>
   <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
@@ -1058,6 +1059,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 </ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_analytics/index.html">Data Analytics</a></li>
+</ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Data Preparation &amp; Analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01-why-do-we-analyze-data.html">Why Do We Analyze Data?</a></li>
@@ -1120,7 +1124,153 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../bayesian_data_analysis/index.html">Bayesian Data Analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bayesian_data_analysis/index.html">Bayesian Data Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/001-the-three-steps-of-bayesian-data-analysis.html">The three steps of Bayesian data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/002-general-notation-for-statistical-inference.html">General Notation for Statistical Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/003-bayesian-inference.html">Bayesian Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/004-discrete-bayesian-examples-genetics-and-spell-checking-with.html">Discrete Bayesian Examples – Genetics and Spell Checking (with θ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/005-probability-as-a-measure-of-uncertainty.html">Probability as a Measure of Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/006-example-probabilities-from-football-point-spreads.html">Example — Probabilities from Football Point Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/007-example-calibration-for-record-linkage.html">Example — Calibration for Record Linkage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/008-some-useful-results-from-probability-theory.html">Some Useful Results from Probability Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/009-computation-and-software.html">Computation and Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/010-bayesian-inference-in-applied-statistics.html">Bayesian Inference in Applied Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/011-estimating-a-probability-from-binomial-data.html">Estimating a Probability from Binomial Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/012-posterior-as-a-compromise-between-data-and-prior-information.html">Posterior as a Compromise Between Data and Prior Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/013-summarizing-posterior-inference.html">Summarizing Posterior Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/014-informative-prior-distributions.html">Informative Prior Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/015-normal-distribution-with-known-variance.html">Normal Distribution with Known Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/016-other-standard-single-parameter-models.html">Other Standard Single-Parameter Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/017-informative-prior-distribution-for-cancer-rates.html">Informative Prior Distribution for Cancer Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/018-noninformative-prior-distributions.html">Noninformative Prior Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/019-weakly-informative-prior-distributions.html">Weakly Informative Prior Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/020-averaging-over-nuisance-parameters.html">Averaging Over Nuisance Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/021-normal-data-with-a-noninformative-prior-distribution.html">Normal Data with a Noninformative Prior Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/022-normal-data-with-a-conjugate-prior-distribution.html">Normal Data with a Conjugate Prior Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/023-multinomial-model-for-categorical-data.html">Multinomial Model for Categorical Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/024-multivariate-normal-model-with-known-variance.html">Multivariate Normal Model with Known Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/025-multivariate-normal-with-unknown-mean-and-variance.html">Multivariate Normal with Unknown Mean and Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html">Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/027-summary-of-elementary-modeling-and-computation.html">Summary of Elementary Modeling and Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/028-normal-approximations-to-the-posterior-distribution.html">Normal Approximations to the Posterior Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/029-large-sample-theory.html">Large-Sample Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html">Counterexamples to large-sample (asymptotic) Bayesian theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/031-frequency-evaluations-of-bayesian-inferences.html">Frequency Evaluations of Bayesian Inferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/032-bayesian-interpretations-of-other-statistical-methods.html">Bayesian interpretations of other statistical methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/033-constructing-a-parameterized-prior-distribution.html">Constructing a Parameterized Prior Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/034-exchangeability-and-hierarchical-models.html">Exchangeability and hierarchical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/035-bayesian-analysis-of-conjugate-hierarchical-models.html">Bayesian analysis of conjugate hierarchical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/036-normal-model-with-exchangeable-parameters.html">Normal model with exchangeable parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/037-example-parallel-experiments-in-eight-schools.html">Example: parallel experiments in eight schools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/038-hierarchical-modeling-applied-to-a-meta-analysis.html">Hierarchical modeling applied to a meta-analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/039-weakly-informative-priors-for-variance-parameters.html">Weakly Informative Priors for Variance Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/040-the-place-of-model-checking-in-applied-bayesian-statistics.html">The Place of Model Checking in Applied Bayesian Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/041-do-the-inferences-from-the-model-make-sense.html">Do the Inferences from the Model Make Sense?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/042-posterior-predictive-checking.html">Posterior predictive checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/043-graphical-posterior-predictive-checks.html">Graphical posterior predictive checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/044-model-checking-for-the-educational-testing-example.html">Model checking for the educational testing example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/045-measures-of-predictive-accuracy.html">Measures of predictive accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/046-model-comparison-based-on-predictive-performance.html">Model comparison based on predictive performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/047-model-comparison-using-bayes-factors.html">Model comparison using Bayes factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/048-continuous-model-expansion.html">Continuous model expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/049-implicit-assumptions-and-model-expansion-an-example.html">Implicit assumptions and model expansion: an example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/050-bayesian-inference-requires-a-model-for-data-collection.html">Bayesian inference requires a model for data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/051-data-collection-models-and-ignorability.html">Data-collection models and ignorability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/052-sample-surveys.html">Sample surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/053-designed-experiments.html">Designed experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/054-sensitivity-and-the-role-of-randomization.html">Sensitivity and the role of randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/055-observational-studies.html">Observational studies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/056-censoring-and-truncation.html">Censoring and truncation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/057-bayesian-decision-theory-in-different-contexts.html">Bayesian decision theory in diﬀerent contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/058-using-regression-predictions-survey-incentives.html">Using regression predictions: survey incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/059-multistage-decision-making-medical-screening.html">Multistage decision making: medical screening</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/060-hierarchical-decision-analysis-for-home-radon.html">Hierarchical decision analysis for home radon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/061-personal-vs-institutional-decision-analysis.html">Personal vs. institutional decision analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/062-numerical-integration.html">Numerical integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/063-distributional-approximations.html">Distributional approximations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/064-direct-simulation-and-rejection-sampling.html">Direct simulation and rejection sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/065-importance-sampling.html">Importance sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/066-how-many-simulation-draws-are-needed.html">How many simulation draws are needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/067-computing-environments.html">Computing environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/068-debugging-bayesian-computing.html">Debugging Bayesian computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/069-gibbs-sampler.html">Gibbs sampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/070-metropolis-and-metropolis-hastings-algorithms.html">Metropolis and Metropolis-Hastings algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/071-using-gibbs-and-metropolis-as-building-blocks.html">Using Gibbs and Metropolis as building blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/072-inference-and-assessing-convergence.html">Inference and assessing convergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/073-effective-number-of-simulation-draws.html">Eﬀective number of simulation draws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/074-example-hierarchical-normal-model.html">Example: hierarchical normal model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/075-efficient-gibbs-samplers.html">Eﬃcient Gibbs samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/076-efficient-metropolis-jumping-rules.html">Eﬃcient Metropolis jumping rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/077-further-extensions-to-gibbs-and-metropolis.html">Further extensions to Gibbs and Metropolis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/078-hamiltonian-monte-carlo.html">Hamiltonian Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/079-hamiltonian-monte-carlo-for-a-hierarchical-model.html">Hamiltonian Monte Carlo for a hierarchical model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/080-stan-developing-a-computing-environment.html">Stan: developing a computing environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/081-finding-posterior-modes.html">Finding posterior modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/082-boundary-avoiding-priors-for-modal-summaries.html">Boundary-avoiding priors for modal summaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/083-normal-and-related-mixture-approximations.html">Normal and related mixture approximations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/084-finding-marginal-posterior-modes-using-em.html">Finding marginal posterior modes using EM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/085-conditional-and-marginal-posterior-approximations.html">Conditional and marginal posterior approximations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/086-example-hierarchical-normal-model-continued.html">Example: hierarchical normal model (continued)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/087-variational-inference.html">Variational inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/088-expectation-propagation.html">Expectation propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/089-other-approximations.html">Other approximations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/090-unknown-normalizing-factors.html">Unknown normalizing factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/091-conditional-modeling.html">Conditional modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/092-bayesian-analysis-of-classical-regression.html">Bayesian analysis of classical regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/093-regression-for-causal-inference-incumbency-and-voting.html">Regression for causal inference: incumbency and voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/094-goals-of-regression-analysis.html">Goals of regression analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/095-assembling-the-matrix-of-explanatory-variables.html">Assembling the matrix of explanatory variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/096-regularization-and-dimension-reduction.html">Regularization and dimension reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/097-unequal-variances-and-correlations.html">Unequal variances and correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/098-including-numerical-prior-information.html">Including numerical prior information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/099-regression-coefficients-exchangeable-in-batches.html">Regression coeﬃcients exchangeable in batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/100-example-forecasting-u-s-presidential-elections.html">Example: forecasting U.S. presidential elections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/101-interpreting-a-normal-prior-distribution-as-extra-data.html">Interpreting a normal prior distribution as extra data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/102-varying-intercepts-and-slopes.html">Varying intercepts and slopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/103-computation-batching-and-transformation.html">Computation: batching and transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/104-analysis-of-variance-and-the-batching-of-coefficients.html">Analysis of variance and the batching of coeﬃcients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/105-hierarchical-models-for-batches-of-variance-components.html">Hierarchical models for batches of variance components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/106-standard-generalized-linear-model-likelihoods.html">Standard generalized linear model likelihoods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/107-working-with-generalized-linear-models.html">Working with generalized linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/108-weakly-informative-priors-for-logistic-regression.html">Weakly informative priors for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/109-overdispersed-poisson-regression-for-police-stops.html">Overdispersed Poisson regression for police stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/110-state-level-opinons-from-national-polls.html">State-level opinons from national polls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/111-models-for-multivariate-and-multinomial-responses.html">Models for multivariate and multinomial responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/112-loglinear-models-for-multivariate-discrete-data.html">Loglinear models for multivariate discrete data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/113-aspects-of-robustness.html">Aspects of robustness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/114-overdispersed-versions-of-standard-models.html">Overdispersed versions of standard models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/115-posterior-inference-and-computation.html">Posterior inference and computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/116-robust-inference-for-the-eight-schools.html">Robust inference for the eight schools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/117-robust-regression-using-t-distributed-errors.html">Robust regression using t-distributed errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/118-notation.html">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/119-multiple-imputation.html">Multiple imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/120-missing-data-in-the-multivariate-normal-and-t-models.html">Missing data in the multivariate normal and t models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/121-example-multiple-imputation-for-a-series-of-polls.html">Example: multiple imputation for a series of polls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/122-missing-values-with-counted-data.html">Missing values with counted data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/123-example-an-opinion-poll-in-slovenia.html">Example: an opinion poll in Slovenia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/124-example-serial-dilution-assay.html">Example: serial dilution assay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/125-example-population-toxicokinetics.html">Example: population toxicokinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/126-splines-and-weighted-sums-of-basis-functions.html">Splines and weighted sums of basis functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/127-basis-selection-and-shrinkage-of-coefficients.html">Basis selection and shrinkage of coeﬃcients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/128-non-normal-models-and-regression-surfaces.html">Non-normal models and regression surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/129-gaussian-process-regression.html">Gaussian process regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/130-example-birthdays-and-birthdates.html">Example: birthdays and birthdates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/131-latent-gaussian-process-models.html">Latent Gaussian process models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/132-functional-data-analysis.html">Functional data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/133-density-estimation-and-regression.html">Density estimation and regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/134-setting-up-and-interpreting-mixture-models.html">Setting up and interpreting mixture models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/135-example-reaction-times-and-schizophrenia.html">Example: reaction times and schizophrenia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/136-label-switching-and-posterior-computation.html">Label switching and posterior computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/137-unspecified-number-of-mixture-components.html">Unspecified number of mixture components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/138-mixture-models-for-classification-and-regression.html">Mixture models for classification and regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/139-bayesian-histograms.html">Bayesian histograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/140-dirichlet-process-prior-distributions.html">Dirichlet process prior distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/141-dirichlet-process-mixtures.html">Dirichlet process mixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/142-beyond-density-estimation.html">Beyond density estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/143-hierarchical-dependence.html">Hierarchical dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayesian_data_analysis/144-density-regression.html">Density regression</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../time_series/index.html">Time Series</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1256,7 +1406,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <section id="binary-classification-models-conceptual-framework-and-evaluation-metrics">
 <span id="dpa-binary-classification-models-conceptual-framework-and-evaluation-metrics"></span><h1>Binary Classification Models – Conceptual Framework and Evaluation Metrics<a class="headerlink" href="#binary-classification-models-conceptual-framework-and-evaluation-metrics" title="Link to this heading">#</a></h1>
 <p><strong>Stage 8 · 📊 Model Evaluation</strong>  ·  Lesson 51 of 56  ·  <em>advanced</em></p>
-<p><a class="reference internal" href="50-assessing-the-quality-of-prediction-models.html"><span class="doc">◀ Previous · Assessing the Quality of Prediction Models</span></a>   ·   <span class="xref std std-doc">Next · Nominal Classification Models: Model State and Evaluation Metrics &lt;52-nominal-classification-models-model-state-and-evaluation-metrics&gt; ▶</span></p>
+<p><a class="reference internal" href="50-assessing-the-quality-of-prediction-models.html"><span class="doc">◀ Previous · Assessing the Quality of Prediction Models</span></a>   ·   <a class="reference internal" href="52-nominal-classification-models-model-state-and-evaluation-metrics.html"><span class="doc">Next · Nominal Classification Models: Model State and Evaluation Metrics ▶</span></a></p>
 <section id="four-kinds-of-outcome">
 <h2>Four kinds of outcome<a class="headerlink" href="#four-kinds-of-outcome" title="Link to this heading">#</a></h2>
 <p>A binary classifier predicts one of two labels — <strong>positive</strong> or <strong>negative</strong> (churn / not, fraud /
@@ -1405,8 +1555,8 @@ exist. The choice of which count to minimise is where evaluation meets the <stro
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1417,7 +1567,7 @@ exist. The choice of which count to minimise is where evaluation meets the <stro
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260705.b2a4600 2026-07-06T00:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
       <br/>
     
   </p>

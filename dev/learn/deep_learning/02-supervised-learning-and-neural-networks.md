@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 02 of 17 · **beginner**
 
-[◀ Previous · What is a Neural Network?](01-what-is-a-neural-network.html) · Next · Why Deep Learning is Taking Off <03-why-deep-learning-is-taking-off> ▶
+[◀ Previous · What is a Neural Network?](01-what-is-a-neural-network.html) · [Next · Why Deep Learning is Taking Off ▶](03-why-deep-learning-is-taking-off.html)
 
 ## Learning a mapping[#](#learning-a-mapping "Link to this heading")
 

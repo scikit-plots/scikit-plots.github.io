@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 15 of 56 · **beginner**
 
-[◀ Previous · Harald Cramér](14-harald-cramer.html) · Next · Eta Squared (η²): Effect Size in ANOVA <16-eta-squared-2-effect-size-in-anova> ▶
+[◀ Previous · Harald Cramér](14-harald-cramer.html) · [Next · Eta Squared (η²): Effect Size in ANOVA ▶](16-eta-squared-2-effect-size-in-anova.html)
 
 ## Is it real or chance?[#](#is-it-real-or-chance "Link to this heading")
 

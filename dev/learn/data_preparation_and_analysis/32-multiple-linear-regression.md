@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 32 of 56 · **intermediate**
 
-[◀ Previous · Least Squares Regression](31-least-squares-regression.html) · Next · Feature Importance in Linear Regression <33-feature-importance-in-linear-regression> ▶
+[◀ Previous · Least Squares Regression](31-least-squares-regression.html) · [Next · Feature Importance in Linear Regression ▶](33-feature-importance-in-linear-regression.html)
 
 ## More than one predictor[#](#more-than-one-predictor "Link to this heading")
 

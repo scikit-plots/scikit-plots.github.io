@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 34 of 56 · **intermediate**
 
-[◀ Previous · Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · Next · Forward Selection and Model Interpretation in Linear Regression <35-forward-selection-and-model-interpretation-in-linear-regression> ▶
+[◀ Previous · Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · [Next · Forward Selection and Model Interpretation in Linear Regression ▶](35-forward-selection-and-model-interpretation-in-linear-regression.html)
 
 ## Too many features[#](#too-many-features "Link to this heading")
 

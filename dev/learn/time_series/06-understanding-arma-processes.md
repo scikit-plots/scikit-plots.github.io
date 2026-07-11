@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 06 of 18 · **intermediate**
 
-[◀ Previous · Linear Processes](05-linear-processes.html) · Next · Computing ACFs of Causal AR(2) Processes Using Difference Equations <07-computing-acfs-of-causal-ar-2-processes-using-difference-equations> ▶
+[◀ Previous · Linear Processes](05-linear-processes.html) · [Next · Computing ACFs of Causal AR(2) Processes Using Difference Equations ▶](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html)
 
 ## The model[#](#the-model "Link to this heading")
 

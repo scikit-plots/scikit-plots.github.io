@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 08 of 17 · **intermediate**
 
-[◀ Previous · Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · Next · Derivatives <09-derivatives> ▶
+[◀ Previous · Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [Next · Derivatives ▶](09-derivatives.html)
 
 ## The optimization problem[#](#the-optimization-problem "Link to this heading")
 

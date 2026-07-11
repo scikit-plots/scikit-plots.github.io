@@ -1,6 +1,6 @@
 # KissRandomState[#](#kissrandomstate "Link to this heading")
 
-class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
+class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
 :   NumPy RandomState-compatible interface with complete serialization.
 
     KissRandomState : Inherites from KissGenerator.

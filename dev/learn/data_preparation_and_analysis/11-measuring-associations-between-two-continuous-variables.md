@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 11 of 56 · **beginner**
 
-[◀ Previous · Measuring Associations in Data](10-measuring-associations-in-data.html) · Next · Correlation Coefficients in Python (Pearson, Spearman, Kendall) <12-correlation-coefficients-in-python-pearson-spearman-kendall> ▶
+[◀ Previous · Measuring Associations in Data](10-measuring-associations-in-data.html) · [Next · Correlation Coefficients in Python (Pearson, Spearman, Kendall) ▶](12-correlation-coefficients-in-python-pearson-spearman-kendall.html)
 
 ## Covariance: direction[#](#covariance-direction "Link to this heading")
 

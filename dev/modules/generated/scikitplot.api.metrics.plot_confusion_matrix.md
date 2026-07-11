@@ -1,6 +1,6 @@
 # plot\_confusion\_matrix[#](#plot-confusion-matrix "Link to this heading")
 
-scikitplot.api.metrics.plot\_confusion\_matrix(**y\_true**, **y\_pred**, **\***, **labels=None**, **true\_labels=None**, **pred\_labels=None**, **normalize=False**, **hide\_zeros=False**, **hide\_counts=False**, **title=None**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **x\_tick\_rotation=0**, **cmap='Blues'**, **show\_colorbar=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/api/metrics/_classification/_confusion_matrix.py#L56)[#](#scikitplot.api.metrics.plot_confusion_matrix "Link to this definition")
+scikitplot.api.metrics.plot\_confusion\_matrix(**y\_true**, **y\_pred**, **\***, **labels=None**, **true\_labels=None**, **pred\_labels=None**, **normalize=False**, **hide\_zeros=False**, **hide\_counts=False**, **title=None**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **x\_tick\_rotation=0**, **cmap='Blues'**, **show\_colorbar=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/api/metrics/_classification/_confusion_matrix.py#L56)[#](#scikitplot.api.metrics.plot_confusion_matrix "Link to this definition")
 :   Generates a confusion matrix plot from predictions and true labels.
 
     The confusion matrix is a summary of prediction results that shows the counts of true

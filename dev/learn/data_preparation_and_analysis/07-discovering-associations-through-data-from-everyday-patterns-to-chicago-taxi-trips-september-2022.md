@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 07 of 56 · **beginner**
 
-[◀ Previous · IEEE 754 Floating-Point Standard](06-ieee-754-floating-point-standard.html) · Next · Taxi Trips – 2022 dataset from the City of Chicago open data portal <08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal> ▶
+[◀ Previous · IEEE 754 Floating-Point Standard](06-ieee-754-floating-point-standard.html) · [Next · Taxi Trips – 2022 dataset from the City of Chicago open data portal ▶](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html)
 
 ## Things that move together[#](#things-that-move-together "Link to this heading")
 

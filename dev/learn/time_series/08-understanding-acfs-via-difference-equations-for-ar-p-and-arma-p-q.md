@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 08 of 18 · **intermediate**
 
-[◀ Previous · Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · Next · Best Linear Predictor of a Stationary Process <09-best-linear-predictor-of-a-stationary-process> ▶
+[◀ Previous · Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [Next · Best Linear Predictor of a Stationary Process ▶](09-best-linear-predictor-of-a-stationary-process.html)
 
 ## The general rule[#](#the-general-rule "Link to this heading")
 

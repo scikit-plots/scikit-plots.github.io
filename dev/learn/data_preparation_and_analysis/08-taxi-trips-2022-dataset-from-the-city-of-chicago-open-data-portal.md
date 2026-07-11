@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 08 of 56 · **beginner**
 
-[◀ Previous · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022)](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html) · Next · Objective Selection of the Bin Width for a Time Histogram <09-objective-selection-of-the-bin-width-for-a-time-histogram> ▶
+[◀ Previous · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022)](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html) · [Next · Objective Selection of the Bin Width for a Time Histogram ▶](09-objective-selection-of-the-bin-width-for-a-time-histogram.html)
 
 ## An open, real dataset[#](#an-open-real-dataset "Link to this heading")
 

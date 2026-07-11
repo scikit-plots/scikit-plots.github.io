@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔵 Logistic Regression as a Neuron**** · Lesson 06 of 17 · **beginner**
 
-[◀ Previous · Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · Next · Logistic Regression – Loss Function and Cost Function <07-logistic-regression-loss-function-and-cost-function> ▶
+[◀ Previous · Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [Next · Logistic Regression – Loss Function and Cost Function ▶](07-logistic-regression-loss-function-and-cost-function.html)
 
 ## From score to probability[#](#from-score-to-probability "Link to this heading")
 

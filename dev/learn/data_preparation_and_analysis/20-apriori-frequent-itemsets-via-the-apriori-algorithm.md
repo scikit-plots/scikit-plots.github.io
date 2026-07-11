@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 20 of 56 · **intermediate**
 
-[◀ Previous · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · Next · association\_rules: Generating Association Rules from Frequent Itemsets (mlxtend) <21-association-rules-generating-association-rules-from-frequent-itemsets-mlxtend> ▶
+[◀ Previous · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · [Next · association\_rules: Generating Association Rules from Frequent Itemsets (mlxtend) ▶](21-association-rules-generating-association-rules-from-frequent-itemsets-mlxtend.html)
 
 ## Prior knowledge[#](#prior-knowledge "Link to this heading")
 

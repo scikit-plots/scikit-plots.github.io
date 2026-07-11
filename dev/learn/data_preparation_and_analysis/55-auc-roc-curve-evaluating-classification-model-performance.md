@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 55 of 56 · **advanced**
 
-[◀ Previous · Identifying Outliers Using Residuals and Studentized Residuals](54-identifying-outliers-using-residuals-and-studentized-residuals.html) · Next · Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value <56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value> ▶
+[◀ Previous · Identifying Outliers Using Residuals and Studentized Residuals](54-identifying-outliers-using-residuals-and-studentized-residuals.html) · [Next · Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value ▶](56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value.html)
 
 ## Every threshold at once[#](#every-threshold-at-once "Link to this heading")
 

@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔵 Logistic Regression as a Neuron**** · Lesson 07 of 17 · **beginner**
 
-[◀ Previous · Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · Next · Gradient Descent in Logistic Regression <08-gradient-descent-in-logistic-regression> ▶
+[◀ Previous · Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · [Next · Gradient Descent in Logistic Regression ▶](08-gradient-descent-in-logistic-regression.html)
 
 ## Measuring one prediction[#](#measuring-one-prediction "Link to this heading")
 

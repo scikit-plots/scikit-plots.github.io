@@ -1,6 +1,6 @@
 # check\_build\_prereqs[#](#check-build-prereqs "Link to this heading")
 
-scikitplot.cython.check\_build\_prereqs(**\***, **numpy=False**, **pybind11=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/cython/_public.py#L183)[#](#scikitplot.cython.check_build_prereqs "Link to this definition")
+scikitplot.cython.check\_build\_prereqs(**\***, **numpy=False**, **pybind11=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/cython/_public.py#L183)[#](#scikitplot.cython.check_build_prereqs "Link to this definition")
 :   Check whether build prerequisites are importable.
 
     Parameters:

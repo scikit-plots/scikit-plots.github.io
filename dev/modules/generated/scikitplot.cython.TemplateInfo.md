@@ -1,6 +1,6 @@
 # TemplateInfo[#](#templateinfo "Link to this heading")
 
-class scikitplot.cython.TemplateInfo(**template\_id=''**, **path=PosixPath('.')**, **meta\_path=None**, **category=''**, **language=''**, **level=''**, **summary=''**, **description=''**, **requires\_numpy=False**, **requires\_cpp=False**, **demo\_calls=()**, **support\_paths=()**, **extra\_sources=()**, **tags=()**, **schema\_version=1**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/cython/_templates_api.py#L64)[#](#scikitplot.cython.TemplateInfo "Link to this definition")
+class scikitplot.cython.TemplateInfo(**template\_id=''**, **path=PosixPath('.')**, **meta\_path=None**, **category=''**, **language=''**, **level=''**, **summary=''**, **description=''**, **requires\_numpy=False**, **requires\_cpp=False**, **demo\_calls=()**, **support\_paths=()**, **extra\_sources=()**, **tags=()**, **schema\_version=1**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/cython/_templates_api.py#L64)[#](#scikitplot.cython.TemplateInfo "Link to this definition")
 :   Structured metadata for a template.
 
     All attributes have defaults to keep Sphinx tooling and linkcode resolvers

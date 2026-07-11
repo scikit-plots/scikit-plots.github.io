@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 03 of 56 · **beginner**
 
-[◀ Previous · The Process of Data Analysis](02-the-process-of-data-analysis.html) · Next · Big Data: Definition, Characteristics, Evolution, and Business Impact <04-big-data-definition-characteristics-evolution-and-business-impact> ▶
+[◀ Previous · The Process of Data Analysis](02-the-process-of-data-analysis.html) · [Next · Big Data: Definition, Characteristics, Evolution, and Business Impact ▶](04-big-data-definition-characteristics-evolution-and-business-impact.html)
 
 ## A shared blueprint[#](#a-shared-blueprint "Link to this heading")
 

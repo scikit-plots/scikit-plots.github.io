@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 04 of 17 · **beginner**
 
-[◀ Previous · Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · Next · Binary Classification and Logistic Regression (Neural Network Basics) <05-binary-classification-and-logistic-regression-neural-network-basics> ▶
+[◀ Previous · Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Next · Binary Classification and Logistic Regression (Neural Network Basics) ▶](05-binary-classification-and-logistic-regression-neural-network-basics.html)
 
 ## Heroes of Deep Learning[#](#heroes-of-deep-learning "Link to this heading")
 

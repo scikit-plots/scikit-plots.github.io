@@ -1,6 +1,6 @@
 # URLKind[#](#urlkind "Link to this heading")
 
-class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L329)[#](#scikitplot.corpus.URLKind "Link to this definition")
+class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L329)[#](#scikitplot.corpus.URLKind "Link to this definition")
 :   Classification of a URL for routing to the correct handler.
 
     Attributes:
@@ -39,21 +39,21 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
         :   GitHub blob URL (`github.com/.../blob/...`) — resolve to
             raw URL, then download.
 
-    DOWNLOADABLE = 'downloadable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.DOWNLOADABLE "Link to this definition")
+    DOWNLOADABLE = 'downloadable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.DOWNLOADABLE "Link to this definition")
 
-    GITHUB\_BLOB = 'github\_blob'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_BLOB "Link to this definition")
+    GITHUB\_BLOB = 'github\_blob'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_BLOB "Link to this definition")
 
-    GITHUB\_RAW = 'github\_raw'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_RAW "Link to this definition")
+    GITHUB\_RAW = 'github\_raw'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_RAW "Link to this definition")
 
-    GOOGLE\_DRIVE = 'google\_drive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GOOGLE_DRIVE "Link to this definition")
+    GOOGLE\_DRIVE = 'google\_drive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GOOGLE_DRIVE "Link to this definition")
 
-    WEB\_PAGE = 'web\_page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.WEB_PAGE "Link to this definition")
+    WEB\_PAGE = 'web\_page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.WEB_PAGE "Link to this definition")
 
-    YOUTUBE = 'youtube'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE "Link to this definition")
+    YOUTUBE = 'youtube'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE "Link to this definition")
 
-    YOUTUBE\_CHANNEL = 'youtube\_channel'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_CHANNEL "Link to this definition")
+    YOUTUBE\_CHANNEL = 'youtube\_channel'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_CHANNEL "Link to this definition")
 
-    YOUTUBE\_PLAYLIST = 'youtube\_playlist'[[source]](https://github.com/scikit-plots/scikit-plots/blob/b2a4600/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_PLAYLIST "Link to this definition")
+    YOUTUBE\_PLAYLIST = 'youtube\_playlist'[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_PLAYLIST "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.URLKind.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

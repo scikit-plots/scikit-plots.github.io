@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 53 of 56 · **advanced**
 
-[◀ Previous · Nominal Classification Models: Model State and Evaluation Metrics](52-nominal-classification-models-model-state-and-evaluation-metrics.html) · Next · Identifying Outliers Using Residuals and Studentized Residuals <54-identifying-outliers-using-residuals-and-studentized-residuals> ▶
+[◀ Previous · Nominal Classification Models: Model State and Evaluation Metrics](52-nominal-classification-models-model-state-and-evaluation-metrics.html) · [Next · Identifying Outliers Using Residuals and Studentized Residuals ▶](54-identifying-outliers-using-residuals-and-studentized-residuals.html)
 
 ## The hidden dial[#](#the-hidden-dial "Link to this heading")
 
