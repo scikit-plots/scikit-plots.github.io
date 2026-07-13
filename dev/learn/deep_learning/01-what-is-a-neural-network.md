@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 01 of 17 · **beginner**
 
-[Next · Supervised Learning and Neural Networks ▶](02-supervised-learning-and-neural-networks.html)
+[Next · Supervised Learning and Neural Networks ▶](02-supervised-learning-and-neural-networks.html) · [↑ Section](index.html)
 
 ## A single neuron[#](#a-single-neuron "Link to this heading")
 
@@ -38,9 +38,9 @@ picture, but easily ****oversold****. An artificial neuron is a small piece of a
 sum and a nonlinearity), not a biological cell. It is more honest to picture a network as a
 ****flexible, trainable function approximator****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Supervised Learning and Neural Networks](02-supervised-learning-and-neural-networks.html) · [Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · [Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Computation Graph](11-computation-graph.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/what-is-a-neural-network/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/what-is-a-neural-network/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: beginner](../../_tags/level-beginner.html)

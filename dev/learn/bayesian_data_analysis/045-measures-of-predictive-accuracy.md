@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 045 of 144 · **intermediate**
 
-[◀ Previous · Model checking for the educational testing example](044-model-checking-for-the-educational-testing-example.html) · [Next · Model comparison based on predictive performance ▶](046-model-comparison-based-on-predictive-performance.html)
+[◀ Previous · Model checking for the educational testing example](044-model-checking-for-the-educational-testing-example.html) · [Next · Model comparison based on predictive performance ▶](046-model-comparison-based-on-predictive-performance.html) · [↑ Section](index.html)
 
 ## Scoring a model by what it predicts[#](#scoring-a-model-by-what-it-predicts "Link to this heading")
 
@@ -55,9 +55,9 @@ errors available (the sd of the \(n\) components times \(\sqrt{n}\)), what lets 
 observations**** a model predicts badly, and what makes leave-one-out cross-validation — the more direct
 estimate of the same elpd — computable from a single fit.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Posterior predictive checking](042-posterior-predictive-checking.html) · [Model comparison based on predictive performance](046-model-comparison-based-on-predictive-performance.html) · [Model comparison using Bayes factors](047-model-comparison-using-bayes-factors.html) · [Bayesian interpretations of other statistical methods](032-bayesian-interpretations-of-other-statistical-methods.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/measures-of-predictive-accuracy/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/measures-of-predictive-accuracy/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

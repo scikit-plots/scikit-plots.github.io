@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 03 of 17 · **beginner**
 
-[◀ Previous · Supervised Learning and Neural Networks](02-supervised-learning-and-neural-networks.html) · [Next · Geoffrey Hinton Interview ▶](04-geoffrey-hinton-interview.html)
+[◀ Previous · Supervised Learning and Neural Networks](02-supervised-learning-and-neural-networks.html) · [Next · Geoffrey Hinton Interview ▶](04-geoffrey-hinton-interview.html) · [↑ Section](index.html)
 
 ## An old idea, newly working[#](#an-old-idea-newly-working "Link to this heading")
 
@@ -34,9 +34,9 @@ These drivers reinforce each other. Faster hardware and better algorithms shorte
 of why progress has felt so ****fast**** — and why the fundamentals in this course sit beneath so many
 modern systems.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [What is a Neural Network?](01-what-is-a-neural-network.html) · [Supervised Learning and Neural Networks](02-supervised-learning-and-neural-networks.html) · [Geoffrey Hinton Interview](04-geoffrey-hinton-interview.html) · [Vectorizing Logistic Regression](17-vectorizing-logistic-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/why-deep-learning-is-taking-off/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/why-deep-learning-is-taking-off/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: beginner](../../_tags/level-beginner.html)

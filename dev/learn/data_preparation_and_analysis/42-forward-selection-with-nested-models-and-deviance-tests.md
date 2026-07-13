@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 42 of 56 · **advanced**
 
-[◀ Previous · Complete and Quasi-Complete Separation in Logistic Regression](41-complete-and-quasi-complete-separation-in-logistic-regression.html) · [Next · Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention ▶](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html)
+[◀ Previous · Complete and Quasi-Complete Separation in Logistic Regression](41-complete-and-quasi-complete-separation-in-logistic-regression.html) · [Next · Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention ▶](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html) · [↑ Section](index.html)
 
 ## Selecting features by deviance[#](#selecting-features-by-deviance "Link to this heading")
 
@@ -41,9 +41,9 @@ improvement. It is the same greedy search as before, now driven by ****deviance*
 F-statistic — and with the same caution that data-driven selection inflates significance, so the final
 model earns its keep only on ****held-out**** data. The next lesson works a full example on real data.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Understanding Forward and Backward Stepwise Regression](36-understanding-forward-and-backward-stepwise-regression.html) · [Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds](38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds.html) · [Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/forward-selection-with-nested-models-and-deviance-tests/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/forward-selection-with-nested-models-and-deviance-tests/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

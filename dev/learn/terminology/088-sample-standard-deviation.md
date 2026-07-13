@@ -41,21 +41,22 @@ whole population); the ****sample**** version uses \(n - 1\) (an estimate of
 
 ---
 
-****Mind map — connected ideas****
-
-> [Sample Mean](089-sample-mean.html) · [Standard Error (SE)](084-standard-error-se.html) · [True Mean (Population Mean)](085-true-mean-population-mean.html) · [Frequentist](059-frequentist.html) · [Bootstrap Confidence Intervals (CIs)](024-bootstrap-confidence-intervals-cis.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html)
-
----
-
-****More in Probability & Statistics Foundations****
-
-> [Beta Distribution](099-beta-distribution.html) · [Confidence Level](285-confidence-level.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [IID (Independent and Identically Distributed)](126-iid-independent-and-identically-distributed.html) · [Likelihood](304-likelihood.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html)
-
----
-
 **Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Sample Mean](089-sample-mean.html) · [Standard Error (SE)](084-standard-error-se.html) · [True Mean (Population Mean)](085-true-mean-population-mean.html) · [Frequentist](059-frequentist.html) · [Bootstrap Confidence Intervals (CIs)](024-bootstrap-confidence-intervals-cis.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html)
+
+---
+
+> **Hint**
+> ****More in Probability & Statistics Foundations****
+
+[Beta Distribution](099-beta-distribution.html) · [Confidence Level](285-confidence-level.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [IID (Independent and Identically Distributed)](126-iid-independent-and-identically-distributed.html) · [Likelihood](304-likelihood.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html)
 > **See also**
-> Adapted in our own words from [Sample Standard Deviation](https://insightful-data-lab.com/2025/08/25/sample-standard-deviation/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Sample Standard Deviation](https://insightful-data-lab.com/2025/08/25/sample-standard-deviation/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

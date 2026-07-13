@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 09 of 17 · **intermediate**
 
-[◀ Previous · Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html) · [Next · More Derivative Examples ▶](10-more-derivative-examples.html)
+[◀ Previous · Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html) · [Next · More Derivative Examples ▶](10-more-derivative-examples.html) · [↑ Section](index.html)
 
 ## Derivative means slope[#](#derivative-means-slope "Link to this heading")
 
@@ -30,9 +30,9 @@ just “****how fast the output moves when you wiggle the input****” is enough
 and ****backpropagation**** ahead — the machinery that computes \(\partial J / \partial \mathbf{w}\)
 and \(\partial J / \partial b\) for a whole network.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [More Derivative Examples](10-more-derivative-examples.html) · [Computation Graph](11-computation-graph.html) · [Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html) · [Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/derivatives/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/derivatives/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

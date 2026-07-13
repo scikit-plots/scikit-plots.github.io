@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 113 of 144 · **advanced**
 
-[◀ Previous · Loglinear models for multivariate discrete data](112-loglinear-models-for-multivariate-discrete-data.html) · [Next · Overdispersed versions of standard models ▶](114-overdispersed-versions-of-standard-models.html)
+[◀ Previous · Loglinear models for multivariate discrete data](112-loglinear-models-for-multivariate-discrete-data.html) · [Next · Overdispersed versions of standard models ▶](114-overdispersed-versions-of-standard-models.html) · [↑ Section](index.html)
 
 ## When the model is wrong in a particular way[#](#when-the-model-is-wrong-in-a-particular-way "Link to this heading")
 
@@ -49,9 +49,9 @@ down-weighting a genuine signal as if it were noise loses information. Robustnes
 assumptions most likely to be wrong, not immunity to all of them; naming which failure you are guarding
 against is part of the modelling.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Continuous model expansion](048-continuous-model-expansion.html) · [Weakly informative priors for logistic regression](108-weakly-informative-priors-for-logistic-regression.html) · [Robust inference for the eight schools](116-robust-inference-for-the-eight-schools.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/aspects-of-robustness/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/aspects-of-robustness/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

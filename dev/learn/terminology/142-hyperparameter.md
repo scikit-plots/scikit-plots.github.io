@@ -35,21 +35,22 @@ performance hinges on those chosen hyperparameters.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Epochs](141-epochs.html) · [Cross-Validation (CV)](136-cross-validation-cv.html) · [Early Stopping](140-early-stopping.html) · [Neural Networks](287-neural-networks.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html) · [Quantization](343-quantization.html)
-
----
-
-****More in Model Training & Optimization****
-
-> [Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html)
-
----
-
 **Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Epochs](141-epochs.html) · [Cross-Validation (CV)](136-cross-validation-cv.html) · [Early Stopping](140-early-stopping.html) · [Neural Networks](287-neural-networks.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html) · [Quantization](343-quantization.html)
+
+---
+
+> **Hint**
+> ****More in Model Training & Optimization****
+
+[Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html)
 > **See also**
-> Adapted in our own words from [Hyperparameter](https://insightful-data-lab.com/2025/08/24/hyperparameter/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Hyperparameter](https://insightful-data-lab.com/2025/08/24/hyperparameter/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

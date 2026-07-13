@@ -48,21 +48,22 @@ odds of disease from a test result.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Marginal Likelihood (also called The Model Evidence or Integrated Likelihood)](062-marginal-likelihood-also-called-the-model-eviden.html) · [Binomial Likelihood](060-binomial-likelihood.html) · [Frequentist](059-frequentist.html) · [Posterior Probability](073-posterior-probability.html)
-
----
-
-****More in Model Evaluation & Uncertainty****
-
-> [Average Absolute Error (AAE)](246-average-absolute-error-aae.html) · [Baseline Heuristics](428-baseline-heuristics.html) · [Bootstrap](365-bootstrap.html) · [Bootstrap Confidence Intervals (CIs)](024-bootstrap-confidence-intervals-cis.html) · [Coverage](411-coverage.html) · [Cramér’s V](180-cramer-s-v.html) · [DeLong’s Test](352-delong-s-test.html) · [KS Statistic (Kolmogorov–Smirnov Statistic)](186-ks-statistic-kolmogorovsmirnov-statistic.html) · [Mann–Whitney U Test (also called the Wilcoxon rank-sum test)](026-mannwhitney-u-test-also-called-the-wilcoxon-rank.html) · [MASE (Mean Absolute Scaled Error)](403-mase-mean-absolute-scaled-error.html) · [Mean Absolute Error (MAE)](408-mean-absolute-error-mae.html) · [Mean Absolute Percentage Error (MAPE)](425-mean-absolute-percentage-error-mape.html) · [Mean Squared Error (MSE)](308-mean-squared-error-mse.html) · [Relative accuracy](258-relative-accuracy.html)
-
----
-
 **Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Marginal Likelihood (also called The Model Evidence or Integrated Likelihood)](062-marginal-likelihood-also-called-the-model-eviden.html) · [Binomial Likelihood](060-binomial-likelihood.html) · [Frequentist](059-frequentist.html) · [Posterior Probability](073-posterior-probability.html)
+
+---
+
+> **Hint**
+> ****More in Model Evaluation & Uncertainty****
+
+[Average Absolute Error (AAE)](246-average-absolute-error-aae.html) · [Baseline Heuristics](428-baseline-heuristics.html) · [Bootstrap](365-bootstrap.html) · [Bootstrap Confidence Intervals (CIs)](024-bootstrap-confidence-intervals-cis.html) · [Coverage](411-coverage.html) · [Cramér’s V](180-cramer-s-v.html) · [DeLong’s Test](352-delong-s-test.html) · [KS Statistic (Kolmogorov–Smirnov Statistic)](186-ks-statistic-kolmogorovsmirnov-statistic.html) · [Mann–Whitney U Test (also called the Wilcoxon rank-sum test)](026-mannwhitney-u-test-also-called-the-wilcoxon-rank.html) · [MASE (Mean Absolute Scaled Error)](403-mase-mean-absolute-scaled-error.html) · [Mean Absolute Error (MAE)](408-mean-absolute-error-mae.html) · [Mean Absolute Percentage Error (MAPE)](425-mean-absolute-percentage-error-mape.html) · [Mean Squared Error (MSE)](308-mean-squared-error-mse.html) · [Relative accuracy](258-relative-accuracy.html)
 > **See also**
-> Adapted in our own words from [Likelihood Ratio (LR)](https://insightful-data-lab.com/2025/08/25/likelihood-ratio-lr/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Likelihood Ratio (LR)](https://insightful-data-lab.com/2025/08/25/likelihood-ratio-lr/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

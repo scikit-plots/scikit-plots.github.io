@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 4 · 📏 Asymptotics & Frequentist Ties**** · Lesson 030 of 144 · **beginner**
 
-[◀ Previous · Large-Sample Theory](029-large-sample-theory.html) · [Next · Frequency Evaluations of Bayesian Inferences ▶](031-frequency-evaluations-of-bayesian-inferences.html)
+[◀ Previous · Large-Sample Theory](029-large-sample-theory.html) · [Next · Frequency Evaluations of Bayesian Inferences ▶](031-frequency-evaluations-of-bayesian-inferences.html) · [↑ Section](index.html)
 
 ## When the guarantees fail[#](#when-the-guarantees-fail "Link to this heading")
 
@@ -55,9 +55,9 @@ The moral is not that asymptotics are useless but that they are ****conditional*
 approximations in regular, correctly specified, fixed-dimension problems — and they justify ****model
 checking**** everywhere else.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Large-Sample Theory](029-large-sample-theory.html) · [Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Label switching and posterior computation](136-label-switching-and-posterior-computation.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/counterexamples-to-large-sample-asymptotic-bayesian-theorems/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/counterexamples-to-large-sample-asymptotic-bayesian-theorems/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

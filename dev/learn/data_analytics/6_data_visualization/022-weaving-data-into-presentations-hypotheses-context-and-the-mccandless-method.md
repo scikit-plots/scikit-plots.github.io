@@ -6,7 +6,7 @@
 
 > **Lesson in progress**
 > Full content for this lesson has not been written yet.
-
-[Source article](https://insightful-data-lab.com/2023/11/26/weaving-data-into-presentations-hypotheses-context-and-the-mccandless-method/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/26/weaving-data-into-presentations-hypotheses-context-and-the-mccandless-method/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [viz](../../../_tags/viz.html) [present](../../../_tags/present.html)

@@ -30,21 +30,22 @@ The ****log score**** is a ****local**** alternative that looks only at the dens
 
 ---
 
-****Mind map — connected ideas****
-
-> [Strictly Proper Scoring Rules](234-strictly-proper-scoring-rules.html) · [Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Quantile Forecasts](232-quantile-forecasts.html)
-
----
-
-****More in Risk & Probabilistic Forecasting****
-
-> [Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Continuous Ranked Probability Score (CRPS)](402-continuous-ranked-probability-score-crps.html) · [Deterministic forecasts](242-deterministic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Pinball Loss (a.k.a. Quantile Loss)](404-pinball-loss-a-k-a-quantile-loss.html) · [Point Forecasts](233-point-forecasts.html) · [Predicting Percentiles](252-predicting-percentiles.html) · [Prediction Intervals (PI)](253-prediction-intervals-pi.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Probability Forecasts](235-probability-forecasts.html) · [Quantile Forecasts](232-quantile-forecasts.html) · [Quantile Level](255-quantile-level.html) · [Quantile Regression](254-quantile-regression.html) · [Return Distribution](225-return-distribution.html)
-
----
-
 **Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Strictly Proper Scoring Rules](234-strictly-proper-scoring-rules.html) · [Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Quantile Forecasts](232-quantile-forecasts.html)
+
+---
+
+> **Hint**
+> ****More in Risk & Probabilistic Forecasting****
+
+[Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Continuous Ranked Probability Score (CRPS)](402-continuous-ranked-probability-score-crps.html) · [Deterministic forecasts](242-deterministic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Pinball Loss (a.k.a. Quantile Loss)](404-pinball-loss-a-k-a-quantile-loss.html) · [Point Forecasts](233-point-forecasts.html) · [Predicting Percentiles](252-predicting-percentiles.html) · [Prediction Intervals (PI)](253-prediction-intervals-pi.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Probability Forecasts](235-probability-forecasts.html) · [Quantile Forecasts](232-quantile-forecasts.html) · [Quantile Level](255-quantile-level.html) · [Quantile Regression](254-quantile-regression.html) · [Return Distribution](225-return-distribution.html)
 > **See also**
-> Adapted in our own words from [Probabilistic Scoring](https://insightful-data-lab.com/2025/08/23/probabilistic-scoring/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Probabilistic Scoring](https://insightful-data-lab.com/2025/08/23/probabilistic-scoring/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

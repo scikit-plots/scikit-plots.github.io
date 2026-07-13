@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 2 · 📍 Single-Parameter Models & Priors**** · Lesson 018 of 144 · **beginner**
 
-[◀ Previous · Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html) · [Next · Weakly Informative Prior Distributions ▶](019-weakly-informative-prior-distributions.html)
+[◀ Previous · Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html) · [Next · Weakly Informative Prior Distributions ▶](019-weakly-informative-prior-distributions.html) · [↑ Section](index.html)
 
 ## Letting the data speak[#](#letting-the-data-speak "Link to this heading")
 
@@ -53,9 +53,9 @@ flat.mean(), jeffreys.mean()                     # 0.750, 0.773
 Modern practice has largely moved on: rather than chase an unattainable neutrality, use a
 ****weakly informative**** prior that rules out the absurd while letting the data dominate.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Informative Prior Distributions](014-informative-prior-distributions.html) · [Some Useful Results from Probability Theory](008-some-useful-results-from-probability-theory.html) · [Normal Data with a Noninformative Prior Distribution](021-normal-data-with-a-noninformative-prior-distribution.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/noninformative-prior-distributions/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/noninformative-prior-distributions/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 141 of 144 · **advanced**
 
-[◀ Previous · Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Next · Beyond density estimation ▶](142-beyond-density-estimation.html)
+[◀ Previous · Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Next · Beyond density estimation ▶](142-beyond-density-estimation.html) · [↑ Section](index.html)
 
 ## Putting a likelihood on the process[#](#putting-a-likelihood-on-the-process "Link to this heading")
 
@@ -62,9 +62,9 @@ are and **which** points belong together. In practice a ****truncated**** stick-
 extends outward: to functionals beyond the density, to shared clustering across groups, and to
 covariate-dependent distributions — the final three lessons.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Beyond density estimation](142-beyond-density-estimation.html) · [Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Density regression](144-density-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/13/dirichlet-process-mixtures/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/13/dirichlet-process-mixtures/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 13 · 🔗 Generalized Linear Models**** · Lesson 107 of 144 · **advanced**
 
-[◀ Previous · Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Next · Weakly informative priors for logistic regression ▶](108-weakly-informative-priors-for-logistic-regression.html)
+[◀ Previous · Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Next · Weakly informative priors for logistic regression ▶](108-weakly-informative-priors-for-logistic-regression.html) · [↑ Section](index.html)
 
 ## Fitting is easy; interpreting is the work[#](#fitting-is-easy-interpreting-is-the-work "Link to this heading")
 
@@ -59,9 +59,9 @@ narrow. The binomial makes an analogous assumption. Detecting this — variance 
 likelihood permits — and fixing it with a richer likelihood is the subject two lessons on. First,
 though, the priors that make even the basic logistic model behave.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Weakly informative priors for logistic regression](108-weakly-informative-priors-for-logistic-regression.html) · [Overdispersed Poisson regression for police stops](109-overdispersed-poisson-regression-for-police-stops.html) · [Do the Inferences from the Model Make Sense?](041-do-the-inferences-from-the-model-make-sense.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/working-with-generalized-linear-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/working-with-generalized-linear-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

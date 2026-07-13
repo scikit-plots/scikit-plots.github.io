@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 120 of 144 · **advanced**
 
-[◀ Previous · Multiple imputation](119-multiple-imputation.html) · [Next · Example: multiple imputation for a series of polls ▶](121-example-multiple-imputation-for-a-series-of-polls.html)
+[◀ Previous · Multiple imputation](119-multiple-imputation.html) · [Next · Example: multiple imputation for a series of polls ▶](121-example-multiple-imputation-for-a-series-of-polls.html) · [↑ Section](index.html)
 
 ## Imputation from a joint model[#](#imputation-from-a-joint-model "Link to this heading")
 
@@ -62,9 +62,9 @@ with continuous) are handled by chained-equations imputation or by more elaborat
 principle is unchanged: ****model the variables together, and the conditional distribution of the missing
 given the observed is the imputation.****
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Multiple imputation](119-multiple-imputation.html) · [Notation](118-notation.html) · [Multivariate Normal with Unknown Mean and Variance](025-multivariate-normal-with-unknown-mean-and-variance.html) · [Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/missing-data-in-the-multivariate-normal-and-t-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/missing-data-in-the-multivariate-normal-and-t-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

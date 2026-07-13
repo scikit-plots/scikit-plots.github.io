@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/5_analyze_data/030-creating-temporary-tables-in-sql-methods-trade-offs-and-best-practices.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📊 Analyze Data 🚀 Validation &amp; Temporary Tables Lesson 030 ◀ Previous · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze advanced" />
+<meta property="og:description" content="📊 Analyze Data 🚀 Validation &amp; Temporary Tables Lesson 030 ◀ Previous · ↑ Section · ↑ Hub Making a temporary table: Temporary tables hold intermediate results across multiple queries in a sessio..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📊 Analyze Data 🚀 Validation &amp; Temporary Tables Lesson 030 ◀ Previous · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze advanced" />
+<meta name="description" content="📊 Analyze Data 🚀 Validation &amp; Temporary Tables Lesson 030 ◀ Previous · ↑ Section · ↑ Hub Making a temporary table: Temporary tables hold intermediate results across multiple queries in a sessio..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:37:39Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:15:30Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,99 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-jobsearch-analyze-030"></span><span id="da-python-analyze-030"></span><span id="da-viz-analyze-030"></span><span id="da-analyze-analyze-030"></span><span id="da-cleaning-analyze-030"></span><span id="da-prep-analyze-030"></span><span id="da-decisions-analyze-030"></span><span id="da-foundations-analyze-030"></span><span id="data-analytics-analyze-030"></span><span id="da-analyze-030"></span><h1>Creating Temporary Tables in SQL — Methods, Trade-offs, and Best Practices<a class="headerlink" href="#creating-temporary-tables-in-sql-methods-trade-offs-and-best-practices" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">📊 Analyze Data</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">🚀 Validation &amp; Temporary Tables</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 030</span></p>
 <p>◀ <a class="reference internal" href="029-temporary-tables-and-the-with-clause-in-sql.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="making-a-temporary-table">
+<h2>Making a temporary table<a class="headerlink" href="#making-a-temporary-table" title="Link to this heading">#</a></h2>
+<p>Temporary tables hold intermediate results across multiple queries in a session, and
+there are several ways to create them — each with trade-offs. This lesson, closing
+the analysis section, covers the methods, when each fits, and the practices that keep
+temporary tables an asset rather than a source of confusion.</p>
+</section>
+<section id="the-methods">
+<h2>The methods<a class="headerlink" href="#the-methods" title="Link to this heading">#</a></h2>
+<p>SQL offers a few ways to create a temporary result:</p>
+<ul>
+<li><p><strong>CREATE TEMPORARY TABLE</strong> — explicitly creates a temp table that persists for the
+session, then populate it with an <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> or create it from a query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TEMPORARY</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">regional_revenue</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">revenue</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">orders</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">region</span><span class="p">;</span>
+</pre></div>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/11/26/creating-temporary-tables-in-sql-methods-trade-offs-and-best-practices/">Source article</a></p>
+<p>The table now exists for the session and can be queried repeatedly like any table.</p>
+</li>
+<li><p><strong>The WITH clause (CTE)</strong> — the previous lesson’s named result set, for
+intermediate results needed within a <em>single</em> query rather than across many.</p></li>
+<li><p><strong>Creating a regular table</strong> as a staging area — a permanent table used
+temporarily (less clean; requires explicit cleanup).</p></li>
+<li><p><strong>Views</strong> — a saved query that behaves like a table but recomputes each time it is
+queried (not truly a stored intermediate result, but related).</p></li>
+</ul>
+<p>The choice among them depends on scope (one query or many), persistence, and how
+often the intermediate result is reused.</p>
+</section>
+<section id="the-trade-offs">
+<h2>The trade-offs<a class="headerlink" href="#the-trade-offs" title="Link to this heading">#</a></h2>
+<p>Each method trades off differently:</p>
+<ul class="simple">
+<li><p><strong>CTEs</strong> — cleanest and most readable for single-query steps; but scoped to one
+query, and possibly recomputed on each reference.</p></li>
+<li><p><strong>Temporary tables</strong> — computed once and reused across a session, efficient when an
+intermediate result feeds several queries; but require creation and consume session
+resources, and add steps to the workflow.</p></li>
+<li><p><strong>Staging in permanent tables</strong> — flexible but risky: they persist beyond the
+session, must be cleaned up, and can clutter or confuse if forgotten.</p></li>
+</ul>
+<p>The core trade-off is <em>readability and simplicity</em> (favouring CTEs) versus <em>reuse and
+performance</em> (favouring temp tables when an intermediate is queried repeatedly).</p>
+</section>
+<section id="best-practices">
+<h2>Best practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h2>
+<p>A few practices keep temporary tables beneficial:</p>
+<ul class="simple">
+<li><p><strong>Prefer CTEs for single queries</strong> — reach for a temp table only when an
+intermediate result is genuinely reused across multiple queries.</p></li>
+<li><p><strong>Name clearly</strong> — a temp table’s name should say what it holds, as with any good
+naming.</p></li>
+<li><p><strong>Clean up</strong> — drop temporary tables when done (session-scoped ones clean up
+automatically, but explicit cleanup avoids surprises), and never leave staging
+tables lingering.</p></li>
+<li><p><strong>Document the pipeline</strong> — when an analysis builds several temp tables in
+sequence, document the steps so the pipeline is reproducible and understandable
+(the documentation discipline from cleaning).</p></li>
+</ul>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>Temporary tables introduce <em>state</em> into an analysis — intermediate results that exist
+outside the queries and must be tracked — which is exactly what makes them both useful
+and hazardous. A temp table built early and queried later can hold <em>stale</em> data if the
+source changed in between; a forgotten staging table can be reused by mistake; and a
+multi-temp-table pipeline is harder to reproduce than a single query. The discipline
+is to use temporary tables when reuse genuinely justifies them, keep the pipeline
+documented and clean, and prefer the self-contained CTE where it suffices. Managed
+well, they make complex analysis efficient; managed carelessly, they become a source
+of exactly the integrity problems this course has warned against.</p>
+<p>This completes the Analyze Data section. You have moved from what analysis is, through
+organising, combining, and calculating data in both spreadsheets and SQL, to the
+advanced techniques that structure complex analytical work. The data is now not only
+prepared and clean but <em>analysed</em> — turned into findings. The next section addresses
+the final step of making those findings land: visualising and communicating them.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="029-temporary-tables-and-the-with-clause-in-sql.html"><span class="doc">Temporary Tables and the WITH Clause in SQL</span></a></p></li>
+<li><p><a class="reference internal" href="018-subqueries-in-sql.html"><span class="doc">Subqueries in SQL</span></a></p></li>
+<li><p><a class="reference internal" href="../4_data_cleaning_preparation/020-core-sql-queries-for-data-cleaning-and-analysis.html"><span class="doc">Core SQL Queries for Data Cleaning and Analysis</span></a></p></li>
+<li><p><a class="reference internal" href="../1_foundations/023-the-role-and-importance-of-data-visualization.html"><span class="doc">The Role and Importance of Data Visualization</span></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/11/26/creating-temporary-tables-in-sql-methods-trade-offs-and-best-practices/">https://insightful-data-lab.com/2023/11/26/creating-temporary-tables-in-sql-methods-trade-offs-and-best-practices/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/analyze.html"><span class="doc">analyze</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/advanced.html"><span class="doc">advanced</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3618,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-temporary-table">Making a temporary table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-methods">The methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trade-offs">The trade-offs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">Best practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3690,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

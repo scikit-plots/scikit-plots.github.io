@@ -48,21 +48,22 @@ print("after: ", Counter(y_res))
 
 ---
 
-****Mind map — connected ideas****
-
-> [Random Undersampling](008-random-undersampling.html) · [Cluster-based undersampling](007-cluster-based-undersampling.html) · [Subsampling](001-subsampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Oversampling](004-oversampling.html)
-
----
-
-****More in Imbalanced Learning & Resampling****
-
-> [Class Weighting](002-class-weighting.html) · [Cluster-based undersampling](007-cluster-based-undersampling.html) · [Downsampling](368-downsampling.html) · [Oversampling](004-oversampling.html) · [Random Undersampling](008-random-undersampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Subsampling](001-subsampling.html) · [Upsampling](367-upsampling.html)
-
----
-
 **Theme:** [Imbalanced Learning & Resampling](index.html#term-theme-imbalance)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Random Undersampling](008-random-undersampling.html) · [Cluster-based undersampling](007-cluster-based-undersampling.html) · [Subsampling](001-subsampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Oversampling](004-oversampling.html)
+
+---
+
+> **Hint**
+> ****More in Imbalanced Learning & Resampling****
+
+[Class Weighting](002-class-weighting.html) · [Cluster-based undersampling](007-cluster-based-undersampling.html) · [Downsampling](368-downsampling.html) · [Oversampling](004-oversampling.html) · [Random Undersampling](008-random-undersampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Subsampling](001-subsampling.html) · [Upsampling](367-upsampling.html)
 > **See also**
-> Adapted in our own words from [NearMiss (Distance-based Undersampling)](https://insightful-data-lab.com/2025/08/30/nearmiss-distance-based-undersampling/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [NearMiss (Distance-based Undersampling)](https://insightful-data-lab.com/2025/08/30/nearmiss-distance-based-undersampling/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

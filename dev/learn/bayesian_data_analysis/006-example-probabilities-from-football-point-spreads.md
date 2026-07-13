@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 006 of 144 · **beginner**
 
-[◀ Previous · Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html) · [Next · Example — Calibration for Record Linkage ▶](007-example-calibration-for-record-linkage.html)
+[◀ Previous · Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html) · [Next · Example — Calibration for Record Linkage ▶](007-example-calibration-for-record-linkage.html) · [↑ Section](index.html)
 
 ## Assignment, not inference[#](#assignment-not-inference "Link to this heading")
 
@@ -46,9 +46,9 @@ were ever played, which raw counts cannot. Second, the model is ****checked agai
 zero-centred, constant-variance normal is adopted **because** the scatterplot supports it, not because it
 is convenient. Probability assignment, done honestly, already involves the third of the three steps.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html) · [Example — Calibration for Record Linkage](007-example-calibration-for-record-linkage.html) · [Some Useful Results from Probability Theory](008-some-useful-results-from-probability-theory.html) · [Normal Distribution with Known Variance](015-normal-distribution-with-known-variance.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/example-probabilities-from-football-point-spreads/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/example-probabilities-from-football-point-spreads/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

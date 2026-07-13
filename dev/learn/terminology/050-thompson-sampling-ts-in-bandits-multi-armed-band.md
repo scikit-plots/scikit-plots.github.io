@@ -88,21 +88,22 @@ rather than confidence bounds.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Bandit Algorithms](113-bandit-algorithms.html) · [Bayesian Decision Theory (BDT)](051-bayesian-decision-theory-bdt.html) · [A/B Testing](380-a-b-testing.html) · [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Posterior](063-posterior.html) · [Prior Belief (or Prior Probability)](064-prior-belief-or-prior-probability.html)
-
----
-
-****More in Sequential Methods & Bandits****
-
-> [Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html)
-
----
-
 **Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Bandit Algorithms](113-bandit-algorithms.html) · [Bayesian Decision Theory (BDT)](051-bayesian-decision-theory-bdt.html) · [A/B Testing](380-a-b-testing.html) · [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Posterior](063-posterior.html) · [Prior Belief (or Prior Probability)](064-prior-belief-or-prior-probability.html)
+
+---
+
+> **Hint**
+> ****More in Sequential Methods & Bandits****
+
+[Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html)
 > **See also**
-> Adapted in our own words from [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](https://insightful-data-lab.com/2025/08/29/thompson-sampling-ts-in-bandits/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](https://insightful-data-lab.com/2025/08/29/thompson-sampling-ts-in-bandits/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

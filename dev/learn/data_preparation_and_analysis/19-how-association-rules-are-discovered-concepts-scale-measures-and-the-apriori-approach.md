@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 19 of 56 · **intermediate**
 
-[◀ Previous · What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · [Next · Apriori: Frequent Itemsets via the Apriori Algorithm ▶](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html)
+[◀ Previous · What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · [Next · Apriori: Frequent Itemsets via the Apriori Algorithm ▶](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [↑ Section](index.html)
 
 ## Three measures of a rule[#](#three-measures-of-a-rule "Link to this heading")
 
@@ -46,9 +46,9 @@ vast regions of the search: once the pair ****{milk, caviar}**** is rare, nothin
 common, so none of its extensions need be checked. The next lesson builds an algorithm around exactly
 this.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · [Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [association\_rules: Generating Association Rules from Frequent Itemsets (mlxtend)](21-association-rules-generating-association-rules-from-frequent-itemsets-mlxtend.html) · [Cross-Selling](22-cross-selling.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

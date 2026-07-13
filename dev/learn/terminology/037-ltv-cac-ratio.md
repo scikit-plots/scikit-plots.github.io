@@ -45,21 +45,22 @@ great ratio still hurts cash flow if CAC takes too long to recover.
 
 ---
 
-****Mind map — connected ideas****
-
-> [LTV (Customer Lifetime Value)](373-ltv-customer-lifetime-value.html) · [CAC (Customer Acquisition Cost)](374-cac-customer-acquisition-cost.html) · [Net LTV (sometimes called Contribution LTV)](038-net-ltv-sometimes-called-contribution-ltv.html) · [Gross LTV (Customer Lifetime Value)](039-gross-ltv-customer-lifetime-value.html) · [Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html)
-
----
-
-****More in Business & Growth Analytics****
-
-> [Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html) · [CAC (Customer Acquisition Cost)](374-cac-customer-acquisition-cost.html) · [Cannibalization](392-cannibalization.html) · [Channel-Specific CAC (Customer Acquisition Cost)](047-channel-specific-cac-customer-acquisition-cost.html) · [Churn](123-churn.html) · [Cohort](183-cohort.html) · [Cohort-Based LTV (Simple Version)](041-cohort-based-ltv-simple-version.html) · [Conversion Rate (CR)](299-conversion-rate-cr.html) · [Cost-Per-Click (CPC) Models](300-cost-per-click-cpc-models.html) · [Cross-Selling](031-cross-selling.html) · [CTR (Click-Through Rate)](421-ctr-click-through-rate.html) · [Customer Lifetime](042-customer-lifetime.html) · [Customer Segmentation](033-customer-segmentation.html) · [D2C (Direct-to-Consumer)](036-d2c-direct-to-consumer.html)
-
----
-
 **Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[LTV (Customer Lifetime Value)](373-ltv-customer-lifetime-value.html) · [CAC (Customer Acquisition Cost)](374-cac-customer-acquisition-cost.html) · [Net LTV (sometimes called Contribution LTV)](038-net-ltv-sometimes-called-contribution-ltv.html) · [Gross LTV (Customer Lifetime Value)](039-gross-ltv-customer-lifetime-value.html) · [Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html)
+
+---
+
+> **Hint**
+> ****More in Business & Growth Analytics****
+
+[Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html) · [CAC (Customer Acquisition Cost)](374-cac-customer-acquisition-cost.html) · [Cannibalization](392-cannibalization.html) · [Channel-Specific CAC (Customer Acquisition Cost)](047-channel-specific-cac-customer-acquisition-cost.html) · [Churn](123-churn.html) · [Cohort](183-cohort.html) · [Cohort-Based LTV (Simple Version)](041-cohort-based-ltv-simple-version.html) · [Conversion Rate (CR)](299-conversion-rate-cr.html) · [Cost-Per-Click (CPC) Models](300-cost-per-click-cpc-models.html) · [Cross-Selling](031-cross-selling.html) · [CTR (Click-Through Rate)](421-ctr-click-through-rate.html) · [Customer Lifetime](042-customer-lifetime.html) · [Customer Segmentation](033-customer-segmentation.html) · [D2C (Direct-to-Consumer)](036-d2c-direct-to-consumer.html)
 > **See also**
-> Adapted in our own words from [LTV:CAC Ratio](https://insightful-data-lab.com/2025/08/29/ltvcac-ratio/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [LTV:CAC Ratio](https://insightful-data-lab.com/2025/08/29/ltvcac-ratio/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

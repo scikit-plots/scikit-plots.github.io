@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 12 of 17 · **intermediate**
 
-[◀ Previous · Computation Graph](11-computation-graph.html) · [Next · Logistic Regression Gradient Descent ▶](13-logistic-regression-gradient-descent.html)
+[◀ Previous · Computation Graph](11-computation-graph.html) · [Next · Logistic Regression Gradient Descent ▶](13-logistic-regression-gradient-descent.html) · [↑ Section](index.html)
 
 ## Walking backward[#](#walking-backward "Link to this heading")
 
@@ -45,9 +45,9 @@ was reused for \(b\) and \(c\). That reuse is why the backward pass is ****effic
 node’s derivative follows from the one just downstream, so the whole gradient costs about as much as
 the forward pass. Applying this to the logistic-regression neuron is the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Computation Graph](11-computation-graph.html) · [More Derivative Examples](10-more-derivative-examples.html) · [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/derivatives-with-a-computation-graph/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/derivatives-with-a-computation-graph/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

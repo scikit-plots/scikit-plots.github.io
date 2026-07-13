@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧭 Orientation**** · Lesson 01 of 18 · **beginner**
 
-[Next · Getting Started with R ▶](02-getting-started-with-r.html)
+[Next · Getting Started with R ▶](02-getting-started-with-r.html) · [↑ Section](index.html)
 
 ## What it is[#](#what-it-is "Link to this heading")
 
@@ -41,9 +41,9 @@ Two complementary goals recur across every domain:
 Typical applications include demand, price and capacity forecasting; monitoring and anomaly
 detection; economics and finance; weather and climate; and any sensor or telemetry stream.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [A Gentle Introduction to Stationarity](03-a-gentle-introduction-to-stationarity.html) · [Getting Started with R](02-getting-started-with-r.html) · [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [Exponential Smoothing Models](18-exponential-smoothing-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/what-are-time-series-and-how-are-they-used/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/what-are-time-series-and-how-are-they-used/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: beginner](../../_tags/level-beginner.html)

@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 8 · 🧰 Simulation Basics**** · Lesson 066 of 144 · **intermediate**
 
-[◀ Previous · Importance sampling](065-importance-sampling.html) · [Next · Computing environments ▶](067-computing-environments.html)
+[◀ Previous · Importance sampling](065-importance-sampling.html) · [Next · Computing environments ▶](067-computing-environments.html) · [↑ Section](index.html)
 
 ## Monte Carlo error is not posterior uncertainty[#](#monte-carlo-error-is-not-posterior-uncertainty "Link to this heading")
 
@@ -49,9 +49,9 @@ well in the middle can crawl in the tails. And remember what more draws cannot b
 Carlo error toward zero and leave posterior uncertainty exactly where it was. If the interval is too
 wide to act on, the remedy is more ****data**** or a better ****model****, never a longer chain.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Importance sampling](065-importance-sampling.html) · [Numerical integration](062-numerical-integration.html) · [Eﬀective number of simulation draws](073-effective-number-of-simulation-draws.html) · [Inference and assessing convergence](072-inference-and-assessing-convergence.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/how-many-simulation-draws-are-needed/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/how-many-simulation-draws-are-needed/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

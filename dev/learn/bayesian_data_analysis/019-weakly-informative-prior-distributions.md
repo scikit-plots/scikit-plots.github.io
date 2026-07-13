@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 2 · 📍 Single-Parameter Models & Priors**** · Lesson 019 of 144 · **beginner**
 
-[◀ Previous · Noninformative Prior Distributions](018-noninformative-prior-distributions.html) · [Next · Averaging Over Nuisance Parameters ▶](020-averaging-over-nuisance-parameters.html)
+[◀ Previous · Noninformative Prior Distributions](018-noninformative-prior-distributions.html) · [Next · Averaging Over Nuisance Parameters ▶](020-averaging-over-nuisance-parameters.html) · [↑ Section](index.html)
 
 ## The sensible middle[#](#the-sensible-middle "Link to this heading")
 
@@ -50,9 +50,9 @@ coefficient on a standardised predictor and wildly informative for one measured 
 ****prior predictive check**** — simulate data from the prior alone and confirm the simulated datasets are
 merely varied, not absurd. A prior generating impossible data is too weak, not too strong.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Noninformative Prior Distributions](018-noninformative-prior-distributions.html) · [Informative Prior Distributions](014-informative-prior-distributions.html) · [Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Weakly informative priors for logistic regression](108-weakly-informative-priors-for-logistic-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/weakly-informative-prior-distributions/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/weakly-informative-prior-distributions/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

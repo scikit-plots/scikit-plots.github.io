@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 118 of 144 · **advanced**
 
-[◀ Previous · Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html) · [Next · Multiple imputation ▶](119-multiple-imputation.html)
+[◀ Previous · Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html) · [Next · Multiple imputation ▶](119-multiple-imputation.html) · [↑ Section](index.html)
 
 ## A language for missingness[#](#a-language-for-missingness "Link to this heading")
 
@@ -51,9 +51,9 @@ missing. The assumption rests on subject knowledge (why **would** these be missi
 doubtful, on a ****sensitivity analysis**** across plausible MNAR mechanisms. The notation’s value is exactly
 this: it turns an untestable worry into an explicit assumption you can state, defend, and vary.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Data-collection models and ignorability](051-data-collection-models-and-ignorability.html) · [Multiple imputation](119-multiple-imputation.html) · [Missing data in the multivariate normal and t models](120-missing-data-in-the-multivariate-normal-and-t-models.html) · [Sample surveys](052-sample-surveys.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/notation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/notation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

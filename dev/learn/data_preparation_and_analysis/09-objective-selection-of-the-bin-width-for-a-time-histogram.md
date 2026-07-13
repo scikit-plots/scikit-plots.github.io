@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 09 of 56 · **beginner**
 
-[◀ Previous · Taxi Trips – 2022 dataset from the City of Chicago open data portal](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · [Next · Measuring Associations in Data ▶](10-measuring-associations-in-data.html)
+[◀ Previous · Taxi Trips – 2022 dataset from the City of Chicago open data portal](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · [Next · Measuring Associations in Data ▶](10-measuring-associations-in-data.html) · [↑ Section](index.html)
 
 ## The bin-width problem[#](#the-bin-width-problem "Link to this heading")
 
@@ -38,9 +38,9 @@ bin width can quietly manufacture or hide patterns. A principled rule makes the 
 ****reproducible**** — the same data yields the same histogram for everyone — which is exactly the standard
 the rest of this course holds its methods to.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Taxi Trips – 2022 dataset from the City of Chicago open data portal](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Measuring Associations in Data](10-measuring-associations-in-data.html) · [Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022)](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/objective-selection-of-the-bin-width-for-a-time-histogram/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/objective-selection-of-the-bin-width-for-a-time-histogram/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

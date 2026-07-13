@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 122 of 144 · **advanced**
 
-[◀ Previous · Example: multiple imputation for a series of polls](121-example-multiple-imputation-for-a-series-of-polls.html) · [Next · Example: an opinion poll in Slovenia ▶](123-example-an-opinion-poll-in-slovenia.html)
+[◀ Previous · Example: multiple imputation for a series of polls](121-example-multiple-imputation-for-a-series-of-polls.html) · [Next · Example: an opinion poll in Slovenia ▶](123-example-an-opinion-poll-in-slovenia.html) · [↑ Section](index.html)
 
 ## Imputation beyond the normal[#](#imputation-beyond-the-normal "Link to this heading")
 
@@ -50,9 +50,9 @@ support, its variance, its offset — is what keeps completed data coherent with
 them. It closes the mechanics of missing data; the next example puts the whole apparatus, ignorability
 and imputation together, on a real survey.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Multiple imputation](119-multiple-imputation.html) · [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Overdispersed Poisson regression for police stops](109-overdispersed-poisson-regression-for-police-stops.html) · [Example: an opinion poll in Slovenia](123-example-an-opinion-poll-in-slovenia.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/missing-values-with-counted-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/missing-values-with-counted-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

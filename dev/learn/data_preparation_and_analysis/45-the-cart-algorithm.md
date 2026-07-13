@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 45 of 56 · **advanced**
 
-[◀ Previous · Motivation of Decision Trees: An Incremental Model of Decision-Making](44-motivation-of-decision-trees-an-incremental-model-of-decision-making.html) · [Next · Decision Trees as Piecewise Models and Their Predictive Structure ▶](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html)
+[◀ Previous · Motivation of Decision Trees: An Incremental Model of Decision-Making](44-motivation-of-decision-trees-an-incremental-model-of-decision-making.html) · [Next · Decision Trees as Piecewise Models and Their Predictive Structure ▶](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html) · [↑ Section](index.html)
 
 ## Growing a tree from data[#](#growing-a-tree-from-data "Link to this heading")
 
@@ -38,9 +38,9 @@ value, using ****cost-complexity pruning**** to trade size against accuracy. In 
 `DecisionTreeClassifier` and `DecisionTreeRegressor` implement CART with both controls. The next
 lessons read what a fitted tree ****means****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Motivation of Decision Trees: An Incremental Model of Decision-Making](44-motivation-of-decision-trees-an-incremental-model-of-decision-making.html) · [Decision Trees as Piecewise Models and Their Predictive Structure](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html) · [How CART Decision Trees Model Interactions](47-how-cart-decision-trees-model-interactions.html) · [Clustering](27-clustering.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/the-cart-algorithm/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/the-cart-algorithm/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

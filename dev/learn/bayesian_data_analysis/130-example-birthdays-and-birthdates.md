@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 15 · 🌊 Basis Functions & Gaussian Processes**** · Lesson 130 of 144 · **advanced**
 
-[◀ Previous · Gaussian process regression](129-gaussian-process-regression.html) · [Next · Latent Gaussian process models ▶](131-latent-gaussian-process-models.html)
+[◀ Previous · Gaussian process regression](129-gaussian-process-regression.html) · [Next · Latent Gaussian process models ▶](131-latent-gaussian-process-models.html) · [↑ Section](index.html)
 
 ## Decomposing a time series with kernels[#](#decomposing-a-time-series-with-kernels "Link to this heading")
 
@@ -59,9 +59,9 @@ methods extract by separate procedures fall out of one coherent model, with prop
 every component. The birthday series is the vivid proof that flexible, structured, interpretable models
 need not be built from a fixed basis.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Gaussian process regression](129-gaussian-process-regression.html) · [Latent Gaussian process models](131-latent-gaussian-process-models.html) · [Unequal variances and correlations](097-unequal-variances-and-correlations.html) · [Functional data analysis](132-functional-data-analysis.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/example-birthdays-and-birthdates/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/example-birthdays-and-birthdates/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

@@ -45,21 +45,22 @@ proba = clf.predict_proba(X_test)[:, 1]   # P(class 1)
 
 ---
 
-****Mind map — connected ideas****
-
-> [Linear Models](341-linear-models.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Neural Networks](287-neural-networks.html) · [Decision Trees](340-decision-trees.html) · [Multiclass AUROC](022-multiclass-auroc.html) · [Discriminatory Power](185-discriminatory-power.html)
-
----
-
-****More in AI & ML Concepts****
-
-> [AI (Artificial Intelligence)](143-ai-artificial-intelligence.html) · [Classification Models](294-classification-models.html) · [Computer Vision (CV)](321-computer-vision-cv.html) · [Decision Trees](340-decision-trees.html) · [Linear Models](341-linear-models.html) · [LLMs (Large Language Models)](158-llms-large-language-models.html) · [Machine Learning (ML)](144-machine-learning-ml.html) · [Medical AI](145-medical-ai.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html) · [Neural Networks](287-neural-networks.html) · [Regression Models](309-regression-models.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Target Variable](236-target-variable.html)
-
----
-
 **Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Linear Models](341-linear-models.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Neural Networks](287-neural-networks.html) · [Decision Trees](340-decision-trees.html) · [Multiclass AUROC](022-multiclass-auroc.html) · [Discriminatory Power](185-discriminatory-power.html)
+
+---
+
+> **Hint**
+> ****More in AI & ML Concepts****
+
+[AI (Artificial Intelligence)](143-ai-artificial-intelligence.html) · [Classification Models](294-classification-models.html) · [Computer Vision (CV)](321-computer-vision-cv.html) · [Decision Trees](340-decision-trees.html) · [Linear Models](341-linear-models.html) · [LLMs (Large Language Models)](158-llms-large-language-models.html) · [Machine Learning (ML)](144-machine-learning-ml.html) · [Medical AI](145-medical-ai.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html) · [Neural Networks](287-neural-networks.html) · [Regression Models](309-regression-models.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Target Variable](236-target-variable.html)
 > **See also**
-> Adapted in our own words from [Logistic Regression](https://insightful-data-lab.com/2025/08/21/logistic-regression/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Logistic Regression](https://insightful-data-lab.com/2025/08/21/logistic-regression/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

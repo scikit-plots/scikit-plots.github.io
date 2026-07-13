@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 8 · 🧰 Simulation Basics**** · Lesson 063 of 144 · **intermediate**
 
-[◀ Previous · Numerical integration](062-numerical-integration.html) · [Next · Direct simulation and rejection sampling ▶](064-direct-simulation-and-rejection-sampling.html)
+[◀ Previous · Numerical integration](062-numerical-integration.html) · [Next · Direct simulation and rejection sampling ▶](064-direct-simulation-and-rejection-sampling.html) · [↑ Section](index.html)
 
 ## Replace the posterior with something tractable[#](#replace-the-posterior-with-something-tractable "Link to this heading")
 
@@ -52,9 +52,9 @@ So use approximations for ****starting values****, for ****proposal distribution
 look****, and for problems too large to sample — but check them against MCMC where you can, and report
 which you used.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Numerical integration](062-numerical-integration.html) · [Variational inference](087-variational-inference.html) · [Importance sampling](065-importance-sampling.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/distributional-approximations/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/distributional-approximations/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

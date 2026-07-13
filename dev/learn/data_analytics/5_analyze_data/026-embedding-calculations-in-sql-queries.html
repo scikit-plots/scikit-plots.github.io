@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/5_analyze_data/026-embedding-calculations-in-sql-queries.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 026 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze calc" />
+<meta property="og:description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 026 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Computing inside the query: SQL does not only retrieve data — it computes on it, producing derived..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 026 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze calc" />
+<meta name="description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 026 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Computing inside the query: SQL does not only retrieve data — it computes on it, producing derived..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:37:35Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:15:26Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,85 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-jobsearch-analyze-026"></span><span id="da-python-analyze-026"></span><span id="da-viz-analyze-026"></span><span id="da-analyze-analyze-026"></span><span id="da-cleaning-analyze-026"></span><span id="da-prep-analyze-026"></span><span id="da-decisions-analyze-026"></span><span id="da-foundations-analyze-026"></span><span id="data-analytics-analyze-026"></span><span id="da-analyze-026"></span><h1>Embedding Calculations in SQL Queries<a class="headerlink" href="#embedding-calculations-in-sql-queries" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">📊 Analyze Data</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">🧮 Calculations &amp; Aggregation</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 026</span></p>
 <p>◀ <a class="reference internal" href="025-comparing-calculations-in-spreadsheets-and-sql.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="027-using-group-by-and-order-by-for-aggregated-calculations-in-sql.html"><span class="doc">Next</span></a> ▶ · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="computing-inside-the-query">
+<h2>Computing inside the query<a class="headerlink" href="#computing-inside-the-query" title="Link to this heading">#</a></h2>
+<p>SQL does not only <em>retrieve</em> data — it <em>computes</em> on it, producing derived values as
+part of the query result. <strong>Embedding calculations in SQL queries</strong> means writing
+arithmetic and expressions directly in the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> clause, so the database
+returns computed columns alongside stored ones. This is where SQL becomes a
+calculation engine, not just a retrieval tool.</p>
+</section>
+<section id="calculated-columns-in-select">
+<h2>Calculated columns in SELECT<a class="headerlink" href="#calculated-columns-in-select" title="Link to this heading">#</a></h2>
+<p>Any expression in the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> clause produces a computed column:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">product</span><span class="p">,</span>
+<span class="w">       </span><span class="n">quantity</span><span class="p">,</span>
+<span class="w">       </span><span class="n">price</span><span class="p">,</span>
+<span class="w">       </span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">price</span><span class="w">               </span><span class="k">AS</span><span class="w"> </span><span class="n">line_total</span><span class="p">,</span>
+<span class="w">       </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">9</span><span class="w">                    </span><span class="k">AS</span><span class="w"> </span><span class="n">discounted_price</span><span class="p">,</span>
+<span class="w">       </span><span class="p">(</span><span class="n">revenue</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cost</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">revenue</span><span class="w">     </span><span class="k">AS</span><span class="w"> </span><span class="n">margin</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">orders</span><span class="p">;</span>
+</pre></div>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/11/26/embedding-calculations-in-sql-queries/">Source article</a></p>
+<p>Each expression — <code class="docutils literal notranslate"><span class="pre">quantity</span> <span class="pre">*</span> <span class="pre">price</span></code>, <code class="docutils literal notranslate"><span class="pre">price</span> <span class="pre">*</span> <span class="pre">0.9</span></code>, the margin formula — is
+computed per row and returned as a new column (named with <code class="docutils literal notranslate"><span class="pre">AS</span></code>). The arithmetic
+operators (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>) work as expected, and expressions can combine
+columns, constants, and functions. This is the SQL equivalent of a spreadsheet
+formula column, computed by the database.</p>
+</section>
+<section id="calculations-with-functions">
+<h2>Calculations with functions<a class="headerlink" href="#calculations-with-functions" title="Link to this heading">#</a></h2>
+<p>Embedded calculations extend beyond arithmetic to SQL’s functions:</p>
+<ul class="simple">
+<li><p><strong>String calculations</strong> — <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code>, <code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code>, and the string functions from
+earlier, producing derived text.</p></li>
+<li><p><strong>Date calculations</strong> — extracting parts of dates, computing differences between
+dates (days between order and ship), which are central to trend and duration
+analysis.</p></li>
+<li><p><strong>Conditional calculations</strong> — <code class="docutils literal notranslate"><span class="pre">CASE</span></code> expressions producing values that depend
+on conditions (the conditional logic from the combine stage).</p></li>
+<li><p><strong>Type conversions</strong> — <code class="docutils literal notranslate"><span class="pre">CAST</span></code> within a calculation, ensuring arithmetic happens
+on the right types.</p></li>
+</ul>
+<p>Combining these, a single <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> can compute a rich set of derived values from
+the stored data — the analytical columns a question needs, produced at query time.</p>
+</section>
+<section id="why-compute-in-the-query">
+<h2>Why compute in the query<a class="headerlink" href="#why-compute-in-the-query" title="Link to this heading">#</a></h2>
+<p>Embedding calculations in the query, rather than retrieving raw data and computing
+elsewhere, has real advantages: the computation happens <em>at the source</em> on the full
+data (no exporting), the query is <em>reproducible</em> (the calculation is recorded in the
+query text and reruns on new data), and only the <em>results</em> travel, not millions of
+raw rows. It keeps the calculation logic with the data and the query, which is
+cleaner and more scalable than pulling data out to compute on it.</p>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>Embedded calculations inherit SQL’s precision demands. <strong>Integer division</strong> is a
+classic trap — in many databases, <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">/</span> <span class="pre">2</span></code> yields <code class="docutils literal notranslate"><span class="pre">2</span></code> (integer division) rather
+than <code class="docutils literal notranslate"><span class="pre">2.5</span></code>, so a ratio computed on integer columns can be silently wrong unless
+you cast to a decimal type first. <strong>Nulls propagate</strong> — any arithmetic involving a
+null yields null (<code class="docutils literal notranslate"><span class="pre">price</span> <span class="pre">*</span> <span class="pre">quantity</span></code> is null if either is null), so calculated
+columns can be unexpectedly empty. And <strong>division by zero</strong> errors or yields null
+depending on the database. As always, the calculation returns exactly what the
+expression specifies — verify that derived columns hold the values you intend,
+checking especially division, nulls, and types. The next lesson combines embedded
+calculation with grouping — the SQL pivot.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="025-comparing-calculations-in-spreadsheets-and-sql.html"><span class="doc">Comparing Calculations in Spreadsheets and SQL</span></a></p></li>
+<li><p><a class="reference internal" href="027-using-group-by-and-order-by-for-aggregated-calculations-in-sql.html"><span class="doc">Using GROUP BY and ORDER BY for Aggregated Calculations in SQL</span></a></p></li>
+<li><p><a class="reference internal" href="../4_data_cleaning_preparation/020-core-sql-queries-for-data-cleaning-and-analysis.html"><span class="doc">Core SQL Queries for Data Cleaning and Analysis</span></a></p></li>
+<li><p><a class="reference internal" href="019-aggregating-data-with-subqueries-having-and-case-in-sql.html"><span class="doc">Aggregating Data with Subqueries, HAVING, and CASE in SQL</span></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/11/26/embedding-calculations-in-sql-queries/">https://insightful-data-lab.com/2023/11/26/embedding-calculations-in-sql-queries/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/analyze.html"><span class="doc">analyze</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/calc.html"><span class="doc">calc</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3604,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-inside-the-query">Computing inside the query</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculated-columns-in-select">Calculated columns in SELECT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations-with-functions">Calculations with functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-compute-in-the-query">Why compute in the query</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3676,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

@@ -36,21 +36,22 @@ efficiency-versus-accuracy trade-off.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Model Weights](155-model-weights.html) · [Quantization](343-quantization.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html) · [Cloud Inference](153-cloud-inference.html) · [OpEx](157-opex.html) · [Neural Networks](287-neural-networks.html)
-
----
-
-****More in Model Training & Optimization****
-
-> [Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html)
-
----
-
 **Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Model Weights](155-model-weights.html) · [Quantization](343-quantization.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html) · [Cloud Inference](153-cloud-inference.html) · [OpEx](157-opex.html) · [Neural Networks](287-neural-networks.html)
+
+---
+
+> **Hint**
+> ****More in Model Training & Optimization****
+
+[Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html)
 > **See also**
-> Adapted in our own words from [FLOPs](https://insightful-data-lab.com/2025/08/24/flops/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [FLOPs](https://insightful-data-lab.com/2025/08/24/flops/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

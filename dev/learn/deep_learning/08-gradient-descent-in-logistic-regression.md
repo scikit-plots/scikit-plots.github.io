@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 08 of 17 · **intermediate**
 
-[◀ Previous · Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [Next · Derivatives ▶](09-derivatives.html)
+[◀ Previous · Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [Next · Derivatives ▶](09-derivatives.html) · [↑ Section](index.html)
 
 ## The optimization problem[#](#the-optimization-problem "Link to this heading")
 
@@ -36,9 +36,9 @@ many iterations; too ****large**** and the steps overshoot the minimum and may *
 \(\alpha\) well — and computing those derivatives efficiently — is what the rest of this stage is
 about, starting with the calculus itself.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [Derivatives](09-derivatives.html) · [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/gradient-descent-in-logistic-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/gradient-descent-in-logistic-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

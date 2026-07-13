@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 041 of 144 · **intermediate**
 
-[◀ Previous · The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [Next · Posterior predictive checking ▶](042-posterior-predictive-checking.html)
+[◀ Previous · The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [Next · Posterior predictive checking ▶](042-posterior-predictive-checking.html) · [↑ Section](index.html)
 
 ## The cheapest check[#](#the-cheapest-check "Link to this heading")
 
@@ -53,9 +53,9 @@ units first, then simulate from the prior, then question the model. And keep the
 result that merely **surprises** you may be the finding. The check is against what is ****impossible**** or
 ****incoherent****, not against what is merely unexpected.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [Posterior predictive checking](042-posterior-predictive-checking.html) · [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Debugging Bayesian computing](068-debugging-bayesian-computing.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/do-the-inferences-from-the-model-make-sense/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/do-the-inferences-from-the-model-make-sense/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

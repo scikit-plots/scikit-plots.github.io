@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:32:25Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:10:10Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Precision annoy.AnnoyIndex with examples — scikit-plots 0.5.dev0 documentation</title>
@@ -243,7 +243,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.png"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
@@ -369,7 +369,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.png"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
@@ -593,95 +593,92 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  1%|▏         | 1271/100000 [00:00&lt;00:07, 12707.95it/s]
-  3%|▎         | 2542/100000 [00:00&lt;00:07, 12703.55it/s]
-  4%|▍         | 3813/100000 [00:00&lt;00:07, 12622.81it/s]
-  5%|▌         | 5076/100000 [00:00&lt;00:07, 12598.01it/s]
-  6%|▋         | 6347/100000 [00:00&lt;00:07, 12635.16it/s]
-  8%|▊         | 7620/100000 [00:00&lt;00:07, 12664.33it/s]
-  9%|▉         | 8889/100000 [00:00&lt;00:07, 12670.30it/s]10000 / 100000 = 0.1
+  1%|▏         | 1316/100000 [00:00&lt;00:07, 13149.17it/s]
+  3%|▎         | 2631/100000 [00:00&lt;00:07, 13068.01it/s]
+  4%|▍         | 3940/100000 [00:00&lt;00:07, 13076.26it/s]
+  5%|▌         | 5253/100000 [00:00&lt;00:07, 13097.26it/s]
+  7%|▋         | 6567/100000 [00:00&lt;00:07, 13109.29it/s]
+  8%|▊         | 7882/100000 [00:00&lt;00:07, 13119.89it/s]
+  9%|▉         | 9201/100000 [00:00&lt;00:06, 13140.74it/s]10000 / 100000 = 0.1
 
- 10%|█         | 10157/100000 [00:00&lt;00:07, 12652.54it/s]
- 11%|█▏        | 11425/100000 [00:00&lt;00:06, 12659.84it/s]
- 13%|█▎        | 12703/100000 [00:01&lt;00:06, 12694.19it/s]
- 14%|█▍        | 13973/100000 [00:01&lt;00:06, 12695.44it/s]
- 15%|█▌        | 15243/100000 [00:01&lt;00:06, 12454.95it/s]
- 16%|█▋        | 16490/100000 [00:01&lt;00:06, 12373.97it/s]
- 18%|█▊        | 17757/100000 [00:01&lt;00:06, 12460.19it/s]
- 19%|█▉        | 19024/100000 [00:01&lt;00:06, 12522.37it/s]20000 / 100000 = 0.2
+ 11%|█         | 10516/100000 [00:00&lt;00:06, 13119.38it/s]
+ 12%|█▏        | 11828/100000 [00:00&lt;00:06, 13097.58it/s]
+ 13%|█▎        | 13138/100000 [00:01&lt;00:06, 12954.10it/s]
+ 14%|█▍        | 14441/100000 [00:01&lt;00:06, 12974.62it/s]
+ 16%|█▌        | 15759/100000 [00:01&lt;00:06, 13034.90it/s]
+ 17%|█▋        | 17075/100000 [00:01&lt;00:06, 13070.93it/s]
+ 18%|█▊        | 18397/100000 [00:01&lt;00:06, 13113.23it/s]
+ 20%|█▉        | 19714/100000 [00:01&lt;00:06, 13128.05it/s]20000 / 100000 = 0.2
 
- 20%|██        | 20277/100000 [00:01&lt;00:06, 12460.50it/s]
- 22%|██▏       | 21524/100000 [00:01&lt;00:06, 12362.20it/s]
- 23%|██▎       | 22761/100000 [00:01&lt;00:06, 12060.30it/s]
- 24%|██▍       | 23969/100000 [00:01&lt;00:06, 11936.72it/s]
- 25%|██▌       | 25164/100000 [00:02&lt;00:06, 11700.28it/s]
- 26%|██▋       | 26392/100000 [00:02&lt;00:06, 11867.24it/s]
- 28%|██▊       | 27581/100000 [00:02&lt;00:06, 11853.32it/s]
- 29%|██▉       | 28804/100000 [00:02&lt;00:05, 11962.25it/s]30000 / 100000 = 0.3
+ 21%|██        | 21027/100000 [00:01&lt;00:06, 13050.39it/s]
+ 22%|██▏       | 22348/100000 [00:01&lt;00:05, 13097.98it/s]
+ 24%|██▎       | 23670/100000 [00:01&lt;00:05, 13132.55it/s]
+ 25%|██▍       | 24990/100000 [00:01&lt;00:05, 13151.13it/s]
+ 26%|██▋       | 26306/100000 [00:02&lt;00:05, 13147.22it/s]
+ 28%|██▊       | 27621/100000 [00:02&lt;00:05, 13124.89it/s]
+ 29%|██▉       | 28939/100000 [00:02&lt;00:05, 13138.66it/s]30000 / 100000 = 0.3
 
- 30%|███       | 30056/100000 [00:02&lt;00:05, 12124.92it/s]
- 31%|███▏      | 31296/100000 [00:02&lt;00:05, 12204.79it/s]
- 33%|███▎      | 32564/100000 [00:02&lt;00:05, 12345.73it/s]
- 34%|███▍      | 33832/100000 [00:02&lt;00:05, 12444.67it/s]
- 35%|███▌      | 35077/100000 [00:02&lt;00:05, 12392.45it/s]
- 36%|███▋      | 36344/100000 [00:02&lt;00:05, 12474.38it/s]
- 38%|███▊      | 37618/100000 [00:03&lt;00:04, 12552.30it/s]
- 39%|███▉      | 38874/100000 [00:03&lt;00:04, 12446.22it/s]40000 / 100000 = 0.4
+ 30%|███       | 30254/100000 [00:02&lt;00:05, 13141.43it/s]
+ 32%|███▏      | 31571/100000 [00:02&lt;00:05, 13149.68it/s]
+ 33%|███▎      | 32888/100000 [00:02&lt;00:05, 13153.15it/s]
+ 34%|███▍      | 34210/100000 [00:02&lt;00:04, 13171.11it/s]
+ 36%|███▌      | 35528/100000 [00:02&lt;00:04, 13156.02it/s]
+ 37%|███▋      | 36844/100000 [00:02&lt;00:04, 12744.97it/s]
+ 38%|███▊      | 38157/100000 [00:02&lt;00:04, 12855.42it/s]
+ 39%|███▉      | 39470/100000 [00:03&lt;00:04, 12935.94it/s]40000 / 100000 = 0.4
 
- 40%|████      | 40153/100000 [00:03&lt;00:04, 12548.17it/s]
- 41%|████▏     | 41428/100000 [00:03&lt;00:04, 12606.82it/s]
- 43%|████▎     | 42704/100000 [00:03&lt;00:04, 12650.68it/s]
- 44%|████▍     | 43973/100000 [00:03&lt;00:04, 12660.73it/s]
- 45%|████▌     | 45240/100000 [00:03&lt;00:04, 12641.83it/s]
- 47%|████▋     | 46506/100000 [00:03&lt;00:04, 12647.07it/s]
- 48%|████▊     | 47780/100000 [00:03&lt;00:04, 12673.26it/s]
- 49%|████▉     | 49050/100000 [00:03&lt;00:04, 12680.24it/s]50000 / 100000 = 0.5
+ 41%|████      | 40786/100000 [00:03&lt;00:04, 12999.35it/s]
+ 42%|████▏     | 42105/100000 [00:03&lt;00:04, 13053.23it/s]
+ 43%|████▎     | 43420/100000 [00:03&lt;00:04, 13081.44it/s]
+ 45%|████▍     | 44741/100000 [00:03&lt;00:04, 13119.74it/s]
+ 46%|████▌     | 46054/100000 [00:03&lt;00:04, 13104.28it/s]
+ 47%|████▋     | 47374/100000 [00:03&lt;00:04, 13132.14it/s]
+ 49%|████▊     | 48693/100000 [00:03&lt;00:03, 13148.10it/s]50000 / 100000 = 0.5
 
- 50%|█████     | 50325/100000 [00:04&lt;00:03, 12700.63it/s]
- 52%|█████▏    | 51596/100000 [00:04&lt;00:03, 12691.28it/s]
- 53%|█████▎    | 52866/100000 [00:04&lt;00:03, 12687.30it/s]
- 54%|█████▍    | 54135/100000 [00:04&lt;00:03, 12682.05it/s]
- 55%|█████▌    | 55414/100000 [00:04&lt;00:03, 12713.90it/s]
- 57%|█████▋    | 56686/100000 [00:04&lt;00:03, 12707.29it/s]
- 58%|█████▊    | 57957/100000 [00:04&lt;00:03, 12700.04it/s]
- 59%|█████▉    | 59228/100000 [00:04&lt;00:03, 12648.97it/s]60000 / 100000 = 0.6
+ 50%|█████     | 50008/100000 [00:03&lt;00:03, 13148.49it/s]
+ 51%|█████▏    | 51329/100000 [00:03&lt;00:03, 13164.78it/s]
+ 53%|█████▎    | 52646/100000 [00:04&lt;00:03, 13157.76it/s]
+ 54%|█████▍    | 53964/100000 [00:04&lt;00:03, 13162.80it/s]
+ 55%|█████▌    | 55281/100000 [00:04&lt;00:03, 13155.49it/s]
+ 57%|█████▋    | 56597/100000 [00:04&lt;00:03, 13076.56it/s]
+ 58%|█████▊    | 57911/100000 [00:04&lt;00:03, 13095.15it/s]
+ 59%|█████▉    | 59221/100000 [00:04&lt;00:03, 13082.88it/s]60000 / 100000 = 0.6
 
- 60%|██████    | 60495/100000 [00:04&lt;00:03, 12655.11it/s]
- 62%|██████▏   | 61767/100000 [00:04&lt;00:03, 12672.02it/s]
- 63%|██████▎   | 63040/100000 [00:05&lt;00:02, 12686.45it/s]
- 64%|██████▍   | 64316/100000 [00:05&lt;00:02, 12706.25it/s]
- 66%|██████▌   | 65587/100000 [00:05&lt;00:02, 12694.99it/s]
- 67%|██████▋   | 66861/100000 [00:05&lt;00:02, 12705.91it/s]
- 68%|██████▊   | 68132/100000 [00:05&lt;00:02, 12705.28it/s]
- 69%|██████▉   | 69404/100000 [00:05&lt;00:02, 12707.37it/s]70000 / 100000 = 0.7
+ 61%|██████    | 60534/100000 [00:04&lt;00:03, 13095.25it/s]
+ 62%|██████▏   | 61844/100000 [00:04&lt;00:02, 13061.23it/s]
+ 63%|██████▎   | 63159/100000 [00:04&lt;00:02, 13086.59it/s]
+ 64%|██████▍   | 64478/100000 [00:04&lt;00:02, 13116.67it/s]
+ 66%|██████▌   | 65791/100000 [00:05&lt;00:02, 13120.32it/s]
+ 67%|██████▋   | 67111/100000 [00:05&lt;00:02, 13141.31it/s]
+ 68%|██████▊   | 68432/100000 [00:05&lt;00:02, 13159.02it/s]
+ 70%|██████▉   | 69754/100000 [00:05&lt;00:02, 13174.28it/s]70000 / 100000 = 0.7
 
- 71%|███████   | 70678/100000 [00:05&lt;00:02, 12715.72it/s]
- 72%|███████▏  | 71950/100000 [00:05&lt;00:02, 12709.66it/s]
- 73%|███████▎  | 73221/100000 [00:05&lt;00:02, 12704.89it/s]
- 74%|███████▍  | 74498/100000 [00:05&lt;00:02, 12722.83it/s]
- 76%|███████▌  | 75775/100000 [00:06&lt;00:01, 12736.19it/s]
- 77%|███████▋  | 77049/100000 [00:06&lt;00:01, 12657.88it/s]
- 78%|███████▊  | 78315/100000 [00:06&lt;00:01, 12655.14it/s]
- 80%|███████▉  | 79581/100000 [00:06&lt;00:01, 12653.47it/s]80000 / 100000 = 0.8
+ 71%|███████   | 71072/100000 [00:05&lt;00:02, 13167.33it/s]
+ 72%|███████▏  | 72391/100000 [00:05&lt;00:02, 13171.79it/s]
+ 74%|███████▎  | 73713/100000 [00:05&lt;00:01, 13184.39it/s]
+ 75%|███████▌  | 75035/100000 [00:05&lt;00:01, 13194.51it/s]
+ 76%|███████▋  | 76355/100000 [00:05&lt;00:01, 13147.03it/s]
+ 78%|███████▊  | 77673/100000 [00:05&lt;00:01, 13154.66it/s]
+ 79%|███████▉  | 78990/100000 [00:06&lt;00:01, 13158.68it/s]80000 / 100000 = 0.8
 
- 81%|████████  | 80849/100000 [00:06&lt;00:01, 12657.99it/s]
- 82%|████████▏ | 82117/100000 [00:06&lt;00:01, 12662.81it/s]
- 83%|████████▎ | 83389/100000 [00:06&lt;00:01, 12677.67it/s]
- 85%|████████▍ | 84657/100000 [00:06&lt;00:01, 12675.44it/s]
- 86%|████████▌ | 85927/100000 [00:06&lt;00:01, 12682.11it/s]
- 87%|████████▋ | 87200/100000 [00:06&lt;00:01, 12693.63it/s]
- 88%|████████▊ | 88474/100000 [00:07&lt;00:00, 12705.79it/s]
- 90%|████████▉ | 89745/100000 [00:07&lt;00:00, 12701.73it/s]90000 / 100000 = 0.9
+ 80%|████████  | 80306/100000 [00:06&lt;00:01, 13158.80it/s]
+ 82%|████████▏ | 81625/100000 [00:06&lt;00:01, 13165.40it/s]
+ 83%|████████▎ | 82944/100000 [00:06&lt;00:01, 13170.57it/s]
+ 84%|████████▍ | 84266/100000 [00:06&lt;00:01, 13182.44it/s]
+ 86%|████████▌ | 85585/100000 [00:06&lt;00:01, 13178.06it/s]
+ 87%|████████▋ | 86906/100000 [00:06&lt;00:00, 13185.00it/s]
+ 88%|████████▊ | 88227/100000 [00:06&lt;00:00, 13190.72it/s]
+ 90%|████████▉ | 89547/100000 [00:06&lt;00:00, 13188.65it/s]90000 / 100000 = 0.9
 
- 91%|█████████ | 91017/100000 [00:07&lt;00:00, 12705.56it/s]
- 92%|█████████▏| 92290/100000 [00:07&lt;00:00, 12711.60it/s]
- 94%|█████████▎| 93562/100000 [00:07&lt;00:00, 12702.54it/s]
- 95%|█████████▍| 94835/100000 [00:07&lt;00:00, 12708.43it/s]
- 96%|█████████▌| 96106/100000 [00:07&lt;00:00, 12707.88it/s]
- 97%|█████████▋| 97378/100000 [00:07&lt;00:00, 12710.74it/s]
- 99%|█████████▊| 98650/100000 [00:07&lt;00:00, 12708.71it/s]
-100%|█████████▉| 99921/100000 [00:07&lt;00:00, 11386.42it/s]
-100%|██████████| 100000/100000 [00:07&lt;00:00, 12509.47it/s]
+ 91%|█████████ | 90866/100000 [00:06&lt;00:00, 13153.18it/s]
+ 92%|█████████▏| 92182/100000 [00:07&lt;00:00, 12821.71it/s]
+ 93%|█████████▎| 93466/100000 [00:07&lt;00:00, 12622.32it/s]
+ 95%|█████████▍| 94730/100000 [00:07&lt;00:00, 12507.79it/s]
+ 96%|█████████▌| 95982/100000 [00:07&lt;00:00, 12420.14it/s]
+ 97%|█████████▋| 97247/100000 [00:07&lt;00:00, 12486.68it/s]
+ 99%|█████████▊| 98535/100000 [00:07&lt;00:00, 12598.45it/s]
+100%|█████████▉| 99796/100000 [00:07&lt;00:00, 12516.74it/s]
+100%|██████████| 100000/100000 [00:07&lt;00:00, 13042.51it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 499984128, 'memory_usage_mib': 476.822021484375}
 </pre></div>
@@ -752,16 +749,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   q.set_seed(0)
 
   0%|          | 0/10 [00:00&lt;?, ?it/s]
- 70%|███████   | 7/10 [00:00&lt;00:00, 61.56it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 62.43it/s]
-limit: 10        precision:  10.00% avg time: 0.000126s
-limit: 100       precision:  16.00% avg time: 0.000111s
-limit: 1000      precision:  33.00% avg time: 0.000328s
-limit: 10000     precision:  86.00% avg time: 0.001939s
+ 60%|██████    | 6/10 [00:00&lt;00:00, 59.03it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 60.97it/s]
+limit: 10        precision:  10.00% avg time: 0.000131s
+limit: 100       precision:  16.00% avg time: 0.000116s
+limit: 1000      precision:  33.00% avg time: 0.000338s
+limit: 10000     precision:  86.00% avg time: 0.002022s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 8.186 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 17.643 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -869,7 +866,7 @@ limit: 10000     precision:  86.00% avg time: 0.001939s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
 </p>
 </div>

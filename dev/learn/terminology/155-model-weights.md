@@ -35,21 +35,22 @@ the last layers. Concretely, a spam classifier might learn a weight of ****+2.5*
 
 ---
 
-****Mind map — connected ideas****
-
-> [Hyperparameter](142-hyperparameter.html) · [Frozen Encoder](172-frozen-encoder.html) · [Regression Coefficient](090-regression-coefficient.html) · [Epochs](141-epochs.html) · [Neural Networks](287-neural-networks.html) · [FLOPs](156-flops.html)
-
----
-
-****More in Model Training & Optimization****
-
-> [Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html)
-
----
-
 **Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Hyperparameter](142-hyperparameter.html) · [Frozen Encoder](172-frozen-encoder.html) · [Regression Coefficient](090-regression-coefficient.html) · [Epochs](141-epochs.html) · [Neural Networks](287-neural-networks.html) · [FLOPs](156-flops.html)
+
+---
+
+> **Hint**
+> ****More in Model Training & Optimization****
+
+[Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html)
 > **See also**
-> Adapted in our own words from [Model Weights](https://insightful-data-lab.com/2025/08/24/model-weights/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Model Weights](https://insightful-data-lab.com/2025/08/24/model-weights/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

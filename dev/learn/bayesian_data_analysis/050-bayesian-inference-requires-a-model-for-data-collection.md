@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 050 of 144 · **intermediate**
 
-[◀ Previous · Implicit assumptions and model expansion: an example](049-implicit-assumptions-and-model-expansion-an-example.html) · [Next · Data-collection models and ignorability ▶](051-data-collection-models-and-ignorability.html)
+[◀ Previous · Implicit assumptions and model expansion: an example](049-implicit-assumptions-and-model-expansion-an-example.html) · [Next · Data-collection models and ignorability ▶](051-data-collection-models-and-ignorability.html) · [↑ Section](index.html)
 
 ## The data did not arrive by magic[#](#the-data-did-not-arrive-by-magic "Link to this heading")
 
@@ -55,9 +55,9 @@ those conditions is what separates an analysis that may safely omit the design f
 it. Randomisation, it will turn out, is precisely a device for ****making the mechanism ignorable by
 construction****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Data-collection models and ignorability](051-data-collection-models-and-ignorability.html) · [Censoring and truncation](056-censoring-and-truncation.html) · [Notation](118-notation.html) · [Sample surveys](052-sample-surveys.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/bayesian-inference-requires-a-model-for-data-collection/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/bayesian-inference-requires-a-model-for-data-collection/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

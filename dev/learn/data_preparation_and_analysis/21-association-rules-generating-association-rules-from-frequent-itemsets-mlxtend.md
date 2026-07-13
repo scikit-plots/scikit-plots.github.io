@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 21 of 56 · **intermediate**
 
-[◀ Previous · Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [Next · Cross-Selling ▶](22-cross-selling.html)
+[◀ Previous · Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [Next · Cross-Selling ▶](22-cross-selling.html) · [↑ Section](index.html)
 
 ## From itemsets to rules in code[#](#from-itemsets-to-rules-in-code "Link to this heading")
 
@@ -49,9 +49,9 @@ The result is a tidy `DataFrame`: each row a rule, with columns for ****antecede
 the most surprising, actionable pairings — the rules a shop would actually act on. The final lesson of
 this stage puts them to use: ****cross-selling****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · [What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · [Cross-Selling](22-cross-selling.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/association_rules-generating-association-rules-from-frequent-itemsets-mlxtend/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/association_rules-generating-association-rules-from-frequent-itemsets-mlxtend/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

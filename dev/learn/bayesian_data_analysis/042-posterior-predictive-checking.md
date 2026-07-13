@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 042 of 144 · **intermediate**
 
-[◀ Previous · Do the Inferences from the Model Make Sense?](041-do-the-inferences-from-the-model-make-sense.html) · [Next · Graphical posterior predictive checks ▶](043-graphical-posterior-predictive-checks.html)
+[◀ Previous · Do the Inferences from the Model Make Sense?](041-do-the-inferences-from-the-model-make-sense.html) · [Next · Graphical posterior predictive checks ▶](043-graphical-posterior-predictive-checks.html) · [↑ Section](index.html)
 
 ## Let the model generate data[#](#let-the-model-generate-data "Link to this heading")
 
@@ -56,9 +56,9 @@ for: choosing \(T\) = the sample mean will almost always pass, because the model
 the mean. ****Choose test quantities the model does not automatically reproduce****, and ones that matter for
 your purpose. The point is never to accept or reject, but to learn ****where**** the model misses.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [Graphical posterior predictive checks](043-graphical-posterior-predictive-checks.html) · [Model checking for the educational testing example](044-model-checking-for-the-educational-testing-example.html) · [Measures of predictive accuracy](045-measures-of-predictive-accuracy.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/posterior-predictive-checking/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/posterior-predictive-checking/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

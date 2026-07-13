@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 34 of 56 · **intermediate**
 
-[◀ Previous · Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · [Next · Forward Selection and Model Interpretation in Linear Regression ▶](35-forward-selection-and-model-interpretation-in-linear-regression.html)
+[◀ Previous · Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · [Next · Forward Selection and Model Interpretation in Linear Regression ▶](35-forward-selection-and-model-interpretation-in-linear-regression.html) · [↑ Section](index.html)
 
 ## Too many features[#](#too-many-features "Link to this heading")
 
@@ -34,9 +34,9 @@ feature that shines only in combination with another might never be picked. Chec
 subset would be exact but explodes combinatorially (echoing the Apriori scale problem). Forward
 selection trades that guarantee for speed and simplicity; the next lessons apply and extend it.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Forward Selection and Model Interpretation in Linear Regression](35-forward-selection-and-model-interpretation-in-linear-regression.html) · [Understanding Forward and Backward Stepwise Regression](36-understanding-forward-and-backward-stepwise-regression.html) · [Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · [Forward Selection with Nested Models and Deviance Tests](42-forward-selection-with-nested-models-and-deviance-tests.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/forward-selection-definition-and-core-idea/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/forward-selection-definition-and-core-idea/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

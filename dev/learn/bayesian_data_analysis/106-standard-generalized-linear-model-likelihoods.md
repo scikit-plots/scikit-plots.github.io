@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 13 · 🔗 Generalized Linear Models**** · Lesson 106 of 144 · **advanced**
 
-[◀ Previous · Hierarchical models for batches of variance components](105-hierarchical-models-for-batches-of-variance-components.html) · [Next · Working with generalized linear models ▶](107-working-with-generalized-linear-models.html)
+[◀ Previous · Hierarchical models for batches of variance components](105-hierarchical-models-for-batches-of-variance-components.html) · [Next · Working with generalized linear models ▶](107-working-with-generalized-linear-models.html) · [↑ Section](index.html)
 
 ## Beyond the normal outcome[#](#beyond-the-normal-outcome "Link to this heading")
 
@@ -63,9 +63,9 @@ binary, count and categorical data are variations on a theme, not separate subje
 of coefficients changes with the link, though, and that — along with the priors that keep GLMs
 well-behaved — is what the rest of this stage is about.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Conditional modeling](091-conditional-modeling.html) · [Working with generalized linear models](107-working-with-generalized-linear-models.html) · [Weakly informative priors for logistic regression](108-weakly-informative-priors-for-logistic-regression.html) · [Models for multivariate and multinomial responses](111-models-for-multivariate-and-multinomial-responses.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/standard-generalized-linear-model-likelihoods/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/standard-generalized-linear-model-likelihoods/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

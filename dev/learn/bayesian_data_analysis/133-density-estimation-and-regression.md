@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 133 of 144 · **advanced**
 
-[◀ Previous · Functional data analysis](132-functional-data-analysis.html) · [Next · Setting up and interpreting mixture models ▶](134-setting-up-and-interpreting-mixture-models.html)
+[◀ Previous · Functional data analysis](132-functional-data-analysis.html) · [Next · Setting up and interpreting mixture models ▶](134-setting-up-and-interpreting-mixture-models.html) · [↑ Section](index.html)
 
 ## Flexibility from components, not curves[#](#flexibility-from-components-not-curves "Link to this heading")
 
@@ -51,9 +51,9 @@ interpret the fit. The stage builds from finite mixtures (this lesson and the ne
 ****unknown**** number of components, and finally to ****infinite**** mixtures — the Dirichlet process — where the
 component count is itself learned. Flexibility, assembled from simple parts.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Functional data analysis](132-functional-data-analysis.html) · [Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Bayesian histograms](139-bayesian-histograms.html) · [Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/density-estimation-and-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/density-estimation-and-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

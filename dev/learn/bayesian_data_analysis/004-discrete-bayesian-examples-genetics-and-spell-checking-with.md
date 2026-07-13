@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 004 of 144 · **beginner**
 
-[◀ Previous · Bayesian Inference](003-bayesian-inference.html) · [Next · Probability as a Measure of Uncertainty ▶](005-probability-as-a-measure-of-uncertainty.html)
+[◀ Previous · Bayesian Inference](003-bayesian-inference.html) · [Next · Probability as a Measure of Uncertainty ▶](005-probability-as-a-measure-of-uncertainty.html) · [↑ Section](index.html)
 
 ## Bayes’ rule on a discrete unknown[#](#bayes-rule-on-a-discrete-unknown "Link to this heading")
 
@@ -47,9 +47,9 @@ A rare word needs a **much** better typo-likelihood to win. Both examples make t
 supplies context, the likelihood supplies evidence, and the posterior is their ****compromise**** — the
 theme of the next stage.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian Inference](003-bayesian-inference.html) · [Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html) · [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Estimating a Probability from Binomial Data](011-estimating-a-probability-from-binomial-data.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/discrete-bayesian-examples-genetics-and-spell-checking-with-%ce%b8/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/discrete-bayesian-examples-genetics-and-spell-checking-with-%ce%b8/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

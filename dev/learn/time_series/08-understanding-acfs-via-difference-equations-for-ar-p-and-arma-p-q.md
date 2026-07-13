@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 08 of 18 · **intermediate**
 
-[◀ Previous · Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [Next · Best Linear Predictor of a Stationary Process ▶](09-best-linear-predictor-of-a-stationary-process.html)
+[◀ Previous · Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [Next · Best Linear Predictor of a Stationary Process ▶](09-best-linear-predictor-of-a-stationary-process.html) · [↑ Section](index.html)
 
 ## The general rule[#](#the-general-rule "Link to this heading")
 
@@ -36,9 +36,9 @@ This is the heart of ****Box–Jenkins identification****: the ****ACF cutting o
 order, while the ****PACF cutting off**** points to an ****AR**** order. AR and ARMA both leave the ACF
 tailing off, so the PACF (next lesson) is what pins down the autoregressive order.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [Understanding ARMA Processes](06-understanding-arma-processes.html) · [Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [Order Selection for Time Series Models](14-order-selection-for-time-series-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/understanding-acfs-via-difference-equations-for-arp-and-armap-q/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/understanding-acfs-via-difference-equations-for-arp-and-armap-q/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: intermediate](../../_tags/level-intermediate.html)

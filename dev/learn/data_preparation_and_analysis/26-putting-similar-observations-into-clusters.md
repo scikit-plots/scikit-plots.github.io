@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 26 of 56 · **intermediate**
 
-[◀ Previous · Partitioning Observations to Train Objective Models](25-partitioning-observations-to-train-objective-models.html) · [Next · Clustering ▶](27-clustering.html)
+[◀ Previous · Partitioning Observations to Train Objective Models](25-partitioning-observations-to-train-objective-models.html) · [Next · Clustering ▶](27-clustering.html) · [↑ Section](index.html)
 
 ## Grouping without labels[#](#grouping-without-labels "Link to this heading")
 
@@ -35,9 +35,9 @@ frequent buyers and another of occasional bargain-hunters, then tailor its appro
 lesson turns this idea into concrete algorithms; the RFM lessons that follow apply it to real customer
 data.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Clustering](27-clustering.html) · [Creating Segments of Observations for Business Reasons (RFM)](30-creating-segments-of-observations-for-business-reasons-rfm.html) · [Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html) · [Measuring Associations Between Two Continuous Variables](11-measuring-associations-between-two-continuous-variables.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/putting-similar-observations-into-clusters/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/putting-similar-observations-into-clusters/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

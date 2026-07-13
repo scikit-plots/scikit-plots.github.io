@@ -46,21 +46,22 @@ differs), ****position bias**** (higher slots get clicks regardless of quality),
 
 ---
 
-****Mind map — connected ideas****
-
-> [NDCG (Normalized Discounted Cumulative Gain)](413-ndcg-normalized-discounted-cumulative-gain.html) · [Mean Average Precision (MAP)](414-mean-average-precision-map.html) · [Probabilistic Interleaving](109-probabilistic-interleaving.html) · [Team Draft Interleaving (TDI)](110-team-draft-interleaving-tdi.html) · [Embedding](173-embedding.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html)
-
----
-
-****More in Ranking & Interleaving****
-
-> [Balanced Interleaving](111-balanced-interleaving.html) · [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Interleaving Tests](379-interleaving-tests.html) · [Mean Average Precision (MAP)](414-mean-average-precision-map.html) · [NDCG (Normalized Discounted Cumulative Gain)](413-ndcg-normalized-discounted-cumulative-gain.html) · [Probabilistic Interleaving](109-probabilistic-interleaving.html) · [Team Draft Interleaving (TDI)](110-team-draft-interleaving-tdi.html) · [TREC (Text REtrieval Conference)](274-trec-text-retrieval-conference.html)
-
----
-
 **Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[NDCG (Normalized Discounted Cumulative Gain)](413-ndcg-normalized-discounted-cumulative-gain.html) · [Mean Average Precision (MAP)](414-mean-average-precision-map.html) · [Probabilistic Interleaving](109-probabilistic-interleaving.html) · [Team Draft Interleaving (TDI)](110-team-draft-interleaving-tdi.html) · [Embedding](173-embedding.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html)
+
+---
+
+> **Hint**
+> ****More in Ranking & Interleaving****
+
+[Balanced Interleaving](111-balanced-interleaving.html) · [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Interleaving Tests](379-interleaving-tests.html) · [Mean Average Precision (MAP)](414-mean-average-precision-map.html) · [NDCG (Normalized Discounted Cumulative Gain)](413-ndcg-normalized-discounted-cumulative-gain.html) · [Probabilistic Interleaving](109-probabilistic-interleaving.html) · [Team Draft Interleaving (TDI)](110-team-draft-interleaving-tdi.html) · [TREC (Text REtrieval Conference)](274-trec-text-retrieval-conference.html)
 > **See also**
-> Adapted in our own words from [Ranking Algorithms](https://insightful-data-lab.com/2025/08/24/ranking-algorithms/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Ranking Algorithms](https://insightful-data-lab.com/2025/08/24/ranking-algorithms/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

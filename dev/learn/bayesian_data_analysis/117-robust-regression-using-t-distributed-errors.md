@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 117 of 144 · **advanced**
 
-[◀ Previous · Robust inference for the eight schools](116-robust-inference-for-the-eight-schools.html) · [Next · Notation ▶](118-notation.html)
+[◀ Previous · Robust inference for the eight schools](116-robust-inference-for-the-eight-schools.html) · [Next · Notation ▶](118-notation.html) · [↑ Section](index.html)
 
 ## Regression that ignores outliers[#](#regression-that-ignores-outliers "Link to this heading")
 
@@ -46,9 +46,9 @@ real signal (a regime change, a rare but valid case), the \(t\) will quietly dis
 might have wanted. Robust regression is the right default for messy continuous outcomes — reach for it
 before least squares on real data — but it guards against one failure mode, not all of them.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Posterior inference and computation](115-posterior-inference-and-computation.html) · [Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html) · [Aspects of robustness](113-aspects-of-robustness.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/robust-regression-using-t-distributed-errors/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/robust-regression-using-t-distributed-errors/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

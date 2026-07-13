@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 5 · 🏛️ Hierarchical Models**** · Lesson 034 of 144 · **beginner**
 
-[◀ Previous · Constructing a Parameterized Prior Distribution](033-constructing-a-parameterized-prior-distribution.html) · [Next · Bayesian analysis of conjugate hierarchical models ▶](035-bayesian-analysis-of-conjugate-hierarchical-models.html)
+[◀ Previous · Constructing a Parameterized Prior Distribution](033-constructing-a-parameterized-prior-distribution.html) · [Next · Bayesian analysis of conjugate hierarchical models ▶](035-bayesian-analysis-of-conjugate-hierarchical-models.html) · [↑ Section](index.html)
 
 ## The licence to pool[#](#the-licence-to-pool "Link to this heading")
 
@@ -53,9 +53,9 @@ make the known structure explicit: model \(\theta\_j\) as depending on covariate
 assume exchangeability of the ****residuals****. This is ****conditional exchangeability****, and it is the
 road from hierarchical models to hierarchical **regression** in Part IV.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Constructing a Parameterized Prior Distribution](033-constructing-a-parameterized-prior-distribution.html) · [General Notation for Statistical Inference](002-general-notation-for-statistical-inference.html) · [Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html) · [Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/exchangeability-and-hierarchical-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/exchangeability-and-hierarchical-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

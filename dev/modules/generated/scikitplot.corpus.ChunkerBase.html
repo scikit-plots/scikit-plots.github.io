@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:44:19Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:22:15Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -371,7 +371,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -589,7 +589,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ChunkerBase<a class="headerlink" href="#chunkerbase" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkerBase">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ChunkerBase</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkerBase" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ChunkerBase</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkerBase" title="Link to this definition">#</a></dt>
 <dd><p>Abstract base class for all text chunkers.</p>
 <p>A chunker receives a block of raw text (one logical unit from the
 source document — a page, paragraph block, section, etc.) and returns
@@ -1353,8 +1353,8 @@ required for a single call (e.g. a loaded language model) must be
 initialised inside <code class="docutils literal notranslate"><span class="pre">chunk()</span></code> or cached as an instance attribute that
 is never mutated after first assignment.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6888482c-db66-4cbf-b30b-83eda50c44d6">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6888482c-db66-4cbf-b30b-83eda50c44d6','c215de0f-d1ad-4bc7-ba24-b46bb520c535','362b8ea7-d9e5-40c1-a05d-9716684c22ac','../../lite/tree/../notebooks/index.html?path=faaa0862_d166_4686_991c_e346e203f90b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f278d877-8a1b-49f6-a68d-a73270b600de">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f278d877-8a1b-49f6-a68d-a73270b600de','fc0e319b-0a4d-4b4a-886a-f0b95bc6e606','e56e90ae-f942-4590-a3d5-c37bf3b7aaf8','../../lite/tree/../notebooks/index.html?path=d3779a52_9c90_4ea5_aefb_2ade4f5924fc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Implementing a trivial single-chunk chunker (no splitting):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">NullChunker</span><span class="p">(</span><span class="n">ChunkerBase</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">strategy</span> <span class="o">=</span> <span class="n">ChunkingStrategy</span><span class="o">.</span><span class="n">NONE</span>
@@ -1365,9 +1365,9 @@ is never mutated after first assignment.</p>
 </div>
 </div>
 </div>
-<div id="362b8ea7-d9e5-40c1-a05d-9716684c22ac" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6888482c-db66-4cbf-b30b-83eda50c44d6','362b8ea7-d9e5-40c1-a05d-9716684c22ac')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6888482c-db66-4cbf-b30b-83eda50c44d6','362b8ea7-d9e5-40c1-a05d-9716684c22ac')">Open In Tab</button></div><div id="c215de0f-d1ad-4bc7-ba24-b46bb520c535" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="e56e90ae-f942-4590-a3d5-c37bf3b7aaf8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f278d877-8a1b-49f6-a68d-a73270b600de','e56e90ae-f942-4590-a3d5-c37bf3b7aaf8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f278d877-8a1b-49f6-a68d-a73270b600de','e56e90ae-f942-4590-a3d5-c37bf3b7aaf8')">Open In Tab</button></div><div id="fc0e319b-0a4d-4b4a-886a-f0b95bc6e606" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkerBase.assert_modality">
-<span class="sig-name descname"><span class="pre">assert_modality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_modality</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L352"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkerBase.assert_modality" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">assert_modality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_modality</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L352"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkerBase.assert_modality" title="Link to this definition">#</a></dt>
 <dd><p>Raise <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if this chunker cannot handle <em>doc_modality</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1404,7 +1404,7 @@ non-TEXT document.  Example:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkerBase.chunk">
-<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_base.py#L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkerBase.chunk" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkerBase.chunk" title="Link to this definition">#</a></dt>
 <dd><p>Segment <code class="docutils literal notranslate"><span class="pre">text</span></code> into a <code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkResult</span></code>.</p>
 <p><strong>CRITICAL-02 (Phase 2):</strong> Return type unified to <code class="docutils literal notranslate"><span class="pre">ChunkResult</span></code>
 across all implementations.  Callers iterate <code class="docutils literal notranslate"><span class="pre">result.chunks</span></code>
@@ -1615,7 +1615,7 @@ snapshots remain reproducible after upgrades.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

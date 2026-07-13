@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:43:24Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:21:22Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -373,7 +373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -591,7 +591,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -1406,7 +1406,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <section id="best-linear-predictor-of-a-stationary-process">
 <span id="ts-best-linear-predictor-of-a-stationary-process"></span><h1>Best Linear Predictor of a Stationary Process<a class="headerlink" href="#best-linear-predictor-of-a-stationary-process" title="Link to this heading">#</a></h1>
 <p><strong>Stage 4 · 🎯 Prediction &amp; the Sample ACF / PACF</strong>  ·  Lesson 09 of 18  ·  <em>intermediate</em></p>
-<p><a class="reference internal" href="08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html"><span class="doc">◀ Previous · Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)</span></a>   ·   <a class="reference internal" href="10-sample-acf-and-sample-pacf.html"><span class="doc">Next · Sample ACF and Sample PACF ▶</span></a></p>
+<p><a class="reference internal" href="08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html"><span class="doc">◀ Previous · Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)</span></a>   ·   <a class="reference internal" href="10-sample-acf-and-sample-pacf.html"><span class="doc">Next · Sample ACF and Sample PACF ▶</span></a>   ·   <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a></p>
 <section id="the-prediction-problem">
 <h2>The prediction problem<a class="headerlink" href="#the-prediction-problem" title="Link to this heading">#</a></h2>
 <p>Given a stationary series observed up to now, the <strong>best linear predictor</strong> of the next value is
@@ -1440,11 +1440,14 @@ order-<span class="math notranslate nohighlight">\(h\)</span> predictor <strong>
 between <span class="math notranslate nohighlight">\(x_t\)</span> and <span class="math notranslate nohighlight">\(x_{t-h}\)</span> <strong>after removing</strong> the linear influence of the intervening
 values. For an <strong>AR(p)</strong> these coefficients vanish for <span class="math notranslate nohighlight">\(h &gt; p\)</span>, so the <strong>PACF cuts off at lag
 p</strong> — the property that makes it the tool for reading autoregressive order.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <p><strong>Related lessons:</strong> <a class="reference internal" href="10-sample-acf-and-sample-pacf.html"><span class="doc">Sample ACF and Sample PACF</span></a>  ·  <a class="reference internal" href="11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html"><span class="doc">Preliminary Estimation for AR Models and the Yule–Walker Equations</span></a>  ·  <a class="reference internal" href="06-understanding-arma-processes.html"><span class="doc">Understanding ARMA Processes</span></a>  ·  <a class="reference internal" href="17-beyond-one-step-ahead-predictions.html"><span class="doc">Beyond One-Step Ahead Predictions</span></a></p>
 </div>
-<p><strong>Source</strong> (context, re-expressed in our own words): <a class="reference external" href="https://insightful-data-lab.com/2026/01/17/best-linear-predictor-of-a-stationary-process-forecasting-principles-and-the-pacf/">https://insightful-data-lab.com/2026/01/17/best-linear-predictor-of-a-stationary-process-forecasting-principles-and-the-pacf/</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2026/01/17/best-linear-predictor-of-a-stationary-process-forecasting-principles-and-the-pacf/">https://insightful-data-lab.com/2026/01/17/best-linear-predictor-of-a-stationary-process-forecasting-principles-and-the-pacf/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-reference.html"><span class="doc">purpose: reference</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/topic-time-series.html"><span class="doc">topic: time series</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a></p>
 </section>
 </section>
@@ -1562,7 +1565,7 @@ p</strong> — the property that makes it the tool for reading autoregressive or
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

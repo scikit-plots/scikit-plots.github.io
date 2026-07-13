@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 13 of 18 · **advanced**
 
-[◀ Previous · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [Next · Order Selection for Time Series Models ▶](14-order-selection-for-time-series-models.html)
+[◀ Previous · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [Next · Order Selection for Time Series Models ▶](14-order-selection-for-time-series-models.html) · [↑ Section](index.html)
 
 ## The goal[#](#the-goal "Link to this heading")
 
@@ -41,9 +41,9 @@ the model is ****missing structure**** — add an ****AR or MA**** term, or, if 
 ****seasonal**** lags, move to a ****seasonal**** model. Re-fit and re-check until the residuals look like
 noise.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · [Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/diagnostics-after-fitting-a-time-series-model-standardized-residuals-normality-and-autocorrelation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/diagnostics-after-fitting-a-time-series-model-standardized-residuals-normality-and-autocorrelation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

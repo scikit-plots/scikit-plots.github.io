@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 53 of 56 · **advanced**
 
-[◀ Previous · Nominal Classification Models: Model State and Evaluation Metrics](52-nominal-classification-models-model-state-and-evaluation-metrics.html) · [Next · Identifying Outliers Using Residuals and Studentized Residuals ▶](54-identifying-outliers-using-residuals-and-studentized-residuals.html)
+[◀ Previous · Nominal Classification Models: Model State and Evaluation Metrics](52-nominal-classification-models-model-state-and-evaluation-metrics.html) · [Next · Identifying Outliers Using Residuals and Studentized Residuals ▶](54-identifying-outliers-using-residuals-and-studentized-residuals.html) · [↑ Section](index.html)
 
 ## The hidden dial[#](#the-hidden-dial "Link to this heading")
 
@@ -38,9 +38,9 @@ target recall, or the cost minimum. scikit-plots’ evaluation charts exist for 
 the next lessons introduce the two most important of them: the ****ROC curve****, which displays **every**
 operating point at once, and the ****lift**** chart, which ranks rather than cuts.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [AUC–ROC Curve: Evaluating Classification Model Performance](55-auc-roc-curve-evaluating-classification-model-performance.html) · [Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value](56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value.html) · [Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds](38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/binary-classification-model-evaluation-and-threshold-optimization/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/binary-classification-model-evaluation-and-threshold-optimization/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

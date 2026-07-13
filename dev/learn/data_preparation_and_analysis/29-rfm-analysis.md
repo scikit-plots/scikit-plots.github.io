@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 29 of 56 · **intermediate**
 
-[◀ Previous · Recency, Frequency, and Monetary Value (RFM)](28-recency-frequency-and-monetary-value-rfm.html) · [Next · Creating Segments of Observations for Business Reasons (RFM) ▶](30-creating-segments-of-observations-for-business-reasons-rfm.html)
+[◀ Previous · Recency, Frequency, and Monetary Value (RFM)](28-recency-frequency-and-monetary-value-rfm.html) · [Next · Creating Segments of Observations for Business Reasons (RFM) ▶](30-creating-segments-of-observations-for-business-reasons-rfm.html) · [↑ Section](index.html)
 
 ## From raw values to scores[#](#from-raw-values-to-scores "Link to this heading")
 
@@ -35,9 +35,9 @@ from the sum of spend. `pandas.qcut` cuts each into quintile scores in one call.
 table, one row per customer with an R, F and M score — ready to be grouped into the segments of the
 next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Recency, Frequency, and Monetary Value (RFM)](28-recency-frequency-and-monetary-value-rfm.html) · [Creating Segments of Observations for Business Reasons (RFM)](30-creating-segments-of-observations-for-business-reasons-rfm.html) · [Stratified Random Sampling](23-stratified-random-sampling.html) · [Putting Similar Observations into Clusters](26-putting-similar-observations-into-clusters.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/rfm-analysis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/rfm-analysis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

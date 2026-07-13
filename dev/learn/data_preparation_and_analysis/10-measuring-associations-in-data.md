@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 10 of 56 · **beginner**
 
-[◀ Previous · Objective Selection of the Bin Width for a Time Histogram](09-objective-selection-of-the-bin-width-for-a-time-histogram.html) · [Next · Measuring Associations Between Two Continuous Variables ▶](11-measuring-associations-between-two-continuous-variables.html)
+[◀ Previous · Objective Selection of the Bin Width for a Time Histogram](09-objective-selection-of-the-bin-width-for-a-time-histogram.html) · [Next · Measuring Associations Between Two Continuous Variables ▶](11-measuring-associations-between-two-continuous-variables.html) · [↑ Section](index.html)
 
 ## One idea, many measures[#](#one-idea-many-measures "Link to this heading")
 
@@ -33,9 +33,9 @@ Two properties matter. ****Strength**** — how tightly the variables track, usu
 together or move oppositely, which only makes sense for ****ordered**** variables. A good measure reports
 strength on a comparable scale, so associations across different variable pairs can be ranked.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Measuring Associations Between Two Continuous Variables](11-measuring-associations-between-two-continuous-variables.html) · [Correlation Coefficients in Python (Pearson, Spearman, Kendall)](12-correlation-coefficients-in-python-pearson-spearman-kendall.html) · [What Are Statistical Tests?](15-what-are-statistical-tests.html) · [Eta Squared (η²): Effect Size in ANOVA](16-eta-squared-2-effect-size-in-anova.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/measuring-associations-in-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/measuring-associations-in-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

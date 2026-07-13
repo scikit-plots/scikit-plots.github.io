@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 008 of 144 · **beginner**
 
-[◀ Previous · Example — Calibration for Record Linkage](007-example-calibration-for-record-linkage.html) · [Next · Computation and Software ▶](009-computation-and-software.html)
+[◀ Previous · Example — Calibration for Record Linkage](007-example-calibration-for-record-linkage.html) · [Next · Computation and Software ▶](009-computation-and-software.html) · [↑ Section](index.html)
 
 ## The toolkit[#](#the-toolkit "Link to this heading")
 
@@ -56,9 +56,9 @@ That last property — that a function of posterior draws gives the posterior of
 Jacobian and no delta method — is one of the quiet advantages of the simulation-based workflow this
 course adopts.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [General Notation for Statistical Inference](002-general-notation-for-statistical-inference.html) · [Bayesian Inference](003-bayesian-inference.html) · [Averaging Over Nuisance Parameters](020-averaging-over-nuisance-parameters.html) · [Noninformative Prior Distributions](018-noninformative-prior-distributions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/some-useful-results-from-probability-theory/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/some-useful-results-from-probability-theory/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

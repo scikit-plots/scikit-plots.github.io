@@ -36,21 +36,22 @@ whichever cloud an organisation already lives in.
 
 ---
 
-****Mind map — connected ideas****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html) · [Drift Detection](138-drift-detection.html) · [Hyperparameter](142-hyperparameter.html) · [Quantization](343-quantization.html)
-
----
-
-****More in ML Platforms & Tools****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html)
-
----
-
 **Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html) · [Drift Detection](138-drift-detection.html) · [Hyperparameter](142-hyperparameter.html) · [Quantization](343-quantization.html)
+
+---
+
+> **Hint**
+> ****More in ML Platforms & Tools****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html)
 > **See also**
-> Adapted in our own words from [Vertex AI](https://insightful-data-lab.com/2025/08/24/vertex-ai/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Vertex AI](https://insightful-data-lab.com/2025/08/24/vertex-ai/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

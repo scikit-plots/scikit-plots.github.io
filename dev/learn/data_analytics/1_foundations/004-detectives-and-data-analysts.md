@@ -50,12 +50,12 @@ the trail, and present a case that survives cross-examination. Every technique
 in the coming sections — spreadsheets, SQL, cleaning, charts, Python — is in
 service of that discipline.
 
-> **See also**
+> **Hint**
 > * [Data-Driven Decision-Making](003-data-driven-decision-making.html)
 * [Analytical Skills and Their Core Components](013-analytical-skills-and-their-core-components.html)
 * [Analytical Thinking and Questions for Problem Solving](016-analytical-thinking-and-questions-for-problem-solving.html)
 * [Why Asking the Right Questions Matters in Data Analytics](../2_data_driven_decisions/004-why-asking-the-right-questions-matters-in-data-analytics.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/detectives-and-data-analysts/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/detectives-and-data-analysts/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [why](../../../_tags/why.html)

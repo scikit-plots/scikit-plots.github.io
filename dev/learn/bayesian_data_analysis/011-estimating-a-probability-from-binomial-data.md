@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 2 · 📍 Single-Parameter Models & Priors**** · Lesson 011 of 144 · **beginner**
 
-[◀ Previous · Bayesian Inference in Applied Statistics](010-bayesian-inference-in-applied-statistics.html) · [Next · Posterior as a Compromise Between Data and Prior Information ▶](012-posterior-as-a-compromise-between-data-and-prior-information.html)
+[◀ Previous · Bayesian Inference in Applied Statistics](010-bayesian-inference-in-applied-statistics.html) · [Next · Posterior as a Compromise Between Data and Prior Information ▶](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [↑ Section](index.html)
 
 ## The workhorse model[#](#the-workhorse-model "Link to this heading")
 
@@ -54,9 +54,9 @@ post.interval(0.95)                            # 95% credible interval
 The MLE is \(8/10 = 0.80\); the posterior mean is \(0.75\), pulled toward the prior mean of
 \(0.5\). That pull — its size, and its fate as \(n\) grows — is the subject of the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Summarizing Posterior Inference](013-summarizing-posterior-inference.html) · [Informative Prior Distributions](014-informative-prior-distributions.html) · [Discrete Bayesian Examples – Genetics and Spell Checking (with θ)](004-discrete-bayesian-examples-genetics-and-spell-checking-with.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/estimating-a-probability-from-binomial-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/estimating-a-probability-from-binomial-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

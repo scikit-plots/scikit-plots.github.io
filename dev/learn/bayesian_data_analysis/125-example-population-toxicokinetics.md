@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 15 · 🌊 Basis Functions & Gaussian Processes**** · Lesson 125 of 144 · **advanced**
 
-[◀ Previous · Example: serial dilution assay](124-example-serial-dilution-assay.html) · [Next · Splines and weighted sums of basis functions ▶](126-splines-and-weighted-sums-of-basis-functions.html)
+[◀ Previous · Example: serial dilution assay](124-example-serial-dilution-assay.html) · [Next · Splines and weighted sums of basis functions ▶](126-splines-and-weighted-sums-of-basis-functions.html) · [↑ Section](index.html)
 
 ## A mechanistic model, fit hierarchically[#](#a-mechanistic-model-fit-hierarchically "Link to this heading")
 
@@ -53,9 +53,9 @@ here is ****scientific****, dictated by physiology, not a flexible curve — and
 mechanistic model be fit with honest uncertainty. The lessons that follow relax that structure, replacing
 mechanism with flexible ****basis functions**** when the true form is unknown.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Example: serial dilution assay](124-example-serial-dilution-assay.html) · [Bayesian analysis of conjugate hierarchical models](035-bayesian-analysis-of-conjugate-hierarchical-models.html) · [Hierarchical decision analysis for home radon](060-hierarchical-decision-analysis-for-home-radon.html) · [Splines and weighted sums of basis functions](126-splines-and-weighted-sums-of-basis-functions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/example-population-toxicokinetics/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/example-population-toxicokinetics/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

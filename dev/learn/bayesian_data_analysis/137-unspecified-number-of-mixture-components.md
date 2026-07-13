@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 137 of 144 · **advanced**
 
-[◀ Previous · Label switching and posterior computation](136-label-switching-and-posterior-computation.html) · [Next · Mixture models for classification and regression ▶](138-mixture-models-for-classification-and-regression.html)
+[◀ Previous · Label switching and posterior computation](136-label-switching-and-posterior-computation.html) · [Next · Mixture models for classification and regression ▶](138-mixture-models-for-classification-and-regression.html) · [↑ Section](index.html)
 
 ## How many components?[#](#how-many-components "Link to this heading")
 
@@ -53,9 +53,9 @@ inference. The elegant resolution, in the Dirichlet-process lessons ahead, is to
 dataset uses a finite but ****unbounded, data-determined**** number. The question “how many components?”
 dissolves into “how many does the data reveal?”
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Model comparison based on predictive performance](046-model-comparison-based-on-predictive-performance.html) · [Label switching and posterior computation](136-label-switching-and-posterior-computation.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/unspecified-number-of-mixture-components/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/unspecified-number-of-mixture-components/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

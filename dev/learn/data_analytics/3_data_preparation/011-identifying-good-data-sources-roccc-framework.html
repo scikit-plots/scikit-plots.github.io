@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/3_data_preparation/011-identifying-good-data-sources-roccc-framework.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📦 Data Preparation ⚖️ Bias &amp; Data Ethics Lesson 011 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics prep bias_ethics" />
+<meta property="og:description" content="📦 Data Preparation ⚖️ Bias &amp; Data Ethics Lesson 011 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub A checklist for trust: Before building on a dataset, an analyst must judge whether the source is trus..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📦 Data Preparation ⚖️ Bias &amp; Data Ethics Lesson 011 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics prep bias_ethics" />
+<meta name="description" content="📦 Data Preparation ⚖️ Bias &amp; Data Ethics Lesson 011 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub A checklist for trust: Before building on a dataset, an analyst must judge whether the source is trus..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:35:42Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:13:33Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,81 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-python-prep-011"></span><span id="da-viz-prep-011"></span><span id="da-analyze-prep-011"></span><span id="da-cleaning-prep-011"></span><span id="da-prep-prep-011"></span><span id="da-decisions-prep-011"></span><span id="da-foundations-prep-011"></span><span id="data-analytics-prep-011"></span><span id="da-prep-011"></span><span id="identifying-good-data-sources-roccc-framework"></span><h1>Identifying Good Data Sources (ROCCC Framework)<a class="headerlink" href="#da-jobsearch-prep-011" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">📦 Data Preparation</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">⚖️ Bias &amp; Data Ethics</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 011</span></p>
 <p>◀ <a class="reference internal" href="010-common-types-of-data-bias.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="012-identifying-bad-data-sources-when-data-does-not-roccc.html"><span class="doc">Next</span></a> ▶ · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="a-checklist-for-trust">
+<h2>A checklist for trust<a class="headerlink" href="#a-checklist-for-trust" title="Link to this heading">#</a></h2>
+<p>Before building on a dataset, an analyst must judge whether the <em>source</em> is
+trustworthy — and a memorable checklist captures what “trustworthy” means. Good
+data sources are <strong>ROCCC</strong>: <a href="#id1"><span class="problematic" id="id2">**</span></a>R**eliable, <a href="#id3"><span class="problematic" id="id4">**</span></a>O**riginal, <a href="#id5"><span class="problematic" id="id6">**</span></a>C**omprehensive,
+<a href="#id7"><span class="problematic" id="id8">**</span></a>C**urrent, and <a href="#id9"><span class="problematic" id="id10">**</span></a>C**ited. Running a candidate source through the five letters
+turns a vague sense of trust into specific, checkable questions.</p>
+</section>
+<section id="the-five-criteria">
+<h2>The five criteria<a class="headerlink" href="#the-five-criteria" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Reliable</strong> — is the data accurate, complete, and unbiased, from a source
+with a track record of getting things right? Reliable data comes from
+well-regarded, vetted origins, not anonymous or casual ones.</p></li>
+<li><p><strong>Original</strong> — can you get to the <em>source</em> of the data, rather than a copy of
+a copy? Original data comes from the party that actually collected it; each
+hand it passes through is a chance for distortion, so validating against the
+origin matters. (This echoes the first/second/third-party gradient from
+earlier.)</p></li>
+<li><p><strong>Comprehensive</strong> — does the data contain all the information you need to
+answer the question? A source missing critical fields or covering only part
+of the population, however accurate on what it has, cannot fully answer the
+question.</p></li>
+<li><p><strong>Current</strong> — is the data recent enough to be relevant? Data ages; a source
+from years ago may no longer reflect present reality, and the right recency
+depends on how fast the subject changes.</p></li>
+<li><p><strong>Cited</strong> — is the source of the data documented — who created it, when,
+where, and how? Cited data can be traced and vetted; uncited data asks you to
+trust it blindly.</p></li>
+</ul>
+<p>A source that satisfies all five is a strong foundation; the more it satisfies,
+the more weight your conclusions can bear.</p>
+</section>
+<section id="using-roccc-in-practice">
+<h2>Using ROCCC in practice<a class="headerlink" href="#using-roccc-in-practice" title="Link to this heading">#</a></h2>
+<p>ROCCC is a pre-flight check for the Prepare phase: before committing to a
+dataset, walk the five letters and note where it is strong and weak. A source
+need not be perfect on every criterion — few are — but the framework makes the
+trade-offs <em>explicit</em>. “This data is comprehensive and current but not fully
+original, since it’s a third-party aggregation” is a clear-eyed basis for
+proceeding with appropriate caution, and for stating that caution in the final
+analysis.</p>
+</section>
+<section id="why-a-checklist-beats-a-gut-feeling">
+<h2>Why a checklist beats a gut feeling<a class="headerlink" href="#why-a-checklist-beats-a-gut-feeling" title="Link to this heading">#</a></h2>
+<p>The value of ROCCC is that it makes source evaluation <em>systematic</em> rather than
+intuitive. Under time pressure, it is tempting to grab whatever data is at hand
+and start analysing — and the resulting problems (unreliable, stale, or
+uncited data) surface only much later, after conclusions have been built on
+sand. Five questions at the start are cheap insurance against that.</p>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>ROCCC evaluates the <em>source</em>, not the <em>fit to your specific question</em>. Data can
+be impeccably reliable, original, comprehensive, current, and cited — and still
+be the wrong data for your problem, or carry sampling bias the framework does
+not directly test. Use ROCCC together with the relevance and coverage judgements
+from the choosing-data lesson: source quality and question-fit are separate
+checks, and a good analysis passes both. The next lesson applies ROCCC in
+reverse, to recognise the sources you should <em>not</em> trust.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="012-identifying-bad-data-sources-when-data-does-not-roccc.html"><span class="doc">Identifying Bad Data Sources (When Data Does Not ROCCC)</span></a></p></li>
+<li><p><a class="reference internal" href="010-common-types-of-data-bias.html"><span class="doc">Common Types of Data Bias</span></a></p></li>
+<li><p><a class="reference internal" href="001-how-data-is-generated-and-collected.html"><span class="doc">How Data Is Generated and Collected</span></a></p></li>
+<li><p><a class="reference internal" href="019-accessing-data-internal-and-external-sources.html"><span class="doc">Accessing Data: Internal and External Sources</span></a></p></li>
+</ul>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/09/04/identifying-good-data-sources-roccc-framework/">Source article</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/09/04/identifying-good-data-sources-roccc-framework/">https://insightful-data-lab.com/2023/09/04/identifying-good-data-sources-roccc-framework/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/prep.html"><span class="doc">prep</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/bias_ethics.html"><span class="doc">bias_ethics</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3600,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-checklist-for-trust">A checklist for trust</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-five-criteria">The five criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-roccc-in-practice">Using ROCCC in practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-a-checklist-beats-a-gut-feeling">Why a checklist beats a gut feeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3672,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

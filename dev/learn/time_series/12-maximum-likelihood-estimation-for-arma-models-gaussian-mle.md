@@ -2,7 +2,7 @@
 
 ****Stage 5 · 🧮 Estimation**** · Lesson 12 of 18 · **advanced**
 
-[◀ Previous · Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [Next · Diagnostics After Fitting a Time Series Model ▶](13-diagnostics-after-fitting-a-time-series-model.html)
+[◀ Previous · Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [Next · Diagnostics After Fitting a Time Series Model ▶](13-diagnostics-after-fitting-a-time-series-model.html) · [↑ Section](index.html)
 
 ## The likelihood[#](#the-likelihood "Link to this heading")
 
@@ -33,9 +33,9 @@ lowest-variance estimates available — and, remarkably, its ****asymptotic dist
 even when the data are not Gaussian****. That combination is why `statsmodels`’ `ARIMA` fits by
 ****exact MLE**** (via a state-space / Kalman filter) by default.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [Understanding ARMA Processes](06-understanding-arma-processes.html) · [Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · [Diagnostics After Fitting a Time Series Model](13-diagnostics-after-fitting-a-time-series-model.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/maximum-likelihood-estimation-for-arma-models-gaussian-mle/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/maximum-likelihood-estimation-for-arma-models-gaussian-mle/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

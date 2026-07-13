@@ -60,12 +60,12 @@ chain is a ****hypothesis**** about causation until data confirms each link —
 plausible chains that verify beautifully in the room and fail in the data are
 common. Ask the questions, then make the data answer them.
 
-> **See also**
+> **Hint**
 > * [Analytical Thinking and Its Core Components](015-analytical-thinking-and-its-core-components.html)
 * [Root Cause Analysis and Business Applications of the Five Whys](017-root-cause-analysis-and-business-applications-of-the-five-whys.html)
 * [Why Asking the Right Questions Matters in Data Analytics](../2_data_driven_decisions/004-why-asking-the-right-questions-matters-in-data-analytics.html)
 * [Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making](019-case-studies-in-data-analysis-and-the-practical-impact-of-data-driven-decision-making.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/analytical-thinking-and-questions-for-problem-solving/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/analytical-thinking-and-questions-for-problem-solving/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)

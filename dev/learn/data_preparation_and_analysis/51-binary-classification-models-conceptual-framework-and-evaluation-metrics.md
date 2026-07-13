@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 51 of 56 · **advanced**
 
-[◀ Previous · Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Next · Nominal Classification Models: Model State and Evaluation Metrics ▶](52-nominal-classification-models-model-state-and-evaluation-metrics.html)
+[◀ Previous · Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Next · Nominal Classification Models: Model State and Evaluation Metrics ▶](52-nominal-classification-models-model-state-and-evaluation-metrics.html) · [↑ Section](index.html)
 
 ## Four kinds of outcome[#](#four-kinds-of-outcome "Link to this heading")
 
@@ -43,9 +43,9 @@ less than letting fraud through. ****Accuracy**** alone hides this, and is espec
 ****imbalanced**** data — which is why precision, recall and the threshold-based tools of the next lessons
 exist. The choice of which count to minimise is where evaluation meets the ****business goal****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [AUC–ROC Curve: Evaluating Classification Model Performance](55-auc-roc-curve-evaluating-classification-model-performance.html) · [Nominal Classification Models: Model State and Evaluation Metrics](52-nominal-classification-models-model-state-and-evaluation-metrics.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/binary-classification-models-conceptual-framework-and-evaluation-metrics/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/binary-classification-models-conceptual-framework-and-evaluation-metrics/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

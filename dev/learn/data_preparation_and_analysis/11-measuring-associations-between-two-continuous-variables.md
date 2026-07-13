@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 11 of 56 · **beginner**
 
-[◀ Previous · Measuring Associations in Data](10-measuring-associations-in-data.html) · [Next · Correlation Coefficients in Python (Pearson, Spearman, Kendall) ▶](12-correlation-coefficients-in-python-pearson-spearman-kendall.html)
+[◀ Previous · Measuring Associations in Data](10-measuring-associations-in-data.html) · [Next · Correlation Coefficients in Python (Pearson, Spearman, Kendall) ▶](12-correlation-coefficients-in-python-pearson-spearman-kendall.html) · [↑ Section](index.html)
 
 ## Covariance: direction[#](#covariance-direction "Link to this heading")
 
@@ -42,9 +42,9 @@ measures ****linear**** association only. A strong curved relationship can still
 and \(r\) is ****sensitive to outliers**** — reasons the next lesson reaches for rank-based
 alternatives.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Measuring Associations in Data](10-measuring-associations-in-data.html) · [Correlation Coefficients in Python (Pearson, Spearman, Kendall)](12-correlation-coefficients-in-python-pearson-spearman-kendall.html) · [Karl Pearson](13-karl-pearson.html) · [Least Squares Regression](31-least-squares-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/measuring-associations-between-two-continuous-variables/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/measuring-associations-between-two-continuous-variables/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

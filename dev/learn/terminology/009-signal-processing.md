@@ -106,21 +106,22 @@ signal-processing pipelines.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Low-pass Filtering](005-low-pass-filtering.html) · [Subsampling](001-subsampling.html) · [Downsampling](368-downsampling.html) · [Time Series](010-time-series.html) · [Time Series Forecasting](256-time-series-forecasting.html)
-
----
-
-****More in Signal Processing & Time Series****
-
-> [ARIMA (AutoRegressive Integrated Moving Average)](224-arima-autoregressive-integrated-moving-average.html) · [Bayesian Time Series](052-bayesian-time-series.html) · [Forecast Error](250-forecast-error.html) · [Forecasting Benchmarks](245-forecasting-benchmarks.html) · [Forecasting Competitions](251-forecasting-competitions.html) · [Log-Space](257-log-space.html) · [Low-pass Filtering](005-low-pass-filtering.html) · [LSTM — Long Short-Term Memory Networks](223-lstm-long-short-term-memory-networks.html) · [M-Competitions (Makridakis Competitions)](244-m-competitions-makridakis-competitions.html) · [Naïve Baseline Forecast](249-naive-baseline-forecast.html) · [Prophet — Time Series Forecasting by Facebook (Meta)](222-prophet-time-series-forecasting-by-facebook-meta.html) · [Seasonal Lag](247-seasonal-lag.html) · [Seasonality](329-seasonality.html) · [Simple Baseline Methods](248-simple-baseline-methods.html)
-
----
-
 **Theme:** [Signal Processing & Time Series](index.html#term-theme-signal)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Low-pass Filtering](005-low-pass-filtering.html) · [Subsampling](001-subsampling.html) · [Downsampling](368-downsampling.html) · [Time Series](010-time-series.html) · [Time Series Forecasting](256-time-series-forecasting.html)
+
+---
+
+> **Hint**
+> ****More in Signal Processing & Time Series****
+
+[ARIMA (AutoRegressive Integrated Moving Average)](224-arima-autoregressive-integrated-moving-average.html) · [Bayesian Time Series](052-bayesian-time-series.html) · [Forecast Error](250-forecast-error.html) · [Forecasting Benchmarks](245-forecasting-benchmarks.html) · [Forecasting Competitions](251-forecasting-competitions.html) · [Log-Space](257-log-space.html) · [Low-pass Filtering](005-low-pass-filtering.html) · [LSTM — Long Short-Term Memory Networks](223-lstm-long-short-term-memory-networks.html) · [M-Competitions (Makridakis Competitions)](244-m-competitions-makridakis-competitions.html) · [Naïve Baseline Forecast](249-naive-baseline-forecast.html) · [Prophet — Time Series Forecasting by Facebook (Meta)](222-prophet-time-series-forecasting-by-facebook-meta.html) · [Seasonal Lag](247-seasonal-lag.html) · [Seasonality](329-seasonality.html) · [Simple Baseline Methods](248-simple-baseline-methods.html)
 > **See also**
-> Adapted in our own words from [Signal Processing](https://insightful-data-lab.com/2025/08/30/signal-processing/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Signal Processing](https://insightful-data-lab.com/2025/08/30/signal-processing/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/4_data_cleaning_preparation/023-advanced-sql-functions-for-data-cleaning.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="🧽 Data Cleaning &amp; Preparation 🐬 Cleaning with SQL Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics cleaning sql" />
+<meta property="og:description" content="🧽 Data Cleaning &amp; Preparation 🐬 Cleaning with SQL Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Beyond the basics: The core string and conversion functions handle most cleaning, but harder..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="🧽 Data Cleaning &amp; Preparation 🐬 Cleaning with SQL Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics cleaning sql" />
+<meta name="description" content="🧽 Data Cleaning &amp; Preparation 🐬 Cleaning with SQL Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Beyond the basics: The core string and conversion functions handle most cleaning, but harder..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:36:39Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:14:28Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,91 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-jobsearch-cleaning-023"></span><span id="da-python-cleaning-023"></span><span id="da-viz-cleaning-023"></span><span id="da-analyze-cleaning-023"></span><span id="da-cleaning-cleaning-023"></span><span id="da-prep-cleaning-023"></span><span id="da-decisions-cleaning-023"></span><span id="da-foundations-cleaning-023"></span><span id="data-analytics-cleaning-023"></span><span id="da-cleaning-023"></span><h1>Advanced SQL Functions for Data Cleaning<a class="headerlink" href="#advanced-sql-functions-for-data-cleaning" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">🧽 Data Cleaning &amp; Preparation</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">🐬 Cleaning with SQL</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 023</span></p>
 <p>◀ <a class="reference internal" href="022-using-cast-to-clean-and-format-data-in-sql.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="024-coalesce.html"><span class="doc">Next</span></a> ▶ · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="beyond-the-basics">
+<h2>Beyond the basics<a class="headerlink" href="#beyond-the-basics" title="Link to this heading">#</a></h2>
+<p>The core string and conversion functions handle most cleaning, but harder cases —
+conditional fixes, extracting parts of a field, pattern-based standardisation —
+call for more capable tools. This lesson covers the <strong>advanced SQL functions</strong>
+that handle the cleaning jobs the basics cannot, extending the toolkit toward the
+messy realities of production data.</p>
+</section>
+<section id="conditional-cleaning-with-case">
+<h2>Conditional cleaning with CASE<a class="headerlink" href="#conditional-cleaning-with-case" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CASE</span></code> is SQL’s if-then-else, applying different fixes depending on a value’s
+condition — the SQL counterpart of the spreadsheet’s nested <code class="docutils literal notranslate"><span class="pre">IF</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+<span class="w">       </span><span class="k">CASE</span>
+<span class="w">         </span><span class="k">WHEN</span><span class="w"> </span><span class="n">spend</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="k">THEN</span><span class="w"> </span><span class="mi">0</span><span class="w">          </span><span class="c1">-- invalid negatives -&gt; 0</span>
+<span class="w">         </span><span class="k">WHEN</span><span class="w"> </span><span class="n">spend</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="mi">0</span><span class="w">          </span><span class="c1">-- missing -&gt; 0</span>
+<span class="w">         </span><span class="k">ELSE</span><span class="w"> </span><span class="n">spend</span>
+<span class="w">       </span><span class="k">END</span><span class="w">                     </span><span class="k">AS</span><span class="w"> </span><span class="n">spend_clean</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">customers</span><span class="p">;</span>
+</pre></div>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/11/01/advanced-sql-functions-for-data-cleaning/">Source article</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">CASE</span></code> evaluates each <code class="docutils literal notranslate"><span class="pre">WHEN</span></code> in order and returns the first matching
+<code class="docutils literal notranslate"><span class="pre">THEN</span></code>, falling through to <code class="docutils literal notranslate"><span class="pre">ELSE</span></code> if none match. It handles the “different
+fix for different conditions” cleaning that a single function cannot —
+standardising categories, bucketing values, or applying rules that vary by row.</p>
+</section>
+<section id="extracting-parts-of-a-field">
+<h2>Extracting parts of a field<a class="headerlink" href="#extracting-parts-of-a-field" title="Link to this heading">#</a></h2>
+<p>When a column crams several values together, substring functions pull them
+apart — the SQL version of the spreadsheet’s <code class="docutils literal notranslate"><span class="pre">LEFT</span></code>/<code class="docutils literal notranslate"><span class="pre">RIGHT</span></code>/<code class="docutils literal notranslate"><span class="pre">MID</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTR</span><span class="p">(</span><span class="n">product_code</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">   </span><span class="k">AS</span><span class="w"> </span><span class="n">category_code</span><span class="p">,</span><span class="w">  </span><span class="c1">-- first 3 chars</span>
+<span class="w">       </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w">                 </span><span class="k">AS</span><span class="w"> </span><span class="n">name_length</span><span class="p">,</span>
+<span class="w">       </span><span class="k">POSITION</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w">       </span><span class="k">AS</span><span class="w"> </span><span class="n">at_position</span><span class="w">     </span><span class="c1">-- find a character</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">products</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code> (or <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code>) extracts characters by position and length;
+<code class="docutils literal notranslate"><span class="pre">LENGTH</span></code> gives a string’s length; <code class="docutils literal notranslate"><span class="pre">POSITION</span></code> (or <code class="docutils literal notranslate"><span class="pre">INSTR</span></code>) locates a
+substring. Together they split composite fields into their components — restoring
+the one-value-per-column structure.</p>
+</section>
+<section id="pattern-based-cleaning">
+<h2>Pattern-based cleaning<a class="headerlink" href="#pattern-based-cleaning" title="Link to this heading">#</a></h2>
+<p>For standardising by <em>pattern</em> rather than exact match, <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> with wildcards
+finds values fitting a shape (<code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">phone</span> <span class="pre">LIKE</span> <span class="pre">'___-___-____'</span></code> for a phone
+format), and combined with <code class="docutils literal notranslate"><span class="pre">CASE</span></code> it standardises variants that a simple
+<code class="docutils literal notranslate"><span class="pre">REPLACE</span></code> cannot. More advanced engines offer regular-expression functions for
+complex pattern matching, though these vary by database.</p>
+</section>
+<section id="composing-the-advanced-tools">
+<h2>Composing the advanced tools<a class="headerlink" href="#composing-the-advanced-tools" title="Link to this heading">#</a></h2>
+<p>The power comes from combining them: a <code class="docutils literal notranslate"><span class="pre">CASE</span></code> that applies different
+<code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code> extractions depending on a field’s pattern, or a <code class="docutils literal notranslate"><span class="pre">TRIM</span></code> wrapped
+around a <code class="docutils literal notranslate"><span class="pre">REPLACE</span></code> inside a <code class="docutils literal notranslate"><span class="pre">CAST</span></code>. Real cleaning queries nest these functions
+into a pipeline that inspects, extracts, conditions, and converts in one pass —
+the same composition principle as spreadsheet formula nesting, with SQL’s richer
+function set.</p>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>Advanced functions bring two cautions. First, <strong>portability</strong>: the basics
+(<code class="docutils literal notranslate"><span class="pre">TRIM</span></code>, <code class="docutils literal notranslate"><span class="pre">UPPER</span></code>, <code class="docutils literal notranslate"><span class="pre">CASE</span></code>, <code class="docutils literal notranslate"><span class="pre">CAST</span></code>) work almost everywhere, but the exact
+names and behaviours of substring, position, and especially regular-expression
+functions <strong>differ across database systems</strong> — <code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code> versus <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code>,
+<code class="docutils literal notranslate"><span class="pre">INSTR</span></code> versus <code class="docutils literal notranslate"><span class="pre">POSITION</span></code> — so a query written for one database may need
+adjustment for another. Second, <strong>readability</strong>: deeply nested advanced functions
+grow hard to read and debug, so build them in stages and comment the intent.
+Power without clarity is its own maintenance problem — the clarity-over-cleverness
+principle, applied to SQL. The final SQL cleaning lesson covers the dedicated tool
+for missing values: <code class="docutils literal notranslate"><span class="pre">COALESCE</span></code>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="022-using-cast-to-clean-and-format-data-in-sql.html"><span class="doc">Using CAST to Clean and Format Data in SQL</span></a></p></li>
+<li><p><a class="reference internal" href="024-coalesce.html"><span class="doc">COALESCE</span></a></p></li>
+<li><p><a class="reference internal" href="../5_analyze_data/010-working-with-strings-in-spreadsheets-len-left-right-find.html"><span class="doc">Working with Strings in Spreadsheets (LEN, LEFT, RIGHT, FIND)</span></a></p></li>
+<li><p><a class="reference internal" href="021-cleaning-data-with-sql-removing-duplicates-and-cleaning-string-variables.html"><span class="doc">Cleaning Data with SQL: Removing Duplicates and Cleaning String Variables</span></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/11/01/advanced-sql-functions-for-data-cleaning/">https://insightful-data-lab.com/2023/11/01/advanced-sql-functions-for-data-cleaning/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/cleaning.html"><span class="doc">cleaning</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/sql.html"><span class="doc">sql</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3610,23 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-the-basics">Beyond the basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-cleaning-with-case">Conditional cleaning with CASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parts-of-a-field">Extracting parts of a field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-based-cleaning">Pattern-based cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composing-the-advanced-tools">Composing the advanced tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3683,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

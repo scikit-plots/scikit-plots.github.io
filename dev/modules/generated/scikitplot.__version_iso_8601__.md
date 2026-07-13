@@ -1,6 +1,6 @@
 # \_\_version\_iso\_8601\_\_[#](#version-iso-8601 "Link to this heading")
 
-scikitplot.\_\_version\_iso\_8601\_\_ = '2026.07.11'[#](#scikitplot.__version_iso_8601__ "Link to this definition")
+scikitplot.\_\_version\_iso\_8601\_\_ = '2026.07.12'[#](#scikitplot.__version_iso_8601__ "Link to this definition")
 :   str(object=’’) -> str
     str(bytes\_or\_buffer[, encoding[, errors]]) -> str
 

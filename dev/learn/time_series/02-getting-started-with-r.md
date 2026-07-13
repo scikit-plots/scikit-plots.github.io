@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧭 Orientation**** · Lesson 02 of 18 · **beginner**
 
-[◀ Previous · What Are Time Series, and How Are They Used?](01-what-are-time-series-and-how-are-they-used.html) · [Next · A Gentle Introduction to Stationarity ▶](03-a-gentle-introduction-to-stationarity.html)
+[◀ Previous · What Are Time Series, and How Are They Used?](01-what-are-time-series-and-how-are-they-used.html) · [Next · A Gentle Introduction to Stationarity ▶](03-a-gentle-introduction-to-stationarity.html) · [↑ Section](index.html)
 
 ## The toolkit[#](#the-toolkit "Link to this heading")
 
@@ -40,9 +40,9 @@ The classic R verbs map cleanly onto the Python stack:
 
 Reach for whichever environment you like; this course uses the Python calls throughout.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [What Are Time Series, and How Are They Used?](01-what-are-time-series-and-how-are-they-used.html) · [A Gentle Introduction to Stationarity](03-a-gentle-introduction-to-stationarity.html) · [Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/getting-started-with-r/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/getting-started-with-r/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: beginner](../../_tags/level-beginner.html)

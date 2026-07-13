@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 06 of 18 · **intermediate**
 
-[◀ Previous · Linear Processes](05-linear-processes.html) · [Next · Computing ACFs of Causal AR(2) Processes Using Difference Equations ▶](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html)
+[◀ Previous · Linear Processes](05-linear-processes.html) · [Next · Computing ACFs of Causal AR(2) Processes Using Difference Equations ▶](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [↑ Section](index.html)
 
 ## The model[#](#the-model "Link to this heading")
 
@@ -40,9 +40,9 @@ reduces the whole model to \(x\_t = w\_t\), plain white noise. Always ****cancel
 before trusting a fit; `statsmodels` exposes the fitted `.arroots` and `.maroots` for exactly
 this check.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Linear Processes](05-linear-processes.html) · [Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)](08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html) · [Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/understanding-arma-processes/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/understanding-arma-processes/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: intermediate](../../_tags/level-intermediate.html)

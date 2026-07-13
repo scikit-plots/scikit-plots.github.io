@@ -57,12 +57,12 @@ consistent with it. Applying analytical skills in business means stating that
 boundary plainly — stakeholders trust analysts who are precise about
 uncertainty far longer than ones who overclaim.
 
-> **See also**
+> **Hint**
 > * [Analytical Skills and Their Core Components](013-analytical-skills-and-their-core-components.html)
 * [Analytical Thinking and Questions for Problem Solving](016-analytical-thinking-and-questions-for-problem-solving.html)
 * [The Six Phases of the Data Analysis Process](005-the-six-phases-of-the-data-analysis-process.html)
 * [Understanding Common Problem Types in Data Analytics](../2_data_driven_decisions/002-understanding-common-problem-types-in-data-analytics.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/applying-analytical-skills-in-a-business-context/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/applying-analytical-skills-in-a-business-context/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)

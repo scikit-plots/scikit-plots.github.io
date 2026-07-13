@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 18 of 18 · **advanced**
 
-[◀ Previous · Beyond One-Step Ahead Predictions](17-beyond-one-step-ahead-predictions.html)
+[◀ Previous · Beyond One-Step Ahead Predictions](17-beyond-one-step-ahead-predictions.html) · [↑ Section](index.html)
 
 ## The idea[#](#the-idea "Link to this heading")
 
@@ -37,9 +37,9 @@ is ****empirical**** — smoothing often shines on strongly trended, seasonal da
 mean-reverting data. In `statsmodels` these live in `SimpleExpSmoothing`, `Holt` and
 `ExponentialSmoothing` (Holt–Winters).
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [SARIMA Models: Seasonal ARIMA](16-sarima-models-seasonal-arima.html) · [Beyond One-Step Ahead Predictions](17-beyond-one-step-ahead-predictions.html) · [What Are Time Series, and How Are They Used?](01-what-are-time-series-and-how-are-they-used.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/exponential-smoothing-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/exponential-smoothing-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

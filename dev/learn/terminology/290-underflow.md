@@ -25,21 +25,22 @@ the ****LogSumExp**** trick, and why scikit-learn’s Naive Bayes works with log
 
 ---
 
-****Mind map — connected ideas****
-
-> [Logits](420-logits.html) · [Softmax Function](296-softmax-function.html) · [Log Loss (also called Logarithmic Loss or Cross-Entropy Loss)](417-log-loss-also-called-logarithmic-loss-or-cross-e.html) · [Log-Odds](295-log-odds.html) · [Quantization](343-quantization.html) · [Sigmoid Function](297-sigmoid-function.html)
-
----
-
-****More in Model Training & Optimization****
-
-> [Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html)
-
----
-
 **Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Logits](420-logits.html) · [Softmax Function](296-softmax-function.html) · [Log Loss (also called Logarithmic Loss or Cross-Entropy Loss)](417-log-loss-also-called-logarithmic-loss-or-cross-e.html) · [Log-Odds](295-log-odds.html) · [Quantization](343-quantization.html) · [Sigmoid Function](297-sigmoid-function.html)
+
+---
+
+> **Hint**
+> ****More in Model Training & Optimization****
+
+[Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logit Space](291-logit-space.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html)
 > **See also**
-> Adapted in our own words from [Underflow](https://insightful-data-lab.com/2025/08/21/underflow/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Underflow](https://insightful-data-lab.com/2025/08/21/underflow/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 001 of 144 · **beginner**
 
-[Next · General Notation for Statistical Inference ▶](002-general-notation-for-statistical-inference.html)
+[Next · General Notation for Statistical Inference ▶](002-general-notation-for-statistical-inference.html) · [↑ Section](index.html)
 
 ## A process, not a formula[#](#a-process-not-a-formula "Link to this heading")
 
@@ -50,9 +50,9 @@ distribution, not a point estimate with an asterisk. And step 3 is not a formali
 **simplification**, and a Bayesian analysis is only as trustworthy as the checks in its final step. The
 three steps are also a ****loop****, iterated as each check teaches you what the model missed.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [General Notation for Statistical Inference](002-general-notation-for-statistical-inference.html) · [Bayesian Inference](003-bayesian-inference.html) · [The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [Bayesian Inference in Applied Statistics](010-bayesian-inference-in-applied-statistics.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/the-three-steps-of-bayesian-data-analysis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/the-three-steps-of-bayesian-data-analysis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 14 of 56 · **beginner**
 
-[◀ Previous · Karl Pearson](13-karl-pearson.html) · [Next · What Are Statistical Tests? ▶](15-what-are-statistical-tests.html)
+[◀ Previous · Karl Pearson](13-karl-pearson.html) · [Next · What Are Statistical Tests? ▶](15-what-are-statistical-tests.html) · [↑ Section](index.html)
 
 ## A Swedish statistician[#](#a-swedish-statistician "Link to this heading")
 
@@ -36,9 +36,9 @@ was among the first to put statistics on a firm measure-theoretic basis, and it 
 of statisticians. Alongside the V and the bound, his broader work spanned probability, actuarial
 mathematics and number theory.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Karl Pearson](13-karl-pearson.html) · [What Are Statistical Tests?](15-what-are-statistical-tests.html) · [Maximum Likelihood (MLE): Fitting a Distribution to Observed Data](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · [Eta Squared (η²): Effect Size in ANOVA](16-eta-squared-2-effect-size-in-anova.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/harald-cramer/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/harald-cramer/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

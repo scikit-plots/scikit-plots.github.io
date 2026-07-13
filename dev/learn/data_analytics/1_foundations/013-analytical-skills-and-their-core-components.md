@@ -53,12 +53,12 @@ not traits to claim: the next lesson takes one business problem and shows each
 skill doing actual work — which is also the honest way to demonstrate them in
 an interview.
 
-> **See also**
+> **Hint**
 > * [Detectives and Data Analysts](004-detectives-and-data-analysts.html)
 * [Applying Analytical Skills in a Business Context](014-applying-analytical-skills-in-a-business-context.html)
 * [Analytical Thinking and Its Core Components](015-analytical-thinking-and-its-core-components.html)
 * [Data-Driven Decision-Making and the Role of Analytical Skills](018-data-driven-decision-making-and-the-role-of-analytical-skills.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/analytical-skills-and-their-core-components/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/analytical-skills-and-their-core-components/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)

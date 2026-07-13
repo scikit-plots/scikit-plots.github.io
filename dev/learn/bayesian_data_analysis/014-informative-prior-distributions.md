@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 2 · 📍 Single-Parameter Models & Priors**** · Lesson 014 of 144 · **beginner**
 
-[◀ Previous · Summarizing Posterior Inference](013-summarizing-posterior-inference.html) · [Next · Normal Distribution with Known Variance ▶](015-normal-distribution-with-known-variance.html)
+[◀ Previous · Summarizing Posterior Inference](013-summarizing-posterior-inference.html) · [Next · Normal Distribution with Known Variance ▶](015-normal-distribution-with-known-variance.html) · [↑ Section](index.html)
 
 ## Using what you know[#](#using-what-you-know "Link to this heading")
 
@@ -48,9 +48,9 @@ And run a ****sensitivity analysis**** — refit under reasonable alternatives, 
 move. Between the extremes of an informative prior and a deliberately vague one lies the
 ****weakly informative**** prior of the coming lessons.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Noninformative Prior Distributions](018-noninformative-prior-distributions.html) · [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/informative-prior-distributions/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/informative-prior-distributions/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

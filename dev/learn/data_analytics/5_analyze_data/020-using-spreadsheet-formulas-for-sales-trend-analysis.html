@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/5_analyze_data/020-using-spreadsheet-formulas-for-sales-trend-analysis.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 020 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze calc" />
+<meta property="og:description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 020 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Calculating change over time: The heart of analysis is calculation — turning organised data into t..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 020 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze calc" />
+<meta name="description" content="📊 Analyze Data 🧮 Calculations &amp; Aggregation Lesson 020 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Calculating change over time: The heart of analysis is calculation — turning organised data into t..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:37:24Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:15:14Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,82 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-jobsearch-analyze-020"></span><span id="da-python-analyze-020"></span><span id="da-viz-analyze-020"></span><span id="da-analyze-analyze-020"></span><span id="da-cleaning-analyze-020"></span><span id="da-prep-analyze-020"></span><span id="da-decisions-analyze-020"></span><span id="da-foundations-analyze-020"></span><span id="data-analytics-analyze-020"></span><span id="da-analyze-020"></span><h1>Using Spreadsheet Formulas for Sales Trend Analysis<a class="headerlink" href="#using-spreadsheet-formulas-for-sales-trend-analysis" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">📊 Analyze Data</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">🧮 Calculations &amp; Aggregation</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 020</span></p>
 <p>◀ <a class="reference internal" href="019-aggregating-data-with-subqueries-having-and-case-in-sql.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="021-using-countif-and-sumif-for-conditional-aggregation-in-spreadsheets.html"><span class="doc">Next</span></a> ▶ · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="calculating-change-over-time">
+<h2>Calculating change over time<a class="headerlink" href="#calculating-change-over-time" title="Link to this heading">#</a></h2>
+<p>The heart of analysis is <em>calculation</em> — turning organised data into the numbers
+that answer a question — and one of the most common calculations is <strong>trend
+analysis</strong>: how a value changes over time. Sales trend analysis is the classic
+case, and the spreadsheet formulas that compute it — growth rates, running totals,
+period-over-period comparisons — are foundational analytical tools, opening the
+calculation stage.</p>
+</section>
+<section id="the-core-trend-calculations">
+<h2>The core trend calculations<a class="headerlink" href="#the-core-trend-calculations" title="Link to this heading">#</a></h2>
+<p>Trends are built from a few standard computations, each a formula pattern:</p>
+<ul>
+<li><p><strong>Period-over-period change</strong> — the difference between consecutive periods:
+<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">this_period</span> <span class="pre">-</span> <span class="pre">last_period</span></code>. The absolute change.</p></li>
+<li><p><strong>Growth rate (percentage change)</strong> — the change <em>relative</em> to the base:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>= (this_period - last_period) / last_period
+</pre></div>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/11/26/using-spreadsheet-formulas-for-sales-trend-analysis/">Source article</a></p>
+<p>This expresses growth as a percentage (12% up, 5% down), which is comparable
+across different scales in a way absolute change is not.</p>
+</li>
+<li><p><strong>Running (cumulative) total</strong> — the sum accumulated up to each period, built
+with a mix of absolute and relative references so it extends down the column:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>= SUM($B$2:B2)     fill down: running total through each row
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">$B$2</span></code> anchors the start (absolute) while <code class="docutils literal notranslate"><span class="pre">B2</span></code> moves (relative), so each
+row sums from the beginning through itself.</p>
+</li>
+<li><p><strong>Comparison to a baseline</strong> — each period against a fixed reference (a target,
+the same month last year), using an absolute reference to the baseline cell.</p></li>
+</ul>
+</section>
+<section id="reading-the-trend">
+<h2>Reading the trend<a class="headerlink" href="#reading-the-trend" title="Link to this heading">#</a></h2>
+<p>The formulas produce numbers; <em>reading</em> them is the analysis. A growth rate turns
+raw sales into a story — accelerating, steady, declining. A running total shows
+progress toward a goal. A year-over-year comparison strips out seasonality that a
+month-over-month view would confuse. The analyst’s job is not just computing these
+but interpreting what they reveal about the direction and health of what is
+measured.</p>
+</section>
+<section id="the-absolute-relative-reference-connection">
+<h2>The absolute/relative reference connection<a class="headerlink" href="#the-absolute-relative-reference-connection" title="Link to this heading">#</a></h2>
+<p>Trend formulas lean heavily on the relative-versus-absolute reference distinction
+from Section 2: the running total’s <code class="docutils literal notranslate"><span class="pre">SUM($B$2:B2)</span></code> and the baseline comparison’s
+anchored reference both depend on getting the <code class="docutils literal notranslate"><span class="pre">$</span></code> right so the formula behaves
+correctly when filled down. This is the earlier concept put to real analytical
+work — a reminder that the foundational skills compound into the analytical ones.</p>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>Trend calculations can mislead in familiar ways. A percentage change from a <em>small</em>
+base is volatile and can look dramatic while representing little (100% growth from 2
+to 4 sales); a <strong>short time span</strong> can show a “trend” that is really noise (the
+sufficiency lessons); and <strong>seasonality</strong> can masquerade as trend if not accounted
+for (December sales are not a growth trend). The numbers compute regardless — the
+judgement is whether the trend is <em>real</em>: enough data, an appropriate base, and
+seasonality considered. Compute the trend, then ask whether it is signal or
+artefact. The next lessons add conditional aggregation to the calculation toolkit.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../2_data_driven_decisions/014-spreadsheet-calculations-with-formulas.html"><span class="doc">Spreadsheet Calculations with Formulas</span></a></p></li>
+<li><p><a class="reference internal" href="021-using-countif-and-sumif-for-conditional-aggregation-in-spreadsheets.html"><span class="doc">Using COUNTIF and SUMIF for Conditional Aggregation in Spreadsheets</span></a></p></li>
+<li><p><a class="reference internal" href="023-using-pivot-tables-for-calculations-and-trend-analysis.html"><span class="doc">Using Pivot Tables for Calculations and Trend Analysis</span></a></p></li>
+<li><p><a class="reference internal" href="../2_data_driven_decisions/010-mathematical-thinking.html"><span class="doc">Mathematical Thinking</span></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/11/26/using-spreadsheet-formulas-for-sales-trend-analysis/">https://insightful-data-lab.com/2023/11/26/using-spreadsheet-formulas-for-sales-trend-analysis/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/analyze.html"><span class="doc">analyze</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/calc.html"><span class="doc">calc</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3601,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-change-over-time">Calculating change over time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-core-trend-calculations">The core trend calculations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-trend">Reading the trend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-absolute-relative-reference-connection">The absolute/relative reference connection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3673,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

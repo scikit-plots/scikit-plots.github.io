@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 4 · 📏 Asymptotics & Frequentist Ties**** · Lesson 031 of 144 · **beginner**
 
-[◀ Previous · Counterexamples to large-sample (asymptotic) Bayesian theorems](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html) · [Next · Bayesian interpretations of other statistical methods ▶](032-bayesian-interpretations-of-other-statistical-methods.html)
+[◀ Previous · Counterexamples to large-sample (asymptotic) Bayesian theorems](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html) · [Next · Bayesian interpretations of other statistical methods ▶](032-bayesian-interpretations-of-other-statistical-methods.html) · [↑ Section](index.html)
 
 ## A different question[#](#a-different-question "Link to this heading")
 
@@ -49,9 +49,9 @@ over the ****prior****, so it certifies the procedure only if that prior is the 
 amount of frequency checking rescues a ****misspecified likelihood****. Coverage is a necessary condition
 for trust, not a sufficient one.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Large-Sample Theory](029-large-sample-theory.html) · [Bayesian interpretations of other statistical methods](032-bayesian-interpretations-of-other-statistical-methods.html) · [Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html) · [Posterior predictive checking](042-posterior-predictive-checking.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/frequency-evaluations-of-bayesian-inferences/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/frequency-evaluations-of-bayesian-inferences/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

@@ -4,9 +4,71 @@
 
 ◀ [Previous](004-handling-insufficient-data-in-data-analysis.html) · [Next](006-statistical-power-in-data-analysis.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
-> **Lesson in progress**
-> Full content for this lesson has not been written yet.
+## The whole and the part[#](#the-whole-and-the-part "Link to this heading")
 
-[Source article](https://insightful-data-lab.com/2023/10/31/population-sample-size-and-random-sampling/)
+The insufficient-data lesson raised the question of **how much** data is enough;
+answering it needs vocabulary. The ****population**** is the entire group you want to
+understand — every customer, every transaction, every citizen. A ****sample**** is
+the subset you actually examine, and the ****sample size**** is how many members it
+contains. Almost all analysis works from samples, because examining the whole
+population is usually impossible or impractical — which makes **how you sample**
+one of the most consequential decisions in the whole process.
+
+## Why we sample[#](#why-we-sample "Link to this heading")
+
+Studying an entire population is often infeasible: too large, too expensive, too
+slow, or simply inaccessible (you cannot survey every possible future customer).
+A well-chosen sample lets you draw reliable conclusions about the whole from a
+manageable part — the core bargain of statistics. The bargain only holds,
+though, when the sample ****represents**** the population, which is exactly where
+sampling method matters.
+
+## Random sampling and its relatives[#](#random-sampling-and-its-relatives "Link to this heading")
+
+****Random sampling**** selects members so that every member of the population has an
+****equal chance**** of being chosen. Its purpose is representativeness **by design**:
+because selection does not depend on any characteristic, the sample tends to
+mirror the population’s mix, and the systematic lean that defines sampling bias
+is removed. Common sampling approaches:
+
+* ****Simple random sampling**** — every member equally likely; the baseline.
+* ****Stratified sampling**** — divide the population into groups (strata) and sample
+  from each, ensuring every group is represented in proportion — useful when some
+  subgroups are small but important.
+* ****Systematic sampling**** — select every **n**-th member from an ordered list; a
+  practical approximation of random when the list has no hidden pattern.
+* ****Cluster sampling**** — divide into clusters, randomly select whole clusters;
+  efficient when the population is naturally grouped (e.g. by location).
+
+The contrast case remains the biased methods from earlier — convenience and
+self-selection — which do **not** give everyone an equal chance and therefore skew.
+
+## The role of sample size[#](#the-role-of-sample-size "Link to this heading")
+
+Given a fair method, ****size**** governs **precision**: larger samples yield estimates
+closer to the population truth, with less variability from the luck of the draw.
+But size cannot fix bias — a large biased sample is confidently wrong, as the
+1936-poll lesson showed. The two requirements are separate and both necessary: a
+sample must be ****representative**** (right method) **and** ****large enough**** (right
+size) to support reliable conclusions. The next lessons quantify “large enough.”
+
+## The caveat[#](#the-caveat "Link to this heading")
+
+Random sampling is the ideal, but genuinely random samples are hard to achieve
+in practice — the sampling frame (the list you draw from) may itself omit part of
+the population, reintroducing bias no amount of randomness within the frame can
+fix. A “random” sample of phone numbers still misses people without phones.
+The professional habit is to scrutinise not just **how** members were selected but
+**what population the frame actually covers** — and to disclose the gap. The next
+lesson turns from representativeness to a different sufficiency question: the
+power to detect a real effect.
+
+> **Hint**
+> * [Handling Insufficient Data in Data Analysis](004-handling-insufficient-data-in-data-analysis.html)
+* [Sampling Bias and Unbiased Data](../3_data_preparation/009-sampling-bias-and-unbiased-data.html)
+* [Statistical Power in Data Analysis](006-statistical-power-in-data-analysis.html)
+* [Sample Size and Data Integrity](007-sample-size-and-data-integrity.html)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/10/31/population-sample-size-and-random-sampling/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [cleaning](../../../_tags/cleaning.html) [integrity](../../../_tags/integrity.html)

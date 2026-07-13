@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 14 of 17 · **intermediate**
 
-[◀ Previous · Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Next · Vectorization in Logistic Regression ▶](15-vectorization-in-logistic-regression.html)
+[◀ Previous · Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Next · Vectorization in Logistic Regression ▶](15-vectorization-in-logistic-regression.html) · [↑ Section](index.html)
 
 ## Averaging the gradient[#](#averaging-the-gradient "Link to this heading")
 
@@ -42,9 +42,9 @@ hidden one over the \(n\) ****features**** — with \(n\) weights you would need
 ****badly suited to parallel hardware**** and crawl on large datasets. Removing them — ****vectorization**** —
 is the subject of the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Vectorization in Logistic Regression](15-vectorization-in-logistic-regression.html) · [Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html) · [Vectorizing Logistic Regression](17-vectorizing-logistic-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/gradient-descent-on-m-training-examples/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/gradient-descent-on-m-training-examples/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

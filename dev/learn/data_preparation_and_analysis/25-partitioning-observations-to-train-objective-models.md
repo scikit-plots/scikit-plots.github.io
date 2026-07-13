@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 25 of 56 · **intermediate**
 
-[◀ Previous · Linear Congruential Random Number Generator (LCG)](24-linear-congruential-random-number-generator-lcg.html) · [Next · Putting Similar Observations into Clusters ▶](26-putting-similar-observations-into-clusters.html)
+[◀ Previous · Linear Congruential Random Number Generator (LCG)](24-linear-congruential-random-number-generator-lcg.html) · [Next · Putting Similar Observations into Clusters ▶](26-putting-similar-observations-into-clusters.html) · [↑ Section](index.html)
 
 ## The temptation to cheat[#](#the-temptation-to-cheat "Link to this heading")
 
@@ -34,9 +34,9 @@ In practice the split is one line — `train_test_split` in scikit-learn, ideall
 course’s standing warning: ****report performance on the test set, never the training set****. Every
 evaluation metric in Stage 8 assumes the model is being judged on data it has never seen.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Stratified Random Sampling](23-stratified-random-sampling.html) · [Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Linear Congruential Random Number Generator (LCG)](24-linear-congruential-random-number-generator-lcg.html) · [Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/partitioning-observations-to-train-objective-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/partitioning-observations-to-train-objective-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

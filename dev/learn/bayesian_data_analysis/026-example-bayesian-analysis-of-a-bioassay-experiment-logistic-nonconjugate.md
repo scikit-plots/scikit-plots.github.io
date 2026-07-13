@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 3 · 🧮 Multiparameter Models**** · Lesson 026 of 144 · **beginner**
 
-[◀ Previous · Multivariate Normal with Unknown Mean and Variance](025-multivariate-normal-with-unknown-mean-and-variance.html) · [Next · Summary of Elementary Modeling and Computation ▶](027-summary-of-elementary-modeling-and-computation.html)
+[◀ Previous · Multivariate Normal with Unknown Mean and Variance](025-multivariate-normal-with-unknown-mean-and-variance.html) · [Next · Summary of Elementary Modeling and Computation ▶](027-summary-of-elementary-modeling-and-computation.html) · [↑ Section](index.html)
 
 ## Where the closed forms end[#](#where-the-closed-forms-end "Link to this heading")
 
@@ -59,9 +59,9 @@ Because any function of draws is itself a posterior draw, the ****LD50**** (the 
 that a plug-in estimate would badly misrepresent. Grids work in two dimensions; beyond three or four
 they die of dimensionality — which is precisely why Part III exists.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Numerical integration](062-numerical-integration.html) · [Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Summary of Elementary Modeling and Computation](027-summary-of-elementary-modeling-and-computation.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

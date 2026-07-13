@@ -56,21 +56,22 @@ shap.plots.force(shap_values[0])    # local explanation for one row
 
 ---
 
-****Mind map — connected ideas****
-
-> [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [Feature Values](188-feature-values.html) · [Discriminatory Power](185-discriminatory-power.html) · [Deep Ensembles](335-deep-ensembles.html)
-
----
-
-****More in Explainability & Governance****
-
-> [Basel III](333-basel-iii.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html)
-
----
-
 **Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [Feature Values](188-feature-values.html) · [Discriminatory Power](185-discriminatory-power.html) · [Deep Ensembles](335-deep-ensembles.html)
+
+---
+
+> **Hint**
+> ****More in Explainability & Governance****
+
+[Basel III](333-basel-iii.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html)
 > **See also**
-> Adapted in our own words from [SHAP (SHapley Additive exPlanations)](https://insightful-data-lab.com/2025/08/20/shap-shapley-additive-explanations/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [SHAP (SHapley Additive exPlanations)](https://insightful-data-lab.com/2025/08/20/shap-shapley-additive-explanations/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

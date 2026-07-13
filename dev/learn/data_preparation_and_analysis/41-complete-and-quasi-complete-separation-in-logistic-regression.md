@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 41 of 56 · **advanced**
 
-[◀ Previous · Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Next · Forward Selection with Nested Models and Deviance Tests ▶](42-forward-selection-with-nested-models-and-deviance-tests.html)
+[◀ Previous · Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Next · Forward Selection with Nested Models and Deviance Tests ▶](42-forward-selection-with-nested-models-and-deviance-tests.html) · [↑ Section](index.html)
 
 ## When the fit blows up[#](#when-the-fit-blows-up "Link to this heading")
 
@@ -39,9 +39,9 @@ zero — always yields ****finite**** coefficients, even under complete separati
 ****combined or removed****, or a rare category merged. The lesson generalises: an estimate that runs to
 infinity is the data telling you the model, as posed, is ****not identifiable****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Logistic Regression: Modeling Binary Outcomes via Odds and Log-Odds](38-logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds.html) · [Maximum Likelihood (MLE): Fitting a Distribution to Observed Data](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · [Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/complete-and-quasi-complete-separation-in-logistic-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/complete-and-quasi-complete-separation-in-logistic-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

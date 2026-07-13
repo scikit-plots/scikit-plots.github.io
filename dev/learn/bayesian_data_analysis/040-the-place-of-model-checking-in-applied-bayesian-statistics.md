@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 040 of 144 · **intermediate**
 
-[◀ Previous · Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Next · Do the Inferences from the Model Make Sense? ▶](041-do-the-inferences-from-the-model-make-sense.html)
+[◀ Previous · Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Next · Do the Inferences from the Model Make Sense? ▶](041-do-the-inferences-from-the-model-make-sense.html) · [↑ Section](index.html)
 
 ## The third step, at last[#](#the-third-step-at-last "Link to this heading")
 
@@ -53,9 +53,9 @@ A final distinction. Checking is not a significance test that accepts or rejects
 \(p\)-value that looks extreme tells you **where** the model misses, not whether to “reject” it at
 5%. The aim is not a verdict but ****understanding**** — and, ultimately, a better model.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The three steps of Bayesian data analysis](001-the-three-steps-of-bayesian-data-analysis.html) · [Do the Inferences from the Model Make Sense?](041-do-the-inferences-from-the-model-make-sense.html) · [Posterior predictive checking](042-posterior-predictive-checking.html) · [Continuous model expansion](048-continuous-model-expansion.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/the-place-of-model-checking-in-applied-bayesian-statistics/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/the-place-of-model-checking-in-applied-bayesian-statistics/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

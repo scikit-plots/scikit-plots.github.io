@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 10 · 🎛️ Modal & Variational Approximation**** · Lesson 086 of 144 · **intermediate**
 
-[◀ Previous · Conditional and marginal posterior approximations](085-conditional-and-marginal-posterior-approximations.html) · [Next · Variational inference ▶](087-variational-inference.html)
+[◀ Previous · Conditional and marginal posterior approximations](085-conditional-and-marginal-posterior-approximations.html) · [Next · Variational inference ▶](087-variational-inference.html) · [↑ Section](index.html)
 
 ## The same model, approximated[#](#the-same-model-approximated "Link to this heading")
 
@@ -54,9 +54,9 @@ variance parameters of hierarchies****, which are precisely the parameters that 
 occurs. Use modal methods for speed and starting values; check the conclusions that hinge on
 \(\tau\) against a sampler.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Example: hierarchical normal model](074-example-hierarchical-normal-model.html) · [Finding marginal posterior modes using EM](084-finding-marginal-posterior-modes-using-em.html) · [Conditional and marginal posterior approximations](085-conditional-and-marginal-posterior-approximations.html) · [Boundary-avoiding priors for modal summaries](082-boundary-avoiding-priors-for-modal-summaries.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/22/example-hierarchical-normal-model-2/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/22/example-hierarchical-normal-model-2/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

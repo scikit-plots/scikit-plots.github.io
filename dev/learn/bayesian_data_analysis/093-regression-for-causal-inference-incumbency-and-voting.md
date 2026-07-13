@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 11 · 📈 Regression Foundations**** · Lesson 093 of 144 · **advanced**
 
-[◀ Previous · Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html) · [Next · Goals of regression analysis ▶](094-goals-of-regression-analysis.html)
+[◀ Previous · Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html) · [Next · Goals of regression analysis ▶](094-goals-of-regression-analysis.html) · [↑ Section](index.html)
 
 ## Does holding office help you win?[#](#does-holding-office-help-you-win "Link to this heading")
 
@@ -55,9 +55,9 @@ So the honest report has three parts: the estimate, the assumption it rests on, 
 analysis**** for how strong a confounder would need to be to erase it. Regression supplies the arithmetic;
 the design supplies the license.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Observational studies](055-observational-studies.html) · [Goals of regression analysis](094-goals-of-regression-analysis.html) · [Sensitivity and the role of randomization](054-sensitivity-and-the-role-of-randomization.html) · [Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/regression-for-causal-inference-incumbency-and-voting/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/regression-for-causal-inference-incumbency-and-voting/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

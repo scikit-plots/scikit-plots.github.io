@@ -63,12 +63,12 @@ numbers that matter little. Part of the analyst’s job — developed throughout
 this course — is choosing the **few** measures that genuinely track the goal, and
 being honest when the data cannot answer the question being asked.
 
-> **See also**
+> **Hint**
 > * [Why Data Analytics Matters Today](001-why-data-analytics-matters-today.html)
 * [Data-Driven Decision-Making](003-data-driven-decision-making.html)
 * [Case Studies in Data Analysis and the Practical Impact of Data-Driven Decision-Making](019-case-studies-in-data-analysis-and-the-practical-impact-of-data-driven-decision-making.html)
 * [The Relationship Between Data and Decision-Making](../2_data_driven_decisions/005-the-relationship-between-data-and-decision-making.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/how-data-analytics-improves-the-workplace/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/how-data-analytics-improves-the-workplace/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [why](../../../_tags/why.html)

@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 2 · 📍 Single-Parameter Models & Priors**** · Lesson 015 of 144 · **beginner**
 
-[◀ Previous · Informative Prior Distributions](014-informative-prior-distributions.html) · [Next · Other Standard Single-Parameter Models ▶](016-other-standard-single-parameter-models.html)
+[◀ Previous · Informative Prior Distributions](014-informative-prior-distributions.html) · [Next · Other Standard Single-Parameter Models ▶](016-other-standard-single-parameter-models.html) · [↑ Section](index.html)
 
 ## The second workhorse[#](#the-second-workhorse "Link to this heading")
 
@@ -54,9 +54,9 @@ becomes negligible and \(\mu\_n \to \bar{y}\) — data win, as always. And a ***
 the familiar sampling-theory result reappearing as a Bayesian posterior. That coincidence, and its
 limits, is the subject of Stage 4.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Estimating a Probability from Binomial Data](011-estimating-a-probability-from-binomial-data.html) · [Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html) · [Other Standard Single-Parameter Models](016-other-standard-single-parameter-models.html) · [Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/normal-distribution-with-known-variance/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/normal-distribution-with-known-variance/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

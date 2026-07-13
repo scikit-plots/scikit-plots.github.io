@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 100 of 144 · **advanced**
 
-[◀ Previous · Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Next · Interpreting a normal prior distribution as extra data ▶](101-interpreting-a-normal-prior-distribution-as-extra-data.html)
+[◀ Previous · Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Next · Interpreting a normal prior distribution as extra data ▶](101-interpreting-a-normal-prior-distribution-as-extra-data.html) · [↑ Section](index.html)
 
 ## A puzzle of two timescales[#](#a-puzzle-of-two-timescales "Link to this heading")
 
@@ -59,9 +59,9 @@ propagating correlated uncertainty in a way no single number could. Prediction, 
 causal story, in one model. Part V now takes regression beyond linearity and beyond a fixed set of
 coefficients.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Regression for causal inference: incumbency and voting](093-regression-for-causal-inference-incumbency-and-voting.html) · [Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Sample surveys](052-sample-surveys.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/24/example-forecasting-u-s-presidential-elections/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/24/example-forecasting-u-s-presidential-elections/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

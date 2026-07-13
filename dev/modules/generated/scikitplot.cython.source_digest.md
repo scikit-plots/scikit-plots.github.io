@@ -1,6 +1,6 @@
 # source\_digest[#](#source-digest "Link to this heading")
 
-scikitplot.cython.source\_digest(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/cython/_cache.py#L342)[#](#scikitplot.cython.source_digest "Link to this definition")
+scikitplot.cython.source\_digest(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cython/_cache.py#L342)[#](#scikitplot.cython.source_digest "Link to this definition")
 :   SHA-256 digest of source bytes.
 
     Parameters:

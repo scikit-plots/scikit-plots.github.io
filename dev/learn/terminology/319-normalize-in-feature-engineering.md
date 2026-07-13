@@ -28,21 +28,22 @@ their meaning), and fit the scaler on the ****training set only**** to avoid lea
 
 ---
 
-****Mind map — connected ideas****
-
-> [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html) · [Outlier](307-outlier.html) · [Z-Score](097-z-score.html) · [Normal Distribution](238-normal-distribution.html) · [Neural Networks](287-neural-networks.html)
-
----
-
-****More in Data Preparation & Features****
-
-> [Advanced Sorting in Spreadsheets](431-advanced-sorting-in-spreadsheets.html) · [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html)
-
----
-
 **Theme:** [Data Preparation & Features](index.html#term-theme-features)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html) · [Outlier](307-outlier.html) · [Z-Score](097-z-score.html) · [Normal Distribution](238-normal-distribution.html) · [Neural Networks](287-neural-networks.html)
+
+---
+
+> **Hint**
+> ****More in Data Preparation & Features****
+
+[Advanced Sorting in Spreadsheets](431-advanced-sorting-in-spreadsheets.html) · [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html)
 > **See also**
-> Adapted in our own words from [Normalize (in Feature Engineering)](https://insightful-data-lab.com/2025/08/20/normalize-in-feature-engineering/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Normalize (in Feature Engineering)](https://insightful-data-lab.com/2025/08/20/normalize-in-feature-engineering/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -27,21 +27,22 @@ features the model actually ****relies on****.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Feature Values](188-feature-values.html) · [Outlier](307-outlier.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Decision Trees](340-decision-trees.html)
-
----
-
-****More in Data Preparation & Features****
-
-> [Advanced Sorting in Spreadsheets](431-advanced-sorting-in-spreadsheets.html) · [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html)
-
----
-
 **Theme:** [Data Preparation & Features](index.html#term-theme-features)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Feature Values](188-feature-values.html) · [Outlier](307-outlier.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Decision Trees](340-decision-trees.html)
+
+---
+
+> **Hint**
+> ****More in Data Preparation & Features****
+
+[Advanced Sorting in Spreadsheets](431-advanced-sorting-in-spreadsheets.html) · [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html)
 > **See also**
-> Adapted in our own words from [Sensitivity in Feature Engineering](https://insightful-data-lab.com/2025/08/20/sensitivity-in-feature-engineering/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Sensitivity in Feature Engineering](https://insightful-data-lab.com/2025/08/20/sensitivity-in-feature-engineering/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

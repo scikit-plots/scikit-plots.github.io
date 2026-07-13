@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 15 · 🌊 Basis Functions & Gaussian Processes**** · Lesson 128 of 144 · **advanced**
 
-[◀ Previous · Basis selection and shrinkage of coeﬃcients](127-basis-selection-and-shrinkage-of-coefficients.html) · [Next · Gaussian process regression ▶](129-gaussian-process-regression.html)
+[◀ Previous · Basis selection and shrinkage of coeﬃcients](127-basis-selection-and-shrinkage-of-coefficients.html) · [Next · Gaussian process regression ▶](129-gaussian-process-regression.html) · [↑ Section](index.html)
 
 ## Flexibility in two directions at once[#](#flexibility-in-two-directions-at-once "Link to this heading")
 
@@ -53,9 +53,9 @@ smoothness through a covariance function over inputs and is the subject of the n
 take flexible regression a long way; Gaussian processes take the same idea to its infinite-dimensional
 conclusion.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Splines and weighted sums of basis functions](126-splines-and-weighted-sums-of-basis-functions.html) · [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Gaussian process regression](129-gaussian-process-regression.html) · [Basis selection and shrinkage of coeﬃcients](127-basis-selection-and-shrinkage-of-coefficients.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/non-normal-models-and-regression-surfaces/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/non-normal-models-and-regression-surfaces/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

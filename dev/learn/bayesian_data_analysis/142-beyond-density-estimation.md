@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 142 of 144 · **advanced**
 
-[◀ Previous · Dirichlet process mixtures](141-dirichlet-process-mixtures.html) · [Next · Hierarchical dependence ▶](143-hierarchical-dependence.html)
+[◀ Previous · Dirichlet process mixtures](141-dirichlet-process-mixtures.html) · [Next · Hierarchical dependence ▶](143-hierarchical-dependence.html) · [↑ Section](index.html)
 
 ## Nonparametrics for other functionals[#](#nonparametrics-for-other-functionals "Link to this heading")
 
@@ -50,9 +50,9 @@ unifying theme: put a prior on an ****infinite-dimensional**** object — a dist
 matrix — and let the data determine its complexity, with every downstream quantity carrying honest
 posterior uncertainty.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Dirichlet process mixtures](141-dirichlet-process-mixtures.html) · [Hierarchical dependence](143-hierarchical-dependence.html) · [Bayesian histograms](139-bayesian-histograms.html) · [Mixture models for classification and regression](138-mixture-models-for-classification-and-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/13/beyond-density-estimation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/13/beyond-density-estimation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

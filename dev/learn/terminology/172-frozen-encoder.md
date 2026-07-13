@@ -47,21 +47,22 @@ representation and spend your limited data learning only the task-specific part.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Embedding](173-embedding.html) · [Autoencoder](171-autoencoder.html)
-
----
-
-****More in Representations & Embeddings****
-
-> [Autoencoder](171-autoencoder.html) · [Embedding](173-embedding.html) · [Embedding Similarity](320-embedding-similarity.html)
-
----
-
 **Theme:** [Representations & Embeddings](index.html#term-theme-repr)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Embedding](173-embedding.html) · [Autoencoder](171-autoencoder.html)
+
+---
+
+> **Hint**
+> ****More in Representations & Embeddings****
+
+[Autoencoder](171-autoencoder.html) · [Embedding](173-embedding.html) · [Embedding Similarity](320-embedding-similarity.html)
 > **See also**
-> Adapted in our own words from [Frozen Encoder](https://insightful-data-lab.com/2025/08/23/frozen-encoder/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Frozen Encoder](https://insightful-data-lab.com/2025/08/23/frozen-encoder/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

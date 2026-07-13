@@ -33,21 +33,22 @@ workloads and costs.
 
 ---
 
-****Mind map — connected ideas****
-
-> [SaaS (Software as a Service)](034-saas-software-as-a-service.html) · [Gross Margin](043-gross-margin.html) · [Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html) · [Customer Segmentation](033-customer-segmentation.html) · [KYC](146-kyc.html) · [D2C (Direct-to-Consumer)](036-d2c-direct-to-consumer.html)
-
----
-
-****More in Business & Growth Analytics****
-
-> [Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html) · [CAC (Customer Acquisition Cost)](374-cac-customer-acquisition-cost.html) · [Cannibalization](392-cannibalization.html) · [Channel-Specific CAC (Customer Acquisition Cost)](047-channel-specific-cac-customer-acquisition-cost.html) · [Churn](123-churn.html) · [Cohort](183-cohort.html) · [Cohort-Based LTV (Simple Version)](041-cohort-based-ltv-simple-version.html) · [Conversion Rate (CR)](299-conversion-rate-cr.html) · [Cost-Per-Click (CPC) Models](300-cost-per-click-cpc-models.html) · [Cross-Selling](031-cross-selling.html) · [CTR (Click-Through Rate)](421-ctr-click-through-rate.html) · [Customer Lifetime](042-customer-lifetime.html) · [Customer Segmentation](033-customer-segmentation.html) · [D2C (Direct-to-Consumer)](036-d2c-direct-to-consumer.html)
-
----
-
 **Theme:** [Business & Growth Analytics](index.html#term-theme-growth)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[SaaS (Software as a Service)](034-saas-software-as-a-service.html) · [Gross Margin](043-gross-margin.html) · [Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html) · [Customer Segmentation](033-customer-segmentation.html) · [KYC](146-kyc.html) · [D2C (Direct-to-Consumer)](036-d2c-direct-to-consumer.html)
+
+---
+
+> **Hint**
+> ****More in Business & Growth Analytics****
+
+[Blended CAC (Customer Acquisition Cost)](048-blended-cac-customer-acquisition-cost.html) · [CAC (Customer Acquisition Cost)](374-cac-customer-acquisition-cost.html) · [Cannibalization](392-cannibalization.html) · [Channel-Specific CAC (Customer Acquisition Cost)](047-channel-specific-cac-customer-acquisition-cost.html) · [Churn](123-churn.html) · [Cohort](183-cohort.html) · [Cohort-Based LTV (Simple Version)](041-cohort-based-ltv-simple-version.html) · [Conversion Rate (CR)](299-conversion-rate-cr.html) · [Cost-Per-Click (CPC) Models](300-cost-per-click-cpc-models.html) · [Cross-Selling](031-cross-selling.html) · [CTR (Click-Through Rate)](421-ctr-click-through-rate.html) · [Customer Lifetime](042-customer-lifetime.html) · [Customer Segmentation](033-customer-segmentation.html) · [D2C (Direct-to-Consumer)](036-d2c-direct-to-consumer.html)
 > **See also**
-> Adapted in our own words from [FTEs](https://insightful-data-lab.com/2025/08/24/ftes/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [FTEs](https://insightful-data-lab.com/2025/08/24/ftes/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

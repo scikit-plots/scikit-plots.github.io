@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 36 of 56 · **intermediate**
 
-[◀ Previous · Forward Selection and Model Interpretation in Linear Regression](35-forward-selection-and-model-interpretation-in-linear-regression.html) · [Next · How Shapley Values Work ▶](37-how-shapley-values-work.html)
+[◀ Previous · Forward Selection and Model Interpretation in Linear Regression](35-forward-selection-and-model-interpretation-in-linear-regression.html) · [Next · How Shapley Values Work ▶](37-how-shapley-values-work.html) · [↑ Section](index.html)
 
 ## Three directions[#](#three-directions "Link to this heading")
 
@@ -38,9 +38,9 @@ theory is thin, always confirming the final model on held-out data. When you can
 a feature’s contribution more fairly — like the ****Shapley values**** of the next lesson — sidestep some
 of these pitfalls.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Forward Selection: Definition and Core Idea](34-forward-selection-definition-and-core-idea.html) · [Forward Selection and Model Interpretation in Linear Regression](35-forward-selection-and-model-interpretation-in-linear-regression.html) · [Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · [Forward Selection with Nested Models and Deviance Tests](42-forward-selection-with-nested-models-and-deviance-tests.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/understanding-forward-and-backward-stepwise-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/understanding-forward-and-backward-stepwise-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

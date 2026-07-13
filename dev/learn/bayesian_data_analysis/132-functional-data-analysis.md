@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 15 · 🌊 Basis Functions & Gaussian Processes**** · Lesson 132 of 144 · **advanced**
 
-[◀ Previous · Latent Gaussian process models](131-latent-gaussian-process-models.html) · [Next · Density estimation and regression ▶](133-density-estimation-and-regression.html)
+[◀ Previous · Latent Gaussian process models](131-latent-gaussian-process-models.html) · [Next · Density estimation and regression ▶](133-density-estimation-and-regression.html) · [↑ Section](index.html)
 
 ## When each observation is a curve[#](#when-each-observation-is-a-curve "Link to this heading")
 
@@ -56,9 +56,9 @@ splines and Gaussian processes to whole-function data — and hands off to the f
 flexibility comes not from smooth functions but from ****mixtures**** and infinite-dimensional
 ****nonparametric**** priors.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Gaussian process regression](129-gaussian-process-regression.html) · [Basis selection and shrinkage of coeﬃcients](127-basis-selection-and-shrinkage-of-coefficients.html) · [Hierarchical models for batches of variance components](105-hierarchical-models-for-batches-of-variance-components.html) · [Latent Gaussian process models](131-latent-gaussian-process-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/functional-data-analysis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/functional-data-analysis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

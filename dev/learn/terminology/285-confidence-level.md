@@ -25,21 +25,22 @@ sense of confidence, distinct from a statistical ****confidence interval****.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Overconfident](284-overconfident.html) · [Underconfident](283-underconfident.html) · [Classification Probability](231-classification-probability.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Multiclass AUROC](022-multiclass-auroc.html)
-
----
-
-****More in Probability & Statistics Foundations****
-
-> [Beta Distribution](099-beta-distribution.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [IID (Independent and Identically Distributed)](126-iid-independent-and-identically-distributed.html) · [Likelihood](304-likelihood.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html) · [Probability](025-probability.html)
-
----
-
 **Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Overconfident](284-overconfident.html) · [Underconfident](283-underconfident.html) · [Classification Probability](231-classification-probability.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Multiclass AUROC](022-multiclass-auroc.html)
+
+---
+
+> **Hint**
+> ****More in Probability & Statistics Foundations****
+
+[Beta Distribution](099-beta-distribution.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [IID (Independent and Identically Distributed)](126-iid-independent-and-identically-distributed.html) · [Likelihood](304-likelihood.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html) · [Probability](025-probability.html)
 > **See also**
-> Adapted in our own words from [Confidence Level](https://insightful-data-lab.com/2025/08/21/confidence-level/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Confidence Level](https://insightful-data-lab.com/2025/08/21/confidence-level/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 051 of 144 · **intermediate**
 
-[◀ Previous · Bayesian inference requires a model for data collection](050-bayesian-inference-requires-a-model-for-data-collection.html) · [Next · Sample surveys ▶](052-sample-surveys.html)
+[◀ Previous · Bayesian inference requires a model for data collection](050-bayesian-inference-requires-a-model-for-data-collection.html) · [Next · Sample surveys ▶](052-sample-surveys.html) · [↑ Section](index.html)
 
 ## When can the design be ignored?[#](#when-can-the-design-be-ignored "Link to this heading")
 
@@ -56,9 +56,9 @@ with pm.Model():
 Randomisation, then, is not a ritual: assigning treatment by a coin flip makes \(I\) depend on
 nothing but a known probability, guaranteeing ignorability ****by design**** rather than by assumption.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian inference requires a model for data collection](050-bayesian-inference-requires-a-model-for-data-collection.html) · [Sensitivity and the role of randomization](054-sensitivity-and-the-role-of-randomization.html) · [Observational studies](055-observational-studies.html) · [Multiple imputation](119-multiple-imputation.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/data-collection-models-and-ignorability/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/data-collection-models-and-ignorability/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

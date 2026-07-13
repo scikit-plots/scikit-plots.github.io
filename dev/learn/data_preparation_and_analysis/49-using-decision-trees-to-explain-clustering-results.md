@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 49 of 56 · **advanced**
 
-[◀ Previous · Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html) · [Next · Assessing the Quality of Prediction Models ▶](50-assessing-the-quality-of-prediction-models.html)
+[◀ Previous · Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html) · [Next · Assessing the Quality of Prediction Models ▶](50-assessing-the-quality-of-prediction-models.html) · [↑ Section](index.html)
 
 ## Explaining a black box[#](#explaining-a-black-box "Link to this heading")
 
@@ -41,9 +41,9 @@ It closes the trees stage on a fitting note: the decision tree, prized for its t
 ****lens**** for seeing into models that have none. With the workflow’s models built and understood, the
 final stage asks the essential question — ****how good are they?****
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html) · [Clustering](27-clustering.html) · [How Shapley Values Work](37-how-shapley-values-work.html) · [The CART Algorithm](45-the-cart-algorithm.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/using-decision-trees-to-explain-clustering-results/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/using-decision-trees-to-explain-clustering-results/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

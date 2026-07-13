@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 007 of 144 · **beginner**
 
-[◀ Previous · Example — Probabilities from Football Point Spreads](006-example-probabilities-from-football-point-spreads.html) · [Next · Some Useful Results from Probability Theory ▶](008-some-useful-results-from-probability-theory.html)
+[◀ Previous · Example — Probabilities from Football Point Spreads](006-example-probabilities-from-football-point-spreads.html) · [Next · Some Useful Results from Probability Theory ▶](008-some-useful-results-from-probability-theory.html) · [↑ Section](index.html)
 
 ## Are two records the same person?[#](#are-two-records-the-same-person "Link to this heading")
 
@@ -50,9 +50,9 @@ probabilities is a first taste of the ****posterior predictive check**** in Part
 **which** pairs to declare matched is a decision problem, with its own costs for false links and missed
 ones.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html) · [Example — Probabilities from Football Point Spreads](006-example-probabilities-from-football-point-spreads.html) · [Posterior predictive checking](042-posterior-predictive-checking.html) · [Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/example-calibration-for-record-linkage/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/example-calibration-for-record-linkage/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

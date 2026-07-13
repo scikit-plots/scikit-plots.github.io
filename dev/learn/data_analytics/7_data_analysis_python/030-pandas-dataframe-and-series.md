@@ -6,7 +6,7 @@
 
 > **Lesson in progress**
 > Full content for this lesson has not been written yet.
-
-[Source article](https://insightful-data-lab.com/2023/12/06/pandas-dataframe-series/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/12/06/pandas-dataframe-series/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [python](../../../_tags/python.html) [libraries](../../../_tags/libraries.html)

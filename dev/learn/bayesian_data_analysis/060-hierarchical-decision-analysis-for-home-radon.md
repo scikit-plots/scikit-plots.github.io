@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 060 of 144 · **intermediate**
 
-[◀ Previous · Multistage decision making: medical screening](059-multistage-decision-making-medical-screening.html) · [Next · Personal vs. institutional decision analysis ▶](061-personal-vs-institutional-decision-analysis.html)
+[◀ Previous · Multistage decision making: medical screening](059-multistage-decision-making-medical-screening.html) · [Next · Personal vs. institutional decision analysis ▶](061-personal-vs-institutional-decision-analysis.html) · [↑ Section](index.html)
 
 ## A decision for every county[#](#a-decision-for-every-county "Link to this heading")
 
@@ -55,9 +55,9 @@ an individual house, it correctly accounts for within-county spread, not merely 
 county mean. The caveat is the usual one: the answer depends on the monetary value placed on a life-year,
 and that number should be stated, not smuggled.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html) · [Varying intercepts and slopes](102-varying-intercepts-and-slopes.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/hierarchical-decision-analysis-for-home-radon/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/hierarchical-decision-analysis-for-home-radon/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

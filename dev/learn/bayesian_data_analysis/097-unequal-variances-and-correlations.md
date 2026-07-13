@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 11 · 📈 Regression Foundations**** · Lesson 097 of 144 · **advanced**
 
-[◀ Previous · Regularization and dimension reduction](096-regularization-and-dimension-reduction.html) · [Next · Including numerical prior information ▶](098-including-numerical-prior-information.html)
+[◀ Previous · Regularization and dimension reduction](096-regularization-and-dimension-reduction.html) · [Next · Including numerical prior information ▶](098-including-numerical-prior-information.html) · [↑ Section](index.html)
 
 ## When the errors are not i.i.d.[#](#when-the-errors-are-not-i-i-d "Link to this heading")
 
@@ -69,9 +69,9 @@ worse: treating clustered or serially dependent observations as independent ****
 sample size, producing intervals far too narrow. Modelling \(\Sigma\) is what makes the uncertainty
 honest, and it is the doorway to the mixed models and Gaussian processes ahead.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html) · [Including numerical prior information](098-including-numerical-prior-information.html) · [Models for multivariate and multinomial responses](111-models-for-multivariate-and-multinomial-responses.html) · [Gaussian process regression](129-gaussian-process-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/unequal-variances-and-correlations/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/unequal-variances-and-correlations/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

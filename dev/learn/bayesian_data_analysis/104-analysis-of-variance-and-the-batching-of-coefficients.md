@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 104 of 144 · **advanced**
 
-[◀ Previous · Computation: batching and transformation](103-computation-batching-and-transformation.html) · [Next · Hierarchical models for batches of variance components ▶](105-hierarchical-models-for-batches-of-variance-components.html)
+[◀ Previous · Computation: batching and transformation](103-computation-batching-and-transformation.html) · [Next · Hierarchical models for batches of variance components ▶](105-hierarchical-models-for-batches-of-variance-components.html) · [↑ Section](index.html)
 
 ## ANOVA, rebuilt as a hierarchy[#](#anova-rebuilt-as-a-hierarchy "Link to this heading")
 
@@ -60,9 +60,9 @@ uncertainty**** rather than a reject/retain verdict on a null nobody believes ex
 really about testing; it was about ****decomposing variation****, and the hierarchical model does that
 directly — the same batching that ran through this entire stage, applied to designed factors.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Hierarchical models for batches of variance components](105-hierarchical-models-for-batches-of-variance-components.html) · [Computation: batching and transformation](103-computation-batching-and-transformation.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/analysis-of-variance-and-the-batching-of-coe%ef%ac%83cients/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/analysis-of-variance-and-the-batching-of-coe%ef%ac%83cients/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

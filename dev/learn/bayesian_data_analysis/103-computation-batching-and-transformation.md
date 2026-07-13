@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 103 of 144 · **advanced**
 
-[◀ Previous · Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Next · Analysis of variance and the batching of coeﬃcients ▶](104-analysis-of-variance-and-the-batching-of-coefficients.html)
+[◀ Previous · Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Next · Analysis of variance and the batching of coeﬃcients ▶](104-analysis-of-variance-and-the-batching-of-coefficients.html) · [↑ Section](index.html)
 
 ## Making batched models sample[#](#making-batched-models-sample "Link to this heading")
 
@@ -52,9 +52,9 @@ per batch — divergences, \(\hat{R}\), and bulk/tail ESS for each \(\tau\_b\) �
 badly-parameterised batch can stall an otherwise healthy model. Batching organises the model; these
 transformations are what let the sampler explore it.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Hamiltonian Monte Carlo for a hierarchical model](079-hamiltonian-monte-carlo-for-a-hierarchical-model.html) · [Eﬃcient Gibbs samplers](075-efficient-gibbs-samplers.html) · [Analysis of variance and the batching of coeﬃcients](104-analysis-of-variance-and-the-batching-of-coefficients.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/computation-batching-and-transformation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/computation-batching-and-transformation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

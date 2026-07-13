@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 13 · 🔗 Generalized Linear Models**** · Lesson 111 of 144 · **advanced**
 
-[◀ Previous · State-level opinons from national polls](110-state-level-opinons-from-national-polls.html) · [Next · Loglinear models for multivariate discrete data ▶](112-loglinear-models-for-multivariate-discrete-data.html)
+[◀ Previous · State-level opinons from national polls](110-state-level-opinons-from-national-polls.html) · [Next · Loglinear models for multivariate discrete data ▶](112-loglinear-models-for-multivariate-discrete-data.html) · [↑ Section](index.html)
 
 ## When the outcome is not a single number[#](#when-the-outcome-is-not-a-single-number "Link to this heading")
 
@@ -54,9 +54,9 @@ background, the covariance of symptoms — a quantity separate univariate models
 Categorical and multivariate responses complete the GLM’s reach: with them, the framework covers binary,
 count, ordered, unordered and vector-valued outcomes under one set of tools.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Loglinear models for multivariate discrete data](112-loglinear-models-for-multivariate-discrete-data.html) · [Multivariate Normal with Unknown Mean and Variance](025-multivariate-normal-with-unknown-mean-and-variance.html) · [Working with generalized linear models](107-working-with-generalized-linear-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/models-for-multivariate-and-multinomial-responses/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/models-for-multivariate-and-multinomial-responses/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

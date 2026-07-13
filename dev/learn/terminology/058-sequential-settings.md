@@ -48,21 +48,22 @@ actually receive data — provided the right method preserves statistical validi
 
 ---
 
-****Mind map — connected ideas****
-
-> [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Traditional A/B Test (Fixed-Horizon A/B Test)](081-traditional-a-b-test-fixed-horizon-a-b-test.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html) · [A/B Testing](380-a-b-testing.html) · [Frequentist](059-frequentist.html) · [Bayesian Stopping Rules](068-bayesian-stopping-rules.html)
-
----
-
-****More in Sequential Methods & Bandits****
-
-> [Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
-
----
-
 **Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Traditional A/B Test (Fixed-Horizon A/B Test)](081-traditional-a-b-test-fixed-horizon-a-b-test.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html) · [A/B Testing](380-a-b-testing.html) · [Frequentist](059-frequentist.html) · [Bayesian Stopping Rules](068-bayesian-stopping-rules.html)
+
+---
+
+> **Hint**
+> ****More in Sequential Methods & Bandits****
+
+[Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
 > **See also**
-> Adapted in our own words from [Sequential Settings](https://insightful-data-lab.com/2025/08/28/sequential-settings/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Sequential Settings](https://insightful-data-lab.com/2025/08/28/sequential-settings/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

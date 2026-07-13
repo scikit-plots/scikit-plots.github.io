@@ -42,21 +42,22 @@ whereas Pocock fits exploratory or business A/B tests where stopping early saves
 
 ---
 
-****Mind map — connected ideas****
-
-> [Pocock Method](077-pocock-method.html) · [Group Sequential Testing](079-group-sequential-testing.html) · [Stopping Rules](071-stopping-rules.html) · [Frequentist](059-frequentist.html) · [Sequential Settings](058-sequential-settings.html) · [Traditional A/B Test (Fixed-Horizon A/B Test)](081-traditional-a-b-test-fixed-horizon-a-b-test.html)
-
----
-
-****More in Sequential Methods & Bandits****
-
-> [Bandit Algorithms](113-bandit-algorithms.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
-
----
-
 **Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Pocock Method](077-pocock-method.html) · [Group Sequential Testing](079-group-sequential-testing.html) · [Stopping Rules](071-stopping-rules.html) · [Frequentist](059-frequentist.html) · [Sequential Settings](058-sequential-settings.html) · [Traditional A/B Test (Fixed-Horizon A/B Test)](081-traditional-a-b-test-fixed-horizon-a-b-test.html)
+
+---
+
+> **Hint**
+> ****More in Sequential Methods & Bandits****
+
+[Bandit Algorithms](113-bandit-algorithms.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
 > **See also**
-> Adapted in our own words from [O’Brien–Fleming (OBF) Method](https://insightful-data-lab.com/2025/08/25/obrien-fleming-obf-method/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [O’Brien–Fleming (OBF) Method](https://insightful-data-lab.com/2025/08/25/obrien-fleming-obf-method/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

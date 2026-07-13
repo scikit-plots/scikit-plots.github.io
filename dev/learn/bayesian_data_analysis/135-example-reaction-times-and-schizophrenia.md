@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 135 of 144 · **advanced**
 
-[◀ Previous · Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Next · Label switching and posterior computation ▶](136-label-switching-and-posterior-computation.html)
+[◀ Previous · Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Next · Label switching and posterior computation ▶](136-label-switching-and-posterior-computation.html) · [↑ Section](index.html)
 
 ## A mixture with a scientific meaning[#](#a-mixture-with-a-scientific-meaning "Link to this heading")
 
@@ -49,9 +49,9 @@ across patients, so a patient with few trials borrows strength. And the ordering
 sidesteps the label-switching problem the next lesson tackles in general. A mixture, here, is a ****model of
 a mechanism****: two cognitive states, their sizes and frequencies estimated from response times.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Label switching and posterior computation](136-label-switching-and-posterior-computation.html) · [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Mixture models for classification and regression](138-mixture-models-for-classification-and-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/example-reaction-times-and-schizophrenia/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/example-reaction-times-and-schizophrenia/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

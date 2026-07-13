@@ -38,21 +38,22 @@ end**** (safety-critical medicine).
 
 ---
 
-****Mind map — connected ideas****
-
-> [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Group Sequential Testing](079-group-sequential-testing.html) · [Stopping Rules](071-stopping-rules.html) · [Frequentist](059-frequentist.html) · [Sequential Settings](058-sequential-settings.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html)
-
----
-
-****More in Sequential Methods & Bandits****
-
-> [Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
-
----
-
 **Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Group Sequential Testing](079-group-sequential-testing.html) · [Stopping Rules](071-stopping-rules.html) · [Frequentist](059-frequentist.html) · [Sequential Settings](058-sequential-settings.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html)
+
+---
+
+> **Hint**
+> ****More in Sequential Methods & Bandits****
+
+[Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
 > **See also**
-> Adapted in our own words from [Pocock Method](https://insightful-data-lab.com/2025/08/25/pocock-method/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Pocock Method](https://insightful-data-lab.com/2025/08/25/pocock-method/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -89,15 +89,15 @@ img_vgg19
 ```
 ![plot dl cnn vgg](../../_images/sphx_glr_plot_dl_cnn_vgg_001.png)
 ```
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/vgg19_20260711_112408Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/vgg19_20260713_000202Z.png
 
-<matplotlib.image.AxesImage object at 0x73931a457fb0>
+<matplotlib.image.AxesImage object at 0x7a2cd4545160>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 40.293 seconds)
+****Total running time of the script:**** (0 minutes 29.081 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_vgg.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_vgg.ipynb)
 

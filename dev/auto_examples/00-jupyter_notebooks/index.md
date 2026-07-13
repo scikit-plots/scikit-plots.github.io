@@ -1,15 +1,16 @@
 # Jupyter Notebooks[#](#jupyter-notebooks "Link to this heading")
 
-GitHub
+> **Note**
+> GitHub
 
 * [GitHub Sample Notebooks](https://github.com/scikit-plots/scikit-plots/tree/main/galleries/examples/00-jupyter_notebooks).
-
-scikit-plots lab pyodide with Notebooks
+> **See also**
+> scikit-plots lab pyodide with Notebooks
 
 * <https://scikit-plots.github.io/dev/lite/lab/index.html>
+jupyterlite (pyodide, xeus-python, c, c++)
 
-> **See also**
-> jupyterlite lab pyodide:
+jupyterlite lab pyodide:
 
 * <https://jupyterlite-pyodide-kernel.readthedocs.io/en/latest/_static/lab/index.html>
 

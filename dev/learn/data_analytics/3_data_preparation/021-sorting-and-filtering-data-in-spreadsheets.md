@@ -4,9 +4,71 @@
 
 ◀ [Previous](020-importing-data-into-spreadsheets.html) · [Next](022-bigquery-account-types.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
-> **Lesson in progress**
-> Full content for this lesson has not been written yet.
+## The two moves you reach for first[#](#the-two-moves-you-reach-for-first "Link to this heading")
 
-[Source article](https://insightful-data-lab.com/2023/09/04/sorting-and-filtering-data-in-spreadsheets/)
+Once data is imported and tidy, the first things an analyst does to make sense
+of it are ****sort**** and ****filter****. They are the most-used operations in any
+spreadsheet, the fastest way to turn a wall of rows into something legible, and
+the intuition behind their SQL equivalents (`ORDER BY` and `WHERE`) that the
+analysis section develops. This lesson makes them precise.
+
+## Sorting: imposing order[#](#sorting-imposing-order "Link to this heading")
+
+****Sorting**** reorders the rows of a table by the values in one or more columns —
+ascending (A→Z, smallest→largest, earliest→latest) or descending. Its analytical
+value is that order reveals: sort sales descending and the top performers rise to
+the top; sort by date and the timeline becomes visible; sort by region then by
+sales and you see the best within each group.
+
+* ****Single-column sort**** orders by one column.
+* ****Multi-column sort**** orders by one column, breaking ties with a second (region
+  first, then sales within each region) — the spreadsheet applies them in
+  priority order.
+
+The one non-negotiable rule: sort the ****whole table together****, so every row
+moves as a unit. Sorting a single column in isolation — leaving the others in
+place — silently scrambles which value belongs to which record, one of the most
+destructive spreadsheet mistakes precisely because it produces no error, just
+quietly corrupted data. (The one-row-one-record discipline from the organisation
+lesson is what makes whole-table sorting safe.)
+
+## Filtering: narrowing the view[#](#filtering-narrowing-the-view "Link to this heading")
+
+****Filtering**** temporarily hides rows that do not meet a condition, showing only
+those that do — orders over $100, one region, this month’s dates. Crucially,
+filtering **hides** rather than **deletes**: the data is all still there, and
+clearing the filter restores the full view. Filters can combine conditions
+(region = “North” **and** amount > 100) to narrow to exactly the subset a question
+concerns.
+
+Filtering’s analytical value is focus: most questions concern a **subset**, and
+filtering isolates it so you can examine or summarise just that slice without the
+rest as noise.
+
+## Sorting and filtering together[#](#sorting-and-filtering-together "Link to this heading")
+
+The two combine constantly: filter to this quarter’s northern orders, then sort
+them by value to see the largest. This filter-then-sort move answers a huge range
+of everyday questions (“what were our biggest northern deals this quarter?”)
+with two clicks and no formulas — which is exactly why it is the analyst’s
+reflexive first pass on new data.
+
+## The caveat[#](#the-caveat "Link to this heading")
+
+Sorting and filtering change what you **see**, and it is easy to forget a filter is
+active — drawing conclusions from a filtered view as though it were the whole
+dataset, or exporting filtered data thinking it is complete. Always know whether
+a filter is on, and remember that a **sort** permanently reorders the data (it
+persists after you look away) while a **filter** only hides — different footprints,
+both easy to lose track of. The next lessons move from the spreadsheet to
+querying data at database scale.
+
+> **Hint**
+> * [Building and Organizing a Spreadsheet](../2_data_driven_decisions/012-building-and-organizing-a-spreadsheet.html)
+* [Importing Data into Spreadsheets](020-importing-data-into-spreadsheets.html)
+* [Sorting and Filtering in Data Analysis](../5_analyze_data/003-sorting-and-filtering-in-data-analysis.html)
+* [Querying Data with SQL](023-querying-data-with-sql.html)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/sorting-and-filtering-data-in-spreadsheets/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [spreadsheets\_sql](../../../_tags/spreadsheets_sql.html)

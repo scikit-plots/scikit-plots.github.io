@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 02 of 17 · **beginner**
 
-[◀ Previous · What is a Neural Network?](01-what-is-a-neural-network.html) · [Next · Why Deep Learning is Taking Off ▶](03-why-deep-learning-is-taking-off.html)
+[◀ Previous · What is a Neural Network?](01-what-is-a-neural-network.html) · [Next · Why Deep Learning is Taking Off ▶](03-why-deep-learning-is-taking-off.html) · [↑ Section](index.html)
 
 ## Learning a mapping[#](#learning-a-mapping "Link to this heading")
 
@@ -33,9 +33,9 @@ unstructured data**** — speech, vision, language — unlocking applications th
 decade ago. Much of the economic value, meanwhile, still comes from ****structured**** data inside
 companies, where accurate predictions on large databases translate directly into money.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [What is a Neural Network?](01-what-is-a-neural-network.html) · [Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/supervised-learning-and-neural-networks/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/supervised-learning-and-neural-networks/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: beginner](../../_tags/level-beginner.html)

@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 16 of 17 · **intermediate**
 
-[◀ Previous · Vectorization in Logistic Regression](15-vectorization-in-logistic-regression.html) · [Next · Vectorizing Logistic Regression ▶](17-vectorizing-logistic-regression.html)
+[◀ Previous · Vectorization in Logistic Regression](15-vectorization-in-logistic-regression.html) · [Next · Vectorizing Logistic Regression ▶](17-vectorizing-logistic-regression.html) · [↑ Section](index.html)
 
 ## Element-wise functions[#](#element-wise-functions "Link to this heading")
 
@@ -40,9 +40,9 @@ for-loops.”**** Reach first for a whole-array operation or a broadcast; fall b
 when no vectorised form exists. With these tools the entire logistic-regression step vectorises, which
 the final lesson assembles.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Vectorization in Logistic Regression](15-vectorization-in-logistic-regression.html) · [Vectorizing Logistic Regression](17-vectorizing-logistic-regression.html) · [Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html) · [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/more-vectorization-examples/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/more-vectorization-examples/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

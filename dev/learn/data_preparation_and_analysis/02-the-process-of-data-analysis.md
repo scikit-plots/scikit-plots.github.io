@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 02 of 56 · **beginner**
 
-[◀ Previous · Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [Next · CRISP-DM for Data Science ▶](03-crisp-dm-for-data-science.html)
+[◀ Previous · Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [Next · CRISP-DM for Data Science ▶](03-crisp-dm-for-data-science.html) · [↑ Section](index.html)
 
 ## It starts with a question[#](#it-starts-with-a-question "Link to this heading")
 
@@ -33,9 +33,9 @@ modelling reveals a preparation step you missed; a failed evaluation returns you
 board. Good analysis ****iterates**** — circling back as each stage teaches you something the last one
 could not. The next lesson gives this loop a formal name and shape: ****CRISP-DM****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [CRISP-DM for Data Science](03-crisp-dm-for-data-science.html) · [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Measuring Associations in Data](10-measuring-associations-in-data.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/the-process-of-data-analysis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/the-process-of-data-analysis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

@@ -24,21 +24,22 @@ information retrieval what shared benchmarks are to the rest of ML.
 
 ---
 
-****Mind map — connected ideas****
-
-> [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Kaggle](273-kaggle.html) · [Average Precision (AP)](366-average-precision-ap.html) · [Relevance in Recommender Systems](262-relevance-in-recommender-systems.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html) · [Forecasting Competitions](251-forecasting-competitions.html)
-
----
-
-****More in Ranking & Interleaving****
-
-> [Balanced Interleaving](111-balanced-interleaving.html) · [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Interleaving Tests](379-interleaving-tests.html) · [Mean Average Precision (MAP)](414-mean-average-precision-map.html) · [NDCG (Normalized Discounted Cumulative Gain)](413-ndcg-normalized-discounted-cumulative-gain.html) · [Probabilistic Interleaving](109-probabilistic-interleaving.html) · [Ranking Algorithms](108-ranking-algorithms.html) · [Team Draft Interleaving (TDI)](110-team-draft-interleaving-tdi.html)
-
----
-
 **Theme:** [Ranking & Interleaving](index.html#term-theme-ranking)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Kaggle](273-kaggle.html) · [Average Precision (AP)](366-average-precision-ap.html) · [Relevance in Recommender Systems](262-relevance-in-recommender-systems.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html) · [Forecasting Competitions](251-forecasting-competitions.html)
+
+---
+
+> **Hint**
+> ****More in Ranking & Interleaving****
+
+[Balanced Interleaving](111-balanced-interleaving.html) · [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Interleaving Tests](379-interleaving-tests.html) · [Mean Average Precision (MAP)](414-mean-average-precision-map.html) · [NDCG (Normalized Discounted Cumulative Gain)](413-ndcg-normalized-discounted-cumulative-gain.html) · [Probabilistic Interleaving](109-probabilistic-interleaving.html) · [Ranking Algorithms](108-ranking-algorithms.html) · [Team Draft Interleaving (TDI)](110-team-draft-interleaving-tdi.html)
 > **See also**
-> Adapted in our own words from [TREC (Text REtrieval Conference)](https://insightful-data-lab.com/2025/08/22/trec-text-retrieval-conference/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [TREC (Text REtrieval Conference)](https://insightful-data-lab.com/2025/08/22/trec-text-retrieval-conference/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

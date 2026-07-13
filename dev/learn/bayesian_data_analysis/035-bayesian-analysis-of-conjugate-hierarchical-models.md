@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 5 · 🏛️ Hierarchical Models**** · Lesson 035 of 144 · **beginner**
 
-[◀ Previous · Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Next · Normal model with exchangeable parameters ▶](036-normal-model-with-exchangeable-parameters.html)
+[◀ Previous · Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Next · Normal model with exchangeable parameters ▶](036-normal-model-with-exchangeable-parameters.html) · [↑ Section](index.html)
 
 ## The rat tumours[#](#the-rat-tumours "Link to this heading")
 
@@ -56,9 +56,9 @@ reparameterises to the population mean \(\alpha/(\alpha+\beta)\) and a transform
 placing a proper prior there. The lesson from Stage 2 returns with teeth: for hierarchical variance and
 concentration parameters, ****check propriety****, and prefer weakly informative hyperpriors.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Estimating a Probability from Binomial Data](011-estimating-a-probability-from-binomial-data.html) · [Constructing a Parameterized Prior Distribution](033-constructing-a-parameterized-prior-distribution.html) · [Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html) · [Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/bayesian-analysis-of-conjugate-hierarchical-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/bayesian-analysis-of-conjugate-hierarchical-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

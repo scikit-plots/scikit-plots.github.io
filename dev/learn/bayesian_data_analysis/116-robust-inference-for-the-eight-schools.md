@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 116 of 144 · **advanced**
 
-[◀ Previous · Posterior inference and computation](115-posterior-inference-and-computation.html) · [Next · Robust regression using t-distributed errors ▶](117-robust-regression-using-t-distributed-errors.html)
+[◀ Previous · Posterior inference and computation](115-posterior-inference-and-computation.html) · [Next · Robust regression using t-distributed errors ▶](117-robust-regression-using-t-distributed-errors.html) · [↑ Section](index.html)
 
 ## Robustness meets the canonical example[#](#robustness-meets-the-canonical-example "Link to this heading")
 
@@ -63,9 +63,9 @@ costs almost nothing and answers a question every hierarchical analysis should a
 estimates a property of the data, or an artefact of assuming no outliers? Stage 14 turns next from
 outliers to the other great departure from clean data — ****missingness****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Example: parallel experiments in eight schools](037-example-parallel-experiments-in-eight-schools.html) · [Aspects of robustness](113-aspects-of-robustness.html) · [Posterior inference and computation](115-posterior-inference-and-computation.html) · [Continuous model expansion](048-continuous-model-expansion.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/robust-inference-for-the-eight-schools/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/robust-inference-for-the-eight-schools/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

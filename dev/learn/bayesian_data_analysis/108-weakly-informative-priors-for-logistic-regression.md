@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 13 · 🔗 Generalized Linear Models**** · Lesson 108 of 144 · **advanced**
 
-[◀ Previous · Working with generalized linear models](107-working-with-generalized-linear-models.html) · [Next · Overdispersed Poisson regression for police stops ▶](109-overdispersed-poisson-regression-for-police-stops.html)
+[◀ Previous · Working with generalized linear models](107-working-with-generalized-linear-models.html) · [Next · Overdispersed Poisson regression for police stops ▶](109-overdispersed-poisson-regression-for-police-stops.html) · [↑ Section](index.html)
 
 ## When flat priors fail[#](#when-flat-priors-fail "Link to this heading")
 
@@ -55,9 +55,9 @@ prior that overrides the data. A weakly informative prior encodes what any analy
 the data — that effects on a sensible scale are not astronomically large — and that mild knowledge is
 often exactly enough to turn an ill-posed problem into a well-behaved one.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Working with generalized linear models](107-working-with-generalized-linear-models.html) · [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html) · [Regularization and dimension reduction](096-regularization-and-dimension-reduction.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/weakly-informative-priors-for-logistic-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/weakly-informative-priors-for-logistic-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

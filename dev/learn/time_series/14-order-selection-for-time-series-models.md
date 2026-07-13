@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 14 of 18 · **advanced**
 
-[◀ Previous · Diagnostics After Fitting a Time Series Model](13-diagnostics-after-fitting-a-time-series-model.html) · [Next · ARIMA Models: How Nonstationary Models Are Built from Stationary Ones ▶](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html)
+[◀ Previous · Diagnostics After Fitting a Time Series Model](13-diagnostics-after-fitting-a-time-series-model.html) · [Next · ARIMA Models: How Nonstationary Models Are Built from Stationary Ones ▶](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [↑ Section](index.html)
 
 ## The trade-off[#](#the-trade-off "Link to this heading")
 
@@ -34,9 +34,9 @@ the ACF / PACF, then ****grid-search**** nearby orders and keep the lowest-crite
 passes diagnostics**** — a lower AIC means nothing if the residuals are still autocorrelated. Tools
 like `pmdarima.auto_arima` automate the search; `statsmodels` exposes `.aic` and `.bic`.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Diagnostics After Fitting a Time Series Model](13-diagnostics-after-fitting-a-time-series-model.html) · [Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [Understanding ARMA Processes](06-understanding-arma-processes.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/order-selection-for-time-series-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/order-selection-for-time-series-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

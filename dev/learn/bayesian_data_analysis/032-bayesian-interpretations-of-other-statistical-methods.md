@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 4 · 📏 Asymptotics & Frequentist Ties**** · Lesson 032 of 144 · **beginner**
 
-[◀ Previous · Frequency Evaluations of Bayesian Inferences](031-frequency-evaluations-of-bayesian-inferences.html) · [Next · Constructing a Parameterized Prior Distribution ▶](033-constructing-a-parameterized-prior-distribution.html)
+[◀ Previous · Frequency Evaluations of Bayesian Inferences](031-frequency-evaluations-of-bayesian-inferences.html) · [Next · Constructing a Parameterized Prior Distribution ▶](033-constructing-a-parameterized-prior-distribution.html) · [↑ Section](index.html)
 
 ## Priors in disguise[#](#priors-in-disguise "Link to this heading")
 
@@ -57,9 +57,9 @@ cures separation (Part IV). The Bayesian reading gives each a language for ****w
 penalty stabilises the fit”, but “here is what the analysis assumes about the world” — a claim that can
 be stated, checked, and defended.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Frequency Evaluations of Bayesian Inferences](031-frequency-evaluations-of-bayesian-inferences.html) · [Large-Sample Theory](029-large-sample-theory.html) · [Regularization and dimension reduction](096-regularization-and-dimension-reduction.html) · [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/bayesian-interpretations-of-other-statistical-methods/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/bayesian-interpretations-of-other-statistical-methods/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

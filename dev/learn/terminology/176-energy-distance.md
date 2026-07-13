@@ -37,21 +37,22 @@ younger incoming sample.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Classifier Two-Sample Tests (C2STs)](175-classifier-two-sample-tests-c2sts.html) · [Representation Shift](174-representation-shift.html) · [Drift Detection](138-drift-detection.html) · [Maximum Mean Discrepancy (MMD)](177-maximum-mean-discrepancy-mmd.html) · [PSI (Population Stability Index)](389-psi-population-stability-index.html) · [Data Drift](331-data-drift.html)
-
----
-
-****More in Distribution Shift & Drift****
-
-> [Cardinality in Categorical Data](178-cardinality-in-categorical-data.html) · [Categorical Drift](179-categorical-drift.html) · [Categorical Explosions](182-categorical-explosions.html) · [Classifier Two-Sample Tests (C2STs)](175-classifier-two-sample-tests-c2sts.html) · [Concept Drift](330-concept-drift.html) · [Covariate Drift (a.k.a. Covariate Shift)](387-covariate-drift-a-k-a-covariate-shift.html) · [Data Drift](331-data-drift.html) · [Dataset Shift](353-dataset-shift.html) · [Drift Detection](138-drift-detection.html) · [Drift Guardrails](349-drift-guardrails.html) · [Jensen–Shannon (JS) Divergence](326-jensenshannon-js-divergence.html) · [KS shift (Kolmogorov–Smirnov shift)](388-ks-shift-kolmogorovsmirnov-shift.html) · [Kullback–Leibler (KL) Divergence](327-kullbackleibler-kl-divergence.html) · [Label Drift (a.k.a. Target Drift)](386-label-drift-a-k-a-target-drift.html)
-
----
-
 **Theme:** [Distribution Shift & Drift](index.html#term-theme-drift)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Classifier Two-Sample Tests (C2STs)](175-classifier-two-sample-tests-c2sts.html) · [Representation Shift](174-representation-shift.html) · [Drift Detection](138-drift-detection.html) · [Maximum Mean Discrepancy (MMD)](177-maximum-mean-discrepancy-mmd.html) · [PSI (Population Stability Index)](389-psi-population-stability-index.html) · [Data Drift](331-data-drift.html)
+
+---
+
+> **Hint**
+> ****More in Distribution Shift & Drift****
+
+[Cardinality in Categorical Data](178-cardinality-in-categorical-data.html) · [Categorical Drift](179-categorical-drift.html) · [Categorical Explosions](182-categorical-explosions.html) · [Classifier Two-Sample Tests (C2STs)](175-classifier-two-sample-tests-c2sts.html) · [Concept Drift](330-concept-drift.html) · [Covariate Drift (a.k.a. Covariate Shift)](387-covariate-drift-a-k-a-covariate-shift.html) · [Data Drift](331-data-drift.html) · [Dataset Shift](353-dataset-shift.html) · [Drift Detection](138-drift-detection.html) · [Drift Guardrails](349-drift-guardrails.html) · [Jensen–Shannon (JS) Divergence](326-jensenshannon-js-divergence.html) · [KS shift (Kolmogorov–Smirnov shift)](388-ks-shift-kolmogorovsmirnov-shift.html) · [Kullback–Leibler (KL) Divergence](327-kullbackleibler-kl-divergence.html) · [Label Drift (a.k.a. Target Drift)](386-label-drift-a-k-a-target-drift.html)
 > **See also**
-> Adapted in our own words from [Energy Distance](https://insightful-data-lab.com/2025/08/23/energy-distance/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Energy Distance](https://insightful-data-lab.com/2025/08/23/energy-distance/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -29,21 +29,22 @@ the ****negative log-likelihood**** of the Bernoulli model. Likelihood ****ratio
 
 ---
 
-****Mind map — connected ideas****
-
-> [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Logistic Regression](292-logistic-regression.html) · [Probability Forecasts](235-probability-forecasts.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Loss Functions](289-loss-functions.html) · [Correlation](305-correlation.html)
-
----
-
-****More in Probability & Statistics Foundations****
-
-> [Beta Distribution](099-beta-distribution.html) · [Confidence Level](285-confidence-level.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [IID (Independent and Identically Distributed)](126-iid-independent-and-identically-distributed.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html) · [Probability](025-probability.html)
-
----
-
 **Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Logistic Regression](292-logistic-regression.html) · [Probability Forecasts](235-probability-forecasts.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Loss Functions](289-loss-functions.html) · [Correlation](305-correlation.html)
+
+---
+
+> **Hint**
+> ****More in Probability & Statistics Foundations****
+
+[Beta Distribution](099-beta-distribution.html) · [Confidence Level](285-confidence-level.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [IID (Independent and Identically Distributed)](126-iid-independent-and-identically-distributed.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html) · [Probability](025-probability.html)
 > **See also**
-> Adapted in our own words from [Likelihood](https://insightful-data-lab.com/2025/08/21/likelihood/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Likelihood](https://insightful-data-lab.com/2025/08/21/likelihood/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

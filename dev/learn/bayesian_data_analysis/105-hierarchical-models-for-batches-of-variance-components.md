@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 105 of 144 · **advanced**
 
-[◀ Previous · Analysis of variance and the batching of coeﬃcients](104-analysis-of-variance-and-the-batching-of-coefficients.html) · [Next · Standard generalized linear model likelihoods ▶](106-standard-generalized-linear-model-likelihoods.html)
+[◀ Previous · Analysis of variance and the batching of coeﬃcients](104-analysis-of-variance-and-the-batching-of-coefficients.html) · [Next · Standard generalized linear model likelihoods ▶](106-standard-generalized-linear-model-likelihoods.html) · [↑ Section](index.html)
 
 ## When the variances themselves have structure[#](#when-the-variances-themselves-have-structure "Link to this heading")
 
@@ -56,9 +56,9 @@ regression stage: the batching idea, applied first to coefficients and then to t
 tangle of factors into one coherent model whose every scale is estimated with appropriate pooling. Part
 IV now leaves the normal likelihood behind.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Analysis of variance and the batching of coeﬃcients](104-analysis-of-variance-and-the-batching-of-coefficients.html) · [Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Varying intercepts and slopes](102-varying-intercepts-and-slopes.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/06/hierarchical-models-for-batches-of-variance-components/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/06/hierarchical-models-for-batches-of-variance-components/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

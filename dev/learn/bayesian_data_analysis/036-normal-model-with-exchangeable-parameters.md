@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 5 · 🏛️ Hierarchical Models**** · Lesson 036 of 144 · **beginner**
 
-[◀ Previous · Bayesian analysis of conjugate hierarchical models](035-bayesian-analysis-of-conjugate-hierarchical-models.html) · [Next · Example: parallel experiments in eight schools ▶](037-example-parallel-experiments-in-eight-schools.html)
+[◀ Previous · Bayesian analysis of conjugate hierarchical models](035-bayesian-analysis-of-conjugate-hierarchical-models.html) · [Next · Example: parallel experiments in eight schools ▶](037-example-parallel-experiments-in-eight-schools.html) · [↑ Section](index.html)
 
 ## The hierarchical normal[#](#the-hierarchical-normal "Link to this heading")
 
@@ -56,9 +56,9 @@ and the geometry becomes a funnel that samplers negotiate badly; the standard re
 groups: with \(J = 8\), a careless inverse-gamma can dominate. Both issues are met head-on in the
 eight-schools example that follows.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Normal Distribution with Known Variance](015-normal-distribution-with-known-variance.html) · [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Example: parallel experiments in eight schools](037-example-parallel-experiments-in-eight-schools.html) · [Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/normal-model-with-exchangeable-parameters/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/normal-model-with-exchangeable-parameters/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

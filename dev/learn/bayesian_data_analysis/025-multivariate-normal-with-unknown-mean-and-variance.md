@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 3 · 🧮 Multiparameter Models**** · Lesson 025 of 144 · **beginner**
 
-[◀ Previous · Multivariate Normal Model with Known Variance](024-multivariate-normal-model-with-known-variance.html) · [Next · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate) ▶](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html)
+[◀ Previous · Multivariate Normal Model with Known Variance](024-multivariate-normal-model-with-known-variance.html) · [Next · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate) ▶](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [↑ Section](index.html)
 
 ## The full multivariate model[#](#the-full-multivariate-model "Link to this heading")
 
@@ -57,9 +57,9 @@ with pm.Model():
 Conjugacy bought tractability when computation was scarce. With HMC available, the honest prior wins —
 a theme that recurs whenever Part I’s closed forms meet Part III’s samplers.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Multivariate Normal Model with Known Variance](024-multivariate-normal-model-with-known-variance.html) · [Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html) · [Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Hierarchical models for batches of variance components](105-hierarchical-models-for-batches-of-variance-components.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/multivariate-normal-with-unknown-mean-and-variance/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/multivariate-normal-with-unknown-mean-and-variance/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

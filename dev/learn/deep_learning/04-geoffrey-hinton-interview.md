@@ -2,7 +2,7 @@
 
 ****Stage 1 · 🧠 Introduction to Deep Learning**** · Lesson 04 of 17 · **beginner**
 
-[◀ Previous · Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Next · Binary Classification and Logistic Regression (Neural Network Basics) ▶](05-binary-classification-and-logistic-regression-neural-network-basics.html)
+[◀ Previous · Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Next · Binary Classification and Logistic Regression (Neural Network Basics) ▶](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [↑ Section](index.html)
 
 ## Heroes of Deep Learning[#](#heroes-of-deep-learning "Link to this heading")
 
@@ -39,9 +39,9 @@ advice to newcomers is quietly encouraging: ****trust your intuitions****, read 
 that you only reproduce others’ thinking, ****replicate results**** to learn them deeply, and keep going
 on the problems that feel right.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [What is a Neural Network?](01-what-is-a-neural-network.html) · [Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Computation Graph](11-computation-graph.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/geoffrey-hinton-interview/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/geoffrey-hinton-interview/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: beginner](../../_tags/level-beginner.html)

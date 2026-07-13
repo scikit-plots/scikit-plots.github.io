@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🎯 Prediction & the Sample ACF / PACF**** · Lesson 09 of 18 · **intermediate**
 
-[◀ Previous · Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)](08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html) · [Next · Sample ACF and Sample PACF ▶](10-sample-acf-and-sample-pacf.html)
+[◀ Previous · Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)](08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html) · [Next · Sample ACF and Sample PACF ▶](10-sample-acf-and-sample-pacf.html) · [↑ Section](index.html)
 
 ## The prediction problem[#](#the-prediction-problem "Link to this heading")
 
@@ -39,9 +39,9 @@ between \(x\_t\) and \(x\_{t-h}\) ****after removing**** the linear influence of
 values. For an ****AR(p)**** these coefficients vanish for \(h > p\), so the ****PACF cuts off at lag
 p**** — the property that makes it the tool for reading autoregressive order.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [Understanding ARMA Processes](06-understanding-arma-processes.html) · [Beyond One-Step Ahead Predictions](17-beyond-one-step-ahead-predictions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/best-linear-predictor-of-a-stationary-process-forecasting-principles-and-the-pacf/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/best-linear-predictor-of-a-stationary-process-forecasting-principles-and-the-pacf/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: intermediate](../../_tags/level-intermediate.html)

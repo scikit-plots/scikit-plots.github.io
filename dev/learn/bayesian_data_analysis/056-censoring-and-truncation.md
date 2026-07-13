@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 056 of 144 · **intermediate**
 
-[◀ Previous · Observational studies](055-observational-studies.html) · [Next · Bayesian decision theory in diﬀerent contexts ▶](057-bayesian-decision-theory-in-different-contexts.html)
+[◀ Previous · Observational studies](055-observational-studies.html) · [Next · Bayesian decision theory in diﬀerent contexts ▶](057-bayesian-decision-theory-in-different-contexts.html) · [↑ Section](index.html)
 
 ## Two ways data go missing[#](#two-ways-data-go-missing "Link to this heading")
 
@@ -57,9 +57,9 @@ patients withdrawing **because** they are deteriorating — the mechanism is ***
 must model why they left. That is not a computational difficulty but an ****identification**** one: the
 data are silent, and the answer will move with the assumption. Report the sensitivity.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian inference requires a model for data collection](050-bayesian-inference-requires-a-model-for-data-collection.html) · [Data-collection models and ignorability](051-data-collection-models-and-ignorability.html) · [Missing values with counted data](122-missing-values-with-counted-data.html) · [Multiple imputation](119-multiple-imputation.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/censoring-and-truncation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/censoring-and-truncation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 102 of 144 · **advanced**
 
-[◀ Previous · Interpreting a normal prior distribution as extra data](101-interpreting-a-normal-prior-distribution-as-extra-data.html) · [Next · Computation: batching and transformation ▶](103-computation-batching-and-transformation.html)
+[◀ Previous · Interpreting a normal prior distribution as extra data](101-interpreting-a-normal-prior-distribution-as-extra-data.html) · [Next · Computation: batching and transformation ▶](103-computation-batching-and-transformation.html) · [↑ Section](index.html)
 
 ## Let the relationship itself vary[#](#let-the-relationship-itself-vary "Link to this heading")
 
@@ -58,9 +58,9 @@ for a large variance reduction. Groups with ample data are barely moved. And the
 varies across groups — often the substantive question. The one subtlety, addressed next, is that
 intercepts and slopes typically ****covary****, and modelling that correlation is what \(\Sigma\) is for.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Computation: batching and transformation](103-computation-batching-and-transformation.html) · [Analysis of variance and the batching of coeﬃcients](104-analysis-of-variance-and-the-batching-of-coefficients.html) · [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/24/varying-intercepts-and-slopes/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/24/varying-intercepts-and-slopes/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

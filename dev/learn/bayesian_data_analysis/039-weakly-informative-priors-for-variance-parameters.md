@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 5 · 🏛️ Hierarchical Models**** · Lesson 039 of 144 · **beginner**
 
-[◀ Previous · Hierarchical modeling applied to a meta-analysis](038-hierarchical-modeling-applied-to-a-meta-analysis.html) · [Next · The Place of Model Checking in Applied Bayesian Statistics ▶](040-the-place-of-model-checking-in-applied-bayesian-statistics.html)
+[◀ Previous · Hierarchical modeling applied to a meta-analysis](038-hierarchical-modeling-applied-to-a-meta-analysis.html) · [Next · The Place of Model Checking in Applied Bayesian Statistics ▶](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [↑ Section](index.html)
 
 ## The parameter that decides everything[#](#the-parameter-that-decides-everything "Link to this heading")
 
@@ -53,9 +53,9 @@ complete pooling is right — but it creates the funnel geometry that demands th
 parameterisation. And with very small \(J\) (say \(J \le 5\)), no prior is truly weak: report
 the sensitivity, because the prior is doing visible work.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Example: parallel experiments in eight schools](037-example-parallel-experiments-in-eight-schools.html) · [Multivariate Normal with Unknown Mean and Variance](025-multivariate-normal-with-unknown-mean-and-variance.html) · [Hierarchical models for batches of variance components](105-hierarchical-models-for-batches-of-variance-components.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/weakly-informative-priors-for-variance-parameters/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/weakly-informative-priors-for-variance-parameters/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

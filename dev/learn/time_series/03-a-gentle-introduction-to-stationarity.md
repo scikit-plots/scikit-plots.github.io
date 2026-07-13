@@ -2,7 +2,7 @@
 
 ****Stage 2 · 📐 Stationarity**** · Lesson 03 of 18 · **beginner**
 
-[◀ Previous · Getting Started with R](02-getting-started-with-r.html) · [Next · Weak and Strong Stationarity ▶](04-weak-and-strong-stationarity.html)
+[◀ Previous · Getting Started with R](02-getting-started-with-r.html) · [Next · Weak and Strong Stationarity ▶](04-weak-and-strong-stationarity.html) · [↑ Section](index.html)
 
 ## What it is[#](#what-it-is "Link to this heading")
 
@@ -36,9 +36,9 @@ Then formalise with tests — the ****Augmented Dickey–Fuller (ADF)**** test (
 **non-stationary**, so a small p-value argues for stationarity) and the ****KPSS**** test (null:
 **stationary**), commonly read together. In `statsmodels` these are `adfuller(x)` and `kpss(x)`.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Weak and Strong Stationarity](04-weak-and-strong-stationarity.html) · [What Are Time Series, and How Are They Used?](01-what-are-time-series-and-how-are-they-used.html) · [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [Linear Processes](05-linear-processes.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/a-gentle-introduction-to-stationarity/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/a-gentle-introduction-to-stationarity/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: beginner](../../_tags/level-beginner.html)

@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 005 of 144 · **beginner**
 
-[◀ Previous · Discrete Bayesian Examples – Genetics and Spell Checking (with θ)](004-discrete-bayesian-examples-genetics-and-spell-checking-with.html) · [Next · Example — Probabilities from Football Point Spreads ▶](006-example-probabilities-from-football-point-spreads.html)
+[◀ Previous · Discrete Bayesian Examples – Genetics and Spell Checking (with θ)](004-discrete-bayesian-examples-genetics-and-spell-checking-with.html) · [Next · Example — Probabilities from Football Point Spreads ▶](006-example-probabilities-from-football-point-spreads.html) · [↑ Section](index.html)
 
 ## Uncertainty, not just frequency[#](#uncertainty-not-just-frequency "Link to this heading")
 
@@ -42,9 +42,9 @@ assign probability 0.7, about 70% should actually occur — an empirically check
 subject of the next two lessons. Bayesian analysis does not demand that priors match anyone’s inner
 convictions; it demands that assumptions be ****stated clearly**** and their implications ****checked****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian Inference](003-bayesian-inference.html) · [Example — Probabilities from Football Point Spreads](006-example-probabilities-from-football-point-spreads.html) · [Example — Calibration for Record Linkage](007-example-calibration-for-record-linkage.html) · [Noninformative Prior Distributions](018-noninformative-prior-distributions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/probability-as-a-measure-of-uncertainty/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/probability-as-a-measure-of-uncertainty/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

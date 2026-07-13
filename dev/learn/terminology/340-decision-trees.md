@@ -51,21 +51,22 @@ print(export_text(tree, feature_names=["sepal_length", "sepal_width",
 
 ---
 
-****Mind map — connected ideas****
-
-> [Post-hoc Explainability](339-post-hoc-explainability.html) · [Deep Ensembles](335-deep-ensembles.html) · [Uplift Random Forests](302-uplift-random-forests.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [Discriminatory Power](185-discriminatory-power.html) · [Bayesian Neural Networks (BNNs)](055-bayesian-neural-networks-bnns.html)
-
----
-
-****More in AI & ML Concepts****
-
-> [AI (Artificial Intelligence)](143-ai-artificial-intelligence.html) · [Classification Models](294-classification-models.html) · [Computer Vision (CV)](321-computer-vision-cv.html) · [Linear Models](341-linear-models.html) · [LLMs (Large Language Models)](158-llms-large-language-models.html) · [Logistic Regression](292-logistic-regression.html) · [Machine Learning (ML)](144-machine-learning-ml.html) · [Medical AI](145-medical-ai.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html) · [Neural Networks](287-neural-networks.html) · [Regression Models](309-regression-models.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Target Variable](236-target-variable.html)
-
----
-
 **Theme:** [AI & ML Concepts](index.html#term-theme-concepts)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Post-hoc Explainability](339-post-hoc-explainability.html) · [Deep Ensembles](335-deep-ensembles.html) · [Uplift Random Forests](302-uplift-random-forests.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [Discriminatory Power](185-discriminatory-power.html) · [Bayesian Neural Networks (BNNs)](055-bayesian-neural-networks-bnns.html)
+
+---
+
+> **Hint**
+> ****More in AI & ML Concepts****
+
+[AI (Artificial Intelligence)](143-ai-artificial-intelligence.html) · [Classification Models](294-classification-models.html) · [Computer Vision (CV)](321-computer-vision-cv.html) · [Linear Models](341-linear-models.html) · [LLMs (Large Language Models)](158-llms-large-language-models.html) · [Logistic Regression](292-logistic-regression.html) · [Machine Learning (ML)](144-machine-learning-ml.html) · [Medical AI](145-medical-ai.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html) · [Neural Networks](287-neural-networks.html) · [Regression Models](309-regression-models.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Target Variable](236-target-variable.html)
 > **See also**
-> Adapted in our own words from [Decision Trees](https://insightful-data-lab.com/2025/08/20/decision-trees/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Decision Trees](https://insightful-data-lab.com/2025/08/20/decision-trees/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

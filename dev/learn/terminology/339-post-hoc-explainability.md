@@ -35,21 +35,22 @@ substitute for fair training practices.
 
 ---
 
-****Mind map — connected ideas****
-
-> [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Decision Trees](340-decision-trees.html) · [Feature Values](188-feature-values.html) · [Discriminatory Power](185-discriminatory-power.html)
-
----
-
-****More in Explainability & Governance****
-
-> [Basel III](333-basel-iii.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
-
----
-
 **Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Decision Trees](340-decision-trees.html) · [Feature Values](188-feature-values.html) · [Discriminatory Power](185-discriminatory-power.html)
+
+---
+
+> **Hint**
+> ****More in Explainability & Governance****
+
+[Basel III](333-basel-iii.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
 > **See also**
-> Adapted in our own words from [Post-hoc Explainability](https://insightful-data-lab.com/2025/08/20/post-hoc-explainability/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Post-hoc Explainability](https://insightful-data-lab.com/2025/08/20/post-hoc-explainability/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

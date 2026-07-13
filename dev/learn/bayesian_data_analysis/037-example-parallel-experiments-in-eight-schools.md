@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 5 · 🏛️ Hierarchical Models**** · Lesson 037 of 144 · **beginner**
 
-[◀ Previous · Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html) · [Next · Hierarchical modeling applied to a meta-analysis ▶](038-hierarchical-modeling-applied-to-a-meta-analysis.html)
+[◀ Previous · Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html) · [Next · Hierarchical modeling applied to a meta-analysis ▶](038-hierarchical-modeling-applied-to-a-meta-analysis.html) · [↑ Section](index.html)
 
 ## Eight coaching programs[#](#eight-coaching-programs "Link to this heading")
 
@@ -65,9 +65,9 @@ decouples them and fixes it. Eight schools is a small dataset that teaches three
 shrinkage tames dramatic claims, \(\tau\) is the parameter that matters, and ****model geometry****
 determines whether your sampler tells the truth.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html) · [Hierarchical modeling applied to a meta-analysis](038-hierarchical-modeling-applied-to-a-meta-analysis.html) · [Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Model checking for the educational testing example](044-model-checking-for-the-educational-testing-example.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/example-parallel-experiments-in-eight-schools/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/example-parallel-experiments-in-eight-schools/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

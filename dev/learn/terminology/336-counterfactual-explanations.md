@@ -38,21 +38,22 @@ gender changed”), are ****non-unique****, and need ****domain constraints**** 
 
 ---
 
-****Mind map — connected ideas****
-
-> [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Causal Effect](306-causal-effect.html) · [Causal Inference](117-causal-inference.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html)
-
----
-
-****More in Explainability & Governance****
-
-> [Basel III](333-basel-iii.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
-
----
-
 **Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Causal Effect](306-causal-effect.html) · [Causal Inference](117-causal-inference.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html)
+
+---
+
+> **Hint**
+> ****More in Explainability & Governance****
+
+[Basel III](333-basel-iii.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
 > **See also**
-> Adapted in our own words from [Counterfactual Explanations](https://insightful-data-lab.com/2025/08/20/counterfactual-explanations/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Counterfactual Explanations](https://insightful-data-lab.com/2025/08/20/counterfactual-explanations/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

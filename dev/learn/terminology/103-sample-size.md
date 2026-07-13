@@ -47,21 +47,22 @@ the concept is one.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Standard Error (SE)](084-standard-error-se.html) · [Statistical Power](348-statistical-power.html) · [A Priori Power Analysis](095-a-priori-power-analysis.html) · [Effect Size (δ)](106-effect-size.html) · [Power (1 – β)](104-power-1.html) · [Trivial Effects](102-trivial-effects.html)
-
----
-
-****More in Statistical Inference & Power****
-
-> [A Priori Power Analysis](095-a-priori-power-analysis.html) · [Chi-square (χ²) Test](324-chi-square-2-test.html) · [Clopper–Pearson Interval](356-clopperpearson-interval.html) · [Compromise Power Analysis](093-compromise-power-analysis.html) · [Confidence Intervals (CIs)](377-confidence-intervals-cis.html) · [Effect Size (δ)](106-effect-size.html) · [Hypothesis Testing](107-hypothesis-testing.html) · [Kolmogorov–Smirnov (KS) Test](325-kolmogorovsmirnov-ks-test.html) · [Minimum Detectable Lift (MDL)](101-minimum-detectable-lift-mdl.html) · [P-Value (probability value)](118-p-value-probability-value.html) · [Post Hoc Power Analysis](094-post-hoc-power-analysis.html) · [Power (1 – β)](104-power-1.html) · [Power Analysis](378-power-analysis.html) · [Significance Level (α)](105-significance-level.html)
-
----
-
 **Theme:** [Statistical Inference & Power](index.html#term-theme-inference)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Standard Error (SE)](084-standard-error-se.html) · [Statistical Power](348-statistical-power.html) · [A Priori Power Analysis](095-a-priori-power-analysis.html) · [Effect Size (δ)](106-effect-size.html) · [Power (1 – β)](104-power-1.html) · [Trivial Effects](102-trivial-effects.html)
+
+---
+
+> **Hint**
+> ****More in Statistical Inference & Power****
+
+[A Priori Power Analysis](095-a-priori-power-analysis.html) · [Chi-square (χ²) Test](324-chi-square-2-test.html) · [Clopper–Pearson Interval](356-clopperpearson-interval.html) · [Compromise Power Analysis](093-compromise-power-analysis.html) · [Confidence Intervals (CIs)](377-confidence-intervals-cis.html) · [Effect Size (δ)](106-effect-size.html) · [Hypothesis Testing](107-hypothesis-testing.html) · [Kolmogorov–Smirnov (KS) Test](325-kolmogorovsmirnov-ks-test.html) · [Minimum Detectable Lift (MDL)](101-minimum-detectable-lift-mdl.html) · [P-Value (probability value)](118-p-value-probability-value.html) · [Post Hoc Power Analysis](094-post-hoc-power-analysis.html) · [Power (1 – β)](104-power-1.html) · [Power Analysis](378-power-analysis.html) · [Significance Level (α)](105-significance-level.html)
 > **See also**
-> Adapted in our own words from [Sample size](https://insightful-data-lab.com/2025/08/24/sample-size-n/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Sample size](https://insightful-data-lab.com/2025/08/24/sample-size-n/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

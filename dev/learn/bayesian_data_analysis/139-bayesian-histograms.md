@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 139 of 144 · **advanced**
 
-[◀ Previous · Mixture models for classification and regression](138-mixture-models-for-classification-and-regression.html) · [Next · Dirichlet process prior distributions ▶](140-dirichlet-process-prior-distributions.html)
+[◀ Previous · Mixture models for classification and regression](138-mixture-models-for-classification-and-regression.html) · [Next · Dirichlet process prior distributions ▶](140-dirichlet-process-prior-distributions.html) · [↑ Section](index.html)
 
 ## The simplest nonparametric density[#](#the-simplest-nonparametric-density "Link to this heading")
 
@@ -53,9 +53,9 @@ Dirichlet prior here is the finite ancestor of the ****Dirichlet process**** of 
 replaces a fixed grid of bins with an adaptive, unbounded partition. From counting in boxes to infinite
 mixtures is one continuous idea.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Density estimation and regression](133-density-estimation-and-regression.html) · [Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Continuous model expansion](048-continuous-model-expansion.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/13/bayesian-histograms/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/13/bayesian-histograms/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

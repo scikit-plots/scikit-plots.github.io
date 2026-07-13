@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 3 · 🧮 Multiparameter Models**** · Lesson 023 of 144 · **beginner**
 
-[◀ Previous · Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html) · [Next · Multivariate Normal Model with Known Variance ▶](024-multivariate-normal-model-with-known-variance.html)
+[◀ Previous · Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html) · [Next · Multivariate Normal Model with Known Variance ▶](024-multivariate-normal-model-with-known-variance.html) · [↑ Section](index.html)
 
 ## Beyond two categories[#](#beyond-two-categories "Link to this heading")
 
@@ -50,9 +50,9 @@ the other categories and the binomial reappears. And the components are ****nega
 construction: they must sum to one, so probability given to one category is taken from another. That
 constraint is exactly what makes the simplex the natural home for mixture weights in Stage 16.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Estimating a Probability from Binomial Data](011-estimating-a-probability-from-binomial-data.html) · [Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Dirichlet process prior distributions](140-dirichlet-process-prior-distributions.html) · [Models for multivariate and multinomial responses](111-models-for-multivariate-and-multinomial-responses.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/multinomial-model-for-categorical-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/multinomial-model-for-categorical-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

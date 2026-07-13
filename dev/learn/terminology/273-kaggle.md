@@ -24,21 +24,22 @@ models, so they don’t always translate to ****production****, where latency an
 
 ---
 
-****Mind map — connected ideas****
-
-> [TREC (Text REtrieval Conference)](274-trec-text-retrieval-conference.html) · [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Forecasting Competitions](251-forecasting-competitions.html) · [Computer Vision (CV)](321-computer-vision-cv.html) · [Average Precision (AP)](366-average-precision-ap.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html)
-
----
-
-****More in ML Platforms & Tools****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
-
----
-
 **Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[TREC (Text REtrieval Conference)](274-trec-text-retrieval-conference.html) · [DCG (Discounted Cumulative Gain)](272-dcg-discounted-cumulative-gain.html) · [Forecasting Competitions](251-forecasting-competitions.html) · [Computer Vision (CV)](321-computer-vision-cv.html) · [Average Precision (AP)](366-average-precision-ap.html) · [Natural Language Processing (NLP)](322-natural-language-processing-nlp.html)
+
+---
+
+> **Hint**
+> ****More in ML Platforms & Tools****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
 > **See also**
-> Adapted in our own words from [Kaggle](https://insightful-data-lab.com/2025/08/22/kaggle/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Kaggle](https://insightful-data-lab.com/2025/08/22/kaggle/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

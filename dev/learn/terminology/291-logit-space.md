@@ -25,21 +25,22 @@ the ****log-odds****, the ****sigmoid****, and the ****cross-entropy**** loss in
 
 ---
 
-****Mind map — connected ideas****
-
-> [Log-Odds](295-log-odds.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Sigmoid Function](297-sigmoid-function.html) · [Loss Functions](289-loss-functions.html) · [Underflow](290-underflow.html) · [Log-Space](257-log-space.html)
-
----
-
-****More in Model Training & Optimization****
-
-> [Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html)
-
----
-
 **Theme:** [Model Training & Optimization](index.html#term-theme-training)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Log-Odds](295-log-odds.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Sigmoid Function](297-sigmoid-function.html) · [Loss Functions](289-loss-functions.html) · [Underflow](290-underflow.html) · [Log-Space](257-log-space.html)
+
+---
+
+> **Hint**
+> ****More in Model Training & Optimization****
+
+[Active Learning](163-active-learning.html) · [Binary Cross-Entropy (BCE)](288-binary-cross-entropy-bce.html) · [Deep Ensembles](335-deep-ensembles.html) · [Early Stopping](140-early-stopping.html) · [Ensemble](154-ensemble.html) · [Epochs](141-epochs.html) · [FLOPs](156-flops.html) · [Full Annotation](345-full-annotation.html) · [Hyperparameter](142-hyperparameter.html) · [Label Noise](354-label-noise.html) · [Log-Odds](295-log-odds.html) · [Logits](420-logits.html) · [Loss Functions](289-loss-functions.html) · [Model Distillation (Knowledge Distillation)](139-model-distillation-knowledge-distillation.html)
 > **See also**
-> Adapted in our own words from [Logit Space](https://insightful-data-lab.com/2025/08/21/logit-space/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Logit Space](https://insightful-data-lab.com/2025/08/21/logit-space/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

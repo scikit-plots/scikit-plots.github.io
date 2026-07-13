@@ -2,7 +2,7 @@
 
 ****Stage 5 · 🧮 Estimation**** · Lesson 11 of 18 · **advanced**
 
-[◀ Previous · Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [Next · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE) ▶](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html)
+[◀ Previous · Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [Next · Maximum Likelihood Estimation for ARMA Models (Gaussian MLE) ▶](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [↑ Section](index.html)
 
 ## The idea[#](#the-idea "Link to this heading")
 
@@ -39,9 +39,9 @@ That reliability makes them the standard ****preliminary estimate**** and a natu
 for the likelihood methods below. (For ****ARMA**** the same idea works but is ****no longer efficient****,
 so it is used only to seed the optimiser.)
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Best Linear Predictor of a Stationary Process](09-best-linear-predictor-of-a-stationary-process.html) · [Sample ACF and Sample PACF](10-sample-acf-and-sample-pacf.html) · [Maximum Likelihood Estimation for ARMA Models (Gaussian MLE)](12-maximum-likelihood-estimation-for-arma-models-gaussian-mle.html) · [Understanding ARMA Processes](06-understanding-arma-processes.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/preliminary-estimation-for-ar-models-and-the-yule-walker-equations/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/preliminary-estimation-for-ar-models-and-the-yule-walker-equations/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

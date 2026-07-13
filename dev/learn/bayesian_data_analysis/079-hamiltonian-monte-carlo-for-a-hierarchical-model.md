@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 9 · ⛓️ MCMC: Gibbs, Metropolis & HMC**** · Lesson 079 of 144 · **intermediate**
 
-[◀ Previous · Hamiltonian Monte Carlo](078-hamiltonian-monte-carlo.html) · [Next · Stan: developing a computing environment ▶](080-stan-developing-a-computing-environment.html)
+[◀ Previous · Hamiltonian Monte Carlo](078-hamiltonian-monte-carlo.html) · [Next · Stan: developing a computing environment ▶](080-stan-developing-a-computing-environment.html) · [↑ Section](index.html)
 
 ## HMC meets the funnel[#](#hmc-meets-the-funnel "Link to this heading")
 
@@ -57,9 +57,9 @@ The general lesson is the one that closes this stage. HMC’s efficiency is dete
 ****geometry****, and geometry is something the modeller controls through parameterisation. A divergence is
 not a complaint about the algorithm; it is information about the model.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Hamiltonian Monte Carlo](078-hamiltonian-monte-carlo.html) · [Example: parallel experiments in eight schools](037-example-parallel-experiments-in-eight-schools.html) · [Eﬃcient Gibbs samplers](075-efficient-gibbs-samplers.html) · [Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/22/hamiltonian-monte-carlo-for-a-hierarchical-model/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/22/hamiltonian-monte-carlo-for-a-hierarchical-model/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

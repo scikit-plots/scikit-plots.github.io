@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 054 of 144 · **intermediate**
 
-[◀ Previous · Designed experiments](053-designed-experiments.html) · [Next · Observational studies ▶](055-observational-studies.html)
+[◀ Previous · Designed experiments](053-designed-experiments.html) · [Next · Observational studies ▶](055-observational-studies.html) · [↑ Section](index.html)
 
 ## What randomisation actually does[#](#what-randomisation-actually-does "Link to this heading")
 
@@ -52,9 +52,9 @@ a separate modelling problem. Randomisation is the cheapest way to buy ignorabil
 genuine and rare gift — but the phrase “randomised, therefore unbiased” quietly assumes that nothing
 else went wrong.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Designed experiments](053-designed-experiments.html) · [Observational studies](055-observational-studies.html) · [Data-collection models and ignorability](051-data-collection-models-and-ignorability.html) · [Aspects of robustness](113-aspects-of-robustness.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/sensitivity-and-the-role-of-randomization/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/sensitivity-and-the-role-of-randomization/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

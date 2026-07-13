@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 16 of 18 · **advanced**
 
-[◀ Previous · ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [Next · Beyond One-Step Ahead Predictions ▶](17-beyond-one-step-ahead-predictions.html)
+[◀ Previous · ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [Next · Beyond One-Step Ahead Predictions ▶](17-beyond-one-step-ahead-predictions.html) · [↑ Section](index.html)
 
 ## The seasonal problem[#](#the-seasonal-problem "Link to this heading")
 
@@ -39,9 +39,9 @@ seasonal terms ****cost parameters****, so imposing them on a ****non-seasonal**
 ****degrade**** forecasts; and for ****multiple**** overlapping seasonalities (say daily **and** weekly),
 specialised tools like ****TBATS**** or ****Prophet**** fit better than a single seasonal period.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [ARIMA Models: How Nonstationary Models Are Built from Stationary Ones](15-arima-models-how-nonstationary-models-are-built-from-stationary-ones.html) · [A Gentle Introduction to Stationarity](03-a-gentle-introduction-to-stationarity.html) · [Exponential Smoothing Models](18-exponential-smoothing-models.html) · [Beyond One-Step Ahead Predictions](17-beyond-one-step-ahead-predictions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/sarima-models-seasonal-arima/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/sarima-models-seasonal-arima/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 31 of 56 · **intermediate**
 
-[◀ Previous · Creating Segments of Observations for Business Reasons (RFM)](30-creating-segments-of-observations-for-business-reasons-rfm.html) · [Next · Multiple Linear Regression ▶](32-multiple-linear-regression.html)
+[◀ Previous · Creating Segments of Observations for Business Reasons (RFM)](30-creating-segments-of-observations-for-business-reasons-rfm.html) · [Next · Multiple Linear Regression ▶](32-multiple-linear-regression.html) · [↑ Section](index.html)
 
 ## Fitting a line[#](#fitting-a-line "Link to this heading")
 
@@ -46,9 +46,9 @@ and it coincides with ****maximum likelihood**** when the errors are normally di
 is ****sensitivity to outliers****: one extreme point can pull the line noticeably — a theme the
 evaluation stage revisits with residual diagnostics.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Multiple Linear Regression](32-multiple-linear-regression.html) · [Feature Importance in Linear Regression](33-feature-importance-in-linear-regression.html) · [Measuring Associations Between Two Continuous Variables](11-measuring-associations-between-two-continuous-variables.html) · [Identifying Outliers Using Residuals and Studentized Residuals](54-identifying-outliers-using-residuals-and-studentized-residuals.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/least-squares-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/least-squares-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

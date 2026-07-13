@@ -54,21 +54,22 @@ SPRT is genuinely ****continuous****.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Likelihood Ratio (LR)](075-likelihood-ratio-lr.html) · [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Stopping Rules](071-stopping-rules.html) · [Sequential Settings](058-sequential-settings.html) · [Frequentist](059-frequentist.html) · [Group Sequential Testing](079-group-sequential-testing.html)
-
----
-
-****More in Sequential Methods & Bandits****
-
-> [Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
-
----
-
 **Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Likelihood Ratio (LR)](075-likelihood-ratio-lr.html) · [Bayesian Sequential Testing](074-bayesian-sequential-testing.html) · [Stopping Rules](071-stopping-rules.html) · [Sequential Settings](058-sequential-settings.html) · [Frequentist](059-frequentist.html) · [Group Sequential Testing](079-group-sequential-testing.html)
+
+---
+
+> **Hint**
+> ****More in Sequential Methods & Bandits****
+
+[Bandit Algorithms](113-bandit-algorithms.html) · [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
 > **See also**
-> Adapted in our own words from [Sequential Probability Ratio Test (SPRT)](https://insightful-data-lab.com/2025/08/25/sequential-probability-ratio-test-sprt/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Sequential Probability Ratio Test (SPRT)](https://insightful-data-lab.com/2025/08/25/sequential-probability-ratio-test-sprt/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

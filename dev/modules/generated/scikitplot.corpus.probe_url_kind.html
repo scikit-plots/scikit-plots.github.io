@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:45:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:23:27Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -371,7 +371,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -589,7 +589,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>probe_url_kind<a class="headerlink" href="#probe-url-kind" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.probe_url_kind">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">probe_url_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_ssrf_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_url_handler.py#L492"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.probe_url_kind" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">probe_url_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_ssrf_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_url_handler.py#L492"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.probe_url_kind" title="Link to this definition">#</a></dt>
 <dd><p>Probe a URL with a HEAD request to classify by Content-Type.</p>
 <p>Use this when <a class="reference internal" href="scikitplot.corpus.classify_url.html#scikitplot.corpus.classify_url" title="scikitplot.corpus.classify_url"><code class="xref py py-func docutils literal notranslate"><span class="pre">classify_url</span></code></a> returns <a class="reference internal" href="scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind.WEB_PAGE" title="scikitplot.corpus.URLKind.WEB_PAGE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">URLKind.WEB_PAGE</span></code></a>
 but the URL has no file extension in the path (e.g. API endpoints
@@ -1381,8 +1381,8 @@ handling).  It falls back to <code class="docutils literal notranslate"><span cl
 installed.  The SSRF check is applied before connecting when
 <code class="docutils literal notranslate"><span class="pre">skip_ssrf_check=False</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c4a4df9a-0367-45ae-a9ad-b74f1c58e8c2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c4a4df9a-0367-45ae-a9ad-b74f1c58e8c2','68ab43b3-33cf-43dd-9591-c44141d46a95','1bd57ce7-cf89-425f-a08c-ac26af94e218','../../lite/tree/../notebooks/index.html?path=9cdba64e_f207_4d3a_aafb_1b76d56cb33a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="10adeea4-426c-48a3-b502-0bddd24f9103">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('10adeea4-426c-48a3-b502-0bddd24f9103','f0ab2b2e-f131-4bbf-b235-e860970ff6cd','8c9175d9-8533-4caa-b247-b2a9a811861c','../../lite/tree/../notebooks/index.html?path=4c9e7bc4_0656_45df_a058_6dadc221b3df.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An API endpoint returning a PDF with no extension in path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kind</span> <span class="o">=</span> <span class="n">probe_url_kind</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">&quot;https://iris.who.int/server/api/core/bitstreams/abc/content&quot;</span>
@@ -1399,7 +1399,7 @@ installed.  The SSRF check is applied before connecting when
 </div>
 </div>
 </div>
-<div id="1bd57ce7-cf89-425f-a08c-ac26af94e218" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c4a4df9a-0367-45ae-a9ad-b74f1c58e8c2','1bd57ce7-cf89-425f-a08c-ac26af94e218')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c4a4df9a-0367-45ae-a9ad-b74f1c58e8c2','1bd57ce7-cf89-425f-a08c-ac26af94e218')">Open In Tab</button></div><div id="68ab43b3-33cf-43dd-9591-c44141d46a95" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="8c9175d9-8533-4caa-b247-b2a9a811861c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('10adeea4-426c-48a3-b502-0bddd24f9103','8c9175d9-8533-4caa-b247-b2a9a811861c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('10adeea4-426c-48a3-b502-0bddd24f9103','8c9175d9-8533-4caa-b247-b2a9a811861c')">Open In Tab</button></div><div id="f0ab2b2e-f131-4bbf-b235-e860970ff6cd" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1517,7 +1517,7 @@ installed.  The SSRF check is applied before connecting when
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

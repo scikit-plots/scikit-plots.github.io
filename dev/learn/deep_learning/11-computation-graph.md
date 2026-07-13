@@ -2,7 +2,7 @@
 
 ****Stage 3 · 📉 Derivatives & the Computation Graph**** · Lesson 11 of 17 · **intermediate**
 
-[◀ Previous · More Derivative Examples](10-more-derivative-examples.html) · [Next · Derivatives with a Computation Graph ▶](12-derivatives-with-a-computation-graph.html)
+[◀ Previous · More Derivative Examples](10-more-derivative-examples.html) · [Next · Derivatives with a Computation Graph ▶](12-derivatives-with-a-computation-graph.html) · [↑ Section](index.html)
 
 ## Breaking it into steps[#](#breaking-it-into-steps "Link to this heading")
 
@@ -35,9 +35,9 @@ we can walk it ****backward**** and apply the chain rule step by step, computing
 \(\partial J / \partial a\), \(\partial J / \partial b\), \(\partial J / \partial c\)
 without ever untangling the whole nested expression at once.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html) · [Derivatives](09-derivatives.html) · [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/computation-graph/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/computation-graph/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

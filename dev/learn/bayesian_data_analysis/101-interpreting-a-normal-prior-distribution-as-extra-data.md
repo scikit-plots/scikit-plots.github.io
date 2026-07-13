@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 12 · 🏗️ Hierarchical Regression**** · Lesson 101 of 144 · **advanced**
 
-[◀ Previous · Example: forecasting U.S. presidential elections](100-example-forecasting-u-s-presidential-elections.html) · [Next · Varying intercepts and slopes ▶](102-varying-intercepts-and-slopes.html)
+[◀ Previous · Example: forecasting U.S. presidential elections](100-example-forecasting-u-s-presidential-elections.html) · [Next · Varying intercepts and slopes ▶](102-varying-intercepts-and-slopes.html) · [↑ Section](index.html)
 
 ## A prior is imaginary data[#](#a-prior-is-imaginary-data "Link to this heading")
 
@@ -54,9 +54,9 @@ design points, so “how strong is this prior?” has a literal answer in units 
 way to feel the weight of a prior — and the honest warning against a prior so tight it silently adds
 hundreds of observations you never collected.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Including numerical prior information](098-including-numerical-prior-information.html) · [Regularization and dimension reduction](096-regularization-and-dimension-reduction.html) · [Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html) · [Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/24/interpreting-a-normal-prior-distribution-as-extra-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/24/interpreting-a-normal-prior-distribution-as-extra-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

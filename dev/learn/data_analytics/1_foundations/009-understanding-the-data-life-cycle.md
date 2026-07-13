@@ -51,12 +51,12 @@ wrong, the life cycle is your checklist of where to look. And downstream, Archiv
 and Destroy explain the gaps: the missing 2019 data may not be lost — it may
 have been destroyed on schedule, which is an answer, not a dead end.
 
-> **See also**
+> **Hint**
 > * [Understanding the Data Analysis Process and the Data Life Cycle](008-understanding-the-data-analysis-process-and-the-data-life-cycle.html)
 * [A Review of the Six Stages of the Data Life Cycle](010-a-review-of-the-six-stages-of-the-data-life-cycle.html)
 * [Understanding the Data Ecosystem](007-understanding-the-data-ecosystem.html)
 * [Data Privacy in Data Ethics](../3_data_preparation/014-data-privacy-in-data-ethics.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/understanding-the-data-life-cycle/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/understanding-the-data-life-cycle/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [process](../../../_tags/process.html)

@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 061 of 144 · **intermediate**
 
-[◀ Previous · Hierarchical decision analysis for home radon](060-hierarchical-decision-analysis-for-home-radon.html) · [Next · Numerical integration ▶](062-numerical-integration.html)
+[◀ Previous · Hierarchical decision analysis for home radon](060-hierarchical-decision-analysis-for-home-radon.html) · [Next · Numerical integration ▶](062-numerical-integration.html) · [↑ Section](index.html)
 
 ## Whose utility?[#](#whose-utility "Link to this heading")
 
@@ -55,9 +55,9 @@ shared; the utilities are not. When a personal and an institutional analysis dis
 should be traceable to a ****named**** difference in utility or information — and that is a far healthier
 disagreement than one hidden inside a threshold nobody can justify.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Hierarchical decision analysis for home radon](060-hierarchical-decision-analysis-for-home-radon.html) · [Multistage decision making: medical screening](059-multistage-decision-making-medical-screening.html) · [Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/personal-vs-institutional-decision-analysis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/personal-vs-institutional-decision-analysis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

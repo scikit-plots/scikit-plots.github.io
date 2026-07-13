@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 15 · 🌊 Basis Functions & Gaussian Processes**** · Lesson 127 of 144 · **advanced**
 
-[◀ Previous · Splines and weighted sums of basis functions](126-splines-and-weighted-sums-of-basis-functions.html) · [Next · Non-normal models and regression surfaces ▶](128-non-normal-models-and-regression-surfaces.html)
+[◀ Previous · Splines and weighted sums of basis functions](126-splines-and-weighted-sums-of-basis-functions.html) · [Next · Non-normal models and regression surfaces ▶](128-non-normal-models-and-regression-surfaces.html) · [↑ Section](index.html)
 
 ## How smooth should the curve be?[#](#how-smooth-should-the-curve-be "Link to this heading")
 
@@ -52,9 +52,9 @@ variance component, so the batching and regularisation stages apply directly. Th
 Gaussian processes, where the basis becomes infinite and the smoothing prior becomes a covariance
 function.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Splines and weighted sums of basis functions](126-splines-and-weighted-sums-of-basis-functions.html) · [Regularization and dimension reduction](096-regularization-and-dimension-reduction.html) · [Regression coeﬃcients exchangeable in batches](099-regression-coefficients-exchangeable-in-batches.html) · [Non-normal models and regression surfaces](128-non-normal-models-and-regression-surfaces.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/basis-selection-and-shrinkage-of-coe%ef%ac%83cients/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/basis-selection-and-shrinkage-of-coe%ef%ac%83cients/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

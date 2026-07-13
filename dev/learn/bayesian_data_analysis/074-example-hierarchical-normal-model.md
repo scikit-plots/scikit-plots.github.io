@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 9 · ⛓️ MCMC: Gibbs, Metropolis & HMC**** · Lesson 074 of 144 · **intermediate**
 
-[◀ Previous · Eﬀective number of simulation draws](073-effective-number-of-simulation-draws.html) · [Next · Eﬃcient Gibbs samplers ▶](075-efficient-gibbs-samplers.html)
+[◀ Previous · Eﬀective number of simulation draws](073-effective-number-of-simulation-draws.html) · [Next · Eﬃcient Gibbs samplers ▶](075-efficient-gibbs-samplers.html) · [↑ Section](index.html)
 
 ## Gibbs, worked through[#](#gibbs-worked-through "Link to this heading")
 
@@ -61,9 +61,9 @@ Closed-form conditionals guarantee ****correctness in the limit****, not ****eff
 diagnosis is posterior ****correlation between levels****, and the two cures are the subject of the next
 lesson: reparameterise so the levels decouple, or update them jointly.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Gibbs sampler](069-gibbs-sampler.html) · [Eﬃcient Gibbs samplers](075-efficient-gibbs-samplers.html) · [Normal model with exchangeable parameters](036-normal-model-with-exchangeable-parameters.html) · [Example: hierarchical normal model (continued)](086-example-hierarchical-normal-model-continued.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/12/example-hierarchical-normal-model/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/12/example-hierarchical-normal-model/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

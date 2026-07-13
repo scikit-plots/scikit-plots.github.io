@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔵 Logistic Regression as a Neuron**** · Lesson 06 of 17 · **beginner**
 
-[◀ Previous · Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [Next · Logistic Regression – Loss Function and Cost Function ▶](07-logistic-regression-loss-function-and-cost-function.html)
+[◀ Previous · Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [Next · Logistic Regression – Loss Function and Cost Function ▶](07-logistic-regression-loss-function-and-cost-function.html) · [↑ Section](index.html)
 
 ## From score to probability[#](#from-score-to-probability "Link to this heading")
 
@@ -34,9 +34,9 @@ inputs followed by a nonlinear activation — here the sigmoid. That is the exac
 Lesson 1, and stacking many such units is all a neural network is. The next lesson gives this neuron
 a ****loss****, so it can learn \(\mathbf{w}\) and \(b\) from data.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [What is a Neural Network?](01-what-is-a-neural-network.html) · [Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/logistic-regression-binary-classification-model/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/logistic-regression-binary-classification-model/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: beginner](../../_tags/level-beginner.html)

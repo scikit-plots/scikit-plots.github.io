@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 3 · 🧮 Multiparameter Models**** · Lesson 027 of 144 · **beginner**
 
-[◀ Previous · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate)](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [Next · Normal Approximations to the Posterior Distribution ▶](028-normal-approximations-to-the-posterior-distribution.html)
+[◀ Previous · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate)](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [Next · Normal Approximations to the Posterior Distribution ▶](028-normal-approximations-to-the-posterior-distribution.html) · [↑ Section](index.html)
 
 ## What Part I established[#](#what-part-i-established "Link to this heading")
 
@@ -55,9 +55,9 @@ models with structure**** — groups, predictors, nonlinearity? (hierarchies, re
 Parts IV–V). The next stage begins the answer by asking what happens to a posterior as data
 accumulate.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The three steps of Bayesian data analysis](001-the-three-steps-of-bayesian-data-analysis.html) · [Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate)](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/summary-of-elementary-modeling-and-computation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/summary-of-elementary-modeling-and-computation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

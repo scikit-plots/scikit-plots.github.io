@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 046 of 144 · **intermediate**
 
-[◀ Previous · Measures of predictive accuracy](045-measures-of-predictive-accuracy.html) · [Next · Model comparison using Bayes factors ▶](047-model-comparison-using-bayes-factors.html)
+[◀ Previous · Measures of predictive accuracy](045-measures-of-predictive-accuracy.html) · [Next · Model comparison using Bayes factors ▶](047-model-comparison-using-bayes-factors.html) · [↑ Section](index.html)
 
 ## Cross-validation, done cheaply[#](#cross-validation-done-cheaply "Link to this heading")
 
@@ -51,9 +51,9 @@ time series or grouped data, leave-****future****-out or leave-one-****group****
 selecting a model by LOO from a large set reintroduces overfitting — to the selection criterion itself.
 Where models are many and similar, ****averaging**** them (stacking) usually beats picking one.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Measures of predictive accuracy](045-measures-of-predictive-accuracy.html) · [Model comparison using Bayes factors](047-model-comparison-using-bayes-factors.html) · [Continuous model expansion](048-continuous-model-expansion.html) · [Graphical posterior predictive checks](043-graphical-posterior-predictive-checks.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/model-comparison-based-on-predictive-performance/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/model-comparison-based-on-predictive-performance/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

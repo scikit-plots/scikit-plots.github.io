@@ -37,21 +37,22 @@ faster to start but limited to the provider’s models.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Vertex AI](149-vertex-ai.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html) · [Drift Detection](138-drift-detection.html) · [Hyperparameter](142-hyperparameter.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html)
-
----
-
-****More in ML Platforms & Tools****
-
-> [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
-
----
-
 **Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Vertex AI](149-vertex-ai.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html) · [Drift Detection](138-drift-detection.html) · [Hyperparameter](142-hyperparameter.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html)
+
+---
+
+> **Hint**
+> ****More in ML Platforms & Tools****
+
+[Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
 > **See also**
-> Adapted in our own words from [AWS SageMaker](https://insightful-data-lab.com/2025/08/24/aws-sagemaker/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [AWS SageMaker](https://insightful-data-lab.com/2025/08/24/aws-sagemaker/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

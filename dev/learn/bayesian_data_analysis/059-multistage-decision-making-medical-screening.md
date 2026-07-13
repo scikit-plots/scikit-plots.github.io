@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 059 of 144 · **intermediate**
 
-[◀ Previous · Using regression predictions: survey incentives](058-using-regression-predictions-survey-incentives.html) · [Next · Hierarchical decision analysis for home radon ▶](060-hierarchical-decision-analysis-for-home-radon.html)
+[◀ Previous · Using regression predictions: survey incentives](058-using-regression-predictions-survey-incentives.html) · [Next · Hierarchical decision analysis for home radon ▶](060-hierarchical-decision-analysis-for-home-radon.html) · [↑ Section](index.html)
 
 ## Decisions that buy information[#](#decisions-that-buy-information "Link to this heading")
 
@@ -53,9 +53,9 @@ backward induction. And the analysis assumes the model for test performance is r
 ****miscalibrated**** sensitivity propagates through every stage. Screening policy is where Bayesian
 decision theory is at its most useful and its most contested.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Example — Calibration for Record Linkage](007-example-calibration-for-record-linkage.html) · [Hierarchical decision analysis for home radon](060-hierarchical-decision-analysis-for-home-radon.html) · [Personal vs. institutional decision analysis](061-personal-vs-institutional-decision-analysis.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/multistage-decision-making-medical-screening/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/multistage-decision-making-medical-screening/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

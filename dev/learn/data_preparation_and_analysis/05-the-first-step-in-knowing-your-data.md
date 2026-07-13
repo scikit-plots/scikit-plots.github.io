@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 05 of 56 · **beginner**
 
-[◀ Previous · Big Data: Definition, Characteristics, Evolution, and Business Impact](04-big-data-definition-characteristics-evolution-and-business-impact.html) · [Next · IEEE 754 Floating-Point Standard ▶](06-ieee-754-floating-point-standard.html)
+[◀ Previous · Big Data: Definition, Characteristics, Evolution, and Business Impact](04-big-data-definition-characteristics-evolution-and-business-impact.html) · [Next · IEEE 754 Floating-Point Standard ▶](06-ieee-754-floating-point-standard.html) · [↑ Section](index.html)
 
 ## Look before you model[#](#look-before-you-model "Link to this heading")
 
@@ -41,9 +41,9 @@ units, how it was collected, what a missing value signifies — so that later ch
 use, how to handle gaps) are informed rather than mechanical. Every stage that follows, from
 association measures to model evaluation, rests on this first honest look.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The Process of Data Analysis](02-the-process-of-data-analysis.html) · [CRISP-DM for Data Science](03-crisp-dm-for-data-science.html) · [Measuring Associations in Data](10-measuring-associations-in-data.html) · [IEEE 754 Floating-Point Standard](06-ieee-754-floating-point-standard.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/the-first-step-in-knowing-your-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/the-first-step-in-knowing-your-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

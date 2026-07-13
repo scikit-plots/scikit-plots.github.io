@@ -1,6 +1,6 @@
 # sigmoid[#](#sigmoid "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.sigmoid(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/cexperimental/_logsumexp.py#L19)[#](#scikitplot.cexperimental._logsumexp.sigmoid "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.sigmoid(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cexperimental/_logsumexp.py#L19)[#](#scikitplot.cexperimental._logsumexp.sigmoid "Link to this definition")
 :   Compute the sigmoid function for the input array `x`.
 
     The sigmoid function is defined as:

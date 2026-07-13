@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 119 of 144 · **advanced**
 
-[◀ Previous · Notation](118-notation.html) · [Next · Missing data in the multivariate normal and t models ▶](120-missing-data-in-the-multivariate-normal-and-t-models.html)
+[◀ Previous · Notation](118-notation.html) · [Next · Missing data in the multivariate normal and t models ▶](120-missing-data-in-the-multivariate-normal-and-t-models.html) · [↑ Section](index.html)
 
 ## Fill in the blanks, honestly[#](#fill-in-the-blanks-honestly "Link to this heading")
 
@@ -59,9 +59,9 @@ will erase it. And it all rests on ****MAR****: multiple imputation handles igno
 still demands an explicit model. Within those limits it is the standard, principled way to keep
 incomplete data from silently understating what you do not know.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Notation](118-notation.html) · [Missing data in the multivariate normal and t models](120-missing-data-in-the-multivariate-normal-and-t-models.html) · [Example: multiple imputation for a series of polls](121-example-multiple-imputation-for-a-series-of-polls.html) · [Missing values with counted data](122-missing-values-with-counted-data.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/multiple-imputation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/multiple-imputation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

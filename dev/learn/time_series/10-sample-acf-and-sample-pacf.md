@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🎯 Prediction & the Sample ACF / PACF**** · Lesson 10 of 18 · **intermediate**
 
-[◀ Previous · Best Linear Predictor of a Stationary Process](09-best-linear-predictor-of-a-stationary-process.html) · [Next · Preliminary Estimation for AR Models and the Yule–Walker Equations ▶](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html)
+[◀ Previous · Best Linear Predictor of a Stationary Process](09-best-linear-predictor-of-a-stationary-process.html) · [Next · Preliminary Estimation for AR Models and the Yule–Walker Equations ▶](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [↑ Section](index.html)
 
 ## From process to sample[#](#from-process-to-sample "Link to this heading")
 
@@ -39,9 +39,9 @@ Identification is a two-plot habit. An ****ACF that cuts off**** after lag \(q\)
 ****tailing ACF**** suggests ****AR(p)****; ****both tailing off**** suggests ****ARMA****. In `statsmodels` these
 plots are `plot_acf` and `plot_pacf`.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Best Linear Predictor of a Stationary Process](09-best-linear-predictor-of-a-stationary-process.html) · [Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)](08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html) · [Preliminary Estimation for AR Models and the Yule–Walker Equations](11-preliminary-estimation-for-ar-models-and-the-yule-walker-equations.html) · [Order Selection for Time Series Models](14-order-selection-for-time-series-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/sample-acf-and-sample-pacf/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/sample-acf-and-sample-pacf/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: intermediate](../../_tags/level-intermediate.html)

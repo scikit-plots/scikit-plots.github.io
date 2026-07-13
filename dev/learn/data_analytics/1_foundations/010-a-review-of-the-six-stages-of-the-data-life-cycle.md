@@ -49,12 +49,12 @@ it. And when an analysis will recur, **walk it forward** — will the data still
 exist, unarchived and legal to use, when the next cycle runs? Ten minutes of
 life-cycle thinking routinely saves days of confused analysis.
 
-> **See also**
+> **Hint**
 > * [Understanding the Data Life Cycle](009-understanding-the-data-life-cycle.html)
 * [The Stages of the Data Analysis Process and Their Roles](011-the-stages-of-the-data-analysis-process-and-their-roles.html)
 * [The Importance of Clean Data](../4_data_cleaning_preparation/001-the-importance-of-clean-data.html)
 * [Data Ethics in Data Analysis](../3_data_preparation/013-data-ethics-in-data-analysis.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/a-review-of-the-six-stages-of-the-data-life-cycle/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/a-review-of-the-six-stages-of-the-data-life-cycle/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [process](../../../_tags/process.html)

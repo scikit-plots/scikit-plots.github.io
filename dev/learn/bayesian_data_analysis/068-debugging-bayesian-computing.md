@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 8 · 🧰 Simulation Basics**** · Lesson 068 of 144 · **intermediate**
 
-[◀ Previous · Computing environments](067-computing-environments.html) · [Next · Gibbs sampler ▶](069-gibbs-sampler.html)
+[◀ Previous · Computing environments](067-computing-environments.html) · [Next · Gibbs sampler ▶](069-gibbs-sampler.html) · [↑ Section](index.html)
 
 ## Silence is the danger[#](#silence-is-the-danger "Link to this heading")
 
@@ -53,9 +53,9 @@ before real; ****check the priors**** by simulating from them alone; ****rescale
 one; ****reparameterise**** (non-centred) when a hierarchy funnels; and only then blame the sampler. Each
 rung tells you something about the model, which is the point.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Computing environments](067-computing-environments.html) · [Do the Inferences from the Model Make Sense?](041-do-the-inferences-from-the-model-make-sense.html) · [Frequency Evaluations of Bayesian Inferences](031-frequency-evaluations-of-bayesian-inferences.html) · [Inference and assessing convergence](072-inference-and-assessing-convergence.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/debugging-bayesian-computing/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/debugging-bayesian-computing/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

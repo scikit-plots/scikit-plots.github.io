@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 048 of 144 · **intermediate**
 
-[◀ Previous · Model comparison using Bayes factors](047-model-comparison-using-bayes-factors.html) · [Next · Implicit assumptions and model expansion: an example ▶](049-implicit-assumptions-and-model-expansion-an-example.html)
+[◀ Previous · Model comparison using Bayes factors](047-model-comparison-using-bayes-factors.html) · [Next · Implicit assumptions and model expansion: an example ▶](049-implicit-assumptions-and-model-expansion-an-example.html) · [↑ Section](index.html)
 
 ## Don’t choose — embed[#](#don-t-choose-embed "Link to this heading")
 
@@ -52,9 +52,9 @@ the loop from the first lesson of this stage. Nor is expansion free: it can make
 (the funnel), so diagnostics matter more. But the direction of travel is right, and it is the workflow
 that the remainder of this course follows: fit, check, find the misfit, ****expand****, refit.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Model comparison based on predictive performance](046-model-comparison-based-on-predictive-performance.html) · [Implicit assumptions and model expansion: an example](049-implicit-assumptions-and-model-expansion-an-example.html) · [The Place of Model Checking in Applied Bayesian Statistics](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/continuous-model-expansion/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/continuous-model-expansion/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

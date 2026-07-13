@@ -80,21 +80,22 @@ signal_sub = sps.resample(signal, len(signal) // 2)
 
 ---
 
-****Mind map — connected ideas****
-
-> [Oversampling](004-oversampling.html) · [Random Undersampling](008-random-undersampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Class Weighting](002-class-weighting.html) · [Low-pass Filtering](005-low-pass-filtering.html) · [Downsampling](368-downsampling.html)
-
----
-
-****More in Imbalanced Learning & Resampling****
-
-> [Class Weighting](002-class-weighting.html) · [Cluster-based undersampling](007-cluster-based-undersampling.html) · [Downsampling](368-downsampling.html) · [NearMiss (Distance-based Undersampling)](006-nearmiss-distance-based-undersampling.html) · [Oversampling](004-oversampling.html) · [Random Undersampling](008-random-undersampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Upsampling](367-upsampling.html)
-
----
-
 **Theme:** [Imbalanced Learning & Resampling](index.html#term-theme-imbalance)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Oversampling](004-oversampling.html) · [Random Undersampling](008-random-undersampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Class Weighting](002-class-weighting.html) · [Low-pass Filtering](005-low-pass-filtering.html) · [Downsampling](368-downsampling.html)
+
+---
+
+> **Hint**
+> ****More in Imbalanced Learning & Resampling****
+
+[Class Weighting](002-class-weighting.html) · [Cluster-based undersampling](007-cluster-based-undersampling.html) · [Downsampling](368-downsampling.html) · [NearMiss (Distance-based Undersampling)](006-nearmiss-distance-based-undersampling.html) · [Oversampling](004-oversampling.html) · [Random Undersampling](008-random-undersampling.html) · [SMOTE (Synthetic Minority Over-sampling Technique)](003-smote-synthetic-minority-over-sampling-technique.html) · [Upsampling](367-upsampling.html)
 > **See also**
-> Adapted in our own words from [Subsampling](https://insightful-data-lab.com/2025/08/30/subsampling/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Subsampling](https://insightful-data-lab.com/2025/08/30/subsampling/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

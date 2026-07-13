@@ -25,21 +25,22 @@ category is ****ordered****, and to its ****cardinality****.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html) · [Embedding](173-embedding.html) · [Feature Values](188-feature-values.html) · [Outlier](307-outlier.html) · [Neural Networks](287-neural-networks.html)
-
----
-
-****More in Data Preparation & Features****
-
-> [Advanced Sorting in Spreadsheets](431-advanced-sorting-in-spreadsheets.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html)
-
----
-
 **Theme:** [Data Preparation & Features](index.html#term-theme-features)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html) · [Embedding](173-embedding.html) · [Feature Values](188-feature-values.html) · [Outlier](307-outlier.html) · [Neural Networks](287-neural-networks.html)
+
+---
+
+> **Hint**
+> ****More in Data Preparation & Features****
+
+[Advanced Sorting in Spreadsheets](431-advanced-sorting-in-spreadsheets.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html)
 > **See also**
-> Adapted in our own words from [Encode (in Feature Engineering)](https://insightful-data-lab.com/2025/08/20/encode-in-feature-engineering/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Encode (in Feature Engineering)](https://insightful-data-lab.com/2025/08/20/encode-in-feature-engineering/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

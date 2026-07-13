@@ -51,21 +51,22 @@ vector arithmetic. The classic word-embedding analogy is that the vector for
 
 ---
 
-****Mind map — connected ideas****
-
-> [Embedding Similarity](320-embedding-similarity.html) · [Autoencoder](171-autoencoder.html) · [Frozen Encoder](172-frozen-encoder.html)
-
----
-
-****More in Representations & Embeddings****
-
-> [Autoencoder](171-autoencoder.html) · [Embedding Similarity](320-embedding-similarity.html) · [Frozen Encoder](172-frozen-encoder.html)
-
----
-
 **Theme:** [Representations & Embeddings](index.html#term-theme-repr)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Embedding Similarity](320-embedding-similarity.html) · [Autoencoder](171-autoencoder.html) · [Frozen Encoder](172-frozen-encoder.html)
+
+---
+
+> **Hint**
+> ****More in Representations & Embeddings****
+
+[Autoencoder](171-autoencoder.html) · [Embedding Similarity](320-embedding-similarity.html) · [Frozen Encoder](172-frozen-encoder.html)
 > **See also**
-> Adapted in our own words from [Embedding](https://insightful-data-lab.com/2025/08/23/embedding/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Embedding](https://insightful-data-lab.com/2025/08/23/embedding/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

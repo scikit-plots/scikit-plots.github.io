@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 46 of 56 · **advanced**
 
-[◀ Previous · The CART Algorithm](45-the-cart-algorithm.html) · [Next · How CART Decision Trees Model Interactions ▶](47-how-cart-decision-trees-model-interactions.html)
+[◀ Previous · The CART Algorithm](45-the-cart-algorithm.html) · [Next · How CART Decision Trees Model Interactions ▶](47-how-cart-decision-trees-model-interactions.html) · [↑ Section](index.html)
 
 ## Boxes in feature space[#](#boxes-in-feature-space "Link to this heading")
 
@@ -37,9 +37,9 @@ power, and also its peril: enough boxes to fit any curve is also enough to fit t
 why the depth controls and pruning of the last lesson matter. The next lesson shows a subtler
 consequence of this box structure: ****interactions****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The CART Algorithm](45-the-cart-algorithm.html) · [How CART Decision Trees Model Interactions](47-how-cart-decision-trees-model-interactions.html) · [Motivation of Decision Trees: An Incremental Model of Decision-Making](44-motivation-of-decision-trees-an-incremental-model-of-decision-making.html) · [Multiple Linear Regression](32-multiple-linear-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/interactions-in-cart-decision-trees/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/interactions-in-cart-decision-trees/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

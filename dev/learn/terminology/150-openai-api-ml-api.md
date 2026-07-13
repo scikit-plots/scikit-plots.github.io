@@ -44,21 +44,22 @@ questions — sensitive data must clear HIPAA/GDPR review before it leaves your 
 
 ---
 
-****Mind map — connected ideas****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [Vertex AI](149-vertex-ai.html) · [AWS SageMaker Endpoints](151-aws-sagemaker-endpoints.html) · [Embedding](173-embedding.html) · [Cloud Inference with Big Payloads](152-cloud-inference-with-big-payloads.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html)
-
----
-
-****More in ML Platforms & Tools****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
-
----
-
 **Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [Vertex AI](149-vertex-ai.html) · [AWS SageMaker Endpoints](151-aws-sagemaker-endpoints.html) · [Embedding](173-embedding.html) · [Cloud Inference with Big Payloads](152-cloud-inference-with-big-payloads.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html)
+
+---
+
+> **Hint**
+> ****More in ML Platforms & Tools****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
 > **See also**
-> Adapted in our own words from [OpenAI API (ML API)](https://insightful-data-lab.com/2025/08/24/openai-api-ml-api/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [OpenAI API (ML API)](https://insightful-data-lab.com/2025/08/24/openai-api-ml-api/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/3_data_preparation/023-querying-data-with-sql.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📦 Data Preparation 🔢 Spreadsheets, SQL &amp; Organization Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics prep spreadsheets_sql" />
+<meta property="og:description" content="📦 Data Preparation 🔢 Spreadsheets, SQL &amp; Organization Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Asking a database a question: With a database environment in hand, the core skill is the..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📦 Data Preparation 🔢 Spreadsheets, SQL &amp; Organization Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics prep spreadsheets_sql" />
+<meta name="description" content="📦 Data Preparation 🔢 Spreadsheets, SQL &amp; Organization Lesson 023 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Asking a database a question: With a database environment in hand, the core skill is the..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:36:01Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:13:51Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,95 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-jobsearch-prep-023"></span><span id="da-python-prep-023"></span><span id="da-viz-prep-023"></span><span id="da-analyze-prep-023"></span><span id="da-cleaning-prep-023"></span><span id="da-prep-prep-023"></span><span id="da-decisions-prep-023"></span><span id="da-foundations-prep-023"></span><span id="data-analytics-prep-023"></span><span id="da-prep-023"></span><h1>Querying Data with SQL<a class="headerlink" href="#querying-data-with-sql" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">📦 Data Preparation</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">🔢 Spreadsheets, SQL &amp; Organization</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 023</span></p>
 <p>◀ <a class="reference internal" href="022-bigquery-account-types.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="024-organizing-data-for-personal-and-work-projects.html"><span class="doc">Next</span></a> ▶ · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="asking-a-database-a-question">
+<h2>Asking a database a question<a class="headerlink" href="#asking-a-database-a-question" title="Link to this heading">#</a></h2>
+<p>With a database environment in hand, the core skill is the <strong>query</strong> — an SQL
+statement that retrieves exactly the data you want. The foundations introduced
+SQL’s shape; this lesson is the hands-on core, the three clauses that answer the
+majority of real questions and the foundation everything later in the SQL thread
+builds on.</p>
+</section>
+<section id="the-essential-query">
+<h2>The essential query<a class="headerlink" href="#the-essential-query" title="Link to this heading">#</a></h2>
+<p>Every basic retrieval combines three clauses:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">orders</span>
+<span class="k">WHERE</span><span class="w">  </span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</pre></div>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/09/04/15229/">Source article</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code> names the <strong>columns</strong> to return. <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span></code> returns all columns;
+naming specific columns is tidier and, on large cloud warehouses, cheaper
+(you are billed for the columns scanned).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code> names the <strong>table</strong> the data comes from.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code> sets the <strong>condition</strong> rows must meet to be included — the filter,
+in query form.</p></li>
+</ul>
+<p>Read top to bottom, it is a sentence: <em>select</em> these columns <em>from</em> this table
+<em>where</em> this condition holds.</p>
+</section>
+<section id="building-up-the-where-clause">
+<h2>Building up the WHERE clause<a class="headerlink" href="#building-up-the-where-clause" title="Link to this heading">#</a></h2>
+<p>Most of a query’s power lives in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, which supports:</p>
+<ul class="simple">
+<li><p><strong>Comparisons</strong> — <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> (not equal), <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>:
+<code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">region</span> <span class="pre">=</span> <span class="pre">'North'</span></code>, <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">amount</span> <span class="pre">&gt;=</span> <span class="pre">50</span></code>.</p></li>
+<li><p><strong>Combinations</strong> — <code class="docutils literal notranslate"><span class="pre">AND</span></code> (both must hold), <code class="docutils literal notranslate"><span class="pre">OR</span></code> (either), <code class="docutils literal notranslate"><span class="pre">NOT</span></code>:
+<code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">region</span> <span class="pre">=</span> <span class="pre">'North'</span> <span class="pre">AND</span> <span class="pre">amount</span> <span class="pre">&gt;</span> <span class="pre">100</span></code>.</p></li>
+<li><p><strong>Ranges and sets</strong> — <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> for ranges, <code class="docutils literal notranslate"><span class="pre">IN</span></code> for lists:
+<code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">amount</span> <span class="pre">BETWEEN</span> <span class="pre">50</span> <span class="pre">AND</span> <span class="pre">200</span></code>, <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">region</span> <span class="pre">IN</span> <span class="pre">('North',</span> <span class="pre">'South')</span></code>.</p></li>
+<li><p><strong>Pattern matching</strong> — <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> with wildcards for text:
+<code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">product</span> <span class="pre">LIKE</span> <span class="pre">'Pro%'</span></code> (products starting with “Pro”).</p></li>
+</ul>
+</section>
+<section id="ordering-the-results">
+<h2>Ordering the results<a class="headerlink" href="#ordering-the-results" title="Link to this heading">#</a></h2>
+<p>A query can also sort its output with <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> — the SQL counterpart of the
+spreadsheet sort:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">orders</span>
+<span class="k">WHERE</span><span class="w">  </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;North&#39;</span>
+<span class="k">ORDER</span><span class="w">  </span><span class="k">BY</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">amount</span> <span class="pre">DESC</span></code> returns the rows largest-first; <code class="docutils literal notranslate"><span class="pre">ASC</span></code> (the default) is
+smallest-first. Filtering with <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> and ordering with <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> together
+are the SQL version of the spreadsheet’s filter-then-sort — the same analytical
+move, now at database scale.</p>
+</section>
+<section id="why-queries-beat-exporting">
+<h2>Why queries beat exporting<a class="headerlink" href="#why-queries-beat-exporting" title="Link to this heading">#</a></h2>
+<p>A query goes to the data where it lives, returns only what you asked for, and is
+<strong>text</strong> — repeatable, shareable, reviewable. Instead of exporting a million rows
+to a spreadsheet and filtering there, you ask the database for the thousand that
+matter. This is why SQL scales where spreadsheets strain, and why it is the most
+consistently demanded analyst skill.</p>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>A query returns exactly what you specify — which is not always what you meant.
+<code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">amount</span> <span class="pre">&gt;</span> <span class="pre">100</span></code> silently excludes rows where amount is <em>null</em> (missing),
+and no error warns you; a <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> pattern that is slightly off quietly returns
+the wrong rows. SQL’s precision demands precision from you, and the habit of
+<strong>checking results</strong> — does the row count look right, do sampled rows match
+expectations — applies to every query, exactly as the sanity-check habit applied
+to spreadsheet formulas. The deeper query techniques come in the analysis
+section; this is the foundation they extend.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="016-databases-and-relational-database-concepts.html"><span class="doc">Databases and Relational Database Concepts</span></a></p></li>
+<li><p><a class="reference internal" href="../1_foundations/022-the-concept-and-basic-use-of-sql-query-language.html"><span class="doc">The Concept and Basic Use of SQL (Query Language)</span></a></p></li>
+<li><p><a class="reference internal" href="022-bigquery-account-types.html"><span class="doc">BigQuery Account Types</span></a></p></li>
+<li><p><a class="reference internal" href="021-sorting-and-filtering-data-in-spreadsheets.html"><span class="doc">Sorting and Filtering Data in Spreadsheets</span></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/09/04/15229/">https://insightful-data-lab.com/2023/09/04/15229/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/prep.html"><span class="doc">prep</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/spreadsheets_sql.html"><span class="doc">spreadsheets_sql</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3614,23 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asking-a-database-a-question">Asking a database a question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-essential-query">The essential query</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-up-the-where-clause">Building up the WHERE clause</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-the-results">Ordering the results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-queries-beat-exporting">Why queries beat exporting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3687,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

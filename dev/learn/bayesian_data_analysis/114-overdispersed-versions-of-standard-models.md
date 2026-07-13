@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 114 of 144 · **advanced**
 
-[◀ Previous · Aspects of robustness](113-aspects-of-robustness.html) · [Next · Posterior inference and computation ▶](115-posterior-inference-and-computation.html)
+[◀ Previous · Aspects of robustness](113-aspects-of-robustness.html) · [Next · Posterior inference and computation ▶](115-posterior-inference-and-computation.html) · [↑ Section](index.html)
 
 ## Adding a tail to every likelihood[#](#adding-a-tail-to-every-likelihood "Link to this heading")
 
@@ -60,9 +60,9 @@ model **built** overdispersion from a normal error term, while the negative bino
 idea in closed form. Robustness, here, is just refusing to let a convenient distribution dictate how much
 your data are allowed to vary.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Aspects of robustness](113-aspects-of-robustness.html) · [Posterior inference and computation](115-posterior-inference-and-computation.html) · [Overdispersed Poisson regression for police stops](109-overdispersed-poisson-regression-for-police-stops.html) · [Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/overdispersed-versions-of-standard-models/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/overdispersed-versions-of-standard-models/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

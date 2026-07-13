@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 11 · 📈 Regression Foundations**** · Lesson 094 of 144 · **advanced**
 
-[◀ Previous · Regression for causal inference: incumbency and voting](093-regression-for-causal-inference-incumbency-and-voting.html) · [Next · Assembling the matrix of explanatory variables ▶](095-assembling-the-matrix-of-explanatory-variables.html)
+[◀ Previous · Regression for causal inference: incumbency and voting](093-regression-for-causal-inference-incumbency-and-voting.html) · [Next · Assembling the matrix of explanatory variables ▶](095-assembling-the-matrix-of-explanatory-variables.html) · [↑ Section](index.html)
 
 ## Three questions, one equation[#](#three-questions-one-equation "Link to this heading")
 
@@ -55,9 +55,9 @@ The purpose determines everything downstream:
 A model excellent for one goal can be worthless for another. The equation does not know which question
 you are asking; ****you must****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Conditional modeling](091-conditional-modeling.html) · [Regression for causal inference: incumbency and voting](093-regression-for-causal-inference-incumbency-and-voting.html) · [Assembling the matrix of explanatory variables](095-assembling-the-matrix-of-explanatory-variables.html) · [Model comparison based on predictive performance](046-model-comparison-based-on-predictive-performance.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/goals-of-regression-analysis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/goals-of-regression-analysis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

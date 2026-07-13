@@ -37,21 +37,22 @@ conversions isolate the ****causal effect**** of the treatment, which is why the
 
 ---
 
-****Mind map — connected ideas****
-
-> [Conversion Rate Uplift](067-conversion-rate-uplift.html) · [Treatment Effect](072-treatment-effect.html) · [Causal Effect](306-causal-effect.html) · [Incremental Revenue](193-incremental-revenue.html) · [Uplift](424-uplift.html) · [Causal Inference](117-causal-inference.html)
-
----
-
-****More in Causal Inference & Uplift****
-
-> [AUUC (Area Under the Uplift Curve)](396-auuc-area-under-the-uplift-curve.html) · [Causal Effect](306-causal-effect.html) · [Causal Impact](112-causal-impact.html) · [Causal Inference](117-causal-inference.html) · [Causal ML (Causal Machine Learning)](197-causal-ml-causal-machine-learning.html) · [Causal Trees](301-causal-trees.html) · [Cumulative Incremental Gain (CIG)](202-cumulative-incremental-gain-cig.html) · [Cumulative Uplift](198-cumulative-uplift.html) · [Incremental Gain](200-incremental-gain.html) · [Incremental Recovery Rate (IRR)](194-incremental-recovery-rate-irr.html) · [Incremental Revenue](193-incremental-revenue.html) · [Incremental Sales](195-incremental-sales.html) · [Qini Coefficient](397-qini-coefficient.html) · [Qini Curve](203-qini-curve.html)
-
----
-
 **Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Conversion Rate Uplift](067-conversion-rate-uplift.html) · [Treatment Effect](072-treatment-effect.html) · [Causal Effect](306-causal-effect.html) · [Incremental Revenue](193-incremental-revenue.html) · [Uplift](424-uplift.html) · [Causal Inference](117-causal-inference.html)
+
+---
+
+> **Hint**
+> ****More in Causal Inference & Uplift****
+
+[AUUC (Area Under the Uplift Curve)](396-auuc-area-under-the-uplift-curve.html) · [Causal Effect](306-causal-effect.html) · [Causal Impact](112-causal-impact.html) · [Causal Inference](117-causal-inference.html) · [Causal ML (Causal Machine Learning)](197-causal-ml-causal-machine-learning.html) · [Causal Trees](301-causal-trees.html) · [Cumulative Incremental Gain (CIG)](202-cumulative-incremental-gain-cig.html) · [Cumulative Uplift](198-cumulative-uplift.html) · [Incremental Gain](200-incremental-gain.html) · [Incremental Recovery Rate (IRR)](194-incremental-recovery-rate-irr.html) · [Incremental Revenue](193-incremental-revenue.html) · [Incremental Sales](195-incremental-sales.html) · [Qini Coefficient](397-qini-coefficient.html) · [Qini Curve](203-qini-curve.html)
 > **See also**
-> Adapted in our own words from [Incremental Conversions](https://insightful-data-lab.com/2025/08/19/incremental-conversions/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Incremental Conversions](https://insightful-data-lab.com/2025/08/19/incremental-conversions/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

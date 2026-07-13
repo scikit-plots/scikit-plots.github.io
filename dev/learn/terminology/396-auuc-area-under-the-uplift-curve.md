@@ -38,21 +38,22 @@ core metrics for evaluating uplift models.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Qini Coefficient](397-qini-coefficient.html) · [Uplift Curve](303-uplift-curve.html) · [Cumulative Incremental Gain (CIG)](202-cumulative-incremental-gain-cig.html) · [Total Incremental Benefit (TIB)](201-total-incremental-benefit-tib.html) · [Uplift Score](204-uplift-score.html) · [Uplift](424-uplift.html)
-
----
-
-****More in Causal Inference & Uplift****
-
-> [Causal Effect](306-causal-effect.html) · [Causal Impact](112-causal-impact.html) · [Causal Inference](117-causal-inference.html) · [Causal ML (Causal Machine Learning)](197-causal-ml-causal-machine-learning.html) · [Causal Trees](301-causal-trees.html) · [Cumulative Incremental Gain (CIG)](202-cumulative-incremental-gain-cig.html) · [Cumulative Uplift](198-cumulative-uplift.html) · [Incremental Conversions](394-incremental-conversions.html) · [Incremental Gain](200-incremental-gain.html) · [Incremental Recovery Rate (IRR)](194-incremental-recovery-rate-irr.html) · [Incremental Revenue](193-incremental-revenue.html) · [Incremental Sales](195-incremental-sales.html) · [Qini Coefficient](397-qini-coefficient.html) · [Qini Curve](203-qini-curve.html)
-
----
-
 **Theme:** [Causal Inference & Uplift](index.html#term-theme-causal)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Qini Coefficient](397-qini-coefficient.html) · [Uplift Curve](303-uplift-curve.html) · [Cumulative Incremental Gain (CIG)](202-cumulative-incremental-gain-cig.html) · [Total Incremental Benefit (TIB)](201-total-incremental-benefit-tib.html) · [Uplift Score](204-uplift-score.html) · [Uplift](424-uplift.html)
+
+---
+
+> **Hint**
+> ****More in Causal Inference & Uplift****
+
+[Causal Effect](306-causal-effect.html) · [Causal Impact](112-causal-impact.html) · [Causal Inference](117-causal-inference.html) · [Causal ML (Causal Machine Learning)](197-causal-ml-causal-machine-learning.html) · [Causal Trees](301-causal-trees.html) · [Cumulative Incremental Gain (CIG)](202-cumulative-incremental-gain-cig.html) · [Cumulative Uplift](198-cumulative-uplift.html) · [Incremental Conversions](394-incremental-conversions.html) · [Incremental Gain](200-incremental-gain.html) · [Incremental Recovery Rate (IRR)](194-incremental-recovery-rate-irr.html) · [Incremental Revenue](193-incremental-revenue.html) · [Incremental Sales](195-incremental-sales.html) · [Qini Coefficient](397-qini-coefficient.html) · [Qini Curve](203-qini-curve.html)
 > **See also**
-> Adapted in our own words from [AUUC (Area Under the Uplift Curve)](https://insightful-data-lab.com/2025/08/19/auuc-area-under-the-uplift-curve/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [AUUC (Area Under the Uplift Curve)](https://insightful-data-lab.com/2025/08/19/auuc-area-under-the-uplift-curve/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -25,21 +25,22 @@ columns****, or you’ll shuffle one field out of alignment with the rest and si
 
 ---
 
-****Mind map — connected ideas****
-
-> [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html) · [Outlier](307-outlier.html) · [Correlation](305-correlation.html) · [Median](315-median.html)
-
----
-
-****More in Data Preparation & Features****
-
-> [Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html)
-
----
-
 **Theme:** [Data Preparation & Features](index.html#term-theme-features)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html) · [Outlier](307-outlier.html) · [Correlation](305-correlation.html) · [Median](315-median.html)
+
+---
+
+> **Hint**
+> ****More in Data Preparation & Features****
+
+[Encode (in Feature Engineering)](318-encode-in-feature-engineering.html) · [Normalize (in Feature Engineering)](319-normalize-in-feature-engineering.html) · [Sensitivity in Feature Engineering](317-sensitivity-in-feature-engineering.html)
 > **See also**
-> Adapted in our own words from [Advanced Sorting in Spreadsheets](https://insightful-data-lab.com/2023/11/26/advanced-sorting-in-spreadsheets/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Advanced Sorting in Spreadsheets](https://insightful-data-lab.com/2023/11/26/advanced-sorting-in-spreadsheets/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

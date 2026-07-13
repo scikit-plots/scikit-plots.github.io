@@ -2,7 +2,7 @@
 
 ****Stage 5 · 📈 Regression**** · Lesson 35 of 56 · **intermediate**
 
-[◀ Previous · Forward Selection: Definition and Core Idea](34-forward-selection-definition-and-core-idea.html) · [Next · Understanding Forward and Backward Stepwise Regression ▶](36-understanding-forward-and-backward-stepwise-regression.html)
+[◀ Previous · Forward Selection: Definition and Core Idea](34-forward-selection-definition-and-core-idea.html) · [Next · Understanding Forward and Backward Stepwise Regression ▶](36-understanding-forward-and-backward-stepwise-regression.html) · [↑ Section](index.html)
 
 ## Building the model[#](#building-the-model "Link to this heading")
 
@@ -37,9 +37,9 @@ repeatedly testing many features inflates apparent significance, so p-values fro
 others fixed), but the honest test of the model is its performance on the ****held-out**** data, not the
 selection statistics.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Forward Selection: Definition and Core Idea](34-forward-selection-definition-and-core-idea.html) · [Understanding Forward and Backward Stepwise Regression](36-understanding-forward-and-backward-stepwise-regression.html) · [Multiple Linear Regression](32-multiple-linear-regression.html) · [How Shapley Values Work](37-how-shapley-values-work.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/forward-selection-and-model-interpretation-in-linear-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/forward-selection-and-model-interpretation-in-linear-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

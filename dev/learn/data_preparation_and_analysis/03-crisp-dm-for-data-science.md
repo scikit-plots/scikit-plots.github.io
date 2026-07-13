@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 03 of 56 · **beginner**
 
-[◀ Previous · The Process of Data Analysis](02-the-process-of-data-analysis.html) · [Next · Big Data: Definition, Characteristics, Evolution, and Business Impact ▶](04-big-data-definition-characteristics-evolution-and-business-impact.html)
+[◀ Previous · The Process of Data Analysis](02-the-process-of-data-analysis.html) · [Next · Big Data: Definition, Characteristics, Evolution, and Business Impact ▶](04-big-data-definition-characteristics-evolution-and-business-impact.html) · [↑ Section](index.html)
 
 ## A shared blueprint[#](#a-shared-blueprint "Link to this heading")
 
@@ -35,9 +35,9 @@ you back to preparation, evaluation back to business understanding — and an ou
 finished project to the start as new questions emerge. The framework’s real lesson is that data work
 is ****iterative****: you revisit earlier phases as later ones teach you what you missed.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The Process of Data Analysis](02-the-process-of-data-analysis.html) · [Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Partitioning Observations to Train Objective Models](25-partitioning-observations-to-train-objective-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/crisp-dm-for-data-science/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/crisp-dm-for-data-science/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

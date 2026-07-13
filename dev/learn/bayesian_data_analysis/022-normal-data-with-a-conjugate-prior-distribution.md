@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 3 · 🧮 Multiparameter Models**** · Lesson 022 of 144 · **beginner**
 
-[◀ Previous · Normal Data with a Noninformative Prior Distribution](021-normal-data-with-a-noninformative-prior-distribution.html) · [Next · Multinomial Model for Categorical Data ▶](023-multinomial-model-for-categorical-data.html)
+[◀ Previous · Normal Data with a Noninformative Prior Distribution](021-normal-data-with-a-noninformative-prior-distribution.html) · [Next · Multinomial Model for Categorical Data ▶](023-multinomial-model-for-categorical-data.html) · [↑ Section](index.html)
 
 ## Prior information on both[#](#prior-information-on-both "Link to this heading")
 
@@ -57,9 +57,9 @@ belief about the mean is expressed in units of the unknown variance. If that dep
 something you actually believe, the conjugate family is buying convenience at the price of realism, and
 a non-conjugate prior fitted by MCMC is the more honest route.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Normal Data with a Noninformative Prior Distribution](021-normal-data-with-a-noninformative-prior-distribution.html) · [Informative Prior Distributions](014-informative-prior-distributions.html) · [Normal Distribution with Known Variance](015-normal-distribution-with-known-variance.html) · [Multivariate Normal with Unknown Mean and Variance](025-multivariate-normal-with-unknown-mean-and-variance.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/normal-data-with-a-conjugate-prior-distribution/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/normal-data-with-a-conjugate-prior-distribution/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

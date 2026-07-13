@@ -24,21 +24,22 @@ decision****, so probabilities are validated with calibration curves, not just a
 
 ---
 
-****Mind map — connected ideas****
-
-> [Binary Classification](293-binary-classification.html) · [Log-Odds](295-log-odds.html) · [Sigmoid Function](297-sigmoid-function.html) · [Logistic Regression](292-logistic-regression.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Multiclass AUROC](022-multiclass-auroc.html)
-
----
-
-****More in Classification & Averaging Metrics****
-
-> [Accuracy](323-accuracy.html) · [AUC (Area Under the Curve)](371-auc-area-under-the-curve.html) · [Average Precision (AP)](366-average-precision-ap.html) · [Binary Classification](293-binary-classification.html) · [Discriminatory Power](185-discriminatory-power.html) · [F1-score](363-f1-score.html) · [Gini Coefficient](023-gini-coefficient.html) · [Harmonic Mean](362-harmonic-mean.html) · [Log Loss (also called Logarithmic Loss or Cross-Entropy Loss)](417-log-loss-also-called-logarithmic-loss-or-cross-e.html) · [Macro AUC](314-macro-auc.html) · [Macro AUROC (Macro-Averaged AUROC)](018-macro-auroc-macro-averaged-auroc.html) · [Macro Averaging](370-macro-averaging.html) · [Macro F1](019-macro-f1.html) · [Macro Precision](021-macro-precision.html)
-
----
-
 **Theme:** [Classification & Averaging Metrics](index.html#term-theme-metrics)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Binary Classification](293-binary-classification.html) · [Log-Odds](295-log-odds.html) · [Sigmoid Function](297-sigmoid-function.html) · [Logistic Regression](292-logistic-regression.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Multiclass AUROC](022-multiclass-auroc.html)
+
+---
+
+> **Hint**
+> ****More in Classification & Averaging Metrics****
+
+[Accuracy](323-accuracy.html) · [AUC (Area Under the Curve)](371-auc-area-under-the-curve.html) · [Average Precision (AP)](366-average-precision-ap.html) · [Binary Classification](293-binary-classification.html) · [Discriminatory Power](185-discriminatory-power.html) · [F1-score](363-f1-score.html) · [Gini Coefficient](023-gini-coefficient.html) · [Harmonic Mean](362-harmonic-mean.html) · [Log Loss (also called Logarithmic Loss or Cross-Entropy Loss)](417-log-loss-also-called-logarithmic-loss-or-cross-e.html) · [Macro AUC](314-macro-auc.html) · [Macro AUROC (Macro-Averaged AUROC)](018-macro-auroc-macro-averaged-auroc.html) · [Macro Averaging](370-macro-averaging.html) · [Macro F1](019-macro-f1.html) · [Macro Precision](021-macro-precision.html)
 > **See also**
-> Adapted in our own words from [Classification Probability](https://insightful-data-lab.com/2025/08/23/classification-probability/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Classification Probability](https://insightful-data-lab.com/2025/08/23/classification-probability/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

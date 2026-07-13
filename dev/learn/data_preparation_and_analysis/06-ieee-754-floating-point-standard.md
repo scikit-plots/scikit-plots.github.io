@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 06 of 56 · **beginner**
 
-[◀ Previous · The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Next · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022) ▶](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html)
+[◀ Previous · The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Next · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022) ▶](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html) · [↑ Section](index.html)
 
 ## Storing real numbers[#](#storing-real-numbers "Link to this heading")
 
@@ -37,9 +37,9 @@ formulations. And know the ****special values**** the standard defines — posit
 and `NaN` (not-a-number) — because `NaN` in particular is how missing or undefined numeric results
 surface throughout `pandas`.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Big Data: Definition, Characteristics, Evolution, and Business Impact](04-big-data-definition-characteristics-evolution-and-business-impact.html) · [Least Squares Regression](31-least-squares-regression.html) · [Correlation Coefficients in Python (Pearson, Spearman, Kendall)](12-correlation-coefficients-in-python-pearson-spearman-kendall.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/ieee-754-floating-point-standard/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/ieee-754-floating-point-standard/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

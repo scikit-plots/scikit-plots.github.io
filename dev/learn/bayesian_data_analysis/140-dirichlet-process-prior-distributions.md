@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 140 of 144 · **advanced**
 
-[◀ Previous · Bayesian histograms](139-bayesian-histograms.html) · [Next · Dirichlet process mixtures ▶](141-dirichlet-process-mixtures.html)
+[◀ Previous · Bayesian histograms](139-bayesian-histograms.html) · [Next · Dirichlet process mixtures ▶](141-dirichlet-process-mixtures.html) · [↑ Section](index.html)
 
 ## A prior over distributions[#](#a-prior-over-distributions "Link to this heading")
 
@@ -61,9 +61,9 @@ posteriori, growing gracefully as more data arrive. What remains is to attach a 
 component — placing a smooth kernel at each atom \(\theta\_k\) — which is the ****Dirichlet process
 mixture**** of the next lesson, the workhorse of nonparametric density estimation and clustering.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Unspecified number of mixture components](137-unspecified-number-of-mixture-components.html) · [Dirichlet process mixtures](141-dirichlet-process-mixtures.html) · [Bayesian histograms](139-bayesian-histograms.html) · [Bayesian analysis of conjugate hierarchical models](035-bayesian-analysis-of-conjugate-hierarchical-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/13/dirichlet-process-prior-distributions/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/13/dirichlet-process-prior-distributions/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

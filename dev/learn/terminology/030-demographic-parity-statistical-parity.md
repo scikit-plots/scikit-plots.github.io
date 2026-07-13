@@ -60,21 +60,22 @@ dpr = demographic_parity_ratio(y_true, y_pred, sensitive_features=A)
 
 ---
 
-****Mind map — connected ideas****
-
-> [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html)
-
----
-
-****More in Fairness & Calibration****
-
-> [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Fairness parity](372-fairness-parity.html) · [Four-Fifths (80%) Rule](189-four-fifths-80-rule.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Selection Rate](390-selection-rate.html)
-
----
-
 **Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html)
+
+---
+
+> **Hint**
+> ****More in Fairness & Calibration****
+
+[Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Fairness parity](372-fairness-parity.html) · [Four-Fifths (80%) Rule](189-four-fifths-80-rule.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Selection Rate](390-selection-rate.html)
 > **See also**
-> Adapted in our own words from [Demographic Parity (Statistical Parity)](https://insightful-data-lab.com/2025/08/29/demographic-parity-statistical-parity/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Demographic Parity (Statistical Parity)](https://insightful-data-lab.com/2025/08/29/demographic-parity-statistical-parity/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -47,21 +47,22 @@ positive-outcome rates across groups.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Demographic Parity (Statistical Parity)](030-demographic-parity-statistical-parity.html) · [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Discriminatory Power](185-discriminatory-power.html) · [Statistical Significance](096-statistical-significance.html)
-
----
-
-****More in Fairness & Calibration****
-
-> [Demographic Parity (Statistical Parity)](030-demographic-parity-statistical-parity.html) · [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Fairness parity](372-fairness-parity.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Selection Rate](390-selection-rate.html)
-
----
-
 **Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Demographic Parity (Statistical Parity)](030-demographic-parity-statistical-parity.html) · [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Discriminatory Power](185-discriminatory-power.html) · [Statistical Significance](096-statistical-significance.html)
+
+---
+
+> **Hint**
+> ****More in Fairness & Calibration****
+
+[Demographic Parity (Statistical Parity)](030-demographic-parity-statistical-parity.html) · [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Fairness parity](372-fairness-parity.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Selection Rate](390-selection-rate.html)
 > **See also**
-> Adapted in our own words from [Four-Fifths (80%) Rule](https://insightful-data-lab.com/2025/08/23/four-fifths-80-rule/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Four-Fifths (80%) Rule](https://insightful-data-lab.com/2025/08/23/four-fifths-80-rule/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -24,21 +24,22 @@ Fewer needless escalations means fewer review minutes, so ****precision**** and 
 
 ---
 
-****Mind map — connected ideas****
-
-> [Inference Cost (Inference $)](385-inference-cost-inference.html) · [Compute budgets](383-compute-budgets.html) · [Precision (a.k.a. Positive Predictive Value, PPV)](429-precision-a-k-a-positive-predictive-value-ppv.html) · [Selection Rate](390-selection-rate.html) · [Latency Guardrails](350-latency-guardrails.html) · [Cloud Inference](153-cloud-inference.html)
-
----
-
-****More in MLOps, Serving & Monitoring****
-
-> [AWS SageMaker Endpoints](151-aws-sagemaker-endpoints.html) · [Caching](342-caching.html) · [Cloud Inference](153-cloud-inference.html) · [Cloud Inference with Big Payloads](152-cloud-inference-with-big-payloads.html) · [Compute budgets](383-compute-budgets.html) · [Continuous Retraining](161-continuous-retraining.html) · [Feature Values](188-feature-values.html) · [Guardrails (in ML & Data Systems)](166-guardrails-in-ml-data-systems.html) · [Inference Cost (Inference $)](385-inference-cost-inference.html) · [Latency Guardrails](350-latency-guardrails.html) · [Model KPIs (Key Performance Indicators)](167-model-kpis-key-performance-indicators.html) · [Model Stability](187-model-stability.html) · [Monitoring Pipelines](162-monitoring-pipelines.html) · [Ops Health Dashboard](206-ops-health-dashboard.html)
-
----
-
 **Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Inference Cost (Inference $)](385-inference-cost-inference.html) · [Compute budgets](383-compute-budgets.html) · [Precision (a.k.a. Positive Predictive Value, PPV)](429-precision-a-k-a-positive-predictive-value-ppv.html) · [Selection Rate](390-selection-rate.html) · [Latency Guardrails](350-latency-guardrails.html) · [Cloud Inference](153-cloud-inference.html)
+
+---
+
+> **Hint**
+> ****More in MLOps, Serving & Monitoring****
+
+[AWS SageMaker Endpoints](151-aws-sagemaker-endpoints.html) · [Caching](342-caching.html) · [Cloud Inference](153-cloud-inference.html) · [Cloud Inference with Big Payloads](152-cloud-inference-with-big-payloads.html) · [Compute budgets](383-compute-budgets.html) · [Continuous Retraining](161-continuous-retraining.html) · [Feature Values](188-feature-values.html) · [Guardrails (in ML & Data Systems)](166-guardrails-in-ml-data-systems.html) · [Inference Cost (Inference $)](385-inference-cost-inference.html) · [Latency Guardrails](350-latency-guardrails.html) · [Model KPIs (Key Performance Indicators)](167-model-kpis-key-performance-indicators.html) · [Model Stability](187-model-stability.html) · [Monitoring Pipelines](162-monitoring-pipelines.html) · [Ops Health Dashboard](206-ops-health-dashboard.html)
 > **See also**
-> Adapted in our own words from [Manual review minutes](https://insightful-data-lab.com/2025/08/19/manual-review-minutes/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Manual review minutes](https://insightful-data-lab.com/2025/08/19/manual-review-minutes/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

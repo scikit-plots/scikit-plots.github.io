@@ -28,21 +28,22 @@ sigmoid-shaped, a more flexible method like ****isotonic regression**** fits bet
 
 ---
 
-****Mind map — connected ideas****
-
-> [Temperature Scaling](279-temperature-scaling.html) · [Isotonic Regression](281-isotonic-regression.html) · [Sigmoid Function](297-sigmoid-function.html) · [Logistic Regression](292-logistic-regression.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Confidence Level](285-confidence-level.html)
-
----
-
-****More in Probability Calibration****
-
-> [Adaptive ECE (Expected Calibration Error with Adaptive Binning)](275-adaptive-ece-expected-calibration-error-with-ada.html) · [Brier Score](418-brier-score.html) · [Calibration quality (Model Calibration)](419-calibration-quality-model-calibration.html) · [Expected Calibration Error (ECE)](415-expected-calibration-error-ece.html) · [Isotonic Regression](281-isotonic-regression.html) · [Maximum Calibration Error (MCE)](276-maximum-calibration-error-mce.html) · [Murphy’s Decomposition](278-murphy-s-decomposition.html) · [Overconfident](284-overconfident.html) · [Reliability Curves (also called Calibration Curves)](416-reliability-curves-also-called-calibration-curve.html) · [Temperature Scaling](279-temperature-scaling.html) · [Underconfident](283-underconfident.html)
-
----
-
 **Theme:** [Probability Calibration](index.html#term-theme-calibration)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Temperature Scaling](279-temperature-scaling.html) · [Isotonic Regression](281-isotonic-regression.html) · [Sigmoid Function](297-sigmoid-function.html) · [Logistic Regression](292-logistic-regression.html) · [Support Vector Machines (SVMs)](282-support-vector-machines-svms.html) · [Confidence Level](285-confidence-level.html)
+
+---
+
+> **Hint**
+> ****More in Probability Calibration****
+
+[Adaptive ECE (Expected Calibration Error with Adaptive Binning)](275-adaptive-ece-expected-calibration-error-with-ada.html) · [Brier Score](418-brier-score.html) · [Calibration quality (Model Calibration)](419-calibration-quality-model-calibration.html) · [Expected Calibration Error (ECE)](415-expected-calibration-error-ece.html) · [Isotonic Regression](281-isotonic-regression.html) · [Maximum Calibration Error (MCE)](276-maximum-calibration-error-mce.html) · [Murphy’s Decomposition](278-murphy-s-decomposition.html) · [Overconfident](284-overconfident.html) · [Reliability Curves (also called Calibration Curves)](416-reliability-curves-also-called-calibration-curve.html) · [Temperature Scaling](279-temperature-scaling.html) · [Underconfident](283-underconfident.html)
 > **See also**
-> Adapted in our own words from [Platt Scaling](https://insightful-data-lab.com/2025/08/21/platt-scaling/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Platt Scaling](https://insightful-data-lab.com/2025/08/21/platt-scaling/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

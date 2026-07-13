@@ -62,12 +62,12 @@ brand — are hard to measure, which makes them easy to ignore in a numbers-only
 culture. The best practitioners treat data as the strongest voice at the table,
 not the only one.
 
-> **See also**
+> **Hint**
 > * [Why Data Analytics Matters Today](001-why-data-analytics-matters-today.html)
 * [Detectives and Data Analysts](004-detectives-and-data-analysts.html)
 * [Data-Driven Decision-Making and the Role of Analytical Skills](018-data-driven-decision-making-and-the-role-of-analytical-skills.html)
 * [Quantitative and Qualitative Data in Decision-Making](../2_data_driven_decisions/006-quantitative-and-qualitative-data-in-decision-making.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/data-driven-decision-making/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/data-driven-decision-making/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [why](../../../_tags/why.html)

@@ -1,6 +1,6 @@
 # WorkflowPaths[#](#workflowpaths "Link to this heading")
 
-class scikitplot.mlflow.WorkflowPaths(**\_project\_root**, **\_config\_dir**, **\_toml\_path**, **\_yaml\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/mlflow/_workflow.py#L35)[#](#scikitplot.mlflow.WorkflowPaths "Link to this definition")
+class scikitplot.mlflow.WorkflowPaths(**\_project\_root**, **\_config\_dir**, **\_toml\_path**, **\_yaml\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/mlflow/_workflow.py#L35)[#](#scikitplot.mlflow.WorkflowPaths "Link to this definition")
 :   Standardized project config paths used by the workflow.
 
     Attributes:

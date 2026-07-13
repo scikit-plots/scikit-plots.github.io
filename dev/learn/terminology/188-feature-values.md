@@ -35,21 +35,22 @@ everything downstream, ****data quality****, ****scaling**** (so no variable dom
 
 ---
 
-****Mind map — connected ideas****
-
-> [Hyperparameter](142-hyperparameter.html) · [Model Weights](155-model-weights.html) · [Embedding](173-embedding.html) · [Cardinality in Categorical Data](178-cardinality-in-categorical-data.html) · [Machine Learning (ML)](144-machine-learning-ml.html) · [Model Stability](187-model-stability.html)
-
----
-
-****More in MLOps, Serving & Monitoring****
-
-> [AWS SageMaker Endpoints](151-aws-sagemaker-endpoints.html) · [Caching](342-caching.html) · [Cloud Inference](153-cloud-inference.html) · [Cloud Inference with Big Payloads](152-cloud-inference-with-big-payloads.html) · [Compute budgets](383-compute-budgets.html) · [Continuous Retraining](161-continuous-retraining.html) · [Guardrails (in ML & Data Systems)](166-guardrails-in-ml-data-systems.html) · [Inference Cost (Inference $)](385-inference-cost-inference.html) · [Latency Guardrails](350-latency-guardrails.html) · [Manual review minutes](384-manual-review-minutes.html) · [Model KPIs (Key Performance Indicators)](167-model-kpis-key-performance-indicators.html) · [Model Stability](187-model-stability.html) · [Monitoring Pipelines](162-monitoring-pipelines.html) · [Ops Health Dashboard](206-ops-health-dashboard.html)
-
----
-
 **Theme:** [MLOps, Serving & Monitoring](index.html#term-theme-mlops)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Hyperparameter](142-hyperparameter.html) · [Model Weights](155-model-weights.html) · [Embedding](173-embedding.html) · [Cardinality in Categorical Data](178-cardinality-in-categorical-data.html) · [Machine Learning (ML)](144-machine-learning-ml.html) · [Model Stability](187-model-stability.html)
+
+---
+
+> **Hint**
+> ****More in MLOps, Serving & Monitoring****
+
+[AWS SageMaker Endpoints](151-aws-sagemaker-endpoints.html) · [Caching](342-caching.html) · [Cloud Inference](153-cloud-inference.html) · [Cloud Inference with Big Payloads](152-cloud-inference-with-big-payloads.html) · [Compute budgets](383-compute-budgets.html) · [Continuous Retraining](161-continuous-retraining.html) · [Guardrails (in ML & Data Systems)](166-guardrails-in-ml-data-systems.html) · [Inference Cost (Inference $)](385-inference-cost-inference.html) · [Latency Guardrails](350-latency-guardrails.html) · [Manual review minutes](384-manual-review-minutes.html) · [Model KPIs (Key Performance Indicators)](167-model-kpis-key-performance-indicators.html) · [Model Stability](187-model-stability.html) · [Monitoring Pipelines](162-monitoring-pipelines.html) · [Ops Health Dashboard](206-ops-health-dashboard.html)
 > **See also**
-> Adapted in our own words from [Feature Values](https://insightful-data-lab.com/2025/08/23/feature-values/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Feature Values](https://insightful-data-lab.com/2025/08/23/feature-values/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 2 · 📍 Single-Parameter Models & Priors**** · Lesson 013 of 144 · **beginner**
 
-[◀ Previous · Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Next · Informative Prior Distributions ▶](014-informative-prior-distributions.html)
+[◀ Previous · Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Next · Informative Prior Distributions ▶](014-informative-prior-distributions.html) · [↑ Section](index.html)
 
 ## The posterior is the answer[#](#the-posterior-is-the-answer "Link to this heading")
 
@@ -52,9 +52,9 @@ probability :math:`theta` lies in this range”** — precisely what a frequenti
 does ****not**** license. But do not let the summary replace the distribution: plot the posterior, and
 report the probability of the hypotheses you actually care about, which the draws give directly.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Estimating a Probability from Binomial Data](011-estimating-a-probability-from-binomial-data.html) · [Bayesian Inference](003-bayesian-inference.html) · [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/summarizing-posterior-inference/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/summarizing-posterior-inference/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

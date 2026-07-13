@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 15 · 🌊 Basis Functions & Gaussian Processes**** · Lesson 129 of 144 · **advanced**
 
-[◀ Previous · Non-normal models and regression surfaces](128-non-normal-models-and-regression-surfaces.html) · [Next · Example: birthdays and birthdates ▶](130-example-birthdays-and-birthdates.html)
+[◀ Previous · Non-normal models and regression surfaces](128-non-normal-models-and-regression-surfaces.html) · [Next · Example: birthdays and birthdates ▶](130-example-birthdays-and-birthdates.html) · [↑ Section](index.html)
 
 ## A prior over functions[#](#a-prior-over-functions "Link to this heading")
 
@@ -58,9 +58,9 @@ approximations (the previous lesson, in reverse) are the standard escapes. What 
 nonparametric flexibility with calibrated uncertainty — a curve that adapts to the data and honestly
 reports where it cannot.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Non-normal models and regression surfaces](128-non-normal-models-and-regression-surfaces.html) · [Example: birthdays and birthdates](130-example-birthdays-and-birthdates.html) · [Latent Gaussian process models](131-latent-gaussian-process-models.html) · [Splines and weighted sums of basis functions](126-splines-and-weighted-sums-of-basis-functions.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/gaussian-process-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/gaussian-process-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

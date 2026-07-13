@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔗 Associations & Correlation**** · Lesson 07 of 56 · **beginner**
 
-[◀ Previous · IEEE 754 Floating-Point Standard](06-ieee-754-floating-point-standard.html) · [Next · Taxi Trips – 2022 dataset from the City of Chicago open data portal ▶](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html)
+[◀ Previous · IEEE 754 Floating-Point Standard](06-ieee-754-floating-point-standard.html) · [Next · Taxi Trips – 2022 dataset from the City of Chicago open data portal ▶](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · [↑ Section](index.html)
 
 ## Things that move together[#](#things-that-move-together "Link to this heading")
 
@@ -32,9 +32,9 @@ because one drives the other, because a third factor drives both, or by pure coi
 strong association tells you the variables are ****related****, not ****why**** — a distinction that matters
 the moment anyone tries to act on the finding.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Taxi Trips – 2022 dataset from the City of Chicago open data portal](08-taxi-trips-2022-dataset-from-the-city-of-chicago-open-data-portal.html) · [Measuring Associations in Data](10-measuring-associations-in-data.html) · [Measuring Associations Between Two Continuous Variables](11-measuring-associations-between-two-continuous-variables.html) · [Correlation Coefficients in Python (Pearson, Spearman, Kendall)](12-correlation-coefficients-in-python-pearson-spearman-kendall.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

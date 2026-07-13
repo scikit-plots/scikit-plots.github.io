@@ -54,21 +54,22 @@ outputs = session.run(None, {"input": input_array})
 
 ---
 
-****Mind map — connected ideas****
-
-> [Quantization](343-quantization.html) · [Caching](342-caching.html) · [Neural Networks](287-neural-networks.html) · [TPU Clusters](347-tpu-clusters.html) · [Latency Guardrails](350-latency-guardrails.html) · [Monitoring Pipelines](162-monitoring-pipelines.html)
-
----
-
-****More in ML Platforms & Tools****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
-
----
-
 **Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Quantization](343-quantization.html) · [Caching](342-caching.html) · [Neural Networks](287-neural-networks.html) · [TPU Clusters](347-tpu-clusters.html) · [Latency Guardrails](350-latency-guardrails.html) · [Monitoring Pipelines](162-monitoring-pipelines.html)
+
+---
+
+> **Hint**
+> ****More in ML Platforms & Tools****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [Google Experiments](100-google-experiments.html) · [Kaggle](273-kaggle.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
 > **See also**
-> Adapted in our own words from [ONNX (Open Neural Network Exchange)](https://insightful-data-lab.com/2025/08/20/onnx-open-neural-network-exchange/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [ONNX (Open Neural Network Exchange)](https://insightful-data-lab.com/2025/08/20/onnx-open-neural-network-exchange/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

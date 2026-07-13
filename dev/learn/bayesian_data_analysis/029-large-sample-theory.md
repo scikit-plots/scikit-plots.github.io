@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 4 · 📏 Asymptotics & Frequentist Ties**** · Lesson 029 of 144 · **beginner**
 
-[◀ Previous · Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Next · Counterexamples to large-sample (asymptotic) Bayesian theorems ▶](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html)
+[◀ Previous · Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Next · Counterexamples to large-sample (asymptotic) Bayesian theorems ▶](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html) · [↑ Section](index.html)
 
 ## What happens as data pile up[#](#what-happens-as-data-pile-up "Link to this heading")
 
@@ -59,9 +59,9 @@ becomes normal around the best-fitting parameter, but its variance is ****no lon
 information — so credible intervals lose their coverage guarantee. The next lesson collects the cases
 where these conditions break.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Normal Approximations to the Posterior Distribution](028-normal-approximations-to-the-posterior-distribution.html) · [Counterexamples to large-sample (asymptotic) Bayesian theorems](030-counterexamples-to-large-sample-asymptotic-bayesian-theorems.html) · [Posterior as a Compromise Between Data and Prior Information](012-posterior-as-a-compromise-between-data-and-prior-information.html) · [Frequency Evaluations of Bayesian Inferences](031-frequency-evaluations-of-bayesian-inferences.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/large-sample-theory/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/large-sample-theory/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

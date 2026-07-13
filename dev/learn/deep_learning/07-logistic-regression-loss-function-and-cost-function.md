@@ -2,7 +2,7 @@
 
 ****Stage 2 · 🔵 Logistic Regression as a Neuron**** · Lesson 07 of 17 · **beginner**
 
-[◀ Previous · Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · [Next · Gradient Descent in Logistic Regression ▶](08-gradient-descent-in-logistic-regression.html)
+[◀ Previous · Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · [Next · Gradient Descent in Logistic Regression ▶](08-gradient-descent-in-logistic-regression.html) · [↑ Section](index.html)
 
 ## Measuring one prediction[#](#measuring-one-prediction "Link to this heading")
 
@@ -41,9 +41,9 @@ Loss scores ****one**** example; the ****cost function**** averages it over ****
 ****Loss is per-example; cost is the whole-set average.**** Training means finding the
 \(\mathbf{w}, b\) that ****minimise**** \(J\) — the job of the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · [Gradient Descent in Logistic Regression](08-gradient-descent-in-logistic-regression.html) · [Logistic Regression Gradient Descent](13-logistic-regression-gradient-descent.html) · [Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/logistic-regression-loss-function-and-cost-function/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/logistic-regression-loss-function-and-cost-function/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: beginner](../../_tags/level-beginner.html)

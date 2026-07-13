@@ -1,6 +1,6 @@
 # sheet\_to\_note[#](#sheet-to-note "Link to this heading")
 
-scikitplot.experimental.\_doremi.sheet\_to\_note(**sheet**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/experimental/_doremi/note.py#L250)[#](#scikitplot.experimental._doremi.sheet_to_note "Link to this definition")
+scikitplot.experimental.\_doremi.sheet\_to\_note(**sheet**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/experimental/_doremi/note.py#L250)[#](#scikitplot.experimental._doremi.sheet_to_note "Link to this definition")
 :   Convert input sheet (str/list/dict) to a list of (note, octave, duration).
 
     Parameters:

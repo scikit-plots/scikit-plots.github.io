@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 55 of 56 · **advanced**
 
-[◀ Previous · Identifying Outliers Using Residuals and Studentized Residuals](54-identifying-outliers-using-residuals-and-studentized-residuals.html) · [Next · Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value ▶](56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value.html)
+[◀ Previous · Identifying Outliers Using Residuals and Studentized Residuals](54-identifying-outliers-using-residuals-and-studentized-residuals.html) · [Next · Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value ▶](56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value.html) · [↑ Section](index.html)
 
 ## Every threshold at once[#](#every-threshold-at-once "Link to this heading")
 
@@ -41,9 +41,9 @@ operating point, and AUC says nothing about whether the probabilities are ****ca
 pick the ranker; use the threshold lesson to pick the cutoff; and, when only the top of the ranking
 will ever be acted on, use the ****lift**** analysis of the final lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value](56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value.html) · [Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/auc-roc-curve-evaluating-classification-model-performance/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/auc-roc-curve-evaluating-classification-model-performance/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

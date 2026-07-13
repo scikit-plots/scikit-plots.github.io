@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 11 · 📈 Regression Foundations**** · Lesson 096 of 144 · **advanced**
 
-[◀ Previous · Assembling the matrix of explanatory variables](095-assembling-the-matrix-of-explanatory-variables.html) · [Next · Unequal variances and correlations ▶](097-unequal-variances-and-correlations.html)
+[◀ Previous · Assembling the matrix of explanatory variables](095-assembling-the-matrix-of-explanatory-variables.html) · [Next · Unequal variances and correlations ▶](097-unequal-variances-and-correlations.html) · [↑ Section](index.html)
 
 ## When there are too many predictors[#](#when-there-are-too-many-predictors "Link to this heading")
 
@@ -58,9 +58,9 @@ buying stability with interpretability. Whatever the route, one caution: ****reg
 and a prior distorts causal estimands. Shrink the nuisance coefficients; leave the effect you came to
 measure weakly informative, so the data — not the penalty — determine it.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian interpretations of other statistical methods](032-bayesian-interpretations-of-other-statistical-methods.html) · [Assembling the matrix of explanatory variables](095-assembling-the-matrix-of-explanatory-variables.html) · [Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Basis selection and shrinkage of coeﬃcients](127-basis-selection-and-shrinkage-of-coefficients.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/regularization-and-dimension-reduction/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/regularization-and-dimension-reduction/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

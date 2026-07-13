@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 123 of 144 · **advanced**
 
-[◀ Previous · Missing values with counted data](122-missing-values-with-counted-data.html) · [Next · Example: serial dilution assay ▶](124-example-serial-dilution-assay.html)
+[◀ Previous · Missing values with counted data](122-missing-values-with-counted-data.html) · [Next · Example: serial dilution assay ▶](124-example-serial-dilution-assay.html) · [↑ Section](index.html)
 
 ## A referendum with missing answers[#](#a-referendum-with-missing-answers "Link to this heading")
 
@@ -54,9 +54,9 @@ non-response **is** informative about the vote — the honest response is a ****
 plausible mechanisms, reporting how much the conclusion moves. Real surveys are never complete; this is
 what taking their gaps seriously looks like.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Multiple imputation](119-multiple-imputation.html) · [Notation](118-notation.html) · [Missing values with counted data](122-missing-values-with-counted-data.html) · [Sample surveys](052-sample-surveys.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/09/example-an-opinion-poll-in-slovenia/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/09/example-an-opinion-poll-in-slovenia/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

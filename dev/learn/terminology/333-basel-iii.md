@@ -24,21 +24,22 @@ and validation, making Basel III a major reason financial ML must be ****auditab
 
 ---
 
-****Mind map — connected ideas****
-
-> [High-Stakes Domains](334-high-stakes-domains.html) · [Fair Lending laws](332-fair-lending-laws.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Model Stability](187-model-stability.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html)
-
----
-
-****More in Explainability & Governance****
-
-> [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
-
----
-
 **Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[High-Stakes Domains](334-high-stakes-domains.html) · [Fair Lending laws](332-fair-lending-laws.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [Model Stability](187-model-stability.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html)
+
+---
+
+> **Hint**
+> ****More in Explainability & Governance****
+
+[Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
 > **See also**
-> Adapted in our own words from [Basel III](https://insightful-data-lab.com/2025/08/20/basel-iii/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Basel III](https://insightful-data-lab.com/2025/08/20/basel-iii/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

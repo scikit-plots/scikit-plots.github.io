@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 10 · 🎛️ Modal & Variational Approximation**** · Lesson 089 of 144 · **intermediate**
 
-[◀ Previous · Expectation propagation](088-expectation-propagation.html) · [Next · Unknown normalizing factors ▶](090-unknown-normalizing-factors.html)
+[◀ Previous · Expectation propagation](088-expectation-propagation.html) · [Next · Unknown normalizing factors ▶](090-unknown-normalizing-factors.html) · [↑ Section](index.html)
 
 ## The wider family[#](#the-wider-family "Link to this heading")
 
@@ -59,9 +59,9 @@ That last line is the discipline of this whole stage. Every approximation here i
 error; ****importance-reweighting supplies the missing diagnostic****, and where the model is small enough,
 so does a run of the sampler you were trying to avoid.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Variational inference](087-variational-inference.html) · [Expectation propagation](088-expectation-propagation.html) · [Conditional and marginal posterior approximations](085-conditional-and-marginal-posterior-approximations.html) · [Unknown normalizing factors](090-unknown-normalizing-factors.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/other-approximations/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/other-approximations/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

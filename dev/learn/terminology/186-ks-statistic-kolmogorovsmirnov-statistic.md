@@ -38,21 +38,22 @@ reports only the ****single maximum point of separation****.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Discriminatory Power](185-discriminatory-power.html) · [Gini Coefficient](023-gini-coefficient.html) · [Multiclass AUROC](022-multiclass-auroc.html) · [Energy Distance](176-energy-distance.html) · [PSI (Population Stability Index)](389-psi-population-stability-index.html)
-
----
-
-****More in Model Evaluation & Uncertainty****
-
-> [Average Absolute Error (AAE)](246-average-absolute-error-aae.html) · [Baseline Heuristics](428-baseline-heuristics.html) · [Bootstrap](365-bootstrap.html) · [Bootstrap Confidence Intervals (CIs)](024-bootstrap-confidence-intervals-cis.html) · [Coverage](411-coverage.html) · [Cramér’s V](180-cramer-s-v.html) · [DeLong’s Test](352-delong-s-test.html) · [Likelihood Ratio (LR)](075-likelihood-ratio-lr.html) · [Mann–Whitney U Test (also called the Wilcoxon rank-sum test)](026-mannwhitney-u-test-also-called-the-wilcoxon-rank.html) · [MASE (Mean Absolute Scaled Error)](403-mase-mean-absolute-scaled-error.html) · [Mean Absolute Error (MAE)](408-mean-absolute-error-mae.html) · [Mean Absolute Percentage Error (MAPE)](425-mean-absolute-percentage-error-mape.html) · [Mean Squared Error (MSE)](308-mean-squared-error-mse.html) · [Relative accuracy](258-relative-accuracy.html)
-
----
-
 **Theme:** [Model Evaluation & Uncertainty](index.html#term-theme-evaluation)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Discriminatory Power](185-discriminatory-power.html) · [Gini Coefficient](023-gini-coefficient.html) · [Multiclass AUROC](022-multiclass-auroc.html) · [Energy Distance](176-energy-distance.html) · [PSI (Population Stability Index)](389-psi-population-stability-index.html)
+
+---
+
+> **Hint**
+> ****More in Model Evaluation & Uncertainty****
+
+[Average Absolute Error (AAE)](246-average-absolute-error-aae.html) · [Baseline Heuristics](428-baseline-heuristics.html) · [Bootstrap](365-bootstrap.html) · [Bootstrap Confidence Intervals (CIs)](024-bootstrap-confidence-intervals-cis.html) · [Coverage](411-coverage.html) · [Cramér’s V](180-cramer-s-v.html) · [DeLong’s Test](352-delong-s-test.html) · [Likelihood Ratio (LR)](075-likelihood-ratio-lr.html) · [Mann–Whitney U Test (also called the Wilcoxon rank-sum test)](026-mannwhitney-u-test-also-called-the-wilcoxon-rank.html) · [MASE (Mean Absolute Scaled Error)](403-mase-mean-absolute-scaled-error.html) · [Mean Absolute Error (MAE)](408-mean-absolute-error-mae.html) · [Mean Absolute Percentage Error (MAPE)](425-mean-absolute-percentage-error-mape.html) · [Mean Squared Error (MSE)](308-mean-squared-error-mse.html) · [Relative accuracy](258-relative-accuracy.html)
 > **See also**
-> Adapted in our own words from [KS Statistic (Kolmogorov–Smirnov Statistic)](https://insightful-data-lab.com/2025/08/23/ks-statistic-kolmogorov-smirnov-statistic/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [KS Statistic (Kolmogorov–Smirnov Statistic)](https://insightful-data-lab.com/2025/08/23/ks-statistic-kolmogorov-smirnov-statistic/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

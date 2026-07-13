@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🏗️ Building & Forecasting Models**** · Lesson 15 of 18 · **advanced**
 
-[◀ Previous · Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · [Next · SARIMA Models: Seasonal ARIMA ▶](16-sarima-models-seasonal-arima.html)
+[◀ Previous · Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · [Next · SARIMA Models: Seasonal ARIMA ▶](16-sarima-models-seasonal-arima.html) · [↑ Section](index.html)
 
 ## The core idea[#](#the-core-idea "Link to this heading")
 
@@ -35,9 +35,9 @@ model ****“integrates”**** — cumulatively sums — its differenced-scale p
 of the raw series, carrying the forecast ****uncertainty**** with it. In `statsmodels` this is all
 handled by `ARIMA(y, order=(p, d, q))`.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [A Gentle Introduction to Stationarity](03-a-gentle-introduction-to-stationarity.html) · [Understanding ARMA Processes](06-understanding-arma-processes.html) · [SARIMA Models: Seasonal ARIMA](16-sarima-models-seasonal-arima.html) · [Order Selection for Time Series Models](14-order-selection-for-time-series-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/arima-models-how-nonstationary-models-are-built-from-stationary-ones/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/arima-models-how-nonstationary-models-are-built-from-stationary-ones/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: advanced](../../_tags/level-advanced.html)

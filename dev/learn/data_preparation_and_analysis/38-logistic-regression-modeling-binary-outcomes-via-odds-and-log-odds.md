@@ -2,7 +2,7 @@
 
 ****Stage 6 · 🎯 Classification & Logistic Regression**** · Lesson 38 of 56 · **advanced**
 
-[◀ Previous · How Shapley Values Work](37-how-shapley-values-work.html) · [Next · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data ▶](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html)
+[◀ Previous · How Shapley Values Work](37-how-shapley-values-work.html) · [Next · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data ▶](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · [↑ Section](index.html)
 
 ## When the outcome is yes or no[#](#when-the-outcome-is-yes-or-no "Link to this heading")
 
@@ -44,9 +44,9 @@ Python it is `LogisticRegression` in scikit-learn, or `Logit` in statsmodels for
 coefficient table. Unlike least squares, its coefficients have ****no closed form**** — they are found by
 ****maximum likelihood****, the subject of the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Maximum Likelihood (MLE): Fitting a Distribution to Observed Data](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · [Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [Complete and Quasi-Complete Separation in Logistic Regression](41-complete-and-quasi-complete-separation-in-logistic-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/logistic-regression-modeling-binary-outcomes-via-odds-and-log-odds/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

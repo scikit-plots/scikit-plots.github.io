@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 14 · 🛡️ Robustness & Missing Data**** · Lesson 115 of 144 · **advanced**
 
-[◀ Previous · Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Next · Robust inference for the eight schools ▶](116-robust-inference-for-the-eight-schools.html)
+[◀ Previous · Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Next · Robust inference for the eight schools ▶](116-robust-inference-for-the-eight-schools.html) · [↑ Section](index.html)
 
 ## Fitting robust models[#](#fitting-robust-models "Link to this heading")
 
@@ -58,9 +58,9 @@ lurch**** when one point is extreme, and an explicit account — through the wei
 posterior of \(\nu\) — of **how much** robustness the data actually demanded. The next lesson puts the
 whole apparatus to work on a familiar dataset.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html) · [Gibbs sampler](069-gibbs-sampler.html) · [Robust inference for the eight schools](116-robust-inference-for-the-eight-schools.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/07/posterior-inference-and-computation/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/07/posterior-inference-and-computation/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

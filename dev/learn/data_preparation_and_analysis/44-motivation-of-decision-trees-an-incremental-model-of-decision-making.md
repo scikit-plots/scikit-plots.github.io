@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 44 of 56 · **advanced**
 
-[◀ Previous · Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html) · [Next · The CART Algorithm ▶](45-the-cart-algorithm.html)
+[◀ Previous · Interpreting and Assessing a Forward-Selection Logistic Regression Model for College Student Retention](43-interpreting-and-assessing-a-forward-selection-logistic-regression-model-for-college-student-retention.html) · [Next · The CART Algorithm ▶](45-the-cart-algorithm.html) · [↑ Section](index.html)
 
 ## How people decide[#](#how-people-decide "Link to this heading")
 
@@ -38,9 +38,9 @@ favourite when a decision must be ****justified****, not merely made — and it 
 stage to ****explain**** the clusters of Stage 4. The next lesson gives the algorithm that actually builds
 a tree from data: ****CART****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The CART Algorithm](45-the-cart-algorithm.html) · [Decision Trees as Piecewise Models and Their Predictive Structure](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html) · [How CART Decision Trees Model Interactions](47-how-cart-decision-trees-model-interactions.html) · [Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/motivation-of-decision-trees-an-incremental-model-of-decision-making/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/motivation-of-decision-trees-an-incremental-model-of-decision-making/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

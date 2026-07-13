@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/5_analyze_data/009-using-concat-in-sql-to-combine-text-from-multiple-columns.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📊 Analyze Data 🗂️ Organizing &amp; Formatting Data Lesson 009 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze organize" />
+<meta property="og:description" content="📊 Analyze Data 🗂️ Organizing &amp; Formatting Data Lesson 009 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Joining text columns: Analysis often needs to combine text from several columns into one — a fu..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📊 Analyze Data 🗂️ Organizing &amp; Formatting Data Lesson 009 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Source article Tags: data-analytics analyze organize" />
+<meta name="description" content="📊 Analyze Data 🗂️ Organizing &amp; Formatting Data Lesson 009 ◀ Previous · Next ▶ · ↑ Section · ↑ Hub Joining text columns: Analysis often needs to combine text from several columns into one — a fu..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:37:07Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:14:57Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -372,7 +372,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -590,7 +590,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -3481,12 +3481,81 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="da-jobsearch-analyze-009"></span><span id="da-python-analyze-009"></span><span id="da-viz-analyze-009"></span><span id="da-analyze-analyze-009"></span><span id="da-cleaning-analyze-009"></span><span id="da-prep-analyze-009"></span><span id="da-decisions-analyze-009"></span><span id="da-foundations-analyze-009"></span><span id="data-analytics-analyze-009"></span><span id="da-analyze-009"></span><h1>Using CONCAT in SQL to Combine Text from Multiple Columns<a class="headerlink" href="#using-concat-in-sql-to-combine-text-from-multiple-columns" title="Link to this heading">#</a></h1>
 <p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">📊 Analyze Data</span> <span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">🗂️ Organizing &amp; Formatting Data</span> <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">Lesson 009</span></p>
 <p>◀ <a class="reference internal" href="008-combining-data-validation-and-conditional-formatting-in-spreadsheets.html"><span class="doc">Previous</span></a> · <a class="reference internal" href="010-working-with-strings-in-spreadsheets-len-left-right-find.html"><span class="doc">Next</span></a> ▶ · <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a> · <a class="reference internal" href="../index.html"><span class="doc">↑ Hub</span></a></p>
-<div class="note admonition">
-<p class="admonition-title">Lesson in progress</p>
-<p>Full content for this lesson has not been written yet.</p>
+<section id="joining-text-columns">
+<h2>Joining text columns<a class="headerlink" href="#joining-text-columns" title="Link to this heading">#</a></h2>
+<p>Analysis often needs to <em>combine</em> text from several columns into one — a full name
+from first and last, an address from its parts, a label from a code and a
+description. In SQL, this is <strong>concatenation</strong>, done with the <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> function
+(or the concatenation operator), and it is the SQL counterpart of the
+spreadsheet’s <code class="docutils literal notranslate"><span class="pre">CONCATENATE</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.</p>
+</section>
+<section id="how-concat-works">
+<h2>How CONCAT works<a class="headerlink" href="#how-concat-works" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> takes several values and joins them into one string:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">)</span><span class="w">        </span><span class="k">AS</span><span class="w"> </span><span class="n">full_name</span><span class="p">,</span>
+<span class="w">       </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;, &#39;</span><span class="p">,</span><span class="w"> </span><span class="k">state</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">zip</span><span class="p">)</span><span class="w">        </span><span class="k">AS</span><span class="w"> </span><span class="n">address</span>
+<span class="k">FROM</span><span class="w">   </span><span class="n">customers</span><span class="p">;</span>
+</pre></div>
 </div>
-<p><a class="reference external" href="https://insightful-data-lab.com/2023/11/26/using-concat-in-sql-to-combine-text-from-multiple-columns/">Source article</a></p>
+<p>Each argument is joined in order; literal text (like the space <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> or the
+comma-space <code class="docutils literal notranslate"><span class="pre">',</span> <span class="pre">'</span></code>) is included as a separator so the result reads correctly.
+Many databases also support the <code class="docutils literal notranslate"><span class="pre">||</span></code> operator for the same purpose
+(<code class="docutils literal notranslate"><span class="pre">first_name</span> <span class="pre">||</span> <span class="pre">'</span> <span class="pre">'</span> <span class="pre">||</span> <span class="pre">last_name</span></code>), though the exact operator varies by system —
+<code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> is the more portable choice.</p>
+</section>
+<section id="why-concatenation-matters-in-analysis">
+<h2>Why concatenation matters in analysis<a class="headerlink" href="#why-concatenation-matters-in-analysis" title="Link to this heading">#</a></h2>
+<p>Combining columns serves several analytical needs:</p>
+<ul class="simple">
+<li><p><strong>Building keys</strong> — concatenating fields to form a combined identifier for
+matching or grouping (a key from region and product code).</p></li>
+<li><p><strong>Creating labels</strong> — assembling readable labels for output and visualisation
+from separate data columns.</p></li>
+<li><p><strong>Reassembling split data</strong> — joining back fields that were separated (the
+inverse of the Text-to-Columns / <code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code> splitting), when analysis needs them
+together.</p></li>
+<li><p><strong>Formatting for presentation</strong> — producing human-readable combined strings for
+a report.</p></li>
+</ul>
+<p>Concatenation is the “combine” counterpart to the “split” operations from earlier
+— together they let you restructure text data into whatever shape the analysis or
+output needs.</p>
+</section>
+<section id="concatenation-with-clean-inputs">
+<h2>Concatenation with clean inputs<a class="headerlink" href="#concatenation-with-clean-inputs" title="Link to this heading">#</a></h2>
+<p>Concatenation composes with the cleaning functions, because combining <em>dirty</em> text
+produces dirty results — joining an untrimmed first name to a last name yields
+<code class="docutils literal notranslate"><span class="pre">&quot;Jane</span>&#160; <span class="pre">Smith&quot;</span></code> with a stray space. The clean-then-combine pattern applies:
+<code class="docutils literal notranslate"><span class="pre">CONCAT(TRIM(first_name),</span> <span class="pre">'</span> <span class="pre">',</span> <span class="pre">TRIM(last_name))</span></code> trims the parts before joining,
+so the combined result is clean. As with all such pipelines, the inputs’ quality
+determines the output’s quality.</p>
+</section>
+<section id="the-caveat">
+<h2>The caveat<a class="headerlink" href="#the-caveat" title="Link to this heading">#</a></h2>
+<p>Concatenation has a null trap that catches beginners: in many databases, if <em>any</em>
+argument to the older concatenation <em>operator</em> is null, the entire result becomes
+null — so one missing middle name can null out an entire assembled address.
+<code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> the <em>function</em> often handles nulls more gracefully (treating them as
+empty strings), but behaviour <strong>varies by database</strong>, so combining columns that
+may contain nulls requires care — often wrapping arguments in <code class="docutils literal notranslate"><span class="pre">COALESCE</span></code> to
+substitute an empty string for nulls first. Verify how your database treats nulls
+in concatenation before relying on it. The next lesson covers the parallel string
+toolkit in spreadsheets.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="010-working-with-strings-in-spreadsheets-len-left-right-find.html"><span class="doc">Working with Strings in Spreadsheets (LEN, LEFT, RIGHT, FIND)</span></a></p></li>
+<li><p><a class="reference internal" href="../4_data_cleaning_preparation/023-advanced-sql-functions-for-data-cleaning.html"><span class="doc">Advanced SQL Functions for Data Cleaning</span></a></p></li>
+<li><p><a class="reference internal" href="../4_data_cleaning_preparation/020-core-sql-queries-for-data-cleaning-and-analysis.html"><span class="doc">Core SQL Queries for Data Cleaning and Analysis</span></a></p></li>
+<li><p><a class="reference internal" href="../4_data_cleaning_preparation/015-using-spreadsheet-functions-for-data-cleaning.html"><span class="doc">Using Spreadsheet Functions for Data Cleaning</span></a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2023/11/26/using-concat-in-sql-to-combine-text-from-multiple-columns/">https://insightful-data-lab.com/2023/11/26/using-concat-in-sql-to-combine-text-from-multiple-columns/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/data-analytics.html"><span class="doc">data-analytics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/analyze.html"><span class="doc">analyze</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../../_tags/organize.html"><span class="doc">organize</span></a></p>
+</section>
 </section>
 
 
@@ -3531,6 +3600,22 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-text-columns">Joining text columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-concat-works">How CONCAT works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-concatenation-matters-in-analysis">Why concatenation matters in analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenation-with-clean-inputs">Concatenation with clean inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-caveat">The caveat</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -3587,7 +3672,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

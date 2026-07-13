@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 057 of 144 · **intermediate**
 
-[◀ Previous · Censoring and truncation](056-censoring-and-truncation.html) · [Next · Using regression predictions: survey incentives ▶](058-using-regression-predictions-survey-incentives.html)
+[◀ Previous · Censoring and truncation](056-censoring-and-truncation.html) · [Next · Using regression predictions: survey incentives ▶](058-using-regression-predictions-survey-incentives.html) · [↑ Section](index.html)
 
 ## From inference to action[#](#from-inference-to-action "Link to this heading")
 
@@ -50,9 +50,9 @@ early action buys information for later ones. And a ****hierarchical**** problem
 for many units at once and shrinkage governs each. The final lesson adds the sharpest distinction of
 all — ****whose**** utility, the individual’s or the institution’s, since the two can rationally disagree.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Using regression predictions: survey incentives](058-using-regression-predictions-survey-incentives.html) · [Multistage decision making: medical screening](059-multistage-decision-making-medical-screening.html) · [Summarizing Posterior Inference](013-summarizing-posterior-inference.html) · [Personal vs. institutional decision analysis](061-personal-vs-institutional-decision-analysis.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/bayesian-decision-theory-in-di%ef%ac%80erent-contexts/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/bayesian-decision-theory-in-di%ef%ac%80erent-contexts/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

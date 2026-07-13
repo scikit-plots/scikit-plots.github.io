@@ -2,7 +2,7 @@
 
 ****Part 4 · Stage 11 · 📈 Regression Foundations**** · Lesson 091 of 144 · **advanced**
 
-[◀ Previous · Unknown normalizing factors](090-unknown-normalizing-factors.html) · [Next · Bayesian analysis of classical regression ▶](092-bayesian-analysis-of-classical-regression.html)
+[◀ Previous · Unknown normalizing factors](090-unknown-normalizing-factors.html) · [Next · Bayesian analysis of classical regression ▶](092-bayesian-analysis-of-classical-regression.html) · [↑ Section](index.html)
 
 ## Model y given x, not (x, y)[#](#model-y-given-x-not-x-y "Link to this heading")
 
@@ -54,9 +54,9 @@ One caution to carry into Part IV: conditioning on \(x\) makes the model ****agn
 \(p(y \mid x)\) is a statement about association; whether the coefficient is a causal effect depends
 on the data-collection lessons, not on the regression.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian analysis of classical regression](092-bayesian-analysis-of-classical-regression.html) · [Goals of regression analysis](094-goals-of-regression-analysis.html) · [Data-collection models and ignorability](051-data-collection-models-and-ignorability.html) · [Standard generalized linear model likelihoods](106-standard-generalized-linear-model-likelihoods.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/conditional-modeling/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/conditional-modeling/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

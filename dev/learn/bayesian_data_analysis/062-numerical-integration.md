@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 8 · 🧰 Simulation Basics**** · Lesson 062 of 144 · **intermediate**
 
-[◀ Previous · Personal vs. institutional decision analysis](061-personal-vs-institutional-decision-analysis.html) · [Next · Distributional approximations ▶](063-distributional-approximations.html)
+[◀ Previous · Personal vs. institutional decision analysis](061-personal-vs-institutional-decision-analysis.html) · [Next · Distributional approximations ▶](063-distributional-approximations.html) · [↑ Section](index.html)
 
 ## Every Bayesian answer is an integral[#](#every-bayesian-answer-is-an-integral "Link to this heading")
 
@@ -54,9 +54,9 @@ The error shrinks like \(1/\sqrt{S}\) — ****regardless of dimension****. That 
 the premise: how do you draw from a distribution you can only evaluate up to a constant? The remaining
 lessons of Part III are answers to that question.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Distributional approximations](063-distributional-approximations.html) · [Direct simulation and rejection sampling](064-direct-simulation-and-rejection-sampling.html) · [Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate)](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [How many simulation draws are needed?](066-how-many-simulation-draws-are-needed.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/numerical-integration/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/numerical-integration/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

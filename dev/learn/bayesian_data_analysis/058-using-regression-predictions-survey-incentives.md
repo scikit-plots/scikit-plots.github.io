@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 7 · 🗳️ Data Collection & Decisions**** · Lesson 058 of 144 · **intermediate**
 
-[◀ Previous · Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Next · Multistage decision making: medical screening ▶](059-multistage-decision-making-medical-screening.html)
+[◀ Previous · Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Next · Multistage decision making: medical screening ▶](059-multistage-decision-making-medical-screening.html) · [↑ Section](index.html)
 
 ## Should you pay respondents?[#](#should-you-pay-respondents "Link to this heading")
 
@@ -60,9 +60,9 @@ falls. And the analysis is honest about what it optimises — small incentives t
 but the recommendation depends on the dollar value assigned to a completed interview, which is a
 ****judgement****, stated openly rather than buried.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Hierarchical modeling applied to a meta-analysis](038-hierarchical-modeling-applied-to-a-meta-analysis.html) · [Sample surveys](052-sample-surveys.html) · [Conditional modeling](091-conditional-modeling.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/11/using-regression-predictions-survey-incentives/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/11/using-regression-predictions-survey-incentives/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

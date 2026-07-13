@@ -25,21 +25,22 @@ where an error is trivial.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Fair Lending laws](332-fair-lending-laws.html) · [Basel III](333-basel-iii.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [Model Stability](187-model-stability.html)
-
----
-
-****More in Explainability & Governance****
-
-> [Basel III](333-basel-iii.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
-
----
-
 **Theme:** [Explainability & Governance](index.html#term-theme-xai)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Fair Lending laws](332-fair-lending-laws.html) · [Basel III](333-basel-iii.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Risk-Based Decisions](286-risk-based-decisions.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html) · [Model Stability](187-model-stability.html)
+
+---
+
+> **Hint**
+> ****More in Explainability & Governance****
+
+[Basel III](333-basel-iii.html) · [Counterfactual Explanations](336-counterfactual-explanations.html) · [Fair Lending laws](332-fair-lending-laws.html) · [LIME (Local Interpretable Model-agnostic Explanations)](337-lime-local-interpretable-model-agnostic-explanat.html) · [Post-hoc Explainability](339-post-hoc-explainability.html) · [SHAP (SHapley Additive exPlanations)](338-shap-shapley-additive-explanations.html)
 > **See also**
-> Adapted in our own words from [High-Stakes Domains](https://insightful-data-lab.com/2025/08/20/high-stakes-domains/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [High-Stakes Domains](https://insightful-data-lab.com/2025/08/20/high-stakes-domains/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

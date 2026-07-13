@@ -60,12 +60,12 @@ asking a sharp question of clean data, not from sophisticated math. And the
 process did not end at the insight: it ended at an ****action with a measurement
 attached****, which is what makes the loop a loop.
 
-> **See also**
+> **Hint**
 > * [The Stages of the Data Analysis Process and Their Roles](011-the-stages-of-the-data-analysis-process-and-their-roles.html)
 * [The Six Phases of the Data Analysis Process](005-the-six-phases-of-the-data-analysis-process.html)
 * [Using Data Analysis to Choose the Right Advertising Strategy](../2_data_driven_decisions/001-using-data-analysis-to-choose-the-right-advertising-strategy.html)
 * [Understanding Data Analysis](../5_analyze_data/001-understanding-data-analysis.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/practical-application-of-the-data-analysis-process/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/practical-application-of-the-data-analysis-process/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [process](../../../_tags/process.html)

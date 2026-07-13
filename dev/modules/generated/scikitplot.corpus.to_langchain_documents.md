@@ -1,6 +1,6 @@
 # to\_langchain\_documents[#](#to-langchain-documents "Link to this heading")
 
-scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/4094af5/scikitplot/corpus/_adapters.py#L165)[#](#scikitplot.corpus.to_langchain_documents "Link to this definition")
+scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_adapters.py#L165)[#](#scikitplot.corpus.to_langchain_documents "Link to this definition")
 :   Convert `CorpusDocument` instances to LangChain `Document`.
 
     Parameters:

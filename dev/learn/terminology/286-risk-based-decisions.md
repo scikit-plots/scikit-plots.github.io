@@ -27,21 +27,22 @@ probability forecasts.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Probability Forecasts](235-probability-forecasts.html) · [Confidence Level](285-confidence-level.html) · [Classification Probability](231-classification-probability.html) · [Overconfident](284-overconfident.html) · [Likelihood](304-likelihood.html) · [Binary Classification](293-binary-classification.html)
-
----
-
-****More in Risk & Probabilistic Forecasting****
-
-> [Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Continuous Ranked Probability Score (CRPS)](402-continuous-ranked-probability-score-crps.html) · [Deterministic forecasts](242-deterministic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Pinball Loss (a.k.a. Quantile Loss)](404-pinball-loss-a-k-a-quantile-loss.html) · [Point Forecasts](233-point-forecasts.html) · [Predicting Percentiles](252-predicting-percentiles.html) · [Prediction Intervals (PI)](253-prediction-intervals-pi.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Probabilistic Scoring](228-probabilistic-scoring.html) · [Probability Forecasts](235-probability-forecasts.html) · [Quantile Forecasts](232-quantile-forecasts.html) · [Quantile Level](255-quantile-level.html) · [Quantile Regression](254-quantile-regression.html)
-
----
-
 **Theme:** [Risk & Probabilistic Forecasting](index.html#term-theme-risk)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Probability Forecasts](235-probability-forecasts.html) · [Confidence Level](285-confidence-level.html) · [Classification Probability](231-classification-probability.html) · [Overconfident](284-overconfident.html) · [Likelihood](304-likelihood.html) · [Binary Classification](293-binary-classification.html)
+
+---
+
+> **Hint**
+> ****More in Risk & Probabilistic Forecasting****
+
+[Continuous Probabilistic Forecasts](230-continuous-probabilistic-forecasts.html) · [Continuous Ranked Probability Score (CRPS)](402-continuous-ranked-probability-score-crps.html) · [Deterministic forecasts](242-deterministic-forecasts.html) · [Full Distribution](229-full-distribution.html) · [Pinball Loss (a.k.a. Quantile Loss)](404-pinball-loss-a-k-a-quantile-loss.html) · [Point Forecasts](233-point-forecasts.html) · [Predicting Percentiles](252-predicting-percentiles.html) · [Prediction Intervals (PI)](253-prediction-intervals-pi.html) · [Probabilistic Forecasts](241-probabilistic-forecasts.html) · [Probabilistic Scoring](228-probabilistic-scoring.html) · [Probability Forecasts](235-probability-forecasts.html) · [Quantile Forecasts](232-quantile-forecasts.html) · [Quantile Level](255-quantile-level.html) · [Quantile Regression](254-quantile-regression.html)
 > **See also**
-> Adapted in our own words from [Risk-Based Decisions](https://insightful-data-lab.com/2025/08/21/risk-based-decisions/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Risk-Based Decisions](https://insightful-data-lab.com/2025/08/21/risk-based-decisions/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

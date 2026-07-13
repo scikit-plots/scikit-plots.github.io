@@ -41,21 +41,22 @@ adaptation**** exist to cope.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Temporal autocorrelation (Serial Correlation)](127-temporal-autocorrelation-serial-correlation.html) · [Time Series](010-time-series.html) · [Probability](025-probability.html) · [Signal Processing](009-signal-processing.html) · [Blocked Splits (Single Holdout)](128-blocked-splits-single-holdout.html) · [Cross-Validation (CV)](136-cross-validation-cv.html)
-
----
-
-****More in Probability & Statistics Foundations****
-
-> [Beta Distribution](099-beta-distribution.html) · [Confidence Level](285-confidence-level.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [Likelihood](304-likelihood.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html) · [Probability](025-probability.html)
-
----
-
 **Theme:** [Probability & Statistics Foundations](index.html#term-theme-probstats)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Temporal autocorrelation (Serial Correlation)](127-temporal-autocorrelation-serial-correlation.html) · [Time Series](010-time-series.html) · [Probability](025-probability.html) · [Signal Processing](009-signal-processing.html) · [Blocked Splits (Single Holdout)](128-blocked-splits-single-holdout.html) · [Cross-Validation (CV)](136-cross-validation-cv.html)
+
+---
+
+> **Hint**
+> ****More in Probability & Statistics Foundations****
+
+[Beta Distribution](099-beta-distribution.html) · [Confidence Level](285-confidence-level.html) · [Correlation](305-correlation.html) · [Critical Value](087-critical-value.html) · [Cumulative Distribution Function (CDF)](243-cumulative-distribution-function-cdf.html) · [Frequentist](059-frequentist.html) · [Likelihood](304-likelihood.html) · [Margin of Error (MoE)](086-margin-of-error-moe.html) · [Mean](316-mean.html) · [Median](315-median.html) · [Normal Distribution](238-normal-distribution.html) · [Outlier](307-outlier.html) · [Population Proportion](199-population-proportion.html) · [Probability](025-probability.html)
 > **See also**
-> Adapted in our own words from [IID (Independent and Identically Distributed)](https://insightful-data-lab.com/2025/08/24/iid-independent-and-identically-distributed/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [IID (Independent and Identically Distributed)](https://insightful-data-lab.com/2025/08/24/iid-independent-and-identically-distributed/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)

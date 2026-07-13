@@ -2,7 +2,7 @@
 
 ****Part 5 · Stage 16 · ♾️ Mixtures & Nonparametric Bayes**** · Lesson 144 of 144 · **advanced**
 
-[◀ Previous · Hierarchical dependence](143-hierarchical-dependence.html)
+[◀ Previous · Hierarchical dependence](143-hierarchical-dependence.html) · [↑ Section](index.html)
 
 ## The whole distribution as a function of x[#](#the-whole-distribution-as-a-function-of-x "Link to this heading")
 
@@ -57,9 +57,9 @@ with full posterior uncertainty over the entire family of conditional densities.
 single unknown to an infinite, covariate-indexed family of distributions — the arc of Bayesian data
 analysis, from its one idea to its fullest expression.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Dirichlet process mixtures](141-dirichlet-process-mixtures.html) · [Gaussian process regression](129-gaussian-process-regression.html) · [Hierarchical dependence](143-hierarchical-dependence.html) · [Mixture models for classification and regression](138-mixture-models-for-classification-and-regression.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/12/13/density-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/12/13/density-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: advanced](../../_tags/level-advanced.html)

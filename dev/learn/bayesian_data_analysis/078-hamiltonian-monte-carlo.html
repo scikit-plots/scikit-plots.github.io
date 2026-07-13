@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-11T11:33:20Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:11:11Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -373,7 +373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -591,7 +591,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.png" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -1406,7 +1406,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <section id="hamiltonian-monte-carlo">
 <span id="bda-hamiltonian-monte-carlo"></span><h1>Hamiltonian Monte Carlo<a class="headerlink" href="#hamiltonian-monte-carlo" title="Link to this heading">#</a></h1>
 <p><strong>Part 3 · Stage 9 · ⛓️ MCMC: Gibbs, Metropolis &amp; HMC</strong>  ·  Lesson 078 of 144  ·  <em>intermediate</em></p>
-<p><a class="reference internal" href="077-further-extensions-to-gibbs-and-metropolis.html"><span class="doc">◀ Previous · Further extensions to Gibbs and Metropolis</span></a>   ·   <a class="reference internal" href="079-hamiltonian-monte-carlo-for-a-hierarchical-model.html"><span class="doc">Next · Hamiltonian Monte Carlo for a hierarchical model ▶</span></a></p>
+<p><a class="reference internal" href="077-further-extensions-to-gibbs-and-metropolis.html"><span class="doc">◀ Previous · Further extensions to Gibbs and Metropolis</span></a>   ·   <a class="reference internal" href="079-hamiltonian-monte-carlo-for-a-hierarchical-model.html"><span class="doc">Next · Hamiltonian Monte Carlo for a hierarchical model ▶</span></a>   ·   <a class="reference internal" href="index.html"><span class="doc">↑ Section</span></a></p>
 <section id="stop-wandering-use-the-gradient">
 <h2>Stop wandering; use the gradient<a class="headerlink" href="#stop-wandering-use-the-gradient" title="Link to this heading">#</a></h2>
 <p>Random-walk Metropolis explores by diffusion, needing <span class="math notranslate nohighlight">\(\mathcal{O}((L/c)^2)\)</span> steps to travel a
@@ -1454,11 +1454,14 @@ degenerates toward a random walk, and estimates are <strong>biased</strong> by t
 <p>Non-negotiable: divergences must be <strong>fixed</strong>, not suppressed. Raise <code class="docutils literal notranslate"><span class="pre">target_accept</span></code> (smaller steps),
 rescale parameters, or — usually the real answer — <strong>reparameterise</strong> the geometry that caused them. The
 next lesson is that story.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <p><strong>Related lessons:</strong> <a class="reference internal" href="070-metropolis-and-metropolis-hastings-algorithms.html"><span class="doc">Metropolis and Metropolis-Hastings algorithms</span></a>  ·  <a class="reference internal" href="079-hamiltonian-monte-carlo-for-a-hierarchical-model.html"><span class="doc">Hamiltonian Monte Carlo for a hierarchical model</span></a>  ·  <a class="reference internal" href="080-stan-developing-a-computing-environment.html"><span class="doc">Stan: developing a computing environment</span></a>  ·  <a class="reference internal" href="072-inference-and-assessing-convergence.html"><span class="doc">Inference and assessing convergence</span></a></p>
 </div>
-<p><strong>Source</strong> (context, re-expressed in our own words): <a class="reference external" href="https://insightful-data-lab.com/2025/11/22/hamiltonian-monte-carlo/">https://insightful-data-lab.com/2025/11/22/hamiltonian-monte-carlo/</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Source article</strong> Adapted (context, re-expressed) in our own words from: <a class="reference external" href="https://insightful-data-lab.com/2025/11/22/hamiltonian-monte-carlo/">https://insightful-data-lab.com/2025/11/22/hamiltonian-monte-carlo/</a> (insightful-data-lab.com).</p>
+</div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-reference.html"><span class="doc">purpose: reference</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-bayesian.html"><span class="doc">domain: bayesian</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a></p>
 </section>
 </section>
@@ -1576,7 +1579,7 @@ next lesson is that story.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260711.4094af5 2026-07-11T11:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
       <br/>
     
   </p>

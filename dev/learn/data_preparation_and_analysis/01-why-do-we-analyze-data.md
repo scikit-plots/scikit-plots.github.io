@@ -2,7 +2,7 @@
 
 ****Stage 1 · 📋 Foundations**** · Lesson 01 of 56 · **beginner**
 
-[Next · The Process of Data Analysis ▶](02-the-process-of-data-analysis.html)
+[Next · The Process of Data Analysis ▶](02-the-process-of-data-analysis.html) · [↑ Section](index.html)
 
 ## From data to decisions[#](#from-data-to-decisions "Link to this heading")
 
@@ -29,9 +29,9 @@ answering “what happened” may be all a question needs; a churn-prevention ca
 about matching the question to a method — and then, in the final stage, ****checking the answer is
 trustworthy**** before anyone relies on it.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The Process of Data Analysis](02-the-process-of-data-analysis.html) · [CRISP-DM for Data Science](03-crisp-dm-for-data-science.html) · [Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/why-do-we-analyze-data/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/why-do-we-analyze-data/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: beginner](../../_tags/level-beginner.html)

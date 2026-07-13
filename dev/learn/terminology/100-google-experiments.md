@@ -43,21 +43,22 @@ full-site UX.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Optimizely](069-optimizely.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html) · [A/B Testing](380-a-b-testing.html) · [Conversion Rate Uplift](067-conversion-rate-uplift.html) · [Bayesian Stopping Rules](068-bayesian-stopping-rules.html)
-
----
-
-****More in ML Platforms & Tools****
-
-> [AWS SageMaker](148-aws-sagemaker.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
-
----
-
 **Theme:** [ML Platforms & Tools](index.html#term-theme-platforms)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Optimizely](069-optimizely.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html) · [A/B Testing](380-a-b-testing.html) · [Conversion Rate Uplift](067-conversion-rate-uplift.html) · [Bayesian Stopping Rules](068-bayesian-stopping-rules.html)
+
+---
+
+> **Hint**
+> ****More in ML Platforms & Tools****
+
+[AWS SageMaker](148-aws-sagemaker.html) · [Kaggle](273-kaggle.html) · [ONNX (Open Neural Network Exchange)](344-onnx-open-neural-network-exchange.html) · [OpenAI API (ML API)](150-openai-api-ml-api.html) · [TPU Clusters](347-tpu-clusters.html) · [Vertex AI](149-vertex-ai.html)
 > **See also**
-> Adapted in our own words from [Google Experiments](https://insightful-data-lab.com/2025/08/25/google-experiments/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Google Experiments](https://insightful-data-lab.com/2025/08/25/google-experiments/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)

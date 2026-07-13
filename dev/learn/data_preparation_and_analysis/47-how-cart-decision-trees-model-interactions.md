@@ -2,7 +2,7 @@
 
 ****Stage 7 · 🌳 Decision Trees**** · Lesson 47 of 56 · **advanced**
 
-[◀ Previous · Decision Trees as Piecewise Models and Their Predictive Structure](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html) · [Next · Cluster Profiling Using Decision Trees ▶](48-cluster-profiling-using-decision-trees.html)
+[◀ Previous · Decision Trees as Piecewise Models and Their Predictive Structure](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html) · [Next · Cluster Profiling Using Decision Trees ▶](48-cluster-profiling-using-decision-trees.html) · [↑ Section](index.html)
 
 ## What is an interaction?[#](#what-is-an-interaction "Link to this heading")
 
@@ -38,9 +38,9 @@ This effortless interaction modelling — together with the piecewise structure 
 what lets a single tree describe complex, realistic patterns, and it powers the cluster-explanation
 uses that close this stage.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Decision Trees as Piecewise Models and Their Predictive Structure](46-decision-trees-as-piecewise-models-and-their-predictive-structure.html) · [The CART Algorithm](45-the-cart-algorithm.html) · [Multiple Linear Regression](32-multiple-linear-regression.html) · [Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/how-cart-decision-trees-model-interactions/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/how-cart-decision-trees-model-interactions/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

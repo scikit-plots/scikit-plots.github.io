@@ -52,12 +52,12 @@ a weak question or credulous data, produces well-organised nonsense. Treat the
 structure as scaffolding for judgement — the judgement itself is what the rest
 of this course builds.
 
-> **See also**
+> **Hint**
 > * [The Six Phases of the Data Analysis Process](005-the-six-phases-of-the-data-analysis-process.html)
 * [Understanding the Data Ecosystem](007-understanding-the-data-ecosystem.html)
 * [Data-Driven Decision-Making](003-data-driven-decision-making.html)
 * [The Stages of the Data Analysis Process and Their Roles](011-the-stages-of-the-data-analysis-process-and-their-roles.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/the-origins-of-data-analysis-and-the-many-ways-to-structure-it/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/the-origins-of-data-analysis-and-the-many-ways-to-structure-it/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [process](../../../_tags/process.html)

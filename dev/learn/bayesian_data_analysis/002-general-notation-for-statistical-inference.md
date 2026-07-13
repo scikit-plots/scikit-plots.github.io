@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 002 of 144 · **beginner**
 
-[◀ Previous · The three steps of Bayesian data analysis](001-the-three-steps-of-bayesian-data-analysis.html) · [Next · Bayesian Inference ▶](003-bayesian-inference.html)
+[◀ Previous · The three steps of Bayesian data analysis](001-the-three-steps-of-bayesian-data-analysis.html) · [Next · Bayesian Inference ▶](003-bayesian-inference.html) · [↑ Section](index.html)
 
 ## The three symbols[#](#the-three-symbols "Link to this heading")
 
@@ -42,9 +42,9 @@ answer opposite questions. Bayesian and frequentist methods differ mainly in ***
 — the Bayesian conditions on the data actually observed and treats \(\theta\) as random; the
 frequentist conditions on \(\theta\) and treats the data as random.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The three steps of Bayesian data analysis](001-the-three-steps-of-bayesian-data-analysis.html) · [Bayesian Inference](003-bayesian-inference.html) · [Some Useful Results from Probability Theory](008-some-useful-results-from-probability-theory.html) · [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/general-notation-for-statistical-inference/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/general-notation-for-statistical-inference/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

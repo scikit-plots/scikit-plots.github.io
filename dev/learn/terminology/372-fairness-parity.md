@@ -26,21 +26,22 @@ prevent. The ****four-fifths (80%) rule**** is a common legal threshold.
 
 ---
 
-****Mind map — connected ideas****
-
-> [Selection Rate](390-selection-rate.html) · [Recall](423-recall.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [Precision (a.k.a. Positive Predictive Value, PPV)](429-precision-a-k-a-positive-predictive-value-ppv.html)
-
----
-
-****More in Fairness & Calibration****
-
-> [Demographic Parity (Statistical Parity)](030-demographic-parity-statistical-parity.html) · [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Four-Fifths (80%) Rule](189-four-fifths-80-rule.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Selection Rate](390-selection-rate.html)
-
----
-
 **Theme:** [Fairness & Calibration](index.html#term-theme-fairness)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Selection Rate](390-selection-rate.html) · [Recall](423-recall.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Fair Lending laws](332-fair-lending-laws.html) · [High-Stakes Domains](334-high-stakes-domains.html) · [Precision (a.k.a. Positive Predictive Value, PPV)](429-precision-a-k-a-positive-predictive-value-ppv.html)
+
+---
+
+> **Hint**
+> ****More in Fairness & Calibration****
+
+[Demographic Parity (Statistical Parity)](030-demographic-parity-statistical-parity.html) · [Equal Opportunity (Fairness)](029-equal-opportunity-fairness.html) · [Equalized Odds (Fairness)](028-equalized-odds-fairness.html) · [Fairness Guardrails](351-fairness-guardrails.html) · [Four-Fifths (80%) Rule](189-four-fifths-80-rule.html) · [Predictive Parity (Calibration)](027-predictive-parity-calibration.html) · [Selection Rate](390-selection-rate.html)
 > **See also**
-> Adapted in our own words from [Fairness parity](https://insightful-data-lab.com/2025/08/19/fairness-parity/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Fairness parity](https://insightful-data-lab.com/2025/08/19/fairness-parity/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

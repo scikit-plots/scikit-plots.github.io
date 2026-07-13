@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 10 · 🎛️ Modal & Variational Approximation**** · Lesson 090 of 144 · **intermediate**
 
-[◀ Previous · Other approximations](089-other-approximations.html) · [Next · Conditional modeling ▶](091-conditional-modeling.html)
+[◀ Previous · Other approximations](089-other-approximations.html) · [Next · Conditional modeling ▶](091-conditional-modeling.html) · [↑ Section](index.html)
 
 ## When the likelihood has a constant you cannot compute[#](#when-the-likelihood-has-a-constant-you-cannot-compute "Link to this heading")
 
@@ -66,9 +66,9 @@ demand a different bargain — auxiliary variables, unbiased estimators, or simu
 and each buys correctness with either exact sampling or extra Monte Carlo noise. With the machinery
 established, Part IV returns to modelling: regression, and the structure that makes models useful.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Other approximations](089-other-approximations.html) · [Metropolis and Metropolis-Hastings algorithms](070-metropolis-and-metropolis-hastings-algorithms.html) · [Model comparison using Bayes factors](047-model-comparison-using-bayes-factors.html) · [Importance sampling](065-importance-sampling.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/23/unknown-normalizing-factors/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/23/unknown-normalizing-factors/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

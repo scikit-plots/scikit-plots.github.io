@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 1 · 🎲 The Bayesian Idea**** · Lesson 003 of 144 · **beginner**
 
-[◀ Previous · General Notation for Statistical Inference](002-general-notation-for-statistical-inference.html) · [Next · Discrete Bayesian Examples – Genetics and Spell Checking (with θ) ▶](004-discrete-bayesian-examples-genetics-and-spell-checking-with.html)
+[◀ Previous · General Notation for Statistical Inference](002-general-notation-for-statistical-inference.html) · [Next · Discrete Bayesian Examples – Genetics and Spell Checking (with θ) ▶](004-discrete-bayesian-examples-genetics-and-spell-checking-with.html) · [↑ Section](index.html)
 
 ## Conclusions as probabilities[#](#conclusions-as-probabilities "Link to this heading")
 
@@ -47,9 +47,9 @@ prior information. The cost is that you must state a prior; the benefit is that 
 distribution you may interpret directly, and that uncertainty propagates automatically into any
 derived quantity.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [The three steps of Bayesian data analysis](001-the-three-steps-of-bayesian-data-analysis.html) · [General Notation for Statistical Inference](002-general-notation-for-statistical-inference.html) · [Discrete Bayesian Examples – Genetics and Spell Checking (with θ)](004-discrete-bayesian-examples-genetics-and-spell-checking-with.html) · [Probability as a Measure of Uncertainty](005-probability-as-a-measure-of-uncertainty.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/08/bayesian-inference-2/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/08/bayesian-inference-2/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

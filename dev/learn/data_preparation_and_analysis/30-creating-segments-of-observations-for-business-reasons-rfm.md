@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 30 of 56 · **intermediate**
 
-[◀ Previous · RFM Analysis](29-rfm-analysis.html) · [Next · Least Squares Regression ▶](31-least-squares-regression.html)
+[◀ Previous · RFM Analysis](29-rfm-analysis.html) · [Next · Least Squares Regression ▶](31-least-squares-regression.html) · [↑ Section](index.html)
 
 ## From codes to segments[#](#from-codes-to-segments "Link to this heading")
 
@@ -39,9 +39,9 @@ the goal is the one this stage began with: turn a mass of observations into ****
 business can act on. With customers understood, the course turns next to ****predicting**** outcomes —
 starting with regression.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Recency, Frequency, and Monetary Value (RFM)](28-recency-frequency-and-monetary-value-rfm.html) · [RFM Analysis](29-rfm-analysis.html) · [Clustering](27-clustering.html) · [Cluster Profiling Using Decision Trees](48-cluster-profiling-using-decision-trees.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/creating-segments-of-observations-for-business-reasons-rfm/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/creating-segments-of-observations-for-business-reasons-rfm/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

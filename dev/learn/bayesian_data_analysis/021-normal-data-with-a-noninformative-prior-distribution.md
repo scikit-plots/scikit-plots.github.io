@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 3 · 🧮 Multiparameter Models**** · Lesson 021 of 144 · **beginner**
 
-[◀ Previous · Averaging Over Nuisance Parameters](020-averaging-over-nuisance-parameters.html) · [Next · Normal Data with a Conjugate Prior Distribution ▶](022-normal-data-with-a-conjugate-prior-distribution.html)
+[◀ Previous · Averaging Over Nuisance Parameters](020-averaging-over-nuisance-parameters.html) · [Next · Normal Data with a Conjugate Prior Distribution ▶](022-normal-data-with-a-conjugate-prior-distribution.html) · [↑ Section](index.html)
 
 ## Two unknowns at last[#](#two-unknowns-at-last "Link to this heading")
 
@@ -55,9 +55,9 @@ np.percentile(mu, [2.5, 97.5])          # matches the t_{n-1} interval
 One caveat: this prior is ****improper****, and with \(n = 1\) the posterior for \(\mu\) fails to
 integrate — a reminder to check propriety rather than trust the algebra.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Averaging Over Nuisance Parameters](020-averaging-over-nuisance-parameters.html) · [Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html) · [Noninformative Prior Distributions](018-noninformative-prior-distributions.html) · [Normal Distribution with Known Variance](015-normal-distribution-with-known-variance.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/normal-data-with-a-noninformative-prior-distribution/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/normal-data-with-a-noninformative-prior-distribution/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)

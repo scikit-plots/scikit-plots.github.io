@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 9 · ⛓️ MCMC: Gibbs, Metropolis & HMC**** · Lesson 080 of 144 · **intermediate**
 
-[◀ Previous · Hamiltonian Monte Carlo for a hierarchical model](079-hamiltonian-monte-carlo-for-a-hierarchical-model.html) · [Next · Finding posterior modes ▶](081-finding-posterior-modes.html)
+[◀ Previous · Hamiltonian Monte Carlo for a hierarchical model](079-hamiltonian-monte-carlo-for-a-hierarchical-model.html) · [Next · Finding posterior modes ▶](081-finding-posterior-modes.html) · [↑ Section](index.html)
 
 ## A language for models[#](#a-language-for-models "Link to this heading")
 
@@ -69,9 +69,9 @@ reported without asking, which made unchecked sampling embarrassing rather than 
 rather than as an algorithm. PyMC, NumPyro and BlackJAX offer the same bargain in Python. The remaining
 craft is the modelling — which is where Parts IV and V go.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Hamiltonian Monte Carlo](078-hamiltonian-monte-carlo.html) · [Computing environments](067-computing-environments.html) · [Computation and Software](009-computation-and-software.html) · [Debugging Bayesian computing](068-debugging-bayesian-computing.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/22/stan-developing-a-computing-environment/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/22/stan-developing-a-computing-environment/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

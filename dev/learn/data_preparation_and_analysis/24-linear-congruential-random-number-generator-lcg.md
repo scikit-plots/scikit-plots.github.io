@@ -2,7 +2,7 @@
 
 ****Stage 4 · 🧩 Sampling, Partitioning & Segmentation**** · Lesson 24 of 56 · **intermediate**
 
-[◀ Previous · Stratified Random Sampling](23-stratified-random-sampling.html) · [Next · Partitioning Observations to Train Objective Models ▶](25-partitioning-observations-to-train-objective-models.html)
+[◀ Previous · Stratified Random Sampling](23-stratified-random-sampling.html) · [Next · Partitioning Observations to Train Objective Models ▶](25-partitioning-observations-to-train-objective-models.html) · [↑ Section](index.html)
 
 ## Randomness you can repeat[#](#randomness-you-can-repeat "Link to this heading")
 
@@ -39,9 +39,9 @@ detectable lattice patterns, and the low-order bits are weakly random. Modern li
 default to stronger generators (numpy now uses a ****PCG64**** generator by default), while keeping the
 same crucial habit: ****set a seed**** so your sampling, splitting and modelling can be reproduced exactly.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Stratified Random Sampling](23-stratified-random-sampling.html) · [Partitioning Observations to Train Objective Models](25-partitioning-observations-to-train-objective-models.html) · [IEEE 754 Floating-Point Standard](06-ieee-754-floating-point-standard.html) · [Clustering](27-clustering.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/linear-congruential-random-number-generator-lcg/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/linear-congruential-random-number-generator-lcg/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

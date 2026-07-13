@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 52 of 56 · **advanced**
 
-[◀ Previous · Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [Next · Binary Classification Model Evaluation and Threshold Optimization ▶](53-binary-classification-model-evaluation-and-threshold-optimization.html)
+[◀ Previous · Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [Next · Binary Classification Model Evaluation and Threshold Optimization ▶](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [↑ Section](index.html)
 
 ## Beyond two classes[#](#beyond-two-classes "Link to this heading")
 
@@ -41,9 +41,9 @@ On ****imbalanced**** data the choice matters: a model useless on a rare class c
 weighted or micro score, while its ****macro**** score collapses — so pick the average that matches whether
 classes or instances are what the business weighs equally.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Binary Classification Models – Conceptual Framework and Evaluation Metrics](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [AUC–ROC Curve: Evaluating Classification Model Performance](55-auc-roc-curve-evaluating-classification-model-performance.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/nominal-classification-models-model-state-and-evaluation-metrics/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/nominal-classification-models-model-state-and-evaluation-metrics/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

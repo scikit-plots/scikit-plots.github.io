@@ -48,12 +48,12 @@ majority of a real project, precisely because their deliverables — a sharp
 question and trustworthy data — determine whether the glamorous phases mean
 anything. The next lesson runs the whole relay on a concrete case.
 
-> **See also**
+> **Hint**
 > * [The Six Phases of the Data Analysis Process](005-the-six-phases-of-the-data-analysis-process.html)
 * [Practical Application of the Data Analysis Process](012-practical-application-of-the-data-analysis-process.html)
 * [A Review of the Six Stages of the Data Life Cycle](010-a-review-of-the-six-stages-of-the-data-life-cycle.html)
 * [Analytical Skills and Their Core Components](013-analytical-skills-and-their-core-components.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/the-stages-of-the-data-analysis-process-and-their-roles/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/the-stages-of-the-data-analysis-process-and-their-roles/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [process](../../../_tags/process.html)

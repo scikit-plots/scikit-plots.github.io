@@ -2,7 +2,7 @@
 
 ****Part 2 · Stage 6 · 🔍 Model Checking & Comparison**** · Lesson 049 of 144 · **intermediate**
 
-[◀ Previous · Continuous model expansion](048-continuous-model-expansion.html) · [Next · Bayesian inference requires a model for data collection ▶](050-bayesian-inference-requires-a-model-for-data-collection.html)
+[◀ Previous · Continuous model expansion](048-continuous-model-expansion.html) · [Next · Bayesian inference requires a model for data collection ▶](050-bayesian-inference-requires-a-model-for-data-collection.html) · [↑ Section](index.html)
 
 ## The assumptions you forgot you made[#](#the-assumptions-you-forgot-you-made "Link to this heading")
 
@@ -63,9 +63,9 @@ with \(J = 8\), \(\nu\) will be weakly determined, so the check reports “no ev
 rather than “assumption verified”. Model expansion widens what the data can speak to; it does not make
 them omniscient.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Continuous model expansion](048-continuous-model-expansion.html) · [Example: parallel experiments in eight schools](037-example-parallel-experiments-in-eight-schools.html) · [Model checking for the educational testing example](044-model-checking-for-the-educational-testing-example.html) · [Robust inference for the eight schools](116-robust-inference-for-the-eight-schools.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/10/implicit-assumptions-and-model-expansion-an-example/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/10/implicit-assumptions-and-model-expansion-an-example/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

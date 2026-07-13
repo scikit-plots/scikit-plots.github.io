@@ -1,3 +1,3 @@
 🌱 Scikit-plots APIs
   
- 0.5.dev0+git.20260711.4094af5 - July 11, 2026 11:08 UTC
+ 0.5.dev0+git.20260712.3bacd52 - July 12, 2026 23:45 UTC

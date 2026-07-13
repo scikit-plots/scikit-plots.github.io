@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🛒 Market Basket & Association Rules**** · Lesson 18 of 56 · **intermediate**
 
-[◀ Previous · Understanding Market Baskets and Ideal Customers](17-understanding-market-baskets-and-ideal-customers.html) · [Next · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach ▶](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html)
+[◀ Previous · Understanding Market Baskets and Ideal Customers](17-understanding-market-baskets-and-ideal-customers.html) · [Next · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach ▶](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · [↑ Section](index.html)
 
 ## If this, then that[#](#if-this-then-that "Link to this heading")
 
@@ -33,9 +33,9 @@ bread and butter travel with milk does not mean one ****causes**** the other —
 weekly grocery run. Rules are superb at spotting ****what**** goes together and useful for acting on it,
 but they do not, by themselves, explain ****why****.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Understanding Market Baskets and Ideal Customers](17-understanding-market-baskets-and-ideal-customers.html) · [How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · [Apriori: Frequent Itemsets via the Apriori Algorithm](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [Cross-Selling](22-cross-selling.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/14/what-can-association-rules-tell-us/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/14/what-can-association-rules-tell-us/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -2,7 +2,7 @@
 
 ****Stage 8 · 📊 Model Evaluation**** · Lesson 54 of 56 · **advanced**
 
-[◀ Previous · Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [Next · AUC–ROC Curve: Evaluating Classification Model Performance ▶](55-auc-roc-curve-evaluating-classification-model-performance.html)
+[◀ Previous · Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [Next · AUC–ROC Curve: Evaluating Classification Model Performance ▶](55-auc-roc-curve-evaluating-classification-model-performance.html) · [↑ Section](index.html)
 
 ## Evaluating regression fits[#](#evaluating-regression-fits "Link to this heading")
 
@@ -47,9 +47,9 @@ robust fit or report it as a notable exception. And when ****many**** points fla
 usually not “bad data” but a ****misspecified model**** — a missing curve or interaction. Residual
 diagnostics evaluate the **model** as much as the points.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Least Squares Regression](31-least-squares-regression.html) · [Multiple Linear Regression](32-multiple-linear-regression.html) · [Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/16/identifying-outliers-using-residuals-and-studentized-residuals/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/16/identifying-outliers-using-residuals-and-studentized-residuals/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: data preparation](../../_tags/topic-data-preparation.html) [level: advanced](../../_tags/level-advanced.html)

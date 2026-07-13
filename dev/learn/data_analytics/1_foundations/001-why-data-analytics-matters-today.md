@@ -56,12 +56,12 @@ biased, or beside the point, and later lessons deal squarely with dirty data,
 sampling bias, and misleading charts. “Data-driven” done well means **evidence
 disciplines the decision** — not that a spreadsheet makes it for you.
 
-> **See also**
+> **Hint**
 > * [How Data Analytics Improves the Workplace](002-how-data-analytics-improves-the-workplace.html)
 * [Data-Driven Decision-Making](003-data-driven-decision-making.html)
 * [The Six Phases of the Data Analysis Process](005-the-six-phases-of-the-data-analysis-process.html)
 * [Overview of Core Tools Used by Data Analysts](020-overview-of-core-tools-used-by-data-analysts.html)
-
-[Source article](https://insightful-data-lab.com/2023/07/30/why-data-analytics-matters-today/)
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/why-data-analytics-matters-today/> (insightful-data-lab.com).
 
 Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [why](../../../_tags/why.html)

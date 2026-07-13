@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 13 of 17 · **intermediate**
 
-[◀ Previous · Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html) · [Next · Gradient Descent on m Training Examples ▶](14-gradient-descent-on-m-training-examples.html)
+[◀ Previous · Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html) · [Next · Gradient Descent on m Training Examples ▶](14-gradient-descent-on-m-training-examples.html) · [↑ Section](index.html)
 
 ## The neuron’s graph[#](#the-neuron-s-graph "Link to this heading")
 
@@ -46,9 +46,9 @@ b := b - \alpha\,\mathrm{d}b.\]
 That is a full learning step — for a ****single**** example. Real training averages over many, which is
 the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Derivatives with a Computation Graph](12-derivatives-with-a-computation-graph.html) · [Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html) · [Computation Graph](11-computation-graph.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/logistic-regression-gradient-descent/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/logistic-regression-gradient-descent/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 9 · ⛓️ MCMC: Gibbs, Metropolis & HMC**** · Lesson 070 of 144 · **intermediate**
 
-[◀ Previous · Gibbs sampler](069-gibbs-sampler.html) · [Next · Using Gibbs and Metropolis as building blocks ▶](071-using-gibbs-and-metropolis-as-building-blocks.html)
+[◀ Previous · Gibbs sampler](069-gibbs-sampler.html) · [Next · Using Gibbs and Metropolis as building blocks ▶](071-using-gibbs-and-metropolis-as-building-blocks.html) · [↑ Section](index.html)
 
 ## Propose, then decide[#](#propose-then-decide "Link to this heading")
 
@@ -56,9 +56,9 @@ legitimate draw but adds no information. The classic guidance targets an accepta
 Even tuned, a random walk explores by ****diffusion****: to travel a distance \(L\) it needs roughly
 \((L/c)^2\) steps. That quadratic cost is what Hamiltonian Monte Carlo was invented to escape.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Gibbs sampler](069-gibbs-sampler.html) · [Using Gibbs and Metropolis as building blocks](071-using-gibbs-and-metropolis-as-building-blocks.html) · [Eﬃcient Metropolis jumping rules](076-efficient-metropolis-jumping-rules.html) · [Hamiltonian Monte Carlo](078-hamiltonian-monte-carlo.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/12/metropolis-and-metropolis-hastings-algorithms/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/12/metropolis-and-metropolis-hastings-algorithms/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -2,7 +2,7 @@
 
 ****Stage 4 · ⚙️ Backprop & Vectorization**** · Lesson 15 of 17 · **intermediate**
 
-[◀ Previous · Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html) · [Next · More Vectorization Examples ▶](16-more-vectorization-examples.html)
+[◀ Previous · Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html) · [Next · More Vectorization Examples ▶](16-more-vectorization-examples.html) · [↑ Section](index.html)
 
 ## What vectorization is[#](#what-vectorization-is "Link to this heading")
 
@@ -37,9 +37,9 @@ for-loops.”**** The remaining lessons apply it relentlessly — vectorising th
 an entire step of logistic regression over all \(m\) examples runs without a single Python loop
 over the data.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html) · [More Vectorization Examples](16-more-vectorization-examples.html) · [Vectorizing Logistic Regression](17-vectorizing-logistic-regression.html) · [Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/04/07/vectorization-in-logistic-regression/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/04/07/vectorization-in-logistic-regression/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: deep learning](../../_tags/topic-deep-learning.html) [level: intermediate](../../_tags/level-intermediate.html)

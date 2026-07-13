@@ -2,7 +2,7 @@
 
 ****Stage 3 · 🔗 Linear & ARMA Processes**** · Lesson 05 of 18 · **intermediate**
 
-[◀ Previous · Weak and Strong Stationarity](04-weak-and-strong-stationarity.html) · [Next · Understanding ARMA Processes ▶](06-understanding-arma-processes.html)
+[◀ Previous · Weak and Strong Stationarity](04-weak-and-strong-stationarity.html) · [Next · Understanding ARMA Processes ▶](06-understanding-arma-processes.html) · [↑ Section](index.html)
 
 ## What it is[#](#what-it-is "Link to this heading")
 
@@ -38,9 +38,9 @@ component — so linear processes are not one model among many but the ****canon
 stationary series. Causality and invertibility (next lesson) are precisely the conditions under
 which an ARMA model collapses into, or inverts back out of, this form.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Understanding ARMA Processes](06-understanding-arma-processes.html) · [Weak and Strong Stationarity](04-weak-and-strong-stationarity.html) · [Best Linear Predictor of a Stationary Process](09-best-linear-predictor-of-a-stationary-process.html) · [Understanding ACFs via Difference Equations for AR(p) and ARMA(p, q)](08-understanding-acfs-via-difference-equations-for-ar-p-and-arma-p-q.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2026/01/17/linear-processes/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2026/01/17/linear-processes/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: time series](../../_tags/topic-time-series.html) [level: intermediate](../../_tags/level-intermediate.html)

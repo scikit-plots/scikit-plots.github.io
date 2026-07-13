@@ -46,21 +46,22 @@ environment is ****stable****; rapidly shifting preferences or delayed rewards w
 
 ---
 
-****Mind map — connected ideas****
-
-> [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html) · [Bayesian Decision Theory (BDT)](051-bayesian-decision-theory-bdt.html) · [A/B/n Test](114-a-b-n-test.html) · [Beta Distribution](099-beta-distribution.html) · [A/B Testing](380-a-b-testing.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html)
-
----
-
-****More in Sequential Methods & Bandits****
-
-> [O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
-
----
-
 **Theme:** [Sequential Methods & Bandits](index.html#term-theme-bandits)  ·  [All terminology](index.html)
 
+---
+
+> **Hint**
+> ****Mind map — connected ideas****
+
+[Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html) · [Bayesian Decision Theory (BDT)](051-bayesian-decision-theory-bdt.html) · [A/B/n Test](114-a-b-n-test.html) · [Beta Distribution](099-beta-distribution.html) · [A/B Testing](380-a-b-testing.html) · [Online Experimentation Platforms](070-online-experimentation-platforms.html)
+
+---
+
+> **Hint**
+> ****More in Sequential Methods & Bandits****
+
+[O’Brien–Fleming (OBF) Method](078-o-brienfleming-obf-method.html) · [Pocock Method](077-pocock-method.html) · [Sequential Probability Ratio Test (SPRT)](076-sequential-probability-ratio-test-sprt.html) · [Sequential Settings](058-sequential-settings.html) · [Thompson Sampling (TS) in Bandits (Multi-Armed Bandit Problem (MAB))](050-thompson-sampling-ts-in-bandits-multi-armed-band.html)
 > **See also**
-> Adapted in our own words from [Bandit Algorithms](https://insightful-data-lab.com/2025/08/24/bandit-algorithms/) (insightful-data-lab.com).
+> ****Source article**** Adapted (context, re-expressed) in our own words from: [Bandit Algorithms](https://insightful-data-lab.com/2025/08/24/bandit-algorithms/) (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)

@@ -2,7 +2,7 @@
 
 ****Part 3 · Stage 9 · ⛓️ MCMC: Gibbs, Metropolis & HMC**** · Lesson 077 of 144 · **intermediate**
 
-[◀ Previous · Eﬃcient Metropolis jumping rules](076-efficient-metropolis-jumping-rules.html) · [Next · Hamiltonian Monte Carlo ▶](078-hamiltonian-monte-carlo.html)
+[◀ Previous · Eﬃcient Metropolis jumping rules](076-efficient-metropolis-jumping-rules.html) · [Next · Hamiltonian Monte Carlo ▶](078-hamiltonian-monte-carlo.html) · [↑ Section](index.html)
 
 ## Beyond the two basics[#](#beyond-the-two-basics "Link to this heading")
 
@@ -60,9 +60,9 @@ posteriors (where tempering still helps), and univariate conditionals inside com
 practice ****marginalises**** discrete parameters analytically where possible, and reaches for these tools
 where it is not.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Using Gibbs and Metropolis as building blocks](071-using-gibbs-and-metropolis-as-building-blocks.html) · [Gibbs sampler](069-gibbs-sampler.html) · [Unspecified number of mixture components](137-unspecified-number-of-mixture-components.html) · [Continuous model expansion](048-continuous-model-expansion.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/21/further-extensions-to-gibbs-and-metropolis/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/21/further-extensions-to-gibbs-and-metropolis/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: intermediate](../../_tags/level-intermediate.html)

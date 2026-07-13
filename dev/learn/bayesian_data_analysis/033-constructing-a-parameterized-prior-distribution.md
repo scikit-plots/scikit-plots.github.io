@@ -2,7 +2,7 @@
 
 ****Part 1 · Stage 5 · 🏛️ Hierarchical Models**** · Lesson 033 of 144 · **beginner**
 
-[◀ Previous · Bayesian interpretations of other statistical methods](032-bayesian-interpretations-of-other-statistical-methods.html) · [Next · Exchangeability and hierarchical models ▶](034-exchangeability-and-hierarchical-models.html)
+[◀ Previous · Bayesian interpretations of other statistical methods](032-bayesian-interpretations-of-other-statistical-methods.html) · [Next · Exchangeability and hierarchical models ▶](034-exchangeability-and-hierarchical-models.html) · [↑ Section](index.html)
 
 ## Where does the prior come from?[#](#where-does-the-prior-come-from "Link to this heading")
 
@@ -56,9 +56,9 @@ borrowing strength from the others. The ****amount**** of borrowing is not chose
 propagates into every group’s interval. But the construction needs a justification — why should
 \(\theta\_j\) share a distribution at all? That is ****exchangeability****, and it is the next lesson.
 
-> **See also**
+> **Hint**
 > ****Related lessons:**** [Exchangeability and hierarchical models](034-exchangeability-and-hierarchical-models.html) · [Informative Prior Distribution for Cancer Rates](017-informative-prior-distribution-for-cancer-rates.html) · [Bayesian analysis of conjugate hierarchical models](035-bayesian-analysis-of-conjugate-hierarchical-models.html) · [Averaging Over Nuisance Parameters](020-averaging-over-nuisance-parameters.html)
-
-****Source**** (context, re-expressed in our own words): <https://insightful-data-lab.com/2025/11/09/constructing-a-parameterized-prior-distribution/>
+> **See also**
+> ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2025/11/09/constructing-a-parameterized-prior-distribution/> (insightful-data-lab.com).
 
 Tags: [purpose: reference](../../_tags/purpose-reference.html) [domain: bayesian](../../_tags/domain-bayesian.html) [level: beginner](../../_tags/level-beginner.html)
