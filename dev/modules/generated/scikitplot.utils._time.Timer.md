@@ -1,6 +1,6 @@
 # Timer[#](#timer "Link to this heading")
 
-class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **logging\_level='info'**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/utils/_time.py#L16)[#](#scikitplot.utils._time.Timer "Link to this definition")
+class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **logging\_level='info'**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/utils/_time.py#L16)[#](#scikitplot.utils._time.Timer "Link to this definition")
 :   Lightweight ⏱ timing context manager with [`logger`](scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger") support.
 
     Examples

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:31:00Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T05:11:27Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,13 +1314,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>SentenceSplitterProtocol<a class="headerlink" href="#sentencesplitterprotocol" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.SentenceSplitterProtocol">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">SentenceSplitterProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SentenceSplitterProtocol" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">SentenceSplitterProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SentenceSplitterProtocol" title="Link to this definition">#</a></dt>
 <dd><p>Structural protocol for sentence segmenters.</p>
 <p>Any object with a <code class="docutils literal notranslate"><span class="pre">split(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">list[str]</span></code> method satisfies
 this protocol.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="db22f3c8-3a76-4922-acf5-811f91b13ebd">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('db22f3c8-3a76-4922-acf5-811f91b13ebd','6efc0418-8003-415e-aca9-45236dceab37','b2f4e00f-4e62-4958-8027-82c20a57ea7e','../../lite/tree/../notebooks/index.html?path=dbfa04d9_0429_47b9_8a25_2b71eadb08ce.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6e06bd69-1784-4bda-b90d-502403d7d27a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6e06bd69-1784-4bda-b90d-502403d7d27a','1d668504-ae31-4096-b869-1c168c1f3396','32c569e0-7796-4378-be91-698a9d5a4fec','../../lite/tree/../notebooks/index.html?path=c6477ddc_7744_4301_a64a_c3ad2754732c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MySplitter</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;. &quot;</span><span class="p">)</span>
@@ -1330,9 +1330,9 @@ this protocol.</p>
 </div>
 </div>
 </div>
-<div id="b2f4e00f-4e62-4958-8027-82c20a57ea7e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('db22f3c8-3a76-4922-acf5-811f91b13ebd','b2f4e00f-4e62-4958-8027-82c20a57ea7e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('db22f3c8-3a76-4922-acf5-811f91b13ebd','b2f4e00f-4e62-4958-8027-82c20a57ea7e')">Open In Tab</button></div><div id="6efc0418-8003-415e-aca9-45236dceab37" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="32c569e0-7796-4378-be91-698a9d5a4fec" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6e06bd69-1784-4bda-b90d-502403d7d27a','32c569e0-7796-4378-be91-698a9d5a4fec')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6e06bd69-1784-4bda-b90d-502403d7d27a','32c569e0-7796-4378-be91-698a9d5a4fec')">Open In Tab</button></div><div id="1d668504-ae31-4096-b869-1c168c1f3396" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SentenceSplitterProtocol.split">
-<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L196"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SentenceSplitterProtocol.split" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L196"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SentenceSplitterProtocol.split" title="Link to this definition">#</a></dt>
 <dd><p>Split <em>text</em> into sentences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1477,7 +1477,7 @@ this protocol.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.7b27db8 2026-07-14T04:36Z.
       <br/>
     
   </p>

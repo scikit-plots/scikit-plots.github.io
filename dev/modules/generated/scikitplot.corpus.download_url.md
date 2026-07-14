@@ -1,6 +1,6 @@
 # download\_url[#](#download-url "Link to this heading")
 
-scikitplot.corpus.download\_url(**url**, **\***, **output\_path=None**, **max\_bytes=524288000**, **timeout=120**, **max\_redirects=10**, **max\_retries=3**, **retry\_backoff=1.0**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_url_handler.py#L1309)[#](#scikitplot.corpus.download_url "Link to this definition")
+scikitplot.corpus.download\_url(**url**, **\***, **output\_path=None**, **max\_bytes=524288000**, **timeout=120**, **max\_redirects=10**, **max\_retries=3**, **retry\_backoff=1.0**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_url_handler.py#L1309)[#](#scikitplot.corpus.download_url "Link to this definition")
 :   Download a URL to a local file.
 
     Parameters:

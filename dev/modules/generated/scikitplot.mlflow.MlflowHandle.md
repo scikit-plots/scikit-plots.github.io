@@ -1,6 +1,6 @@
 # MlflowHandle[#](#mlflowhandle "Link to this heading")
 
-class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, **\_registry\_uri**, **\_ui\_url**, **\_client**, **\_artifacts**, **\_models**, **server=None**, **version=None**, **experiment\_name=None**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/mlflow/_session.py#L157)[#](#scikitplot.mlflow.MlflowHandle "Link to this definition")
+class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, **\_registry\_uri**, **\_ui\_url**, **\_client**, **\_artifacts**, **\_models**, **server=None**, **version=None**, **experiment\_name=None**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/mlflow/_session.py#L157)[#](#scikitplot.mlflow.MlflowHandle "Link to this definition")
 :   A handle that proxies the upstream `mlflow` module while adding session context.
 
     Attributes:
@@ -94,7 +94,7 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
 
     server: [SpawnedServer](scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer "scikitplot.mlflow._server.SpawnedServer") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowHandle.server "Link to this definition")
 
-    start\_run(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/mlflow/_session.py#L270)[#](#scikitplot.mlflow.MlflowHandle.start_run "Link to this definition")
+    start\_run(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/mlflow/_session.py#L270)[#](#scikitplot.mlflow.MlflowHandle.start_run "Link to this definition")
     :   Start an MLflow run and apply session defaults.
 
         Parameters:
