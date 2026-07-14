@@ -88,4 +88,4 @@ print("after: ", Counter(y_res))
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [SMOTE (Synthetic Minority Over-sampling Technique)](https://insightful-data-lab.com/2025/08/30/smote-synthetic-minority-over-sampling-technique/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

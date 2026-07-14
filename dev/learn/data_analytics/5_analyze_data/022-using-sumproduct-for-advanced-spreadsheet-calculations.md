@@ -80,4 +80,4 @@ turns to the most powerful summarising tool of all: the pivot table.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/26/using-sumproduct-for-advanced-spreadsheet-calculations/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [analyze](../../../_tags/analyze.html) [calc](../../../_tags/calc.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: analyze](../../../_tags/topic-analyze.html) [topic: calc](../../../_tags/topic-calc.html)

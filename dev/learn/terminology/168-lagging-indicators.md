@@ -50,4 +50,4 @@ indicator is AUC sliding from 0.87 to 0.72 — proof the model is now underperfo
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Lagging Indicators](https://insightful-data-lab.com/2025/08/23/lagging-indicators/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

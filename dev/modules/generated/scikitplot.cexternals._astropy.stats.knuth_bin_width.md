@@ -1,6 +1,6 @@
 # knuth\_bin\_width[#](#knuth-bin-width "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.knuth\_bin\_width(**data**, **return\_bins=False**, **quiet=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cexternals/_astropy/stats/histogram.py#L313)[#](#scikitplot.cexternals._astropy.stats.knuth_bin_width "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.knuth\_bin\_width(**data**, **return\_bins=False**, **quiet=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/cexternals/_astropy/stats/histogram.py#L313)[#](#scikitplot.cexternals._astropy.stats.knuth_bin_width "Link to this definition")
 :   Return the optimal histogram bin width using Knuth’s rule.
 
     Knuth’s rule is a fixed-width, Bayesian approach to determining

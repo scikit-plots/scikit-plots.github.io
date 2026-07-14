@@ -71,4 +71,4 @@ checklist for judging whether a **source** is trustworthy.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/common-types-of-data-bias/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [bias\_ethics](../../../_tags/bias_ethics.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: prep](../../../_tags/topic-prep.html) [topic: bias\_ethics](../../../_tags/topic-bias_ethics.html)

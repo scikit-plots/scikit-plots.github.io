@@ -45,4 +45,4 @@ beats a high-traffic, low-CR one on profit.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Conversion Rate (CR)](https://insightful-data-lab.com/2025/08/21/conversion-rate-cr/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

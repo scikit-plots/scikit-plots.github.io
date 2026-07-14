@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:22:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:30:27Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>DefaultFilter<a class="headerlink" href="#defaultfilter" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.DefaultFilter">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">DefaultFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L490"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DefaultFilter" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">DefaultFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_base.py#L490"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DefaultFilter" title="Link to this definition">#</a></dt>
 <dd><p>Standard noise filter ported and improved from remarx’s <code class="docutils literal notranslate"><span class="pre">include_sentence</span></code>.</p>
 <p>Rejects a document when <strong>any</strong> of the following is true:</p>
 <ol class="arabic simple">
@@ -1344,8 +1344,8 @@ matches any Unicode letter (including accented and non-Latin characters)
 while excluding digits and underscore. This is more robust than
 remarx’s original <code class="docutils literal notranslate"><span class="pre">^[\\W\\d]+$</span></code> which could pass on some Unicode input_path.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c5a73505-5536-4839-8bdb-057e0c1d1ea6">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c5a73505-5536-4839-8bdb-057e0c1d1ea6','eaf26ace-69cf-416e-9a22-9c91ea8a7442','aa4646e7-f310-4f81-b3aa-76d7c8729c13','../../lite/tree/../notebooks/index.html?path=029dc90b_ec78_440a_ad4c_dd1305c46d91.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="07e410e8-f54a-49aa-bdbf-4dc3e5065835">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('07e410e8-f54a-49aa-bdbf-4dc3e5065835','1845352e-e7a6-42c5-a9a5-57e7f4074d95','876c1921-a573-4207-a8f5-b500e83f3b23','../../lite/tree/../notebooks/index.html?path=262c7e20_c0db_4d2b_9d3b_c19a4d6ad2b4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">DefaultFilter</span><span class="p">(</span><span class="n">min_words</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_chars</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc_ok</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Hello world test.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc_noise</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;p. 56, 57.&quot;</span><span class="p">)</span>
@@ -1357,9 +1357,9 @@ remarx’s original <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 </div>
-<div id="aa4646e7-f310-4f81-b3aa-76d7c8729c13" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c5a73505-5536-4839-8bdb-057e0c1d1ea6','aa4646e7-f310-4f81-b3aa-76d7c8729c13')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c5a73505-5536-4839-8bdb-057e0c1d1ea6','aa4646e7-f310-4f81-b3aa-76d7c8729c13')">Open In Tab</button></div><div id="eaf26ace-69cf-416e-9a22-9c91ea8a7442" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="876c1921-a573-4207-a8f5-b500e83f3b23" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('07e410e8-f54a-49aa-bdbf-4dc3e5065835','876c1921-a573-4207-a8f5-b500e83f3b23')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('07e410e8-f54a-49aa-bdbf-4dc3e5065835','876c1921-a573-4207-a8f5-b500e83f3b23')">Open In Tab</button></div><div id="1845352e-e7a6-42c5-a9a5-57e7f4074d95" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.DefaultFilter.include">
-<span class="sig-name descname"><span class="pre">include</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L547"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DefaultFilter.include" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">include</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_base.py#L547"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DefaultFilter.include" title="Link to this definition">#</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">doc</span></code> passes all noise checks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1519,7 +1519,7 @@ surrounding whitespace as content.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
       <br/>
     
   </p>

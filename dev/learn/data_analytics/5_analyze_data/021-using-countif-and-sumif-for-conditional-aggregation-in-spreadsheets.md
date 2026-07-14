@@ -80,4 +80,4 @@ error. The next lesson covers a more advanced calculation function: SUMPRODUCT.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/26/using-countif-and-sumif-for-conditional-aggregation-in-spreadsheets/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [analyze](../../../_tags/analyze.html) [calc](../../../_tags/calc.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: analyze](../../../_tags/topic-analyze.html) [topic: calc](../../../_tags/topic-calc.html)

@@ -45,4 +45,4 @@ alarms.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Precision (a.k.a. Positive Predictive Value, PPV)](https://insightful-data-lab.com/2025/08/17/precision-a-k-a-positive-predictive-value-ppv/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

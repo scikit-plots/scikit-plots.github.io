@@ -77,4 +77,4 @@ and the next section confronts the reality that it is almost never clean.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/15236/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [spreadsheets\_sql](../../../_tags/spreadsheets_sql.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: prep](../../../_tags/topic-prep.html) [topic: spreadsheets\_sql](../../../_tags/topic-spreadsheets_sql.html)

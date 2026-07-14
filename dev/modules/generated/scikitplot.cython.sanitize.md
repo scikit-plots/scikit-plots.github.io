@@ -1,6 +1,6 @@
 # sanitize[#](#sanitize "Link to this heading")
 
-scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cython/_utils.py#L10)[#](#scikitplot.cython.sanitize "Link to this definition")
+scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/cython/_utils.py#L10)[#](#scikitplot.cython.sanitize "Link to this definition")
 :   Convert an arbitrary string into a valid Python module name.
 
     Parameters:

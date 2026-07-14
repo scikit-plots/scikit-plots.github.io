@@ -75,4 +75,4 @@ what is in these databases and the governance that manages it.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/databases-and-relational-database-concepts/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [sources](../../../_tags/sources.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: prep](../../../_tags/topic-prep.html) [topic: sources](../../../_tags/topic-sources.html)

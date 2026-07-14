@@ -42,4 +42,4 @@ flooding a rare positive class with false alarms. There, ****PR-AUC**** is more 
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [ROC-AUC (Receiver Operating Characteristic – Area Under Curve, = AUROC)](https://insightful-data-lab.com/2025/08/17/roc-auc-receiver-operating-characteristic-area-under-curve/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

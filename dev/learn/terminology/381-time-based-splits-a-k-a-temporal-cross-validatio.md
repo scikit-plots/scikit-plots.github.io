@@ -42,4 +42,4 @@ on. Look-ahead ****features**** must be avoided too.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Time-based splits (a.k.a. Temporal Cross-Validation, Rolling Window Validation)](https://insightful-data-lab.com/2025/08/19/time-based-splits-a-k-a-temporal-cross-validation-rolling-window-validation/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -42,4 +42,4 @@ and aligns with the real objective.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Loss Functions](https://insightful-data-lab.com/2025/08/21/loss-functions/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

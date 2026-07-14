@@ -77,4 +77,4 @@ with random weights **converges to a Gaussian process**.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Gaussian Processes (GPs)](https://insightful-data-lab.com/2025/08/29/gaussian-processes-gps/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

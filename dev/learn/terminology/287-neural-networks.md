@@ -64,4 +64,4 @@ clf.fit(X_train, y_train)
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Neural Networks](https://insightful-data-lab.com/2025/08/21/neural-networks/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: beginner](../../_tags/level-beginner.html)

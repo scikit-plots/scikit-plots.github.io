@@ -66,4 +66,4 @@ exist to approximate the evidence for posterior computation and model selection.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Marginal Likelihood (also called The Model Evidence or Integrated Likelihood)](https://insightful-data-lab.com/2025/08/28/marginal-likelihood-also-called-the-model-evidence-or-integrated-likelihood/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

@@ -75,4 +75,4 @@ how data is structured overall.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/understanding-data-types-and-data-formats/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [types](../../../_tags/types.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: prep](../../../_tags/topic-prep.html) [topic: types](../../../_tags/topic-types.html)

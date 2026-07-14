@@ -42,4 +42,4 @@ liked), and it is the usual kernel for computing ****intra-list similarity / div
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Cosine Similarity of Item Features](https://insightful-data-lab.com/2025/08/22/cosine-similarity-of-item-features/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

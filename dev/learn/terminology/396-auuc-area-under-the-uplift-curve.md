@@ -56,4 +56,4 @@ core metrics for evaluating uplift models.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [AUUC (Area Under the Uplift Curve)](https://insightful-data-lab.com/2025/08/19/auuc-area-under-the-uplift-curve/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

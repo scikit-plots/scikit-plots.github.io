@@ -42,4 +42,4 @@ It prevents ****overselling**** and ****stockouts****, keeps multi-channel stock
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Real-Time Inventory Tracking](https://insightful-data-lab.com/2025/08/23/real-time-inventory-tracking/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

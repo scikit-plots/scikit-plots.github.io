@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:23:31Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:31:36Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>to_langchain_documents<a class="headerlink" href="#to-langchain-documents" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.to_langchain_documents">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_langchain_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_adapters.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_langchain_documents" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_langchain_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_adapters.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_langchain_documents" title="Link to this definition">#</a></dt>
 <dd><p>Convert <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> instances to LangChain <code class="docutils literal notranslate"><span class="pre">Document</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1349,8 +1349,8 @@ LangChain retriever, chain, or agent:</p>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="447bcb6f-ef08-4d76-a1db-13ddc14d809e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('447bcb6f-ef08-4d76-a1db-13ddc14d809e','fe6053d6-447d-413b-a389-15af8d680dc4','e51b84a6-2e79-45c8-932e-0740d45daaa5','../../lite/tree/../notebooks/index.html?path=faf28a7b_e789_43cd_8721_08b17147160b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e01b9840-437d-4a5c-9361-a31d7f0307d0">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e01b9840-437d-4a5c-9361-a31d7f0307d0','32804d98-1e44-460b-a5e6-56eaf017d4fb','825c866b-2485-4492-9d02-c2819da89c29','../../lite/tree/../notebooks/index.html?path=cdf0e993_ecf5_4987_98e1_fabcb01f570a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lc_docs</span> <span class="o">=</span> <span class="n">to_langchain_documents</span><span class="p">(</span><span class="n">corpus_docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="go">&#39;Document&#39;</span>
@@ -1358,7 +1358,7 @@ LangChain retriever, chain, or agent:</p>
 </div>
 </div>
 </div>
-<div id="e51b84a6-2e79-45c8-932e-0740d45daaa5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('447bcb6f-ef08-4d76-a1db-13ddc14d809e','e51b84a6-2e79-45c8-932e-0740d45daaa5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('447bcb6f-ef08-4d76-a1db-13ddc14d809e','e51b84a6-2e79-45c8-932e-0740d45daaa5')">Open In Tab</button></div><div id="fe6053d6-447d-413b-a389-15af8d680dc4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="825c866b-2485-4492-9d02-c2819da89c29" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e01b9840-437d-4a5c-9361-a31d7f0307d0','825c866b-2485-4492-9d02-c2819da89c29')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e01b9840-437d-4a5c-9361-a31d7f0307d0','825c866b-2485-4492-9d02-c2819da89c29')">Open In Tab</button></div><div id="32804d98-1e44-460b-a5e6-56eaf017d4fb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1483,7 +1483,7 @@ LangChain retriever, chain, or agent:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
       <br/>
     
   </p>

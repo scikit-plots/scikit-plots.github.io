@@ -41,4 +41,4 @@ methods be compared on ****common ground**** rather than on each author’s priv
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Forecasting Benchmarks](https://insightful-data-lab.com/2025/08/22/forecasting-benchmarks/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

@@ -50,4 +50,4 @@ and leading indicators.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Windows (in Time-Series)](https://insightful-data-lab.com/2025/08/23/windows-in-time-series-data-analysis/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

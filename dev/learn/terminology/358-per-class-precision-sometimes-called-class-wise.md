@@ -44,4 +44,4 @@ collapse into one score. Best practice is to report the ****per-class**** values
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Per-class Precision (sometimes called class-wise precision)](https://insightful-data-lab.com/2025/08/20/per-class-precision-sometimes-called-class-wise-precision/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

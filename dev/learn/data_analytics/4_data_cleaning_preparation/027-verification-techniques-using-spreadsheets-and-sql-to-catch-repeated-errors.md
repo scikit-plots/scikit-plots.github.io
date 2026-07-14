@@ -74,4 +74,4 @@ The final lesson of the stage covers documenting all of this.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/01/verification-techniques-using-spreadsheets-and-sql-to-catch-repeated-errors/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [cleaning](../../../_tags/cleaning.html) [verify](../../../_tags/verify.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: cleaning](../../../_tags/topic-cleaning.html) [topic: verify](../../../_tags/topic-verify.html)

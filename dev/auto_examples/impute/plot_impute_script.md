@@ -200,7 +200,7 @@ time_data[0] = T
 
 ```
 ```
-17.916043281555176
+18.27163553237915
 
 ```
 
@@ -229,7 +229,7 @@ time_data[1] = T
 
 ```
 ```
-20.674502849578857
+18.711312532424927
 
 ```
 
@@ -255,7 +255,7 @@ time_data[2] = T
 
 ```
 ```
-22.240968227386475
+20.883370637893677
 
 ```
 
@@ -285,7 +285,7 @@ time_data[3] = T
 
 ```
 ```
-22.860861778259277
+20.85807704925537
 
 ```
 
@@ -319,7 +319,7 @@ time_data[4] = T
 
 ```
 ```
-38.50312662124634
+35.69236660003662
 
 ```
 
@@ -357,7 +357,7 @@ time_data[5] = T
 
 ```
 ```
-22.287391662597656
+24.573069095611572
 
 ```
 
@@ -378,7 +378,7 @@ from scikitplot.impute import ANNImputer
 
 ```
 ```
-0.5.dev0+git.20260712.3bacd52
+0.5.dev0+git.20260713.9359828
 
 ```
 ```
@@ -404,7 +404,7 @@ time_data[6] = T
 
 ```
 ```
-26.801504850387573
+29.250931978225708
 
 ```
 ```
@@ -438,7 +438,7 @@ time_data[7] = T
 
 ```
 ```
-23.397381067276
+28.657031297683716
 
 ```
 
@@ -549,7 +549,7 @@ neighbor retrieval and degraded imputation quality.
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: impute](../../_tags/model-workflow-impute.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (3 minutes 15.276 seconds)
+****Total running time of the script:**** (3 minutes 17.546 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo8.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo8.svg)](../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb)
 

@@ -42,4 +42,4 @@ and ****self-supervised**** learning, which trade some label quality for far les
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Full Annotation](https://insightful-data-lab.com/2025/08/20/full-annotation/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

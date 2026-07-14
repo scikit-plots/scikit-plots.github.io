@@ -46,4 +46,4 @@ power**** on small samples — a non-significant result is weak evidence, not co
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Chi-square (χ²) Test](https://insightful-data-lab.com/2025/08/20/chi-square-%cf%87%c2%b2-test/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: beginner](../../_tags/level-beginner.html)

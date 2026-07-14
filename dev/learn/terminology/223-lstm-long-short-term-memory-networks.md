@@ -54,4 +54,4 @@ across ****50-100+ steps****, but they are ****computationally heavy****, slower
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [LSTM — Long Short-Term Memory Networks](https://insightful-data-lab.com/2025/08/23/lstm-long-short-term-memory-networks/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

@@ -51,4 +51,4 @@ single model, and ****deployment complexity**** (several models mean more latenc
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Ensemble](https://insightful-data-lab.com/2025/08/24/ensemble/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

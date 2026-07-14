@@ -61,4 +61,4 @@ do better. For periodic data, the ****SARIMA**** extension adds seasonal terms, 
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [ARIMA (AutoRegressive Integrated Moving Average)](https://insightful-data-lab.com/2025/08/23/arima-autoregressive-integrated-moving-average/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

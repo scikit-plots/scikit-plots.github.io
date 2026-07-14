@@ -55,4 +55,4 @@ means high tends to follow low (****mean-reversion****). On an ACF plot, strong 
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Temporal autocorrelation (Serial Correlation)](https://insightful-data-lab.com/2025/08/24/temporal-autocorrelation-serial-correlation/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

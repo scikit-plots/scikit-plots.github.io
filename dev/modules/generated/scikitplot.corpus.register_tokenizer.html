@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:23:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:31:30Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>register_tokenizer<a class="headerlink" href="#register-tokenizer" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.register_tokenizer">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L681"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_tokenizer" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L681"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_tokenizer" title="Link to this definition">#</a></dt>
 <dd><p>Register a named <a class="reference internal" href="scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol" title="scikitplot.corpus.TokenizerProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">TokenizerProtocol</span></code></a> implementation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1336,8 +1336,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="1cbdc809-373f-4322-90cf-2c29b6eaa648">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1cbdc809-373f-4322-90cf-2c29b6eaa648','b3be541c-33ba-4e92-9e6f-19e590586795','02737ca8-88f1-4d91-a6b8-97966f86970a','../../lite/tree/../notebooks/index.html?path=293f5735_d122_4a25_afad_57a744c042cf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="445a1b66-f557-4456-b0ee-2c5126eb5c8e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('445a1b66-f557-4456-b0ee-2c5126eb5c8e','cd8e1f2d-c73e-46db-830f-0e6697fea12a','31133450-a25e-4058-acad-ed515569fa1d','../../lite/tree/../notebooks/index.html?path=d38f37d1_5d2b_4e59_ac43_c2d6a5b82f3e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">register_tokenizer</span><span class="p">(</span><span class="s2">&quot;jieba&quot;</span><span class="p">,</span> <span class="n">FunctionTokenizer</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">get_tokenizer</span><span class="p">(</span><span class="s2">&quot;jieba&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
 <span class="go">[&#39;hello&#39;, &#39;world&#39;]</span>
@@ -1345,7 +1345,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="02737ca8-88f1-4d91-a6b8-97966f86970a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1cbdc809-373f-4322-90cf-2c29b6eaa648','02737ca8-88f1-4d91-a6b8-97966f86970a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1cbdc809-373f-4322-90cf-2c29b6eaa648','02737ca8-88f1-4d91-a6b8-97966f86970a')">Open In Tab</button></div><div id="b3be541c-33ba-4e92-9e6f-19e590586795" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="31133450-a25e-4058-acad-ed515569fa1d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('445a1b66-f557-4456-b0ee-2c5126eb5c8e','31133450-a25e-4058-acad-ed515569fa1d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('445a1b66-f557-4456-b0ee-2c5126eb5c8e','31133450-a25e-4058-acad-ed515569fa1d')">Open In Tab</button></div><div id="cd8e1f2d-c73e-46db-830f-0e6697fea12a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1463,7 +1463,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
       <br/>
     
   </p>

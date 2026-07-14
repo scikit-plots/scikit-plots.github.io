@@ -56,4 +56,4 @@ A 200MB ****CT scan**** goes to cloud storage, with only its reference passed to
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Cloud Inference with Big Payloads](https://insightful-data-lab.com/2025/08/24/cloud-inference-with-big-payloads/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

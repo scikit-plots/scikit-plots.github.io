@@ -58,4 +58,4 @@ sheet helps or fights you.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/08/31/spreadsheets-in-data-analysis/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [ddd](../../../_tags/ddd.html) [spreadsheets](../../../_tags/spreadsheets.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: ddd](../../../_tags/topic-ddd.html) [topic: spreadsheets](../../../_tags/topic-spreadsheets.html)

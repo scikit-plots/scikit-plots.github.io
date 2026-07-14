@@ -59,4 +59,4 @@ whole population); the ****sample**** version uses \(n - 1\) (an estimate of
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Sample Standard Deviation](https://insightful-data-lab.com/2025/08/25/sample-standard-deviation/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: beginner](../../_tags/level-beginner.html)

@@ -61,4 +61,4 @@ look suffices; the next lesson sharpens the apparatus into concrete questions.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/analytical-thinking-and-its-core-components/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: foundations](../../../_tags/topic-foundations.html) [topic: thinking](../../../_tags/topic-thinking.html)

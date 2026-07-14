@@ -55,4 +55,4 @@ faster to start but limited to the provider’s models.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [AWS SageMaker](https://insightful-data-lab.com/2025/08/24/aws-sagemaker/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

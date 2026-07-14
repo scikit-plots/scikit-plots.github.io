@@ -69,4 +69,4 @@ begins that hands-on work in the spreadsheet.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/01/common-issues-in-dirty-data/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [cleaning](../../../_tags/cleaning.html) [dirty](../../../_tags/dirty.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: cleaning](../../../_tags/topic-cleaning.html) [topic: dirty](../../../_tags/topic-dirty.html)

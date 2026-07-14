@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:24:07Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:32:09Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>is_safe_compiler_arg<a class="headerlink" href="#is-safe-compiler-arg" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.is_safe_compiler_arg">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">is_safe_compiler_arg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_shell_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_dangerous</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cython/_security.py#L409"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.is_safe_compiler_arg" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">is_safe_compiler_arg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_shell_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_dangerous</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/cython/_security.py#L409"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.is_safe_compiler_arg" title="Link to this definition">#</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> when a compiler argument string is safe to pass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1347,8 +1347,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <p class="rubric">Notes</p>
 <p>Null bytes are always rejected regardless of other flags.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f69b1575-f934-46a5-b802-1f75f972091d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f69b1575-f934-46a5-b802-1f75f972091d','b86496d7-8476-4962-8fb6-d7f359caf1f9','c2570200-a49f-4906-963a-0be680cb6667','../../lite/tree/../notebooks/index.html?path=9c9e1c52_51d5_4e86_83ae_6f1ca06d97f0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b04d92dc-c2d9-4226-a76a-3e38b262e945">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b04d92dc-c2d9-4226-a76a-3e38b262e945','c52d8350-b66e-4d1b-89ec-ffcdc213d97c','6c142bfa-3c19-4b09-b6b9-4434f68a5d78','../../lite/tree/../notebooks/index.html?path=0cd46be6_d553_4aa6_a422_61ae8725bc27.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_safe_compiler_arg</span><span class="p">(</span><span class="s2">&quot;-O2&quot;</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_safe_compiler_arg</span><span class="p">(</span><span class="s2">&quot;-O2; rm -rf /&quot;</span><span class="p">)</span>
@@ -1359,7 +1359,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="c2570200-a49f-4906-963a-0be680cb6667" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f69b1575-f934-46a5-b802-1f75f972091d','c2570200-a49f-4906-963a-0be680cb6667')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f69b1575-f934-46a5-b802-1f75f972091d','c2570200-a49f-4906-963a-0be680cb6667')">Open In Tab</button></div><div id="b86496d7-8476-4962-8fb6-d7f359caf1f9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="6c142bfa-3c19-4b09-b6b9-4434f68a5d78" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b04d92dc-c2d9-4226-a76a-3e38b262e945','6c142bfa-3c19-4b09-b6b9-4434f68a5d78')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b04d92dc-c2d9-4226-a76a-3e38b262e945','6c142bfa-3c19-4b09-b6b9-4434f68a5d78')">Open In Tab</button></div><div id="c52d8350-b66e-4d1b-89ec-ffcdc213d97c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1477,7 +1477,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
       <br/>
     
   </p>

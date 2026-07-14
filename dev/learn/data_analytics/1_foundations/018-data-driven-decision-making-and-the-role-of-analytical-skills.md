@@ -61,4 +61,4 @@ which skill it is starving for; that diagnosis is usually the fix.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/data-driven-decision-making-and-the-role-of-analytical-skills/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [thinking](../../../_tags/thinking.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: foundations](../../../_tags/topic-foundations.html) [topic: thinking](../../../_tags/topic-thinking.html)

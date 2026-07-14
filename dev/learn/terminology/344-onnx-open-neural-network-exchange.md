@@ -72,4 +72,4 @@ outputs = session.run(None, {"input": input_array})
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [ONNX (Open Neural Network Exchange)](https://insightful-data-lab.com/2025/08/20/onnx-open-neural-network-exchange/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

@@ -54,4 +54,4 @@ distinguishable — strong drift.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Classifier Two-Sample Tests (C2STs)](https://insightful-data-lab.com/2025/08/23/classifier-two-sample-tests-c2sts/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

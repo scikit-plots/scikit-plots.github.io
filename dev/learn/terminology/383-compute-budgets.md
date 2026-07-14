@@ -46,4 +46,4 @@ oversized experiments — routinely add ****20–40%**** over the planned figure
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Compute budgets](https://insightful-data-lab.com/2025/08/19/compute-budgets/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

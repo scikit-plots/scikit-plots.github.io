@@ -1,6 +1,6 @@
 # ChunkerBase[#](#chunkerbase "Link to this heading")
 
-class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L234)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
+class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_base.py#L234)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
 :   Abstract base class for all text chunkers.
 
     A chunker receives a block of raw text (one logical unit from the
@@ -51,7 +51,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
     ```
     Go BackOpen In Tab
 
-    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L352)[#](#scikitplot.corpus.ChunkerBase.assert_modality "Link to this definition")
+    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_base.py#L352)[#](#scikitplot.corpus.ChunkerBase.assert_modality "Link to this definition")
     :   Raise `ValueError` if this chunker cannot handle **doc\_modality**.
 
         Parameters:
@@ -83,7 +83,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
 
         ```
 
-    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_base.py#L304)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
+    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_base.py#L304)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
     :   Segment `text` into a `ChunkResult`.
 
         ****CRITICAL-02 (Phase 2):**** Return type unified to `ChunkResult`

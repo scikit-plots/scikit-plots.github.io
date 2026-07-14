@@ -1,6 +1,6 @@
 # make\_path[#](#make-path "Link to this heading")
 
-scikitplot.utils.\_path.make\_path(**prefix=''**, **suffix=''**, **ext=''**, **root=PosixPath('scikitplot-artifacts')**, **\***, **by\_day=False**, **add\_secret=False**, **private=False**, **mkdir=True**, **subdir=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/utils/_path.py#L580)[#](#scikitplot.utils._path.make_path "Link to this definition")
+scikitplot.utils.\_path.make\_path(**prefix=''**, **suffix=''**, **ext=''**, **root=PosixPath('scikitplot-artifacts')**, **\***, **by\_day=False**, **add\_secret=False**, **private=False**, **mkdir=True**, **subdir=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/utils/_path.py#L580)[#](#scikitplot.utils._path.make_path "Link to this definition")
 :   Make Convenience wrapper to build a unique path (callable with zero args).
 
     Parameters:

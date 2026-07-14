@@ -1,6 +1,6 @@
 # SecurityPolicy[#](#securitypolicy "Link to this heading")
 
-class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_include\_dirs=False**, **allow\_shell\_metacharacters=False**, **allow\_reserved\_macros=False**, **allow\_dangerous\_compiler\_args=False**, **max\_source\_bytes=10485760**, **max\_extra\_compile\_args=64**, **max\_extra\_link\_args=64**, **max\_include\_dirs=32**, **max\_libraries=32**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cython/_security.py#L165)[#](#scikitplot.cython.SecurityPolicy "Link to this definition")
+class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_include\_dirs=False**, **allow\_shell\_metacharacters=False**, **allow\_reserved\_macros=False**, **allow\_dangerous\_compiler\_args=False**, **max\_source\_bytes=10485760**, **max\_extra\_compile\_args=64**, **max\_extra\_link\_args=64**, **max\_include\_dirs=32**, **max\_libraries=32**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/cython/_security.py#L165)[#](#scikitplot.cython.SecurityPolicy "Link to this definition")
 :   Immutable security policy applied to build inputs before compilation.
 
     Parameters:
@@ -139,7 +139,7 @@ class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_inclu
     max\_source\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.max_source_bytes "Link to this definition")
     :   !! processed by numpydoc !!
 
-    classmethod relaxed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cython/_security.py#L270)[#](#scikitplot.cython.SecurityPolicy.relaxed "Link to this definition")
+    classmethod relaxed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/cython/_security.py#L270)[#](#scikitplot.cython.SecurityPolicy.relaxed "Link to this definition")
     :   Return a pre-configured policy with all dangerous checks disabled.
 
         > **Warning**

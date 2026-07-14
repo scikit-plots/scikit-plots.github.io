@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:22:36Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:30:34Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>GoogleDriveDownloader<a class="headerlink" href="#googledrivedownloader" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">GoogleDriveDownloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">104857600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_private_ips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_redirects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Mozilla/5.0</span> <span class="pre">(compatible;</span> <span class="pre">scikitplot-corpus/1.0;</span> <span class="pre">+https://github.com/scikit-plots/scikit-plots)'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_downloader/_gdrive.py#L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">GoogleDriveDownloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">104857600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_private_ips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_redirects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Mozilla/5.0</span> <span class="pre">(compatible;</span> <span class="pre">scikitplot-corpus/1.0;</span> <span class="pre">+https://github.com/scikit-plots/scikit-plots)'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_downloader/_gdrive.py#L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader" title="Link to this definition">#</a></dt>
 <dd><p>Google Drive share-link downloader.</p>
 <p>Resolves any public Google Drive share URL to a direct download URL
 and streams the file to a local path.  Handles the large-file
@@ -1367,8 +1367,8 @@ re-downloads transparently.</p>
 that require Google account authentication will raise <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code>
 from Google’s servers.  OAuth2 support is a planned future extension.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6718a173-f053-4554-be14-d8551c03680d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6718a173-f053-4554-be14-d8551c03680d','b71e0f61-ca30-4231-9f2a-c608bd90b9a4','14a47635-ccb2-44e6-8e6a-7cae3d612722','../../lite/tree/../notebooks/index.html?path=a33f9e32_2fd1_4bc2_8115_e943d2b1d141.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="54a26493-1813-466f-8163-42924ef86c93">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('54a26493-1813-466f-8163-42924ef86c93','ec095648-19d4-4e05-bef0-5940c1dd7484','4abe80ec-670c-4393-a57b-b568341ee5b3','../../lite/tree/../notebooks/index.html?path=e5606b9e_709a_4302_86ec_f9be6eb47102.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dl</span> <span class="o">=</span> <span class="n">GoogleDriveDownloader</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">&quot;https://drive.google.com/file/d/1abc-DEF_xyz/view?usp=sharing&quot;</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -1386,14 +1386,14 @@ from Google’s servers.  OAuth2 support is a planned future extension.</p>
 </div>
 </div>
 </div>
-<div id="14a47635-ccb2-44e6-8e6a-7cae3d612722" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6718a173-f053-4554-be14-d8551c03680d','14a47635-ccb2-44e6-8e6a-7cae3d612722')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6718a173-f053-4554-be14-d8551c03680d','14a47635-ccb2-44e6-8e6a-7cae3d612722')">Open In Tab</button></div><div id="b71e0f61-ca30-4231-9f2a-c608bd90b9a4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="4abe80ec-670c-4393-a57b-b568341ee5b3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('54a26493-1813-466f-8163-42924ef86c93','4abe80ec-670c-4393-a57b-b568341ee5b3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('54a26493-1813-466f-8163-42924ef86c93','4abe80ec-670c-4393-a57b-b568341ee5b3')">Open In Tab</button></div><div id="ec095648-19d4-4e05-bef0-5940c1dd7484" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader.block_private_ips">
 <span class="sig-name descname"><span class="pre">block_private_ips</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.block_private_ips" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader.cleanup">
-<span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_downloader/_base.py#L481"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.cleanup" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_downloader/_base.py#L481"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.cleanup" title="Link to this definition">#</a></dt>
 <dd><p>Remove the temporary directory owned by this instance, if any.</p>
 <p>Safe to call multiple times.  If <code class="docutils literal notranslate"><span class="pre">output_path</span></code> was supplied at
 construction time (caller-owned), this method is a no-op.</p>
@@ -1406,7 +1406,7 @@ construction time (caller-owned), this method is a no-op.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader.download">
-<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_downloader/_gdrive.py#L220"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.download" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_downloader/_gdrive.py#L220"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.download" title="Link to this definition">#</a></dt>
 <dd><p>Download the Google Drive file and return a <a class="reference internal" href="scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult" title="scikitplot.corpus.DownloadResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadResult</span></code></a>.</p>
 <p>Handles the large-file virus-warning interstitial by inspecting
 the first response for a <code class="docutils literal notranslate"><span class="pre">confirm=</span></code> token and re-issuing the
@@ -1437,7 +1437,7 @@ cannot be extracted.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader.input_url">
-<span class="sig-name descname"><span class="pre">input_url</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_downloader/_gdrive.py#L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.input_url" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">input_url</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_downloader/_gdrive.py#L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.input_url" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1457,7 +1457,7 @@ cannot be extracted.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader.resolve_download_url">
-<span class="sig-name descname"><span class="pre">resolve_download_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_downloader/_gdrive.py#L202"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.resolve_download_url" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">resolve_download_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_downloader/_gdrive.py#L202"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GoogleDriveDownloader.resolve_download_url" title="Link to this definition">#</a></dt>
 <dd><p>Resolve the share URL to a direct Google Drive download URL.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1471,8 +1471,8 @@ cannot be extracted.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="54e01915-2030-4b8a-87d4-64c9777f65d2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('54e01915-2030-4b8a-87d4-64c9777f65d2','13d80c98-4779-4fb6-b9fa-3bcbdd31138a','ff9b1585-cdca-4ece-ae25-44dbeb13e88f','../../lite/tree/../notebooks/index.html?path=58db2bc6_2b68_4592_bec4_08b31e0dfbee.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="14b8d2d5-4e39-4787-ac65-f3c808953971">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('14b8d2d5-4e39-4787-ac65-f3c808953971','f8da44ec-100b-489e-9bbc-3309dad68bff','0922c3d4-d82b-49c7-8e62-22a82ca71fda','../../lite/tree/../notebooks/index.html?path=6dde696e_8e0f_43d7_843f_114b371fe7d4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dl</span> <span class="o">=</span> <span class="n">GoogleDriveDownloader</span><span class="p">(</span><span class="s2">&quot;https://drive.google.com/file/d/1abc-DEF/view&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dl</span><span class="o">.</span><span class="n">resolve_download_url</span><span class="p">()</span>
 <span class="go">&#39;https://drive.google.com/uc?export=download&amp;id=1abc-DEF&#39;</span>
@@ -1480,7 +1480,7 @@ cannot be extracted.</p>
 </div>
 </div>
 </div>
-<div id="ff9b1585-cdca-4ece-ae25-44dbeb13e88f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('54e01915-2030-4b8a-87d4-64c9777f65d2','ff9b1585-cdca-4ece-ae25-44dbeb13e88f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('54e01915-2030-4b8a-87d4-64c9777f65d2','ff9b1585-cdca-4ece-ae25-44dbeb13e88f')">Open In Tab</button></div><div id="13d80c98-4779-4fb6-b9fa-3bcbdd31138a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0922c3d4-d82b-49c7-8e62-22a82ca71fda" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('14b8d2d5-4e39-4787-ac65-f3c808953971','0922c3d4-d82b-49c7-8e62-22a82ca71fda')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('14b8d2d5-4e39-4787-ac65-f3c808953971','0922c3d4-d82b-49c7-8e62-22a82ca71fda')">Open In Tab</button></div><div id="f8da44ec-100b-489e-9bbc-3309dad68bff" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.GoogleDriveDownloader.timeout">
@@ -1628,7 +1628,7 @@ cannot be extracted.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
       <br/>
     
   </p>

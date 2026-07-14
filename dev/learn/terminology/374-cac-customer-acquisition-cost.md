@@ -42,4 +42,4 @@ every customer, and ****above ~5:1**** can signal you’re ****under-investing**
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [CAC (Customer Acquisition Cost)](https://insightful-data-lab.com/2025/08/19/cac-customer-acquisition-cost/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

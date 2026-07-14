@@ -60,4 +60,4 @@ scenarios.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/08/01/understanding-common-problem-types-in-data-analytics/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [ddd](../../../_tags/ddd.html) [framing](../../../_tags/framing.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: ddd](../../../_tags/topic-ddd.html) [topic: framing](../../../_tags/topic-framing.html)

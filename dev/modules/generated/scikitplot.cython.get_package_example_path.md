@@ -1,6 +1,6 @@
 # get\_package\_example\_path[#](#get-package-example-path "Link to this heading")
 
-scikitplot.cython.get\_package\_example\_path(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/cython/_templates_api.py#L783)[#](#scikitplot.cython.get_package_example_path "Link to this definition")
+scikitplot.cython.get\_package\_example\_path(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/cython/_templates_api.py#L783)[#](#scikitplot.cython.get_package_example_path "Link to this definition")
 :   Resolve a package example name to its on-disk folder path.
 
     Parameters:

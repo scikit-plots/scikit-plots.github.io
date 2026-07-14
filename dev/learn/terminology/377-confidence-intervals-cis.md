@@ -43,4 +43,4 @@ tricky quantities like a ****binomial proportion**** there are several methods â
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Confidence Intervals (CIs)](https://insightful-data-lab.com/2025/08/19/confidence-intervals-cis/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: beginner](../../_tags/level-beginner.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: beginner](../../_tags/level-beginner.html)

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-13T00:23:28Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T00:31:29Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>provenance_from_filename<a class="headerlink" href="#provenance-from-filename" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.provenance_from_filename">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">provenance_from_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/3bacd52/scikitplot/corpus/_metadata/_metadata.py#L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.provenance_from_filename" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">provenance_from_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9359828/scikitplot/corpus/_metadata/_metadata.py#L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.provenance_from_filename" title="Link to this definition">#</a></dt>
 <dd><p>Extract provenance metadata from a source filename using heuristics.</p>
 <p>Designed for corpora organised by the Project Gutenberg naming
 convention: <code class="docutils literal notranslate"><span class="pre">Surname_Firstname_Title_Year.ext</span></code> or
@@ -1349,8 +1349,8 @@ even if no patterns are detected.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="846f2397-4978-4100-b533-d1e9b1e330be">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('846f2397-4978-4100-b533-d1e9b1e330be','66a5fa2d-8a02-4c2e-bab4-d921213c94cb','4cc54056-f9da-471d-b971-3ce4d4b54ac3','../../lite/tree/../notebooks/index.html?path=9fb0fe72_d3d1_4470_81ed_b0eeb8f592e4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1265af3d-fdb3-4c6b-a6c1-44e4521c5537">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1265af3d-fdb3-4c6b-a6c1-44e4521c5537','fb955ace-a929-41a2-94b8-f80e2bbcbbc0','6fc90f0c-f7fc-410c-a4fa-a702f34bd92f','../../lite/tree/../notebooks/index.html?path=1d69654e_0e18_43cf_bf0c_9ae12dc707b2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">provenance_from_filename</span><span class="p">(</span><span class="s2">&quot;Shakespeare_William_Hamlet_1603.xml&quot;</span><span class="p">)</span>
 <span class="go">{&#39;source_author&#39;: &#39;Shakespeare William&#39;, &#39;source_title&#39;: &#39;Hamlet&#39;,</span>
 <span class="go"> &#39;source_date&#39;: &#39;1603&#39;}</span>
@@ -1366,7 +1366,7 @@ even if no patterns are detected.</p>
 </div>
 </div>
 </div>
-<div id="4cc54056-f9da-471d-b971-3ce4d4b54ac3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('846f2397-4978-4100-b533-d1e9b1e330be','4cc54056-f9da-471d-b971-3ce4d4b54ac3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('846f2397-4978-4100-b533-d1e9b1e330be','4cc54056-f9da-471d-b971-3ce4d4b54ac3')">Open In Tab</button></div><div id="66a5fa2d-8a02-4c2e-bab4-d921213c94cb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="6fc90f0c-f7fc-410c-a4fa-a702f34bd92f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1265af3d-fdb3-4c6b-a6c1-44e4521c5537','6fc90f0c-f7fc-410c-a4fa-a702f34bd92f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1265af3d-fdb3-4c6b-a6c1-44e4521c5537','6fc90f0c-f7fc-410c-a4fa-a702f34bd92f')">Open In Tab</button></div><div id="fb955ace-a929-41a2-94b8-f80e2bbcbbc0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1484,7 +1484,7 @@ even if no patterns are detected.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260712.3bacd52 2026-07-12T23:45Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260713.9359828 2026-07-13T23:53Z.
       <br/>
     
   </p>

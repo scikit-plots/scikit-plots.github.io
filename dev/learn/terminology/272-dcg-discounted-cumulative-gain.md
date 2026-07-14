@@ -46,4 +46,4 @@ giving a ****0-to-1**** score where ****1**** is a perfect ranking. It is the st
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [DCG (Discounted Cumulative Gain)](https://insightful-data-lab.com/2025/08/22/dcg-discounted-cumulative-gain/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

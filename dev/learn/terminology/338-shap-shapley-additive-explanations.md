@@ -74,4 +74,4 @@ shap.plots.force(shap_values[0])    # local explanation for one row
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [SHAP (SHapley Additive exPlanations)](https://insightful-data-lab.com/2025/08/20/shap-shapley-additive-explanations/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

@@ -72,4 +72,4 @@ lesson puts the environment to use with actual queries.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/bigquery-account-types/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [spreadsheets\_sql](../../../_tags/spreadsheets_sql.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: prep](../../../_tags/topic-prep.html) [topic: spreadsheets\_sql](../../../_tags/topic-spreadsheets_sql.html)

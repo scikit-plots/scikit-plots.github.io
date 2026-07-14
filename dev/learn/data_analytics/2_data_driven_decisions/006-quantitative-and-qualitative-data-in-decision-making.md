@@ -65,4 +65,4 @@ resisting the pull to treat what is easily counted as all that counts.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/08/31/quantitative-and-qualitative-data-in-decision-making/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [ddd](../../../_tags/ddd.html) [framing](../../../_tags/framing.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: ddd](../../../_tags/topic-ddd.html) [topic: framing](../../../_tags/topic-framing.html)

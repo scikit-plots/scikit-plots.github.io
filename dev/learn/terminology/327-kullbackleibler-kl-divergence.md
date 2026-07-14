@@ -45,4 +45,4 @@ means you read it as a ****degree**** of drift, not a comparable distance.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Kullback–Leibler (KL) Divergence](https://insightful-data-lab.com/2025/08/20/kullback-leibler-kl-divergence/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

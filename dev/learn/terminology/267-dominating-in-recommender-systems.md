@@ -45,4 +45,4 @@ everyone’s lists, crowding out the long tail and harming exposure fairness.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Dominating in Recommender Systems](https://insightful-data-lab.com/2025/08/22/dominating-in-recommender-systems/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

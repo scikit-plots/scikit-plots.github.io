@@ -61,4 +61,4 @@ upper = QuantileRegressor(quantile=0.95, alpha=0.0).fit(X_train, y_train)
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Quantile Regression](https://insightful-data-lab.com/2025/08/22/quantile-regression/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

@@ -43,4 +43,4 @@ columns****, or you’ll shuffle one field out of alignment with the rest and si
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Advanced Sorting in Spreadsheets](https://insightful-data-lab.com/2023/11/26/advanced-sorting-in-spreadsheets/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

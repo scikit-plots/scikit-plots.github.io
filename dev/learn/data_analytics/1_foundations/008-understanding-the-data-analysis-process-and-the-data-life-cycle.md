@@ -67,4 +67,4 @@ detective work about where a given dataset really is on it.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/07/30/understanding-the-data-analysis-process-and-the-data-life-cycle/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [foundations](../../../_tags/foundations.html) [process](../../../_tags/process.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: foundations](../../../_tags/topic-foundations.html) [topic: process](../../../_tags/topic-process.html)

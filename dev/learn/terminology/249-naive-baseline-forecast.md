@@ -44,4 +44,4 @@ robust, and — for noisy or short series — surprisingly hard to beat.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Naïve Baseline Forecast](https://insightful-data-lab.com/2025/08/22/naive-baseline-forecast/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

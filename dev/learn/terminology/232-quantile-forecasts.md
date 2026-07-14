@@ -44,4 +44,4 @@ Quantile forecasts are evaluated with the ****pinball (quantile) loss****, match
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [Quantile Forecasts](https://insightful-data-lab.com/2025/08/23/quantile-forecasts/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

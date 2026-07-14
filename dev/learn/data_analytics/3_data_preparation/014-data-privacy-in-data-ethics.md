@@ -73,4 +73,4 @@ lesson turns to the opposite impulse: data that **should** be open.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/09/04/data-privacy-in-data-ethics/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [prep](../../../_tags/prep.html) [bias\_ethics](../../../_tags/bias_ethics.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: prep](../../../_tags/topic-prep.html) [topic: bias\_ethics](../../../_tags/topic-bias_ethics.html)

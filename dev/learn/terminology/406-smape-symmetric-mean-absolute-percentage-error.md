@@ -45,4 +45,4 @@ but avoid it on ****intermittent**** or zero-heavy demand, where ****MASE**** is
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [sMAPE (Symmetric Mean Absolute Percentage Error)](https://insightful-data-lab.com/2025/08/19/smape-symmetric-mean-absolute-percentage-error/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

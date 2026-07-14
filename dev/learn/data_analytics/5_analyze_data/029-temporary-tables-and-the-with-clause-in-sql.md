@@ -83,4 +83,4 @@ used once or many times. The next lesson details creating temporary tables.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/26/temporary-tables-and-the-with-clause-in-sql/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [analyze](../../../_tags/analyze.html) [advanced](../../../_tags/advanced.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: analyze](../../../_tags/topic-analyze.html) [topic: advanced](../../../_tags/topic-advanced.html)

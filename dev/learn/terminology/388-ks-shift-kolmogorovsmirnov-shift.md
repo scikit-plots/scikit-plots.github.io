@@ -46,4 +46,4 @@ to batch size to avoid ****alert fatigue****. KS shift complements ****PSI**** (
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [KS shift (Kolmogorov–Smirnov shift)](https://insightful-data-lab.com/2025/08/19/ks-shift-kolmogorov-smirnov-shift/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: advanced](../../_tags/level-advanced.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: advanced](../../_tags/level-advanced.html)

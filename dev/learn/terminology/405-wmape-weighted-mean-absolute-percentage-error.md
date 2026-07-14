@@ -45,4 +45,4 @@ score well while badly missing many low-volume SKUs. It is closely related to **
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: [WMAPE (Weighted Mean Absolute Percentage Error)](https://insightful-data-lab.com/2025/08/19/wmape-weighted-mean-absolute-percentage-error/) (insightful-data-lab.com).
 
-Tags: [purpose: reference](../../_tags/purpose-reference.html) [level: intermediate](../../_tags/level-intermediate.html)
+Tags: [purpose: reference](../../_tags/purpose-reference.html) [topic: terminology](../../_tags/topic-terminology.html) [level: intermediate](../../_tags/level-intermediate.html)

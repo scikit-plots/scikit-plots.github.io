@@ -66,4 +66,4 @@ becomes an image at all.
 > **See also**
 > ****Source article**** Adapted (context, re-expressed) in our own words from: <https://insightful-data-lab.com/2023/11/26/data-visualization/> (insightful-data-lab.com).
 
-Tags: [data-analytics](../../../_tags/data-analytics.html) [viz](../../../_tags/viz.html) [principles](../../../_tags/principles.html)
+Tags: [purpose: reference](../../../_tags/purpose-reference.html) [topic: data analytics](../../../_tags/topic-data-analytics.html) [topic: viz](../../../_tags/topic-viz.html) [topic: principles](../../../_tags/topic-principles.html)
