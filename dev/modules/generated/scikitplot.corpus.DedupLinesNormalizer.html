@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T05:10:51Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T10:36:26Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>DedupLinesNormalizer<a class="headerlink" href="#deduplinesnormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.DedupLinesNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">DedupLinesNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_whitespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_line_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_normalizers/_normalizer.py#L431"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DedupLinesNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">DedupLinesNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_whitespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_line_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_normalizers/_normalizer.py#L431"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DedupLinesNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Remove exact duplicate lines while preserving first-occurrence order.</p>
 <p>Useful for de-noising OCR output and web-scraped text which often
 contains repeated navigation bars, headers, or footers.</p>
@@ -1338,8 +1338,8 @@ structural lines. Default: <code class="docutils literal notranslate"><span clas
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="16229430-99f6-4aac-8940-2f960e6240ae">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('16229430-99f6-4aac-8940-2f960e6240ae','87afae9d-98bc-45b9-be85-b1990544d0cd','91459223-0a1c-4545-898c-83ccefe7e846','../../lite/tree/../notebooks/index.html?path=42c150e5_b991_4a19_b1e6_750d16249bda.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7ef7bf90-39c9-4796-bad7-552bac12a440">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7ef7bf90-39c9-4796-bad7-552bac12a440','8bc22e38-1f73-4789-a575-6665dcb4726f','0c1ad8e4-abf3-4435-a5c3-077a52de2b2d','../../lite/tree/../notebooks/index.html?path=1dc2c4dd_d42e_43bf_8115_d8109e522a6e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">DedupLinesNormalizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Hello.</span><span class="se">\\</span><span class="s2">nHello.</span><span class="se">\\</span><span class="s2">nWorld.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span><span class="o">.</span><span class="n">normalize_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span><span class="o">.</span><span class="n">normalized_text</span>
@@ -1348,9 +1348,9 @@ structural lines. Default: <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 </div>
-<div id="91459223-0a1c-4545-898c-83ccefe7e846" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('16229430-99f6-4aac-8940-2f960e6240ae','91459223-0a1c-4545-898c-83ccefe7e846')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('16229430-99f6-4aac-8940-2f960e6240ae','91459223-0a1c-4545-898c-83ccefe7e846')">Open In Tab</button></div><div id="87afae9d-98bc-45b9-be85-b1990544d0cd" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="0c1ad8e4-abf3-4435-a5c3-077a52de2b2d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7ef7bf90-39c9-4796-bad7-552bac12a440','0c1ad8e4-abf3-4435-a5c3-077a52de2b2d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7ef7bf90-39c9-4796-bad7-552bac12a440','0c1ad8e4-abf3-4435-a5c3-077a52de2b2d')">Open In Tab</button></div><div id="8bc22e38-1f73-4789-a575-6665dcb4726f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.DedupLinesNormalizer.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_normalizers/_normalizer.py#L469"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DedupLinesNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_normalizers/_normalizer.py#L469"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.DedupLinesNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Remove duplicate lines from the document text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1493,7 +1493,7 @@ structural lines. Default: <code class="docutils literal notranslate"><span clas
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.7b27db8 2026-07-14T04:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.77015c4 2026-07-14T09:59Z.
       <br/>
     
   </p>

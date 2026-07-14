@@ -1,6 +1,6 @@
 # log\_every\_n[#](#log-every-n "Link to this heading")
 
-scikitplot.logging.log\_every\_n(**level**, **msg**, **n**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/logging.py#L1620)[#](#scikitplot.logging.log_every_n "Link to this definition")
+scikitplot.logging.log\_every\_n(**level**, **msg**, **n**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/logging.py#L1620)[#](#scikitplot.logging.log_every_n "Link to this definition")
 :   Log once per **n** calls from the same call site.
 
     Log ‘msg % args’ at level ‘level’ once per ‘n’ times.

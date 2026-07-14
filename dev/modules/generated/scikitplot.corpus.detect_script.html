@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T05:11:47Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T10:37:21Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>detect_script<a class="headerlink" href="#detect-script" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.detect_script">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">detect_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">majority_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L943"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.detect_script" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">detect_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">majority_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L943"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.detect_script" title="Link to this definition">#</a></dt>
 <dd><p>Detect the dominant Unicode script in <em>text</em>.</p>
 <p>Samples up to <em>sample_size</em> characters for efficiency on long documents.
 Returns <a class="reference internal" href="scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType.MIXED" title="scikitplot.corpus.ScriptType.MIXED"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ScriptType.MIXED</span></code></a> when no single script exceeds
@@ -1365,8 +1365,8 @@ Dravidian (Tamil/Telugu/Kannada/Malayalam/Sinhala), Armenian, Tibetan.</p>
 are <em>not</em> used here because they do not map cleanly to script families.
 Code-point ranges from the Unicode Standard are used instead.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="cbf073a1-1635-46a4-bb3f-9b0030db51db">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cbf073a1-1635-46a4-bb3f-9b0030db51db','c5f77712-5e4f-47df-9747-0aee43915616','44429015-56cd-4fba-bb99-1395bff21bf1','../../lite/tree/../notebooks/index.html?path=77d65451_d8f9_4ce6_b875_5f008761f545.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="732f1331-299a-4222-9054-02786f930d53">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('732f1331-299a-4222-9054-02786f930d53','71215ac9-3cc7-4868-a6c7-279282127896','4fac5c20-0a66-4cae-9ec3-47e08183bef6','../../lite/tree/../notebooks/index.html?path=6a558a39_8da0_4834_9e38_e9c435e970ce.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_script</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
 <span class="go">&lt;ScriptType.LATIN: &#39;latin&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">detect_script</span><span class="p">(</span><span class="s2">&quot;مرحبا بالعالم&quot;</span><span class="p">)</span>
@@ -1387,7 +1387,7 @@ Code-point ranges from the Unicode Standard are used instead.</p>
 </div>
 </div>
 </div>
-<div id="44429015-56cd-4fba-bb99-1395bff21bf1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cbf073a1-1635-46a4-bb3f-9b0030db51db','44429015-56cd-4fba-bb99-1395bff21bf1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cbf073a1-1635-46a4-bb3f-9b0030db51db','44429015-56cd-4fba-bb99-1395bff21bf1')">Open In Tab</button></div><div id="c5f77712-5e4f-47df-9747-0aee43915616" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="4fac5c20-0a66-4cae-9ec3-47e08183bef6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('732f1331-299a-4222-9054-02786f930d53','4fac5c20-0a66-4cae-9ec3-47e08183bef6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('732f1331-299a-4222-9054-02786f930d53','4fac5c20-0a66-4cae-9ec3-47e08183bef6')">Open In Tab</button></div><div id="71215ac9-3cc7-4868-a6c7-279282127896" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1505,7 +1505,7 @@ Code-point ranges from the Unicode Standard are used instead.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.7b27db8 2026-07-14T04:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.77015c4 2026-07-14T09:59Z.
       <br/>
     
   </p>

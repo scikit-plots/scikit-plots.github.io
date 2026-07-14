@@ -1,6 +1,6 @@
 # log\_softmax[#](#log-softmax "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.log\_softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cexperimental/_logsumexp.py#L383)[#](#scikitplot.cexperimental._logsumexp.log_softmax "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.log\_softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cexperimental/_logsumexp.py#L383)[#](#scikitplot.cexperimental._logsumexp.log_softmax "Link to this definition")
 :   Compute the logarithm of the softmax function.
 
     In principle:

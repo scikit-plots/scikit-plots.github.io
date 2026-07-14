@@ -1,6 +1,6 @@
 # purge\_cache[#](#purge-cache "Link to this heading")
 
-scikitplot.cython.purge\_cache(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_public.py#L163)[#](#scikitplot.cython.purge_cache "Link to this definition")
+scikitplot.cython.purge\_cache(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_public.py#L163)[#](#scikitplot.cython.purge_cache "Link to this definition")
 :   Delete the entire cache directory.
 
     Parameters:

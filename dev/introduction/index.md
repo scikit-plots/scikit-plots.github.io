@@ -1,3 +1,3 @@
 🤗 Welcome to Scikit-plots 101
   
- 0.5.dev0+git.20260714.7b27db8 - July 14, 2026 04:36 UTC
+ 0.5.dev0+git.20260714.77015c4 - July 14, 2026 09:59 UTC

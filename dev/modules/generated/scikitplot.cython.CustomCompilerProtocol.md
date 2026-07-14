@@ -1,6 +1,6 @@
 # CustomCompilerProtocol[#](#customcompilerprotocol "Link to this heading")
 
-class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_custom_compiler.py#L131)[#](#scikitplot.cython.CustomCompilerProtocol "Link to this definition")
+class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L131)[#](#scikitplot.cython.CustomCompilerProtocol "Link to this definition")
 :   Structural protocol for custom compiler callables.
 
     Any callable that satisfies this protocol can be registered with
@@ -70,7 +70,7 @@ class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[sour
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_custom_compiler.py#L202)[#](#scikitplot.cython.CustomCompilerProtocol.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L202)[#](#scikitplot.cython.CustomCompilerProtocol.__call__ "Link to this definition")
     :   Compile **source** and return the artifact path.
 
         Parameters:

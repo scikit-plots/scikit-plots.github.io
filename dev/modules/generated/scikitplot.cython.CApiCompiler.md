@@ -1,6 +1,6 @@
 # CApiCompiler[#](#capicompiler "Link to this heading")
 
-class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_custom_compiler.py#L1012)[#](#scikitplot.cython.CApiCompiler "Link to this definition")
+class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L1012)[#](#scikitplot.cython.CApiCompiler "Link to this definition")
 :   Built-in custom compiler: NumPy C-API projects.
 
     Wraps the Cython+setuptools pipeline with automatic NumPy include
@@ -40,7 +40,7 @@ class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/s
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **extra\_sources=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_custom_compiler.py#L1049)[#](#scikitplot.cython.CApiCompiler.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **extra\_sources=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L1049)[#](#scikitplot.cython.CApiCompiler.__call__ "Link to this definition")
     :   Compile a Cython+NumPy C-API extension.
 
         Parameters:

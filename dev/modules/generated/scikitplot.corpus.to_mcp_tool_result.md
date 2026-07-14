@@ -1,6 +1,6 @@
 # to\_mcp\_tool\_result[#](#to-mcp-tool-result "Link to this heading")
 
-scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='corpus\_search'**, **is\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_adapters.py#L324)[#](#scikitplot.corpus.to_mcp_tool_result "Link to this definition")
+scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='corpus\_search'**, **is\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_adapters.py#L324)[#](#scikitplot.corpus.to_mcp_tool_result "Link to this definition")
 :   Format documents as an MCP `tools/call` response.
 
     Parameters:

@@ -1,6 +1,6 @@
 # WordChunkerConfig[#](#wordchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**, **custom\_tokenizer=None**, **stemmer=StemmingBackend.NONE**, **custom\_stemmer=None**, **lemmatizer=LemmatizationBackend.NONE**, **custom\_lemmatizer=None**, **stopwords=StopwordSource.BUILTIN**, **custom\_stopwords=None**, **spacy\_model=None**, **nltk\_language='english'**, **lowercase=True**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **remove\_numbers=False**, **min\_token\_length=2**, **max\_token\_length=None**, **ngram\_range=(1, 1)**, **chunk\_by='document'**, **include\_offsets=False**, **build\_gensim\_corpus=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_word.py#L294)[#](#scikitplot.corpus.WordChunkerConfig "Link to this definition")
+class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**, **custom\_tokenizer=None**, **stemmer=StemmingBackend.NONE**, **custom\_stemmer=None**, **lemmatizer=LemmatizationBackend.NONE**, **custom\_lemmatizer=None**, **stopwords=StopwordSource.BUILTIN**, **custom\_stopwords=None**, **spacy\_model=None**, **nltk\_language='english'**, **lowercase=True**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **remove\_numbers=False**, **min\_token\_length=2**, **max\_token\_length=None**, **ngram\_range=(1, 1)**, **chunk\_by='document'**, **include\_offsets=False**, **build\_gensim\_corpus=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_word.py#L294)[#](#scikitplot.corpus.WordChunkerConfig "Link to this definition")
 :   Configuration for [`WordChunker`](scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker "scikitplot.corpus.WordChunker").
 
     Parameters:
@@ -136,7 +136,7 @@ class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**,
 
     include\_offsets: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.WordChunkerConfig.include_offsets "Link to this definition")
 
-    lemmatizer: [LemmatizationBackend](scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus._chunkers._word.LemmatizationBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.lemmatizer "Link to this definition")
+    lemmatizer: [LemmatizationBackend](scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus._chunkers._word.LemmatizationBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.lemmatizer "Link to this definition")
 
     lowercase: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.WordChunkerConfig.lowercase "Link to this definition")
 
@@ -175,13 +175,13 @@ class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**,
 
     spacy\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.spacy_model "Link to this definition")
 
-    stemmer: [StemmingBackend](scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend "scikitplot.corpus._chunkers._word.StemmingBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stemmer "Link to this definition")
+    stemmer: [StemmingBackend](scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend "scikitplot.corpus._chunkers._word.StemmingBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stemmer "Link to this definition")
 
-    stopwords: [StopwordSource](scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource "scikitplot.corpus._chunkers._word.StopwordSource") = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stopwords "Link to this definition")
+    stopwords: [StopwordSource](scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource "scikitplot.corpus._chunkers._word.StopwordSource") = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stopwords "Link to this definition")
 
     strip\_unicode\_punctuation: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.WordChunkerConfig.strip_unicode_punctuation "Link to this definition")
 
-    tokenizer: [TokenizerBackend](scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend "scikitplot.corpus._chunkers._word.TokenizerBackend") = 'simple'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.tokenizer "Link to this definition")
+    tokenizer: [TokenizerBackend](scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend "scikitplot.corpus._chunkers._word.TokenizerBackend") = 'simple'[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.tokenizer "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

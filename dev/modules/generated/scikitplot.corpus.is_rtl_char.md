@@ -1,6 +1,6 @@
 # is\_rtl\_char[#](#is-rtl-char "Link to this heading")
 
-scikitplot.corpus.is\_rtl\_char(**ch**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1248)[#](#scikitplot.corpus.is_rtl_char "Link to this definition")
+scikitplot.corpus.is\_rtl\_char(**ch**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1248)[#](#scikitplot.corpus.is_rtl_char "Link to this definition")
 :   Return `True` if **ch** belongs to a right-to-left script.
 
     Covers Arabic, Persian, Ottoman, Hebrew, and related blocks.

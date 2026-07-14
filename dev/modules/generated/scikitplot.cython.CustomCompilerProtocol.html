@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T05:12:11Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T10:37:46Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>CustomCompilerProtocol<a class="headerlink" href="#customcompilerprotocol" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cython.CustomCompilerProtocol">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">CustomCompilerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_custom_compiler.py#L131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.CustomCompilerProtocol" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">CustomCompilerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.CustomCompilerProtocol" title="Link to this definition">#</a></dt>
 <dd><p>Structural protocol for custom compiler callables.</p>
 <p>Any callable that satisfies this protocol can be registered with
 <a class="reference internal" href="scikitplot.cython.CompilerRegistry.html#scikitplot.cython.CompilerRegistry" title="scikitplot.cython.CompilerRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompilerRegistry</span></code></a> and used as a drop-in replacement or
@@ -1360,8 +1360,8 @@ supplement to the default Cython/setuptools compiler.</p>
 arguments.  If state is needed (e.g., caching an include path), store
 it in constructor-set <code class="docutils literal notranslate"><span class="pre">frozen</span></code> dataclass fields.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="bf655616-8a4e-4534-a17b-8a7c6d79b0b7">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('bf655616-8a4e-4534-a17b-8a7c6d79b0b7','29a5047d-e58b-4beb-8d12-285366ece890','30519e71-7cfa-41c7-8a10-ef2cf24d21a6','../../lite/tree/../notebooks/index.html?path=8e407c13_9102_4556_a817_952664b4f67f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7e130b75-9b39-4d63-8d00-06776445dd89">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7e130b75-9b39-4d63-8d00-06776445dd89','bc239bff-7e86-4a79-a8cc-732d19df3e75','258e46c8-e13b-4ecd-8963-72b00b466068','../../lite/tree/../notebooks/index.html?path=94a33588_3ed9_43fe_8cab_2e7a9f9e90aa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Minimal custom compiler:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cython._custom_compiler</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_compiler</span>
@@ -1380,9 +1380,9 @@ it in constructor-set <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 </div>
-<div id="30519e71-7cfa-41c7-8a10-ef2cf24d21a6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('bf655616-8a4e-4534-a17b-8a7c6d79b0b7','30519e71-7cfa-41c7-8a10-ef2cf24d21a6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('bf655616-8a4e-4534-a17b-8a7c6d79b0b7','30519e71-7cfa-41c7-8a10-ef2cf24d21a6')">Open In Tab</button></div><div id="29a5047d-e58b-4beb-8d12-285366ece890" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="258e46c8-e13b-4ecd-8963-72b00b466068" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7e130b75-9b39-4d63-8d00-06776445dd89','258e46c8-e13b-4ecd-8963-72b00b466068')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7e130b75-9b39-4d63-8d00-06776445dd89','258e46c8-e13b-4ecd-8963-72b00b466068')">Open In Tab</button></div><div id="bc239bff-7e86-4a79-a8cc-732d19df3e75" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cython.CustomCompilerProtocol.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_custom_compiler.py#L202"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.CustomCompilerProtocol.__call__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L202"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.CustomCompilerProtocol.__call__" title="Link to this definition">#</a></dt>
 <dd><p>Compile <em>source</em> and return the artifact path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1526,7 +1526,7 @@ it in constructor-set <code class="docutils literal notranslate"><span class="pr
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.7b27db8 2026-07-14T04:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.77015c4 2026-07-14T09:59Z.
       <br/>
     
   </p>

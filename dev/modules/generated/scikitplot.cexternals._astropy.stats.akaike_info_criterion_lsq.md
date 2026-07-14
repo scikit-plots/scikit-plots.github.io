@@ -1,6 +1,6 @@
 # akaike\_info\_criterion\_lsq[#](#akaike-info-criterion-lsq "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cexternals/_astropy/stats/info_theory.py#L327)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cexternals/_astropy/stats/info_theory.py#L327)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq "Link to this definition")
 :   Computes the Akaike Information Criterion assuming that the observations
     are Gaussian distributed.
 

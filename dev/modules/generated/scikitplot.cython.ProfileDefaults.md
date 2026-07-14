@@ -1,6 +1,6 @@
 # ProfileDefaults[#](#profiledefaults "Link to this heading")
 
-class scikitplot.cython.ProfileDefaults(**annotate=False**, **compiler\_directives=<factory>**, **extra\_compile\_args=<factory>**, **extra\_link\_args=<factory>**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_profiles.py#L70)[#](#scikitplot.cython.ProfileDefaults "Link to this definition")
+class scikitplot.cython.ProfileDefaults(**annotate=False**, **compiler\_directives=<factory>**, **extra\_compile\_args=<factory>**, **extra\_link\_args=<factory>**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_profiles.py#L70)[#](#scikitplot.cython.ProfileDefaults "Link to this definition")
 :   Normalized defaults produced by resolving a profile.
 
     The instance is frozen and slotted: it is immutable and rejects attribute

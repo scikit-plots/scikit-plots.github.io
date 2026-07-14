@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T05:12:14Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T10:37:49Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>RELAXED_SECURITY_POLICY<a class="headerlink" href="#relaxed-security-policy" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.cython.RELAXED_SECURITY_POLICY">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">RELAXED_SECURITY_POLICY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">SecurityPolicy(strict=False,</span> <span class="pre">allow_absolute_include_dirs=True,</span> <span class="pre">allow_shell_metacharacters=True,</span> <span class="pre">allow_reserved_macros=True,</span> <span class="pre">allow_dangerous_compiler_args=True,</span> <span class="pre">max_source_bytes=None,</span> <span class="pre">max_extra_compile_args=1024,</span> <span class="pre">max_extra_link_args=1024,</span> <span class="pre">max_include_dirs=512,</span> <span class="pre">max_libraries=512)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7b27db8/scikitplot/cython/_security.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.RELAXED_SECURITY_POLICY" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">RELAXED_SECURITY_POLICY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">SecurityPolicy(strict=False,</span> <span class="pre">allow_absolute_include_dirs=True,</span> <span class="pre">allow_shell_metacharacters=True,</span> <span class="pre">allow_reserved_macros=True,</span> <span class="pre">allow_dangerous_compiler_args=True,</span> <span class="pre">max_source_bytes=None,</span> <span class="pre">max_extra_compile_args=1024,</span> <span class="pre">max_extra_link_args=1024,</span> <span class="pre">max_include_dirs=512,</span> <span class="pre">max_libraries=512)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_security.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.RELAXED_SECURITY_POLICY" title="Link to this definition">#</a></dt>
 <dd><p>Immutable security policy applied to build inputs before compilation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1380,8 +1380,8 @@ relaxes only the specific checks you need:</p>
 <code class="docutils literal notranslate"><span class="pre">SCIKITPLOT_CYTHON_ALLOW_ABSOLUTE_DIRS=1</span></code> in the environment to
 temporarily enable absolute include dirs without code changes.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="35c78318-91a8-47d2-8002-79bdc07925c7">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('35c78318-91a8-47d2-8002-79bdc07925c7','81610613-0ebc-4bf8-aa35-b2f04c4ed39c','51804b7f-c31d-465e-84a0-46065f921ad1','../../lite/tree/../notebooks/index.html?path=01b3fd9c_5136_4cf2_8884_e053aa071608.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fd06a439-8322-4b23-b892-7e639cc0e8f0">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fd06a439-8322-4b23-b892-7e639cc0e8f0','07c27376-7e67-451a-bb5b-b85d45204355','37114598-497c-40d2-89b2-5457d8a9cf3f','../../lite/tree/../notebooks/index.html?path=527815c0_330b_45d4_9955_3eee93ae9967.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Default (strict) policy:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span> <span class="o">=</span> <span class="n">SecurityPolicy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span><span class="o">.</span><span class="n">strict</span>
@@ -1398,7 +1398,7 @@ temporarily enable absolute include dirs without code changes.</p>
 </div>
 </div>
 </div>
-<div id="51804b7f-c31d-465e-84a0-46065f921ad1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('35c78318-91a8-47d2-8002-79bdc07925c7','51804b7f-c31d-465e-84a0-46065f921ad1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('35c78318-91a8-47d2-8002-79bdc07925c7','51804b7f-c31d-465e-84a0-46065f921ad1')">Open In Tab</button></div><div id="81610613-0ebc-4bf8-aa35-b2f04c4ed39c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="37114598-497c-40d2-89b2-5457d8a9cf3f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fd06a439-8322-4b23-b892-7e639cc0e8f0','37114598-497c-40d2-89b2-5457d8a9cf3f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fd06a439-8322-4b23-b892-7e639cc0e8f0','37114598-497c-40d2-89b2-5457d8a9cf3f')">Open In Tab</button></div><div id="07c27376-7e67-451a-bb5b-b85d45204355" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1516,7 +1516,7 @@ temporarily enable absolute include dirs without code changes.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.7b27db8 2026-07-14T04:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.77015c4 2026-07-14T09:59Z.
       <br/>
     
   </p>
