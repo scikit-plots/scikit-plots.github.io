@@ -1,6 +1,6 @@
 # is\_valid\_key[#](#is-valid-key "Link to this heading")
 
-scikitplot.cython.is\_valid\_key(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_cache.py#L77)[#](#scikitplot.cython.is_valid_key "Link to this definition")
+scikitplot.cython.is\_valid\_key(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cython/_cache.py#L77)[#](#scikitplot.cython.is_valid_key "Link to this definition")
 :   Return True if `key` is a valid cache key.
 
     Parameters:

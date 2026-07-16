@@ -64,7 +64,7 @@ constructor signature — the pipeline threads the outer dict straight through.
 pipeline_zip = CorpusPipeline(
     chunker=SentenceChunker(SentenceChunkerConfig(backend=SentenceBackend.NLTK)),
     output_path=Path("output/"),
-    export_format=ExportFormat.CSV,
+    format=ExportFormat.CSV,
     reader_kwargs={
         "reader_kwargs": {
             ".mp3": {"transcribe": True, "whisper_model": "small"},
@@ -77,7 +77,7 @@ result_zip
 
 ```
 ```
-PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, export_format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=10.0s)
+PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=11.3s)
 
 ```
 ```
@@ -181,7 +181,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 10.045 seconds)
+****Total running time of the script:**** (0 minutes 11.350 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 

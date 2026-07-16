@@ -1,6 +1,6 @@
 # TokenizerProtocol[#](#tokenizerprotocol "Link to this heading")
 
-class scikitplot.corpus.TokenizerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L142)[#](#scikitplot.corpus.TokenizerProtocol "Link to this definition")
+class scikitplot.corpus.TokenizerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L142)[#](#scikitplot.corpus.TokenizerProtocol "Link to this definition")
 :   Structural protocol for word tokenizers.
 
     Any object with a `tokenize(text: str) -> list[str]` method satisfies
@@ -24,7 +24,7 @@ class scikitplot.corpus.TokenizerProtocol(**\*args**, **\*\*kwargs**)[[source]](
     ```
     Go BackOpen In Tab
 
-    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L164)[#](#scikitplot.corpus.TokenizerProtocol.tokenize "Link to this definition")
+    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L164)[#](#scikitplot.corpus.TokenizerProtocol.tokenize "Link to this definition")
     :   Tokenize **text** into a list of token strings.
 
         Parameters:

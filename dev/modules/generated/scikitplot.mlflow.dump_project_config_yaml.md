@@ -1,6 +1,6 @@
 # dump\_project\_config\_yaml[#](#dump-project-config-yaml "Link to this heading")
 
-scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\***, **profile='local'**, **source\_config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/mlflow/_project.py#L899)[#](#scikitplot.mlflow.dump_project_config_yaml "Link to this definition")
+scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\***, **profile='local'**, **source\_config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/mlflow/_project.py#L899)[#](#scikitplot.mlflow.dump_project_config_yaml "Link to this definition")
 :   Write a ProjectConfig to a YAML file.
 
     This function supports two strict modes:

@@ -1,6 +1,6 @@
 # kuiper[#](#kuiper "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.kuiper(**data**, **cdf=<function <lambda>>**, **args=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cexternals/_astropy/stats/funcs.py#L1417)[#](#scikitplot.cexternals._astropy.stats.kuiper "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.kuiper(**data**, **cdf=<function <lambda>>**, **args=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cexternals/_astropy/stats/funcs.py#L1417)[#](#scikitplot.cexternals._astropy.stats.kuiper "Link to this definition")
 :   Compute the Kuiper statistic.
 
     Use the Kuiper statistic version of the Kolmogorov-Smirnov test to

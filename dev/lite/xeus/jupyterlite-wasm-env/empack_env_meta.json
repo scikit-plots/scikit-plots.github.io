@@ -2,22 +2,22 @@
   "prefix": "/",
   "packages": [
     {
-      "name": "emscripten-abi",
-      "version": "4.0.9",
-      "build": "h267e887_8",
-      "filename_stem": "emscripten-abi-4.0.9-h267e887_8",
-      "filename": "emscripten-abi-4.0.9-h267e887_8.tar.gz",
-      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "name": "font-ttf-dejavu",
+      "version": "2.37",
+      "build": "hd8ed1ab_1",
+      "filename_stem": "font-ttf-dejavu-2.37-hd8ed1ab_1",
+      "filename": "font-ttf-dejavu-2.37-hd8ed1ab_1.tar.gz",
+      "channel": "https://prefix.dev/conda-forge",
       "depends": [],
       "subdir": "noarch"
     },
     {
-      "name": "clang-resource-headers",
-      "version": "21.1.8",
-      "build": "h267e887_1",
-      "filename_stem": "clang-resource-headers-21.1.8-h267e887_1",
-      "filename": "clang-resource-headers-21.1.8-h267e887_1.tar.gz",
-      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "name": "font-ttf-dejavu-sans-mono",
+      "version": "2.37",
+      "build": "hab24e00_0",
+      "filename_stem": "font-ttf-dejavu-sans-mono-2.37-hab24e00_0",
+      "filename": "font-ttf-dejavu-sans-mono-2.37-hab24e00_0.tar.gz",
+      "channel": "https://prefix.dev/conda-forge",
       "depends": [],
       "subdir": "noarch"
     },
@@ -42,6 +42,39 @@
       "subdir": "noarch"
     },
     {
+      "name": "emscripten-abi",
+      "version": "4.0.9",
+      "build": "h267e887_8",
+      "filename_stem": "emscripten-abi-4.0.9-h267e887_8",
+      "filename": "emscripten-abi-4.0.9-h267e887_8.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [],
+      "subdir": "noarch"
+    },
+    {
+      "name": "clang-resource-headers",
+      "version": "21.1.8",
+      "build": "h267e887_1",
+      "filename_stem": "clang-resource-headers-21.1.8-h267e887_1",
+      "filename": "clang-resource-headers-21.1.8-h267e887_1.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [],
+      "subdir": "noarch"
+    },
+    {
+      "name": "pyjs-rt",
+      "version": "4.0.5",
+      "build": "py313h06ab7c0_0",
+      "filename_stem": "pyjs-rt-4.0.5-py313h06ab7c0_0",
+      "filename": "pyjs-rt-4.0.5-py313h06ab7c0_0.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [
+        "emscripten-abi >=4,<5.0a0",
+        "python_abi 3.13.* *_cp313"
+      ],
+      "subdir": "emscripten-wasm32"
+    },
+    {
       "name": "zlib",
       "version": "1.3.2",
       "build": "h8b79025_0",
@@ -56,50 +89,14 @@
     {
       "name": "r-base",
       "version": "4.5.3",
-      "build": "h1590c74_7",
-      "filename_stem": "r-base-4.5.3-h1590c74_7",
-      "filename": "r-base-4.5.3-h1590c74_7.tar.gz",
+      "build": "h1590c74_8",
+      "filename_stem": "r-base-4.5.3-h1590c74_8",
+      "filename": "r-base-4.5.3-h1590c74_8.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
+        "font-ttf-dejavu >=2.37",
+        "font-ttf-dejavu-sans-mono >=2.37",
         "emscripten-abi >=4,<5.0a0"
-      ],
-      "subdir": "emscripten-wasm32"
-    },
-    {
-      "name": "nlohmann_json",
-      "version": "3.12.0",
-      "build": "h0b0027f_0",
-      "filename_stem": "nlohmann_json-3.12.0-h0b0027f_0",
-      "filename": "nlohmann_json-3.12.0-h0b0027f_0.tar.gz",
-      "channel": "https://prefix.dev/emscripten-forge-4x",
-      "depends": [
-        "emscripten-abi >=4,<5.0a0"
-      ],
-      "subdir": "emscripten-wasm32"
-    },
-    {
-      "name": "cppinterop",
-      "version": "1.9.0",
-      "build": "h0b0027f_0",
-      "filename_stem": "cppinterop-1.9.0-h0b0027f_0",
-      "filename": "cppinterop-1.9.0-h0b0027f_0.tar.gz",
-      "channel": "https://prefix.dev/emscripten-forge-4x",
-      "depends": [
-        "clang-resource-headers 21.1.8",
-        "emscripten-abi >=4,<5.0a0"
-      ],
-      "subdir": "emscripten-wasm32"
-    },
-    {
-      "name": "pyjs-rt",
-      "version": "4.0.5",
-      "build": "py313h06ab7c0_0",
-      "filename_stem": "pyjs-rt-4.0.5-py313h06ab7c0_0",
-      "filename": "pyjs-rt-4.0.5-py313h06ab7c0_0.tar.gz",
-      "channel": "https://prefix.dev/emscripten-forge-4x",
-      "depends": [
-        "emscripten-abi >=4,<5.0a0",
-        "python_abi 3.13.* *_cp313"
       ],
       "subdir": "emscripten-wasm32"
     },
@@ -126,6 +123,31 @@
       "depends": [
         "emscripten-abi >=4,<5.0a0",
         "nlohmann_json-abi 3.12.0"
+      ],
+      "subdir": "emscripten-wasm32"
+    },
+    {
+      "name": "nlohmann_json",
+      "version": "3.12.0",
+      "build": "h0b0027f_0",
+      "filename_stem": "nlohmann_json-3.12.0-h0b0027f_0",
+      "filename": "nlohmann_json-3.12.0-h0b0027f_0.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [
+        "emscripten-abi >=4,<5.0a0"
+      ],
+      "subdir": "emscripten-wasm32"
+    },
+    {
+      "name": "cppinterop",
+      "version": "1.9.0",
+      "build": "h0b0027f_0",
+      "filename_stem": "cppinterop-1.9.0-h0b0027f_0",
+      "filename": "cppinterop-1.9.0-h0b0027f_0.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [
+        "clang-resource-headers 21.1.8",
+        "emscripten-abi >=4,<5.0a0"
       ],
       "subdir": "emscripten-wasm32"
     },

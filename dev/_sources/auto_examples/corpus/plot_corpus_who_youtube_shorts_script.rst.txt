@@ -81,7 +81,7 @@ Examples related to the :py:mod:`~scikitplot.corpus` submodule.
     pipeline = CorpusPipeline(
         chunker=SentenceChunker(SentenceChunkerConfig(backend=SentenceBackend.NLTK)),
         output_path=Path("output/"),
-        export_format=ExportFormat.CSV,
+        format=ExportFormat.CSV,
     )
     pipeline
 
@@ -94,7 +94,7 @@ Examples related to the :py:mod:`~scikitplot.corpus` submodule.
  .. code-block:: none
 
 
-    <scikitplot.corpus._pipeline.CorpusPipeline object at 0x7177cd0da6c0>
+    <scikitplot.corpus._pipeline.CorpusPipeline object at 0x7fdb56f64cb0>
 
 
 
@@ -207,7 +207,7 @@ Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.001 seconds)
+   **Total running time of the script:** (0 minutes 0.002 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_who_youtube_shorts_script.py:

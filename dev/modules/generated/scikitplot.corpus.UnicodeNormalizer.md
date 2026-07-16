@@ -1,6 +1,6 @@
 # UnicodeNormalizer[#](#unicodenormalizer "Link to this heading")
 
-class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_normalizers/_normalizer.py#L159)[#](#scikitplot.corpus.UnicodeNormalizer "Link to this definition")
+class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_normalizers/_normalizer.py#L159)[#](#scikitplot.corpus.UnicodeNormalizer "Link to this definition")
 :   Apply Unicode normalisation (NFC, NFD, NFKC, or NFKD).
 
     Parameters:
@@ -25,7 +25,7 @@ class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://gith
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_normalizers/_normalizer.py#L189)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_normalizers/_normalizer.py#L189)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_doc "Link to this definition")
     :   Apply Unicode normalisation to the document text.
 
         Parameters:

@@ -1,6 +1,6 @@
 # probe\_url\_kind[#](#probe-url-kind "Link to this heading")
 
-scikitplot.corpus.probe\_url\_kind(**url**, **\***, **timeout=15**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_url_handler.py#L492)[#](#scikitplot.corpus.probe_url_kind "Link to this definition")
+scikitplot.corpus.probe\_url\_kind(**url**, **\***, **timeout=15**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_url_handler.py#L492)[#](#scikitplot.corpus.probe_url_kind "Link to this definition")
 :   Probe a URL with a HEAD request to classify by Content-Type.
 
     Use this when [`classify_url`](scikitplot.corpus.classify_url.html#scikitplot.corpus.classify_url "scikitplot.corpus.classify_url") returns [`URLKind.WEB_PAGE`](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind.WEB_PAGE "scikitplot.corpus.URLKind.WEB_PAGE")

@@ -1,6 +1,6 @@
 # freedman\_bin\_width[#](#freedman-bin-width "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.freedman\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cexternals/_astropy/stats/histogram.py#L235)[#](#scikitplot.cexternals._astropy.stats.freedman_bin_width "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.freedman\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cexternals/_astropy/stats/histogram.py#L235)[#](#scikitplot.cexternals._astropy.stats.freedman_bin_width "Link to this definition")
 :   Return the optimal histogram bin width using the Freedman-Diaconis rule.
 
     The Freedman-Diaconis rule is a normal reference rule like Scott’s

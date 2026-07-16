@@ -1,6 +1,6 @@
 # MlflowCliIncompatibleError[#](#mlflowcliincompatibleerror "Link to this heading")
 
-exception scikitplot.mlflow.MlflowCliIncompatibleError[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/mlflow/_errors.py#L24)[#](#scikitplot.mlflow.MlflowCliIncompatibleError "Link to this definition")
+exception scikitplot.mlflow.MlflowCliIncompatibleError[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/mlflow/_errors.py#L24)[#](#scikitplot.mlflow.MlflowCliIncompatibleError "Link to this definition")
 :   Raised when a requested `mlflow server` option is not supported by the installed MLflow.
 
     Annotation:

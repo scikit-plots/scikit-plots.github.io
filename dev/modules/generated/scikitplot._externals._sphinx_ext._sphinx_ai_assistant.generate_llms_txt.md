@@ -1,6 +1,6 @@
 # generate\_llms\_txt[#](#generate-llms-txt "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt(**app**, **exception**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3469)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt(**app**, **exception**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3469)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt "Link to this definition")
 :   Post-build hook: write `llms.txt` listing all generated `.md` URLs.
 
     Registered with Sphinx’s `build-finished` event in `setup`.

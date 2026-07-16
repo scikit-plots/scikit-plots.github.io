@@ -1,6 +1,6 @@
 # unregister\_bridge[#](#unregister-bridge "Link to this heading")
 
-scikitplot.corpus.unregister\_bridge(**chunker\_class**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/corpus/_chunkers/_chunker_bridge.py#L449)[#](#scikitplot.corpus.unregister_bridge "Link to this definition")
+scikitplot.corpus.unregister\_bridge(**chunker\_class**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_chunkers/_chunker_bridge.py#L449)[#](#scikitplot.corpus.unregister_bridge "Link to this definition")
 :   Remove a previously registered bridge for **chunker\_class**.
 
     Parameters:

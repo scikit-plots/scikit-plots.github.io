@@ -1,4 +1,4 @@
-# Identifying Bad Data Sources (When Data Does Not ROCCC)[#](#da-jobsearch-prep-012 "Link to this heading")
+# Identifying Bad Data Sources (When Data Does Not ROCCC)[#](#da-3-prep-prep-012 "Link to this heading")
 
 📦 Data Preparation ⚖️ Bias & Data Ethics Lesson 012
 

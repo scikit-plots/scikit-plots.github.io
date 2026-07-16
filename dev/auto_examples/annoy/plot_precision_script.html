@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-14T10:26:23Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-16T17:35:53Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Precision annoy.AnnoyIndex with examples — scikit-plots 0.5.dev0 documentation</title>
@@ -593,92 +593,91 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  1%|▏         | 1315/100000 [00:00&lt;00:07, 13141.43it/s]
-  3%|▎         | 2630/100000 [00:00&lt;00:07, 13144.38it/s]
-  4%|▍         | 3945/100000 [00:00&lt;00:07, 13101.67it/s]
-  5%|▌         | 5261/100000 [00:00&lt;00:07, 13122.60it/s]
-  7%|▋         | 6574/100000 [00:00&lt;00:07, 13117.29it/s]
-  8%|▊         | 7887/100000 [00:00&lt;00:07, 13120.38it/s]
-  9%|▉         | 9205/100000 [00:00&lt;00:06, 13138.90it/s]10000 / 100000 = 0.1
+  1%|▏         | 1324/100000 [00:00&lt;00:07, 13235.47it/s]
+  3%|▎         | 2648/100000 [00:00&lt;00:07, 13192.45it/s]
+  4%|▍         | 3968/100000 [00:00&lt;00:07, 13189.17it/s]
+  5%|▌         | 5288/100000 [00:00&lt;00:07, 13192.01it/s]
+  7%|▋         | 6608/100000 [00:00&lt;00:07, 13190.10it/s]
+  8%|▊         | 7928/100000 [00:00&lt;00:06, 13189.79it/s]
+  9%|▉         | 9251/100000 [00:00&lt;00:06, 13200.81it/s]10000 / 100000 = 0.1
 
- 11%|█         | 10519/100000 [00:00&lt;00:06, 13076.83it/s]
- 12%|█▏        | 11834/100000 [00:00&lt;00:06, 13098.42it/s]
- 13%|█▎        | 13144/100000 [00:01&lt;00:06, 13097.05it/s]
- 14%|█▍        | 14462/100000 [00:01&lt;00:06, 13119.79it/s]
- 16%|█▌        | 15775/100000 [00:01&lt;00:06, 13111.59it/s]
- 17%|█▋        | 17089/100000 [00:01&lt;00:06, 13117.49it/s]
- 18%|█▊        | 18408/100000 [00:01&lt;00:06, 13136.61it/s]
- 20%|█▉        | 19725/100000 [00:01&lt;00:06, 13146.03it/s]20000 / 100000 = 0.2
+ 11%|█         | 10572/100000 [00:00&lt;00:06, 13167.21it/s]
+ 12%|█▏        | 11890/100000 [00:00&lt;00:06, 13170.18it/s]
+ 13%|█▎        | 13208/100000 [00:01&lt;00:06, 13169.84it/s]
+ 15%|█▍        | 14525/100000 [00:01&lt;00:06, 13141.82it/s]
+ 16%|█▌        | 15840/100000 [00:01&lt;00:06, 13089.00it/s]
+ 17%|█▋        | 17163/100000 [00:01&lt;00:06, 13128.78it/s]
+ 18%|█▊        | 18485/100000 [00:01&lt;00:06, 13153.51it/s]
+ 20%|█▉        | 19809/100000 [00:01&lt;00:06, 13179.26it/s]20000 / 100000 = 0.2
 
- 21%|██        | 21040/100000 [00:01&lt;00:06, 13046.62it/s]
- 22%|██▏       | 22356/100000 [00:01&lt;00:05, 13077.71it/s]
- 24%|██▎       | 23672/100000 [00:01&lt;00:05, 13099.63it/s]
- 25%|██▍       | 24986/100000 [00:01&lt;00:05, 13110.73it/s]
- 26%|██▋       | 26299/100000 [00:02&lt;00:05, 13115.88it/s]
- 28%|██▊       | 27614/100000 [00:02&lt;00:05, 13123.15it/s]
- 29%|██▉       | 28929/100000 [00:02&lt;00:05, 13128.97it/s]30000 / 100000 = 0.3
+ 21%|██        | 21127/100000 [00:01&lt;00:05, 13169.66it/s]
+ 22%|██▏       | 22448/100000 [00:01&lt;00:05, 13178.87it/s]
+ 24%|██▍       | 23766/100000 [00:01&lt;00:05, 13158.31it/s]
+ 25%|██▌       | 25089/100000 [00:01&lt;00:05, 13178.95it/s]
+ 26%|██▋       | 26416/100000 [00:02&lt;00:05, 13205.21it/s]
+ 28%|██▊       | 27737/100000 [00:02&lt;00:05, 13096.31it/s]
+ 29%|██▉       | 29060/100000 [00:02&lt;00:05, 13135.46it/s]30000 / 100000 = 0.3
 
- 30%|███       | 30242/100000 [00:02&lt;00:05, 13120.94it/s]
- 32%|███▏      | 31560/100000 [00:02&lt;00:05, 13137.16it/s]
- 33%|███▎      | 32877/100000 [00:02&lt;00:05, 13146.65it/s]
- 34%|███▍      | 34195/100000 [00:02&lt;00:05, 13153.55it/s]
- 36%|███▌      | 35511/100000 [00:02&lt;00:04, 13002.14it/s]
- 37%|███▋      | 36822/100000 [00:02&lt;00:04, 13033.96it/s]
- 38%|███▊      | 38126/100000 [00:02&lt;00:04, 13006.54it/s]
- 39%|███▉      | 39436/100000 [00:03&lt;00:04, 13033.05it/s]40000 / 100000 = 0.4
+ 30%|███       | 30378/100000 [00:02&lt;00:05, 13146.68it/s]
+ 32%|███▏      | 31706/100000 [00:02&lt;00:05, 13184.62it/s]
+ 33%|███▎      | 33032/100000 [00:02&lt;00:05, 13204.71it/s]
+ 34%|███▍      | 34357/100000 [00:02&lt;00:04, 13217.64it/s]
+ 36%|███▌      | 35679/100000 [00:02&lt;00:04, 13193.80it/s]
+ 37%|███▋      | 36999/100000 [00:02&lt;00:04, 13190.05it/s]
+ 38%|███▊      | 38319/100000 [00:02&lt;00:04, 13185.12it/s]
+ 40%|███▉      | 39644/100000 [00:03&lt;00:04, 13203.97it/s]40000 / 100000 = 0.4
 
- 41%|████      | 40750/100000 [00:03&lt;00:04, 13062.60it/s]
- 42%|████▏     | 42068/100000 [00:03&lt;00:04, 13096.67it/s]
- 43%|████▎     | 43384/100000 [00:03&lt;00:04, 13113.61it/s]
- 45%|████▍     | 44701/100000 [00:03&lt;00:04, 13129.65it/s]
- 46%|████▌     | 46015/100000 [00:03&lt;00:04, 13101.92it/s]
- 47%|████▋     | 47332/100000 [00:03&lt;00:04, 13120.49it/s]
- 49%|████▊     | 48645/100000 [00:03&lt;00:03, 13116.51it/s]
- 50%|████▉     | 49961/100000 [00:03&lt;00:03, 13127.40it/s]50000 / 100000 = 0.5
+ 41%|████      | 40967/100000 [00:03&lt;00:04, 13211.27it/s]
+ 42%|████▏     | 42293/100000 [00:03&lt;00:04, 13224.35it/s]
+ 44%|████▎     | 43616/100000 [00:03&lt;00:04, 13217.43it/s]
+ 45%|████▍     | 44938/100000 [00:03&lt;00:04, 13206.54it/s]
+ 46%|████▋     | 46259/100000 [00:03&lt;00:04, 13183.70it/s]
+ 48%|████▊     | 47582/100000 [00:03&lt;00:03, 13194.19it/s]
+ 49%|████▉     | 48902/100000 [00:03&lt;00:03, 13183.43it/s]50000 / 100000 = 0.5
 
- 51%|█████▏    | 51276/100000 [00:03&lt;00:03, 13131.78it/s]
- 53%|█████▎    | 52593/100000 [00:04&lt;00:03, 13142.51it/s]
- 54%|█████▍    | 53908/100000 [00:04&lt;00:03, 13028.15it/s]
- 55%|█████▌    | 55225/100000 [00:04&lt;00:03, 13069.70it/s]
- 57%|█████▋    | 56543/100000 [00:04&lt;00:03, 13099.71it/s]
- 58%|█████▊    | 57859/100000 [00:04&lt;00:03, 13116.65it/s]
- 59%|█████▉    | 59171/100000 [00:04&lt;00:03, 12310.25it/s]60000 / 100000 = 0.6
+ 50%|█████     | 50227/100000 [00:03&lt;00:03, 13201.64it/s]
+ 52%|█████▏    | 51552/100000 [00:03&lt;00:03, 13213.53it/s]
+ 53%|█████▎    | 52874/100000 [00:04&lt;00:03, 13203.94it/s]
+ 54%|█████▍    | 54195/100000 [00:04&lt;00:03, 13204.73it/s]
+ 56%|█████▌    | 55516/100000 [00:04&lt;00:03, 13199.95it/s]
+ 57%|█████▋    | 56843/100000 [00:04&lt;00:03, 13219.58it/s]
+ 58%|█████▊    | 58165/100000 [00:04&lt;00:03, 13214.74it/s]
+ 59%|█████▉    | 59487/100000 [00:04&lt;00:03, 13173.23it/s]60000 / 100000 = 0.6
 
- 60%|██████    | 60482/100000 [00:04&lt;00:03, 12537.68it/s]
- 62%|██████▏   | 61802/100000 [00:04&lt;00:03, 12729.21it/s]
- 63%|██████▎   | 63123/100000 [00:04&lt;00:02, 12869.47it/s]
- 64%|██████▍   | 64442/100000 [00:04&lt;00:02, 12962.57it/s]
- 66%|██████▌   | 65760/100000 [00:05&lt;00:02, 13024.34it/s]
- 67%|██████▋   | 67080/100000 [00:05&lt;00:02, 13075.44it/s]
- 68%|██████▊   | 68396/100000 [00:05&lt;00:02, 13100.50it/s]
- 70%|██████▉   | 69713/100000 [00:05&lt;00:02, 13120.51it/s]70000 / 100000 = 0.7
+ 61%|██████    | 60805/100000 [00:04&lt;00:02, 13173.57it/s]
+ 62%|██████▏   | 62125/100000 [00:04&lt;00:02, 13178.80it/s]
+ 63%|██████▎   | 63443/100000 [00:04&lt;00:02, 13170.21it/s]
+ 65%|██████▍   | 64765/100000 [00:04&lt;00:02, 13183.85it/s]
+ 66%|██████▌   | 66087/100000 [00:05&lt;00:02, 13193.81it/s]
+ 67%|██████▋   | 67413/100000 [00:05&lt;00:02, 13213.34it/s]
+ 69%|██████▊   | 68735/100000 [00:05&lt;00:02, 13189.59it/s]70000 / 100000 = 0.7
 
- 71%|███████   | 71031/100000 [00:05&lt;00:02, 13135.65it/s]
- 72%|███████▏  | 72350/100000 [00:05&lt;00:02, 13150.56it/s]
- 74%|███████▎  | 73666/100000 [00:05&lt;00:02, 13148.25it/s]
- 75%|███████▍  | 74984/100000 [00:05&lt;00:01, 13155.61it/s]
- 76%|███████▋  | 76300/100000 [00:05&lt;00:01, 12928.87it/s]
- 78%|███████▊  | 77615/100000 [00:05&lt;00:01, 12992.94it/s]
- 79%|███████▉  | 78932/100000 [00:06&lt;00:01, 13043.00it/s]80000 / 100000 = 0.8
+ 70%|███████   | 70054/100000 [00:05&lt;00:02, 13114.92it/s]
+ 71%|███████▏  | 71378/100000 [00:05&lt;00:02, 13150.67it/s]
+ 73%|███████▎  | 72703/100000 [00:05&lt;00:02, 13178.13it/s]
+ 74%|███████▍  | 74024/100000 [00:05&lt;00:01, 13187.08it/s]
+ 75%|███████▌  | 75345/100000 [00:05&lt;00:01, 13190.97it/s]
+ 77%|███████▋  | 76665/100000 [00:05&lt;00:01, 12917.74it/s]
+ 78%|███████▊  | 77986/100000 [00:05&lt;00:01, 13002.92it/s]
+ 79%|███████▉  | 79310/100000 [00:06&lt;00:01, 13071.50it/s]80000 / 100000 = 0.8
 
- 80%|████████  | 80248/100000 [00:06&lt;00:01, 13075.52it/s]
- 82%|████████▏ | 81565/100000 [00:06&lt;00:01, 13101.59it/s]
- 83%|████████▎ | 82883/100000 [00:06&lt;00:01, 13122.20it/s]
- 84%|████████▍ | 84198/100000 [00:06&lt;00:01, 13128.17it/s]
- 86%|████████▌ | 85515/100000 [00:06&lt;00:01, 13138.37it/s]
- 87%|████████▋ | 86829/100000 [00:06&lt;00:01, 13127.41it/s]
- 88%|████████▊ | 88147/100000 [00:06&lt;00:00, 13142.12it/s]
- 89%|████████▉ | 89462/100000 [00:06&lt;00:00, 13143.99it/s]90000 / 100000 = 0.9
+ 81%|████████  | 80635/100000 [00:06&lt;00:01, 13123.35it/s]
+ 82%|████████▏ | 81960/100000 [00:06&lt;00:01, 13158.20it/s]
+ 83%|████████▎ | 83284/100000 [00:06&lt;00:01, 13180.56it/s]
+ 85%|████████▍ | 84605/100000 [00:06&lt;00:01, 13188.99it/s]
+ 86%|████████▌ | 85929/100000 [00:06&lt;00:01, 13203.60it/s]
+ 87%|████████▋ | 87253/100000 [00:06&lt;00:00, 13211.64it/s]
+ 89%|████████▊ | 88575/100000 [00:06&lt;00:00, 13201.58it/s]
+ 90%|████████▉ | 89896/100000 [00:06&lt;00:00, 13202.41it/s]90000 / 100000 = 0.9
 
- 91%|█████████ | 90777/100000 [00:06&lt;00:00, 13142.01it/s]
- 92%|█████████▏| 92095/100000 [00:07&lt;00:00, 13150.78it/s]
- 93%|█████████▎| 93411/100000 [00:07&lt;00:00, 13152.24it/s]
- 95%|█████████▍| 94727/100000 [00:07&lt;00:00, 13152.56it/s]
- 96%|█████████▌| 96043/100000 [00:07&lt;00:00, 13146.45it/s]
- 97%|█████████▋| 97358/100000 [00:07&lt;00:00, 13143.92it/s]
- 99%|█████████▊| 98673/100000 [00:07&lt;00:00, 13139.75it/s]
-100%|█████████▉| 99987/100000 [00:07&lt;00:00, 12842.45it/s]
-100%|██████████| 100000/100000 [00:07&lt;00:00, 13064.14it/s]
+ 91%|█████████ | 91217/100000 [00:06&lt;00:00, 13201.23it/s]
+ 93%|█████████▎| 92540/100000 [00:07&lt;00:00, 13207.31it/s]
+ 94%|█████████▍| 93866/100000 [00:07&lt;00:00, 13220.25it/s]
+ 95%|█████████▌| 95189/100000 [00:07&lt;00:00, 13221.84it/s]
+ 97%|█████████▋| 96513/100000 [00:07&lt;00:00, 13225.81it/s]
+ 98%|█████████▊| 97836/100000 [00:07&lt;00:00, 13218.82it/s]
+ 99%|█████████▉| 99158/100000 [00:07&lt;00:00, 11878.10it/s]
+100%|██████████| 100000/100000 [00:07&lt;00:00, 13113.99it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 499984128, 'memory_usage_mib': 476.822021484375}
 </pre></div>
@@ -722,21 +721,20 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <span class="n">time_sum</span> <span class="o">=</span> <span class="p">{}</span>
 
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">prec_n</span><span class="p">):</span>
-      <span class="n">j</span> <span class="o">=</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.randrange" title="random.randrange"><span class="n">random</span><span class="o">.</span><span class="n">randrange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-      <span class="n">closest</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-      <span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
-          <span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-          <span class="n">toplist</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-          <span class="n">T</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    <span class="n">j</span> <span class="o">=</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.randrange" title="random.randrange"><span class="n">random</span><span class="o">.</span><span class="n">randrange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">closest</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
+        <span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+        <span class="n">toplist</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+        <span class="n">T</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
 
-          <span class="n">found</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">closest</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">toplist</span><span class="p">))</span>
-          <span class="n">hitrate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">found</span> <span class="o">/</span> <span class="n">k</span>
-          <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">prec_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">hitrate</span>
-          <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">T</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">closest</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">toplist</span><span class="p">))</span>
+        <span class="n">hitrate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">found</span> <span class="o">/</span> <span class="n">k</span>
+        <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">prec_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">hitrate</span>
+        <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">T</span>
 
-  <span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">'limit: </span><span class="si">%-9d</span><span class="s1"> precision: </span><span class="si">%6.2f%%</span><span class="s1"> avg time: </span><span class="si">%.6f</span><span class="s1">s'</span>
-      <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'limit: </span><span class="si">%-9d</span><span class="s1"> precision: </span><span class="si">%6.2f%%</span><span class="s1"> avg time: </span><span class="si">%.6f</span><span class="s1">s'</span>
+              <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
@@ -745,20 +743,56 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span class="n">precision</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:111: UserWarning: seed=0 resets to Annoy's default seed
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:110: UserWarning: seed=0 resets to Annoy's default seed
   q.set_seed(0)
 
-  0%|          | 0/10 [00:00&lt;?, ?it/s]
- 60%|██████    | 6/10 [00:00&lt;00:00, 57.30it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 58.81it/s]
-limit: 10        precision:  10.00% avg time: 0.000140s
-limit: 100       precision:  16.00% avg time: 0.000120s
-limit: 1000      precision:  33.00% avg time: 0.000359s
-limit: 10000     precision:  86.00% avg time: 0.002133s
+  0%|          | 0/10 [00:00&lt;?, ?it/s]limit: 10        precision:  10.00% avg time: 0.000114s
+limit: 100       precision:  10.00% avg time: 0.000154s
+limit: 1000      precision:  20.00% avg time: 0.000359s
+limit: 10000     precision:  80.00% avg time: 0.002056s
+limit: 10        precision:  10.00% avg time: 0.000119s
+limit: 100       precision:  10.00% avg time: 0.000167s
+limit: 1000      precision:  20.00% avg time: 0.000379s
+limit: 10000     precision:  85.00% avg time: 0.002065s
+limit: 10        precision:  10.00% avg time: 0.000132s
+limit: 100       precision:  10.00% avg time: 0.000157s
+limit: 1000      precision:  26.67% avg time: 0.000391s
+limit: 10000     precision:  90.00% avg time: 0.002063s
+limit: 10        precision:  10.00% avg time: 0.000136s
+limit: 100       precision:  10.00% avg time: 0.000148s
+limit: 1000      precision:  27.50% avg time: 0.000374s
+limit: 10000     precision:  80.00% avg time: 0.002040s
+limit: 10        precision:  10.00% avg time: 0.000131s
+limit: 100       precision:  10.00% avg time: 0.000147s
+limit: 1000      precision:  26.00% avg time: 0.000379s
+limit: 10000     precision:  84.00% avg time: 0.002062s
+limit: 10        precision:  10.00% avg time: 0.000130s
+limit: 100       precision:  11.67% avg time: 0.000141s
+limit: 1000      precision:  26.67% avg time: 0.000376s
+limit: 10000     precision:  81.67% avg time: 0.002045s
+
+ 60%|██████    | 6/10 [00:00&lt;00:00, 54.09it/s]limit: 10        precision:  10.00% avg time: 0.000129s
+limit: 100       precision:  17.14% avg time: 0.000142s
+limit: 1000      precision:  34.29% avg time: 0.000371s
+limit: 10000     precision:  84.29% avg time: 0.002053s
+limit: 10        precision:  10.00% avg time: 0.000132s
+limit: 100       precision:  17.50% avg time: 0.000142s
+limit: 1000      precision:  33.75% avg time: 0.000370s
+limit: 10000     precision:  85.00% avg time: 0.002054s
+limit: 10        precision:  10.00% avg time: 0.000135s
+limit: 100       precision:  16.67% avg time: 0.000142s
+limit: 1000      precision:  34.44% avg time: 0.000369s
+limit: 10000     precision:  85.56% avg time: 0.002063s
+limit: 10        precision:  10.00% avg time: 0.000135s
+limit: 100       precision:  16.00% avg time: 0.000141s
+limit: 1000      precision:  33.00% avg time: 0.000366s
+limit: 10000     precision:  86.00% avg time: 0.002064s
+
+100%|██████████| 10/10 [00:00&lt;00:00, 56.87it/s]
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 22.061 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 8.809 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -866,7 +900,7 @@ limit: 10000     precision:  86.00% avg time: 0.002133s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260714.77015c4 2026-07-14T09:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260716.f800619 2026-07-16T17:09Z.
       <br/>
 </p>
 </div>

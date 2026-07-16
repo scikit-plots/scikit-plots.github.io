@@ -2,4 +2,4 @@
   
  From a single neuron to deep networks
   
- 0.5.dev0+git.20260714.77015c4 - July 14, 2026 09:59 UTC
+ 0.5.dev0+git.20260716.f800619 - July 16, 2026 17:09 UTC

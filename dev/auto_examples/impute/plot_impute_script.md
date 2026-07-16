@@ -200,7 +200,7 @@ time_data[0] = T
 
 ```
 ```
-20.03223752975464
+17.465202569961548
 
 ```
 
@@ -229,7 +229,7 @@ time_data[1] = T
 
 ```
 ```
-23.4263653755188
+18.023176908493042
 
 ```
 
@@ -255,7 +255,7 @@ time_data[2] = T
 
 ```
 ```
-23.4532310962677
+19.933348417282104
 
 ```
 
@@ -285,7 +285,7 @@ time_data[3] = T
 
 ```
 ```
-22.238898038864136
+19.876193284988403
 
 ```
 
@@ -319,7 +319,7 @@ time_data[4] = T
 
 ```
 ```
-46.814104318618774
+33.169978857040405
 
 ```
 
@@ -357,7 +357,7 @@ time_data[5] = T
 
 ```
 ```
-24.81741428375244
+21.813838005065918
 
 ```
 
@@ -378,7 +378,7 @@ from scikitplot.impute import ANNImputer
 
 ```
 ```
-0.5.dev0+git.20260714.77015c4
+0.5.dev0+git.20260716.f800619
 
 ```
 ```
@@ -404,7 +404,7 @@ time_data[6] = T
 
 ```
 ```
-28.348683834075928
+24.222554206848145
 
 ```
 ```
@@ -438,7 +438,7 @@ time_data[7] = T
 
 ```
 ```
-23.657238721847534
+24.09661316871643
 
 ```
 
@@ -549,7 +549,7 @@ neighbor retrieval and degraded imputation quality.
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: impute](../../_tags/model-workflow-impute.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (3 minutes 33.449 seconds)
+****Total running time of the script:**** (2 minutes 59.192 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo8.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo8.svg)](../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb)
 
@@ -565,15 +565,15 @@ Related examples
 
 [Comparing DummyCode Encoder with Other Encoders](../preprocessing/plot_dummy_code_encoder.html)
 
-Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
-
-[plot\_feature\_importances with examples](../classification/plot_feature_importances_script.html)
-
-plot\_feature\_importances with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_precision_script_thumb.png)
 
 [Precision annoy.AnnoyIndex with examples](../annoy/plot_precision_script.html)
 
-Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_aucplot_script_thumb.png)
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
+
+[plot\_feature\_importances with examples](../classification/plot_feature_importances_script.html)
+
+plot\_feature\_importances with examples![](../../_images/sphx_glr_plot_aucplot_script_thumb.png)
 
 [plot\_aucplot\_script with examples](../seaborn/plot_aucplot_script.html)
 

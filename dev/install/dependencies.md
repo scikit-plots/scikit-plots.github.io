@@ -27,7 +27,7 @@ of Matplotlib.
 #### Backends[#](#backends "Link to this heading")
 
 Matplotlib figures can be rendered to various user interfaces. See
-[What is a backend?](https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend "(in Matplotlib v3.12.0.dev348+gbde111fb4)") for more details on the optional Matplotlib backends
+[What is a backend?](https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend "(in Matplotlib v3.12.0.dev356+g63bd09560)") for more details on the optional Matplotlib backends
 and the capabilities they provide.
 
 * [Tk](https://docs.python.org/3/library/tk.html) (>= 8.5, != 8.6.0 or 8.6.1): for the Tk-based backends. Tk is part of
@@ -287,7 +287,7 @@ tests will not find it.
 ### Python[#](#id12 "Link to this heading")
 
 The additional Python packages required to build the
-[documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.12.0.dev348+gbde111fb4)") are listed in
+[documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.12.0.dev356+g63bd09560)") are listed in
 `doc.txt` and can be installed using
 
 ```

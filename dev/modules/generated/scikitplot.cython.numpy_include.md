@@ -1,6 +1,6 @@
 # numpy\_include[#](#numpy-include "Link to this heading")
 
-scikitplot.cython.numpy\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/77015c4/scikitplot/cython/_custom_compiler.py#L617)[#](#scikitplot.cython.numpy_include "Link to this definition")
+scikitplot.cython.numpy\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cython/_custom_compiler.py#L617)[#](#scikitplot.cython.numpy_include "Link to this definition")
 :   Return the NumPy C-API include directory, or `None` if not installed.
 
     Returns:

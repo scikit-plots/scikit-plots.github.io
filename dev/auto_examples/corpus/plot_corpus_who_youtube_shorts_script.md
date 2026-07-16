@@ -38,13 +38,13 @@ from scikitplot.corpus import (
 pipeline = CorpusPipeline(
     chunker=SentenceChunker(SentenceChunkerConfig(backend=SentenceBackend.NLTK)),
     output_path=Path("output/"),
-    export_format=ExportFormat.CSV,
+    format=ExportFormat.CSV,
 )
 pipeline
 
 ```
 ```
-<scikitplot.corpus._pipeline.CorpusPipeline object at 0x7177cd0da6c0>
+<scikitplot.corpus._pipeline.CorpusPipeline object at 0x7fdb56f64cb0>
 
 ```
 
@@ -84,7 +84,7 @@ Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.001 seconds)
+****Total running time of the script:**** (0 minutes 0.002 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_youtube_shorts_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_youtube_shorts_script.ipynb)
 
