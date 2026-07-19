@@ -4,6 +4,16 @@
 
 [◀ Previous · Assessing Model Fit in Logistic Regression](40-assessing-model-fit-in-logistic-regression.html) · [Next · Forward Selection with Nested Models and Deviance Tests ▶](42-forward-selection-with-nested-models-and-deviance-tests.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## When the fit blows up[#](#when-the-fit-blows-up "Link to this heading")
 
 Occasionally a logistic regression ****refuses to behave****: coefficients balloon to absurd sizes,

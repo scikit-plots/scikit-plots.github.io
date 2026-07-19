@@ -4,6 +4,16 @@
 
 [◀ Previous · Observational studies](055-observational-studies.html) · [Next · Bayesian decision theory in diﬀerent contexts ▶](057-bayesian-decision-theory-in-different-contexts.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Two ways data go missing[#](#two-ways-data-go-missing "Link to this heading")
 
 Both words describe incomplete observation, and confusing them yields a wrong likelihood. The

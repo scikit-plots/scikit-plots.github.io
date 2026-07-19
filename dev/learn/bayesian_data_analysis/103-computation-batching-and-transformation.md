@@ -4,6 +4,16 @@
 
 [◀ Previous · Varying intercepts and slopes](102-varying-intercepts-and-slopes.html) · [Next · Analysis of variance and the batching of coeﬃcients ▶](104-analysis-of-variance-and-the-batching-of-coefficients.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Making batched models sample[#](#making-batched-models-sample "Link to this heading")
 
 A model with several batches of exchangeable coefficients — varying intercepts, varying slopes, their

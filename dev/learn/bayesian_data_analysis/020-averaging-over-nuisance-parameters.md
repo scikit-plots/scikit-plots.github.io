@@ -4,6 +4,16 @@
 
 [◀ Previous · Weakly Informative Prior Distributions](019-weakly-informative-prior-distributions.html) · [Next · Normal Data with a Noninformative Prior Distribution ▶](021-normal-data-with-a-noninformative-prior-distribution.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The parameters you don’t want[#](#the-parameters-you-don-t-want "Link to this heading")
 
 Real models have more parameters than questions. Estimating a mean \(\mu\) usually drags along an

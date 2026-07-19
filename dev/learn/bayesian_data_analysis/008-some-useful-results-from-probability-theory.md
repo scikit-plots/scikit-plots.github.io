@@ -4,6 +4,16 @@
 
 [◀ Previous · Example — Calibration for Record Linkage](007-example-calibration-for-record-linkage.html) · [Next · Computation and Software ▶](009-computation-and-software.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The toolkit[#](#the-toolkit "Link to this heading")
 
 A handful of identities do nearly all the work in Bayesian derivations. They are elementary, but worth

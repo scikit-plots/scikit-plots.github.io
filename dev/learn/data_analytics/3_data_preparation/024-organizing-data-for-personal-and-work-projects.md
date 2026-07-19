@@ -4,6 +4,16 @@
 
 ◀ [Previous](023-querying-data-with-sql.html) · [Next](025-data-security-in-spreadsheets.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Organisation is preparation too[#](#organisation-is-preparation-too "Link to this heading")
 
 Preparing data is not only about the data’s **content** — it is also about how the

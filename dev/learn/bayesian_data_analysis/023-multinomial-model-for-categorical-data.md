@@ -4,6 +4,16 @@
 
 [◀ Previous · Normal Data with a Conjugate Prior Distribution](022-normal-data-with-a-conjugate-prior-distribution.html) · [Next · Multivariate Normal Model with Known Variance ▶](024-multivariate-normal-model-with-known-variance.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Beyond two categories[#](#beyond-two-categories "Link to this heading")
 
 Generalise the binomial from two outcomes to \(k\). Each observation falls in exactly one of

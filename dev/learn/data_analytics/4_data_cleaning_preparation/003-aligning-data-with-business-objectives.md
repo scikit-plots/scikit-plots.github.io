@@ -4,6 +4,16 @@
 
 ◀ [Previous](002-data-integrity-and-its-risks-in-data-analysis.html) · [Next](004-handling-insufficient-data-in-data-analysis.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Clean is not the same as useful[#](#clean-is-not-the-same-as-useful "Link to this heading")
 
 Data can be perfectly clean and still be the **wrong data** for the question. A

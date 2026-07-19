@@ -4,6 +4,16 @@
 
 ◀ [Previous](015-common-spreadsheet-errors-and-how-to-fix-them.html) · [Next](017-defining-the-problem-domain.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The analyst’s vocabulary[#](#the-analyst-s-vocabulary "Link to this heading")
 
 A ****function**** is a named, prebuilt operation you use inside a formula:

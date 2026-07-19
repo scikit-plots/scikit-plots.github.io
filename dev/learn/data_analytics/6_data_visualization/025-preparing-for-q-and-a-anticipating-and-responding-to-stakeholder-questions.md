@@ -4,6 +4,16 @@
 
 ◀ [Previous](024-presenting-like-a-pro-best-practices-for-data-analysts.html) · [Next](026-handling-objections-in-data-presentations-responding-with-confidence-and-clarity.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The part you cannot script[#](#the-part-you-cannot-script "Link to this heading")
 
 A presentation’s prepared portion ends; then comes the ****question-and-answer****, the

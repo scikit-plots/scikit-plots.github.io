@@ -4,6 +4,16 @@
 
 [◀ Previous · Weakly Informative Priors for Variance Parameters](039-weakly-informative-priors-for-variance-parameters.html) · [Next · Do the Inferences from the Model Make Sense? ▶](041-do-the-inferences-from-the-model-make-sense.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The third step, at last[#](#the-third-step-at-last "Link to this heading")
 
 Part I was about steps one and two: build a full probability model, condition on data. Everything

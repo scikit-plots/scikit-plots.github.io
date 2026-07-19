@@ -4,6 +4,16 @@
 
 [◀ Previous · Normal Distribution with Known Variance](015-normal-distribution-with-known-variance.html) · [Next · Informative Prior Distribution for Cancer Rates ▶](017-informative-prior-distribution-for-cancer-rates.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The same pattern, different data[#](#the-same-pattern-different-data "Link to this heading")
 
 Binomial and normal are two instances of one recipe. Whenever the likelihood belongs to the

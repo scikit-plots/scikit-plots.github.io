@@ -4,6 +4,16 @@
 
 [◀ Previous · Why Deep Learning is Taking Off](03-why-deep-learning-is-taking-off.html) · [Next · Binary Classification and Logistic Regression (Neural Network Basics) ▶](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Heroes of Deep Learning[#](#heroes-of-deep-learning "Link to this heading")
 
 This lesson is a short detour from the mathematics: a look at the ideas from Andrew Ng’s

@@ -4,6 +4,16 @@
 
 [◀ Previous · Interpreting a normal prior distribution as extra data](101-interpreting-a-normal-prior-distribution-as-extra-data.html) · [Next · Computation: batching and transformation ▶](103-computation-batching-and-transformation.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Let the relationship itself vary[#](#let-the-relationship-itself-vary "Link to this heading")
 
 A varying-intercept model lets each group have its own baseline but forces a ****common slope**** — every

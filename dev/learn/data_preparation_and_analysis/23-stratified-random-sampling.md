@@ -4,6 +4,16 @@
 
 [◀ Previous · Cross-Selling](22-cross-selling.html) · [Next · Linear Congruential Random Number Generator (LCG) ▶](24-linear-congruential-random-number-generator-lcg.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Representative by design[#](#representative-by-design "Link to this heading")
 
 A sample is only useful if it ****resembles**** the population it is drawn from. ****Stratified random

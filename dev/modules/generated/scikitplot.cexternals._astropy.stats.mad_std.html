@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-16T17:45:26Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:46:49Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1315,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>mad_std<a class="headerlink" href="#mad-std" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.mad_std">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">mad_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cexternals/_astropy/stats/funcs.py#L886"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.mad_std" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">mad_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cexternals/_astropy/stats/funcs.py#L886"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.mad_std" title="Link to this definition">#</a></dt>
 <dd><p>Calculate a robust standard deviation using the <a class="reference external" href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation (MAD)</a>.</p>
 <p>The standard deviation estimator is given by:</p>
 <div class="math notranslate nohighlight">
@@ -1369,8 +1369,8 @@ specified, or <code class="docutils literal notranslate"><span class="pre">numpy
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="67f4b074-1eea-4769-840b-ba5609567b4c">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('67f4b074-1eea-4769-840b-ba5609567b4c','8438ecfa-ea04-4e02-94ed-02d1c35fc8cb','3d1dfbce-1cec-4303-9389-9a3e3fc87609','../../lite/tree/../notebooks/index.html?path=8d05198a_8e01_4c33_93b7_abb6bfdddd73.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1ffaf316-51a6-4d7b-b25f-c0c7a9e91b93">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1ffaf316-51a6-4d7b-b25f-c0c7a9e91b93','73d78f73-8578-476b-9d43-d0888462145f','9d5329ce-6374-4340-9d0e-a2ead95c58a0','../../lite/tree/../notebooks/index.html?path=256fc8ff_16ef_4359_aa96_26b94002be33.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">mad_std</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
@@ -1381,7 +1381,7 @@ specified, or <code class="docutils literal notranslate"><span class="pre">numpy
 </div>
 </div>
 </div>
-<div id="3d1dfbce-1cec-4303-9389-9a3e3fc87609" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('67f4b074-1eea-4769-840b-ba5609567b4c','3d1dfbce-1cec-4303-9389-9a3e3fc87609')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('67f4b074-1eea-4769-840b-ba5609567b4c','3d1dfbce-1cec-4303-9389-9a3e3fc87609')">Open In Tab</button></div><div id="8438ecfa-ea04-4e02-94ed-02d1c35fc8cb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="9d5329ce-6374-4340-9d0e-a2ead95c58a0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1ffaf316-51a6-4d7b-b25f-c0c7a9e91b93','9d5329ce-6374-4340-9d0e-a2ead95c58a0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1ffaf316-51a6-4d7b-b25f-c0c7a9e91b93','9d5329ce-6374-4340-9d0e-a2ead95c58a0')">Open In Tab</button></div><div id="73d78f73-8578-476b-9d43-d0888462145f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1499,7 +1499,7 @@ specified, or <code class="docutils literal notranslate"><span class="pre">numpy
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260716.f800619 2026-07-16T17:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
       <br/>
     
   </p>

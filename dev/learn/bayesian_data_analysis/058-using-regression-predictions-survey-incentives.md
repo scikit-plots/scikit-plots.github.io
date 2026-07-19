@@ -4,6 +4,16 @@
 
 [◀ Previous · Bayesian decision theory in diﬀerent contexts](057-bayesian-decision-theory-in-different-contexts.html) · [Next · Multistage decision making: medical screening ▶](059-multistage-decision-making-medical-screening.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Should you pay respondents?[#](#should-you-pay-respondents "Link to this heading")
 
 A survey organisation must choose whether to offer respondents an incentive, of what size, in what

@@ -4,6 +4,16 @@
 
 [◀ Previous · Putting Similar Observations into Clusters](26-putting-similar-observations-into-clusters.html) · [Next · Recency, Frequency, and Monetary Value (RFM) ▶](28-recency-frequency-and-monetary-value-rfm.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Algorithms for groups[#](#algorithms-for-groups "Link to this heading")
 
 Turning the idea of clustering into practice means choosing an ****algorithm**** — a procedure that

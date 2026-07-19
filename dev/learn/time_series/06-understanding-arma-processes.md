@@ -4,6 +4,16 @@
 
 [◀ Previous · Linear Processes](05-linear-processes.html) · [Next · Computing ACFs of Causal AR(2) Processes Using Difference Equations ▶](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The model[#](#the-model "Link to this heading")
 
 An ****ARMA(p, q)**** process blends two mechanisms: an ****autoregressive (AR)**** part, where the value

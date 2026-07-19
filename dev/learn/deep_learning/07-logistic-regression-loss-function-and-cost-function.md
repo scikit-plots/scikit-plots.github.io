@@ -4,6 +4,16 @@
 
 [◀ Previous · Logistic Regression (Binary Classification Model)](06-logistic-regression-binary-classification-model.html) · [Next · Gradient Descent in Logistic Regression ▶](08-gradient-descent-in-logistic-regression.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Measuring one prediction[#](#measuring-one-prediction "Link to this heading")
 
 To learn, the neuron needs a ****score of how wrong it is****. A ****loss function****

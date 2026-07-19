@@ -4,6 +4,16 @@
 
 ◀ [Previous](009-code-reusability-modularity-and-clean-code-in-python.html) · [Next](011-boolean-data-comparators-and-logical-operators-in-python.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Documenting code[#](#documenting-code "Link to this heading")
 
 Code expresses **what** it does; documentation explains **why** and **how**, and thinking in

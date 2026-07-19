@@ -4,6 +4,16 @@
 
 [◀ Previous · More Derivative Examples](10-more-derivative-examples.html) · [Next · Derivatives with a Computation Graph ▶](12-derivatives-with-a-computation-graph.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Breaking it into steps[#](#breaking-it-into-steps "Link to this heading")
 
 A ****computation graph**** writes a calculation as a chain of ****elementary steps****, each a node feeding

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-16T17:47:19Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:49:02Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>collect_header_dirs<a class="headerlink" href="#collect-header-dirs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.collect_header_dirs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">collect_header_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffixes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cython/_custom_compiler.py#L784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.collect_header_dirs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">collect_header_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffixes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_custom_compiler.py#L784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.collect_header_dirs" title="Link to this definition">#</a></dt>
 <dd><p>Collect unique directories that contain C/C++ header files.</p>
 <p>This complements <a class="reference internal" href="scikitplot.cython.collect_c_api_sources.html#scikitplot.cython.collect_c_api_sources" title="scikitplot.cython.collect_c_api_sources"><code class="xref py py-func docutils literal notranslate"><span class="pre">collect_c_api_sources</span></code></a>:
 given a source tree, automatically discover all directories containing
@@ -1356,8 +1356,8 @@ least one header file.</p>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="334bf29a-36df-49e7-9488-9c1c3771ccf8">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('334bf29a-36df-49e7-9488-9c1c3771ccf8','0f20d93c-b78f-4232-a2bc-2ad00d67f102','fb6f41ed-c5ad-482a-ac2a-8763cdf3ac43','../../lite/tree/../notebooks/index.html?path=8f7c88da_f64b_483a_bb05_1ac59a453eac.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7bd4bdb9-71e4-4e33-9061-7883f91b5710">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7bd4bdb9-71e4-4e33-9061-7883f91b5710','7051ac30-7a51-4dea-9fb0-67cf3da85313','e5bd254a-6254-411c-974d-b1d8d23bf173','../../lite/tree/../notebooks/index.html?path=0a6f7b15_63ce_4cc4_be41_b5c2d52d911f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">td</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
@@ -1369,7 +1369,7 @@ least one header file.</p>
 </div>
 </div>
 </div>
-<div id="fb6f41ed-c5ad-482a-ac2a-8763cdf3ac43" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('334bf29a-36df-49e7-9488-9c1c3771ccf8','fb6f41ed-c5ad-482a-ac2a-8763cdf3ac43')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('334bf29a-36df-49e7-9488-9c1c3771ccf8','fb6f41ed-c5ad-482a-ac2a-8763cdf3ac43')">Open In Tab</button></div><div id="0f20d93c-b78f-4232-a2bc-2ad00d67f102" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e5bd254a-6254-411c-974d-b1d8d23bf173" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7bd4bdb9-71e4-4e33-9061-7883f91b5710','e5bd254a-6254-411c-974d-b1d8d23bf173')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7bd4bdb9-71e4-4e33-9061-7883f91b5710','e5bd254a-6254-411c-974d-b1d8d23bf173')">Open In Tab</button></div><div id="7051ac30-7a51-4dea-9fb0-67cf3da85313" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1487,7 +1487,7 @@ least one header file.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260716.f800619 2026-07-16T17:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
       <br/>
     
   </p>

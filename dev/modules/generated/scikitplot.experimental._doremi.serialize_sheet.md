@@ -1,6 +1,6 @@
 # serialize\_sheet[#](#serialize-sheet "Link to this heading")
 
-scikitplot.experimental.\_doremi.serialize\_sheet(**sheet=None**, **save\_format='json'**, **add\_frequency=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/experimental/_doremi/note.py#L394)[#](#scikitplot.experimental._doremi.serialize_sheet "Link to this definition")
+scikitplot.experimental.\_doremi.serialize\_sheet(**sheet=None**, **save\_format='json'**, **add\_frequency=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/experimental/_doremi/note.py#L394)[#](#scikitplot.experimental._doremi.serialize_sheet "Link to this definition")
 :   Serialize sheet notes to JSON or YAML string.
 
     Parameters:

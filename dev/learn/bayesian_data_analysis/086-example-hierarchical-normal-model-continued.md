@@ -4,6 +4,16 @@
 
 [◀ Previous · Conditional and marginal posterior approximations](085-conditional-and-marginal-posterior-approximations.html) · [Next · Variational inference ▶](087-variational-inference.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The same model, approximated[#](#the-same-model-approximated "Link to this heading")
 
 Return to the hierarchical normal model that Stage 9 sampled with Gibbs, and apply the machinery of this

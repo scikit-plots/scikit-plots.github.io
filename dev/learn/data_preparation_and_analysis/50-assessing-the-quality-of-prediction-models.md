@@ -4,6 +4,16 @@
 
 [◀ Previous · Using Decision Trees to Explain Clustering Results](49-using-decision-trees-to-explain-clustering-results.html) · [Next · Binary Classification Models – Conceptual Framework and Evaluation Metrics ▶](51-binary-classification-models-conceptual-framework-and-evaluation-metrics.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The essential question[#](#the-essential-question "Link to this heading")
 
 A model has been built — a regression, a classifier, a tree. The question that decides whether anyone

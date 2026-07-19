@@ -4,6 +4,16 @@
 
 ◀ [Previous](001-how-data-is-generated-and-collected.html) · [Next](003-understanding-data-types-and-data-formats.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Not all data is worth collecting[#](#not-all-data-is-worth-collecting "Link to this heading")
 
 Once you know where data can come from, the next decision is **which** to collect

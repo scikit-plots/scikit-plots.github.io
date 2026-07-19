@@ -4,6 +4,16 @@
 
 [◀ Previous · Setting up and interpreting mixture models](134-setting-up-and-interpreting-mixture-models.html) · [Next · Label switching and posterior computation ▶](136-label-switching-and-posterior-computation.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## A mixture with a scientific meaning[#](#a-mixture-with-a-scientific-meaning "Link to this heading")
 
 Not every mixture is a mere density approximation — sometimes the components are ****real and

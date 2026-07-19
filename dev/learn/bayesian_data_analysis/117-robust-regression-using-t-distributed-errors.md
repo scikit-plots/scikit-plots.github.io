@@ -4,6 +4,16 @@
 
 [◀ Previous · Robust inference for the eight schools](116-robust-inference-for-the-eight-schools.html) · [Next · Notation ▶](118-notation.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Regression that ignores outliers[#](#regression-that-ignores-outliers "Link to this heading")
 
 Ordinary regression puts a ****normal**** on the residuals, so a single aberrant point drags the whole line

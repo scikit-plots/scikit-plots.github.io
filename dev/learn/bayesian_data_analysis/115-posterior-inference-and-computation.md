@@ -4,6 +4,16 @@
 
 [◀ Previous · Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Next · Robust inference for the eight schools ▶](116-robust-inference-for-the-eight-schools.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Fitting robust models[#](#fitting-robust-models "Link to this heading")
 
 Heavy-tailed and overdispersed likelihoods are more expressive, and modestly harder to compute.

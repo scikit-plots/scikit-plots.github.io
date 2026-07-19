@@ -4,6 +4,16 @@
 
 [◀ Previous · Posterior inference and computation](115-posterior-inference-and-computation.html) · [Next · Robust regression using t-distributed errors ▶](117-robust-regression-using-t-distributed-errors.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Robustness meets the canonical example[#](#robustness-meets-the-canonical-example "Link to this heading")
 
 The eight-schools model has run through this book as the archetype of hierarchical inference. Here it

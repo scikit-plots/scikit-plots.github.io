@@ -4,6 +4,16 @@
 
 [◀ Previous · Bayesian histograms](139-bayesian-histograms.html) · [Next · Dirichlet process mixtures ▶](141-dirichlet-process-mixtures.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## A prior over distributions[#](#a-prior-over-distributions "Link to this heading")
 
 The finite mixtures of this stage all fixed, or struggled to infer, the number of components. The

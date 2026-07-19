@@ -4,6 +4,16 @@
 
 [◀ Previous · Model comparison based on predictive performance](046-model-comparison-based-on-predictive-performance.html) · [Next · Continuous model expansion ▶](048-continuous-model-expansion.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Betting on whole models[#](#betting-on-whole-models "Link to this heading")
 
 If the candidate models are treated as hypotheses with prior probabilities, Bayes’ rule applies to

@@ -1,6 +1,6 @@
 # cython\_import\_all[#](#cython-import-all "Link to this heading")
 
-scikitplot.cython.cython\_import\_all(**directory**, **\***, **pattern='\*.pyx'**, **recursive=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cython/_public.py#L1022)[#](#scikitplot.cython.cython_import_all "Link to this definition")
+scikitplot.cython.cython\_import\_all(**directory**, **\***, **pattern='\*.pyx'**, **recursive=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_public.py#L1022)[#](#scikitplot.cython.cython_import_all "Link to this definition")
 :   Compile and import all `.pyx` files in a directory.
 
     Parameters:

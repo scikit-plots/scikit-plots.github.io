@@ -4,6 +4,16 @@
 
 ◀ [Previous](017-root-cause-analysis-and-business-applications-of-the-five-whys.html) · [Next](019-case-studies-in-data-analysis-and-the-practical-impact-of-data-driven-decision-making.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The loop meets the skills[#](#the-loop-meets-the-skills "Link to this heading")
 
 Two earlier threads join here. Data-driven decision-making is a ****loop**** — ask,

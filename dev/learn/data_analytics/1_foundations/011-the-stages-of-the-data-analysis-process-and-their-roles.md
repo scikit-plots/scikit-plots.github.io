@@ -4,6 +4,16 @@
 
 ◀ [Previous](010-a-review-of-the-six-stages-of-the-data-life-cycle.html) · [Next](012-practical-application-of-the-data-analysis-process.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## What each phase is **for**[#](#what-each-phase-is-for "Link to this heading")
 
 Naming the six phases is easy; using them well means knowing each phase’s

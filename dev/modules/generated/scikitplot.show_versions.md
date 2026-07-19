@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -56,7 +56,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260716.f800619
+                   scikitplot: 0.5.dev0+git.20260719.cdecb99
                           pip: 26.0.1
                    setuptools: 83.0.0
                        cython: 3.2.8
@@ -64,7 +64,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                         scipy: 1.18.0
                       aggdraw: 1.4.1
                        pandas: 2.3.3
-                   matplotlib: 3.11.0
+                   matplotlib: 3.11.1
                        joblib: 1.5.3
                 threadpoolctl: 3.6.0
                  scikit-learn: 1.9.0
@@ -113,7 +113,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260716.f800619',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260719.cdecb99',
       'pip': '26.0.1',
       'setuptools': '83.0.0',
       'cython': '3.2.8',
@@ -121,7 +121,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'scipy': '1.18.0',
       'aggdraw': '1.4.1',
       'pandas': '2.3.3',
-      'matplotlib': '3.11.0',
+      'matplotlib': '3.11.1',
       'joblib': '1.5.3',
       'threadpoolctl': '3.6.0',
       'scikit-learn': '1.9.0',
@@ -169,7 +169,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260716.f800619
+                   scikitplot: 0.5.dev0+git.20260719.cdecb99
                           pip: 26.0.1
                    setuptools: 83.0.0
                        cython: 3.2.8
@@ -177,7 +177,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                         scipy: 1.18.0
                       aggdraw: 1.4.1
                        pandas: 2.3.3
-                   matplotlib: 3.11.0
+                   matplotlib: 3.11.1
                        joblib: 1.5.3
                 threadpoolctl: 3.6.0
                  scikit-learn: 1.9.0

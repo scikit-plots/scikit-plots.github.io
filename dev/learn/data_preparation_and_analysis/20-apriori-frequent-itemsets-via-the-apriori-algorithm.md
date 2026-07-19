@@ -4,6 +4,16 @@
 
 [◀ Previous · How Association Rules Are Discovered: Concepts, Scale, Measures, and the Apriori Approach](19-how-association-rules-are-discovered-concepts-scale-measures-and-the-apriori-approach.html) · [Next · association\_rules: Generating Association Rules from Frequent Itemsets (mlxtend) ▶](21-association-rules-generating-association-rules-from-frequent-itemsets-mlxtend.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Prior knowledge[#](#prior-knowledge "Link to this heading")
 
 The ****Apriori algorithm****, introduced by Agrawal and Srikant in ****1994****, is the classic method for

@@ -4,6 +4,16 @@
 
 [◀ Previous · How Shapley Values Work](37-how-shapley-values-work.html) · [Next · Maximum Likelihood (MLE): Fitting a Distribution to Observed Data ▶](39-maximum-likelihood-mle-fitting-a-distribution-to-observed-data.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## When the outcome is yes or no[#](#when-the-outcome-is-yes-or-no "Link to this heading")
 
 Regression so far has predicted a ****number**** — a fare, a price. But many outcomes are ****binary****: will

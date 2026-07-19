@@ -4,6 +4,16 @@
 
 ◀ [Previous](003-applying-data-analytics-problem-types-in-real-business-scenarios.html) · [Next](005-the-relationship-between-data-and-decision-making.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The question is the steering wheel[#](#the-question-is-the-steering-wheel "Link to this heading")
 
 Every failure mode met so far — answering the wrong problem, gathering

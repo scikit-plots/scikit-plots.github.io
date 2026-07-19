@@ -4,6 +4,16 @@
 
 [◀ Previous · Eﬀective number of simulation draws](073-effective-number-of-simulation-draws.html) · [Next · Eﬃcient Gibbs samplers ▶](075-efficient-gibbs-samplers.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Gibbs, worked through[#](#gibbs-worked-through "Link to this heading")
 
 The hierarchical normal model of Stage 5 has closed-form conditionals at every level, which makes it the

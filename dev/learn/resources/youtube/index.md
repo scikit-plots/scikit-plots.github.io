@@ -2,10 +2,11 @@
 
 ## Channels[#](#channels "Link to this heading")
 
-* [Channel: Statistics Globe](https://www.youtube.com/@StatisticsGlobe)
+* [Statistics Globe](https://www.youtube.com/@StatisticsGlobe)
   by Joachim Schork
-* [Tutorials at Statistics Globe](https://statisticsglobe.com/tutorials)
-  by Joachim Schork
+
+  * [Tutorials at Statistics Globe](https://statisticsglobe.com/tutorials)
+    by Joachim Schork
 
 ## Videos[#](#videos "Link to this heading")
 

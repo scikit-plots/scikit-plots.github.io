@@ -4,6 +4,16 @@
 
 ◀ [Previous](020-using-spreadsheet-formulas-for-sales-trend-analysis.html) · [Next](022-using-sumproduct-for-advanced-spreadsheet-calculations.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Aggregating with a condition[#](#aggregating-with-a-condition "Link to this heading")
 
 Plain `SUM` and `COUNT` aggregate **everything**; analysis usually needs to

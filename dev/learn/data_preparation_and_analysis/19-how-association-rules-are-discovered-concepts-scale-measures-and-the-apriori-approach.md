@@ -4,6 +4,16 @@
 
 [◀ Previous · What Can Association Rules Tell Us?](18-what-can-association-rules-tell-us.html) · [Next · Apriori: Frequent Itemsets via the Apriori Algorithm ▶](20-apriori-frequent-itemsets-via-the-apriori-algorithm.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Three measures of a rule[#](#three-measures-of-a-rule "Link to this heading")
 
 A rule like \(X \rightarrow Y\) is only worth keeping if it is both ****common**** and ****reliable****.

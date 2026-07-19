@@ -4,6 +4,16 @@
 
 [◀ Previous · Multivariate Normal Model with Known Variance](024-multivariate-normal-model-with-known-variance.html) · [Next · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate) ▶](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The full multivariate model[#](#the-full-multivariate-model "Link to this heading")
 
 Drop the fiction that \(\Sigma\) is known. With \(y\_i \sim \mathrm{N}(\theta, \Sigma)\) and

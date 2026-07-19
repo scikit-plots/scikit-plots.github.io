@@ -4,6 +4,16 @@
 
 [◀ Previous · Bayesian Inference](003-bayesian-inference.html) · [Next · Probability as a Measure of Uncertainty ▶](005-probability-as-a-measure-of-uncertainty.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Bayes’ rule on a discrete unknown[#](#bayes-rule-on-a-discrete-unknown "Link to this heading")
 
 The clearest way to see Bayes’ rule work is when \(\theta\) takes only a ****few discrete values****.

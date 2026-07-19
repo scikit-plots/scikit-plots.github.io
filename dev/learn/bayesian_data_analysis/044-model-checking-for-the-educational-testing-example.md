@@ -4,6 +4,16 @@
 
 [◀ Previous · Graphical posterior predictive checks](043-graphical-posterior-predictive-checks.html) · [Next · Measures of predictive accuracy ▶](045-measures-of-predictive-accuracy.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Checking eight schools[#](#checking-eight-schools "Link to this heading")
 
 The hierarchical model of Stage 5 gave a satisfying answer: school A’s dramatic 28-point effect shrinks

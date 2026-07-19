@@ -4,6 +4,16 @@
 
 [◀ Previous · Weakly informative priors for logistic regression](108-weakly-informative-priors-for-logistic-regression.html) · [Next · State-level opinons from national polls ▶](110-state-level-opinons-from-national-polls.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Counts with too much variance[#](#counts-with-too-much-variance "Link to this heading")
 
 The Poisson model forces a rigid tie: variance equals mean. Real count data almost never obey it —

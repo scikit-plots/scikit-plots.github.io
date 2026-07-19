@@ -5,9 +5,20 @@
 
 * [GitHub Sample Notebooks](https://github.com/scikit-plots/scikit-plots/tree/main/galleries/examples/00-jupyter_notebooks).
 > **See also**
-> scikit-plots lab pyodide with Notebooks
+> 🚀 Try Scikit-Plots in Your Browser with Notebooks
 
-* <https://scikit-plots.github.io/dev/lite/lab/index.html>
+No installation required. Launch one of the interactive environments below.
+
+🚀 Launch Interactive Environments[#](#id1 "Link to this table")
+
+
+
+
+| Interface | URL |
+| --- | --- |
+| Lab | <https://scikit-plots.github.io/dev/lite/lab/index.html> |
+| Retro | <https://scikit-plots.github.io/dev/lite/tree/index.html> |
+| REPL | <https://scikit-plots.github.io/dev/lite/repl/index.html?kernel=python&code=import%20this> |
 jupyterlite (pyodide, xeus-python, c, c++)
 
 jupyterlite lab pyodide:

@@ -1,6 +1,6 @@
 # SQLiteStorage[#](#sqlitestorage "Link to this heading")
 
-class scikitplot.corpus.SQLiteStorage(**db\_path=':memory:'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L579)[#](#scikitplot.corpus.SQLiteStorage "Link to this definition")
+class scikitplot.corpus.SQLiteStorage(**db\_path=':memory:'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L579)[#](#scikitplot.corpus.SQLiteStorage "Link to this definition")
 :   SQLite-backed corpus store with FTS5 full-text search.
 
     Uses stdlib `sqlite3` — no external dependencies. Full-text search
@@ -31,19 +31,19 @@ class scikitplot.corpus.SQLiteStorage(**db\_path=':memory:'**)[[source]](https:/
     ```
     Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L795)[#](#scikitplot.corpus.SQLiteStorage.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L795)[#](#scikitplot.corpus.SQLiteStorage.close "Link to this definition")
     :   Close the database connection.
 
         Return type:
         :   None
 
-    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L788)[#](#scikitplot.corpus.SQLiteStorage.count "Link to this definition")
+    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L788)[#](#scikitplot.corpus.SQLiteStorage.count "Link to this definition")
     :   Return total stored document count via fast SQL COUNT.
 
         Return type:
         :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
 
-    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L711)[#](#scikitplot.corpus.SQLiteStorage.get "Link to this definition")
+    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L711)[#](#scikitplot.corpus.SQLiteStorage.get "Link to this definition")
     :   Retrieve a document by `doc_id`.
 
         Parameters:
@@ -55,7 +55,7 @@ class scikitplot.corpus.SQLiteStorage(**db\_path=':memory:'**)[[source]](https:/
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") | None
 
-    query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L729)[#](#scikitplot.corpus.SQLiteStorage.query "Link to this definition")
+    query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L729)[#](#scikitplot.corpus.SQLiteStorage.query "Link to this definition")
     :   Query documents with optional full-text search (FTS5).
 
         Parameters:
@@ -67,7 +67,7 @@ class scikitplot.corpus.SQLiteStorage(**db\_path=':memory:'**)[[source]](https:/
         Return type:
         :   [**QueryResult**](scikitplot.corpus.QueryResult.html#scikitplot.corpus.QueryResult "scikitplot.corpus._storage._storage.QueryResult")
 
-    save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L683)[#](#scikitplot.corpus.SQLiteStorage.save "Link to this definition")
+    save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L683)[#](#scikitplot.corpus.SQLiteStorage.save "Link to this definition")
     :   Persist a single document (upsert by `doc_id`).
 
         Parameters:
@@ -79,7 +79,7 @@ class scikitplot.corpus.SQLiteStorage(**db\_path=':memory:'**)[[source]](https:/
         Return type:
         :   None
 
-    save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/corpus/_storage/_storage.py#L695)[#](#scikitplot.corpus.SQLiteStorage.save_batch "Link to this definition")
+    save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_storage/_storage.py#L695)[#](#scikitplot.corpus.SQLiteStorage.save_batch "Link to this definition")
     :   Persist a batch of documents in a single transaction.
 
         Parameters:

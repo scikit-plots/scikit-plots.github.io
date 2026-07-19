@@ -1,6 +1,6 @@
 # plot\_feature\_importances[#](#plot-feature-importances "Link to this heading")
 
-scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **feature\_names=None**, **class\_index=None**, **threshold=None**, **title='Feature Importances'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='PiYG'**, **order=None**, **orientation='vertical'**, **x\_tick\_rotation=None**, **bar\_padding=11**, **digits=4**, **display\_bar\_label=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/api/estimators/_classifier/_feature_importances.py#L44)[#](#scikitplot.api.estimators.plot_feature_importances "Link to this definition")
+scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **feature\_names=None**, **class\_index=None**, **threshold=None**, **title='Feature Importances'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='PiYG'**, **order=None**, **orientation='vertical'**, **x\_tick\_rotation=None**, **bar\_padding=11**, **digits=4**, **display\_bar\_label=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/api/estimators/_classifier/_feature_importances.py#L44)[#](#scikitplot.api.estimators.plot_feature_importances "Link to this definition")
 :   Generate a plot of a sklearn model’s feature importances.
 
     This function handles different types of classifiers and their respective

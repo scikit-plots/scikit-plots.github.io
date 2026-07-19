@@ -4,6 +4,16 @@
 
 ◀ [Previous](013-using-creativity-in-tableau.html) · [Next](015-data-storytelling-giving-numbers-a-clear-and-convincing-voice.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Combining sources for richer views[#](#combining-sources-for-richer-views "Link to this heading")
 
 Real analysis often draws on several datasets, and Tableau can **combine** them —

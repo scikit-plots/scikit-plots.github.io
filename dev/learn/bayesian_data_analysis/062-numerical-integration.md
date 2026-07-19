@@ -4,6 +4,16 @@
 
 [◀ Previous · Personal vs. institutional decision analysis](061-personal-vs-institutional-decision-analysis.html) · [Next · Distributional approximations ▶](063-distributional-approximations.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Every Bayesian answer is an integral[#](#every-bayesian-answer-is-an-integral "Link to this heading")
 
 Posterior expectations, marginal distributions, predictive densities, the evidence: all are integrals

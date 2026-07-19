@@ -1,6 +1,6 @@
 # build\_package\_from\_code[#](#build-package-from-code "Link to this heading")
 
-scikitplot.cython.build\_package\_from\_code(**modules**, **\***, **package\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cython/_public.py#L875)[#](#scikitplot.cython.build_package_from_code "Link to this definition")
+scikitplot.cython.build\_package\_from\_code(**modules**, **\***, **package\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_public.py#L875)[#](#scikitplot.cython.build_package_from_code "Link to this definition")
 :   Build and import a multi-module extension package and return loaded modules.
 
     Parameters:

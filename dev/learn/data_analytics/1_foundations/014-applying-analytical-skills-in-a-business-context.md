@@ -4,6 +4,16 @@
 
 ◀ [Previous](013-analytical-skills-and-their-core-components.html) · [Next](015-analytical-thinking-and-its-core-components.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## From list to practice[#](#from-list-to-practice "Link to this heading")
 
 A skills list means little until it changes what you **do** on a live problem.

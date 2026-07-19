@@ -4,6 +4,16 @@
 
 ◀ [Previous](021-sorting-and-filtering-data-in-spreadsheets.html) · [Next](023-querying-data-with-sql.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## A place to practise SQL at scale[#](#a-place-to-practise-sql-at-scale "Link to this heading")
 
 To practise SQL on realistic, large datasets, you need access to a database

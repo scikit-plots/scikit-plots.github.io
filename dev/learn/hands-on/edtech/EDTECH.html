@@ -1,0 +1,1248 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="BilimEdtech Labs mirror — course guide (Mode B, verbatim CC BY 4.0)" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/learn/hands-on/edtech/EDTECH.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="A verbatim mirror of the BilimEdtech Labs site( https://labs.bilimedtech.com, © 2022 BilimEdtech Labs) reproduced under the Creative Commons Attribution 4.0 International (CC BY 4.0) license into l..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="A verbatim mirror of the BilimEdtech Labs site( https://labs.bilimedtech.com, © 2022 BilimEdtech Labs) reproduced under the Creative Commons Attribution 4.0 International (CC BY 4.0) license into l..." />
+
+<script>
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+</script>
+
+<script>
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:40:33Z"}};
+window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
+</script>
+
+    <title>BilimEdtech Labs mirror — course guide (Mode B, verbatim CC BY 4.0) &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/ai-assistant.css?v=6ecd9b07" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/ai-assistant.js?v=4fba141c"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/hands-on/edtech/EDTECH';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/learn/hands-on/edtech/EDTECH.html" />
+    <link rel="icon" href="../../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+  
+  
+  
+
+  
+  
+  
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">BilimEdtech Labs mirror — course guide (Mode B, verbatim CC BY 4.0)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="bilimedtech-labs-mirror-course-guide-mode-b-verbatim-cc-by-4-0">
+<h1>BilimEdtech Labs mirror — course guide (Mode B, verbatim CC BY 4.0)<a class="headerlink" href="#bilimedtech-labs-mirror-course-guide-mode-b-verbatim-cc-by-4-0" title="Link to this heading">#</a></h1>
+<p>A <strong>verbatim mirror</strong> of the BilimEdtech Labs site
+(<code class="docutils literal notranslate"><span class="pre">https://labs.bilimedtech.com</span></code>, © 2022 BilimEdtech Labs) reproduced under the
+<strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> license into
+<code class="docutils literal notranslate"><span class="pre">learn/hands-on/edtech/</span></code>. This is a <strong>Mode B</strong> build in the sense of
+<code class="docutils literal notranslate"><span class="pre">NEW_COURSE_PLAYBOOK.md</span></code> §7: the body of every page is reproduced <em>without
+modification</em> from the source’s reStructuredText; the only additions are a
+per-page attribution notice and (for pages not yet fetched) a clearly-labelled
+placeholder stub. No content is rewritten, reordered, or “improved”.</p>
+<blockquote>
+<div><p><strong>The deal (CC BY 4.0).</strong> You may copy, redistribute, and adapt the material,
+including commercially, provided you (a) give appropriate credit, (b) link to
+the license, and (c) indicate if changes were made. This mirror credits the
+author, links the license on every page, ships the full legal text
+(<code class="docutils literal notranslate"><span class="pre">LICENSE_edtech</span></code>), and states plainly that pages are reproduced <em>without
+modification</em>. See <code class="docutils literal notranslate"><span class="pre">LICENSE_edtech.rst</span></code> and
+https://creativecommons.org/licenses/by/4.0/deed.en.</p>
+</div></blockquote>
+<section id="what-is-in-this-folder">
+<h2>What is in this folder<a class="headerlink" href="#what-is-in-this-folder" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">learn</span><span class="o">/</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span><span class="o">/</span><span class="n">edtech</span><span class="o">/</span>
+  <span class="n">build_edtech</span><span class="o">.</span><span class="n">py</span>         <span class="c1"># generator: verbatim body + attribution + auto-stubs</span>
+  <span class="n">edtech_manifest</span><span class="o">.</span><span class="n">py</span>      <span class="c1"># HAND INPUT: VERBATIM set, DROP_SEARCH, STUB_TITLES</span>
+  <span class="n">_sources_cache</span><span class="o">/</span>         <span class="c1"># HAND INPUT: raw upstream RST, byte-for-byte as fetched</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">LICENSE</span><span class="o">.</span><span class="n">txt</span>           <span class="c1"># CC BY 4.0 legalcode.txt, verbatim</span>
+    <span class="n">cloud</span><span class="o">-</span><span class="n">computing</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">nasm</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">operating</span><span class="o">-</span><span class="n">systems</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">workshops</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+  <span class="n">_buildcheck</span><span class="o">.</span><span class="n">py</span>          <span class="c1"># drop-in validator (identical across every learn/ course)</span>
+  <span class="n">EDTECH</span><span class="o">.</span><span class="n">md</span>               <span class="c1"># this guide</span>
+  <span class="n">LICENSE_edtech</span><span class="o">.</span><span class="n">rst</span>      <span class="c1"># GENERATED: title + scope header + full legal text</span>
+  <span class="n">index</span><span class="o">.</span><span class="n">rst</span>               <span class="c1"># GENERATED: verbatim site index (Search section dropped)</span>
+  <span class="o">&lt;</span><span class="n">section</span><span class="o">&gt;/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span>     <span class="c1"># GENERATED: verbatim section indexes / stubs</span>
+  <span class="o">&lt;</span><span class="n">section</span><span class="o">&gt;/&lt;</span><span class="n">lab</span><span class="o">&gt;/...</span>      <span class="c1"># GENERATED: verbatim leaf pages / stubs</span>
+</pre></div>
+</div>
+<p><strong>Hand inputs</strong> are <code class="docutils literal notranslate"><span class="pre">edtech_manifest.py</span></code> and everything under <code class="docutils literal notranslate"><span class="pre">_sources_cache/</span></code>.
+Everything else (<code class="docutils literal notranslate"><span class="pre">*.rst</span></code>) is <strong>generated</strong> and owned by <code class="docutils literal notranslate"><span class="pre">build_edtech.py</span></code> — the
+generator deletes and rewrites all <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> on every run, so never hand-edit a
+generated page; edit the manifest and/or the cache instead.</p>
+</section>
+<section id="upstream-structure-and-fetch-map">
+<h2>Upstream structure and fetch-map<a class="headerlink" href="#upstream-structure-and-fetch-map" title="Link to this heading">#</a></h2>
+<p>The source is a Sphinx / Read-the-Docs site. Its root <code class="docutils literal notranslate"><span class="pre">toctree</span></code> has five
+sections; each section index has its own <code class="docutils literal notranslate"><span class="pre">toctree</span></code> down to leaf pages. The map
+below is the frozen structure this mirror targets (harvested by walking the
+toctrees — see “Fetch strategy”). Page URLs are <code class="docutils literal notranslate"><span class="pre">…/&lt;doc</span> <span class="pre">path&gt;.html</span></code>; sources are
+<code class="docutils literal notranslate"><span class="pre">…/_sources/&lt;doc</span> <span class="pre">path&gt;.rst.txt</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Leaf pages (upstream doc paths under the section)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">index</span></code> (root)</p></td>
+<td><p>site index → the five section indexes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cloud-computing</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">index</span></code>; <code class="docutils literal notranslate"><span class="pre">1/{index,overview,1.1..1.9}</span></code>; <code class="docutils literal notranslate"><span class="pre">2/{index,overview,2.1..2.4}</span></code>; <code class="docutils literal notranslate"><span class="pre">3/{index,overview,docker-compose,3.1..3.6}</span></code>; <code class="docutils literal notranslate"><span class="pre">4/{index,overview,docker-terms,4.1..4.3}</span></code>; <code class="docutils literal notranslate"><span class="pre">5/{index,overview,dockerfile,5.1..5.3}</span></code>; <code class="docutils literal notranslate"><span class="pre">6/{index,overview,6.1..6.4}</span></code>; <code class="docutils literal notranslate"><span class="pre">8/{index,overview,8.1..8.5}</span></code>; <code class="docutils literal notranslate"><span class="pre">references/{index,nginx,security,wordpress,sphinx-readthedocs,dockerfile,paas}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nasm</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">index</span></code>; <code class="docutils literal notranslate"><span class="pre">1..6/{index</span> <span class="pre">+</span> <span class="pre">steps}</span></code>; <code class="docutils literal notranslate"><span class="pre">resources/{index,templates,resources}</span></code>; <code class="docutils literal notranslate"><span class="pre">windows-install/{index,overview,1,2,3,4}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">index</span></code> (+ include <code class="docutils literal notranslate"><span class="pre">c-urls.rst</span></code>); <code class="docutils literal notranslate"><span class="pre">1..6/{index</span> <span class="pre">+</span> <span class="pre">steps}</span></code>; <code class="docutils literal notranslate"><span class="pre">templates/index</span></code>; <code class="docutils literal notranslate"><span class="pre">references/{index,c-programming-resources}</span></code>; <code class="docutils literal notranslate"><span class="pre">windows-install/index</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">operating-systems</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">index</span></code>; <code class="docutils literal notranslate"><span class="pre">overview</span></code>; <code class="docutils literal notranslate"><span class="pre">1..8/{index</span> <span class="pre">+</span> <span class="pre">steps}</span></code>; <code class="docutils literal notranslate"><span class="pre">references/{index,system-calls-resources,misc}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">workshops</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">index</span></code>; <code class="docutils literal notranslate"><span class="pre">rst/{index,dev-env,writing-rst-setup,vps-config,writing-rst-1..8}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Full site ≈ 190–240 pages. The lab-step lists for <code class="docutils literal notranslate"><span class="pre">nasm/c/operating-systems</span></code>
+labs <code class="docutils literal notranslate"><span class="pre">1..N</span></code> are discovered by fetching each lab <code class="docutils literal notranslate"><span class="pre">index</span></code> (see below); the table
+records what the top-level and section indexes reveal.</p>
+</section>
+<section id="how-the-generator-works">
+<h2>How the generator works<a class="headerlink" href="#how-the-generator-works" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">build_edtech.py</span></code> is a pure, deterministic, idempotent function of its inputs.
+Each run:</p>
+<ol class="arabic simple">
+<li><p><strong>Clears</strong> every generated <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> under the folder (the generator owns them;
+<code class="docutils literal notranslate"><span class="pre">_sources_cache/*.rst.txt</span></code> are <code class="docutils literal notranslate"><span class="pre">.txt</span></code> and are never touched).</p></li>
+<li><p><strong>Emits <code class="docutils literal notranslate"><span class="pre">LICENSE_edtech.rst</span></code></strong> — an <code class="docutils literal notranslate"><span class="pre">:orphan:</span></code> page with a 70-rule title, a
+scope header, and the full CC BY 4.0 legal text placed in a <strong>literal block</strong>
+(4-space indented) so its <code class="docutils literal notranslate"><span class="pre">====</span></code> rule lines are rendered as preformatted text,
+never parsed as RST section underlines.</p></li>
+<li><p><strong>Emits each <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code> page</strong>: reads <code class="docutils literal notranslate"><span class="pre">_sources_cache/&lt;path&gt;.rst.txt</span></code>,
+optionally strips a trailing <code class="docutils literal notranslate"><span class="pre">Search</span></code> section (only for paths in
+<code class="docutils literal notranslate"><span class="pre">DROP_SEARCH</span></code> — currently just the root <code class="docutils literal notranslate"><span class="pre">index</span></code>, since Sphinx provides search
+itself — the one edit the plan permits), writes the body <strong>byte-for-byte</strong>,
+then appends the <strong>Source &amp; license</strong> admonition (below).</p></li>
+<li><p><strong>Auto-stubs the rest</strong>: collects every <code class="docutils literal notranslate"><span class="pre">toctree</span></code> target across the emitted
+pages; any target not in <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code> is written as a placeholder stub (title
+from <code class="docutils literal notranslate"><span class="pre">STUB_TITLES</span></code> or a humanized path segment, a “verbatim mirror pending”
+note, and the same license link). Stubs carry <strong>no <code class="docutils literal notranslate"><span class="pre">toctree</span></code></strong>, so they add no
+further unresolved targets — the tree is always buildable, and the full
+upstream structure is visible while pages are filled in batches.</p></li>
+<li><p><strong>Writes placeholder images</strong> for every entry in <code class="docutils literal notranslate"><span class="pre">PLACEHOLDER_IMAGES</span></code> (a
+deterministic 640×360 labelled PNG), then <strong>prunes empty directories</strong> left
+behind when a stub is removed (e.g. after a section is fully mirrored).</p></li>
+</ol>
+<p>Both the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> scan (step 4) and the validator’s role scan skip literal /
+code-block bodies via the shared <code class="docutils literal notranslate"><span class="pre">_mask_code_blocks</span></code> rule, so RST <em>about</em> RST
+mirrors correctly — example directives in code blocks never become real structure.</p>
+<p>Determinism: inputs are sorted, there is no RNG and no timestamp, so two runs are
+byte-identical. <code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span></code> proves this every run (<code class="docutils literal notranslate"><span class="pre">idem</span> <span class="pre">OK</span> <span class="pre">&lt;sha12&gt;</span></code>).</p>
+<section id="the-source-license-admonition-every-mirrored-page">
+<h3>The Source &amp; license admonition (every mirrored page)<a class="headerlink" href="#the-source-license-admonition-every-mirrored-page" title="Link to this heading">#</a></h3>
+<p>Appended <strong>after</strong> the verbatim body (not before — see landmine <em>Title
+promotion</em>). CC BY 4.0 requires author credit, a license link, and a change
+notice; the block supplies all three plus the page’s own source URL:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">admonition</span><span class="p">::</span> Source &amp; license
+   <span class="nc">:class:</span> note
+
+   Reproduced <span class="gs">**verbatim, without modification**</span> from
+   <span class="s">`© 2022, BilimEdtech Labs </span><span class="si">&lt;https://labs.bilimedtech.com/index.html&gt;</span><span class="s">`__</span>,
+   licensed under
+   <span class="s">`Creative Commons Attribution 4.0 International (CC BY 4.0) </span><span class="si">&lt;https://creativecommons.org/licenses/by/4.0/deed.en&gt;</span><span class="s">`__</span>.
+
+   Source page:
+   https://labs.bilimedtech.com/&lt;doc path&gt;.html
+
+   See <span class="na">:doc:</span><span class="nv">`LICENSE &lt;&lt;relative&gt;/LICENSE_edtech&gt;`</span> for the full license text.
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> link to <code class="docutils literal notranslate"><span class="pre">LICENSE_edtech</span></code> is <strong>depth-correct per page</strong>
+(<code class="docutils literal notranslate"><span class="pre">lic_rel()</span></code> emits <code class="docutils literal notranslate"><span class="pre">../</span></code> × the path depth), so it resolves whether the tree is
+validated from <code class="docutils literal notranslate"><span class="pre">edtech/</span></code>, from <code class="docutils literal notranslate"><span class="pre">hands-on/</span></code>, or by the real Sphinx build — all use
+relative <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> resolution. Because the mirror is verbatim, the notice states
+“without modification”; <strong>if you ever adapt a page, change that wording to record
+the change</strong> (CC BY change-notice requirement).</p>
+</section>
+<section id="extending-editing-later-the-whole-point-of-the-generator">
+<h3>Extending / editing later (the whole point of the generator)<a class="headerlink" href="#extending-editing-later-the-whole-point-of-the-generator" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Add a page (Mode B fetch):</strong> fetch its source RST (see below), drop it at
+<code class="docutils literal notranslate"><span class="pre">_sources_cache/&lt;path&gt;.rst.txt</span></code>, add <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code> in the manifest,
+rerun <code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span></code>. The matching stub is automatically replaced by the
+verbatim page. If the new page’s <code class="docutils literal notranslate"><span class="pre">toctree</span></code> references further pages, those
+become new stubs until fetched.</p></li>
+<li><p><strong>Add a whole lab atomically:</strong> fetch the lab <code class="docutils literal notranslate"><span class="pre">index</span></code> <strong>and all its step
+pages</strong> in one batch, add them all to <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code>, rebuild. (Do not add a lab
+<code class="docutils literal notranslate"><span class="pre">index</span></code> with a step <code class="docutils literal notranslate"><span class="pre">toctree</span></code> without its steps, or the real Sphinx build will
+warn about missing toctree docs — the stub <code class="docutils literal notranslate"><span class="pre">index</span></code> has no toctree precisely to
+avoid this.)</p></li>
+<li><p><strong>Edit a page:</strong> re-fetch it into <code class="docutils literal notranslate"><span class="pre">_sources_cache/</span></code> and rebuild; the idempotency
+check confirms nothing else moved.</p></li>
+<li><p><strong>Re-mirror:</strong> re-fetch only changed pages. The frozen manifest + cache make it
+reproducible; update the change notice if the upstream page changed.</p></li>
+</ul>
+</section>
+</section>
+<section id="fetch-strategy-proven">
+<h2>Fetch strategy (proven)<a class="headerlink" href="#fetch-strategy-proven" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">web_fetch</span></code> only accepts URLs already surfaced in the conversation; <strong>constructed
+<code class="docutils literal notranslate"><span class="pre">_sources/…</span></code> URLs are rejected</strong>. So the crawl follows links down the toctree:</p>
+<ol class="arabic simple">
+<li><p>Fetch a page’s rendered <strong><code class="docutils literal notranslate"><span class="pre">.html</span></code></strong> (root <code class="docutils literal notranslate"><span class="pre">index.html</span></code> is the entry point).
+The RTD theme exposes real <code class="docutils literal notranslate"><span class="pre">href</span></code> links to every child page <strong>and</strong> a
+<strong>“View page source”</strong> link to that page’s <code class="docutils literal notranslate"><span class="pre">_sources/&lt;path&gt;.rst.txt</span></code>.</p></li>
+<li><p>Fetch that <strong><code class="docutils literal notranslate"><span class="pre">_sources/&lt;path&gt;.rst.txt</span></code></strong> (now allowed, because the link
+appeared in the HTML result) to get the exact reStructuredText.</p></li>
+<li><p>Parse its <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> blocks for child doc paths, fetch each child’s
+<code class="docutils literal notranslate"><span class="pre">.html</span></code>, recurse to the leaves.</p></li>
+</ol>
+<section id="bulk-crawl-fetch-edtech-py-fast-path-run-locally">
+<h3>Bulk crawl — <code class="docutils literal notranslate"><span class="pre">fetch_edtech.py</span></code> (fast path, run locally)<a class="headerlink" href="#bulk-crawl-fetch-edtech-py-fast-path-run-locally" title="Link to this heading">#</a></h3>
+<p>The link-following crawl above is what the in-notebook fetcher is limited to. From
+<strong>any machine with ordinary network access to the site</strong>, <code class="docutils literal notranslate"><span class="pre">fetch_edtech.py</span></code>
+does the whole thing in one pass — the constructed-URL restriction is only the
+notebook fetcher’s, not the site’s. The script (stdlib only, no <code class="docutils literal notranslate"><span class="pre">pip</span></code> installs):</p>
+<ul class="simple">
+<li><p>walks every <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> from the root to discover all reachable pages
+(orphan pages outside the nav are skipped — matching the mirror’s scope);</p></li>
+<li><p>writes each page’s source to <code class="docutils literal notranslate"><span class="pre">_sources_cache/&lt;path&gt;.rst.txt</span></code>;</p></li>
+<li><p>resolves and fetches every <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> fragment (<code class="docutils literal notranslate"><span class="pre">urls.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">*-content.rst</span></code>)
+to <code class="docutils literal notranslate"><span class="pre">_sources_cache/&lt;frag&gt;.txt</span></code>;</p></li>
+<li><p>downloads every referenced image (<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">image::</span></code> / <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">figure::</span></code> /
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">|x|</span> <span class="pre">image::</span></code>) from <code class="docutils literal notranslate"><span class="pre">_images/&lt;basename&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">_sources_cache/_images/</span></code>;</p></li>
+<li><p>writes <code class="docutils literal notranslate"><span class="pre">_sources_cache/_discovered.json</span></code> (<code class="docutils literal notranslate"><span class="pre">{pages,</span> <span class="pre">fragments,</span> <span class="pre">images}</span></code>).</p></li>
+</ul>
+<p>It reuses the generator’s exact code-block/inline-literal <strong>masking</strong>, so example
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> / <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> blocks inside tutorial code are not mistaken for
+real structure. It is <strong>idempotent</strong> (skips cached files unless <code class="docutils literal notranslate"><span class="pre">--force</span></code>),
+<strong>fails safe</strong> (a page/fragment/image that won’t fetch is listed in a failure
+report and skipped — those stay stubs to hand-mirror), and polite (a short delay
+and a descriptive User-Agent).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">fetch_edtech</span><span class="o">.</span><span class="n">py</span>            <span class="c1"># crawl + fetch everything new</span>
+<span class="n">python3</span> <span class="n">fetch_edtech</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>  <span class="c1"># discover + report only, fetch nothing</span>
+<span class="n">python3</span> <span class="n">fetch_edtech</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">force</span>    <span class="c1"># refetch even cached files</span>
+<span class="n">python3</span> <span class="n">_buildcheck</span><span class="o">.</span><span class="n">py</span>             <span class="c1"># then regenerate + validate the full mirror</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">edtech_manifest.py</span></code> folds <code class="docutils literal notranslate"><span class="pre">_discovered.json</span></code> into <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code> / <code class="docutils literal notranslate"><span class="pre">INCLUDES</span></code> /
+<code class="docutils literal notranslate"><span class="pre">PLACEHOLDER_IMAGES</span></code> at import (<code class="docutils literal notranslate"><span class="pre">_apply_discovered()</span></code>), and <code class="docutils literal notranslate"><span class="pre">write_placeholder</span></code>
+copies a real downloaded image from <code class="docutils literal notranslate"><span class="pre">_sources_cache/_images/</span></code> when present,
+falling back to a labelled placeholder otherwise. So the <strong>same</strong> generator
+produces either the hand-built subset (no crawl) or the complete mirror (after a
+crawl) with no other change — and real screenshots replace the placeholders
+automatically. If the script can’t reach the site or a run fails, nothing is lost:
+the hand-built path in this guide still applies.</p>
+</section>
+<section id="fetch-landmines-seen-in-practice">
+<h3>Fetch landmines (seen in practice)<a class="headerlink" href="#fetch-landmines-seen-in-practice" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Windowed allow-list.</strong> Surfaced URLs seem to age out after enough
+intervening fetches/searches. If a <code class="docutils literal notranslate"><span class="pre">_sources/...rst.txt</span></code> fetch is rejected even
+though you saw the page, <strong>re-fetch that page’s <code class="docutils literal notranslate"><span class="pre">.html</span></code> and immediately fetch
+the source</strong> (adjacent calls), or <code class="docutils literal notranslate"><span class="pre">web_search</span></code> the page title to re-surface it.</p></li>
+<li><p><strong>CC legal text is off-domain.</strong> <code class="docutils literal notranslate"><span class="pre">creativecommons.org</span></code> is not pre-approved for
+direct fetch. <code class="docutils literal notranslate"><span class="pre">web_search</span></code> for “creativecommons.org licenses by 4.0
+legalcode.txt”, then fetch the surfaced <code class="docutils literal notranslate"><span class="pre">…/legalcode.txt</span></code> result. (Done — cached
+at <code class="docutils literal notranslate"><span class="pre">_sources_cache/LICENSE.txt</span></code>.)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span> <span class="pre">&lt;name&gt;-urls.rst</span></code> fragments — a hard blocker for lab step
+pages.</strong> Many lab pages begin with <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span> <span class="pre">1-urls.rst</span></code> (Lab 1),
+<code class="docutils literal notranslate"><span class="pre">c-urls.rst</span></code> (<code class="docutils literal notranslate"><span class="pre">c/index</span></code>), etc. — a per-lab fragment that defines the
+<code class="docutils literal notranslate"><span class="pre">|Name|</span></code> raw-HTML link substitutions the page body uses. These fragments have
+<strong>no HTML page of their own</strong>, so Sphinx never publishes them to <code class="docutils literal notranslate"><span class="pre">_sources</span></code>, and
+there is no “View page source” link to surface — they <strong>cannot be fetched</strong> by
+the link-following strategy, and no public source repo was found. Because the
+fragment content is not in any fetchable source, reproducing these pages verbatim
+is blocked, and the fragment must not be <em>invented</em> (that would violate the
+verbatim / no-inference rule). Options when you hit one: <strong>(a)</strong> obtain the
+fragment from the upstream source repo if you can get it, then mirror normally;
+<strong>(b)</strong> reconstruct the fragment from the rendered link targets on the pages that
+use it (an explicit, documented adaptation — every <code class="docutils literal notranslate"><span class="pre">|Name|</span></code> becomes
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">|Name|</span> <span class="pre">raw::</span> <span class="pre">html</span></code> / <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;…&quot;</span> <span class="pre">target=&quot;_blank&quot;&gt;Name&lt;/a&gt;</span></code> — flagged as
+a CC BY change notice), which also needs the generator to inline it or a
+<code class="docutils literal notranslate"><span class="pre">conf.py</span></code> <code class="docutils literal notranslate"><span class="pre">exclude_patterns</span></code> entry so the fragment file does not orphan-warn;
+<strong>(c)</strong> keep the include-dependent pages stubbed and mirror only the
+self-contained pages. <strong>Self-contained pages have no such include</strong> — section and
+lab <strong>index</strong> pages, lab <strong>overview</strong> pages (they carry their own inline
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">|…|</span> <span class="pre">raw::</span> <span class="pre">html</span></code> defs), and <strong>most <code class="docutils literal notranslate"><span class="pre">references/</span></code></strong> pages — so those mirror
+cleanly today. Until a decision is made on (a)/(b)/(c), the lab <strong>step</strong> pages
+(<code class="docutils literal notranslate"><span class="pre">1/1.1..1.9</span></code>, etc.) stay stubbed.</p></li>
+<li><p><strong>A second include variant: <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span> <span class="pre">&lt;name&gt;-content.rst</span></code>.</strong> A few pages put
+their <em>entire body</em> in an unfetchable content fragment — e.g.
+<code class="docutils literal notranslate"><span class="pre">references/sphinx-readthedocs</span></code> includes <code class="docutils literal notranslate"><span class="pre">sphinx-readthedocs-content.rst</span></code> and
+<code class="docutils literal notranslate"><span class="pre">references/dockerfile</span></code> includes <code class="docutils literal notranslate"><span class="pre">dockerfile-content.rst</span></code>. Same root problem as
+the <code class="docutils literal notranslate"><span class="pre">-urls.rst</span></code> fragments (no HTML page → not in <code class="docutils literal notranslate"><span class="pre">_sources</span></code> → unfetchable), but
+here the fragment <em>is</em> the whole page. These stay stubbed under the same options.
+Always fetch a page’s <code class="docutils literal notranslate"><span class="pre">.rst.txt</span></code> and check for <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> before assuming it
+is mirrorable — rendered HTML hides includes entirely.</p></li>
+<li><p><strong>A third variant: <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span> <span class="pre">urls.rst</span></code> (shared, unprefixed).</strong> Some lab
+<strong>overview</strong> pages pull a site-shared <code class="docutils literal notranslate"><span class="pre">urls.rst</span></code> fragment for their link
+substitutions (e.g. Lab 2 and Lab 5 overviews use <code class="docutils literal notranslate"><span class="pre">|Rocket.Chat|</span></code> / <code class="docutils literal notranslate"><span class="pre">|Flask|</span></code>
+from it), while others define their substitutions <strong>inline</strong> and are clean
+(Lab 1 and Lab 4 overviews). So overviews are <strong>mixed</strong> — each must be checked
+individually; there is no way to tell from the rendered page. Same unfetchable-
+fragment problem; the <code class="docutils literal notranslate"><span class="pre">urls.rst</span></code>-dependent overviews stay stubbed under the
+options above. Overviews that use it may also carry a real screenshot (e.g. Lab
+2’s <code class="docutils literal notranslate"><span class="pre">reverse-proxy.png</span></code>) needing a placeholder.</p></li>
+<li><p><strong>Cross-section <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> labels.</strong> Some pages reference labels defined on other
+pages. Fetch a lab’s pages as a unit so intra-lab refs resolve; a
+cross-<em>section</em> ref (like the C one above) needs both endpoints present.</p></li>
+</ul>
+</section>
+</section>
+<section id="canonical-url-duplicate-content-seo-the-one-hook-outside-rst">
+<h2>Canonical URL / duplicate-content (SEO) — the one hook outside RST<a class="headerlink" href="#canonical-url-duplicate-content-seo-the-one-hook-outside-rst" title="Link to this heading">#</a></h2>
+<p>Verbatim reproduction risks a search-engine duplicate-content penalty. The fix is
+to point each mirrored page’s <strong>canonical URL at the upstream source page</strong> so
+engines credit the original (the upstream pages already declare
+<code class="docutils literal notranslate"><span class="pre">canonical:</span> <span class="pre">https://labs.bilimedtech.com/…</span></code>). Sphinx sets canonical at the
+<code class="docutils literal notranslate"><span class="pre">conf.py</span></code> / theme level, <strong>not</strong> from page RST, so this is wired once in the
+docs <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> with an <code class="docutils literal notranslate"><span class="pre">html-page-context</span></code> handler that maps each edtech page to
+its source URL. Drop-in for the scikit-plots <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf.py — point edtech mirror pages&#39; canonical link at the upstream source.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_edtech_canonical</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">templatename</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;learn/hands-on/edtech/&quot;</span>
+    <span class="k">if</span> <span class="n">pagename</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+        <span class="n">rel</span> <span class="o">=</span> <span class="n">pagename</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">):]</span>            <span class="c1"># e.g. &quot;cloud-computing/index&quot;</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;pageurl&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://labs.bilimedtech.com/</span><span class="si">{</span><span class="n">rel</span><span class="si">}</span><span class="s2">.html&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;html-page-context&quot;</span><span class="p">,</span> <span class="n">_edtech_canonical</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(The PyData / RTD themes emit <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;canonical&quot;</span> <span class="pre">href=&quot;{{</span> <span class="pre">pageurl</span> <span class="pre">}}&quot;&gt;</span></code> in
+<code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> when <code class="docutils literal notranslate"><span class="pre">pageurl</span></code> is set. Confirm the exact context key for the active
+theme; <code class="docutils literal notranslate"><span class="pre">pageurl</span></code> is standard.) The <code class="docutils literal notranslate"><span class="pre">LICENSE_edtech</span></code> page is our own artifact —
+leave its canonical at the local build.</p>
+</section>
+<section id="rst-validation-landmines-specific-to-this-mirror">
+<h2>RST &amp; validation landmines specific to this mirror<a class="headerlink" href="#rst-validation-landmines-specific-to-this-mirror" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Title promotion → notice goes at the bottom.</strong> docutils only promotes a
+page’s first heading to the document title if it is the <em>first</em> structural
+element. Prepending the attribution admonition would demote the title and
+change every toctree caption, so the notice is <strong>appended after</strong> the verbatim
+body instead.</p></li>
+<li><p><strong>License legal text in a literal block.</strong> The CC text contains 71-char <code class="docutils literal notranslate"><span class="pre">====</span></code>
+rules; if placed as raw RST they parse as section under/overlines. Indenting
+every line 4 spaces inside a <code class="docutils literal notranslate"><span class="pre">::</span></code> literal block renders them as preformatted
+text, and the <code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span></code> underline check skips indented lines, so no false
+positives.</p></li>
+<li><p><strong>Grid card <code class="docutils literal notranslate"><span class="pre">^^^</span></code> separator.</strong> The <code class="docutils literal notranslate"><span class="pre">sphinx-design</span></code> card header uses <code class="docutils literal notranslate"><span class="pre">^^^</span></code>,
+which is shorter than the bold title above it and would trip the underline
+check — <em>unless</em> the card body is indented (its head line then starts with
+spaces and is skipped). Keep card content indented (8 spaces), as in the hub
+<code class="docutils literal notranslate"><span class="pre">hands-on/index.rst</span></code> and the site <code class="docutils literal notranslate"><span class="pre">learn/index.rst</span></code>.</p></li>
+<li><p><strong>Dropped <code class="docutils literal notranslate"><span class="pre">Search</span></code> section.</strong> The source root index ends with a <code class="docutils literal notranslate"><span class="pre">Search</span></code>
+heading and <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">:ref:</span></code>search``. <code class="docutils literal notranslate"><span class="pre">search</span></code> is a Sphinx built-in with no explicit
+label, so leaving it would trip the <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> check; dropping the section (the
+one permitted edit) removes it cleanly.</p></li>
+<li><p><strong>Code-block example roles / directives (RST-workshop pages) — handled.</strong> Pages
+that <em>teach</em> RST embed example roles like <code class="docutils literal notranslate"><span class="pre">:ref:</span></code>genindex<code class="docutils literal notranslate"><span class="pre">and</span> <span class="pre">example</span> <span class="pre">directives</span> <span class="pre">like</span> <span class="pre">`..</span> <span class="pre">toctree::`</span> <span class="pre">/</span> <span class="pre">`..</span> <span class="pre">include::`</span> <span class="pre">inside</span> <span class="pre">literal/code</span> <span class="pre">blocks.</span> <span class="pre">Real</span> <span class="pre">Sphinx</span> <span class="pre">treats</span> <span class="pre">code-block</span> <span class="pre">contents</span> <span class="pre">as</span> <span class="pre">literal</span> <span class="pre">and</span> <span class="pre">ignores</span> <span class="pre">them.</span> <span class="pre">Both</span> <span class="pre">tools</span> <span class="pre">here</span> <span class="pre">now</span> <span class="pre">do</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">via</span> <span class="pre">a</span> <span class="pre">shared</span> <span class="pre">`_mask_code_blocks`</span> <span class="pre">helper</span> <span class="pre">that</span> <span class="pre">blanks</span> <span class="pre">literal/code-block</span> <span class="pre">bodies</span> <span class="pre">(a</span> <span class="pre">`..</span> <span class="pre">code-block::`/`code`/`sourcecode`/</span> <span class="pre">`parsed-literal`/`literalinclude`</span> <span class="pre">directive,</span> <span class="pre">or</span> <span class="pre">a</span> <span class="pre">line</span> <span class="pre">ending</span> <span class="pre">in</span> <span class="pre">`::`</span> <span class="pre">that</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">itself</span> <span class="pre">a</span> <span class="pre">directive,</span> <span class="pre">followed</span> <span class="pre">by</span> <span class="pre">its</span> <span class="pre">blank-or-more-indented</span> <span class="pre">body)</span> <span class="pre">**and</span> <span class="pre">blanks</span> <span class="pre">inline-literal</span> <span class="pre">spans**</span> <span class="pre">(double</span> <span class="pre">backticks),</span> <span class="pre">so</span> <span class="pre">an</span> <span class="pre">example</span> <span class="pre">role</span> <span class="pre">written</span> <span class="pre">inline</span> <span class="pre">like</span> <span class="pre">```</span></code>:ref:<code class="docutils literal notranslate"><span class="pre">Label```</span> <span class="pre">```</span> <span class="pre">is</span> <span class="pre">also</span> <span class="pre">ignored.</span> </code>_buildcheck.py<code class="docutils literal notranslate"><span class="pre">masks</span> <span class="pre">before</span> <span class="pre">the</span></code>:doc:<code class="docutils literal notranslate"><span class="pre">/</span></code>:ref:<code class="docutils literal notranslate"><span class="pre">scan,</span> <span class="pre">and</span></code>build_edtech.py<code class="docutils literal notranslate"><span class="pre">masks</span> <span class="pre">before</span> <span class="pre">the</span></code>toctree<code class="docutils literal notranslate"><span class="pre">scan</span> <span class="pre">(so</span> <span class="pre">an</span> <span class="pre">example</span></code>.. toctree::<code class="docutils literal notranslate"><span class="pre">inside</span> <span class="pre">a</span> <span class="pre">code</span> <span class="pre">block</span> <span class="pre">does</span> <span class="pre">**not**</span> <span class="pre">spawn</span> <span class="pre">spurious</span> <span class="pre">stub</span> <span class="pre">pages</span> <span class="pre">—</span> <span class="pre">this</span> <span class="pre">is</span> <span class="pre">exactly</span> <span class="pre">what</span> <span class="pre">created</span> <span class="pre">the</span> <span class="pre">phantom</span></code>web-guide/index<code class="docutils literal notranslate"><span class="pre">and</span></code>…<code class="docutils literal notranslate"><span class="pre">stubs</span> <span class="pre">before</span> <span class="pre">the</span> <span class="pre">fix).</span> <span class="pre">The</span> <span class="pre">masker</span> <span class="pre">only</span> <span class="pre">*skips*</span> <span class="pre">checks/parsing,</span> <span class="pre">so</span> <span class="pre">it</span> <span class="pre">cannot</span> <span class="pre">regress</span> <span class="pre">existing</span> <span class="pre">courses</span> <span class="pre">(all</span> <span class="pre">remained</span> <span class="pre">green</span> <span class="pre">with</span> <span class="pre">identical</span> <span class="pre">shas).</span> <span class="pre">Real</span></code>.. automodule::<code class="docutils literal notranslate"><span class="pre">(Task</span> <span class="pre">9)</span> <span class="pre">still</span> <span class="pre">must</span> <span class="pre">never</span> <span class="pre">appear</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">live</span> <span class="pre">directive</span> <span class="pre">—</span> <span class="pre">reproduce</span> <span class="pre">it</span> <span class="pre">only</span> <span class="pre">inside</span> <span class="pre">a</span> <span class="pre">code</span> <span class="pre">block;</span> <span class="pre">and</span></code>.. image::<code class="docutils literal notranslate"><span class="pre">targets</span> <span class="pre">need</span> <span class="pre">a</span> <span class="pre">real</span> <span class="pre">file</span> <span class="pre">present</span> <span class="pre">(see</span></code>PLACEHOLDER_IMAGES`).</p></li>
+</ul>
+</section>
+<section id="validation-rebuilding">
+<h2>Validation &amp; rebuilding<a class="headerlink" href="#validation-rebuilding" title="Link to this heading">#</a></h2>
+<p>Run from inside the folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>learn/hands-on/edtech
+python3<span class="w"> </span>_buildcheck.py<span class="w">          </span><span class="c1"># build + validate + idempotency</span>
+</pre></div>
+</div>
+<p>Green run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">edtech</span><span class="p">]</span> <span class="n">edtech</span> <span class="n">mirror</span><span class="p">:</span> <span class="mi">5</span> <span class="n">verbatim</span><span class="p">,</span> <span class="mi">28</span> <span class="n">stub</span><span class="p">,</span> <span class="mi">34</span> <span class="n">rst</span> <span class="p">(</span><span class="n">incl</span> <span class="n">LICENSE</span><span class="p">)</span>
+<span class="n">validate</span><span class="p">:</span> <span class="n">doc</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">ref</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">underline</span> <span class="mi">0</span>  <span class="o">||</span>  <span class="n">idem</span> <span class="n">OK</span> <span class="o">&lt;</span><span class="n">sha12</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span></code> runs <code class="docutils literal notranslate"><span class="pre">build_edtech.py</span></code>, then validates every <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> target
+(resolved per file directory), every <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> target, and every section underline,
+then rebuilds once and compares a sha256 of all <code class="docutils literal notranslate"><span class="pre">.rst</span></code> for byte-identical
+idempotency. The <code class="docutils literal notranslate"><span class="pre">hands-on/</span></code> parent carries the same drop-in in <strong>validate-only</strong>
+mode (no generator there): <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">learn/hands-on</span> <span class="pre">&amp;&amp;</span> <span class="pre">python3</span> <span class="pre">_buildcheck.py</span></code> checks
+the hub page plus the whole edtech tree.</p>
+<section id="current-mirror-status">
+<h3>Current mirror status<a class="headerlink" href="#current-mirror-status" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Workshops section: COMPLETE.</strong> All 16 RST-workshop pages are verbatim —
+<code class="docutils literal notranslate"><span class="pre">workshops/index</span></code>, <code class="docutils literal notranslate"><span class="pre">workshops/rst/index</span></code>, the four support pages, the two guide
+pages (<code class="docutils literal notranslate"><span class="pre">writing-rst-overview</span></code>, <code class="docutils literal notranslate"><span class="pre">setting-up-sphinx</span></code>), and all nine Tasks
+(<code class="docutils literal notranslate"><span class="pre">writing-rst-1..9</span></code>).</p></li>
+<li><p><strong>COMPLETE — 134 verbatim pages, 13 include-fragments, 78 real images, 0
+stubs.</strong> Populated in one pass by <code class="docutils literal notranslate"><span class="pre">fetch_edtech.py</span></code> (see the Bulk crawl section);
+<code class="docutils literal notranslate"><span class="pre">_sources_cache/_discovered.json</span></code> drives <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code> / <code class="docutils literal notranslate"><span class="pre">INCLUDES</span></code> /
+<code class="docutils literal notranslate"><span class="pre">PLACEHOLDER_IMAGES</span></code> via <code class="docutils literal notranslate"><span class="pre">edtech_manifest._apply_discovered()</span></code>. Every section is
+mirrored end to end: cloud-computing (all 8 labs + references), NASM, C, operating
+systems, and the RST workshop. All <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> fragments (<code class="docutils literal notranslate"><span class="pre">urls.rst</span></code>,
+<code class="docutils literal notranslate"><span class="pre">N-urls.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">*-content.rst</span></code>) are fetched and resolved in place; every downloaded
+screenshot replaces its placeholder (0 placeholders remain). Validation:
+<code class="docutils literal notranslate"><span class="pre">doc</span> <span class="pre">0</span> <span class="pre">|</span> <span class="pre">ref</span> <span class="pre">0</span> <span class="pre">|</span> <span class="pre">underline</span> <span class="pre">0</span></code>, byte-identical idempotent rebuild.</p></li>
+<li><p><strong>The site-wide prolog (<code class="docutils literal notranslate"><span class="pre">/includes/prolog.inc</span></code>).</strong> Upstream pages carry
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span> <span class="pre">/includes/prolog.inc</span></code> — a leading-slash, Sphinx-source-root path
+that has no <code class="docutils literal notranslate"><span class="pre">_sources</span></code> entry and, in scikit-plots, would resolve into <em>its own</em>
+<code class="docutils literal notranslate"><span class="pre">/includes/</span></code> tree. The crawler skips it (<code class="docutils literal notranslate"><span class="pre">find_includes</span></code> drops leading-slash
+targets) and the overlay filters it; the generator’s <code class="docutils literal notranslate"><span class="pre">rewrite_prolog</span></code> repoints
+the directive at a <strong>mirror-local</strong> <code class="docutils literal notranslate"><span class="pre">includes/prolog.inc</span></code> (emitted from cache),
+which reconstructs only the one substitution it provides — the standard
+<code class="docutils literal notranslate"><span class="pre">|br|</span></code> → <code class="docutils literal notranslate"><span class="pre">&lt;br</span> <span class="pre">/&gt;</span></code>. Documented CC BY change notice. (The <code class="docutils literal notranslate"><span class="pre">|Memory</span> <span class="pre">leak|</span></code> /
+<code class="docutils literal notranslate"><span class="pre">|linked</span> <span class="pre">list|</span></code> refs on <code class="docutils literal notranslate"><span class="pre">c/5/index</span></code> are upstream capitalization typos vs. the
+<code class="docutils literal notranslate"><span class="pre">|memory</span> <span class="pre">leak|</span></code> / <code class="docutils literal notranslate"><span class="pre">|Linked</span> <span class="pre">List|</span></code> defs in <code class="docutils literal notranslate"><span class="pre">c-urls.rst</span></code>; reproduced verbatim.)</p></li>
+<li><p><strong>Validator anchor collection</strong> now matches Sphinx: explicit labels are collected
+when <strong>indented</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_simple-wp-in-using-docker-compose:</span></code> inside a list)
+and when they contain <strong>spaces</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_Step</span> <span class="pre">5.3:</span></code>, referenced as
+<code class="docutils literal notranslate"><span class="pre">:ref:`text</span> <span class="pre">&lt;Step</span> <span class="pre">5.3&gt;```).</span> <span class="pre">The</span> <span class="pre">pattern</span> <span class="pre">`^\s*\.\.</span> <span class="pre">_([^:\n]+):\s*$`</span> <span class="pre">still</span> <span class="pre">excludes</span> </code>.. _name: url`` external-link targets. Propagated to all 11 drop-in
+copies; the six existing courses stay byte-identical (idempotency shas unchanged).</p></li>
+<li><p><strong>conf.py requirement (fragments + prolog).</strong> Sphinx’s “document isn’t included
+in any toctree” warning fires only for files it treats as <em>documents</em> — i.e.
+those whose extension is in <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code> (default <code class="docutils literal notranslate"><span class="pre">.rst</span></code>). Two consequences
+for this mirror:</p>
+<ol class="arabic simple">
+<li><p>The emitted include-fragments are real <code class="docutils literal notranslate"><span class="pre">.rst</span></code> (<code class="docutils literal notranslate"><span class="pre">urls.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">*-urls.rst</span></code>,
+<code class="docutils literal notranslate"><span class="pre">*-content.rst</span></code>) and so <strong>are</strong> documents — <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> does not exempt
+them (inclusion is parse-time text substitution; the file is still discovered
+independently). They must be excluded or they orphan-warn.</p></li>
+<li><p>Everything under <code class="docutils literal notranslate"><span class="pre">_sources_cache/</span></code> is <code class="docutils literal notranslate"><span class="pre">.txt</span></code> / <code class="docutils literal notranslate"><span class="pre">.png</span></code> / <code class="docutils literal notranslate"><span class="pre">.json</span></code> (never <code class="docutils literal notranslate"><span class="pre">.rst</span></code>)
+and <code class="docutils literal notranslate"><span class="pre">includes/prolog.inc</span></code> is <code class="docutils literal notranslate"><span class="pre">.inc</span></code>, so Sphinx ignores them <strong>by extension</strong>
+already. But the cache is build <em>input</em>, not publishable content, and its
+safety hinges on <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code> staying <code class="docutils literal notranslate"><span class="pre">.rst</span></code> — add <code class="docutils literal notranslate"><span class="pre">.txt</span></code> there and every
+<code class="docutils literal notranslate"><span class="pre">*.rst.txt</span></code> would flip into a (broken) document. So exclude the cache outright
+rather than rely on the extension.</p></li>
+</ol>
+<p>::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>exclude_patterns += [
+    &quot;learn/hands-on/edtech/_sources_cache/**&quot;,   # raw source cache — build input, never a doc
+    &quot;learn/hands-on/edtech/**/urls.rst&quot;,
+    &quot;learn/hands-on/edtech/**/*-urls.rst&quot;,
+    &quot;learn/hands-on/edtech/**/*-content.rst&quot;,
+    &quot;learn/hands-on/edtech/**/includes/*.inc&quot;,
+    # + &quot;learn/hands-on/edtech/**/*.md&quot;  only if you build with MyST
+]
+</pre></div>
+</div>
+<p>This mirrors upstream’s own build config (upstream excludes the same fragments).
+<strong>If you build with MyST</strong> (i.e. <code class="docutils literal notranslate"><span class="pre">.md</span></code> is in <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code>), also exclude the
+guide files, which would otherwise orphan-warn as documents::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;learn/hands-on/edtech/**/*.md&quot;,   # EDTECH.md and friends — docs about the mirror, not pages
+</pre></div>
+</div>
+</li>
+<li><p><strong>Generator note (toctree comments).</strong> A lab index toctree may contain a
+commented-out entry (e.g. Lab 4’s <code class="docutils literal notranslate"><span class="pre">..</span>&#160;&#160; <span class="pre">4.4</span></code>). <code class="docutils literal notranslate"><span class="pre">toctree_targets</span></code> skips lines
+whose stripped form starts with <code class="docutils literal notranslate"><span class="pre">..</span></code>, so commented entries don’t spawn spurious
+stub pages (same class of fix as the code-block masking).</p></li>
+<li><p><strong>cloud-computing progress &amp; blocker:</strong> the self-contained pages mirror cleanly
+(section/lab indexes, lab overviews, <code class="docutils literal notranslate"><span class="pre">references/</span></code> pages). The lab <strong>step</strong> pages
+(<code class="docutils literal notranslate"><span class="pre">1/1.1..1.9</span></code>, and every other lab’s numbered steps) begin with
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span> <span class="pre">&lt;lab&gt;-urls.rst</span></code> — an unfetchable fragment (see the landmine) — so
+they stay stubbed pending a decision on how to handle those includes. Step pages
+also carry screenshots that will each need a placeholder image.</p></li>
+<li><p><strong>cloud-computing scope note:</strong> the main <code class="docutils literal notranslate"><span class="pre">cloud-computing/index</span></code> toctree covers
+Labs 1-6, 8 and <code class="docutils literal notranslate"><span class="pre">references/</span></code> only. The upstream also has <code class="docutils literal notranslate"><span class="pre">6-open-vpn/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">7-scripting/</span></code> folders that are <strong>not</strong> in that toctree (orphan-ish upstream);
+they are outside the mirror’s structure. This is why <code class="docutils literal notranslate"><span class="pre">writing-rst-8</span></code>’s
+``:ref:<code class="docutils literal notranslate"><span class="pre">Step</span> <span class="pre">1.</span> <span class="pre">Initialize</span> <span class="pre">OpenVPN</span> <span class="pre">using</span> <span class="pre">Docker```</span> <span class="pre">(target</span> <span class="pre">lives</span> <span class="pre">in</span> </code>6-open-vpn/`)
+stays a documented pending reference rather than resolving via the main nav.</p></li>
+<li><p><strong>Placeholder assets (3):</strong> <code class="docutils literal notranslate"><span class="pre">workshops/rst/images/default-sphinx-page.png</span></code>,
+<code class="docutils literal notranslate"><span class="pre">rtd-sphinx-page.png</span></code>, and <code class="docutils literal notranslate"><span class="pre">the_great_sphinx_david_roberts.jpg</span></code> (a JPEG — the
+generator matches the placeholder format to the file extension). These are the
+upstream screenshots the fetch pipeline cannot retrieve; <code class="docutils literal notranslate"><span class="pre">PLACEHOLDER_IMAGES</span></code>
+records the upstream URLs. <strong>CC BY change notice:</strong> these three image files are
+substitutes; all page <em>text</em> is verbatim.</p></li>
+<li><p><strong>One pending cross-section reference:</strong> <code class="docutils literal notranslate"><span class="pre">writing-rst-8</span></code> (Tables) links to the
+cloud-computing OpenVPN lab via ``:ref:<code class="docutils literal notranslate"><span class="pre">Step</span> <span class="pre">1.</span> <span class="pre">Initialize</span> <span class="pre">OpenVPN</span> <span class="pre">using</span> <span class="pre">Docker```.</span> <span class="pre">That</span> <span class="pre">label</span> <span class="pre">lives</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">not-yet-mirrored</span> <span class="pre">cloud-computing</span> <span class="pre">page,</span> <span class="pre">so</span> <span class="pre">the</span> <span class="pre">reference</span> <span class="pre">is</span> <span class="pre">validator-green</span> <span class="pre">(space-form,</span> <span class="pre">so</span> <span class="pre">the</span> </code>:ref:` check skips it) but will
+emit one “undefined label” warning under a real Sphinx build until that page is
+mirrored. It resolves automatically when cloud-computing’s OpenVPN lab lands.</p></li>
+<li><p><strong>Stubs (27):</strong> <code class="docutils literal notranslate"><span class="pre">c/index</span></code> (blocked on its <code class="docutils literal notranslate"><span class="pre">c-urls.rst</span></code> include); every lab /
+reference / overview page under <code class="docutils literal notranslate"><span class="pre">cloud-computing</span></code>, <code class="docutils literal notranslate"><span class="pre">nasm</span></code>, <code class="docutils literal notranslate"><span class="pre">operating-systems</span></code>.</p></li>
+<li><p><strong>Remaining work:</strong> each lab’s <code class="docutils literal notranslate"><span class="pre">index</span></code> + steps (and <code class="docutils literal notranslate"><span class="pre">c/index</span></code> with its include)
+per the batch procedure above; add to <code class="docutils literal notranslate"><span class="pre">VERBATIM</span></code>; rebuild.</p></li>
+</ul>
+</section>
+</section>
+<section id="delivery-sync-nested-folder-note">
+<h2>Delivery / sync (nested folder note)<a class="headerlink" href="#delivery-sync-nested-folder-note" title="Link to this heading">#</a></h2>
+<p>This course lives at <code class="docutils literal notranslate"><span class="pre">learn/hands-on/edtech/</span></code>, one level deeper than the flat
+<code class="docutils literal notranslate"><span class="pre">learn/&lt;course&gt;/</span></code> courses. The drop-in <code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span> <span class="pre">--sync</span></code> mirrors a folder to
+<code class="docutils literal notranslate"><span class="pre">/mnt/user-data/outputs/learn/&lt;folder-name&gt;</span></code>, which is correct only for
+top-level courses; for this nested folder, <strong>sync the whole <code class="docutils literal notranslate"><span class="pre">learn/</span></code> tree at once</strong>
+(copy <code class="docutils literal notranslate"><span class="pre">learn/</span></code> into <code class="docutils literal notranslate"><span class="pre">/mnt/user-data/outputs/learn</span></code> and rezip
+<code class="docutils literal notranslate"><span class="pre">scikit-plots-learn.zip</span></code>) rather than <code class="docutils literal notranslate"><span class="pre">edtech/</span> <span class="pre">--sync</span></code>. The build/validate/
+idempotency parts of <code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span></code> are unaffected and correct here.</p>
+</section>
+<section id="provenance">
+<h2>Provenance<a class="headerlink" href="#provenance" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Source: <code class="docutils literal notranslate"><span class="pre">https://labs.bilimedtech.com</span></code> — © 2022, BilimEdtech Labs; Sphinx +
+Read-the-Docs theme; site license CC BY 4.0 (declared in every page footer).</p></li>
+<li><p>License text: fetched from
+<code class="docutils literal notranslate"><span class="pre">https://creativecommons.org/licenses/by/4.0/legalcode.txt</span></code> (verbatim,
+<code class="docutils literal notranslate"><span class="pre">_sources_cache/LICENSE.txt</span></code>).</p></li>
+<li><p>Every page and structure detail was grounded by fetching the live site; nothing
+here is inferred. Lab-step page lists for <code class="docutils literal notranslate"><span class="pre">nasm/c/operating-systems</span></code> labs <code class="docutils literal notranslate"><span class="pre">1..N</span></code>
+are completed by fetching each lab index in later batches.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-in-this-folder">What is in this folder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upstream-structure-and-fetch-map">Upstream structure and fetch-map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-generator-works">How the generator works</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-source-license-admonition-every-mirrored-page">The Source &amp; license admonition (every mirrored page)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-editing-later-the-whole-point-of-the-generator">Extending / editing later (the whole point of the generator)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-strategy-proven">Fetch strategy (proven)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-crawl-fetch-edtech-py-fast-path-run-locally">Bulk crawl — <code class="docutils literal notranslate"><span class="pre">fetch_edtech.py</span></code> (fast path, run locally)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-landmines-seen-in-practice">Fetch landmines (seen in practice)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canonical-url-duplicate-content-seo-the-one-hook-outside-rst">Canonical URL / duplicate-content (SEO) — the one hook outside RST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rst-validation-landmines-specific-to-this-mirror">RST &amp; validation landmines specific to this mirror</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-rebuilding">Validation &amp; rebuilding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-mirror-status">Current mirror status</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delivery-sync-nested-folder-note">Delivery / sync (nested folder note)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#provenance">Provenance</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/learn/hands-on/edtech/EDTECH.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/learn/hands-on/edtech/EDTECH.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+
+  
+  
+  
+
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

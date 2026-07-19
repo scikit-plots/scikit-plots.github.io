@@ -1,6 +1,6 @@
 # ProbScale[#](#probscale "Link to this heading")
 
-class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/externals/_probscale/probscale.py#L240)[#](#scikitplot.externals._probscale.ProbScale "Link to this definition")
+class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/externals/_probscale/probscale.py#L240)[#](#scikitplot.externals._probscale.ProbScale "Link to this definition")
 :   A probability scale for matplotlib Axes.
 
     Transforms an axis so that normally distributed data plot as a straight
@@ -49,7 +49,7 @@ class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[so
         * ****kwargs**** (**Any**)
 
     > **See also**
-    > [`matplotlib.scale.ScaleBase`](https://matplotlib.org/devdocs/api/scale_api.html#matplotlib.scale.ScaleBase "(in Matplotlib v3.12.0.dev356+g63bd09560)")
+    > [`matplotlib.scale.ScaleBase`](https://matplotlib.org/devdocs/api/scale_api.html#matplotlib.scale.ScaleBase "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
     :   Abstract base class for all scales.
 
     `transforms.ProbTransform`
@@ -121,12 +121,12 @@ class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[so
     ![ProbScale proportion axis](../../_images/scikitplot-externals-_probscale-ProbScale-2.png)
     Go BackOpen In Tab
 
-    get\_transform()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/externals/_probscale/probscale.py#L427)[#](#scikitplot.externals._probscale.ProbScale.get_transform "Link to this definition")
+    get\_transform()[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/externals/_probscale/probscale.py#L427)[#](#scikitplot.externals._probscale.ProbScale.get_transform "Link to this definition")
     :   Return the probability transform for this scale.
 
         Returns:
         :   ****transform****.transforms.ProbTransform
-            :   The [`Transform`](https://matplotlib.org/devdocs/api/transformations.html#matplotlib.transforms.Transform "(in Matplotlib v3.12.0.dev356+g63bd09560)") instance that
+            :   The [`Transform`](https://matplotlib.org/devdocs/api/transformations.html#matplotlib.transforms.Transform "(in Matplotlib v3.12.0.dev368+g6db3896c8)") instance that
                 maps probability / percentage values to quantile space (and
                 vice versa via its `inverted`
                 twin `QuantileTransform`).
@@ -134,7 +134,7 @@ class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[so
         Return type:
         :   **ProbTransform**
 
-    limit\_range\_for\_scale(**vmin**, **vmax**, **minpos**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/externals/_probscale/probscale.py#L440)[#](#scikitplot.externals._probscale.ProbScale.limit_range_for_scale "Link to this definition")
+    limit\_range\_for\_scale(**vmin**, **vmax**, **minpos**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/externals/_probscale/probscale.py#L440)[#](#scikitplot.externals._probscale.ProbScale.limit_range_for_scale "Link to this definition")
     :   Clamp axis limits to positive probability values.
 
         Any limit at or below zero is replaced by **minpos**, the smallest
@@ -180,11 +180,11 @@ class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[so
 
     name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'prob'[#](#scikitplot.externals._probscale.ProbScale.name "Link to this definition")
 
-    set\_default\_locators\_and\_formatters(**axis**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/externals/_probscale/probscale.py#L404)[#](#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters "Link to this definition")
+    set\_default\_locators\_and\_formatters(**axis**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/externals/_probscale/probscale.py#L404)[#](#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters "Link to this definition")
     :   Configure probability-scale locators and formatters.
 
-        Sets a [`FixedLocator`](https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FixedLocator "(in Matplotlib v3.12.0.dev356+g63bd09560)") at standard
-        probability tick positions, a [`FuncFormatter`](https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FuncFormatter "(in Matplotlib v3.12.0.dev356+g63bd09560)")
+        Sets a [`FixedLocator`](https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FixedLocator "(in Matplotlib v3.12.0.dev368+g6db3896c8)") at standard
+        probability tick positions, a [`FuncFormatter`](https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FuncFormatter "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
         that renders probabilities as percentages or proportions, and
         `NullLocator` / `NullFormatter` for minor ticks.
 
@@ -198,7 +198,7 @@ class scikitplot.externals.\_probscale.ProbScale(**\*args**, **\*\*kwargs**)[[so
         Return type:
         :   None
 
-    val\_in\_range(**val**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/../matplotlib/scale.py#L117)[#](#scikitplot.externals._probscale.ProbScale.val_in_range "Link to this definition")
+    val\_in\_range(**val**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/../matplotlib/scale.py#L117)[#](#scikitplot.externals._probscale.ProbScale.val_in_range "Link to this definition")
     :   Return whether the value(s) are within the valid range for this scale.
 
         Accepts a scalar or array-like `val`. For a scalar, returns a

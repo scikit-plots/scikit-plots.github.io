@@ -4,6 +4,16 @@
 
 [◀ Previous · Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html) · [Next · Multiple imputation ▶](119-multiple-imputation.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## A language for missingness[#](#a-language-for-missingness "Link to this heading")
 
 Missing data need notation before they need methods, because the ****right analysis depends entirely on

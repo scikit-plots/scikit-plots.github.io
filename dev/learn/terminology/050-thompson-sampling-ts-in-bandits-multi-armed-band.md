@@ -4,6 +4,16 @@
 
 **A bandit strategy that samples from posterior beliefs to balance exploration and exploitation.**
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The multi-armed bandit problem[#](#the-multi-armed-bandit-problem "Link to this heading")
 
 Picture a row of slot machines (****arms****). Each arm \(i\) pays out from an unknown

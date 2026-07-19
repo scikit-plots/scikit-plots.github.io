@@ -4,6 +4,16 @@
 
 [◀ Previous · Measuring Associations in Data](10-measuring-associations-in-data.html) · [Next · Correlation Coefficients in Python (Pearson, Spearman, Kendall) ▶](12-correlation-coefficients-in-python-pearson-spearman-kendall.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Covariance: direction[#](#covariance-direction "Link to this heading")
 
 The starting point for two continuous variables is ****covariance****, which measures whether they vary

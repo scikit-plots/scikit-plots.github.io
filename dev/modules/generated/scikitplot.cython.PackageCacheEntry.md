@@ -1,6 +1,6 @@
 # PackageCacheEntry[#](#packagecacheentry "Link to this heading")
 
-class scikitplot.cython.PackageCacheEntry(**key=''**, **build\_dir=PosixPath('.')**, **package\_name=''**, **modules=()**, **artifacts=()**, **created\_utc=None**, **fingerprint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f800619/scikitplot/cython/_cache.py#L141)[#](#scikitplot.cython.PackageCacheEntry "Link to this definition")
+class scikitplot.cython.PackageCacheEntry(**key=''**, **build\_dir=PosixPath('.')**, **package\_name=''**, **modules=()**, **artifacts=()**, **created\_utc=None**, **fingerprint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_cache.py#L141)[#](#scikitplot.cython.PackageCacheEntry "Link to this definition")
 :   A compiled **package** cache entry (multi-module build).
 
     Parameters:

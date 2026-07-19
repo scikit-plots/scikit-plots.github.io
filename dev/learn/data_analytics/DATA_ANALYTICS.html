@@ -1,0 +1,1461 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Data Analytics — course guide" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/learn/data_analytics/DATA_ANALYTICS.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="This folder builds the Data Analytics hub of the scikit-plots learn/ documentation: a 216-lesson, career-oriented course taking a learner from the case for data through preparation, cleaning, analy..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="This folder builds the Data Analytics hub of the scikit-plots learn/ documentation: a 216-lesson, career-oriented course taking a learner from the case for data through preparation, cleaning, analy..." />
+
+<script>
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+</script>
+
+<script>
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:39:52Z"}};
+window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
+</script>
+
+    <title>Data Analytics — course guide &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=6ecd9b07" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/data_analytics/DATA_ANALYTICS';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/learn/data_analytics/DATA_ANALYTICS.html" />
+    <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+  
+  
+  
+
+  
+  
+  
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Data Analytics — course guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="data-analytics-course-guide">
+<h1>Data Analytics — course guide<a class="headerlink" href="#data-analytics-course-guide" title="Link to this heading">#</a></h1>
+<p>This folder builds the <strong>Data Analytics</strong> hub of the scikit-plots <code class="docutils literal notranslate"><span class="pre">learn/</span></code>
+documentation: a 216-lesson, career-oriented course taking a learner from the case
+for data through preparation, cleaning, analysis (spreadsheets + SQL), visualization,
+Python (NumPy + pandas), and the analyst job search — rewritten in original words and
+cross-linked into a browsable Sphinx site. It is the sixth subfolder, and it follows
+the same self-contained generator pattern as <code class="docutils literal notranslate"><span class="pre">terminology/</span></code>, <code class="docutils literal notranslate"><span class="pre">time_series/</span></code>,
+<code class="docutils literal notranslate"><span class="pre">deep_learning/</span></code>, <code class="docutils literal notranslate"><span class="pre">data_preparation_and_analysis/</span></code>, and <code class="docutils literal notranslate"><span class="pre">bayesian_data_analysis/</span></code> —
+<strong>with one structural difference: it is nested two levels deep</strong> (a top hub plus eight
+per-section browsers), where the other five are flat.</p>
+<p>The course renders at
+<code class="docutils literal notranslate"><span class="pre">https://scikit-plots.github.io/dev/learn/data_analytics/</span></code>.</p>
+<hr class="docutils" />
+<section id="what-is-in-this-folder">
+<h2>What is in this folder<a class="headerlink" href="#what-is-in-this-folder" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DATA_ANALYTICS.md</span></code></p></td>
+<td><p>This guide.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">build_data_analytics.py</span></code></p></td>
+<td><p>The generator. Reads the inventory + content, writes the hub <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, eight section <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> browsers, and the 216 lesson pages. Deterministic and idempotent.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">da_content.py</span></code></p></td>
+<td><p>The corpus: <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> (full lesson bodies), <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code> (4 cross-links per lesson), and <code class="docutils literal notranslate"><span class="pre">GLOSS</span></code> (one-line gloss per lesson, used by the filter box), all keyed by exact lesson title.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">da_inventory.tsv</span></code></p></td>
+<td><p><strong>Frozen.</strong> Header + 216 rows (<code class="docutils literal notranslate"><span class="pre">title⇥url⇥section⇥stage</span></code>) in curriculum order, stored <strong>stage-contiguous within each section</strong>. The single source of truth for titles, ordering, section, and stage assignment.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">index.rst</span></code></p></td>
+<td><p>Generated. The top hub browser (all 216 lessons grouped by section).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;n&gt;_&lt;slug&gt;/index.rst</span></code></p></td>
+<td><p>Generated. One per section — the section browser (that section’s lessons grouped by stage).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;n&gt;_&lt;slug&gt;/NNN-*.rst</span></code></p></td>
+<td><p>Generated. One page per lesson, 3-digit zero-padded id <strong>restarting at <code class="docutils literal notranslate"><span class="pre">001</span></code> in each section folder</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Everything the generator needs lives in this folder. Nothing outside it is read or
+written except the Sphinx build itself.</p>
+<blockquote>
+<div><p><strong>Note.</strong> The repository helper <code class="docutils literal notranslate"><span class="pre">/home/claude/_buildcheck.py</span></code> is <strong>flat-folder only</strong>
+and is <strong>not</strong> used for this course. Data Analytics validates with the inline nested
+validator described below, because its <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> targets are relative to each file’s
+own directory across two levels.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="curriculum-8-sections-31-stages-216-lessons">
+<h2>Curriculum: 8 sections, 31 stages, 216 lessons<a class="headerlink" href="#curriculum-8-sections-31-stages-216-lessons" title="Link to this heading">#</a></h2>
+<p>The course is organised into 8 <strong>sections</strong>, each spanning three or four <strong>stages</strong>;
+every lesson belongs to exactly one <code class="docutils literal notranslate"><span class="pre">(section,</span> <span class="pre">stage)</span></code>. Sections 1–2 are beginner,
+3–6 intermediate, 7 (Python) intermediate→advanced, 8 (job search) applied.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Section (<code class="docutils literal notranslate"><span class="pre">key</span></code>, folder)</p></th>
+<th class="head"><p>🔣</p></th>
+<th class="head"><p>Stage (<code class="docutils literal notranslate"><span class="pre">key</span></code>)</p></th>
+<th class="head"><p>🔣</p></th>
+<th class="head"><p>Lessons</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p><strong>Foundations</strong> (<code class="docutils literal notranslate"><span class="pre">foundations</span></code>, <code class="docutils literal notranslate"><span class="pre">1_foundations</span></code>)</p></td>
+<td><p>🌱</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">why</span></code></p></td>
+<td><p>🌟</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">process</span></code></p></td>
+<td><p>🔄</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thinking</span></code></p></td>
+<td><p>🧠</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tools</span></code></p></td>
+<td><p>🧰</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>2</strong></p></td>
+<td><p><strong>Data-Driven Decisions</strong> (<code class="docutils literal notranslate"><span class="pre">ddd</span></code>, <code class="docutils literal notranslate"><span class="pre">2_data_driven_decisions</span></code>)</p></td>
+<td><p>🎯</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">framing</span></code></p></td>
+<td><p>🧭</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metrics</span></code></p></td>
+<td><p>📐</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">spreadsheets</span></code></p></td>
+<td><p>📗</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">execution</span></code></p></td>
+<td><p>🗣</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p><strong>Data Preparation</strong> (<code class="docutils literal notranslate"><span class="pre">prep</span></code>, <code class="docutils literal notranslate"><span class="pre">3_data_preparation</span></code>)</p></td>
+<td><p>📦</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">types</span></code></p></td>
+<td><p>🧬</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bias_ethics</span></code></p></td>
+<td><p>⚖️</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sources</span></code></p></td>
+<td><p>🗄️</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">spreadsheets_sql</span></code></p></td>
+<td><p>🔢</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>4</strong></p></td>
+<td><p><strong>Data Cleaning &amp; Preparation</strong> (<code class="docutils literal notranslate"><span class="pre">cleaning</span></code>, <code class="docutils literal notranslate"><span class="pre">4_data_cleaning_preparation</span></code>)</p></td>
+<td><p>🧽</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integrity</span></code></p></td>
+<td><p>🧱</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dirty</span></code></p></td>
+<td><p>🧹</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sql</span></code></p></td>
+<td><p>🐬</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">verify</span></code></p></td>
+<td><p>✅</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>5</strong></p></td>
+<td><p><strong>Analyze Data</strong> (<code class="docutils literal notranslate"><span class="pre">analyze</span></code>, <code class="docutils literal notranslate"><span class="pre">5_analyze_data</span></code>)</p></td>
+<td><p>📊</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">organize</span></code></p></td>
+<td><p>🗂️</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">combine</span></code></p></td>
+<td><p>🔗</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">calc</span></code></p></td>
+<td><p>🧮</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">advanced</span></code></p></td>
+<td><p>🚀</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>6</strong></p></td>
+<td><p><strong>Data Visualization</strong> (<code class="docutils literal notranslate"><span class="pre">viz</span></code>, <code class="docutils literal notranslate"><span class="pre">6_data_visualization</span></code>)</p></td>
+<td><p>🎨</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">principles</span></code></p></td>
+<td><p>🎨</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tableau</span></code></p></td>
+<td><p>📊</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">story</span></code></p></td>
+<td><p>📖</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">present</span></code></p></td>
+<td><p>🎤</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>7</strong></p></td>
+<td><p><strong>Data Analysis Using Python</strong> (<code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">7_data_analysis_python</span></code>)</p></td>
+<td><p>🐍</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">basics</span></code></p></td>
+<td><p>🐍</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">control</span></code></p></td>
+<td><p>🔀</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">structures</span></code></p></td>
+<td><p>📚</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">libraries</span></code></p></td>
+<td><p>🐼</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>8</strong></p></td>
+<td><p><strong>Job Search</strong> (<code class="docutils literal notranslate"><span class="pre">jobsearch</span></code>, <code class="docutils literal notranslate"><span class="pre">8_job_search</span></code>)</p></td>
+<td><p>💼</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">identity</span></code></p></td>
+<td><p>🧭</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">apply</span></code></p></td>
+<td><p>📄</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">interview</span></code></p></td>
+<td><p>🎯</p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Section totals: 27 · 27 · 25 · 32 · 30 · 27 · 33 · 15 = <strong>216</strong>.</p>
+<p>Two registries in <code class="docutils literal notranslate"><span class="pre">build_data_analytics.py</span></code> hold this:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SECTIONS[key]</span> <span class="pre">=</span> <span class="pre">(order,</span> <span class="pre">emoji,</span> <span class="pre">title,</span> <span class="pre">blurb,</span> <span class="pre">folder)</span></code>; <code class="docutils literal notranslate"><span class="pre">SECTION_ORDER</span></code> fixes the
+section sequence; <code class="docutils literal notranslate"><span class="pre">SECTION_TOTALS[key]</span></code> is the per-section lesson count.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STAGES[(section,</span> <span class="pre">stage)]</span> <span class="pre">=</span> <span class="pre">(emoji,</span> <span class="pre">title,</span> <span class="pre">blurb)</span></code>; <code class="docutils literal notranslate"><span class="pre">STAGE_ORDER[section]</span></code> fixes the
+within-section stage sequence.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-the-generator-works">
+<h2>How the generator works<a class="headerlink" href="#how-the-generator-works" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">build_data_analytics.py</span></code> is a pure function of its three inputs
+(<code class="docutils literal notranslate"><span class="pre">ANCHOR_PREFIX</span> <span class="pre">=</span> <span class="pre">&quot;da&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">N_LESSONS_TOTAL</span> <span class="pre">=</span> <span class="pre">216</span></code>). One run:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HERE</span> <span class="pre">=</span> <span class="pre">Path(__file__).resolve().parent</span></code>; <code class="docutils literal notranslate"><span class="pre">sys.path.insert(0,</span> <span class="pre">str(HERE))</span></code> so
+<code class="docutils literal notranslate"><span class="pre">da_content</span></code> imports regardless of the working directory.</p></li>
+<li><p>Load <code class="docutils literal notranslate"><span class="pre">da_inventory.tsv</span></code> (216 rows) and <code class="docutils literal notranslate"><span class="pre">da_content.py</span></code> (<code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>, <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code>,
+<code class="docutils literal notranslate"><span class="pre">GLOSS</span></code>).</p></li>
+<li><p><strong>Fail-fast validation</strong> (aborts with exit 1, writing nothing, on any of):</p>
+<ul class="simple">
+<li><p>inventory row count ≠ <code class="docutils literal notranslate"><span class="pre">N_LESSONS_TOTAL</span></code>;</p></li>
+<li><p>any inventory title without a <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> entry, or any <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>/<code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code>/<code class="docutils literal notranslate"><span class="pre">GLOSS</span></code>
+key that is not an <strong>exact</strong> inventory title;</p></li>
+<li><p>any <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code> neighbour not an exact inventory title;</p></li>
+<li><p>any <code class="docutils literal notranslate"><span class="pre">(section,</span> <span class="pre">stage)</span></code> not in <code class="docutils literal notranslate"><span class="pre">STAGES</span></code>, or any section not in <code class="docutils literal notranslate"><span class="pre">SECTIONS</span></code>;</p></li>
+<li><p>duplicate titles.</p></li>
+</ul>
+</li>
+<li><p>Clear only files matching <code class="docutils literal notranslate"><span class="pre">[0-9]+-*.rst</span></code> in each section folder (never touches this
+guide or the hand files).</p></li>
+<li><p>Emit, per section, one <code class="docutils literal notranslate"><span class="pre">NNN-*.rst</span></code> per lesson and the section <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>; then the
+top hub <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>.</p></li>
+</ol>
+<p>Determinism: everything is sorted, no RNG, no timestamps — so two runs are
+<strong>byte-identical</strong>. This is verified every build via sha256 and proven at seal time by
+a clean-room rebuild.</p>
+<section id="per-section-numbering">
+<h3>Per-section numbering<a class="headerlink" href="#per-section-numbering" title="Link to this heading">#</a></h3>
+<p>Lesson ids restart at <code class="docutils literal notranslate"><span class="pre">001</span></code> in each section folder and run to that section’s total
+(e.g. <code class="docutils literal notranslate"><span class="pre">1_foundations/001</span></code>–<code class="docutils literal notranslate"><span class="pre">027</span></code>, <code class="docutils literal notranslate"><span class="pre">7_data_analysis_python/001</span></code>–<code class="docutils literal notranslate"><span class="pre">033</span></code>). The id is the
+lesson’s <strong>position within its section</strong> in the inventory; because the inventory is
+stored stage-contiguous, positions are also stage-contiguous. Filenames are derived
+from the <strong>title</strong> by <code class="docutils literal notranslate"><span class="pre">slugify()</span></code> (lowercase; <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>→<code class="docutils literal notranslate"><span class="pre">and</span></code>; strip characters that are not
+alphanumeric, space, or hyphen; spaces→hyphens), which reduces em-dash, subscript,
+parentheses, and ampersand to clean ASCII slugs.</p>
+</section>
+<section id="each-lesson-page">
+<h3>Each lesson page<a class="headerlink" href="#each-lesson-page" title="Link to this heading">#</a></h3>
+<p>Anchor(s) → auto H1 (<code class="docutils literal notranslate"><span class="pre">title_bar</span> <span class="pre">=</span> <span class="pre">ch</span> <span class="pre">*</span> <span class="pre">max(72,</span> <span class="pre">len(title)</span> <span class="pre">+</span> <span class="pre">2)</span></code>) → section/stage badge
+→ ◀ Prev / Next ▶ nav (within the section) plus ↑ Section and ↑ Hub links → body
+(<code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>) → <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">seealso::</span></code> block (the 4 <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code> links) → source link. Every full
+lesson is: intuition → key idea → a real worked example (a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span> <span class="pre">python</span></code>
+or <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span> <span class="pre">sql</span></code> where the topic is technical) → an honest “The caveat”
+section. Section-closer lessons end with a paragraph handing off to the next section.</p>
+</section>
+<section id="cross-link-resolution">
+<h3>Cross-link resolution<a class="headerlink" href="#cross-link-resolution" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">:doc:</span></code> targets are <strong>relative to each file’s directory</strong>: a same-section link is the
+bare stem (<code class="docutils literal notranslate"><span class="pre">NNN-slug</span></code>); a cross-section link is <code class="docutils literal notranslate"><span class="pre">../&lt;folder&gt;/&lt;stem&gt;</span></code>. The <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code>
+neighbours may point across sections, so both forms occur. The nested validator
+resolves every target against the full doc-set (see below).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="anchors-and-the-da-prefix">
+<h2>Anchors and the <code class="docutils literal notranslate"><span class="pre">da-</span></code> prefix<a class="headerlink" href="#anchors-and-the-da-prefix" title="Link to this heading">#</a></h2>
+<p>Five anchor families, all globally unique:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Anchor</p></th>
+<th class="head"><p>Emitted on</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">da-&lt;sec&gt;-NNN</span></code></p></td>
+<td><p>each lesson page</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">da-foundations-001</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">da-&lt;sec&gt;-index</span></code></p></td>
+<td><p>each section browser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">da-python-index</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">da-&lt;sec&gt;-stage-&lt;stage&gt;</span></code></p></td>
+<td><p>section browser (per stage)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">da-viz-stage-tableau</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">da-section-&lt;sec&gt;</span></code></p></td>
+<td><p>hub browser (per section)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">da-section-jobsearch</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">data-analytics-index</span></code></p></td>
+<td><p>the hub page</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">data-analytics-index</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;sec&gt;</span></code> is the section <strong>key</strong> (<code class="docutils literal notranslate"><span class="pre">foundations</span></code>, <code class="docutils literal notranslate"><span class="pre">ddd</span></code>, <code class="docutils literal notranslate"><span class="pre">prep</span></code>, <code class="docutils literal notranslate"><span class="pre">cleaning</span></code>, <code class="docutils literal notranslate"><span class="pre">analyze</span></code>,
+<code class="docutils literal notranslate"><span class="pre">viz</span></code>, <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">jobsearch</span></code>), not the folder name.</p>
+</section>
+<hr class="docutils" />
+<section id="the-two-level-filterable-browser">
+<h2>The two-level filterable browser<a class="headerlink" href="#the-two-level-filterable-browser" title="Link to this heading">#</a></h2>
+<p>Both browser levels are produced by <strong>one shared <code class="docutils literal notranslate"><span class="pre">render_browser()</span></code></strong> — identical v2
+mechanism, differing only in the grouping key and link targets:</p>
+<ul class="simple">
+<li><p><strong>Top hub</strong> (<code class="docutils literal notranslate"><span class="pre">index.rst</span></code>): groups all 216 lessons by the <strong>8 sections</strong>; each
+section is a collapsed <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dropdown::</span></code> whose rows link to lesson pages under
+<code class="docutils literal notranslate"><span class="pre">&lt;folder&gt;/</span></code>.</p></li>
+<li><p><strong>Section browser</strong> (<code class="docutils literal notranslate"><span class="pre">&lt;folder&gt;/index.rst</span></code>): groups that section’s lessons by its
+<strong>stages</strong>; each stage is a collapsed dropdown of that stage’s lessons.</p></li>
+</ul>
+<p>Each browser carries:</p>
+<ul class="simple">
+<li><p>a dependency-free JS <strong>filter box</strong> (<code class="docutils literal notranslate"><span class="pre">id=&quot;term-filter&quot;</span></code>) matching lesson title OR
+<code class="docutils literal notranslate"><span class="pre">GLOSS</span></code> keyword, auto-opening matching dropdowns, showing a live match count, and
+degrading to a plain list when JS is off;</p></li>
+<li><p>collapsed <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dropdown::</span></code> groups (class <code class="docutils literal notranslate"><span class="pre">details.sd-dropdown</span></code>) with a blurb and rows
+<code class="docutils literal notranslate"><span class="pre">NN</span> <span class="pre">·</span> <span class="pre">Title</span> <span class="pre">—</span> <span class="pre">gloss</span></code>;</p></li>
+<li><p>an A–Z master dropdown (class <code class="docutils literal notranslate"><span class="pre">term-az</span></code>).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="legacy-anchor-compatibility-compat-anchors">
+<h2>Legacy anchor compatibility (<code class="docutils literal notranslate"><span class="pre">COMPAT_ANCHORS</span></code>)<a class="headerlink" href="#legacy-anchor-compatibility-compat-anchors" title="Link to this heading">#</a></h2>
+<p>The pre-existing hand-written hub used 9 anchors. To avoid breaking inbound links,
+<strong>every lesson page</strong> emits these as compatibility anchors (after its own page anchor),
+formatted per page as <code class="docutils literal notranslate"><span class="pre">_&lt;anchor&gt;-&lt;sec&gt;-NNN:</span></code> so they remain globally unique while
+resolving to the lesson:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">-</span><span class="n">analytics</span>   <span class="n">da</span><span class="o">-</span><span class="n">foundations</span>  <span class="n">da</span><span class="o">-</span><span class="n">decisions</span>  <span class="n">da</span><span class="o">-</span><span class="n">prep</span>
+<span class="n">da</span><span class="o">-</span><span class="n">cleaning</span>      <span class="n">da</span><span class="o">-</span><span class="n">analyze</span>      <span class="n">da</span><span class="o">-</span><span class="n">viz</span>        <span class="n">da</span><span class="o">-</span><span class="n">python</span>
+<span class="n">da</span><span class="o">-</span><span class="n">jobsearch</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="landmines-exact-titles-copy-verbatim-never-retype">
+<h2>Landmines (exact titles — copy verbatim, never retype)<a class="headerlink" href="#landmines-exact-titles-copy-verbatim-never-retype" title="Link to this heading">#</a></h2>
+<p>The inventory preserves several source-title oddities. Their <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> / <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code> /
+<code class="docutils literal notranslate"><span class="pre">GLOSS</span></code> keys <strong>must</strong> match the frozen title exactly; retyping with ASCII look-alikes,
+“correcting” a typo, or normalising a special character will trip the fail-fast guard.
+Lesson ids below are <strong>per-section</strong> (the number within that section’s folder).</p>
+<section id="untitled-numeric-slug-posts-2-prep">
+<h3>1 · Untitled numeric-slug posts ×2 (prep)<a class="headerlink" href="#untitled-numeric-slug-posts-2-prep" title="Link to this heading">#</a></h3>
+<p>Two source posts had numeric-only slugs; the inventory carries descriptive titles for
+them. Nothing special in the key — listed so they are not mistaken for errors.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lesson</p></th>
+<th class="head"><p>Source slug</p></th>
+<th class="head"><p>Title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>prep 023</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">…/15229</span></code></p></td>
+<td><p>Querying Data with SQL</p></td>
+</tr>
+<tr class="row-odd"><td><p>prep 025</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">…/15236</span></code></p></td>
+<td><p>Data Security in Spreadsheets</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="intra-course-duplicate-cleaning">
+<h3>2 · Intra-course duplicate (cleaning)<a class="headerlink" href="#intra-course-duplicate-cleaning" title="Link to this heading">#</a></h3>
+<p>Two near-identical titles, kept distinct by the <code class="docutils literal notranslate"><span class="pre">(revisited)</span></code> suffix, with distinct
+filenames, distinct H1s, distinct bodies, and cross-links to each other:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lesson</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Body angle</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cleaning 001</p></td>
+<td><p>The Importance of Clean Data</p></td>
+<td><p>the general case</p></td>
+</tr>
+<tr class="row-odd"><td><p>cleaning 010</p></td>
+<td><p>The Importance of Clean Data (revisited)</p></td>
+<td><p>the business-cost angle</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Do <strong>not</strong> collapse them; both keys are in the frozen inventory.</p>
+</section>
+<section id="special-characters-in-titles">
+<h3>3 · Special characters in titles<a class="headerlink" href="#special-characters-in-titles" title="Link to this heading">#</a></h3>
+<p>Written <strong>literally</strong> into the quoted-heredoc <code class="docutils literal notranslate"><span class="pre">r&quot;&quot;&quot;…&quot;&quot;&quot;</span></code> body (this is safe — see the
+triple-quote note). The H1 bar is sized by Python <code class="docutils literal notranslate"><span class="pre">len()</span></code>, which counts each as one
+column.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lesson</p></th>
+<th class="head"><p>Char</p></th>
+<th class="head"><p>Title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>analyze 030</p></td>
+<td><p>em-dash <code class="docutils literal notranslate"><span class="pre">\u2014</span></code></p></td>
+<td><p>Creating Temporary Tables in SQL <strong>—</strong> Methods, Trade-offs, and Best Practices</p></td>
+</tr>
+<tr class="row-odd"><td><p>viz 011</p></td>
+<td><p>subscript-2 <code class="docutils literal notranslate"><span class="pre">\u2082</span></code></p></td>
+<td><p>Creating a CO<strong>₂</strong> Emissions Visualization in Tableau Public</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="preserved-source-typo">
+<h3>4 · Preserved source typo<a class="headerlink" href="#preserved-source-typo" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lesson</p></th>
+<th class="head"><p>Title (typo kept verbatim)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>python 013</p></td>
+<td><p>While Loops and Iteration in <strong>Python</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The missing final “n” is preserved in <strong>both</strong> the title/H1 and the slug
+(<code class="docutils literal notranslate"><span class="pre">013-while-loops-and-iteration-in-pytho.rst</span></code>). A clean-room rebuild must reproduce the
+source byte-for-byte, so do <strong>not</strong> “correct” it to <em>Python</em>.</p>
+</section>
+<section id="triple-quote-collision-the-r-rule">
+<h3>5 · Triple-quote collision (the <code class="docutils literal notranslate"><span class="pre">r'''</span></code> rule)<a class="headerlink" href="#triple-quote-collision-the-r-rule" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lesson</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Delimiter</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>python 010</p></td>
+<td><p>Comments, Algorithms, and Docstrings in Python</p></td>
+<td><p><strong><code class="docutils literal notranslate"><span class="pre">r'''…'''</span></code></strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This lesson’s code block shows a NumPyDoc <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;…&quot;&quot;&quot;</span></code> docstring. Placed inside an
+<code class="docutils literal notranslate"><span class="pre">r&quot;&quot;&quot;…&quot;&quot;&quot;</span></code> <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> value, the inner <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> <strong>terminates the string early</strong> and the
+build fails loudly with a <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> (it does not silently ship). The fix: this one
+entry uses <strong><code class="docutils literal notranslate"><span class="pre">r'''…'''</span></code></strong> delimiters so the inner <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> is inert. No other <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>
+value uses <code class="docutils literal notranslate"><span class="pre">'''</span></code> as a delimiter (the only other <code class="docutils literal notranslate"><span class="pre">'''</span></code> in the file is inside the
+explanatory comment above that entry), and the docstrings body itself contains no
+<code class="docutils literal notranslate"><span class="pre">'''</span></code>, so the swap is safe.</p>
+<blockquote>
+<div><p><strong>Rule for any future lesson:</strong> if a code block shows a <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> docstring, that
+<code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> entry <strong>must</strong> use the <code class="docutils literal notranslate"><span class="pre">r'''…'''</span></code> delimiter. Writing literal Unicode
+(em-dash, subscript, etc.) into an <code class="docutils literal notranslate"><span class="pre">r&quot;&quot;&quot;…&quot;&quot;&quot;</span></code> body is fine; only triple-quote
+<strong>sequences</strong> in code blocks force the <code class="docutils literal notranslate"><span class="pre">r'''</span></code> delimiter.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="rst-validation-conventions">
+<h2>RST &amp; validation conventions<a class="headerlink" href="#rst-validation-conventions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Section underlines</strong> must be ≥ header length. Unicode (—, ₂, &amp;, parentheses)
+counts as <strong>one column</strong> via Python <code class="docutils literal notranslate"><span class="pre">len()</span></code>. Short “Why … matters”-style headings are
+the usual offenders — count the dashes deliberately (e.g. <code class="docutils literal notranslate"><span class="pre">Why</span> <span class="pre">masking</span> <span class="pre">matters</span></code> is 19
+chars → needs ≥ 19 dashes). The generator sizes the H1 bar automatically; only the
+in-body sub-headings written by hand in <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> need manual care.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span> <span class="pre">python</span></code> / <code class="docutils literal notranslate"><span class="pre">sql</span></code></strong> bodies are indented 3 spaces. The underline
+validator <strong>skips</strong> any line starting with 3 spaces, so code content never
+false-positives.</p></li>
+<li><p>Each technical lesson’s code imports what it uses (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>,
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>) so import statements stay copy-runnable.</p></li>
+</ul>
+<section id="the-inline-nested-validator-run-every-build">
+<h3>The inline nested validator (run every build)<a class="headerlink" href="#the-inline-nested-validator-run-every-build" title="Link to this heading">#</a></h3>
+<p>A short Python block (not <code class="docutils literal notranslate"><span class="pre">_buildcheck.py</span></code>) that, over all <code class="docutils literal notranslate"><span class="pre">**/*.rst</span></code>:</p>
+<ol class="arabic simple">
+<li><p>builds the doc-set (every <code class="docutils literal notranslate"><span class="pre">.rst</span></code> stem) and anchor-set (every <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_name:</span></code>);</p></li>
+<li><p>resolves each <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> target <strong>relative to its file’s directory</strong> (posix normpath;
+a leading <code class="docutils literal notranslate"><span class="pre">/</span></code> means “from the docs root”) and flags any miss;</p></li>
+<li><p>checks each <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> target against the anchor-set;</p></li>
+<li><p>checks every non-indented heading’s underline ≥ heading length;</p></li>
+<li><p>recomputes the sha256 over all pages, rebuilds once, and compares (idempotency);</p></li>
+<li><p>confirms <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> / <code class="docutils literal notranslate"><span class="pre">MINDMAP</span></code> / <code class="docutils literal notranslate"><span class="pre">GLOSS</span></code> keys ⊆ inventory titles;</p></li>
+<li><p>runs a per-section census of full vs stub pages.</p></li>
+</ol>
+</section>
+<section id="validator-report">
+<h3>Validator report<a class="headerlink" href="#validator-report" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">→</span> <span class="pre">validate</span> <span class="pre">→</span> <span class="pre">idempotency</span></code> prints, each run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">validate</span><span class="p">:</span> <span class="n">doc</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">ref</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">underline</span> <span class="mi">0</span>
+<span class="n">idempotent</span><span class="p">:</span> <span class="kc">True</span> <span class="o">|</span> <span class="n">sha</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">sha16</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>with <code class="docutils literal notranslate"><span class="pre">full</span> <span class="pre">lessons:</span> <span class="pre">216/216</span></code> and every section <code class="docutils literal notranslate"><span class="pre">&lt;n&gt;/&lt;total&gt;</span></code> at its target. The
+defined-anchor set includes the six project hub anchors — <code class="docutils literal notranslate"><span class="pre">terminology-index</span></code>,
+<code class="docutils literal notranslate"><span class="pre">time-series-index</span></code>, <code class="docutils literal notranslate"><span class="pre">deep-learning-index</span></code>, <code class="docutils literal notranslate"><span class="pre">data-preparation-and-analysis-index</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bayesian-data-analysis-index</span></code>, and <code class="docutils literal notranslate"><span class="pre">data-analytics-index</span></code> — alongside the pre-existing
+non-project <code class="docutils literal notranslate"><span class="pre">cheatsheet-index</span></code>, <code class="docutils literal notranslate"><span class="pre">glossary-index</span></code>, and <code class="docutils literal notranslate"><span class="pre">resources-index</span></code>.</p>
+</section>
+<section id="ship-census">
+<h3>Ship census<a class="headerlink" href="#ship-census" title="Link to this heading">#</a></h3>
+<p>The zip should carry, for this course, <strong>225 <code class="docutils literal notranslate"><span class="pre">data_analytics/*.rst</span></code></strong> files
+(216 lessons + 8 section indexes + 1 hub) and <strong>0</strong> <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> / <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> entries.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="rebuilding">
+<h2>Rebuilding<a class="headerlink" href="#rebuilding" title="Link to this heading">#</a></h2>
+<p>From this folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>build_data_analytics.py
+</pre></div>
+</div>
+<p>Writes the hub <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, eight section <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> browsers, and 216 pages. Then run
+the inline nested validator block, and sync + rezip the whole <code class="docutils literal notranslate"><span class="pre">learn/</span></code> tree
+defensively:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SRC</span><span class="o">=</span>/home/claude/learn/data_analytics
+<span class="nv">OUT</span><span class="o">=</span>/mnt/user-data/outputs/learn/data_analytics
+find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sync<span class="p">;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>
+cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SRC</span><span class="s2">&quot;</span>/.<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>/<span class="p">;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>/__pycache__<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUT</span><span class="s2">&quot;</span>/*/__pycache__
+<span class="nb">cd</span><span class="w"> </span>/mnt/user-data/outputs<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>zip<span class="w"> </span>-rq<span class="w"> </span>scikit-plots-learn.zip<span class="w"> </span>learn<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-x<span class="w"> </span><span class="s1">&#39;*__pycache__*&#39;</span><span class="w"> </span>-x<span class="w"> </span><span class="s1">&#39;*.pyc&#39;</span>
+</pre></div>
+</div>
+<section id="environment-notes">
+<h3>Environment notes<a class="headerlink" href="#environment-notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bash</span></code> here is <code class="docutils literal notranslate"><span class="pre">/bin/sh</span></code> (dash): no <code class="docutils literal notranslate"><span class="pre">${var:0:N}</span></code> slicing, and <code class="docutils literal notranslate"><span class="pre">$'\uXXXX'</span></code> escapes do
+<strong>not</strong> expand — append any Unicode inventory rows via Python, never a heredoc.
+(The inventory is frozen, so this only matters if re-harvesting. Writing literal
+Unicode into a quoted-heredoc <code class="docutils literal notranslate"><span class="pre">r&quot;&quot;&quot;…&quot;&quot;&quot;</span></code> body is safe.)</p></li>
+<li><p>The output mount can throw transient I/O errors mid-sync; delete file-by-file,
+<code class="docutils literal notranslate"><span class="pre">sync</span></code>, then remove and recreate the directory to recover.</p></li>
+<li><p>The working tree resets between sessions; the source of truth persists under
+<code class="docutils literal notranslate"><span class="pre">/mnt/user-data/outputs/learn/data_analytics/</span></code>. Restore by copying it back (plus the
+five sealed sibling folders) before rebuilding.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="provenance">
+<h2>Provenance<a class="headerlink" href="#provenance" title="Link to this heading">#</a></h2>
+<p>Content is an original rewrite of a data-analytics curriculum, written in original
+words to respect copyright, cross-linked into the mind-map, and mapped where relevant
+to the earlier tools the course teaches (spreadsheets, SQL, NumPy, pandas). Most
+lessons are canonical fundamentals written from established knowledge; a handful were
+grounded per batch against authoritative sources where they name specific tools or
+frameworks — the <strong>McCandless Method</strong> for data storytelling, and the AI job-search
+tools <strong>Career Dreamer</strong> (Grow with Google), <strong>NotebookLM</strong> (Google’s source-grounded
+research assistant), and <strong>Gemini Live</strong> (Google’s real-time voice mode) — each
+described from its documented behaviour rather than assumption. Every lesson ends with
+an honest caveat, and the job-search section keeps the course’s throughline: reason
+from evidence, respect data integrity, communicate honestly, and present real ability
+rather than fabricated claims.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-in-this-folder">What is in this folder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curriculum-8-sections-31-stages-216-lessons">Curriculum: 8 sections, 31 stages, 216 lessons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-generator-works">How the generator works</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-section-numbering">Per-section numbering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#each-lesson-page">Each lesson page</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-link-resolution">Cross-link resolution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anchors-and-the-da-prefix">Anchors and the <code class="docutils literal notranslate"><span class="pre">da-</span></code> prefix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-two-level-filterable-browser">The two-level filterable browser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-anchor-compatibility-compat-anchors">Legacy anchor compatibility (<code class="docutils literal notranslate"><span class="pre">COMPAT_ANCHORS</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landmines-exact-titles-copy-verbatim-never-retype">Landmines (exact titles — copy verbatim, never retype)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#untitled-numeric-slug-posts-2-prep">1 · Untitled numeric-slug posts ×2 (prep)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intra-course-duplicate-cleaning">2 · Intra-course duplicate (cleaning)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-characters-in-titles">3 · Special characters in titles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preserved-source-typo">4 · Preserved source typo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triple-quote-collision-the-r-rule">5 · Triple-quote collision (the <code class="docutils literal notranslate"><span class="pre">r'''</span></code> rule)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rst-validation-conventions">RST &amp; validation conventions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inline-nested-validator-run-every-build">The inline nested validator (run every build)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validator-report">Validator report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ship-census">Ship census</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuilding">Rebuilding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-notes">Environment notes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#provenance">Provenance</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/learn/data_analytics/DATA_ANALYTICS.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/learn/data_analytics/DATA_ANALYTICS.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+
+  
+  
+  
+
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

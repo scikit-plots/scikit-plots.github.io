@@ -4,6 +4,16 @@
 
 [◀ Previous · Binary Classification and Logistic Regression (Neural Network Basics)](05-binary-classification-and-logistic-regression-neural-network-basics.html) · [Next · Logistic Regression – Loss Function and Cost Function ▶](07-logistic-regression-loss-function-and-cost-function.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## From score to probability[#](#from-score-to-probability "Link to this heading")
 
 Given an input \(x\), logistic regression predicts \(\hat{y} = P(y = 1 \mid x)\) — the

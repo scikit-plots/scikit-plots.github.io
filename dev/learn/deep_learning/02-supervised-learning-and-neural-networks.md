@@ -4,6 +4,16 @@
 
 [◀ Previous · What is a Neural Network?](01-what-is-a-neural-network.html) · [Next · Why Deep Learning is Taking Off ▶](03-why-deep-learning-is-taking-off.html) · [↑ Section](index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## Learning a mapping[#](#learning-a-mapping "Link to this heading")
 
 Nearly all the commercial value of neural networks comes from ****supervised learning****: you are given

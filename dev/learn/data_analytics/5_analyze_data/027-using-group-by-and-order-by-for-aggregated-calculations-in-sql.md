@@ -4,6 +4,16 @@
 
 ◀ [Previous](026-embedding-calculations-in-sql-queries.html) · [Next](028-data-validation-as-an-ongoing-analytical-process.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
+> **Important**
+> ****AI-generated content.**** This page was written with the assistance of an
+AI language model and is provided as a learning aid. Despite careful
+review, it may still contain mistakes, omissions, or out-of-date
+information. Whether you are new to the topic, a team lead, or a senior
+practitioner, treat it as a starting point rather than an authoritative
+reference: read it critically and independently verify anything you act on
+(code, commands, figures, and factual claims) against official
+documentation and primary sources before relying on it.
+
 ## The SQL pivot, complete[#](#the-sql-pivot-complete "Link to this heading")
 
 The calculation stage culminates where SQL aggregation began: ****GROUP BY**** to
