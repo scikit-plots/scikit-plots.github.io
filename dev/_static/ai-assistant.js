@@ -471,6 +471,10 @@
         chat:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="12" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="0.8" fill="currentColor" stroke="none"/></svg>',
         // ── v0.3 additions — mirror _ICON_META in _static/__init__.py ──────────
         newChat:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>',
+        // Compose / spark variant of "new chat" — additive, inert, for future usage.
+        // Filled 16x16 glyph; inline SVG inherits currentColor (dark-mode safe).
+        // Mirror of new-chat-compose.svg / _SVG_NEW_CHAT_COMPOSE in _static/__init__.py.
+        newChatCompose: '<svg viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M13.75 10c0-2.389-.983-4.131-1.696-5.08-.19.437-.74 1.33-2.054 1.33-.765 0-1.3-.334-1.643-.712-.306-.338-.455-.706-.513-.902l-.01-.037c-.097-.36-.176-.738-.253-1.079-.079-.35-.159-.676-.262-.98-.108-.318-.24-.6-.412-.844-.865 1.82-2.002 3.05-2.899 4.151C2.98 7.111 2.25 8.22 2.25 10c0 1.545.923 2.955 2.374 3.831-.074-.277-.115-.565-.123-.855l-.001-.104c0-.957.522-1.784 1.107-2.472.58-.685 1.352-1.371 1.952-1.968l.024-.022c.245-.22.622-.213.858.022.613.61 1.372 1.31 1.956 2.012.575.691 1.103 1.52 1.103 2.428l-.001.104c-.008.29-.049.578-.123.855 1.45-.876 2.374-2.286 2.374-3.831M15 10c0 2.817-2.241 5.046-5.036 5.756l-.133.032c-.297.07-.601-.085-.72-.366-.118-.28-.016-.607.242-.77l.053-.035c.528-.362.824-.967.843-1.674l.001-.07c0-.443-.271-.977-.814-1.63-.416-.5-.92-.99-1.438-1.494-.52.5-1.019.965-1.438 1.46-.533.627-.81 1.164-.81 1.663l.001.071c.02.73.335 1.353.896 1.71.258.163.36.488.241.77-.114.272-.403.425-.691.371l-.028-.006C3.313 15.116 1 12.862 1 10c0-2.22.957-3.611 2.039-4.941C4.119 3.73 5.305 2.473 6.104.4l.014-.033c.073-.16.21-.284.38-.338.181-.057.378-.03.536.076l.074.05c.756.533 1.148 1.26 1.394 1.983.126.37.218.75.299 1.107.083.368.152.703.24 1.03l.008.026c.025.074.096.245.235.398.142.157.356.301.716.301.34 0 .537-.111.66-.222.137-.123.216-.277.26-.385l.012-.036c.03-.094.063-.263.101-.478.018-.1.04-.221.063-.312.009-.035.03-.123.075-.208.013-.026.082-.165.242-.263.097-.06.24-.109.408-.088.142.017.248.078.319.135l.028.023.049.046C12.6 3.575 15 5.996 15 10"/></svg>',
         exportTxt:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
         copyAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
         privacy:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
@@ -1117,24 +1121,6 @@
     var TurndownService=function(){"use strict";function e(e,n){return Array(n+1).join(e)}var n=["ADDRESS","ARTICLE","ASIDE","AUDIO","BLOCKQUOTE","BODY","CANVAS","CENTER","DD","DIR","DIV","DL","DT","FIELDSET","FIGCAPTION","FIGURE","FOOTER","FORM","FRAMESET","H1","H2","H3","H4","H5","H6","HEADER","HGROUP","HR","HTML","ISINDEX","LI","MAIN","MENU","NAV","NOFRAMES","NOSCRIPT","OL","OUTPUT","P","PRE","SECTION","TABLE","TBODY","TD","TFOOT","TH","THEAD","TR","UL"];function t(e){return a(e,n)}var r=["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR"];function i(e){return a(e,r)}var o=["A","TABLE","THEAD","TBODY","TFOOT","TH","TD","IFRAME","SCRIPT","AUDIO","VIDEO"];function a(e,n){return n.indexOf(e.nodeName)>=0}function l(e,n){return e.getElementsByTagName&&n.some(function(n){return e.getElementsByTagName(n).length})}var u={};function c(e){return e?e.replace(/(\n+\s*)+/g,"\n"):""}function s(e){for(var n in this.options=e,this._keep=[],this._remove=[],this.blankRule={replacement:e.blankReplacement},this.keepReplacement=e.keepReplacement,this.defaultRule={replacement:e.defaultReplacement},this.array=[],e.rules)this.array.push(e.rules[n])}function f(e,n,t){for(var r=0;r<e.length;r++){var i=e[r];if(d(i,n,t))return i}}function d(e,n,t){var r=e.filter;if("string"==typeof r){if(r===n.nodeName.toLowerCase())return!0}else if(Array.isArray(r)){if(r.indexOf(n.nodeName.toLowerCase())>-1)return!0}else{if("function"!=typeof r)throw new TypeError("`filter` needs to be a string, array, or function");if(r.call(e,n,t))return!0}}function p(e){var n=e.nextSibling||e.parentNode;return e.parentNode.removeChild(e),n}function h(e,n,t){return e&&e.parentNode===n||t(n)?n.nextSibling||n.parentNode:n.firstChild||n.nextSibling||n.parentNode}u.paragraph={filter:"p",replacement:function(e){return"\n\n"+e+"\n\n"}},u.lineBreak={filter:"br",replacement:function(e,n,t){return t.br+"\n"}},u.heading={filter:["h1","h2","h3","h4","h5","h6"],replacement:function(n,t,r){var i=Number(t.nodeName.charAt(1));return"setext"===r.headingStyle&&i<3?"\n\n"+n+"\n"+e(1===i?"=":"-",n.length)+"\n\n":"\n\n"+e("#",i)+" "+n+"\n\n"}},u.blockquote={filter:"blockquote",replacement:function(e){return"\n\n"+(e=(e=e.replace(/^\n+|\n+$/g,"")).replace(/^/gm,"> "))+"\n\n"}},u.list={filter:["ul","ol"],replacement:function(e,n){var t=n.parentNode;return"LI"===t.nodeName&&t.lastElementChild===n?"\n"+e:"\n\n"+e+"\n\n"}},u.listItem={filter:"li",replacement:function(e,n,t){e=e.replace(/^\n+/,"").replace(/\n+$/,"\n").replace(/\n/gm,"\n    ");var r=t.bulletListMarker+"   ",i=n.parentNode;if("OL"===i.nodeName){var o=i.getAttribute("start"),a=Array.prototype.indexOf.call(i.children,n);r=(o?Number(o)+a:a+1)+".  "}return r+e+(n.nextSibling&&!/\n$/.test(e)?"\n":"")}},u.indentedCodeBlock={filter:function(e,n){return"indented"===n.codeBlockStyle&&"PRE"===e.nodeName&&e.firstChild&&"CODE"===e.firstChild.nodeName},replacement:function(e,n,t){return"\n\n    "+n.firstChild.textContent.replace(/\n/g,"\n    ")+"\n\n"}},u.fencedCodeBlock={filter:function(e,n){return"fenced"===n.codeBlockStyle&&"PRE"===e.nodeName&&e.firstChild&&"CODE"===e.firstChild.nodeName},replacement:function(n,t,r){for(var i,o=((t.firstChild.getAttribute("class")||"").match(/language-(\S+)/)||[null,""])[1],a=t.firstChild.textContent,l=r.fence.charAt(0),u=3,c=new RegExp("^"+l+"{3,}","gm");i=c.exec(a);)i[0].length>=u&&(u=i[0].length+1);var s=e(l,u);return"\n\n"+s+o+"\n"+a.replace(/\n$/,"")+"\n"+s+"\n\n"}},u.horizontalRule={filter:"hr",replacement:function(e,n,t){return"\n\n"+t.hr+"\n\n"}},u.inlineLink={filter:function(e,n){return"inlined"===n.linkStyle&&"A"===e.nodeName&&e.getAttribute("href")},replacement:function(e,n){var t=n.getAttribute("href"),r=c(n.getAttribute("title"));return r&&(r=' "'+r+'"'),"["+e+"]("+t+r+")"}},u.referenceLink={filter:function(e,n){return"referenced"===n.linkStyle&&"A"===e.nodeName&&e.getAttribute("href")},replacement:function(e,n,t){var r,i,o=n.getAttribute("href"),a=c(n.getAttribute("title"));switch(a&&(a=' "'+a+'"'),t.linkReferenceStyle){case"collapsed":r="["+e+"][]",i="["+e+"]: "+o+a;break;case"shortcut":r="["+e+"]",i="["+e+"]: "+o+a;break;default:var l=this.references.length+1;r="["+e+"]["+l+"]",i="["+l+"]: "+o+a}return this.references.push(i),r},references:[],append:function(e){var n="";return this.references.length&&(n="\n\n"+this.references.join("\n")+"\n\n",this.references=[]),n}},u.emphasis={filter:["em","i"],replacement:function(e,n,t){return e.trim()?t.emDelimiter+e+t.emDelimiter:""}},u.strong={filter:["strong","b"],replacement:function(e,n,t){return e.trim()?t.strongDelimiter+e+t.strongDelimiter:""}},u.code={filter:function(e){var n=e.previousSibling||e.nextSibling,t="PRE"===e.parentNode.nodeName&&!n;return"CODE"===e.nodeName&&!t},replacement:function(e){if(!e)return"";e=e.replace(/\r?\n|\r/g," ");for(var n=/^`|^ .*?[^ ].* $|`$/.test(e)?" ":"",t="`",r=e.match(/`+/gm)||[];-1!==r.indexOf(t);)t+="`";return t+n+e+n+t}},u.image={filter:"img",replacement:function(e,n){var t=c(n.getAttribute("alt")),r=n.getAttribute("src")||"",i=c(n.getAttribute("title"));return r?"!["+t+"]("+r+(i?' "'+i+'"':"")+")":""}},s.prototype={add:function(e,n){this.array.unshift(n)},keep:function(e){this._keep.unshift({filter:e,replacement:this.keepReplacement})},remove:function(e){this._remove.unshift({filter:e,replacement:function(){return""}})},forNode:function(e){return e.isBlank?this.blankRule:(n=f(this.array,e,this.options))||(n=f(this._keep,e,this.options))||(n=f(this._remove,e,this.options))?n:this.defaultRule;var n},forEach:function(e){for(var n=0;n<this.array.length;n++)e(this.array[n],n)}};var g="undefined"!=typeof window?window:{};var m,v,A=function(){var e=g.DOMParser,n=!1;try{(new e).parseFromString("","text/html")&&(n=!0)}catch(e){}return n}()?g.DOMParser:(m=function(){},function(){var e=!1;try{document.implementation.createHTMLDocument("").open()}catch(n){window.ActiveXObject&&(e=!0)}return e}()?m.prototype.parseFromString=function(e){var n=new window.ActiveXObject("htmlfile");return n.designMode="on",n.open(),n.write(e),n.close(),n}:m.prototype.parseFromString=function(e){var n=document.implementation.createHTMLDocument("");return n.open(),n.write(e),n.close(),n},m);function y(e,n){var r;"string"==typeof e?r=(v=v||new A).parseFromString('<x-turndown id="turndown-root">'+e+"</x-turndown>","text/html").getElementById("turndown-root"):r=e.cloneNode(!0);return function(e){var n=e.element,t=e.isBlock,r=e.isVoid,i=e.isPre||function(e){return"PRE"===e.nodeName};if(n.firstChild&&!i(n)){for(var o=null,a=!1,l=null,u=h(l,n,i);u!==n;){if(3===u.nodeType||4===u.nodeType){var c=u.data.replace(/[ \r\n\t]+/g," ");if(o&&!/ $/.test(o.data)||a||" "!==c[0]||(c=c.substr(1)),!c){u=p(u);continue}u.data=c,o=u}else{if(1!==u.nodeType){u=p(u);continue}t(u)||"BR"===u.nodeName?(o&&(o.data=o.data.replace(/ $/,"")),o=null,a=!1):r(u)||i(u)?(o=null,a=!0):o&&(a=!1)}var s=h(l,u,i);l=u,u=s}o&&(o.data=o.data.replace(/ $/,""),o.data||p(o))}}({element:r,isBlock:t,isVoid:i,isPre:n.preformattedCode?N:null}),r}function N(e){return"PRE"===e.nodeName||"CODE"===e.nodeName}function E(e,n){return e.isBlock=t(e),e.isCode="CODE"===e.nodeName||e.parentNode.isCode,e.isBlank=function(e){return!i(e)&&!function(e){return a(e,o)}(e)&&/^\s*$/i.test(e.textContent)&&!function(e){return l(e,r)}(e)&&!function(e){return l(e,o)}(e)}(e),e.flankingWhitespace=function(e,n){if(e.isBlock||n.preformattedCode&&e.isCode)return{leading:"",trailing:""};var t=(r=e.textContent,i=r.match(/^(([ \t\r\n]*)(\s*))(?:(?=\S)[\s\S]*\S)?((\s*?)([ \t\r\n]*))$/),{leading:i[1],leadingAscii:i[2],leadingNonAscii:i[3],trailing:i[4],trailingNonAscii:i[5],trailingAscii:i[6]});var r,i;t.leadingAscii&&T("left",e,n)&&(t.leading=t.leadingNonAscii);t.trailingAscii&&T("right",e,n)&&(t.trailing=t.trailingNonAscii);return{leading:t.leading,trailing:t.trailing}}(e,n),e}function T(e,n,r){var i,o,a;return"left"===e?(i=n.previousSibling,o=/ $/):(i=n.nextSibling,o=/^ /),i&&(3===i.nodeType?a=o.test(i.nodeValue):r.preformattedCode&&"CODE"===i.nodeName?a=!1:1!==i.nodeType||t(i)||(a=o.test(i.textContent))),a}var R=Array.prototype.reduce,C=[[/\\/g,"\\\\"],[/\*/g,"\\*"],[/^-/g,"\\-"],[/^\+ /g,"\\+ "],[/^(=+)/g,"\\$1"],[/^(#{1,6}) /g,"\\$1 "],[/`/g,"\\`"],[/^~~~/g,"\\~~~"],[/\[/g,"\\["],[/\]/g,"\\]"],[/^>/g,"\\>"],[/_/g,"\\_"],[/^(\d+)\. /g,"$1\\. "]];function k(e){if(!(this instanceof k))return new k(e);var n={rules:u,headingStyle:"setext",hr:"* * *",bulletListMarker:"*",codeBlockStyle:"indented",fence:"```",emDelimiter:"_",strongDelimiter:"**",linkStyle:"inlined",linkReferenceStyle:"full",br:"  ",preformattedCode:!1,blankReplacement:function(e,n){return n.isBlock?"\n\n":""},keepReplacement:function(e,n){return n.isBlock?"\n\n"+n.outerHTML+"\n\n":n.outerHTML},defaultReplacement:function(e,n){return n.isBlock?"\n\n"+e+"\n\n":e}};this.options=function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r])}return e}({},n,e),this.rules=new s(this.options)}function b(e){var n=this;return R.call(e.childNodes,function(e,t){var r="";return 3===(t=new E(t,n.options)).nodeType?r=t.isCode?t.nodeValue:n.escape(t.nodeValue):1===t.nodeType&&(r=D.call(n,t)),S(e,r)},"")}function O(e){var n=this;return this.rules.forEach(function(t){"function"==typeof t.append&&(e=S(e,t.append(n.options)))}),e.replace(/^[\t\r\n]+/,"").replace(/[\t\r\n\s]+$/,"")}function D(e){var n=this.rules.forNode(e),t=b.call(this,e),r=e.flankingWhitespace;return(r.leading||r.trailing)&&(t=t.trim()),r.leading+n.replacement(t,e,this.options)+r.trailing}function S(e,n){var t=function(e){for(var n=e.length;n>0&&"\n"===e[n-1];)n--;return e.substring(0,n)}(e),r=n.replace(/^\n*/,""),i=Math.max(e.length-t.length,n.length-r.length);return t+"\n\n".substring(0,i)+r}return k.prototype={turndown:function(e){if(!function(e){return null!=e&&("string"==typeof e||e.nodeType&&(1===e.nodeType||9===e.nodeType||11===e.nodeType))}(e))throw new TypeError(e+" is not a string, or an element/document/fragment node.");if(""===e)return"";var n=b.call(this,new y(e,this.options));return O.call(this,n)},use:function(e){if(Array.isArray(e))for(var n=0;n<e.length;n++)this.use(e[n]);else{if("function"!=typeof e)throw new TypeError("plugin must be a Function or an Array of Functions");e(this)}return this},addRule:function(e,n){return this.rules.add(e,n),this},keep:function(e){return this.rules.keep(e),this},remove:function(e){return this.rules.remove(e),this},escape:function(e){return C.reduce(function(e,n){return e.replace(n[0],n[1])},e)}},k}();
     // turndown@7.1.2 — MIT — end vendor
     /* eslint-enable */
-
-    /**
-     * Compatibility shim — previously performed async CDN loading of Turndown.
-     *
-     * TurndownService is now vendored inline (see block above) and is always
-     * synchronously available.  This function is retained so any call-site
-     * that passes a callback continues to work without modification; the
-     * callback is invoked synchronously on the same call stack.
-     *
-     * Developer note: do NOT restore CDN loading here.  The inline vendor is
-     * the correct long-term approach; it eliminates the entire class of
-     * iOS-Safari / ad-blocker / offline failures that motivated this change.
-     *
-     * @param {function(): void} callback  Called immediately.
-     */
-    function loadTurndown(callback) {
-        callback();
-    }
 
     /**
      * Bootstrap entry point — called by DOMContentLoaded (or immediately if
@@ -2631,8 +2617,7 @@
 // =============================================================================
 
     /* jshint esversion:5 */
-    if (typeof _EP !== 'undefined' && _EP &&
-            typeof _EP.resolve === 'function' &&
+    if (typeof _EP.resolve === 'function' &&
             typeof _EP.addCustomProfile !== 'function') {
 
         (function (_ep) {
@@ -4207,7 +4192,6 @@
      * @returns {Array<Object>}  Flat row objects, one per message.
      */
     function _buildExportRecords() {
-        var cfg     = window.AI_ASSISTANT_CONFIG || {};
         var pageUrl = (typeof location !== 'undefined') ? location.href : '';
         var sid     = _sessionId;
 
@@ -4943,7 +4927,7 @@ opts.jsonPayload + '\n' +
      * HTMLElement  A wrapper div containing trigger button + dropdown menu.
      */
     function _buildExportDropdownBtn(opts) {
-        var options    = (typeof opts === 'object' && opts !== null) ? opts : {};
+        var options    = (opts && typeof opts === 'object') ? opts : {};
         var onLinkMode = typeof options.onLinkMode === 'function' ? options.onLinkMode : null;
 
         var wrapper = document.createElement('div');
@@ -7011,8 +6995,7 @@ opts.jsonPayload + '\n' +
         'use strict';
 
         // ── Safety guard ──────────────────────────────────────────────────────
-        var _epSafe = (typeof _EP !== 'undefined' && _EP &&
-                       typeof _EP.resolve === 'function') ? _EP : null;
+        var _epSafe = (typeof _EP.resolve === 'function') ? _EP : null;
 
         // ── Shared constants ──────────────────────────────────────────────────
         var _FEATURE_DEFS = [
@@ -9852,7 +9835,7 @@ opts.jsonPayload + '\n' +
      *                          info_url, description, default} or null.
      */
     function _buildModelInfo(cfg) {
-        var activeModel = _getActiveModel ? _getActiveModel(cfg) : null;
+        var activeModel = _getActiveModel(cfg);
         if (activeModel) {
             return {
                 id:          activeModel.id,
@@ -12224,7 +12207,7 @@ opts.jsonPayload + '\n' +
      *   so no deregistration is needed — see the registry docblock.
      */
     function _buildShareExportSection(opts) {
-        var options    = (typeof opts === 'object' && opts !== null) ? opts : {};
+        var options    = (opts && typeof opts === 'object') ? opts : {};
         var onLinkMode = typeof options.onLinkMode === 'function' ? options.onLinkMode : null;
 
         // ── Format registry ───────────────────────────────────────────────────
@@ -12497,7 +12480,7 @@ opts.jsonPayload + '\n' +
     }
 
     function _buildShareSheet(opts) {
-        var sheetOpts  = (typeof opts === 'object' && opts !== null) ? opts : {};
+        var sheetOpts  = (opts && typeof opts === 'object') ? opts : {};
         var onLinkMode = typeof sheetOpts.onLinkMode === 'function'
             ? sheetOpts.onLinkMode : null;
         var cfg = window.AI_ASSISTANT_CONFIG || {};
@@ -13940,8 +13923,7 @@ opts.jsonPayload + '\n' +
                 if (!_hfEndpointUrl) {
                     var _trainUrl = '';
                     try {
-                        if (typeof _EP !== 'undefined' && _EP
-                            && typeof _EP.resolve === 'function') {
+                        if (typeof _EP.resolve === 'function') {
                             _trainUrl = _EP.resolve('training') || '';
                         }
                     } catch (_e) { _trainUrl = ''; }
@@ -14694,7 +14676,7 @@ opts.jsonPayload + '\n' +
         // Resolve the active profile label for the initial button text.
         (function () {
             var _epBtnLabel = 'Endpoint Configuration';
-            if (typeof _EP !== 'undefined' && _EP && _EP.hasProfiles && _EP.hasProfiles()) {
+            if (typeof _EP.hasProfiles === 'function' && _EP.hasProfiles()) {
                 var _activeProfiles = _EP.list();
                 var _activeKey      = _EP.getActive();
                 for (var _pi = 0; _pi < _activeProfiles.length; _pi++) {
@@ -17419,9 +17401,6 @@ opts.jsonPayload + '\n' +
 
         var protocol = window.location.protocol;
         var hostname = window.location.hostname;
-        var showLocalhostWarning =
-            window.location.protocol === 'file:';
-
         var insecureOrigin =
             protocol === 'file:' ||
             (
@@ -19797,7 +19776,7 @@ opts.jsonPayload + '\n' +
 
         // ── Typing indicator ──────────────────────────────────────────────
         var body = document.getElementById('ai-assistant-panel-body');
-        var typingEl = body ? _showTypingIndicator(body) : null;
+        if (body) { _showTypingIndicator(body); }
 
         var cfg = window.AI_ASSISTANT_CONFIG || {};
         try {
@@ -20202,7 +20181,6 @@ opts.jsonPayload + '\n' +
                                 String(errMsg).slice(0, 200),
                                 'error'
                             );
-                            sseEventType = 'message';
                             return;  // abort further SSE processing
                         }
                         try {
