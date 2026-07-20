@@ -19853,7 +19853,7 @@ opts.jsonPayload + '\n' +
         // Each transcript entry carries the model that generated it — enables
         // per-model analytics in JSON exports and DataFrame groupby operations.
         var modelInfo = (role === 'assistant')
-            ? _getActiveModel_cfg()
+            ? _getActiveModel(_cfg())
             : null;
 
         _recordMessage(role, text, modelInfo);   // v2: includes modelInfo
@@ -20336,7 +20336,7 @@ opts.jsonPayload + '\n' +
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
-        var _streamModelInfo = _getActiveModel_cfg();
+        var _streamModelInfo = _getActiveModel(_cfg());
         _recordMessage('assistant', accumulated || '(no response)', _streamModelInfo);
         // Read the timestamp just stored — same single-threaded guarantee as
         // _appendPanelMessage: the last _transcript entry is this streamed reply.
