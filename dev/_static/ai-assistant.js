@@ -8680,10 +8680,10 @@ opts.jsonPayload + '\n' +
 
         /** Orchestrate discovery / config, then render links + token posture. */
         function _buildDatasetSection(statusRow, linksWrap, tokenRow) {
-            var _cfg = _cfg();
+            var cfg = _cfg();
 
             // P1: explicit panel config wins — no network call.
-            var explicitRepo = (_cfg.panelDatasetRepo || '').trim();
+            var explicitRepo = (cfg.panelDatasetRepo || '').trim();
 
             var trainingUrl = (_epSafe && typeof _epSafe.resolve === 'function')
                 ? (_epSafe.resolve('training') || '') : '';
