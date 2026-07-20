@@ -5843,6 +5843,10 @@ opts.jsonPayload + '\n' +
     function _renderWelcome(body) {
         var cfg     = _cfg();
         var title   = cfg.panelTitle || 'AI Assistant';
+        // ✨ \u2728
+        if (!title.startsWith('\u2728')) {
+            title = '\u2728 ' + title;
+        }
         var quickQs = Array.isArray(cfg.panelQuickQuestions)
             ? cfg.panelQuickQuestions.slice(0, 5) : [];
 
