@@ -14580,7 +14580,7 @@ opts.jsonPayload + '\n' +
         var closeBtn    = _createIconBtn('close',    'Close ' + _escapeHtml(title), ICONS.close);
 
         // R3: clear conversation without page refresh ("Start a new chat").
-        var newChatBtn = _createIconBtn('new-chat', 'Start a new chat', ICONS.newChat);
+        var newChatBtn = _createIconBtn('new-chat', 'Start a new chat', ICONS.newChatCompose);
         newChatBtn.title = 'Start a new chat';
         newChatBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         newChatBtn.addEventListener('click', clearConversation);
