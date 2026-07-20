@@ -5,7 +5,7 @@
 [◀ Previous · Logistic Regression – Loss Function and Cost Function](07-logistic-regression-loss-function-and-cost-function.html) · [Next · Derivatives ▶](09-derivatives.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

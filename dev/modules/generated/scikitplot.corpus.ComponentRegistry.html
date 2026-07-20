@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:47:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-20T16:42:52Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -51,7 +51,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=6ecd9b07" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=4ddd039c" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
+    <script defer="defer" src="../../_static/ai-assistant.js?v=f3bcf783"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ComponentRegistry<a class="headerlink" href="#componentregistry" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ComponentRegistry</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L95"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ComponentRegistry</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L95"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry" title="Link to this definition">#</a></dt>
 <dd><p>Central look-up table for corpus pipeline components.</p>
 <p>Stores class references (not instances) for four component types:
 chunkers, filters, readers, and normalizers. Callers retrieve a class
@@ -1324,8 +1324,8 @@ and instantiate it with their own parameters.</p>
 built-in components via <a class="reference internal" href="#scikitplot.corpus.ComponentRegistry.register_builtins" title="scikitplot.corpus.ComponentRegistry.register_builtins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_builtins</span></code></a>. Third-party
 packages can register additional components after import.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b8cefdef-5144-4497-81e5-70feb4586da3">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b8cefdef-5144-4497-81e5-70feb4586da3','23d4539a-b819-4d0f-bfd9-ed3c7c33e747','d2e29413-2243-4fae-b81e-eaf8732147d3','../../lite/tree/../notebooks/index.html?path=209b2b5d_f73f_45b4_91f8_ff072a343043.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="59736d0e-d7f7-45cb-8841-662ca69701d8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('59736d0e-d7f7-45cb-8841-662ca69701d8','0db26ec8-b256-49bf-bb67-4b77e5702d46','ccbc0256-7e83-4ebb-b4a2-cb5a6c6001d7','../../lite/tree/../notebooks/index.html?path=0db0c3bd_c1da_4995_8adf_7802dd6b5af9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="o">.</span><span class="n">register_builtins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="bp">cls</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">get_chunker</span><span class="p">(</span><span class="s2">&quot;paragraph&quot;</span><span class="p">)</span>
@@ -1334,11 +1334,11 @@ packages can register additional components after import.</p>
 </div>
 </div>
 </div>
-<div id="d2e29413-2243-4fae-b81e-eaf8732147d3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b8cefdef-5144-4497-81e5-70feb4586da3','d2e29413-2243-4fae-b81e-eaf8732147d3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b8cefdef-5144-4497-81e5-70feb4586da3','d2e29413-2243-4fae-b81e-eaf8732147d3')">Open In Tab</button></div><div id="23d4539a-b819-4d0f-bfd9-ed3c7c33e747" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="field-list simple">
+<div id="ccbc0256-7e83-4ebb-b4a2-cb5a6c6001d7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('59736d0e-d7f7-45cb-8841-662ca69701d8','ccbc0256-7e83-4ebb-b4a2-cb5a6c6001d7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('59736d0e-d7f7-45cb-8841-662ca69701d8','ccbc0256-7e83-4ebb-b4a2-cb5a6c6001d7')">Open In Tab</button></div><div id="0db26ec8-b256-49bf-bb67-4b77e5702d46" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="field-list simple">
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.build_chunker">
-<span class="sig-name descname"><span class="pre">build_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.build_chunker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.build_chunker" title="Link to this definition">#</a></dt>
 <dd><p>Instantiate the chunker registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1371,18 +1371,18 @@ packages can register additional components after import.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="2279e529-d407-4113-95e3-4ee7f0997e37">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2279e529-d407-4113-95e3-4ee7f0997e37','5f034697-ca7d-496c-a38f-4ea7ce226f8b','fbe9e779-69b4-424d-a9e4-9d8a956e11e4','../../lite/tree/../notebooks/index.html?path=059c51e0_fb4f_445f_a0a4_b252889443e2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fc075376-c4db-44fa-8f9d-f13b2df9fa06">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fc075376-c4db-44fa-8f9d-f13b2df9fa06','5e6c1362-a8b3-41ee-be63-b7e69e155d95','106753c7-b279-466f-b72a-f16cdb56bd8b','../../lite/tree/../notebooks/index.html?path=860e3ad7_8e42_441c_8b63_f23986ec97a4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chunker</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">build_chunker</span><span class="p">(</span><span class="s2">&quot;paragraph&quot;</span><span class="p">,</span> <span class="n">min_chars</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="fbe9e779-69b4-424d-a9e4-9d8a956e11e4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2279e529-d407-4113-95e3-4ee7f0997e37','fbe9e779-69b4-424d-a9e4-9d8a956e11e4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2279e529-d407-4113-95e3-4ee7f0997e37','fbe9e779-69b4-424d-a9e4-9d8a956e11e4')">Open In Tab</button></div><div id="5f034697-ca7d-496c-a38f-4ea7ce226f8b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="106753c7-b279-466f-b72a-f16cdb56bd8b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fc075376-c4db-44fa-8f9d-f13b2df9fa06','106753c7-b279-466f-b72a-f16cdb56bd8b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fc075376-c4db-44fa-8f9d-f13b2df9fa06','106753c7-b279-466f-b72a-f16cdb56bd8b')">Open In Tab</button></div><div id="5e6c1362-a8b3-41ee-be63-b7e69e155d95" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.build_filter">
-<span class="sig-name descname"><span class="pre">build_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L453"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.build_filter" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L453"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.build_filter" title="Link to this definition">#</a></dt>
 <dd><p>Instantiate the filter registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1410,7 +1410,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.build_normalizer">
-<span class="sig-name descname"><span class="pre">build_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L468"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.build_normalizer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L468"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.build_normalizer" title="Link to this definition">#</a></dt>
 <dd><p>Instantiate the normalizer registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1438,7 +1438,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.get_chunker">
-<span class="sig-name descname"><span class="pre">get_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_chunker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_chunker" title="Link to this definition">#</a></dt>
 <dd><p>Return the chunker class registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1470,7 +1470,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.get_filter">
-<span class="sig-name descname"><span class="pre">get_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L296"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_filter" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L296"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_filter" title="Link to this definition">#</a></dt>
 <dd><p>Return the filter class registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1500,7 +1500,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.get_normalizer">
-<span class="sig-name descname"><span class="pre">get_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_normalizer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_normalizer" title="Link to this definition">#</a></dt>
 <dd><p>Return the normalizer class registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1530,7 +1530,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.get_reader">
-<span class="sig-name descname"><span class="pre">get_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_reader" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.get_reader" title="Link to this definition">#</a></dt>
 <dd><p>Return the reader class registered under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1560,7 +1560,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.list_chunkers">
-<span class="sig-name descname"><span class="pre">list_chunkers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L273"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_chunkers" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">list_chunkers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L273"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_chunkers" title="Link to this definition">#</a></dt>
 <dd><p>Return sorted list of registered chunker names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1571,7 +1571,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.list_filters">
-<span class="sig-name descname"><span class="pre">list_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_filters" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">list_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_filters" title="Link to this definition">#</a></dt>
 <dd><p>Return sorted list of registered filter names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1582,7 +1582,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.list_normalizers">
-<span class="sig-name descname"><span class="pre">list_normalizers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L419"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_normalizers" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">list_normalizers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L419"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_normalizers" title="Link to this definition">#</a></dt>
 <dd><p>Return sorted list of registered normalizer names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1593,7 +1593,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.list_readers">
-<span class="sig-name descname"><span class="pre">list_readers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L371"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_readers" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">list_readers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L371"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.list_readers" title="Link to this definition">#</a></dt>
 <dd><p>Return sorted list of registered reader names / extensions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1604,7 +1604,7 @@ packages can register additional components after import.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.load_from_snapshot">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">load_from_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_module_prefixes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scikitplot.'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.load_from_snapshot" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">load_from_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_module_prefixes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scikitplot.'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.load_from_snapshot" title="Link to this definition">#</a></dt>
 <dd><p>Reconstruct a registry from a snapshot.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1651,7 +1651,7 @@ execution risk.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.register_builtins">
-<span class="sig-name descname"><span class="pre">register_builtins</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_builtins" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">register_builtins</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_builtins" title="Link to this definition">#</a></dt>
 <dd><p>Register all built-in corpus pipeline components.</p>
 <p>Safe to call multiple times — subsequent calls are no-ops.
 Triggers the necessary imports to populate the
@@ -1669,7 +1669,7 @@ extension map used by <code class="xref py py-meth docutils literal notranslate"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.register_chunker">
-<span class="sig-name descname"><span class="pre">register_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L215"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_chunker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">register_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L215"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_chunker" title="Link to this definition">#</a></dt>
 <dd><p>Register a chunker class under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1704,7 +1704,7 @@ non-empty.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.register_filter">
-<span class="sig-name descname"><span class="pre">register_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_filter" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">register_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_filter" title="Link to this definition">#</a></dt>
 <dd><p>Register a filter class under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1729,7 +1729,7 @@ non-empty.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.register_normalizer">
-<span class="sig-name descname"><span class="pre">register_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L379"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_normalizer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">register_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L379"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_normalizer" title="Link to this definition">#</a></dt>
 <dd><p>Register a normalizer class under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1754,7 +1754,7 @@ non-empty.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.register_reader">
-<span class="sig-name descname"><span class="pre">register_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L329"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_reader" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">register_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L329"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.register_reader" title="Link to this definition">#</a></dt>
 <dd><p>Register a reader class under <code class="docutils literal notranslate"><span class="pre">name</span></code> (typically a file extension).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1781,7 +1781,7 @@ non-empty.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ComponentRegistry.snapshot">
-<span class="sig-name descname"><span class="pre">snapshot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_registry/_registry.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.snapshot" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">snapshot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_registry/_registry.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ComponentRegistry.snapshot" title="Link to this definition">#</a></dt>
 <dd><p>Return a JSON-safe snapshot of all registered components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1935,7 +1935,7 @@ non-empty.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260720.c8f33de 2026-07-20T16:01Z.
       <br/>
     
   </p>

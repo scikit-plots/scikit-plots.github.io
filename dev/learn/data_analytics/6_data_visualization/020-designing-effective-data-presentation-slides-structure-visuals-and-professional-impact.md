@@ -5,7 +5,7 @@
 ◀ [Previous](019-structuring-a-persuasive-data-presentation-turning-insights-into-story.html) · [Next](021-using-a-strategic-framework-to-structure-data-presentations.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

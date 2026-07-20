@@ -36,8 +36,7 @@
  *   – Every public function is at module scope inside the IIFE.
  *   – The global 'click' listener for dropdown-close is registered once only
  *     (guarded by _listenersAttached).
- *   – Turndown 7.1.2 is loaded as a separate same-origin file (turndown.min.js,
- *     registered before this file) — no CDN request, works everywhere.
+ *   – Turndown 7.1.2 is vendored inline (minified) — no CDN request, works everywhere.
  *   – Speech recognition is lazy-started on first mic click (no permission
  *     prompts until the user explicitly clicks the mic icon).
  */
@@ -49,7 +48,7 @@
  * IIFE A — the widget                                       L37 → ~L20305
  *   Bootstrap / shared utils (guard, config, getStaticPath,
  *     _fetch, _isSafeUrl, ICONS, haptics, long-press)       L37
- *   Markdown converter (Turndown alias)                     ~L1107
+ *   Markdown converter (Turndown vendored inline)            ~L1107
  *   Toolbar + dropdown (createAIAssistantUI)                ~L1127
  *     ├─ Copy page / View as Markdown
  *     ├─ Ask-LLM deep links (ChatGPT / Claude / Gemini)
@@ -67,13 +66,12 @@
  * LOAD & INIT ORDER  (verified; see ARCHITECTURE-ai-assistant.md)
  * ─────────────────────────────────────────────────────────────────────────
  *   1. inline window.AI_ASSISTANT_CONFIG   (parse-time, injected by the page)
- *   2. turndown.min.js                     (deferred → window.TurndownService)
- *   3. ai-assistant.js                     (deferred → this file)
- *   4. IIFE A bootstrap: initAIAssistant → createAIAssistantUI (toolbar)
- *   5. AI panel built lazily on first toggleAIPanel()
- *   6. IIFE B observer attaches once the panel body exists
- *   Both external scripts are deferred and run in registration order after
- *   parse; each bootstrap is readyState-gated, so ordering is guaranteed.
+ *   2. ai-assistant.js                     (this file; Turndown is inline)
+ *   3. IIFE A bootstrap: initAIAssistant → createAIAssistantUI (toolbar)
+ *   4. AI panel built lazily on first toggleAIPanel()
+ *   5. IIFE B observer attaches once the panel body exists
+ *   The script is deferred and runs after parse; the bootstrap is
+ *   readyState-gated, so ordering is guaranteed.
  * ─────────────────────────────────────────────────────────────────────────
  */
 
@@ -83,6 +81,11 @@
     // Guard against multiple injections
     if (window.SphinxAIAssistantInitialized) return;
     window.SphinxAIAssistantInitialized = true;
+
+    // ── Config accessor ──────────────────────────────────────────────────────
+    // Single source for the page-injected configuration; always returns an
+    // object, so callers can do _cfg().foo without guarding.
+    function _cfg() { return window.AI_ASSISTANT_CONFIG || {}; }
 
     // ── Diagnostics: single gated, scrubbing logger ──────────────────────────
     // All console output routes through _log(). Rationale:
@@ -96,7 +99,7 @@
     //     _redactPayloadForLog).
     var _AI_DEBUG = (function () {
         try {
-            if (window.AI_ASSISTANT_CONFIG && window.AI_ASSISTANT_CONFIG.debug === true) return true;
+            if (_cfg().debug === true) return true;
             if (window.localStorage && localStorage.getItem('ai-assistant-debug') === '1') return true;
             if (location && /[?&]ai-debug=1(?:&|$)/.test(location.search)) return true;
         } catch (_e) {}
@@ -518,7 +521,7 @@
 
     /**
      * Feature-flag defaults — last line of defence when the injected
-     * window.AI_ASSISTANT_CONFIG.features dict is missing/partial.
+     * _cfg().features dict is missing/partial.
      *
      * CRITICAL — SINGLE SOURCE OF TRUTH CONTRACT
      * ──────────────────────────────────────────
@@ -657,7 +660,7 @@
      */
     function _providerColor(provider) {
         if (!provider) return '';
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var merged = Object.assign({}, _PROVIDER_COLORS_JS, cfg.providerColors || {});
         return merged[provider] || '';
     }
@@ -1184,26 +1187,28 @@
     //   Vendoring eliminates every one of those failure modes at once because
     //   there is simply no network request to block.
     //
-    // SCOPE:  Turndown is now a separate same-origin static asset,
-    //   _static/turndown.min.js, registered by the Sphinx extension *before*
-    //   this file (both deferred -> execute in registration order after parse).
-    //   It assigns window.TurndownService, which this IIFE aliases below.
-    //   Extracting the ~15 KB library keeps the same offline / ad-blocker
-    //   reliability (same origin, no CDN) while letting the browser cache it
-    //   independently and letting CodeQL skip third-party code.
+    // SCOPE:  Declared as a local `var` inside this IIFE - does not write to
+    //   window.TurndownService, so it cannot collide with a host page that also
+    //   loads Turndown. Inline + same-origin means no network request at all:
+    //   Markdown export works offline and behind content blockers.
     //
-    // UPGRADING:  Replace _static/turndown.min.js. Regenerate its body with:
+    // UPGRADING:  Regenerate the minified body below with:
     //     npm install turndown@<new-version>
-    //     npx terser node_modules/turndown/dist/turndown.js \
-    //       --compress --mangle --output turndown.min.js
-    //   then prefix the output with `window.TurndownService=` and keep the
-    //   MIT license header (full MIT text lives in that file).
+    //     npx terser node_modules/turndown/dist/turndown.js --compress --mangle
+    //   and paste it after `var TurndownService=`, keeping the MIT attribution.
+    //
+    // CodeQL: the alerts on the minified line below (unreachable-statement, ASI,
+    //   use-before-declaration, useless-assignment) are inherent to minified
+    //   third-party output; they are suppressed, not "fixed" - the vendored
+    //   library must never be hand-edited. If your CodeQL pack ignores the inline
+    //   suppression, dismiss those 6 alerts in the UI as third-party.
     // ---------------------------------------------------------------------------
-    window.TurndownService=function(){"use strict";function e(e,n){return Array(n+1).join(e)}var n=["ADDRESS","ARTICLE","ASIDE","AUDIO","BLOCKQUOTE","BODY","CANVAS","CENTER","DD","DIR","DIV","DL","DT","FIELDSET","FIGCAPTION","FIGURE","FOOTER","FORM","FRAMESET","H1","H2","H3","H4","H5","H6","HEADER","HGROUP","HR","HTML","ISINDEX","LI","MAIN","MENU","NAV","NOFRAMES","NOSCRIPT","OL","OUTPUT","P","PRE","SECTION","TABLE","TBODY","TD","TFOOT","TH","THEAD","TR","UL"];function t(e){return a(e,n)}var r=["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR"];function i(e){return a(e,r)}var o=["A","TABLE","THEAD","TBODY","TFOOT","TH","TD","IFRAME","SCRIPT","AUDIO","VIDEO"];function a(e,n){return n.indexOf(e.nodeName)>=0}function l(e,n){return e.getElementsByTagName&&n.some(function(n){return e.getElementsByTagName(n).length})}var u={};function c(e){return e?e.replace(/(\n+\s*)+/g,"\n"):""}function s(e){for(var n in this.options=e,this._keep=[],this._remove=[],this.blankRule={replacement:e.blankReplacement},this.keepReplacement=e.keepReplacement,this.defaultRule={replacement:e.defaultReplacement},this.array=[],e.rules)this.array.push(e.rules[n])}function f(e,n,t){for(var r=0;r<e.length;r++){var i=e[r];if(d(i,n,t))return i}}function d(e,n,t){var r=e.filter;if("string"==typeof r){if(r===n.nodeName.toLowerCase())return!0}else if(Array.isArray(r)){if(r.indexOf(n.nodeName.toLowerCase())>-1)return!0}else{if("function"!=typeof r)throw new TypeError("`filter` needs to be a string, array, or function");if(r.call(e,n,t))return!0}}function p(e){var n=e.nextSibling||e.parentNode;return e.parentNode.removeChild(e),n}function h(e,n,t){return e&&e.parentNode===n||t(n)?n.nextSibling||n.parentNode:n.firstChild||n.nextSibling||n.parentNode}u.paragraph={filter:"p",replacement:function(e){return"\n\n"+e+"\n\n"}},u.lineBreak={filter:"br",replacement:function(e,n,t){return t.br+"\n"}},u.heading={filter:["h1","h2","h3","h4","h5","h6"],replacement:function(n,t,r){var i=Number(t.nodeName.charAt(1));return"setext"===r.headingStyle&&i<3?"\n\n"+n+"\n"+e(1===i?"=":"-",n.length)+"\n\n":"\n\n"+e("#",i)+" "+n+"\n\n"}},u.blockquote={filter:"blockquote",replacement:function(e){return"\n\n"+(e=(e=e.replace(/^\n+|\n+$/g,"")).replace(/^/gm,"> "))+"\n\n"}},u.list={filter:["ul","ol"],replacement:function(e,n){var t=n.parentNode;return"LI"===t.nodeName&&t.lastElementChild===n?"\n"+e:"\n\n"+e+"\n\n"}},u.listItem={filter:"li",replacement:function(e,n,t){e=e.replace(/^\n+/,"").replace(/\n+$/,"\n").replace(/\n/gm,"\n    ");var r=t.bulletListMarker+"   ",i=n.parentNode;if("OL"===i.nodeName){var o=i.getAttribute("start"),a=Array.prototype.indexOf.call(i.children,n);r=(o?Number(o)+a:a+1)+".  "}return r+e+(n.nextSibling&&!/\n$/.test(e)?"\n":"")}},u.indentedCodeBlock={filter:function(e,n){return"indented"===n.codeBlockStyle&&"PRE"===e.nodeName&&e.firstChild&&"CODE"===e.firstChild.nodeName},replacement:function(e,n,t){return"\n\n    "+n.firstChild.textContent.replace(/\n/g,"\n    ")+"\n\n"}},u.fencedCodeBlock={filter:function(e,n){return"fenced"===n.codeBlockStyle&&"PRE"===e.nodeName&&e.firstChild&&"CODE"===e.firstChild.nodeName},replacement:function(n,t,r){for(var i,o=((t.firstChild.getAttribute("class")||"").match(/language-(\S+)/)||[null,""])[1],a=t.firstChild.textContent,l=r.fence.charAt(0),u=3,c=new RegExp("^"+l+"{3,}","gm");i=c.exec(a);)i[0].length>=u&&(u=i[0].length+1);var s=e(l,u);return"\n\n"+s+o+"\n"+a.replace(/\n$/,"")+"\n"+s+"\n\n"}},u.horizontalRule={filter:"hr",replacement:function(e,n,t){return"\n\n"+t.hr+"\n\n"}},u.inlineLink={filter:function(e,n){return"inlined"===n.linkStyle&&"A"===e.nodeName&&e.getAttribute("href")},replacement:function(e,n){var t=n.getAttribute("href"),r=c(n.getAttribute("title"));return r&&(r=' "'+r+'"'),"["+e+"]("+t+r+")"}},u.referenceLink={filter:function(e,n){return"referenced"===n.linkStyle&&"A"===e.nodeName&&e.getAttribute("href")},replacement:function(e,n,t){var r,i,o=n.getAttribute("href"),a=c(n.getAttribute("title"));switch(a&&(a=' "'+a+'"'),t.linkReferenceStyle){case"collapsed":r="["+e+"][]",i="["+e+"]: "+o+a;break;case"shortcut":r="["+e+"]",i="["+e+"]: "+o+a;break;default:var l=this.references.length+1;r="["+e+"]["+l+"]",i="["+l+"]: "+o+a}return this.references.push(i),r},references:[],append:function(e){var n="";return this.references.length&&(n="\n\n"+this.references.join("\n")+"\n\n",this.references=[]),n}},u.emphasis={filter:["em","i"],replacement:function(e,n,t){return e.trim()?t.emDelimiter+e+t.emDelimiter:""}},u.strong={filter:["strong","b"],replacement:function(e,n,t){return e.trim()?t.strongDelimiter+e+t.strongDelimiter:""}},u.code={filter:function(e){var n=e.previousSibling||e.nextSibling,t="PRE"===e.parentNode.nodeName&&!n;return"CODE"===e.nodeName&&!t},replacement:function(e){if(!e)return"";e=e.replace(/\r?\n|\r/g," ");for(var n=/^`|^ .*?[^ ].* $|`$/.test(e)?" ":"",t="`",r=e.match(/`+/gm)||[];-1!==r.indexOf(t);)t+="`";return t+n+e+n+t}},u.image={filter:"img",replacement:function(e,n){var t=c(n.getAttribute("alt")),r=n.getAttribute("src")||"",i=c(n.getAttribute("title"));return r?"!["+t+"]("+r+(i?' "'+i+'"':"")+")":""}},s.prototype={add:function(e,n){this.array.unshift(n)},keep:function(e){this._keep.unshift({filter:e,replacement:this.keepReplacement})},remove:function(e){this._remove.unshift({filter:e,replacement:function(){return""}})},forNode:function(e){return e.isBlank?this.blankRule:(n=f(this.array,e,this.options))||(n=f(this._keep,e,this.options))||(n=f(this._remove,e,this.options))?n:this.defaultRule;var n},forEach:function(e){for(var n=0;n<this.array.length;n++)e(this.array[n],n)}};var g="undefined"!=typeof window?window:{};var m,v,A=function(){var e=g.DOMParser,n=!1;try{(new e).parseFromString("","text/html")&&(n=!0)}catch(e){}return n}()?g.DOMParser:(m=function(){},function(){var e=!1;try{document.implementation.createHTMLDocument("").open()}catch(n){window.ActiveXObject&&(e=!0)}return e}()?m.prototype.parseFromString=function(e){var n=new window.ActiveXObject("htmlfile");return n.designMode="on",n.open(),n.write(e),n.close(),n}:m.prototype.parseFromString=function(e){var n=document.implementation.createHTMLDocument("");return n.open(),n.write(e),n.close(),n},m);function y(e,n){var r;"string"==typeof e?r=(v=v||new A).parseFromString('<x-turndown id="turndown-root">'+e+"</x-turndown>","text/html").getElementById("turndown-root"):r=e.cloneNode(!0);return function(e){var n=e.element,t=e.isBlock,r=e.isVoid,i=e.isPre||function(e){return"PRE"===e.nodeName};if(n.firstChild&&!i(n)){for(var o=null,a=!1,l=null,u=h(l,n,i);u!==n;){if(3===u.nodeType||4===u.nodeType){var c=u.data.replace(/[ \r\n\t]+/g," ");if(o&&!/ $/.test(o.data)||a||" "!==c[0]||(c=c.substr(1)),!c){u=p(u);continue}u.data=c,o=u}else{if(1!==u.nodeType){u=p(u);continue}t(u)||"BR"===u.nodeName?(o&&(o.data=o.data.replace(/ $/,"")),o=null,a=!1):r(u)||i(u)?(o=null,a=!0):o&&(a=!1)}var s=h(l,u,i);l=u,u=s}o&&(o.data=o.data.replace(/ $/,""),o.data||p(o))}}({element:r,isBlock:t,isVoid:i,isPre:n.preformattedCode?N:null}),r}function N(e){return"PRE"===e.nodeName||"CODE"===e.nodeName}function E(e,n){return e.isBlock=t(e),e.isCode="CODE"===e.nodeName||e.parentNode.isCode,e.isBlank=function(e){return!i(e)&&!function(e){return a(e,o)}(e)&&/^\s*$/i.test(e.textContent)&&!function(e){return l(e,r)}(e)&&!function(e){return l(e,o)}(e)}(e),e.flankingWhitespace=function(e,n){if(e.isBlock||n.preformattedCode&&e.isCode)return{leading:"",trailing:""};var t=(r=e.textContent,i=r.match(/^(([ \t\r\n]*)(\s*))(?:(?=\S)[\s\S]*\S)?((\s*?)([ \t\r\n]*))$/),{leading:i[1],leadingAscii:i[2],leadingNonAscii:i[3],trailing:i[4],trailingNonAscii:i[5],trailingAscii:i[6]});var r,i;t.leadingAscii&&T("left",e,n)&&(t.leading=t.leadingNonAscii);t.trailingAscii&&T("right",e,n)&&(t.trailing=t.trailingNonAscii);return{leading:t.leading,trailing:t.trailing}}(e,n),e}function T(e,n,r){var i,o,a;return"left"===e?(i=n.previousSibling,o=/ $/):(i=n.nextSibling,o=/^ /),i&&(3===i.nodeType?a=o.test(i.nodeValue):r.preformattedCode&&"CODE"===i.nodeName?a=!1:1!==i.nodeType||t(i)||(a=o.test(i.textContent))),a}var R=Array.prototype.reduce,C=[[/\\/g,"\\\\"],[/\*/g,"\\*"],[/^-/g,"\\-"],[/^\+ /g,"\\+ "],[/^(=+)/g,"\\$1"],[/^(#{1,6}) /g,"\\$1 "],[/`/g,"\\`"],[/^~~~/g,"\\~~~"],[/\[/g,"\\["],[/\]/g,"\\]"],[/^>/g,"\\>"],[/_/g,"\\_"],[/^(\d+)\. /g,"$1\\. "]];function k(e){if(!(this instanceof k))return new k(e);var n={rules:u,headingStyle:"setext",hr:"* * *",bulletListMarker:"*",codeBlockStyle:"indented",fence:"```",emDelimiter:"_",strongDelimiter:"**",linkStyle:"inlined",linkReferenceStyle:"full",br:"  ",preformattedCode:!1,blankReplacement:function(e,n){return n.isBlock?"\n\n":""},keepReplacement:function(e,n){return n.isBlock?"\n\n"+n.outerHTML+"\n\n":n.outerHTML},defaultReplacement:function(e,n){return n.isBlock?"\n\n"+e+"\n\n":e}};this.options=function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r])}return e}({},n,e),this.rules=new s(this.options)}function b(e){var n=this;return R.call(e.childNodes,function(e,t){var r="";return 3===(t=new E(t,n.options)).nodeType?r=t.isCode?t.nodeValue:n.escape(t.nodeValue):1===t.nodeType&&(r=D.call(n,t)),S(e,r)},"")}function O(e){var n=this;return this.rules.forEach(function(t){"function"==typeof t.append&&(e=S(e,t.append(n.options)))}),e.replace(/^[\t\r\n]+/,"").replace(/[\t\r\n\s]+$/,"")}function D(e){var n=this.rules.forNode(e),t=b.call(this,e),r=e.flankingWhitespace;return(r.leading||r.trailing)&&(t=t.trim()),r.leading+n.replacement(t,e,this.options)+r.trailing}function S(e,n){var t=function(e){for(var n=e.length;n>0&&"\n"===e[n-1];)n--;return e.substring(0,n)}(e),r=n.replace(/^\n*/,""),i=Math.max(e.length-t.length,n.length-r.length);return t+"\n\n".substring(0,i)+r}return k.prototype={turndown:function(e){if(!function(e){return null!=e&&("string"==typeof e||e.nodeType&&(1===e.nodeType||9===e.nodeType||11===e.nodeType))}(e))throw new TypeError(e+" is not a string, or an element/document/fragment node.");if(""===e)return"";var n=b.call(this,new y(e,this.options));return O.call(this,n)},use:function(e){if(Array.isArray(e))for(var n=0;n<e.length;n++)this.use(e[n]);else{if("function"!=typeof e)throw new TypeError("plugin must be a Function or an Array of Functions");e(this)}return this},addRule:function(e,n){return this.rules.add(e,n),this},keep:function(e){return this.rules.keep(e),this},remove:function(e){return this.rules.remove(e),this},escape:function(e){return C.reduce(function(e,n){return e.replace(n[0],n[1])},e)}},k}();
-
-    var TurndownService = (typeof window !== 'undefined')
-        ? window.TurndownService
-        : undefined;
+    /* eslint-disable */
+    // turndown@7.1.2 - MIT (Dom Christie) - https://github.com/domchristie/turndown - begin vendor
+    // codeql[js/unreachable-statement, js/automatic-semicolon-insertion, js/variable-use-before-declaration, js/useless-assignment-to-local]
+    var TurndownService=function(){"use strict";function e(e,n){return Array(n+1).join(e)}var n=["ADDRESS","ARTICLE","ASIDE","AUDIO","BLOCKQUOTE","BODY","CANVAS","CENTER","DD","DIR","DIV","DL","DT","FIELDSET","FIGCAPTION","FIGURE","FOOTER","FORM","FRAMESET","H1","H2","H3","H4","H5","H6","HEADER","HGROUP","HR","HTML","ISINDEX","LI","MAIN","MENU","NAV","NOFRAMES","NOSCRIPT","OL","OUTPUT","P","PRE","SECTION","TABLE","TBODY","TD","TFOOT","TH","THEAD","TR","UL"];function t(e){return a(e,n)}var r=["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR"];function i(e){return a(e,r)}var o=["A","TABLE","THEAD","TBODY","TFOOT","TH","TD","IFRAME","SCRIPT","AUDIO","VIDEO"];function a(e,n){return n.indexOf(e.nodeName)>=0}function l(e,n){return e.getElementsByTagName&&n.some(function(n){return e.getElementsByTagName(n).length})}var u={};function c(e){return e?e.replace(/(\n+\s*)+/g,"\n"):""}function s(e){for(var n in this.options=e,this._keep=[],this._remove=[],this.blankRule={replacement:e.blankReplacement},this.keepReplacement=e.keepReplacement,this.defaultRule={replacement:e.defaultReplacement},this.array=[],e.rules)this.array.push(e.rules[n])}function f(e,n,t){for(var r=0;r<e.length;r++){var i=e[r];if(d(i,n,t))return i}}function d(e,n,t){var r=e.filter;if("string"==typeof r){if(r===n.nodeName.toLowerCase())return!0}else if(Array.isArray(r)){if(r.indexOf(n.nodeName.toLowerCase())>-1)return!0}else{if("function"!=typeof r)throw new TypeError("`filter` needs to be a string, array, or function");if(r.call(e,n,t))return!0}}function p(e){var n=e.nextSibling||e.parentNode;return e.parentNode.removeChild(e),n}function h(e,n,t){return e&&e.parentNode===n||t(n)?n.nextSibling||n.parentNode:n.firstChild||n.nextSibling||n.parentNode}u.paragraph={filter:"p",replacement:function(e){return"\n\n"+e+"\n\n"}},u.lineBreak={filter:"br",replacement:function(e,n,t){return t.br+"\n"}},u.heading={filter:["h1","h2","h3","h4","h5","h6"],replacement:function(n,t,r){var i=Number(t.nodeName.charAt(1));return"setext"===r.headingStyle&&i<3?"\n\n"+n+"\n"+e(1===i?"=":"-",n.length)+"\n\n":"\n\n"+e("#",i)+" "+n+"\n\n"}},u.blockquote={filter:"blockquote",replacement:function(e){return"\n\n"+(e=(e=e.replace(/^\n+|\n+$/g,"")).replace(/^/gm,"> "))+"\n\n"}},u.list={filter:["ul","ol"],replacement:function(e,n){var t=n.parentNode;return"LI"===t.nodeName&&t.lastElementChild===n?"\n"+e:"\n\n"+e+"\n\n"}},u.listItem={filter:"li",replacement:function(e,n,t){e=e.replace(/^\n+/,"").replace(/\n+$/,"\n").replace(/\n/gm,"\n    ");var r=t.bulletListMarker+"   ",i=n.parentNode;if("OL"===i.nodeName){var o=i.getAttribute("start"),a=Array.prototype.indexOf.call(i.children,n);r=(o?Number(o)+a:a+1)+".  "}return r+e+(n.nextSibling&&!/\n$/.test(e)?"\n":"")}},u.indentedCodeBlock={filter:function(e,n){return"indented"===n.codeBlockStyle&&"PRE"===e.nodeName&&e.firstChild&&"CODE"===e.firstChild.nodeName},replacement:function(e,n,t){return"\n\n    "+n.firstChild.textContent.replace(/\n/g,"\n    ")+"\n\n"}},u.fencedCodeBlock={filter:function(e,n){return"fenced"===n.codeBlockStyle&&"PRE"===e.nodeName&&e.firstChild&&"CODE"===e.firstChild.nodeName},replacement:function(n,t,r){for(var i,o=((t.firstChild.getAttribute("class")||"").match(/language-(\S+)/)||[null,""])[1],a=t.firstChild.textContent,l=r.fence.charAt(0),u=3,c=new RegExp("^"+l+"{3,}","gm");i=c.exec(a);)i[0].length>=u&&(u=i[0].length+1);var s=e(l,u);return"\n\n"+s+o+"\n"+a.replace(/\n$/,"")+"\n"+s+"\n\n"}},u.horizontalRule={filter:"hr",replacement:function(e,n,t){return"\n\n"+t.hr+"\n\n"}},u.inlineLink={filter:function(e,n){return"inlined"===n.linkStyle&&"A"===e.nodeName&&e.getAttribute("href")},replacement:function(e,n){var t=n.getAttribute("href"),r=c(n.getAttribute("title"));return r&&(r=' "'+r+'"'),"["+e+"]("+t+r+")"}},u.referenceLink={filter:function(e,n){return"referenced"===n.linkStyle&&"A"===e.nodeName&&e.getAttribute("href")},replacement:function(e,n,t){var r,i,o=n.getAttribute("href"),a=c(n.getAttribute("title"));switch(a&&(a=' "'+a+'"'),t.linkReferenceStyle){case"collapsed":r="["+e+"][]",i="["+e+"]: "+o+a;break;case"shortcut":r="["+e+"]",i="["+e+"]: "+o+a;break;default:var l=this.references.length+1;r="["+e+"]["+l+"]",i="["+l+"]: "+o+a}return this.references.push(i),r},references:[],append:function(e){var n="";return this.references.length&&(n="\n\n"+this.references.join("\n")+"\n\n",this.references=[]),n}},u.emphasis={filter:["em","i"],replacement:function(e,n,t){return e.trim()?t.emDelimiter+e+t.emDelimiter:""}},u.strong={filter:["strong","b"],replacement:function(e,n,t){return e.trim()?t.strongDelimiter+e+t.strongDelimiter:""}},u.code={filter:function(e){var n=e.previousSibling||e.nextSibling,t="PRE"===e.parentNode.nodeName&&!n;return"CODE"===e.nodeName&&!t},replacement:function(e){if(!e)return"";e=e.replace(/\r?\n|\r/g," ");for(var n=/^`|^ .*?[^ ].* $|`$/.test(e)?" ":"",t="`",r=e.match(/`+/gm)||[];-1!==r.indexOf(t);)t+="`";return t+n+e+n+t}},u.image={filter:"img",replacement:function(e,n){var t=c(n.getAttribute("alt")),r=n.getAttribute("src")||"",i=c(n.getAttribute("title"));return r?"!["+t+"]("+r+(i?' "'+i+'"':"")+")":""}},s.prototype={add:function(e,n){this.array.unshift(n)},keep:function(e){this._keep.unshift({filter:e,replacement:this.keepReplacement})},remove:function(e){this._remove.unshift({filter:e,replacement:function(){return""}})},forNode:function(e){return e.isBlank?this.blankRule:(n=f(this.array,e,this.options))||(n=f(this._keep,e,this.options))||(n=f(this._remove,e,this.options))?n:this.defaultRule;var n},forEach:function(e){for(var n=0;n<this.array.length;n++)e(this.array[n],n)}};var g="undefined"!=typeof window?window:{};var m,v,A=function(){var e=g.DOMParser,n=!1;try{(new e).parseFromString("","text/html")&&(n=!0)}catch(e){}return n}()?g.DOMParser:(m=function(){},function(){var e=!1;try{document.implementation.createHTMLDocument("").open()}catch(n){window.ActiveXObject&&(e=!0)}return e}()?m.prototype.parseFromString=function(e){var n=new window.ActiveXObject("htmlfile");return n.designMode="on",n.open(),n.write(e),n.close(),n}:m.prototype.parseFromString=function(e){var n=document.implementation.createHTMLDocument("");return n.open(),n.write(e),n.close(),n},m);function y(e,n){var r;"string"==typeof e?r=(v=v||new A).parseFromString('<x-turndown id="turndown-root">'+e+"</x-turndown>","text/html").getElementById("turndown-root"):r=e.cloneNode(!0);return function(e){var n=e.element,t=e.isBlock,r=e.isVoid,i=e.isPre||function(e){return"PRE"===e.nodeName};if(n.firstChild&&!i(n)){for(var o=null,a=!1,l=null,u=h(l,n,i);u!==n;){if(3===u.nodeType||4===u.nodeType){var c=u.data.replace(/[ \r\n\t]+/g," ");if(o&&!/ $/.test(o.data)||a||" "!==c[0]||(c=c.substr(1)),!c){u=p(u);continue}u.data=c,o=u}else{if(1!==u.nodeType){u=p(u);continue}t(u)||"BR"===u.nodeName?(o&&(o.data=o.data.replace(/ $/,"")),o=null,a=!1):r(u)||i(u)?(o=null,a=!0):o&&(a=!1)}var s=h(l,u,i);l=u,u=s}o&&(o.data=o.data.replace(/ $/,""),o.data||p(o))}}({element:r,isBlock:t,isVoid:i,isPre:n.preformattedCode?N:null}),r}function N(e){return"PRE"===e.nodeName||"CODE"===e.nodeName}function E(e,n){return e.isBlock=t(e),e.isCode="CODE"===e.nodeName||e.parentNode.isCode,e.isBlank=function(e){return!i(e)&&!function(e){return a(e,o)}(e)&&/^\s*$/i.test(e.textContent)&&!function(e){return l(e,r)}(e)&&!function(e){return l(e,o)}(e)}(e),e.flankingWhitespace=function(e,n){if(e.isBlock||n.preformattedCode&&e.isCode)return{leading:"",trailing:""};var t=(r=e.textContent,i=r.match(/^(([ \t\r\n]*)(\s*))(?:(?=\S)[\s\S]*\S)?((\s*?)([ \t\r\n]*))$/),{leading:i[1],leadingAscii:i[2],leadingNonAscii:i[3],trailing:i[4],trailingNonAscii:i[5],trailingAscii:i[6]});var r,i;t.leadingAscii&&T("left",e,n)&&(t.leading=t.leadingNonAscii);t.trailingAscii&&T("right",e,n)&&(t.trailing=t.trailingNonAscii);return{leading:t.leading,trailing:t.trailing}}(e,n),e}function T(e,n,r){var i,o,a;return"left"===e?(i=n.previousSibling,o=/ $/):(i=n.nextSibling,o=/^ /),i&&(3===i.nodeType?a=o.test(i.nodeValue):r.preformattedCode&&"CODE"===i.nodeName?a=!1:1!==i.nodeType||t(i)||(a=o.test(i.textContent))),a}var R=Array.prototype.reduce,C=[[/\\/g,"\\\\"],[/\*/g,"\\*"],[/^-/g,"\\-"],[/^\+ /g,"\\+ "],[/^(=+)/g,"\\$1"],[/^(#{1,6}) /g,"\\$1 "],[/`/g,"\\`"],[/^~~~/g,"\\~~~"],[/\[/g,"\\["],[/\]/g,"\\]"],[/^>/g,"\\>"],[/_/g,"\\_"],[/^(\d+)\. /g,"$1\\. "]];function k(e){if(!(this instanceof k))return new k(e);var n={rules:u,headingStyle:"setext",hr:"* * *",bulletListMarker:"*",codeBlockStyle:"indented",fence:"```",emDelimiter:"_",strongDelimiter:"**",linkStyle:"inlined",linkReferenceStyle:"full",br:"  ",preformattedCode:!1,blankReplacement:function(e,n){return n.isBlock?"\n\n":""},keepReplacement:function(e,n){return n.isBlock?"\n\n"+n.outerHTML+"\n\n":n.outerHTML},defaultReplacement:function(e,n){return n.isBlock?"\n\n"+e+"\n\n":e}};this.options=function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r])}return e}({},n,e),this.rules=new s(this.options)}function b(e){var n=this;return R.call(e.childNodes,function(e,t){var r="";return 3===(t=new E(t,n.options)).nodeType?r=t.isCode?t.nodeValue:n.escape(t.nodeValue):1===t.nodeType&&(r=D.call(n,t)),S(e,r)},"")}function O(e){var n=this;return this.rules.forEach(function(t){"function"==typeof t.append&&(e=S(e,t.append(n.options)))}),e.replace(/^[\t\r\n]+/,"").replace(/[\t\r\n\s]+$/,"")}function D(e){var n=this.rules.forNode(e),t=b.call(this,e),r=e.flankingWhitespace;return(r.leading||r.trailing)&&(t=t.trim()),r.leading+n.replacement(t,e,this.options)+r.trailing}function S(e,n){var t=function(e){for(var n=e.length;n>0&&"\n"===e[n-1];)n--;return e.substring(0,n)}(e),r=n.replace(/^\n*/,""),i=Math.max(e.length-t.length,n.length-r.length);return t+"\n\n".substring(0,i)+r}return k.prototype={turndown:function(e){if(!function(e){return null!=e&&("string"==typeof e||e.nodeType&&(1===e.nodeType||9===e.nodeType||11===e.nodeType))}(e))throw new TypeError(e+" is not a string, or an element/document/fragment node.");if(""===e)return"";var n=b.call(this,new y(e,this.options));return O.call(this,n)},use:function(e){if(Array.isArray(e))for(var n=0;n<e.length;n++)this.use(e[n]);else{if("function"!=typeof e)throw new TypeError("plugin must be a Function or an Array of Functions");e(this)}return this},addRule:function(e,n){return this.rules.add(e,n),this},keep:function(e){return this.rules.keep(e),this},remove:function(e){return this.rules.remove(e),this},escape:function(e){return C.reduce(function(e,n){return e.replace(n[0],n[1])},e)}},k}();
+    // turndown@7.1.2 - end vendor
+    /* eslint-enable */
 
     /**
      * Bootstrap entry point — called by DOMContentLoaded (or immediately if
@@ -1229,13 +1234,13 @@
         container.appendChild(button);
         container.appendChild(dropdown);
 
-        var position = (window.AI_ASSISTANT_CONFIG && window.AI_ASSISTANT_CONFIG.position) || 'sidebar';
+        var position = (_cfg().position) || 'sidebar';
         insertContainer(container, position);
         setupEventListeners(button, dropdown);
 
         // v0.3: only wire panel-dependent extras when the AI panel feature
         // is actually enabled (respects the FEATURE_DEFAULTS contract).
-        var cfg      = window.AI_ASSISTANT_CONFIG || {};
+        var cfg      = _cfg();
         var features = Object.assign({}, FEATURE_DEFAULTS, cfg.features || {});
         if (features.ai_panel) {
             _bindShortcut();    // R7 — no-op if disabled/invalid in config
@@ -1327,7 +1332,7 @@
         dropdown.setAttribute('role', 'menu');
         // dropdown.style.display = 'none';
 
-        var cfg        = window.AI_ASSISTANT_CONFIG || {};
+        var cfg        = _cfg();
         var features   = Object.assign({}, FEATURE_DEFAULTS, cfg.features || {});
         var staticPath = getStaticPath();
         var hasItems   = false;
@@ -1495,14 +1500,14 @@
         var urlBtn   = document.getElementById('ai-assistant-pdf-mode-url');
         var printBtn = document.getElementById('ai-assistant-pdf-mode-print');
         var descEl   = document.getElementById('ai-assistant-pdf-desc');
-        var pdfUrl   = ((window.AI_ASSISTANT_CONFIG || {}).pdfExportUrl || '').trim();
+        var pdfUrl   = (_cfg().pdfExportUrl || '').trim();
         if (urlBtn)   urlBtn.classList.toggle('active',   mode === 'url');
         if (printBtn) printBtn.classList.toggle('active', mode === 'print');
         if (descEl)   descEl.textContent = _pdfModeDescription(mode, pdfUrl);
     }
 
     function _getPdfMode() {
-        var pdfUrl = ((window.AI_ASSISTANT_CONFIG || {}).pdfExportUrl || '').trim();
+        var pdfUrl = (_cfg().pdfExportUrl || '').trim();
         try {
             var saved = sessionStorage.getItem(_PDF_MODE_KEY);
             if (saved === 'url' || saved === 'print') return saved;
@@ -1556,7 +1561,14 @@
 
     // ── Static path detection ─────────────────────────────────────────────────
 
+    // C2: getStaticPath is deterministic after load (its inputs do not change),
+    // so memoize the first result to avoid repeated string scans on each call.
+    var _staticPathCache = null;
     function getStaticPath() {
+        if (_staticPathCache === null) { _staticPathCache = _computeStaticPath(); }
+        return _staticPathCache;
+    }
+    function _computeStaticPath() {
         if (_selfSrc && _selfSrc.indexOf('_static') !== -1) {
             return _selfSrc.substring(0, _selfSrc.indexOf('_static') + 7);
         }
@@ -1742,7 +1754,7 @@
     // ── Markdown conversion ───────────────────────────────────────────────────
 
     function convertToMarkdown() {
-        var contentSelector = (window.AI_ASSISTANT_CONFIG && window.AI_ASSISTANT_CONFIG.content_selector) || 'article';
+        var contentSelector = (_cfg().content_selector) || 'article';
         var content = document.querySelector(contentSelector);
 
         if (!content) return Promise.reject(new Error('Could not find page content (selector: ' + contentSelector + ')'));
@@ -1801,7 +1813,7 @@
 
     function handleAIChat(providerKey) {
         try {
-            var providers = ((window.AI_ASSISTANT_CONFIG || {}).providers) || {};
+            var providers = (_cfg().providers) || {};
             var provider  = providers[providerKey];
             if (!provider) { showNotification('AI provider "' + providerKey + '" not configured.', true); return; }
 
@@ -1832,7 +1844,7 @@
 
     function handleMCPInstall(toolKey) {
         try {
-            var mcpTools = ((window.AI_ASSISTANT_CONFIG || {}).mcp_tools) || {};
+            var mcpTools = (_cfg().mcp_tools) || {};
             var tool     = mcpTools[toolKey];
             if (!tool)   { showNotification('MCP tool configuration not found.', true); return; }
 
@@ -1897,7 +1909,7 @@
     }
 
     function handlePdfExport() {
-        var cfg    = window.AI_ASSISTANT_CONFIG || {};
+        var cfg    = _cfg();
         var pdfUrl = (cfg.pdfExportUrl || '').trim();
         var mode   = _getPdfMode();
         closeDropdown();
@@ -1921,8 +1933,7 @@
      * (no header) if that stylesheet is absent.
      */
     function _printWithHeader() {
-        var contentSel = (window.AI_ASSISTANT_CONFIG &&
-            window.AI_ASSISTANT_CONFIG.content_selector) || 'article';
+        var contentSel = (_cfg().content_selector) || 'article';
         var mount = document.querySelector(contentSel) || document.body;
         if (!mount) { try { window.print(); } catch (_e) {} return; }
 
@@ -3505,7 +3516,7 @@
      *   call ``container.innerHTML = ''`` immediately before this call.
      */
     function _showFeedbackThanks(container, answerIndex, answerText, questionText, cfg) {
-        cfg = cfg || (window.AI_ASSISTANT_CONFIG || {});
+        cfg = cfg || _cfg();
         var thanks = (typeof cfg.panelFeedbackThanks === 'string' &&
             cfg.panelFeedbackThanks) || 'Thanks for your feedback!';
 
@@ -3575,7 +3586,7 @@
      *   the previous message text is pre-filled in the textarea.
      */
     function _rebuildFeedbackFormIn(container, answerIndex, answerText, questionText) {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
 
         var question = (typeof cfg.panelFeedbackQuestion === 'string' &&
             cfg.panelFeedbackQuestion) || 'Was this helpful?';
@@ -4108,7 +4119,7 @@
      * @returns {boolean}
      */
     function _persistEnabled() {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         return cfg.panelPersist !== false;   // default true
     }
 
@@ -4178,7 +4189,7 @@
      *   (stub mode, error path) pass null or omit the argument.
      */
     function _recordMessage(role, text, modelInfo) {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var maxTurns = (typeof cfg.panelMaxTranscriptTurns === 'number' &&
                         cfg.panelMaxTranscriptTurns > 0)
             ? Math.floor(cfg.panelMaxTranscriptTurns)
@@ -4264,7 +4275,7 @@
             showNotification('Nothing to export yet', true);
             return;
         }
-        var cfg   = window.AI_ASSISTANT_CONFIG || {};
+        var cfg   = _cfg();
         var title = cfg.panelTitle || 'AI Assistant';
         var lines = [
             title + ' — conversation export',
@@ -4379,7 +4390,7 @@
             showNotification('Nothing to export yet', true);
             return;
         }
-        var cfg       = window.AI_ASSISTANT_CONFIG || {};
+        var cfg       = _cfg();
         var aiName    = cfg.panelTitle || 'AI Assistant';
         var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
         var pageTitle = (typeof document !== 'undefined') ? document.title : '';
@@ -4484,7 +4495,7 @@
     function _buildConvHtmlString() {
         if (_transcript.length === 0) return '';
 
-        var cfg         = window.AI_ASSISTANT_CONFIG || {};
+        var cfg         = _cfg();
         var aiName      = cfg.panelTitle || 'AI Assistant';
         var pageUrl     = (typeof location !== 'undefined') ? location.href : '';
         var pageTitle   = (typeof document !== 'undefined') ? document.title : '';
@@ -4621,7 +4632,7 @@
      */
     function _buildConvTxtString() {
         if (_transcript.length === 0) return '';
-        var cfg   = window.AI_ASSISTANT_CONFIG || {};
+        var cfg   = _cfg();
         var title = cfg.panelTitle || 'AI Assistant';
         var lines = [
             title + ' \u2014 conversation export',
@@ -4667,7 +4678,7 @@
      */
     function _buildConvJsonString() {
         if (_transcript.length === 0) return '';
-        var cfg       = window.AI_ASSISTANT_CONFIG || {};
+        var cfg       = _cfg();
         var aiName    = cfg.panelTitle || 'AI Assistant';
         var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
         var pageTitle = (typeof document !== 'undefined') ? document.title : '';
@@ -5328,7 +5339,7 @@ opts.jsonPayload + '\n' +
      */
     function _shareAnswer(answerText, questionText, bubbleEl, btn, answerIndex) {
         var raw    = (bubbleEl && bubbleEl.getAttribute('data-raw')) || answerText;
-        var cfg    = window.AI_ASSISTANT_CONFIG || {};
+        var cfg    = _cfg();
         var aiName = cfg.panelTitle || 'AI Assistant';
         var pageUrl = (typeof location !== 'undefined') ? location.href : '';
 
@@ -5830,7 +5841,7 @@ opts.jsonPayload + '\n' +
      * @param {HTMLElement} body
      */
     function _renderWelcome(body) {
-        var cfg     = window.AI_ASSISTANT_CONFIG || {};
+        var cfg     = _cfg();
         var title   = cfg.panelTitle || 'AI Assistant';
         var quickQs = Array.isArray(cfg.panelQuickQuestions)
             ? cfg.panelQuickQuestions.slice(0, 5) : [];
@@ -5925,7 +5936,7 @@ opts.jsonPayload + '\n' +
      */
     function _bindShortcut() {
         if (_shortcutBound) return;
-        var cfg  = window.AI_ASSISTANT_CONFIG || {};
+        var cfg  = _cfg();
         var spec = typeof cfg.panelShortcut === 'string'
             ? cfg.panelShortcut : 'Alt+Shift+A';
         var pred = _parseShortcut(spec);
@@ -5938,7 +5949,7 @@ opts.jsonPayload + '\n' +
 
     /** Human-readable shortcut label for the hint chip (or '' if disabled). */
     function _shortcutLabel() {
-        var cfg  = window.AI_ASSISTANT_CONFIG || {};
+        var cfg  = _cfg();
         var spec = typeof cfg.panelShortcut === 'string'
             ? cfg.panelShortcut : 'Alt+Shift+A';
         return _parseShortcut(spec) ? spec : '';
@@ -6305,7 +6316,7 @@ opts.jsonPayload + '\n' +
      *   ``.ai-assistant-panel-feedback--revealed`` on the existing block.
      */
     function _buildFbkFloat(answerIndex, answerText, questionText) {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         if (cfg.panelFeedback === false) return null;
         if (_feedbackGivenSet.has(answerIndex)) return null;
 
@@ -6677,7 +6688,7 @@ opts.jsonPayload + '\n' +
     }
 
     function _buildFeedbackBlock(answerIndex, answerText, questionText) {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         if (cfg.panelFeedback === false) return null;     // opt-out
         if (_feedbackGivenSet.has(answerIndex)) return null;
 
@@ -7033,7 +7044,7 @@ opts.jsonPayload + '\n' +
      *      was already open is still the active view (no navigation side-effect).
      */
     function _buildSheetHamburgerBtn(sheet, idSuffix, closeExtra) {  // closeExtra retained for call-site compat; not invoked
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         if (cfg.panelHamburger === false) return null;
         var btn = _createIconBtn('sheet-ham-' + idSuffix, 'Open menu', ICONS.menu);
         btn.title = 'Open menu';
@@ -8451,7 +8462,7 @@ opts.jsonPayload + '\n' +
         // ── E: Dataset Endpoint + Token status ────────────────────────────
         // NEW (vNEXT). Discovers the HuggingFace dataset repo and the server's
         // HF-token posture WITHOUT exposing any secret. Two-source priority:
-        //   P1  window.AI_ASSISTANT_CONFIG.panelDatasetRepo  (conf.py override)
+        //   P1  _cfg().panelDatasetRepo  (conf.py override)
         //   P2  GET {proxyBase}/  → .training.dataset_repo    (auto-discovery)
         // The same GET / response also carries tokens.{hf_token_type,
         // hf_write_token_type,least_privilege_mode} — surfaced as a read-only
@@ -8669,7 +8680,7 @@ opts.jsonPayload + '\n' +
 
         /** Orchestrate discovery / config, then render links + token posture. */
         function _buildDatasetSection(statusRow, linksWrap, tokenRow) {
-            var _cfg = window.AI_ASSISTANT_CONFIG || {};
+            var _cfg = _cfg();
 
             // P1: explicit panel config wins — no network call.
             var explicitRepo = (_cfg.panelDatasetRepo || '').trim();
@@ -9767,7 +9778,7 @@ opts.jsonPayload + '\n' +
     }
 
         function _buildPrivacySheet() {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var title = (typeof cfg.panelPrivacyTitle === 'string' &&
             cfg.panelPrivacyTitle) || 'Privacy & Responsibility';
 
@@ -10452,7 +10463,7 @@ opts.jsonPayload + '\n' +
      * @returns {HTMLElement}
      */
     function _buildModelSheet() {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var sheet = document.createElement('div');
         sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-model-sheet';
         sheet.id = 'ai-assistant-panel-model-sheet';
@@ -10828,7 +10839,7 @@ opts.jsonPayload + '\n' +
                 var id = m.id;
                 _setActiveModelId(id);
                 try {
-                    var liveModels = (window.AI_ASSISTANT_CONFIG || {}).panelApiModels;
+                    var liveModels = _cfg().panelApiModels;
                     var liveM = _findModel(
                         Array.isArray(liveModels) ? liveModels : models, id
                     );
@@ -10999,7 +11010,7 @@ opts.jsonPayload + '\n' +
 
         // ── Threshold: only attach when there are enough models to warrant it ─
         // Configurable: set panelFilterThreshold in conf.py (default 2).
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var THRESHOLD = _safeInt(cfg.panelFilterThreshold, 1, 9999, 2);
         if (!models || models.length < THRESHOLD) return;
 
@@ -12201,7 +12212,7 @@ opts.jsonPayload + '\n' +
      * @returns {HTMLElement}
      */
     function _buildTermsSheet() {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var title = (typeof cfg.panelTermsTitle === 'string' &&
             cfg.panelTermsTitle) || 'Terms of Service';
 
@@ -12604,7 +12615,7 @@ opts.jsonPayload + '\n' +
         var sheetOpts  = (opts && typeof opts === 'object') ? opts : {};
         var onLinkMode = typeof sheetOpts.onLinkMode === 'function'
             ? sheetOpts.onLinkMode : null;
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var label = (typeof cfg.panelShareLabel === 'string' &&
             cfg.panelShareLabel) || 'Share';
 
@@ -12895,7 +12906,7 @@ opts.jsonPayload + '\n' +
         // conditional global-share and training tiers below — can access it
         // without a ReferenceError (BUG-FIX: cfg was only declared inside the
         // permSaveBtn click closure, making it invisible at function-body scope).
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
 
         // ── Per-format metadata ────────────────────────────────────────────────
         var _fmtMeta = {
@@ -13916,7 +13927,7 @@ opts.jsonPayload + '\n' +
      *     The assembled sheet element (data-open="false" initially).
      */
     function _buildLinksSheet() {
-        var cfg    = window.AI_ASSISTANT_CONFIG || {};
+        var cfg    = _cfg();
         var title  = (typeof cfg.panelLinksTitle === 'string' && cfg.panelLinksTitle)
                      || 'Project Links';
 
@@ -14285,7 +14296,7 @@ opts.jsonPayload + '\n' +
      *   opens the model sheet where the user selects a model via radio button.
      */
     function _buildInlineModelPicker() {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         if (cfg.panelInlineModelPicker === false) return null;
         var models = Array.isArray(cfg.panelApiModels) ? cfg.panelApiModels : [];
         if (models.length === 0) return null;
@@ -14349,7 +14360,7 @@ opts.jsonPayload + '\n' +
         // re-querying the closure, and so the button always reflects the live
         // panelApiModels list even when hot-reloaded after DOMContentLoaded.
         btn._syncState = function (id) {
-            var freshModels = (window.AI_ASSISTANT_CONFIG || {}).panelApiModels;
+            var freshModels = _cfg().panelApiModels;
             var m = _findModel(
                 Array.isArray(freshModels) ? freshModels : models,
                 id
@@ -14386,7 +14397,7 @@ opts.jsonPayload + '\n' +
      * @returns {HTMLElement}
      */
     function _buildSearchBar(mini) {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         var ph  = (typeof cfg.panelSearchPlaceholder === 'string' &&
             cfg.panelSearchPlaceholder) || 'Ask AI about these docs\u2026';
 
@@ -14457,7 +14468,7 @@ opts.jsonPayload + '\n' +
      * Any value other than "top" falls back to "bottom" (pre-existing behaviour).
      */
     function _mountSearchBar() {
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         if (!cfg.searchBar) return;                       // default off
         var sel = (typeof cfg.searchBarSelector === 'string' &&
             cfg.searchBarSelector) || '';
@@ -14512,7 +14523,7 @@ opts.jsonPayload + '\n' +
      * @returns {HTMLElement}
      */
     function createAIPanel() {
-        var cfg         = window.AI_ASSISTANT_CONFIG || {};
+        var cfg         = _cfg();
         var title       = cfg.panelTitle       || 'AI Assistant';
         var placeholder = cfg.panelPlaceholder || 'Ask a question about this page\u2026';
         // Quick-suggestion chips are now built by _renderWelcome (shared with
@@ -14609,7 +14620,7 @@ opts.jsonPayload + '\n' +
         // The hamburger popover is still opened by the header button and wired
         // below.  The right overflow button (⋯) shares the same popover for
         // narrow viewports.
-        var cfgRef = window.AI_ASSISTANT_CONFIG || {};
+        var cfgRef = _cfg();
         var subbar = document.createElement('div');
         subbar.className = 'ai-assistant-panel-subbar';
 
@@ -14703,8 +14714,7 @@ opts.jsonPayload + '\n' +
         privacyLink.className = 'ai-assistant-panel-privacy-link';
         privacyLink.type = 'button';
         privacyLink.textContent =
-            (window.AI_ASSISTANT_CONFIG &&
-             window.AI_ASSISTANT_CONFIG.panelPrivacyLinkText) ||
+            (_cfg().panelPrivacyLinkText) ||
             'Privacy & Responsibility';
 
         // Terms-of-Service link — sibling of Privacy, same CSS class so the
@@ -15796,7 +15806,7 @@ opts.jsonPayload + '\n' +
         var label = document.createElement('span');
         // BUG-FIX: was hardcoded 'Ask AI' — now reads cfg.panelTriggerLabel
         // so ai_assistant_panel_trigger_label in conf.py is actually applied.
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         label.textContent = cfg.panelTriggerLabel || 'Ask AI';
 
         trigger.appendChild(iconWrap);
@@ -18291,7 +18301,7 @@ opts.jsonPayload + '\n' +
                 _speechRecognitionEnded = true;
                 _pendingSpeechStart = false;
 
-                _log('error', 
+                _log('error',
                     'AI Assistant: Speech recognition start error:',
                     err
                 );
@@ -18634,7 +18644,7 @@ opts.jsonPayload + '\n' +
                     // Permission denied or hardware unavailable — proceed without
                     // Web Audio.  The user will see normal recognition behaviour;
                     // silence detection degrades to result-gap timer only.
-                    _log('warn', 
+                    _log('warn',
                         'AI Assistant banner: getUserMedia failed, '
                         + 'using recognition-only fallback:',
                         err
@@ -19843,7 +19853,7 @@ opts.jsonPayload + '\n' +
         // Each transcript entry carries the model that generated it — enables
         // per-model analytics in JSON exports and DataFrame groupby operations.
         var modelInfo = (role === 'assistant')
-            ? _getActiveModel(window.AI_ASSISTANT_CONFIG || {})
+            ? _getActiveModel_cfg()
             : null;
 
         _recordMessage(role, text, modelInfo);   // v2: includes modelInfo
@@ -19900,7 +19910,7 @@ opts.jsonPayload + '\n' +
         var body = document.getElementById('ai-assistant-panel-body');
         if (body) { _showTypingIndicator(body); }
 
-        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var cfg = _cfg();
         try {
             if (cfg.panelApiEnabled) {
                 await _panelApiCall(questionText, cfg);
@@ -20326,7 +20336,7 @@ opts.jsonPayload + '\n' +
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
-        var _streamModelInfo = _getActiveModel(window.AI_ASSISTANT_CONFIG || {});
+        var _streamModelInfo = _getActiveModel_cfg();
         _recordMessage('assistant', accumulated || '(no response)', _streamModelInfo);
         // Read the timestamp just stored — same single-threaded guarantee as
         // _appendPanelMessage: the last _transcript entry is this streamed reply.
@@ -20440,7 +20450,7 @@ opts.jsonPayload + '\n' +
         var ns = window.AI_ASSISTANT = window.AI_ASSISTANT || {};
         if (ns._wired) { return; }              // idempotent across re-injection
         ns._wired          = true;
-        ns.config          = function () { return window.AI_ASSISTANT_CONFIG || {}; };
+        ns.config          = function () { return _cfg(); };
         ns.getStaticPath   = getStaticPath;     // asset base URL resolver
         ns.icons           = ICONS;             // inline SVG map
         ns.fetch           = _fetch;            // AI_COMPAT-aware fetch

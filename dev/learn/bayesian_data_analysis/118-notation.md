@@ -5,7 +5,7 @@
 [◀ Previous · Robust regression using t-distributed errors](117-robust-regression-using-t-distributed-errors.html) · [Next · Multiple imputation ▶](119-multiple-imputation.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

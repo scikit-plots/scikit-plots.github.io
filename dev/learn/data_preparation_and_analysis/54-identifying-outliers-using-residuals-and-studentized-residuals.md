@@ -5,7 +5,7 @@
 [◀ Previous · Binary Classification Model Evaluation and Threshold Optimization](53-binary-classification-model-evaluation-and-threshold-optimization.html) · [Next · AUC–ROC Curve: Evaluating Classification Model Performance ▶](55-auc-roc-curve-evaluating-classification-model-performance.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

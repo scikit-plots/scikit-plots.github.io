@@ -5,7 +5,7 @@
 [◀ Previous · Multivariate Normal Model with Known Variance](024-multivariate-normal-model-with-known-variance.html) · [Next · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate) ▶](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

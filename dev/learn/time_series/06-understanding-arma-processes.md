@@ -5,7 +5,7 @@
 [◀ Previous · Linear Processes](05-linear-processes.html) · [Next · Computing ACFs of Causal AR(2) Processes Using Difference Equations ▶](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

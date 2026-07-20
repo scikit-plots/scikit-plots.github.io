@@ -5,7 +5,7 @@
 ◀ [Previous](013-analytical-skills-and-their-core-components.html) · [Next](015-analytical-thinking-and-its-core-components.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

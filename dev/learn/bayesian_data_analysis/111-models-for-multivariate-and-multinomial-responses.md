@@ -5,7 +5,7 @@
 [◀ Previous · State-level opinons from national polls](110-state-level-opinons-from-national-polls.html) · [Next · Loglinear models for multivariate discrete data ▶](112-loglinear-models-for-multivariate-discrete-data.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

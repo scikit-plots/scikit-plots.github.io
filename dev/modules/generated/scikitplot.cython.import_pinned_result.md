@@ -1,6 +1,6 @@
 # import\_pinned\_result[#](#import-pinned-result "Link to this heading")
 
-scikitplot.cython.import\_pinned\_result(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_public.py#L672)[#](#scikitplot.cython.import_pinned_result "Link to this definition")
+scikitplot.cython.import\_pinned\_result(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_public.py#L672)[#](#scikitplot.cython.import_pinned_result "Link to this definition")
 :   Import a pinned alias.
 
     Parameters:

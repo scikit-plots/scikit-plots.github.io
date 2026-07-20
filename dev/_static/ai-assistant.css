@@ -13190,23 +13190,11 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     }
 }
 
-/*!
- * ai-assistant-print.css — print / "Save as PDF" stylesheet for the Sphinx AI
- * Assistant. Pairs with handlePdfExport()'s Print mode.
- *
- * SAFETY: screen rendering is untouched — every layout rule lives inside
- * @media print. The only screen-scoped rule hides the injected print header.
- *
- * SCOPE: tuned for the PyData Sphinx theme (scikit-plots docs). For other
- * themes, adjust the chrome selectors in block (2). Everything else is generic.
- *
- * INTEGRATION: register after ai-assistant.css, e.g.
- *   app.add_css_file("ai-assistant-print.css")
- * or append this block to ai-assistant.css.
- */
-
-/* The header injected by _printWithHeader() is hidden on screen; @media print
-   reveals it. If this file is not loaded it simply never appears (safe). */
+/* ═══════════════════════════════════════════════════════════════════════
+   PRINT / "Save as PDF" — merged from ai-assistant-print.css.
+   Screen rendering is untouched: all layout rules live inside @media print;
+   the one screen rule hides the print-only header injected by _printWithHeader().
+   ═══════════════════════════════════════════════════════════════════════ */
 .ai-assistant-print-header { display: none; }
 
 @media print {

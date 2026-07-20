@@ -5,7 +5,7 @@
 [◀ Previous · Direct simulation and rejection sampling](064-direct-simulation-and-rejection-sampling.html) · [Next · How many simulation draws are needed? ▶](066-how-many-simulation-draws-are-needed.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

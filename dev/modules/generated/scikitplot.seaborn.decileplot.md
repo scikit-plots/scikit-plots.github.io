@@ -1,6 +1,6 @@
 # decileplot[#](#decileplot "Link to this heading")
 
-scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **n\_deciles=10**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt=''**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/seaborn/_decile.py#L1663)[#](#scikitplot.seaborn.decileplot "Link to this definition")
+scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **n\_deciles=10**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt=''**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/seaborn/_decile.py#L1663)[#](#scikitplot.seaborn.decileplot "Link to this definition")
 :   Given binary labels y\_true (0/1) and probabilities y\_score 1d array, compute/plot a decile [[2]](#rd1ed195c7ca1-2) table.
 
     The function sorts observations by descending score, assigns decile index

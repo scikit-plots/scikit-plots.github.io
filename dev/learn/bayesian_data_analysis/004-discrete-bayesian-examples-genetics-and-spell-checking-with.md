@@ -5,7 +5,7 @@
 [◀ Previous · Bayesian Inference](003-bayesian-inference.html) · [Next · Probability as a Measure of Uncertainty ▶](005-probability-as-a-measure-of-uncertainty.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

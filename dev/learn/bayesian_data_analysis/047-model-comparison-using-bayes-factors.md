@@ -5,7 +5,7 @@
 [◀ Previous · Model comparison based on predictive performance](046-model-comparison-based-on-predictive-performance.html) · [Next · Continuous model expansion ▶](048-continuous-model-expansion.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

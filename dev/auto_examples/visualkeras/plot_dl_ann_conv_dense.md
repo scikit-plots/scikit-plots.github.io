@@ -123,7 +123,7 @@ img_spam
 ```
 ![plot dl ann conv dense](../../_images/sphx_glr_plot_dl_ann_conv_dense_001.png)
 ```
-<matplotlib.image.AxesImage object at 0x7edb64504fe0>
+<matplotlib.image.AxesImage object at 0x78f42c673d70>
 
 ```
 ```
@@ -147,7 +147,7 @@ img_spam
 ```
 ![plot dl ann conv dense](../../_images/sphx_glr_plot_dl_ann_conv_dense_002.png)
 ```
-<matplotlib.image.AxesImage object at 0x7edb64481c40>
+<matplotlib.image.AxesImage object at 0x78f42c703350>
 
 ```
 ```
@@ -174,15 +174,15 @@ img_spam
 ```
 ![plot dl ann conv dense](../../_images/sphx_glr_plot_dl_ann_conv_dense_003.png)
 ```
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/spam_conv_z_20260719_102409Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/spam_conv_z_20260720_161558Z.png
 
-<matplotlib.image.AxesImage object at 0x7edb642be450>
+<matplotlib.image.AxesImage object at 0x78f42c531580>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 5.773 seconds)
+****Total running time of the script:**** (0 minutes 5.514 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_ann_conv_dense.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_ann_conv_dense.ipynb)
 

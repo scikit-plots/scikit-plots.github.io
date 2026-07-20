@@ -5,7 +5,7 @@
 [◀ Previous · What is a Neural Network?](01-what-is-a-neural-network.html) · [Next · Why Deep Learning is Taking Off ▶](03-why-deep-learning-is-taking-off.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

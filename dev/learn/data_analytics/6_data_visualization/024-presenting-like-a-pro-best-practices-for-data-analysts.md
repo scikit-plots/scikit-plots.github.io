@@ -5,7 +5,7 @@
 ◀ [Previous](023-presentation-skills-for-data-analysts-delivering-insights-with-confidence.html) · [Next](025-preparing-for-q-and-a-anticipating-and-responding-to-stakeholder-questions.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

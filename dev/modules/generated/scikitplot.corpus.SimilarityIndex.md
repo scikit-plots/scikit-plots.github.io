@@ -1,6 +1,6 @@
 # SimilarityIndex[#](#similarityindex "Link to this heading")
 
-class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_similarity/_similarity.py#L229)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
+class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_similarity/_similarity.py#L229)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -43,7 +43,7 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     ```
     Go BackOpen In Tab
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_similarity/_similarity.py#L277)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_similarity/_similarity.py#L277)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -67,7 +67,7 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/corpus/_similarity/_similarity.py#L371)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_similarity/_similarity.py#L371)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:

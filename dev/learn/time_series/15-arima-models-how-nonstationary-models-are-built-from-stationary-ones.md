@@ -5,7 +5,7 @@
 [◀ Previous · Order Selection for Time Series Models](14-order-selection-for-time-series-models.html) · [Next · SARIMA Models: Seasonal ARIMA ▶](16-sarima-models-seasonal-arima.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

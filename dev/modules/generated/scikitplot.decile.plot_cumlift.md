@@ -1,6 +1,6 @@
 # plot\_cumlift[#](#plot-cumlift "Link to this heading")
 
-scikitplot.decile.plot\_cumlift(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/decile/_decile_modelplotpy.py#L2827)[#](#scikitplot.decile.plot_cumlift "Link to this definition")
+scikitplot.decile.plot\_cumlift(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/decile/_decile_modelplotpy.py#L2827)[#](#scikitplot.decile.plot_cumlift "Link to this definition")
 :   Plot cumulative lift curve.
 
     Parameters:

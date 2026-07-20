@@ -5,7 +5,7 @@
 [◀ Previous · Weakly informative priors for logistic regression](108-weakly-informative-priors-for-logistic-regression.html) · [Next · State-level opinons from national polls ▶](110-state-level-opinons-from-national-polls.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

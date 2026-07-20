@@ -1,6 +1,6 @@
 # cython\_cpp\_prereqs[#](#cython-cpp-prereqs "Link to this heading")
 
-scikitplot.cython.cython\_cpp\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_custom_compiler.py#L454)[#](#scikitplot.cython.cython_cpp_prereqs "Link to this definition")
+scikitplot.cython.cython\_cpp\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L454)[#](#scikitplot.cython.cython_cpp_prereqs "Link to this definition")
 :   Check prerequisites compile C++ via Cython.
 
     Requires Cython only. NumPy is optional; setuptools is optional (the

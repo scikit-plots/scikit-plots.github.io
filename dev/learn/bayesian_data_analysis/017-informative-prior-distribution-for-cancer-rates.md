@@ -5,7 +5,7 @@
 [◀ Previous · Other Standard Single-Parameter Models](016-other-standard-single-parameter-models.html) · [Next · Noninformative Prior Distributions ▶](018-noninformative-prior-distributions.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

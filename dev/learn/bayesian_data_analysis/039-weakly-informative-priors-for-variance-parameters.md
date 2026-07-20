@@ -5,7 +5,7 @@
 [◀ Previous · Hierarchical modeling applied to a meta-analysis](038-hierarchical-modeling-applied-to-a-meta-analysis.html) · [Next · The Place of Model Checking in Applied Bayesian Statistics ▶](040-the-place-of-model-checking-in-applied-bayesian-statistics.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

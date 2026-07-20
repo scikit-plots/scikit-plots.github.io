@@ -5,7 +5,7 @@
 [◀ Previous · Density estimation and regression](133-density-estimation-and-regression.html) · [Next · Example: reaction times and schizophrenia ▶](135-example-reaction-times-and-schizophrenia.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

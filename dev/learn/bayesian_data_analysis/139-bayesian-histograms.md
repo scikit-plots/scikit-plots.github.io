@@ -5,7 +5,7 @@
 [◀ Previous · Mixture models for classification and regression](138-mixture-models-for-classification-and-regression.html) · [Next · Dirichlet process prior distributions ▶](140-dirichlet-process-prior-distributions.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

@@ -5,7 +5,7 @@
 [◀ Previous · Gradient Descent on m Training Examples](14-gradient-descent-on-m-training-examples.html) · [Next · More Vectorization Examples ▶](16-more-vectorization-examples.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

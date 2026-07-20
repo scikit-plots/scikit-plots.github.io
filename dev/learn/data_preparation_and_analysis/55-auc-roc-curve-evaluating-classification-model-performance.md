@@ -5,7 +5,7 @@
 [◀ Previous · Identifying Outliers Using Residuals and Studentized Residuals](54-identifying-outliers-using-residuals-and-studentized-residuals.html) · [Next · Lift Analysis for Direct Mail Campaigns: Concept, Process, and Business Value ▶](56-lift-analysis-for-direct-mail-campaigns-concept-process-and-business-value.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

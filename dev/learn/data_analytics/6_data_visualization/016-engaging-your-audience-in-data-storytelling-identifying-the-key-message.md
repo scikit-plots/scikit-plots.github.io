@@ -5,7 +5,7 @@
 ◀ [Previous](015-data-storytelling-giving-numbers-a-clear-and-convincing-voice.html) · [Next](017-data-dashboards-organizing-insight-for-real-time-decision-making.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

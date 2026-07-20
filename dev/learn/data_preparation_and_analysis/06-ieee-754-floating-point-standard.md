@@ -5,7 +5,7 @@
 [◀ Previous · The First Step in Knowing Your Data](05-the-first-step-in-knowing-your-data.html) · [Next · Discovering Associations Through Data: From Everyday Patterns to Chicago Taxi Trips (September 2022) ▶](07-discovering-associations-through-data-from-everyday-patterns-to-chicago-taxi-trips-september-2022.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

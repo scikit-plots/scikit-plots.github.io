@@ -5,7 +5,7 @@
 [◀ Previous · Why Do We Analyze Data?](01-why-do-we-analyze-data.html) · [Next · CRISP-DM for Data Science ▶](03-crisp-dm-for-data-science.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

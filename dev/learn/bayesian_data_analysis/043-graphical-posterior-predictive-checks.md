@@ -5,7 +5,7 @@
 [◀ Previous · Posterior predictive checking](042-posterior-predictive-checking.html) · [Next · Model checking for the educational testing example ▶](044-model-checking-for-the-educational-testing-example.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

@@ -5,7 +5,7 @@
 [◀ Previous · Using regression predictions: survey incentives](058-using-regression-predictions-survey-incentives.html) · [Next · Hierarchical decision analysis for home radon ▶](060-hierarchical-decision-analysis-for-home-radon.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

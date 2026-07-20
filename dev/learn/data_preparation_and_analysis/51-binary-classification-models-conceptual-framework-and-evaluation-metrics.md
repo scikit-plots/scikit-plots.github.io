@@ -5,7 +5,7 @@
 [◀ Previous · Assessing the Quality of Prediction Models](50-assessing-the-quality-of-prediction-models.html) · [Next · Nominal Classification Models: Model State and Evaluation Metrics ▶](52-nominal-classification-models-model-state-and-evaluation-metrics.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

@@ -5,7 +5,7 @@
 [◀ Previous · Gibbs sampler](069-gibbs-sampler.html) · [Next · Using Gibbs and Metropolis as building blocks ▶](071-using-gibbs-and-metropolis-as-building-blocks.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

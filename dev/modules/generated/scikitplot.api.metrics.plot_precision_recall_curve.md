@@ -1,6 +1,6 @@
 # plot\_precision\_recall\_curve[#](#plot-precision-recall-curve "Link to this heading")
 
-scikitplot.api.metrics.plot\_precision\_recall\_curve(**y\_true**, **y\_probas**, **title='Precision-Recall Curve'**, **curves=('micro', 'each\_class')**, **ax=None**, **figsize=None**, **cmap='nipy\_spectral'**, **title\_fontsize='large'**, **text\_fontsize='medium'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/api/metrics/_classification/_precision_recall_curve.py#L50)[#](#scikitplot.api.metrics.plot_precision_recall_curve "Link to this definition")
+scikitplot.api.metrics.plot\_precision\_recall\_curve(**y\_true**, **y\_probas**, **title='Precision-Recall Curve'**, **curves=('micro', 'each\_class')**, **ax=None**, **figsize=None**, **cmap='nipy\_spectral'**, **title\_fontsize='large'**, **text\_fontsize='medium'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/api/metrics/_classification/_precision_recall_curve.py#L50)[#](#scikitplot.api.metrics.plot_precision_recall_curve "Link to this definition")
 :   Generates the Precision Recall Curve from labels and probabilities
 
     Parameters:

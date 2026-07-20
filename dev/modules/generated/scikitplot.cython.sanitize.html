@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:49:38Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-20T16:45:48Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -51,7 +51,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=6ecd9b07" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=4ddd039c" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -77,7 +77,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
+    <script defer="defer" src="../../_static/ai-assistant.js?v=f3bcf783"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>sanitize<a class="headerlink" href="#sanitize" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.sanitize">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_utils.py#L10"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.sanitize" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_utils.py#L10"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.sanitize" title="Link to this definition">#</a></dt>
 <dd><p>Convert an arbitrary string into a valid Python module name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1353,8 +1353,8 @@ underscore is prepended so that the output is always a valid identifier.</p></li
 <li><p>An empty input string returns <code class="docutils literal notranslate"><span class="pre">&quot;_&quot;</span></code> (the minimal valid identifier).</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="813ab5a1-1147-4ccc-96d0-5f8cedfbe4ee">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('813ab5a1-1147-4ccc-96d0-5f8cedfbe4ee','b6f66169-ded2-4584-971c-aa77984cd6fe','e29a231b-0b9c-4542-84a5-55cac1db1e7d','../../lite/tree/../notebooks/index.html?path=b922124d_be59_45d5_920d_6758135507d5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="623a96b6-e2fe-4fc9-8465-fb5bc0dc4b5c">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('623a96b6-e2fe-4fc9-8465-fb5bc0dc4b5c','ac5a232a-2ff6-47fe-81bf-dd50a0beac47','25d97704-86e4-430a-8499-8d82d0af1a9c','../../lite/tree/../notebooks/index.html?path=2f9c3b72_42c7_4057_a278_61250b76aa94.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize</span><span class="p">(</span><span class="s2">&quot;hello-world&quot;</span><span class="p">)</span>
 <span class="go">&#39;hello_world&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize</span><span class="p">(</span><span class="s2">&quot;123abc&quot;</span><span class="p">)</span>
@@ -1367,7 +1367,7 @@ underscore is prepended so that the output is always a valid identifier.</p></li
 </div>
 </div>
 </div>
-<div id="e29a231b-0b9c-4542-84a5-55cac1db1e7d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('813ab5a1-1147-4ccc-96d0-5f8cedfbe4ee','e29a231b-0b9c-4542-84a5-55cac1db1e7d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('813ab5a1-1147-4ccc-96d0-5f8cedfbe4ee','e29a231b-0b9c-4542-84a5-55cac1db1e7d')">Open In Tab</button></div><div id="b6f66169-ded2-4584-971c-aa77984cd6fe" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="25d97704-86e4-430a-8499-8d82d0af1a9c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('623a96b6-e2fe-4fc9-8465-fb5bc0dc4b5c','25d97704-86e4-430a-8499-8d82d0af1a9c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('623a96b6-e2fe-4fc9-8465-fb5bc0dc4b5c','25d97704-86e4-430a-8499-8d82d0af1a9c')">Open In Tab</button></div><div id="ac5a232a-2ff6-47fe-81bf-dd50a0beac47" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1485,7 +1485,7 @@ underscore is prepended so that the output is always a valid identifier.</p></li
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260720.c8f33de 2026-07-20T16:01Z.
       <br/>
     
   </p>

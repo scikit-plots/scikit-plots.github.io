@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-19T10:50:54Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-20T16:47:07Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -53,7 +53,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=6ecd9b07" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=4ddd039c" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -79,7 +79,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=4fba141c"></script>
+    <script defer="defer" src="../../_static/ai-assistant.js?v=f3bcf783"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>Kiss64Random<a class="headerlink" href="#kiss64random" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">Kiss64Random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.Kiss64Random" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">Kiss64Random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.Kiss64Random" title="Link to this definition">#</a></dt>
 <dd><p>Low-level 64-bit KISS RNG with context manager support.</p>
 <p>This class provides direct access to the C++ Kiss64Random implementation.
 For most use cases, prefer KissGenerator or default_rng() instead.
@@ -1371,8 +1371,8 @@ Must be in range [0, 2^64-1].</p>
 <li><p>Preferred for large-scale applications</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ce070107-5ebd-4dc3-a029-5856e64286f5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ce070107-5ebd-4dc3-a029-5856e64286f5','e7237006-1b53-4cd7-bbcb-6211b6e32d7c','71aed257-f35d-48eb-8485-1573f81dee2f','../../lite/tree/../notebooks/index.html?path=018fa6ca_664a_4aac_aabe_dcf8f0a28466.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="aea0669c-081b-4ce8-ad20-22aec2860baa">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('aea0669c-081b-4ce8-ad20-22aec2860baa','f5345e25-cb10-45c3-9880-ec68031fcf72','b5f5bc81-727b-4da0-8d9d-70ecaedb8f32','../../lite/tree/../notebooks/index.html?path=b8831f3c_5ed3_471b_a2d0_842013e61d03.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span><span class="o">.</span><span class="n">kiss</span><span class="p">()</span>  <span class="c1"># Random uint64</span>
 <span class="gp">&gt;&gt;&gt;</span>
@@ -1387,7 +1387,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="71aed257-f35d-48eb-8485-1573f81dee2f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ce070107-5ebd-4dc3-a029-5856e64286f5','71aed257-f35d-48eb-8485-1573f81dee2f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ce070107-5ebd-4dc3-a029-5856e64286f5','71aed257-f35d-48eb-8485-1573f81dee2f')">Open In Tab</button></div><div id="e7237006-1b53-4cd7-bbcb-6211b6e32d7c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="b5f5bc81-727b-4da0-8d9d-70ecaedb8f32" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('aea0669c-081b-4ce8-ad20-22aec2860baa','b5f5bc81-727b-4da0-8d9d-70ecaedb8f32')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('aea0669c-081b-4ce8-ad20-22aec2860baa','b5f5bc81-727b-4da0-8d9d-70ecaedb8f32')">Open In Tab</button></div><div id="f5345e25-cb10-45c3-9880-ec68031fcf72" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.default_seed">
 <span class="sig-name descname"><span class="pre">default_seed</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1234567890987654321</span></span><a class="headerlink" href="#scikitplot.random.Kiss64Random.default_seed" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1411,8 +1411,8 @@ Must be in range [0, 2^64-1].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="16c8a006-3a71-41a1-90b7-f715ef4b3c7a">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('16c8a006-3a71-41a1-90b7-f715ef4b3c7a','db3306a2-32f3-43b2-8f17-ca80808fbc22','0bb1640a-b734-4ab8-a00f-b21ffb499052','../../lite/tree/../notebooks/index.html?path=5a990929_f002_4861_9b16_9d48913fbc2e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="d1195349-fb88-4ac3-b7aa-66aa221e0d8e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d1195349-fb88-4ac3-b7aa-66aa221e0d8e','ccdbe031-4f82-48b2-8434-9ab35f22f306','a669c3a1-94e3-4d9b-8d49-e15a7ec96ac9','../../lite/tree/../notebooks/index.html?path=ebff0b89_c4f1_492d_a536_f6bd6a08d006.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span>
@@ -1422,7 +1422,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="0bb1640a-b734-4ab8-a00f-b21ffb499052" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('16c8a006-3a71-41a1-90b7-f715ef4b3c7a','0bb1640a-b734-4ab8-a00f-b21ffb499052')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('16c8a006-3a71-41a1-90b7-f715ef4b3c7a','0bb1640a-b734-4ab8-a00f-b21ffb499052')">Open In Tab</button></div><div id="db3306a2-32f3-43b2-8f17-ca80808fbc22" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a669c3a1-94e3-4d9b-8d49-e15a7ec96ac9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d1195349-fb88-4ac3-b7aa-66aa221e0d8e','a669c3a1-94e3-4d9b-8d49-e15a7ec96ac9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d1195349-fb88-4ac3-b7aa-66aa221e0d8e','a669c3a1-94e3-4d9b-8d49-e15a7ec96ac9')">Open In Tab</button></div><div id="ccdbe031-4f82-48b2-8434-9ab35f22f306" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.flip">
@@ -1466,8 +1466,8 @@ Must be in range [0, 2^64-1].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="4ae526da-1638-41dc-9b5c-7411071c7793">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4ae526da-1638-41dc-9b5c-7411071c7793','8e9db2cb-5d28-45c4-ab68-83b428325772','1d95e61c-81b7-4ef4-9c88-3a04f3607e36','../../lite/tree/../notebooks/index.html?path=bbf8940b_4265_4f08_a478_564725c1af0f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ef32d3cd-0680-4338-93d5-0751c590e65f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ef32d3cd-0680-4338-93d5-0751c590e65f','624c465d-de63-4135-8e22-e1f0429eaea3','1cc5a972-b750-4835-b471-b09c98e7af14','../../lite/tree/../notebooks/index.html?path=a964b2c4_4b65_4bdf_9c39_c7acef219543.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
@@ -1476,7 +1476,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="1d95e61c-81b7-4ef4-9c88-3a04f3607e36" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4ae526da-1638-41dc-9b5c-7411071c7793','1d95e61c-81b7-4ef4-9c88-3a04f3607e36')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4ae526da-1638-41dc-9b5c-7411071c7793','1d95e61c-81b7-4ef4-9c88-3a04f3607e36')">Open In Tab</button></div><div id="8e9db2cb-5d28-45c4-ab68-83b428325772" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="1cc5a972-b750-4835-b471-b09c98e7af14" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ef32d3cd-0680-4338-93d5-0751c590e65f','1cc5a972-b750-4835-b471-b09c98e7af14')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ef32d3cd-0680-4338-93d5-0751c590e65f','1cc5a972-b750-4835-b471-b09c98e7af14')">Open In Tab</button></div><div id="624c465d-de63-4135-8e22-e1f0429eaea3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.get_state">
@@ -1491,8 +1491,8 @@ Must be in range [0, 2^64-1].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="a7132513-7308-4f55-aeaf-e115c251319d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a7132513-7308-4f55-aeaf-e115c251319d','8eeb1e74-dc17-4f76-b45a-3fa06c44dda1','36258224-eb10-4b1a-8545-3fd7f8f0ef31','../../lite/tree/../notebooks/index.html?path=bdabfbe3_b50d_4867_a33b_73ed95e20b62.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c7feae7b-0f9e-4e10-9bcb-55cb93dbc710">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c7feae7b-0f9e-4e10-9bcb-55cb93dbc710','4768a960-2aa7-40fb-a644-aac8a1e2e449','5d0a65a0-d99e-4ff1-a528-f64f273038e1','../../lite/tree/../notebooks/index.html?path=49ac78b5_be7b_4089_9d42_b651638df9eb.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">])</span>
@@ -1501,7 +1501,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="36258224-eb10-4b1a-8545-3fd7f8f0ef31" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a7132513-7308-4f55-aeaf-e115c251319d','36258224-eb10-4b1a-8545-3fd7f8f0ef31')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a7132513-7308-4f55-aeaf-e115c251319d','36258224-eb10-4b1a-8545-3fd7f8f0ef31')">Open In Tab</button></div><div id="8eeb1e74-dc17-4f76-b45a-3fa06c44dda1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="5d0a65a0-d99e-4ff1-a528-f64f273038e1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c7feae7b-0f9e-4e10-9bcb-55cb93dbc710','5d0a65a0-d99e-4ff1-a528-f64f273038e1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c7feae7b-0f9e-4e10-9bcb-55cb93dbc710','5d0a65a0-d99e-4ff1-a528-f64f273038e1')">Open In Tab</button></div><div id="4768a960-2aa7-40fb-a644-aac8a1e2e449" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.index">
@@ -1593,8 +1593,8 @@ Must be in range [0, 2^64-1].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="016478b5-e9c1-459f-8b66-1c8486c01285">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('016478b5-e9c1-459f-8b66-1c8486c01285','56e40034-a8b6-4585-bc0a-ca3fafd10901','45d27fcc-3472-45d8-abd5-7b9bccd6a057','../../lite/tree/../notebooks/index.html?path=ed10dd45_69ae_4821_b22c_7a586165e575.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7f53255e-245e-495d-8f06-f807c78ec8ec">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7f53255e-245e-495d-8f06-f807c78ec8ec','80104f54-2354-421b-94b0-2396cff31845','83634d57-415b-453c-83f0-61a8c8fbc6eb','../../lite/tree/../notebooks/index.html?path=a4c9a460_3a08_4788_8752_aa96d26c777e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
@@ -1603,7 +1603,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="45d27fcc-3472-45d8-abd5-7b9bccd6a057" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('016478b5-e9c1-459f-8b66-1c8486c01285','45d27fcc-3472-45d8-abd5-7b9bccd6a057')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('016478b5-e9c1-459f-8b66-1c8486c01285','45d27fcc-3472-45d8-abd5-7b9bccd6a057')">Open In Tab</button></div><div id="56e40034-a8b6-4585-bc0a-ca3fafd10901" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="83634d57-415b-453c-83f0-61a8c8fbc6eb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7f53255e-245e-495d-8f06-f807c78ec8ec','83634d57-415b-453c-83f0-61a8c8fbc6eb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7f53255e-245e-495d-8f06-f807c78ec8ec','83634d57-415b-453c-83f0-61a8c8fbc6eb')">Open In Tab</button></div><div id="80104f54-2354-421b-94b0-2396cff31845" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.set_params">
@@ -1624,8 +1624,8 @@ Must be in range [0, 2^64-1].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="47f97024-3754-4edc-864d-16fc459829d4">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('47f97024-3754-4edc-864d-16fc459829d4','a9485b0a-8ad3-4623-a53d-ad17d71f5a28','8f1d0a91-f8a0-4af6-a0bf-f461c8010efa','../../lite/tree/../notebooks/index.html?path=5607a6da_670f_466b_8513_8d7bf8ca0677.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="af6baffd-88d1-4b82-b44a-d2cb12d3279c">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('af6baffd-88d1-4b82-b44a-d2cb12d3279c','282307c4-604d-4304-8563-f5345b425ef8','2dcbda9d-17c2-4189-bc5e-251f90640c4c','../../lite/tree/../notebooks/index.html?path=15b8e001_e36d_469d_a823_6654e89f6f69.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
@@ -1634,7 +1634,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="8f1d0a91-f8a0-4af6-a0bf-f461c8010efa" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('47f97024-3754-4edc-864d-16fc459829d4','8f1d0a91-f8a0-4af6-a0bf-f461c8010efa')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('47f97024-3754-4edc-864d-16fc459829d4','8f1d0a91-f8a0-4af6-a0bf-f461c8010efa')">Open In Tab</button></div><div id="a9485b0a-8ad3-4623-a53d-ad17d71f5a28" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="2dcbda9d-17c2-4189-bc5e-251f90640c4c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('af6baffd-88d1-4b82-b44a-d2cb12d3279c','2dcbda9d-17c2-4189-bc5e-251f90640c4c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('af6baffd-88d1-4b82-b44a-d2cb12d3279c','2dcbda9d-17c2-4189-bc5e-251f90640c4c')">Open In Tab</button></div><div id="282307c4-604d-4304-8563-f5345b425ef8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.set_seed">
@@ -1663,8 +1663,8 @@ Must be in range [0, 2^64-1].</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8892f33b-01d8-4954-b089-551be0dbdc1e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8892f33b-01d8-4954-b089-551be0dbdc1e','4b95d0d2-1d4a-4202-8f9a-32b712137c23','86b85281-186f-463f-9465-3a79f55e70f6','../../lite/tree/../notebooks/index.html?path=0005a0e2_1530_4c7d_9034_aa2b5e99ea9c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e3a6f1df-89ca-4ce2-bd5d-259de839fa94">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e3a6f1df-89ca-4ce2-bd5d-259de839fa94','ed5d7343-d814-42f0-ae85-4bce693784f8','0e5a7ba4-c3a7-4148-b53e-8169d24be2bb','../../lite/tree/../notebooks/index.html?path=b5abb1e6_9eb8_4896_a32b_40cb71c3dced.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng1</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">rng1</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng2</span> <span class="o">=</span> <span class="n">Kiss64Random</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1673,7 +1673,7 @@ Must be in range [0, 2^64-1].</p>
 </div>
 </div>
 </div>
-<div id="86b85281-186f-463f-9465-3a79f55e70f6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8892f33b-01d8-4954-b089-551be0dbdc1e','86b85281-186f-463f-9465-3a79f55e70f6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8892f33b-01d8-4954-b089-551be0dbdc1e','86b85281-186f-463f-9465-3a79f55e70f6')">Open In Tab</button></div><div id="4b95d0d2-1d4a-4202-8f9a-32b712137c23" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0e5a7ba4-c3a7-4148-b53e-8169d24be2bb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e3a6f1df-89ca-4ce2-bd5d-259de839fa94','0e5a7ba4-c3a7-4148-b53e-8169d24be2bb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e3a6f1df-89ca-4ce2-bd5d-259de839fa94','0e5a7ba4-c3a7-4148-b53e-8169d24be2bb')">Open In Tab</button></div><div id="ed5d7343-d814-42f0-ae85-4bce693784f8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.Kiss64Random.to_dict">
@@ -1827,7 +1827,7 @@ Must be in range [0, 2^64-1].</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260719.cdecb99 2026-07-19T10:07Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260720.c8f33de 2026-07-20T16:01Z.
       <br/>
     
   </p>

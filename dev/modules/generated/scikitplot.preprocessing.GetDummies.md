@@ -1,6 +1,6 @@
 # GetDummies[#](#getdummies "Link to this heading")
 
-class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, **'**, **col\_name\_sep='\_'**, **drop=None**, **sparse\_output=False**, **dtype=<class 'numpy.float64'>**, **handle\_unknown='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/preprocessing/_encoders.py#L80)[#](#scikitplot.preprocessing.GetDummies "Link to this definition")
+class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, **'**, **col\_name\_sep='\_'**, **drop=None**, **sparse\_output=False**, **dtype=<class 'numpy.float64'>**, **handle\_unknown='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/preprocessing/_encoders.py#L80)[#](#scikitplot.preprocessing.GetDummies "Link to this definition")
 :   Multi-column multi-label string column one-hot encoder [[1]](#rbcee2ffc57f9-1).
 
     Custom transformer to expand string columns that contain multiple labels
@@ -94,12 +94,12 @@ class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, *
     ```
     Go BackOpen In Tab
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/preprocessing/_encoders.py#L360)[#](#scikitplot.preprocessing.GetDummies.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/preprocessing/_encoders.py#L360)[#](#scikitplot.preprocessing.GetDummies.fit "Link to this definition")
     :   Learn dummy categories from training data.
 
         Stores column order, prefixes, and categories for later alignment.
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.preprocessing.GetDummies.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.preprocessing.GetDummies.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -120,10 +120,10 @@ class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, *
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/preprocessing/_encoders.py#L488)[#](#scikitplot.preprocessing.GetDummies.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/preprocessing/_encoders.py#L488)[#](#scikitplot.preprocessing.GetDummies.get_feature_names_out "Link to this definition")
     :   Return feature names after transformation.
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/../sklearn/utils/_metadata_requests.py#L1737)[#](#scikitplot.preprocessing.GetDummies.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/../sklearn/utils/_metadata_requests.py#L1737)[#](#scikitplot.preprocessing.GetDummies.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
         Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") on how the routing
@@ -134,7 +134,7 @@ class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, *
             :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.preprocessing.GetDummies.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.preprocessing.GetDummies.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -146,7 +146,7 @@ class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, *
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/../sklearn/utils/_set_output.py#L392)[#](#scikitplot.preprocessing.GetDummies.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/../sklearn/utils/_set_output.py#L392)[#](#scikitplot.preprocessing.GetDummies.set_output "Link to this definition")
     :   Set output container.
 
         Refer to the [user guide](https://scikit-learn.org/dev/modules/df_output_transform.html#df-output-transform "(in scikit-learn v1.10)") for more details
@@ -168,7 +168,7 @@ class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, *
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.preprocessing.GetDummies.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.preprocessing.GetDummies.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
@@ -184,7 +184,7 @@ class scikitplot.preprocessing.GetDummies(**\***, **columns=None**, **sep='**, *
         :   ****self****estimator instance
             :   Estimator instance.
 
-    transform(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/preprocessing/_encoders.py#L430)[#](#scikitplot.preprocessing.GetDummies.transform "Link to this definition")
+    transform(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/preprocessing/_encoders.py#L430)[#](#scikitplot.preprocessing.GetDummies.transform "Link to this definition")
     :   Transform new data into dummy-expanded format.
 
         Steps:

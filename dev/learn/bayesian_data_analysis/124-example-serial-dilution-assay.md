@@ -5,7 +5,7 @@
 [◀ Previous · Example: an opinion poll in Slovenia](123-example-an-opinion-poll-in-slovenia.html) · [Next · Example: population toxicokinetics ▶](125-example-population-toxicokinetics.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

@@ -5,7 +5,7 @@
 [◀ Previous · Example: Bayesian analysis of a bioassay experiment (logistic, nonconjugate)](026-example-bayesian-analysis-of-a-bioassay-experiment-logistic-nonconjugate.html) · [Next · Normal Approximations to the Posterior Distribution ▶](028-normal-approximations-to-the-posterior-distribution.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

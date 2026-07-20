@@ -5,7 +5,7 @@
 ◀ [Previous](021-cleaning-data-with-sql-removing-duplicates-and-cleaning-string-variables.html) · [Next](023-advanced-sql-functions-for-data-cleaning.html) ▶ · [↑ Section](index.html) · [↑ Hub](../index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

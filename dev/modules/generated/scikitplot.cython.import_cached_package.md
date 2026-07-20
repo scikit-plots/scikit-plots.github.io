@@ -1,6 +1,6 @@
 # import\_cached\_package[#](#import-cached-package "Link to this heading")
 
-scikitplot.cython.import\_cached\_package(**key**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/cython/_public.py#L647)[#](#scikitplot.cython.import_cached_package "Link to this definition")
+scikitplot.cython.import\_cached\_package(**key**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_public.py#L647)[#](#scikitplot.cython.import_cached_package "Link to this definition")
 :   Import a cached package and return the loaded modules.
 
     Parameters:

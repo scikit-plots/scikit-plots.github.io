@@ -1,6 +1,6 @@
 # plot\_cumulative\_gain[#](#plot-cumulative-gain "Link to this heading")
 
-scikitplot.decile.kds.plot\_cumulative\_gain(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Cumulative Gain Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/cdecb99/scikitplot/decile/kds/_kds.py#L600)[#](#scikitplot.decile.kds.plot_cumulative_gain "Link to this definition")
+scikitplot.decile.kds.plot\_cumulative\_gain(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Cumulative Gain Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/decile/kds/_kds.py#L600)[#](#scikitplot.decile.kds.plot_cumulative_gain "Link to this definition")
 :   Generate the Decile-wise Lift Plot from labels and probabilities.
 
     The lift curve is used to determine the effectiveness of a

@@ -5,7 +5,7 @@
 [◀ Previous · Do the Inferences from the Model Make Sense?](041-do-the-inferences-from-the-model-make-sense.html) · [Next · Graphical posterior predictive checks ▶](043-graphical-posterior-predictive-checks.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

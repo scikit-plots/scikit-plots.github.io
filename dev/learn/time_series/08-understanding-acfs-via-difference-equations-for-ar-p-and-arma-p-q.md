@@ -5,7 +5,7 @@
 [◀ Previous · Computing ACFs of Causal AR(2) Processes Using Difference Equations](07-computing-acfs-of-causal-ar-2-processes-using-difference-equations.html) · [Next · Best Linear Predictor of a Stationary Process ▶](09-best-linear-predictor-of-a-stationary-process.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior

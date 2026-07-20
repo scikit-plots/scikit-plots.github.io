@@ -5,7 +5,7 @@
 [◀ Previous · Overdispersed versions of standard models](114-overdispersed-versions-of-standard-models.html) · [Next · Robust inference for the eight schools ▶](116-robust-inference-for-the-eight-schools.html) · [↑ Section](index.html)
 
 > **Important**
-> ****AI-generated content.**** This page was written with the assistance of an
+> ****✨ AI-generated content.**** This page was written with the assistance of an
 AI language model and is provided as a learning aid. Despite careful
 review, it may still contain mistakes, omissions, or out-of-date
 information. Whether you are new to the topic, a team lead, or a senior
