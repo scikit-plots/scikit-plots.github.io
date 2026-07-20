@@ -5855,13 +5855,62 @@ opts.jsonPayload + '\n' +
         var p1 = document.createElement('p');
         var strong = document.createElement('strong');
         strong.textContent = title;
-        p1.appendChild(document.createTextNode('Hi! I\u2019m '));
+        // 👋︎ 👋 \u1F44B
+        p1.appendChild(document.createTextNode('\u1F44B Hi! I\u2019m '));
         p1.appendChild(strong);
         p1.appendChild(document.createTextNode('.'));
         var p2 = document.createElement('p');
         p2.textContent = 'Ask me anything about this documentation page.';
+        var p3 = document.createElement('p');
+        // 🕺'<img src="https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif" class="ai-assistant-panel-dancer-gif" alt="" aria-hidden="true" alt="" height="11">'
+        const _img = '<img src="https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif" class="ai-assistant-panel-dancer-gif" alt="" aria-hidden="true" alt="" height="11">';
+        // multi syntax: '' + ''; or ``; or [''].join('\n');
+        // var _html = Array(11).fill(_img).join('&ensp;');
+        function symmetricGroups(n, maxGroup = Infinity) {
+            if (!Number.isInteger(n) || n <= 0)
+                throw new TypeError("'n' must be a positive integer.");
+            if (maxGroup !== Infinity &&
+                (!Number.isInteger(maxGroup) || maxGroup <= 0))
+                throw new TypeError("'maxGroup' must be a positive integer or Infinity.");
+            const center = (n & 1) ? 1 : 2;
+            let side = (n - center) / 2;
+            const left = [];
+            while (side > 0) {
+                const g = Math.min(maxGroup, side);
+                left.push(g);
+                side -= g;
+            }
+            return [...left, center, ...left.slice().reverse()];
+        }
+        function makePattern(
+            n,
+            {
+                maxGroup = Infinity,
+                item = "x",
+                intra = "",
+                inter = " ",
+            } = {},
+        ) {
+            try {
+                return symmetricGroups(n, maxGroup)
+                    .map(group => Array(group).fill(item).join(intra))
+                    .join(inter);
+            } catch (err) {
+                console.error("makePattern():", err);
+                // Return an empty string (or return null if preferred)
+                return Array(11).fill(_img).join('&ensp;');
+            }
+        }
+        const _html = makePattern(11, {
+            maxGroup: 3,
+            item: _img,
+            intra: "&ensp;",
+            inter: "&emsp;",
+        });
+        p3.textContent = _html;
         welcome.appendChild(p1);
         welcome.appendChild(p2);
+        welcome.appendChild(p3);
         body.appendChild(welcome);
 
         if (quickQs.length > 0) {
