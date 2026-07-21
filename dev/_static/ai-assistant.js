@@ -627,6 +627,104 @@
         endpoint:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
     };
 
+    // Remembers whether the hosted dancer GIF has ever failed to load, so a
+    // dead/blocked external asset is only attempted once per page load — every
+    // later render skips straight to the emoji fallback instead of re-issuing
+    // (and re-failing) the same request.
+    var _dancerGifBroken = false;
+
+    /**
+     * Split n into a left-center-right symmetric grouping, capped at maxGroup
+     * per cluster, e.g. _symmetricGroups(11, 3) -> [3, 2, 1, 2, 3].
+     * @param {number} n - Total item count. Must be a positive integer.
+     * @param {number} [maxGroup=Infinity] - Max cluster size on each side.
+     * @returns {number[]} Cluster sizes, symmetric around the center.
+     */
+    function _symmetricGroups(n, maxGroup = Infinity) {
+        if (!Number.isInteger(n) || n <= 0) {
+            throw new TypeError("'n' must be a positive integer.");
+        }
+        if (maxGroup !== Infinity && (!Number.isInteger(maxGroup) || maxGroup <= 0)) {
+            throw new TypeError("'maxGroup' must be a positive integer or Infinity.");
+        }
+        const center = (n % 2) ? 1 : 2;  // (n & 1) ? 1 : 2;
+        let side = (n - center) / 2;
+        const left = [];
+        while (side > 0) {
+            const size = Math.min(side, maxGroup);
+            left.push(size);
+            side -= size;
+        }
+        // return [...left, center, ...left.slice().reverse()];
+        return left.concat(center, left.slice().reverse());
+    }
+
+    /**
+     * Create one decorative dancer node. Prefers the animated GIF; falls back
+     * to a plain 🕺 glyph (no network request) once that asset is known to be
+     * broken, and repairs any already-inserted broken-image icon on failure.
+     * @returns {HTMLImageElement|Text} An `<img>`, or a text node once the GIF is known-broken.
+     */
+    function _createDancer() {
+        if (_dancerGifBroken) {
+            return document.createTextNode('🕺');
+        }
+        const img = document.createElement('img');
+        img.src = 'https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif';
+        img.className = 'ai-assistant-panel-dancer-gif';
+        img.height = 11;
+        img.alt = '';
+        img.setAttribute('aria-hidden', 'true');
+        img.onerror = function () {
+            _dancerGifBroken = true;
+            if (img.parentNode) {
+                img.parentNode.replaceChild(document.createTextNode('🕺'), img);
+            }
+        };
+        return img;
+    }
+
+    /**
+     * Append a symmetric row of dancers to `parent`
+     * (e.g. 🕺🕺🕺 🕺🕺 🕺 🕺🕺 🕺🕺🕺). Falls back to a flat run of `n` dancers
+     * if the grouping itself is misconfigured, so a bad n/maxGroup never
+     * leaves the welcome message half-rendered.
+     * 
+     * Note: multi line syntax: '' + ''; or ``; or [''].join('\n');
+     * const _img =
+     *     '<img src="https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif"' +
+     *     ' class="ai-assistant-panel-dancer-gif"' +
+     *     ' height="11"' +
+     *     ' alt="" aria-hidden="true">';
+     * var _html = Array(11).fill(_img).join('&ensp;');
+     * 
+     * @param {HTMLElement} parent - Node to append dancers/spacers to.
+     * @param {number} n - Total dancer count.
+     * @param {{maxGroup?: number, intra?: string, inter?: string}} [opts]
+     */
+    function _appendPattern(parent, n, opts) {
+        opts = opts || {};
+        const maxGroup = opts.maxGroup ?? Infinity;
+        const intra = opts.intra ?? '\u2002'; // en space
+        const inter = opts.inter ?? '\u2003'; // em space
+
+        let groups;
+        try {
+            groups = _symmetricGroups(n, maxGroup);
+        } catch (err) {
+            console.error('_appendPattern(): invalid n/maxGroup, using a flat run —', err);
+            groups = [Number.isInteger(n) && n > 0 ? n : 1];
+        }
+
+        groups.forEach(function (group, gi) {
+            for (let i = 0; i < group; i++) {
+                parent.appendChild(_createDancer());
+                if (i < group - 1) parent.appendChild(document.createTextNode(intra));
+            }
+            if (gi < groups.length - 1) parent.appendChild(document.createTextNode(inter));
+        });
+    }
+
     // ── Provider accent colours (mirrors _PROVIDER_COLORS in __init__.py) ──────
     //
     // These are merged with any cfg.providerColors injected by the Python side
@@ -5856,58 +5954,15 @@ opts.jsonPayload + '\n' +
         var strong = document.createElement('strong');
         strong.textContent = title;
         // 👋︎ 👋 \u1F44B
-        p1.appendChild(document.createTextNode('\u1F44B Hi! I\u2019m '));
+        // '\u{1F44B}'     // ES6+ \u only supports four hexadecimal digits.
+        // '\uD83D\uDC4B'  // UTF-16 surrogate pair
+        p1.appendChild(document.createTextNode('👋 Hi! I\u2019m '));
         p1.appendChild(strong);
         p1.appendChild(document.createTextNode('.'));
         var p2 = document.createElement('p');
         p2.textContent = 'Ask me anything about this documentation page.';
         var p3 = document.createElement('p');
-        // 🕺'<img src="https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif" class="ai-assistant-panel-dancer-gif" alt="" aria-hidden="true" alt="" height="11">'
-        const _img = '<img src="https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif" class="ai-assistant-panel-dancer-gif" alt="" aria-hidden="true" alt="" height="11">';
-        // multi syntax: '' + ''; or ``; or [''].join('\n');
-        // var _html = Array(11).fill(_img).join('&ensp;');
-        function symmetricGroups(n, maxGroup = Infinity) {
-            if (!Number.isInteger(n) || n <= 0)
-                throw new TypeError("'n' must be a positive integer.");
-            if (maxGroup !== Infinity &&
-                (!Number.isInteger(maxGroup) || maxGroup <= 0))
-                throw new TypeError("'maxGroup' must be a positive integer or Infinity.");
-            const center = (n & 1) ? 1 : 2;
-            let side = (n - center) / 2;
-            const left = [];
-            while (side > 0) {
-                const g = Math.min(maxGroup, side);
-                left.push(g);
-                side -= g;
-            }
-            return [...left, center, ...left.slice().reverse()];
-        }
-        function makePattern(
-            n,
-            {
-                maxGroup = Infinity,
-                item = "x",
-                intra = "",
-                inter = " ",
-            } = {},
-        ) {
-            try {
-                return symmetricGroups(n, maxGroup)
-                    .map(group => Array(group).fill(item).join(intra))
-                    .join(inter);
-            } catch (err) {
-                console.error("makePattern():", err);
-                // Return an empty string (or return null if preferred)
-                return Array(11).fill(_img).join('&ensp;');
-            }
-        }
-        const _html = makePattern(11, {
-            maxGroup: 3,
-            item: _img,
-            intra: "&ensp;",
-            inter: "&emsp;",
-        });
-        p3.textContent = _html;
+        _appendPattern(p3, 11, { maxGroup: 3 }); // add glyphs 🕺🕺🕺 🕺🕺 🕺 🕺🕺 🕺🕺🕺
         welcome.appendChild(p1);
         welcome.appendChild(p2);
         welcome.appendChild(p3);
