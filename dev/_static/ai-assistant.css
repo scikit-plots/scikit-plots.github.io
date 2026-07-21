@@ -722,6 +722,10 @@
 .ai-assistant-panel-footer {
     display: flex;
     align-items: stretch;
+    /* Row-flex with wrap: .ai-assistant-panel-input-group fills the first
+       line; .ai-assistant-panel-footer-note (2nd child, width:100%) has no
+       room left on that line and wraps onto its own row underneath it. */
+    flex-wrap: wrap;
     padding: 0.625rem 0.75rem;
     border-top: 1px solid var(
         --pst-color-border,
@@ -863,6 +867,23 @@
 @keyframes ai-mic-pulse {
     0%, 100% { opacity: 1; }
     50%       { opacity: 0.45; }
+}
+
+/* Static AI disclaimer, last child of the footer — sits under the input
+ * group (see flex-wrap on .ai-assistant-panel-footer above). Typography
+ * matches .ai-assistant-panel-privacy-link: same low-emphasis "small
+ * print" register, not a new type step. */
+.ai-assistant-panel-footer-note {
+    width: 100%;
+    margin: 0.35rem 0 0;
+    font-size: 0.68rem;
+    line-height: 1.35;
+    text-align: center;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-footer-note {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
 }
 
 /* ─── "Speak with assistant" banner (optional, above input) ─────────────── */

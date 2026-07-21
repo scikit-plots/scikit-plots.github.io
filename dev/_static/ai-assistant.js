@@ -5941,10 +5941,9 @@ opts.jsonPayload + '\n' +
     function _renderWelcome(body) {
         var cfg     = _cfg();
         var title   = cfg.panelTitle || 'AI Assistant';
-        // ✨ \u2728
-        if (!title.startsWith('\u2728')) {
-            title = '\u2728 ' + title;
-        }
+        // if (!title.startsWith('\u2728')) {
+        //     title = '\u2728 ' + title;
+        // }
         var quickQs = Array.isArray(cfg.panelQuickQuestions)
             ? cfg.panelQuickQuestions.slice(0, 5) : [];
 
@@ -5959,8 +5958,8 @@ opts.jsonPayload + '\n' +
         p1.appendChild(document.createTextNode('👋 Hi! I\u2019m '));
         p1.appendChild(strong);
         p1.appendChild(document.createTextNode('.'));
-        var p2 = document.createElement('p');
-        p2.textContent = 'Ask me anything about this documentation page.';
+        var p2 = document.createElement('p');        
+        p2.textContent = '\u2728 Ask me anything about this documentation page.';  // ✨ \u2728
         var p3 = document.createElement('p');
         _appendPattern(p3, 11, { maxGroup: 3 }); // add glyphs 🕺🕺🕺 🕺🕺 🕺 🕺🕺 🕺🕺🕺
         welcome.appendChild(p1);
@@ -15336,6 +15335,20 @@ opts.jsonPayload + '\n' +
         footerActions.appendChild(footerActionsRight);
         inputGroup.appendChild(footerActions);
         footer.appendChild(inputGroup);
+
+        // ── Footer note: AI disclaimer ───────────────────────────────────────
+        // Sits under the input group, at the very bottom of the footer/panel.
+        // Static, non-interactive text — plain textContent is enough and keeps
+        // us inside the file's HTML policy (textContent/setAttribute only,
+        // never innerHTML; see the Security note in the file header).
+        // role="note" flags it to assistive tech as ancillary/parenthetic
+        // content rather than part of the conversation itself.
+        var footerNote = document.createElement('div');
+        footerNote.className = 'ai-assistant-panel-footer-note';
+        footerNote.setAttribute('role', 'note');
+        footerNote.textContent =
+            '\u2728 The chatbot is an AI and can make mistakes. Please double-check cited sources.';
+        footer.appendChild(footerNote);
 
         // ── Assemble panel ────────────────────────────────────────────────────
         panel.appendChild(header);
