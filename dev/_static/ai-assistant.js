@@ -672,9 +672,11 @@
         const img = document.createElement('img');
         // const version = window.location.pathname.split("/")[1]; // "dev" or "stable"
         // const root = window.location.pathname.match(/^\/[^/]+/)[0];
-        // if the script itself is inside _static, even better:
-        // img.src = new URL("_static/animated_gif/dancer_anim.gif", document.baseURI);
-        img.src = new URL("animated_gif/dancer_anim.gif", document.currentScript.src);
+        // if the script itself is inside _static, even better because
+        // DOCUMENTATION_OPTIONS.URL_ROOT points back to the documentation root.:
+        // img.src = new URL("animated_gif/dancer_anim.gif", import.meta.url).href;
+        // img.src = `${DOCUMENTATION_OPTIONS.URL_ROOT}_static/animated_gif/dancer_anim.gif`;
+        img.src = new URL("_static/animated_gif/dancer_anim.gif", document.baseURI).href;
         img.className = 'ai-assistant-panel-dancer-gif';
         img.height = 11;
         img.alt = '';
