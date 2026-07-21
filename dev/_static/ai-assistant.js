@@ -670,7 +670,11 @@
             return document.createTextNode('🕺');
         }
         const img = document.createElement('img');
-        img.src = 'https://homepages.uc.edu/~hansonmm/FUN/dancer_anim.gif';
+        // const version = window.location.pathname.split("/")[1]; // "dev" or "stable"
+        // const root = window.location.pathname.match(/^\/[^/]+/)[0];
+        // if the script itself is inside _static, even better:
+        // img.src = new URL("_static/animated_gif/dancer_anim.gif", document.baseURI);
+        img.src = new URL("animated_gif/dancer_anim.gif", document.currentScript.src);
         img.className = 'ai-assistant-panel-dancer-gif';
         img.height = 11;
         img.alt = '';
@@ -5942,7 +5946,7 @@ opts.jsonPayload + '\n' +
         var cfg     = _cfg();
         var title   = cfg.panelTitle || 'AI Assistant';
         // if (!title.startsWith('\u2728')) {
-        //     title = '\u2728 ' + title;
+        //     title = '\u2728 ' + title;  // ✨ \u2728
         // }
         var quickQs = Array.isArray(cfg.panelQuickQuestions)
             ? cfg.panelQuickQuestions.slice(0, 5) : [];
@@ -5959,7 +5963,7 @@ opts.jsonPayload + '\n' +
         p1.appendChild(strong);
         p1.appendChild(document.createTextNode('.'));
         var p2 = document.createElement('p');        
-        p2.textContent = '\u2728 Ask me anything about this documentation page.';  // ✨ \u2728
+        p2.textContent = '🤖 Ask me anything about this documentation page.';
         var p3 = document.createElement('p');
         _appendPattern(p3, 11, { maxGroup: 3 }); // add glyphs 🕺🕺🕺 🕺🕺 🕺 🕺🕺 🕺🕺🕺
         welcome.appendChild(p1);
