@@ -226,21 +226,28 @@
     /**
      * Whether export share-link mode is active.
      *
-     * ``false`` (default) → clicking an export format downloads the file.
-     * ``true``            → clicking opens the "Share conversation" sheet,
-     *                       which generates a blob URL the user can copy/open.
+     * ``true`` (default) → clicking an export format opens the "Share
+     *                       conversation" sheet, which generates a blob URL
+     *                       the user can copy/open.
+     * ``false``           → clicking an export format downloads the file.
      *
      * Persisted in localStorage so the preference survives page reloads.
      * Falls back gracefully when storage is unavailable (private mode,
      * storage quota exceeded, cross-origin iframe, etc.).
      *
+     * Default resolution:
+     *   - No stored value yet (`null`)   → `true`  (link mode open by default)
+     *   - Stored value is `'true'`       → `true`
+     *   - Stored value is anything else  → `false` (explicit prior opt-out)
+     *
      * @type {boolean}
      */
     var _exportLinkMode = (function () {
         try {
-            return localStorage.getItem(_EXPORT_LINK_MODE_KEY) === 'true';
+            var _stored = localStorage.getItem(_EXPORT_LINK_MODE_KEY);
+            return _stored === null ? true : _stored === 'true';
         } catch (_) {
-            return false;
+            return true;
         }
     }());
 
@@ -8492,13 +8499,25 @@ opts.jsonPayload + '\n' +
             'server-side share link when a Share endpoint is configured) ' +
             'instead of downloading a file.',
             _exportLinkMode,
-            null
+            'ai-assistant-ext-share-link-toggle'
         );
         shareLinkToggle.pill.setAttribute('aria-label', 'Share-link mode');
+        // Single source of truth is `_exportLinkMode`; this pill only ever
+        // requests a change (_setExportLinkMode). It never mutates its own
+        // aria-checked directly — that would create a second write path and
+        // is exactly what let this pill drift out of sync with the export
+        // dropdown pill and the share-sheet accordion pill. Actual visual
+        // sync happens below via the shared _exportStateListeners channel,
+        // the same mechanism the accordion pill already uses (§12710).
         shareLinkToggle.pill.addEventListener('click', function () {
             _setExportLinkMode(!_exportLinkMode);
+        });
+        // Stay in sync with the export dropdown + share-sheet accordion:
+        // any call to _setExportLinkMode from either of those also updates
+        // this pill's aria-checked/title, closing the one-way sync gap.
+        _exportStateListeners.push(function (state) {
             shareLinkToggle.pill.setAttribute(
-                'aria-checked', _exportLinkMode ? 'true' : 'false');
+                'aria-checked', state.linkMode ? 'true' : 'false');
         });
         shareSub.appendChild(shareLinkToggle.row);
         shareSub.appendChild(_buildExtFutureRow('\u23F1\uFE0F', 'Share TTL (days)'));
