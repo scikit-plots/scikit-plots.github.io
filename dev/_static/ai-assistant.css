@@ -12306,8 +12306,9 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
  *
  * §G  Parameter fill bar
  *       .ai-assistant-panel-model-bar
+ *       .ai-assistant-panel-model-bar--s / --m / --l        (track tint + edge)
  *       .ai-assistant-panel-model-bar-fill
- *       .ai-assistant-panel-model-bar-fill--s / --m / --l
+ *       .ai-assistant-panel-model-bar-fill--s / --m / --l   (solid fill)
  *
  * §H  "Coming soon" inline badge
  *       .ai-assistant-panel-model-soon
@@ -12652,6 +12653,10 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     --ai-model-bar-fill-s-rgb: 22, 163, 74;    /* #16a34a */
     --ai-model-bar-fill-m-rgb: 217, 119, 6;    /* #d97706 */
     --ai-model-bar-fill-l-rgb: 37, 99, 235;    /* #2563eb */
+    /* Track tint/edge — same tier RGB as the fill, just diluted (light tone
+       for the unfilled track) or intensified (dark-tone edge outline). */
+    --ai-model-bar-track-tint-opacity: 0.14;
+    --ai-model-bar-track-edge-opacity: 0.55;
 }
 
 [data-bs-theme="dark"] {
@@ -12660,6 +12665,11 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     --ai-model-bar-fill-s-rgb: 74, 222, 128;   /* #4ade80 */
     --ai-model-bar-fill-m-rgb: 251, 191, 36;   /* #fbbf24 */
     --ai-model-bar-fill-l-rgb: 96, 165, 250;   /* #60a5fa */
+    /* Dark-mode fill colours are already lighter/brighter, so both the tint
+       and the edge are toned down slightly to avoid glare against the dark
+       card background. */
+    --ai-model-bar-track-tint-opacity: 0.16;
+    --ai-model-bar-track-edge-opacity: 0.40;
 }
 
 .ai-assistant-panel-model-bar {
@@ -12667,13 +12677,19 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     width: 100%;                  /* explicit — some flex contexts need this */
     height: 5px;                  /* 3 px can sub-pixel disappear on HiDPI */
     border-radius: 9999px;        /* pill track, matches Claude's rounded-full */
-    /* Token-driven — do NOT use --pst-color-on-background here.
+    /* Neutral fallback — only shows if a tier modifier class (below) isn't
+       present. Token-driven — do NOT use --pst-color-on-background here.
        In PyData Sphinx Theme light mode that variable resolves to #ffffff
        (the card surface colour), making the track white-on-white → invisible. */
     background: rgba(
         var(--ai-model-bar-track-rgb),
         var(--ai-model-bar-track-opacity)
     );
+    /* Inset outline instead of a real `border`: draws a crisp edge that
+       follows the pill radius exactly, without eating into the 5 px height
+       or shifting layout (a solid border would need extra box-sizing
+       accounting at this thickness). */
+    box-shadow: inset 0 0 0 1px rgba(var(--ai-model-bar-track-rgb), 0.12);
     overflow: hidden;              /* safety net if fill ever exceeds 100 % */
     margin-top: 5px;               /* breathing room below description */
     box-sizing: border-box;
@@ -12698,6 +12714,31 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-panel-model-bar-fill--s { background: rgb(var(--ai-model-bar-fill-s-rgb)); }
 .ai-assistant-panel-model-bar-fill--m { background: rgb(var(--ai-model-bar-fill-m-rgb)); }
 .ai-assistant-panel-model-bar-fill--l { background: rgb(var(--ai-model-bar-fill-l-rgb)); }
+
+/* ── Track tier colouring — light tone body + dark tone edge ─────────────
+   The JS applies the SAME --s/--m/--l modifier to the track (.ai-assistant-
+   panel-model-bar) as it does to the fill, so the whole bar reads as one
+   colour family instead of a coloured fill sitting on a neutral grey track:
+     • background  → light tint  of the tier colour, covers the full 0–100 %
+                      track (the fill then sits on top of it at its solid,
+                      dark tone, from the earlier --s/--m/--l fill rules)
+     • box-shadow  → dark tone  edge outline in the same tier colour, so the
+                      whole pill reads as "belonging" to that tier at a glance
+   ────────────────────────────────────────────────────────────────────── */
+.ai-assistant-panel-model-bar--s {
+    background: rgba(var(--ai-model-bar-fill-s-rgb), var(--ai-model-bar-track-tint-opacity));
+    box-shadow: inset 0 0 0 1px rgba(var(--ai-model-bar-fill-s-rgb), var(--ai-model-bar-track-edge-opacity));
+}
+
+.ai-assistant-panel-model-bar--m {
+    background: rgba(var(--ai-model-bar-fill-m-rgb), var(--ai-model-bar-track-tint-opacity));
+    box-shadow: inset 0 0 0 1px rgba(var(--ai-model-bar-fill-m-rgb), var(--ai-model-bar-track-edge-opacity));
+}
+
+.ai-assistant-panel-model-bar--l {
+    background: rgba(var(--ai-model-bar-fill-l-rgb), var(--ai-model-bar-track-tint-opacity));
+    box-shadow: inset 0 0 0 1px rgba(var(--ai-model-bar-fill-l-rgb), var(--ai-model-bar-track-edge-opacity));
+}
 
 
 /* ═══════════════════════════════════════════════════════════════════════════

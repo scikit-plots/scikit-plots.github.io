@@ -675,8 +675,9 @@
         // if the script itself is inside _static, even better because
         // DOCUMENTATION_OPTIONS.URL_ROOT points back to the documentation root.:
         // img.src = new URL("animated_gif/dancer_anim.gif", import.meta.url).href;
-        // img.src = `${DOCUMENTATION_OPTIONS.URL_ROOT}_static/animated_gif/dancer_anim.gif`;
-        img.src = new URL("_static/animated_gif/dancer_anim.gif", document.baseURI).href;
+        // img.src = new URL("_static/animated_gif/dancer_anim.gif", document.baseURI).href;
+        const urlRoot = window.DOCUMENTATION_OPTIONS?.URL_ROOT ?? "/dev/";
+        img.src = `${urlRoot}_static/animated_gif/dancer_anim.gif`;
         img.className = 'ai-assistant-panel-dancer-gif';
         img.height = 11;
         img.alt = '';
@@ -10914,7 +10915,11 @@ opts.jsonPayload + '\n' +
             if (fillPct !== null) {
                 var szMod2 = effectiveSize ? _szVariant(effectiveSize) : '--m';
                 var barWrap = document.createElement('div');
-                barWrap.className = 'ai-assistant-panel-model-bar';
+                // Track gets the same tier modifier as the fill (--s/--m/--l) so
+                // its light-tint background and dark-tone edge stay in lockstep
+                // with the fill colour — see §G in ai-assistant.css.
+                barWrap.className = 'ai-assistant-panel-model-bar' +
+                    (szMod2 ? ' ai-assistant-panel-model-bar' + szMod2 : '');
                 barWrap.setAttribute('aria-hidden', 'true');
                 // Hover tooltip for quick dev inspection (e.g. '70B — 92 % of scale').
                 if (effectiveSize) {
