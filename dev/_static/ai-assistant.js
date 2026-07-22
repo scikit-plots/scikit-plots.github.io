@@ -582,6 +582,9 @@
         newChatCompose: '<svg viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M13.75 10c0-2.389-.983-4.131-1.696-5.08-.19.437-.74 1.33-2.054 1.33-.765 0-1.3-.334-1.643-.712-.306-.338-.455-.706-.513-.902l-.01-.037c-.097-.36-.176-.738-.253-1.079-.079-.35-.159-.676-.262-.98-.108-.318-.24-.6-.412-.844-.865 1.82-2.002 3.05-2.899 4.151C2.98 7.111 2.25 8.22 2.25 10c0 1.545.923 2.955 2.374 3.831-.074-.277-.115-.565-.123-.855l-.001-.104c0-.957.522-1.784 1.107-2.472.58-.685 1.352-1.371 1.952-1.968l.024-.022c.245-.22.622-.213.858.022.613.61 1.372 1.31 1.956 2.012.575.691 1.103 1.52 1.103 2.428l-.001.104c-.008.29-.049.578-.123.855 1.45-.876 2.374-2.286 2.374-3.831M15 10c0 2.817-2.241 5.046-5.036 5.756l-.133.032c-.297.07-.601-.085-.72-.366-.118-.28-.016-.607.242-.77l.053-.035c.528-.362.824-.967.843-1.674l.001-.07c0-.443-.271-.977-.814-1.63-.416-.5-.92-.99-1.438-1.494-.52.5-1.019.965-1.438 1.46-.533.627-.81 1.164-.81 1.663l.001.071c.02.73.335 1.353.896 1.71.258.163.36.488.241.77-.114.272-.403.425-.691.371l-.028-.006C3.313 15.116 1 12.862 1 10c0-2.22.957-3.611 2.039-4.941C4.119 3.73 5.305 2.473 6.104.4l.014-.033c.073-.16.21-.284.38-.338.181-.057.378-.03.536.076l.074.05c.756.533 1.148 1.26 1.394 1.983.126.37.218.75.299 1.107.083.368.152.703.24 1.03l.008.026c.025.074.096.245.235.398.142.157.356.301.716.301.34 0 .537-.111.66-.222.137-.123.216-.277.26-.385l.012-.036c.03-.094.063-.263.101-.478.018-.1.04-.221.063-.312.009-.035.03-.123.075-.208.013-.026.082-.165.242-.263.097-.06.24-.109.408-.088.142.017.248.078.319.135l.028.023.049.046C12.6 3.575 15 5.996 15 10"/></svg>',
         exportTxt:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
         copyAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+        // Checkmark — swapped in for copyAns for ~1.6s after a successful
+        // copy, same viewBox/stroke-width so the swap doesn't jump in size.
+        checkAns: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
         privacy:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
         // ── Listen / Text-to-Speech ───────────────────────────────────────────
         // Speaker-wave icon used for TTS "Listen" button in the action row.
@@ -2110,18 +2113,19 @@
 
     // ── Clipboard ─────────────────────────────────────────────────────────────
 
-    function copyToClipboard(text, showInlineConfirmation) {
+    function copyToClipboard(text, showInlineConfirmation, onSuccess) {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text)
                 .then(function () {
                     showInlineConfirmation ? showInlineSuccessState() : showNotification('Markdown copied to clipboard!');
+                    if (typeof onSuccess === 'function') { onSuccess(); }
                 })
                 .catch(function (err) {
                     _log('error', 'AI Assistant: Clipboard API failed:', err);
-                    fallbackCopy(text, showInlineConfirmation);
+                    fallbackCopy(text, showInlineConfirmation, onSuccess);
                 });
         } else {
-            fallbackCopy(text, showInlineConfirmation);
+            fallbackCopy(text, showInlineConfirmation, onSuccess);
         }
     }
 
@@ -2143,7 +2147,7 @@
         }, 2000);
     }
 
-    function fallbackCopy(text, showInlineConfirmation) {
+    function fallbackCopy(text, showInlineConfirmation, onSuccess) {
         var textarea = document.createElement('textarea');
         textarea.value = text;
         textarea.style.position = 'fixed';
@@ -2153,6 +2157,7 @@
         try {
             document.execCommand('copy');
             showInlineConfirmation ? showInlineSuccessState() : showNotification('Markdown copied to clipboard!');
+            if (typeof onSuccess === 'function') { onSuccess(); }
         } catch (err) {
             _log('error', 'AI Assistant: Fallback copy failed:', err);
             showNotification('Failed to copy to clipboard.', true);
@@ -5431,10 +5436,68 @@ opts.jsonPayload + '\n' +
      * text content so the copy is clean and reusable outside the panel.
      * @param {string} text  The exact bubble text (from `_transcript`).
      * @param {HTMLElement} [bubbleEl]  Optional bubble element for data-raw.
+     * @param {function} [onSuccess]  Called only after a confirmed copy
+     *   (Clipboard API resolved, or execCommand succeeded) — never on failure.
      */
-    function copyAnswer(text, bubbleEl) {
+    function copyAnswer(text, bubbleEl, onSuccess) {
         var raw = (bubbleEl && bubbleEl.getAttribute('data-raw')) || text;
-        copyToClipboard(raw, false);
+        copyToClipboard(raw, false, onSuccess);
+    }
+
+    /**
+     * Briefly swap a per-answer "Copy" button into a "Copied!" confirmation
+     * state — checkmark icon + updated aria-label/title/visible label — then
+     * auto-reverts to the original copy icon/text after ~1.6s.
+     *
+     * Shared by both per-answer copy buttons (streamed + non-streamed render
+     * paths) so their confirmation behaviour can never drift out of sync with
+     * each other — see the export-link-toggle sync fix for why that matters
+     * in this codebase.
+     *
+     * Notes
+     * -----
+     * Developer: Only called from copyAnswer's onSuccess callback, i.e. only
+     *   after a *confirmed* clipboard write — never optimistically on click.
+     * Developer: Guards against overlapping timers so rapid re-clicks don't
+     *   revert early or leave a stale "Copied!" label.
+     *
+     * @param {HTMLElement} btn  The button returned by the copy-button builders.
+     */
+    function _flashCopyBtnCopied(btn) {
+        if (!btn) { return; }
+        if (btn._copiedRevertTimer) {
+            clearTimeout(btn._copiedRevertTimer);
+            btn._copiedRevertTimer = null;
+        }
+        // Stash the original label/title once — a rapid re-click must not
+        // overwrite them with "Copied!" as the new "original" value.
+        if (!btn.hasAttribute('data-copy-orig-label')) {
+            btn.setAttribute('data-copy-orig-label', btn.getAttribute('aria-label') || 'Copy this answer');
+            btn.setAttribute('data-copy-orig-title', btn.title || 'Copy this answer');
+        }
+        var svgEl   = btn.querySelector('svg');
+        var lblSpan = btn.querySelector('span');
+        var origLblText = lblSpan ? (btn.getAttribute('data-copy-orig-lbl') || lblSpan.textContent) : null;
+        if (lblSpan && !btn.hasAttribute('data-copy-orig-lbl')) {
+            btn.setAttribute('data-copy-orig-lbl', lblSpan.textContent);
+        }
+
+        btn.classList.add('ai-assistant-panel-bubble-action--copied');
+        btn.setAttribute('aria-label', 'Copied!');
+        btn.title = 'Copied!';
+        if (svgEl) { svgEl.outerHTML = ICONS.checkAns; }
+        if (lblSpan) { lblSpan.textContent = 'Copied'; }
+
+        btn._copiedRevertTimer = setTimeout(function () {
+            btn.classList.remove('ai-assistant-panel-bubble-action--copied');
+            btn.setAttribute('aria-label', btn.getAttribute('data-copy-orig-label'));
+            btn.title = btn.getAttribute('data-copy-orig-title');
+            var svgEl2   = btn.querySelector('svg');
+            var lblSpan2 = btn.querySelector('span');
+            if (svgEl2) { svgEl2.outerHTML = ICONS.copyAns; }
+            if (lblSpan2) { lblSpan2.textContent = origLblText; }
+            btn._copiedRevertTimer = null;
+        }, 1600);
     }
 
     /**
@@ -19949,7 +20012,9 @@ opts.jsonPayload + '\n' +
             var copyLbl = document.createElement('span');
             copyLbl.textContent = 'Copy';
             copyBtn.appendChild(copyLbl);
-            copyBtn.addEventListener('click', function () { copyAnswer(text, bubble); });
+            copyBtn.addEventListener('click', function () {
+                copyAnswer(text, bubble, function () { _flashCopyBtnCopied(copyBtn); });
+            });
             actions.appendChild(copyBtn);
 
             // Hoist answerIndex before the quick-rate block so its closure captures
@@ -20590,7 +20655,9 @@ opts.jsonPayload + '\n' +
             var cl2 = document.createElement('span'); cl2.textContent = 'Copy';
             cb2.appendChild(cl2);
             (function (ft, bEl) {
-                cb2.addEventListener('click', function () { copyAnswer(ft, bEl); });
+                cb2.addEventListener('click', function () {
+                    copyAnswer(ft, bEl, function () { _flashCopyBtnCopied(cb2); });
+                });
             }(accumulated, streamBubble));
             acts.appendChild(cb2);
 
