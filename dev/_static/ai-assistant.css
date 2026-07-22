@@ -1373,6 +1373,49 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     background: rgba(74, 222, 128, 0.14);
 }
 
+/* ── Copy button: icon-only by default, label expands on hover ──────────────
+ * Scoped to `(hover: hover) and (pointer: fine)` — devices that can actually
+ * hover (mouse/trackpad). Touch devices have no reliable hover gesture, so
+ * they're deliberately excluded from this block entirely: the button falls
+ * back to its un-collapsed default (icon + "Copy" label always visible
+ * together), which is the more usable behaviour when hover isn't available
+ * rather than requiring a tap-and-hold or a second tap to reveal text.
+ *
+ * `:focus-visible` is included alongside `:hover` so keyboard users (who
+ * also can't "hover") get the same expanded label via Tab navigation.
+ *
+ * The `--copied` confirmation state also forces the expanded label even
+ * without hover/focus, since that's the whole point of the visual
+ * confirmation — a user who isn't currently hovering still needs to see
+ * "Copied" after clicking, not just a color change on an icon they've
+ * already looked away from.
+ */
+@media (hover: hover) and (pointer: fine) {
+    .ai-assistant-panel-bubble-action--copy {
+        gap: 0;
+        transition: background-color 0.15s ease, color 0.15s ease, gap 0.2s ease;
+    }
+    .ai-assistant-panel-bubble-action--copy span {
+        display: inline-block;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: max-width 0.2s ease, opacity 0.15s ease;
+    }
+    .ai-assistant-panel-bubble-action--copy:hover,
+    .ai-assistant-panel-bubble-action--copy:focus-visible,
+    .ai-assistant-panel-bubble-action--copy.ai-assistant-panel-bubble-action--copied {
+        gap: 0.3rem;
+    }
+    .ai-assistant-panel-bubble-action--copy:hover span,
+    .ai-assistant-panel-bubble-action--copy:focus-visible span,
+    .ai-assistant-panel-bubble-action--copy.ai-assistant-panel-bubble-action--copied span {
+        max-width: 60px;   /* comfortably fits both "Copy" and "Copied" */
+        opacity: 1;
+    }
+}
+
 /* ─── Action-row expandable "… More" menu ─────────────────────────────────────
  *
  * Architecture (data-first, JS-minimal):

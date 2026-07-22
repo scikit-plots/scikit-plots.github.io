@@ -20004,7 +20004,8 @@ opts.jsonPayload + '\n' +
 
             // Copy button
             var copyBtn = document.createElement('button');
-            copyBtn.className = 'ai-assistant-panel-bubble-action';
+            copyBtn.className = 'ai-assistant-panel-bubble-action ' +
+                'ai-assistant-panel-bubble-action--copy';
             copyBtn.type = 'button';
             copyBtn.setAttribute('aria-label', 'Copy this answer');
             copyBtn.title = 'Copy this answer';
@@ -20647,7 +20648,8 @@ opts.jsonPayload + '\n' +
 
             // Copy button
             var cb2 = document.createElement('button');
-            cb2.className = 'ai-assistant-panel-bubble-action';
+            cb2.className = 'ai-assistant-panel-bubble-action ' +
+                'ai-assistant-panel-bubble-action--copy';
             cb2.type = 'button';
             cb2.setAttribute('aria-label', 'Copy this answer');
             cb2.title = 'Copy this answer';
