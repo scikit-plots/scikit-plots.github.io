@@ -632,6 +632,37 @@
         // ── Endpoint registry icon — server/network node ─────────────────────
         // Three-tier stack: represents layered proxy backends (DMR / CF / HF).
         endpoint:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
+        // ── Octicon-derived additions (GitHub Octicons, MIT-licensed path data) ──
+        // Same trimming convention as `github` above: drop data-component /
+        // class / width / height / inline style — sizing and color come from
+        // the wrapping element + currentColor so these behave like every
+        // other icon in this registry.
+        // Copilot-style assistant/robot glyph — for future branding use
+        // wherever a "this is the AI" visual cue is useful (welcome message,
+        // empty states, etc.).
+        botAssistant: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"/><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"/></svg>',
+        // Filled thumbs-up / thumbs-down — used by the quick-rate pill so the
+        // idle/hover/pressed colours (currently only working on the score
+        // chip) also apply to the glyph itself, which a plain emoji glyph
+        // can never pick up (emoji ignore `color`).
+        thumbUp:   '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.347.631A.75.75 0 0 1 9.123.26l.238.04a3.25 3.25 0 0 1 2.591 4.098L11.494 6h.665a3.25 3.25 0 0 1 3.118 4.167l-1.135 3.859A2.751 2.751 0 0 1 11.503 16H6.586a3.75 3.75 0 0 1-2.184-.702A1.75 1.75 0 0 1 3 16H1.75A1.75 1.75 0 0 1 0 14.25v-6.5C0 6.784.784 6 1.75 6h3.417a.25.25 0 0 0 .217-.127ZM4.75 13.649l.396.33c.404.337.914.521 1.44.521h4.917a1.25 1.25 0 0 0 1.2-.897l1.135-3.859A1.75 1.75 0 0 0 12.159 7.5H10.5a.75.75 0 0 1-.721-.956l.731-2.558a1.75 1.75 0 0 0-1.127-2.14L6.69 6.611a1.75 1.75 0 0 1-1.523.889H4.75ZM3.25 7.5h-1.5a.25.25 0 0 0-.25.25v6.5c0 .138.112.25.25.25H3a.25.25 0 0 0 .25-.25Z"/></svg>',
+        thumbDown: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.653 15.369a.75.75 0 0 1-.776.371l-.238-.04a3.25 3.25 0 0 1-2.591-4.099L4.506 10h-.665A3.25 3.25 0 0 1 .723 5.833l1.135-3.859A2.75 2.75 0 0 1 4.482 0H9.43c.78.003 1.538.25 2.168.702A1.752 1.752 0 0 1 12.989 0h1.272A1.75 1.75 0 0 1 16 1.75v6.5A1.75 1.75 0 0 1 14.25 10h-3.417a.25.25 0 0 0-.217.127ZM11.25 2.351l-.396-.33a2.248 2.248 0 0 0-1.44-.521H4.496a1.25 1.25 0 0 0-1.199.897L2.162 6.256A1.75 1.75 0 0 0 3.841 8.5H5.5a.75.75 0 0 1 .721.956l-.731 2.558a1.75 1.75 0 0 0 1.127 2.14L9.31 9.389a1.75 1.75 0 0 1 1.523-.889h.417Zm1.5 6.149h1.5a.25.25 0 0 0 .25-.25v-6.5a.25.25 0 0 0-.25-.25H13a.25.25 0 0 0-.25.25Z"/></svg>',
+        // Two-arrow "sync" glyph — replaces the old single-arrow retry icon
+        // below with a cleaner, more recognizable Octicon (the old path
+        // visually reads a lot like the ⟲ glyph mentioned in review).
+        syncRetry: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"/></svg>',
+        // Mirrored variant (⟳ rather than ⟲) — same glyph flipped horizontally
+        // via a transform, so it stays a single source of truth instead of a
+        // second hand-drawn path. Not wired to any control yet; kept available
+        // for a future "redo" / alternate-direction action (e.g. a reversible
+        // retry, or distinguishing "regenerate" from "undo regenerate").
+        syncRetryReverse: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><g transform="translate(16,0) scale(-1,1)"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"/></g></svg>',
+        // ── Suggestion for future use ──────────────────────────────────────
+        // "AI sparkle" glyph — common convention for "this was AI-generated /
+        // AI-enhanced" badges. Not wired to any control; here as a ready-made
+        // option if a future feature (e.g. an "AI suggested" tag on quick
+        // questions, or a highlight on the send button) needs one.
+        sparkleAI: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>',
     };
 
     // Remembers whether the hosted dancer GIF has ever failed to load, so a
@@ -5861,7 +5892,9 @@ opts.jsonPayload + '\n' +
                 retryMenuBtn.setAttribute('role', 'menuitem');
                 retryMenuBtn.setAttribute('aria-label', 'Retry this answer');
                 retryMenuBtn.title = 'Retry — re-send the same question';
-                retryMenuBtn.innerHTML = ICONS.retry;
+                // Swapped from ICONS.retry (single-arrow feather glyph) to the
+                // clearer two-arrow sync Octicon — see ICONS.syncRetry above.
+                retryMenuBtn.innerHTML = ICONS.syncRetry;
                 var retryMenuLbl = document.createElement('span');
                 retryMenuLbl.textContent = 'Retry';
                 retryMenuBtn.appendChild(retryMenuLbl);
@@ -5972,8 +6005,21 @@ opts.jsonPayload + '\n' +
         p1.appendChild(document.createTextNode('👋 Hi! I\u2019m '));
         p1.appendChild(strong);
         p1.appendChild(document.createTextNode('.'));
-        var p2 = document.createElement('p');        
-        p2.textContent = '🤖 Ask me anything about this documentation page.';
+        var p2 = document.createElement('p');
+        // Default: SVG bot icon (inherits the muted welcome-text colour).
+        // Opt-out: cfg.panelEmojiIcons = true keeps the literal 🤖 emoji —
+        // same flag used by the quick-rate thumbs icons, so both surfaces
+        // switch together.
+        if (cfg.panelEmojiIcons === true) {
+            p2.textContent = '🤖 Ask me anything about this documentation page.';
+        } else {
+            var botIconSpan = document.createElement('span');
+            botIconSpan.className = 'ai-assistant-panel-welcome-bot-icon';
+            botIconSpan.setAttribute('aria-hidden', 'true');
+            botIconSpan.innerHTML = ICONS.botAssistant;
+            p2.appendChild(botIconSpan);
+            p2.appendChild(document.createTextNode(' Ask me anything about this documentation page.'));
+        }
         var p3 = document.createElement('p');
         _appendPattern(p3, 11, { maxGroup: 3 }); // add glyphs 🕺🕺🕺 🕺🕺 🕺 🕺🕺 🕺🕺🕺
         welcome.appendChild(p1);
@@ -6452,8 +6498,8 @@ opts.jsonPayload + '\n' +
         quick.className = 'ai-assistant-fbk-quick';
 
         var _quickOpts = [
-            { emoji: '\uD83D\uDC4E', sentiment: 'negative', value: -1, title: 'Not helpful', slug: 'not_helpful' },
-            { emoji: '\uD83D\uDC4D', sentiment: 'positive', value: 1,  title: 'Helpful',     slug: 'helpful'     },
+            { emoji: '\uD83D\uDC4E', icon: 'thumbDown', sentiment: 'negative', value: -1, title: 'Not helpful', slug: 'not_helpful' },
+            { emoji: '\uD83D\uDC4D', icon: 'thumbUp',   sentiment: 'positive', value: 1,  title: 'Helpful',     slug: 'helpful'     },
         ];
 
         _quickOpts.forEach(function (opt) {
@@ -6467,11 +6513,23 @@ opts.jsonPayload + '\n' +
             btn.setAttribute('aria-label', _btnLabel);
             btn.title = _btnLabel;
 
-            // Emoji + score chip — same structure as .ai-assistant-panel-feedback-btn
+            // Icon + score chip — same structure as .ai-assistant-panel-feedback-btn
             // so .ai-fbk-score CSS rules apply without duplication.
+            // Default: SVG (fill="currentColor") instead of a plain emoji glyph,
+            // since emoji ignore the `color` CSS property and never picked up
+            // the idle/hover/pressed sentiment colours below.
+            // Opt-out: set cfg.panelEmojiIcons = true to keep the literal
+            // 👍/👎 emoji glyph instead (e.g. for sites that prefer native
+            // platform emoji rendering over inline SVG).
             var emojiSpan = document.createElement('span');
+            emojiSpan.className = 'ai-fbk-quick-icon';
             emojiSpan.setAttribute('aria-hidden', 'true');
-            emojiSpan.textContent = opt.emoji;
+            if (cfg.panelEmojiIcons === true) {
+                emojiSpan.classList.add('ai-fbk-quick-icon--emoji');
+                emojiSpan.textContent = opt.emoji;
+            } else {
+                emojiSpan.innerHTML = ICONS[opt.icon];
+            }
             btn.appendChild(emojiSpan);
 
             // Score label hidden until aria-pressed="true" (revealed via CSS).

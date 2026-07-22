@@ -589,6 +589,19 @@
 
 .ai-assistant-panel-welcome p { margin: 0.25rem 0; }
 
+/* Inline bot icon at the start of the "Ask me anything…" line — replaces
+ * the old 🤖 emoji glyph with an actual SVG so it inherits the muted
+ * welcome-text colour instead of rendering with its own fixed emoji tone. */
+.ai-assistant-panel-welcome-bot-icon {
+    display: inline-flex;
+    vertical-align: -2px;
+}
+.ai-assistant-panel-welcome-bot-icon svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+
 /* ─── Quick suggestion chips ─────────────────────────────────────────────── */
 /*
  * Shown below the welcome message (or at body top before first message).
@@ -11288,6 +11301,25 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 }
 [data-bs-theme="dark"] .ai-assistant-fbk-quick-btn:hover {
     background-color: rgba(255, 255, 255, 0.08);
+}
+/* SVG icon (replaces the old emoji glyph) — explicit size since, unlike an
+ * emoji character, an <svg> has no intrinsic font-driven dimensions. Sized
+ * to match the emoji's prior visual footprint at 0.88rem font-size. */
+.ai-fbk-quick-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.ai-fbk-quick-icon svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+/* Emoji fallback (cfg.panelEmojiIcons = true) — plain glyph, no forced
+ * flex sizing needed; font-size is inherited from the button (0.88rem). */
+.ai-fbk-quick-icon--emoji {
+    display: inline;
+    line-height: 1;
 }
 /* Pressed states — sentiment colours */
 .ai-assistant-fbk-quick-btn[data-sentiment="positive"][aria-pressed="true"] {
