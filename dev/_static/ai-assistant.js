@@ -665,7 +665,27 @@
         // AI-enhanced" badges. Not wired to any control; here as a ready-made
         // option if a future feature (e.g. an "AI suggested" tag on quick
         // questions, or a highlight on the send button) needs one.
-        sparkleAI: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>',
+        // "Sparkle" — Octicon, four-pointed star with concave sides (the
+        // GitHub Copilot/AI-suggestion glyph family). Not wired to any
+        // control yet — see ICONS.sparkleAlt below for how it differs from
+        // the two-sparkle variant.
+        sparkle: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.198.57c.275-.752 1.34-.752 1.615 0l.849 2.317a5.819 5.819 0 0 0 3.462 3.463l2.317.848c.753.275.753 1.34 0 1.615l-2.317.849a5.815 5.815 0 0 0-3.462 3.462l-.849 2.317c-.275.753-1.34.753-1.615 0l-.848-2.317a5.819 5.819 0 0 0-3.463-3.462L.57 8.813c-.752-.275-.752-1.34 0-1.615l2.317-.848A5.823 5.823 0 0 0 6.35 2.887L7.198.57Zm.562 2.833A7.323 7.323 0 0 1 3.403 7.76l-.673.246.673.246a7.324 7.324 0 0 1 4.357 4.356l.246.673.246-.673a7.322 7.322 0 0 1 4.356-4.356l.673-.246-.673-.246a7.324 7.324 0 0 1-4.356-4.357l-.246-.673-.246.673Z"/></svg>',
+        // Two-tier "AI sparkle" — one large 4-point star, one small offset
+        // star top-right. Hand-drafted equivalent (not wired anywhere yet)
+        // — see note above ICONS.termsOfService for why.
+        sparkleAlt: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 1.5c.18 0 .34.12.39.29l.82 2.72a4.7 4.7 0 0 0 3.15 3.15l2.72.82a.4.4 0 0 1 0 .77l-2.72.82a4.7 4.7 0 0 0-3.15 3.15l-.82 2.72a.4.4 0 0 1-.77 0l-.82-2.72a4.7 4.7 0 0 0-3.15-3.15l-2.72-.82a.4.4 0 0 1 0-.77l2.72-.82A4.7 4.7 0 0 0 7.6 4.51l.82-2.72A.4.4 0 0 1 9 1.5Z"/><path d="M15.5 1c.16 0 .3.1.34.26l.32.99c.15.47.52.84.99.99l.99.32a.36.36 0 0 1 0 .68l-.99.32a1.56 1.56 0 0 0-.99.99l-.32.99a.36.36 0 0 1-.68 0l-.32-.99a1.56 1.56 0 0 0-.99-.99l-.99-.32a.36.36 0 0 1 0-.68l.99-.32c.47-.15.84-.52.99-.99l.32-.99A.36.36 0 0 1 15.5 1Z"/></svg>',
+        // ── Hand-drafted equivalents (see chat) ────────────────────────────
+        // The originals were referenced via <use href="…sprite…#hash">,
+        // which points into a compiled sprite sheet I don't have access to
+        // (opaque IDs, not path data). These are same-intent icons drawn
+        // fresh — not a copy of any proprietary asset. Not wired to any
+        // control yet; every consumer reads ICONS[key], so swapping in the
+        // real path data later (if you get it) is a one-line change here.
+        //
+        // Document / lines — Terms of Service.
+        termsOfService: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5h6l3 3v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1Z"/><path d="M12 2.5v3h3"/><path d="M7 11h6M7 13.5h6M7 8.5h3"/></svg>',
+        // Shield + check — Privacy & Responsibility (protection + verified).
+        privacyResponsibility: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.2 4 4.5v4.8c0 4 2.6 6.9 6 8 3.4-1.1 6-4 6-8V4.5L10 2.2Z"/><path d="m7.3 9.8 1.9 1.9 3.5-3.6"/></svg>',
     };
 
     // Remembers whether the hosted dancer GIF has ever failed to load, so a
