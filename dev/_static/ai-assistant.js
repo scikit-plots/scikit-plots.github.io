@@ -671,21 +671,22 @@
         // the two-sparkle variant.
         sparkle: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.198.57c.275-.752 1.34-.752 1.615 0l.849 2.317a5.819 5.819 0 0 0 3.462 3.463l2.317.848c.753.275.753 1.34 0 1.615l-2.317.849a5.815 5.815 0 0 0-3.462 3.462l-.849 2.317c-.275.753-1.34.753-1.615 0l-.848-2.317a5.819 5.819 0 0 0-3.463-3.462L.57 8.813c-.752-.275-.752-1.34 0-1.615l2.317-.848A5.823 5.823 0 0 0 6.35 2.887L7.198.57Zm.562 2.833A7.323 7.323 0 0 1 3.403 7.76l-.673.246.673.246a7.324 7.324 0 0 1 4.357 4.356l.246.673.246-.673a7.322 7.322 0 0 1 4.356-4.356l.673-.246-.673-.246a7.324 7.324 0 0 1-4.356-4.357l-.246-.673-.246.673Z"/></svg>',
         // Two-tier "AI sparkle" — one large 4-point star, one small offset
-        // star top-right. Hand-drafted equivalent (not wired anywhere yet)
-        // — see note above ICONS.termsOfService for why.
+        // star top-right. Hand-drafted (sprite ID unresolved, see chat);
+        // not wired anywhere yet.
         sparkleAlt: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 1.5c.18 0 .34.12.39.29l.82 2.72a4.7 4.7 0 0 0 3.15 3.15l2.72.82a.4.4 0 0 1 0 .77l-2.72.82a4.7 4.7 0 0 0-3.15 3.15l-.82 2.72a.4.4 0 0 1-.77 0l-.82-2.72a4.7 4.7 0 0 0-3.15-3.15l-2.72-.82a.4.4 0 0 1 0-.77l2.72-.82A4.7 4.7 0 0 0 7.6 4.51l.82-2.72A.4.4 0 0 1 9 1.5Z"/><path d="M15.5 1c.16 0 .3.1.34.26l.32.99c.15.47.52.84.99.99l.99.32a.36.36 0 0 1 0 .68l-.99.32a1.56 1.56 0 0 0-.99.99l-.32.99a.36.36 0 0 1-.68 0l-.32-.99a1.56 1.56 0 0 0-.99-.99l-.99-.32a.36.36 0 0 1 0-.68l.99-.32c.47-.15.84-.52.99-.99l.32-.99A.36.36 0 0 1 15.5 1Z"/></svg>',
-        // ── Hand-drafted equivalents (see chat) ────────────────────────────
-        // The originals were referenced via <use href="…sprite…#hash">,
-        // which points into a compiled sprite sheet I don't have access to
-        // (opaque IDs, not path data). These are same-intent icons drawn
-        // fresh — not a copy of any proprietary asset. Not wired to any
-        // control yet; every consumer reads ICONS[key], so swapping in the
-        // real path data later (if you get it) is a one-line change here.
-        //
-        // Document / lines — Terms of Service.
-        termsOfService: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5h6l3 3v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1Z"/><path d="M12 2.5v3h3"/><path d="M7 11h6M7 13.5h6M7 8.5h3"/></svg>',
-        // Shield + check — Privacy & Responsibility (protection + verified).
-        privacyResponsibility: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.2 4 4.5v4.8c0 4 2.6 6.9 6 8 3.4-1.1 6-4 6-8V4.5L10 2.2Z"/><path d="m7.3 9.8 1.9 1.9 3.5-3.6"/></svg>',
+        // Reuses the exact same path as the Python-side _SVG_TERMS constant
+        // (__init__.py) — consolidated to one design instead of a second,
+        // slightly-different document glyph, so JS/Python/disk-file stay
+        // pixel-identical. See _ICON_META["terms-of-service"] for the
+        // Python-side mirror.
+        termsOfService: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>',
+        // Reuses the exact same shield path as the Python-side _SVG_PRIVACY
+        // constant (and the on-disk privacy.svg) — same consolidation
+        // rationale as termsOfService above. No added checkmark: keeping it
+        // pixel-identical to the existing "Privacy Policy" icon everywhere
+        // it's used was judged more valuable than a one-off variant: ask if
+        // you want a visually distinct mark for "& Responsibility" instead.
+        privacyResponsibility: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
     };
 
     // Remembers whether the hosted dancer GIF has ever failed to load, so a
@@ -14947,15 +14948,24 @@ opts.jsonPayload + '\n' +
             hIcon.setAttribute('aria-hidden', 'true');
             hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
             hint.appendChild(hIcon);
-            // Render each chord token as its own <kbd>.
+            // Chord tokens live in their own wrapper (not appended straight to
+            // `hint`) so CSS can collapse/expand them as a single unit — see
+            // .ai-assistant-panel-kbd-hint-keys. Icon-only by default on every
+            // device; hover-capable devices (mouse/trackpad) reveal this on
+            // :hover/:focus-visible. Touch devices never get a hover event, so
+            // they stay icon-only permanently — see the long-press fallback
+            // below for how they still learn the shortcut.
+            var keysWrap = document.createElement('span');
+            keysWrap.className = 'ai-assistant-panel-kbd-hint-keys';
             kbdLabel.split('+').forEach(function (tok, i, arr) {
                 var k = document.createElement('kbd');
                 k.textContent = tok.trim();
-                hint.appendChild(k);
+                keysWrap.appendChild(k);
                 if (i < arr.length - 1) {
-                    hint.appendChild(document.createTextNode('+'));
+                    keysWrap.appendChild(document.createTextNode('+'));
                 }
             });
+            hint.appendChild(keysWrap);
             // Left-click: minimize panel.
             hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
             // Right-click: fully close panel.
@@ -14973,6 +14983,20 @@ opts.jsonPayload + '\n' +
                     minimizeAIPanel();
                 }
             });
+            // Touch devices have no hover gesture to reveal the collapsed
+            // .ai-assistant-panel-kbd-hint-keys, and permanently showing the
+            // full "icon + Alt+Shift+A" row would eat into already-limited
+            // small-screen width. Long-press surfaces the same shortcut text
+            // via the existing toast/notification channel instead — mirrors
+            // the trigger-pill's tap-vs-long-press convention documented on
+            // _attachLongPress. onShortTap is null because the `click`
+            // listener above already owns the short-tap action (minimize);
+            // passing a second handler here would double-fire it.
+            if (_isTouchDevice()) {
+                _attachLongPress(hint, null, function () {
+                    showNotification('Shortcut: ' + kbdLabel.split('+').join(' + '));
+                }, { hapticTap: null });
+            }
             leftCluster.appendChild(hint);
         }
 
@@ -14991,9 +15015,19 @@ opts.jsonPayload + '\n' +
         var privacyLink = document.createElement('button');
         privacyLink.className = 'ai-assistant-panel-privacy-link';
         privacyLink.type = 'button';
-        privacyLink.textContent =
+        // Icon + label — same structure as shareLink/modelLink below, and
+        // the same ICONS.privacy glyph already used in the hamburger menu
+        // (addItem(ICONS.privacy, 'Privacy & Responsibility', …)) so the
+        // icon reads identically wherever this action appears.
+        var privacyIc = document.createElement('span');
+        privacyIc.setAttribute('aria-hidden', 'true');
+        privacyIc.innerHTML = ICONS.privacy;
+        privacyLink.appendChild(privacyIc);
+        var privacyLbl = document.createElement('span');
+        privacyLbl.textContent =
             (_cfg().panelPrivacyLinkText) ||
             'Privacy & Responsibility';
+        privacyLink.appendChild(privacyLbl);
 
         // Terms-of-Service link — sibling of Privacy, same CSS class so the
         // theme styling cascades automatically.
@@ -15002,8 +15036,16 @@ opts.jsonPayload + '\n' +
             termsLink = document.createElement('button');
             termsLink.className = 'ai-assistant-panel-privacy-link ai-assistant-panel-terms-link';
             termsLink.type = 'button';
-            termsLink.textContent =
+            // Icon + label — same ICONS.terms glyph already used in the
+            // hamburger menu, kept consistent across both entry points.
+            var termsIc = document.createElement('span');
+            termsIc.setAttribute('aria-hidden', 'true');
+            termsIc.innerHTML = ICONS.terms;
+            termsLink.appendChild(termsIc);
+            var termsLbl = document.createElement('span');
+            termsLbl.textContent =
                 (cfgRef.panelTermsLinkText) || 'Terms of Service';
+            termsLink.appendChild(termsLbl);
             termsLink.setAttribute('aria-label', 'Open Terms of Service');
         }
 

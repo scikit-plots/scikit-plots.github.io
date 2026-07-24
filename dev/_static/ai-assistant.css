@@ -1980,6 +1980,34 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: inherit;
 }
 
+/* ── Icon-only by default, keys reveal on hover ──────────────────────────
+ * Collapsed for every device (mobile included) — a permanently-visible
+ * "icon + Alt+Shift+A" row costs too much width on small screens, and
+ * touch devices have no hover gesture to expand it anyway (see the
+ * long-press → showNotification fallback wired in ai-assistant.js instead).
+ * `max-width` (not `width`) is the animatable property here since the
+ * rendered chord width is unknown ahead of time — see the Copy-button
+ * hover-expand pattern this mirrors.
+ */
+.ai-assistant-panel-kbd-hint-keys {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.03rem;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.2s ease, opacity 0.15s ease, margin-left 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+    .ai-assistant-panel-kbd-hint:hover .ai-assistant-panel-kbd-hint-keys,
+    .ai-assistant-panel-kbd-hint:focus-visible .ai-assistant-panel-kbd-hint-keys {
+        max-width: 160px;   /* comfortably fits a 3-key chord like Alt+Shift+A */
+        opacity: 1;
+        margin-left: 0.2rem;
+    }
+}
+
 /* Dark-mode: lighten the muted tone so the icon and kbd labels stay clearly
    legible against the dark panel surface.  The kbd chip gets a translucent
    white background (unchanged from before). */
@@ -2303,16 +2331,23 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     white-space: nowrap;
 }
 
-/* Share / Terms buttons inherit .ai-assistant-panel-privacy-link spacing. */
+/* Privacy / Share / Terms buttons — icon + label layout. Privacy is
+ * included directly (rather than via its own modifier class) since it's
+ * the only consumer of the bare .ai-assistant-panel-privacy-link class;
+ * every other button pairs it with a modifier that already had this. */
+.ai-assistant-panel-privacy-link,
 .ai-assistant-panel-share-link,
 .ai-assistant-panel-terms-link {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
 }
-.ai-assistant-panel-share-link svg {
+.ai-assistant-panel-privacy-link svg,
+.ai-assistant-panel-share-link svg,
+.ai-assistant-panel-terms-link svg {
     width: 0.9rem;
     height: 0.9rem;
+    flex-shrink: 0;
 }
 
 /* ─── Progressive right-cluster overflow — per-item smooth collapse ──────────
