@@ -581,6 +581,8 @@
         // Mirror of new-chat-compose.svg / _SVG_NEW_CHAT_COMPOSE in _static/__init__.py.
         newChatCompose: '<svg viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M13.75 10c0-2.389-.983-4.131-1.696-5.08-.19.437-.74 1.33-2.054 1.33-.765 0-1.3-.334-1.643-.712-.306-.338-.455-.706-.513-.902l-.01-.037c-.097-.36-.176-.738-.253-1.079-.079-.35-.159-.676-.262-.98-.108-.318-.24-.6-.412-.844-.865 1.82-2.002 3.05-2.899 4.151C2.98 7.111 2.25 8.22 2.25 10c0 1.545.923 2.955 2.374 3.831-.074-.277-.115-.565-.123-.855l-.001-.104c0-.957.522-1.784 1.107-2.472.58-.685 1.352-1.371 1.952-1.968l.024-.022c.245-.22.622-.213.858.022.613.61 1.372 1.31 1.956 2.012.575.691 1.103 1.52 1.103 2.428l-.001.104c-.008.29-.049.578-.123.855 1.45-.876 2.374-2.286 2.374-3.831M15 10c0 2.817-2.241 5.046-5.036 5.756l-.133.032c-.297.07-.601-.085-.72-.366-.118-.28-.016-.607.242-.77l.053-.035c.528-.362.824-.967.843-1.674l.001-.07c0-.443-.271-.977-.814-1.63-.416-.5-.92-.99-1.438-1.494-.52.5-1.019.965-1.438 1.46-.533.627-.81 1.164-.81 1.663l.001.071c.02.73.335 1.353.896 1.71.258.163.36.488.241.77-.114.272-.403.425-.691.371l-.028-.006C3.313 15.116 1 12.862 1 10c0-2.22.957-3.611 2.039-4.941C4.119 3.73 5.305 2.473 6.104.4l.014-.033c.073-.16.21-.284.38-.338.181-.057.378-.03.536.076l.074.05c.756.533 1.148 1.26 1.394 1.983.126.37.218.75.299 1.107.083.368.152.703.24 1.03l.008.026c.025.074.096.245.235.398.142.157.356.301.716.301.34 0 .537-.111.66-.222.137-.123.216-.277.26-.385l.012-.036c.03-.094.063-.263.101-.478.018-.1.04-.221.063-.312.009-.035.03-.123.075-.208.013-.026.082-.165.242-.263.097-.06.24-.109.408-.088.142.017.248.078.319.135l.028.023.049.046C12.6 3.575 15 5.996 15 10"/></svg>',
         exportTxt:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+        // Pencil — Edit & resend a previous question.
+        editAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
         copyAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
         // Checkmark — swapped in for copyAns for ~1.6s after a successful
         // copy, same viewBox/stroke-width so the swap doesn't jump in size.
@@ -5519,6 +5521,204 @@ opts.jsonPayload + '\n' +
             if (lblSpan2) { lblSpan2.textContent = origLblText; }
             btn._copiedRevertTimer = null;
         }, 1600);
+    }
+
+    /**
+     * Add a small "Copy code" + "Download" button to every fenced code
+     * block (`<pre class="ai-md-pre">`) inside `root` that doesn't already
+     * have them — lets a single snippet be copied/saved on its own instead
+     * of only the whole answer via the bubble-level Copy button. When a
+     * bubble has more than one code block, each also gets a "Block X of Y"
+     * step marker so multi-file answers read as a numbered sequence.
+     *
+     * Idempotent by design: guarded by the `.ai-md-pre-wrap` wrapper's
+     * presence, so it's safe (and necessary) to call this again after every
+     * re-render — streaming answers reset `bubble.innerHTML` on every
+     * chunk, which would otherwise wipe out anything injected on the
+     * previous chunk (and re-wrapping an already-wrapped `<pre>` would nest
+     * wrappers indefinitely without this guard). The step-marker TEXT is
+     * the one thing re-computed on every call even for already-wrapped
+     * blocks — during streaming, block 2 may not exist yet when block 1
+     * first gets wrapped, so "Block 1 of 1" would go stale the moment
+     * block 2 appears; re-deriving the total each call keeps it correct.
+     *
+     * Developer: the buttons are appended to a *wrapper* div around `<pre>`,
+     * not to `<pre>` itself. `<pre>` has `overflow-x: auto` for long code
+     * lines — a button appended directly inside it would scroll away
+     * horizontally with the code instead of staying pinned to the visible
+     * corner. The wrapper sits outside that scroll area and carries the
+     * `margin`/`position: relative` that used to live on `<pre>` itself
+     * (see the matching CSS change), so visual spacing is unchanged.
+     *
+     * Reuses `_flashCopyBtnCopied` for the "Copied!" confirmation exactly
+     * like the bubble-level Copy buttons do — it already no-ops safely on
+     * buttons with no label `<span>` (icon-only, as these are), so no
+     * changes were needed there for this to work. Reuses `_downloadBlob`
+     * (the same helper the export-format buttons use) for the download
+     * button, so iOS/legacy-browser handling isn't duplicated.
+     *
+     * Developer: uses `codeEl.textContent`, not `pre.textContent` — this
+     * matters once a per-block header/toolbar exists (e.g. the language
+     * badge), since `pre.textContent` would copy/download that label text too.
+     *
+     * @param {HTMLElement} root  Bubble element to scan (not the whole panel).
+     */
+    // Language → file extension, for the per-block download button.
+    // Falls back to .txt for anything not listed rather than guessing.
+    var _LANG_EXT = {
+        python: 'py', py: 'py', javascript: 'js', js: 'js', typescript: 'ts',
+        ts: 'ts', jsx: 'jsx', tsx: 'tsx', json: 'json', yaml: 'yaml',
+        yml: 'yaml', html: 'html', css: 'css', scss: 'scss', bash: 'sh',
+        sh: 'sh', shell: 'sh', zsh: 'sh', sql: 'sql', c: 'c', cpp: 'cpp',
+        'c++': 'cpp', java: 'java', go: 'go', rust: 'rs', rs: 'rs',
+        ruby: 'rb', rb: 'rb', php: 'php', xml: 'xml', markdown: 'md',
+        md: 'md', toml: 'toml', ini: 'ini', dockerfile: 'Dockerfile',
+        r: 'r', kotlin: 'kt', swift: 'swift'
+    };
+
+    function _enhanceCodeBlocks(root) {
+        if (!root) { return; }
+        var blocks = root.querySelectorAll('pre.ai-md-pre');
+        var total = blocks.length;
+        for (var i = 0; i < blocks.length; i++) {
+            var pre = blocks[i];
+            var parent = pre.parentNode;
+            var alreadyWrapped = !!(parent && parent.classList &&
+                parent.classList.contains('ai-md-pre-wrap'));
+            var wrap;
+
+            if (alreadyWrapped) {
+                wrap = parent;
+            } else {
+                var codeEl = pre.querySelector('code');
+                if (!codeEl) { continue; }
+
+                wrap = document.createElement('div');
+                wrap.className = 'ai-md-pre-wrap';
+                parent.insertBefore(wrap, pre);
+                wrap.appendChild(pre);
+
+                var toolbar = document.createElement('div');
+                toolbar.className = 'ai-md-code-toolbar';
+
+                var copyBtnEl = document.createElement('button');
+                copyBtnEl.type = 'button';
+                copyBtnEl.className = 'ai-md-code-copy-btn';
+                copyBtnEl.setAttribute('aria-label', 'Copy code');
+                copyBtnEl.title = 'Copy code';
+                copyBtnEl.innerHTML = ICONS.copyAns;   // ICONS constant — safe.
+                (function (codeElRef, btnRef) {
+                    copyBtnEl.addEventListener('click', function () {
+                        copyToClipboard(codeElRef.textContent, false, function () {
+                            _flashCopyBtnCopied(btnRef);
+                        });
+                    });
+                }(codeEl, copyBtnEl));
+                toolbar.appendChild(copyBtnEl);
+
+                var dlBtn = document.createElement('button');
+                dlBtn.type = 'button';
+                dlBtn.className = 'ai-md-code-download-btn';
+                dlBtn.setAttribute('aria-label', 'Download code');
+                dlBtn.title = 'Download code';
+                dlBtn.innerHTML = ICONS.exportTxt;   // ICONS constant — safe.
+                (function (codeElRef, preRef) {
+                    dlBtn.addEventListener('click', function () {
+                        var lang = (preRef.getAttribute('data-lang') || '').toLowerCase();
+                        var ext  = _LANG_EXT[lang] || 'txt';
+                        var stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+                        _downloadBlob(codeElRef.textContent, 'text/plain',
+                            'snippet-' + stamp + '.' + ext);
+                    });
+                }(codeEl, pre));
+                toolbar.appendChild(dlBtn);
+
+                wrap.appendChild(toolbar);
+            }
+
+            // Step marker — only shown once a bubble has more than one code
+            // block, and re-derived every call so the count self-corrects
+            // as more blocks stream in (see docstring).
+            var stepEl = wrap.querySelector('.ai-md-code-step');
+            if (total > 1) {
+                if (!stepEl) {
+                    stepEl = document.createElement('span');
+                    stepEl.className = 'ai-md-code-step';
+                    wrap.insertBefore(stepEl, wrap.firstChild);
+                }
+                stepEl.textContent = 'Block ' + (i + 1) + ' of ' + total;
+            } else if (stepEl) {
+                stepEl.remove();   // dropped from 2+ blocks back to 1 (edited/regenerated)
+            }
+        }
+    }
+
+    /**
+     * Turn a long answer's H1/H2/H3-delimited sections into native
+     * `<details>`/`<summary>` blocks so a long, multi-part answer can be
+     * collapsed section-by-section instead of only scrolled through.
+     *
+     * Deliberately NOT called during streaming chunks — only once, after a
+     * stream finishes (or immediately for the non-streamed render path).
+     * Restructuring the DOM around headings while content is still actively
+     * changing risks a `<details>` snapping shut mid-stream if a user had
+     * opened/closed one, or headings appearing mid-word before the rest of
+     * a streamed line arrives. Applying it once, after the answer is
+     * final, avoids that whole class of streaming-related bugs.
+     *
+     * Guarded two ways:
+     *   - Skips entirely if `root` already contains a `.ai-md-section`
+     *     (idempotent — safe to call more than once on the same bubble).
+     *   - Skips entirely if there are fewer than 2 top-level headings —
+     *     wrapping a single section in a collapse toggle adds a control
+     *     with no organizational benefit.
+     *
+     * Sections default to `open` (expanded) — a user who just asked a
+     * question should see the full answer immediately; collapsing is an
+     * option they reach for on a long answer, not a surprise default that
+     * hides content they haven't read yet.
+     *
+     * @param {HTMLElement} root  Bubble element to restructure (assistant only).
+     */
+    function _makeSectionsCollapsible(root) {
+        if (!root) { return; }
+        if (root.querySelector('details.ai-md-section')) { return; }   // already done
+        var headings = root.querySelectorAll(
+            ':scope > h1.ai-md-h, :scope > h2.ai-md-h, :scope > h3.ai-md-h'
+        );
+        if (headings.length < 2) { return; }   // nothing worth collapsing
+
+        headings.forEach(function (h) {
+            var details = document.createElement('details');
+            details.className = 'ai-md-section';
+            details.open = true;
+
+            var summary = document.createElement('summary');
+            summary.className = 'ai-md-section-summary';
+            var chevron = document.createElement('span');
+            chevron.className = 'ai-md-section-chevron';
+            chevron.setAttribute('aria-hidden', 'true');
+            chevron.innerHTML = ICONS.chevronDown;   // ICONS constant — safe.
+            summary.appendChild(chevron);
+            var titleSpan = document.createElement('span');
+            titleSpan.textContent = h.textContent;
+            summary.appendChild(titleSpan);
+            details.appendChild(summary);
+
+            // Move every sibling up to (not including) the next top-level
+            // heading into this <details> — the heading's own text now
+            // lives in <summary>, so the original heading node is dropped.
+            var next = h.nextSibling;
+            h.parentNode.insertBefore(details, h);
+            while (next && !(next.nodeType === 1 &&
+                    /^H[1-3]$/.test(next.tagName) &&
+                    next.classList && next.classList.contains('ai-md-h'))) {
+                var toMove = next;
+                next = next.nextSibling;
+                details.appendChild(toMove);
+            }
+            h.remove();
+        });
     }
 
     /**
@@ -20025,6 +20225,8 @@ opts.jsonPayload + '\n' +
             // emits known-safe tags.  bubble is NOT user-controlled.
             bubble.innerHTML = _mdToHtml(text);
             bubble.setAttribute('data-raw', text);  // preserve for copy/export
+            _enhanceCodeBlocks(bubble);
+            _makeSectionsCollapsible(bubble);
         } else {
             // User / error bubbles: plain text only (XSS-safe by design).
             bubble.textContent = text;
@@ -20032,14 +20234,13 @@ opts.jsonPayload + '\n' +
 
         body.appendChild(bubble);
 
-        // User bubble: minimal action row — timestamp only.
+        // User bubble: action row — timestamp + Edit & resend.
         //
-        // Mirrors the assistant action row layout but contains only the <time>
-        // element; no Copy / Share / Retry affordances are needed for outgoing
-        // messages.  The `--user` modifier pins the row to the trailing (right)
-        // edge via `align-self: flex-end` so it stays visually attached to the
-        // user bubble above it, matching the messaging-app convention (iMessage,
-        // WhatsApp, Telegram) where send-time sits under the bubble on its side.
+        // Mirrors the assistant action row layout. The `--user` modifier pins
+        // the row to the trailing (right) edge via `align-self: flex-end` so
+        // it stays visually attached to the user bubble above it, matching
+        // the messaging-app convention (iMessage, WhatsApp, Telegram) where
+        // send-time sits under the bubble on its side.
         //
         // Guard: skip the row entirely when `ts` is absent or non-finite (old
         // persisted transcript entries that pre-date timestamp recording) so no
@@ -20048,6 +20249,36 @@ opts.jsonPayload + '\n' +
             var userActs = document.createElement('div');
             userActs.className = 'ai-assistant-panel-bubble-actions ai-assistant-panel-bubble-actions--user';
             userActs.appendChild(_buildBubbleTimeEl(ts));
+
+            // Edit & resend — prefills the input with this exact question so
+            // the user can tweak it before sending, rather than an immediate
+            // silent resend (which would just be "resend", not "edit").
+            var editBtn = document.createElement('button');
+            editBtn.type = 'button';
+            editBtn.className = 'ai-assistant-panel-bubble-action ai-assistant-panel-bubble-action--edit';
+            editBtn.setAttribute('aria-label', 'Edit and resend this question');
+            editBtn.title = 'Edit and resend this question';
+            editBtn.innerHTML = ICONS.editAns;   // ICONS constant — safe.
+            (function (questionText) {
+                editBtn.addEventListener('click', function () {
+                    var input = document.getElementById('ai-assistant-panel-input');
+                    if (!input) { return; }
+                    input.value = questionText;
+                    input.focus();
+                    // Cursor at end, not a full selection — matches native
+                    // <textarea> click-to-edit behaviour, doesn't require the
+                    // user to first deselect before typing.
+                    if (typeof input.setSelectionRange === 'function') {
+                        input.setSelectionRange(input.value.length, input.value.length);
+                    }
+                    _updateSendBtnState();
+                    if (typeof input.scrollIntoView === 'function') {
+                        input.scrollIntoView({ block: 'nearest' });
+                    }
+                });
+            }(text));
+            userActs.appendChild(editBtn);
+
             body.appendChild(userActs);
         }
 
@@ -20678,6 +20909,7 @@ opts.jsonPayload + '\n' +
                                 accumulated += delta.content;
                                 streamBubble.innerHTML = _mdToHtml(accumulated);
                                 streamBubble.setAttribute('data-raw', accumulated);
+                                _enhanceCodeBlocks(streamBubble);
                                 if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
                             }
                         } catch (_pe) {}
@@ -20690,6 +20922,15 @@ opts.jsonPayload + '\n' +
         }
 
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
+        // Collapsible sections applied ONCE here, post-completion — not on
+        // every chunk during the loop above. See _makeSectionsCollapsible's
+        // docstring for why restructuring around headings mid-stream is
+        // deliberately avoided (open/closed state churn, headings arriving
+        // mid-word, etc.). _enhanceCodeBlocks already runs per-chunk above;
+        // one more pass here is a no-op for it (idempotent) but the code
+        // step-marker counts get one final correctness pass regardless.
+        _enhanceCodeBlocks(streamBubble);
+        _makeSectionsCollapsible(streamBubble);
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
         var _streamModelInfo = _getActiveModel(_cfg());

@@ -3324,6 +3324,21 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     font-size: 0.82em;
 }
 
+/* Wrapper injected by _enhanceCodeBlocks() around each .ai-md-pre — carries
+ * the positioning context and margin that used to live on .ai-md-pre
+ * itself (see the rule above, still present for markup that hasn't been
+ * enhanced yet, e.g. a brief flash before JS runs). Kept OUTSIDE .ai-md-pre
+ * deliberately: .ai-md-pre has overflow-x:auto for long code lines, and a
+ * button positioned relative to it would scroll away with the code instead
+ * of staying pinned to the corner. */
+.ai-md-pre-wrap {
+    position: relative;
+    margin: 0.55rem 0;
+}
+.ai-md-pre-wrap .ai-md-pre {
+    margin: 0;   /* spacing now owned by the wrapper, not the scroll box */
+}
+
 [data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant .ai-md-pre {
     background: rgba(255,255,255,0.06);
     border-color: rgba(255,255,255,0.12);
@@ -3351,6 +3366,160 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 
 [data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant .ai-md-code-lang {
     color: rgba(255,255,255,0.35);
+}
+
+/* ── Per-code-block "Copy code" button ──────────────────────────────────
+ * Floats in the top-right corner of each fenced code block — `.ai-md-pre`
+ * already has `position: relative` above, so this needs no wrapper element.
+ * Uses the exact same copy/copied icon pair and confirmation color as the
+ * bubble-level Copy button (ICONS.copyAns / ICONS.checkAns and the
+ * .ai-assistant-panel-bubble-action--copied rule) so "copy succeeded" reads
+ * identically everywhere it appears in the panel.
+ *
+ * Visibility differs from the bubble-level Copy button on purpose: that one
+ * is icon-only-until-hover because it sits in a row of *other* always-
+ * visible actions and text would be redundant most of the time. This
+ * button is the ONLY control inside a code block, so hiding it entirely
+ * until hover (rather than just collapsing a label) would mean touch users
+ * — who have no hover — could never discover it at all. Hence the split
+ * below: fades in on hover for devices that have one, stays fully visible
+ * by default everywhere else (including touch).
+ */
+.ai-md-code-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    touch-action: manipulation;
+}
+.ai-md-code-download-btn {
+    /* Same visual treatment as the copy button — one shared look for both
+     * toolbar actions, only the icon differs. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    touch-action: manipulation;
+}
+.ai-md-code-copy-btn svg,
+.ai-md-code-download-btn svg {
+    width: 0.85rem;
+    height: 0.85rem;
+}
+.ai-md-code-copy-btn:hover,
+.ai-md-code-download-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #24292f));
+}
+[data-bs-theme="dark"] .ai-md-code-copy-btn,
+[data-bs-theme="dark"] .ai-md-code-download-btn {
+    background: rgba(255, 255, 255, 0.08);
+}
+[data-bs-theme="dark"] .ai-md-code-copy-btn:hover,
+[data-bs-theme="dark"] .ai-md-code-download-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+.ai-md-code-copy-btn:focus,
+.ai-md-code-download-btn:focus         { outline: none; }
+.ai-md-code-copy-btn:focus-visible,
+.ai-md-code-download-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 1px;
+}
+
+/* Toolbar — groups Copy + Download as one visual unit, positioned once
+ * instead of positioning each button individually. Lives in .ai-md-pre-wrap
+ * (see docstring on _enhanceCodeBlocks for why, not inside .ai-md-pre). */
+.ai-md-code-toolbar {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+}
+
+/* "Block X of Y" step marker — only present when a bubble has more than
+ * one code block (multi-file answers). Mirrors the toolbar's treatment,
+ * mirrored to the opposite (top-left) corner so it never collides with it. */
+.ai-md-code-step {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    opacity: 0.85;
+    pointer-events: none;   /* purely informational, never intercepts clicks */
+}
+[data-bs-theme="dark"] .ai-md-code-step {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    /* Hover-capable devices: dim the toolbar until the code block itself is
+     * hovered or a button inside it gets keyboard focus, so a page full of
+     * answers doesn't show a dozen little icon pairs at once. The step
+     * marker stays visible regardless — it's informational, not an action,
+     * so hiding it would remove context rather than declutter. */
+    .ai-md-code-toolbar {
+        opacity: 0;
+    }
+    .ai-md-pre-wrap:hover .ai-md-code-toolbar,
+    .ai-md-code-toolbar:focus-within {
+        opacity: 0.85;
+    }
+}
+
+/* ── "Block X of Y" already covers multi-code-block sequencing above.
+   Collapsible answer sections (details/summary around H2/H3-delimited
+   content) reuse the browser's native <details> element — no extra CSS
+   needed for the collapse mechanics themselves, only for the header row
+   the summary renders as. */
+.ai-assistant-panel-bubble--assistant details.ai-md-section {
+    margin: 0.5rem 0;
+}
+.ai-assistant-panel-bubble--assistant summary.ai-md-section-summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    user-select: none;
+}
+.ai-assistant-panel-bubble--assistant summary.ai-md-section-summary::-webkit-details-marker {
+    display: none;   /* replaced by the chevron span below, all browsers */
+}
+.ai-md-section-chevron {
+    display: inline-flex;
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+}
+.ai-md-section-chevron svg { width: 0.8rem; height: 0.8rem; }
+details.ai-md-section[open] > summary .ai-md-section-chevron {
+    transform: rotate(90deg);
 }
 
 /* Inline code */
