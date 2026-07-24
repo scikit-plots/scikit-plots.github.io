@@ -11513,7 +11513,25 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 0;
-    min-width: 230px;
+    /* Responsive range instead of one flat min-width. Absolutely-positioned
+     * with only `right` set (no `left`), so this already shrink-to-fits its
+     * content between the two bounds — no explicit `width` needed:
+     *   • min-width: 190px  — floor so the two toggle rows never feel
+     *                         cramped, even now that the anchor (the
+     *                         collapsed icon-only Copy button) is narrower
+     *                         than it used to be.
+     *   • max-width: min(230px, 100vw - 2rem) — ceiling that keeps the
+     *                         "🔮 Coming soon: Flag · Correct · Bookmark"
+     *                         row readable on normal screens, but yields to
+     *                         `calc(100vw - 2rem)` on a narrow phone
+     *                         viewport so `right: 0` can never push this
+     *                         past the left edge of the screen — the
+     *                         actual "small screen" risk, not just this
+     *                         popup looking slightly too wide next to a
+     *                         smaller anchor.
+     */
+    min-width: 190px;
+    max-width: min(230px, calc(100vw - 2rem));
     padding: 0.35rem;
     background: var(--pst-color-surface, var(--color-background-primary, #fff));
     border: 1px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
