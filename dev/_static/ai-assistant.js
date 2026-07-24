@@ -14826,9 +14826,12 @@ opts.jsonPayload + '\n' +
         var headerTitle = document.createElement('div');
         headerTitle.className = 'ai-assistant-panel-header-title';
 
-        // Logo — try image file first; inline SVG as fallback attribute
+        // Logo — try image file first; inline SVG as fallback attribute.
+        // Sparkle (not the chat-bubble ai-panel.svg) — reads as "AI" at a
+        // glance rather than "message", which fits an assistant panel title
+        // better than a generic chat-bubble glyph.
         var logo = document.createElement('img');
-        logo.src = getStaticPath() + '/ai-panel.svg';
+        logo.src = getStaticPath() + '/sparkle-alt.svg';
         logo.className = 'ai-assistant-panel-logo';
         logo.setAttribute('aria-hidden', 'true');
         logo.alt = '';
