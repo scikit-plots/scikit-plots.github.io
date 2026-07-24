@@ -14826,15 +14826,19 @@ opts.jsonPayload + '\n' +
         var headerTitle = document.createElement('div');
         headerTitle.className = 'ai-assistant-panel-header-title';
 
-        // Logo — try image file first; inline SVG as fallback attribute.
-        // Sparkle (not the chat-bubble ai-panel.svg) — reads as "AI" at a
-        // glance rather than "message", which fits an assistant panel title
-        // better than a generic chat-bubble glyph.
-        var logo = document.createElement('img');
-        logo.src = getStaticPath() + '/sparkle-alt.svg';
+        // Logo — inline SVG (not <img src="...svg">) so it themes the same
+        // way every other icon-btn in this header does: fill="currentColor"
+        // inherits .ai-assistant-panel-header-title's `color`, which already
+        // resolves correctly per light/dark theme via --pst-color-text-base.
+        // An <img>-loaded SVG can't do this (it's a separate document, so
+        // currentColor inside it never sees the host page's color) — the
+        // old dark-mode `filter: brightness(1.6)` hack existed only to
+        // compensate for that; it's removed below since it's no longer
+        // needed and would double up on an already-correct color.
+        var logo = document.createElement('span');
+        logo.innerHTML = ICONS.sparkleAlt;
         logo.className = 'ai-assistant-panel-logo';
         logo.setAttribute('aria-hidden', 'true');
-        logo.alt = '';
 
         var titleSpan = document.createElement('span');
         titleSpan.textContent = title;
@@ -20081,6 +20085,18 @@ opts.jsonPayload + '\n' +
             copyBtn.addEventListener('click', function () {
                 copyAnswer(text, bubble, function () { _flashCopyBtnCopied(copyBtn); });
             });
+            // Touch devices have no hover gesture to reveal the collapsed
+            // "Copy" label (see CSS), so a long-press surfaces it via the
+            // same toast/notification channel used elsewhere — mirrors the
+            // kbd-hint's tap-vs-long-press convention. onShortTap is null
+            // because the `click` listener above already owns the short-tap
+            // action (perform the copy); this only adds an informational
+            // long-press, it never performs the copy itself.
+            if (_isTouchDevice()) {
+                _attachLongPress(copyBtn, null, function () {
+                    showNotification('Copy');
+                }, { hapticTap: null });
+            }
             actions.appendChild(copyBtn);
 
             // Hoist answerIndex before the quick-rate block so its closure captures
@@ -20726,6 +20742,13 @@ opts.jsonPayload + '\n' +
                     copyAnswer(ft, bEl, function () { _flashCopyBtnCopied(cb2); });
                 });
             }(accumulated, streamBubble));
+            // Same long-press → "Copy" toast fallback as the non-streamed
+            // copy button above, so behaviour can't drift between the two.
+            if (_isTouchDevice()) {
+                _attachLongPress(cb2, null, function () {
+                    showNotification('Copy');
+                }, { hapticTap: null });
+            }
             acts.appendChild(cb2);
 
             // ── Quick-rate 👍 👎 (always visible — mobile-first, see CSS D4-c) ──
