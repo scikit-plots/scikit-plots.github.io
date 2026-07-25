@@ -20500,7 +20500,7 @@ opts.jsonPayload + '\n' +
 
         body.appendChild(bubble);
 
-        // User bubble: action row — timestamp + Edit & resend.
+        // User bubble: action row — timestamp + Retry + Edit & resend + Copy.
         //
         // Mirrors the assistant action row layout. The `--user` modifier pins
         // the row to the trailing (right) edge via `align-self: flex-end` so
@@ -20515,6 +20515,27 @@ opts.jsonPayload + '\n' +
             var userActs = document.createElement('div');
             userActs.className = 'ai-assistant-panel-bubble-actions ai-assistant-panel-bubble-actions--user';
             userActs.appendChild(_buildBubbleTimeEl(ts));
+
+            // Retry — immediate resend of this exact question, no editing.
+            // Reuses the exact same 3-line resend mechanism as the
+            // assistant-bubble Retry menu item (_buildBubbleMore) so both
+            // "retry" actions in this panel behave identically.
+            var userRetryBtn = document.createElement('button');
+            userRetryBtn.type = 'button';
+            userRetryBtn.className = 'ai-assistant-panel-bubble-action ai-assistant-panel-bubble-action--retry';
+            userRetryBtn.setAttribute('aria-label', 'Retry — resend this question as-is');
+            userRetryBtn.title = 'Retry — resend this question as-is';
+            userRetryBtn.innerHTML = ICONS.syncRetry;   // ICONS constant — safe.
+            (function (questionText) {
+                userRetryBtn.addEventListener('click', function () {
+                    var input = document.getElementById('ai-assistant-panel-input');
+                    if (!input) { return; }
+                    input.value = questionText;
+                    _updateSendBtnState();
+                    handleAIPanelSubmit();
+                });
+            }(text));
+            userActs.appendChild(userRetryBtn);
 
             // Edit & resend — prefills the input with this exact question so
             // the user can tweak it before sending, rather than an immediate
@@ -20544,6 +20565,35 @@ opts.jsonPayload + '\n' +
                 });
             }(text));
             userActs.appendChild(editBtn);
+
+            // Copy — copies the question text. Same icon-only/hover-expand/
+            // "Copied!" flash/long-press-on-touch behaviour as the answer's
+            // Copy button (see .ai-assistant-panel-bubble-action--copy CSS
+            // and _flashCopyBtnCopied) — one consistent copy pattern
+            // everywhere it appears in the panel, not a second one-off.
+            var userCopyBtn = document.createElement('button');
+            userCopyBtn.type = 'button';
+            userCopyBtn.className = 'ai-assistant-panel-bubble-action ' +
+                'ai-assistant-panel-bubble-action--copy';
+            userCopyBtn.setAttribute('aria-label', 'Copy this question');
+            userCopyBtn.title = 'Copy this question';
+            userCopyBtn.innerHTML = ICONS.copyAns;   // ICONS constant — safe.
+            var userCopyLbl = document.createElement('span');
+            userCopyLbl.textContent = 'Copy';
+            userCopyBtn.appendChild(userCopyLbl);
+            (function (questionText, btn) {
+                userCopyBtn.addEventListener('click', function () {
+                    copyToClipboard(questionText, false, function () {
+                        _flashCopyBtnCopied(btn);
+                    });
+                });
+                if (_isTouchDevice()) {
+                    _attachLongPress(btn, null, function () {
+                        showNotification('Copy');
+                    }, { hapticTap: null });
+                }
+            }(text, userCopyBtn));
+            userActs.appendChild(userCopyBtn);
 
             body.appendChild(userActs);
         }
