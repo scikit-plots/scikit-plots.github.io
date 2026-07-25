@@ -729,6 +729,10 @@
         // control yet — see ICONS.sparkleAlt below for how it differs from
         // the two-sparkle variant.
         sparkle: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.198.57c.275-.752 1.34-.752 1.615 0l.849 2.317a5.819 5.819 0 0 0 3.462 3.463l2.317.848c.753.275.753 1.34 0 1.615l-2.317.849a5.815 5.815 0 0 0-3.462 3.462l-.849 2.317c-.275.753-1.34.753-1.615 0l-.848-2.317a5.819 5.819 0 0 0-3.463-3.462L.57 8.813c-.752-.275-.752-1.34 0-1.615l2.317-.848A5.823 5.823 0 0 0 6.35 2.887L7.198.57Zm.562 2.833A7.323 7.323 0 0 1 3.403 7.76l-.673.246.673.246a7.324 7.324 0 0 1 4.357 4.356l.246.673.246-.673a7.322 7.322 0 0 1 4.356-4.356l.673-.246-.673-.246a7.324 7.324 0 0 1-4.356-4.357l-.246-.673-.246.673Z"/></svg>',
+        // Paintbrush + AI sparkle — not wired to any control yet; kept
+        // available for a future "customize/style" or "AI-assisted
+        // formatting" affordance.
+        brushSparkle: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M14.8777 7.28311L15.226 8.3539C15.3343 8.67945 15.5171 8.97527 15.7599 9.21784C16.0026 9.46042 16.2987 9.64308 16.6245 9.7513L17.6961 10.0993L17.7175 10.1047C17.8001 10.1338 17.8716 10.1878 17.9222 10.2592C17.9728 10.3307 18 10.416 18 10.5035C18 10.5911 17.9728 10.6764 17.9222 10.7479C17.8716 10.8193 17.8001 10.8733 17.7175 10.9024L16.6459 11.2504C16.3201 11.3586 16.024 11.5413 15.7813 11.7839C15.5385 12.0265 15.3557 12.3223 15.2474 12.6478L14.8991 13.7186C14.87 13.8011 14.816 13.8726 14.7445 13.9232C14.673 13.9737 14.5876 14.0009 14.5 14.0009C14.4124 14.0009 14.327 13.9737 14.2555 13.9232C14.2484 13.9182 14.2415 13.913 14.2348 13.9076C14.1736 13.8584 14.1271 13.793 14.1008 13.7186L13.7525 12.6478C13.7338 12.591 13.7128 12.5351 13.6896 12.4802C13.5796 12.2196 13.4202 11.982 13.2196 11.7808C13.1815 11.7426 13.142 11.7058 13.1014 11.6706C12.883 11.4815 12.6292 11.3367 12.3541 11.2451L11.2824 10.8971C11.1998 10.8679 11.1283 10.8139 11.0777 10.7425C11.0271 10.6711 11 10.5857 11 10.4982C11 10.4107 11.0271 10.3253 11.0777 10.2539C11.1283 10.1824 11.1998 10.1284 11.2824 10.0993L12.3541 9.7513C12.6759 9.64026 12.9676 9.45634 13.2065 9.21392C13.4454 8.97151 13.6249 8.67716 13.7311 8.3539L14.0794 7.28311C14.1085 7.20057 14.1625 7.12911 14.234 7.07855C14.3055 7.028 14.391 7.00085 14.4785 7.00085C14.5661 7.00085 14.6515 7.028 14.723 7.07855C14.7945 7.12911 14.8486 7.20057 14.8777 7.28311ZM19.7829 15.214L19.0175 14.9655C18.7847 14.8882 18.5733 14.7577 18.3999 14.5844C18.2265 14.4112 18.0959 14.1999 18.0186 13.9673L17.7698 13.2025C17.749 13.1435 17.7104 13.0925 17.6593 13.0564C17.6082 13.0203 17.5472 13.0009 17.4847 13.0009C17.4221 13.0009 17.3611 13.0203 17.31 13.0564C17.2589 13.0925 17.2203 13.1435 17.1995 13.2025L16.9508 13.9673C16.875 14.1982 16.7467 14.4085 16.5761 14.5816C16.4055 14.7548 16.1971 14.8862 15.9672 14.9655L15.2017 15.214C15.1427 15.2348 15.0916 15.2734 15.0555 15.3244C15.0194 15.3755 15 15.4364 15 15.499C15 15.5615 15.0194 15.6224 15.0555 15.6735C15.0916 15.7245 15.1427 15.7631 15.2017 15.7839L15.9672 16.0324C16.2003 16.1101 16.412 16.2412 16.5855 16.4151C16.7589 16.5891 16.8892 16.8012 16.9661 17.0344L17.2148 17.7993C17.2357 17.8582 17.2743 17.9093 17.3253 17.9454C17.3764 17.9815 17.4374 18.0009 17.5 18.0009C17.5625 18.0009 17.6235 17.9815 17.6746 17.9454C17.7257 17.9093 17.7643 17.8582 17.7851 17.7993L18.0339 17.0344C18.1112 16.8019 18.2418 16.5906 18.4152 16.4173C18.5886 16.244 18.8001 16.1136 19.0328 16.0363L19.7982 15.7877C19.8572 15.7669 19.9083 15.7283 19.9444 15.6773C19.9806 15.6263 20 15.5653 20 15.5028C20 15.4403 19.9806 15.3793 19.9444 15.3283C19.9083 15.2772 19.8572 15.2387 19.7982 15.2179L19.7829 15.214ZM4.99997 2.5C4.99997 2.22386 5.22383 2 5.49997 2H14.5C14.7761 2 15 2.22386 15 2.5V6.09979C14.8348 6.03477 14.658 6.00085 14.4785 6.00085C14.3145 6.00085 14.1527 6.02919 14 6.08371V3H13V5.50219C13 5.77834 12.7761 6.00219 12.5 6.00219C12.2238 6.00219 12 5.77834 12 5.50219V3H11V4.5C11 4.77614 10.7761 5 10.5 5C10.2238 5 9.99997 4.77614 9.99997 4.5V3H5.99997V9.00436H11.4165L10.9617 9.15205L10.95 9.15619C10.6724 9.25405 10.4318 9.4356 10.2616 9.67594C10.1894 9.77798 10.1313 9.88847 10.0884 10.0044H5.99999V11.0043C5.99999 11.5566 6.4477 12.0043 6.99999 12.0043H8.50408C8.78023 12.0043 9.00408 12.2282 9.00408 12.5043V16.0017C9.00408 16.554 9.4518 17.0017 10.0041 17.0017C10.5564 17.0017 11.0041 16.5539 11.0041 16.0017V12.5043C11.0041 12.2429 11.2047 12.0284 11.4603 12.0062L12.041 12.1948C12.1904 12.245 12.3282 12.3239 12.4468 12.4266C12.469 12.4458 12.4906 12.466 12.5115 12.4869C12.6211 12.5969 12.7082 12.7267 12.7684 12.8691C12.7808 12.8987 12.7921 12.9287 12.8022 12.9592L12.8027 12.9608L12.8169 13.0043H12.0041V16.0017C12.0041 17.1062 11.1087 18.0017 10.0041 18.0017C8.89951 18.0017 8.00408 17.1062 8.00408 16.0017V13.0043H6.99999C5.89542 13.0043 4.99999 12.1089 4.99999 11.0043L4.99997 2.5Z"/></svg>',
         // Two-tier "AI sparkle" — one large 4-point star, one small offset
         // star top-right. Hand-drafted (sprite ID unresolved, see chat);
         // not wired anywhere yet.
@@ -1502,8 +1506,9 @@
      * flicker/duplicate while an answer is still streaming in.
      *
      * When there's more than one code block, a "Download all" button is
-     * appended inside the same list — sequential individual downloads,
-     * not a bundled .zip (see the inline comment at that button for why).
+     * appended inside the same list, bundling every snippet into one
+     * .zip via _buildZipBlob (see its own doc comment for the format
+     * details and why it's vendored inline rather than a CDN library).
      *
      * @param {HTMLElement} root  Bubble element to scan (not the whole panel).
      */
@@ -1573,34 +1578,24 @@
         // "Download all" — only worth showing once there's more than one
         // file; a single-artifact answer already has its one card above.
         //
-        // Deliberately sequential individual downloads, NOT a bundled
-        // .zip: a real zip would need a new client-side dependency this
-        // panel doesn't otherwise carry, and — same reasoning as one-card-
-        // per-block above — a Python setup script and a bash install
-        // command don't belong merged into one archive entry anyway. This
-        // reuses the exact same _downloadBlob path each individual card
-        // uses, just looped.
-        //
-        // The ~180ms stagger between downloads isn't cosmetic: browsers
-        // (Chrome in particular) can silently block a burst of same-tick
-        // downloads as if it were popup spam. Spacing them out keeps every
-        // download inside the same trusted user-gesture window without
-        // tripping that heuristic.
+        // Bundles into one real .zip via _buildZipBlob (vendored inline —
+        // see its own doc comment for why not a CDN library). One
+        // download, one file, matching what a user actually expects from
+        // "download all" — not N separate browser download prompts.
         if (files.length > 1) {
             var allBtn = document.createElement('button');
             allBtn.type = 'button';
             allBtn.className = 'ai-md-artifact-download-all-btn';
-            allBtn.setAttribute('aria-label', 'Download all ' + files.length + ' files');
+            allBtn.setAttribute('aria-label', 'Download all ' + files.length + ' files as a zip');
             allBtn.innerHTML = ICONS.exportTxt;   // ICONS constant — safe.
             var allLbl = document.createElement('span');
             allLbl.textContent = 'Download all';
             allBtn.appendChild(allLbl);
             allBtn.addEventListener('click', function () {
-                files.forEach(function (f, idx) {
-                    setTimeout(function () {
-                        _downloadBlob(f.content, 'text/plain', f.filename);
-                    }, idx * 180);
-                });
+                var zipBlob = _buildZipBlob(files.map(function (f) {
+                    return { name: f.filename, content: f.content };
+                }));
+                _downloadBlob(zipBlob, 'application/zip', 'snippets-' + _isoFileStamp() + '.zip');
             });
             list.appendChild(allBtn);
         }
@@ -5474,6 +5469,128 @@ opts.jsonPayload + '\n' +
                 try { URL.revokeObjectURL(url); } catch (_) {}
             }, 1500);
         }
+    }
+
+    /**
+     * Standard CRC-32 (IEEE 802.3 / zlib polynomial), table-based.
+     * Only real dependency of _buildZipBlob below.
+     */
+    function _crc32(bytes) {
+        if (!_crc32._table) {
+            var t = new Uint32Array(256);
+            for (var n = 0; n < 256; n++) {
+                var c = n;
+                for (var k = 0; k < 8; k++) {
+                    c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+                }
+                t[n] = c >>> 0;
+            }
+            _crc32._table = t;
+        }
+        var crc = 0xFFFFFFFF;
+        for (var i = 0; i < bytes.length; i++) {
+            crc = _crc32._table[(crc ^ bytes[i]) & 0xFF] ^ (crc >>> 8);
+        }
+        return (crc ^ 0xFFFFFFFF) >>> 0;
+    }
+
+    /**
+     * Build a minimal, valid ZIP archive (STORE method — no compression)
+     * from a list of ``{name, content}`` text files, returned as a Blob
+     * ready for ``_downloadBlob()``.
+     *
+     * Vendored inline rather than pulling in a zip library from a CDN —
+     * same reasoning as the vendored Turndown copy elsewhere in this file
+     * (see its own comment): an external CDN dependency can silently fail
+     * this one feature on any device/network where that CDN happens to be
+     * blocked (ad-blockers, corporate firewalls, iOS content blockers,
+     * offline docs), and there's no good way to detect that failure from
+     * inside a click handler.
+     *
+     * STORE-only (no DEFLATE) is a deliberate scope limit, not an
+     * oversight: these are small code snippets, not large assets, so the
+     * size cost of skipping compression is negligible, while a correct
+     * DEFLATE implementation is a meaningfully bigger and riskier thing to
+     * hand-roll than a CRC32 + fixed-format ZIP writer. The output is a
+     * fully valid .zip either way — every mainstream unzip tool (Windows
+     * Explorer, macOS Archive Utility, 7-Zip, unzip(1)) opens STORE
+     * entries the same as compressed ones.
+     *
+     * @param {Array<{name: string, content: string}>} files
+     * @returns {Blob}
+     */
+    function _buildZipBlob(files) {
+        var encoder = new TextEncoder();
+        var localParts = [];
+        var centralParts = [];
+        var offset = 0;
+        // Fixed DOS date/time (1980-01-01, 00:00) — these are freshly
+        // generated snippets, not files with a meaningful mtime to
+        // preserve, and every extractor accepts this as a valid value.
+        var DOS_TIME = 0, DOS_DATE = 0x21;
+
+        files.forEach(function (f) {
+            var nameBytes = encoder.encode(f.name);
+            var dataBytes = encoder.encode(f.content);
+            var crc = _crc32(dataBytes);
+            var size = dataBytes.length;
+
+            var lh = new Uint8Array(30 + nameBytes.length);
+            var ldv = new DataView(lh.buffer);
+            ldv.setUint32(0, 0x04034b50, true);   // local file header signature
+            ldv.setUint16(4, 20, true);           // version needed to extract
+            ldv.setUint16(6, 0, true);            // general purpose bit flag
+            ldv.setUint16(8, 0, true);            // compression method (0 = store)
+            ldv.setUint16(10, DOS_TIME, true);
+            ldv.setUint16(12, DOS_DATE, true);
+            ldv.setUint32(14, crc, true);
+            ldv.setUint32(18, size, true);        // compressed size
+            ldv.setUint32(22, size, true);        // uncompressed size
+            ldv.setUint16(26, nameBytes.length, true);
+            ldv.setUint16(28, 0, true);           // extra field length
+            lh.set(nameBytes, 30);
+            localParts.push(lh, dataBytes);
+
+            var ch = new Uint8Array(46 + nameBytes.length);
+            var cdv = new DataView(ch.buffer);
+            cdv.setUint32(0, 0x02014b50, true);   // central file header signature
+            cdv.setUint16(4, 20, true);           // version made by
+            cdv.setUint16(6, 20, true);           // version needed to extract
+            cdv.setUint16(8, 0, true);            // general purpose bit flag
+            cdv.setUint16(10, 0, true);           // compression method
+            cdv.setUint16(12, DOS_TIME, true);
+            cdv.setUint16(14, DOS_DATE, true);
+            cdv.setUint32(16, crc, true);
+            cdv.setUint32(20, size, true);
+            cdv.setUint32(24, size, true);
+            cdv.setUint16(28, nameBytes.length, true);
+            cdv.setUint16(30, 0, true);           // extra field length
+            cdv.setUint16(32, 0, true);           // file comment length
+            cdv.setUint16(34, 0, true);           // disk number start
+            cdv.setUint16(36, 0, true);           // internal file attributes
+            cdv.setUint32(38, 0, true);           // external file attributes
+            cdv.setUint32(42, offset, true);      // relative offset of local header
+            ch.set(nameBytes, 46);
+            centralParts.push(ch);
+
+            offset += lh.length + dataBytes.length;
+        });
+
+        var centralSize = centralParts.reduce(function (sum, p) { return sum + p.length; }, 0);
+        var centralOffset = offset;
+
+        var end = new Uint8Array(22);
+        var edv = new DataView(end.buffer);
+        edv.setUint32(0, 0x06054b50, true);       // end of central directory signature
+        edv.setUint16(4, 0, true);                // disk number
+        edv.setUint16(6, 0, true);                // disk with start of central directory
+        edv.setUint16(8, files.length, true);     // entries on this disk
+        edv.setUint16(10, files.length, true);    // total entries
+        edv.setUint32(12, centralSize, true);
+        edv.setUint32(16, centralOffset, true);
+        edv.setUint16(20, 0, true);                // comment length
+
+        return new Blob(localParts.concat(centralParts, [end]), { type: 'application/zip' });
     }
 
     /**
