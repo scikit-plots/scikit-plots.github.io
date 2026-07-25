@@ -5795,12 +5795,25 @@ opts.jsonPayload + '\n' +
             // Step marker — only shown once a bubble has more than one code
             // block, and re-derived every call so the count self-corrects
             // as more blocks stream in (see docstring).
-            var stepEl = wrap.querySelector('.ai-md-code-step');
+            //
+            // Inserted as a SIBLING immediately before `wrap`, not as a
+            // child inside it. .ai-md-code-toolbar is position:absolute
+            // relative to .ai-md-pre-wrap (its nearest positioned
+            // ancestor) — if the step marker lived inside wrap as a normal-
+            // flow block, it would push <pre> down without moving the
+            // toolbar's positioning context, leaving the copy/download
+            // icons floating above the code instead of aligned with it.
+            // Keeping wrap's only children as <pre> + the toolbar means
+            // wrap's top edge always equals <pre>'s top edge, regardless
+            // of whether a step marker exists above it.
+            var prevSib = wrap.previousElementSibling;
+            var stepEl = (prevSib && prevSib.classList &&
+                prevSib.classList.contains('ai-md-code-step')) ? prevSib : null;
             if (total > 1) {
                 if (!stepEl) {
                     stepEl = document.createElement('span');
                     stepEl.className = 'ai-md-code-step';
-                    wrap.insertBefore(stepEl, wrap.firstChild);
+                    wrap.parentNode.insertBefore(stepEl, wrap);
                 }
                 stepEl.textContent = 'Block ' + (i + 1) + ' of ' + total;
             } else if (stepEl) {
