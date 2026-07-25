@@ -1484,7 +1484,86 @@
         }
     }
 
-    // ── Initialisation ────────────────────────────────────────────────────────
+    /**
+     * Append Claude-artifact-style downloadable file cards after all of a
+     * bubble's content — one card per code block, not one per answer: an
+     * answer can mix unrelated languages (Python setup + a bash install
+     * command), so a single bundled download wouldn't make sense without
+     * adding a ZIP dependency this panel doesn't otherwise need.
+     *
+     * Deliberately reuses the exact same download mechanism as the inline
+     * per-block toolbar button (`_downloadBlob` + `_LANG_EXT`) rather than
+     * a second implementation — the card is a more prominent, end-of-
+     * answer *presentation* of the same action, not a different feature.
+     *
+     * Idempotent (guarded by `.ai-md-artifact-list` presence) and, like
+     * `_makeSectionsCollapsible`/`_typesetMath`, only ever called once
+     * after a stream finishes — not per chunk, so cards don't
+     * flicker/duplicate while an answer is still streaming in.
+     *
+     * @param {HTMLElement} root  Bubble element to scan (not the whole panel).
+     */
+    function _appendArtifactCards(root) {
+        if (!root) { return; }
+        if (root.querySelector('.ai-md-artifact-list')) { return; }   // already done
+        var wraps = root.querySelectorAll('.ai-md-pre-wrap');
+        if (!wraps.length) { return; }
+
+        var list = document.createElement('div');
+        list.className = 'ai-md-artifact-list';
+
+        wraps.forEach(function (wrap, i) {
+            var pre = wrap.querySelector('pre.ai-md-pre');
+            var codeEl = pre && pre.querySelector('code');
+            if (!codeEl) { return; }
+
+            var lang = (pre.getAttribute('data-lang') || '').toLowerCase();
+            var ext = _LANG_EXT[lang] || 'txt';
+            var typeLabel = lang ? (lang.charAt(0).toUpperCase() + lang.slice(1)) : 'Text';
+            var filename = 'snippet-' + (i + 1) + '.' + ext;
+
+            var card = document.createElement('button');
+            card.type = 'button';
+            card.className = 'ai-md-artifact-card';
+            card.setAttribute('aria-label', 'Download ' + filename);
+            card.title = 'Download ' + filename;
+
+            var iconWrap = document.createElement('span');
+            iconWrap.className = 'ai-md-artifact-icon';
+            iconWrap.setAttribute('aria-hidden', 'true');
+            iconWrap.innerHTML = ICONS.termsOfService;   // document glyph, reused — ICONS constant, safe.
+            card.appendChild(iconWrap);
+
+            var info = document.createElement('span');
+            info.className = 'ai-md-artifact-info';
+            var nameEl = document.createElement('span');
+            nameEl.className = 'ai-md-artifact-name';
+            nameEl.textContent = filename;
+            var typeEl = document.createElement('span');
+            typeEl.className = 'ai-md-artifact-type';
+            typeEl.textContent = typeLabel;
+            info.appendChild(nameEl);
+            info.appendChild(typeEl);
+            card.appendChild(info);
+
+            var dlLabel = document.createElement('span');
+            dlLabel.className = 'ai-md-artifact-download-label';
+            dlLabel.textContent = 'Download';
+            card.appendChild(dlLabel);
+
+            (function (codeElRef, fname) {
+                card.addEventListener('click', function () {
+                    _downloadBlob(codeElRef.textContent, 'text/plain', fname);
+                });
+            }(codeEl, filename));
+
+            list.appendChild(card);
+        });
+
+        if (list.children.length) {
+            root.appendChild(list);
+        }
+    }
 
     // ── Turndown 7.1.2: vendored inline ──────────────────────────────────────
     //
@@ -20493,6 +20572,7 @@ opts.jsonPayload + '\n' +
             _enhanceCodeBlocks(bubble);
             _makeSectionsCollapsible(bubble);
             _typesetMath(bubble);
+            _appendArtifactCards(bubble);
         } else {
             // User / error bubbles: plain text only (XSS-safe by design).
             bubble.textContent = text;
@@ -21265,6 +21345,7 @@ opts.jsonPayload + '\n' +
         _enhanceCodeBlocks(streamBubble);
         _makeSectionsCollapsible(streamBubble);
         _typesetMath(streamBubble);
+        _appendArtifactCards(streamBubble);
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
         var _streamModelInfo = _getActiveModel(_cfg());
