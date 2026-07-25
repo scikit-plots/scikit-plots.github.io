@@ -1234,9 +1234,26 @@
         result = _escapeHtml(result);
 
         // ── 3. Inline code (after escaping so & < > inside are safe) ─────
-        result = result.replace(/`([^`]+)`/g, '<code class="ai-md-inline-code">$1</code>');
+        // [^`\n]+ (not [^`]+) — deliberately excludes newlines from the
+        // match. A single stray/unmatched backtick anywhere in a long
+        // answer (the model does occasionally emit one) would otherwise
+        // pair with the *next* backtick that appears, however many
+        // paragraphs, headings, or list items later — silently swallowing
+        // all of that content into one giant <code> span. Real markdown
+        // parsers don't let inline code spans cross line boundaries for
+        // exactly this reason; this keeps the blast radius of a malformed
+        // backtick to the one line it's actually on.
+        result = result.replace(/`([^`\n]+)`/g, '<code class="ai-md-inline-code">$1</code>');
 
         // ── 4. Headers ────────────────────────────────────────────────────
+        // Tried longest-prefix-first (#### before ###, etc.) — not strictly
+        // required since e.g. /^### / can never match a line starting with
+        // 4+ hashes (the char right after the captured ### must be a space,
+        // but it's a 4th #), but ordering this way is the standard safe
+        // pattern for hash-count heading parsers regardless.
+        result = result.replace(/^###### (.+)$/gm, '<h6 class="ai-md-h">$1</h6>');
+        result = result.replace(/^##### (.+)$/gm,  '<h5 class="ai-md-h">$1</h5>');
+        result = result.replace(/^#### (.+)$/gm,   '<h4 class="ai-md-h">$1</h4>');
         result = result.replace(/^### (.+)$/gm, '<h3 class="ai-md-h">$1</h3>');
         result = result.replace(/^## (.+)$/gm,  '<h2 class="ai-md-h">$1</h2>');
         result = result.replace(/^# (.+)$/gm,   '<h1 class="ai-md-h">$1</h1>');

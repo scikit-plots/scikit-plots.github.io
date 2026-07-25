@@ -3458,24 +3458,23 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 /* "Block X of Y" step marker — only present when a bubble has more than
- * one code block (multi-file answers). Mirrors the toolbar's treatment,
- * mirrored to the opposite (top-left) corner so it never collides with it. */
+ * one code block (multi-file answers).
+ *
+ * Normal document flow, NOT position:absolute. It was originally absolute-
+ * positioned top-left, which overlapped .ai-md-code-lang (the language
+ * badge rendered inside <pre> itself, also top-left) — two independent
+ * elements both claiming the same corner. _enhanceCodeBlocks() already
+ * inserts this as .ai-md-pre-wrap's *first* child, before <pre> — letting
+ * it sit in normal flow means it naturally pushes <pre> down instead,
+ * with no collision possible regardless of whether a language badge is
+ * present. */
 .ai-md-code-step {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.6rem;
+    display: block;
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
-    background: var(--pst-color-surface, var(--color-background-primary, #fff));
-    padding: 0.1rem 0.4rem;
-    border-radius: 999px;
-    opacity: 0.85;
-    pointer-events: none;   /* purely informational, never intercepts clicks */
-}
-[data-bs-theme="dark"] .ai-md-code-step {
-    background: rgba(255, 255, 255, 0.08);
+    margin: 0 0 0.25rem 0.15rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -3508,6 +3507,26 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     align-items: center;
     gap: 0.35rem;
     user-select: none;
+    /* Bold + slightly larger than body text so a collapsible section reads
+     * as a heading-like, obviously-clickable control at a glance — not
+     * plain body-weight text that happens to have a chevron next to it. */
+    font-weight: 700;
+    font-size: 1.02em;
+    padding: 0.2rem 0.3rem;
+    margin: 0 -0.3rem;   /* offset the padding so text still aligns visually */
+    border-radius: 6px;
+    transition: background-color 0.12s ease;
+}
+.ai-assistant-panel-bubble--assistant summary.ai-md-section-summary:hover {
+    background: rgba(0, 0, 0, 0.045);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant summary.ai-md-section-summary:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+.ai-assistant-panel-bubble--assistant summary.ai-md-section-summary:focus         { outline: none; }
+.ai-assistant-panel-bubble--assistant summary.ai-md-section-summary:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 1px;
 }
 .ai-assistant-panel-bubble--assistant summary.ai-md-section-summary::-webkit-details-marker {
     display: none;   /* replaced by the chevron span below, all browsers */
@@ -3546,6 +3565,12 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 .ai-assistant-panel-bubble--assistant h1.ai-md-h { font-size: 1.05em; }
 .ai-assistant-panel-bubble--assistant h2.ai-md-h { font-size: 0.97em; }
 .ai-assistant-panel-bubble--assistant h3.ai-md-h { font-size: 0.92em; }
+.ai-assistant-panel-bubble--assistant h4.ai-md-h { font-size: 0.88em; }
+.ai-assistant-panel-bubble--assistant h5.ai-md-h { font-size: 0.85em; }
+.ai-assistant-panel-bubble--assistant h6.ai-md-h {
+    font-size: 0.85em;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
 
 /* Lists */
 .ai-assistant-panel-bubble--assistant .ai-md-ul,
