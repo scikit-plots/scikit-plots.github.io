@@ -11526,6 +11526,26 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-panel-ep-ext-dataset-token-row {
     margin: 0.2rem 0 0;
 }
+
+/* Custom dataset repo override form — P0 in _buildDatasetSection's
+ * resolution chain. datasetCustomClearBtn intentionally reuses
+ * .ai-assistant-panel-ep-ext-dataset-refresh-btn's low-emphasis style
+ * ("Reset to default" reads as secondary next to Save). */
+.ai-assistant-panel-ep-ext-dataset-custom {
+    margin: 0.5rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--pst-color-border, var(--color-foreground-border, #d0d4d8));
+}
+.ai-assistant-panel-ep-ext-dataset-custom-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+}
+.ai-assistant-panel-ep-ext-dataset-custom-row .ai-assistant-panel-ep-input {
+    flex: 1;
+    min-width: 0;
+}
 .ai-assistant-panel-ep-ext-dataset-refresh-btn {
     display: inline-flex;
     align-items: center;

@@ -224,6 +224,63 @@
     var _EXPORT_LINK_MODE_KEY = 'ai-assistant-export-link-mode';
 
     /**
+     * User-settable dataset repo override — the runtime, no-recompile
+     * counterpart to conf.py's ``panelDatasetRepo``.
+     *
+     * Set from the "Dataset Endpoint" section in Extended Settings (mirrors
+     * the endpoint-profile system: the built-in auto-discovery / conf.py
+     * behaviour keeps working unchanged, this just adds a live, user-owned
+     * override on top, same as a custom endpoint profile sits alongside the
+     * built-in DMR/CF/HF ones). Highest priority in _buildDatasetSection's
+     * resolution chain — see there for P0/P1/P2 order.
+     *
+     * Stored as a plain "owner/repo" string (validated via
+     * _isValidHfRepoId before ever being saved) — never a full URL, so
+     * there's no SSRF surface here the way there is for endpoint profiles.
+     *
+     * @type {string}
+     */
+    var _CUSTOM_DATASET_REPO_KEY = 'ai-assistant-custom-dataset-repo';
+
+    /** "owner/repo" — HF's own id format. Deliberately conservative (no
+     *  leading/trailing dots or hyphens, no consecutive slashes) since this
+     *  string gets embedded directly into a huggingface.co URL. */
+    var _HF_REPO_ID_RE = /^[A-Za-z0-9]([A-Za-z0-9_.-]{0,94}[A-Za-z0-9])?\/[A-Za-z0-9]([A-Za-z0-9_.-]{0,94}[A-Za-z0-9])?$/;
+
+    function _isValidHfRepoId(s) {
+        return typeof s === 'string' && _HF_REPO_ID_RE.test(s.trim());
+    }
+
+    /** @returns {string} The saved custom repo id, or '' if unset/unavailable. */
+    function _getCustomDatasetRepo() {
+        try {
+            return localStorage.getItem(_CUSTOM_DATASET_REPO_KEY) || '';
+        } catch (_) {
+            return '';
+        }
+    }
+
+    /**
+     * @param {string} repoId  Must already be validated by the caller
+     *   (_isValidHfRepoId) — this function trusts its input.
+     * @returns {boolean} Whether the write succeeded.
+     */
+    function _setCustomDatasetRepo(repoId) {
+        try {
+            localStorage.setItem(_CUSTOM_DATASET_REPO_KEY, repoId);
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function _clearCustomDatasetRepo() {
+        try {
+            localStorage.removeItem(_CUSTOM_DATASET_REPO_KEY);
+        } catch (_) {}
+    }
+
+    /**
      * Whether export share-link mode is active.
      *
      * ``true`` (default) → clicking an export format opens the "Share
@@ -9209,11 +9266,13 @@ opts.jsonPayload + '\n' +
 
             var badge = document.createElement('span');
             badge.className = 'ai-assistant-panel-ep-ext-info-badge ' +
-                (state === 'configured'
+                (state === 'configured' || state === 'custom'
                     ? 'ai-assistant-panel-ep-ext-info-badge--ok'
                     : 'ai-assistant-panel-ep-ext-dataset-badge--discovered');
-            badge.textContent = (state === 'configured')
-                ? 'Configured' : 'Auto-discovered';
+            badge.textContent =
+                state === 'custom'     ? 'Custom (yours)' :
+                state === 'configured' ? 'Configured'      :
+                                          'Auto-discovered';
             statusRow.appendChild(badge);
 
             var repoLabel = document.createElement('span');
@@ -9256,21 +9315,28 @@ opts.jsonPayload + '\n' +
         function _buildDatasetSection(statusRow, linksWrap, tokenRow) {
             var cfg = _cfg();
 
-            // P1: explicit panel config wins — no network call.
+            // P0: user's own runtime override wins over everything — the
+            // no-recompile counterpart to conf.py's panelDatasetRepo. Set
+            // from the form below; see _CUSTOM_DATASET_REPO_KEY.
+            var customRepo = _getCustomDatasetRepo();
+            // P1: explicit panel config (conf.py) — no network call needed.
             var explicitRepo = (cfg.panelDatasetRepo || '').trim();
+
+            var effectiveRepo   = customRepo || explicitRepo;
+            var effectiveSource = customRepo ? 'custom' : (explicitRepo ? 'configured' : null);
 
             var trainingUrl = (_epSafe && typeof _epSafe.resolve === 'function')
                 ? (_epSafe.resolve('training') || '') : '';
             var proxyBase = _proxyBaseFromTrainingUrl(trainingUrl);
 
-            if (explicitRepo && !proxyBase) {
-                // Config only, nothing to discover.
-                _renderDatasetLinks(statusRow, linksWrap, explicitRepo, 'configured');
+            if (effectiveRepo && !proxyBase) {
+                // Config/override only, nothing to discover.
+                _renderDatasetLinks(statusRow, linksWrap, effectiveRepo, effectiveSource);
                 if (tokenRow) { tokenRow.textContent = ''; }
                 return;
             }
 
-            if (!explicitRepo && !proxyBase) {
+            if (!effectiveRepo && !proxyBase) {
                 _renderDatasetLinks(statusRow, linksWrap, null, 'not-configured');
                 if (tokenRow) { tokenRow.textContent = ''; }
                 return;
@@ -9286,9 +9352,9 @@ opts.jsonPayload + '\n' +
             statusRow.appendChild(spinner); statusRow.appendChild(loadTxt);
 
             _fetchProxyDatasetInfo(proxyBase, function (info) {
-                // P1 still wins for the link target; discovery adds token posture.
-                if (explicitRepo) {
-                    _renderDatasetLinks(statusRow, linksWrap, explicitRepo, 'configured');
+                // P0/P1 still win for the link target; discovery adds token posture.
+                if (effectiveRepo) {
+                    _renderDatasetLinks(statusRow, linksWrap, effectiveRepo, effectiveSource);
                 } else if (!info.repoId) {
                     _renderDatasetLinks(statusRow, linksWrap, null, 'discovery-failed');
                 } else {
@@ -9304,12 +9370,62 @@ opts.jsonPayload + '\n' +
         datasetIntro.className = 'ai-assistant-panel-ep-hint';
         datasetIntro.textContent =
             'HuggingFace dataset where feedback and training contributions are ' +
-            'stored. Discovered automatically from the proxy when a training URL ' +
-            'is configured, or set explicitly via panelDatasetRepo in conf.py. ' +
+            'stored. Set your own below to use it right away — no rebuild needed. ' +
+            'Otherwise it\u2019s discovered automatically from the proxy when a ' +
+            'training URL is configured, or set via panelDatasetRepo in conf.py. ' +
             'The HF token posture below is reported by the server (no secret is ' +
             'ever exposed); when nothing is reachable, the Space repository ' +
             'secret continues to drive persistence.';
         datasetSub.appendChild(datasetIntro);
+
+        // ── Custom override form (P0 — no recompile needed) ────────────────
+        // The runtime, user-owned counterpart to conf.py's panelDatasetRepo —
+        // same idea as a custom endpoint profile: the built-in behaviour
+        // above keeps working untouched, this just lets a user layer their
+        // own choice on top, persisted locally, editable any time.
+        var datasetCustomWrap = document.createElement('div');
+        datasetCustomWrap.className = 'ai-assistant-panel-ep-ext-dataset-custom';
+
+        var datasetCustomLbl = document.createElement('label');
+        datasetCustomLbl.className = 'ai-assistant-panel-ep-url-label';
+        datasetCustomLbl.textContent = 'Custom dataset repo (owner/repo)';
+        datasetCustomLbl.htmlFor = 'ai-assistant-ext-dataset-custom-input';
+        datasetCustomWrap.appendChild(datasetCustomLbl);
+
+        var datasetCustomRow = document.createElement('div');
+        datasetCustomRow.className = 'ai-assistant-panel-ep-ext-dataset-custom-row';
+
+        var datasetCustomInp = document.createElement('input');
+        datasetCustomInp.type  = 'text';
+        datasetCustomInp.id    = 'ai-assistant-ext-dataset-custom-input';
+        datasetCustomInp.className = 'ai-assistant-panel-ep-input';
+        datasetCustomInp.placeholder = 'e.g. your-username/your-dataset';
+        datasetCustomInp.autocomplete = 'off';
+        datasetCustomInp.spellcheck = false;
+        datasetCustomInp.value = _getCustomDatasetRepo();
+        datasetCustomRow.appendChild(datasetCustomInp);
+
+        var datasetCustomSaveBtn = document.createElement('button');
+        datasetCustomSaveBtn.type = 'button';
+        datasetCustomSaveBtn.className = 'ai-assistant-panel-ep-add-btn';
+        datasetCustomSaveBtn.textContent = 'Save';
+        datasetCustomRow.appendChild(datasetCustomSaveBtn);
+
+        var datasetCustomClearBtn = document.createElement('button');
+        datasetCustomClearBtn.type = 'button';
+        datasetCustomClearBtn.className = 'ai-assistant-panel-ep-ext-dataset-refresh-btn';
+        datasetCustomClearBtn.textContent = 'Reset to default';
+        datasetCustomRow.appendChild(datasetCustomClearBtn);
+
+        datasetCustomWrap.appendChild(datasetCustomRow);
+
+        var datasetCustomErr = document.createElement('p');
+        datasetCustomErr.className = 'ai-assistant-panel-ep-status ai-assistant-panel-ep-status--error';
+        datasetCustomErr.style.display = 'none';
+        datasetCustomWrap.appendChild(datasetCustomErr);
+
+        datasetSub.appendChild(datasetCustomWrap);
+
 
         var datasetStatusRow = document.createElement('div');
         datasetStatusRow.className = 'ai-assistant-panel-ep-ext-dataset-status';
@@ -9332,6 +9448,43 @@ opts.jsonPayload + '\n' +
             _buildDatasetSection(datasetStatusRow, datasetLinksWrap, datasetTokenRow);
         });
         datasetSub.appendChild(datasetRefreshBtn);
+
+        // ── Custom override form wiring ─────────────────────────────────────
+        function _showDatasetCustomErr(msg) {
+            datasetCustomErr.textContent = msg;
+            datasetCustomErr.style.display = '';
+        }
+        function _hideDatasetCustomErr() {
+            datasetCustomErr.style.display = 'none';
+        }
+        datasetCustomInp.addEventListener('input', _hideDatasetCustomErr);
+
+        datasetCustomSaveBtn.addEventListener('click', function () {
+            var val = datasetCustomInp.value.trim();
+            if (!val) {
+                _showDatasetCustomErr('Enter a repo id first, or use "Reset to default".');
+                return;
+            }
+            if (!_isValidHfRepoId(val)) {
+                _showDatasetCustomErr(
+                    'Not a valid HuggingFace repo id — expected the form "owner/repo".');
+                return;
+            }
+            if (!_setCustomDatasetRepo(val)) {
+                _showDatasetCustomErr(
+                    'Could not save — local storage is unavailable (private browsing?).');
+                return;
+            }
+            _hideDatasetCustomErr();
+            _buildDatasetSection(datasetStatusRow, datasetLinksWrap, datasetTokenRow);
+        });
+
+        datasetCustomClearBtn.addEventListener('click', function () {
+            _clearCustomDatasetRepo();
+            datasetCustomInp.value = '';
+            _hideDatasetCustomErr();
+            _buildDatasetSection(datasetStatusRow, datasetLinksWrap, datasetTokenRow);
+        });
 
         _buildDatasetSection(datasetStatusRow, datasetLinksWrap, datasetTokenRow);
 
