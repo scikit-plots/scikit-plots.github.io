@@ -20962,16 +20962,33 @@ opts.jsonPayload + '\n' +
 
         // FIX Issue 7: configurable system prompt via cfg.panelSystemPrompt.
         // Use {context} as the template variable for the page markdown block.
+        //
+        // The "panel capabilities" paragraph exists because the model was
+        // otherwise only ever told to answer from page content — asked
+        // "can I download a code snippet?", it correctly (from its POV)
+        // said the docs don't cover that, since nothing told it the panel
+        // itself has a download button. Kept short on purpose: this text
+        // is sent on every request, so it's a fixed feature list, not a
+        // running description of the whole UI.
+        var panelCapabilities =
+            'This chat panel (not the page itself) has some built-in tools: ' +
+            'every code block gets its own Copy and Download buttons, each ' +
+            'answer has a Copy button, long answers auto-collapse into ' +
+            'sections, and LaTeX (\\(...\\) / \\[...\\]) renders as math. If ' +
+            'asked about downloading, copying, or reading a long answer, ' +
+            'mention these rather than saying it isn\'t possible.';
         var defaultSystemPrompt = pageMarkdown
             ? 'You are a helpful documentation assistant. Answer questions ' +
-              'about the following documentation page.\n\n---\n' +
+              'about the following documentation page.\n\n' +
+              panelCapabilities + '\n\n---\n' +
               pageMarkdown.slice(0, contextLimit) + '\n---'
-            : 'You are a helpful documentation assistant.';
+            : 'You are a helpful documentation assistant.\n\n' + panelCapabilities;
         var systemPrompt = (typeof cfg.panelSystemPrompt === 'string' &&
                             cfg.panelSystemPrompt)
             ? cfg.panelSystemPrompt.replace('{context}',
                 pageMarkdown.slice(0, contextLimit))
             : defaultSystemPrompt;
+
 
         // ── 4. Build request body ─────────────────────────────────────────
         // Anthropic uses a distinct body shape (system at top level).
