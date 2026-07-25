@@ -1230,6 +1230,23 @@
             return '\x00CB' + idx + '\x00';   // null-byte placeholder (safe)
         });
 
+        // ── 1.5 Extract LaTeX math → placeholders ──────────────────────────
+        // \(...\) inline math and \[...\] display math (MathJax's default
+        // delimiters — the same ones Sphinx's sphinx.ext.mathjax expects).
+        // Extracted immediately after fenced code for the same reason: math
+        // content often contains backslashes, underscores, and braces that
+        // the list/bold/italic regexes below could otherwise misinterpret.
+        // Actual rendering is delegated to the host page's own MathJax
+        // instance after the bubble is in the DOM — see _typesetMath().
+        // This step only protects the delimiters and gives a clean,
+        // monospace-styled fallback if MathJax isn't loaded on this page.
+        var mathSpans = [];
+        result = result.replace(/\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)/g, function (m) {
+            var idx = mathSpans.length;
+            mathSpans.push(m);
+            return '\x00MJ' + idx + '\x00';
+        });
+
         // ── 2. Escape all remaining text (prevents HTML injection) ────────
         result = _escapeHtml(result);
 
@@ -1352,7 +1369,62 @@
                 '<code>' + _escapeHtml(cb.code) + '</code></pre>';
         });
 
+        // ── 11. Restore LaTeX math ──────────────────────────────────────────
+        // The delimiters (\(...\) / \[...\]) are kept literal inside the
+        // span — MathJax's tex2jax preprocessor scans DOM text content for
+        // exactly this syntax and replaces it in place. Escaped here (was
+        // extracted before step 2's escaping) for the same XSS-safety
+        // reason fenced code blocks are escaped on restore above.
+        result = result.replace(/\x00MJ(\d+)\x00/g, function (_, idx) {
+            var m = mathSpans[+idx];
+            var isDisplay = m.charAt(1) === '[';
+            return '<span class="ai-md-math ' +
+                (isDisplay ? 'ai-md-math--display' : 'ai-md-math--inline') +
+                '">' + _escapeHtml(m) + '</span>';
+        });
+
         return result;
+    }
+
+    /**
+     * Delegate LaTeX math rendering to the host page's own MathJax
+     * instance, if present — this panel is embedded in Sphinx docs pages,
+     * which almost always already load MathJax via ``sphinx.ext.mathjax``
+     * whenever any page on the site uses math notation. Reusing that
+     * instance means zero extra network requests and it respects the
+     * site's own math macros/config, instead of bundling a second,
+     * separate math renderer that would fight the page's for consistency.
+     *
+     * No-ops gracefully if MathJax isn't loaded on this particular page
+     * (not every doc page necessarily triggers Sphinx to include it): the
+     * \(...\) / \[...\] text stays visible, styled as math via
+     * .ai-md-math (see CSS), rather than throwing or silently vanishing.
+     *
+     * Deliberately NOT called on every streaming chunk — only once, after
+     * a stream finishes (or immediately for the non-streamed render path).
+     * Re-typesetting partial/incomplete LaTeX mid-stream (e.g. a \[ with
+     * no matching \] yet) on every delta would be wasteful and could
+     * throw on the incomplete syntax; same reasoning as
+     * _makeSectionsCollapsible being post-completion-only.
+     *
+     * @param {HTMLElement} root  Bubble element to typeset (not the whole panel).
+     */
+    function _typesetMath(root) {
+        if (!root) { return; }
+        if (!/\\[[(]/.test(root.textContent || '')) { return; }   // no math present — skip the call entirely
+        try {
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                window.MathJax.typesetPromise([root]).catch(function (err) {
+                    _log('warn', 'AI Assistant: MathJax typeset failed:', err);
+                });
+            } else if (window.MathJax && window.MathJax.Hub &&
+                    typeof window.MathJax.Hub.Queue === 'function') {
+                // MathJax v2 API — some older Sphinx theme setups still ship it.
+                window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub, root]);
+            }
+        } catch (err) {
+            _log('warn', 'AI Assistant: MathJax typeset threw:', err);
+        }
     }
 
     // ── Initialisation ────────────────────────────────────────────────────────
@@ -20254,6 +20326,7 @@ opts.jsonPayload + '\n' +
             bubble.setAttribute('data-raw', text);  // preserve for copy/export
             _enhanceCodeBlocks(bubble);
             _makeSectionsCollapsible(bubble);
+            _typesetMath(bubble);
         } else {
             // User / error bubbles: plain text only (XSS-safe by design).
             bubble.textContent = text;
@@ -20958,6 +21031,7 @@ opts.jsonPayload + '\n' +
         // step-marker counts get one final correctness pass regardless.
         _enhanceCodeBlocks(streamBubble);
         _makeSectionsCollapsible(streamBubble);
+        _typesetMath(streamBubble);
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
         var _streamModelInfo = _getActiveModel(_cfg());

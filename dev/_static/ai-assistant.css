@@ -3556,6 +3556,39 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     border-color: rgba(255,255,255,0.14);
 }
 
+/* ── LaTeX math spans ──────────────────────────────────────────────────
+ * See _typesetMath() in ai-assistant.js — actual rendering is delegated
+ * to the host page's own MathJax instance (Sphinx sites almost always
+ * already load one). These rules are the fallback appearance for when
+ * MathJax hasn't run yet, or isn't present on this particular page: a
+ * subtly-set-off, monospace treatment so raw \(...\) / \[...\] reads as
+ * "this is math notation" rather than looking like a rendering error.
+ * Once MathJax processes a span, it replaces/annotates the span's own
+ * content with its generated markup — these rules don't fight that. */
+.ai-assistant-panel-bubble--assistant .ai-md-math {
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+    font-size: 0.92em;
+}
+.ai-assistant-panel-bubble--assistant .ai-md-math--inline {
+    background: rgba(37, 99, 235, 0.07);
+    border-radius: 0.25em;
+    padding: 0.05em 0.3em;
+}
+.ai-assistant-panel-bubble--assistant .ai-md-math--display {
+    display: block;
+    text-align: center;
+    background: rgba(37, 99, 235, 0.06);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    margin: 0.5rem 0;
+    overflow-x: auto;   /* long equations scroll instead of clipping/wrapping oddly */
+    white-space: pre;
+}
+[data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant .ai-md-math--inline,
+[data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant .ai-md-math--display {
+    background: rgba(96, 165, 250, 0.1);
+}
+
 /* Headers inside assistant bubbles */
 .ai-assistant-panel-bubble--assistant .ai-md-h {
     font-weight: 700;
