@@ -1327,8 +1327,12 @@
         result = paras.map(function (p) {
             p = p.trim();
             if (!p) return '';
-            // Already a block element — don't wrap in <p>
-            if (/^<(?:ul|ol|h[1-3]|hr|pre)/i.test(p)) return p;
+            // Already a block element — don't wrap in <p>. h[1-6] (not
+            // h[1-3]) — H4-H6 support was added to the header regexes
+            // above; without also widening this check, an <h4> would get
+            // wrongly nested inside a <p> (invalid HTML: block element
+            // inside an inline-content container).
+            if (/^<(?:ul|ol|h[1-6]|hr|pre)/i.test(p)) return p;
             // Placeholder line — restore below
             if (/^\x00CB/.test(p)) return p;
             return '<p class="ai-md-p">' + p.replace(/\n/g, '<br>') + '</p>';
@@ -5104,12 +5108,18 @@ opts.jsonPayload + '\n' +
 '.badge--positive{background:var(--rate-pos-bg);color:var(--rate-pos-tx)}\n' +
 '.badge--negative{background:var(--rate-neg-bg);color:var(--rate-neg-tx)}\n' +
 '.badge--rating{background:var(--rate-neu-bg);color:var(--rate-neu-tx)}\n' +
-'h1,h2,h3,h4{margin:.85rem 0 .4rem;font-weight:600;line-height:1.3}\n' +
-'h1{font-size:1.25rem}h2{font-size:1.1rem}h3{font-size:1rem}\n' +
+'h1,h2,h3,h4,h5,h6{margin:.85rem 0 .4rem;font-weight:600;line-height:1.3}\n' +
+'h1{font-size:1.25rem}h2{font-size:1.1rem}h3{font-size:1rem}h4{font-size:.92rem}h5,h6{font-size:.85rem;color:var(--tx2)}\n' +
 'p{margin:.4rem 0}\n' +
 'ul,ol{margin:.4rem 0 .4rem 1.4rem;padding:0}\n' +
 'li{margin:.15rem 0}\n' +
-'pre.ai-md-codeblock{background:var(--code-bg);color:var(--code-tx);border-radius:var(--rs);padding:.75rem 1rem;overflow-x:auto;margin:.6rem 0;font-size:.8125rem;font-family:ui-monospace,"SF Mono","Fira Code","Cascadia Code",Consolas,monospace;border:1px solid var(--border)}\n' +
+'pre.ai-md-pre{background:var(--code-bg);color:var(--code-tx);border-radius:var(--rs);padding:.75rem 1rem;overflow-x:auto;margin:.6rem 0;font-size:.8125rem;font-family:ui-monospace,"SF Mono","Fira Code","Cascadia Code",Consolas,monospace;border:1px solid var(--border)}\n' +
+// .ai-md-code-lang MUST be display:block — the source HTML (from _mdToHtml)
+// emits <span class="ai-md-code-lang">python</span><code>from ...</code>
+// with no separator between them, relying entirely on this rule to push
+// the language label onto its own line. Without it, the label visually
+// glues onto the first line of code (e.g. "pythonfrom scikitplot...").
+'.ai-md-code-lang{display:block;font-size:.7em;letter-spacing:.04em;text-transform:uppercase;color:var(--tx3);margin-bottom:.4rem;font-weight:600}\n' +
 'code{font-family:ui-monospace,"SF Mono","Fira Code",Consolas,monospace;font-size:.875em;background:var(--code-bg);padding:.1em .35em;border-radius:.25rem}\n' +
 'pre code{background:none;padding:0;font-size:inherit}\n' +
 'table{border-collapse:collapse;width:100%;margin:.6rem 0;font-size:.875rem}\n' +
