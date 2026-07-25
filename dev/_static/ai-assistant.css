@@ -3677,6 +3677,48 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     color: #93c5fd;
 }
 
+/* "Download all" — deliberately styled differently from the per-file
+ * cards above it (centered, outline-style) rather than looking like one
+ * more file row, since it's a summary action over all of them, not
+ * another artifact of its own. */
+.ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    align-self: center;
+    margin-top: 0.15rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    border-radius: 999px;
+    background: none;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+.ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn svg {
+    width: 0.85rem;
+    height: 0.85rem;
+}
+.ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn {
+    border-color: #93c5fd;
+    color: #93c5fd;
+}
+[data-bs-theme="dark"] .ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn:hover {
+    background: rgba(96, 165, 250, 0.1);
+}
+.ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn:focus         { outline: none; }
+.ai-assistant-panel-bubble--assistant .ai-md-artifact-download-all-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 1px;
+}
+
 /* Headers inside assistant bubbles */
 .ai-assistant-panel-bubble--assistant .ai-md-h {
     font-weight: 700;

@@ -1501,6 +1501,10 @@
      * after a stream finishes — not per chunk, so cards don't
      * flicker/duplicate while an answer is still streaming in.
      *
+     * When there's more than one code block, a "Download all" button is
+     * appended inside the same list — sequential individual downloads,
+     * not a bundled .zip (see the inline comment at that button for why).
+     *
      * @param {HTMLElement} root  Bubble element to scan (not the whole panel).
      */
     function _appendArtifactCards(root) {
@@ -1511,6 +1515,11 @@
 
         var list = document.createElement('div');
         list.className = 'ai-md-artifact-list';
+
+        // Collected alongside each card so "Download all" (below) can
+        // trigger the exact same per-file downloads in sequence, rather
+        // than a second, separate code path.
+        var files = [];
 
         wraps.forEach(function (wrap, i) {
             var pre = wrap.querySelector('pre.ai-md-pre');
@@ -1556,9 +1565,45 @@
                     _downloadBlob(codeElRef.textContent, 'text/plain', fname);
                 });
             }(codeEl, filename));
+            files.push({ filename: filename, content: codeEl.textContent });
 
             list.appendChild(card);
         });
+
+        // "Download all" — only worth showing once there's more than one
+        // file; a single-artifact answer already has its one card above.
+        //
+        // Deliberately sequential individual downloads, NOT a bundled
+        // .zip: a real zip would need a new client-side dependency this
+        // panel doesn't otherwise carry, and — same reasoning as one-card-
+        // per-block above — a Python setup script and a bash install
+        // command don't belong merged into one archive entry anyway. This
+        // reuses the exact same _downloadBlob path each individual card
+        // uses, just looped.
+        //
+        // The ~180ms stagger between downloads isn't cosmetic: browsers
+        // (Chrome in particular) can silently block a burst of same-tick
+        // downloads as if it were popup spam. Spacing them out keeps every
+        // download inside the same trusted user-gesture window without
+        // tripping that heuristic.
+        if (files.length > 1) {
+            var allBtn = document.createElement('button');
+            allBtn.type = 'button';
+            allBtn.className = 'ai-md-artifact-download-all-btn';
+            allBtn.setAttribute('aria-label', 'Download all ' + files.length + ' files');
+            allBtn.innerHTML = ICONS.exportTxt;   // ICONS constant — safe.
+            var allLbl = document.createElement('span');
+            allLbl.textContent = 'Download all';
+            allBtn.appendChild(allLbl);
+            allBtn.addEventListener('click', function () {
+                files.forEach(function (f, idx) {
+                    setTimeout(function () {
+                        _downloadBlob(f.content, 'text/plain', f.filename);
+                    }, idx * 180);
+                });
+            });
+            list.appendChild(allBtn);
+        }
 
         if (list.children.length) {
             root.appendChild(list);
