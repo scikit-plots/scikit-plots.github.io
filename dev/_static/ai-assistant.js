@@ -700,6 +700,19 @@
         // Vertical three-dot "more" icon for the expandable action-row submenu.
         moreVert: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5"  r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>',
         searchAI: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M8 11h6M11 8v6" stroke-width="1.5"/></svg>',
+        // Search + AI sparkle — restructured from a submitted icon that
+        // embedded a background <rect>, a dark-mode <style> media query,
+        // and <title>/role attributes. None of that fits this registry's
+        // convention: dark-mode theming already happens at the CSS layer
+        // wherever an icon is used (currentColor + the page's own theme
+        // vars), not baked into the icon markup itself, and icons here are
+        // transparent/sized by their wrapper, not self-backgrounded. Kept
+        // only the actual visual content (circle + handle + sparkle),
+        // converted to the same stroke/currentColor pattern ICONS.privacy
+        // and ICONS.terms already use. Now the primary icon in
+        // .ai-assistant-searchbar — see _buildSearchBar. searchAI above
+        // is kept as a fallback/alternate, not removed.
+        searchSparkle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.24 11.38 A6.3 6.3 0 1 1 13.15 5.04" stroke-width="1.2"/><path d="M13.65 16.60 L19.45 22.40" stroke-width="2.35"/><path d="M16.5 5.02 Q16.78 6.22 17.18 6.52 Q17.52 6.78 18.75 7.05 Q17.52 7.32 17.18 7.58 Q16.78 7.88 16.5 9.08 Q16.22 7.88 15.82 7.58 Q15.48 7.32 14.25 7.05 Q15.48 6.78 15.82 6.52 Q16.22 6.22 16.5 5.02 Z" stroke-width="1"/></svg>',
         keyboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>',
         retry:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>',
         // Share-up icon: tray with arrow emerging upward — the universal
@@ -15492,7 +15505,10 @@ opts.jsonPayload + '\n' +
 
         var icon = document.createElement('span');
         icon.setAttribute('aria-hidden', 'true');
-        icon.innerHTML = ICONS.searchAI;     // ICONS constant — safe.
+        // Primary icon — searchSparkle (search + AI sparkle). searchAI
+        // (plain magnifying glass) stays defined above as a fallback for
+        // future use, not removed.
+        icon.innerHTML = ICONS.searchSparkle;   // ICONS constant — safe.
         bar.appendChild(icon);
 
         var inp = document.createElement('input');
