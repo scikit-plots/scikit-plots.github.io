@@ -460,11 +460,21 @@
        them, so animating from 'auto' wouldn't be reliable anyway). */
     bottom: 0;
     right: 0;
-    /* iOS Safari dvh fix: same 100vh bug applies to explicit height. */
-    width: 100vw;
+    /* Width overflow fix (Chrome/Firefox/Edge/Android — not Safari): 100vw
+     * is specified against the full window width, INCLUDING the vertical
+     * scrollbar's gutter. macOS/iOS Safari's overlay scrollbars have no
+     * gutter, so 100vw happened to match the visible viewport there and
+     * the bug was invisible — but every Chromium and Firefox browser (and
+     * Android WebViews generally) reserves real space for the scrollbar,
+     * so 100vw rendered the panel ~15-17px wider than what's actually
+     * visible, pushing the page into horizontal overflow by that amount.
+     * A position:fixed box's percentage width resolves against the
+     * visible viewport instead, so 100% avoids the gutter entirely on
+     * every engine. */
+    width: 100%;
     height: 100vh;
     height: 100dvh;
-    max-width: 100vw;
+    max-width: 100%;
     max-height: 100vh;
     max-height: 100dvh;
     border-radius: 0;
