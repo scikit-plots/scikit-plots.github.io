@@ -383,7 +383,7 @@
     /* Mobile width-overflow fix: this rule has a 1px solid border but no
      * box-sizing, so it defaulted to content-box — width was CONTENT width,
      * with the border added on top. Invisible on desktop, where max-width:
-     * calc(100vw - 1rem) has ~1rem of slack to absorb the extra 2px, but at
+     * calc(100% - 1rem) has ~1rem of slack to absorb the extra 2px, but at
      * the ≤480px breakpoint below (width:100%; max-width:100%; zero slack)
      * the panel actually rendered at 100% + 2px, overflowing the viewport
      * horizontally. border-box makes width/max-width include the border. */
@@ -402,7 +402,20 @@
      * excluding browser chrome.  100vh stays as the universal fallback.      */
     max-height: calc(100vh - 1rem);
     max-height: calc(100dvh - 1rem);
-    max-width: calc(100vw - 1rem);
+    /* Width overflow fix (Chrome/Firefox/Edge/Android — not Safari): 100vw
+     * is specified against the full window width INCLUDING the vertical
+     * scrollbar's gutter. macOS/iOS Safari's overlay scrollbars have no
+     * gutter, so this was invisible there, but Chromium/Firefox/Android
+     * reserve real space for the scrollbar — so whenever the underlying
+     * page had one, calc(100vw - 1rem) could still exceed the visible
+     * viewport once the scrollbar ate into that 1rem of slack (a scrollbar
+     * can run ~15-17px depending on OS/browser, right at the edge of the
+     * 16px budget). calc(100% - 1rem) resolves against the visible
+     * viewport for this fixed-position box instead, sidestepping the
+     * gutter on every engine. This rule is active any time the panel is
+     * open (not just maximized), so it's the more consequential fix for
+     * the reported cross-browser/Android overflow.                        */
+    max-width: calc(100% - 1rem);
 
     display: none;          /* JS sets display:flex when open */
     flex-direction: column;
@@ -934,6 +947,39 @@
 
 [data-bs-theme="dark"] .ai-assistant-panel-footer-note {
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+/* ─── Footer credit: "Powered by …" white-label branding line ───────────── */
+/*
+ * Deliberately understated — same size/color/centering as the disclaimer
+ * note directly above it, so it reads as a quiet footer line rather than an
+ * ad. Content (text/name/url) comes from _resolvePoweredBy() in the JS,
+ * which defaults to the scikit-plots repo and can be overridden per-page
+ * via window.AI_ASSISTANT_CONFIG.poweredBy, or hidden entirely — see that
+ * function's docblock for the future cavehub.ai stub and other options.
+ */
+.ai-assistant-panel-footer-credit {
+    width: 100%;
+    margin: 0.15rem 0 0;
+    font-size: 0.68rem;
+    line-height: 1.35;
+    text-align: center;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-footer-credit {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+.ai-assistant-panel-footer-credit-link {
+    color: inherit;
+    text-decoration: underline;
+    touch-action: manipulation;  /* eliminate 300ms tap delay on touch devices */
+}
+
+.ai-assistant-panel-footer-credit-link:hover,
+.ai-assistant-panel-footer-credit-link:focus-visible {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
 }
 
 /* ─── "Speak with assistant" banner (optional, above input) ─────────────── */

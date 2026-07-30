@@ -87,6 +87,54 @@
     // object, so callers can do _cfg().foo without guarding.
     function _cfg() { return window.AI_ASSISTANT_CONFIG || {}; }
 
+    // ── Footer branding: "Powered by …" credit line ──────────────────────────
+    // White-label point for downstream/custom deployments. Override per-page
+    // via window.AI_ASSISTANT_CONFIG.poweredBy — no code changes required:
+    //
+    //   window.AI_ASSISTANT_CONFIG = {
+    //     poweredBy: { text: 'Powered by', name: 'Acme Docs', url: 'https://acme.example' }
+    //   };
+    //
+    //   window.AI_ASSISTANT_CONFIG = { poweredBy: false };   // hide the line entirely
+    //
+    // `url` is optional — omit it to render plain, non-linked text.
+    //
+    // Ships with the scikit-plots repo as the default. FUTURE STUB (inactive):
+    // once cavehub.ai is ready to be a supported custom-stakeholder target,
+    // flip _DEFAULT_POWERED_BY below to _CAVEHUB_POWERED_BY — every deployment
+    // that hasn't set its own `poweredBy` override picks it up automatically.
+    var _DEFAULT_POWERED_BY = {
+        text: 'Powered by',
+        name: 'scikit-plots',
+        url:  'https://github.com/scikit-plots/scikit-plots'
+    };
+    // var _CAVEHUB_POWERED_BY = {   // eslint-disable-line no-unused-vars
+    //     text: 'Powered by',
+    //     name: 'cavehub.ai',
+    //     url:  'https://cavehub.ai'
+    // };
+
+    /**
+     * Resolve the effective "Powered by" branding for this page.
+     *
+     * @returns {{text: string, name: string, url: (string|null)}|null}
+     *   Null means "render nothing" (explicit `poweredBy: false`/`null`).
+     */
+    function _resolvePoweredBy() {
+        var override = _cfg().poweredBy;
+        if (override === false || override === null) return null;
+        if (override && typeof override === 'object') {
+            var name = typeof override.name === 'string' && override.name.trim()
+                ? override.name.trim() : _DEFAULT_POWERED_BY.name;
+            var text = typeof override.text === 'string' && override.text.trim()
+                ? override.text.trim() : _DEFAULT_POWERED_BY.text;
+            var url  = typeof override.url === 'string' && override.url.trim()
+                ? override.url.trim() : null;
+            return { text: text, name: name, url: url };
+        }
+        return _DEFAULT_POWERED_BY;
+    }
+
     // ── Diagnostics: single gated, scrubbing logger ──────────────────────────
     // All console output routes through _log(). Rationale:
     //   * one place to control verbosity and formatting;
@@ -16427,6 +16475,34 @@ opts.jsonPayload + '\n' +
         footerNote.textContent =
             '\u2728 The chatbot is an AI and can make mistakes. Please double-check cited sources.';
         footer.appendChild(footerNote);
+
+        // ── Footer credit: "Powered by …" branding line ─────────────────────
+        // White-label point — see _resolvePoweredBy() / window.AI_ASSISTANT_CONFIG.poweredBy
+        // near the top of this file. Built with createElement/textContent/
+        // setAttribute only (never innerHTML), matching this file's HTML
+        // policy, since `name`/`url` may ultimately come from page-injected
+        // config rather than a hardcoded literal.
+        var poweredBy = _resolvePoweredBy();
+        if (poweredBy) {
+            var footerCredit = document.createElement('div');
+            footerCredit.className = 'ai-assistant-panel-footer-credit';
+            footerCredit.appendChild(document.createTextNode(poweredBy.text + ' '));
+            if (poweredBy.url) {
+                var creditLink = document.createElement('a');
+                creditLink.className = 'ai-assistant-panel-footer-credit-link';
+                creditLink.textContent = poweredBy.name;
+                creditLink.href = poweredBy.url;
+                creditLink.target = '_blank';
+                // noopener/noreferrer: same "external links never get a
+                // reference back to this window" policy as window.open()
+                // elsewhere in this file (see file header, Security).
+                creditLink.rel = 'noopener noreferrer';
+                footerCredit.appendChild(creditLink);
+            } else {
+                footerCredit.appendChild(document.createTextNode(poweredBy.name));
+            }
+            footer.appendChild(footerCredit);
+        }
 
         // ── Assemble panel ────────────────────────────────────────────────────
         panel.appendChild(header);
