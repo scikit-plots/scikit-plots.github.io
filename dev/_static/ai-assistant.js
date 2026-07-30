@@ -16840,59 +16840,34 @@ opts.jsonPayload + '\n' +
         });
 
         /**
-         * Enter or leave the maximized (full-viewport) state.
+         * Enter or leave the maximized state.
          *
-         * Previously this only toggled a `data-maximized` attribute and
-         * relied on an external `[data-maximized="true"]` CSS rule to
-         * actually resize the panel — no such rule exists in this
-         * extension's stylesheet, so "maximize" was a no-op click that
-         * just cleared the inline width/height back to the CSS defaults.
-         * Fixed here by applying the full-viewport sizing directly as
-         * inline styles, so the behavior no longer depends on an external
-         * stylesheet rule that may or may not be present.
+         * Sizing itself is entirely CSS-driven via the pre-existing
+         * `.ai-assistant-panel[data-maximized="true"]` rule in
+         * ai-assistant.css (updated separately to fill the full viewport
+         * edge-to-edge). This function only owns: the attribute that rule
+         * keys off of, clearing any inline width/height left over from a
+         * manual resize-grip drag (inline styles otherwise outrank the
+         * stylesheet and would keep the panel pinned to its pre-maximize
+         * size), and swapping which of maximizeBtn / collapseBtn is shown.
          *
          * @param {boolean} maximize  True to maximize, false to restore.
          */
         function _setMaximized(maximize) {
             if (maximize) {
                 // ── Maximize ───────────────────────────────────────────────
+                // Clear any inline width/height set by the resize grips so
+                // the CSS [data-maximized="true"] rule can take full control
+                // of both dimensions — otherwise the inline values win in
+                // the cascade.
+                panel.style.width  = '';
+                panel.style.height = '';
                 panel.setAttribute('data-maximized', 'true');
-                panel.style.position      = 'fixed';
-                panel.style.inset         = '0px';
-                panel.style.top           = '0px';
-                panel.style.right         = '0px';
-                panel.style.bottom        = '0px';
-                panel.style.left          = '0px';
-                panel.style.margin        = '0px';
-                // dvh tracks mobile browser chrome (address bar) correctly;
-                // vh is kept as an implicit fallback via the cascade order
-                // (older browsers ignore the unsupported dvh declaration and
-                // keep using vh instead of failing the whole rule).
-                panel.style.width         = '100vw';
-                panel.style.height        = '100vh';
-                panel.style.height        = '100dvh';
-                panel.style.maxWidth      = '100vw';
-                panel.style.maxHeight     = '100dvh';
-                panel.style.borderRadius  = '0px';
-                panel.style.zIndex        = '2147483647';
                 maximizeBtn.style.display = 'none';
-                maximizeBtn.setAttribute('aria-label', 'Maximize panel');
-                maximizeBtn.innerHTML     = ICONS.maximize;
                 collapseBtn.style.display = '';
             } else {
                 // ── Restore ────────────────────────────────────────────────
                 panel.removeAttribute('data-maximized');
-                panel.style.position     = '';
-                panel.style.inset        = '';
-                panel.style.top          = '';
-                panel.style.right        = '';
-                panel.style.bottom       = '';
-                panel.style.left         = '';
-                panel.style.margin       = '';
-                panel.style.maxWidth     = '';
-                panel.style.maxHeight    = '';
-                panel.style.borderRadius = '';
-                panel.style.zIndex       = '';
                 // Re-apply any manually-saved size so the panel returns to
                 // exactly where the user left it before maximizing.
                 var saved = _ssGet(_PANEL_SIZE_KEY);
@@ -16911,8 +16886,6 @@ opts.jsonPayload + '\n' +
                 }
                 collapseBtn.style.display = 'none';
                 maximizeBtn.style.display = '';
-                maximizeBtn.setAttribute('aria-label', 'Maximize panel');
-                maximizeBtn.innerHTML     = ICONS.maximize;
             }
         }
 
