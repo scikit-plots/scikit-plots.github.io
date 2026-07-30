@@ -6714,16 +6714,18 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   PROJECT LINKS — subbar buttons & Links slide-over sheet
+   PROJECT LINKS — subbar button & Links slide-over sheet
    ═══════════════════════════════════════════════════════════════════════════
-   Added by the panelLinks / panelSource / panelSite feature.
+   Added by the panelLinks / panelSite feature. (The panelSource left-cluster
+   sourceBtn that used to sit alongside this was removed as redundant — siteBtn
+   and the hamburger's "Project Links" item already cover the same entry point,
+   and now share the same GitHub icon for visual consistency between them.)
 
    Architecture:
-     • Two compact icon-label buttons live in the subbar:
-         sourceBtn  — left cluster, after the hamburger hint (GitHub icon)
-         siteBtn    — right cluster, after the Share button (Globe icon)
-       Both share `.ai-assistant-panel-subbar-link-btn` as a base class and
-       carry an additional specific class for per-role overrides.
+     • One compact icon-label button lives in the subbar's right cluster,
+       after the Share button: siteBtn.  Carries the shared
+       `.ai-assistant-panel-subbar-link-btn` base class plus
+       `.ai-assistant-panel-site-btn` for role-specific overrides.
      • The Links slide-over sheet contains rich card elements
        (`.ai-assistant-panel-link-card`) for each configured link.
    ─────────────────────────────────────────────────────────────────────── */
@@ -6755,24 +6757,14 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     stroke: none;
 }
 
-/* ── GitHub source button — left cluster ────────────────────────────────── */
-.ai-assistant-panel-source-btn:hover {
-    color: #24292f;
-    background: rgba(36, 41, 47, 0.08);
-}
-[data-bs-theme="dark"] .ai-assistant-panel-source-btn:hover,
-.dark .ai-assistant-panel-source-btn:hover {
-    color: #e6edf3;
-    background: rgba(230, 237, 243, 0.1);
-}
-
-/* ── Globe / website button — right cluster ─────────────────────────────── */
-/* Globe uses stroke paths, not fill paths */
-.ai-assistant-panel-site-btn svg {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-}
+/* ── Site / project-links button — right cluster ────────────────────────── */
+/* Uses the shared fill-based icon styling from
+   .ai-assistant-panel-subbar-link-btn svg above (fill: currentColor;
+   stroke: none) — no per-role override needed, since this now renders the
+   same GitHub mark as the hamburger's "Project Links" item, not the old
+   stroke-based globe glyph. Hover color rule lives further down (brand
+   color via color-mix), unchanged — see .ai-assistant-panel-site-btn:hover
+   below "Narrow-panel". */
 .ai-assistant-panel-site-btn:hover {
     color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
     background: rgba(37, 99, 235, 0.10);

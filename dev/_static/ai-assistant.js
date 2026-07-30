@@ -15807,7 +15807,7 @@ opts.jsonPayload + '\n' +
         // Layout (left → right):
         //
         //    [☰ hamburger ← now in header-title]
-        //    [Source ▸] [⌨ kbd-hint]  . . .  [Model ▾] [Endpoints ▾] [Privacy] [Terms] [↗ Share]
+        //    [⌨ kbd-hint]  . . .  [Model ▾] [Endpoints ▾] [Privacy] [Terms] [↗ Share] [Website]
         //
         // The hamburger popover is still opened by the header button and wired
         // below.  The right overflow button (⋯) shares the same popover for
@@ -15818,36 +15818,16 @@ opts.jsonPayload + '\n' +
 
         // ── Left cluster ──────────────────────────────────────────────────────
         // Note: hamburger button is in div.ai-assistant-panel-header-title now.
-        // The subbar left cluster holds only the Source button and the kbd hint.
+        // The subbar left cluster holds only the kbd hint (the Source button
+        // that used to live here was removed — see note below).
         var leftCluster = document.createElement('div');
         leftCluster.className = 'ai-assistant-panel-subbar-left';
 
-        // ── Left cluster: Source (GitHub) button ──────────────────────────────
-        // Shown when panelSource !== false AND panelSourceUrl is a valid URL.
-        // Clicking opens the Links sheet (same _openSheet contract as all other
-        // sheets).  Built here so the element is available to wire() below.
-        // Order: [☰ hamburger] [Source] [kbd-hint]
-        var sourceBtn = null;
-        if (cfgRef.panelSource !== false) {
-            sourceBtn = document.createElement('button');
-            sourceBtn.type = 'button';
-            sourceBtn.className =
-                'ai-assistant-panel-subbar-link-btn ai-assistant-panel-source-btn';
-            var sourceIc = document.createElement('span');
-            sourceIc.setAttribute('aria-hidden', 'true');
-            sourceIc.innerHTML = ICONS.github;   // ICONS constant — safe.
-            sourceBtn.appendChild(sourceIc);
-            var sourceLbl = document.createElement('span');
-            sourceLbl.textContent =
-                (cfgRef.panelSourceBtnLabel) || 'Source';
-            sourceBtn.appendChild(sourceLbl);
-            sourceBtn.setAttribute(
-                'aria-label',
-                (cfgRef.panelSourceBtnLabel || 'Source') + ' \u2014 open project links'
-            );
-            sourceBtn.title = 'View project source & links';
-            leftCluster.appendChild(sourceBtn);
-        }
+        // ── Left cluster: kbd hint only ──────────────────────────────────────
+        // The Source button that used to live here was removed — siteBtn
+        // (right cluster) and the hamburger "Project Links" item both already
+        // open the same Project Links sheet, so it was a redundant third
+        // entry point. See _buildLinksSheet() for the sheet itself.
 
         var kbdLabel = _shortcutLabel();
         if (kbdLabel) {
@@ -16074,8 +16054,11 @@ opts.jsonPayload + '\n' +
         if (shareLink)  rightCluster.appendChild(shareLink);
 
         // ── Right cluster: Site (website) button — after Share ────────────────
-        // Counterpart to sourceBtn.  Opens the same Links sheet from the right
-        // side so the user can reach project links from either subbar edge.
+        // The other entry point to the Project Links sheet (alongside the
+        // hamburger's "Project Links" item) — kept in sync with it visually,
+        // using the same icon (ICONS.github, see _buildHamburgerMenu's
+        // addItem(ICONS.github, 'Project Links', ...) call) since both refer
+        // to the exact same destination.
         var siteBtn = null;
         if (cfgRef.panelSite !== false) {
             siteBtn = document.createElement('button');
@@ -16084,7 +16067,7 @@ opts.jsonPayload + '\n' +
                 'ai-assistant-panel-subbar-link-btn ai-assistant-panel-site-btn';
             var siteIc = document.createElement('span');
             siteIc.setAttribute('aria-hidden', 'true');
-            siteIc.innerHTML = ICONS.globe;   // ICONS constant — safe.
+            siteIc.innerHTML = ICONS.github;   // ICONS constant — safe.
             siteBtn.appendChild(siteIc);
             var siteLbl = document.createElement('span');
             siteLbl.textContent = (cfgRef.panelSiteBtnLabel) || 'Website';
@@ -16548,8 +16531,9 @@ opts.jsonPayload + '\n' +
         if (shareSheet) panel.appendChild(shareSheet);
 
         // Links sheet — source repository + project website cards.
-        // Built when panelLinks !== false (default true).  Both sourceBtn and
-        // siteBtn in the sub-bar open this same sheet via _openSheet.
+        // Built when panelLinks !== false (default true).  siteBtn in the
+        // sub-bar and the "Project Links" hamburger item both open this same
+        // sheet via _openSheet.
         var linksSheet = (cfgRef.panelLinks !== false) ? _buildLinksSheet() : null;
         if (linksSheet) panel.appendChild(linksSheet);
 
@@ -16731,11 +16715,6 @@ opts.jsonPayload + '\n' +
                     if (w) { try { w.opener = null; } catch (_) {} }
                 } catch (_) {}
             }
-        }
-        if (sourceBtn) {
-            sourceBtn.addEventListener('click', function () {
-                _openLinksOrUrl(cfgRef.panelSourceUrl || '');
-            });
         }
         if (siteBtn) {
             siteBtn.addEventListener('click', function () {
