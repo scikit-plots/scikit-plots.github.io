@@ -672,6 +672,17 @@
         minimize: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>',
         maximize: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
         restore:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 3 3 3 3 8"/><polyline points="21 8 21 3 16 3"/><polyline points="3 16 3 21 8 21"/><polyline points="16 21 21 21 21 16"/></svg>',
+        // Lucide "minimize-2" — inward-pointing diagonal arrows, the visual
+        // inverse of `maximize` above. Used for the dedicated "collapse full
+        // screen" header button (see maximizeBtn / collapseBtn wiring below).
+        // Distinct from `minimize` (collapses panel to the floating trigger
+        // pill) and from `restore` (kept unchanged for back-compat).
+        minimizeCollapse: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
+        // MUI "ErrorIcon" outline, re-authored with stroke="currentColor" so
+        // it themes the same way every other icon here does. Not wired to
+        // any control yet — reserved for a future error/alert affordance.
+        // Mirrors _SVG_ERROR_ALERT in _static/__init__.py.
+        errorAlert: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4M12 16h.01M3 7.94v8.12c0 .34 0 .51.05.66.05.14.12.26.22.37.1.11.25.2.55.36l7.4 4.11c.28.16.43.24.58.27.13.03.27.03.4 0 .15-.03.3-.11.58-.27l7.4-4.11c.3-.16.45-.25.55-.36.1-.11.17-.23.22-.37.05-.15.05-.32.05-.66V7.94c0-.34 0-.51-.05-.66-.05-.14-.12-.27-.22-.37-.1-.12-.25-.2-.55-.37l-7.4-4.11c-.28-.16-.43-.24-.58-.27a1 1 0 0 0-.4 0c-.15.03-.3.11-.58.27l-7.4 4.11c-.3.17-.45.25-.55.37-.1.1-.17.23-.22.37-.05.15-.05.32-.05.66Z"/></svg>',
         close:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
         mic:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>',
         send:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
@@ -15702,6 +15713,13 @@ opts.jsonPayload + '\n' +
 
         var minimizeBtn = _createIconBtn('minimize', 'Minimize panel', ICONS.minimize);
         var maximizeBtn = _createIconBtn('maximize', 'Maximize panel', ICONS.maximize);
+        // Dedicated "collapse full screen" button — the inverse of `maximize`.
+        // Kept as a separate control (rather than only relying on maximizeBtn
+        // re-labeling itself) so the maximized state always has an explicit,
+        // discoverable exit affordance. Hidden until the panel is maximized;
+        // see _setMaximized() below for the show/hide + icon wiring.
+        var collapseBtn = _createIconBtn('collapse', 'Collapse full screen', ICONS.minimizeCollapse);
+        collapseBtn.style.display = 'none';
         var closeBtn    = _createIconBtn('close',    'Close ' + _escapeHtml(title), ICONS.close);
 
         // R3: clear conversation without page refresh ("Start a new chat").
@@ -15730,6 +15748,7 @@ opts.jsonPayload + '\n' +
         headerActions.appendChild(exportDropdown);
         headerActions.appendChild(minimizeBtn);
         headerActions.appendChild(maximizeBtn);
+        headerActions.appendChild(collapseBtn);
         headerActions.appendChild(closeBtn);
 
         header.appendChild(headerTitle);
@@ -16820,14 +16839,60 @@ opts.jsonPayload + '\n' +
             closeAIPanel();
         });
 
-        maximizeBtn.addEventListener('click', function () {
-            _hapticFeedback([8]);
-            var isMax = panel.getAttribute('data-maximized') === 'true';
-            if (isMax) {
-                // ── Restore ────────────────────────────────────────────────────
-                panel.removeAttribute('data-maximized');
+        /**
+         * Enter or leave the maximized (full-viewport) state.
+         *
+         * Previously this only toggled a `data-maximized` attribute and
+         * relied on an external `[data-maximized="true"]` CSS rule to
+         * actually resize the panel — no such rule exists in this
+         * extension's stylesheet, so "maximize" was a no-op click that
+         * just cleared the inline width/height back to the CSS defaults.
+         * Fixed here by applying the full-viewport sizing directly as
+         * inline styles, so the behavior no longer depends on an external
+         * stylesheet rule that may or may not be present.
+         *
+         * @param {boolean} maximize  True to maximize, false to restore.
+         */
+        function _setMaximized(maximize) {
+            if (maximize) {
+                // ── Maximize ───────────────────────────────────────────────
+                panel.setAttribute('data-maximized', 'true');
+                panel.style.position      = 'fixed';
+                panel.style.inset         = '0px';
+                panel.style.top           = '0px';
+                panel.style.right         = '0px';
+                panel.style.bottom        = '0px';
+                panel.style.left          = '0px';
+                panel.style.margin        = '0px';
+                // dvh tracks mobile browser chrome (address bar) correctly;
+                // vh is kept as an implicit fallback via the cascade order
+                // (older browsers ignore the unsupported dvh declaration and
+                // keep using vh instead of failing the whole rule).
+                panel.style.width         = '100vw';
+                panel.style.height        = '100vh';
+                panel.style.height        = '100dvh';
+                panel.style.maxWidth      = '100vw';
+                panel.style.maxHeight     = '100dvh';
+                panel.style.borderRadius  = '0px';
+                panel.style.zIndex        = '2147483647';
+                maximizeBtn.style.display = 'none';
                 maximizeBtn.setAttribute('aria-label', 'Maximize panel');
-                maximizeBtn.innerHTML = ICONS.maximize;
+                maximizeBtn.innerHTML     = ICONS.maximize;
+                collapseBtn.style.display = '';
+            } else {
+                // ── Restore ────────────────────────────────────────────────
+                panel.removeAttribute('data-maximized');
+                panel.style.position     = '';
+                panel.style.inset        = '';
+                panel.style.top          = '';
+                panel.style.right        = '';
+                panel.style.bottom       = '';
+                panel.style.left         = '';
+                panel.style.margin       = '';
+                panel.style.maxWidth     = '';
+                panel.style.maxHeight    = '';
+                panel.style.borderRadius = '';
+                panel.style.zIndex       = '';
                 // Re-apply any manually-saved size so the panel returns to
                 // exactly where the user left it before maximizing.
                 var saved = _ssGet(_PANEL_SIZE_KEY);
@@ -16844,17 +16909,24 @@ opts.jsonPayload + '\n' +
                     panel.style.width  = '';
                     panel.style.height = '';
                 }
-            } else {
-                // ── Maximize ───────────────────────────────────────────────────
-                // Clear any inline width/height set by the resize grips so the
-                // CSS [data-maximized="true"] rules can take full control of
-                // both dimensions — otherwise the inline values win in cascade.
-                panel.style.width  = '';
-                panel.style.height = '';
-                panel.setAttribute('data-maximized', 'true');
-                maximizeBtn.setAttribute('aria-label', 'Restore panel size');
-                maximizeBtn.innerHTML = ICONS.restore;
+                collapseBtn.style.display = 'none';
+                maximizeBtn.style.display = '';
+                maximizeBtn.setAttribute('aria-label', 'Maximize panel');
+                maximizeBtn.innerHTML     = ICONS.maximize;
             }
+        }
+
+        maximizeBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
+            var isMax = panel.getAttribute('data-maximized') === 'true';
+            _setMaximized(!isMax);
+        });
+
+        // Dedicated inverse-of-maximize control — only visible while
+        // maximized (see _setMaximized above), always restores.
+        collapseBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
+            _setMaximized(false);
         });
 
         // Issue 4: Re-wire all sheet close (×) buttons to go through _closeSheet
