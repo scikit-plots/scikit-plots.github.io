@@ -26,11 +26,11 @@ corpus Knowledge and Information local .png with examples![](../../_images/sphx_
 
 [corpus WHO European Region local or url per file with examples](plot_corpus_who_per_file_script.html)
 
-corpus WHO European Region local or url per file with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+corpus WHO European Region local or url per file with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
-[corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
+[corpus WHO European Region YouTube with examples](plot_corpus_who_youtube_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
 

@@ -1,12 +1,16 @@
 # DEFAULT\_SECURITY\_POLICY[#](#default-security-policy "Link to this heading")
 
-scikitplot.cython.DEFAULT\_SECURITY\_POLICY = SecurityPolicy(strict=True, allow\_absolute\_include\_dirs=False, allow\_shell\_metacharacters=False, allow\_reserved\_macros=False, allow\_dangerous\_compiler\_args=False, max\_source\_bytes=10485760, max\_extra\_compile\_args=64, max\_extra\_link\_args=64, max\_include\_dirs=32, max\_libraries=32)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_security.py#L)[#](#scikitplot.cython.DEFAULT_SECURITY_POLICY "Link to this definition")
+scikitplot.cython.DEFAULT\_SECURITY\_POLICY = SecurityPolicy(strict=True, allow\_absolute\_include\_dirs=False, allow\_shell\_metacharacters=False, allow\_reserved\_macros=False, allow\_dangerous\_compiler\_args=False, max\_source\_bytes=10485760, max\_extra\_compile\_args=64, max\_extra\_link\_args=64, max\_include\_dirs=32, max\_libraries=32)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_security.py#L)[#](#scikitplot.cython.DEFAULT_SECURITY_POLICY "Link to this definition")
 :   Immutable security policy applied to build inputs before compilation.
 
     Parameters:
     :   ****strict****bool, default=True
-        :   Master switch. When `False`, all checks below default to the
-            most permissive setting. Overriding individual flags still works.
+        :   Master switch. When `True` (default), every `allow_*` flag left
+            unset defaults to its restrictive setting. When `False`, every
+            `allow_*` flag left unset defaults to permissive. An `allow_*` flag
+            given an explicit `True`/`False` always overrides `strict` for
+            that check, so you can, e.g., relax everything except one guard with
+            `SecurityPolicy(strict=False, allow_shell_metacharacters=False)`.
 
         ****allow\_absolute\_include\_dirs****bool, default=False
         :   When `False`, include directories must be relative paths or must

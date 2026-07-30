@@ -1,6 +1,6 @@
 # LangChainCorpusRetriever[#](#langchaincorpusretriever "Link to this heading")
 
-class scikitplot.corpus.LangChainCorpusRetriever(**index**, **embedding\_fn=None**, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_adapters.py#L519)[#](#scikitplot.corpus.LangChainCorpusRetriever "Link to this definition")
+class scikitplot.corpus.LangChainCorpusRetriever(**index**, **embedding\_fn=None**, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_adapters.py#L519)[#](#scikitplot.corpus.LangChainCorpusRetriever "Link to this definition")
 :   LangChain-compatible retriever backed by `SimilarityIndex`.
 
     Parameters:
@@ -39,7 +39,7 @@ class scikitplot.corpus.LangChainCorpusRetriever(**index**, **embedding\_fn=None
     `langchain_core` is installed, otherwise it provides a
     compatible `get_relevant_documents` method.
 
-    get\_relevant\_documents(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_adapters.py#L576)[#](#scikitplot.corpus.LangChainCorpusRetriever.get_relevant_documents "Link to this definition")
+    get\_relevant\_documents(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_adapters.py#L576)[#](#scikitplot.corpus.LangChainCorpusRetriever.get_relevant_documents "Link to this definition")
     :   Retrieve documents relevant to **query**.
 
         Parameters:
@@ -56,7 +56,7 @@ class scikitplot.corpus.LangChainCorpusRetriever(**index**, **embedding\_fn=None
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    invoke(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_adapters.py#L576)[#](#scikitplot.corpus.LangChainCorpusRetriever.invoke "Link to this definition")
+    invoke(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_adapters.py#L576)[#](#scikitplot.corpus.LangChainCorpusRetriever.invoke "Link to this definition")
     :   Retrieve documents relevant to **query**.
 
         Parameters:

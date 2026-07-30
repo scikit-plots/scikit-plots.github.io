@@ -1,19 +1,20 @@
 # CompilerRegistry[#](#compilerregistry "Link to this heading")
 
-class scikitplot.cython.CompilerRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L219)[#](#scikitplot.cython.CompilerRegistry "Link to this definition")
-:   Thread-unsafe module-level registry of custom compiler callables.
+class scikitplot.cython.CompilerRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L317)[#](#scikitplot.cython.CompilerRegistry "Link to this definition")
+:   Thread-safe module-level registry of custom compiler callables.
 
     Notes
 
-    The registry is intentionally simple (dict-backed) and ****not****
-    thread-safe. Register compilers at module-import time or in a
-    single-threaded setup phase, not concurrently.
+    All operations on the backing dict are guarded by an internal
+    [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.14)"), so concurrent `register` / `get` /
+    `list` / `unregister` calls are safe (CYTHON-CON-002). The lock is
+    re-entrant so a method may call another without deadlocking.
 
     Use the module-level helpers [`register_compiler`](scikitplot.cython.register_compiler.html#scikitplot.cython.register_compiler "scikitplot.cython.register_compiler"),
     [`get_compiler`](scikitplot.cython.get_compiler.html#scikitplot.cython.get_compiler "scikitplot.cython.get_compiler"), and [`list_compilers`](scikitplot.cython.list_compilers.html#scikitplot.cython.list_compilers "scikitplot.cython.list_compilers") instead of
     instantiating this class directly.
 
-    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L276)[#](#scikitplot.cython.CompilerRegistry.get "Link to this definition")
+    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L376)[#](#scikitplot.cython.CompilerRegistry.get "Link to this definition")
     :   Retrieve a registered compiler by name.
 
         Parameters:
@@ -34,7 +35,7 @@ class scikitplot.cython.CompilerRegistry[[source]](https://github.com/scikit-plo
         Return type:
         :   [**CustomCompilerProtocol**](scikitplot.cython.CustomCompilerProtocol.html#scikitplot.cython.CustomCompilerProtocol "scikitplot.cython._custom_compiler.CustomCompilerProtocol")
 
-    list()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L302)[#](#scikitplot.cython.CompilerRegistry.list "Link to this definition")
+    list()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L403)[#](#scikitplot.cython.CompilerRegistry.list "Link to this definition")
     :   Return sorted list of registered compiler names.
 
         Returns:
@@ -44,7 +45,7 @@ class scikitplot.cython.CompilerRegistry[[source]](https://github.com/scikit-plo
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    register(**compiler**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L237)[#](#scikitplot.cython.CompilerRegistry.register "Link to this definition")
+    register(**compiler**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L336)[#](#scikitplot.cython.CompilerRegistry.register "Link to this definition")
     :   Register a custom compiler callable.
 
         Parameters:
@@ -70,7 +71,7 @@ class scikitplot.cython.CompilerRegistry[[source]](https://github.com/scikit-plo
         Return type:
         :   None
 
-    unregister(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L313)[#](#scikitplot.cython.CompilerRegistry.unregister "Link to this definition")
+    unregister(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L415)[#](#scikitplot.cython.CompilerRegistry.unregister "Link to this definition")
     :   Remove a registered compiler.
 
         Parameters:

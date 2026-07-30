@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
+class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
 :   Annoy Approximate Nearest Neighbors Index.
 
     This is a Cython-powered Python wrapper around the Annoy C++ library.
@@ -165,6 +165,12 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         * Must be called before build()
         * Item IDs need not be contiguous
         * After build(), call unbuild() to add more items
+        * Precision: embeddings pass through a double-precision (float64) bridge,
+          so values are converted to `double` here regardless of `dtype`.
+          `float16` inputs are narrowed and `float128` inputs gain no extra
+          input precision — `float128` only raises the precision of internal
+          distance arithmetic, not the stored/returned values. Do not rely on
+          more-than-double input precision being preserved.
 
     build(**self**, **int n\_trees=-1**, **n\_jobs=None**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.build "Link to this definition")
     :   Build the search forest (thread-safe, releases GIL).
@@ -596,18 +602,22 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Whether to prefault pages into memory
 
         Raises:
-        :   RuntimeError
-            :   If dimensions don’t match
-
-            IOError
-            :   If file cannot be read
+        :   IOError
+            :   If the file cannot be read, or if the saved dimension `f` or
+                metric does not match this instance (both are validated on load).
 
         Return type:
         :   None
 
         Notes
 
-        * Dimension f and metric must match the saved index
+        * Dimension `f` and metric must match the saved index; both are
+          validated and a mismatch raises `IOError` (`OSError`).
+        * Only the NATIVE index is restored (item vectors + trees). Wrapper
+          query parameters (`n_neighbors`) and the build `seed` are NOT
+          stored in the `.ann` format and remain at THIS instance’s
+          configuration — they do not mirror the saved index. Use `pickle` /
+          `set_state` to restore full wrapper state.
         * prefault=True may improve query latency at cost of load time
 
     metric[#](#scikitplot.annoy._annoy.Index.metric "Link to this definition")
@@ -746,6 +756,13 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Return type:
         :   None
+
+        Notes
+
+        * Persists the NATIVE index only: dimension `f`, metric, item vectors,
+          and built trees. Wrapper query parameters (`n_neighbors`) and the
+          build `seed` are not written to the native `.ann` format. Use
+          `pickle` / `get_state` for a full wrapper-state round-trip.
 
     serialize(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.serialize "Link to this definition")
     :   Serialize to JSON-compatible dictionary.

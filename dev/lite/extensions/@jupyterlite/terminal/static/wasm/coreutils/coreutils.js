@@ -1579,6 +1579,9 @@ var PROXYFS = {
       var oldPath = PROXYFS.realPath(oldNode);
       var newPath = PATH.join2(PROXYFS.realPath(newDir), newName);
       try {
+        FS.unlink(newPath);
+      } catch (e) {}
+      try {
         oldNode.mount.opts.fs.rename(oldPath, newPath);
         oldNode.name = newName;
       } catch (e) {

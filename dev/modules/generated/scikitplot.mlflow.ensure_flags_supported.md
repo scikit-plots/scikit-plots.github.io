@@ -1,6 +1,6 @@
 # ensure\_flags\_supported[#](#ensure-flags-supported "Link to this heading")
 
-scikitplot.mlflow.ensure\_flags\_supported(**args**, **\***, **supported\_flags**, **context**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/mlflow/_cli_caps.py#L115)[#](#scikitplot.mlflow.ensure_flags_supported "Link to this definition")
+scikitplot.mlflow.ensure\_flags\_supported(**args**, **\***, **supported\_flags**, **context**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/mlflow/_cli_caps.py#L115)[#](#scikitplot.mlflow.ensure_flags_supported "Link to this definition")
 :   Validate that all long-form CLI flags in `args` are supported.
 
     Parameters:

@@ -122,7 +122,7 @@ If you want to work on some stuff with other people, where you are all
 committing into the same repository, or even the same branch, then just
 share it via GitHub.
 
-First fork Astropy into your account, as from [Create a fork of pandas](https://pandas.pydata.org/docs/dev/development/contributing.html#contributing-forking "(in pandas v3.1.0.dev0+1159.gd7b577e035)").
+First fork Astropy into your account, as from [Create a fork of pandas](https://pandas.pydata.org/docs/dev/development/contributing.html#contributing-forking "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)").
 
 Then, go to your forked repository GitHub page, e.g.,
 `https://github.com/your-user-name/astropy`

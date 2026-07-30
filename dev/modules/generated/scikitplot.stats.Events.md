@@ -1,6 +1,6 @@
 # Events[#](#events "Link to this heading")
 
-class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L445)[#](#scikitplot.stats.Events "Link to this definition")
+class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L445)[#](#scikitplot.stats.Events "Link to this definition")
 :   Bayesian blocks fitness for binned or unbinned events.
 
     Parameters:
@@ -30,7 +30,7 @@ class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[
         * ****gamma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
         * ****ncp\_prior**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
 
-    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.Events.compute_ncp_prior "Link to this definition")
+    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.Events.compute_ncp_prior "Link to this definition")
     :   If `ncp_prior` is not explicitly defined, compute it from `gamma`
         or `p0`.
 
@@ -40,7 +40,7 @@ class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[
         Return type:
         :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
 
-    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.Events.fit "Link to this definition")
+    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.Events.fit "Link to this definition")
     :   Fit the Bayesian Blocks model given the specified fitness function.
 
         Parameters:
@@ -65,7 +65,7 @@ class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
 
-    fitness(**N\_k**, **T\_k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L470)[#](#scikitplot.stats.Events.fitness "Link to this definition")
+    fitness(**N\_k**, **T\_k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L470)[#](#scikitplot.stats.Events.fitness "Link to this definition")
     :   Parameters:
         :   * ****N\_k**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
             * ****T\_k**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
@@ -73,7 +73,7 @@ class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
 
-    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.Events.p0_prior "Link to this definition")
+    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.Events.p0_prior "Link to this definition")
     :   Empirical prior, parametrized by the false alarm probability `p0`.
 
         See eq. 21 in Scargle (2013).
@@ -88,7 +88,7 @@ class scikitplot.stats.Events(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[
         Return type:
         :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
 
-    validate\_input(**t**, **x**, **sigma**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L484)[#](#scikitplot.stats.Events.validate_input "Link to this definition")
+    validate\_input(**t**, **x**, **sigma**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L484)[#](#scikitplot.stats.Events.validate_input "Link to this definition")
     :   Validate inputs to the model.
 
         Parameters:

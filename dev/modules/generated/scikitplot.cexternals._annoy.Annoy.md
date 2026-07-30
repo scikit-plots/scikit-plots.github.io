@@ -1,6 +1,6 @@
 # Annoy[#](#annoy "Link to this heading")
 
-class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
+class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
 :   Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
     Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
@@ -1000,11 +1000,11 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
             :   Canonical metric name, or None if not configured yet.
 
             > **See also**
-            > * [`cosine`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cosine.html#scipy.spatial.distance.cosine "(in SciPy v1.19.0.dev)")
-            * [`euclidean`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.euclidean.html#scipy.spatial.distance.euclidean "(in SciPy v1.19.0.dev)")
-            * [`cityblock`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cityblock.html#scipy.spatial.distance.cityblock "(in SciPy v1.19.0.dev)")
-            * [`dot`](https://scipy.github.io/devdocs/reference/generated/scipy.sparse.coo_array.dot.html#scipy.sparse.coo_array.dot "(in SciPy v1.19.0.dev)")
-            * [`hamming`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.hamming.html#scipy.spatial.distance.hamming "(in SciPy v1.19.0.dev)")
+            > * [`cosine`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cosine.html#scipy.spatial.distance.cosine "(in SciPy v2.0.0.dev)")
+            * [`euclidean`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.euclidean.html#scipy.spatial.distance.euclidean "(in SciPy v2.0.0.dev)")
+            * [`cityblock`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cityblock.html#scipy.spatial.distance.cityblock "(in SciPy v2.0.0.dev)")
+            * [`dot`](https://scipy.github.io/devdocs/reference/generated/scipy.sparse.coo_array.dot.html#scipy.sparse.coo_array.dot "(in SciPy v2.0.0.dev)")
+            * [`hamming`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.hamming.html#scipy.spatial.distance.hamming "(in SciPy v2.0.0.dev)")
 
         Notes
 

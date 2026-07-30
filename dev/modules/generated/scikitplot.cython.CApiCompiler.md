@@ -1,6 +1,6 @@
 # CApiCompiler[#](#capicompiler "Link to this heading")
 
-class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L1012)[#](#scikitplot.cython.CApiCompiler "Link to this definition")
+class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L1125)[#](#scikitplot.cython.CApiCompiler "Link to this definition")
 :   Built-in custom compiler: NumPy C-API projects.
 
     Wraps the Cython+setuptools pipeline with automatic NumPy include
@@ -40,7 +40,7 @@ class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/s
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **extra\_sources=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_custom_compiler.py#L1049)[#](#scikitplot.cython.CApiCompiler.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **extra\_sources=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_custom_compiler.py#L1172)[#](#scikitplot.cython.CApiCompiler.__call__ "Link to this definition")
     :   Compile a Cython+NumPy C-API extension.
 
         Parameters:
@@ -92,5 +92,11 @@ class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/s
 
         Return type:
         :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+
+    property capabilities: CompilerCapabilities[#](#scikitplot.cython.CApiCompiler.capabilities "Link to this definition")
+    :   C (Python C-API extensions).
+
+        Type:
+        :   Declared capabilities
 
     name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'custom\_c\_api'[#](#scikitplot.cython.CApiCompiler.name "Link to this definition")

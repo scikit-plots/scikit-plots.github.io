@@ -1,6 +1,6 @@
 # apply\_profile[#](#apply-profile "Link to this heading")
 
-scikitplot.cython.apply\_profile(**\***, **profile**, **annotate=None**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_profiles.py#L333)[#](#scikitplot.cython.apply_profile "Link to this definition")
+scikitplot.cython.apply\_profile(**\***, **profile**, **annotate=None**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_profiles.py#L630)[#](#scikitplot.cython.apply_profile "Link to this definition")
 :   Apply a profile with strict, three-state precedence.
 
     Every field follows the same contract:

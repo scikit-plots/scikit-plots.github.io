@@ -704,7 +704,6 @@ _SVG_SPARKLE_NOVA: str = (
 )
 
 
-
 # ---------------------------------------------------------------------------
 # Provider icon + description registry
 # ---------------------------------------------------------------------------
@@ -749,7 +748,10 @@ _ICON_META: dict[str, dict[str, str]] = {
     "copy-answer": {"icon": _SVG_COPY_ANSWER, "desc": "Copy this answer"},
     "privacy": {"icon": _SVG_PRIVACY, "desc": "Privacy Policy"},
     "search-ai": {"icon": _SVG_SEARCH_AI, "desc": "AI search"},
-    "search-sparkle": {"icon": _SVG_SEARCH_SPARKLE, "desc": "AI-powered search (primary searchbar icon)"},
+    "search-sparkle": {
+        "icon": _SVG_SEARCH_SPARKLE,
+        "desc": "AI-powered search (primary searchbar icon)",
+    },
     "keyboard": {"icon": _SVG_KEYBOARD, "desc": "Keyboard shortcuts"},
     # ── Phase B additions ─────────────────────────────────────────────
     "model": {"icon": _SVG_MODEL, "desc": "Choose a model"},
@@ -767,8 +769,14 @@ _ICON_META: dict[str, dict[str, str]] = {
     "retry-reverse": {"icon": _SVG_SYNC_RETRY_REVERSE, "desc": "Redo (reverse retry)"},
     "sparkle": {"icon": _SVG_SPARKLE, "desc": "AI sparkle"},
     "sparkle-alt": {"icon": _SVG_SPARKLE_ALT, "desc": "AI sparkle (alternate)"},
-    "sparkle-nova": {"icon": _SVG_SPARKLE_NOVA, "desc": "AI sparkle, Nova style (primary panel logo)"},
-    "brush-sparkle": {"icon": _SVG_BRUSH_SPARKLE, "desc": "AI-assisted style/customize"},
+    "sparkle-nova": {
+        "icon": _SVG_SPARKLE_NOVA,
+        "desc": "AI sparkle, Nova style (primary panel logo)",
+    },
+    "brush-sparkle": {
+        "icon": _SVG_BRUSH_SPARKLE,
+        "desc": "AI-assisted style/customize",
+    },
     "menu-sparkle": {"icon": _SVG_MENU_SPARKLE, "desc": "AI menu"},
     "shield-alert": {"icon": _SVG_SHIELD_ALERT, "desc": "Security notice"},
     # Deliberately reuse the existing "terms" / "privacy" constants above
@@ -776,5 +784,8 @@ _ICON_META: dict[str, dict[str, str]] = {
     # ICONS.termsOfService / ICONS.privacyResponsibility for the rationale
     # (consolidated to one design per concept across JS/Python/disk-file).
     "terms-of-service": {"icon": _SVG_TERMS, "desc": "Terms of Service"},
-    "privacy-responsibility": {"icon": _SVG_PRIVACY, "desc": "Privacy & Responsibility"},
+    "privacy-responsibility": {
+        "icon": _SVG_PRIVACY,
+        "desc": "Privacy & Responsibility",
+    },
 }

@@ -13,7 +13,7 @@ low-level Cython packages and modules for immediate use and testing.
 * <https://cython.readthedocs.io/en/latest/index.html>
 * <https://doc.sagemath.org/html/en/reference/misc/sage/misc/cython.html>
 
-****User guide.**** See the [Instant PKG/MOD Generation](../user_guide/cython/index.html#cython-index) section for further details.
+****User guide.**** See the [Cython User Guide](../user_guide/cython/index.html#cython-index) section for further details.
 
 ## PKG/MOD Builder[#](#pkg-mod-builder "Link to this heading")
 
@@ -52,7 +52,7 @@ low-level Cython packages and modules for immediate use and testing.
 |  |  |
 | --- | --- |
 | [`CustomCompilerProtocol`](../modules/generated/scikitplot.cython.CustomCompilerProtocol.html#scikitplot.cython.CustomCompilerProtocol "scikitplot.cython.CustomCompilerProtocol") | Structural protocol for custom compiler callables. |
-| [`CompilerRegistry`](../modules/generated/scikitplot.cython.CompilerRegistry.html#scikitplot.cython.CompilerRegistry "scikitplot.cython.CompilerRegistry") | Thread-unsafe module-level registry of custom compiler callables. |
+| [`CompilerRegistry`](../modules/generated/scikitplot.cython.CompilerRegistry.html#scikitplot.cython.CompilerRegistry "scikitplot.cython.CompilerRegistry") | Thread-safe module-level registry of custom compiler callables. |
 | [`register_compiler`](../modules/generated/scikitplot.cython.register_compiler.html#scikitplot.cython.register_compiler "scikitplot.cython.register_compiler") | Register a custom compiler in the module-level registry. |
 | [`get_compiler`](../modules/generated/scikitplot.cython.get_compiler.html#scikitplot.cython.get_compiler "scikitplot.cython.get_compiler") | Retrieve a registered custom compiler by name. |
 | [`list_compilers`](../modules/generated/scikitplot.cython.list_compilers.html#scikitplot.cython.list_compilers "scikitplot.cython.list_compilers") | Return sorted list of registered custom compiler names. |
@@ -188,4 +188,4 @@ low-level Cython packages and modules for immediate use and testing.
 
 |  |  |
 | --- | --- |
-| [`sanitize`](../modules/generated/scikitplot.cython.sanitize.html#scikitplot.cython.sanitize "scikitplot.cython.sanitize") | Convert an arbitrary string into a valid Python module name. |
+| [`sanitize`](../modules/generated/scikitplot.cython.sanitize.html#scikitplot.cython.sanitize "scikitplot.cython.sanitize") | Convert an arbitrary string into a valid, collision-resistant module name. |

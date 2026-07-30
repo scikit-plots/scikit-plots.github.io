@@ -53,8 +53,8 @@ array-like[#](#term-array-like "Link to this term")
     * a numpy array
     * a list of numbers
     * a list of length-k lists of numbers for some fixed length k
-    * a [`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1159.gd7b577e035)") with all columns numeric
-    * a numeric [`pandas.Series`](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas v3.1.0.dev0+1159.gd7b577e035)")
+    * a [`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)") with all columns numeric
+    * a numeric [`pandas.Series`](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)")
 
     It excludes:
 
@@ -688,7 +688,7 @@ pairwise metrics[#](#term-pairwise-metrics "Link to this term")
     See also [precomputed](#term-precomputed) and [metric](#term-metric).
 
     Note that for most distance metrics, we rely on implementations from
-    [`scipy.spatial.distance`](https://scipy.github.io/devdocs/reference/spatial.distance.html#module-scipy.spatial.distance "(in SciPy v1.19.0.dev)"), but may reimplement for efficiency in
+    [`scipy.spatial.distance`](https://scipy.github.io/devdocs/reference/spatial.distance.html#module-scipy.spatial.distance "(in SciPy v2.0.0.dev)"), but may reimplement for efficiency in
     our context. The [`metrics.DistanceMetric`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric "(in scikit-learn v1.10)") interface is used to implement
     distance metrics for integration with efficient neighbors search.
 
@@ -783,7 +783,7 @@ sparse matrix[#](#term-sparse-matrix "Link to this term")
 sparse graph[#](#term-sparse-graph "Link to this term")
 :   A representation of two-dimensional numeric data that is more memory
     efficient the corresponding dense numpy array where almost all elements
-    are zero. We use the [`scipy.sparse`](https://scipy.github.io/devdocs/reference/sparse.html#module-scipy.sparse "(in SciPy v1.19.0.dev)") framework, which provides
+    are zero. We use the [`scipy.sparse`](https://scipy.github.io/devdocs/reference/sparse.html#module-scipy.sparse "(in SciPy v2.0.0.dev)") framework, which provides
     several underlying sparse data representations, or **formats**.
     Some formats are more efficient than others for particular tasks, and
     when a particular format provides especial benefit, we try to document
@@ -805,7 +805,7 @@ sparse graph[#](#term-sparse-graph "Link to this term")
         matrices](#term-multilabel-indicator-matrices).
 
     graph semantics
-    :   As with [`scipy.sparse.csgraph`](https://scipy.github.io/devdocs/reference/sparse.csgraph.html#module-scipy.sparse.csgraph "(in SciPy v1.19.0.dev)"), explicit zeros are
+    :   As with [`scipy.sparse.csgraph`](https://scipy.github.io/devdocs/reference/sparse.csgraph.html#module-scipy.sparse.csgraph "(in SciPy v2.0.0.dev)"), explicit zeros are
         interpreted as the number 0, but implicit zeros indicate a masked
         or absent value, such as the absence of an edge between two
         vertices of a graph, where an explicit value indicates an edge’s

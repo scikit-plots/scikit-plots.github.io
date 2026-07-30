@@ -1,7 +1,12 @@
 # cython\_import\_all[#](#cython-import-all "Link to this heading")
 
-scikitplot.cython.cython\_import\_all(**directory**, **\***, **pattern='\*.pyx'**, **recursive=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_public.py#L1022)[#](#scikitplot.cython.cython_import_all "Link to this definition")
+scikitplot.cython.cython\_import\_all(**directory**, **\***, **pattern='\*.pyx'**, **recursive=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_public.py#L1350)[#](#scikitplot.cython.cython_import_all "Link to this definition")
 :   Compile and import all `.pyx` files in a directory.
+
+    This is the backward-compatible convenience wrapper: it returns a plain
+    `{stem: BuildResult}` mapping and is fail-fast. For a structured partial
+    report (ordered successes/failures, committed side effects, resume token) or
+    a collect-all policy, use `cython_import_all_result`.
 
     Parameters:
     :   ****directory****str or pathlib.Path
@@ -19,6 +24,14 @@ scikitplot.cython.cython\_import\_all(**directory**, **\***, **pattern='\*.pyx'*
     Returns:
     :   dict[str, BuildResult]
         :   Mapping of file stem to build result.
+
+    Raises:
+    :   FileNotFoundError
+        :   If `directory` does not exist.
+
+        BatchBuildError
+        :   If any file fails; the exception’s `result` attribute holds the
+            partial `BatchBuildResult` describing what was already committed.
 
     Parameters:
     :   * ****directory**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))

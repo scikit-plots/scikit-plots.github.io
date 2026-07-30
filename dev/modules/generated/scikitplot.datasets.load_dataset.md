@@ -1,6 +1,6 @@
 # load\_dataset[#](#load-dataset "Link to this heading")
 
-scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
+scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
 :   Load an example dataset from the online repository (requires internet).
 
     This function provides quick access to a small number of example datasets
@@ -26,10 +26,10 @@ scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**,
 
         ****kws****keys and values, optional
         :   Additional keyword arguments are passed to passed through to
-            [`pandas.read_csv`](https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv "(in pandas v3.1.0.dev0+1159.gd7b577e035)").
+            [`pandas.read_csv`](https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)").
 
     Returns:
-    :   ****df****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1159.gd7b577e035)")
+    :   ****df****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)")
         :   Tabular data, possibly with some preprocessing applied.
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")

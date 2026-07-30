@@ -100,4 +100,4 @@ However, it supports calculations for all valid values of the shape parameter `p
 |  |  |
 | --- | --- |
 | [`_tweedie.tweedie`](../modules/generated/scikitplot.externals._tweedie.tweedie.html#scikitplot.externals._tweedie.tweedie "scikitplot.externals._tweedie.tweedie") | An instance of `tweedie_gen`, providing Tweedie distribution functionality. |
-| [`_tweedie.tweedie_gen`](../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen "scikitplot.externals._tweedie.tweedie_gen") | A Tweedie continuous random variable inherited [`scipy.stats.rv_continuous`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous "(in SciPy v1.19.0.dev)"). |
+| [`_tweedie.tweedie_gen`](../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen "scikitplot.externals._tweedie.tweedie_gen") | A Tweedie continuous random variable inherited [`scipy.stats.rv_continuous`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous "(in SciPy v2.0.0.dev)"). |

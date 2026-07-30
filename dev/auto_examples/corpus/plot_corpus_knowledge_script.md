@@ -1622,7 +1622,7 @@ result_semantic = _run(                 # Bug fix B: renamed from result_fw_toke
 ```
 ```
 Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6926.29it/s]
+Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4932.87it/s]
 
 ============================================================
 Semantic chunker (HYBRID backend, multilang enriched)
@@ -1662,7 +1662,7 @@ Source image: /home/circleci/repo/galleries/examples/corpus/data/echo_of_the_wis
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 58.413 seconds)
+****Total running time of the script:**** (1 minutes 39.326 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_knowledge_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_knowledge_script.ipynb)
 
@@ -1682,11 +1682,11 @@ corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_pl
 
 [corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
-[corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
+[corpus WHO European Region YouTube with examples](plot_corpus_who_youtube_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
+corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
 
 [Index (cython) python-api benchmark with examples](../annoy/plot_annoy_cython_0benchmark.html)
 

@@ -1,6 +1,6 @@
 # warning[#](#warning "Link to this heading")
 
-scikitplot.logging.warning(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/logging.py#L1487)[#](#scikitplot.logging.warning "Link to this definition")
+scikitplot.logging.warning(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/logging.py#L1487)[#](#scikitplot.logging.warning "Link to this definition")
 :   Log a message at the WARNING log level.
 
     Parameters:

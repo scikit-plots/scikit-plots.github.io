@@ -1,12 +1,16 @@
 # RELAXED\_SECURITY\_POLICY[#](#relaxed-security-policy "Link to this heading")
 
-scikitplot.cython.RELAXED\_SECURITY\_POLICY = SecurityPolicy(strict=False, allow\_absolute\_include\_dirs=True, allow\_shell\_metacharacters=True, allow\_reserved\_macros=True, allow\_dangerous\_compiler\_args=True, max\_source\_bytes=None, max\_extra\_compile\_args=1024, max\_extra\_link\_args=1024, max\_include\_dirs=512, max\_libraries=512)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_security.py#L)[#](#scikitplot.cython.RELAXED_SECURITY_POLICY "Link to this definition")
+scikitplot.cython.RELAXED\_SECURITY\_POLICY = SecurityPolicy(strict=False, allow\_absolute\_include\_dirs=True, allow\_shell\_metacharacters=True, allow\_reserved\_macros=True, allow\_dangerous\_compiler\_args=True, max\_source\_bytes=None, max\_extra\_compile\_args=1024, max\_extra\_link\_args=1024, max\_include\_dirs=512, max\_libraries=512)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_security.py#L)[#](#scikitplot.cython.RELAXED_SECURITY_POLICY "Link to this definition")
 :   Immutable security policy applied to build inputs before compilation.
 
     Parameters:
     :   ****strict****bool, default=True
-        :   Master switch. When `False`, all checks below default to the
-            most permissive setting. Overriding individual flags still works.
+        :   Master switch. When `True` (default), every `allow_*` flag left
+            unset defaults to its restrictive setting. When `False`, every
+            `allow_*` flag left unset defaults to permissive. An `allow_*` flag
+            given an explicit `True`/`False` always overrides `strict` for
+            that check, so you can, e.g., relax everything except one guard with
+            `SecurityPolicy(strict=False, allow_shell_metacharacters=False)`.
 
         ****allow\_absolute\_include\_dirs****bool, default=False
         :   When `False`, include directories must be relative paths or must

@@ -1,6 +1,6 @@
 # cache\_stats[#](#cache-stats "Link to this heading")
 
-scikitplot.cython.cache\_stats(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_gc.py#L61)[#](#scikitplot.cython.cache_stats "Link to this definition")
+scikitplot.cython.cache\_stats(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_gc.py#L77)[#](#scikitplot.cython.cache_stats "Link to this definition")
 :   Compute cache statistics.
 
     Parameters:
@@ -27,8 +27,4 @@ Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_03_cache_an
 
 [Cache and restart reuse](../../auto_examples/cython/plot_03_cache_and_restart_reuse.html)
 
-Cache and restart reuse![](../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png)
-
-[Multi-module package builds (5 package examples)](../../auto_examples/cython/plot_05_package_examples_multimodule.html)
-
-Multi-module package builds (5 package examples)
+Cache and restart reuse

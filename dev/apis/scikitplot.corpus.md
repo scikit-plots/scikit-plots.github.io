@@ -124,7 +124,7 @@ Convenience function (direct replacement for remarx `create_corpus`):
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [Corpus (Remarks Citation) Generation](../user_guide/corpus/index.html#corpus-index) section for further details.
+****User guide.**** See the [Corpus User Guide](../user_guide/corpus/index.html#corpus-index) section for further details.
 
 ## Adapter layer[#](#adapter-layer "Link to this heading")
 

@@ -1,6 +1,6 @@
 # decileplot[#](#decileplot "Link to this heading")
 
-scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **n\_deciles=10**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt=''**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/seaborn/_decile.py#L1663)[#](#scikitplot.seaborn.decileplot "Link to this definition")
+scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **n\_deciles=10**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt=''**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/seaborn/_decile.py#L1663)[#](#scikitplot.seaborn.decileplot "Link to this definition")
 :   Given binary labels y\_true (0/1) and probabilities y\_score 1d array, compute/plot a decile [[2]](#rd1ed195c7ca1-2) table.
 
     The function sorts observations by descending score, assigns decile index
@@ -39,7 +39,7 @@ scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **h
     ```
 
     Parameters:
-    :   ****data****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1159.gd7b577e035)"), [`numpy.ndarray`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), mapping, or sequence
+    :   ****data****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)"), [`numpy.ndarray`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), mapping, or sequence
         :   Input data structure. Either a long-form collection of vectors that can be
             assigned to named variables or a wide-form dataset that will be internally
             reshaped.
@@ -66,17 +66,17 @@ scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **h
         :   Specify the order of processing and plotting for categorical levels of the
             `hue` semantic.
 
-        ****hue\_norm****tuple or [`matplotlib.colors.Normalize`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Normalize.html#matplotlib.colors.Normalize "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
+        ****hue\_norm****tuple or [`matplotlib.colors.Normalize`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Normalize.html#matplotlib.colors.Normalize "(in Matplotlib v3.12.0.dev414+g30073003d)")
         :   Either a pair of values that set the normalization range in data units
             or an object that will map from data units into a [0, 1] interval. Usage
             implies numeric mapping.
 
-        ****palette****string, list, dict, or [`matplotlib.colors.Colormap`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
+        ****palette****string, list, dict, or [`matplotlib.colors.Colormap`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap "(in Matplotlib v3.12.0.dev414+g30073003d)")
         :   Method for choosing the colors to use when mapping the `hue` semantic.
             String values are passed to `color_palette`. List or dict values
             imply categorical mapping, while a colormap object implies numeric mapping.
 
-        ****color****[`matplotlib color`](https://matplotlib.org/devdocs/api/colors_api.html#module-matplotlib.colors "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
+        ****color****[`matplotlib color`](https://matplotlib.org/devdocs/api/colors_api.html#module-matplotlib.colors "(in Matplotlib v3.12.0.dev414+g30073003d)")
         :   Single color specification for when hue mapping is not used. Otherwise, the
             plot will try to hook into the matplotlib property cycle.
 
@@ -96,8 +96,8 @@ scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **h
         ****legend****bool
         :   If False, suppress the legend for semantic variables.
 
-        ****ax****[`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
-        :   Pre-existing axes for the plot. Otherwise, call [`matplotlib.pyplot.gca`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
+        ****ax****[`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev414+g30073003d)")
+        :   Pre-existing axes for the plot. Otherwise, call [`matplotlib.pyplot.gca`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca "(in Matplotlib v3.12.0.dev414+g30073003d)")
             internally.
 
         ****digits****int, optional, default=4
@@ -130,14 +130,14 @@ scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **h
             (e.g., ‘.2g’, ‘.4g’).
 
         ****annot\_kws****dict of key, value mappings, optional
-        :   Keyword arguments for [`matplotlib.axes.Axes.text`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.text.html#matplotlib.axes.Axes.text "(in Matplotlib v3.12.0.dev368+g6db3896c8)") when `annot`
+        :   Keyword arguments for [`matplotlib.axes.Axes.text`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.text.html#matplotlib.axes.Axes.text "(in Matplotlib v3.12.0.dev414+g30073003d)") when `annot`
             is True.
 
         ****kwargs****
         :   Other keyword arguments are passed to one of the following matplotlib
             functions:
 
-            * [`matplotlib.axes.Axes.plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
+            * [`matplotlib.axes.Axes.plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.12.0.dev414+g30073003d)")
 
     Returns:
     :   pandas.DataFrame | matplotlib.axes.Axes | dict
@@ -162,7 +162,7 @@ scikitplot.seaborn.decileplot(**data=None**, **\***, **x=None**, **y=None**, **h
         * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
     Return type:
-    :   **DataFrame** | [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev368+g6db3896c8)")
+    :   **DataFrame** | [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev414+g30073003d)")
 
     References
 

@@ -1,6 +1,6 @@
 # read\_meta[#](#read-meta "Link to this heading")
 
-scikitplot.cython.read\_meta(**build\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_cache.py#L387)[#](#scikitplot.cython.read_meta "Link to this definition")
+scikitplot.cython.read\_meta(**build\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_cache.py#L483)[#](#scikitplot.cython.read_meta "Link to this definition")
 :   Read `meta.json` from a build directory.
 
     Parameters:

@@ -103,10 +103,10 @@ sp.mlflow.workflow(
 
 ```
 ```
-2026/07/20 16:14:00 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/d0a9ab2c903948b68944af0551e8b5d2
+2026/07/29 23:19:44 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/d0b6ab963c154bc4b50acc900a8f00f5
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/2b0bba1bb7fc48b4884c27b3f5b7f2ec
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/0f30e9b870bb459283ca1c40e6fe353a
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
@@ -144,17 +144,17 @@ with sp.mlflow.session_from_file(ROOT / "configs/mlflow.yaml", profile="local") 
 
 ```
 ```
-🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/e131d730824743baa59d511b6d8d59e9
+🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/9b00758d0fff42c1827cfc8b660702f9
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/042b7fcac7534b0bb40ec9ed09dfba9d
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/cb181fb9253a4b9fb7efeb21b75333b8
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: text](../../_tags/plot-type-text.html) [domain: mlflow](../../_tags/domain-mlflow.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (1 minutes 33.016 seconds)
+****Total running time of the script:**** (1 minutes 39.779 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo11.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo11.svg)](../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb)
 

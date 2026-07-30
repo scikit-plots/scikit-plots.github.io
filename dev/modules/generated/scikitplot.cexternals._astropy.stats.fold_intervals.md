@@ -1,6 +1,6 @@
 # fold\_intervals[#](#fold-intervals "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.fold\_intervals(**intervals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/funcs.py#L1534)[#](#scikitplot.cexternals._astropy.stats.fold_intervals "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.fold\_intervals(**intervals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/funcs.py#L1534)[#](#scikitplot.cexternals._astropy.stats.fold_intervals "Link to this definition")
 :   Fold the weighted intervals to the interval (0,1).
 
     Convert a list of intervals (ai, bi, wi) to a list of non-overlapping

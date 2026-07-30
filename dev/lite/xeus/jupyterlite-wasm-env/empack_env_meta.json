@@ -2,6 +2,16 @@
   "prefix": "/",
   "packages": [
     {
+      "name": "r-main-module-abi",
+      "version": "0.1.0",
+      "build": "vanilla_ha99ebfa_0",
+      "filename_stem": "r-main-module-abi-0.1.0-vanilla_ha99ebfa_0",
+      "filename": "r-main-module-abi-0.1.0-vanilla_ha99ebfa_0.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [],
+      "subdir": "emscripten-wasm32"
+    },
+    {
       "name": "font-ttf-dejavu",
       "version": "2.37",
       "build": "hd8ed1ab_1",
@@ -44,9 +54,9 @@
     {
       "name": "emscripten-abi",
       "version": "4.0.9",
-      "build": "h267e887_8",
-      "filename_stem": "emscripten-abi-4.0.9-h267e887_8",
-      "filename": "emscripten-abi-4.0.9-h267e887_8.tar.gz",
+      "build": "h267e887_9",
+      "filename_stem": "emscripten-abi-4.0.9-h267e887_9",
+      "filename": "emscripten-abi-4.0.9-h267e887_9.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [],
       "subdir": "noarch"
@@ -89,9 +99,9 @@
     {
       "name": "r-base",
       "version": "4.5.3",
-      "build": "h1590c74_8",
-      "filename_stem": "r-base-4.5.3-h1590c74_8",
-      "filename": "r-base-4.5.3-h1590c74_8.tar.gz",
+      "build": "h1590c74_9",
+      "filename_stem": "r-base-4.5.3-h1590c74_9",
+      "filename": "r-base-4.5.3-h1590c74_9.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
         "font-ttf-dejavu >=2.37",
@@ -552,10 +562,10 @@
     },
     {
       "name": "prompt-toolkit",
-      "version": "3.0.52",
+      "version": "3.0.53",
       "build": "pyha770c72_0",
-      "filename_stem": "prompt-toolkit-3.0.52-pyha770c72_0",
-      "filename": "prompt-toolkit-3.0.52-pyha770c72_0.tar.gz",
+      "filename_stem": "prompt-toolkit-3.0.53-pyha770c72_0",
+      "filename": "prompt-toolkit-3.0.53-pyha770c72_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
         "python >=3.10",
@@ -743,11 +753,12 @@
     {
       "name": "xeus-r",
       "version": "0.11.2",
-      "build": "r45h9f56b5e_0",
-      "filename_stem": "xeus-r-0.11.2-r45h9f56b5e_0",
-      "filename": "xeus-r-0.11.2-r45h9f56b5e_0.tar.gz",
+      "build": "h01c9e3f_1",
+      "filename_stem": "xeus-r-0.11.2-h01c9e3f_1",
+      "filename": "xeus-r-0.11.2-h01c9e3f_1.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
+        "r-main-module-abi * vanilla*",
         "r-cli",
         "r-evaluate",
         "r-glue",
@@ -759,8 +770,8 @@
         "zlib",
         "emscripten-abi >=4,<5.0a0",
         "nlohmann_json-abi 3.12.0",
-        "xeus >=6.0.5,<6.1.0a0",
-        "r-base >=4.5.3,<4.6.0a0"
+        "r-base >=4.5.3,<4.6.0a0",
+        "xeus >=6.0.5,<6.1.0a0"
       ],
       "subdir": "emscripten-wasm32"
     }

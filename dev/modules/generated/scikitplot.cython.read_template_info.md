@@ -1,6 +1,6 @@
 # read\_template\_info[#](#read-template-info "Link to this heading")
 
-scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf-8'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_templates_api.py#L222)[#](#scikitplot.cython.read_template_info "Link to this definition")
+scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf-8'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_templates_api.py#L272)[#](#scikitplot.cython.read_template_info "Link to this definition")
 :   Read metadata for a template and return a [`TemplateInfo`](scikitplot.cython.TemplateInfo.html#scikitplot.cython.TemplateInfo "scikitplot.cython.TemplateInfo").
 
     Parameters:
@@ -9,6 +9,9 @@ scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf
 
         ****encoding****str, default=”utf-8”
         :   Reserved for future use (kept to preserve API stability).
+
+        ****strict****bool
+        :   False
 
     Returns:
     :   TemplateInfo
@@ -25,6 +28,7 @@ scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf
     Parameters:
     :   * ****template\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****encoding**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
     Return type:
     :   [**TemplateInfo**](scikitplot.cython.TemplateInfo.html#scikitplot.cython.TemplateInfo "scikitplot.cython._templates_api.TemplateInfo")

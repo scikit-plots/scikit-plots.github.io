@@ -1,6 +1,6 @@
 # build\_lock[#](#build-lock "Link to this heading")
 
-scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_lock.py#L35)[#](#scikitplot.cython.build_lock "Link to this definition")
+scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_lock.py#L92)[#](#scikitplot.cython.build_lock "Link to this definition")
 :   Acquire an exclusive build lock via atomic directory creation.
 
     Parameters:
@@ -14,6 +14,9 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
 
         ****poll\_s****float, default=0.05
         :   Sleep interval in seconds between acquisition retries.
+
+        ****stale\_after\_s****float | None, default=None
+        :   None
 
     Returns:
     :   Iterator[None]
@@ -30,6 +33,7 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
     :   * ****lock\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
         * ****timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****poll\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+        * ****stale\_after\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
 
     Return type:
     :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.14)")[None]

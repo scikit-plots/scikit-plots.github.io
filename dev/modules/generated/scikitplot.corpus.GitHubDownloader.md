@@ -1,6 +1,6 @@
 # GitHubDownloader[#](#githubdownloader "Link to this heading")
 
-class scikitplot.corpus.GitHubDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **token=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_downloader/_github.py#L72)[#](#scikitplot.corpus.GitHubDownloader "Link to this definition")
+class scikitplot.corpus.GitHubDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **token=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_downloader/_github.py#L72)[#](#scikitplot.corpus.GitHubDownloader "Link to this definition")
 :   GitHub URL downloader with automatic blob → raw normalisation.
 
     Accepts both `github.com/.../blob/...` and
@@ -120,7 +120,7 @@ class scikitplot.corpus.GitHubDownloader(**input\_url**, **output\_path=None**, 
 
     block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.GitHubDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.GitHubDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.GitHubDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -129,7 +129,7 @@ class scikitplot.corpus.GitHubDownloader(**input\_url**, **output\_path=None**, 
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_downloader/_github.py#L254)[#](#scikitplot.corpus.GitHubDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_downloader/_github.py#L254)[#](#scikitplot.corpus.GitHubDownloader.download "Link to this definition")
     :   Download the GitHub file and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         The blob URL (if given) is normalised to a raw URL first, then
@@ -156,7 +156,7 @@ class scikitplot.corpus.GitHubDownloader(**input\_url**, **output\_path=None**, 
         the **original** URL passed at construction time, not the resolved raw
         URL. This preserves the provenance label shown to end users.
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_downloader/_github.py#L72)[#](#scikitplot.corpus.GitHubDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_downloader/_github.py#L72)[#](#scikitplot.corpus.GitHubDownloader.input_url "Link to this definition")
 
     max\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 104857600[#](#scikitplot.corpus.GitHubDownloader.max_bytes "Link to this definition")
 
@@ -164,7 +164,7 @@ class scikitplot.corpus.GitHubDownloader(**input\_url**, **output\_path=None**, 
 
     output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.GitHubDownloader.output_path "Link to this definition")
 
-    resolve\_raw\_url()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_downloader/_github.py#L216)[#](#scikitplot.corpus.GitHubDownloader.resolve_raw_url "Link to this definition")
+    resolve\_raw\_url()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_downloader/_github.py#L216)[#](#scikitplot.corpus.GitHubDownloader.resolve_raw_url "Link to this definition")
     :   Normalise a GitHub blob URL to its raw.githubusercontent.com equivalent.
 
         Returns:

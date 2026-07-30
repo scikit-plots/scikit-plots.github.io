@@ -77,7 +77,7 @@ result_zip
 
 ```
 ```
-PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=10.5s)
+PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=14.3s)
 
 ```
 ```
@@ -181,7 +181,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 10.513 seconds)
+****Total running time of the script:**** (0 minutes 14.318 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 
@@ -197,11 +197,11 @@ Related examples
 
 [corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
-[corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
+[corpus WHO European Region YouTube with examples](plot_corpus_who_youtube_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
 [corpus Knowledge and Information local .png with examples](plot_corpus_knowledge_script.html)
 

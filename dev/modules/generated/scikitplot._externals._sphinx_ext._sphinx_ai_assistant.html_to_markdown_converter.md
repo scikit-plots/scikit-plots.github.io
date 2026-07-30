@@ -1,6 +1,6 @@
 # html\_to\_markdown\_converter[#](#html-to-markdown-converter "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.html\_to\_markdown\_converter(**html\_content**, **strip\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L2584)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.html\_to\_markdown\_converter(**html\_content**, **strip\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L2590)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter "Link to this definition")
 :   Convert an HTML string to Markdown using the Sphinx-tuned converter.
 
     Parameters:

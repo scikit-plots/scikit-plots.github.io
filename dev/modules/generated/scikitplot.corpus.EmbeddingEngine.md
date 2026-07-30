@@ -1,6 +1,6 @@
 # EmbeddingEngine[#](#embeddingengine "Link to this heading")
 
-class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-mpnet-base-v2'**, **backend='sentence\_transformers'**, **custom\_fn=None**, **cache\_dir=None**, **enable\_cache=True**, **batch\_size=64**, **normalize=True**, **dtype=<class 'numpy.float32'>**, **show\_progress\_bar=False**, **device=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_embeddings/_embedding.py#L362)[#](#scikitplot.corpus.EmbeddingEngine "Link to this definition")
+class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-mpnet-base-v2'**, **backend='sentence\_transformers'**, **custom\_fn=None**, **cache\_dir=None**, **enable\_cache=True**, **batch\_size=64**, **normalize=True**, **dtype=<class 'numpy.float32'>**, **show\_progress\_bar=False**, **device=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_embeddings/_embedding.py#L362)[#](#scikitplot.corpus.EmbeddingEngine "Link to this definition")
 :   Multi-backend sentence embedding engine with SHA-256 file caching.
 
     Produces a 2-D `float32` numpy array of shape `(n_texts, dim)`
@@ -157,10 +157,10 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
 
     device: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EmbeddingEngine.device "Link to this definition")
 
-    dtype[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/../numpy/__init__.py#L)[#](#scikitplot.corpus.EmbeddingEngine.dtype "Link to this definition")
+    dtype[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/../numpy/__init__.py#L)[#](#scikitplot.corpus.EmbeddingEngine.dtype "Link to this definition")
     :   alias of `float32`
 
-    embed(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_embeddings/_embedding.py#L539)[#](#scikitplot.corpus.EmbeddingEngine.embed "Link to this definition")
+    embed(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_embeddings/_embedding.py#L539)[#](#scikitplot.corpus.EmbeddingEngine.embed "Link to this definition")
     :   Compute embeddings for `texts` without caching.
 
         Parameters:
@@ -200,7 +200,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         ```
         Go BackOpen In Tab
 
-    embed\_documents(**documents**, **input\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_embeddings/_embedding.py#L688)[#](#scikitplot.corpus.EmbeddingEngine.embed_documents "Link to this definition")
+    embed\_documents(**documents**, **input\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_embeddings/_embedding.py#L688)[#](#scikitplot.corpus.EmbeddingEngine.embed_documents "Link to this definition")
     :   Embed a list of `CorpusDocument`
         instances in-place (sets `doc.embedding` on each).
 
@@ -235,7 +235,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         ```
         Go BackOpen In Tab
 
-    embed\_with\_cache(**texts**, **input\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/corpus/_embeddings/_embedding.py#L605)[#](#scikitplot.corpus.EmbeddingEngine.embed_with_cache "Link to this definition")
+    embed\_with\_cache(**texts**, **input\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_embeddings/_embedding.py#L605)[#](#scikitplot.corpus.EmbeddingEngine.embed_with_cache "Link to this definition")
     :   Compute embeddings with file caching keyed to `input_path`.
 
         Parameters:

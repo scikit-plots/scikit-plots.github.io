@@ -171,7 +171,7 @@ except Exception as e:
 
   --- Source ①: Web Article (text proxy for HTML URL) ---
 
-  ✓ Web article: 92 chunks ingested
+  ✓ Web article: 93 chunks ingested
   [  0] doc_id=9432e3e0cdf3…  source_type=web
         text: 'Out-of-pocket payments for primary health care unaffordable for millions in Europe, new WHO report s'…
 
@@ -408,7 +408,7 @@ print(f"\n  Total documents in corpus: {len(all_documents)}")
 ```
   --- Ingestion Summary ---
 
-  ✓ web_article               →  92 docs  [OK]
+  ✓ web_article               →  93 docs  [OK]
   ⚠ youtube_transcript        →   0 docs  [ERROR: YouTubeReader: could not retrieve transcripts for video 'rwPISgZcYIk':
 Could not retrieve a transcript for the video https://www.youtube.com/watch?v=rwPISgZcYIk! This is most likely caused by:
 
@@ -425,7 +425,7 @@ If you are sure that the described cause is not responsible for this error and t
   ⚠ image_ocr                 →   0 docs  [ERROR: ImageReader.__init__() got an unexpected keyword argument 'allow_private_networks']
   ✓ audio_asr                 →   5 docs  [OK]
 
-  Total documents in corpus: 97
+  Total documents in corpus: 98
 
 ```
 ```
@@ -455,7 +455,7 @@ if all_documents:
   PHASE 2: NORMALIZE — Unicode + Whitespace cleanup
 ========================================================================
 
-  ✓ Normalised 97/97 documents
+  ✓ Normalised 98/98 documents
   Example (doc 0):
     text[:80]:           'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
     normalized_text[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
@@ -491,7 +491,7 @@ if all_documents:
   PHASE 3: ENRICH — Tokens + Keywords (NLPEnricher)
 ========================================================================
 
-  ✓ Enriched 97/97 documents
+  ✓ Enriched 98/98 documents
   Example (doc 0):
     tokens(11): ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe', 'new', 'report']…
     keywords: ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe']
@@ -514,7 +514,7 @@ print(f"  ✓ Index built: {index.n_documents} documents, dense={index.has_embed
   PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)
 ========================================================================
 
-  ✓ Index built: 97 documents, dense=False
+  ✓ Index built: 98 documents, dense=False
 
 ```
 ```
@@ -553,29 +553,29 @@ for query, mode in queries:
 
   --- Search: "catastrophic health spending Greece" (mode=keyword) ---
 
-  [1] score=6.3980  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=6.4124  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
-  [2] score=5.4049  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=5.4153  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'The report provides an assessment of financial protection for 40 countries (including all '…
-  [3] score=3.9702  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=3.9728  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Catastrophic out-of-pocket payments are mainly driven by household spending on services th'…
 
   --- Search: "poorest households" (mode=keyword) ---
 
-  [1] score=5.8640  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=5.8644  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
-  [2] score=2.6438  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=2.6443  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
-  [3] score=1.3150  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=1.3142  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Financial hardship caused by out-of-pocket payments for medicines, medical products such a'…
 
   --- Search: "out-of-pocket payments medicines" (mode=keyword) ---
 
-  [1] score=6.4385  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=6.4475  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Primary-care coverage should include treatment, not just consultation and diagnosis. This '…
-  [2] score=5.3222  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=5.3379  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Redesigning health coverage policy to reduce out-of-pocket payments'…
-  [3] score=5.1156  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=5.1210  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
 
   --- Search: "dental care" (mode=strict) ---
@@ -691,7 +691,7 @@ for i, line in enumerate(lines[:2]):
 
   --- 6a: LangChain Documents ---
 
-  ✓ 97 LangChain docs (dict fallback — langchain not installed)
+  ✓ 98 LangChain docs (dict fallback — langchain not installed)
     keys: ['page_content', 'metadata']
     page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
     metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path', 'section_type', 'source_type']
@@ -700,7 +700,7 @@ for i, line in enumerate(lines[:2]):
 
   ✓ LangGraph state dict:
     keys: ['documents', 'match_mode', 'n_results', 'query']
-    n_results: 97
+    n_results: 98
     query: 'catastrophic health spending'
 
   --- 6c: MCP Resources (Model Context Protocol) ---
@@ -728,7 +728,7 @@ for i, line in enumerate(lines[:2]):
 
   --- 6e: MCP Server Adapter ---
 
-  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=97)
+  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=98)
     tools: ['corpus_search']
     tool schema: {
       "type": "object",
@@ -744,7 +744,7 @@ for i, line in enumerate(lines[:2]):
 
   ✓ HuggingFace Dataset: Dataset({
     features: ['doc_id', 'text', 'input_path', 'source_type', 'source_title', 'chunk_index', 'language', 'metadata_json'],
-    num_rows: 97
+    num_rows: 98
 })
 
   --- 6g: RAG Tuples (text, metadata, embedding) ---
@@ -964,10 +964,10 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 ========================================================================
 
   Sources processed:  5
-  Total documents:    97
-  Normalised:         97
-  Enriched (tokens):  97
-  Index documents:    97
+  Total documents:    98
+  Normalised:         98
+  Enriched (tokens):  98
+  Index documents:    98
   Dense embeddings:   False
 
   Adapter outputs demonstrated:
@@ -1024,7 +1024,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 5.540 seconds)
+****Total running time of the script:**** (0 minutes 5.875 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 
@@ -1036,11 +1036,11 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
-[corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
+[corpus WHO European Region YouTube with examples](plot_corpus_who_youtube_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
 

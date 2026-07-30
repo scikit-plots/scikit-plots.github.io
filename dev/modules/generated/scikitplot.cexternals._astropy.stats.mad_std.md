@@ -1,6 +1,6 @@
 # mad\_std[#](#mad-std "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
 :   Calculate a robust standard deviation using the [median absolute deviation (MAD)](https://en.wikipedia.org/wiki/Median_absolute_deviation).
 
     The standard deviation estimator is given by:

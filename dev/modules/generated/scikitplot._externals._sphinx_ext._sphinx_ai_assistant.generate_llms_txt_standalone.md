@@ -1,6 +1,6 @@
 # generate\_llms\_txt\_standalone[#](#generate-llms-txt-standalone "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt\_standalone(**md\_root**, **\***, **base\_url=''**, **output\_file=None**, **project\_name='Documentation'**, **max\_entries=None**, **full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3022)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt\_standalone(**md\_root**, **\***, **base\_url=''**, **output\_file=None**, **project\_name='Documentation'**, **max\_entries=None**, **full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3028)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone "Link to this definition")
 :   Write `llms.txt` from an existing set of `.md` files.
 
     This function is entirely ****Sphinx-free****.

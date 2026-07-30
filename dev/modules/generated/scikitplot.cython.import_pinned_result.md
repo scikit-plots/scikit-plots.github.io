@@ -1,6 +1,6 @@
 # import\_pinned\_result[#](#import-pinned-result "Link to this heading")
 
-scikitplot.cython.import\_pinned\_result(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8f33de/scikitplot/cython/_public.py#L672)[#](#scikitplot.cython.import_pinned_result "Link to this definition")
+scikitplot.cython.import\_pinned\_result(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_public.py#L841)[#](#scikitplot.cython.import_pinned_result "Link to this definition")
 :   Import a pinned alias.
 
     Parameters:
@@ -28,8 +28,4 @@ scikitplot.cython.import\_pinned\_result(**alias**, **\***, **cache\_dir=None**)
 
 [Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
 
-Pin/Alias: stable handles for cached builds![](../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png)
-
-[Multi-module package builds (5 package examples)](../../auto_examples/cython/plot_05_package_examples_multimodule.html)
-
-Multi-module package builds (5 package examples)
+Pin/Alias: stable handles for cached builds
