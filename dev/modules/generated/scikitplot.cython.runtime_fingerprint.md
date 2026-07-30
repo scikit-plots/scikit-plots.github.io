@@ -1,6 +1,6 @@
 # runtime\_fingerprint[#](#runtime-fingerprint "Link to this heading")
 
-scikitplot.cython.runtime\_fingerprint(**\***, **cython\_version**, **numpy\_version**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_cache.py#L390)[#](#scikitplot.cython.runtime_fingerprint "Link to this definition")
+scikitplot.cython.runtime\_fingerprint(**\***, **cython\_version**, **numpy\_version**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_cache.py#L390)[#](#scikitplot.cython.runtime_fingerprint "Link to this definition")
 :   Compute a runtime fingerprint for caching correctness.
 
     The fingerprint includes the interpreter, platform, and library versions

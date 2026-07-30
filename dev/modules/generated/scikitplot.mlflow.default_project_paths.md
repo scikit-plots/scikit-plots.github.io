@@ -1,6 +1,6 @@
 # default\_project\_paths[#](#default-project-paths "Link to this heading")
 
-scikitplot.mlflow.default\_project\_paths(**\***, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/mlflow/_workflow.py#L109)[#](#scikitplot.mlflow.default_project_paths "Link to this definition")
+scikitplot.mlflow.default\_project\_paths(**\***, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_workflow.py#L109)[#](#scikitplot.mlflow.default_project_paths "Link to this definition")
 :   Compute standard config file paths for a project.
 
     Returns:

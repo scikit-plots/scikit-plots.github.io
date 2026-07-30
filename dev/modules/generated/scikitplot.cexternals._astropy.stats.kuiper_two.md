@@ -1,6 +1,6 @@
 # kuiper\_two[#](#kuiper-two "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.kuiper\_two(**data1**, **data2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cexternals/_astropy/stats/funcs.py#L1494)[#](#scikitplot.cexternals._astropy.stats.kuiper_two "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.kuiper\_two(**data1**, **data2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cexternals/_astropy/stats/funcs.py#L1494)[#](#scikitplot.cexternals._astropy.stats.kuiper_two "Link to this definition")
 :   Compute the Kuiper statistic to compare two samples.
 
     Parameters:

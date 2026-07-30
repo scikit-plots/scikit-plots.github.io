@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-29T23:48:30Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:09:56Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>security_policy<a class="headerlink" href="#security-policy" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.mlflow.security_policy">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">security_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/mlflow/_security.py#L724"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.security_policy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">security_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_security.py#L724"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.security_policy" title="Link to this definition">#</a></dt>
 <dd><p>Temporarily activate a <a class="reference internal" href="scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy" title="scikitplot.mlflow.SecurityPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecurityPolicy</span></code></a> for a context block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1345,8 +1345,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <p class="rubric">Notes</p>
 <p>Exception-safe: previous policy is always restored on exit.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c464cf32-1e07-4be0-b681-c20c29919422">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c464cf32-1e07-4be0-b681-c20c29919422','394c694c-1cc7-4d10-ac1f-802b8950c79f','c5a79191-03eb-4790-94ba-493dd88ecd3c','../../lite/tree/../notebooks/index.html?path=1226cf1b_4526_497e_96f3_a309e32873db.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="95a2ef5f-1583-4978-b987-3ae78beaf4c1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('95a2ef5f-1583-4978-b987-3ae78beaf4c1','6fea5e52-60e6-4265-bb09-be7aee905d7f','06e34f9b-9289-4e45-a41a-22c4d2376cf3','../../lite/tree/../notebooks/index.html?path=48eec149_3706_47fd_b9fc_686f7da897a6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.mlflow._security</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_SECURITY_POLICY</span><span class="p">,</span> <span class="n">security_policy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">security_policy</span><span class="p">(</span><span class="n">DEFAULT_SECURITY_POLICY</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">pass</span>  <span class="c1"># session() calls here are guarded</span>
@@ -1354,7 +1354,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="c5a79191-03eb-4790-94ba-493dd88ecd3c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c464cf32-1e07-4be0-b681-c20c29919422','c5a79191-03eb-4790-94ba-493dd88ecd3c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c464cf32-1e07-4be0-b681-c20c29919422','c5a79191-03eb-4790-94ba-493dd88ecd3c')">Open In Tab</button></div><div id="394c694c-1cc7-4d10-ac1f-802b8950c79f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="06e34f9b-9289-4e45-a41a-22c4d2376cf3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('95a2ef5f-1583-4978-b987-3ae78beaf4c1','06e34f9b-9289-4e45-a41a-22c4d2376cf3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('95a2ef5f-1583-4978-b987-3ae78beaf4c1','06e34f9b-9289-4e45-a41a-22c4d2376cf3')">Open In Tab</button></div><div id="6fea5e52-60e6-4265-bb09-be7aee905d7f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1472,7 +1472,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260729.db9d710 2026-07-29T23:05Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
       <br/>
     
   </p>

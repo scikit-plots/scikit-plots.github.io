@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-29T23:45:55Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:07:47Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>load_documents<a class="headerlink" href="#load-documents" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.load_documents">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">load_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">trusted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_export/_export.py#L940"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.load_documents" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">load_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">trusted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_export/_export.py#L940"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.load_documents" title="Link to this definition">#</a></dt>
 <dd><p>Load <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> instances
 from a previously exported file.</p>
 <p>Supported round-trip formats: <a class="reference internal" href="scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.PICKLE" title="scikitplot.corpus.ExportFormat.PICKLE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ExportFormat.PICKLE</span></code></a>,
@@ -1358,8 +1358,8 @@ file extension (<code class="docutils literal notranslate"><span class="pre">.pk
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="28dac60e-defc-4012-8aec-7808cf199780">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('28dac60e-defc-4012-8aec-7808cf199780','1c924852-5311-45f7-b1b6-7ef8155de7a1','f1ecb2c0-31e5-4fc2-b4d9-26258f931a6d','../../lite/tree/../notebooks/index.html?path=f6cb05da_a067_4685_8f96_e056e06cda90.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="59abb3cb-136c-4aaa-ab06-c399fa9c9d3f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('59abb3cb-136c-4aaa-ab06-c399fa9c9d3f','003d93ab-21e7-443e-9c30-aa77460e6ff6','0c24ae51-7606-4dc3-b44c-1250be0c106f','../../lite/tree/../notebooks/index.html?path=f8ab28df_0cb1_46b4_bae9_a756040ed592.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="n">load_documents</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;corpus.pkl&quot;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="go">312</span>
@@ -1367,7 +1367,7 @@ file extension (<code class="docutils literal notranslate"><span class="pre">.pk
 </div>
 </div>
 </div>
-<div id="f1ecb2c0-31e5-4fc2-b4d9-26258f931a6d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('28dac60e-defc-4012-8aec-7808cf199780','f1ecb2c0-31e5-4fc2-b4d9-26258f931a6d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('28dac60e-defc-4012-8aec-7808cf199780','f1ecb2c0-31e5-4fc2-b4d9-26258f931a6d')">Open In Tab</button></div><div id="1c924852-5311-45f7-b1b6-7ef8155de7a1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0c24ae51-7606-4dc3-b44c-1250be0c106f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('59abb3cb-136c-4aaa-ab06-c399fa9c9d3f','0c24ae51-7606-4dc3-b44c-1250be0c106f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('59abb3cb-136c-4aaa-ab06-c399fa9c9d3f','0c24ae51-7606-4dc3-b44c-1250be0c106f')">Open In Tab</button></div><div id="003d93ab-21e7-443e-9c30-aa77460e6ff6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1485,7 +1485,7 @@ file extension (<code class="docutils literal notranslate"><span class="pre">.pk
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260729.db9d710 2026-07-29T23:05Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # register\_tokenizer[#](#register-tokenizer "Link to this heading")
 
-scikitplot.corpus.register\_tokenizer(**name**, **tokenizer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L709)[#](#scikitplot.corpus.register_tokenizer "Link to this definition")
+scikitplot.corpus.register\_tokenizer(**name**, **tokenizer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L709)[#](#scikitplot.corpus.register_tokenizer "Link to this definition")
 :   Register a named [`TokenizerProtocol`](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus.TokenizerProtocol") implementation.
 
     Parameters:

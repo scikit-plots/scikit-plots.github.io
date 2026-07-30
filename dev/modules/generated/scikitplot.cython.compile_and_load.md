@@ -1,6 +1,6 @@
 # compile\_and\_load[#](#compile-and-load "Link to this heading")
 
-scikitplot.cython.compile\_and\_load(**source**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_public.py#L567)[#](#scikitplot.cython.compile_and_load "Link to this definition")
+scikitplot.cython.compile\_and\_load(**source**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_public.py#L567)[#](#scikitplot.cython.compile_and_load "Link to this definition")
 :   Compile and import a Cython extension module and return the loaded module.
 
     Parameters:

@@ -1,6 +1,6 @@
 # AudioReader[#](#audioreader "Link to this heading")
 
-class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **transcribe=False**, **whisper\_model='base'**, **classify=False**, **classifier=None**, **segment\_duration=5.0**, **segment\_overlap=1.0**, **extract\_features=False**, **txt\_as\_single\_chunk=False**, **max\_file\_bytes=5368709120**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader "Link to this definition")
+class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **transcribe=False**, **whisper\_model='base'**, **classify=False**, **classifier=None**, **segment\_duration=5.0**, **segment\_overlap=1.0**, **extract\_features=False**, **txt\_as\_single\_chunk=False**, **max\_file\_bytes=5368709120**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader "Link to this definition")
 :   Text extraction from audio files via companion transcript/lyrics parsing,
     Whisper ASR, and optional audio classification.
 
@@ -244,7 +244,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
     classify: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.AudioReader.classify "Link to this definition")
     :   Enable audio classification via `classifier` callable.
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L1531)[#](#scikitplot.corpus.AudioReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1531)[#](#scikitplot.corpus.AudioReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -466,7 +466,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.AudioReader.custom_extractor "scikitplot.corpus.AudioReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -534,7 +534,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.AudioReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L1848)[#](#scikitplot.corpus.AudioReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1848)[#](#scikitplot.corpus.AudioReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -661,7 +661,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L2044)[#](#scikitplot.corpus.AudioReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L2044)[#](#scikitplot.corpus.AudioReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -762,7 +762,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.AudioReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.AudioReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -807,7 +807,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_readers/_audio.py#L1327)[#](#scikitplot.corpus.AudioReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_audio.py#L1327)[#](#scikitplot.corpus.AudioReader.get_raw_chunks "Link to this definition")
     :   Attempts companion detection first. Falls back to Whisper only
         when `transcribe=True` and no companion was found. Classification
         via `classify=True` runs independently (can combine with
@@ -829,7 +829,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         Return type:
         :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], None, None]
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -855,7 +855,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         Type:
         :   Classification window overlap in seconds. Default
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_audio.py#L1034)[#](#scikitplot.corpus.AudioReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -882,7 +882,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.AudioReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.AudioReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -904,7 +904,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L1402)[#](#scikitplot.corpus.AudioReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1402)[#](#scikitplot.corpus.AudioReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -931,7 +931,7 @@ class scikitplot.corpus.AudioReader(**input\_path**, **chunker=None**, **filter\
     txt\_as\_single\_chunk: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.AudioReader.txt_as_single_chunk "Link to this definition")
     :   Yield entire `.txt` companion as one chunk if `True`.
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_base.py#L931)[#](#scikitplot.corpus.AudioReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L931)[#](#scikitplot.corpus.AudioReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:

@@ -1,6 +1,6 @@
 # build\_lock[#](#build-lock "Link to this heading")
 
-scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_lock.py#L92)[#](#scikitplot.cython.build_lock "Link to this definition")
+scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_lock.py#L92)[#](#scikitplot.cython.build_lock "Link to this definition")
 :   Acquire an exclusive build lock via atomic directory creation.
 
     Parameters:

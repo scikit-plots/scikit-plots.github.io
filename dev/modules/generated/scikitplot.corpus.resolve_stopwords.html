@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-29T23:45:59Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:07:51Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>resolve_stopwords<a class="headerlink" href="#resolve-stopwords" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.resolve_stopwords">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">resolve_stopwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'english'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_chunkers/_language_data.py#L1353"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.resolve_stopwords" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">resolve_stopwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'english'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_language_data.py#L1353"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.resolve_stopwords" title="Link to this definition">#</a></dt>
 <dd><p>Return a frozenset of stopwords for one or more languages.</p>
 <p>Looks up each language in <a class="reference internal" href="scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html#scikitplot.corpus.BUILTIN_LANG_STOPWORDS" title="scikitplot.corpus.BUILTIN_LANG_STOPWORDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">BUILTIN_LANG_STOPWORDS</span></code></a>.  Languages
 that are in NLTK’s stopwords corpus but absent from the built-in table
@@ -1348,8 +1348,8 @@ are silently skipped (callers should use NLTK directly for those).</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="2e78e365-5841-401d-a49f-c93af972f03e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2e78e365-5841-401d-a49f-c93af972f03e','e19d6e21-db58-4dd1-8a0a-1969c1fcaa2b','23506c08-2a6c-484f-a2e2-db81434ed695','../../lite/tree/../notebooks/index.html?path=09a2c2b4_0d5b_4a1f_8b2f_cc099ab3d7b5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a88cd717-5e2e-4b5f-bdd9-a2c4e6f4579b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a88cd717-5e2e-4b5f-bdd9-a2c4e6f4579b','9c59f861-8fb5-4e80-8216-58056148c9cb','951a2b47-c963-4d4e-91f6-46aa8916922e','../../lite/tree/../notebooks/index.html?path=bb365dc7_40f0_4463_b5e7_1ba6269dbec5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;the&quot;</span> <span class="ow">in</span> <span class="n">resolve_stopwords</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">resolve_stopwords</span><span class="p">([</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;hi&quot;</span><span class="p">])</span>
@@ -1361,7 +1361,7 @@ are silently skipped (callers should use NLTK directly for those).</p>
 </div>
 </div>
 </div>
-<div id="23506c08-2a6c-484f-a2e2-db81434ed695" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2e78e365-5841-401d-a49f-c93af972f03e','23506c08-2a6c-484f-a2e2-db81434ed695')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2e78e365-5841-401d-a49f-c93af972f03e','23506c08-2a6c-484f-a2e2-db81434ed695')">Open In Tab</button></div><div id="e19d6e21-db58-4dd1-8a0a-1969c1fcaa2b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="951a2b47-c963-4d4e-91f6-46aa8916922e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a88cd717-5e2e-4b5f-bdd9-a2c4e6f4579b','951a2b47-c963-4d4e-91f6-46aa8916922e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a88cd717-5e2e-4b5f-bdd9-a2c4e6f4579b','951a2b47-c963-4d4e-91f6-46aa8916922e')">Open In Tab</button></div><div id="9c59f861-8fb5-4e80-8216-58056148c9cb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1479,7 +1479,7 @@ are silently skipped (callers should use NLTK directly for those).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260729.db9d710 2026-07-29T23:05Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
       <br/>
     
   </p>

@@ -9,7 +9,7 @@
 
 Initial changes added in 1.3. Conversion of the gallery is on-going.
 29 September 2015 - The last `pylab_examples` where `pylab` is imported has
-been converted over to use [`matplotlib.pyplot`](https://matplotlib.org/devdocs/api/pyplot_summary.html#module-matplotlib.pyplot "(in Matplotlib v3.12.0.dev414+g30073003d)") and `numpy`.
+been converted over to use [`matplotlib.pyplot`](https://matplotlib.org/devdocs/api/pyplot_summary.html#module-matplotlib.pyplot "(in Matplotlib v3.12.0.dev415+ga888f5e9a)") and `numpy`.
 
 ## [Branches and Pull requests](#id8)[#](#branches-and-pull-requests "Link to this heading")
 

@@ -135,8 +135,8 @@ else:
 
 ```
 ```
-Compiling /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4zjuidf_/scikitplot_cython_b7dab274e3fd001e.pyx because it changed.
-[1/1] Cythonizing /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4zjuidf_/scikitplot_cython_b7dab274e3fd001e.pyx
+Compiling /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4alroi0k/scikitplot_cython_b7dab274e3fd001e.pyx because it changed.
+[1/1] Cythonizing /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4alroi0k/scikitplot_cython_b7dab274e3fd001e.pyx
 HTML: /home/circleci/.cache/scikitplot/cython/b7dab274e3fd001ea22a772ac180186ac42d98a930de71922e64717c7c18ff9f/scikitplot_cython_b7dab274e3fd001e.html
 exists: True
 fast-debug key: 7024267ad2d3c2afa1443f720ed827a3fda6a73089b625ac96fbae1e4394d000
@@ -189,7 +189,7 @@ f(10) annotate  : 100
   compiler_directives (subset): {'boundscheck': True, 'embedsignature': True, 'initializedcheck': True, 'language_level': 3, 'wraparound': True}
 
 Annotation HTML report:
-  /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4zjuidf_/scikitplot_cython_b7dab274e3fd001e.html
+  /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4alroi0k/scikitplot_cython_b7dab274e3fd001e.html
 
 Precedence demo: explicit annotate=False under release
   key: c9fa120136e2f5589f656a08da08fb3845159ab04926b9c67f5df454a2cfffd6
@@ -224,9 +224,9 @@ BuildResult (metadata):
   build dir   : /home/circleci/.cache/scikitplot/cython/b7dab274e3fd001ea22a772ac180186ac42d98a930de71922e64717c7c18ff9f
   artifact    : /home/circleci/.cache/scikitplot/cython/b7dab274e3fd001ea22a772ac180186ac42d98a930de71922e64717c7c18ff9f/scikitplot_cython_b7dab274e3fd001e.cpython-312-x86_64-linux-gnu.so
   used_cache  : False
-  created_utc : 2026-07-29T23:14:31Z
+  created_utc : 2026-07-30T02:36:39Z
   Annotation  : True
-  HTML report : /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4zjuidf_/scikitplot_cython_b7dab274e3fd001e.html
+  HTML report : /home/circleci/.cache/scikitplot/cython/.staging-b7dab274e3fd001e-4alroi0k/scikitplot_cython_b7dab274e3fd001e.html
 
 ```
 
@@ -398,7 +398,7 @@ static PyObject *__pyx_pf_34scikitplot_cython_ddc7a5b27b5b1257_f(CYTHON_UNUSED P
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.945 seconds)
+****Total running time of the script:**** (0 minutes 1.609 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_02_build_profiles.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_02_build_profiles.ipynb)
 

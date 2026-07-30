@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-29T23:45:05Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:06:55Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,13 +1314,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>LemmatizerProtocol<a class="headerlink" href="#lemmatizerprotocol" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.LemmatizerProtocol">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">LemmatizerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L241"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LemmatizerProtocol" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">LemmatizerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L241"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LemmatizerProtocol" title="Link to this definition">#</a></dt>
 <dd><p>Structural protocol for word lemmatizers.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pos</span></code> parameter is optional context (part-of-speech tag).
 Implementations that do not use <code class="docutils literal notranslate"><span class="pre">pos</span></code> can ignore it.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="a774d9d8-f232-4db8-9ab8-f02ed627d763">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a774d9d8-f232-4db8-9ab8-f02ed627d763','06da35de-a7c5-4c01-8a90-6a3ee78f1b23','306e6a41-1f49-4fbd-85dc-c29282d5d871','../../lite/tree/../notebooks/index.html?path=da6f723f_d212_4ba1_b079_66641f108107.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="4fa89201-a660-442a-a78f-375c04bd2aa8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4fa89201-a660-442a-a78f-375c04bd2aa8','d552dd50-f336-49ff-8954-ac11d893e63e','177f28a5-8832-4732-bfd6-665409836820','../../lite/tree/../notebooks/index.html?path=4fd0ae98_54d3_4779_967b_4e9c3afbdc56.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyLemma</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">lemmatize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -1330,9 +1330,9 @@ Implementations that do not use <code class="docutils literal notranslate"><span
 </div>
 </div>
 </div>
-<div id="306e6a41-1f49-4fbd-85dc-c29282d5d871" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a774d9d8-f232-4db8-9ab8-f02ed627d763','306e6a41-1f49-4fbd-85dc-c29282d5d871')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a774d9d8-f232-4db8-9ab8-f02ed627d763','306e6a41-1f49-4fbd-85dc-c29282d5d871')">Open In Tab</button></div><div id="06da35de-a7c5-4c01-8a90-6a3ee78f1b23" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="177f28a5-8832-4732-bfd6-665409836820" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4fa89201-a660-442a-a78f-375c04bd2aa8','177f28a5-8832-4732-bfd6-665409836820')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4fa89201-a660-442a-a78f-375c04bd2aa8','177f28a5-8832-4732-bfd6-665409836820')">Open In Tab</button></div><div id="d552dd50-f336-49ff-8954-ac11d893e63e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.LemmatizerProtocol.lemmatize">
-<span class="sig-name descname"><span class="pre">lemmatize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LemmatizerProtocol.lemmatize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">lemmatize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LemmatizerProtocol.lemmatize" title="Link to this definition">#</a></dt>
 <dd><p>Return the lemma of <em>word</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1482,7 +1482,7 @@ Implementations that do not use <code class="docutils literal notranslate"><span
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260729.db9d710 2026-07-29T23:05Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
       <br/>
     
   </p>

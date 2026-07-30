@@ -2,6 +2,8 @@
 
 ## Cache lifecycle[#](#cache-lifecycle "Link to this heading")
 
+orphan:
+
 stateDiagram-v2
 [\*] --> Absent
 Absent --> Staging : build starts
@@ -20,6 +22,8 @@ Reclaimed --> Absent
 
 ## Lock lifecycle[#](#lock-lifecycle "Link to this heading")
 
+orphan:
+
 stateDiagram-v2
 [\*] --> Idle
 Idle --> Requested : build, GC, pin, or purge requests lock
@@ -33,6 +37,8 @@ Failed --> Releasing : cleanup begins
 Releasing --> Idle : ownership released
 
 ## Garbage collection and pins[#](#garbage-collection-and-pins "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[Cache maintenance starts] --> B[List cache entries]

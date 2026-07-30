@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-29T23:45:49Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:07:41Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>infer_extension<a class="headerlink" href="#infer-extension" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.infer_extension">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">infer_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_url_handler.py#L1237"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.infer_extension" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">infer_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_url_handler.py#L1237"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.infer_extension" title="Link to this definition">#</a></dt>
 <dd><p>Infer a file extension from HTTP response headers and URL path.</p>
 <p>Public wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">_infer_extension_from_headers</span></code>.  Call
 this when you already hold response headers (e.g. after a manual
@@ -1357,8 +1357,8 @@ Returns <code class="docutils literal notranslate"><span class="pre">&quot;.bin&
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="4753fe45-1fd3-42ed-a944-4b3b1c5c7a37">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4753fe45-1fd3-42ed-a944-4b3b1c5c7a37','aea0e645-01a5-460b-99b1-b5ff98107113','aef25e25-be5d-404e-a3fb-62fd1d909be6','../../lite/tree/../notebooks/index.html?path=b91838ac_2e5b_479d_bbd7_e12944a4c51d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="74dc5639-dc42-411e-abc7-345cba999bd7">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('74dc5639-dc42-411e-abc7-345cba999bd7','88e86259-9cdf-471a-89ff-b7a1d03257df','988a176e-1cf8-4a3d-a4ec-aaac8691501d','../../lite/tree/../notebooks/index.html?path=e1877d96_85b7_4bdd_8ecf_1a151be67a6e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">infer_extension</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;audio/mpeg&quot;</span><span class="p">},</span> <span class="s2">&quot;https://host/dl&quot;</span><span class="p">)</span>
 <span class="go">&#39;.mp3&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infer_extension</span><span class="p">({},</span> <span class="s2">&quot;https://host/report.pdf&quot;</span><span class="p">)</span>
@@ -1372,7 +1372,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">&quot;.bin&
 </div>
 </div>
 </div>
-<div id="aef25e25-be5d-404e-a3fb-62fd1d909be6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4753fe45-1fd3-42ed-a944-4b3b1c5c7a37','aef25e25-be5d-404e-a3fb-62fd1d909be6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4753fe45-1fd3-42ed-a944-4b3b1c5c7a37','aef25e25-be5d-404e-a3fb-62fd1d909be6')">Open In Tab</button></div><div id="aea0e645-01a5-460b-99b1-b5ff98107113" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="988a176e-1cf8-4a3d-a4ec-aaac8691501d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('74dc5639-dc42-411e-abc7-345cba999bd7','988a176e-1cf8-4a3d-a4ec-aaac8691501d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('74dc5639-dc42-411e-abc7-345cba999bd7','988a176e-1cf8-4a3d-a4ec-aaac8691501d')">Open In Tab</button></div><div id="88e86259-9cdf-471a-89ff-b7a1d03257df" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1490,7 +1490,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">&quot;.bin&
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260729.db9d710 2026-07-29T23:05Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
       <br/>
     
   </p>

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-29T23:47:34Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:09:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>serialize_sheet<a class="headerlink" href="#serialize-sheet" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.experimental._doremi.serialize_sheet">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">serialize_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/experimental/_doremi/note.py#L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.serialize_sheet" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">serialize_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/experimental/_doremi/note.py#L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.serialize_sheet" title="Link to this definition">#</a></dt>
 <dd><p>Serialize sheet notes to JSON or YAML string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1345,15 +1345,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="4c17951f-9a83-46d4-b7f0-e3ff6e389031">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4c17951f-9a83-46d4-b7f0-e3ff6e389031','d07ce2ff-ea4c-4e61-8e60-5f7b06c06c0c','24047bb8-0721-4251-8b3f-7c11c7fa3153','../../lite/tree/../notebooks/index.html?path=2cae832f_e1b2_4e64_9176_30ac6f7218be.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="80131a52-5f40-479c-a107-bcfca3abfd45">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('80131a52-5f40-479c-a107-bcfca3abfd45','c4574f34-e041-4d9f-b0c2-dfce33c73b40','942a6e5a-43d6-4f8e-9074-2f03a72e0cb8','../../lite/tree/../notebooks/index.html?path=270c5f1e_03f9_4224_bc57_d787097b3cb8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">serialize_sheet</span><span class="p">(</span><span class="s2">&quot;A4-1&quot;</span><span class="p">,</span> <span class="n">save_format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">serialize_sheet</span><span class="p">(</span><span class="s2">&quot;A4-1&quot;</span><span class="p">,</span> <span class="n">save_format</span><span class="o">=</span><span class="s2">&quot;yaml&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="24047bb8-0721-4251-8b3f-7c11c7fa3153" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4c17951f-9a83-46d4-b7f0-e3ff6e389031','24047bb8-0721-4251-8b3f-7c11c7fa3153')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4c17951f-9a83-46d4-b7f0-e3ff6e389031','24047bb8-0721-4251-8b3f-7c11c7fa3153')">Open In Tab</button></div><div id="d07ce2ff-ea4c-4e61-8e60-5f7b06c06c0c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="942a6e5a-43d6-4f8e-9074-2f03a72e0cb8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('80131a52-5f40-479c-a107-bcfca3abfd45','942a6e5a-43d6-4f8e-9074-2f03a72e0cb8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('80131a52-5f40-479c-a107-bcfca3abfd45','942a6e5a-43d6-4f8e-9074-2f03a72e0cb8')">Open In Tab</button></div><div id="c4574f34-e041-4d9f-b0c2-dfce33c73b40" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1471,7 +1471,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260729.db9d710 2026-07-29T23:05Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
       <br/>
     
   </p>

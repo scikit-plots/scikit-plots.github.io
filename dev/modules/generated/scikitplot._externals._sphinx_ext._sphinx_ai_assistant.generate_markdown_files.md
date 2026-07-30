@@ -1,6 +1,6 @@
 # generate\_markdown\_files[#](#generate-markdown-files "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_markdown\_files(**app**, **exception**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3360)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_markdown\_files(**app**, **exception**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3360)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files "Link to this definition")
 :   Post-build hook: generate `.md` companions for every `.html` file.
 
     Registered with Sphinx’s `build-finished` event in `setup`.

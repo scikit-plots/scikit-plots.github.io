@@ -5,6 +5,8 @@ build orchestration, cache publication, loading, and maintenance.
 
 ## Architecture overview[#](#architecture-overview "Link to this heading")
 
+orphan:
+
 flowchart LR
 U[User code] --> API[Public API]
 API --> PUB[\_public.py / \_api.py]
@@ -24,6 +26,8 @@ CACHE --> GC[GC and purge]
 CACHE --> PIN[Pins]
 
 ## Public API path[#](#public-api-path "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[User calls public API] --> B{Entry point}
@@ -48,6 +52,8 @@ L --> P[Return ImportResult or BuildResult]
 
 ## Security boundary[#](#security-boundary "Link to this heading")
 
+orphan:
+
 flowchart TD
 A[Input request] --> B[Normalize paths]
 B --> C[Validate roots and containment]
@@ -61,6 +67,8 @@ I -->|Yes| J[Proceed to build, cache, or import]
 I -->|No| K[Reject with structured error]
 
 ## Template resolution[#](#template-resolution "Link to this heading")
+
+orphan:
 
 flowchart LR
 A[User selects template] --> B[Templates API]

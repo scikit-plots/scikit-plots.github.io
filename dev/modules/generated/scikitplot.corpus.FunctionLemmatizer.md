@@ -1,6 +1,6 @@
 # FunctionLemmatizer[#](#functionlemmatizer "Link to this heading")
 
-class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L473)[#](#scikitplot.corpus.FunctionLemmatizer "Link to this definition")
+class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L473)[#](#scikitplot.corpus.FunctionLemmatizer "Link to this definition")
 :   Wrap any `Callable[[str, Optional[str]], str]` as a [`LemmatizerProtocol`](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus.LemmatizerProtocol").
 
     Parameters:
@@ -27,7 +27,7 @@ class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](
     ```
     Go BackOpen In Tab
 
-    lemmatize(**word**, **pos=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L526)[#](#scikitplot.corpus.FunctionLemmatizer.lemmatize "Link to this definition")
+    lemmatize(**word**, **pos=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L526)[#](#scikitplot.corpus.FunctionLemmatizer.lemmatize "Link to this definition")
     :   Lemmatize **word** with optional POS hint.
 
         Parameters:

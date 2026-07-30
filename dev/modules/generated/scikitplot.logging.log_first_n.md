@@ -1,6 +1,6 @@
 # log\_first\_n[#](#log-first-n "Link to this heading")
 
-scikitplot.logging.log\_first\_n(**level**, **msg**, **n**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/logging.py#L1654)[#](#scikitplot.logging.log_first_n "Link to this definition")
+scikitplot.logging.log\_first\_n(**level**, **msg**, **n**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/logging.py#L1654)[#](#scikitplot.logging.log_first_n "Link to this definition")
 :   Log only for the first **n** calls from the same call site.
 
     Log ‘msg % args’ at level ‘level’ only first ‘n’ times.

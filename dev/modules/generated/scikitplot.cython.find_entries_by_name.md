@@ -1,6 +1,6 @@
 # find\_entries\_by\_name[#](#find-entries-by-name "Link to this heading")
 
-scikitplot.cython.find\_entries\_by\_name(**cache\_dir**, **module\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_cache.py#L807)[#](#scikitplot.cython.find_entries_by_name "Link to this definition")
+scikitplot.cython.find\_entries\_by\_name(**cache\_dir**, **module\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_cache.py#L807)[#](#scikitplot.cython.find_entries_by_name "Link to this definition")
 :   Find module cache entries matching an exact module name.
 
     Parameters:

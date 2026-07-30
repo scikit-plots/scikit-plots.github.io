@@ -1,6 +1,6 @@
 # infer\_extension[#](#infer-extension "Link to this heading")
 
-scikitplot.corpus.infer\_extension(**headers**, **url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/corpus/_url_handler.py#L1237)[#](#scikitplot.corpus.infer_extension "Link to this definition")
+scikitplot.corpus.infer\_extension(**headers**, **url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_url_handler.py#L1237)[#](#scikitplot.corpus.infer_extension "Link to this definition")
 :   Infer a file extension from HTTP response headers and URL path.
 
     Public wrapper around `_infer_extension_from_headers`. Call

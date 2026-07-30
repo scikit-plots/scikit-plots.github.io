@@ -75,7 +75,7 @@ Because many people use and work on Matplotlib, we have guidelines for keeping
 our code consistent and mitigating the impact of changes.
 
 * [Code Style and Writing Guidelines](guide_code_style_write.html#coding-guidelines)
-* [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.12.0.dev414+g30073003d)")
+* [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.12.0.dev415+ga888f5e9a)")
 * [Pull Request Guidelines](guide_pr.html#pr-guidelines)
 
 Code is contributed through pull requests, so we recommend that you start at
@@ -90,8 +90,8 @@ you can:
 
 * Fix a typo
 * Clarify a docstring
-* Write or update an [example plot](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.12.0.dev414+g30073003d)")
-* Write or update a comprehensive [tutorial](https://matplotlib.org/devdocs/tutorials/index.html#tutorials "(in Matplotlib v3.12.0.dev414+g30073003d)")
+* Write or update an [example plot](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.12.0.dev415+ga888f5e9a)")
+* Write or update a comprehensive [tutorial](https://matplotlib.org/devdocs/tutorials/index.html#tutorials "(in Matplotlib v3.12.0.dev415+ga888f5e9a)")
 
 Our code is documented inline in the source code files in `matplotlib/lib`.
 Our website structure mirrors our folder structure, meaning that a narrative
@@ -151,7 +151,7 @@ If you have any questions about the process, please reach out on the
 ### Community[#](#community "Link to this heading")
 
 Matplotlib’s community is built by its members, if you would like to help out
-see our [Community management guide](https://matplotlib.org/devdocs/devel/communication_guide.html#communications-guidelines "(in Matplotlib v3.12.0.dev414+g30073003d)").
+see our [Community management guide](https://matplotlib.org/devdocs/devel/communication_guide.html#communications-guidelines "(in Matplotlib v3.12.0.dev415+ga888f5e9a)").
 
 It helps us if you spread the word: reference the project from your blog
 and articles or link to it from your website!
@@ -307,7 +307,7 @@ to hear back on your PR.-->
 When in doubt, we recommend going together! Get connected with our community of
 active contributors, many of whom felt just like you when they started out and
 are happy to welcome you and support you as you get to know how we work, and
-where things are. You can reach out on any of our [Official project platforms](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.12.0.dev414+g30073003d)").
+where things are. You can reach out on any of our [Official project platforms](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.12.0.dev415+ga888f5e9a)").
 For development questions we recommend reaching out on our development [gitter](https://gitter.im/matplotlib/matplotlib)
 chat room and for community questions reach out at [community](https://gitter.im/matplotlib/community).
 

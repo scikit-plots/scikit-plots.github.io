@@ -1,6 +1,6 @@
 # load\_package\_example\_metadata[#](#load-package-example-metadata "Link to this heading")
 
-scikitplot.cython.load\_package\_example\_metadata(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_templates_api.py#L952)[#](#scikitplot.cython.load_package_example_metadata "Link to this definition")
+scikitplot.cython.load\_package\_example\_metadata(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_templates_api.py#L952)[#](#scikitplot.cython.load_package_example_metadata "Link to this definition")
 :   Load package example metadata from `package.meta.json`.
 
     Parameters:

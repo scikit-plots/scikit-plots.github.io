@@ -1,6 +1,6 @@
 # print\_labels[#](#print-labels "Link to this heading")
 
-scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/seaborn/_decile.py#L303)[#](#scikitplot.seaborn.print_labels "Link to this definition")
+scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/seaborn/_decile.py#L303)[#](#scikitplot.seaborn.print_labels "Link to this definition")
 :   Pretty-print the legend of decile table column names.
 
     ```

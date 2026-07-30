@@ -1,6 +1,6 @@
 # use\_provider[#](#use-provider "Link to this heading")
 
-scikitplot.mlflow.use\_provider(**provider**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/mlflow/_custom.py#L90)[#](#scikitplot.mlflow.use_provider "Link to this definition")
+scikitplot.mlflow.use\_provider(**provider**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_custom.py#L90)[#](#scikitplot.mlflow.use_provider "Link to this definition")
 :   Temporarily set the MLflow provider for a context block.
 
     Parameters:

@@ -37,6 +37,8 @@ m.f(10)
 
 ## Architecture[#](#architecture "Link to this heading")
 
+orphan:
+
 flowchart LR
 U[User code] --> API[Public API]
 API --> PUB[\_public.py / \_api.py]
@@ -56,6 +58,8 @@ CACHE --> GC[GC and purge]
 CACHE --> PIN[Pins]
 
 ## Public API flow[#](#public-api-flow "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[User calls public API] --> B{Entry point}
@@ -82,6 +86,8 @@ L --> P[Return ImportResult or BuildResult]
 
 ### Single-module build[#](#single-module-build "Link to this heading")
 
+orphan:
+
 flowchart TD
 A[Request single-module build] --> B[Normalize source path]
 B --> C[Resolve compiler options]
@@ -104,6 +110,8 @@ R --> S[Load extension]
 S --> K
 
 ### Package build[#](#package-build "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[Request package build] --> B[Resolve example or package source]
@@ -131,6 +139,8 @@ T --> K
 
 ### Cache lifecycle[#](#cache-lifecycle "Link to this heading")
 
+orphan:
+
 stateDiagram-v2
 [\*] --> Absent
 Absent --> Staging : build starts
@@ -149,6 +159,8 @@ Reclaimed --> Absent
 
 ### Lock lifecycle[#](#lock-lifecycle "Link to this heading")
 
+orphan:
+
 stateDiagram-v2
 [\*] --> Idle
 Idle --> Requested : build, GC, pin, or purge requests lock
@@ -162,6 +174,8 @@ Failed --> Releasing : cleanup begins
 Releasing --> Idle : ownership released
 
 ## Security validation[#](#security-validation "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[Input request] --> B[Normalize paths]
@@ -177,6 +191,8 @@ I -->|No| K[Reject with structured error]
 
 ## Templates[#](#templates "Link to this heading")
 
+orphan:
+
 flowchart LR
 A[User selects template] --> B[Templates API]
 B --> C[Resolve template family]
@@ -188,6 +204,8 @@ G --> H[Pass generated source to builder]
 H --> I[Compile and return result]
 
 ## Garbage collection and pins[#](#garbage-collection-and-pins "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[Cache maintenance starts] --> B[List cache entries]
@@ -211,6 +229,8 @@ N -->|No| O[Finish GC report]
 
 ## Failure and recovery[#](#failure-and-recovery "Link to this heading")
 
+orphan:
+
 stateDiagram-v2
 [\*] --> Ready
 Ready --> Validating : request received
@@ -231,17 +251,23 @@ Active --> Available : runtime reference released
 
 ## Further reading[#](#further-reading "Link to this heading")
 
-****further reading****
+****architecture****
 
 * [Cython Architecture](architecture.html)
   * [Architecture overview](architecture.html#architecture-overview)
   * [Public API path](architecture.html#public-api-path)
   * [Security boundary](architecture.html#security-boundary)
   * [Template resolution](architecture.html#template-resolution)
+
+****workflows****
+
 * [Cython Build Workflows](workflows.html)
   * [Single-module build](workflows.html#single-module-build)
   * [Package build](workflows.html#package-build)
   * [Failure and recovery](workflows.html#failure-and-recovery)
+
+****lifecycle****
+
 * [Cython Lifecycle and Maintenance](lifecycle.html)
   * [Cache lifecycle](lifecycle.html#cache-lifecycle)
   * [Lock lifecycle](lifecycle.html#lock-lifecycle)

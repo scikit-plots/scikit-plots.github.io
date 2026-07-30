@@ -2,6 +2,8 @@
 
 ## Single-module build[#](#single-module-build "Link to this heading")
 
+orphan:
+
 flowchart TD
 A[Request single-module build] --> B[Normalize source path]
 B --> C[Resolve compiler options]
@@ -24,6 +26,8 @@ R --> S[Load extension]
 S --> K
 
 ## Package build[#](#package-build "Link to this heading")
+
+orphan:
 
 flowchart TD
 A[Request package build] --> B[Resolve example or package source]
@@ -48,6 +52,8 @@ S --> T[Import built package]
 T --> K
 
 ## Failure and recovery[#](#failure-and-recovery "Link to this heading")
+
+orphan:
 
 stateDiagram-v2
 [\*] --> Ready

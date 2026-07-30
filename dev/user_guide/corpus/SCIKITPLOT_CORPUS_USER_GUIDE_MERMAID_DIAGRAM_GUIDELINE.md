@@ -74,7 +74,7 @@ Pipeline execution
 
 Explain the contract and important options in prose before the diagram.
 
-.. include:: diagrams/03_pipeline_execution_flow.rst
+.. include:: _diagrams/03_pipeline_execution_flow.rst
 
 Explain edge cases, failure behavior, and platform limits after the diagram.
 
@@ -87,7 +87,7 @@ builder-specific policy:
 ```
 .. only:: html
 
-   .. include:: diagrams/03_pipeline_execution_flow.rst
+   .. include:: _diagrams/03_pipeline_execution_flow.rst
 
 ```
 
@@ -183,7 +183,7 @@ docs/source/user_guide/corpus/
 ├── readers.rst
 ├── chunking.rst
 ├── persistence.rst
-└── diagrams/
+└── _diagrams/
     ├── 00_corpus_at_a_glance_logical.rst
     ├── 01_corpus_physical_module_map.rst
     └── ...

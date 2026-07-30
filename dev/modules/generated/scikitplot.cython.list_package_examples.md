@@ -1,6 +1,6 @@
 # list\_package\_examples[#](#list-package-examples "Link to this heading")
 
-scikitplot.cython.list\_package\_examples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_templates_api.py#L909)[#](#scikitplot.cython.list_package_examples "Link to this definition")
+scikitplot.cython.list\_package\_examples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_templates_api.py#L909)[#](#scikitplot.cython.list_package_examples "Link to this definition")
 :   List available multi-module package examples.
 
     Returns:

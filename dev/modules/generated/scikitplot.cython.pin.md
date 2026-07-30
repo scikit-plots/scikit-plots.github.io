@@ -1,6 +1,6 @@
 # pin[#](#pin "Link to this heading")
 
-scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwrite=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/db9d710b/scikitplot/cython/_pins.py#L161)[#](#scikitplot.cython.pin "Link to this definition")
+scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwrite=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_pins.py#L161)[#](#scikitplot.cython.pin "Link to this definition")
 :   Pin a cache key under a human-friendly alias.
 
     Parameters:

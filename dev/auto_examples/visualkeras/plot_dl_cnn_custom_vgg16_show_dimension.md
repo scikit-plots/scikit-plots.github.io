@@ -112,7 +112,7 @@ ImageFont.load_default()
 
 ```
 ```
-<PIL.ImageFont.FreeTypeFont object at 0x7d88dc340bc0>
+<PIL.ImageFont.FreeTypeFont object at 0x782220226c30>
 
 ```
 ```
@@ -135,7 +135,7 @@ img_vgg16_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_001.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d88dc782420>
+<matplotlib.image.AxesImage object at 0x782220321280>
 
 ```
 ```
@@ -158,7 +158,7 @@ img_vgg16_legend_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_002.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d88fc0cd5e0>
+<matplotlib.image.AxesImage object at 0x7822c0ea2450>
 
 ```
 ```
@@ -182,7 +182,7 @@ img_vgg16_spacing_layers_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_003.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d88dc702390>
+<matplotlib.image.AxesImage object at 0x78227c275fa0>
 
 ```
 ```
@@ -210,7 +210,7 @@ img_vgg16_type_ignore_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_004.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d88dc35dc10>
+<matplotlib.image.AxesImage object at 0x78239ff86360>
 
 ```
 ```
@@ -234,7 +234,7 @@ img_vgg16_color_map_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_005.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d88dc267860>
+<matplotlib.image.AxesImage object at 0x782220780350>
 
 ```
 ```
@@ -258,7 +258,7 @@ img_vgg16_flat_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_006.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d898856e2a0>
+<matplotlib.image.AxesImage object at 0x78227c237f20>
 
 ```
 ```
@@ -283,13 +283,13 @@ img_vgg16_scaling_show_dimension
 ```
 ![plot dl cnn custom vgg16 show dimension](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_007.png)
 ```
-<matplotlib.image.AxesImage object at 0x7d88fc0a8410>
+<matplotlib.image.AxesImage object at 0x78227c24f5f0>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 23.501 seconds)
+****Total running time of the script:**** (0 minutes 22.894 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.ipynb)
 
