@@ -303,9 +303,19 @@
      * automatically zooms the viewport on focus — causing jarring layout shifts
      * every time the user taps the chat input.
      * Setting font-size to 1rem (16px) on mobile ONLY prevents the zoom while
-     * preserving the 0.875rem desktop size.                                     */
+     * preserving the 0.875rem desktop size.
+     *
+     * !important is required here: this rule and the later, unconditional
+     * `.ai-assistant-panel-input { font-size: 0.875rem; ... }` rule (further
+     * down in this file, outside any media query) have IDENTICAL specificity
+     * (one class each). CSS breaks specificity ties by source order, not by
+     * which @media condition is active — so without !important, that later
+     * rule silently won on mobile too, this fix never actually applied, and
+     * the input stayed at 14px. That's the actual root cause of the reported
+     * "width increase on tapping the input": Safari's auto-zoom kicking in
+     * on every focus because the font-size never really reached 16px.      */
     .ai-assistant-panel-input {
-        font-size: 1rem;
+        font-size: 1rem !important;
     }
 }
 
