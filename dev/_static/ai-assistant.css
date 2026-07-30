@@ -370,6 +370,14 @@
      * the panel header.  The panel-body child manages its own scroll via
      * overflow-y:auto and is unaffected by this declaration.              */
     overflow: visible;
+    /* Mobile width-overflow fix: this rule has a 1px solid border but no
+     * box-sizing, so it defaulted to content-box — width was CONTENT width,
+     * with the border added on top. Invisible on desktop, where max-width:
+     * calc(100vw - 1rem) has ~1rem of slack to absorb the extra 2px, but at
+     * the ≤480px breakpoint below (width:100%; max-width:100%; zero slack)
+     * the panel actually rendered at 100% + 2px, overflowing the viewport
+     * horizontally. border-box makes width/max-width include the border. */
+    box-sizing: border-box;
     position: fixed;
     bottom: 0.3rem;
     right: 0.3rem;
