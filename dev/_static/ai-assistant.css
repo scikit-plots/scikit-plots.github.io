@@ -554,6 +554,15 @@
     overflow: visible;
 }
 
+/* Sheet-embedded copy of the header action cluster (new chat / export /
+ * minimize / maximize) — see _buildSheetToolbar() in the JS. Sits inside
+ * .ai-assistant-panel-privacy-head alongside the hamburger, title, and the
+ * sheet's own close button, so it needs a tighter gap than the main
+ * header's copy, which has the whole header row to itself. */
+.ai-assistant-panel-sheet-toolbar {
+    gap: 0.05rem;
+}
+
 .ai-assistant-panel-icon-btn {
     background: transparent;
     border: none;
@@ -2152,11 +2161,19 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.25rem;       /* breathing room between hamburger · title · close */
+    gap: 0.25rem;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid
         var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
     flex-shrink: 0;
+    /* Defensive fallback for very narrow viewports now that the sheet
+       toolbar (new chat / export / minimize / maximize) can add ~150px of
+       fixed-width chrome alongside the hamburger + close buttons — see
+       .ai-assistant-panel-sheet-toolbar below. Wraps to a second line
+       instead of overflowing if min-width:0 on the title (below) still
+       isn't enough room. */
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
 }
 .ai-assistant-panel-privacy-head strong {
     font-size: 0.95rem;
@@ -2165,6 +2182,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
        28 px side icons centres the strong automatically.  flex: 1 prevents the
        title from collapsing on very narrow panels. */
     flex: 1 1 auto;
+    /* Required for text-overflow:ellipsis to actually engage inside a flex
+       row: flex items default to min-width:auto, which floors their shrink
+       at the *unwrapped* text's natural width — overflowing the row instead
+       of truncating. min-width:0 lets it shrink below that. */
+    min-width: 0;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;

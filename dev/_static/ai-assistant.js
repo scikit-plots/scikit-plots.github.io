@@ -16895,6 +16895,16 @@ opts.jsonPayload + '\n' +
         });
 
         /**
+         * Registry of maximize/collapse button pairs beyond the main header's
+         * (maximizeBtn/collapseBtn). Populated by _buildSheetToolbar() below —
+         * each slide-over sheet gets its own independent button pair (a DOM
+         * node can't exist in two places at once), and this keeps all of them
+         * showing/hiding in sync with the single source of truth: the panel's
+         * data-maximized attribute.
+         */
+        var _extraMaxPairs = [];
+
+        /**
          * Enter or leave the maximized state.
          *
          * Sizing itself is entirely CSS-driven via the pre-existing
@@ -16904,7 +16914,9 @@ opts.jsonPayload + '\n' +
          * keys off of, clearing any inline width/height left over from a
          * manual resize-grip drag (inline styles otherwise outrank the
          * stylesheet and would keep the panel pinned to its pre-maximize
-         * size), and swapping which of maximizeBtn / collapseBtn is shown.
+         * size), and swapping which of maximizeBtn / collapseBtn is shown
+         * — for the main header AND every sheet-toolbar copy in
+         * _extraMaxPairs.
          *
          * @param {boolean} maximize  True to maximize, false to restore.
          */
@@ -16920,6 +16932,10 @@ opts.jsonPayload + '\n' +
                 panel.setAttribute('data-maximized', 'true');
                 maximizeBtn.style.display = 'none';
                 collapseBtn.style.display = '';
+                _extraMaxPairs.forEach(function (p) {
+                    p.max.style.display = 'none';
+                    p.col.style.display = '';
+                });
             } else {
                 // ── Restore ────────────────────────────────────────────────
                 panel.removeAttribute('data-maximized');
@@ -16941,6 +16957,10 @@ opts.jsonPayload + '\n' +
                 }
                 collapseBtn.style.display = 'none';
                 maximizeBtn.style.display = '';
+                _extraMaxPairs.forEach(function (p) {
+                    p.col.style.display = 'none';
+                    p.max.style.display = '';
+                });
             }
         }
 
@@ -16955,6 +16975,122 @@ opts.jsonPayload + '\n' +
         collapseBtn.addEventListener('click', function () {
             _hapticFeedback([8]);
             _setMaximized(false);
+        });
+
+        /**
+         * Build a fresh copy of the header action cluster (new chat / export
+         * / minimize / maximize-collapse) for use inside a slide-over sheet's
+         * head.
+         *
+         * Why a fresh instance per sheet instead of moving the main header's
+         * copy: a DOM node can only exist in one place at a time, and the
+         * main header sits BEHIND every open sheet — sheets are
+         * `position: absolute; inset: 0` over the whole panel (see
+         * .ai-assistant-panel-privacy in the stylesheet) — so its buttons
+         * become visually covered and unreachable while any sheet is open.
+         * Each instance here is fully independent DOM but routes to the
+         * exact same shared functions (clearConversation, minimizeAIPanel,
+         * _setMaximized) as the main header, so behavior and state stay in
+         * sync regardless of which copy was clicked. Mirrors the same
+         * "shared logic, per-context trigger" pattern _buildSheetHamburgerBtn
+         * already uses for the hamburger menu.
+         *
+         * @param {string} idSuffix  Unique suffix so element ids stay unique
+         *   per sheet (e.g. 'links', 'privacy').
+         * @returns {HTMLElement}  A `.ai-assistant-panel-header-actions`
+         *   container, ready to insert into a sheet's
+         *   `.ai-assistant-panel-privacy-head`.
+         */
+        function _buildSheetToolbar(idSuffix) {
+            var wrap = document.createElement('div');
+            wrap.className =
+                'ai-assistant-panel-header-actions ai-assistant-panel-sheet-toolbar';
+
+            var newChatBtn2 = _createIconBtn(
+                'sheet-new-chat-' + idSuffix, 'Start a new chat', ICONS.newChatCompose);
+            newChatBtn2.title = 'Start a new chat';
+            newChatBtn2.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
+            newChatBtn2.addEventListener('click', clearConversation);
+            wrap.appendChild(newChatBtn2);
+
+            var exportDropdown2 = _buildExportDropdownBtn({
+                onLinkMode: function (fmt) {
+                    if (fmt === 'json')       { _openSheet(convShareSheetJson); }
+                    else if (fmt === 'html')  { _openSheet(convShareSheetHtml); }
+                    else                      { _openSheet(convShareSheetTxt);  }
+                },
+            });
+            wrap.appendChild(exportDropdown2);
+
+            var minimizeBtn2 = _createIconBtn(
+                'sheet-minimize-' + idSuffix, 'Minimize panel', ICONS.minimize);
+            minimizeBtn2.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                minimizeAIPanel();
+            });
+            minimizeBtn2.setAttribute('aria-label',
+                'Minimize panel \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
+            minimizeBtn2.title =
+                'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
+            minimizeBtn2.addEventListener('contextmenu', function (e) {
+                if (e.shiftKey) { return; }   // Shift held — let browser menu appear.
+                e.preventDefault();
+                closeAIPanel();
+            });
+            wrap.appendChild(minimizeBtn2);
+
+            var maximizeBtn2 = _createIconBtn(
+                'sheet-maximize-' + idSuffix, 'Maximize panel', ICONS.maximize);
+            var collapseBtn2 = _createIconBtn(
+                'sheet-collapse-' + idSuffix, 'Collapse full screen', ICONS.minimizeCollapse);
+            // Match current state immediately — a sheet can be opened while
+            // the panel is already maximized, and this pair shouldn't wait
+            // for the next toggle to reflect that.
+            var alreadyMax = panel.getAttribute('data-maximized') === 'true';
+            maximizeBtn2.style.display = alreadyMax ? 'none' : '';
+            collapseBtn2.style.display = alreadyMax ? '' : 'none';
+            maximizeBtn2.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                var isMax = panel.getAttribute('data-maximized') === 'true';
+                _setMaximized(!isMax);
+            });
+            collapseBtn2.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                _setMaximized(false);
+            });
+            _extraMaxPairs.push({ max: maximizeBtn2, col: collapseBtn2 });
+            wrap.appendChild(maximizeBtn2);
+            wrap.appendChild(collapseBtn2);
+
+            return wrap;
+        }
+
+        // Inject a copy of the header action cluster (new chat / export /
+        // minimize / maximize) into every slide-over sheet's head, so those
+        // controls stay reachable while browsing any sheet. Previously they
+        // were only usable on the main page: every sheet is
+        // position:absolute;inset:0 over the whole panel (see
+        // .ai-assistant-panel-privacy in the stylesheet) and visually covers
+        // the main header underneath it while open.
+        // epSheet is intentionally excluded — it has its own DOM-removal
+        // MutationObserver teardown lifecycle (see _buildSheetHamburgerBtn's
+        // closeExtra docs above) and is safer left as-is rather than risk
+        // interfering with that path.
+        [
+            { sheet: linksSheet,          id: 'links'      },
+            { sheet: privacySheet,        id: 'privacy'    },
+            { sheet: termsSheet,          id: 'terms'      },
+            { sheet: modelSheet,          id: 'model'      },
+            { sheet: shareSheet,          id: 'share'      },
+            { sheet: convShareSheetJson,  id: 'share-json' },
+            { sheet: convShareSheetHtml,  id: 'share-html' },
+            { sheet: convShareSheetTxt,   id: 'share-txt'  }
+        ].forEach(function (entry) {
+            if (!entry.sheet) return;
+            var head = entry.sheet.querySelector('.ai-assistant-panel-privacy-head');
+            var closeBtnEl = entry.sheet.querySelector('button[id$="-close"]');
+            if (!head || !closeBtnEl) return;
+            head.insertBefore(_buildSheetToolbar(entry.id), closeBtnEl);
         });
 
         // Issue 4: Re-wire all sheet close (×) buttons to go through _closeSheet
