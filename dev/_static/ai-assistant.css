@@ -2462,8 +2462,12 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 /* ─── Progressive right-cluster overflow — per-item smooth collapse ──────────
-   JS assigns [data-overflow-hidden] to each button individually, keyed to
-   panel-width thresholds (Model 575 → Privacy 475 → Terms 350 → Share 300 px).
+   JS assigns [data-overflow-hidden] to each button individually. As of the
+   ratio/slot-based rewrite, exact px thresholds are computed from two
+   constants (_SUBBAR_BASE_PX, _SUBBAR_ITEM_SLOT_PX) rather than six
+   hand-tuned numbers — see _updateSubbarOverflow() in the JS for the
+   priority order (Model → Endpoints → Privacy → Terms → Share → Project
+   Links, lowest priority/hides first to highest/hides last) and formula.
    max-width transitions from its natural content width down to 0 so the item
    squeezes closed in place.  opacity fades in parallel so the text/icon fades
    as the element collapses — no sudden pop-in or pop-out.
@@ -2514,13 +2518,18 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 
 /* Stagger: in the fast-resize fallback (all hidden simultaneously), carriages depart
    one at a time right → left, 70 ms apart, so each departure is individually visible.
-   In normal use JS crosses one threshold at a time, so only one carriage animates
-   per resize step — the stagger acts as a graceful safety net here.
-   DOM positions: 1=Model  2=Privacy  3=Terms  4=Share  5=⋯btn */
-.ai-assistant-panel-subbar-right > button:nth-child(1)[data-overflow-hidden] { transition-delay: 210ms; } /* Model — exits last    */
-.ai-assistant-panel-subbar-right > button:nth-child(2)[data-overflow-hidden] { transition-delay: 140ms;}  /* Privacy               */
-.ai-assistant-panel-subbar-right > button:nth-child(3)[data-overflow-hidden] { transition-delay: 70ms;}   /* Terms                 */
-.ai-assistant-panel-subbar-right > button:nth-child(4)[data-overflow-hidden] { transition-delay: 0ms;  }  /* Share — exits first   */
+   In normal use JS crosses one visibleCount step at a time, so only one carriage
+   animates per resize step — the stagger acts as a graceful safety net here.
+   DOM positions (left→right): 1=Model 2=Endpoints 3=Privacy 4=Terms 5=Share
+   6=Project Links 7=⋯btn. (The previous version of this comment mislabeled
+   nth-child(2) as "Privacy" — it's actually Endpoints, which meant Endpoints
+   silently never got a stagger delay before this fix.) */
+.ai-assistant-panel-subbar-right > button:nth-child(1)[data-overflow-hidden] { transition-delay: 350ms; } /* Model         — furthest from the tunnel, departs last  */
+.ai-assistant-panel-subbar-right > button:nth-child(2)[data-overflow-hidden] { transition-delay: 280ms; } /* Endpoints                                                */
+.ai-assistant-panel-subbar-right > button:nth-child(3)[data-overflow-hidden] { transition-delay: 210ms; } /* Privacy                                                  */
+.ai-assistant-panel-subbar-right > button:nth-child(4)[data-overflow-hidden] { transition-delay: 140ms; } /* Terms                                                    */
+.ai-assistant-panel-subbar-right > button:nth-child(5)[data-overflow-hidden] { transition-delay: 70ms;  } /* Share                                                    */
+.ai-assistant-panel-subbar-right > button:nth-child(6)[data-overflow-hidden] { transition-delay: 0ms;   } /* Project Links — right at the tunnel mouth, departs first */
 
 /* Model-selection sheet — list of radio rows. */
 .ai-assistant-panel-model-list {

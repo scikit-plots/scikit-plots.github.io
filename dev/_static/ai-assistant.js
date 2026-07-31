@@ -16818,50 +16818,66 @@ opts.jsonPayload + '\n' +
         // browsers that don't support ResizeObserver (IE11, very old Safari).
         if (typeof ResizeObserver !== 'undefined') {
             /**
-             * Progressive right-cluster overflow.
+             * Progressive right-cluster overflow — ratio/slot-based.
              *
-             * Hides subbar-right items one-by-one as the panel narrows instead
-             * of collapsing the entire cluster at once.  Priority order (first
-             * to last to hide):
+             * Priority order below is LOWEST priority first (hides soonest,
+             * i.e. at the widest remaining panel width) to HIGHEST priority
+             * last (hides only once the panel is nearly as narrow as it can
+             * get): Model → Endpoints → Privacy → Terms → Share → Project
+             * Links. A new future item is simply appended to this array —
+             * it automatically becomes the new lowest-priority item with no
+             * per-item pixel tuning required, which is the whole point of
+             * computing thresholds from a formula instead of hand-picking
+             * five (now six) magic numbers.
              *
-             *   modelLink        575 px
-             *   epRightBtn       525 px
-             *   privacyLink      475 px
-             *   termsLink        350 px
-             *   shareLink        300 px
+             * The number of VISIBLE items is computed directly from the
+             * panel width using two constants instead of one hand-tuned
+             * px value per item:
              *
-             * Sets [data-overflow-hidden] on each item so CSS max-width + opacity
-             * transitions can animate the collapse.  Sets [data-overflow-visible]
-             * on the overflow button once any item is hidden so it fades in with a
-             * 60 ms delay (items start squeezing before the ⋯ button appears).
+             *   _SUBBAR_BASE_PX       — width needed for zero items (just
+             *                           the kbd-hint, ⋯ button, and padding)
+             *   _SUBBAR_ITEM_SLOT_PX  — width "spent" per additional
+             *                           visible item, applied uniformly
              *
-             * Items configured as null (feature-flagged off) are silently skipped.
+             *   visibleCount = floor((w - BASE) / SLOT), clamped to
+             *                  [0, total item count]
+             *
+             * This is an intentional approximation — real button widths
+             * vary a little with label length — traded for something that
+             * scales automatically to any number of items and is easy to
+             * reason about/adjust (two constants instead of a five-to-six
+             * entry lookup table that needs re-tuning by hand every time an
+             * item is added or removed).
+             *
+             * Sets [data-overflow-hidden] on each item so CSS max-width +
+             * opacity transitions can animate the collapse (see the
+             * "Train-carriage collapse" rules in ai-assistant.css). Sets
+             * [data-overflow-visible] on the overflow button once any item
+             * is hidden so it fades in with a 60 ms delay (items start
+             * squeezing before the ⋯ button appears).
+             *
+             * Items configured as null (feature-flagged off) are silently
+             * skipped via the Boolean filter below.
              *
              * @param {number} w - Panel content rect width in pixels.
              */
+            var _SUBBAR_ITEM_SLOT_PX = 60;   // px "spent" per visible right-cluster item
+            var _SUBBAR_BASE_PX      = 270;  // px needed for zero right-cluster items
             function _updateSubbarOverflow(w) {
-                var slots = [
-                    // Hide order: rightmost carriage departs first.
-                    // Visual order left→right: Model | Endpoints | Privacy | Terms | Share
-                    { el: modelLink,   px: 575 },   /* leftmost  — exits last   */
-                    { el: epRightBtn,  px: 525 },
-                    { el: privacyLink, px: 475 },
-                    { el: termsLink,   px: 350 },
-                    { el: shareLink,   px: 300 },   /* rightmost — exits first  */
-                ];
-                var anyHidden = false;
+                var slots = [modelLink, epRightBtn, privacyLink, termsLink, shareLink, siteBtn]
+                    .filter(Boolean);
+                var visibleCount = Math.max(0, Math.min(slots.length,
+                    Math.floor((w - _SUBBAR_BASE_PX) / _SUBBAR_ITEM_SLOT_PX)));
+                var hideCount = slots.length - visibleCount;
                 for (var si = 0; si < slots.length; si++) {
-                    var slot = slots[si];
-                    if (!slot.el) continue;
-                    if (w < slot.px) {
-                        slot.el.setAttribute('data-overflow-hidden', '');
-                        anyHidden = true;
+                    if (si < hideCount) {
+                        slots[si].setAttribute('data-overflow-hidden', '');
                     } else {
-                        slot.el.removeAttribute('data-overflow-hidden');
+                        slots[si].removeAttribute('data-overflow-hidden');
                     }
                 }
                 // Overflow button: fade in as soon as any item is hidden.
-                if (anyHidden) {
+                if (hideCount > 0) {
                     rightOverflowBtn.setAttribute('data-overflow-visible', '');
                 } else {
                     rightOverflowBtn.removeAttribute('data-overflow-visible');
