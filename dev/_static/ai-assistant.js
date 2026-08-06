@@ -1993,13 +1993,20 @@
     //
     // Architecture:
     //   * A small capability registry describes each export method.
+    //   * The direct-PDF target is resolved at runtime. An explicit
+    //     cfg.pdfExportUrl always wins; otherwise Sphinx's URL_ROOT is used to
+    //     discover the generated PDF under the current version's _downloads/
+    //     directory. This lets a static ai-assistant.js update expose the toggle
+    //     without requiring every already-rendered HTML page to receive a new
+    //     window.AI_ASSISTANT_CONFIG value.
+    //   * Pages under user_guide/ select scikit-plots-user-guide.pdf; every
+    //     other page selects scikit-plots.pdf. The current /dev/, /stable/, or
+    //     versioned root is preserved automatically.
     //   * The export action and method switch are sibling buttons inside one
     //     visual row. This avoids invalid nested interactive controls while
     //     preserving the appearance of a single menu item.
     //   * The left action reuses createMenuItem(), so its content structure
     //     remains aligned with Copy page, Markdown, provider, and MCP entries.
-    //   * The compact right switch reuses the established mic toggle track/thumb
-    //     vocabulary and is rendered only when both methods are available.
     //   * Selection, icon, description, ARIA state, and persistence are updated
     //     through the single _syncPdfModeUI() path.
 
@@ -2019,6 +2026,223 @@
             requiresUrl: false
         }
     };
+
+    // Ordered first-match registry. Keep the document-selection policy separate
+    // from DOM construction so another generated PDF can be added later with one
+    // small entry instead of another branch inside createPdfSection().
+    var _PDF_AUTO_DOCUMENTS = [
+        {
+            key: 'user-guide',
+            file: 'scikit-plots-user-guide.pdf',
+            label: 'User Guide PDF',
+            matches: function (context) {
+                return /(^|\/)user_guide(?:\/|$)/.test(context.pageName);
+            }
+        },
+        {
+            key: 'documentation',
+            file: 'scikit-plots.pdf',
+            label: 'documentation PDF',
+            matches: function () { return true; }
+        }
+    ];
+
+    function _getSphinxDocsRootUrl() {
+        var options = window.DOCUMENTATION_OPTIONS || {};
+        var urlRoot = typeof options.URL_ROOT === 'string' ? options.URL_ROOT.trim() : '';
+
+        try {
+            if (urlRoot) return new URL(urlRoot, document.baseURI).href;
+
+            // Fallback for pages where documentation_options.js is unavailable:
+            // ai-assistant.js itself lives in <docs-root>/_static/.
+            var staticPath = String(getStaticPath() || '').replace(/\/?$/, '/');
+            var staticUrl = new URL(staticPath, document.baseURI);
+            return new URL('../', staticUrl).href;
+        } catch (_e) {
+            return '';
+        }
+    }
+
+    function _getCurrentSphinxPageName(docsRootUrl) {
+        var options = window.DOCUMENTATION_OPTIONS || {};
+        var configured = typeof options.pagename === 'string'
+            ? options.pagename.trim().replace(/^\/+|\/+$/g, '')
+            : '';
+        if (configured) return configured;
+
+        try {
+            var current = new URL(window.location.href);
+            var root = new URL(docsRootUrl || current.origin + '/');
+            var currentPath = decodeURIComponent(current.pathname || '');
+            var rootPath = decodeURIComponent(root.pathname || '/');
+
+            if (currentPath.indexOf(rootPath) === 0) {
+                currentPath = currentPath.slice(rootPath.length);
+            }
+
+            currentPath = currentPath
+                .replace(/^\/+/, '')
+                .replace(/\/index\.html?$/i, '')
+                .replace(/\.html?$/i, '')
+                .replace(/\/+$/, '');
+
+            return currentPath || 'index';
+        } catch (_e) {
+            return 'index';
+        }
+    }
+
+    function _getCurrentPageHeading() {
+        var heading = document.querySelector('main h1, article h1, h1');
+        var value = heading && heading.textContent
+            ? heading.textContent
+            : String(document.title || '').split(/\s+[—-]\s+/)[0];
+        return String(value || '')
+            .replace(/\s*[¶#]\s*$/, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function _selectAutoPdfDocument(context) {
+        for (var i = 0; i < _PDF_AUTO_DOCUMENTS.length; i++) {
+            var candidate = _PDF_AUTO_DOCUMENTS[i];
+            try {
+                if (candidate.matches(context)) return candidate;
+            } catch (_e) {}
+        }
+        return null;
+    }
+
+    /**
+     * Optional exact-page hook for future build tooling.
+     *
+     * A separate generated script may define:
+     *
+     *   window.AI_ASSISTANT_PDF_PAGE_MAP = {
+     *     'user_guide/logging': 42
+     *   };
+     *
+     * Numeric values become standard #page=N PDF fragments. No map is required
+     * for the normal runtime-discovery path, and arbitrary fragments/URLs are
+     * deliberately rejected.
+     */
+    function _applyPdfPageMap(url, pageName) {
+        var map = window.AI_ASSISTANT_PDF_PAGE_MAP;
+        if (!map || typeof map !== 'object' || !Object.prototype.hasOwnProperty.call(map, pageName)) {
+            return { url: url, exactPage: false };
+        }
+
+        var page = Number(map[pageName]);
+        if (!Number.isInteger(page) || page < 1 || page > 100000) {
+            return { url: url, exactPage: false };
+        }
+
+        try {
+            var target = new URL(url, document.baseURI);
+            target.hash = 'page=' + page;
+            return { url: target.href, exactPage: true };
+        } catch (_e) {
+            return { url: url, exactPage: false };
+        }
+    }
+
+    function _expandConfiguredPdfUrl(rawUrl, context) {
+        // Backward-compatible support for the placeholders documented in
+        // _example_conf.py. Values come from the current Sphinx page, not user
+        // input, and are URI-encoded only where they represent one component.
+        return String(rawUrl || '')
+            .replace(/\{(?:pagename|docname)\}/g, context.pageName)
+            .replace(/\{title\}/g, encodeURIComponent(context.pageTitle));
+    }
+
+    /**
+     * Resolve the effective prepared-PDF target.
+     *
+     * Priority:
+     *   P0 explicit cfg.pdfExportUrl
+     *   P1 runtime Sphinx discovery under <URL_ROOT>/_downloads/
+     *   P2 no URL capability (print-only)
+     *
+     * cfg.pdfAutoDiscover=false is an optional JS-only escape hatch. Also, when
+     * pdfUrlModeToggle is explicitly false and no URL is configured, preserve
+     * the historical print-only contract instead of silently changing it.
+     */
+    function _resolvePdfTarget(cfg) {
+        cfg = cfg || _cfg();
+        var docsRootUrl = _getSphinxDocsRootUrl();
+        var context = {
+            docsRootUrl: docsRootUrl,
+            pageName: _getCurrentSphinxPageName(docsRootUrl),
+            pageTitle: _getCurrentPageHeading()
+        };
+        var explicit = typeof cfg.pdfExportUrl === 'string'
+            ? cfg.pdfExportUrl.trim()
+            : '';
+
+        if (explicit) {
+            var configuredUrl = _expandConfiguredPdfUrl(explicit, context);
+            var configuredLocation = _applyPdfPageMap(configuredUrl, context.pageName);
+            return {
+                url: configuredLocation.url,
+                source: 'config',
+                documentKey: 'configured',
+                documentLabel: 'prepared PDF',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: configuredLocation.exactPage
+            };
+        }
+
+        if (cfg.pdfAutoDiscover === false || cfg.pdfUrlModeToggle === false || !docsRootUrl) {
+            return {
+                url: '',
+                source: 'none',
+                documentKey: '',
+                documentLabel: '',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: false
+            };
+        }
+
+        var documentDef = _selectAutoPdfDocument(context);
+        if (!documentDef) {
+            return {
+                url: '',
+                source: 'none',
+                documentKey: '',
+                documentLabel: '',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: false
+            };
+        }
+
+        try {
+            var autoUrl = new URL('_downloads/' + documentDef.file, docsRootUrl).href;
+            var autoLocation = _applyPdfPageMap(autoUrl, context.pageName);
+            return {
+                url: autoLocation.url,
+                source: 'auto',
+                documentKey: documentDef.key,
+                documentLabel: documentDef.label,
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: autoLocation.exactPage
+            };
+        } catch (_e) {
+            return {
+                url: '',
+                source: 'none',
+                documentKey: '',
+                documentLabel: '',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: false
+            };
+        }
+    }
 
     function _isPdfModeAvailable(mode, pdfUrl) {
         var def = _PDF_MODE_DEFS[mode];
@@ -2041,15 +2265,36 @@
         return staticPath.replace(/\/$/, '') + '/' + def.iconFile;
     }
 
-    function _pdfSwitchAccessibleLabel(mode) {
+    function _pdfSwitchAccessibleLabel(mode, target) {
+        var directLabel = target && target.documentLabel
+            ? target.documentLabel
+            : 'prepared PDF';
         return mode === 'url'
-            ? 'PDF export method: prepared PDF. Switch to print and save.'
-            : 'PDF export method: print and save. Switch to prepared PDF.';
+            ? 'PDF export method: ' + directLabel + '. Switch to print and save.'
+            : 'PDF export method: print and save. Switch to ' + directLabel + '.';
+    }
+
+    function _pdfModeDescription(mode, pdfUrl, target) {
+        var normalized = _normalizePdfMode(mode, pdfUrl);
+        if (normalized !== 'url') return _PDF_MODE_DEFS.print.description;
+
+        target = target || _resolvePdfTarget(_cfg());
+        if (target.exactPage && target.pageTitle) {
+            return 'Open the ' + target.documentLabel + ' at “' + target.pageTitle + '”.';
+        }
+        if (target.documentKey === 'user-guide') {
+            return 'Open the User Guide PDF for this section in a new tab.';
+        }
+        if (target.documentKey === 'documentation') {
+            return 'Open the complete documentation PDF in a new tab.';
+        }
+        return _PDF_MODE_DEFS.url.description;
     }
 
     function createPdfSection(staticPath, cfg) {
         cfg = cfg || {};
-        var pdfUrl     = (cfg.pdfExportUrl || '').trim();
+        var target     = _resolvePdfTarget(cfg);
+        var pdfUrl     = target.url;
         var showToggle = cfg.pdfUrlModeToggle !== false;
         var available  = _getAvailablePdfModes(pdfUrl);
 
@@ -2057,16 +2302,31 @@
         try { savedMode = sessionStorage.getItem(_PDF_MODE_KEY); } catch (_e) {}
         var initialMode = _normalizePdfMode(savedMode, pdfUrl);
         var initialDef  = _PDF_MODE_DEFS[initialMode];
-        var hasSwitch   = showToggle && available.length > 1;
+        // Toggle visibility vs. interactivity are two separate questions:
+        //   • hasSwitch     — is the toggle rendered at all? Whenever the site
+        //                     has not explicitly set pdfUrlModeToggle=false, the
+        //                     toggle is ALWAYS shown so the control is
+        //                     discoverable and the row layout is stable across
+        //                     pages, not appearing only where a PDF exists.
+        //   • switchEnabled — is it interactive? Only when a second mode (a
+        //                     prepared-PDF URL) actually exists for this page.
+        //                     In print-only mode the toggle is shown DISABLED:
+        //                     visible, pinned to Print, and not clickable.
+        var hasSwitch     = showToggle;
+        var switchEnabled = showToggle && available.length > 1;
 
         var section = document.createElement('div');
         section.className = 'ai-assistant-pdf-section';
         section.dataset.pdfMode = initialMode;
         section.dataset.pdfMethodCount = String(available.length);
         section.dataset.pdfHasToggle = hasSwitch ? 'true' : 'false';
-        // Internal component state. Keeping icon sources on the section avoids
-        // re-running static-path discovery during every toggle operation.
+        section.dataset.pdfToggleEnabled = switchEnabled ? 'true' : 'false';
+        section.dataset.pdfUrlSource = target.source;
+        section.dataset.pdfDocument = target.documentKey;
+        // Internal component state. Keeping resolved target/static sources on
+        // the section avoids repeating URL-root discovery during every toggle.
         section._pdfStaticPath = staticPath;
+        section._pdfTarget = target;
 
         var row = document.createElement('div');
         row.className = 'ai-assistant-pdf-row';
@@ -2076,7 +2336,7 @@
         var btn = createMenuItem(
             'pdf-export',
             'Export as PDF',
-            initialDef.description,
+            _pdfModeDescription(initialMode, pdfUrl, target),
             _pdfIconSource(staticPath, initialMode)
         );
         btn.classList.add('ai-assistant-pdf-action');
@@ -2101,8 +2361,24 @@
             modeSwitch.type = 'button';
             modeSwitch.setAttribute('role', 'menuitemcheckbox');
             modeSwitch.setAttribute('aria-checked', initialMode === 'print' ? 'true' : 'false');
-            modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(initialMode));
-            modeSwitch.title = _pdfSwitchAccessibleLabel(initialMode);
+
+            if (!switchEnabled) {
+                // Print-only: visible but inert. Pinned to Print, marked disabled
+                // for pointer + assistive tech, and labelled so the disabled
+                // state is understandable rather than mysterious.
+                var _pdfDisabledLabel =
+                    'No prepared PDF is available for this page \u2014 Print & save only.';
+                modeSwitch.disabled = true;
+                modeSwitch.setAttribute('aria-disabled', 'true');
+                modeSwitch.setAttribute('tabindex', '-1');
+                modeSwitch.dataset.pdfDisabled = 'true';
+                modeSwitch.classList.add('ai-assistant-pdf-mode-switch--disabled');
+                modeSwitch.setAttribute('aria-label', _pdfDisabledLabel);
+                modeSwitch.title = _pdfDisabledLabel;
+            } else {
+                modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(initialMode, target));
+                modeSwitch.title = _pdfSwitchAccessibleLabel(initialMode, target);
+            }
 
             var modeTrack = document.createElement('span');
             modeTrack.className = 'ai-assistant-mic-toggle-track ai-assistant-pdf-toggle-track';
@@ -2119,38 +2395,40 @@
             modeSwitch.appendChild(modeTrack);
             modeSwitch.appendChild(modeText);
 
-            // Keep focus on the compact switch while preventing the surrounding
-            // dropdown from treating pointer-down as an outside interaction.
-            modeSwitch.addEventListener('mousedown', function (event) {
-                event.stopPropagation();
-            });
-            modeSwitch.addEventListener('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                var current = _getPdfMode();
-                _setPdfMode(current === 'url' ? 'print' : 'url');
-            });
+            // Interaction is wired only when a real second mode exists. In
+            // print-only mode the switch is inert (see the disabled branch
+            // above), so no handlers are attached and clicks cannot change mode.
+            if (switchEnabled) {
+                // Keep focus on the compact switch while preventing the
+                // surrounding dropdown from treating pointer-down as an outside
+                // interaction.
+                modeSwitch.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
+                });
+                modeSwitch.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    var current = _getPdfMode();
+                    _setPdfMode(current === 'url' ? 'print' : 'url');
+                });
+            }
 
             row.appendChild(modeSwitch);
         }
 
         section.appendChild(row);
-        _syncPdfModeUI(initialMode, pdfUrl, section);
+        _syncPdfModeUI(initialMode, pdfUrl, section, target);
         return section;
     }
 
-    function _pdfModeDescription(mode, pdfUrl) {
-        var normalized = _normalizePdfMode(mode, pdfUrl);
-        return _PDF_MODE_DEFS[normalized].description;
-    }
-
-    function _syncPdfModeUI(mode, pdfUrl, root) {
+    function _syncPdfModeUI(mode, pdfUrl, root, target) {
         var normalized = _normalizePdfMode(mode, pdfUrl);
         var def = _PDF_MODE_DEFS[normalized];
 
         // `root` is used during construction, before the section is attached to
         // document. Runtime updates omit it and resolve the live section.
         var section = root || document.querySelector('.ai-assistant-pdf-section');
+        target = target || (section && section._pdfTarget) || _resolvePdfTarget(_cfg());
         var exportBtn = section
             ? section.querySelector('#ai-assistant-pdf-export')
             : document.getElementById('ai-assistant-pdf-export');
@@ -2176,18 +2454,18 @@
             exportBtn.setAttribute(
                 'aria-label',
                 normalized === 'url'
-                    ? 'Open the prepared PDF in a new tab'
+                    ? 'Open the ' + (target.documentLabel || 'prepared PDF') + ' in a new tab'
                     : 'Open the browser print dialog to save as PDF'
             );
         }
-        if (descEl) descEl.textContent = def.description;
+        if (descEl) descEl.textContent = _pdfModeDescription(normalized, pdfUrl, target);
         if (iconEl) iconEl.src = _pdfIconSource(staticPath, normalized);
 
-        if (modeSwitch) {
+        if (modeSwitch && modeSwitch.dataset.pdfDisabled !== 'true') {
             modeSwitch.dataset.pdfMode = normalized;
             modeSwitch.setAttribute('aria-checked', normalized === 'print' ? 'true' : 'false');
-            modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(normalized));
-            modeSwitch.title = _pdfSwitchAccessibleLabel(normalized);
+            modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(normalized, target));
+            modeSwitch.title = _pdfSwitchAccessibleLabel(normalized, target);
         }
         if (modeText) modeText.textContent = def.label;
 
@@ -2195,18 +2473,18 @@
     }
 
     function _setPdfMode(mode) {
-        var pdfUrl = (_cfg().pdfExportUrl || '').trim();
-        var normalized = _normalizePdfMode(mode, pdfUrl);
+        var target = _resolvePdfTarget(_cfg());
+        var normalized = _normalizePdfMode(mode, target.url);
         try { sessionStorage.setItem(_PDF_MODE_KEY, normalized); } catch (_e) {}
-        _syncPdfModeUI(normalized, pdfUrl);
+        _syncPdfModeUI(normalized, target.url, null, target);
     }
 
     function _getPdfMode() {
-        var pdfUrl = (_cfg().pdfExportUrl || '').trim();
+        var target = _resolvePdfTarget(_cfg());
         try {
-            return _normalizePdfMode(sessionStorage.getItem(_PDF_MODE_KEY), pdfUrl);
+            return _normalizePdfMode(sessionStorage.getItem(_PDF_MODE_KEY), target.url);
         } catch (_e) {
-            return _normalizePdfMode(null, pdfUrl);
+            return _normalizePdfMode(null, target.url);
         }
     }
 
@@ -2604,12 +2882,15 @@
     }
 
     function handlePdfExport() {
-        var cfg    = _cfg();
-        var pdfUrl = (cfg.pdfExportUrl || '').trim();
+        var target = _resolvePdfTarget(_cfg());
         var mode   = _getPdfMode();
         closeDropdown();
-        if (mode === 'url' && pdfUrl) {
-            window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+        // Defence-in-depth: only ever open http(s)/root-relative targets in a
+        // new tab. The URL is config-sourced, but validating the scheme here
+        // ensures a misconfigured or poisoned value can never become a
+        // javascript:/data: window.open. On an unsafe value, fall back to print.
+        if (mode === 'url' && target.url && _isSafeHref(target.url)) {
+            window.open(target.url, '_blank', 'noopener,noreferrer');
             return;
         }
         _printWithHeader();

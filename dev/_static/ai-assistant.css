@@ -1294,6 +1294,24 @@
     transform: translateX(16px);
 }
 
+/* Print-only mode: the toggle stays visible for a stable, discoverable layout
+ * but is inert — dimmed and non-interactive, pinned to Print. Matches the
+ * disabled treatment used elsewhere (inputs, footer buttons). */
+.ai-assistant-pdf-mode-switch:disabled,
+.ai-assistant-pdf-mode-switch--disabled,
+.ai-assistant-pdf-mode-switch[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.ai-assistant-pdf-mode-switch:disabled:hover,
+.ai-assistant-pdf-mode-switch--disabled:hover,
+.ai-assistant-pdf-mode-switch[aria-disabled="true"]:hover {
+    /* Suppress the interactive hover affordance while disabled. */
+    background: transparent;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
+}
+
 /* Accessible current-mode text; visual feedback comes from the moving thumb,
  * changing leading icon, description, and native tooltip. */
 .ai-assistant-pdf-toggle-text {
@@ -2605,8 +2623,10 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     height: 0.9rem;
 }
 .ai-assistant-panel-model-link-label {
-    max-width: 7.5rem;  /* by model name 12ch */
-    min-width: 7rem;  /* by model name */
+    /* by model name 12ch */
+    /* max-width: 7.5rem; */
+    /* by model name */
+    /* min-width: 7rem; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -9287,8 +9307,8 @@ a.ai-assistant-panel-ep-resolved-url:focus-visible {
 
 /* Active profile name label — same truncation behaviour as model-link-label. */
 .ai-assistant-panel-ep-btn-label {
-    max-width: 11ch;
-    min-width: 0;
+    /* max-width: 13ch; */
+    /* min-width: 0; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
