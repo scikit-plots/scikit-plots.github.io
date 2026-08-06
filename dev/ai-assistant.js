@@ -899,6 +899,20 @@
         // it's used was judged more valuable than a one-off variant: ask if
         // you want a visually distinct mark for "& Responsibility" instead.
         privacyResponsibility: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        // Party popper + confetti — hand-authored (not traced from any icon
+        // font) in this file's own stroke convention so it themes the same
+        // way as every other 24x24 glyph here. Reserved for the "I'm Feeling
+        // Lucky" entry point (see _renderWelcome). Confetti dots are filled
+        // dots on the same stroke path, matching the mixed fill+stroke style
+        // already used by e.g. `chat`'s dot eyes above.
+        celebration: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5 9 8l7 4.5-12.5 8Z"/><path d="M9 8l1.3-3.5"/><path d="M14 3.5 15 5.5"/><path d="M19 6.5l2 1"/><circle cx="20" cy="11.5" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="4" r="1" fill="currentColor" stroke="none"/><circle cx="21.5" cy="16" r="1" fill="currentColor" stroke="none"/></svg>',
+        // Right-aligned "AI-suggested" sparkle badge — reuses sparkleAlt's
+        // exact path (see the consolidation rationale on termsOfService /
+        // privacyResponsibility above) rather than a near-duplicate glyph.
+        // sparkleAlt was already this two-tier star, just unwired; this alias
+        // just gives it a name matching where it's used (small badge to the
+        // right of a menu item title, e.g. "I'm Feeling Lucky").
+        get menuSparkleRight() { return ICONS.sparkleAlt; },
     };
 
     // Remembers whether the hosted dancer GIF has ever failed to load, so a
@@ -2274,6 +2288,16 @@
             : 'PDF export method: print and save. Switch to ' + directLabel + '.';
     }
 
+    /**
+     * Visible title text for the left-hand action button, kept in step with
+     * the toggle so the row always reads correctly on its own:
+     *   toggle OFF (print mode) → "Print as PDF"
+     *   toggle ON  (url mode)   → "Export as PDF"
+     */
+    function _pdfActionLabel(mode) {
+        return mode === 'url' ? 'Export as PDF' : 'Print as PDF';
+    }
+
     function _pdfModeDescription(mode, pdfUrl, target) {
         var normalized = _normalizePdfMode(mode, pdfUrl);
         if (normalized !== 'url') return _PDF_MODE_DEFS.print.description;
@@ -2302,13 +2326,25 @@
         try { savedMode = sessionStorage.getItem(_PDF_MODE_KEY); } catch (_e) {}
         var initialMode = _normalizePdfMode(savedMode, pdfUrl);
         var initialDef  = _PDF_MODE_DEFS[initialMode];
-        var hasSwitch   = showToggle && available.length > 1;
+        // Toggle visibility vs. interactivity are two separate questions:
+        //   • hasSwitch     — is the toggle rendered at all? Whenever the site
+        //                     has not explicitly set pdfUrlModeToggle=false, the
+        //                     toggle is ALWAYS shown so the control is
+        //                     discoverable and the row layout is stable across
+        //                     pages, not appearing only where a PDF exists.
+        //   • switchEnabled — is it interactive? Only when a second mode (a
+        //                     prepared-PDF URL) actually exists for this page.
+        //                     In print-only mode the toggle is shown DISABLED:
+        //                     visible, pinned to Print, and not clickable.
+        var hasSwitch     = showToggle;
+        var switchEnabled = showToggle && available.length > 1;
 
         var section = document.createElement('div');
         section.className = 'ai-assistant-pdf-section';
         section.dataset.pdfMode = initialMode;
         section.dataset.pdfMethodCount = String(available.length);
         section.dataset.pdfHasToggle = hasSwitch ? 'true' : 'false';
+        section.dataset.pdfToggleEnabled = switchEnabled ? 'true' : 'false';
         section.dataset.pdfUrlSource = target.source;
         section.dataset.pdfDocument = target.documentKey;
         // Internal component state. Keeping resolved target/static sources on
@@ -2319,11 +2355,11 @@
         var row = document.createElement('div');
         row.className = 'ai-assistant-pdf-row';
         row.setAttribute('role', 'group');
-        row.setAttribute('aria-label', 'Export as PDF');
+        row.setAttribute('aria-label', 'PDF export');
 
         var btn = createMenuItem(
             'pdf-export',
-            'Export as PDF',
+            _pdfActionLabel(initialMode),
             _pdfModeDescription(initialMode, pdfUrl, target),
             _pdfIconSource(staticPath, initialMode)
         );
@@ -2348,9 +2384,25 @@
             modeSwitch.id = 'ai-assistant-pdf-toggle';
             modeSwitch.type = 'button';
             modeSwitch.setAttribute('role', 'menuitemcheckbox');
-            modeSwitch.setAttribute('aria-checked', initialMode === 'print' ? 'true' : 'false');
-            modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(initialMode, target));
-            modeSwitch.title = _pdfSwitchAccessibleLabel(initialMode, target);
+            modeSwitch.setAttribute('aria-checked', initialMode === 'url' ? 'true' : 'false');
+
+            if (!switchEnabled) {
+                // Print-only: visible but inert. Pinned to Print, marked disabled
+                // for pointer + assistive tech, and labelled so the disabled
+                // state is understandable rather than mysterious.
+                var _pdfDisabledLabel =
+                    'No prepared PDF is available for this page \u2014 Print & save only.';
+                modeSwitch.disabled = true;
+                modeSwitch.setAttribute('aria-disabled', 'true');
+                modeSwitch.setAttribute('tabindex', '-1');
+                modeSwitch.dataset.pdfDisabled = 'true';
+                modeSwitch.classList.add('ai-assistant-pdf-mode-switch--disabled');
+                modeSwitch.setAttribute('aria-label', _pdfDisabledLabel);
+                modeSwitch.title = _pdfDisabledLabel;
+            } else {
+                modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(initialMode, target));
+                modeSwitch.title = _pdfSwitchAccessibleLabel(initialMode, target);
+            }
 
             var modeTrack = document.createElement('span');
             modeTrack.className = 'ai-assistant-mic-toggle-track ai-assistant-pdf-toggle-track';
@@ -2367,17 +2419,23 @@
             modeSwitch.appendChild(modeTrack);
             modeSwitch.appendChild(modeText);
 
-            // Keep focus on the compact switch while preventing the surrounding
-            // dropdown from treating pointer-down as an outside interaction.
-            modeSwitch.addEventListener('mousedown', function (event) {
-                event.stopPropagation();
-            });
-            modeSwitch.addEventListener('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                var current = _getPdfMode();
-                _setPdfMode(current === 'url' ? 'print' : 'url');
-            });
+            // Interaction is wired only when a real second mode exists. In
+            // print-only mode the switch is inert (see the disabled branch
+            // above), so no handlers are attached and clicks cannot change mode.
+            if (switchEnabled) {
+                // Keep focus on the compact switch while preventing the
+                // surrounding dropdown from treating pointer-down as an outside
+                // interaction.
+                modeSwitch.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
+                });
+                modeSwitch.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    var current = _getPdfMode();
+                    _setPdfMode(current === 'url' ? 'print' : 'url');
+                });
+            }
 
             row.appendChild(modeSwitch);
         }
@@ -2404,6 +2462,9 @@
         var iconEl = exportBtn
             ? exportBtn.querySelector('.ai-assistant-menu-icon')
             : null;
+        var titleEl = exportBtn
+            ? exportBtn.querySelector('.ai-assistant-menu-item-title-text')
+            : null;
         var modeSwitch = section
             ? section.querySelector('#ai-assistant-pdf-toggle')
             : document.getElementById('ai-assistant-pdf-toggle');
@@ -2426,10 +2487,11 @@
         }
         if (descEl) descEl.textContent = _pdfModeDescription(normalized, pdfUrl, target);
         if (iconEl) iconEl.src = _pdfIconSource(staticPath, normalized);
+        if (titleEl) titleEl.textContent = _pdfActionLabel(normalized);
 
-        if (modeSwitch) {
+        if (modeSwitch && modeSwitch.dataset.pdfDisabled !== 'true') {
             modeSwitch.dataset.pdfMode = normalized;
-            modeSwitch.setAttribute('aria-checked', normalized === 'print' ? 'true' : 'false');
+            modeSwitch.setAttribute('aria-checked', normalized === 'url' ? 'true' : 'false');
             modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(normalized, target));
             modeSwitch.title = _pdfSwitchAccessibleLabel(normalized, target);
         }
@@ -2476,6 +2538,7 @@
         icon.alt = '';
 
         var label = document.createElement('span');
+        label.className = 'ai-assistant-menu-item-title-text';
         label.textContent = text;
 
         titleRow.appendChild(icon);
@@ -2851,7 +2914,11 @@
         var target = _resolvePdfTarget(_cfg());
         var mode   = _getPdfMode();
         closeDropdown();
-        if (mode === 'url' && target.url) {
+        // Defence-in-depth: only ever open http(s)/root-relative targets in a
+        // new tab. The URL is config-sourced, but validating the scheme here
+        // ensures a misconfigured or poisoned value can never become a
+        // javascript:/data: window.open. On an unsafe value, fall back to print.
+        if (mode === 'url' && target.url && _isSafeHref(target.url)) {
             window.open(target.url, '_blank', 'noopener,noreferrer');
             return;
         }
@@ -7174,6 +7241,368 @@ opts.jsonPayload + '\n' +
         return wrapper;
     }
 
+    // ── Lucky picker ("I'm Feeling Lucky") ──────────────────────────────────
+    //
+    // A self-contained popover — same shape as _buildExportDropdownBtn: one
+    // trigger button + one floating panel, each with their own open/close,
+    // outside-click, and focus handling. Deliberately NOT wired into
+    // createAIPanel's sheet system (_openSheet/_closeSheet/the Escape-key
+    // sheet array): _renderWelcome also runs from clearConversation(), which
+    // has no access to that closure, and every input this feature needs
+    // (cfg, page DOM, sessionStorage) is already reachable from module scope.
+    // Being self-contained also means it survives clearConversation()'s
+    // `body.innerHTML = ''` + rebuild for free, same as the suggestion chips.
+    //
+    // Extensibility: add a new question source by appending one entry to
+    // _LUCKY_SOURCES below — nothing else needs to change. Each source is an
+    // independent checkbox the user can combine with any other; `generate()`
+    // returns zero or more candidate question strings for the current page.
+
+    /** sessionStorage keys — mirrors the _PDF_MODE_KEY persistence pattern. */
+    var _LUCKY_SOURCES_KEY = 'ai-assistant-lucky-sources';
+    var _LUCKY_TOPIC_KEY   = 'ai-assistant-lucky-topic';
+
+    /**
+     * Prompt templates shared by the 'surprise' and 'custom' sources.
+     * '%s' is replaced with either the page title or the user's own topic.
+     * Client-side templates, not a live model call — kept honest in the UI
+     * copy below ("Prompt templates…", not "AI-generated…").
+     */
+    var _LUCKY_TEMPLATES = [
+        'What are common mistakes people make with %s?',
+        'What edge cases should I watch out for with %s?',
+        'Explain %s like I\u2019m completely new to it.',
+        'What\u2019s a lesser-known detail about %s that\u2019s easy to miss?',
+        'How would you debug an unexpected problem involving %s?'
+    ];
+
+    function _luckyFillTemplates(subject) {
+        subject = String(subject || '').trim();
+        if (!subject) return [];
+        return _LUCKY_TEMPLATES.map(function (t) { return t.replace('%s', subject); });
+    }
+
+    /**
+     * Extract heading strings from the current page's content region, for
+     * the 'topics' source. Same content-scope convention already used by
+     * copy/print/markdown: `_cfg().content_selector || 'article'`.
+     * @returns {string[]}
+     */
+    function _luckyPageHeadings() {
+        var root = document.querySelector(_cfg().content_selector || 'article') || document.body;
+        var out = [];
+        root.querySelectorAll('h2, h3').forEach(function (h) {
+            var text = String(h.textContent || '')
+                .replace(/\s*[\u00b6#]\s*$/, '')  // strip trailing pilcrow/permalink glyph
+                .replace(/\s+/g, ' ')
+                .trim();
+            if (text) out.push(text);
+        });
+        return out;
+    }
+
+    /**
+     * Checkbox-driven question sources. Order here is display order.
+     * `generate(ctx)` must be a pure function of `ctx` and must never throw
+     * uncaught — the caller wraps each call so one bad source can't blank
+     * out the others.
+     */
+    var _LUCKY_SOURCES = [
+        {
+            id: 'quick',
+            label: 'Quick questions',
+            desc: 'Pull from this page\u2019s curated question list',
+            icon: 'chat',
+            generate: function () {
+                var cfg = _cfg();
+                return Array.isArray(cfg.panelQuickQuestions) ? cfg.panelQuickQuestions.slice() : [];
+            }
+        },
+        {
+            id: 'topics',
+            label: 'Page topics',
+            desc: 'Ask about a heading on this page',
+            icon: 'terms',
+            generate: function () {
+                return _luckyPageHeadings().map(function (h) {
+                    return 'Can you explain \u201c' + h + '\u201d?';
+                });
+            }
+        },
+        {
+            id: 'surprise',
+            label: 'Surprise me',
+            desc: 'Prompt templates built from this page\u2019s title',
+            icon: 'celebration',
+            generate: function () {
+                return _luckyFillTemplates(_getCurrentPageHeading() || document.title);
+            }
+        },
+        {
+            id: 'custom',
+            label: 'My own topic',
+            desc: 'Type a topic and build a question from it',
+            icon: 'plus',
+            requiresInput: true,
+            generate: function (ctx) {
+                return _luckyFillTemplates(ctx && ctx.customTopic);
+            }
+        }
+    ];
+
+    /**
+     * Sources to pre-check on first use — only ones that can actually
+     * produce something right now, so the first open is never empty.
+     * @returns {string[]}
+     */
+    function _luckyDefaultSources() {
+        var cfg = _cfg();
+        var out = [];
+        if (Array.isArray(cfg.panelQuickQuestions) && cfg.panelQuickQuestions.length) out.push('quick');
+        if (_luckyPageHeadings().length) out.push('topics');
+        if (out.length === 0) out.push('surprise'); // always available: falls back to document.title
+        return out;
+    }
+
+    /** @returns {string[]} persisted source ids, or the computed defaults. */
+    function _luckySelectedSources() {
+        var raw = _ssGet(_LUCKY_SOURCES_KEY);
+        if (raw) {
+            try {
+                var parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length) return parsed;
+            } catch (_e) { /* fall through to defaults */ }
+        }
+        return _luckyDefaultSources();
+    }
+
+    /** @param {HTMLElement} sourcesListEl */
+    function _luckySaveSelectedSources(sourcesListEl) {
+        var ids = Array.prototype.slice
+            .call(sourcesListEl.querySelectorAll('.ai-assistant-lucky-source-checkbox:checked'))
+            .map(function (el) { return el.dataset.sourceId; });
+        _ssSet(_LUCKY_SOURCES_KEY, JSON.stringify(ids));
+    }
+
+    /**
+     * Build the "I'm Feeling Lucky" trigger + popover.
+     * @returns {HTMLElement} wrapper containing trigger button + panel.
+     */
+    function _buildLuckyPicker() {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'ai-assistant-lucky-picker';
+
+        // ── Trigger button ──────────────────────────────────────────────────
+        var trigger = document.createElement('button');
+        trigger.className = 'ai-assistant-lucky-trigger';
+        trigger.id = 'ai-assistant-lucky-trigger';
+        trigger.type = 'button';
+        trigger.setAttribute('aria-haspopup', 'true');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-label', 'I\u2019m Feeling Lucky \u2014 get a suggested question');
+
+        var triggerIcon = document.createElement('span');
+        triggerIcon.className = 'ai-assistant-lucky-trigger-icon';
+        triggerIcon.setAttribute('aria-hidden', 'true');
+        triggerIcon.innerHTML = ICONS.celebration;
+        trigger.appendChild(triggerIcon);
+
+        var triggerLbl = document.createElement('span');
+        triggerLbl.className = 'ai-assistant-lucky-trigger-label';
+        triggerLbl.textContent = 'I\u2019m Feeling Lucky';
+        trigger.appendChild(triggerLbl);
+
+        var triggerSpark = document.createElement('span');
+        triggerSpark.className = 'ai-assistant-lucky-trigger-spark';
+        triggerSpark.setAttribute('aria-hidden', 'true');
+        triggerSpark.innerHTML = ICONS.menuSparkleRight;
+        trigger.appendChild(triggerSpark);
+
+        // ── Popover panel ────────────────────────────────────────────────────
+        var panel = document.createElement('div');
+        panel.className = 'ai-assistant-lucky-panel';
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-label', 'I\u2019m Feeling Lucky');
+        panel.setAttribute('data-open', 'false');
+
+        var sourcesList = document.createElement('div');
+        sourcesList.className = 'ai-assistant-lucky-sources';
+
+        var selected      = _luckySelectedSources();
+        var customInputRow = null;
+        var customInputEl  = null;
+
+        _LUCKY_SOURCES.forEach(function (src) {
+            var row = document.createElement('label');
+            row.className = 'ai-assistant-lucky-source-row';
+
+            var cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.className = 'ai-assistant-lucky-source-checkbox';
+            cb.checked = selected.indexOf(src.id) !== -1;
+            cb.dataset.sourceId = src.id;
+
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-lucky-source-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.innerHTML = ICONS[src.icon] || ICONS.celebration;
+
+            var text = document.createElement('span');
+            text.className = 'ai-assistant-lucky-source-text';
+            var strong = document.createElement('strong');
+            strong.textContent = src.label;
+            var small = document.createElement('span');
+            small.className = 'ai-assistant-lucky-source-desc';
+            small.textContent = src.desc;
+            text.appendChild(strong);
+            text.appendChild(small);
+
+            row.appendChild(cb);
+            row.appendChild(icon);
+            row.appendChild(text);
+            sourcesList.appendChild(row);
+
+            if (src.requiresInput) {
+                customInputRow = document.createElement('div');
+                customInputRow.className = 'ai-assistant-lucky-custom-row';
+                customInputRow.hidden = !cb.checked;
+
+                customInputEl = document.createElement('input');
+                customInputEl.type = 'text';
+                customInputEl.className = 'ai-assistant-lucky-custom-input';
+                customInputEl.placeholder = 'e.g. authentication, retries, plotting\u2026';
+                customInputEl.value = _ssGet(_LUCKY_TOPIC_KEY) || '';
+                customInputEl.maxLength = 120;
+                customInputEl.setAttribute('aria-label', src.label + ' \u2014 topic');
+                customInputEl.addEventListener('input', function () {
+                    _ssSet(_LUCKY_TOPIC_KEY, customInputEl.value);
+                    _luckyRefresh();
+                });
+
+                customInputRow.appendChild(customInputEl);
+                sourcesList.appendChild(customInputRow);
+            }
+
+            cb.addEventListener('change', function () {
+                _luckySaveSelectedSources(sourcesList);
+                if (src.requiresInput && customInputRow) {
+                    customInputRow.hidden = !cb.checked;
+                    if (cb.checked && customInputEl) customInputEl.focus();
+                }
+                _luckyRefresh();
+            });
+        });
+
+        panel.appendChild(sourcesList);
+
+        var shuffleBtn = document.createElement('button');
+        shuffleBtn.type = 'button';
+        shuffleBtn.className = 'ai-assistant-lucky-shuffle';
+        var shuffleIcon = document.createElement('span');
+        shuffleIcon.setAttribute('aria-hidden', 'true');
+        shuffleIcon.innerHTML = ICONS.menuSparkleRight;
+        shuffleBtn.appendChild(shuffleIcon);
+        var shuffleLbl = document.createElement('span');
+        shuffleLbl.textContent = 'Shuffle';
+        shuffleBtn.appendChild(shuffleLbl);
+        shuffleBtn.addEventListener('click', function () { _luckyRefresh(); });
+        panel.appendChild(shuffleBtn);
+
+        var candidatesEl = document.createElement('div');
+        candidatesEl.className = 'ai-assistant-lucky-candidates';
+        candidatesEl.setAttribute('aria-live', 'polite');
+        panel.appendChild(candidatesEl);
+
+        /** Recompute the candidate pool from checked sources and re-render. */
+        function _luckyRefresh() {
+            var checkedIds = Array.prototype.slice
+                .call(sourcesList.querySelectorAll('.ai-assistant-lucky-source-checkbox:checked'))
+                .map(function (el) { return el.dataset.sourceId; });
+
+            var ctx  = { customTopic: customInputEl ? customInputEl.value : '' };
+            var pool = [];
+            _LUCKY_SOURCES.forEach(function (src) {
+                if (checkedIds.indexOf(src.id) === -1) return;
+                try {
+                    (src.generate(ctx) || []).forEach(function (q) {
+                        q = String(q || '').trim();
+                        if (q && pool.indexOf(q) === -1) pool.push(q);
+                    });
+                } catch (_e) { /* one bad source must not blank out the others */ }
+            });
+
+            candidatesEl.innerHTML = '';
+            if (pool.length === 0) {
+                var empty = document.createElement('p');
+                empty.className = 'ai-assistant-lucky-empty';
+                empty.textContent = checkedIds.length === 0
+                    ? 'Pick at least one source above.'
+                    : 'Nothing to suggest yet \u2014 try a different source or type a topic.';
+                candidatesEl.appendChild(empty);
+                return;
+            }
+
+            // Fisher-Yates, capped at 3 — enough variety without a wall of chips.
+            for (var i = pool.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+            }
+            pool.slice(0, 3).forEach(function (q) {
+                var chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'ai-assistant-panel-chip ai-assistant-lucky-chip';
+                chip.textContent = q;
+                chip.addEventListener('click', function () {
+                    var input = document.getElementById('ai-assistant-panel-input');
+                    if (input) { input.value = q; _updateSendBtnState(); input.focus(); }
+                    _closeLucky();
+                });
+                candidatesEl.appendChild(chip);
+            });
+        }
+
+        function _closeLucky() {
+            panel.setAttribute('data-open', 'false');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+
+        // ── Toggle open/close (mirrors _buildExportDropdownBtn) ──────────────
+        trigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = panel.getAttribute('data-open') === 'true';
+            _closeLucky();
+            if (!isOpen) {
+                panel.setAttribute('data-open', 'true');
+                trigger.setAttribute('aria-expanded', 'true');
+                _luckyRefresh();
+            }
+        });
+
+        wrapper.addEventListener('focusout', function (e) {
+            if (!wrapper.contains(e.relatedTarget)) _closeLucky();
+        });
+
+        // Capture-phase outside-click close — see _buildExportDropdownBtn for
+        // why focusout alone is insufficient (non-focusable-element clicks).
+        document.addEventListener('mousedown', function (e) {
+            if (panel.getAttribute('data-open') !== 'true') return;
+            if (wrapper.contains(e.target)) return;
+            _closeLucky();
+        }, true /* capture */);
+
+        wrapper.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && panel.getAttribute('data-open') === 'true') {
+                e.stopPropagation();
+                _closeLucky();
+                trigger.focus();
+            }
+        });
+
+        wrapper.appendChild(trigger);
+        wrapper.appendChild(panel);
+        return wrapper;
+    }
+
     /**
      * Render the initial welcome + quick-suggestion chips into the body.
      * Extracted so clearConversation() can rebuild without duplicating logic.
@@ -7220,6 +7649,10 @@ opts.jsonPayload + '\n' +
         welcome.appendChild(p2);
         welcome.appendChild(p3);
         body.appendChild(welcome);
+
+        if (cfg.panelLucky !== false) {
+            body.appendChild(_buildLuckyPicker());
+        }
 
         if (quickQs.length > 0) {
             var suggestionsEl = document.createElement('div');
