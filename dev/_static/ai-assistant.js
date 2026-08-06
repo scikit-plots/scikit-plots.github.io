@@ -1991,10 +1991,11 @@
     // Architecture:
     //   * A small capability registry describes every export method.
     //   * Only currently available methods are rendered (progressive disclosure).
-    //   * The primary action always mirrors the selected method.
+    //   * The primary action is built by the shared createMenuItem() factory, so
+    //     it always matches every other dropdown item structurally and visually.
     //   * Selection state is synchronized in one place (_syncPdfModeUI).
-    //   * The method picker supports menuitemradio semantics, roving tabindex,
-    //     and arrow/Home/End keyboard navigation.
+    //   * The optional method picker supports menuitemradio semantics, roving
+    //     tabindex, and arrow/Home/End keyboard navigation.
     //
     // Adding a future method (for example a server-rendered archival PDF) only
     // requires a registry entry plus an execution branch in handlePdfExport().
@@ -2004,7 +2005,6 @@
     var _PDF_MODE_DEFS = {
         url: {
             label: 'Open PDF',
-            actionLabel: 'Open',
             statusLabel: 'Direct PDF selected',
             description: 'Open the prepared PDF instantly in a new tab.',
             meta: 'Fast · ready to share',
@@ -2012,7 +2012,6 @@
         },
         print: {
             label: 'Print & save',
-            actionLabel: 'Print',
             statusLabel: 'Print layout selected',
             description: 'Customize paper, margins, and pages before saving.',
             meta: 'Flexible · browser controls',
@@ -2174,61 +2173,25 @@
         section.dataset.pdfMode = initialMode;
         section.dataset.pdfMethodCount = String(available.length);
 
-        var btn = document.createElement('button');
-        btn.className = 'ai-assistant-menu-item ai-assistant-pdf-btn';
-        btn.id = 'ai-assistant-pdf-export';
-        btn.type = 'button';
+        // Reuse the canonical menu-item factory rather than maintaining a
+        // PDF-specific copy of the same DOM. This keeps markup, spacing, icon
+        // sizing, hover/focus behavior, and future theme changes in lockstep
+        // with Copy page, View as Markdown, AI providers, and MCP items.
+        var btn = createMenuItem(
+            'pdf-export',
+            'Export as PDF',
+            initialDef.description,
+            staticPath + '/file-pdf.svg'
+        );
         btn.dataset.pdfMode = initialMode;
-        btn.setAttribute('role', 'menuitem');
         btn.setAttribute('aria-describedby', 'ai-assistant-pdf-desc');
 
-        var btnLeading = document.createElement('span');
-        btnLeading.className = 'ai-assistant-pdf-leading';
+        var btnDesc = btn.querySelector('.ai-assistant-menu-item-description');
+        if (btnDesc) {
+            btnDesc.id = 'ai-assistant-pdf-desc';
+            btnDesc.classList.add('ai-assistant-pdf-desc');
+        }
 
-        var iconShell = document.createElement('span');
-        iconShell.className = 'ai-assistant-pdf-icon-shell';
-
-        var pdfIcon = document.createElement('img');
-        pdfIcon.src = staticPath + '/file-pdf.svg';
-        pdfIcon.className = 'ai-assistant-menu-icon';
-        pdfIcon.setAttribute('aria-hidden', 'true');
-        pdfIcon.alt = '';
-        iconShell.appendChild(pdfIcon);
-
-        var btnContent = document.createElement('span');
-        btnContent.className = 'ai-assistant-menu-item-content ai-assistant-pdf-content';
-
-        var titleRow = document.createElement('span');
-        titleRow.className = 'ai-assistant-pdf-title-row';
-
-        var pdfLabel = document.createElement('span');
-        pdfLabel.className = 'ai-assistant-pdf-title';
-        pdfLabel.textContent = 'Export as PDF';
-
-        var actionBadge = document.createElement('span');
-        actionBadge.className = 'ai-assistant-pdf-action-badge';
-        actionBadge.id = 'ai-assistant-pdf-action-badge';
-        actionBadge.textContent = initialDef.actionLabel;
-
-        titleRow.appendChild(pdfLabel);
-        titleRow.appendChild(actionBadge);
-
-        var btnDesc = document.createElement('span');
-        btnDesc.className = 'ai-assistant-menu-item-description ai-assistant-pdf-desc';
-        btnDesc.id = 'ai-assistant-pdf-desc';
-        btnDesc.textContent = initialDef.description;
-
-        btnContent.appendChild(titleRow);
-        btnContent.appendChild(btnDesc);
-        btnLeading.appendChild(iconShell);
-        btnLeading.appendChild(btnContent);
-
-        var actionArrow = document.createElement('span');
-        actionArrow.className = 'ai-assistant-pdf-action-arrow';
-        actionArrow.appendChild(_createPdfSvgIcon('arrow'));
-
-        btn.appendChild(btnLeading);
-        btn.appendChild(actionArrow);
         section.appendChild(btn);
 
         // Progressive disclosure: a chooser is useful only when there is an
@@ -2292,9 +2255,6 @@
         var descEl = section
             ? section.querySelector('#ai-assistant-pdf-desc')
             : document.getElementById('ai-assistant-pdf-desc');
-        var badgeEl = section
-            ? section.querySelector('#ai-assistant-pdf-action-badge')
-            : document.getElementById('ai-assistant-pdf-action-badge');
         var statusEl = section
             ? section.querySelector('#ai-assistant-pdf-mode-status')
             : document.getElementById('ai-assistant-pdf-mode-status');
@@ -2313,7 +2273,6 @@
             );
         }
         if (descEl) descEl.textContent = def.description;
-        if (badgeEl) badgeEl.textContent = def.actionLabel;
         if (statusEl) statusEl.textContent = def.statusLabel;
 
         Array.prototype.forEach.call(modeButtons, function (button) {
