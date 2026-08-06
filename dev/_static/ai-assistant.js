@@ -2274,6 +2274,16 @@
             : 'PDF export method: print and save. Switch to ' + directLabel + '.';
     }
 
+    /**
+     * Visible title text for the left-hand action button, kept in step with
+     * the toggle so the row always reads correctly on its own:
+     *   toggle OFF (print mode) → "Print as PDF"
+     *   toggle ON  (url mode)   → "Export as PDF"
+     */
+    function _pdfActionLabel(mode) {
+        return mode === 'url' ? 'Export as PDF' : 'Print as PDF';
+    }
+
     function _pdfModeDescription(mode, pdfUrl, target) {
         var normalized = _normalizePdfMode(mode, pdfUrl);
         if (normalized !== 'url') return _PDF_MODE_DEFS.print.description;
@@ -2331,11 +2341,11 @@
         var row = document.createElement('div');
         row.className = 'ai-assistant-pdf-row';
         row.setAttribute('role', 'group');
-        row.setAttribute('aria-label', 'Export as PDF');
+        row.setAttribute('aria-label', 'PDF export');
 
         var btn = createMenuItem(
             'pdf-export',
-            'Export as PDF',
+            _pdfActionLabel(initialMode),
             _pdfModeDescription(initialMode, pdfUrl, target),
             _pdfIconSource(staticPath, initialMode)
         );
@@ -2360,7 +2370,7 @@
             modeSwitch.id = 'ai-assistant-pdf-toggle';
             modeSwitch.type = 'button';
             modeSwitch.setAttribute('role', 'menuitemcheckbox');
-            modeSwitch.setAttribute('aria-checked', initialMode === 'print' ? 'true' : 'false');
+            modeSwitch.setAttribute('aria-checked', initialMode === 'url' ? 'true' : 'false');
 
             if (!switchEnabled) {
                 // Print-only: visible but inert. Pinned to Print, marked disabled
@@ -2438,6 +2448,9 @@
         var iconEl = exportBtn
             ? exportBtn.querySelector('.ai-assistant-menu-icon')
             : null;
+        var titleEl = exportBtn
+            ? exportBtn.querySelector('.ai-assistant-menu-item-title-text')
+            : null;
         var modeSwitch = section
             ? section.querySelector('#ai-assistant-pdf-toggle')
             : document.getElementById('ai-assistant-pdf-toggle');
@@ -2460,10 +2473,11 @@
         }
         if (descEl) descEl.textContent = _pdfModeDescription(normalized, pdfUrl, target);
         if (iconEl) iconEl.src = _pdfIconSource(staticPath, normalized);
+        if (titleEl) titleEl.textContent = _pdfActionLabel(normalized);
 
         if (modeSwitch && modeSwitch.dataset.pdfDisabled !== 'true') {
             modeSwitch.dataset.pdfMode = normalized;
-            modeSwitch.setAttribute('aria-checked', normalized === 'print' ? 'true' : 'false');
+            modeSwitch.setAttribute('aria-checked', normalized === 'url' ? 'true' : 'false');
             modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(normalized, target));
             modeSwitch.title = _pdfSwitchAccessibleLabel(normalized, target);
         }
@@ -2510,6 +2524,7 @@
         icon.alt = '';
 
         var label = document.createElement('span');
+        label.className = 'ai-assistant-menu-item-title-text';
         label.textContent = text;
 
         titleRow.appendChild(icon);

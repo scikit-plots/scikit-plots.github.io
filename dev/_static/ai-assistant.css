@@ -1284,8 +1284,11 @@
     height: 14px;
 }
 
-/* aria-checked=false → prepared PDF (thumb left)
- * aria-checked=true  → browser print (thumb right). */
+/* aria-checked=false → Print as PDF   (default/off, thumb left)
+ * aria-checked=true  → Export as PDF  (prepared-PDF URL, on, thumb right,
+ *                       accent-highlighted). Print-only pages render
+ *                       disabled with aria-checked="false" since there is
+ *                       no second mode to switch to. */
 .ai-assistant-pdf-mode-switch[aria-checked="true"] .ai-assistant-pdf-toggle-track {
     background: var(--ai-pdf-accent);
 }
