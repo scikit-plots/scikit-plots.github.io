@@ -729,6 +729,80 @@
     outline-offset: 1px;
 }
 
+/* ─── "Explain this page" prompt button ───────────────────────── *
+ * A single deterministic action between the welcome message and the quick-
+ * suggestion chips (see _buildPageHelpButton / _renderWelcome). One tap
+ * pre-fills the input with the best question for the current page; the user
+ * reviews and sends. Replaces the former random "I'm Feeling Lucky" picker. */
+
+.ai-assistant-pagehelp {
+    display: flex;
+    justify-content: center;
+    margin: 0.35rem 0;
+}
+
+.ai-assistant-pagehelp-btn {
+    --ai-pagehelp-accent: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    background: var(--pst-color-on-background, var(--color-background-secondary, #f0f0f0));
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d0d0d0));
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ai-assistant-pagehelp-btn:hover {
+    background: var(--ai-pagehelp-accent);
+    color: #fff;
+    border-color: transparent;
+}
+
+.ai-assistant-pagehelp-btn:focus         { outline: none; }
+.ai-assistant-pagehelp-btn:focus-visible {
+    outline: 2px solid var(--ai-pagehelp-accent);
+    outline-offset: 1px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-pagehelp-btn {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-bs-theme="dark"] .ai-assistant-pagehelp-btn:hover {
+    background: var(--ai-pagehelp-accent);
+    color: #fff;
+    border-color: transparent;
+}
+
+.ai-assistant-pagehelp-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.ai-assistant-pagehelp-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-pagehelp-btn {
+        transition: none;
+    }
+}
+
 /* ─── Message bubbles ────────────────────────────────────────────────────── */
 
 .ai-assistant-panel-bubble {
