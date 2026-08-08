@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:11:53Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:17:19Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>to_numpy_arrays<a class="headerlink" href="#to-numpy-arrays" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.to_numpy_arrays">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_numpy_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_raw_tensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_adapters.py#L784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_numpy_arrays" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_numpy_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_raw_tensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_numpy_arrays" title="Link to this definition">#</a></dt>
 <dd><p>Convert documents to a dict of NumPy arrays suitable for batch ML.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1372,8 +1373,8 @@ Default: <code class="docutils literal notranslate"><span class="pre">None</span
 <p class="rubric">Notes</p>
 <p>Requires <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  Raises <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> when not installed.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9619821f-2b11-4199-ae02-6f323db7f872">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9619821f-2b11-4199-ae02-6f323db7f872','bbee8214-b01a-4474-8130-48566f17d070','018a8417-fad3-48e9-88d2-6967164018bc','../../lite/tree/../notebooks/index.html?path=45b10685_cce0_417b_9cad_083cb139755f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="68212435-ebf3-4825-a893-58c6029e152f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('68212435-ebf3-4825-a893-58c6029e152f','3b48c264-3101-45f6-bc51-bb5ba54c4c44','34e21ca8-b222-48b4-996b-99f892ad2a3d','../../lite/tree/../notebooks/index.html?path=4766834b_63ae_403e_9d23_d66f397d3ce1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arrays</span> <span class="o">=</span> <span class="n">to_numpy_arrays</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">include_raw_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">arrays</span><span class="p">[</span><span class="s2">&quot;raw_tensors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># (N, H, W, C) for image batch</span>
 <span class="go">(32, 224, 224, 3)</span>
@@ -1383,7 +1384,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">None</span
 </div>
 </div>
 </div>
-<div id="018a8417-fad3-48e9-88d2-6967164018bc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9619821f-2b11-4199-ae02-6f323db7f872','018a8417-fad3-48e9-88d2-6967164018bc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9619821f-2b11-4199-ae02-6f323db7f872','018a8417-fad3-48e9-88d2-6967164018bc')">Open In Tab</button></div><div id="bbee8214-b01a-4474-8130-48566f17d070" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="34e21ca8-b222-48b4-996b-99f892ad2a3d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('68212435-ebf3-4825-a893-58c6029e152f','34e21ca8-b222-48b4-996b-99f892ad2a3d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('68212435-ebf3-4825-a893-58c6029e152f','34e21ca8-b222-48b4-996b-99f892ad2a3d')">Open In Tab</button></div><div id="3b48c264-3101-45f6-bc51-bb5ba54c4c44" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1501,7 +1502,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">None</span
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

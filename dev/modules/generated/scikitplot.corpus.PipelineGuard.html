@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:10:50Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:16:29Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>PipelineGuard<a class="headerlink" href="#pipelineguard" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.PipelineGuard">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">PipelineGuard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L2729"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PipelineGuard" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">PipelineGuard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_base.py#L2729"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PipelineGuard" title="Link to this definition">#</a></dt>
 <dd><p>Wrap any document stream with resilience, deduplication, and checkpointing.</p>
 <p><a class="reference internal" href="#scikitplot.corpus.PipelineGuard" title="scikitplot.corpus.PipelineGuard"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineGuard</span></code></a> is a thin, composable layer you place around
 any <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.get_documents" title="scikitplot.corpus.DocumentReader.get_documents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocumentReader.get_documents</span></code></a> call (or any
@@ -1372,8 +1373,8 @@ reads <code class="docutils literal notranslate"><span class="pre">content_hash<
 <p><strong>Thread safety:</strong> Not thread-safe.  Use one guard per thread when
 processing sources in parallel.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9c4196e2-651f-4539-b854-01667900be47">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9c4196e2-651f-4539-b854-01667900be47','02e9b107-1def-4806-9b7f-f4a0918e55e1','c69d649c-034f-4593-8963-d2df314060cd','../../lite/tree/../notebooks/index.html?path=1523bdfe_5ee4_4de5_bc65_da2409acfc38.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="8f0123f5-3c2d-48cf-94f8-5a3242e34959">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8f0123f5-3c2d-48cf-94f8-5a3242e34959','33a571f3-39c2-4142-b9a1-53cb90b9663b','af0df38d-470b-4743-ab99-c46331451a7d','../../lite/tree/../notebooks/index.html?path=2e646af2_cb6f_4727_a60b_f9581a482770.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Basic error isolation — skip broken documents:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">guard</span> <span class="o">=</span> <span class="n">PipelineGuard</span><span class="p">(</span><span class="n">policy</span><span class="o">=</span><span class="n">ErrorPolicy</span><span class="o">.</span><span class="n">SKIP</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">guard</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">()))</span>
@@ -1405,9 +1406,9 @@ processing sources in parallel.</p>
 </div>
 </div>
 </div>
-<div id="c69d649c-034f-4593-8963-d2df314060cd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9c4196e2-651f-4539-b854-01667900be47','c69d649c-034f-4593-8963-d2df314060cd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9c4196e2-651f-4539-b854-01667900be47','c69d649c-034f-4593-8963-d2df314060cd')">Open In Tab</button></div><div id="02e9b107-1def-4806-9b7f-f4a0918e55e1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="af0df38d-470b-4743-ab99-c46331451a7d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8f0123f5-3c2d-48cf-94f8-5a3242e34959','af0df38d-470b-4743-ab99-c46331451a7d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8f0123f5-3c2d-48cf-94f8-5a3242e34959','af0df38d-470b-4743-ab99-c46331451a7d')">Open In Tab</button></div><div id="33a571f3-39c2-4142-b9a1-53cb90b9663b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PipelineGuard.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L2979"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PipelineGuard.close" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_base.py#L2979"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PipelineGuard.close" title="Link to this definition">#</a></dt>
 <dd><p>Flush and close the checkpoint file handle.</p>
 <p class="rubric">Notes</p>
 <p>Called automatically when used as a context manager.
@@ -1421,7 +1422,7 @@ Call manually when using <a class="reference internal" href="#scikitplot.corpus.
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PipelineGuard.iter">
-<span class="sig-name descname"><span class="pre">iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L2878"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PipelineGuard.iter" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_base.py#L2878"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PipelineGuard.iter" title="Link to this definition">#</a></dt>
 <dd><p>Iterate <em>source</em> with resilience, dedup, and checkpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1584,7 +1585,7 @@ ensure the file is flushed and closed.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

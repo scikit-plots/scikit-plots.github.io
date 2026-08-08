@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:12:32Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:17:45Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>full_stack_prereqs<a class="headerlink" href="#full-stack-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.full_stack_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">full_stack_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L585"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.full_stack_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">full_stack_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_custom_compiler.py#L585"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.full_stack_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check prerequisites full stack setuptools, Cython, pybind11, and NumPy.</p>
 <p>Validates setuptools, Cython, pybind11, and NumPy — the full set
 required for scientific extension development with C-API bindings.</p>
@@ -1340,8 +1341,8 @@ required for scientific extension development with C-API bindings.</p>
 </div>
 <p>to install CMake-compatible headers system-wide.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="324b516c-6553-4a10-ba1c-1b0a170d0f29">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('324b516c-6553-4a10-ba1c-1b0a170d0f29','6e5b442f-e4f9-4131-b2f7-4afcc85c144c','729ee4db-1e57-4ca3-9b8a-2ec820f5f893','../../lite/tree/../notebooks/index.html?path=08cb8dd9_03c1_4562_8fde_bc6f421ab500.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="d42aebbf-3508-48a2-ac92-97c4c7f42b68">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d42aebbf-3508-48a2-ac92-97c4c7f42b68','9336fd08-6ba0-4e8d-8832-9902ca04125c','659232f3-82b0-474f-93c9-fb0562fa74fc','../../lite/tree/../notebooks/index.html?path=0416717f_3b15_493e_a4c0_88fe9e805622.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">full_stack_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">result</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span> <span class="s2">&quot;cython&quot;</span><span class="p">,</span> <span class="s2">&quot;pybind11&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">))</span>
 <span class="go">True</span>
@@ -1349,7 +1350,7 @@ required for scientific extension development with C-API bindings.</p>
 </div>
 </div>
 </div>
-<div id="729ee4db-1e57-4ca3-9b8a-2ec820f5f893" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('324b516c-6553-4a10-ba1c-1b0a170d0f29','729ee4db-1e57-4ca3-9b8a-2ec820f5f893')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('324b516c-6553-4a10-ba1c-1b0a170d0f29','729ee4db-1e57-4ca3-9b8a-2ec820f5f893')">Open In Tab</button></div><div id="6e5b442f-e4f9-4131-b2f7-4afcc85c144c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="659232f3-82b0-474f-93c9-fb0562fa74fc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d42aebbf-3508-48a2-ac92-97c4c7f42b68','659232f3-82b0-474f-93c9-fb0562fa74fc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d42aebbf-3508-48a2-ac92-97c4c7f42b68','659232f3-82b0-474f-93c9-fb0562fa74fc')">Open In Tab</button></div><div id="9336fd08-6ba0-4e8d-8832-9902ca04125c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1467,7 +1468,7 @@ required for scientific extension development with C-API bindings.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

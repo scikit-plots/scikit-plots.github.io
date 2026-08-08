@@ -1,6 +1,6 @@
 # split\_cjk\_chars[#](#split-cjk-chars "Link to this heading")
 
-scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1314)[#](#scikitplot.corpus.split_cjk_chars "Link to this definition")
+scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1314)[#](#scikitplot.corpus.split_cjk_chars "Link to this definition")
 :   Split **text** into individual CJK character tokens.
 
     Non-CJK runs (Latin words, numbers, spaces) are kept as contiguous

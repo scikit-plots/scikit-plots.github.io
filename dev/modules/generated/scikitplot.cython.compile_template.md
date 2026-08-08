@@ -1,6 +1,6 @@
 # compile\_template[#](#compile-template "Link to this heading")
 
-scikitplot.cython.compile\_template(**template\_id**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_templates_api.py#L782)[#](#scikitplot.cython.compile_template "Link to this definition")
+scikitplot.cython.compile\_template(**template\_id**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_templates_api.py#L782)[#](#scikitplot.cython.compile_template "Link to this definition")
 :   Compile and import a Cython template and return the loaded module.
 
     Parameters:

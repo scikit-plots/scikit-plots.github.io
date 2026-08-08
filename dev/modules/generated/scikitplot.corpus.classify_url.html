@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:11:23Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:16:58Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>classify_url<a class="headerlink" href="#classify-url" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.classify_url">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">classify_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_url_handler.py#L379"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.classify_url" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">classify_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_url_handler.py#L379"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.classify_url" title="Link to this definition">#</a></dt>
 <dd><p>Classify a URL into one of the known <a class="reference internal" href="scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind" title="scikitplot.corpus.URLKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">URLKind</span></code></a> categories.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1360,8 +1361,8 @@ are on <code class="docutils literal notranslate"><span class="pre">github.com</
 <li><p>Web page (default fallback).</p></li>
 </ol>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="62f4064b-e3a6-422f-abcd-652e4cb2a699">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('62f4064b-e3a6-422f-abcd-652e4cb2a699','8d85e0f0-890e-4a7a-ae6c-188108473bc6','dcd2c8d3-37fd-444e-b47b-9b2562292e62','../../lite/tree/../notebooks/index.html?path=3889dcb2_45e7_40f4_9e1f_df85135d957a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fd700605-a94c-4cbb-8300-9b383399c4b2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fd700605-a94c-4cbb-8300-9b383399c4b2','eb0dc8dd-dc56-4fa6-a2ff-f647e6c05561','7a605a30-bd79-4259-baeb-6835c80c8b16','../../lite/tree/../notebooks/index.html?path=4fd13187_ce39_4853_8a4b_ec7eaa700ed5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">classify_url</span><span class="p">(</span><span class="s2">&quot;https://youtu.be/rwPISgZcYIk&quot;</span><span class="p">)</span>
 <span class="go">&lt;URLKind.YOUTUBE: &#39;youtube&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">classify_url</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=4nMSvDEYl1c&quot;</span><span class="p">)</span>
@@ -1386,7 +1387,7 @@ are on <code class="docutils literal notranslate"><span class="pre">github.com</
 </div>
 </div>
 </div>
-<div id="dcd2c8d3-37fd-444e-b47b-9b2562292e62" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('62f4064b-e3a6-422f-abcd-652e4cb2a699','dcd2c8d3-37fd-444e-b47b-9b2562292e62')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('62f4064b-e3a6-422f-abcd-652e4cb2a699','dcd2c8d3-37fd-444e-b47b-9b2562292e62')">Open In Tab</button></div><div id="8d85e0f0-890e-4a7a-ae6c-188108473bc6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7a605a30-bd79-4259-baeb-6835c80c8b16" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fd700605-a94c-4cbb-8300-9b383399c4b2','7a605a30-bd79-4259-baeb-6835c80c8b16')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fd700605-a94c-4cbb-8300-9b383399c4b2','7a605a30-bd79-4259-baeb-6835c80c8b16')">Open In Tab</button></div><div id="eb0dc8dd-dc56-4fa6-a2ff-f647e6c05561" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1504,7 +1505,7 @@ are on <code class="docutils literal notranslate"><span class="pre">github.com</
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

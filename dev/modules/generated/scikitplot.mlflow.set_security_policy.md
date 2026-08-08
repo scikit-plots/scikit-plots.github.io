@@ -1,6 +1,6 @@
 # set\_security\_policy[#](#set-security-policy "Link to this heading")
 
-scikitplot.mlflow.set\_security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_security.py#L688)[#](#scikitplot.mlflow.set_security_policy "Link to this definition")
+scikitplot.mlflow.set\_security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/mlflow/_security.py#L688)[#](#scikitplot.mlflow.set_security_policy "Link to this definition")
 :   Set the active [`SecurityPolicy`](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow.SecurityPolicy") globally.
 
     Parameters:

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:13:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:18:06Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>pure_python_prereqs<a class="headerlink" href="#pure-python-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.pure_python_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">pure_python_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.pure_python_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">pure_python_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_custom_compiler.py#L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.pure_python_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check prerequisites pure Python, setuptools only.</p>
 <p>No Cython, pybind11, or NumPy is required.  Only setuptools (for
 building pure-Python packages with a <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>) is checked.</p>
@@ -1335,8 +1336,8 @@ and either <code class="docutils literal notranslate"><span class="pre">version:
 it with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">setuptools</span></code>.  No C compiler is needed for
 pure Python packages.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="13ae3fd2-8a89-420d-94fb-7efec8121857">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('13ae3fd2-8a89-420d-94fb-7efec8121857','9a71aade-6ce2-4377-a46c-a1d6b9d94cef','6e29ed9c-682b-461a-802e-119d1634b9d3','../../lite/tree/../notebooks/index.html?path=4f6d3fc2_984d_4969_8f53_b0cbb7b9f6cd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7ba378c6-8414-4ee8-b073-3dc7bdf62cad">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7ba378c6-8414-4ee8-b073-3dc7bdf62cad','26734781-dba6-490e-bac3-866968de9187','e272d9cb-30b0-4fce-8b0f-136a0131e924','../../lite/tree/../notebooks/index.html?path=7ec91de8_517e_4b35_8e3d_48ba1619b40d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">pure_python_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;setuptools&quot;</span> <span class="ow">in</span> <span class="n">result</span>
 <span class="go">True</span>
@@ -1344,7 +1345,7 @@ pure Python packages.</p>
 </div>
 </div>
 </div>
-<div id="6e29ed9c-682b-461a-802e-119d1634b9d3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('13ae3fd2-8a89-420d-94fb-7efec8121857','6e29ed9c-682b-461a-802e-119d1634b9d3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('13ae3fd2-8a89-420d-94fb-7efec8121857','6e29ed9c-682b-461a-802e-119d1634b9d3')">Open In Tab</button></div><div id="9a71aade-6ce2-4377-a46c-a1d6b9d94cef" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e272d9cb-30b0-4fce-8b0f-136a0131e924" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7ba378c6-8414-4ee8-b073-3dc7bdf62cad','e272d9cb-30b0-4fce-8b0f-136a0131e924')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7ba378c6-8414-4ee8-b073-3dc7bdf62cad','e272d9cb-30b0-4fce-8b0f-136a0131e924')">Open In Tab</button></div><div id="26734781-dba6-490e-bac3-866968de9187" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1462,7 +1463,7 @@ pure Python packages.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

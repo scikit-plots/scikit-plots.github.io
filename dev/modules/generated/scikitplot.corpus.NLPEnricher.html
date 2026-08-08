@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:10:45Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:16:25Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>NLPEnricher<a class="headerlink" href="#nlpenricher" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.NLPEnricher">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">NLPEnricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_enrichers/_nlp_enricher.py#L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NLPEnricher" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">NLPEnricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NLPEnricher" title="Link to this definition">#</a></dt>
 <dd><p>Pipeline component that populates NLP enrichment fields on
 <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>.</p>
 <dl class="field-list simple">
@@ -1343,8 +1344,8 @@ dominant script of each document is detected independently via
 <code class="docutils literal notranslate"><span class="pre">self._*</span></code> attributes.  The class is NOT thread-safe.  Use separate
 instances per thread.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="88cf8de2-c1df-4910-ac66-02dd70bb8cc1">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('88cf8de2-c1df-4910-ac66-02dd70bb8cc1','555da919-7190-4f28-9b49-9e8b631e9bd2','e3d0d46d-0a17-4c02-9893-03ad355c3b0f','../../lite/tree/../notebooks/index.html?path=01c7636f_2c65_4af2_a2c4_0c04eae2a80a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="00180e7f-d3e6-4108-8e36-0bea7d1f2331">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('00180e7f-d3e6-4108-8e36-0bea7d1f2331','e5537e03-cad2-47b8-8ecf-9659a96dfee4','b5e609e9-18f8-401c-949b-95f66cf4093c','../../lite/tree/../notebooks/index.html?path=30e6ec16_c718_4a93_9985_d43a7c67c0df.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span> <span class="o">=</span> <span class="n">EnricherConfig</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">language</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;ar&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">keyword_extractor</span><span class="o">=</span><span class="s2">&quot;tfidf&quot;</span><span class="p">,</span>
@@ -1358,9 +1359,9 @@ instances per thread.</p>
 </div>
 </div>
 </div>
-<div id="e3d0d46d-0a17-4c02-9893-03ad355c3b0f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('88cf8de2-c1df-4910-ac66-02dd70bb8cc1','e3d0d46d-0a17-4c02-9893-03ad355c3b0f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('88cf8de2-c1df-4910-ac66-02dd70bb8cc1','e3d0d46d-0a17-4c02-9893-03ad355c3b0f')">Open In Tab</button></div><div id="555da919-7190-4f28-9b49-9e8b631e9bd2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="b5e609e9-18f8-401c-949b-95f66cf4093c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('00180e7f-d3e6-4108-8e36-0bea7d1f2331','b5e609e9-18f8-401c-949b-95f66cf4093c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('00180e7f-d3e6-4108-8e36-0bea7d1f2331','b5e609e9-18f8-401c-949b-95f66cf4093c')">Open In Tab</button></div><div id="e5537e03-cad2-47b8-8ecf-9659a96dfee4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.NLPEnricher.enrich_documents">
-<span class="sig-name descname"><span class="pre">enrich_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_enrichers/_nlp_enricher.py#L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NLPEnricher.enrich_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enrich_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NLPEnricher.enrich_documents" title="Link to this definition">#</a></dt>
 <dd><p>Enrich a batch of <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1515,7 +1516,7 @@ For large corpora, call in batches to control memory.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

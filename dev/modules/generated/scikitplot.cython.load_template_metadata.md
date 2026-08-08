@@ -1,6 +1,6 @@
 # load\_template\_metadata[#](#load-template-metadata "Link to this heading")
 
-scikitplot.cython.load\_template\_metadata(**template\_id**, **\***, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_templates_api.py#L592)[#](#scikitplot.cython.load_template_metadata "Link to this definition")
+scikitplot.cython.load\_template\_metadata(**template\_id**, **\***, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_templates_api.py#L592)[#](#scikitplot.cython.load_template_metadata "Link to this definition")
 :   Load template metadata from an adjacent `*.meta.json` file.
 
     Parameters:

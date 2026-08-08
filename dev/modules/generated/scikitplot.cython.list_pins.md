@@ -1,6 +1,6 @@
 # list\_pins[#](#list-pins "Link to this heading")
 
-scikitplot.cython.list\_pins(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_pins.py#L137)[#](#scikitplot.cython.list_pins "Link to this definition")
+scikitplot.cython.list\_pins(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_pins.py#L137)[#](#scikitplot.cython.list_pins "Link to this definition")
 :   List the current alias→key mappings.
 
     Parameters:

@@ -1,6 +1,6 @@
 # documents\_to\_pandas[#](#documents-to-pandas "Link to this heading")
 
-scikitplot.corpus.documents\_to\_pandas(**docs**, **\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_schema.py#L2572)[#](#scikitplot.corpus.documents_to_pandas "Link to this definition")
+scikitplot.corpus.documents\_to\_pandas(**docs**, **\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L2572)[#](#scikitplot.corpus.documents_to_pandas "Link to this definition")
 :   Convert a list of [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") instances to a
     `pandas.DataFrame`.
 

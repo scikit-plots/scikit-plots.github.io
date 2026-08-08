@@ -1,6 +1,6 @@
 # plot\_pos[#](#plot-pos "Link to this heading")
 
-scikitplot.externals.\_probscale.plot\_pos(**data**, **postype=None**, **alpha=None**, **beta=None**, **exceedance=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/externals/_probscale/viz.py#L302)[#](#scikitplot.externals._probscale.plot_pos "Link to this definition")
+scikitplot.externals.\_probscale.plot\_pos(**data**, **postype=None**, **alpha=None**, **beta=None**, **exceedance=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/externals/_probscale/viz.py#L302)[#](#scikitplot.externals._probscale.plot_pos "Link to this definition")
 :   Compute the plotting positions for a dataset. Heavily borrows from
     `scipy.stats.mstats.plotting_positions`.
 

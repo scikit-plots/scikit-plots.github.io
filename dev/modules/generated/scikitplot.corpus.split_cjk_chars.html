@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:11:49Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:17:17Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>split_cjk_chars<a class="headerlink" href="#split-cjk-chars" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.split_cjk_chars">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">split_cjk_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1314"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.split_cjk_chars" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">split_cjk_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1314"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.split_cjk_chars" title="Link to this definition">#</a></dt>
 <dd><p>Split <em>text</em> into individual CJK character tokens.</p>
 <p>Non-CJK runs (Latin words, numbers, spaces) are kept as contiguous
 tokens split on whitespace.  This produces a mixed token list where
@@ -1360,8 +1361,8 @@ safe.  After Layer 0 (GraphemeClusterNormalizer) is applied, use the
 <code class="docutils literal notranslate"><span class="pre">regex</span></code> path.  The legacy path is preserved as
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_split_cjk_chars_legacy</span></code> for environments without <code class="docutils literal notranslate"><span class="pre">regex</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="a0a1d226-86b7-4f07-92cd-1a7e8c4ed3ec">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a0a1d226-86b7-4f07-92cd-1a7e8c4ed3ec','7e1e39b1-3da7-4636-98bd-d725df18df27','a9d8856a-d011-436c-b9a1-e58db8265110','../../lite/tree/../notebooks/index.html?path=39accdea_a477_4c88_b82a_ed498d86602e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="22bf4f84-3a89-4061-9bbc-d65a2dcc39be">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('22bf4f84-3a89-4061-9bbc-d65a2dcc39be','714c5190-b99f-4bc7-a6f1-2dc63f6d7d2a','0218f1cd-02fe-4ab5-a75e-64366a030d43','../../lite/tree/../notebooks/index.html?path=afd0949f_9981_472d_beb7_8234d3aafa97.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">split_cjk_chars</span><span class="p">(</span><span class="s2">&quot;你好 world 再见&quot;</span><span class="p">)</span>
 <span class="go">[&#39;你&#39;, &#39;好&#39;, &#39;world&#39;, &#39;再&#39;, &#39;见&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">split_cjk_chars</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
@@ -1372,7 +1373,7 @@ safe.  After Layer 0 (GraphemeClusterNormalizer) is applied, use the
 </div>
 </div>
 </div>
-<div id="a9d8856a-d011-436c-b9a1-e58db8265110" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a0a1d226-86b7-4f07-92cd-1a7e8c4ed3ec','a9d8856a-d011-436c-b9a1-e58db8265110')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a0a1d226-86b7-4f07-92cd-1a7e8c4ed3ec','a9d8856a-d011-436c-b9a1-e58db8265110')">Open In Tab</button></div><div id="7e1e39b1-3da7-4636-98bd-d725df18df27" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0218f1cd-02fe-4ab5-a75e-64366a030d43" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('22bf4f84-3a89-4061-9bbc-d65a2dcc39be','0218f1cd-02fe-4ab5-a75e-64366a030d43')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('22bf4f84-3a89-4061-9bbc-d65a2dcc39be','0218f1cd-02fe-4ab5-a75e-64366a030d43')">Open In Tab</button></div><div id="714c5190-b99f-4bc7-a6f1-2dc63f6d7d2a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1490,7 +1491,7 @@ safe.  After Layer 0 (GraphemeClusterNormalizer) is applied, use the
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

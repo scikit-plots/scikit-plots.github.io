@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:10:26Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:16:09Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>FactoryCorpusBuilder<a class="headerlink" href="#factorycorpusbuilder" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FactoryCorpusBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1437"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FactoryCorpusBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1437"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder" title="Link to this definition">#</a></dt>
 <dd><p><a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder" title="scikitplot.corpus._corpus_builder.CorpusBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code></a> extended with
 pluggable component factories.</p>
 <p>All public methods (<code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">search</span></code>, <code class="docutils literal notranslate"><span class="pre">to_langchain</span></code>,
@@ -1347,8 +1348,8 @@ embedding engines with non-standard initialisation, etc.</p>
 private <code class="docutils literal notranslate"><span class="pre">_get_*</span></code> lazy-init methods inherited from
 <a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder" title="scikitplot.corpus._corpus_builder.CorpusBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code></a>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0510b249-db37-4374-b9e4-fcd465e59ba7">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0510b249-db37-4374-b9e4-fcd465e59ba7','de282631-3c65-4130-bc14-0784cb9eb62c','4c88463a-f9f7-417c-b0c8-bee05b204ce9','../../lite/tree/../notebooks/index.html?path=c3d26d56_7e99_4c5f_b1d8_d7d6b1bdd85a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="64567353-3b06-4556-8787-f5e3b8f8c195">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('64567353-3b06-4556-8787-f5e3b8f8c195','873a6e8f-d92d-4683-8a64-63d576e9a0d8','65f6a795-7d82-4730-9bf5-5e0d993ff3b8','../../lite/tree/../notebooks/index.html?path=5d434145_1122_4b96_a2b8_737338e081ce.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Inject a custom embedding engine factory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_embed_factory</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">MyEmbeddingEngine</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;custom-embedder-v2&quot;</span><span class="p">)</span>
@@ -1364,9 +1365,9 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 </div>
 </div>
 </div>
-<div id="4c88463a-f9f7-417c-b0c8-bee05b204ce9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0510b249-db37-4374-b9e4-fcd465e59ba7','4c88463a-f9f7-417c-b0c8-bee05b204ce9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0510b249-db37-4374-b9e4-fcd465e59ba7','4c88463a-f9f7-417c-b0c8-bee05b204ce9')">Open In Tab</button></div><div id="de282631-3c65-4130-bc14-0784cb9eb62c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="65f6a795-7d82-4730-9bf5-5e0d993ff3b8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('64567353-3b06-4556-8787-f5e3b8f8c195','65f6a795-7d82-4730-9bf5-5e0d993ff3b8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('64567353-3b06-4556-8787-f5e3b8f8c195','65f6a795-7d82-4730-9bf5-5e0d993ff3b8')">Open In Tab</button></div><div id="873a6e8f-d92d-4683-8a64-63d576e9a0d8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1587"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.add" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1587"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.add" title="Link to this definition">#</a></dt>
 <dd><p>Add sources to existing corpus — delegates to inner builder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1383,7 +1384,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1581"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1581"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.build" title="Link to this definition">#</a></dt>
 <dd><p>Build corpus — delegates to inner builder with factory overrides.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1400,7 +1401,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1631"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.close" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1631"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.close" title="Link to this definition">#</a></dt>
 <dd><p>Clean up temporary files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1411,7 +1412,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.export">
-<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1627"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.export" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1627"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.export" title="Link to this definition">#</a></dt>
 <dd><p>Export documents to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1428,7 +1429,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.search">
-<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1591"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.search" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1591"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.search" title="Link to this definition">#</a></dt>
 <dd><p>Search corpus — delegates to inner builder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1445,7 +1446,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_huggingface">
-<span class="sig-name descname"><span class="pre">to_huggingface</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_huggingface" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_huggingface</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_huggingface" title="Link to this definition">#</a></dt>
 <dd><p>Export as HuggingFace Dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1456,7 +1457,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_jsonl">
-<span class="sig-name descname"><span class="pre">to_jsonl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1623"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_jsonl" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_jsonl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1623"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_jsonl" title="Link to this definition">#</a></dt>
 <dd><p>Export as JSONL lines.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1467,7 +1468,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_langchain">
-<span class="sig-name descname"><span class="pre">to_langchain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1595"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_langchain" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_langchain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1595"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_langchain" title="Link to this definition">#</a></dt>
 <dd><p>Export as LangChain documents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1478,7 +1479,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_langchain_retriever">
-<span class="sig-name descname"><span class="pre">to_langchain_retriever</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1599"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_langchain_retriever" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_langchain_retriever</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1599"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_langchain_retriever" title="Link to this definition">#</a></dt>
 <dd><p>Create LangChain retriever.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1489,7 +1490,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_langgraph_state">
-<span class="sig-name descname"><span class="pre">to_langgraph_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_langgraph_state" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_langgraph_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_langgraph_state" title="Link to this definition">#</a></dt>
 <dd><p>Export as LangGraph state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1503,7 +1504,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_mcp_resources">
-<span class="sig-name descname"><span class="pre">to_mcp_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1607"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_resources" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_mcp_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1607"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_resources" title="Link to this definition">#</a></dt>
 <dd><p>Export as MCP resources.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1517,7 +1518,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_mcp_tool_result">
-<span class="sig-name descname"><span class="pre">to_mcp_tool_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1611"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_tool_result" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_mcp_tool_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1611"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_tool_result" title="Link to this definition">#</a></dt>
 <dd><p>Search and format as MCP tool result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1534,7 +1535,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FactoryCorpusBuilder.to_rag_tuples">
-<span class="sig-name descname"><span class="pre">to_rag_tuples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_custom_hooks.py#L1619"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_rag_tuples" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_rag_tuples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_custom_hooks.py#L1619"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FactoryCorpusBuilder.to_rag_tuples" title="Link to this definition">#</a></dt>
 <dd><p>Export as RAG tuples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1676,7 +1677,7 @@ private <code class="docutils literal notranslate"><span class="pre">_get_*</spa
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

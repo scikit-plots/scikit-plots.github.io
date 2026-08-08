@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:14:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:18:52Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>get_logger<a class="headerlink" href="#get-logger" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.logging.get_logger">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.logging.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/logging.py#L1124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.get_logger" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.logging.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/logging.py#L1124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.get_logger" title="Link to this definition">#</a></dt>
 <dd><p>Return SP (scikitplot) logger instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1375,8 +1376,8 @@ WARN level log will not be emitted:</p>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8faec0c3-4f6e-423b-a3b7-97ba69d8368d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8faec0c3-4f6e-423b-a3b7-97ba69d8368d','d4d66642-7654-4350-9c46-3a8bc136e01e','44612dc6-5254-414a-8a37-711e0b3df1a0','../../lite/tree/../notebooks/index.html?path=1f134291_9fab_43f9_8d94_900c1d377c03.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="970c05e3-b25e-483e-8f0b-84efb363701d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('970c05e3-b25e-483e-8f0b-84efb363701d','c753fd2e-6cbd-4064-a004-d24e41a8d037','81f077c0-8c73-4324-9bc4-478a9c56cfc3','../../lite/tree/../notebooks/index.html?path=e1451b4f_75c0_4720_91f8_691fba885693.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Get the root <code class="docutils literal notranslate"><span class="pre">logger</span></code> from <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">attr</span></code>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
@@ -1396,7 +1397,7 @@ WARN level log will not be emitted:</p>
 </div>
 </div>
 </div>
-<div id="44612dc6-5254-414a-8a37-711e0b3df1a0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8faec0c3-4f6e-423b-a3b7-97ba69d8368d','44612dc6-5254-414a-8a37-711e0b3df1a0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8faec0c3-4f6e-423b-a3b7-97ba69d8368d','44612dc6-5254-414a-8a37-711e0b3df1a0')">Open In Tab</button></div><div id="d4d66642-7654-4350-9c46-3a8bc136e01e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="81f077c0-8c73-4324-9bc4-478a9c56cfc3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('970c05e3-b25e-483e-8f0b-84efb363701d','81f077c0-8c73-4324-9bc4-478a9c56cfc3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('970c05e3-b25e-483e-8f0b-84efb363701d','81f077c0-8c73-4324-9bc4-478a9c56cfc3')">Open In Tab</button></div><div id="c753fd2e-6cbd-4064-a004-d24e41a8d037" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1514,7 +1515,7 @@ WARN level log will not be emitted:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

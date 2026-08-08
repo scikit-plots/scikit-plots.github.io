@@ -1,6 +1,6 @@
 # import\_artifact\_path[#](#import-artifact-path "Link to this heading")
 
-scikitplot.cython.import\_artifact\_path(**artifact\_path**, **\***, **module\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_public.py#L947)[#](#scikitplot.cython.import_artifact_path "Link to this definition")
+scikitplot.cython.import\_artifact\_path(**artifact\_path**, **\***, **module\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_public.py#L947)[#](#scikitplot.cython.import_artifact_path "Link to this definition")
 :   Import a compiled extension artifact from a path.
 
     Parameters:

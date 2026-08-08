@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:12:28Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:17:43Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>cython_cpp_prereqs<a class="headerlink" href="#cython-cpp-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.cython_cpp_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">cython_cpp_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L557"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.cython_cpp_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">cython_cpp_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_custom_compiler.py#L557"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.cython_cpp_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check prerequisites compile C++ via Cython.</p>
 <p>Requires Cython only.  NumPy is optional; setuptools is optional (the
 Cython compiler transpiles the <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> to C++ which can be compiled
@@ -1335,8 +1336,8 @@ separately).</p>
 You also need a working C++ compiler (<code class="docutils literal notranslate"><span class="pre">gcc</span></code>/<code class="docutils literal notranslate"><span class="pre">g++</span></code> on Linux,
 Xcode on macOS, MSVC on Windows).</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3f2b8303-9c17-436b-b0cb-62bea5583826">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3f2b8303-9c17-436b-b0cb-62bea5583826','c1448a50-e7fc-45db-9e33-148305aae44f','2469ad21-7b68-4069-93ce-fe2e9cefc9f2','../../lite/tree/../notebooks/index.html?path=06388b12_f4ce_4c6c_975f_d75e075f31fa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2ed8a05e-77e9-4f91-a01d-a673fbc57ff8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2ed8a05e-77e9-4f91-a01d-a673fbc57ff8','4faf6ca9-8a6e-4574-b5ae-812eafb27ddc','f0d4bf0e-3d0a-460e-9ffe-a61acb7e49b4','../../lite/tree/../notebooks/index.html?path=5e0a109c_8e97_4a78_9951_c742b3fee39b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">cython_cpp_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;cython&quot;</span> <span class="ow">in</span> <span class="n">result</span>
 <span class="go">True</span>
@@ -1344,7 +1345,7 @@ Xcode on macOS, MSVC on Windows).</p>
 </div>
 </div>
 </div>
-<div id="2469ad21-7b68-4069-93ce-fe2e9cefc9f2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3f2b8303-9c17-436b-b0cb-62bea5583826','2469ad21-7b68-4069-93ce-fe2e9cefc9f2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3f2b8303-9c17-436b-b0cb-62bea5583826','2469ad21-7b68-4069-93ce-fe2e9cefc9f2')">Open In Tab</button></div><div id="c1448a50-e7fc-45db-9e33-148305aae44f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="f0d4bf0e-3d0a-460e-9ffe-a61acb7e49b4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2ed8a05e-77e9-4f91-a01d-a673fbc57ff8','f0d4bf0e-3d0a-460e-9ffe-a61acb7e49b4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2ed8a05e-77e9-4f91-a01d-a673fbc57ff8','f0d4bf0e-3d0a-460e-9ffe-a61acb7e49b4')">Open In Tab</button></div><div id="4faf6ca9-8a6e-4574-b5ae-812eafb27ddc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1462,7 +1463,7 @@ Xcode on macOS, MSVC on Windows).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

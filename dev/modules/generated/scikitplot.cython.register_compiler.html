@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:13:11Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:18:13Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>register_compiler<a class="headerlink" href="#register-compiler" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.register_compiler">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">register_compiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compiler</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.register_compiler" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">register_compiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compiler</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_custom_compiler.py#L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.register_compiler" title="Link to this definition">#</a></dt>
 <dd><p>Register a custom compiler in the module-level registry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1348,8 +1349,8 @@ with <code class="docutils literal notranslate"><span class="pre">custom_</span>
 <p>Register at module-import time in a single-threaded context.  The
 registry is <strong>not</strong> thread-safe.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="33be2495-bfb2-4c6f-bcf9-1844a4c9870c">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('33be2495-bfb2-4c6f-bcf9-1844a4c9870c','973c08a5-1dd2-4e1f-8e4b-677a26545d1d','c862a5d0-b040-491c-aa7a-c80c0346b2dd','../../lite/tree/../notebooks/index.html?path=f8e08925_54d0_4931_8e66_991f2b12020d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="4644c378-91b7-46e7-8b85-47fc531bb91b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4644c378-91b7-46e7-8b85-47fc531bb91b','a487c7eb-782f-405c-b2fe-c1ac674aff9f','b14f898c-9e7c-4e5a-9ed2-0e79d7c12b63','../../lite/tree/../notebooks/index.html?path=54423d36_4199_4081_9c06_9a0fd5933c16.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">custom_fast</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;custom_fast&quot;</span>
 <span class="gp">...</span>
@@ -1362,7 +1363,7 @@ registry is <strong>not</strong> thread-safe.</p>
 </div>
 </div>
 </div>
-<div id="c862a5d0-b040-491c-aa7a-c80c0346b2dd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('33be2495-bfb2-4c6f-bcf9-1844a4c9870c','c862a5d0-b040-491c-aa7a-c80c0346b2dd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('33be2495-bfb2-4c6f-bcf9-1844a4c9870c','c862a5d0-b040-491c-aa7a-c80c0346b2dd')">Open In Tab</button></div><div id="973c08a5-1dd2-4e1f-8e4b-677a26545d1d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="b14f898c-9e7c-4e5a-9ed2-0e79d7c12b63" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4644c378-91b7-46e7-8b85-47fc531bb91b','b14f898c-9e7c-4e5a-9ed2-0e79d7c12b63')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4644c378-91b7-46e7-8b85-47fc531bb91b','b14f898c-9e7c-4e5a-9ed2-0e79d7c12b63')">Open In Tab</button></div><div id="a487c7eb-782f-405c-b2fe-c1ac674aff9f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1480,7 +1481,7 @@ registry is <strong>not</strong> thread-safe.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

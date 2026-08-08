@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:13:00Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:18:05Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>numpy_include<a class="headerlink" href="#numpy-include" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.numpy_include">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">numpy_include</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L720"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.numpy_include" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">numpy_include</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_custom_compiler.py#L720"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.numpy_include" title="Link to this definition">#</a></dt>
 <dd><p>Return the NumPy C-API include directory, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not installed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1333,8 +1334,8 @@ is not importable.</p>
 <code class="docutils literal notranslate"><span class="pre">numpy_support=True</span></code> to the public API, but gives you an explicit
 path you can inspect or pass to a custom compiler.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="1ffc67dc-25cd-43aa-ab8c-edadfe9e8386">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1ffc67dc-25cd-43aa-ab8c-edadfe9e8386','adad3f84-ad47-41b8-b329-a874d9e7dadf','5a958149-4903-4888-af96-1e23cb92caf2','../../lite/tree/../notebooks/index.html?path=490edc31_d85e_4a1e_8298_f159c5218741.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="efd1e2a0-77ce-477d-835c-1169551ad252">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('efd1e2a0-77ce-477d-835c-1169551ad252','93618c83-9874-4288-a4ec-6958c8d95ee0','f235b488-70e3-41e9-8471-b0200fc7095c','../../lite/tree/../notebooks/index.html?path=6e25e5d6_1bc7_44a5_92ba_877e1ba13a1b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">numpy_include</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">p</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span>
 <span class="go">True</span>
@@ -1342,7 +1343,7 @@ path you can inspect or pass to a custom compiler.</p>
 </div>
 </div>
 </div>
-<div id="5a958149-4903-4888-af96-1e23cb92caf2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1ffc67dc-25cd-43aa-ab8c-edadfe9e8386','5a958149-4903-4888-af96-1e23cb92caf2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1ffc67dc-25cd-43aa-ab8c-edadfe9e8386','5a958149-4903-4888-af96-1e23cb92caf2')">Open In Tab</button></div><div id="adad3f84-ad47-41b8-b329-a874d9e7dadf" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="f235b488-70e3-41e9-8471-b0200fc7095c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('efd1e2a0-77ce-477d-835c-1169551ad252','f235b488-70e3-41e9-8471-b0200fc7095c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('efd1e2a0-77ce-477d-835c-1169551ad252','f235b488-70e3-41e9-8471-b0200fc7095c')">Open In Tab</button></div><div id="93618c83-9874-4288-a4ec-6958c8d95ee0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1460,7 +1461,7 @@ path you can inspect or pass to a custom compiler.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

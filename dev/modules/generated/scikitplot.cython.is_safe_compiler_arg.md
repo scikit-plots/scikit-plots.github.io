@@ -1,6 +1,6 @@
 # is\_safe\_compiler\_arg[#](#is-safe-compiler-arg "Link to this heading")
 
-scikitplot.cython.is\_safe\_compiler\_arg(**arg**, **\***, **allow\_shell\_meta=False**, **allow\_dangerous=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_security.py#L431)[#](#scikitplot.cython.is_safe_compiler_arg "Link to this definition")
+scikitplot.cython.is\_safe\_compiler\_arg(**arg**, **\***, **allow\_shell\_meta=False**, **allow\_dangerous=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_security.py#L431)[#](#scikitplot.cython.is_safe_compiler_arg "Link to this definition")
 :   Return `True` when a compiler argument string is safe to pass.
 
     Parameters:

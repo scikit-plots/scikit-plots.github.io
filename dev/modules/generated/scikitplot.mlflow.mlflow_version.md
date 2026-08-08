@@ -1,6 +1,6 @@
 # mlflow\_version[#](#mlflow-version "Link to this heading")
 
-scikitplot.mlflow.mlflow\_version()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_utils.py#L97)[#](#scikitplot.mlflow.mlflow_version "Link to this definition")
+scikitplot.mlflow.mlflow\_version()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/mlflow/_utils.py#L97)[#](#scikitplot.mlflow.mlflow_version "Link to this definition")
 :   Retrieve the installed MLflow version (if available).
 
     Returns:

@@ -1,6 +1,6 @@
 # SimilarityIndex[#](#similarityindex "Link to this heading")
 
-class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L298)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
+class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_similarity/_similarity.py#L298)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -46,7 +46,7 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     property backend\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.backend_name "Link to this definition")
     :   Name of the active dense ANN backend, or `None` if unbuilt.
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L347)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_similarity/_similarity.py#L347)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -77,11 +77,11 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L708)[#](#scikitplot.corpus.SimilarityIndex.query "Link to this definition")
+    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_similarity/_similarity.py#L708)[#](#scikitplot.corpus.SimilarityIndex.query "Link to this definition")
     :   Vector-level ANN query returning `(doc_id, score)` pairs.
 
         This is the vector-index seam consumed by
-        `scikitplot.mcp` (the `VectorIndex` protocol): it takes a query
+        [`scikitplot.mcp`](../../apis/scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") (the `VectorIndex` protocol): it takes a query
         ****vector**** (already embedded) rather than a query string, and returns
         stable document identities instead of [`SearchResult`](scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult "scikitplot.corpus.SearchResult") objects.
 
@@ -109,7 +109,7 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L463)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_similarity/_similarity.py#L463)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:

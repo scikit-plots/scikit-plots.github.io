@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:13:43Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:18:36Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ProbScale<a class="headerlink" href="#probscale" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.externals._probscale.</span></span><span class="sig-name descname"><span class="pre">ProbScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/externals/_probscale/probscale.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.externals._probscale.</span></span><span class="sig-name descname"><span class="pre">ProbScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/externals/_probscale/probscale.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale" title="Link to this definition">#</a></dt>
 <dd><p>A probability scale for matplotlib Axes.</p>
 <p>Transforms an axis so that normally distributed data plot as a straight
 line.  Tick locations correspond to probability (or percentage) values;
@@ -1399,8 +1400,8 @@ all configuration is driven by keyword arguments.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="be2cf3bb-6fe9-4f81-8ed0-3fb94887a0f5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('be2cf3bb-6fe9-4f81-8ed0-3fb94887a0f5','52ea0f53-06ab-4fcd-b071-55fc1c1723ba','302173b8-87f3-4fe8-94cd-7602cf5de0b8','../../lite/tree/../notebooks/index.html?path=70949541_e7a3_4c64_a8d3_cf77560fcb57.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="73e07adf-db28-433a-957e-5f11429fba6e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('73e07adf-db28-433a-957e-5f11429fba6e','44cf87c9-33f8-4073-9615-71600d080b59','24dec107-70f3-4b4a-9619-c0b2c85f196a','../../lite/tree/../notebooks/index.html?path=8eeb3777_e773_4442_bb7d_083b56c3eac3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Basic probability scale (percentage labels):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.externals._probscale</span>  <span class="c1"># registers &#39;prob&#39; scale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
@@ -1426,9 +1427,9 @@ all configuration is driven by keyword arguments.</p>
 </figure>
 </div>
 </div>
-<div id="302173b8-87f3-4fe8-94cd-7602cf5de0b8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('be2cf3bb-6fe9-4f81-8ed0-3fb94887a0f5','302173b8-87f3-4fe8-94cd-7602cf5de0b8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('be2cf3bb-6fe9-4f81-8ed0-3fb94887a0f5','302173b8-87f3-4fe8-94cd-7602cf5de0b8')">Open In Tab</button></div><div id="52ea0f53-06ab-4fcd-b071-55fc1c1723ba" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="24dec107-70f3-4b4a-9619-c0b2c85f196a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('73e07adf-db28-433a-957e-5f11429fba6e','24dec107-70f3-4b4a-9619-c0b2c85f196a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('73e07adf-db28-433a-957e-5f11429fba6e','24dec107-70f3-4b4a-9619-c0b2c85f196a')">Open In Tab</button></div><div id="44cf87c9-33f8-4073-9615-71600d080b59" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.get_transform">
-<span class="sig-name descname"><span class="pre">get_transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/externals/_probscale/probscale.py#L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.get_transform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/externals/_probscale/probscale.py#L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.get_transform" title="Link to this definition">#</a></dt>
 <dd><p>Return the probability transform for this scale.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1448,7 +1449,7 @@ twin <code class="xref py py-class docutils literal notranslate"><span class="pr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.limit_range_for_scale">
-<span class="sig-name descname"><span class="pre">limit_range_for_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minpos</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/externals/_probscale/probscale.py#L440"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.limit_range_for_scale" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">limit_range_for_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minpos</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/externals/_probscale/probscale.py#L440"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.limit_range_for_scale" title="Link to this definition">#</a></dt>
 <dd><p>Clamp axis limits to positive probability values.</p>
 <p>Any limit at or below zero is replaced by <em>minpos</em>, the smallest
 strictly-positive value on the axis, so that the probability
@@ -1502,7 +1503,7 @@ form used here is always correct regardless of the truthiness of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters">
-<span class="sig-name descname"><span class="pre">set_default_locators_and_formatters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/externals/_probscale/probscale.py#L404"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_default_locators_and_formatters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/externals/_probscale/probscale.py#L404"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters" title="Link to this definition">#</a></dt>
 <dd><p>Configure probability-scale locators and formatters.</p>
 <p>Sets a <a class="reference external" href="https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FixedLocator" title="(in Matplotlib v3.12.0.dev474+gba0ff3afc)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FixedLocator</span></code></a> at standard
 probability tick positions, a <a class="reference external" href="https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FuncFormatter" title="(in Matplotlib v3.12.0.dev474+gba0ff3afc)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FuncFormatter</span></code></a>
@@ -1526,7 +1527,7 @@ that renders probabilities as percentages or proportions, and
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.val_in_range">
-<span class="sig-name descname"><span class="pre">val_in_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/../matplotlib/scale.py#L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.val_in_range" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">val_in_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/../matplotlib/scale.py#L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.val_in_range" title="Link to this definition">#</a></dt>
 <dd><p>Return whether the value(s) are within the valid range for this scale.</p>
 <p>Accepts a scalar or array-like <code class="docutils literal notranslate"><span class="pre">val</span></code>. For a scalar, returns a
 Python <code class="docutils literal notranslate"><span class="pre">bool</span></code>. For an array, returns a bool ndarray of the same
@@ -1659,7 +1660,7 @@ more efficient solutions for their domain.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

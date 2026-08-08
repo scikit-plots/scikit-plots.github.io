@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:14:40Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:19:23Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>security_policy<a class="headerlink" href="#security-policy" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.mlflow.security_policy">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">security_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_security.py#L724"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.security_policy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">security_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/mlflow/_security.py#L724"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.security_policy" title="Link to this definition">#</a></dt>
 <dd><p>Temporarily activate a <a class="reference internal" href="scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy" title="scikitplot.mlflow.SecurityPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecurityPolicy</span></code></a> for a context block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1345,8 +1346,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <p class="rubric">Notes</p>
 <p>Exception-safe: previous policy is always restored on exit.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e9d03b08-e0e2-43e8-b578-9a73d59d70a1">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e9d03b08-e0e2-43e8-b578-9a73d59d70a1','f677c581-5fb3-42e0-a574-6b4cb831e95e','1595b84c-2838-4d3e-9914-4a96edf47650','../../lite/tree/../notebooks/index.html?path=cdf0555c_fb92_4c1e_ab07_3aa501b9a110.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="3b88dc85-12e9-4823-aebf-42237b88568c">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3b88dc85-12e9-4823-aebf-42237b88568c','4028891b-3a96-4c83-86e6-4d97e43d5807','d0b18153-6e07-46ad-8fa1-7975b7730b2b','../../lite/tree/../notebooks/index.html?path=4cb318ae_f9c2_4301_963d_2252396b2c46.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.mlflow._security</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_SECURITY_POLICY</span><span class="p">,</span> <span class="n">security_policy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">security_policy</span><span class="p">(</span><span class="n">DEFAULT_SECURITY_POLICY</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">pass</span>  <span class="c1"># session() calls here are guarded</span>
@@ -1354,7 +1355,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="1595b84c-2838-4d3e-9914-4a96edf47650" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e9d03b08-e0e2-43e8-b578-9a73d59d70a1','1595b84c-2838-4d3e-9914-4a96edf47650')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e9d03b08-e0e2-43e8-b578-9a73d59d70a1','1595b84c-2838-4d3e-9914-4a96edf47650')">Open In Tab</button></div><div id="f677c581-5fb3-42e0-a574-6b4cb831e95e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d0b18153-6e07-46ad-8fa1-7975b7730b2b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3b88dc85-12e9-4823-aebf-42237b88568c','d0b18153-6e07-46ad-8fa1-7975b7730b2b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3b88dc85-12e9-4823-aebf-42237b88568c','d0b18153-6e07-46ad-8fa1-7975b7730b2b')">Open In Tab</button></div><div id="4028891b-3a96-4c83-86e6-4d97e43d5807" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1472,7 +1473,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

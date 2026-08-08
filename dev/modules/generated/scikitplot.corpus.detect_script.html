@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:11:30Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:17:04Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>detect_script<a class="headerlink" href="#detect-script" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.detect_script">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">detect_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">majority_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L971"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.detect_script" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">detect_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">majority_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L971"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.detect_script" title="Link to this definition">#</a></dt>
 <dd><p>Detect the dominant Unicode script in <em>text</em>.</p>
 <p>Samples up to <em>sample_size</em> characters for efficiency on long documents.
 Returns <a class="reference internal" href="scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType.MIXED" title="scikitplot.corpus.ScriptType.MIXED"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ScriptType.MIXED</span></code></a> when no single script exceeds
@@ -1365,8 +1366,8 @@ Dravidian (Tamil/Telugu/Kannada/Malayalam/Sinhala), Armenian, Tibetan.</p>
 are <em>not</em> used here because they do not map cleanly to script families.
 Code-point ranges from the Unicode Standard are used instead.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="cd6d7acd-f101-4038-b7ac-a2e0a1e3a526">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cd6d7acd-f101-4038-b7ac-a2e0a1e3a526','881462df-2c23-44ac-ae9d-55c9d49ecb03','9b4fdddd-a0f4-4fe1-8601-813a1149537a','../../lite/tree/../notebooks/index.html?path=2c6b5f60_0acc_46d2_86cd_9f0555f498ef.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="8f5f225c-4833-4f98-acc4-3954c49b1a65">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8f5f225c-4833-4f98-acc4-3954c49b1a65','b1eda651-5524-4e8a-9298-10129a8b8c9c','ef8b72f5-7324-4c45-afca-1e02984ce2d7','../../lite/tree/../notebooks/index.html?path=537320ca_1faa_4792_b88f_7a3c51c8f0ba.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_script</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
 <span class="go">&lt;ScriptType.LATIN: &#39;latin&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">detect_script</span><span class="p">(</span><span class="s2">&quot;مرحبا بالعالم&quot;</span><span class="p">)</span>
@@ -1387,7 +1388,7 @@ Code-point ranges from the Unicode Standard are used instead.</p>
 </div>
 </div>
 </div>
-<div id="9b4fdddd-a0f4-4fe1-8601-813a1149537a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cd6d7acd-f101-4038-b7ac-a2e0a1e3a526','9b4fdddd-a0f4-4fe1-8601-813a1149537a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cd6d7acd-f101-4038-b7ac-a2e0a1e3a526','9b4fdddd-a0f4-4fe1-8601-813a1149537a')">Open In Tab</button></div><div id="881462df-2c23-44ac-ae9d-55c9d49ecb03" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ef8b72f5-7324-4c45-afca-1e02984ce2d7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8f5f225c-4833-4f98-acc4-3954c49b1a65','ef8b72f5-7324-4c45-afca-1e02984ce2d7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8f5f225c-4833-4f98-acc4-3954c49b1a65','ef8b72f5-7324-4c45-afca-1e02984ce2d7')">Open In Tab</button></div><div id="b1eda651-5524-4e8a-9298-10129a8b8c9c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1505,7 +1506,7 @@ Code-point ranges from the Unicode Standard are used instead.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

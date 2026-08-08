@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:11:37Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:17:09Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>normalize_extractor_output<a class="headerlink" href="#normalize-extractor-output" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.normalize_extractor_output">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">normalize_extractor_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SourceType.UNKNOWN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SectionType.TEXT</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_custom.py#L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.normalize_extractor_output" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">normalize_extractor_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SourceType.UNKNOWN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SectionType.TEXT</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_readers/_custom.py#L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.normalize_extractor_output" title="Link to this definition">#</a></dt>
 <dd><p>Coerce an extractor return value to a list of raw chunk dicts.</p>
 <p>Every dict in the returned list is guaranteed to contain a <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code>
 key.  Missing <code class="docutils literal notranslate"><span class="pre">&quot;section_type&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;source_type&quot;</span></code> keys are filled
@@ -1385,8 +1386,8 @@ dispatch branches of <code class="xref py py-class docutils literal notranslate"
 <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioReader</span></code>, and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">VideoReader</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="fac38479-280e-4cbf-a6cc-7c5f4a9ce873">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fac38479-280e-4cbf-a6cc-7c5f4a9ce873','acabc32e-6ac4-43a3-883b-766d38fced1b','2dc5d9ac-d873-4a3d-a290-cabf59a02823','../../lite/tree/../notebooks/index.html?path=efd77c8c_705e_4180_b271_819e021b6698.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="124573c3-a340-4f42-bc07-edc1e6a847a2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('124573c3-a340-4f42-bc07-edc1e6a847a2','5a234a74-45f2-4040-8d01-a376f416ab7a','ba64dd9b-0b01-41b1-9f34-d4fc1f04e07a','../../lite/tree/../notebooks/index.html?path=c61dd25b_4ba2_4706_8a02_59958f30b97c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Single string → one-element list:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._readers._custom</span><span class="w"> </span><span class="kn">import</span> <span class="n">normalize_extractor_output</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">normalize_extractor_output</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
@@ -1405,7 +1406,7 @@ dispatch branches of <code class="xref py py-class docutils literal notranslate"
 </div>
 </div>
 </div>
-<div id="2dc5d9ac-d873-4a3d-a290-cabf59a02823" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fac38479-280e-4cbf-a6cc-7c5f4a9ce873','2dc5d9ac-d873-4a3d-a290-cabf59a02823')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fac38479-280e-4cbf-a6cc-7c5f4a9ce873','2dc5d9ac-d873-4a3d-a290-cabf59a02823')">Open In Tab</button></div><div id="acabc32e-6ac4-43a3-883b-766d38fced1b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ba64dd9b-0b01-41b1-9f34-d4fc1f04e07a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('124573c3-a340-4f42-bc07-edc1e6a847a2','ba64dd9b-0b01-41b1-9f34-d4fc1f04e07a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('124573c3-a340-4f42-bc07-edc1e6a847a2','ba64dd9b-0b01-41b1-9f34-d4fc1f04e07a')">Open In Tab</button></div><div id="5a234a74-45f2-4040-8d01-a376f416ab7a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1523,7 +1524,7 @@ dispatch branches of <code class="xref py py-class docutils literal notranslate"
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:09:36Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:15:22Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>binned_binom_proportion<a class="headerlink" href="#binned-binom-proportion" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.binned_binom_proportion">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">binned_binom_proportion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68269</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cexternals/_astropy/stats/funcs.py#L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.binned_binom_proportion" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">binned_binom_proportion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68269</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/funcs.py#L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.binned_binom_proportion" title="Link to this definition">#</a></dt>
 <dd><p>Binomial proportion and confidence interval in bins of a continuous
 variable <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>Given a set of datapoint pairs where the <code class="docutils literal notranslate"><span class="pre">x</span></code> values are
@@ -1394,8 +1395,8 @@ uncertainty on p in each bin.</p>
 <p class="rubric">Notes</p>
 <p>This function requires <code class="docutils literal notranslate"><span class="pre">scipy</span></code> for all interval types.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="a0ec6e3e-3820-4c28-8a00-1d57ffedc281">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a0ec6e3e-3820-4c28-8a00-1d57ffedc281','c28aa402-1f02-4f6e-b83d-734b1c7c4f45','2b6e3acb-e6ae-441f-bebb-7951dcf92d88','../../lite/tree/../notebooks/index.html?path=2f9966d4_672a_445a_bdee_48b402f25599.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="32d537e1-8f2f-4d75-b611-8f22482c651b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('32d537e1-8f2f-4d75-b611-8f22482c651b','3996e317-3b47-41b1-ab12-b7c3bb79c793','739036a4-d7e7-4d17-91bb-05387bb8eeb8','../../lite/tree/../notebooks/index.html?path=d3c36f5d_b35a_4991_a153_a953a32a2dc8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Suppose we wish to estimate the efficiency of a survey in
 detecting astronomical sources as a function of magnitude (i.e.,
 the probability of detecting a source given its magnitude). In a
@@ -1495,7 +1496,7 @@ interval rather than the Wilson interval to calculate <code class="docutils lite
 </figure>
 </div>
 </div>
-<div id="2b6e3acb-e6ae-441f-bebb-7951dcf92d88" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a0ec6e3e-3820-4c28-8a00-1d57ffedc281','2b6e3acb-e6ae-441f-bebb-7951dcf92d88')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a0ec6e3e-3820-4c28-8a00-1d57ffedc281','2b6e3acb-e6ae-441f-bebb-7951dcf92d88')">Open In Tab</button></div><div id="c28aa402-1f02-4f6e-b83d-734b1c7c4f45" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="739036a4-d7e7-4d17-91bb-05387bb8eeb8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('32d537e1-8f2f-4d75-b611-8f22482c651b','739036a4-d7e7-4d17-91bb-05387bb8eeb8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('32d537e1-8f2f-4d75-b611-8f22482c651b','739036a4-d7e7-4d17-91bb-05387bb8eeb8')">Open In Tab</button></div><div id="3996e317-3b47-41b1-ab12-b7c3bb79c793" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1613,7 +1614,7 @@ interval rather than the Wilson interval to calculate <code class="docutils lite
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

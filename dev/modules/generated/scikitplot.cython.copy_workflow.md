@@ -1,6 +1,6 @@
 # copy\_workflow[#](#copy-workflow "Link to this heading")
 
-scikitplot.cython.copy\_workflow(**name**, **\***, **dest\_dir**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_templates_api.py#L864)[#](#scikitplot.cython.copy_workflow "Link to this definition")
+scikitplot.cython.copy\_workflow(**name**, **\***, **dest\_dir**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_templates_api.py#L864)[#](#scikitplot.cython.copy_workflow "Link to this definition")
 :   Copy a workflow template folder to a destination directory.
 
     Parameters:

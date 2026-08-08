@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:10:20Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:16:03Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ErrorPolicy<a class="headerlink" href="#errorpolicy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.ErrorPolicy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ErrorPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_schema.py#L195"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ErrorPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L195"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy" title="Link to this definition">#</a></dt>
 <dd><p>Per-document error handling strategy for <a class="reference internal" href="scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard" title="scikitplot.corpus.PipelineGuard"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineGuard</span></code></a>.</p>
 <p class="rubric">Notes</p>
 <p><strong>RAISE</strong> (default) — exceptions propagate immediately; caller handles.
@@ -1323,35 +1324,35 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <strong>RETRY</strong> — the document is retried up to <code class="docutils literal notranslate"><span class="pre">max_retries</span></code> times
 (for transient I/O errors); falls back to LOG on exhaustion.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ef8e38aa-560f-4117-bb54-b3ddf15969cf">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ef8e38aa-560f-4117-bb54-b3ddf15969cf','ba2f63b3-58c2-45ae-ba6e-c636a510f3cf','e4ce5484-9d55-4eec-9de2-c628879f3143','../../lite/tree/../notebooks/index.html?path=992b799a_93db_4f04_9ae2_5848ee1e1934.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a4f283df-d4b7-49aa-8c77-478bc1e5f574">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a4f283df-d4b7-49aa-8c77-478bc1e5f574','8b13c217-866b-446d-9ead-5fc846f44eba','ae00bb82-f829-4558-801c-9c30fa8e0d2e','../../lite/tree/../notebooks/index.html?path=5e976009_f7cd_4f89_be2e_c94ddadcda75.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ErrorPolicy</span><span class="o">.</span><span class="n">SKIP</span> <span class="o">==</span> <span class="s2">&quot;skip&quot;</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="e4ce5484-9d55-4eec-9de2-c628879f3143" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ef8e38aa-560f-4117-bb54-b3ddf15969cf','e4ce5484-9d55-4eec-9de2-c628879f3143')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ef8e38aa-560f-4117-bb54-b3ddf15969cf','e4ce5484-9d55-4eec-9de2-c628879f3143')">Open In Tab</button></div><div id="ba2f63b3-58c2-45ae-ba6e-c636a510f3cf" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="ae00bb82-f829-4558-801c-9c30fa8e0d2e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a4f283df-d4b7-49aa-8c77-478bc1e5f574','ae00bb82-f829-4558-801c-9c30fa8e0d2e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a4f283df-d4b7-49aa-8c77-478bc1e5f574','ae00bb82-f829-4558-801c-9c30fa8e0d2e')">Open In Tab</button></div><div id="8b13c217-866b-446d-9ead-5fc846f44eba" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ErrorPolicy.LOG">
-<span class="sig-name descname"><span class="pre">LOG</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'log'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.LOG" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">LOG</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'log'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.LOG" title="Link to this definition">#</a></dt>
 <dd><p>Log failures at WARNING level and discard.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ErrorPolicy.RAISE">
-<span class="sig-name descname"><span class="pre">RAISE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'raise'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.RAISE" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">RAISE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'raise'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.RAISE" title="Link to this definition">#</a></dt>
 <dd><p>Propagate exceptions immediately (default, strictest).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ErrorPolicy.RETRY">
-<span class="sig-name descname"><span class="pre">RETRY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'retry'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.RETRY" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">RETRY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'retry'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.RETRY" title="Link to this definition">#</a></dt>
 <dd><p>Retry transient failures up to <code class="docutils literal notranslate"><span class="pre">max_retries</span></code> times, then LOG.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ErrorPolicy.SKIP">
-<span class="sig-name descname"><span class="pre">SKIP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'skip'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.SKIP" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">SKIP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'skip'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ErrorPolicy.SKIP" title="Link to this definition">#</a></dt>
 <dd><p>Discard failing documents silently.</p>
 </dd></dl>
 
@@ -1936,7 +1937,7 @@ left untouched.  Characters mapped to None are deleted.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>

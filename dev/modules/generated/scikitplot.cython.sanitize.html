@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:13:13Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:18:15Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -1031,6 +1031,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.mcp.html">scikitplot.mcp</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.MemoryMap.html">MemoryMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.memmap.mmap_region.html">mmap_region</a></li>
@@ -1314,7 +1315,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>sanitize<a class="headerlink" href="#sanitize" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.sanitize">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_utils.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.sanitize" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">sanitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_utils.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.sanitize" title="Link to this definition">#</a></dt>
 <dd><p>Convert an arbitrary string into a valid, collision-resistant module name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1360,8 +1361,8 @@ returned unchanged (no suffix), preserving backward-compatible names.</p></li>
 <li><p>An empty input string returns <code class="docutils literal notranslate"><span class="pre">&quot;_&quot;</span></code> (the minimal valid identifier).</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="04078f6a-6f7e-4a09-92b3-22e803ce30f0">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('04078f6a-6f7e-4a09-92b3-22e803ce30f0','72259b1e-9c7b-46b2-ab5e-dc5e8f02b635','4a4a5b64-f5d0-4cc8-845d-42cceb3a15c6','../../lite/tree/../notebooks/index.html?path=7ad070e7_e11f_4255_b90b_b0b110ef53c0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ace571e9-3f51-4629-b816-78b6c0dbe773">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ace571e9-3f51-4629-b816-78b6c0dbe773','39c05357-b8e0-4882-ac4a-5c2bca14e318','27b46112-860a-4e39-888a-157810ba6431','../../lite/tree/../notebooks/index.html?path=3c3bff1d_47ce_4b64_93a1_e17de09e78b3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize</span><span class="p">(</span><span class="s2">&quot;hello_world&quot;</span><span class="p">)</span>  <span class="c1"># already valid -&gt; unchanged</span>
 <span class="go">&#39;hello_world&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize</span><span class="p">(</span><span class="s2">&quot;hello-world&quot;</span><span class="p">)</span>  <span class="c1"># altered -&gt; disambiguated</span>
@@ -1374,7 +1375,7 @@ returned unchanged (no suffix), preserving backward-compatible names.</p></li>
 </div>
 </div>
 </div>
-<div id="4a4a5b64-f5d0-4cc8-845d-42cceb3a15c6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('04078f6a-6f7e-4a09-92b3-22e803ce30f0','4a4a5b64-f5d0-4cc8-845d-42cceb3a15c6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('04078f6a-6f7e-4a09-92b3-22e803ce30f0','4a4a5b64-f5d0-4cc8-845d-42cceb3a15c6')">Open In Tab</button></div><div id="72259b1e-9c7b-46b2-ab5e-dc5e8f02b635" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="27b46112-860a-4e39-888a-157810ba6431" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ace571e9-3f51-4629-b816-78b6c0dbe773','27b46112-860a-4e39-888a-157810ba6431')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ace571e9-3f51-4629-b816-78b6c0dbe773','27b46112-860a-4e39-888a-157810ba6431')">Open In Tab</button></div><div id="39c05357-b8e0-4882-ac4a-5c2bca14e318" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1492,7 +1493,7 @@ returned unchanged (no suffix), preserving backward-compatible names.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
       <br/>
     
   </p>
