@@ -1,6 +1,6 @@
 # to\_rag\_tuples[#](#to-rag-tuples "Link to this heading")
 
-scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_adapters.py#L444)[#](#scikitplot.corpus.to_rag_tuples "Link to this definition")
+scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_adapters.py#L444)[#](#scikitplot.corpus.to_rag_tuples "Link to this definition")
 :   Convert documents to `(text, metadata, embedding)` tuples.
 
     Parameters:
@@ -27,11 +27,3 @@ scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/sc
         vector_store.upsert(id=meta["doc_id"], vector=emb, metadata=meta, text=text)
 
     ```
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

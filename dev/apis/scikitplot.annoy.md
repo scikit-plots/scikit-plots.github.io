@@ -73,6 +73,12 @@ Go BackOpen In Tab
 
 ANNoy (Approximate Nearest Neighbors Oh Yeah)
 
+Class inheritance
+
+![Inheritance diagram of _annoy.Index](../_images/inheritance-742cfa59148a2f153e3b09e1d873b5d99ff85d49.png)
+
+
+
 |  |  |
 | --- | --- |
 | [`_annoy.Index`](../modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index "scikitplot.annoy._annoy.Index") | Annoy Approximate Nearest Neighbors Index. |
@@ -80,6 +86,19 @@ ANNoy (Approximate Nearest Neighbors Oh Yeah)
 ## ANNoy (cpp based `scikitplot/cexternals/_annoy`)[#](#annoy-cpp-based-scikitplot-cexternals-annoy "Link to this heading")
 
 ANNoy (Approximate Nearest Neighbors Oh Yeah)
+
+Class inheritance
+
+![Inheritance diagram of Index](../_images/inheritance-7d3bf2b5e90632e5fa2e703ef843e7b0116fd3d5.png)
+
+
+
+
+
+
+
+
+
 
 |  |  |
 | --- | --- |

@@ -1,6 +1,6 @@
 # normalize\_extractor\_output[#](#normalize-extractor-output "Link to this heading")
 
-scikitplot.corpus.normalize\_extractor\_output(**raw**, **\***, **source\_type=SourceType.UNKNOWN**, **section\_type=SectionType.TEXT**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_custom.py#L99)[#](#scikitplot.corpus.normalize_extractor_output "Link to this definition")
+scikitplot.corpus.normalize\_extractor\_output(**raw**, **\***, **source\_type=SourceType.UNKNOWN**, **section\_type=SectionType.TEXT**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_custom.py#L99)[#](#scikitplot.corpus.normalize_extractor_output "Link to this definition")
 :   Coerce an extractor return value to a list of raw chunk dicts.
 
     Every dict in the returned list is guaranteed to contain a `"text"`

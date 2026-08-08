@@ -1,6 +1,6 @@
 # parse\_dotenv[#](#parse-dotenv "Link to this heading")
 
-scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_env.py#L69)[#](#scikitplot.mlflow.parse_dotenv "Link to this definition")
+scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_env.py#L69)[#](#scikitplot.mlflow.parse_dotenv "Link to this definition")
 :   Parse a minimal `.env` file containing KEY=VALUE assignments.
 
     Parameters:

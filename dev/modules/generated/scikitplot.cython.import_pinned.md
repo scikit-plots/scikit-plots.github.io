@@ -1,6 +1,6 @@
 # import\_pinned[#](#import-pinned "Link to this heading")
 
-scikitplot.cython.import\_pinned(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_public.py#L876)[#](#scikitplot.cython.import_pinned "Link to this definition")
+scikitplot.cython.import\_pinned(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_public.py#L876)[#](#scikitplot.cython.import_pinned "Link to this definition")
 :   Import a pinned alias and return the loaded module(s).
 
     Returns:
@@ -14,15 +14,3 @@ scikitplot.cython.import\_pinned(**alias**, **\***, **cache\_dir=None**)[[source
 
     Return type:
     :   [**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.14)") | [**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")[[**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.14)")]
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
-
-[Cython quickstart: compile\_and\_load](../../auto_examples/cython/plot_00_quickstart_compile_and_load.html)
-
-Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
-
-[Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
-
-Pin/Alias: stable handles for cached builds

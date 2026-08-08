@@ -172,7 +172,7 @@ except Exception as e:
   --- Source ①: Web Article (text proxy for HTML URL) ---
 
   ✓ Web article: 93 chunks ingested
-  [  0] doc_id=9432e3e0cdf3…  source_type=web
+  [  0] doc_id=0da9a8e0ace9…  source_type=web
         text: 'Out-of-pocket payments for primary health care unaffordable for millions in Europe, new WHO report s'…
 
 ```
@@ -386,7 +386,7 @@ except Exception as e:
 --- Source ⑤: Audio Podcast (MP3 → ASR) ---
 
 ✓ Audio ASR: 5 chunks ingested
-[  0] doc_id=7c39f4d500e1…  source_type=audio
+[  0] doc_id=746c8b464618…  source_type=audio
       text: 'Can people afford to pay for health care in Europe?'…
       timecode: 0.0s – 6.0s
       confidence: 0.854
@@ -706,12 +706,12 @@ for i, line in enumerate(lines[:2]):
   --- 6c: MCP Resources (Model Context Protocol) ---
 
   resource:
-    uri:      corpus://9432e3e0cdf3de0d
+    uri:      corpus://0da9a8e0ace9d70e
     name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
     mimeType: text/plain
     text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
   resource:
-    uri:      corpus://d4100a2a7807259d
+    uri:      corpus://dd55b4181c292671
     name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
     mimeType: text/plain
     text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
@@ -722,9 +722,9 @@ for i, line in enumerate(lines[:2]):
     isError: False
     content items: 3
     [text] text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
-         annotations: {'doc_id': '9432e3e0cdf3de0d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
+         annotations: {'doc_id': '0da9a8e0ace9d70e', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
     [text] text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
-         annotations: {'doc_id': 'd4100a2a7807259d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
+         annotations: {'doc_id': 'dd55b4181c292671', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
 
   --- 6e: MCP Server Adapter ---
 
@@ -1024,7 +1024,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 5.077 seconds)
+****Total running time of the script:**** (0 minutes 6.026 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 

@@ -9,11 +9,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>
-window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-07-30T03:10:33Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T11:15:20Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -44,7 +44,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="_static/ai-assistant.css?v=034a52a9" />
+    <link rel="stylesheet" type="text/css" href="_static/ai-assistant.css?v=0a983dac" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -69,7 +69,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
-    <script defer="defer" src="_static/ai-assistant.js?v=1e649f2a"></script>
+    <script defer="defer" src="_static/ai-assistant.js?v=e747c355"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script>let toggleHintShow = 'Click to show';</script>
@@ -792,14 +792,26 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy">(class in scikitplot.cexternals._annoy)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.annoy_dtype">annoy_dtype (scikitplot.corpus.SearchConfig attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.annoy_impl">annoy_impl (scikitplot.corpus.SearchConfig attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.annoy_index_dtype">annoy_index_dtype (scikitplot.corpus.SearchConfig attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.annoy_metric">annoy_metric (scikitplot.corpus.SearchConfig attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.annoy_n_trees">annoy_n_trees (scikitplot.corpus.SearchConfig attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.annoy_search_k">annoy_search_k (scikitplot.corpus.SearchConfig attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex">AnnoyIndex (in module scikitplot.annoy)</a>
 
       <ul>
         <li><a href="modules/generated/scikitplot.cexternals._annoy.AnnoyIndex.html#scikitplot.cexternals._annoy.AnnoyIndex">(in module scikitplot.cexternals._annoy)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader">AnyDownloader (class in scikitplot.corpus)</a>
 </li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-API"><strong>API</strong></a>
@@ -905,9 +917,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
         <li><a href="modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader.backend">(scikitplot.corpus.ImageReader attribute)</a>
 </li>
+        <li><a href="modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig.backend">(scikitplot.corpus.SearchConfig attribute)</a>
+</li>
+        <li><a href="modules/generated/scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult.backend">(scikitplot.corpus.SearchResult attribute)</a>
+</li>
         <li><a href="modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig.backend">(scikitplot.corpus.SentenceChunkerConfig attribute)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex.backend_name">backend_name (scikitplot.corpus.SimilarityIndex property)</a>
+</li>
       <li><a href="modules/generated/scikitplot.mlflow.ServerConfig.html#scikitplot.mlflow.ServerConfig.backend_store_uri">backend_store_uri (scikitplot.mlflow.ServerConfig attribute)</a>
 </li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-backwards-compatibility"><strong>backwards compatibility</strong></a>
@@ -980,6 +998,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.cexternals._astropy.stats.bootstrap.html#scikitplot.cexternals._astropy.stats.bootstrap">bootstrap() (in module scikitplot.cexternals._astropy.stats)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.bridge_chunker.html#scikitplot.corpus.bridge_chunker">bridge_chunker() (in module scikitplot.corpus)</a>
 </li>
       <li><a href="modules/generated/scikitplot.annoy._annoy.Index.html#scikitplot.annoy._annoy.Index.build">build() (scikitplot.annoy._annoy.Index method)</a>
@@ -1000,8 +1020,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex.build">(scikitplot.corpus.SimilarityIndex method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.ComponentRegistry.html#scikitplot.corpus.ComponentRegistry.build_chunker">build_chunker() (scikitplot.corpus.ComponentRegistry method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult.build_dir">build_dir (scikitplot.cython.BuildResult attribute)</a>
@@ -1997,6 +2015,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult.documents">documents (scikitplot.corpus.BuildResult attribute)</a>
 
       <ul>
+        <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.documents">(scikitplot.corpus.PipelineResult attribute)</a>
+</li>
         <li><a href="modules/generated/scikitplot.corpus.QueryResult.html#scikitplot.corpus.QueryResult.documents">(scikitplot.corpus.QueryResult attribute)</a>
 </li>
       </ul></li>
@@ -2069,6 +2089,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType.EGYPTIAN">EGYPTIAN (scikitplot.corpus.ScriptType attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType.EGYPTIAN_HIEROGLYPHS">EGYPTIAN_HIEROGLYPHS (scikitplot.corpus.ScriptType attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.elapsed_seconds">elapsed_seconds (scikitplot.corpus.PipelineResult attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.EMAIL">EMAIL (scikitplot.corpus.SourceType attribute)</a>
 </li>
@@ -2216,10 +2238,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.ensure_local_store_layout.html#scikitplot.mlflow.ensure_local_store_layout">ensure_local_store_layout() (in module scikitplot.mlflow)</a>
 </li>
-      <li><a href="modules/generated/scikitplot.mlflow.SessionConfig.html#scikitplot.mlflow.SessionConfig.ensure_reachable">ensure_reachable (scikitplot.mlflow.SessionConfig attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/generated/scikitplot.mlflow.SessionConfig.html#scikitplot.mlflow.SessionConfig.ensure_reachable">ensure_reachable (scikitplot.mlflow.SessionConfig attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen.entropy">entropy() (scikitplot.externals._tweedie.tweedie_gen method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.SessionConfig.html#scikitplot.mlflow.SessionConfig.env_file">env_file (scikitplot.mlflow.SessionConfig attribute)</a>
@@ -2746,6 +2768,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.CorpusSource.html#scikitplot.corpus.CorpusSource.follow_symlinks">follow_symlinks (scikitplot.corpus.CorpusSource attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType.FOOTNOTE">FOOTNOTE (scikitplot.corpus.SectionType attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.format">format (scikitplot.corpus.PipelineResult attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy.format">format() (scikitplot.corpus.ChunkingStrategy method)</a>
 
@@ -3531,6 +3555,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.random.Kiss64Random.html#scikitplot.random.Kiss64Random.index">(scikitplot.random.Kiss64Random method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult.index_generation">index_generation (scikitplot.corpus.SearchResult attribute)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex.index_generation">(scikitplot.corpus.SimilarityIndex property)</a>
+</li>
+      </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.index_kwargs">index_kwargs (scikitplot.corpus.BuilderConfig attribute)</a>
 </li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-indexable"><strong>indexable</strong></a>
@@ -3581,6 +3611,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader.input_path">(scikitplot.corpus.MarkdownReader attribute)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader.input_path">(scikitplot.corpus.PDFReader attribute)</a>
+</li>
+        <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.input_path">(scikitplot.corpus.PipelineResult attribute)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader.input_path">(scikitplot.corpus.ReSTReader attribute)</a>
 </li>
@@ -4589,6 +4621,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader.max_content_bytes">max_content_bytes (scikitplot.corpus.WebReader attribute)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader.max_depth">max_depth (scikitplot.corpus.ZipReader attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.max_download_bytes">max_download_bytes (scikitplot.corpus.BuilderConfig attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy.max_env_pairs">max_env_pairs (scikitplot.mlflow.SecurityPolicy attribute)</a>
@@ -4818,6 +4852,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.YouTubeDownloader.html#scikitplot.corpus.YouTubeDownloader.mode">mode (scikitplot.corpus.YouTubeDownloader attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine.model_name">model_name (scikitplot.corpus.EmbeddingEngine attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine.model_revision">model_revision (scikitplot.corpus.EmbeddingEngine attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.decile.ModelPlotPy.html#scikitplot.decile.ModelPlotPy">ModelPlotPy (class in scikitplot.decile)</a>
 
@@ -5079,11 +5115,17 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
         <li><a href="modules/generated/scikitplot.corpus.CustomSimilarityIndex.html#scikitplot.corpus.CustomSimilarityIndex.n_documents">(scikitplot.corpus.CustomSimilarityIndex property)</a>
 </li>
+        <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.n_documents">(scikitplot.corpus.PipelineResult property)</a>
+</li>
         <li><a href="modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex.n_documents">(scikitplot.corpus.SimilarityIndex property)</a>
 </li>
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult.n_embedded">n_embedded (scikitplot.corpus.BuildResult attribute)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.n_embedded">(scikitplot.corpus.PipelineResult attribute)</a>
 </li>
+      </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult.n_enriched">n_enriched (scikitplot.corpus.BuildResult attribute)</a>
 </li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-n_features"><strong>n_features</strong></a>
@@ -5142,11 +5184,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult.n_normalised">n_normalised (scikitplot.corpus.BuildResult attribute)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.n_omitted">n_omitted (scikitplot.corpus.PipelineResult attribute)</a>
+</li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-n_outputs"><strong>n_outputs</strong></a>
 </li>
       <li><a href="modules/generated/scikitplot.cython.CacheStats.html#scikitplot.cython.CacheStats.n_packages">n_packages (scikitplot.cython.CacheStats attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult.n_raw">n_raw (scikitplot.corpus.BuildResult attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.n_read">n_read (scikitplot.corpus.PipelineResult attribute)</a>
 </li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-n_samples"><strong>n_samples</strong></a>
 </li>
@@ -5182,12 +5228,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.cython.CacheStats.html#scikitplot.cython.CacheStats.newest_mtime_utc">newest_mtime_utc (scikitplot.cython.CacheStats attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.NEWS">NEWS (scikitplot.corpus.SourceType attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.NEWSLETTER">NEWSLETTER (scikitplot.corpus.SourceType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig.ngram_range">ngram_range (scikitplot.corpus.WordChunkerConfig attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher">NLPEnricher (class in scikitplot.corpus)</a>
@@ -5342,10 +5388,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.online_help.html#scikitplot.online_help">online_help() (in module scikitplot)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-out-of-core"><strong>out-of-core</strong></a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-outlier-detector"><strong>outlier detector</strong></a>
 </li>
       <li><a href="learn/glossary/_glossary_sklearn.html#term-outlier-detectors"><strong>outlier detectors</strong></a>
@@ -5362,6 +5408,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.corpus.GitHubDownloader.html#scikitplot.corpus.GitHubDownloader.output_path">(scikitplot.corpus.GitHubDownloader attribute)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.GoogleDriveDownloader.html#scikitplot.corpus.GoogleDriveDownloader.output_path">(scikitplot.corpus.GoogleDriveDownloader attribute)</a>
+</li>
+        <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult.output_path">(scikitplot.corpus.PipelineResult attribute)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.WebDownloader.html#scikitplot.corpus.WebDownloader.output_path">(scikitplot.corpus.WebDownloader attribute)</a>
 </li>
@@ -5530,7 +5578,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.corpus.PipelineHooks.html#scikitplot.corpus.PipelineHooks">PipelineHooks (class in scikitplot.corpus)</a>
 </li>
-      <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult">PipelineResult (in module scikitplot.corpus)</a>
+      <li><a href="modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult">PipelineResult (class in scikitplot.corpus)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.PLAY">PLAY (scikitplot.corpus.SourceType attribute)</a>
 </li>
@@ -5755,6 +5803,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
       <ul>
         <li><a href="modules/generated/scikitplot.corpus.JSONLStorage.html#scikitplot.corpus.JSONLStorage.query">(scikitplot.corpus.JSONLStorage method)</a>
+</li>
+        <li><a href="modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex.query">(scikitplot.corpus.SimilarityIndex method)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.SQLiteStorage.html#scikitplot.corpus.SQLiteStorage.query">(scikitplot.corpus.SQLiteStorage method)</a>
 </li>
@@ -8723,7 +8773,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260730.d0ea395 2026-07-30T02:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.8ec94fe 2026-08-08T10:48Z.
       <br/>
     
   </p>

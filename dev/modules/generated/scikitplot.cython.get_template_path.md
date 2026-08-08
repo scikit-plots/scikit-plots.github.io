@@ -1,6 +1,6 @@
 # get\_template\_path[#](#get-template-path "Link to this heading")
 
-scikitplot.cython.get\_template\_path(**template\_id**, **\***, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_templates_api.py#L486)[#](#scikitplot.cython.get_template_path "Link to this definition")
+scikitplot.cython.get\_template\_path(**template\_id**, **\***, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_templates_api.py#L486)[#](#scikitplot.cython.get_template_path "Link to this definition")
 :   Resolve a template ID to an on-disk path.
 
     Parameters:
@@ -31,15 +31,3 @@ scikitplot.cython.get\_template\_path(**template\_id**, **\***, **kind=None**)[[
 
     Return type:
     :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
-
-[Browse and compile templates](../../auto_examples/cython/plot_01_browse_and_compile_templates.html)
-
-Browse and compile templates![](../../_images/sphx_glr_plot_cython_template_thumb.png)
-
-[Cython: Realtime compile\_and\_load (.pyx)](../../auto_examples/cython/plot_cython_template.html)
-
-Cython: Realtime compile\_and\_load (.pyx)

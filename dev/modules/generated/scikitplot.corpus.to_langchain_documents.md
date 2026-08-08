@@ -1,6 +1,6 @@
 # to\_langchain\_documents[#](#to-langchain-documents "Link to this heading")
 
-scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_adapters.py#L165)[#](#scikitplot.corpus.to_langchain_documents "Link to this definition")
+scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_adapters.py#L165)[#](#scikitplot.corpus.to_langchain_documents "Link to this definition")
 :   Convert `CorpusDocument` instances to LangChain `Document`.
 
     Parameters:
@@ -41,11 +41,3 @@ scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://gith
 
     ```
     Go BackOpen In Tab
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

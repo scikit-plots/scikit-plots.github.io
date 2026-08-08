@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -56,7 +56,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260730.d0ea395
+                   scikitplot: 0.5.dev0+git.20260808.8ec94fe
                           pip: 26.0.1
                    setuptools: 83.0.0
                        cython: 3.2.9
@@ -113,7 +113,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260730.d0ea395',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260808.8ec94fe',
       'pip': '26.0.1',
       'setuptools': '83.0.0',
       'cython': '3.2.9',
@@ -152,9 +152,6 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     [1;36mScikit-plot Version Information:[0m
 
 
-    ```
-    ```
-
     System Information:
                        python: 3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]
                    executable: /home/circleci/.pyenv/versions/3.12.13/bin/python
@@ -169,7 +166,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260730.d0ea395
+                   scikitplot: 0.5.dev0+git.20260808.8ec94fe
                           pip: 26.0.1
                    setuptools: 83.0.0
                        cython: 3.2.9

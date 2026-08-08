@@ -1,6 +1,6 @@
 # copy\_workflow[#](#copy-workflow "Link to this heading")
 
-scikitplot.cython.copy\_workflow(**name**, **\***, **dest\_dir**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_templates_api.py#L864)[#](#scikitplot.cython.copy_workflow "Link to this definition")
+scikitplot.cython.copy\_workflow(**name**, **\***, **dest\_dir**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_templates_api.py#L864)[#](#scikitplot.cython.copy_workflow "Link to this definition")
 :   Copy a workflow template folder to a destination directory.
 
     Parameters:
@@ -29,11 +29,3 @@ scikitplot.cython.copy\_workflow(**name**, **\***, **dest\_dir**, **overwrite=Fa
 
     Return type:
     :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
-
-[Workflow templates (train / hpo / predict) + CLI entry template](../../auto_examples/cython/plot_09_workflow_templates_cli.html)
-
-Workflow templates (train / hpo / predict) + CLI entry template

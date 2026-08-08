@@ -1,6 +1,6 @@
 # import\_extension[#](#import-extension "Link to this heading")
 
-scikitplot.cython.import\_extension(**\***, **name**, **path**, **key=None**, **build\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_loader.py#L36)[#](#scikitplot.cython.import_extension "Link to this definition")
+scikitplot.cython.import\_extension(**\***, **name**, **path**, **key=None**, **build\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_loader.py#L36)[#](#scikitplot.cython.import_extension "Link to this definition")
 :   Import an extension module from an explicit artifact path.
 
     Parameters:

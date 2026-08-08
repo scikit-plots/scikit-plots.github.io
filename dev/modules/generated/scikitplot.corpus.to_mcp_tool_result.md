@@ -1,6 +1,6 @@
 # to\_mcp\_tool\_result[#](#to-mcp-tool-result "Link to this heading")
 
-scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='corpus\_search'**, **is\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_adapters.py#L324)[#](#scikitplot.corpus.to_mcp_tool_result "Link to this definition")
+scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='corpus\_search'**, **is\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_adapters.py#L324)[#](#scikitplot.corpus.to_mcp_tool_result "Link to this definition")
 :   Format documents as an MCP `tools/call` response.
 
     Parameters:
@@ -37,11 +37,3 @@ scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='cor
         return to_mcp_tool_result([r.doc for r in results])
 
     ```
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

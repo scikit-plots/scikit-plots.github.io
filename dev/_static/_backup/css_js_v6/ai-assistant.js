@@ -6,7 +6,7 @@
  *   • Markdown export (clipboard copy + view as .md)
  *   • AI chat deep-links (Claude, ChatGPT, Gemini, …)
  *   • MCP tool integration (VS Code, Claude Desktop, …)
- *   • PDF export with URL-mode / Print-mode toggle
+ *   • PDF export with a capability-aware URL / Print method picker
  *   • Floating AI panel with:
  *       – Minimize (hide to floating "Ask AI" trigger pill)
  *       – Maximize (expand to full viewport height)
@@ -86,6 +86,54 @@
     // Single source for the page-injected configuration; always returns an
     // object, so callers can do _cfg().foo without guarding.
     function _cfg() { return window.AI_ASSISTANT_CONFIG || {}; }
+
+    // ── Footer branding: "Powered by …" credit line ──────────────────────────
+    // White-label point for downstream/custom deployments. Override per-page
+    // via window.AI_ASSISTANT_CONFIG.poweredBy — no code changes required:
+    //
+    //   window.AI_ASSISTANT_CONFIG = {
+    //     poweredBy: { text: 'Powered by', name: 'Acme Docs', url: 'https://acme.example' }
+    //   };
+    //
+    //   window.AI_ASSISTANT_CONFIG = { poweredBy: false };   // hide the line entirely
+    //
+    // `url` is optional — omit it to render plain, non-linked text.
+    //
+    // Ships with the scikit-plots repo as the default. FUTURE STUB (inactive):
+    // once cavehub.ai is ready to be a supported custom-stakeholder target,
+    // flip _DEFAULT_POWERED_BY below to _CAVEHUB_POWERED_BY — every deployment
+    // that hasn't set its own `poweredBy` override picks it up automatically.
+    var _DEFAULT_POWERED_BY = {
+        text: 'Powered by',
+        name: 'scikit-plots',
+        url:  'https://github.com/scikit-plots/scikit-plots'
+    };
+    // var _CAVEHUB_POWERED_BY = {   // eslint-disable-line no-unused-vars
+    //     text: 'Powered by',
+    //     name: 'cavehub.ai',
+    //     url:  'https://cavehub.ai'
+    // };
+
+    /**
+     * Resolve the effective "Powered by" branding for this page.
+     *
+     * @returns {{text: string, name: string, url: (string|null)}|null}
+     *   Null means "render nothing" (explicit `poweredBy: false`/`null`).
+     */
+    function _resolvePoweredBy() {
+        var override = _cfg().poweredBy;
+        if (override === false || override === null) return null;
+        if (override && typeof override === 'object') {
+            var name = typeof override.name === 'string' && override.name.trim()
+                ? override.name.trim() : _DEFAULT_POWERED_BY.name;
+            var text = typeof override.text === 'string' && override.text.trim()
+                ? override.text.trim() : _DEFAULT_POWERED_BY.text;
+            var url  = typeof override.url === 'string' && override.url.trim()
+                ? override.url.trim() : null;
+            return { text: text, name: name, url: url };
+        }
+        return _DEFAULT_POWERED_BY;
+    }
 
     // ── Diagnostics: single gated, scrubbing logger ──────────────────────────
     // All console output routes through _log(). Rationale:
@@ -672,10 +720,30 @@
         minimize: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>',
         maximize: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
         restore:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 3 3 3 3 8"/><polyline points="21 8 21 3 16 3"/><polyline points="3 16 3 21 8 21"/><polyline points="16 21 21 21 21 16"/></svg>',
+        // Lucide "minimize-2" — inward-pointing diagonal arrows, the visual
+        // inverse of `maximize` above. Used for the dedicated "collapse full
+        // screen" header button (see maximizeBtn / collapseBtn wiring below).
+        // Distinct from `minimize` (collapses panel to the floating trigger
+        // pill) and from `restore` (kept unchanged for back-compat).
+        minimizeCollapse: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
+        // MUI "ErrorIcon" outline, re-authored with stroke="currentColor" so
+        // it themes the same way every other icon here does. Not wired to
+        // any control yet — reserved for a future error/alert affordance.
+        // Mirrors _SVG_ERROR_ALERT in _static/__init__.py.
+        errorAlert: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4M12 16h.01M3 7.94v8.12c0 .34 0 .51.05.66.05.14.12.26.22.37.1.11.25.2.55.36l7.4 4.11c.28.16.43.24.58.27.13.03.27.03.4 0 .15-.03.3-.11.58-.27l7.4-4.11c.3-.16.45-.25.55-.36.1-.11.17-.23.22-.37.05-.15.05-.32.05-.66V7.94c0-.34 0-.51-.05-.66-.05-.14-.12-.27-.22-.37-.1-.12-.25-.2-.55-.37l-7.4-4.11c-.28-.16-.43-.24-.58-.27a1 1 0 0 0-.4 0c-.15.03-.3.11-.58.27l-7.4 4.11c-.3.17-.45.25-.55.37-.1.1-.17.23-.22.37-.05.15-.05.32-.05.66Z"/></svg>',
         close:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
         mic:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>',
         send:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
         chat:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="12" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="0.8" fill="currentColor" stroke="none"/></svg>',
+        // GitHub Octicon "comment-discussion" — additive and not wired to a control yet.
+        // Mirrors comment-discussion.svg / _SVG_COMMENT_DISCUSSION in _static/__init__.py.
+        commentDiscussion: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"/></svg>',
+        // GitHub Octicon "upload" — additive and not wired to a control yet.
+        // Mirrors upload.svg / _SVG_UPLOAD in _static/__init__.py.
+        upload: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M11.78 4.72a.749.749 0 1 1-1.06 1.06L8.75 3.811V9.5a.75.75 0 0 1-1.5 0V3.811L5.28 5.78a.749.749 0 1 1-1.06-1.06l3.25-3.25a.749.749 0 0 1 1.06 0l3.25 3.25Z"/></svg>',
+        // Octicon-style printer — used by the inline PDF method switch and
+        // mirrored by _SVG_PRINTER / printer.svg.
+        printer: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.75C4 1.784 4.784 1 5.75 1h4.5C11.216 1 12 1.784 12 2.75V5h.25A2.75 2.75 0 0 1 15 7.75v3.5A1.75 1.75 0 0 1 13.25 13H12v.25A1.75 1.75 0 0 1 10.25 15h-4.5A1.75 1.75 0 0 1 4 13.25V13H2.75A1.75 1.75 0 0 1 1 11.25v-3.5A2.75 2.75 0 0 1 3.75 5H4V2.75Zm1.5 0V5h5V2.75a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25ZM3.75 6.5A1.25 1.25 0 0 0 2.5 7.75v3.5c0 .138.112.25.25.25H4v-.75C4 9.784 4.784 9 5.75 9h4.5c.966 0 1.75.784 1.75 1.75v.75h1.25a.25.25 0 0 0 .25-.25v-3.5a1.25 1.25 0 0 0-1.25-1.25h-8.5Zm1.75 4.25v2.5c0 .138.112.25.25.25h4.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25ZM12 8a.75.75 0 1 1 1.5 0A.75.75 0 0 1 12 8Z"/></svg>',
         // ── v0.3 additions — mirror _ICON_META in _static/__init__.py ──────────
         newChat:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>',
         // Compose / spark variant of "new chat" — additive, inert, for future usage.
@@ -784,7 +852,7 @@
         // questions, or a highlight on the send button) needs one.
         // "Sparkle" — Octicon, four-pointed star with concave sides (the
         // GitHub Copilot/AI-suggestion glyph family). Not wired to any
-        // control yet — see ICONS.sparkleAlt below for how it differs from
+        // control yet — see ICONS.sparkleRight1NovaUp below for how it differs from
         // the two-sparkle variant.
         sparkle: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.198.57c.275-.752 1.34-.752 1.615 0l.849 2.317a5.819 5.819 0 0 0 3.462 3.463l2.317.848c.753.275.753 1.34 0 1.615l-2.317.849a5.815 5.815 0 0 0-3.462 3.462l-.849 2.317c-.275.753-1.34.753-1.615 0l-.848-2.317a5.819 5.819 0 0 0-3.463-3.462L.57 8.813c-.752-.275-.752-1.34 0-1.615l2.317-.848A5.823 5.823 0 0 0 6.35 2.887L7.198.57Zm.562 2.833A7.323 7.323 0 0 1 3.403 7.76l-.673.246.673.246a7.324 7.324 0 0 1 4.357 4.356l.246.673.246-.673a7.322 7.322 0 0 1 4.356-4.356l.673-.246-.673-.246a7.324 7.324 0 0 1-4.356-4.357l-.246-.673-.246.673Z"/></svg>',
         // Paintbrush + AI sparkle — not wired to any control yet; kept
@@ -808,8 +876,8 @@
         // this registry, and dropped the dead .proton alternative and
         // the non-functional media toggle entirely. Now the primary
         // .ai-assistant-panel-logo icon — see createAIAssistantUI.
-        // sparkle/sparkleAlt above are kept as-is, not removed.
-        sparkleNova: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2.622 11.252a.409.409 0 0 1 .756 0q.04.096.078.197.122.326.195.614c.038.143.154.25.297.286a6 6 0 0 1 .798.27.41.41 0 0 1 .002.76 6 6 0 0 1-.8.27.4.4 0 0 0-.296.284 6 6 0 0 1-.213.66l-.062.156a.409.409 0 0 1-.754 0l-.063-.156a6 6 0 0 1-.213-.66.4.4 0 0 0-.294-.284 6 6 0 0 1-.801-.27.41.41 0 0 1 .002-.76 6 6 0 0 1 .798-.27.4.4 0 0 0 .296-.286 6 6 0 0 1 .274-.811"/><path fill-rule="evenodd" d="M8.314 3.13c.627-1.498 2.739-1.498 3.366 0q.11.264.213.54h.002c.224.596.4 1.162.538 1.688.022.085.098.176.238.213l.346.094a16 16 0 0 1 1.846.645c1.499.627 1.524 2.736.01 3.371q-.33.14-.683.269a17 17 0 0 1-1.52.479c-.137.035-.213.124-.235.208a17 17 0 0 1-.584 1.808l-.001.001a16 16 0 0 1-.172.425c-.61 1.461-2.645 1.492-3.316.094a1 1 0 0 1-.046-.091 17 17 0 0 1-.756-2.236v-.002c-.022-.08-.095-.171-.235-.208a16.4 16.4 0 0 1-2.2-.744h-.001c-1.516-.635-1.493-2.746.006-3.374q.363-.15.75-.292a16 16 0 0 1 1.443-.447h.002c.138-.037.214-.126.237-.213A17 17 0 0 1 8.1 3.671V3.67q.104-.276.214-.54m1.982.579a.322.322 0 0 0-.598 0l-.195.492a16 16 0 0 0-.49 1.535v.001A1.81 1.81 0 0 1 7.7 7.021l.001.001a15 15 0 0 0-1.993.673h-.001a.324.324 0 0 0-.004.605q.303.125.617.243l.36.127q.535.18 1.023.306l.002.001c.606.16 1.134.62 1.307 1.282.133.509.306 1.062.531 1.644l.144.36.016.03a.32.32 0 0 0 .592 0v-.001q.077-.186.156-.389c.226-.584.399-1.137.532-1.646a1.81 1.81 0 0 1 1.306-1.28l.332-.09a15 15 0 0 0 1.667-.586l.003-.001a.323.323 0 0 0-.005-.606q-.33-.138-.681-.264l-.003-.001a15 15 0 0 0-1.309-.407 1.82 1.82 0 0 1-1.312-1.284 15 15 0 0 0-.344-1.136l-.146-.401a15 15 0 0 0-.195-.492" clip-rule="evenodd"/><path d="M2.622 1.252a.409.409 0 0 1 .756 0q.04.096.078.197.122.327.195.614c.038.143.154.25.297.286a6 6 0 0 1 .798.27.41.41 0 0 1 .002.76 6 6 0 0 1-.8.27.4.4 0 0 0-.296.284 6 6 0 0 1-.213.66l-.062.156a.409.409 0 0 1-.754 0l-.063-.156a6 6 0 0 1-.213-.66.4.4 0 0 0-.294-.284 6 6 0 0 1-.801-.27.41.41 0 0 1 .002-.76q.13-.055.272-.106.276-.099.526-.164a.4.4 0 0 0 .296-.286 6 6 0 0 1 .274-.811"/></svg>',
+        // sparkle/sparkleRight1NovaUp above are kept as-is, not removed.
+        sparkleLeft2NovaUpDown: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2.622 11.252a.409.409 0 0 1 .756 0q.04.096.078.197.122.326.195.614c.038.143.154.25.297.286a6 6 0 0 1 .798.27.41.41 0 0 1 .002.76 6 6 0 0 1-.8.27.4.4 0 0 0-.296.284 6 6 0 0 1-.213.66l-.062.156a.409.409 0 0 1-.754 0l-.063-.156a6 6 0 0 1-.213-.66.4.4 0 0 0-.294-.284 6 6 0 0 1-.801-.27.41.41 0 0 1 .002-.76 6 6 0 0 1 .798-.27.4.4 0 0 0 .296-.286 6 6 0 0 1 .274-.811"/><path fill-rule="evenodd" d="M8.314 3.13c.627-1.498 2.739-1.498 3.366 0q.11.264.213.54h.002c.224.596.4 1.162.538 1.688.022.085.098.176.238.213l.346.094a16 16 0 0 1 1.846.645c1.499.627 1.524 2.736.01 3.371q-.33.14-.683.269a17 17 0 0 1-1.52.479c-.137.035-.213.124-.235.208a17 17 0 0 1-.584 1.808l-.001.001a16 16 0 0 1-.172.425c-.61 1.461-2.645 1.492-3.316.094a1 1 0 0 1-.046-.091 17 17 0 0 1-.756-2.236v-.002c-.022-.08-.095-.171-.235-.208a16.4 16.4 0 0 1-2.2-.744h-.001c-1.516-.635-1.493-2.746.006-3.374q.363-.15.75-.292a16 16 0 0 1 1.443-.447h.002c.138-.037.214-.126.237-.213A17 17 0 0 1 8.1 3.671V3.67q.104-.276.214-.54m1.982.579a.322.322 0 0 0-.598 0l-.195.492a16 16 0 0 0-.49 1.535v.001A1.81 1.81 0 0 1 7.7 7.021l.001.001a15 15 0 0 0-1.993.673h-.001a.324.324 0 0 0-.004.605q.303.125.617.243l.36.127q.535.18 1.023.306l.002.001c.606.16 1.134.62 1.307 1.282.133.509.306 1.062.531 1.644l.144.36.016.03a.32.32 0 0 0 .592 0v-.001q.077-.186.156-.389c.226-.584.399-1.137.532-1.646a1.81 1.81 0 0 1 1.306-1.28l.332-.09a15 15 0 0 0 1.667-.586l.003-.001a.323.323 0 0 0-.005-.606q-.33-.138-.681-.264l-.003-.001a15 15 0 0 0-1.309-.407 1.82 1.82 0 0 1-1.312-1.284 15 15 0 0 0-.344-1.136l-.146-.401a15 15 0 0 0-.195-.492" clip-rule="evenodd"/><path d="M2.622 1.252a.409.409 0 0 1 .756 0q.04.096.078.197.122.327.195.614c.038.143.154.25.297.286a6 6 0 0 1 .798.27.41.41 0 0 1 .002.76 6 6 0 0 1-.8.27.4.4 0 0 0-.296.284 6 6 0 0 1-.213.66l-.062.156a.409.409 0 0 1-.754 0l-.063-.156a6 6 0 0 1-.213-.66.4.4 0 0 0-.294-.284 6 6 0 0 1-.801-.27.41.41 0 0 1 .002-.76q.13-.055.272-.106.276-.099.526-.164a.4.4 0 0 0 .296-.286 6 6 0 0 1 .274-.811"/></svg>',
         // Security alert shield (Octicon shield) — not wired to any
         // control yet; kept available for a future "security notice" or
         // "verified/protected" indicator.
@@ -817,7 +885,7 @@
         // Two-tier "AI sparkle" — one large 4-point star, one small offset
         // star top-right. Hand-drafted (sprite ID unresolved, see chat);
         // not wired anywhere yet.
-        sparkleAlt: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 1.5c.18 0 .34.12.39.29l.82 2.72a4.7 4.7 0 0 0 3.15 3.15l2.72.82a.4.4 0 0 1 0 .77l-2.72.82a4.7 4.7 0 0 0-3.15 3.15l-.82 2.72a.4.4 0 0 1-.77 0l-.82-2.72a4.7 4.7 0 0 0-3.15-3.15l-2.72-.82a.4.4 0 0 1 0-.77l2.72-.82A4.7 4.7 0 0 0 7.6 4.51l.82-2.72A.4.4 0 0 1 9 1.5Z"/><path d="M15.5 1c.16 0 .3.1.34.26l.32.99c.15.47.52.84.99.99l.99.32a.36.36 0 0 1 0 .68l-.99.32a1.56 1.56 0 0 0-.99.99l-.32.99a.36.36 0 0 1-.68 0l-.32-.99a1.56 1.56 0 0 0-.99-.99l-.99-.32a.36.36 0 0 1 0-.68l.99-.32c.47-.15.84-.52.99-.99l.32-.99A.36.36 0 0 1 15.5 1Z"/></svg>',
+        sparkleRight1NovaUp: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 1.5c.18 0 .34.12.39.29l.82 2.72a4.7 4.7 0 0 0 3.15 3.15l2.72.82a.4.4 0 0 1 0 .77l-2.72.82a4.7 4.7 0 0 0-3.15 3.15l-.82 2.72a.4.4 0 0 1-.77 0l-.82-2.72a4.7 4.7 0 0 0-3.15-3.15l-2.72-.82a.4.4 0 0 1 0-.77l2.72-.82A4.7 4.7 0 0 0 7.6 4.51l.82-2.72A.4.4 0 0 1 9 1.5Z"/><path d="M15.5 1c.16 0 .3.1.34.26l.32.99c.15.47.52.84.99.99l.99.32a.36.36 0 0 1 0 .68l-.99.32a1.56 1.56 0 0 0-.99.99l-.32.99a.36.36 0 0 1-.68 0l-.32-.99a1.56 1.56 0 0 0-.99-.99l-.99-.32a.36.36 0 0 1 0-.68l.99-.32c.47-.15.84-.52.99-.99l.32-.99A.36.36 0 0 1 15.5 1Z"/></svg>',
         // Reuses the exact same path as the Python-side _SVG_TERMS constant
         // (__init__.py) — consolidated to one design instead of a second,
         // slightly-different document glyph, so JS/Python/disk-file stay
@@ -831,6 +899,23 @@
         // it's used was judged more valuable than a one-off variant: ask if
         // you want a visually distinct mark for "& Responsibility" instead.
         privacyResponsibility: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        // Party popper + confetti — hand-authored (not traced from any icon
+        // font) in this file's own stroke convention so it themes the same
+        // way as every other 24x24 glyph here. Currently unwired: it was the
+        // "I'm Feeling Lucky" trigger glyph, which has been retired in favour
+        // of the deterministic "Explain this page" button (see
+        // _buildPageHelpButton). Kept as a ready-made "celebration/success"
+        // glyph and still mirrored Python-side (_ICON_META["celebration"]).
+        celebration: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5 9 8l7 4.5-12.5 8Z"/><path d="M9 8l1.3-3.5"/><path d="M14 3.5 15 5.5"/><path d="M19 6.5l2 1"/><circle cx="20" cy="11.5" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="4" r="1" fill="currentColor" stroke="none"/><circle cx="21.5" cy="16" r="1" fill="currentColor" stroke="none"/></svg>',
+        // Right-aligned "AI-suggested" sparkle badge — a DISTINCT glyph, not a
+        // reuse of sparkleRight1NovaUp. sparkleRight1NovaUp (above) is the filled two-tier star and
+        // is kept unchanged; this is the Lucide "sparkles" cluster (one large
+        // 4-point star + two small twinkles). Used as the leading icon on the
+        // deterministic "Explain this page" prompt button (see
+        // _buildPageHelpButton). Mirrored on the Python side by
+        // _SVG_SPARKLE_RIGHT_2_NOVA_UP_DOWN / _ICON_META["sparkle-right-2-nova-up-down"]
+        // (byte-for-byte, same parity convention as celebration/terms/privacy).
+        sparkleRight2NovaUpDown: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>',
     };
 
     // Remembers whether the hosted dancer GIF has ever failed to load, so a
@@ -1922,116 +2007,536 @@
     }
 
     // ── PDF section ───────────────────────────────────────────────────────────
+    //
+    // Architecture:
+    //   * A small capability registry describes each export method.
+    //   * The direct-PDF target is resolved at runtime. An explicit
+    //     cfg.pdfExportUrl always wins; otherwise Sphinx's URL_ROOT is used to
+    //     discover the generated PDF under the current version's _downloads/
+    //     directory. This lets a static ai-assistant.js update expose the toggle
+    //     without requiring every already-rendered HTML page to receive a new
+    //     window.AI_ASSISTANT_CONFIG value.
+    //   * Pages under apis/ select scikit-plots-apis.pdf and user_guide/ pages
+    //     select scikit-plots-user-guide.pdf; every other page also defaults to
+    //     scikit-plots-apis.pdf — the PDF reliably built on CI (the all-in-one
+    //     scikit-plots.pdf is frequently not built; see _PDF_AUTO_DOCUMENTS).
+    //     The current /dev/, /stable/, or
+    //     versioned root is preserved automatically.
+    //   * The export action and method switch are sibling buttons inside one
+    //     visual row. This avoids invalid nested interactive controls while
+    //     preserving the appearance of a single menu item.
+    //   * The left action reuses createMenuItem(), so its content structure
+    //     remains aligned with Copy page, Markdown, provider, and MCP entries.
+    //   * Selection, icon, description, ARIA state, and persistence are updated
+    //     through the single _syncPdfModeUI() path.
+
+    var _PDF_MODE_ORDER = ['url', 'print'];
+
+    var _PDF_MODE_DEFS = {
+        url: {
+            label: 'Prepared PDF',
+            description: 'Open the prepared PDF instantly in a new tab.',
+            iconFile: 'file-pdf.svg',
+            requiresUrl: true
+        },
+        print: {
+            label: 'Print & save',
+            description: 'Customize paper, margins, and pages before saving.',
+            iconFile: 'printer.svg',
+            requiresUrl: false
+        }
+    };
+
+    // Ordered first-match registry. Keep the document-selection policy separate
+    // from DOM construction so another generated PDF can be added later with one
+    // small entry instead of another branch inside createPdfSection().
+    var _PDF_AUTO_DOCUMENTS = [
+        {
+            key: 'apis',
+            file: 'scikit-plots-apis.pdf',
+            label: 'APIs Reference PDF',
+            matches: function (context) {
+                return /(^|\/)apis(?:\/|$)/.test(context.pageName);
+            }
+        },
+        {
+            key: 'user-guide',
+            file: 'scikit-plots-user-guide.pdf',
+            label: 'User Guide PDF',
+            matches: function (context) {
+                return /(^|\/)user_guide(?:\/|$)/.test(context.pageName);
+            }
+        },
+        {
+            // Catch-all default. The all-in-one scikit-plots.pdf is the "primary"
+            // PDF conceptually, but it is NOT reliably built: CircleCI time /
+            // resource limits mean most runs build only scikit-plots-apis.tex
+            // (-> scikit-plots-apis.pdf), with scikit-plots-user-guide.pdf rarely
+            // and the full scikit-plots.pdf only occasionally. Pointing the
+            // catch-all at the frequently-absent all-in-one produced 404s, so the
+            // reliable auto-discovery default is the APIs PDF. A deployment that
+            // DOES build the full PDF can target it via an explicit
+            // ai_assistant_pdf_export_url (P0), which always wins over this.
+            key: 'documentation',
+            file: 'scikit-plots-apis.pdf',
+            label: 'APIs Reference PDF',
+            matches: function () { return true; }
+        }
+    ];
+
+    function _getSphinxDocsRootUrl() {
+        var options = window.DOCUMENTATION_OPTIONS || {};
+        var urlRoot = typeof options.URL_ROOT === 'string' ? options.URL_ROOT.trim() : '';
+
+        try {
+            if (urlRoot) return new URL(urlRoot, document.baseURI).href;
+
+            // Fallback for pages where documentation_options.js is unavailable:
+            // ai-assistant.js itself lives in <docs-root>/_static/.
+            var staticPath = String(getStaticPath() || '').replace(/\/?$/, '/');
+            var staticUrl = new URL(staticPath, document.baseURI);
+            return new URL('../', staticUrl).href;
+        } catch (_e) {
+            return '';
+        }
+    }
+
+    function _getCurrentSphinxPageName(docsRootUrl) {
+        var options = window.DOCUMENTATION_OPTIONS || {};
+        var configured = typeof options.pagename === 'string'
+            ? options.pagename.trim().replace(/^\/+|\/+$/g, '')
+            : '';
+        if (configured) return configured;
+
+        try {
+            var current = new URL(window.location.href);
+            var root = new URL(docsRootUrl || current.origin + '/');
+            var currentPath = decodeURIComponent(current.pathname || '');
+            var rootPath = decodeURIComponent(root.pathname || '/');
+
+            if (currentPath.indexOf(rootPath) === 0) {
+                currentPath = currentPath.slice(rootPath.length);
+            }
+
+            currentPath = currentPath
+                .replace(/^\/+/, '')
+                .replace(/\/index\.html?$/i, '')
+                .replace(/\.html?$/i, '')
+                .replace(/\/+$/, '');
+
+            return currentPath || 'index';
+        } catch (_e) {
+            return 'index';
+        }
+    }
+
+    function _getCurrentPageHeading() {
+        var heading = document.querySelector('main h1, article h1, h1');
+        var value = heading && heading.textContent
+            ? heading.textContent
+            : String(document.title || '').split(/\s+[—-]\s+/)[0];
+        return String(value || '')
+            .replace(/\s*[¶#]\s*$/, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function _selectAutoPdfDocument(context) {
+        for (var i = 0; i < _PDF_AUTO_DOCUMENTS.length; i++) {
+            var candidate = _PDF_AUTO_DOCUMENTS[i];
+            try {
+                if (candidate.matches(context)) return candidate;
+            } catch (_e) {}
+        }
+        return null;
+    }
+
+    /**
+     * Optional exact-page hook for future build tooling.
+     *
+     * A separate generated script may define:
+     *
+     *   window.AI_ASSISTANT_PDF_PAGE_MAP = {
+     *     'user_guide/logging': 42
+     *   };
+     *
+     * Numeric values become standard #page=N PDF fragments. No map is required
+     * for the normal runtime-discovery path, and arbitrary fragments/URLs are
+     * deliberately rejected.
+     */
+    function _applyPdfPageMap(url, pageName) {
+        var map = window.AI_ASSISTANT_PDF_PAGE_MAP;
+        if (!map || typeof map !== 'object' || !Object.prototype.hasOwnProperty.call(map, pageName)) {
+            return { url: url, exactPage: false };
+        }
+
+        var page = Number(map[pageName]);
+        if (!Number.isInteger(page) || page < 1 || page > 100000) {
+            return { url: url, exactPage: false };
+        }
+
+        try {
+            var target = new URL(url, document.baseURI);
+            target.hash = 'page=' + page;
+            return { url: target.href, exactPage: true };
+        } catch (_e) {
+            return { url: url, exactPage: false };
+        }
+    }
+
+    function _expandConfiguredPdfUrl(rawUrl, context) {
+        // Backward-compatible support for the placeholders documented in
+        // _example_conf.py. Values come from the current Sphinx page, not user
+        // input, and are URI-encoded only where they represent one component.
+        return String(rawUrl || '')
+            .replace(/\{(?:pagename|docname)\}/g, context.pageName)
+            .replace(/\{title\}/g, encodeURIComponent(context.pageTitle));
+    }
+
+    /**
+     * Resolve the effective prepared-PDF target.
+     *
+     * Priority:
+     *   P0 explicit cfg.pdfExportUrl
+     *   P1 runtime Sphinx discovery under <URL_ROOT>/_downloads/
+     *   P2 no URL capability (print-only)
+     *
+     * cfg.pdfAutoDiscover=false is an optional JS-only escape hatch. Also, when
+     * pdfUrlModeToggle is explicitly false and no URL is configured, preserve
+     * the historical print-only contract instead of silently changing it.
+     */
+    function _resolvePdfTarget(cfg) {
+        cfg = cfg || _cfg();
+        var docsRootUrl = _getSphinxDocsRootUrl();
+        var context = {
+            docsRootUrl: docsRootUrl,
+            pageName: _getCurrentSphinxPageName(docsRootUrl),
+            pageTitle: _getCurrentPageHeading()
+        };
+        var explicit = typeof cfg.pdfExportUrl === 'string'
+            ? cfg.pdfExportUrl.trim()
+            : '';
+
+        if (explicit) {
+            var configuredUrl = _expandConfiguredPdfUrl(explicit, context);
+            var configuredLocation = _applyPdfPageMap(configuredUrl, context.pageName);
+            return {
+                url: configuredLocation.url,
+                source: 'config',
+                documentKey: 'configured',
+                documentLabel: 'prepared PDF',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: configuredLocation.exactPage
+            };
+        }
+
+        if (cfg.pdfAutoDiscover === false || cfg.pdfUrlModeToggle === false || !docsRootUrl) {
+            return {
+                url: '',
+                source: 'none',
+                documentKey: '',
+                documentLabel: '',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: false
+            };
+        }
+
+        var documentDef = _selectAutoPdfDocument(context);
+        if (!documentDef) {
+            return {
+                url: '',
+                source: 'none',
+                documentKey: '',
+                documentLabel: '',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: false
+            };
+        }
+
+        try {
+            var autoUrl = new URL('_downloads/' + documentDef.file, docsRootUrl).href;
+            var autoLocation = _applyPdfPageMap(autoUrl, context.pageName);
+            return {
+                url: autoLocation.url,
+                source: 'auto',
+                documentKey: documentDef.key,
+                documentLabel: documentDef.label,
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: autoLocation.exactPage
+            };
+        } catch (_e) {
+            return {
+                url: '',
+                source: 'none',
+                documentKey: '',
+                documentLabel: '',
+                pageName: context.pageName,
+                pageTitle: context.pageTitle,
+                exactPage: false
+            };
+        }
+    }
+
+    function _isPdfModeAvailable(mode, pdfUrl) {
+        var def = _PDF_MODE_DEFS[mode];
+        return !!def && (!def.requiresUrl || !!pdfUrl);
+    }
+
+    function _normalizePdfMode(mode, pdfUrl) {
+        if (_isPdfModeAvailable(mode, pdfUrl)) return mode;
+        return pdfUrl ? 'url' : 'print';
+    }
+
+    function _getAvailablePdfModes(pdfUrl) {
+        return _PDF_MODE_ORDER.filter(function (mode) {
+            return _isPdfModeAvailable(mode, pdfUrl);
+        });
+    }
+
+    function _pdfIconSource(staticPath, mode) {
+        var def = _PDF_MODE_DEFS[mode] || _PDF_MODE_DEFS.print;
+        return staticPath.replace(/\/$/, '') + '/' + def.iconFile;
+    }
+
+    function _pdfSwitchAccessibleLabel(mode, target) {
+        var directLabel = target && target.documentLabel
+            ? target.documentLabel
+            : 'prepared PDF';
+        return mode === 'url'
+            ? 'PDF export method: ' + directLabel + '. Switch to print and save.'
+            : 'PDF export method: print and save. Switch to ' + directLabel + '.';
+    }
+
+    /**
+     * Visible title text for the left-hand action button, kept in step with
+     * the toggle so the row always reads correctly on its own:
+     *   toggle OFF (print mode) → "Print as PDF"
+     *   toggle ON  (url mode)   → "Export as PDF"
+     */
+    function _pdfActionLabel(mode) {
+        return mode === 'url' ? 'Export as PDF' : 'Print as PDF';
+    }
+
+    function _pdfModeDescription(mode, pdfUrl, target) {
+        var normalized = _normalizePdfMode(mode, pdfUrl);
+        if (normalized !== 'url') return _PDF_MODE_DEFS.print.description;
+
+        target = target || _resolvePdfTarget(_cfg());
+        if (target.exactPage && target.pageTitle) {
+            return 'Open the ' + target.documentLabel + ' at “' + target.pageTitle + '”.';
+        }
+        if (target.documentKey === 'user-guide') {
+            return 'Open the User Guide PDF for this section in a new tab.';
+        }
+        if (target.documentKey === 'documentation') {
+            return 'Open the complete documentation PDF in a new tab.';
+        }
+        return _PDF_MODE_DEFS.url.description;
+    }
 
     function createPdfSection(staticPath, cfg) {
         cfg = cfg || {};
-        var pdfUrl     = (cfg.pdfExportUrl || '').trim();
+        var target     = _resolvePdfTarget(cfg);
+        var pdfUrl     = target.url;
         var showToggle = cfg.pdfUrlModeToggle !== false;
+        var available  = _getAvailablePdfModes(pdfUrl);
 
         var savedMode = null;
         try { savedMode = sessionStorage.getItem(_PDF_MODE_KEY); } catch (_e) {}
-
-        var initialMode = (savedMode === 'url' || savedMode === 'print')
-            ? savedMode
-            : (pdfUrl ? 'url' : 'print');
+        var initialMode = _normalizePdfMode(savedMode, pdfUrl);
+        var initialDef  = _PDF_MODE_DEFS[initialMode];
+        // Toggle visibility vs. interactivity are two separate questions:
+        //   • hasSwitch     — is the toggle rendered at all? Whenever the site
+        //                     has not explicitly set pdfUrlModeToggle=false, the
+        //                     toggle is ALWAYS shown so the control is
+        //                     discoverable and the row layout is stable across
+        //                     pages, not appearing only where a PDF exists.
+        //   • switchEnabled — is it interactive? Only when a second mode (a
+        //                     prepared-PDF URL) actually exists for this page.
+        //                     In print-only mode the toggle is shown DISABLED:
+        //                     visible, pinned to Print, and not clickable.
+        var hasSwitch     = showToggle;
+        var switchEnabled = showToggle && available.length > 1;
 
         var section = document.createElement('div');
         section.className = 'ai-assistant-pdf-section';
+        section.dataset.pdfMode = initialMode;
+        section.dataset.pdfMethodCount = String(available.length);
+        section.dataset.pdfHasToggle = hasSwitch ? 'true' : 'false';
+        section.dataset.pdfToggleEnabled = switchEnabled ? 'true' : 'false';
+        section.dataset.pdfUrlSource = target.source;
+        section.dataset.pdfDocument = target.documentKey;
+        // Internal component state. Keeping resolved target/static sources on
+        // the section avoids repeating URL-root discovery during every toggle.
+        section._pdfStaticPath = staticPath;
+        section._pdfTarget = target;
 
-        var btn = document.createElement('button');
-        btn.className = 'ai-assistant-menu-item ai-assistant-pdf-btn';
-        btn.id = 'ai-assistant-pdf-export';
-        btn.type = 'button';
-        btn.setAttribute('role', 'menuitem');
+        var row = document.createElement('div');
+        row.className = 'ai-assistant-pdf-row';
+        row.setAttribute('role', 'group');
+        row.setAttribute('aria-label', 'PDF export');
 
-        var btnContent = document.createElement('div');
-        btnContent.className = 'ai-assistant-menu-item-content ai-assistant-pdf-content';
+        var btn = createMenuItem(
+            'pdf-export',
+            _pdfActionLabel(initialMode),
+            _pdfModeDescription(initialMode, pdfUrl, target),
+            _pdfIconSource(staticPath, initialMode)
+        );
+        btn.classList.add('ai-assistant-pdf-action');
+        btn.dataset.pdfMode = initialMode;
+        btn.setAttribute('aria-describedby', 'ai-assistant-pdf-desc');
 
-        var btnTitle = document.createElement('div');
-        btnTitle.className = 'ai-assistant-menu-item-title';
-
-        var pdfIcon = document.createElement('img');
-        pdfIcon.src = staticPath + '/file-pdf.svg';
-        pdfIcon.className = 'ai-assistant-menu-icon';
-        pdfIcon.setAttribute('aria-hidden', 'true');
-        pdfIcon.alt = '';
-
-        var pdfLabel = document.createElement('span');
-        pdfLabel.textContent = 'Export as PDF';
-
-        btnTitle.appendChild(pdfIcon);
-        btnTitle.appendChild(pdfLabel);
-
-        var btnDesc = document.createElement('div');
-        btnDesc.className = 'ai-assistant-menu-item-description ai-assistant-pdf-desc';
-        btnDesc.id = 'ai-assistant-pdf-desc';
-        btnDesc.textContent = _pdfModeDescription(initialMode, pdfUrl);
-
-        btnContent.appendChild(btnTitle);
-        btnContent.appendChild(btnDesc);
-        btn.appendChild(btnContent);
-        section.appendChild(btn);
-
-        if (showToggle) {
-            var toggleRow = document.createElement('div');
-            toggleRow.className = 'ai-assistant-pdf-toggle';
-            toggleRow.id = 'ai-assistant-pdf-toggle';
-            toggleRow.setAttribute('role', 'group');
-            toggleRow.setAttribute('aria-label', 'PDF export mode');
-
-            var toggleLabel = document.createElement('span');
-            toggleLabel.className = 'ai-assistant-pdf-toggle-label';
-            toggleLabel.textContent = 'Mode:';
-
-            var urlBtn = document.createElement('button');
-            urlBtn.className = 'ai-assistant-pdf-mode-btn' + (initialMode === 'url' ? ' active' : '');
-            urlBtn.id = 'ai-assistant-pdf-mode-url';
-            urlBtn.type = 'button';
-            urlBtn.textContent = 'URL';
-            urlBtn.title = 'Open PDF URL in new tab';
-            if (!pdfUrl) urlBtn.disabled = true;
-
-            var printBtn = document.createElement('button');
-            printBtn.className = 'ai-assistant-pdf-mode-btn' + (initialMode === 'print' ? ' active' : '');
-            printBtn.id = 'ai-assistant-pdf-mode-print';
-            printBtn.type = 'button';
-            printBtn.textContent = 'Print';
-            printBtn.title = 'Use browser print dialog (Save as PDF)';
-
-            urlBtn.addEventListener('click', function (e) { e.stopPropagation(); if (!urlBtn.disabled) _setPdfMode('url'); });
-            printBtn.addEventListener('click', function (e) { e.stopPropagation(); _setPdfMode('print'); });
-
-            toggleRow.appendChild(toggleLabel);
-            toggleRow.appendChild(urlBtn);
-            toggleRow.appendChild(printBtn);
-            section.appendChild(toggleRow);
+        var btnDesc = btn.querySelector('.ai-assistant-menu-item-description');
+        if (btnDesc) {
+            btnDesc.id = 'ai-assistant-pdf-desc';
+            btnDesc.classList.add('ai-assistant-pdf-desc');
         }
 
+        row.appendChild(btn);
+
+        // The switch is a sibling—not a child—of the export button. Nested
+        // buttons are invalid HTML and create unreliable keyboard/AT behavior.
+        // menuitemcheckbox keeps the control valid inside the surrounding menu.
+        if (hasSwitch) {
+            var modeSwitch = document.createElement('button');
+            modeSwitch.className = 'ai-assistant-pdf-mode-switch ai-assistant-mic-popup-toggle';
+            modeSwitch.id = 'ai-assistant-pdf-toggle';
+            modeSwitch.type = 'button';
+            modeSwitch.setAttribute('role', 'menuitemcheckbox');
+            modeSwitch.setAttribute('aria-checked', initialMode === 'url' ? 'true' : 'false');
+
+            if (!switchEnabled) {
+                // Print-only: visible but inert. Pinned to Print, marked disabled
+                // for pointer + assistive tech, and labelled so the disabled
+                // state is understandable rather than mysterious.
+                var _pdfDisabledLabel =
+                    'No prepared PDF is available for this page \u2014 Print & save only.';
+                modeSwitch.disabled = true;
+                modeSwitch.setAttribute('aria-disabled', 'true');
+                modeSwitch.setAttribute('tabindex', '-1');
+                modeSwitch.dataset.pdfDisabled = 'true';
+                modeSwitch.classList.add('ai-assistant-pdf-mode-switch--disabled');
+                modeSwitch.setAttribute('aria-label', _pdfDisabledLabel);
+                modeSwitch.title = _pdfDisabledLabel;
+            } else {
+                modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(initialMode, target));
+                modeSwitch.title = _pdfSwitchAccessibleLabel(initialMode, target);
+            }
+
+            var modeTrack = document.createElement('span');
+            modeTrack.className = 'ai-assistant-mic-toggle-track ai-assistant-pdf-toggle-track';
+            modeTrack.setAttribute('aria-hidden', 'true');
+
+            var modeThumb = document.createElement('span');
+            modeThumb.className = 'ai-assistant-mic-toggle-thumb ai-assistant-pdf-toggle-thumb';
+            modeTrack.appendChild(modeThumb);
+
+            var modeText = document.createElement('span');
+            modeText.className = 'ai-assistant-pdf-toggle-text';
+            modeText.textContent = initialDef.label;
+
+            modeSwitch.appendChild(modeTrack);
+            modeSwitch.appendChild(modeText);
+
+            // Interaction is wired only when a real second mode exists. In
+            // print-only mode the switch is inert (see the disabled branch
+            // above), so no handlers are attached and clicks cannot change mode.
+            if (switchEnabled) {
+                // Keep focus on the compact switch while preventing the
+                // surrounding dropdown from treating pointer-down as an outside
+                // interaction.
+                modeSwitch.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
+                });
+                modeSwitch.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    var current = _getPdfMode();
+                    _setPdfMode(current === 'url' ? 'print' : 'url');
+                });
+            }
+
+            row.appendChild(modeSwitch);
+        }
+
+        section.appendChild(row);
+        _syncPdfModeUI(initialMode, pdfUrl, section, target);
         return section;
     }
 
-    function _pdfModeDescription(mode, pdfUrl) {
-        return (mode === 'url' && pdfUrl) ? 'Opens PDF in a new tab.' : 'Save as PDF via browser print dialog.';
+    function _syncPdfModeUI(mode, pdfUrl, root, target) {
+        var normalized = _normalizePdfMode(mode, pdfUrl);
+        var def = _PDF_MODE_DEFS[normalized];
+
+        // `root` is used during construction, before the section is attached to
+        // document. Runtime updates omit it and resolve the live section.
+        var section = root || document.querySelector('.ai-assistant-pdf-section');
+        target = target || (section && section._pdfTarget) || _resolvePdfTarget(_cfg());
+        var exportBtn = section
+            ? section.querySelector('#ai-assistant-pdf-export')
+            : document.getElementById('ai-assistant-pdf-export');
+        var descEl = section
+            ? section.querySelector('#ai-assistant-pdf-desc')
+            : document.getElementById('ai-assistant-pdf-desc');
+        var iconEl = exportBtn
+            ? exportBtn.querySelector('.ai-assistant-menu-icon')
+            : null;
+        var titleEl = exportBtn
+            ? exportBtn.querySelector('.ai-assistant-menu-item-title-text')
+            : null;
+        var modeSwitch = section
+            ? section.querySelector('#ai-assistant-pdf-toggle')
+            : document.getElementById('ai-assistant-pdf-toggle');
+        var modeText = modeSwitch
+            ? modeSwitch.querySelector('.ai-assistant-pdf-toggle-text')
+            : null;
+        var staticPath = section && section._pdfStaticPath
+            ? section._pdfStaticPath
+            : getStaticPath();
+
+        if (section) section.dataset.pdfMode = normalized;
+        if (exportBtn) {
+            exportBtn.dataset.pdfMode = normalized;
+            exportBtn.setAttribute(
+                'aria-label',
+                normalized === 'url'
+                    ? 'Open the ' + (target.documentLabel || 'prepared PDF') + ' in a new tab'
+                    : 'Open the browser print dialog to save as PDF'
+            );
+        }
+        if (descEl) descEl.textContent = _pdfModeDescription(normalized, pdfUrl, target);
+        if (iconEl) iconEl.src = _pdfIconSource(staticPath, normalized);
+        if (titleEl) titleEl.textContent = _pdfActionLabel(normalized);
+
+        if (modeSwitch && modeSwitch.dataset.pdfDisabled !== 'true') {
+            modeSwitch.dataset.pdfMode = normalized;
+            modeSwitch.setAttribute('aria-checked', normalized === 'url' ? 'true' : 'false');
+            modeSwitch.setAttribute('aria-label', _pdfSwitchAccessibleLabel(normalized, target));
+            modeSwitch.title = _pdfSwitchAccessibleLabel(normalized, target);
+        }
+        if (modeText) modeText.textContent = def.label;
+
+        return normalized;
     }
 
     function _setPdfMode(mode) {
-        try { sessionStorage.setItem(_PDF_MODE_KEY, mode); } catch (_e) {}
-        var urlBtn   = document.getElementById('ai-assistant-pdf-mode-url');
-        var printBtn = document.getElementById('ai-assistant-pdf-mode-print');
-        var descEl   = document.getElementById('ai-assistant-pdf-desc');
-        var pdfUrl   = (_cfg().pdfExportUrl || '').trim();
-        if (urlBtn)   urlBtn.classList.toggle('active',   mode === 'url');
-        if (printBtn) printBtn.classList.toggle('active', mode === 'print');
-        if (descEl)   descEl.textContent = _pdfModeDescription(mode, pdfUrl);
+        var target = _resolvePdfTarget(_cfg());
+        var normalized = _normalizePdfMode(mode, target.url);
+        try { sessionStorage.setItem(_PDF_MODE_KEY, normalized); } catch (_e) {}
+        _syncPdfModeUI(normalized, target.url, null, target);
     }
 
     function _getPdfMode() {
-        var pdfUrl = (_cfg().pdfExportUrl || '').trim();
+        var target = _resolvePdfTarget(_cfg());
         try {
-            var saved = sessionStorage.getItem(_PDF_MODE_KEY);
-            if (saved === 'url' || saved === 'print') return saved;
-        } catch (_e) {}
-        return pdfUrl ? 'url' : 'print';
+            return _normalizePdfMode(sessionStorage.getItem(_PDF_MODE_KEY), target.url);
+        } catch (_e) {
+            return _normalizePdfMode(null, target.url);
+        }
     }
 
     // ── Menu helpers ──────────────────────────────────────────────────────────
@@ -2056,6 +2561,7 @@
         icon.alt = '';
 
         var label = document.createElement('span');
+        label.className = 'ai-assistant-menu-item-title-text';
         label.textContent = text;
 
         titleRow.appendChild(icon);
@@ -2428,12 +2934,15 @@
     }
 
     function handlePdfExport() {
-        var cfg    = _cfg();
-        var pdfUrl = (cfg.pdfExportUrl || '').trim();
+        var target = _resolvePdfTarget(_cfg());
         var mode   = _getPdfMode();
         closeDropdown();
-        if (mode === 'url' && pdfUrl) {
-            window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+        // Defence-in-depth: only ever open http(s)/root-relative targets in a
+        // new tab. The URL is config-sourced, but validating the scheme here
+        // ensures a misconfigured or poisoned value can never become a
+        // javascript:/data: window.open. On an unsafe value, fall back to print.
+        if (mode === 'url' && target.url && _isSafeHref(target.url)) {
+            window.open(target.url, '_blank', 'noopener,noreferrer');
             return;
         }
         _printWithHeader();
@@ -6755,6 +7264,94 @@ opts.jsonPayload + '\n' +
         return wrapper;
     }
 
+    // ── Page-help prompt (deterministic, grounded — not random) ─────────
+    //
+    // A single opinionated button that pre-fills the chat input with the most
+    // useful question for THIS page, then lets the user review/edit and send.
+    // Deterministic: the same page always yields the same question, chosen in
+    // priority order (no shuffle, no random templates, no dice):
+    //   1. the author's top curated question (cfg.panelQuickQuestions) — their
+    //      explicit judgement of what matters most here, zero model cost;
+    //   2. else a grounded question built from the page's real subject
+    //      (primary heading / title) with one fixed phrasing.
+    // Replaces the former "I'm Feeling Lucky" random picker: the checkbox
+    // sources, shuffle, static templates, custom-topic input, and the
+    // document-level outside-click listener (and its rebuild leak) are all gone.
+    // Inserted between the welcome message and the suggestion chips by
+    // _renderWelcome. Pre-fill only — the user reviews and hits send.
+
+    /**
+     * The single best question to pre-fill for the current page.
+     * Pure and deterministic: same page → same string, never random.
+     * @returns {string}
+     */
+    function _bestQuestionForPage() {
+        var cfg = _cfg();
+        // 1. Author's top curated question wins.
+        if (Array.isArray(cfg.panelQuickQuestions)) {
+            for (var i = 0; i < cfg.panelQuickQuestions.length; i++) {
+                var q = String(cfg.panelQuickQuestions[i] || '').trim();
+                if (q) return q;
+            }
+        }
+        // 2. A grounded question keyed to the page's real subject. Strip a
+        //    trailing site suffix (" — Project", " · scikit-plots", " | Docs")
+        //    so the subject is the page's own topic, not the site name.
+        var subject = String(_getCurrentPageHeading() || document.title || '').trim();
+        subject = subject.split(/\s[\u2013\u2014|\u00b7]\s/)[0].trim();
+        if (subject) {
+            return 'How do I use ' + subject +
+                ', and what are the key things to know about it?';
+        }
+        // 3. Last resort when the page exposes no subject at all.
+        return 'What is this page about, and how do I use it?';
+    }
+
+    /**
+     * Build the "Explain this page" button. On click it pre-fills the chat
+     * input with _bestQuestionForPage() and focuses it; the user reviews and
+     * sends. No auto-send, no popover, no document-level listeners.
+     * @returns {HTMLElement} wrapper containing the button.
+     */
+    function _buildPageHelpButton() {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'ai-assistant-pagehelp';
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ai-assistant-pagehelp-btn';
+        btn.id = 'ai-assistant-pagehelp-btn';
+        // The button prepares a question rather than sending one — say so.
+        btn.setAttribute('aria-label',
+            'Explain this page \u2014 fills the box with a suggested question ' +
+            'you can edit, then send');
+
+        var icon = document.createElement('span');
+        icon.className = 'ai-assistant-pagehelp-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = ICONS.sparkleRight2NovaUpDown;
+        btn.appendChild(icon);
+
+        var lbl = document.createElement('span');
+        lbl.className = 'ai-assistant-pagehelp-label';
+        lbl.textContent = 'Explain this page';
+        btn.appendChild(lbl);
+
+        btn.addEventListener('click', function () {
+            var input = document.getElementById('ai-assistant-panel-input');
+            if (!input) return;
+            input.value = _bestQuestionForPage();
+            if (typeof _updateSendBtnState === 'function') _updateSendBtnState();
+            input.focus();
+            // Caret at end so editing continues naturally.
+            try { input.setSelectionRange(input.value.length, input.value.length); }
+            catch (_e) { /* not all input types support selection range */ }
+        });
+
+        wrapper.appendChild(btn);
+        return wrapper;
+    }
+
     /**
      * Render the initial welcome + quick-suggestion chips into the body.
      * Extracted so clearConversation() can rebuild without duplicating logic.
@@ -6801,6 +7398,14 @@ opts.jsonPayload + '\n' +
         welcome.appendChild(p2);
         welcome.appendChild(p3);
         body.appendChild(welcome);
+
+        // Enabled by default; disable from conf.py via
+        // ai_assistant_panel_page_help = False once registered in the extension
+        // __init__.py (serialised to panelPageHelp). `panelLucky` is honoured as
+        // a fallback so any existing explicit opt-out keeps working.
+        if (cfg.panelPageHelp !== false && cfg.panelLucky !== false) {
+            body.appendChild(_buildPageHelpButton());
+        }
 
         if (quickQs.length > 0) {
             var suggestionsEl = document.createElement('div');
@@ -15673,9 +16278,9 @@ opts.jsonPayload + '\n' +
         // compensate for that; it's removed below since it's no longer
         // needed and would double up on an already-correct color.
         var logo = document.createElement('span');
-        // Primary icon — sparkleNova. sparkle/sparkleAlt stay defined
+        // Primary icon — sparkleLeft2NovaUpDown. sparkle/sparkleRight1NovaUp stay defined
         // above as alternates for future use, not removed.
-        logo.innerHTML = ICONS.sparkleNova;
+        logo.innerHTML = ICONS.sparkleLeft2NovaUpDown;
         logo.className = 'ai-assistant-panel-logo';
         logo.setAttribute('aria-hidden', 'true');
 
@@ -15702,6 +16307,13 @@ opts.jsonPayload + '\n' +
 
         var minimizeBtn = _createIconBtn('minimize', 'Minimize panel', ICONS.minimize);
         var maximizeBtn = _createIconBtn('maximize', 'Maximize panel', ICONS.maximize);
+        // Dedicated "collapse full screen" button — the inverse of `maximize`.
+        // Kept as a separate control (rather than only relying on maximizeBtn
+        // re-labeling itself) so the maximized state always has an explicit,
+        // discoverable exit affordance. Hidden until the panel is maximized;
+        // see _setMaximized() below for the show/hide + icon wiring.
+        var collapseBtn = _createIconBtn('collapse', 'Collapse full screen', ICONS.minimizeCollapse);
+        collapseBtn.style.display = 'none';
         var closeBtn    = _createIconBtn('close',    'Close ' + _escapeHtml(title), ICONS.close);
 
         // R3: clear conversation without page refresh ("Start a new chat").
@@ -15730,6 +16342,7 @@ opts.jsonPayload + '\n' +
         headerActions.appendChild(exportDropdown);
         headerActions.appendChild(minimizeBtn);
         headerActions.appendChild(maximizeBtn);
+        headerActions.appendChild(collapseBtn);
         headerActions.appendChild(closeBtn);
 
         header.appendChild(headerTitle);
@@ -15740,7 +16353,7 @@ opts.jsonPayload + '\n' +
         // Layout (left → right):
         //
         //    [☰ hamburger ← now in header-title]
-        //    [Source ▸] [⌨ kbd-hint]  . . .  [Model ▾] [Endpoints ▾] [Privacy] [Terms] [↗ Share]
+        //    [⌨ kbd-hint]  . . .  [Model ▾] [Endpoints ▾] [Privacy] [Terms] [↗ Share] [Website]
         //
         // The hamburger popover is still opened by the header button and wired
         // below.  The right overflow button (⋯) shares the same popover for
@@ -15751,36 +16364,16 @@ opts.jsonPayload + '\n' +
 
         // ── Left cluster ──────────────────────────────────────────────────────
         // Note: hamburger button is in div.ai-assistant-panel-header-title now.
-        // The subbar left cluster holds only the Source button and the kbd hint.
+        // The subbar left cluster holds only the kbd hint (the Source button
+        // that used to live here was removed — see note below).
         var leftCluster = document.createElement('div');
         leftCluster.className = 'ai-assistant-panel-subbar-left';
 
-        // ── Left cluster: Source (GitHub) button ──────────────────────────────
-        // Shown when panelSource !== false AND panelSourceUrl is a valid URL.
-        // Clicking opens the Links sheet (same _openSheet contract as all other
-        // sheets).  Built here so the element is available to wire() below.
-        // Order: [☰ hamburger] [Source] [kbd-hint]
-        var sourceBtn = null;
-        if (cfgRef.panelSource !== false) {
-            sourceBtn = document.createElement('button');
-            sourceBtn.type = 'button';
-            sourceBtn.className =
-                'ai-assistant-panel-subbar-link-btn ai-assistant-panel-source-btn';
-            var sourceIc = document.createElement('span');
-            sourceIc.setAttribute('aria-hidden', 'true');
-            sourceIc.innerHTML = ICONS.github;   // ICONS constant — safe.
-            sourceBtn.appendChild(sourceIc);
-            var sourceLbl = document.createElement('span');
-            sourceLbl.textContent =
-                (cfgRef.panelSourceBtnLabel) || 'Source';
-            sourceBtn.appendChild(sourceLbl);
-            sourceBtn.setAttribute(
-                'aria-label',
-                (cfgRef.panelSourceBtnLabel || 'Source') + ' \u2014 open project links'
-            );
-            sourceBtn.title = 'View project source & links';
-            leftCluster.appendChild(sourceBtn);
-        }
+        // ── Left cluster: kbd hint only ──────────────────────────────────────
+        // The Source button that used to live here was removed — siteBtn
+        // (right cluster) and the hamburger "Project Links" item both already
+        // open the same Project Links sheet, so it was a redundant third
+        // entry point. See _buildLinksSheet() for the sheet itself.
 
         var kbdLabel = _shortcutLabel();
         if (kbdLabel) {
@@ -16007,8 +16600,11 @@ opts.jsonPayload + '\n' +
         if (shareLink)  rightCluster.appendChild(shareLink);
 
         // ── Right cluster: Site (website) button — after Share ────────────────
-        // Counterpart to sourceBtn.  Opens the same Links sheet from the right
-        // side so the user can reach project links from either subbar edge.
+        // The other entry point to the Project Links sheet (alongside the
+        // hamburger's "Project Links" item) — kept in sync with it visually,
+        // using the same icon (ICONS.github, see _buildHamburgerMenu's
+        // addItem(ICONS.github, 'Project Links', ...) call) since both refer
+        // to the exact same destination.
         var siteBtn = null;
         if (cfgRef.panelSite !== false) {
             siteBtn = document.createElement('button');
@@ -16017,7 +16613,7 @@ opts.jsonPayload + '\n' +
                 'ai-assistant-panel-subbar-link-btn ai-assistant-panel-site-btn';
             var siteIc = document.createElement('span');
             siteIc.setAttribute('aria-hidden', 'true');
-            siteIc.innerHTML = ICONS.globe;   // ICONS constant — safe.
+            siteIc.innerHTML = ICONS.github;   // ICONS constant — safe.
             siteBtn.appendChild(siteIc);
             var siteLbl = document.createElement('span');
             siteLbl.textContent = (cfgRef.panelSiteBtnLabel) || 'Website';
@@ -16409,6 +17005,34 @@ opts.jsonPayload + '\n' +
             '\u2728 The chatbot is an AI and can make mistakes. Please double-check cited sources.';
         footer.appendChild(footerNote);
 
+        // ── Footer credit: "Powered by …" branding line ─────────────────────
+        // White-label point — see _resolvePoweredBy() / window.AI_ASSISTANT_CONFIG.poweredBy
+        // near the top of this file. Built with createElement/textContent/
+        // setAttribute only (never innerHTML), matching this file's HTML
+        // policy, since `name`/`url` may ultimately come from page-injected
+        // config rather than a hardcoded literal.
+        var poweredBy = _resolvePoweredBy();
+        if (poweredBy) {
+            var footerCredit = document.createElement('div');
+            footerCredit.className = 'ai-assistant-panel-footer-credit';
+            footerCredit.appendChild(document.createTextNode(poweredBy.text + ' '));
+            if (poweredBy.url) {
+                var creditLink = document.createElement('a');
+                creditLink.className = 'ai-assistant-panel-footer-credit-link';
+                creditLink.textContent = poweredBy.name;
+                creditLink.href = poweredBy.url;
+                creditLink.target = '_blank';
+                // noopener/noreferrer: same "external links never get a
+                // reference back to this window" policy as window.open()
+                // elsewhere in this file (see file header, Security).
+                creditLink.rel = 'noopener noreferrer';
+                footerCredit.appendChild(creditLink);
+            } else {
+                footerCredit.appendChild(document.createTextNode(poweredBy.name));
+            }
+            footer.appendChild(footerCredit);
+        }
+
         // ── Assemble panel ────────────────────────────────────────────────────
         panel.appendChild(header);
         panel.appendChild(subbar);            // R7 kbd hint + R2 privacy link
@@ -16453,8 +17077,9 @@ opts.jsonPayload + '\n' +
         if (shareSheet) panel.appendChild(shareSheet);
 
         // Links sheet — source repository + project website cards.
-        // Built when panelLinks !== false (default true).  Both sourceBtn and
-        // siteBtn in the sub-bar open this same sheet via _openSheet.
+        // Built when panelLinks !== false (default true).  siteBtn in the
+        // sub-bar and the "Project Links" hamburger item both open this same
+        // sheet via _openSheet.
         var linksSheet = (cfgRef.panelLinks !== false) ? _buildLinksSheet() : null;
         if (linksSheet) panel.appendChild(linksSheet);
 
@@ -16637,11 +17262,6 @@ opts.jsonPayload + '\n' +
                 } catch (_) {}
             }
         }
-        if (sourceBtn) {
-            sourceBtn.addEventListener('click', function () {
-                _openLinksOrUrl(cfgRef.panelSourceUrl || '');
-            });
-        }
         if (siteBtn) {
             siteBtn.addEventListener('click', function () {
                 _openLinksOrUrl(cfgRef.panelSiteUrl || '');
@@ -16744,50 +17364,66 @@ opts.jsonPayload + '\n' +
         // browsers that don't support ResizeObserver (IE11, very old Safari).
         if (typeof ResizeObserver !== 'undefined') {
             /**
-             * Progressive right-cluster overflow.
+             * Progressive right-cluster overflow — ratio/slot-based.
              *
-             * Hides subbar-right items one-by-one as the panel narrows instead
-             * of collapsing the entire cluster at once.  Priority order (first
-             * to last to hide):
+             * Priority order below is LOWEST priority first (hides soonest,
+             * i.e. at the widest remaining panel width) to HIGHEST priority
+             * last (hides only once the panel is nearly as narrow as it can
+             * get): Model → Endpoints → Privacy → Terms → Share → Project
+             * Links. A new future item is simply appended to this array —
+             * it automatically becomes the new lowest-priority item with no
+             * per-item pixel tuning required, which is the whole point of
+             * computing thresholds from a formula instead of hand-picking
+             * five (now six) magic numbers.
              *
-             *   modelLink        575 px
-             *   epRightBtn       525 px
-             *   privacyLink      475 px
-             *   termsLink        350 px
-             *   shareLink        300 px
+             * The number of VISIBLE items is computed directly from the
+             * panel width using two constants instead of one hand-tuned
+             * px value per item:
              *
-             * Sets [data-overflow-hidden] on each item so CSS max-width + opacity
-             * transitions can animate the collapse.  Sets [data-overflow-visible]
-             * on the overflow button once any item is hidden so it fades in with a
-             * 60 ms delay (items start squeezing before the ⋯ button appears).
+             *   _SUBBAR_BASE_PX       — width needed for zero items (just
+             *                           the kbd-hint, ⋯ button, and padding)
+             *   _SUBBAR_ITEM_SLOT_PX  — width "spent" per additional
+             *                           visible item, applied uniformly
              *
-             * Items configured as null (feature-flagged off) are silently skipped.
+             *   visibleCount = floor((w - BASE) / SLOT), clamped to
+             *                  [0, total item count]
+             *
+             * This is an intentional approximation — real button widths
+             * vary a little with label length — traded for something that
+             * scales automatically to any number of items and is easy to
+             * reason about/adjust (two constants instead of a five-to-six
+             * entry lookup table that needs re-tuning by hand every time an
+             * item is added or removed).
+             *
+             * Sets [data-overflow-hidden] on each item so CSS max-width +
+             * opacity transitions can animate the collapse (see the
+             * "Train-carriage collapse" rules in ai-assistant.css). Sets
+             * [data-overflow-visible] on the overflow button once any item
+             * is hidden so it fades in with a 60 ms delay (items start
+             * squeezing before the ⋯ button appears).
+             *
+             * Items configured as null (feature-flagged off) are silently
+             * skipped via the Boolean filter below.
              *
              * @param {number} w - Panel content rect width in pixels.
              */
+            var _SUBBAR_ITEM_SLOT_PX = 60;   // px "spent" per visible right-cluster item
+            var _SUBBAR_BASE_PX      = 270;  // px needed for zero right-cluster items
             function _updateSubbarOverflow(w) {
-                var slots = [
-                    // Hide order: rightmost carriage departs first.
-                    // Visual order left→right: Model | Endpoints | Privacy | Terms | Share
-                    { el: modelLink,   px: 575 },   /* leftmost  — exits last   */
-                    { el: epRightBtn,  px: 525 },
-                    { el: privacyLink, px: 475 },
-                    { el: termsLink,   px: 350 },
-                    { el: shareLink,   px: 300 },   /* rightmost — exits first  */
-                ];
-                var anyHidden = false;
+                var slots = [modelLink, epRightBtn, privacyLink, termsLink, shareLink, siteBtn]
+                    .filter(Boolean);
+                var visibleCount = Math.max(0, Math.min(slots.length,
+                    Math.floor((w - _SUBBAR_BASE_PX) / _SUBBAR_ITEM_SLOT_PX)));
+                var hideCount = slots.length - visibleCount;
                 for (var si = 0; si < slots.length; si++) {
-                    var slot = slots[si];
-                    if (!slot.el) continue;
-                    if (w < slot.px) {
-                        slot.el.setAttribute('data-overflow-hidden', '');
-                        anyHidden = true;
+                    if (si < hideCount) {
+                        slots[si].setAttribute('data-overflow-hidden', '');
                     } else {
-                        slot.el.removeAttribute('data-overflow-hidden');
+                        slots[si].removeAttribute('data-overflow-hidden');
                     }
                 }
                 // Overflow button: fade in as soon as any item is hidden.
-                if (anyHidden) {
+                if (hideCount > 0) {
                     rightOverflowBtn.setAttribute('data-overflow-visible', '');
                 } else {
                     rightOverflowBtn.removeAttribute('data-overflow-visible');
@@ -16820,14 +17456,51 @@ opts.jsonPayload + '\n' +
             closeAIPanel();
         });
 
-        maximizeBtn.addEventListener('click', function () {
-            _hapticFeedback([8]);
-            var isMax = panel.getAttribute('data-maximized') === 'true';
-            if (isMax) {
-                // ── Restore ────────────────────────────────────────────────────
+        /**
+         * Registry of maximize/collapse button pairs beyond the main header's
+         * (maximizeBtn/collapseBtn). Populated by _buildSheetToolbar() below —
+         * each slide-over sheet gets its own independent button pair (a DOM
+         * node can't exist in two places at once), and this keeps all of them
+         * showing/hiding in sync with the single source of truth: the panel's
+         * data-maximized attribute.
+         */
+        var _extraMaxPairs = [];
+
+        /**
+         * Enter or leave the maximized state.
+         *
+         * Sizing itself is entirely CSS-driven via the pre-existing
+         * `.ai-assistant-panel[data-maximized="true"]` rule in
+         * ai-assistant.css (updated separately to fill the full viewport
+         * edge-to-edge). This function only owns: the attribute that rule
+         * keys off of, clearing any inline width/height left over from a
+         * manual resize-grip drag (inline styles otherwise outrank the
+         * stylesheet and would keep the panel pinned to its pre-maximize
+         * size), and swapping which of maximizeBtn / collapseBtn is shown
+         * — for the main header AND every sheet-toolbar copy in
+         * _extraMaxPairs.
+         *
+         * @param {boolean} maximize  True to maximize, false to restore.
+         */
+        function _setMaximized(maximize) {
+            if (maximize) {
+                // ── Maximize ───────────────────────────────────────────────
+                // Clear any inline width/height set by the resize grips so
+                // the CSS [data-maximized="true"] rule can take full control
+                // of both dimensions — otherwise the inline values win in
+                // the cascade.
+                panel.style.width  = '';
+                panel.style.height = '';
+                panel.setAttribute('data-maximized', 'true');
+                maximizeBtn.style.display = 'none';
+                collapseBtn.style.display = '';
+                _extraMaxPairs.forEach(function (p) {
+                    p.max.style.display = 'none';
+                    p.col.style.display = '';
+                });
+            } else {
+                // ── Restore ────────────────────────────────────────────────
                 panel.removeAttribute('data-maximized');
-                maximizeBtn.setAttribute('aria-label', 'Maximize panel');
-                maximizeBtn.innerHTML = ICONS.maximize;
                 // Re-apply any manually-saved size so the panel returns to
                 // exactly where the user left it before maximizing.
                 var saved = _ssGet(_PANEL_SIZE_KEY);
@@ -16844,17 +17517,142 @@ opts.jsonPayload + '\n' +
                     panel.style.width  = '';
                     panel.style.height = '';
                 }
-            } else {
-                // ── Maximize ───────────────────────────────────────────────────
-                // Clear any inline width/height set by the resize grips so the
-                // CSS [data-maximized="true"] rules can take full control of
-                // both dimensions — otherwise the inline values win in cascade.
-                panel.style.width  = '';
-                panel.style.height = '';
-                panel.setAttribute('data-maximized', 'true');
-                maximizeBtn.setAttribute('aria-label', 'Restore panel size');
-                maximizeBtn.innerHTML = ICONS.restore;
+                collapseBtn.style.display = 'none';
+                maximizeBtn.style.display = '';
+                _extraMaxPairs.forEach(function (p) {
+                    p.col.style.display = 'none';
+                    p.max.style.display = '';
+                });
             }
+        }
+
+        maximizeBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
+            var isMax = panel.getAttribute('data-maximized') === 'true';
+            _setMaximized(!isMax);
+        });
+
+        // Dedicated inverse-of-maximize control — only visible while
+        // maximized (see _setMaximized above), always restores.
+        collapseBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
+            _setMaximized(false);
+        });
+
+        /**
+         * Build a fresh copy of the header action cluster (new chat / export
+         * / minimize / maximize-collapse) for use inside a slide-over sheet's
+         * head.
+         *
+         * Why a fresh instance per sheet instead of moving the main header's
+         * copy: a DOM node can only exist in one place at a time, and the
+         * main header sits BEHIND every open sheet — sheets are
+         * `position: absolute; inset: 0` over the whole panel (see
+         * .ai-assistant-panel-privacy in the stylesheet) — so its buttons
+         * become visually covered and unreachable while any sheet is open.
+         * Each instance here is fully independent DOM but routes to the
+         * exact same shared functions (clearConversation, minimizeAIPanel,
+         * _setMaximized) as the main header, so behavior and state stay in
+         * sync regardless of which copy was clicked. Mirrors the same
+         * "shared logic, per-context trigger" pattern _buildSheetHamburgerBtn
+         * already uses for the hamburger menu.
+         *
+         * @param {string} idSuffix  Unique suffix so element ids stay unique
+         *   per sheet (e.g. 'links', 'privacy').
+         * @returns {HTMLElement}  A `.ai-assistant-panel-header-actions`
+         *   container, ready to insert into a sheet's
+         *   `.ai-assistant-panel-privacy-head`.
+         */
+        function _buildSheetToolbar(idSuffix) {
+            var wrap = document.createElement('div');
+            wrap.className =
+                'ai-assistant-panel-header-actions ai-assistant-panel-sheet-toolbar';
+
+            var newChatBtn2 = _createIconBtn(
+                'sheet-new-chat-' + idSuffix, 'Start a new chat', ICONS.newChatCompose);
+            newChatBtn2.title = 'Start a new chat';
+            newChatBtn2.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
+            newChatBtn2.addEventListener('click', clearConversation);
+            wrap.appendChild(newChatBtn2);
+
+            var exportDropdown2 = _buildExportDropdownBtn({
+                onLinkMode: function (fmt) {
+                    if (fmt === 'json')       { _openSheet(convShareSheetJson); }
+                    else if (fmt === 'html')  { _openSheet(convShareSheetHtml); }
+                    else                      { _openSheet(convShareSheetTxt);  }
+                },
+            });
+            wrap.appendChild(exportDropdown2);
+
+            var minimizeBtn2 = _createIconBtn(
+                'sheet-minimize-' + idSuffix, 'Minimize panel', ICONS.minimize);
+            minimizeBtn2.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                minimizeAIPanel();
+            });
+            minimizeBtn2.setAttribute('aria-label',
+                'Minimize panel \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
+            minimizeBtn2.title =
+                'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
+            minimizeBtn2.addEventListener('contextmenu', function (e) {
+                if (e.shiftKey) { return; }   // Shift held — let browser menu appear.
+                e.preventDefault();
+                closeAIPanel();
+            });
+            wrap.appendChild(minimizeBtn2);
+
+            var maximizeBtn2 = _createIconBtn(
+                'sheet-maximize-' + idSuffix, 'Maximize panel', ICONS.maximize);
+            var collapseBtn2 = _createIconBtn(
+                'sheet-collapse-' + idSuffix, 'Collapse full screen', ICONS.minimizeCollapse);
+            // Match current state immediately — a sheet can be opened while
+            // the panel is already maximized, and this pair shouldn't wait
+            // for the next toggle to reflect that.
+            var alreadyMax = panel.getAttribute('data-maximized') === 'true';
+            maximizeBtn2.style.display = alreadyMax ? 'none' : '';
+            collapseBtn2.style.display = alreadyMax ? '' : 'none';
+            maximizeBtn2.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                var isMax = panel.getAttribute('data-maximized') === 'true';
+                _setMaximized(!isMax);
+            });
+            collapseBtn2.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                _setMaximized(false);
+            });
+            _extraMaxPairs.push({ max: maximizeBtn2, col: collapseBtn2 });
+            wrap.appendChild(maximizeBtn2);
+            wrap.appendChild(collapseBtn2);
+
+            return wrap;
+        }
+
+        // Inject a copy of the header action cluster (new chat / export /
+        // minimize / maximize) into every slide-over sheet's head, so those
+        // controls stay reachable while browsing any sheet. Previously they
+        // were only usable on the main page: every sheet is
+        // position:absolute;inset:0 over the whole panel (see
+        // .ai-assistant-panel-privacy in the stylesheet) and visually covers
+        // the main header underneath it while open.
+        // epSheet is intentionally excluded — it has its own DOM-removal
+        // MutationObserver teardown lifecycle (see _buildSheetHamburgerBtn's
+        // closeExtra docs above) and is safer left as-is rather than risk
+        // interfering with that path.
+        [
+            { sheet: linksSheet,          id: 'links'      },
+            { sheet: privacySheet,        id: 'privacy'    },
+            { sheet: termsSheet,          id: 'terms'      },
+            { sheet: modelSheet,          id: 'model'      },
+            { sheet: shareSheet,          id: 'share'      },
+            { sheet: convShareSheetJson,  id: 'share-json' },
+            { sheet: convShareSheetHtml,  id: 'share-html' },
+            { sheet: convShareSheetTxt,   id: 'share-txt'  }
+        ].forEach(function (entry) {
+            if (!entry.sheet) return;
+            var head = entry.sheet.querySelector('.ai-assistant-panel-privacy-head');
+            var closeBtnEl = entry.sheet.querySelector('button[id$="-close"]');
+            if (!head || !closeBtnEl) return;
+            head.insertBefore(_buildSheetToolbar(entry.id), closeBtnEl);
         });
 
         // Issue 4: Re-wire all sheet close (×) buttons to go through _closeSheet

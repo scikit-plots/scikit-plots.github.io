@@ -1,6 +1,6 @@
 # coerce\_language[#](#coerce-language "Link to this heading")
 
-scikitplot.corpus.coerce\_language(**lang**, **\***, **default='english'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_language_data.py#L1278)[#](#scikitplot.corpus.coerce_language "Link to this definition")
+scikitplot.corpus.coerce\_language(**lang**, **\***, **default='english'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_language_data.py#L1278)[#](#scikitplot.corpus.coerce_language "Link to this definition")
 :   Normalise any language specifier into a list of canonical NLTK names.
 
     Accepts all three forms used by chunkers and the enricher:

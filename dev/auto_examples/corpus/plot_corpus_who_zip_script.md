@@ -77,7 +77,7 @@ result_zip
 
 ```
 ```
-PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=10.6s)
+PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=11.5s)
 
 ```
 ```
@@ -112,11 +112,11 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
                   3: '14312e5e9f2c77936f3da344dc9d8869',
                   4: '7c2b137120a08fcffd38c67e655cb899'},
  'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: '63533d90661689f9',
-            1: 'af4a96b6f8cccd60',
-            2: 'adb1682d7e30a156',
-            3: '854e98d6f9240e55',
-            4: 'da326479e13bf3ce'},
+ 'doc_id': {0: '189e003b0bc8492e',
+            1: '24d964d555c00f6c',
+            2: '328fc49e15798775',
+            3: 'dd7ad441d141a8ea',
+            4: '7538434ddfa2ae0a'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'grapheme_count': {0: 50, 1: 33, 2: 60, 3: 78, 4: 61},
@@ -181,7 +181,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 10.637 seconds)
+****Total running time of the script:**** (0 minutes 11.504 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 

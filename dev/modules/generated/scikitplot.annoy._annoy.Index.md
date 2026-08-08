@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
+class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
 :   Annoy Approximate Nearest Neighbors Index.
 
     This is a Cython-powered Python wrapper around the Annoy C++ library.
@@ -173,7 +173,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
           more-than-double input precision being preserved.
 
     build(**self**, **int n\_trees=-1**, **n\_jobs=None**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.build "Link to this definition")
-    :   Build the search forest (thread-safe, releases GIL).
+    :   Build the search forest (releases the GIL; see Concurrency).
 
         Parameters:
         :   ****n\_trees****int, default=-1
@@ -197,6 +197,11 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         * Call unbuild() to add more items
         * Releases GIL during C++ build operation
         * Allows concurrent Python threads to run
+        * Concurrency (CY-009): `build` MUTATES the index and is NOT safe to
+          call concurrently with any other operation on the SAME instance
+          (query/add/save/load/unload). Releasing the GIL lets **other** Python
+          threads run; it does NOT synchronize same-instance access. Use
+          independent instances for parallelism, or serialize mutation yourself.
         * The C++ build itself is multi-threaded (n\_jobs)
 
         Examples
@@ -420,7 +425,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
 
     get\_nns\_by\_item(**self**, **item**, **int n**, **int search\_k=-1**, **bool include\_distances=False**)[#](#scikitplot.annoy._annoy.Index.get_nns_by_item "Link to this definition")
-    :   Find nearest neighbors (thread-safe, releases GIL).
+    :   Find nearest neighbors (releases the GIL; safe for concurrent reads).
 
         Parameters:
         :   ****item****int
@@ -460,6 +465,10 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Notes
 
         * Releases GIL during query (true parallelism)
+        * Concurrency (CY-009): safe to call from multiple threads on a
+          FULLY-BUILT index that no thread is mutating (the query path is
+          read-only). NOT safe concurrent with build/add/save/load/unload on the
+          same instance.
         * Multiple threads can query simultaneously
         * Linear speedup with thread count
 
@@ -482,7 +491,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Go BackOpen In Tab
 
     get\_nns\_by\_vector(**self**, **vector**, **int n**, **int search\_k=-1**, **bool include\_distances=False**)[#](#scikitplot.annoy._annoy.Index.get_nns_by_vector "Link to this definition")
-    :   Query by vector (thread-safe, releases GIL).
+    :   Query by vector (releases the GIL; safe for concurrent reads).
 
         Parameters:
         :   ****vector****sequence
@@ -919,23 +928,3 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Return type:
         :   None
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
-
-[annoy.Annoy legacy c-api with examples](../../auto_examples/annoy/plot_Annoy_legacy_c_api.html)
-
-annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
-
-[Index (cython) python-api benchmark with examples](../../auto_examples/annoy/plot_annoy_cython_0benchmark.html)
-
-Index (cython) python-api benchmark with examples![](../../_images/sphx_glr_plot_annoy_cython_api_thumb.png)
-
-[Index (cython) python-api with examples](../../auto_examples/annoy/plot_annoy_cython_api.html)
-
-Index (cython) python-api with examples![](../../_images/sphx_glr_plot_annoy_cython_hamlet_example_thumb.png)
-
-[Approximate Nearest Neighbors with Annoy — A Hamlet Example](../../auto_examples/annoy/plot_annoy_cython_hamlet_example.html)
-
-Approximate Nearest Neighbors with Annoy — A Hamlet Example

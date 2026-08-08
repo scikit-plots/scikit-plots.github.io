@@ -1,6 +1,6 @@
 # get\_compiler[#](#get-compiler "Link to this heading")
 
-scikitplot.cython.get\_compiler(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_custom_compiler.py#L481)[#](#scikitplot.cython.get_compiler "Link to this definition")
+scikitplot.cython.get\_compiler(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L481)[#](#scikitplot.cython.get_compiler "Link to this definition")
 :   Retrieve a registered custom compiler by name.
 
     Parameters:

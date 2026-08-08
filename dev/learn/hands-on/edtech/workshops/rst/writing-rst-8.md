@@ -108,7 +108,7 @@ no effect. Perhaps it is a problem with the RTD theme.
 
 CVS Tables are the most convenient if you need to display tabular data.
 You can see an example from this site on page
-Step 1. Initialize OpenVPN using Docker. As you can see from the
+[Step 1: Initialize OpenVPN using Docker](../../cloud-computing/6-open-vpn/6.1.html#step-1-initialize-openvpn-using-docker). As you can see from the
 raw RST, you can develop your data in a spreadsheet and then paste
 do the document directly.
 

@@ -1,4 +1,4 @@
-# ✨ Sphinx AI Extensions (experimental)[#](#sphinx-ai-extensions-experimental "Link to this heading")
+# Sphinx AI Extensions (experimental) ✨[#](#sphinx-ai-extensions-experimental "Link to this heading")
 
 ## Sphinx ai extensions for generated websites[#](#sphinx-ai-extensions-for-generated-websites "Link to this heading")
 

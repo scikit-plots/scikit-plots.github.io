@@ -1,6 +1,6 @@
 # decile\_table[#](#decile-table "Link to this heading")
 
-scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=None**, **class\_index=1**, **pos\_label=None**, **change\_deciles=10**, **digits=6**, **feature\_infos=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/decile/kds/_kds.py#L116)[#](#scikitplot.decile.kds.decile_table "Link to this definition")
+scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=None**, **class\_index=1**, **pos\_label=None**, **change\_deciles=10**, **digits=6**, **feature\_infos=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/decile/kds/_kds.py#L116)[#](#scikitplot.decile.kds.decile_table "Link to this definition")
 :   Generate the Decile Table from labels and probabilities.
 
     The Decile Table is creared by first sorting the customers by their predicted
@@ -122,13 +122,5 @@ scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=
     | 9 | 10 | 0.049020 | 0.049020 | 0.049020 | 28.0 | 0.0 | 28.0 | 18.4 | 0 | 0.000000 | 285.0 | 184.0 | 184 | 101.0 | 100.000000 | 100.000000 | 100.000000 | 100.000000 | 0.000000 | 1.000000 |
 
     Go BackOpen In Tab
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_report_script_thumb.png)
-
-[plot\_report with examples](../../auto_examples/decile/plot_report_script.html)
-
-plot\_report with examples
 
 Make live

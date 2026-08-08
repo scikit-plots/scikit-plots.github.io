@@ -128,6 +128,13 @@ Go BackOpen In Tab
 
 ## Adapter layer[#](#adapter-layer "Link to this heading")
 
+Class inheritance
+
+![Inheritance diagram of LangChainCorpusRetriever, MCPCorpusServer](../_images/inheritance-d6ac6adb6ed4eeaa1428a91b4bcb811589ae9db1.png)
+
+
+
+
 |  |  |
 | --- | --- |
 | [`to_langchain_documents`](../modules/generated/scikitplot.corpus.to_langchain_documents.html#scikitplot.corpus.to_langchain_documents "scikitplot.corpus.to_langchain_documents") | Convert `CorpusDocument` instances to LangChain `Document`. |
@@ -151,6 +158,28 @@ Go BackOpen In Tab
 | [`is_archive`](../modules/generated/scikitplot.corpus.is_archive.html#scikitplot.corpus.is_archive "scikitplot.corpus.is_archive") | Check if a file path has a supported archive extension. |
 
 ## Base Classes[#](#base-classes "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-a3d308c22933e509fd8f33675b88cc1b3263fc3d.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 |  |  |
 | --- | --- |
@@ -222,6 +251,12 @@ Go BackOpen In Tab
 
 ## Corpus Builder[#](#corpus-builder "Link to this heading")
 
+Class inheritance
+
+![Inheritance diagram of CorpusBuilder](../_images/inheritance-cc2ac827045985516247782b43cc2acb8e6b8a25.png)
+
+
+
 |  |  |
 | --- | --- |
 | [`BuildResult`](../modules/generated/scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult "scikitplot.corpus.BuildResult") | Result of a corpus build operation. |
@@ -244,6 +279,19 @@ Go BackOpen In Tab
 | [`PipelineHooks`](../modules/generated/scikitplot.corpus.PipelineHooks.html#scikitplot.corpus.PipelineHooks "scikitplot.corpus.PipelineHooks") | Lifecycle callbacks for [`HookableCorpusPipeline`](../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline "scikitplot.corpus.HookableCorpusPipeline"). |
 
 ## Downloader[#](#downloader "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of BaseDownloader, AnyDownloader](../_images/inheritance-974fa607252718e670297908f147a1359a81340b.png)
+
+
+
+
+
+
+
+
+
 
 |  |  |
 | --- | --- |
@@ -311,13 +359,30 @@ Go BackOpen In Tab
 
 ## Pipeline[#](#pipeline "Link to this heading")
 
+Class inheritance
+
+![Inheritance diagram of CorpusPipeline, PipelineResult](../_images/inheritance-77ecb7dd0a58cb80200edb97ba01f18870cca0a1.png)
+
+
+
+
 |  |  |
 | --- | --- |
 | [`CorpusPipeline`](../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") | Orchestrates the full corpus ingestion pipeline. |
-| [`PipelineResult`](../modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult") |  |
+| [`PipelineResult`](../modules/generated/scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult") | Immutable summary of a single pipeline run. |
 | [`create_corpus`](../modules/generated/scikitplot.corpus.create_corpus.html#scikitplot.corpus.create_corpus "scikitplot.corpus.create_corpus") | Create and export a corpus from a single source file. |
 
 ## Readers[#](#readers "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of MarkdownReader, CustomReader](../_images/inheritance-e26a53059d8558d358ebfe8d76c2f2dcef470290.png)
+
+
+
+
+
+
 
 |  |  |
 | --- | --- |
@@ -377,6 +442,15 @@ Go BackOpen In Tab
 | [`SourceKind`](../modules/generated/scikitplot.corpus.SourceKind.html#scikitplot.corpus.SourceKind "scikitplot.corpus.SourceKind") | Discriminant for the kind of source an entry represents. |
 
 ## Storage[#](#storage "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of InMemoryStorage, SQLiteStorage](../_images/inheritance-6c5f42ec69659a0a6e627f0b96450654f9800102.png)
+
+
+
+
+
 
 |  |  |
 | --- | --- |

@@ -1,6 +1,6 @@
 # to\_huggingface\_dataset[#](#to-huggingface-dataset "Link to this heading")
 
-scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_adapters.py#L385)[#](#scikitplot.corpus.to_huggingface_dataset "Link to this definition")
+scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_adapters.py#L385)[#](#scikitplot.corpus.to_huggingface_dataset "Link to this definition")
 :   Convert documents to a HuggingFace `Dataset`.
 
     Parameters:
@@ -27,11 +27,3 @@ scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://gith
     ds.push_to_hub("my-org/my-corpus")
 
     ```
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

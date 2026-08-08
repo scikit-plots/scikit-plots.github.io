@@ -1,6 +1,6 @@
 # SearchConfig[#](#searchconfig "Link to this heading")
 
-class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_similarity/_similarity.py#L77)[#](#scikitplot.corpus.SearchConfig "Link to this definition")
+class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L101)[#](#scikitplot.corpus.SearchConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -30,6 +30,38 @@ class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, 
         ****case\_sensitive****bool
         :   Case-sensitive matching in STRICT mode.
 
+        ****backend****str
+        :   Dense ANN backend selector for SEMANTIC/HYBRID modes. One of
+            `"auto"` (default; resolves to Annoy when available, else FAISS,
+            Voyager, or exact brute-force), `"annoy"`, `"faiss"`,
+            `"voyager"`, `"bruteforce"`. An explicitly named backend that is
+            not installed raises at build time rather than silently degrading.
+
+        ****annoy\_n\_trees****int
+        :   Annoy tree count (accuracy/size trade-off) when the Annoy backend is
+            used. Higher is more accurate and larger. Default 10.
+
+        ****annoy\_metric****str
+        :   Annoy distance metric. Default `"angular"` (cosine-like); scores are
+            always reported as cosine similarity regardless of metric.
+
+        ****annoy\_search\_k****int
+        :   Annoy query-time node budget. `-1` (default) lets Annoy choose.
+
+        ****annoy\_impl****str
+        :   Which Annoy index class to use: `"auto"` (default; high-level
+            `scikitplot.annoy.Index` first, else the Cython
+            `scikitplot.annoy._annoy.Index`), `"highlevel"`, or `"cython"`.
+
+        ****annoy\_dtype****str or None
+        :   Embedding precision for the Cython Annoy class (e.g. `"float32"`,
+            `"float64"`). Ignored by the high-level class. Default `None`.
+
+        ****annoy\_index\_dtype****str or None
+        :   Item-id integer width for the Cython Annoy class (e.g. `"int32"`,
+            `"uint64"`) for very large corpora. Ignored otherwise. Default
+            `None`.
+
     Parameters:
     :   * ****top\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****match\_mode**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
@@ -39,12 +71,34 @@ class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, 
         * ****rrf\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****use\_normalized\_text**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****case\_sensitive**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****backend**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****annoy\_n\_trees**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        * ****annoy\_metric**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****annoy\_search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        * ****annoy\_impl**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****annoy\_dtype**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****annoy\_index\_dtype**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
     Notes
 
     ****User note:**** For RAG pipelines, `match_mode="hybrid"` with
     default settings provides a good balance. For exact citation
-    matching, use `match_mode="strict"`.
+    matching, use `match_mode="strict"`. To force a specific ANN
+    library, set e.g. `backend="annoy"` and tune `annoy_n_trees`.
+
+    annoy\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SearchConfig.annoy_dtype "Link to this definition")
+
+    annoy\_impl: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'auto'[#](#scikitplot.corpus.SearchConfig.annoy_impl "Link to this definition")
+
+    annoy\_index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SearchConfig.annoy_index_dtype "Link to this definition")
+
+    annoy\_metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'angular'[#](#scikitplot.corpus.SearchConfig.annoy_metric "Link to this definition")
+
+    annoy\_n\_trees: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 10[#](#scikitplot.corpus.SearchConfig.annoy_n_trees "Link to this definition")
+
+    annoy\_search\_k: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = -1[#](#scikitplot.corpus.SearchConfig.annoy_search_k "Link to this definition")
+
+    backend: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'auto'[#](#scikitplot.corpus.SearchConfig.backend "Link to this definition")
 
     case\_sensitive: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.SearchConfig.case_sensitive "Link to this definition")
 
@@ -61,11 +115,3 @@ class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, 
     top\_k: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 10[#](#scikitplot.corpus.SearchConfig.top_k "Link to this definition")
 
     use\_normalized\_text: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.SearchConfig.use_normalized_text "Link to this definition")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

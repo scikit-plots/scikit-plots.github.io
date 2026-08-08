@@ -44,6 +44,14 @@ References
 
 ****User guide.**** See the [ANNImputer](../user_guide/impute/index.html#ann-imputer-index) section for further details.
 
+Class inheritance
+
+![Inheritance diagram of _ann.ANNImputer](../_images/inheritance-9eb359a6a22cc4bb1b8543a8b03f41a2adbef6b5.png)
+
+
+
+
+
 |  |  |
 | --- | --- |
 | [`_ann.ANNImputer`](../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer "scikitplot.impute._ann.ANNImputer") | Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends. |

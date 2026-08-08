@@ -26,7 +26,7 @@ Blockquotes are indented paragraphs or other text blocks
 ```
 > **Note**
 > You will learn quickly that spaces and line breaks are very
-important in restructuredtext.
+important in reStucturedText.
 
 ### [RST Links](#id3)[#](#rst-links "Link to this heading")
 

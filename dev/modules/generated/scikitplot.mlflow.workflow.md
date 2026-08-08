@@ -1,6 +1,6 @@
 # workflow[#](#workflow "Link to this heading")
 
-scikitplot.mlflow.workflow(**\***, **profile='local'**, **open\_ui\_seconds=0.0**, **experiment\_name=None**, **fmt='toml'**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_workflow.py#L373)[#](#scikitplot.mlflow.workflow "Link to this definition")
+scikitplot.mlflow.workflow(**\***, **profile='local'**, **open\_ui\_seconds=0.0**, **experiment\_name=None**, **fmt='toml'**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_workflow.py#L373)[#](#scikitplot.mlflow.workflow "Link to this definition")
 :   Run the built-in end-to-end MLflow workflow demo.
 
     This is a small, newbie-friendly helper that:
@@ -43,11 +43,3 @@ scikitplot.mlflow.workflow(**\***, **profile='local'**, **open\_ui\_seconds=0.0*
     > **See also**
     > [`run_demo`](scikitplot.mlflow.run_demo.html#scikitplot.mlflow.run_demo "scikitplot.mlflow.run_demo")
     :   The implementation used by the CLI entry point.
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_mlflow_thumb.png)
-
-[MLflow](../../auto_examples/mlflow/plot_mlflow.html)
-
-MLflow

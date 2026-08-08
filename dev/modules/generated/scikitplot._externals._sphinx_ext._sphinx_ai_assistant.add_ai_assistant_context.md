@@ -1,6 +1,6 @@
 # add\_ai\_assistant\_context[#](#add-ai-assistant-context "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\_context(**app**, **pagename**, **templatename**, **context**, **doctree**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L4325)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\_context(**app**, **pagename**, **templatename**, **context**, **doctree**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L4326)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context "Link to this definition")
 :   Inject AI-assistant configuration into each HTML page’s template context.
 
     Registered with Sphinx’s `html-page-context` event in `setup`.

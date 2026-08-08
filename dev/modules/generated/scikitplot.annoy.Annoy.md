@@ -1,6 +1,6 @@
 # Annoy[#](#annoy "Link to this heading")
 
-class scikitplot.annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.annoy.Annoy "Link to this definition")
+class scikitplot.annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.annoy.Annoy "Link to this definition")
 :   Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
     Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
@@ -1601,15 +1601,3 @@ class scikitplot.annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-pl
 
         Type:
         :   [y\_map](#scikitplot.annoy.Annoy.y_map "scikitplot.annoy.Annoy.y_map")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
-
-[annoy.Annoy legacy c-api with examples](../../auto_examples/annoy/plot_Annoy_legacy_c_api.html)
-
-annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_Annoy_python_api_thumb.png)
-
-[annoy.Index python-api with examples](../../auto_examples/annoy/plot_Annoy_python_api.html)
-
-annoy.Index python-api with examples

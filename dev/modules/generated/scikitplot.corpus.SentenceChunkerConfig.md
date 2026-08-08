@@ -1,6 +1,6 @@
 # SentenceChunkerConfig[#](#sentencechunkerconfig "Link to this heading")
 
-class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**, **min\_length=1**, **overlap=0**, **spacy\_model=None**, **nltk\_language='english'**, **strip\_whitespace=True**, **include\_offsets=True**, **custom\_splitter=None**, **script\_hint=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_sentence.py#L267)[#](#scikitplot.corpus.SentenceChunkerConfig "Link to this definition")
+class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**, **min\_length=1**, **overlap=0**, **spacy\_model=None**, **nltk\_language='english'**, **strip\_whitespace=True**, **include\_offsets=True**, **custom\_splitter=None**, **script\_hint=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_sentence.py#L267)[#](#scikitplot.corpus.SentenceChunkerConfig "Link to this definition")
 :   Configuration for [`SentenceChunker`](scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker").
 
     Parameters:
@@ -43,7 +43,7 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
         * ****script\_hint**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****multilang\_config**** (**MultilangConfig** **|** **None**)
 
-    backend: [SentenceBackend](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus.SentenceBackend") = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceChunkerConfig.backend "Link to this definition")
+    backend: [SentenceBackend](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus.SentenceBackend") = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceChunkerConfig.backend "Link to this definition")
 
     custom\_splitter: [SentenceSplitterProtocol](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol") | callable[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.custom_splitter "Link to this definition")
     :   User-supplied splitter for `backend=SentenceBackend.CUSTOM`.
@@ -101,23 +101,3 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
     spacy\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.spacy_model "Link to this definition")
 
     strip\_whitespace: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.SentenceChunkerConfig.strip_whitespace "Link to this definition")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
-
-[corpus A Tale of Two Cities .mp3 with examples](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
-
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
-
-[corpus Knowledge and Information local .png with examples](../../auto_examples/corpus/plot_corpus_knowledge_script.html)
-
-corpus Knowledge and Information local .png with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[corpus WHO European Region YouTube with examples](../../auto_examples/corpus/plot_corpus_who_youtube_script.html)
-
-corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[corpus WHO European Region local .zip with examples](../../auto_examples/corpus/plot_corpus_who_zip_script.html)
-
-corpus WHO European Region local .zip with examples

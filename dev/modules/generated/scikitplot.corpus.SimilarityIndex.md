@@ -1,6 +1,6 @@
 # SimilarityIndex[#](#similarityindex "Link to this heading")
 
-class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_similarity/_similarity.py#L229)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
+class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L298)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -43,7 +43,10 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     ```
     Go BackOpen In Tab
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_similarity/_similarity.py#L277)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
+    property backend\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.backend_name "Link to this definition")
+    :   Name of the active dense ANN backend, or `None` if unbuilt.
+
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L347)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -64,10 +67,49 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     property has\_embeddings: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.has_embeddings "Link to this definition")
     :   Whether dense embeddings are indexed.
 
+    property index\_generation: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.index_generation "Link to this definition")
+    :   Build generation, incremented on every [`build`](#scikitplot.corpus.SimilarityIndex.build "scikitplot.corpus.SimilarityIndex.build").
+
+        Zero before the first build. Every [`SearchResult`](scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult "scikitplot.corpus.SearchResult") produced by
+        [`search`](#scikitplot.corpus.SimilarityIndex.search "scikitplot.corpus.SimilarityIndex.search") carries the generation active at query time, so a caller
+        can detect results computed against a since-rebuilt index.
+
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_similarity/_similarity.py#L371)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
+    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L708)[#](#scikitplot.corpus.SimilarityIndex.query "Link to this definition")
+    :   Vector-level ANN query returning `(doc_id, score)` pairs.
+
+        This is the vector-index seam consumed by
+        `scikitplot.mcp` (the `VectorIndex` protocol): it takes a query
+        ****vector**** (already embedded) rather than a query string, and returns
+        stable document identities instead of [`SearchResult`](scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult "scikitplot.corpus.SearchResult") objects.
+
+        Parameters:
+        :   ****vector****array-like
+            :   Query embedding of the same dimension as the indexed vectors.
+
+            ****k****int or None, optional
+            :   Number of neighbours to return. Defaults to `config.top_k`.
+
+        Returns:
+        :   list of (str, float)
+            :   `(doc_id, cosine_score)` pairs, best first. `doc_id` is the
+                document’s `doc_id` attribute when present, else its stringified
+                index. Empty if no dense index was built or the query is zero-norm.
+
+        Raises:
+        :   ValueError
+            :   If **vector** dimension mismatches the index or is non-finite.
+
+        Parameters:
+        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+            * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+
+        Return type:
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
+
+    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_similarity/_similarity.py#L463)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:
@@ -92,11 +134,3 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**SearchResult**](scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult "scikitplot.corpus._similarity._similarity.SearchResult")]
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

@@ -6,6 +6,15 @@ Methods for scaling, centering, normalization, binarization, and more.
 
 ## Extended sklearn feature preprocessing.[#](#extended-sklearn-feature-preprocessing "Link to this heading")
 
+Class inheritance
+
+![Inheritance diagram of DummyCodeEncoder, GetDummies](../_images/inheritance-684d587075e791eb7cb12be32b681c57b14cba95.png)
+
+
+
+
+
+
 |  |  |
 | --- | --- |
 | [`DummyCodeEncoder`](../modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#scikitplot.preprocessing.DummyCodeEncoder "scikitplot.preprocessing.DummyCodeEncoder") | Encode categorical features into dummy/indicator 0/1 variables. |

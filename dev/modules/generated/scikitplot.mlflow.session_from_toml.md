@@ -1,6 +1,6 @@
 # session\_from\_toml[#](#session-from-toml "Link to this heading")
 
-scikitplot.mlflow.session\_from\_toml(**toml\_path**, **\***, **profile='local'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_session.py#L504)[#](#scikitplot.mlflow.session_from_toml "Link to this definition")
+scikitplot.mlflow.session\_from\_toml(**toml\_path**, **\***, **profile='local'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_session.py#L504)[#](#scikitplot.mlflow.session_from_toml "Link to this definition")
 :   Create an MLflow session using a shared project TOML config.
 
     Notes

@@ -1,6 +1,6 @@
 # build\_lock[#](#build-lock "Link to this heading")
 
-scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_lock.py#L92)[#](#scikitplot.cython.build_lock "Link to this definition")
+scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_lock.py#L93)[#](#scikitplot.cython.build_lock "Link to this definition")
 :   Acquire an exclusive build lock via atomic directory creation.
 
     Parameters:
@@ -16,7 +16,9 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
         :   Sleep interval in seconds between acquisition retries.
 
         ****stale\_after\_s****float | None, default=None
-        :   None
+        :   Age in seconds after which an existing lock may be reclaimed as stale.
+            When `None`, the effective threshold is
+            `max(timeout_s, _DEFAULT_STALE_AFTER_S)`.
 
     Returns:
     :   Iterator[None]
@@ -27,7 +29,8 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
         :   If the lock cannot be acquired within `timeout_s` seconds.
 
         ValueError
-        :   If `timeout_s < 0` or `poll_s <= 0`.
+        :   If `timeout_s < 0`, `poll_s <= 0`, or an explicit
+            `stale_after_s <= 0`.
 
     Parameters:
     :   * ****lock\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
@@ -41,9 +44,10 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
     Notes
 
     ****Stale lock recovery****: if a lock directory exists but its `mtime` is
-    older than `timeout_s` seconds, it is treated as stale (left by a killed
-    process) and removed before the next acquisition attempt. This prevents
-    permanent deadlock after hard crashes.
+    older than the effective stale threshold, it is treated as stale (left by
+    a killed process) and removed before the next acquisition attempt. The
+    threshold is `stale_after_s` when supplied; otherwise it is
+    `max(timeout_s, _DEFAULT_STALE_AFTER_S)`.
 
     ****Clean release****: the lock directory is always removed in the `finally`
     block, so normal exceptions inside the `with` body release the lock

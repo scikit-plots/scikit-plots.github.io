@@ -162,20 +162,20 @@ Word chunker — chunk_by='document' (PORTER stemming)
 ============================================================
 {'act': {0: nan},
  'bbox': {0: nan},
- 'char_end': {0: 873},
+ 'char_end': {0: 875},
  'char_start': {0: 0},
  'chunk_index': {0: 0},
  'chunking_strategy': {0: 'custom'},
  'chunking_unit': {0: 'word'},
- 'codepoint_count': {0: 873},
+ 'codepoint_count': {0: 875},
  'collection_id': {0: nan},
  'confidence': {0: 0.6372},
- 'content_hash': {0: '8db16ee6ad399ec05154ba6a29e2c8a6'},
+ 'content_hash': {0: 'f7c70479a291e3be3dad4ee0afa545a5'},
  'determinative_groups': {0: nan},
- 'doc_id': {0: 'cddbb4132e9ed33c'},
+ 'doc_id': {0: '3f1fd9585949d82f'},
  'doi': {0: nan},
  'frame_index': {0: nan},
- 'grapheme_count': {0: 873},
+ 'grapheme_count': {0: 875},
  'image_height': {0: 1024},
  'image_width': {0: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png'},
@@ -325,7 +325,7 @@ Word chunker — chunk_by='document' (PORTER stemming)
              'lic pye matterhow much kaov word reach onli far person '
              'understand ugh glen lat cs lb cle lage ernest rutherford mevlana '
              '1871-1937 nelson nz cambridg warm ed balkh konya sato le scholar '
-             'ace simplic mark os true knowledg focus pocus distract cenit '
+             'ace simplic mark os true knowledge. focus pocus distract cenit '
              'innoc know world convers sto person intellig vision knowledg '
              "limit speaker limit listen mevlana 's wisdom 1207-1273 balkh "
              'konya'},
@@ -381,10 +381,10 @@ Word chunker — chunk_by='sentence' (SNOWBALL stemming)
                   2: '357043daf50f1a2c8969664f442c153e',
                   3: '0e3d11aeb9c648a124ea5a868a59f79e'},
  'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan},
- 'doc_id': {0: 'cddbb4132e9ed33c',
-            1: '373e950c24f9fe97',
-            2: '8f7b55bd79324031',
-            3: '999aca3ee85e1488'},
+ 'doc_id': {0: '176ef0a09cedddcb',
+            1: '90b6c784fa40e214',
+            2: '452d5c3f3a44673a',
+            3: '59b63c0a75171ef4'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan},
  'grapheme_count': {0: 274, 1: 522, 2: 22, 3: 35},
@@ -568,8 +568,8 @@ Sentence chunker (NLTK backend)
 ============================================================
 {'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'char_end': {0: 229, 1: 299, 2: 607, 3: 1011, 4: 1179},
- 'char_start': {0: 6, 1: 230, 2: 301, 3: 608, 4: 1013},
+ 'char_end': {0: 229, 1: 299, 2: 607, 3: 1014, 4: 1179},
+ 'char_start': {0: 6, 1: 230, 2: 301, 3: 608, 4: 1015},
  'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
  'chunking_strategy': {0: 'sentence',
                        1: 'sentence',
@@ -581,23 +581,23 @@ Sentence chunker (NLTK backend)
                    2: 'sentence',
                    3: 'sentence',
                    4: 'sentence'},
- 'codepoint_count': {0: 223, 1: 69, 2: 306, 3: 403, 4: 166},
+ 'codepoint_count': {0: 223, 1: 69, 2: 306, 3: 406, 4: 164},
  'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
  'content_hash': {0: '72d9a66ad2010fe6f95c336e9b967aef',
                   1: '2ae9055ee90f61d3ed9a6ee7a8425acc',
                   2: '929db36bee285ec5d8f380cacba9e157',
-                  3: '8fd437ea14514826c2c1dcae91e2c3c3',
-                  4: '1890c9fdc4ee3b5ba62205dd8c1c7cf0'},
+                  3: '43cecb16baea3f703dd21352d19e51b8',
+                  4: '5083405d4ea1c457649b9e531f9020dc'},
  'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: '033fe979c6bb209c',
-            1: '2829df524657858f',
-            2: '4f3824727d6cf878',
-            3: '2c4188cef46cee22',
-            4: 'b203e048a59ee500'},
+ 'doc_id': {0: '987eeb12dd692aaf',
+            1: 'ab83339b31c1ceec',
+            2: '40c598fbca41e847',
+            3: '18c4bc0e2af14c1c',
+            4: '96a4372683debea8'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'grapheme_count': {0: 223, 1: 69, 2: 306, 3: 403, 4: 166},
+ 'grapheme_count': {0: 223, 1: 69, 2: 306, 3: 406, 4: 164},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png',
@@ -710,8 +710,10 @@ Sentence chunker (NLTK backend)
                  'Sato r le Scholar aCe Is\n'
                  '\n'
                  'Simplicity is the mark\n'
-                 '7 Os true knowledge.',
-              4: '“ (Focused)  (Pocused) | (Distracted)\n'
+                 '7 Os true knowledge.\n'
+                 '\n'
+                 '“',
+              4: '(Focused)  (Pocused) | (Distracted)\n'
                  '\n'
                  'cenit)\n'
                  '(Innocent)\n'
@@ -818,8 +820,10 @@ Sentence chunker (NLTK backend)
              'Sato r le Scholar aCe Is\n'
              '\n'
              'Simplicity is the mark\n'
-             '7 Os true knowledge.',
-          4: '“ (Focused)  (Pocused) | (Distracted)\n'
+             '7 Os true knowledge.\n'
+             '\n'
+             '“',
+          4: '(Focused)  (Pocused) | (Distracted)\n'
              '\n'
              'cenit)\n'
              '(Innocent)\n'
@@ -882,11 +886,11 @@ Fixed Window chunker — unit=CHARS (window=512, step=256)
                   3: 'ed5fb80c57aa1440f5cdbff9c548ddae',
                   4: '94cbe0d3b596da3d27f721698e46d4d7'},
  'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: '033fe979c6bb209c',
-            1: 'f0beb35fc68a949b',
-            2: '3dfc7e6e9304011c',
-            3: 'fba7147bfc0a189c',
-            4: '0c3188c73ed9b48c'},
+ 'doc_id': {0: 'b5ebc343fe66efa7',
+            1: '9dddf71340821d6d',
+            2: '303eafb8c5903778',
+            3: '0c8c41d734af84e4',
+            4: 'e8a5a46ca14a4e63'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'grapheme_count': {0: 506, 1: 512, 2: 511, 3: 511, 4: 269},
@@ -1344,11 +1348,11 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
                   3: '7f2941cc0c1702425a21d38c343d735c',
                   4: '594f83ff7ed721cf3797cc954d9c6c70'},
  'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: '14578619132abab9',
-            1: 'a52bde7151592af4',
-            2: 'efd17d43a8360abc',
-            3: '0b1428dfd3b9383e',
-            4: '82c5d8c562da48a2'},
+ 'doc_id': {0: 'cca0cb32f1223b2b',
+            1: '2d904ab32b8246ce',
+            2: '640a17a989b49c1f',
+            3: 'cc1a25106ded8c8f',
+            4: '76a06023bb0b5fca'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'grapheme_count': {0: 346, 1: 330, 2: 341, 3: 317, 4: 321},
@@ -1622,7 +1626,7 @@ result_semantic = _run(                 # Bug fix B: renamed from result_fw_toke
 ```
 ```
 Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5807.71it/s]
+Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6140.37it/s]
 
 ============================================================
 Semantic chunker (HYBRID backend, multilang enriched)
@@ -1662,7 +1666,7 @@ Source image: /home/circleci/repo/galleries/examples/corpus/data/echo_of_the_wis
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 56.507 seconds)
+****Total running time of the script:**** (1 minutes 23.440 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_knowledge_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_knowledge_script.ipynb)
 

@@ -1,6 +1,6 @@
 # to\_langgraph\_state[#](#to-langgraph-state "Link to this heading")
 
-scikitplot.corpus.to\_langgraph\_state(**documents**, **\***, **query=''**, **match\_mode=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_adapters.py#L226)[#](#scikitplot.corpus.to_langgraph_state "Link to this definition")
+scikitplot.corpus.to\_langgraph\_state(**documents**, **\***, **query=''**, **match\_mode=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_adapters.py#L226)[#](#scikitplot.corpus.to_langgraph_state "Link to this definition")
 :   Convert documents to a LangGraph-compatible state dict.
 
     Parameters:
@@ -36,11 +36,3 @@ scikitplot.corpus.to\_langgraph\_state(**documents**, **\***, **query=''**, **ma
     graph.invoke(state)
 
     ```
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[corpus WHO European Region local or url per file with examples](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
-
-corpus WHO European Region local or url per file with examples

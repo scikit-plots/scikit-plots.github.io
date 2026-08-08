@@ -1,6 +1,6 @@
 # CorpusPipeline[#](#corpuspipeline "Link to this heading")
 
-class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_pipeline.py#L168)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
+class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_pipeline.py#L168)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
 :   Orchestrates the full corpus ingestion pipeline.
 
     Instantiate once, then call [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") (single file),
@@ -253,7 +253,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Deprecated since version 0.5.0: Use `pipeline.filter` (no trailing underscore).
         `filter_` will be removed in 0.7.0.
 
-    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_pipeline.py#L453)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_pipeline.py#L453)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
     :   Process a single source and return a [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult").
 
         Accepts a local file path ****or**** an `http(s)://` URL string.
@@ -305,7 +305,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
         Return type:
-        :   **PipelineResult**
+        :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")
 
         > **See also**
         > [`run_batch`](#scikitplot.corpus.CorpusPipeline.run_batch "scikitplot.corpus.CorpusPipeline.run_batch")
@@ -337,7 +337,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_pipeline.py#L851)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_pipeline.py#L851)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources sequentially.
 
         Each item may be a local file path ****or**** an `http(s)://` URL
@@ -386,7 +386,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
             * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**PipelineResult**]
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
 
         > **See also**
         > [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run")
@@ -424,7 +424,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_pipeline.py#L688)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_pipeline.py#L688)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs.
 
         Accepts a single URL string or a list of URL strings. When a list
@@ -488,7 +488,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
             * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   **PipelineResult** | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**PipelineResult**]
+        :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
 
         Examples
 
@@ -517,23 +517,3 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         ```
         Go BackOpen In Tab
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
-
-[corpus A Tale of Two Cities .mp3 with examples](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
-
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
-
-[corpus Knowledge and Information local .png with examples](../../auto_examples/corpus/plot_corpus_knowledge_script.html)
-
-corpus Knowledge and Information local .png with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[corpus WHO European Region YouTube with examples](../../auto_examples/corpus/plot_corpus_who_youtube_script.html)
-
-corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[corpus WHO European Region local .zip with examples](../../auto_examples/corpus/plot_corpus_who_zip_script.html)
-
-corpus WHO European Region local .zip with examples

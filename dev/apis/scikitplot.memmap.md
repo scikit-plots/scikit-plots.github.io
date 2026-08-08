@@ -28,6 +28,12 @@ management.
 
 ****User guide.**** See the [MemMap: file-backed or anonymous memory mapping](../user_guide/memmap/index.html#memmap-index) section for further details.
 
+Class inheritance
+
+![Inheritance diagram of MemoryMap](../_images/inheritance-91939b8fa837238ad34b831e4acc6d696114ea61.png)
+
+
+
 |  |  |
 | --- | --- |
 | [`MemoryMap`](../modules/generated/scikitplot.memmap.MemoryMap.html#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap") | Memory-mapped region with automatic resource management. |

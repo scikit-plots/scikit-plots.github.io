@@ -1,6 +1,6 @@
 # show\_config[#](#show-config "Link to this heading")
 
-scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/config/__config__.py#L189)[#](#scikitplot.show_config "Link to this definition")
+scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/config/__config__.py#L189)[#](#scikitplot.show_config "Link to this definition")
 :   Show libraries and system information on which SciPy was built
     and is being used
 
@@ -53,7 +53,7 @@ scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-p
         detection method: config-tool
         include directory: unknown
         name: pybind11
-        version: 3.0.4
+        version: 3.1.0
     Compilers:
       c:
         commands: /usr/bin/ccache, cc

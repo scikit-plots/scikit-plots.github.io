@@ -1,6 +1,6 @@
 # c\_api\_prereqs[#](#c-api-prereqs "Link to this heading")
 
-scikitplot.cython.c\_api\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_custom_compiler.py#L650)[#](#scikitplot.cython.c_api_prereqs "Link to this definition")
+scikitplot.cython.c\_api\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L650)[#](#scikitplot.cython.c_api_prereqs "Link to this definition")
 :   Check prerequisites own custom C-API.
 
     Validates Cython (for `.pyx` transpilation), NumPy (for

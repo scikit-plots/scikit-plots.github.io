@@ -1,6 +1,6 @@
 # unpin[#](#unpin "Link to this heading")
 
-scikitplot.cython.unpin(**alias**, **\***, **cache\_dir=None**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_pins.py#L224)[#](#scikitplot.cython.unpin "Link to this definition")
+scikitplot.cython.unpin(**alias**, **\***, **cache\_dir=None**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_pins.py#L224)[#](#scikitplot.cython.unpin "Link to this definition")
 :   Remove an alias pin.
 
     Parameters:
@@ -24,11 +24,3 @@ scikitplot.cython.unpin(**alias**, **\***, **cache\_dir=None**, **lock\_timeout\
 
     Return type:
     :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
-
-[Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
-
-Pin/Alias: stable handles for cached builds

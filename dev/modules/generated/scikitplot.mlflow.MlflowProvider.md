@@ -1,6 +1,6 @@
 # MlflowProvider[#](#mlflowprovider "Link to this heading")
 
-class scikitplot.mlflow.MlflowProvider(**module**, **version=None**, **client\_factory=None**, **artifact\_downloader=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_custom.py#L29)[#](#scikitplot.mlflow.MlflowProvider "Link to this definition")
+class scikitplot.mlflow.MlflowProvider(**module**, **version=None**, **client\_factory=None**, **artifact\_downloader=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_custom.py#L29)[#](#scikitplot.mlflow.MlflowProvider "Link to this definition")
 :   A customizable provider for MLflow-like libraries.
 
     This class acts as an abstraction layer to support inconsistent MLflow
@@ -31,7 +31,7 @@ class scikitplot.mlflow.MlflowProvider(**module**, **version=None**, **client\_f
 
     client\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowProvider.client_factory "Link to this definition")
 
-    get\_artifact\_downloader(**client**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_custom.py#L69)[#](#scikitplot.mlflow.MlflowProvider.get_artifact_downloader "Link to this definition")
+    get\_artifact\_downloader(**client**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_custom.py#L69)[#](#scikitplot.mlflow.MlflowProvider.get_artifact_downloader "Link to this definition")
     :   Resolve the artifact download callable.
 
         Parameters:
@@ -40,7 +40,7 @@ class scikitplot.mlflow.MlflowProvider(**module**, **version=None**, **client\_f
         Return type:
         :   [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[…], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    get\_client(**tracking\_uri**, **registry\_uri=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_custom.py#L56)[#](#scikitplot.mlflow.MlflowProvider.get_client "Link to this definition")
+    get\_client(**tracking\_uri**, **registry\_uri=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_custom.py#L56)[#](#scikitplot.mlflow.MlflowProvider.get_client "Link to this definition")
     :   Instantiate the MLflow-like client.
 
         Parameters:
@@ -50,6 +50,6 @@ class scikitplot.mlflow.MlflowProvider(**module**, **version=None**, **client\_f
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_custom.py#L29)[#](#scikitplot.mlflow.MlflowProvider.module "Link to this definition")
+    module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_custom.py#L29)[#](#scikitplot.mlflow.MlflowProvider.module "Link to this definition")
 
     version: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowProvider.version "Link to this definition")

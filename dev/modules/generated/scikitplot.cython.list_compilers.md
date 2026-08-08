@@ -1,6 +1,6 @@
 # list\_compilers[#](#list-compilers "Link to this heading")
 
-scikitplot.cython.list\_compilers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/cython/_custom_compiler.py#L503)[#](#scikitplot.cython.list_compilers "Link to this definition")
+scikitplot.cython.list\_compilers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/cython/_custom_compiler.py#L503)[#](#scikitplot.cython.list_compilers "Link to this definition")
 :   Return sorted list of registered custom compiler names.
 
     Returns:

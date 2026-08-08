@@ -1,6 +1,6 @@
 # Kiss32Random[#](#kiss32random "Link to this heading")
 
-class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
+class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
 :   32-bit KISS RNG with complete serialization support.
 
     Period: ~2^121 (suitable for <16M data points)
@@ -468,11 +468,3 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
     to\_dict(**self**)[#](#scikitplot.random.Kiss32Random.to_dict "Link to this definition")
     :   Alias for serialize().
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
-
-[Enhanced KISS Random Generator - Complete Usage Examples](../../auto_examples/random/plot_kiss_random.html)
-
-Enhanced KISS Random Generator - Complete Usage Examples

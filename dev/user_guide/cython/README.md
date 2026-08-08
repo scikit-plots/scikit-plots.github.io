@@ -23,6 +23,7 @@ This package contains reusable reStructuredText Mermaid diagrams for the
 
 ```
 .. include:: _diagrams/architecture_overview.rst
+  :start-after: :orphan:
 
 ```
 

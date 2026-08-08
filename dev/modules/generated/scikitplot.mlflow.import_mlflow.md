@@ -1,6 +1,6 @@
 # import\_mlflow[#](#import-mlflow "Link to this heading")
 
-scikitplot.mlflow.import\_mlflow()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/mlflow/_compat.py#L24)[#](#scikitplot.mlflow.import_mlflow "Link to this definition")
+scikitplot.mlflow.import\_mlflow()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/mlflow/_compat.py#L24)[#](#scikitplot.mlflow.import_mlflow "Link to this definition")
 :   Import MLflow lazily with a user-friendly error.
 
     Returns:

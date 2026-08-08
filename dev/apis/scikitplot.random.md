@@ -53,6 +53,17 @@ Go BackOpen In Tab
 
 ****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
 
+Class inheritance
+
+![Inheritance diagram of Kiss32Random, Kiss64Random, KissSeedSequence, KissBitGenerator, KissGenerator, KissRandomState](../_images/inheritance-1afc048cd6b3769c9971dbbea2db15804738806e.png)
+
+
+
+
+
+
+
+
 |  |  |
 | --- | --- |
 | [`Kiss32Random`](../modules/generated/scikitplot.random.Kiss32Random.html#scikitplot.random.Kiss32Random "scikitplot.random.Kiss32Random") | 32-bit KISS RNG with complete serialization support. |

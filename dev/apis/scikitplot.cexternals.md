@@ -58,6 +58,8 @@ Go BackOpen In Tab
 
 ****User guide.**** See the [spotify/ANNoy Vector Database (Approximate Nearest Neighbors)](../user_guide/cexternals/_annoy/index.html#cexternals-annoy-index) section for further details.
 
+Class inheritance
+
 |  |  |
 | --- | --- |
 | [`_annoy.annoylib`](../modules/generated/scikitplot.cexternals._annoy.annoylib.html#module-scikitplot.cexternals._annoy.annoylib "scikitplot.cexternals._annoy.annoylib") | Compiled with GCC/Clang(Using 512-bit AVX instructions). |

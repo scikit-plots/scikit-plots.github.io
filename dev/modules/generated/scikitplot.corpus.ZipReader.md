@@ -1,6 +1,6 @@
 # ZipReader[#](#zipreader "Link to this heading")
 
-class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_files=10000**, **max\_total\_bytes=2147483648**, **skip\_unsupported=True**, **infer\_source\_type=True**, **reader\_kwargs=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L152)[#](#scikitplot.corpus.ZipReader "Link to this definition")
+class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_files=10000**, **max\_total\_bytes=2147483648**, **max\_depth=8**, **skip\_unsupported=True**, **infer\_source\_type=True**, **reader\_kwargs=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L174)[#](#scikitplot.corpus.ZipReader "Link to this definition")
 :   Generic ZIP archive reader — dispatches each member to its natural reader.
 
     Extracts all supported members from a `.zip` archive into a temporary
@@ -42,6 +42,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         * ****custom\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
         * ****max\_files**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****max\_total\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        * ****max\_depth**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****skip\_unsupported**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****infer\_source\_type**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****reader\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]**)
@@ -114,7 +115,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1531)[#](#scikitplot.corpus.ZipReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L1531)[#](#scikitplot.corpus.ZipReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -336,7 +337,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L152)[#](#scikitplot.corpus.ZipReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L174)[#](#scikitplot.corpus.ZipReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.ZipReader.custom_extractor "scikitplot.corpus.ZipReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -378,7 +379,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L152)[#](#scikitplot.corpus.ZipReader.file_type "Link to this definition")
+    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L174)[#](#scikitplot.corpus.ZipReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
         dot). E.g. `".txt"`, `".xml"`, `".zip"`.
 
@@ -401,7 +402,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ZipReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1848)[#](#scikitplot.corpus.ZipReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L1848)[#](#scikitplot.corpus.ZipReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -528,7 +529,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L2044)[#](#scikitplot.corpus.ZipReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L2044)[#](#scikitplot.corpus.ZipReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -629,7 +630,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.ZipReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.ZipReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -674,46 +675,32 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L334)[#](#scikitplot.corpus.ZipReader.get_raw_chunks "Link to this definition")
-    :   Extract ZIP and yield raw chunks from all supported members.
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L357)[#](#scikitplot.corpus.ZipReader.get_raw_chunks "Link to this definition")
+    :   Yield raw chunks, enforcing an archive-nesting depth cap.
 
-        Each member is dispatched to [`DocumentReader.create`](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create "scikitplot.corpus.DocumentReader.create"), which
-        selects the appropriate reader by file extension. The member’s raw
-        chunks are yielded inline, as if the member files had been passed
-        directly.
+        Nested archives are re-dispatched synchronously
+        (`yield from sub_reader.get_raw_chunks()`), so a shared
+        `_archive_ctx` counter bounds recursion and refuses a
+        zip-quine / deeply nested-archive bomb (CORPUS-ARC-002). The actual
+        extraction and per-member dispatch is delegated to
+        `_iter_raw_chunks`.
 
         Yields:
         :   dict[str, Any]
-            :   Raw chunk dicts from each member reader’s
-                `get_raw_chunks()` call. The `input_path` key is set
-                to `"<archive_name>/<member_name>"` for provenance.
 
         Raises:
         :   ValueError
-            :   If the archive contains more than `max_files` members, or
-                if cumulative extracted size exceeds `max_total_bytes`, or
-                if a member has a path-traversal component (ZipSlip).
-
-            OSError
-            :   If the archive cannot be opened or a member cannot be read.
+            :   If the archive nesting depth would exceed `max_depth`.
 
         Return type:
         :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], None, None]
-
-        Notes
-
-        Temporary extraction happens inside a `tempfile.mkdtemp()`
-        directory that is removed on exit (even on exception) via a
-        `try/finally` block. The extracted files are read and their
-        chunks forwarded; the files themselves are not streamed — each
-        member is fully extracted before its reader is called.
 
     infer\_source\_type: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.ZipReader.infer_source_type "Link to this definition")
     :   Auto-infer `source_type` for each member via
         [`SourceType.infer`](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.infer "scikitplot.corpus.SourceType.infer") when the caller did not supply
         `source_type` in `source_provenance`. Default: `True`.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L152)[#](#scikitplot.corpus.ZipReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L174)[#](#scikitplot.corpus.ZipReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -721,13 +708,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         original URL string. `validate_input()` is overridden in those
         subclasses to skip the file-existence check.
 
-    max\_files: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 10000[#](#scikitplot.corpus.ZipReader.max_files "Link to this definition")
-    :   10,000.
-
-        Type:
-        :   Maximum file count inside the archive. Default
-
-    max\_total\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2147483648[#](#scikitplot.corpus.ZipReader.max_total_bytes "Link to this definition")
+    max\_depth: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 8[#](#scikitplot.corpus.ZipReader.max_depth "Link to this definition")
     :   Maximum ****cumulative uncompressed**** bytes across all extracted ZIP members.
 
         ****BUG-10 clarification:**** This is a different guard than
@@ -744,7 +725,15 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         pre-download (file size) vs post-extraction (total expanded size).
         Default: 10 GB.
 
-    reader\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]][[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L152)[#](#scikitplot.corpus.ZipReader.reader_kwargs "Link to this definition")
+    max\_files: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 10000[#](#scikitplot.corpus.ZipReader.max_files "Link to this definition")
+    :   10,000.
+
+        Type:
+        :   Maximum file count inside the archive. Default
+
+    max\_total\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2147483648[#](#scikitplot.corpus.ZipReader.max_total_bytes "Link to this definition")
+
+    reader\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]][[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L174)[#](#scikitplot.corpus.ZipReader.reader_kwargs "Link to this definition")
     :   Per-extension keyword arguments forwarded to sub-reader constructors.
 
         Enables reader-specific options for individual file types inside the
@@ -772,7 +761,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
     skip\_unsupported: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.ZipReader.skip_unsupported "Link to this definition")
     :   Skip members with unregistered extensions instead of raising.
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_readers/_zip.py#L152)[#](#scikitplot.corpus.ZipReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_readers/_zip.py#L174)[#](#scikitplot.corpus.ZipReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -799,7 +788,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.ZipReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.ZipReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -821,7 +810,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L1402)[#](#scikitplot.corpus.ZipReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L1402)[#](#scikitplot.corpus.ZipReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -842,7 +831,7 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_base.py#L931)[#](#scikitplot.corpus.ZipReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_base.py#L931)[#](#scikitplot.corpus.ZipReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:
@@ -869,11 +858,3 @@ class scikitplot.corpus.ZipReader(**input\_path**, **chunker=None**, **filter\_=
 
         ```
         Go BackOpen In Tab
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[corpus WHO European Region local .zip with examples](../../auto_examples/corpus/plot_corpus_who_zip_script.html)
-
-corpus WHO European Region local .zip with examples

@@ -7,11 +7,3 @@ scikitplot.mlflow.DEFAULT\_PROJECT\_MARKERS = ('.git', 'configs', 'configs/mlflo
     If iterable is specified the tuple is initialized from iterable’s items.
 
     If the argument is a tuple, the return value is the same object.
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_mlflow_thumb.png)
-
-[MLflow](../../auto_examples/mlflow/plot_mlflow.html)
-
-MLflow

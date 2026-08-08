@@ -1,6 +1,6 @@
 # SentenceChunker[#](#sentencechunker "Link to this heading")
 
-class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_sentence.py#L581)[#](#scikitplot.corpus.SentenceChunker "Link to this definition")
+class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_sentence.py#L585)[#](#scikitplot.corpus.SentenceChunker "Link to this definition")
 :   Split a document into sentence-level `Chunk` objects.
 
     Parameters:
@@ -81,7 +81,7 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_multilang_mixin.py#L783)[#](#scikitplot.corpus.SentenceChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L783)[#](#scikitplot.corpus.SentenceChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -126,7 +126,7 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_multilang_mixin.py#L840)[#](#scikitplot.corpus.SentenceChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L840)[#](#scikitplot.corpus.SentenceChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -160,7 +160,7 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**Chunk**]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_sentence.py#L790)[#](#scikitplot.corpus.SentenceChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_sentence.py#L794)[#](#scikitplot.corpus.SentenceChunker.chunk "Link to this definition")
     :   Split **text** into sentence-level chunks.
 
         Parameters:
@@ -192,7 +192,7 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
         Return type:
         :   **ChunkResult**
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/corpus/_chunkers/_sentence.py#L902)[#](#scikitplot.corpus.SentenceChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/corpus/_chunkers/_sentence.py#L906)[#](#scikitplot.corpus.SentenceChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -226,23 +226,3 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
 
     property config: [SentenceChunkerConfig](scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig "scikitplot.corpus._chunkers._sentence.SentenceChunkerConfig")[#](#scikitplot.corpus.SentenceChunker.config "Link to this definition")
     :   The resolved [`SentenceChunkerConfig`](scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig "scikitplot.corpus.SentenceChunkerConfig") for this instance.
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
-
-[corpus A Tale of Two Cities .mp3 with examples](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
-
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
-
-[corpus Knowledge and Information local .png with examples](../../auto_examples/corpus/plot_corpus_knowledge_script.html)
-
-corpus Knowledge and Information local .png with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[corpus WHO European Region YouTube with examples](../../auto_examples/corpus/plot_corpus_who_youtube_script.html)
-
-corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[corpus WHO European Region local .zip with examples](../../auto_examples/corpus/plot_corpus_who_zip_script.html)
-
-corpus WHO European Region local .zip with examples

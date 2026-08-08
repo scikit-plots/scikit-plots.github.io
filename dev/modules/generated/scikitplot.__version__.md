@@ -1,6 +1,6 @@
 # \_\_version\_\_[#](#version "Link to this heading")
 
-scikitplot.\_\_version\_\_ = '0.5.dev0+git.20260730.d0ea395'[#](#scikitplot.__version__ "Link to this definition")
+scikitplot.\_\_version\_\_ = '0.5.dev0+git.20260808.8ec94fe'[#](#scikitplot.__version__ "Link to this definition")
 :   str(object=’’) -> str
     str(bytes\_or\_buffer[, encoding[, errors]]) -> str
 
@@ -11,15 +11,3 @@ scikitplot.\_\_version\_\_ = '0.5.dev0+git.20260730.d0ea395'[#](#scikitplot.__ve
     or repr(object).
     encoding defaults to sys.getdefaultencoding().
     errors defaults to ‘strict’.
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_modelplotpy_script_thumb.png)
-
-[Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html)
-
-Introduction to modelplotpy![](../../_images/sphx_glr_plot_impute_script_thumb.png)
-
-[annoy impute with examples](../../auto_examples/impute/plot_impute_script.html)
-
-annoy impute with examples

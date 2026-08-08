@@ -1,6 +1,6 @@
 # PickleMixin[#](#picklemixin "Link to this heading")
 
-class scikitplot.annoy.PickleMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/d0ea3951/scikitplot/annoy/_mixins/_pickle.py#L173)[#](#scikitplot.annoy.PickleMixin "Link to this definition")
+class scikitplot.annoy.PickleMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/8ec94fe1/scikitplot/annoy/_mixins/_pickle.py#L173)[#](#scikitplot.annoy.PickleMixin "Link to this definition")
 :   Mixin adding pickle support.
 
     Parameters:
