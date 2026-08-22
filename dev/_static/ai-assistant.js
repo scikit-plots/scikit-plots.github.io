@@ -3,7 +3,8 @@
  *
  * Features
  * ────────
- *   • Markdown export (clipboard copy + view as .md)
+ *   • Markdown export — clipboard copy with a source picker
+ *     (rendered page / published file), plus view as .md
  *   • AI chat deep-links (Claude, ChatGPT, Gemini, …)
  *   • MCP tool integration (VS Code, Claude Desktop, …)
  *   • PDF export with a capability-aware URL / Print method picker
@@ -18,6 +19,57 @@
  * All behaviour driven by window.AI_ASSISTANT_CONFIG injected by the
  * Python extension's add_ai_assistant_context().
  *
+ * Representation model
+ * ────────────────────
+ * Every page has two Markdown representations, and keeping them distinct is the
+ * most important rule in this file.
+ *
+ *   page.md          built at build-finished from the final HTML   CANONICAL
+ *   clipboard text   converted here, from the live DOM, by Turndown CONVENIENCE
+ *
+ * User-facing meaning: canonical is not "better written", it is *fetchable*.
+ * page.md is a real file at a real URL, so a crawler, ChatGPT, Claude, Gemini,
+ * an MCP client or curl can read it. A browser conversion exists only in this
+ * tab. That is why View as Markdown opens the published URL instead of a blob:
+ * — a blob: URL cannot be handed to anyone else.
+ *
+ * Developer rule: never substitute one for the other silently. If a canonical
+ * fetch fails, report it and name the alternative (see handleCopyMarkdown).
+ * A reader who asked for the published file and was quietly given a browser
+ * conversion has been answered confidently and wrongly.
+ *
+ * UI surfaces
+ * ───────────
+ *   Toolbar button   Copy page              → clipboard, current copy mode
+ *   Dropdown
+ *     Copy page      + mode switch          → clipboard; switch picks the source
+ *                                             thumb left  = Rendered page  (convenience)
+ *                                             thumb right = Published file (canonical)
+ *     View as Markdown                      → new tab at page.md            (canonical)
+ *     Ask ChatGPT / Claude / Gemini …       → provider receives page.md URL (canonical)
+ *     MCP tools                             → editor/tool deep links
+ *     PDF / Print + method switch           → prepared URL, or window.print()
+ *   Floating panel   Ask AI                 → in-page chat drawer
+ *
+ * Two switches, one interaction: the copy-mode switch deliberately reuses the
+ * PDF picker's track/thumb primitives and geometry. Both are siblings of their
+ * action button, never children — nested buttons are invalid HTML and behave
+ * unreliably for keyboard and assistive technology — and both use
+ * role=menuitemcheckbox with an aria-label that states the current mode *and*
+ * what activating will do.
+ *
+ * Copy mode resolution
+ * ────────────────────
+ *   reader preference (localStorage)  →  build-time copyMode  →  'browser'
+ *
+ * with the build-time value winning outright when copyModeToggle is false, so a
+ * stored preference cannot resurrect a mode the site turned off. Storage that
+ * throws (private mode, quota, cross-origin iframe) degrades to the build-time
+ * default rather than breaking Copy.
+ *
+ * Default is 'browser' because it always succeeds: it needs no build artifact,
+ * so Copy still works on a site with Markdown generation switched off.
+ *
  * Browser baseline
  * ────────────────
  *   – Modern browsers (ES2017+): async/await, arrow functions and spread are
@@ -29,7 +81,10 @@
  * ────────
  *   – All user-facing HTML via textContent / setAttribute, never innerHTML.
  *   – window.open() passes 'noopener,noreferrer' on all external links.
- *   – sessionStorage for PDF-mode persistence (no cross-origin leak).
+ *   – sessionStorage for PDF-mode persistence, localStorage for the copy-mode
+ *     preference (both same-origin only; no cross-origin leak).
+ *   – The static copy path fetches same-origin with credentials:'same-origin'
+ *     and refuses an empty or non-OK response rather than pasting a 404 body.
  *
  * Developer notes
  * ───────────────
@@ -50,7 +105,7 @@
  *     _fetch, _isSafeUrl, ICONS, haptics, long-press)       L37
  *   Markdown converter (Turndown vendored inline)            ~L1107
  *   Toolbar + dropdown (createAIAssistantUI)                ~L1127
- *     ├─ Copy page / View as Markdown
+ *     ├─ Copy page (+ copy-mode switch) / View as Markdown
  *     ├─ Ask-LLM deep links (ChatGPT / Claude / Gemini)
  *     ├─ MCP tools
  *     └─ PDF / Print (createPdfSection, handlePdfExport)    ~L1305
@@ -3037,6 +3092,7 @@
         });
 
         var ts = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', emDelimiter: '*' });
+        _applyConfiguredRules(ts);
         ts.addRule('preserveCodeBlocks', {
             filter: ['pre'],
             replacement: function (content, node) {
@@ -3050,6 +3106,123 @@
         });
 
         return Promise.resolve(ts.turndown(cloned.innerHTML));
+    }
+
+    /**
+     * Map a video embed URL to its shareable watch form and a platform label.
+     *
+     * Mirrors _video_link() in __init__.py, and the prefixes arrive from the
+     * server in conversionRules[].videoPrefixes so the two paths cannot drift.
+     *
+     * An embed URL renders a bare player and several clients refuse to open it,
+     * so it is the wrong thing to paste into a chat or hand to an AI tool.
+     * Query parameters are preserved: a start time or playlist position was set
+     * deliberately by the author.
+     *
+     * @param {string} src
+     * @returns {Array} [label, href]
+     */
+    function _videoLink(src) {
+        if (!src) return ['Video', src];
+        var prefixes = (_cfg().videoEmbedPrefixes || []);
+        for (var i = 0; i < prefixes.length; i++) {
+            var p = prefixes[i];
+            if (p && p.prefix && src.indexOf(p.prefix) === 0) {
+                if (!p.watch) return [p.label, src];
+                return [p.label, p.watch + src.slice(p.prefix.length)];
+            }
+        }
+        var peertube = _cfg().peertubePaths;
+        if (peertube && peertube.embed && src.indexOf(peertube.embed) >= 0) {
+            return ['PeerTube video', src.replace(peertube.embed, peertube.watch)];
+        }
+        return ['Video', src];
+    }
+
+    /**
+     * Install the shared conversion rules on a TurndownService instance.
+     *
+     * The rules arrive in window.AI_ASSISTANT_CONFIG.conversionRules, generated
+     * from CONVERSION_RULES in __init__.py. They are not duplicated here: this
+     * function is a driver, and adding a rule means adding a table row on the
+     * Python side, which both paths then pick up.
+     *
+     * That is deliberate. Two hand-maintained rule sets drift, and the drift is
+     * invisible — Copy and Ask AI would return different Markdown for the same
+     * page with nothing on screen to indicate it.
+     *
+     * Kinds:
+     *   drop         render nothing
+     *   link         "[label](src|href)" — for embeds Markdown cannot show
+     *   fence        wrap the content in a code fence
+     *   admonition   "> **Title**" block quote
+     *   passthrough  leave the default conversion alone
+     *
+     * A malformed rule is skipped rather than thrown: a bad selector in the
+     * page config must not break Copy for the whole site.
+     *
+     * @param {object} ts TurndownService instance
+     */
+    function _applyConfiguredRules(ts) {
+        var rules = (_cfg().conversionRules || []);
+        if (!Array.isArray(rules)) return;
+
+        rules.forEach(function (rule) {
+            if (!rule || !rule.selector || !rule.name) return;
+            var kind  = rule.kind || 'passthrough';
+            if (kind === 'passthrough') return;
+            var label = rule.label || 'Link';
+
+            try {
+                // Validate the selector once, here, rather than on every node.
+                document.createDocumentFragment().querySelector(rule.selector);
+            } catch (_) {
+                _log('warn', 'AI Assistant: skipping conversion rule with an invalid selector:', rule.name);
+                return;
+            }
+
+            ts.addRule('shared_' + rule.name, {
+                filter: function (node) {
+                    try { return node.matches && node.matches(rule.selector); }
+                    catch (_) { return false; }
+                },
+                replacement: function (content, node) {
+                    if (kind === 'drop') return '';
+                    if (kind === 'link' || kind === 'video') {
+                        var href = (node.getAttribute('src') || node.getAttribute('href') || '').trim();
+                        if (!href) return content;
+                        var text = label;
+                        if (kind === 'video') {
+                            // Same embed→watch mapping as the build-time path,
+                            // driven by the table the server sent.
+                            var mapped = _videoLink(href);
+                            text = mapped[0];
+                            href = mapped[1];
+                        }
+                        return '\n[' + text + '](' + href + ')\n';
+                    }
+                    if (kind === 'fence') {
+                        return '\n```\n' + String(content).trim() + '\n```\n';
+                    }
+                    if (kind === 'heading') {
+                        // Flatten to text: a card header is
+                        // <div><p><strong>…</strong></p></div>, and converting
+                        // each layer independently doubles the emphasis.
+                        var title = (node.textContent || '').trim();
+                        return title ? '\n**' + title + '**\n' : '';
+                    }
+
+                    if (kind === 'admonition') {
+                        var titleEl = node.querySelector('.admonition-title');
+                        var title = titleEl ? titleEl.textContent.trim() : '';
+                        var body = String(content).trim();
+                        if (title && body.indexOf(title) === 0) body = body.slice(title.length).trim();
+                        return title ? '\n> **' + title + '**\n> ' + body + '\n' : content;
+                    }
+                    return content;
+                },
+            });
+        });
     }
 
     /**
