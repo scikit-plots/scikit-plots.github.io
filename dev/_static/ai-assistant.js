@@ -272,6 +272,65 @@
     var _EXPORT_LINK_MODE_KEY = 'ai-assistant-export-link-mode';
 
     /**
+     * localStorage key for the Copy representation mode.
+     *
+     * Two modes, and the distinction is the whole point of the control:
+     *
+     *   'browser'  Turndown over the live DOM. CONVENIENCE. Always available,
+     *              because it needs no build artifact.
+     *   'static'   fetch the build-time page.md. CANONICAL — byte-identical to
+     *              what "View as Markdown" opens and to what an AI provider is
+     *              given.
+     *
+     * Canonical is not a quality claim. A browser conversion can be excellent
+     * and still not be canonical, because no external agent — a crawler,
+     * ChatGPT, Claude, Gemini, an MCP client, curl — can fetch something that
+     * only exists in this tab. That is also why View opens the static URL
+     * rather than a blob:.
+     *
+     * Persisted so the reader's choice survives reloads; falls back to the
+     * build-time default when storage is unavailable (private mode, quota,
+     * cross-origin iframe).
+     *
+     * @type {string}
+     */
+    var _COPY_MODE_KEY = 'ai-assistant-copy-mode';
+
+    /** Valid Copy modes, mirroring COPY_MODES in __init__.py. */
+    var _COPY_MODES = ['browser', 'static'];
+
+    /**
+     * Resolve the active Copy mode.
+     *
+     * Precedence: reader preference, then the build-time default, then
+     * 'browser'. When the toggle is disabled the build-time value wins outright
+     * so a stored preference cannot resurrect a mode the site turned off.
+     *
+     * @returns {string} 'browser' or 'static'
+     */
+    function _copyMode() {
+        var cfg = _cfg();
+        var configured = _COPY_MODES.indexOf(cfg.copyMode) >= 0 ? cfg.copyMode : 'browser';
+        if (cfg.copyModeToggle === false) return configured;
+        try {
+            var stored = localStorage.getItem(_COPY_MODE_KEY);
+            if (_COPY_MODES.indexOf(stored) >= 0) return stored;
+        } catch (_) { /* storage unavailable; fall through to configured */ }
+        return configured;
+    }
+
+    /**
+     * Persist the reader's Copy mode. Storage failure is non-fatal: the mode
+     * still applies for this page view, it simply will not survive a reload.
+     *
+     * @param {string} mode
+     */
+    function _setCopyMode(mode) {
+        if (_COPY_MODES.indexOf(mode) < 0) return;
+        try { localStorage.setItem(_COPY_MODE_KEY, mode); } catch (_) {}
+    }
+
+    /**
      * User-settable dataset repo override — the runtime, no-recompile
      * counterpart to conf.py's ``panelDatasetRepo``.
      *
@@ -1943,6 +2002,142 @@
         return container;
     }
 
+    /**
+     * Human-readable description of a Copy mode, used for the menu item's
+     * secondary line and the switch's accessible label.
+     *
+     * @param {string} mode 'browser' or 'static'
+     * @returns {string}
+     */
+    function _copyModeDescription(mode) {
+        return mode === 'static'
+            ? 'Copy the published Markdown file \u2014 the same text AI tools read.'
+            : 'Copy this page as Markdown, converted here in your browser.';
+    }
+
+    /**
+     * Accessible label for the Copy mode switch, stating both the current mode
+     * and what activating the switch will do.
+     *
+     * @param {string} mode
+     * @returns {string}
+     */
+    function _copySwitchAccessibleLabel(mode) {
+        return mode === 'static'
+            ? 'Copy source: published file. Activate to copy the rendered page instead.'
+            : 'Copy source: rendered page. Activate to copy the published file instead.';
+    }
+
+    /**
+     * Build the Copy row: the Copy menu item plus its mode switch.
+     *
+     * The switch is a **sibling** of the menu item, never a child. Nested
+     * buttons are invalid HTML and behave unreliably for keyboard and
+     * assistive technology; `menuitemcheckbox` keeps the control valid inside
+     * the surrounding menu. This mirrors the PDF mode switch exactly, so the
+     * two controls are learned once.
+     *
+     * When `copyModeToggle` is false the section renders as a plain menu item
+     * with no switch, and the mode is whatever the build pinned.
+     *
+     * @param {string} staticPath
+     * @returns {HTMLElement}
+     */
+    function createCopySection(staticPath) {
+        var mode      = _copyMode();
+        var hasSwitch = _cfg().copyModeToggle !== false;
+
+        var section = document.createElement('div');
+        section.className = 'ai-assistant-copy-section';
+        section.dataset.copyMode = mode;
+        section.dataset.copyHasToggle = hasSwitch ? 'true' : 'false';
+
+        var row = document.createElement('div');
+        row.className = 'ai-assistant-copy-row';
+
+        var item = createMenuItem(
+            'copy-markdown',
+            'Copy page',
+            _copyModeDescription(mode),
+            getStaticAssetUrl('copy-to-clipboard.svg', staticPath)
+        );
+        item.classList.add('ai-assistant-copy-action');
+        item.dataset.copyMode = mode;
+        row.appendChild(item);
+
+        if (hasSwitch) {
+            var modeSwitch = document.createElement('button');
+            modeSwitch.className = 'ai-assistant-copy-mode-switch ai-assistant-mic-popup-toggle';
+            modeSwitch.id = 'ai-assistant-copy-toggle';
+            modeSwitch.type = 'button';
+            modeSwitch.setAttribute('role', 'menuitemcheckbox');
+            modeSwitch.setAttribute('aria-checked', mode === 'static' ? 'true' : 'false');
+            modeSwitch.setAttribute('aria-label', _copySwitchAccessibleLabel(mode));
+            modeSwitch.title = _copySwitchAccessibleLabel(mode);
+
+            var track = document.createElement('span');
+            track.className = 'ai-assistant-mic-toggle-track ai-assistant-copy-toggle-track';
+            track.setAttribute('aria-hidden', 'true');
+
+            var thumb = document.createElement('span');
+            thumb.className = 'ai-assistant-mic-toggle-thumb ai-assistant-copy-toggle-thumb';
+            track.appendChild(thumb);
+
+            // Visually hidden, but the authoritative current-mode text for
+            // screen readers; sighted feedback comes from the thumb position
+            // and the changing description line.
+            var text = document.createElement('span');
+            text.className = 'ai-assistant-copy-toggle-text';
+            text.textContent = mode === 'static' ? 'Published file' : 'Rendered page';
+
+            modeSwitch.appendChild(track);
+            modeSwitch.appendChild(text);
+
+            modeSwitch.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                setCopyMode(_copyMode() === 'static' ? 'browser' : 'static');
+            });
+
+            row.appendChild(modeSwitch);
+        }
+
+        section.appendChild(row);
+        return section;
+    }
+
+    /**
+     * Apply a Copy mode to the live DOM and persist it.
+     *
+     * Kept separate from the click handler so the mode can also be set
+     * programmatically without synthesising an event.
+     *
+     * @param {string} next 'browser' or 'static'
+     */
+    function setCopyMode(next) {
+        if (_COPY_MODES.indexOf(next) < 0) return;
+        _setCopyMode(next);
+
+        var section = document.querySelector('.ai-assistant-copy-section');
+        if (section) section.dataset.copyMode = next;
+
+        var item = document.getElementById('ai-assistant-copy-markdown');
+        if (item) {
+            item.dataset.copyMode = next;
+            var desc = item.querySelector('.ai-assistant-menu-item-desc');
+            if (desc) desc.textContent = _copyModeDescription(next);
+        }
+
+        var sw = document.getElementById('ai-assistant-copy-toggle');
+        if (sw) {
+            sw.setAttribute('aria-checked', next === 'static' ? 'true' : 'false');
+            sw.setAttribute('aria-label', _copySwitchAccessibleLabel(next));
+            sw.title = _copySwitchAccessibleLabel(next);
+            var label = sw.querySelector('.ai-assistant-copy-toggle-text');
+            if (label) label.textContent = next === 'static' ? 'Published file' : 'Rendered page';
+        }
+    }
+
     function createDropdown() {
         var dropdown = document.createElement('div');
         dropdown.className = 'ai-assistant-dropdown';
@@ -1957,7 +2152,7 @@
 
         // 1. Markdown export
         if (features.markdown_export) {
-            dropdown.appendChild(createMenuItem('copy-markdown', 'Copy page', 'Copy this page as Markdown for LLMs.', getStaticAssetUrl('copy-to-clipboard.svg', staticPath)));
+            dropdown.appendChild(createCopySection(staticPath));
             hasItems = true;
         }
 
@@ -2857,6 +3052,34 @@
         return Promise.resolve(ts.turndown(cloned.innerHTML));
     }
 
+    /**
+     * Fetch the canonical build-time Markdown for the current page.
+     *
+     * @returns {Promise<string>} the page.md body
+     *
+     * Rejects when the artifact is absent or empty. It deliberately does **not**
+     * fall back to the browser conversion: silently substituting convenience
+     * output for canonical output would make the control lie about which
+     * representation the reader received. The caller surfaces the failure and
+     * names the alternative instead.
+     */
+    function fetchStaticMarkdown() {
+        var url = getMarkdownUrl();
+        return fetch(url, { credentials: 'same-origin' })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('No static Markdown at ' + url + ' (HTTP ' + response.status + ')');
+                }
+                return response.text();
+            })
+            .then(function (text) {
+                if (!text || !text.trim()) {
+                    throw new Error('Static Markdown at ' + url + ' is empty');
+                }
+                return text;
+            });
+    }
+
     function getMarkdownUrl() {
         // Strip query string AND fragment before rewriting the extension.
         // Rationale: window.location.href.split('#')[0] removes fragments but
@@ -2872,14 +3095,27 @@
     // ── Action handlers ───────────────────────────────────────────────────────
 
     function handleCopyMarkdown(showInlineConfirmation) {
-        convertToMarkdown()
+        var mode = _copyMode();
+        var source = mode === 'static' ? fetchStaticMarkdown() : convertToMarkdown();
+        source
             .then(function (markdown) {
                 copyToClipboard(markdown, showInlineConfirmation);
                 closeDropdown();
             })
             .catch(function (err) {
-                _log('error', 'AI Assistant: Failed to convert to Markdown:', err);
-                showNotification('Failed to convert page to Markdown.', true);
+                _log('error', 'AI Assistant: Copy failed in ' + mode + ' mode:', err);
+                if (mode === 'static') {
+                    // Name the alternative rather than taking it silently. The
+                    // reader asked for the canonical file; giving them the
+                    // browser conversion without saying so would defeat the
+                    // reason they switched.
+                    showNotification(
+                        'No published Markdown for this page. Switch Copy to page mode to copy the rendered page instead.',
+                        true
+                    );
+                } else {
+                    showNotification('Failed to convert page to Markdown.', true);
+                }
             });
     }
 
