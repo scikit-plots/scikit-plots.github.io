@@ -2065,9 +2065,39 @@
      * @returns {string}
      */
     function _copyModeDescription(mode) {
-        return mode === 'static'
-            ? 'Copy the published Markdown file \u2014 the same text AI tools read.'
-            : 'Copy this page as Markdown, converted here in your browser.';
+        return _copyModeProcess(mode).description;
+    }
+
+    /**
+     * The process behind each Copy mode, in the reader's terms.
+     *
+     * The description answers what actually happens when the button is pressed:
+     * where the text comes from, and whether that source can be missing. Both
+     * matter at the moment of choosing, and neither is visible from the label.
+     *
+     *   browser  nothing is fetched. The page in front of you is converted in
+     *            place, so it always succeeds — including on a site built with
+     *            ai_assistant_generate_markdown = False.
+     *   static   page.md is fetched over the network. It is the same file View
+     *            opens and the same URL Ask AI sends, so the paste matches what
+     *            a model reads exactly. If the page was excluded from Markdown
+     *            generation, there is nothing to fetch and Copy says so rather
+     *            than quietly converting the page instead.
+     *
+     * @param {string} mode 'browser' or 'static'
+     * @returns {{label: string, description: string}}
+     */
+    function _copyModeProcess(mode) {
+        if (mode === 'static') {
+            return {
+                label: 'Published file',
+                description: 'Fetches the published page.md \u2014 byte-for-byte what View opens and Ask AI sends.',
+            };
+        }
+        return {
+            label: 'Rendered page',
+            description: 'Converts the page you are viewing, here in the browser. No download, always available.',
+        };
     }
 
     /**
@@ -2079,8 +2109,8 @@
      */
     function _copySwitchAccessibleLabel(mode) {
         return mode === 'static'
-            ? 'Copy source: published file. Activate to copy the rendered page instead.'
-            : 'Copy source: rendered page. Activate to copy the published file instead.';
+            ? 'Copy fetches the published page.md. Activate to convert the rendered page in the browser instead.'
+            : 'Copy converts the rendered page in the browser. Activate to fetch the published page.md instead.';
     }
 
     /**
@@ -2118,6 +2148,17 @@
         );
         item.classList.add('ai-assistant-copy-action');
         item.dataset.copyMode = mode;
+
+        // Mirrors the PDF row: the description is the accessible explanation of
+        // the action, so the item points at it rather than repeating the text
+        // in an aria-label that can drift from it.
+        var itemDesc = item.querySelector('.ai-assistant-menu-item-description');
+        if (itemDesc) {
+            itemDesc.id = 'ai-assistant-copy-desc';
+            itemDesc.classList.add('ai-assistant-copy-desc');
+            item.setAttribute('aria-describedby', 'ai-assistant-copy-desc');
+        }
+
         row.appendChild(item);
 
         if (hasSwitch) {
@@ -2143,7 +2184,7 @@
             // and the changing description line.
             var text = document.createElement('span');
             text.className = 'ai-assistant-copy-toggle-text';
-            text.textContent = mode === 'static' ? 'Published file' : 'Rendered page';
+            text.textContent = _copyModeProcess(mode).label;
 
             modeSwitch.appendChild(track);
             modeSwitch.appendChild(text);
@@ -2179,7 +2220,10 @@
         var item = document.getElementById('ai-assistant-copy-markdown');
         if (item) {
             item.dataset.copyMode = next;
-            var desc = item.querySelector('.ai-assistant-menu-item-desc');
+            // createMenuItem writes '…-menu-item-description'. Querying
+            // '…-menu-item-desc' silently matched nothing, so the description
+            // kept describing the mode the reader had just left.
+            var desc = item.querySelector('.ai-assistant-menu-item-description');
             if (desc) desc.textContent = _copyModeDescription(next);
         }
 
@@ -2189,7 +2233,7 @@
             sw.setAttribute('aria-label', _copySwitchAccessibleLabel(next));
             sw.title = _copySwitchAccessibleLabel(next);
             var label = sw.querySelector('.ai-assistant-copy-toggle-text');
-            if (label) label.textContent = next === 'static' ? 'Published file' : 'Rendered page';
+            if (label) label.textContent = _copyModeProcess(next).label;
         }
     }
 
@@ -3188,6 +3232,7 @@
                 },
                 replacement: function (content, node) {
                     if (kind === 'drop') return '';
+                    if (kind === 'unwrap') return content;
                     if (kind === 'link' || kind === 'video') {
                         var href = (node.getAttribute('src') || node.getAttribute('href') || '').trim();
                         if (!href) return content;
