@@ -1,6 +1,6 @@
 # use\_provider[#](#use-provider "Link to this heading")
 
-scikitplot.mlflow.use\_provider(**provider**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/mlflow/_custom.py#L90)[#](#scikitplot.mlflow.use_provider "Link to this definition")
+scikitplot.mlflow.use\_provider(**provider**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/mlflow/_custom.py#L90)[#](#scikitplot.mlflow.use_provider "Link to this definition")
 :   Temporarily set the MLflow provider for a context block.
 
     Parameters:
@@ -8,3 +8,5 @@ scikitplot.mlflow.use\_provider(**provider**)[[source]](https://github.com/sciki
 
     Return type:
     :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.14)")[None]
+
+ On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/modules/generated/scikitplot.mlflow.use_provider.rst)[Show Source](../../_sources/modules/generated/scikitplot.mlflow.use_provider.rst.txt)

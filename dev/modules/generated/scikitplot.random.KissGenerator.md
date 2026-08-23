@@ -1,6 +1,6 @@
 # KissGenerator[#](#kissgenerator "Link to this heading")
 
-class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissGenerator "Link to this definition")
+class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissGenerator "Link to this definition")
 :   High-level random number generator using KISS algorithm.
 
     Provides NumPy-compatible interface for common distributions
@@ -549,3 +549,11 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         ```
         Go BackOpen In Tab
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
+
+[Enhanced KISS Random Generator - Complete Usage Examples](../../auto_examples/random/plot_kiss_random.html)
+
+Enhanced KISS Random Generator - Complete Usage Examples

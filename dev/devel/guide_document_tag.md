@@ -42,7 +42,7 @@ purpose of a gallery example might be to demonstrate a colormap, but it’s also
 demonstration of a legend. Tag `legend` to indicate that, rather than changing the
 title or the scope of the example.
 
-****Tag Categories****
+**Tag Categories**
 
 * [Tag Glossary](guide_document_tag_glossary.html)
   * [API tags: what content from the API reference is in the example?](guide_document_tag_glossary.html#api-tags-what-content-from-the-api-reference-is-in-the-example)

@@ -1,6 +1,6 @@
 # provenance\_from\_filename[#](#provenance-from-filename "Link to this heading")
 
-scikitplot.corpus.provenance\_from\_filename(**filename**, **source\_type=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_metadata/_metadata.py#L504)[#](#scikitplot.corpus.provenance_from_filename "Link to this definition")
+scikitplot.corpus.provenance\_from\_filename(**filename**, **source\_type=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_metadata/_metadata.py#L504)[#](#scikitplot.corpus.provenance_from_filename "Link to this definition")
 :   Extract provenance metadata from a source filename using heuristics.
 
     Designed for corpora organised by the Project Gutenberg naming

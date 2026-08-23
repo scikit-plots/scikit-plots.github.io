@@ -72,15 +72,15 @@
       "subdir": "noarch"
     },
     {
-      "name": "pyjs-rt",
-      "version": "4.0.5",
-      "build": "py313h06ab7c0_0",
-      "filename_stem": "pyjs-rt-4.0.5-py313h06ab7c0_0",
-      "filename": "pyjs-rt-4.0.5-py313h06ab7c0_0.tar.gz",
+      "name": "python",
+      "version": "3.13.1",
+      "build": "h_2efca29_11_cp313",
+      "filename_stem": "python-3.13.1-h_2efca29_11_cp313",
+      "filename": "python-3.13.1-h_2efca29_11_cp313.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
-        "emscripten-abi >=4,<5.0a0",
-        "python_abi 3.13.* *_cp313"
+        "python_abi 3.13.* *_cp313",
+        "emscripten-abi >=4,<5.0a0"
       ],
       "subdir": "emscripten-wasm32"
     },
@@ -111,15 +111,15 @@
       "subdir": "emscripten-wasm32"
     },
     {
-      "name": "python",
-      "version": "3.13.1",
-      "build": "h_2efca29_11_cp313",
-      "filename_stem": "python-3.13.1-h_2efca29_11_cp313",
-      "filename": "python-3.13.1-h_2efca29_11_cp313.tar.gz",
+      "name": "pyjs-rt",
+      "version": "4.0.6",
+      "build": "py313h06ab7c0_0",
+      "filename_stem": "pyjs-rt-4.0.6-py313h06ab7c0_0",
+      "filename": "pyjs-rt-4.0.6-py313h06ab7c0_0.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
-        "python_abi 3.13.* *_cp313",
-        "emscripten-abi >=4,<5.0a0"
+        "emscripten-abi >=4,<5.0a0",
+        "python_abi 3.13.* *_cp313"
       ],
       "subdir": "emscripten-wasm32"
     },
@@ -310,9 +310,9 @@
     {
       "name": "r-htmltools",
       "version": "0.5.9",
-      "build": "r45h6b09a92_4",
-      "filename_stem": "r-htmltools-0.5.9-r45h6b09a92_4",
-      "filename": "r-htmltools-0.5.9-r45h6b09a92_4.tar.gz",
+      "build": "r45h6b09a92_5",
+      "filename_stem": "r-htmltools-0.5.9-r45h6b09a92_5",
+      "filename": "r-htmltools-0.5.9-r45h6b09a92_5.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
         "r-base64enc",
@@ -323,42 +323,6 @@
         "r-base >=4.5.3,<4.6.0a0"
       ],
       "subdir": "emscripten-wasm32"
-    },
-    {
-      "name": "r-crayon",
-      "version": "1.5.3",
-      "build": "r45hc72bb7e_2",
-      "filename_stem": "r-crayon-1.5.3-r45hc72bb7e_2",
-      "filename": "r-crayon-1.5.3-r45hc72bb7e_2.tar.gz",
-      "channel": "https://prefix.dev/conda-forge",
-      "depends": [
-        "r-base >=4.5,<4.6.0a0"
-      ],
-      "subdir": "noarch"
-    },
-    {
-      "name": "r-evaluate",
-      "version": "1.0.5",
-      "build": "r45hc72bb7e_1",
-      "filename_stem": "r-evaluate-1.0.5-r45hc72bb7e_1",
-      "filename": "r-evaluate-1.0.5-r45hc72bb7e_1.tar.gz",
-      "channel": "https://prefix.dev/conda-forge",
-      "depends": [
-        "r-base >=4.5,<4.6.0a0"
-      ],
-      "subdir": "noarch"
-    },
-    {
-      "name": "r-r6",
-      "version": "2.6.1",
-      "build": "r45hc72bb7e_1",
-      "filename_stem": "r-r6-2.6.1-r45hc72bb7e_1",
-      "filename": "r-r6-2.6.1-r45hc72bb7e_1.tar.gz",
-      "channel": "https://prefix.dev/conda-forge",
-      "depends": [
-        "r-base >=4.5,<4.6.0a0"
-      ],
-      "subdir": "noarch"
     },
     {
       "name": "ptyprocess",
@@ -446,13 +410,14 @@
     },
     {
       "name": "pygments",
-      "version": "2.20.0",
-      "build": "pyhd8ed1ab_0",
-      "filename_stem": "pygments-2.20.0-pyhd8ed1ab_0",
-      "filename": "pygments-2.20.0-pyhd8ed1ab_0.tar.gz",
+      "version": "2.21.0",
+      "build": "pyhcf101f3_0",
+      "filename_stem": "pygments-2.21.0-pyhcf101f3_0",
+      "filename": "pygments-2.21.0-pyhcf101f3_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
-        "python >=3.10"
+        "python >=3.10",
+        "python"
       ],
       "subdir": "noarch"
     },
@@ -509,10 +474,10 @@
     },
     {
       "name": "xeus-python-shell-raw",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "build": "pyhd8ed1ab_0",
-      "filename_stem": "xeus-python-shell-raw-0.8.0-pyhd8ed1ab_0",
-      "filename": "xeus-python-shell-raw-0.8.0-pyhd8ed1ab_0.tar.gz",
+      "filename_stem": "xeus-python-shell-raw-0.8.1-pyhd8ed1ab_0",
+      "filename": "xeus-python-shell-raw-0.8.1-pyhd8ed1ab_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
         "python >=3.10"
@@ -529,6 +494,42 @@
       "depends": [
         "python >=3.10",
         "python"
+      ],
+      "subdir": "noarch"
+    },
+    {
+      "name": "r-crayon",
+      "version": "1.5.3",
+      "build": "r45hc72bb7e_2",
+      "filename_stem": "r-crayon-1.5.3-r45hc72bb7e_2",
+      "filename": "r-crayon-1.5.3-r45hc72bb7e_2.tar.gz",
+      "channel": "https://prefix.dev/conda-forge",
+      "depends": [
+        "r-base >=4.5,<4.6.0a0"
+      ],
+      "subdir": "noarch"
+    },
+    {
+      "name": "r-evaluate",
+      "version": "1.0.5",
+      "build": "r45hc72bb7e_1",
+      "filename_stem": "r-evaluate-1.0.5-r45hc72bb7e_1",
+      "filename": "r-evaluate-1.0.5-r45hc72bb7e_1.tar.gz",
+      "channel": "https://prefix.dev/conda-forge",
+      "depends": [
+        "r-base >=4.5,<4.6.0a0"
+      ],
+      "subdir": "noarch"
+    },
+    {
+      "name": "r-r6",
+      "version": "2.6.1",
+      "build": "r45hc72bb7e_1",
+      "filename_stem": "r-r6-2.6.1-r45hc72bb7e_1",
+      "filename": "r-r6-2.6.1-r45hc72bb7e_1.tar.gz",
+      "channel": "https://prefix.dev/conda-forge",
+      "depends": [
+        "r-base >=4.5,<4.6.0a0"
       ],
       "subdir": "noarch"
     },
@@ -676,15 +677,15 @@
     },
     {
       "name": "xeus-python-shell",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "build": "pyh332efcf_0",
-      "filename_stem": "xeus-python-shell-0.8.0-pyh332efcf_0",
-      "filename": "xeus-python-shell-0.8.0-pyh332efcf_0.tar.gz",
+      "filename_stem": "xeus-python-shell-0.8.1-pyh332efcf_0",
+      "filename": "xeus-python-shell-0.8.1-pyh332efcf_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
         "ipython >=7.21",
         "python",
-        "xeus-python-shell-raw 0.8.0 pyhd8ed1ab_0"
+        "xeus-python-shell-raw 0.8.1 pyhd8ed1ab_0"
       ],
       "subdir": "noarch"
     },
@@ -706,16 +707,16 @@
     },
     {
       "name": "xeus-python-shell-lite",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "build": "pyhd8ed1ab_0",
-      "filename_stem": "xeus-python-shell-lite-0.8.0-pyhd8ed1ab_0",
-      "filename": "xeus-python-shell-lite-0.8.0-pyhd8ed1ab_0.tar.gz",
+      "filename_stem": "xeus-python-shell-lite-0.8.1-pyhd8ed1ab_0",
+      "filename": "xeus-python-shell-lite-0.8.1-pyhd8ed1ab_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
         "packaging",
         "pyodide-http",
         "python",
-        "xeus-python-shell 0.8.0 pyh332efcf_0"
+        "xeus-python-shell 0.8.1 pyh332efcf_0"
       ],
       "subdir": "noarch"
     },
@@ -735,17 +736,17 @@
     {
       "name": "xeus-python",
       "version": "0.19.0",
-      "build": "py313h6852881_2",
-      "filename_stem": "xeus-python-0.19.0-py313h6852881_2",
-      "filename": "xeus-python-0.19.0-py313h6852881_2.tar.gz",
+      "build": "py313he5686da_3",
+      "filename_stem": "xeus-python-0.19.0-py313he5686da_3",
+      "filename": "xeus-python-0.19.0-py313he5686da_3.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
         "python",
         "xeus-python-shell-lite >=0.8,<0.9",
-        "pyjs-rt >=4.0.4",
+        "pyjs-rt >=4.0.6",
         "emscripten-abi >=4,<5.0a0",
-        "python_abi 3.13.* *_cp313",
         "xeus >=6.0.5,<6.1.0a0",
+        "python_abi 3.13.* *_cp313",
         "nlohmann_json-abi 3.12.0"
       ],
       "subdir": "emscripten-wasm32"

@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -43,8 +43,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     ```
 
     System Information:
-                       python: 3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]
-                   executable: /home/circleci/.pyenv/versions/3.12.13/bin/python3.12
+                       python: 3.12.14 (main, Aug 13 2026, 21:21:31) [GCC 11.4.0]
+                   executable: /home/circleci/.pyenv/versions/3.12.14/bin/python3.12
         python_implementation: CPython
                      libc_ver: ('glibc', '2.35')
                            OS: Linux-7.0.0-1009-aws-x86_64-with-glibc2.35
@@ -56,12 +56,12 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260808.d6e9440
-                          pip: 26.0.1
+                   scikitplot: 0.5.dev0+git.20260823.71eae2e
+                          pip: 26.2.1
                    setuptools: 84.0.0
-                       cython: 3.2.9
-                        numpy: 2.4.6
-                        scipy: 1.18.0
+                       cython: 3.3.0
+                        numpy: 2.5.2
+                        scipy: 1.18.1
                       aggdraw: 1.4.1
                        pandas: 2.3.3
                    matplotlib: 3.11.1
@@ -89,8 +89,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                  internal_api: openblas
                   num_threads: 36
                        prefix: libscipy_openblas
-                     filepath: /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
-                      version: 0.3.31.188.0
+                     filepath: /home/circleci/.pyenv/versions/3.12.14/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-61654e39.so
+                      version: 0.3.34.0.0
               threading_layer: pthreads
                  architecture: SkylakeX
 
@@ -102,8 +102,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
 
     ```
     ```
-    {'system': {'python': '3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]',
-      'executable': '/home/circleci/.pyenv/versions/3.12.13/bin/python3.12',
+    {'system': {'python': '3.12.14 (main, Aug 13 2026, 21:21:31) [GCC 11.4.0]',
+      'executable': '/home/circleci/.pyenv/versions/3.12.14/bin/python3.12',
       'python_implementation': 'CPython',
       'libc_ver': ('glibc', '2.35'),
       'OS': 'Linux-7.0.0-1009-aws-x86_64-with-glibc2.35',
@@ -113,12 +113,12 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260808.d6e9440',
-      'pip': '26.0.1',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260823.71eae2e',
+      'pip': '26.2.1',
       'setuptools': '84.0.0',
-      'cython': '3.2.9',
-      'numpy': '2.4.6',
-      'scipy': '1.18.0',
+      'cython': '3.3.0',
+      'numpy': '2.5.2',
+      'scipy': '1.18.1',
       'aggdraw': '1.4.1',
       'pandas': '2.3.3',
       'matplotlib': '3.11.1',
@@ -136,8 +136,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
        'internal_api': 'openblas',
        'num_threads': 36,
        'prefix': 'libscipy_openblas',
-       'filepath': '/home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so',
-       'version': '0.3.31.188.0',
+       'filepath': '/home/circleci/.pyenv/versions/3.12.14/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-61654e39.so',
+       'version': '0.3.34.0.0',
        'threading_layer': 'pthreads',
        'architecture': 'SkylakeX'}]}
 
@@ -148,16 +148,10 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
 
     ```
     ```
-    [32m[1mChanged logging level: WARNING[0m
-    [1;36mScikit-plot Version Information:[0m
-
-
-    ```
-    ```
 
     System Information:
-                       python: 3.12.13 (main, Mar  4 2026, 15:44:42) [GCC 11.4.0]
-                   executable: /home/circleci/.pyenv/versions/3.12.13/bin/python
+                       python: 3.12.14 (main, Aug 13 2026, 21:21:31) [GCC 11.4.0]
+                   executable: /home/circleci/.pyenv/versions/3.12.14/bin/python
         python_implementation: CPython
                      libc_ver: ('glibc', '2.35')
                            OS: Linux-7.0.0-1009-aws-x86_64-with-glibc2.35
@@ -169,12 +163,12 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260808.d6e9440
-                          pip: 26.0.1
+                   scikitplot: 0.5.dev0+git.20260823.71eae2e
+                          pip: 26.2.1
                    setuptools: 84.0.0
-                       cython: 3.2.9
-                        numpy: 2.4.6
-                        scipy: 1.18.0
+                       cython: 3.3.0
+                        numpy: 2.5.2
+                        scipy: 1.18.1
                       aggdraw: 1.4.1
                        pandas: 2.3.3
                    matplotlib: 3.11.1
@@ -202,26 +196,10 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                  internal_api: openblas
                   num_threads: 36
                        prefix: libscipy_openblas
-                     filepath: /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
-                      version: 0.3.31.188.0
+                     filepath: /home/circleci/.pyenv/versions/3.12.14/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-61654e39.so
+                      version: 0.3.34.0.0
               threading_layer: pthreads
                  architecture: SkylakeX
-
-                     user_api: blas
-                 internal_api: openblas
-                  num_threads: 36
-                       prefix: libscipy_openblas
-                     filepath: /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-5f890258.so
-                      version: 0.3.31.dev
-              threading_layer: pthreads
-                 architecture: SkylakeX
-
-                     user_api: openmp
-                 internal_api: openmp
-                  num_threads: 36
-                       prefix: libgomp
-                     filepath: /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0
-                      version: None
 
 
     ```

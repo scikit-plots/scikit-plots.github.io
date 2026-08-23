@@ -1,6 +1,6 @@
 # purge\_cache[#](#purge-cache "Link to this heading")
 
-scikitplot.cython.purge\_cache(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_public.py#L279)[#](#scikitplot.cython.purge_cache "Link to this definition")
+scikitplot.cython.purge\_cache(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_public.py#L279)[#](#scikitplot.cython.purge_cache "Link to this definition")
 :   Delete the entire cache directory.
 
     The purge runs under the cache-root GC lock so it cannot race a concurrent
@@ -25,3 +25,11 @@ scikitplot.cython.purge\_cache(**cache\_dir=None**)[[source]](https://github.com
 
     Return type:
     :   None
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_cython_template_thumb.png)
+
+[Cython: Realtime compile\_and\_load (.pyx)](../../auto_examples/cython/plot_cython_template.html)
+
+Cython: Realtime compile\_and\_load (.pyx)

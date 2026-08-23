@@ -1,6 +1,6 @@
 # list\_cached\_packages[#](#list-cached-packages "Link to this heading")
 
-scikitplot.cython.list\_cached\_packages(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_public.py#L832)[#](#scikitplot.cython.list_cached_packages "Link to this definition")
+scikitplot.cython.list\_cached\_packages(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_public.py#L832)[#](#scikitplot.cython.list_cached_packages "Link to this definition")
 :   List cached **package** entries.
 
     Parameters:
@@ -8,3 +8,5 @@ scikitplot.cython.list\_cached\_packages(**cache\_dir=None**)[[source]](https://
 
     Return type:
     :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PackageCacheEntry**](scikitplot.cython.PackageCacheEntry.html#scikitplot.cython.PackageCacheEntry "scikitplot.cython._cache.PackageCacheEntry")]
+
+ On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/modules/generated/scikitplot.cython.list_cached_packages.rst)[Show Source](../../_sources/modules/generated/scikitplot.cython.list_cached_packages.rst.txt)

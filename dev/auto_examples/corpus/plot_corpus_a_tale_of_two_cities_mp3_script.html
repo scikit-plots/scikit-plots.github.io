@@ -5,22 +5,22 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="corpus A Tale of Two Cities .mp3 with examples" property="og:title"/>
+<meta content="Process an MP3 with Corpus" property="og:title"/>
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="Examples related to the corpus submodule. Audio URL transcription: Pass transcribe=True and whisper_model via reader_kwargs. These kwargs are forwarded by the pipeline to the AudioReader constructo..." property="og:description"/>
+<meta content="This example shows the audio ingestion path without making a documentation build depend on a speech model download. The default executed scenario uses a real bundled MP3 plus a small companion SRT ..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="Examples related to the corpus submodule. Audio URL transcription: Pass transcribe=True and whisper_model via reader_kwargs. These kwargs are forwarded by the pipeline to the AudioReader constructo..." name="description"/>
+<meta content="This example shows the audio ingestion path without making a documentation build depend on a speech model download. The default executed scenario uses a real bundled MP3 plus a small companion SRT ..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":false,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:03:53Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-23T18:56:31Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-<title>corpus A Tale of Two Cities .mp3 with examples — scikit-plots 0.5.dev0 documentation</title>
+<title>Process an MP3 with Corpus — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -42,18 +42,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
-<link href="../../_static/ai-assistant.css?v=0a983dac" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=7286b3b3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=f676e775" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=fd6457a4" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=6c2c4627" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script defer="" src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -62,18 +62,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
-<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script defer="defer" src="../../_static/ai-assistant.js?v=e747c355"></script>
+<script defer="defer" src="../../_static/ai-assistant.js?v=c938e8b0"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script>let toggleHintShow = 'Click to show';</script>
 <script>let toggleHintHide = 'Click to hide';</script>
 <script>let toggleOpenOnPrint = 'true';</script>
 <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script';</script>
@@ -85,13 +85,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
 <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-<link href="https://scikit-plots.github.io/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html" rel="canonical"/>
+<link href="https://scikit-plots.github.io/dev/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_corpus_knowledge_script.html" rel="next" title="corpus Knowledge and Information local .png with examples"/>
+<link href="plot_corpus_fluent_corpus_script.html" rel="next" title="Configure Corpus with FluentCorpus"/>
 <link href="index.html" rel="prev" title="Corpus"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -153,7 +153,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../learn/index.html">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
@@ -293,7 +293,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../learn/index.html">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
@@ -423,11 +423,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">corpus A Tale of Two Cities .mp3 with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">corpus WHO European Region YouTube with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v2.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -536,7 +540,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
 <li class="breadcrumb-item"><a class="nav-link" href="index.html">Corpus</a></li>
-<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">corpus A Tale of Two Cities .mp3 with examples</span></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Process an MP3 with Corpus</span></li>
 </ul>
 </nav>
 </div>
@@ -546,116 +550,439 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div id="searchbox"></div>
 <article class="bd-article">
 
-<section class="sphx-glr-example-title" id="corpus-a-tale-of-two-cities-mp3-with-examples">
-<span id="sphx-glr-auto-examples-corpus-plot-corpus-a-tale-of-two-cities-mp3-script-py"></span><h1>corpus A Tale of Two Cities .mp3 with examples<a class="headerlink" href="#corpus-a-tale-of-two-cities-mp3-with-examples" title="Link to this heading">#</a></h1>
-<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.corpus.html#module-scikitplot.corpus" title="scikitplot.corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">corpus</span></code></a> submodule.</p>
+<section class="sphx-glr-example-title" id="process-an-mp3-with-corpus">
+<span id="sphx-glr-auto-examples-corpus-plot-corpus-a-tale-of-two-cities-mp3-script-py"></span><h1>Process an MP3 with Corpus<a class="headerlink" href="#process-an-mp3-with-corpus" title="Link to this heading">#</a></h1>
+<p>This example shows the audio ingestion path without making a documentation
+build depend on a speech model download.</p>
+<p>The default executed scenario uses a real bundled MP3 plus a small companion
+SRT transcript.  <a class="reference internal" href="../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader" title="scikitplot.corpus.AudioReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AudioReader</span></code></a> checks companion transcript/lyrics files
+before Whisper, so the audio can be routed through the normal Corpus media
+reader while remaining deterministic and offline-safe.</p>
+<p>The example demonstrates:</p>
+<ul class="simple">
+<li><p>audio reader dispatch from an MP3 path,</p></li>
+<li><p>companion-transcript precedence over Whisper ASR,</p></li>
+<li><p>portable REGEX sentence chunking,</p></li>
+<li><p>audio provenance such as source type, section type, and timecodes,</p></li>
+<li><p>dependency-free SIMPLE NLP enrichment,</p></li>
+<li><p>optional NLTK enrichment when local NLTK resources are present,</p></li>
+<li><p>optional real Whisper ASR only when the gallery is explicitly opted in.</p></li>
+</ul>
+<section id="optional-capability-rule">
+<h2>Optional capability rule<a class="headerlink" href="#optional-capability-rule" title="Link to this heading">#</a></h2>
+<p>Missing optional packages or local data resources are reported as <code class="docutils literal notranslate"><span class="pre">SKIP</span></code>.
+Unexpected failures after a capability has been explicitly enabled are not
+silently swallowed.</p>
+<p>The live remote-MP3 path is shown as code only; this gallery performs no
+network access.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DocumentReader</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">,</span>
-    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">,</span>
-    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">,</span>
-    <span class="n">ExportFormat</span><span class="p">,</span>
-    <span class="n">CorpusDocument</span><span class="p">,</span>
-    <span class="n">SourceType</span><span class="p">,</span>
-    <span class="n">SentenceBackend</span><span class="p">,</span>
+    <span class="n">DocumentReader</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">,</span>
+    <span class="n">SentenceBackend</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="c1"># os.environ["SCIKITPLOT_GALLERY_RUN_ASR"] = "1"</span>
+<span class="c1"># os.environ["SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS"] = "1"</span>
+<span class="n">_RUN_ASR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"SCIKITPLOT_GALLERY_RUN_ASR"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"true"</span><span class="p">,</span>
+    <span class="s2">"yes"</span><span class="p">,</span>
+    <span class="s2">"on"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">_SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS</span> <span class="o">=</span> <a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.html#os.getenv" title="os.getenv"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">"SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"true"</span><span class="p">,</span>
+    <span class="s2">"yes"</span><span class="p">,</span>
+    <span class="s2">"on"</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<section id="audio-url-transcription">
-<h2>Audio URL transcription<a class="headerlink" href="#audio-url-transcription" title="Link to this heading">#</a></h2>
-<p>Pass <code class="docutils literal notranslate"><span class="pre">transcribe=True</span></code> and <code class="docutils literal notranslate"><span class="pre">whisper_model</span></code> via <code class="docutils literal notranslate"><span class="pre">reader_kwargs</span></code>.
-These kwargs are forwarded by the pipeline to the <a class="reference internal" href="../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader" title="scikitplot.corpus.AudioReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AudioReader</span></code></a>
-constructor — for both <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline.run" title="scikitplot.corpus.CorpusPipeline.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run</span></code></a> (local files) and
-<a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline.run_url" title="scikitplot.corpus.CorpusPipeline.run_url"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run_url</span></code></a> (remote URLs).</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
-    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span><span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.NLTK" title="scikitplot.corpus.SentenceBackend.NLTK"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">NLTK</span></a><span class="p">)),</span>
-    <span class="n">output_path</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
-    <span class="nb">format</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-ExportFormat sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.CSV" title="scikitplot.corpus.ExportFormat.CSV"><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span></a><span class="p">,</span>
-    <span class="n">reader_kwargs</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">"transcribe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s2">"whisper_model"</span><span class="p">:</span> <span class="s2">"base"</span><span class="p">,</span>  <span class="c1"># "tiny" | "base" | "small" | "medium" | "large"</span>
-    <span class="p">},</span>
-<span class="p">)</span>
-<span class="n">pipeline</span>
+</section>
+<section id="resolve-the-bundled-audio-asset">
+<h2>Resolve the bundled audio asset<a class="headerlink" href="#resolve-the-bundled-audio-asset" title="Link to this heading">#</a></h2>
+<p>The local asset is the reproducible execution path.  If a documentation
+packaging step omitted it, the example reports a bounded skip rather than
+falling through to a live URL automatically.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_resolve_example_dir</span><span class="p">()</span> <span class="o">-&gt;</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Resolve the example directory across script and gallery runtimes."""</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"__file__"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">return</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+    <span class="k">return</span> <a class="sphx-glr-backref-module-pathlib-Path sphx-glr-backref-type-py-method" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.cwd" title="pathlib.Path.cwd"><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span></a><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+
+<span class="n">_EXAMPLE_DIR</span> <span class="o">=</span> <span class="n">_resolve_example_dir</span><span class="p">()</span>
+<span class="n">_DATA_DIR</span> <span class="o">=</span> <span class="n">_EXAMPLE_DIR</span> <span class="o">/</span> <span class="s2">"data"</span>
+<span class="n">_AUDIO_PATH</span> <span class="o">=</span> <span class="n">_DATA_DIR</span> <span class="o">/</span> <span class="s2">"tale_of_two_cities_01_dickens_64kb.mp3"</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;scikitplot.corpus._pipeline.CorpusPipeline object at 0x74f7f25ac470&gt;
+</section>
+<section id="optional-capability-preflight-helpers">
+<h2>Optional-capability preflight helpers<a class="headerlink" href="#optional-capability-preflight-helpers" title="Link to this heading">#</a></h2>
+<p>These checks do not install packages, download NLTK resources, or fetch
+Whisper model weights.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_probe_nltk</span><span class="p">(</span><span class="o">*</span><span class="n">resource_paths</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Check NLTK and local NLTK data without downloading anything."""</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"nltk"</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"NLTK is not installed"</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"NLTK is not importable"</span>
+
+    <span class="n">missing</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">resource_path</span> <span class="ow">in</span> <span class="n">resource_paths</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">resource_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+            <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resource_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"missing local NLTK resources: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"NLTK resources available"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_probe_whisper_backend</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Return whether at least one supported Whisper Python backend exists."""</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"faster_whisper"</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"faster-whisper is installed"</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"whisper"</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"openai-whisper is installed"</span>
+    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"neither faster-whisper nor openai-whisper is installed"</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://archive.org/compress/tale_two_cities_librivox/formats=128KBPS%20MP3&amp;file=/tale_two_cities_librivox.zip</span>
-<span class="c1"># https://archive.org/details/tale_two_cities_librivox/tale_of_two_cities_01_dickens.mp3</span>
-<span class="c1"># result = pipeline.run_url(</span>
-<span class="c1">#     "https://archive.org/details/tale_two_cities_librivox/tale_of_two_cities_01_dickens.mp3"</span>
-<span class="c1"># )</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="c1"># "https://archive.org/details/tale_two_cities_librivox/tale_of_two_cities_01_dickens.mp3"</span>
-    <span class="s2">"data/tale_of_two_cities_01_dickens_64kb.mp3"</span>
+</section>
+<section id="prepare-a-deterministic-companion-transcript">
+<h2>Prepare a deterministic companion transcript<a class="headerlink" href="#prepare-a-deterministic-companion-transcript" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">AudioReader</span></code> searches for a same-stem companion in this order:</p>
+<p><code class="docutils literal notranslate"><span class="pre">.lrc</span> <span class="pre">→</span> <span class="pre">.srt</span> <span class="pre">→</span> <span class="pre">.vtt</span> <span class="pre">→</span> <span class="pre">.txt</span></code>.</p>
+<p>We copy the gallery MP3 into a temporary workspace and place a short SRT next
+to it.  The transcript contains the opening LibriVox announcement already
+represented by this gallery asset.  Timecodes make the resulting
+<code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> objects visibly different from ordinary plain-text input.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">_WORKSPACE</span><span class="p">:</span> <a class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryDirectory" title="tempfile.TemporaryDirectory"><span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span></a><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_WORK_DIR</span><span class="p">:</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_DEMO_AUDIO</span><span class="p">:</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">_AUDIO_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] Bundled MP3 is unavailable: </span><span class="si">{</span><span class="n">_AUDIO_PATH</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">_WORKSPACE</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryDirectory" title="tempfile.TemporaryDirectory"><span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span></a><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"scikitplot-audio-gallery-"</span><span class="p">)</span>
+    <span class="n">_WORK_DIR</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">_DEMO_AUDIO</span> <span class="o">=</span> <span class="n">_WORK_DIR</span> <span class="o">/</span> <span class="n">_AUDIO_PATH</span><span class="o">.</span><span class="n">name</span>
+    <a class="sphx-glr-backref-module-shutil sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/shutil.html#shutil.copy2" title="shutil.copy2"><span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span></a><span class="p">(</span><span class="n">_AUDIO_PATH</span><span class="p">,</span> <span class="n">_DEMO_AUDIO</span><span class="p">)</span>
+
+    <span class="n">_DEMO_AUDIO</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">".srt"</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""1</span>
+<span class="sd">00:00:00,000 --&gt; 00:00:08,000</span>
+<span class="sd">This is a Librivox recording. All Librivox recordings are in the public domain.</span>
+
+<span class="sd">2</span>
+<span class="sd">00:00:08,000 --&gt; 00:00:13,000</span>
+<span class="sd">For more information or to volunteer, please visit Librivox.org.</span>
+
+<span class="sd">3</span>
+<span class="sd">00:00:14,000 --&gt; 00:00:21,000</span>
+<span class="sd">Recording by Michael Sirois.</span>
+
+<span class="sd">4</span>
+<span class="sd">00:00:22,000 --&gt; 00:00:25,000</span>
+<span class="sd">A Tale of Two Cities by Charles Dickens.</span>
+<span class="sd">"""</span><span class="p">,</span>
+        <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Bundled MP3:"</span><span class="p">,</span> <span class="n">_AUDIO_PATH</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Temporary audio:"</span><span class="p">,</span> <span class="n">_DEMO_AUDIO</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Companion:"</span><span class="p">,</span> <span class="n">_DEMO_AUDIO</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">".srt"</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bundled MP3: /home/circleci/repo/galleries/examples/corpus/data/tale_of_two_cities_01_dickens_64kb.mp3
+Temporary audio: /tmp/scikitplot-audio-gallery-vthww70r/tale_of_two_cities_01_dickens_64kb.mp3
+Companion: /tmp/scikitplot-audio-gallery-vthww70r/tale_of_two_cities_01_dickens_64kb.srt
+</pre></div>
+</div>
+</section>
+<section id="process-the-mp3-through-corpuspipeline">
+<h2>Process the MP3 through CorpusPipeline<a class="headerlink" href="#process-the-mp3-through-corpuspipeline" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">transcribe=True</span></code> is intentional here.  Because the SRT companion exists,
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader" title="scikitplot.corpus.AudioReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AudioReader</span></code></a> consumes it first and never initializes Whisper.  In this
+path the MP3 remains the source/provenance object; the text comes from the
+sidecar, so the reader does not need to decode the audio signal.</p>
+<p>REGEX sentence chunking is used instead of NLTK so the primary media path
+remains dependency-light.  No export is configured because serialization is
+not the teaching goal of this example.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">core_result</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">core_documents</span> <span class="o">=</span> <span class="p">()</span>
+
+<span class="k">if</span> <span class="n">_DEMO_AUDIO</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] Core audio pipeline: local MP3 asset is unavailable."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+        <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span>
+            <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span>
+                <span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.REGEX" title="scikitplot.corpus.SentenceBackend.REGEX"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">REGEX</span></a><span class="p">,</span>
+                <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">include_offsets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">reader_kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">"transcribe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">"whisper_model"</span><span class="p">:</span> <span class="s2">"base"</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="n">core_result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">_DEMO_AUDIO</span><span class="p">)</span>
+    <span class="n">core_documents</span> <span class="o">=</span> <span class="n">core_result</span><span class="o">.</span><span class="n">documents</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Documents produced: </span><span class="si">{</span><span class="n">core_result</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Documents produced: 5
+</pre></div>
+</div>
+</section>
+<section id="inspect-audio-specific-evidence">
+<h2>Inspect audio-specific evidence<a class="headerlink" href="#inspect-audio-specific-evidence" title="Link to this heading">#</a></h2>
+<p>Companion SRT cues carry start/end timecodes.  The sentence chunker preserves
+those source timecodes when one cue produces multiple sentence chunks.</p>
+<p><code class="docutils literal notranslate"><span class="pre">companion_format</span></code> is stored in metadata because it is reader-specific
+provenance rather than a universal CorpusDocument field.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">core_documents</span><span class="p">[:</span><span class="mi">5</span><span class="p">]):</span>
+    <span class="n">companion_format</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"companion_format"</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="s2">"-"</span> <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="s2">"-"</span> <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span>
+    <span class="n">confidence</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"-"</span>
+        <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">confidence</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">confidence</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] source=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="si">}</span><span class="s2"> "</span>
+        <span class="sa">f</span><span class="s2">"section=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">section_type</span><span class="si">}</span><span class="s2"> "</span>
+        <span class="sa">f</span><span class="s2">"time=</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2"> "</span>
+        <span class="sa">f</span><span class="s2">"confidence=</span><span class="si">{</span><span class="n">confidence</span><span class="si">}</span><span class="s2"> "</span>
+        <span class="sa">f</span><span class="s2">"companion=</span><span class="si">{</span><span class="n">companion_format</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">180</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0] source=audio section=text time=0.0s→8.0s confidence=- companion=srt
+    'This is a Librivox recording.'
+[1] source=audio section=text time=0.0s→8.0s confidence=- companion=srt
+    'All Librivox recordings are in the public domain.'
+[2] source=audio section=text time=8.0s→13.0s confidence=- companion=srt
+    'For more information or to volunteer, please visit Librivox.org.'
+[3] source=audio section=text time=14.0s→21.0s confidence=- companion=srt
+    'Recording by Michael Sirois.'
+[4] source=audio section=text time=22.0s→25.0s confidence=- companion=srt
+    'A Tale of Two Cities by Charles Dickens.'
+</pre></div>
+</div>
+</section>
+<section id="dependency-free-nlp-enrichment">
+<h2>Dependency-free NLP enrichment<a class="headerlink" href="#dependency-free-nlp-enrichment" title="Link to this heading">#</a></h2>
+<p>SIMPLE tokenization and frequency keywords do not need NLTK when stopword
+removal is disabled.  This gives the beginner example a real enrichment
+result even on a minimal installation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">portable_rich</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">core_documents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] Portable enrichment: no audio documents are available."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">portable_rich</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">(</span>
+            <span class="n">tokenizer</span><span class="o">=</span><span class="s2">"simple"</span><span class="p">,</span>
+            <span class="n">keyword_extractor</span><span class="o">=</span><span class="s2">"frequency"</span><span class="p">,</span>
+            <span class="n">max_keywords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">remove_stopwords</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">min_token_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">enrich_documents</span><span class="p">(</span><span class="n">core_documents</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">portable_rich</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Portable tokens:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Portable keywords:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Portable tokens: ['this', 'is', 'librivox', 'recording']
+Portable keywords: ['this', 'is', 'librivox', 'recording']
+</pre></div>
+</div>
+</section>
+<section id="optional-richer-nltk-enrichment">
+<h2>Optional richer NLTK enrichment<a class="headerlink" href="#optional-richer-nltk-enrichment" title="Link to this heading">#</a></h2>
+<p>The original showcase used NLTK tokenization, WordNet lemmatization, and a
+Snowball stemmer.  That scenario is preserved, but it runs only when NLTK and
+the required local resources are already available.</p>
+<p>No managed NLTK download is enabled by this example.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">nltk_ready</span><span class="p">,</span> <span class="n">nltk_reason</span> <span class="o">=</span> <span class="n">_probe_nltk</span><span class="p">(</span>
+    <span class="s2">"tokenizers/punkt_tab"</span><span class="p">,</span>
+    <span class="s2">"corpora/wordnet"</span><span class="p">,</span>
+    <span class="s2">"corpora/omw-1.4"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">result</span>
+
+<span class="n">nltk_rich</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">core_documents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] NLTK enrichment: no audio documents are available."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">nltk_ready</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] NLTK enrichment: </span><span class="si">{</span><span class="n">nltk_reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">nltk_rich</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">(</span>
+            <span class="n">tokenizer</span><span class="o">=</span><span class="s2">"nltk"</span><span class="p">,</span>
+            <span class="n">lemmatizer</span><span class="o">=</span><span class="s2">"nltk"</span><span class="p">,</span>
+            <span class="n">stemmer</span><span class="o">=</span><span class="s2">"snowball"</span><span class="p">,</span>
+            <span class="n">stemmer_language</span><span class="o">=</span><span class="s2">"english"</span><span class="p">,</span>
+            <span class="n">keyword_extractor</span><span class="o">=</span><span class="s2">"frequency"</span><span class="p">,</span>
+            <span class="n">max_keywords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">remove_stopwords</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">min_token_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">enrich_documents</span><span class="p">(</span><span class="n">core_documents</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nltk_rich</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"NLTK keywords:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"NLTK lemmas:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">lemmas</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"NLTK stems:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">stems</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>NLTK keywords: ['this', 'is', 'librivox', 'recording']
+NLTK lemmas: None
+NLTK stems: ['this', 'is', 'librivox', 'record']
+</pre></div>
+</div>
+</section>
+<section id="optional-real-whisper-asr">
+<h2>Optional real Whisper ASR<a class="headerlink" href="#optional-real-whisper-asr" title="Link to this heading">#</a></h2>
+<p>A companion transcript is usually the best reproducible docs/CI path.
+Real ASR is intentionally opt-in because Whisper may need large model files.</p>
+<p>To execute this section manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SCIKITPLOT_GALLERY_RUN_ASR</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>python<span class="w"> </span>plot_corpus_a_tale_of_two_cities_mp3_script.py
+</pre></div>
+</div>
+<p>When opted in, the example requires an installed Whisper backend.  Model
+availability is then the responsibility of that explicitly enabled runtime;
+an unexpected ASR failure is allowed to surface rather than being mislabeled
+as a missing-package skip.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">whisper_ready</span><span class="p">,</span> <span class="n">whisper_reason</span> <span class="o">=</span> <span class="n">_probe_whisper_backend</span><span class="p">()</span>
+<span class="n">asr_documents</span> <span class="o">=</span> <span class="p">()</span>
+
+<span class="k">if</span> <span class="n">_DEMO_AUDIO</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] Whisper ASR: local MP3 asset is unavailable."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">_RUN_ASR</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">"[SKIP] Whisper ASR: optional execution is disabled. "</span>
+        <span class="s2">"Set SCIKITPLOT_GALLERY_RUN_ASR=1 to opt in."</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">whisper_ready</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] Whisper ASR: </span><span class="si">{</span><span class="n">whisper_reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">_WORK_DIR</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="c1"># Use a different stem so the demo SRT companion cannot satisfy this read.</span>
+    <span class="n">asr_audio</span> <span class="o">=</span> <span class="n">_WORK_DIR</span> <span class="o">/</span> <span class="s2">"tale_of_two_cities_asr_only.mp3"</span>
+    <a class="sphx-glr-backref-module-shutil sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/shutil.html#shutil.copy2" title="shutil.copy2"><span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span></a><span class="p">(</span><span class="n">_DEMO_AUDIO</span><span class="p">,</span> <span class="n">asr_audio</span><span class="p">)</span>
+
+    <span class="n">asr_reader</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus-DocumentReader sphx-glr-backref-type-py-method" href="../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create" title="scikitplot.corpus.DocumentReader.create"><span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span></a><span class="p">(</span>
+        <span class="n">asr_audio</span><span class="p">,</span>
+        <span class="n">transcribe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">whisper_model</span><span class="o">=</span><span class="s2">"base"</span><span class="p">,</span>
+        <span class="n">default_language</span><span class="o">=</span><span class="s2">"en"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">asr_documents</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">asr_reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Whisper documents: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">asr_documents</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">asr_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">]):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="s2">"-"</span> <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="s2">"-"</span> <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">"-"</span>
+            <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">confidence</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">confidence</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"[ASR </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] time=</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2"> confidence=</span><span class="si">{</span><span class="n">confidence</span><span class="si">}</span><span class="s2"> "</span>
+            <span class="sa">f</span><span class="s2">"text=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">160</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span>
+        <span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-
-PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=11.1s)
+Whisper documents: 4
+[ASR 0] time=0.0s→8.0s confidence=0.779 text='This is a Libravox Recording. All Libravox recordings are in the public domain.'
+[ASR 1] time=8.0s→13.0s confidence=0.779 text='For more information or to volunteer, please visit Libravox.org.'
+[ASR 2] time=14.0s→21.0s confidence=0.654 text='Recording by Michael Sirwa, Michael.Sirwa.SIROIS.com'
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">)</span>
+</section>
+<section id="remote-mp3-ingestion-code-only">
+<h2>Remote MP3 ingestion — code-only<a class="headerlink" href="#remote-mp3-ingestion-code-only" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CorpusPipeline.run</span></code> and <code class="docutils literal notranslate"><span class="pre">run_url</span></code> can also accept a remote media URL.
+The network path is not executed during a normal gallery build.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run_url</span><span class="p">(</span>
+    <span class="s2">"https://archive.org/details/tale_two_cities_librivox/"</span>
+    <span class="s2">"tale_of_two_cities_01_dickens.mp3"</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(CorpusDocument(doc_id='f3ca8b3c470492ac', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=0, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='f3cd7bba77142f38', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=1, source_type='audio', section_type='transcript', words=8), CorpusDocument(doc_id='157eb162225b8023', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=2, source_type='audio', section_type='transcript', words=9), CorpusDocument(doc_id='89c62bef4298fb49', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=3, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='ac156b0799622663', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=4, source_type='audio', section_type='transcript', words=8))
+<p>For reproducible documentation or batch processing, prefer local audio plus a
+pre-generated companion transcript when practical.</p>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<p>The most reproducible audio workflow is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">MP3</span> <span class="pre">+</span> <span class="pre">companion</span> <span class="pre">transcript</span> <span class="pre">→</span> <span class="pre">Corpus</span> <span class="pre">documents</span> <span class="pre">with</span> <span class="pre">temporal</span> <span class="pre">provenance</span></code>.</p>
+<p>Whisper remains available as an opt-in fallback when no companion is present.
+Optional NLP resources can enrich the resulting documents, but they should
+not be prerequisites for basic media ingestion.</p>
+</section>
+<section id="cleanup">
+<h2>Cleanup<a class="headerlink" href="#cleanup" title="Link to this heading">#</a></h2>
+<p>Only temporary copies of the MP3 and generated companion transcript were
+created by this example.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">_WORKSPACE</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Temporary audio workspace cleaned."</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Temporary audio workspace cleaned.
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>This is a Libravox Recording. All Libravox recordings are in the public domain.
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">rich1</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">(</span>
-    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">(</span><span class="s2">"nltk"</span><span class="p">,</span> <span class="n">lemmatizer</span><span class="o">=</span><span class="s2">"nltk"</span><span class="p">,</span> <span class="n">stemmer</span><span class="o">=</span><span class="s2">"snowball"</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">enrich_documents</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">rich1</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[CorpusDocument(doc_id='f3ca8b3c470492ac', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=0, source_type='audio', section_type='transcript', words=5)]
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">rich1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keywords</span><span class="p">,</span> <span class="n">rich1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lemmas</span><span class="p">,</span> <span class="n">rich1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stems</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>['libravox', 'recording'] None ['libravox', 'record']
-</pre></div>
-</div>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.112 seconds)</p>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.759 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_zip_script.html"><span class="doc">corpus WHO European Region local .zip with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region local .zip with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_youtube_script.html"><span class="doc">corpus WHO European Region YouTube with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region YouTube with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule. Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence, SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an image file containing multi-script text extracted via OCR."><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">corpus Knowledge and Information local .png with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus Knowledge and Information local .png with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">corpus WHO European Region local or url per file with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region local or url per file with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A ZIP archive can contain different source types.  ZipReader applies the Corpus archive-safety boundary, extracts supported members into temporary storage, dispatches each member to its registered reader, and yields one document stream."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_zip_script.html"><span class="doc">Process a Mixed-Media ZIP Archive with Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Process a Mixed-Media ZIP Archive with Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is the broad, explicit integration showcase for scikitplot.corpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">Build a Multi-Source WHO Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Build a Multi-Source WHO Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="YouTube transcript ingestion is a network capability: the reader uses youtube-transcript-api to request caption tracks from YouTube and does not download the video or run a local speech model."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_youtube_script.html"><span class="doc">Process a YouTube Transcript with Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Process a YouTube Transcript with Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example asks one focused question:"><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">Compare Corpus Chunking Strategies on OCR Text</span></a></p>
+<div class="sphx-glr-thumbnail-title">Compare Corpus Chunking Strategies on OCR Text</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -671,10 +998,10 @@ PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_
 <p class="prev-next-title">Corpus</p>
 </div>
 </a>
-<a class="right-next" href="plot_corpus_knowledge_script.html" title="next page">
+<a class="right-next" href="plot_corpus_fluent_corpus_script.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">corpus Knowledge and Information local .png with examples</p>
+<p class="prev-next-title">Configure Corpus with FluentCorpus</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -690,7 +1017,18 @@ PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_
   </div>
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-url-transcription">Audio URL transcription</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-capability-rule">Optional capability rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resolve-the-bundled-audio-asset">Resolve the bundled audio asset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-capability-preflight-helpers">Optional-capability preflight helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-a-deterministic-companion-transcript">Prepare a deterministic companion transcript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-the-mp3-through-corpuspipeline">Process the MP3 through CorpusPipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-audio-specific-evidence">Inspect audio-specific evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-free-nlp-enrichment">Dependency-free NLP enrichment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-richer-nltk-enrichment">Optional richer NLTK enrichment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-real-whisper-asr">Optional real Whisper ASR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-mp3-ingestion-code-only">Remote MP3 ingestion — code-only</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleanup">Cleanup</a></li>
 </ul>
 </nav></div>
 <div class="sidebar-secondary-item">
@@ -759,7 +1097,7 @@ PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260823.71eae2e 2026-08-23T18:39Z.
       <br/>
 </p>
 </div>

@@ -1,6 +1,6 @@
 # LanguageDetectionNormalizer[#](#languagedetectionnormalizer "Link to this heading")
 
-class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**, **min\_confidence=0.7**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_normalizers/_normalizer.py#L515)[#](#scikitplot.corpus.LanguageDetectionNormalizer "Link to this definition")
+class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**, **min\_confidence=0.7**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_normalizers/_normalizer.py#L515)[#](#scikitplot.corpus.LanguageDetectionNormalizer "Link to this definition")
 :   Detect document language and set `CorpusDocument.language`.
 
     Uses `langdetect` (`pip install langdetect`) which is a port of
@@ -40,7 +40,7 @@ class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**,
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_normalizers/_normalizer.py#L561)[#](#scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_normalizers/_normalizer.py#L561)[#](#scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc "Link to this definition")
     :   Detect language and update `doc.language`.
 
         Parameters:

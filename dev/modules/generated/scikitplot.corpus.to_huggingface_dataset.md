@@ -1,6 +1,6 @@
 # to\_huggingface\_dataset[#](#to-huggingface-dataset "Link to this heading")
 
-scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L385)[#](#scikitplot.corpus.to_huggingface_dataset "Link to this definition")
+scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L385)[#](#scikitplot.corpus.to_huggingface_dataset "Link to this definition")
 :   Convert documents to a HuggingFace `Dataset`.
 
     Parameters:
@@ -27,3 +27,11 @@ scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://gith
     ds.push_to_hub("my-org/my-corpus")
 
     ```
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus

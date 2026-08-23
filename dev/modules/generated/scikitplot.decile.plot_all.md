@@ -1,6 +1,6 @@
 # plot\_all[#](#plot-all "Link to this heading")
 
-scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **figsize=(15, 10)**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/decile/_decile_modelplotpy.py#L3124)[#](#scikitplot.decile.plot_all "Link to this definition")
+scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **figsize=(15, 10)**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/decile/_decile_modelplotpy.py#L3124)[#](#scikitplot.decile.plot_all "Link to this definition")
 :   Plot response, cumulative response, cumulative lift, and cumulative gains as a 2x2 panel.
 
     Parameters:
@@ -96,7 +96,7 @@ scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, 
         * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
     Return type:
-    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev498+gadecc563e)")
 
     > **See also**
     > [`plot_response`](scikitplot.decile.plot_response.html#scikitplot.decile.plot_response "scikitplot.decile.plot_response"), [`plot_cumresponse`](scikitplot.decile.plot_cumresponse.html#scikitplot.decile.plot_cumresponse "scikitplot.decile.plot_cumresponse"), [`plot_cumlift`](scikitplot.decile.plot_cumlift.html#scikitplot.decile.plot_cumlift "scikitplot.decile.plot_cumlift"), [`plot_cumgains`](scikitplot.decile.plot_cumgains.html#scikitplot.decile.plot_cumgains "scikitplot.decile.plot_cumgains")
@@ -114,3 +114,11 @@ scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, 
 
     ```
     Go BackOpen In Tab
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_modelplotpy_script_thumb.png)
+
+[Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html)
+
+Introduction to modelplotpy

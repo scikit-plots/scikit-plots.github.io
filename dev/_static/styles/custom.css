@@ -6,18 +6,28 @@
  * https://sass-lang.com/guide/
  */
 /* Global */
+/* Needed to override the pydata sphinx theme's default */
+html[data-theme="light"] .highlight pre {
+  background: #fff; }
+
+html[data-theme="dark"] .highlight pre {
+  background: #000; }
+
 code.literal {
   border: 0; }
 
 /* Version switcher */
-.version-switcher__menu a.list-group-item.sk-avail-docs-link {
-  display: flex;
-  align-items: center; }
-  .version-switcher__menu a.list-group-item.sk-avail-docs-link:after {
-    content: var(--pst-icon-external-link);
-    font: var(--fa-font-solid);
-    font-size: 0.75rem;
-    margin-left: 0.5rem; }
+.version-switcher__menu.dropdown-menu {
+  left: unset;
+  right: 0; }
+  .version-switcher__menu.dropdown-menu a.list-group-item.sk-avail-docs-link {
+    display: flex;
+    align-items: center; }
+    .version-switcher__menu.dropdown-menu a.list-group-item.sk-avail-docs-link:after {
+      content: var(--pst-icon-external-link);
+      font: var(--fa-font-solid);
+      font-size: 0.75rem;
+      margin-left: 0.5rem; }
 
 /* Primary sidebar */
 .bd-sidebar-primary {
@@ -99,6 +109,15 @@ details.sd-dropdown > summary.sd-summary-title > .sk-toggle-all {
     transform: unset;
     border: 2px solid var(--pst-color-primary); }
 
+/* Download/launcher links and top hint (sphinx-gallery) */
+.sphx-glr-download-link-note,
+.binder-badge,
+.lite-badge,
+.sphx-glr-download-jupyter,
+.sphx-glr-download-python,
+.sphx-glr-download-zip {
+  display: none; }
+
 /* scikit-learn buttons */
 a.btn.sk-btn-orange {
   background-color: var(--sk-orange-tint-1);
@@ -125,13 +144,16 @@ div.sk-authors-container {
 /* scikit-learn text-image grid, used in testimonials and sponsors pages */
 div.sk-text-image-grid-small {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap; }
-  div.sk-text-image-grid-small div.text-box,
-  div.sk-text-image-grid-small div.image-box {
-    width: 50%; }
+  div.sk-text-image-grid-small div.text-box {
+    width: 65%; }
     @media screen and (max-width: 500px) {
-      div.sk-text-image-grid-small div.text-box,
+      div.sk-text-image-grid-small div.text-box {
+        width: 100%; } }
+  div.sk-text-image-grid-small div.image-box {
+    width: 35%; }
+    @media screen and (max-width: 500px) {
       div.sk-text-image-grid-small div.image-box {
         width: 100%; } }
   div.sk-text-image-grid-small div.text-box .annotation {
@@ -146,13 +168,16 @@ div.sk-text-image-grid-small {
 
 div.sk-text-image-grid-large {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap; }
-  div.sk-text-image-grid-large div.text-box,
-  div.sk-text-image-grid-large div.image-box {
-    width: 50%; }
+  div.sk-text-image-grid-large div.text-box {
+    width: 65%; }
     @media screen and (max-width: 500px) {
-      div.sk-text-image-grid-large div.text-box,
+      div.sk-text-image-grid-large div.text-box {
+        width: 100%; } }
+  div.sk-text-image-grid-large div.image-box {
+    width: 35%; }
+    @media screen and (max-width: 500px) {
       div.sk-text-image-grid-large div.image-box {
         width: 100%; } }
   div.sk-text-image-grid-large div.text-box .annotation {
@@ -164,3 +189,47 @@ div.sk-text-image-grid-large {
     div.sk-text-image-grid-large div.image-box img {
       max-height: 100px;
       max-width: 50%; }
+
+/* Institutional support: active funding participation table (institutional_support.rst) */
+.bd-article table.sk-funding-participation-table {
+  width: 100%;
+  border-collapse: collapse;
+  --bs-table-striped-bg: #fff;
+  --bs-table-hover-bg: #fff;
+  --bs-table-active-bg: #fff; }
+  .bd-article table.sk-funding-participation-table th,
+  .bd-article table.sk-funding-participation-table td {
+    padding: 0.75rem 0.5rem;
+    border: 1px solid var(--pst-color-border);
+    text-align: center; }
+  .bd-article table.sk-funding-participation-table li {
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0.5rem !important; }
+  .bd-article table.sk-funding-participation-table img {
+    height: 40px !important;
+    padding: 5px; }
+
+/* Funding sidebar secondary panel (doc/templates/funding_links.html) */
+.sk-funding-sidepanel {
+  margin-top: 1.25rem; }
+  .sk-funding-sidepanel .sk-funding-logos img {
+    max-width: 80%;
+    padding: 5px;
+    height: auto !important;
+    width: auto;
+    display: inline-block; }
+
+/* Responsive three-column grid list */
+.grid-list-three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; }
+  @media screen and (max-width: 500px) {
+    .grid-list-three-columns {
+      grid-template-columns: 1fr; } }
+.navbar-brand .logo__image.only-light {
+  height: 130%; }
+
+.navbar-brand .logo__image.only-dark {
+  height: 130%; }

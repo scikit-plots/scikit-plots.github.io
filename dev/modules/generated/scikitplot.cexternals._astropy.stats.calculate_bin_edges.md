@@ -1,6 +1,6 @@
 # calculate\_bin\_edges[#](#calculate-bin-edges "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, **range=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/histogram.py#L25)[#](#scikitplot.cexternals._astropy.stats.calculate_bin_edges "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, **range=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/histogram.py#L25)[#](#scikitplot.cexternals._astropy.stats.calculate_bin_edges "Link to this definition")
 :   Calculate histogram bin edges like `numpy.histogram_bin_edges`.
 
     Parameters:
@@ -35,4 +35,4 @@ scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, 
         * ****weights**** (**ArrayLike** **|** **None**)
 
     Return type:
-    :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
+    :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]

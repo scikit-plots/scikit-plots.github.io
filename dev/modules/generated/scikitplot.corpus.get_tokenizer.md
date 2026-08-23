@@ -1,6 +1,6 @@
 # get\_tokenizer[#](#get-tokenizer "Link to this heading")
 
-scikitplot.corpus.get\_tokenizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L728)[#](#scikitplot.corpus.get_tokenizer "Link to this definition")
+scikitplot.corpus.get\_tokenizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L728)[#](#scikitplot.corpus.get_tokenizer "Link to this definition")
 :   Retrieve a registered tokenizer by name.
 
     Parameters:

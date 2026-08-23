@@ -1,6 +1,6 @@
 # SourceType[#](#sourcetype "Link to this heading")
 
-class scikitplot.corpus.SourceType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L419)[#](#scikitplot.corpus.SourceType "Link to this definition")
+class scikitplot.corpus.SourceType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L485)[#](#scikitplot.corpus.SourceType "Link to this definition")
 :   Semantic label for the kind of source from which a document was read.
 
     Notes
@@ -39,112 +39,112 @@ class scikitplot.corpus.SourceType(**\*values**)[[source]](https://github.com/sc
     ```
     Go BackOpen In Tab
 
-    ARTICLE = 'article'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.ARTICLE "Link to this definition")
+    ARTICLE = 'article'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.ARTICLE "Link to this definition")
     :   Magazine or journal article (non-peer-reviewed).
 
-    AUDIO = 'audio'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.AUDIO "Link to this definition")
+    AUDIO = 'audio'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.AUDIO "Link to this definition")
     :   Generic audio source (transcript extracted via ASR / Whisper).
 
-    BIOGRAPHY = 'biography'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.BIOGRAPHY "Link to this definition")
+    BIOGRAPHY = 'biography'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.BIOGRAPHY "Link to this definition")
     :   Biography or autobiography.
 
-    BLOG = 'blog'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.BLOG "Link to this definition")
+    BLOG = 'blog'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.BLOG "Link to this definition")
     :   Personal or corporate blog post.
 
-    BOOK = 'book'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.BOOK "Link to this definition")
+    BOOK = 'book'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.BOOK "Link to this definition")
     :   Printed or digital book (novel, monograph, anthology, etc.).
 
-    CHAT = 'chat'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.CHAT "Link to this definition")
+    CHAT = 'chat'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.CHAT "Link to this definition")
     :   Chat or messaging log (Slack, Teams, WhatsApp, IRC export).
 
-    CODE = 'code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.CODE "Link to this definition")
+    CODE = 'code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.CODE "Link to this definition")
     :   Source-code file or repository.
 
-    DATASET = 'dataset'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.DATASET "Link to this definition")
+    DATASET = 'dataset'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.DATASET "Link to this definition")
     :   Structured dataset (JSON, JSONL, Parquet, database export).
 
-    DOCUMENTATION = 'documentation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.DOCUMENTATION "Link to this definition")
+    DOCUMENTATION = 'documentation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.DOCUMENTATION "Link to this definition")
     :   Technical or product documentation (API docs, user manuals, etc.).
 
-    EMAIL = 'email'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.EMAIL "Link to this definition")
+    EMAIL = 'email'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.EMAIL "Link to this definition")
     :   Email message or mailing-list post.
 
-    FAQ = 'faq'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.FAQ "Link to this definition")
+    FAQ = 'faq'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.FAQ "Link to this definition")
     :   Frequently-asked-questions page or document.
 
-    FORUM = 'forum'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.FORUM "Link to this definition")
+    FORUM = 'forum'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.FORUM "Link to this definition")
     :   Online forum post, thread, or discussion (Reddit, Stack Overflow, etc.).
 
-    IMAGE = 'image'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.IMAGE "Link to this definition")
+    IMAGE = 'image'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.IMAGE "Link to this definition")
     :   Image source (OCR’d text from a raster image file).
 
-    INTERVIEW = 'interview'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.INTERVIEW "Link to this definition")
+    INTERVIEW = 'interview'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.INTERVIEW "Link to this definition")
     :   Interview recording or transcript (audio, video, or text).
 
-    LECTURE = 'lecture'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.LECTURE "Link to this definition")
+    LECTURE = 'lecture'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.LECTURE "Link to this definition")
     :   Academic or conference lecture (audio or video recording).
 
-    LEGAL = 'legal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.LEGAL "Link to this definition")
+    LEGAL = 'legal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.LEGAL "Link to this definition")
     :   Legal document (contract, court ruling, legislation, terms of service).
 
-    MANUAL = 'manual'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.MANUAL "Link to this definition")
+    MANUAL = 'manual'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.MANUAL "Link to this definition")
     :   Instruction manual, operator guide, or maintenance handbook.
 
-    MEDICAL = 'medical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.MEDICAL "Link to this definition")
+    MEDICAL = 'medical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.MEDICAL "Link to this definition")
     :   Medical or clinical document (case study, clinical trial, drug insert).
 
-    MOVIE = 'movie'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.MOVIE "Link to this definition")
+    MOVIE = 'movie'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.MOVIE "Link to this definition")
     :   Feature film or short film source (subtitle file or OCR transcript).
 
-    NEWS = 'news'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.NEWS "Link to this definition")
+    NEWS = 'news'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.NEWS "Link to this definition")
     :   News article from a news outlet or wire service.
 
-    NEWSLETTER = 'newsletter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.NEWSLETTER "Link to this definition")
+    NEWSLETTER = 'newsletter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.NEWSLETTER "Link to this definition")
     :   Email or web newsletter (Substack, Revue, Mailchimp, etc.).
 
-    PATENT = 'patent'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PATENT "Link to this definition")
+    PATENT = 'patent'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PATENT "Link to this definition")
     :   Patent application or granted patent document.
 
-    PLAY = 'play'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PLAY "Link to this definition")
+    PLAY = 'play'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PLAY "Link to this definition")
     :   Dramatic play text (Shakespeare, modern theatre, screenplays).
 
-    PODCAST = 'podcast'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PODCAST "Link to this definition")
+    PODCAST = 'podcast'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PODCAST "Link to this definition")
     :   Podcast episode — audio file with associated RSS/feed metadata.
 
-    POEM = 'poem'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.POEM "Link to this definition")
+    POEM = 'poem'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.POEM "Link to this definition")
     :   Poem or collection of poems.
 
-    PRESS\_RELEASE = 'press\_release'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PRESS_RELEASE "Link to this definition")
+    PRESS\_RELEASE = 'press\_release'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.PRESS_RELEASE "Link to this definition")
     :   Official press release or public statement.
 
-    REPORT = 'report'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.REPORT "Link to this definition")
+    REPORT = 'report'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.REPORT "Link to this definition")
     :   Formal report (annual report, white paper, government report, etc.).
 
-    RESEARCH = 'research'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.RESEARCH "Link to this definition")
+    RESEARCH = 'research'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.RESEARCH "Link to this definition")
     :   Peer-reviewed research paper (arXiv, ResearchGate, DOI-bearing PDF).
 
-    SOCIAL\_MEDIA = 'social\_media'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.SOCIAL_MEDIA "Link to this definition")
+    SOCIAL\_MEDIA = 'social\_media'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.SOCIAL_MEDIA "Link to this definition")
     :   Post, thread, or profile from a social media platform.
 
-    SPREADSHEET = 'spreadsheet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.SPREADSHEET "Link to this definition")
+    SPREADSHEET = 'spreadsheet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.SPREADSHEET "Link to this definition")
     :   Spreadsheet source (.xlsx, .csv, .ods).
 
-    SUBTITLE = 'subtitle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.SUBTITLE "Link to this definition")
+    SUBTITLE = 'subtitle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.SUBTITLE "Link to this definition")
     :   Subtitle / caption file (.srt, .vtt, .sbv, .sub).
 
-    TUTORIAL = 'tutorial'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.TUTORIAL "Link to this definition")
+    TUTORIAL = 'tutorial'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.TUTORIAL "Link to this definition")
     :   Step-by-step guide or how-to article.
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.UNKNOWN "Link to this definition")
     :   Source type could not be determined.
 
-    VIDEO = 'video'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.VIDEO "Link to this definition")
+    VIDEO = 'video'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.VIDEO "Link to this definition")
     :   Generic video source (transcript extracted from video file or stream).
 
-    WEB = 'web'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.WEB "Link to this definition")
+    WEB = 'web'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.WEB "Link to this definition")
     :   General web page (HTML scraped from an http/https URL).
 
-    WIKI = 'wiki'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.WIKI "Link to this definition")
+    WIKI = 'wiki'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SourceType.WIKI "Link to this definition")
     :   Wikipedia or MediaWiki article.
 
     capitalize(**/**)[#](#scikitplot.corpus.SourceType.capitalize "Link to this definition")
@@ -212,7 +212,7 @@ class scikitplot.corpus.SourceType(**\*values**)[[source]](https://github.com/sc
 
         Raises ValueError when the substring is not found.
 
-    classmethod infer(**input\_path=None**, **\***, **mime\_type=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L617)[#](#scikitplot.corpus.SourceType.infer "Link to this definition")
+    classmethod infer(**input\_path=None**, **\***, **mime\_type=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L683)[#](#scikitplot.corpus.SourceType.infer "Link to this definition")
     :   Infer the most likely [`SourceType`](#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") from a file path or MIME type.
 
         Parameters:

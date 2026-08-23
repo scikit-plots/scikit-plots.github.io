@@ -1,6 +1,6 @@
 # ParagraphChunkerConfig[#](#paragraphchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=None**, **overlap=0**, **strip\_whitespace=True**, **include\_offsets=True**, **merge\_short=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_chunkers/_paragraph.py#L77)[#](#scikitplot.corpus.ParagraphChunkerConfig "Link to this definition")
+class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=None**, **overlap=0**, **strip\_whitespace=True**, **include\_offsets=True**, **merge\_short=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_chunkers/_paragraph.py#L77)[#](#scikitplot.corpus.ParagraphChunkerConfig "Link to this definition")
 :   Configuration for [`ParagraphChunker`](scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker "scikitplot.corpus.ParagraphChunker").
 
     Parameters:
@@ -46,3 +46,23 @@ class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=
     overlap: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0[#](#scikitplot.corpus.ParagraphChunkerConfig.overlap "Link to this definition")
 
     strip\_whitespace: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.ParagraphChunkerConfig.strip_whitespace "Link to this definition")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
+
+[Configure Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_corpus_script.html)
+
+Configure Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
+
+[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
+
+[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
+
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png)
+
+[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
+
+Build and Search a Real Hamlet Corpus with FluentCorpus

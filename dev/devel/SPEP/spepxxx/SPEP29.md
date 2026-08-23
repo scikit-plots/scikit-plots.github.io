@@ -21,7 +21,7 @@ Using different size/color/family in a text annotation is difficult because the
 `~.Axes.text` method accepts argument for size/color/family/weight/etc. that are used
 for the whole text. But, if one wants, for example, to have different colors,
 one has to look at the gallery where one such example is provided:
-[Concatenate text objects with different properties](https://matplotlib.org/devdocs/gallery/text_labels_and_annotations/rainbow_text.html "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+[Concatenate text objects with different properties](https://matplotlib.org/devdocs/gallery/text_labels_and_annotations/rainbow_text.html "(in Matplotlib v3.12.0.dev498+gadecc563e)")
 
 This example takes a list of strings as well as a list of colors which makes it
 cumbersome to use. An alternative would be to use a restricted set of [pango](https://docs.gtk.org/Pango/pango_markup.html#pango-markup)-like markup and to interpret this markup.

@@ -112,6 +112,111 @@ lives **inside** the function or class body that needs it, guarded by a
 try/except where appropriate. Nothing is imported at module scope except
 the standard library. This keeps `import time` cost near zero and
 avoids `ImportError` at load time when optional packages are absent.
+Representation model
+——————–
+Every page exists in two Markdown representations, and the difference is the
+single most important thing to understand about this extension.
+
+| Representation | How it is produced | Status |
+| --- | --- | --- |
+| `page.md` | build time, from the final HTML | ****canonical**** |
+| clipboard text | run time, from the live DOM | ****convenience**** |
+
+`page.md` is written by [`generate_markdown_files`](../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files.html#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files "scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files"); the clipboard text is
+produced by the Turndown build vendored inside `_static/ai-assistant.js`.
+
+****User note.**** **Canonical** is not a claim that one is better written. It means
+one of them is a real file at a real URL, so anything can fetch it — a crawler,
+ChatGPT, Claude, Gemini, an MCP client, `curl`. The browser conversion exists
+only inside the tab you are looking at. That is the whole distinction, and it is
+why **View as Markdown** opens the published file instead of generating one
+locally: a `blob:` URL cannot be handed to anyone.
+
+****Developer note.**** Do not blur the two. If a canonical path fails, say so and
+name the alternative; never substitute convenience output and report success.
+A reader who chose the published file and silently received a browser conversion
+has been given the wrong answer confidently, which is worse than an error.
+
+### Surfaces[#](#surfaces "Link to this heading")
+
+```
+Control                   Reader gets              Source           Build
+                                                                    artifact
+----------------------------------------------------------------------------
+Copy page  (browser)      clipboard Markdown       live DOM         not needed
+Copy page  (static)       clipboard Markdown       fetched page.md  required
+View as Markdown          new tab on the file      page.md URL      required
+Ask AI                    provider gets the URL    page.md URL      required
+
+```
+
+The Copy control carries a two-state switch, modelled on the PDF method picker
+so the interaction is learned once. It defaults to `browser` because that mode
+always succeeds: it needs nothing from the build, so Copy keeps working on a
+site with `ai_assistant_generate_markdown = False`.
+
+Configure the default and whether readers may change it:
+
+```
+ai_assistant_copy_mode = "browser"  # or "static"
+ai_assistant_copy_mode_toggle = True  # False pins the mode, hides the switch
+
+```
+
+### Build pipeline[#](#build-pipeline "Link to this heading")
+
+```
+Sphinx
+    │
+all normal extensions           sphinx_design, sphinx_tabs, Sphinx-Gallery,
+    │                           IPython, Matplotlib, JupyterLite, the
+    ▼                           PyData theme directives, …
+final HTML
+    │
+build-finished                  ← this extension runs here, last
+    │
+    ├── generate_markdown_files()   final HTML → page.md  (canonical)
+    │
+    └── generate_llms_txt()         the page.md set → llms.txt
+
+```
+
+****Developer note**** — why the ordering matters more than it looks. Converting
+**after** the build means every directive has already been resolved to HTML:
+
+```
+RST/MyST → custom directive → Sphinx → theme → FINAL HTML → Markdown
+
+```
+
+so there is no custom docutils node for a Markdown visitor to learn. A
+Markdown-builder approach would have to understand every extension in the
+stack; this one has to understand HTML. That is the reason this extension needs
+no sibling producer, and the reason its dependency surface is: zero module-scope
+non-stdlib imports, with `bs4`/`markdownify` optional and `find_spec`-gated.
+
+### Directive fidelity (planned, not yet implemented)[#](#directive-fidelity-planned-not-yet-implemented "Link to this heading")
+
+Conversion is currently generic HTML→Markdown. Better semantic fidelity is
+planned for the markup emitted by:
+
+`sphinx_gallery.gen_gallery`, `sphinx_design`, `sphinx_prompt`,
+`sphinx_togglebutton`, `sphinx_tabs.tabs`,
+`IPython.sphinxext.ipython_directive`,
+`matplotlib.sphinxext.plot_directive`, and the in-tree
+`_sphinx_jinja_render`, `_pydata_sphinx_theme.gallery_directive`,
+`_pydata_sphinx_theme.component_directive`, `_sphinx_gallery_jupyterlite`
+and `_sphinxcontrib_youtube` extensions.
+
+Structures to be recognised: `grid`, `row`, `column`, `container`,
+`tab`, `dropdown`, `card`, `youtube`, `video`, `iframe`,
+`jupyterlite`, `inheritance_diagram`, `thumbnail`.
+
+****Developer note.**** Both conversion paths must gain each rule together. If the
+build-time converter learns a directive and the browser Turndown rules do not,
+Copy and Ask AI start disagreeing about the same page — a divergence no user can
+see and no current test would catch. Treat their equivalence as the acceptance
+criterion, not the rules themselves.
 
 ****Security notes****:
 

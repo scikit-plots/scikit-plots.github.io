@@ -1,6 +1,6 @@
 # NLPEnricher[#](#nlpenricher "Link to this heading")
 
-class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L505)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
+class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_enrichers/_nlp_enricher.py#L528)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
 :   Pipeline component that populates NLP enrichment fields on
     [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument").
 
@@ -48,7 +48,7 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L556)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_enrichers/_nlp_enricher.py#L579)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances.
 
         Parameters:
@@ -75,3 +75,19 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
 
         ****Developer note:**** Documents are processed sequentially.
         For large corpora, call in batches to control memory.
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+
+[Process an MP3 with Corpus](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
+
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+
+[Process a YouTube Transcript with Corpus](../../auto_examples/corpus/plot_corpus_who_youtube_script.html)
+
+Process a YouTube Transcript with Corpus

@@ -1,6 +1,6 @@
 # KissSeedSequence[#](#kissseedsequence "Link to this heading")
 
-class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
+class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
 :   Seed sequence compatible with numpy.random.SeedSequence.
 
     Parameters:
@@ -157,7 +157,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             * ****dtype**** (**DTypeLike**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**uint32** | **uint64**]]
+        :   **NDArray**[**uint32** | **uint64**]
 
         Notes
 

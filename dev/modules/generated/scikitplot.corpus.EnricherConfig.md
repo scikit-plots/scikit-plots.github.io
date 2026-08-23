@@ -1,6 +1,6 @@
 # EnricherConfig[#](#enricherconfig "Link to this heading")
 
-class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**, **custom\_tokenizer=None**, **spacy\_model='en\_core\_web\_sm'**, **lemmatizer=None**, **custom\_lemmatizer=None**, **stemmer=None**, **custom\_stemmer=None**, **stemmer\_language='english'**, **keyword\_extractor='frequency'**, **keyword\_extractor\_kwargs=None**, **max\_keywords=20**, **save\_token\_scores=False**, **lowercase\_tokens=True**, **remove\_stopwords=True**, **extra\_stopwords=None**, **min\_token\_length=2**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **pos\_tags=False**, **ner\_entities=False**, **sentence\_count=False**, **char\_count=False**, **type\_token\_ratio=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L246)[#](#scikitplot.corpus.EnricherConfig "Link to this definition")
+class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**, **custom\_tokenizer=None**, **spacy\_model='en\_core\_web\_sm'**, **lemmatizer=None**, **custom\_lemmatizer=None**, **stemmer=None**, **custom\_stemmer=None**, **stemmer\_language='english'**, **keyword\_extractor='frequency'**, **keyword\_extractor\_kwargs=None**, **max\_keywords=20**, **save\_token\_scores=False**, **lowercase\_tokens=True**, **remove\_stopwords=True**, **extra\_stopwords=None**, **min\_token\_length=2**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **pos\_tags=False**, **ner\_entities=False**, **sentence\_count=False**, **char\_count=False**, **type\_token\_ratio=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_enrichers/_nlp_enricher.py#L267)[#](#scikitplot.corpus.EnricherConfig "Link to this definition")
 :   Configuration for [`NLPEnricher`](scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher "scikitplot.corpus.NLPEnricher").
 
     Parameters:
@@ -207,3 +207,19 @@ class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**
     tokenizer: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['simple', 'nltk', 'spacy', 'custom'] = 'simple'[#](#scikitplot.corpus.EnricherConfig.tokenizer "Link to this definition")
 
     type\_token\_ratio: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.EnricherConfig.type_token_ratio "Link to this definition")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+
+[Process an MP3 with Corpus](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
+
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+
+[Process a YouTube Transcript with Corpus](../../auto_examples/corpus/plot_corpus_who_youtube_script.html)
+
+Process a YouTube Transcript with Corpus

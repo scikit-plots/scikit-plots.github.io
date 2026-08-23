@@ -84,7 +84,7 @@ Examples
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.589 seconds)
+****Total running time of the script:**** (0 minutes 0.669 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_nlp_vector_index_db.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_nlp_vector_index_db.ipynb)
 
@@ -104,11 +104,11 @@ visualkeras: custom VGG example![](../../_images/sphx_glr_plot_dl_cnn_resnetv2_t
 
 [visualkeras: ResNetV2 example](plot_dl_cnn_resnetv2.html)
 
-visualkeras: ResNetV2 example![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
+visualkeras: ResNetV2 example![](../../_images/sphx_glr_plot_dl_ann_conv_dense_thumb.png)
 
-[Index (cython) python-api benchmark with examples](../annoy/plot_annoy_cython_0benchmark.html)
+[Visualkeras: Spam Classification Conv1D Dense Example](plot_dl_ann_conv_dense.html)
 
-Index (cython) python-api benchmark with examples![](../../_images/sphx_glr_plot_dl_ann_dense_thumb.png)
+Visualkeras: Spam Classification Conv1D Dense Example![](../../_images/sphx_glr_plot_dl_ann_dense_thumb.png)
 
 [visualkeras: Spam Dense example](plot_dl_ann_dense.html)
 

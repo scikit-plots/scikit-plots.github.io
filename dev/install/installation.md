@@ -268,15 +268,14 @@ Mandatory dependencies should be installed automatically if you install Matplotl
 a package manager such as `pip` or `conda`; therefore this list is primarily for
 reference and troubleshooting.
 
-****Dependencies****
+**Dependencies**
 
 * [Dependencies](dependencies.html)
   * [Runtime dependencies](dependencies.html#runtime-dependencies)
   * [Build dependencies](dependencies.html#build-dependencies)
   * [Test dependencies](dependencies.html#test-dependencies)
   * [Documentation dependencies](dependencies.html#documentation-dependencies)
-
-****Dependencies****
+**Dependencies**
 
 * [Troubleshooting](troubleshooting_faq.inc.html)
   * [Obtaining Matplotlib version](troubleshooting_faq.inc.html#obtaining-matplotlib-version)

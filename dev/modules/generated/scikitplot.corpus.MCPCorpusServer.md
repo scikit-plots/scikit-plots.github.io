@@ -1,13 +1,13 @@
 # MCPCorpusServer[#](#mcpcorpusserver "Link to this heading")
 
-class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **server\_name='corpus-search'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L620)[#](#scikitplot.corpus.MCPCorpusServer "Link to this definition")
+class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **server\_name='corpus-search'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L620)[#](#scikitplot.corpus.MCPCorpusServer "Link to this definition")
 :   MCP server adapter for corpus search.
 
     Provides a structured interface for building MCP servers that
     expose corpus search as tools and resources.
 
     Parameters:
-    :   ****index****SimilarityIndex
+    :   ****index****RetrievalIndex
         :   A built similarity index.
 
         ****embedding\_fn****Callable[[str], list[float]] or None, optional
@@ -49,7 +49,7 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
     Model Context Protocol,
     <https://modelcontextprotocol.io/>
 
-    handle\_resource(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L712)[#](#scikitplot.corpus.MCPCorpusServer.handle_resource "Link to this definition")
+    handle\_resource(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L712)[#](#scikitplot.corpus.MCPCorpusServer.handle_resource "Link to this definition")
     :   Handle an MCP `resources/read` request.
 
         Returns:
@@ -62,7 +62,7 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
         Return type:
         :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | None
 
-    handle\_search(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L684)[#](#scikitplot.corpus.MCPCorpusServer.handle_search "Link to this definition")
+    handle\_search(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L684)[#](#scikitplot.corpus.MCPCorpusServer.handle_search "Link to this definition")
     :   Handle an MCP `tools/call` request.
 
         Returns:
@@ -77,7 +77,7 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
         Return type:
         :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    list\_tools()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L726)[#](#scikitplot.corpus.MCPCorpusServer.list_tools "Link to this definition")
+    list\_tools()[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L726)[#](#scikitplot.corpus.MCPCorpusServer.list_tools "Link to this definition")
     :   Return MCP tool definitions for this server.
 
         Returns:
@@ -86,3 +86,11 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]]
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus

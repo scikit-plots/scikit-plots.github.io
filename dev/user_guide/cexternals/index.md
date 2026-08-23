@@ -1,6 +1,6 @@
 # C-Externals (experimental)[#](#c-externals-experimental "Link to this heading")
 
-****Nearest Neighbor****
+**Nearest Neighbor**
 
 * [spotify/ANNoy Vector Index DB](_annoy/index.html)
   * [Python API](_annoy/index.html#python-api)
@@ -24,20 +24,16 @@
   * [See also](_annoy/index.html#see-also)
   * [References](_annoy/index.html#references)
   * [Glossary](_annoy/index.html#glossary)
-
-****astropy stats****
+**astropy stats**
 
 * [Astropy (experimental)](_astropy/index.html)
-
-****Fortran to Python****
+**Fortran to Python**
 
 * [f2py (experimental)](_f2py/index.html)
-
-****NumCpp****
+**NumCpp**
 
 * [NumCpp](_numcpp/index.html)
   * [Notes](_numcpp/index.html#notes)
-
-****lightnumpy****
+**lightnumpy**
 
 * [LightNumPy (experimental)](_lightnumpy/index.html)

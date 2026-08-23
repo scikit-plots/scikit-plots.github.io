@@ -1,6 +1,6 @@
 # to\_mcp\_resources[#](#to-mcp-resources "Link to this heading")
 
-scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_adapters.py#L271)[#](#scikitplot.corpus.to_mcp_resources "Link to this definition")
+scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L271)[#](#scikitplot.corpus.to_mcp_resources "Link to this definition")
 :   Convert documents to MCP `resources/read` response format.
 
     Parameters:
@@ -34,3 +34,11 @@ scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpu
 
     Model Context Protocol specification,
     <https://modelcontextprotocol.io/>
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus

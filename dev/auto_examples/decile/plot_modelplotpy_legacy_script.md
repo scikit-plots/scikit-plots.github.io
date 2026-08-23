@@ -447,7 +447,7 @@ or [jurriaan.nagelkerke](mailto:jurriaan.nagelkerke%40gmail.com).
 
 Happy modelplotting!
 
-****Total running time of the script:**** (0 minutes 10.368 seconds)
+****Total running time of the script:**** (0 minutes 10.802 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_legacy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_legacy_script.ipynb)
 
@@ -467,11 +467,11 @@ Introduction to modelplotpy![](../../_images/sphx_glr_plot_dummy_code_encoder_th
 
 [Comparing DummyCode Encoder with Other Encoders](../preprocessing/plot_dummy_code_encoder.html)
 
-Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_gaussian_mixture_models_thumb.png)
+Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
 
-[Gaussian Mixture Models — AIC, AICc, and BIC Model Selection](../stats/plot_gaussian_mixture_models.html)
+[plot\_feature\_importances with examples](../classification/plot_feature_importances_script.html)
 
-Gaussian Mixture Models — AIC, AICc, and BIC Model Selection![](../../_images/sphx_glr_plot_calibration_script_thumb.png)
+plot\_feature\_importances with examples![](../../_images/sphx_glr_plot_calibration_script_thumb.png)
 
 [plot\_calibration with examples](../calibration/plot_calibration_script.html)
 

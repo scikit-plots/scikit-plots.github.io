@@ -2,26 +2,49 @@
 
 ## scikitplot.corpus[#](#id1 "Link to this heading")
 
-A production-grade document corpus ingestion, chunking, filtering,
-embedding, and export pipeline for NLP and ML workflows.
+Tools for turning files, URLs, media, and text sources into canonical
+[`CorpusDocument`](../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") evidence that can be transformed, embedded, stored,
+searched, adapted, and exported.
 
-This package is a ground-up rewrite of the `remarx.sentence.corpus`
-module, preserving all proven design patterns while resolving every known
-correctness, robustness, and maintainability issue identified during the
-migration audit.
+### Choose the API that matches the job[#](#choose-the-api-that-matches-the-job "Link to this heading")
 
-Standardized NLP/ML Workflow:
-`Sourcing → Reading → Chunking → Filtering → Normalizing → Embedding → Exporting`.
+`CorpusPipeline`
+:   Direct stage control for one source or an explicit batch.
 
-> **See also**
-> * [Princeton-CDH/remarx](https://github.com/Princeton-CDH/remarx)
-* <https://princeton-cdh.github.io/remarx/api/>
+`CorpusBuilder`
+:   High-level build/search/adapt convenience for end-to-end corpus workflows.
+
+`FluentCorpus`
+:   Immutable, reusable configuration. Chained setter order describes **what**
+    is configured; it does not define execution order.
+
+`RuntimeCorpus`
+:   The operational form of a validated Fluent plan. Materialization constructs
+    runtime components; source processing starts only with `run()` or
+    `add()`.
+
+`RetrievalIndex` / `VectorIndexBackend`
+:   Lower-level retrieval and vector-backend extension APIs.
+
+The common processing picture is:
+
+```
+Source
+  -> Read
+  -> Chunk / Normalize / Enrich
+  -> Embed
+  -> Store
+  -> Index
+  -> Retrieve
+  -> Adapt / Export
+
+```
 
 Examples
 
 Try it in your browser!
 
-Single file, no embedding:
+Direct pipeline control:
 
 ```
 >>> from pathlib import Path
@@ -32,79 +55,18 @@ Single file, no embedding:
 
 ```
 
-Batch processing with sentence chunking:
+The dependency-free default sentence backend is `REGEX`. Passing a spaCy
+model name explicitly selects the spaCy shorthand instead:
 
 ```
->>> from scikitplot.corpus import CorpusPipeline, SentenceChunker, ExportFormat
->>> pipeline = CorpusPipeline(
-...     # chunker=SentenceChunker(SentenceChunkerConfig(backend=SentenceBackend.NLTK)),
-...     chunker=SentenceChunker("en_core_web_sm"),  # default backend spacy
-...     output_path=Path("output/"),
-...     format=ExportFormat.PARQUET,
-... )
->>> results = pipeline.run_batch(list(Path("corpus/").glob("*.txt")))
+>>> from scikitplot.corpus import SentenceChunker
+>>> portable = SentenceChunker()
+>>> spacy_chunker = SentenceChunker("en_core_web_sm")
 
 ```
 
-URL ingestion:
+High-level builder:
 
-```
->>> # https://archive.org/download/WHO-documents
->>> # https://www.who.int/europe/news/item/...
->>> result = pipeline.run_url("https://en.wikipedia.org/wiki/Python")
-
-```
-
-YouTube transcript:
-
-```
->>> result = pipeline.run("https://www.youtube.com/watch?v=rwPISgZcYIk")
-
-```
-
-Image OCR:
-
-```
->>> reader = DocumentReader.create(Path("scan.png"))
->>> docs = list(reader.get_documents())
-
-```
-
-Video transcription (subtitle-first):
-
-```
->>> # Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio
->>> # https://www.youtube.com/watch?v=kEx-gRfuhhk
->>> reader = DocumentReader.create(Path("lecture.mp4"))
->>> docs = list(reader.get_documents())
-
-```
-
-With embeddings:
-
-```
->>> from scikitplot.corpus import EmbeddingEngine
->>> engine = EmbeddingEngine(backend="sentence_transformers")
->>> pipeline = CorpusPipeline(
-...     chunker=ParagraphChunker(),
-...     embedding_engine=engine,
-... )
->>> result = pipeline.run(Path("article.txt"))
->>> result.documents[0].has_embedding
-True
-
-```
-
-Convenience function (direct replacement for remarx `create_corpus`):
-
-```
->>> from scikitplot.corpus import create_corpus
->>> result = create_corpus(
-...     input_path=Path("chapter01.txt"),
-...     output_path=Path("output/chapter01.csv"),
-... )
-
-```
 ```
 >>> from scikitplot.corpus import CorpusBuilder, BuilderConfig
 >>> builder = CorpusBuilder(
@@ -112,16 +74,104 @@ Convenience function (direct replacement for remarx `create_corpus`):
 ...         chunker="paragraph",
 ...         normalize=True,
 ...         enrich=True,
-...         embed=True,
 ...         build_index=True,
 ...     )
 ... )
 >>> result = builder.build("./data/")
 >>> results = builder.search("quantum computing")
->>> lc_docs = builder.to_langchain()
->>> mcp_response = builder.to_mcp_tool_result("quantum computing")
 
 ```
+
+Reusable declarative configuration:
+
+```
+>>> from scikitplot.corpus import FluentCorpus
+>>> fluent = FluentCorpus().chunker("paragraph").storage("memory")
+>>> fluent.validate()
+[]
+
+```
+
+Materialization is explicit and performs no source read by itself:
+
+```
+>>> from scikitplot.corpus import RuntimePolicy
+>>> with fluent.materialize(policy=RuntimePolicy(allow_network=False)) as runtime:
+...     len(runtime.documents)
+0
+
+```
+
+A configured source becomes operational only when `run()` is called:
+
+```
+>>> runtime_fluent = (
+...     FluentCorpus().source("article.txt").chunker("paragraph").storage("memory")
+... )
+>>> with runtime_fluent.materialize() as runtime:
+...     result = runtime.run()
+
+```
+
+Network and optional-capability examples:
+
+Live URLs, OCR, ASR, spaCy, NLTK resource-backed NLP, model embeddings, and
+native vector backends depend on the corresponding environment capability.
+User-facing examples should not fabricate results when a capability is absent.
+Documentation/gallery examples should either use a portable executed path or
+report a clear skip while keeping the optional configuration visible.
+
+URL ingestion:
+
+```
+>>> result = pipeline.run_url("https://en.wikipedia.org/wiki/Python")
+
+```
+
+YouTube transcript:
+
+```
+>>> result = pipeline.run(
+...     "https://www.youtube.com/watch?v=rwPISgZcYIk"
+... )
+
+```
+
+Image OCR:
+
+```
+>>> from scikitplot.corpus import DocumentReader
+>>> reader = DocumentReader.create(Path("scan.png"))
+>>> docs = list(reader.get_documents())
+
+```
+
+With model embeddings:
+
+```
+>>> from scikitplot.corpus import EmbeddingEngine
+>>> engine = EmbeddingEngine(backend="sentence_transformers")
+
+```
+
+Dependency-free local helpers:
+
+```
+>>> from scikitplot.corpus import HAMLET_TEXT, HashEmbedder, SimpleEnricherSpec
+>>> HashEmbedder(dimension=32)([HAMLET_TEXT[:120]]).shape
+(1, 32)
+>>> FluentCorpus().enricher(SimpleEnricherSpec()).validate()
+[]
+
+```
+
+`HashEmbedder` is a deterministic lexical hashing baseline, not a learned
+semantic model. `HAMLET_TEXT` is bundled convenience sample data rather than
+an authoritative scholarly edition.
+
+See `scikitplot/corpus/README.md` for the user-oriented API map, runtime
+policy boundary, retrieval modes, and optional-capability guidance.
+
 Go BackOpen In Tab
 
 ****User guide.**** See the [Corpus User Guide](../user_guide/corpus/index.html#corpus-index) section for further details.
@@ -130,7 +180,7 @@ Go BackOpen In Tab
 
 Class inheritance
 
-![Inheritance diagram of LangChainCorpusRetriever, MCPCorpusServer](../_images/inheritance-d6ac6adb6ed4eeaa1428a91b4bcb811589ae9db1.png)
+![Inheritance diagram of LangChainCorpusRetriever, MCPCorpusServer](../_images/inheritance-0a447f15a17478783c50dca31666b17184d5dcd0.png)
 
 
 
@@ -147,7 +197,7 @@ Class inheritance
 | [`to_numpy_arrays`](../modules/generated/scikitplot.corpus.to_numpy_arrays.html#scikitplot.corpus.to_numpy_arrays "scikitplot.corpus.to_numpy_arrays") | Convert documents to a dict of NumPy arrays suitable for batch ML. |
 | [`to_tensorflow_dataset`](../modules/generated/scikitplot.corpus.to_tensorflow_dataset.html#scikitplot.corpus.to_tensorflow_dataset "scikitplot.corpus.to_tensorflow_dataset") | Convert documents to a `tf.data.Dataset`. |
 | [`to_torch_dataloader`](../modules/generated/scikitplot.corpus.to_torch_dataloader.html#scikitplot.corpus.to_torch_dataloader "scikitplot.corpus.to_torch_dataloader") | Convert documents to a `torch.utils.data.DataLoader`. |
-| [`LangChainCorpusRetriever`](../modules/generated/scikitplot.corpus.LangChainCorpusRetriever.html#scikitplot.corpus.LangChainCorpusRetriever "scikitplot.corpus.LangChainCorpusRetriever") | LangChain-compatible retriever backed by `SimilarityIndex`. |
+| [`LangChainCorpusRetriever`](../modules/generated/scikitplot.corpus.LangChainCorpusRetriever.html#scikitplot.corpus.LangChainCorpusRetriever "scikitplot.corpus.LangChainCorpusRetriever") | LangChain-compatible retriever backed by `RetrievalIndex`. |
 | [`MCPCorpusServer`](../modules/generated/scikitplot.corpus.MCPCorpusServer.html#scikitplot.corpus.MCPCorpusServer "scikitplot.corpus.MCPCorpusServer") | MCP server adapter for corpus search. |
 
 ## Archive-within-archive[#](#archive-within-archive "Link to this heading")
@@ -273,7 +323,7 @@ Class inheritance
 | [`CustomFilter`](../modules/generated/scikitplot.corpus.CustomFilter.html#scikitplot.corpus.CustomFilter "scikitplot.corpus.CustomFilter") | Wrap any callable as a [`FilterBase`](../modules/generated/scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase"). |
 | [`CustomNLPEnricher`](../modules/generated/scikitplot.corpus.CustomNLPEnricher.html#scikitplot.corpus.CustomNLPEnricher "scikitplot.corpus.CustomNLPEnricher") | `NLPEnricher` extended with fully-replaceable NLP backends. |
 | [`CustomNormalizer`](../modules/generated/scikitplot.corpus.CustomNormalizer.html#scikitplot.corpus.CustomNormalizer "scikitplot.corpus.CustomNormalizer") | Wrap any callable as a `NormalizerBase`. |
-| [`CustomSimilarityIndex`](../modules/generated/scikitplot.corpus.CustomSimilarityIndex.html#scikitplot.corpus.CustomSimilarityIndex "scikitplot.corpus.CustomSimilarityIndex") | `SimilarityIndex` extended with a fully-replaceable custom scorer callable. |
+| [`CustomRetrievalIndex`](../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex "scikitplot.corpus.CustomRetrievalIndex") | `RetrievalIndex` extended with a fully-replaceable custom scorer callable. |
 | [`FactoryCorpusBuilder`](../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder") | [`CorpusBuilder`](../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus._corpus_builder.CorpusBuilder") extended with pluggable component factories. |
 | [`HookableCorpusPipeline`](../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline "scikitplot.corpus.HookableCorpusPipeline") | [`CorpusPipeline`](../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus._pipeline.CorpusPipeline") extended with per-stage lifecycle hooks. |
 | [`PipelineHooks`](../modules/generated/scikitplot.corpus.PipelineHooks.html#scikitplot.corpus.PipelineHooks "scikitplot.corpus.PipelineHooks") | Lifecycle callbacks for [`HookableCorpusPipeline`](../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline "scikitplot.corpus.HookableCorpusPipeline"). |
@@ -353,8 +403,8 @@ Class inheritance
 | [`NormalizerBase`](../modules/generated/scikitplot.corpus.NormalizerBase.html#scikitplot.corpus.NormalizerBase "scikitplot.corpus.NormalizerBase") | Abstract base class for all text normalisers. |
 | [`UnicodeNormalizer`](../modules/generated/scikitplot.corpus.UnicodeNormalizer.html#scikitplot.corpus.UnicodeNormalizer "scikitplot.corpus.UnicodeNormalizer") | Apply Unicode normalisation (NFC, NFD, NFKC, or NFKD). |
 | [`WhitespaceNormalizer`](../modules/generated/scikitplot.corpus.WhitespaceNormalizer.html#scikitplot.corpus.WhitespaceNormalizer "scikitplot.corpus.WhitespaceNormalizer") | Collapse runs of whitespace and optionally strip leading/trailing space. |
-| [`NormalizerConfig`](../modules/generated/scikitplot.corpus.NormalizerConfig.html#scikitplot.corpus.NormalizerConfig "scikitplot.corpus.NormalizerConfig") | Abstract base configuration for text normaliser implementations. |
 | [`TextNormalizer`](../modules/generated/scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer") | Pipeline component that populates `normalized_text` on [`CorpusDocument`](../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances. |
+| [`TextNormalizerConfig`](../modules/generated/scikitplot.corpus.TextNormalizerConfig.html#scikitplot.corpus.TextNormalizerConfig "scikitplot.corpus.TextNormalizerConfig") | Configuration for [`TextNormalizer`](../modules/generated/scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer"). |
 | [`normalize_text`](../modules/generated/scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") | Normalise **text** according to **config**. |
 
 ## Pipeline[#](#pipeline "Link to this heading")
@@ -413,9 +463,9 @@ Class inheritance
 
 |  |  |
 | --- | --- |
-| [`SearchConfig`](../modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig "scikitplot.corpus.SearchConfig") | Configuration for similarity search. |
-| [`SearchResult`](../modules/generated/scikitplot.corpus.SearchResult.html#scikitplot.corpus.SearchResult "scikitplot.corpus.SearchResult") | A single search result. |
-| [`SimilarityIndex`](../modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex "scikitplot.corpus.SimilarityIndex") | Multi-mode similarity index over `CorpusDocument` collections. |
+| [`RetrievalConfig`](../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig") | Configuration for similarity search. |
+| [`RetrievalHit`](../modules/generated/scikitplot.corpus.RetrievalHit.html#scikitplot.corpus.RetrievalHit "scikitplot.corpus.RetrievalHit") | A single search result. |
+| [`RetrievalIndex`](../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex "scikitplot.corpus.RetrievalIndex") | Multi-mode similarity index over `CorpusDocument` collections. |
 
 ## Schema[#](#schema "Link to this heading")
 
@@ -427,7 +477,7 @@ Class inheritance
 | [`SourceType`](../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") | Semantic label for the kind of source from which a document was read. |
 | [`MatchMode`](../modules/generated/scikitplot.corpus.MatchMode.html#scikitplot.corpus.MatchMode "scikitplot.corpus.MatchMode") | Search mode for intertextual matching queries against a corpus index. |
 | [`Modality`](../modules/generated/scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus.Modality") | Primary content modality of a [`CorpusDocument`](../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument"). |
-| [`ErrorPolicy`](../modules/generated/scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus.ErrorPolicy") | Per-document error handling strategy for [`PipelineGuard`](../modules/generated/scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard"). |
+| [`ErrorPolicy`](../modules/generated/scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus.ErrorPolicy") | Per-document error handling **behaviour** for [`PipelineGuard`](../modules/generated/scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard"). |
 | [`CorpusDocument`](../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") | Canonical representation of a single text chunk in a processed corpus. |
 | [`_PROMOTED_RAW_KEYS`](../modules/generated/scikitplot.corpus._PROMOTED_RAW_KEYS.html#scikitplot.corpus._PROMOTED_RAW_KEYS "scikitplot.corpus._PROMOTED_RAW_KEYS") | frozenset() -> empty frozenset object frozenset(iterable) -> frozenset object |
 | [`documents_to_pandas`](../modules/generated/scikitplot.corpus.documents_to_pandas.html#scikitplot.corpus.documents_to_pandas "scikitplot.corpus.documents_to_pandas") | Convert a list of [`CorpusDocument`](../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") instances to a `pandas.DataFrame`. |

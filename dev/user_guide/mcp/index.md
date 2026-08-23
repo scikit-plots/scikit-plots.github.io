@@ -1,31 +1,101 @@
 # Model Context Protocol (MCP)[#](#model-context-protocol-mcp "Link to this heading")
 
-Use `scikitplot.mcp` to make documentation searchable from an
-MCP-compatible assistant, developer tool, local process, container, or service.
+Use `scikitplot.mcp` to make documentation or a custom corpus searchable
+from an MCP-compatible assistant, developer tool, local process, container, or
+service.
 
 The normal user workflow is intentionally small:
 
-1. choose how the MCP server should run;
-2. verify it before connecting a client;
-3. optionally point it at your own documentation; and
-4. let the client call the read-only `search_docs` tool.
+1. choose the sources that should count as reference evidence;
+2. use simple lexical retrieval, or add corpus-backed semantic/hybrid retrieval;
+3. verify the selected corpus and retriever with known queries;
+4. choose how the MCP server should run; and
+5. let the client call the read-only `search_docs` tool and inspect citations.
 
-You do not need to understand the retrieval internals to get started.
+You do not need to understand the retrieval internals to get started. Retrieval
+finds and ranks evidence; it does not make the underlying data true.
 
-## [At a glance](#id5)[#](#at-a-glance "Link to this heading")
+## [Scientific grounding: evidence, not absolute truth](#id7)[#](#scientific-grounding-evidence-not-absolute-truth "Link to this heading")
+
+`scikitplot.mcp` is designed for ****source-grounded**** answers: retrieve relevant
+passages, preserve where they came from, and let the client reason from visible
+evidence instead of unsupported recall.
+
+A grounded answer is ****traceable****, not automatically correct. Source documents
+can be incomplete, stale, biased, contradictory, or simply wrong. Retrieval can
+also miss relevant material.
+
+> **Important**
+> Treat retrieved data as ****evidence for or against a hypothesis****, not as
+absolute truth. A retrieval score measures relevance for ranking; it is not a
+probability that a statement is correct.
+
+A useful scientific response should therefore prefer language such as:
+
+* “the retrieved sources support …”;
+* “the available evidence is consistent with …”;
+* “the sources disagree …”;
+* “this remains uncertain …”; or
+* “no supporting passage was retrieved.”
+
+Prefer evidence that is current, attributable, reproducible, and independently
+checkable. When sources conflict, preserve the disagreement instead of forcing a
+single confident answer.
+
+## [How the pieces fit](#id8)[#](#how-the-pieces-fit "Link to this heading")
+
+The three modules have different jobs. You can use `scikitplot.mcp` by itself
+for a small corpus, then add the other layers only when your retrieval needs grow.
+
+Corpus, retrieval, and MCP roles[#](#id1 "Link to this table")
+
+
+
+
+
+| Component | Main job | What it does ****not**** mean |
+| --- | --- | --- |
+| [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") | Read, chunk, normalize, enrich, embed, index, and preserve source metadata for custom corpora. | Corpus content is not automatically verified or true. |
+| [`scikitplot.annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy") | Provide fast local approximate-nearest-neighbor search over vectors for semantic retrieval. | Vector similarity is not factual correctness or scientific confidence. |
+| [`scikitplot.mcp`](../../apis/scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") | Expose a bounded, read-only retrieval contract with citations to MCP-compatible clients. | MCP does not retrain the model or validate every claim in the corpus. |
+
+Common paths are intentionally composable:
+
+```
+Small / simple
+source JSONL -> lexical retrieval -> scikitplot.mcp -> MCP client
+
+Semantic
+sources -> scikitplot.corpus -> embeddings -> scikitplot.annoy
+        -> CorpusAnnoyRetriever -> scikitplot.mcp -> MCP client
+
+Hybrid
+sources -> scikitplot.corpus -> lexical + semantic retrieval
+        -> rank fusion -> scikitplot.mcp -> MCP client
+
+```
+
+In every path, the final responsibility is the same: retrieve useful evidence,
+keep provenance attached, and communicate uncertainty honestly.
+
+## [At a glance](#id9)[#](#at-a-glance "Link to this heading")
 
 * ****Main tool:**** `search_docs`
 * ****Default transport:**** local `stdio`
 * ****HTTP transport:**** Streamable HTTP
 * ****Default HTTP endpoint:**** `http://127.0.0.1:8000/mcp`
 * ****Default health endpoint:**** `http://127.0.0.1:8000/healthz`
-* ****Your docs:**** optional UTF-8 JSONL corpus via `--docs-jsonl`
+* ****Small custom corpus:**** optional UTF-8 JSONL via `--docs-jsonl`
+* ****Corpus pipeline:**** [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") for richer ingestion, chunking, embeddings, storage, and provenance
+* ****Semantic retrieval:**** `CorpusAnnoyRetriever` can compose [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") with [`scikitplot.annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy")
+* ****Hybrid retrieval:**** `HybridRetriever` can combine lexical and semantic ranked results
 * ****Default HTTP behavior:**** stateless
+* ****Evidence model:**** retrieval scores rank relevance; they do not certify truth
 * ****Safety model:**** returned document text is explicitly untrusted reference data
 
-## [Choose your scenario](#id6)[#](#choose-your-scenario "Link to this heading")
+## [Choose your scenario](#id10)[#](#choose-your-scenario "Link to this heading")
 
-Find the shortest path[#](#id1 "Link to this table")
+Find the shortest path[#](#id2 "Link to this table")
 
 
 
@@ -40,9 +110,12 @@ Find the shortest path[#](#id1 "Link to this table")
 | Run in Docker | `--docker` | Container-friendly HTTP defaults. |
 | Add a CI/readiness check | `--self-test` + expected document ID | Detect missing, stale, or wrong documentation indexes. |
 | Serve a team or remote client | HTTP behind production controls | Authentication, TLS, network policy, and quotas are required. |
+| Build a curated multi-format corpus | [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") | Ingest, chunk, normalize, embed, index, and retain provenance before serving. |
+| Search concepts and paraphrases | `CorpusAnnoyRetriever` | Semantic retrieval using corpus embeddings and [`scikitplot.annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy"). |
+| Balance exact terms and semantic meaning | `HybridRetriever` | Fuse lexical and dense rankings while keeping one MCP tool contract. |
 | Search a larger or richer corpus | [`scikitplot.mcp`](../../apis/scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") retrieval API | BM25, vector, or hybrid retrieval without changing the MCP tool contract. |
 
-## [Quick start](#id7)[#](#quick-start "Link to this heading")
+## [Quick start](#id11)[#](#quick-start "Link to this heading")
 
 Install the optional MCP server dependency in the environment containing
 scikit-plots:
@@ -69,7 +142,7 @@ python -m scikitplot.mcp
 > The default command uses `stdio`. It normally waits for an MCP client.
 It does ****not**** open a browser page, and waiting for the client is expected.
 
-## [Scenario 1: connect a local assistant](#id8)[#](#scenario-1-connect-a-local-assistant "Link to this heading")
+## [Scenario 1: connect a local assistant](#id12)[#](#scenario-1-connect-a-local-assistant "Link to this heading")
 
 Use `stdio` when your MCP client can start a local command for its tools.
 This is the simplest mode and does not expose a network listener.
@@ -90,7 +163,7 @@ output.
 import, dependency, or documentation-loading problem before the MCP client is
 involved.
 
-## [Scenario 2: test before connecting anything](#id9)[#](#scenario-2-test-before-connecting-anything "Link to this heading")
+## [Scenario 2: test before connecting anything](#id13)[#](#scenario-2-test-before-connecting-anything "Link to this heading")
 
 The self-test loads the selected retrieval backend, performs one read-only
 search, validates the output contract, prints JSON, and exits.
@@ -115,7 +188,7 @@ python -m scikitplot.mcp \
 This is useful for local troubleshooting, Docker image validation, CI, and
 readiness gates.
 
-## [Scenario 3: search your own documentation](#id10)[#](#scenario-3-search-your-own-documentation "Link to this heading")
+## [Scenario 3: search your own documentation](#id14)[#](#scenario-3-search-your-own-documentation "Link to this heading")
 
 For a small local corpus, create a UTF-8 JSON Lines file with one document per
 line. `doc_id` and `text` are required. `title`, `source_uri`, and
@@ -154,7 +227,107 @@ local corpora. For larger documentation collections, use a production
 retrieval backend through [`scikitplot.mcp`](../../apis/scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") rather than continually
 growing one in-memory file.
 
-## [Scenario 4: make CI detect the wrong corpus](#id11)[#](#scenario-4-make-ci-detect-the-wrong-corpus "Link to this heading")
+## [Scenario 4: build a curated corpus](#id15)[#](#scenario-4-build-a-curated-corpus "Link to this heading")
+
+Use [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") when your evidence comes from more than a small
+hand-written JSONL file or when you need a repeatable ingestion pipeline.
+
+A corpus can read and transform source material, preserve provenance, create
+embeddings, and build a similarity index before MCP is involved:
+
+```
+from scikitplot.corpus import BuilderConfig, CorpusBuilder
+
+builder = CorpusBuilder(
+    BuilderConfig(
+        chunker="paragraph",
+        normalize=True,
+        enrich=True,
+        embed=True,
+        build_index=True,
+    )
+)
+
+result = builder.build("./data/")
+hits = builder.search("what evidence supports this claim?")
+mcp_result = builder.to_mcp_tool_result(
+    "what evidence supports this claim?"
+)
+
+```
+
+This is useful because corpus quality can be tested independently from transport
+or the AI client. Inspect representative chunks, source metadata, and search
+results before serving them.
+
+> **Note**
+> Curating a corpus improves control and traceability; it does not convert the
+corpus into ground truth. Keep source dates, authorship, versions, and other
+provenance needed to judge the evidence later.
+
+## [Scenario 5: add semantic retrieval with Annoy](#id16)[#](#scenario-5-add-semantic-retrieval-with-annoy "Link to this heading")
+
+Use semantic retrieval when users may ask for the same concept with different
+words. `CorpusAnnoyRetriever` composes [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") embeddings with
+an approximate vector index provided by [`scikitplot.annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy").
+
+```
+from scikitplot.mcp import CorpusAnnoyRetriever
+
+retriever = CorpusAnnoyRetriever.from_corpus_annoy(
+    "./docs/",
+    metric="angular",
+    n_trees=10,
+)
+
+hits = retriever.search(
+    "connect a local assistant without opening a network port",
+    k=5,
+)
+
+```
+
+The same embedding model is used for corpus and query vectors so they share one
+vector space. Annoy then finds nearby vectors efficiently.
+
+> **Important**
+> Annoy performs ****approximate**** nearest-neighbor search. Its parameters trade
+retrieval recall, index size, build cost, and query speed. A closer vector is
+a stronger semantic match, not stronger evidence that the passage is true.
+
+For scientific or safety-sensitive use, evaluate retrieval on a held-out set of
+known questions and relevant passages instead of choosing tuning parameters by
+feel alone.
+
+## [Scenario 6: combine lexical and semantic evidence](#id17)[#](#scenario-6-combine-lexical-and-semantic-evidence "Link to this heading")
+
+Exact terms and semantic meaning fail in different ways. API names, flags,
+identifiers, and error strings often favor lexical/BM25 search, while paraphrases
+and synonyms often favor dense semantic search.
+
+`HybridRetriever` can fuse already-configured retrieval legs with Reciprocal
+Rank Fusion (RRF):
+
+```
+from scikitplot.mcp import HybridRetriever
+
+retriever = HybridRetriever(
+    [lexical_retriever, semantic_retriever],
+    weights=[1.0, 1.0],
+)
+
+hits = retriever.search("why is the HTTP service reachable but search stale?")
+
+```
+
+RRF combines ****rank positions**** rather than pretending BM25 and cosine scores are
+the same quantity. A result supported by more than one retrieval leg may rank
+higher, but fusion still measures retrieval usefulness, not factual certainty.
+
+Use hybrid retrieval when your corpus contains both precise technical language
+and natural-language explanations.
+
+## [Scenario 7: make CI detect the wrong corpus](#id18)[#](#scenario-7-make-ci-detect-the-wrong-corpus "Link to this heading")
 
 A health endpoint can tell you that a process is alive. It cannot prove that
 the expected documentation was loaded.
@@ -183,7 +356,7 @@ This helps detect:
 For an immutable corpus and deterministic backend, repeated self-tests with the
 same input should also produce stable results.
 
-## [Scenario 5: run a local HTTP endpoint](#id12)[#](#scenario-5-run-a-local-http-endpoint "Link to this heading")
+## [Scenario 8: run a local HTTP endpoint](#id19)[#](#scenario-8-run-a-local-http-endpoint "Link to this heading")
 
 Use Streamable HTTP when a local service or client connects over HTTP:
 
@@ -210,7 +383,7 @@ The health check confirms that the HTTP service is reachable and returns the
 expected minimal health response. Use `--self-test` when you also need to
 check corpus loading and search behavior.
 
-## [Scenario 6: run in Docker](#id13)[#](#scenario-6-run-in-docker "Link to this heading")
+## [Scenario 9: run in Docker](#id20)[#](#scenario-9-run-in-docker "Link to this heading")
 
 Use the explicit Docker profile:
 
@@ -247,7 +420,7 @@ For production containers, install a built wheel in a clean runtime image
 instead of using an editable `-e` installation. This avoids build-system work
 on import and gives more deterministic startup and rollback behavior.
 
-## [Scenario 7: serve remote or team clients safely](#id14)[#](#scenario-7-serve-remote-or-team-clients-safely "Link to this heading")
+## [Scenario 10: serve remote or team clients safely](#id21)[#](#scenario-10-serve-remote-or-team-clients-safely "Link to this heading")
 
 Treat remote MCP deployment like any other network service.
 
@@ -281,7 +454,7 @@ The CLI refuses an ordinary unauthenticated non-local HTTP bind unless you make
 that choice explicit. Do not use `--allow-unauthenticated-remote` as a
 shortcut for a production security layer.
 
-## [How a documentation search works](#id15)[#](#how-a-documentation-search-works "Link to this heading")
+## [How a documentation search works](#id22)[#](#how-a-documentation-search-works "Link to this heading")
 
 A client discovers `search_docs` and calls it with:
 
@@ -307,12 +480,48 @@ returning an uncited block of generated prose.
 When nothing matches, the result is a normal empty search result with a clear
 message rather than a fabricated documentation passage.
 
-## [Security by design](#id16)[#](#security-by-design "Link to this heading")
+## [Read retrieval results scientifically](#id23)[#](#read-retrieval-results-scientifically "Link to this heading")
+
+Do not collapse retrieval quality, source quality, and factual correctness into
+one number. They answer different questions.
+
+What each signal actually tells you[#](#id3 "Link to this table")
+
+
+
+
+
+| Signal | Useful interpretation | Do not interpret it as |
+| --- | --- | --- |
+| Retrieval score / rank | “This passage appears relevant to the query.” | Probability that the passage or final answer is true. |
+| Citation / `source_uri` | “This is where the retrieved claim came from.” | Proof that the source is authoritative or current. |
+| Agreement across sources | Corroborating evidence worth investigating. | Automatic independence or consensus. |
+| Missing result | The retriever did not find supporting material in the searched corpus. | Proof that the claim is false. |
+| Conflicting passages | Evidence that uncertainty, version drift, or genuine disagreement exists. | A reason to silently choose the highest-ranked passage. |
+
+A practical evidence loop is:
+
+```
+question
+   -> retrieve candidate evidence
+   -> inspect provenance and dates
+   -> compare independent sources
+   -> note contradictions / missing evidence
+   -> state the best-supported hypothesis
+   -> cite what supports it
+   -> keep uncertainty visible
+
+```
+
+This makes the system ****data-driven without becoming data-obedient****: data gets a
+voice, but evidence is still tested, compared, and interpreted.
+
+## [Security by design](#id24)[#](#security-by-design "Link to this heading")
 
 The user-facing tool is intentionally narrow: search documentation and return
 references. The server does not need write access to perform this workflow.
 
-Built-in safety boundaries[#](#id2 "Link to this table")
+Built-in safety boundaries[#](#id4 "Link to this table")
 
 
 
@@ -336,11 +545,11 @@ trustworthy. A malicious or compromised documentation page can still contain
 semantic prompt-injection text. The client/model must continue treating
 retrieved passages only as reference material.
 
-## [Reliable operation](#id17)[#](#reliable-operation "Link to this heading")
+## [Reliable operation](#id25)[#](#reliable-operation "Link to this heading")
 
 Use three different checks for three different questions:
 
-Which check should I use?[#](#id3 "Link to this table")
+Which check should I use?[#](#id5 "Link to this table")
 
 
 
@@ -369,12 +578,12 @@ python -m scikitplot.mcp --docker --print-effective-config
 This is especially useful when CLI options and `SCIKITPLOT_MCP_*` environment
 variables are mixed.
 
-## [Useful runtime controls](#id18)[#](#useful-runtime-controls "Link to this heading")
+## [Useful runtime controls](#id26)[#](#useful-runtime-controls "Link to this heading")
 
 Most users can keep the defaults. These controls are available when deployment
 requirements change:
 
-Common controls[#](#id4 "Link to this table")
+Common controls[#](#id6 "Link to this table")
 
 
 
@@ -394,9 +603,9 @@ Common controls[#](#id4 "Link to this table")
 For automated deployments, the same settings can be supplied with
 `SCIKITPLOT_MCP_*` environment variables.
 
-## [Common problems](#id19)[#](#common-problems "Link to this heading")
+## [Common problems](#id27)[#](#common-problems "Link to this heading")
 
-### [The command appears to hang](#id20)[#](#the-command-appears-to-hang "Link to this heading")
+### [The command appears to hang](#id28)[#](#the-command-appears-to-hang "Link to this heading")
 
 If you ran:
 
@@ -408,13 +617,13 @@ python -m scikitplot.mcp
 this is usually normal. `stdio` mode is waiting for an MCP client. Run
 `--self-test` if you only want to check that the server works.
 
-### [The health check passes but search is wrong](#id21)[#](#the-health-check-passes-but-search-is-wrong "Link to this heading")
+### [The health check passes but search is wrong](#id29)[#](#the-health-check-passes-but-search-is-wrong "Link to this heading")
 
 `/healthz` is intentionally a lightweight process/HTTP check. Run a
 `--self-test` against the real corpus, preferably with a canary and
 `--self-test-expected-doc-id`.
 
-### [My JSONL file is rejected](#id22)[#](#my-jsonl-file-is-rejected "Link to this heading")
+### [My JSONL file is rejected](#id30)[#](#my-jsonl-file-is-rejected "Link to this heading")
 
 Check that:
 
@@ -424,24 +633,33 @@ Check that:
 * document IDs are unique; and
 * the corpus stays within the bounded JSONL limits.
 
-### [No documentation matches](#id23)[#](#no-documentation-matches "Link to this heading")
+### [No documentation matches](#id31)[#](#no-documentation-matches "Link to this heading")
 
 An empty result is not automatically a server failure. Try a shorter or more
 specific term, verify the intended corpus with `--self-test`, and confirm the
 expected document is actually present.
 
-### [A non-local HTTP bind is refused](#id24)[#](#a-non-local-http-bind-is-refused "Link to this heading")
+### [The top result is relevant but the claim is still wrong](#id32)[#](#the-top-result-is-relevant-but-the-claim-is-still-wrong "Link to this heading")
+
+This is possible and should be expected in real corpora. Retrieval ranking asks
+“what best matches the query?” rather than “what is certainly true?”
+
+Check the citation, source date, document version, and surrounding context. Search
+for independent supporting or contradicting passages, try a lexical/semantic
+hybrid query, and update or quarantine stale corpus material when necessary.
+
+### [A non-local HTTP bind is refused](#id33)[#](#a-non-local-http-bind-is-refused "Link to this heading")
 
 This is a safety guard. Prefer localhost, an isolated container/private
 network, or a properly authenticated production gateway. Make remote exposure
 an intentional deployment decision rather than disabling the guard by default.
 
-### [A production container rebuilds on import](#id25)[#](#a-production-container-rebuilds-on-import "Link to this heading")
+### [A production container rebuilds on import](#id34)[#](#a-production-container-rebuilds-on-import "Link to this heading")
 
 Do not ship a Meson editable installation in the runtime image. Build a wheel
 in a builder stage and install that wheel into a clean runtime stage.
 
-## [Designed to grow without changing the basic workflow](#id26)[#](#designed-to-grow-without-changing-the-basic-workflow "Link to this heading")
+## [Designed to grow without changing the basic workflow](#id35)[#](#designed-to-grow-without-changing-the-basic-workflow "Link to this heading")
 
 The simple user contract stays the same even when the retrieval system becomes
 more capable:
@@ -477,24 +695,34 @@ This separation is useful for future changes: transport, indexing strategy,
 embedding model, storage engine, or ranking can evolve without requiring every
 MCP client to learn a new documentation tool.
 
-## [Keep the user guide simple](#id27)[#](#keep-the-user-guide-simple "Link to this heading")
+Measure each retrieval backend on representative queries before promoting it.
+For semantic or hybrid search, track retrieval metrics such as recall at `k`
+or manually reviewed relevance alongside latency and memory. Do not optimize a
+single score as if it measured truth.
+
+## [Keep the user guide simple](#id36)[#](#keep-the-user-guide-simple "Link to this heading")
 
 For normal use, remember this sequence:
 
 ```
-1. Self-test
-2. Choose stdio or HTTP
-3. Connect the client
-4. Search documentation
-5. Check citations
+1. Choose and curate the evidence sources
+2. Self-test the corpus and retrieval behavior
+3. Choose stdio or HTTP
+4. Connect the client
+5. Search and inspect citations
+6. State conclusions in proportion to the evidence
 
 ```
 
 Everything after that is an optimization or deployment concern.
 
-## [Where to go next](#id28)[#](#where-to-go-next "Link to this heading")
+## [Where to go next](#id37)[#](#where-to-go-next "Link to this heading")
 
 Most users can stop here.
+
+For corpus construction and provenance-aware processing, see
+[`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus"). For local approximate vector search and its
+speed/recall trade-offs, see [`scikitplot.annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy").
 
 For custom retrieval or programmatic integrations, see [`scikitplot.mcp`](../../apis/scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp").
 The public API includes `DocsRetriever`, `RetrievedChunk`,

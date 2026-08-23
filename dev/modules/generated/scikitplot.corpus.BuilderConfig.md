@@ -1,6 +1,6 @@
 # BuilderConfig[#](#builderconfig "Link to this heading")
 
-class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=<factory>**, **normalize=True**, **normalizer\_steps=<factory>**, **normalizer\_kwargs=<factory>**, **enrich=False**, **enricher\_kwargs=<factory>**, **embed=False**, **embedding\_model='all-MiniLM-L6-v2'**, **embedding\_kwargs=<factory>**, **build\_index=False**, **index\_kwargs=<factory>**, **source\_title=None**, **source\_author=None**, **source\_type=None**, **collection\_id=None**, **default\_language=None**, **filter\_kwargs=<factory>**, **max\_download\_bytes=524288000**, **download\_timeout=120**, **download\_max\_retries=3**, **download\_retry\_backoff=1.0**, **max\_archive\_files=10000**, **max\_archive\_bytes=2147483648**, **probe\_url\_content\_type=True**, **probe\_url\_timeout=15**, **max\_workers=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig "Link to this definition")
+class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=<factory>**, **normalize=True**, **normalizer\_steps=<factory>**, **normalizer\_kwargs=<factory>**, **enrich=False**, **enricher\_kwargs=<factory>**, **embed=False**, **embedding\_model='all-MiniLM-L6-v2'**, **embedding\_kwargs=<factory>**, **build\_index=False**, **retrieval\_config=None**, **index\_kwargs=<factory>**, **source\_title=None**, **source\_author=None**, **source\_type=None**, **collection\_id=None**, **default\_language=None**, **filter\_kwargs=<factory>**, **max\_download\_bytes=524288000**, **download\_timeout=120**, **download\_max\_retries=3**, **download\_retry\_backoff=1.0**, **max\_archive\_files=10000**, **max\_archive\_bytes=2147483648**, **probe\_url\_content\_type=True**, **probe\_url\_timeout=15**, **max\_workers=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig "Link to this definition")
 :   Configuration for [`CorpusBuilder`](scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder").
 
     Parameters:
@@ -24,7 +24,7 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
 
         ****normalizer\_kwargs****dict[str, Any]
         :   Run `TextNormalizer` after filtering.
-            Kwargs for `NormalizerConfig`.
+            Kwargs for `TextNormalizerConfig`.
 
         ****enrich****bool
         :   Run `NLPEnricher` after normalisation.
@@ -42,10 +42,16 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
         :   Kwargs for `EmbeddingEngine` constructor.
 
         ****build\_index****bool
-        :   Build a `SimilarityIndex` after embedding.
+        :   Build a `RetrievalIndex` after embedding.
+
+        ****retrieval\_config****RetrievalConfig or None
+        :   Canonical retrieval/index configuration. New code should prefer this
+            field so backend constructor options can use
+            `RetrievalConfig(index_kwargs={...})` directly.
 
         ****index\_kwargs****dict[str, Any]
-        :   Kwargs for `SearchConfig`.
+        :   Backward-compatible kwargs used to construct `RetrievalConfig` when
+            `retrieval_config` is not supplied. Do not provide both forms.
 
         ****source\_title****str or None
         :   Default `source_title` for all documents.
@@ -89,6 +95,7 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
         * ****embedding\_model**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****embedding\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
         * ****build\_index**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****retrieval\_config**** ([**RetrievalConfig**](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig") **|** **None**)
         * ****index\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
         * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -121,7 +128,7 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
 
     chunker: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [ChunkerBase](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = 'sentence'[#](#scikitplot.corpus.BuilderConfig.chunker "Link to this definition")
 
-    chunker\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.chunker_kwargs "Link to this definition")
+    chunker\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.chunker_kwargs "Link to this definition")
 
     collection\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderConfig.collection_id "Link to this definition")
 
@@ -143,17 +150,17 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
 
     embed: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.BuilderConfig.embed "Link to this definition")
 
-    embedding\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.embedding_kwargs "Link to this definition")
+    embedding\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.embedding_kwargs "Link to this definition")
 
     embedding\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'all-MiniLM-L6-v2'[#](#scikitplot.corpus.BuilderConfig.embedding_model "Link to this definition")
 
     enrich: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.BuilderConfig.enrich "Link to this definition")
 
-    enricher\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.enricher_kwargs "Link to this definition")
+    enricher\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.enricher_kwargs "Link to this definition")
 
-    filter\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.filter_kwargs "Link to this definition")
+    filter\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.filter_kwargs "Link to this definition")
 
-    index\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.index_kwargs "Link to this definition")
 
     max\_archive\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2147483648[#](#scikitplot.corpus.BuilderConfig.max_archive_bytes "Link to this definition")
     :   2 GB.
@@ -177,9 +184,9 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
 
     normalize: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.BuilderConfig.normalize "Link to this definition")
 
-    normalizer\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.normalizer_kwargs "Link to this definition")
+    normalizer\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.normalizer_kwargs "Link to this definition")
 
-    normalizer\_steps: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[Literal['unicode', 'whitespace', 'html\_strip', 'lowercase', 'dedup\_lines']][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_corpus_builder.py#L144)[#](#scikitplot.corpus.BuilderConfig.normalizer_steps "Link to this definition")
+    normalizer\_steps: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[Literal['unicode', 'whitespace', 'html\_strip', 'lowercase', 'dedup\_lines']][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_corpus_builder.py#L146)[#](#scikitplot.corpus.BuilderConfig.normalizer_steps "Link to this definition")
 
     probe\_url\_content\_type: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.BuilderConfig.probe_url_content_type "Link to this definition")
     :   Probe extensionless URLs with a HEAD request to determine the correct
@@ -194,8 +201,18 @@ class scikitplot.corpus.BuilderConfig(**chunker='sentence'**, **chunker\_kwargs=
     :   HTTP timeout in seconds for the URL-probing HEAD request.
         Default: 15.
 
+    retrieval\_config: [RetrievalConfig](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderConfig.retrieval_config "Link to this definition")
+
     source\_author: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderConfig.source_author "Link to this definition")
 
     source\_title: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderConfig.source_title "Link to this definition")
 
     source\_type: [SourceType](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") | [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderConfig.source_type "Link to this definition")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus

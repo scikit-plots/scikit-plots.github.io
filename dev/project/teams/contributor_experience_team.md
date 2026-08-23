@@ -9,3 +9,5 @@ Jurriaan Nagelkerke
 [![](https://avatars.githubusercontent.com/u/29182592)](https://github.com/dpilger26)   
 
 David Pilger
+
+ On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/project/teams/contributor_experience_team.rst)[Show Source](../../_sources/project/teams/contributor_experience_team.rst.txt)

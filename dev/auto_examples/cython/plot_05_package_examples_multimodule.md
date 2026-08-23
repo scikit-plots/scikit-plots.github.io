@@ -185,15 +185,15 @@ Related examples
 
 [Cython quickstart: compile\_and\_load](plot_00_quickstart_compile_and_load.html)
 
-Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
-
-[Workflow templates (train / hpo / predict) + CLI entry template](plot_09_workflow_templates_cli.html)
-
-Workflow templates (train / hpo / predict) + CLI entry template![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
+Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
 
 [Pin/Alias: stable handles for cached builds](plot_04_pin_alias.html)
 
-Pin/Alias: stable handles for cached builds![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
+Pin/Alias: stable handles for cached builds![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
+
+[Workflow templates (train / hpo / predict) + CLI entry template](plot_09_workflow_templates_cli.html)
+
+Workflow templates (train / hpo / predict) + CLI entry template![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
 
 [Browse and compile templates](plot_01_browse_and_compile_templates.html)
 

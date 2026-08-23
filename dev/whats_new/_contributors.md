@@ -1,0 +1,1 @@
+ On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/whats_new/_contributors.rst)[Show Source](../_sources/whats_new/_contributors.rst.txt)

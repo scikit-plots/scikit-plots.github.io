@@ -1,6 +1,6 @@
 # freedman\_bin\_width[#](#freedman-bin-width "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.freedman\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/histogram.py#L235)[#](#scikitplot.cexternals._astropy.stats.freedman_bin_width "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.freedman\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/histogram.py#L235)[#](#scikitplot.cexternals._astropy.stats.freedman_bin_width "Link to this definition")
 :   Return the optimal histogram bin width using the Freedman-Diaconis rule.
 
     The Freedman-Diaconis rule is a normal reference rule like Scott’s
@@ -26,7 +26,7 @@ scikitplot.cexternals.\_astropy.stats.freedman\_bin\_width(**data**, **return\_b
         * ****return\_bins**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]]
+    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"), **NDArray**]
 
     > **See also**
     > [`knuth_bin_width`](scikitplot.cexternals._astropy.stats.knuth_bin_width.html#scikitplot.cexternals._astropy.stats.knuth_bin_width "scikitplot.cexternals._astropy.stats.knuth_bin_width")

@@ -1,6 +1,6 @@
 # get\_workflow\_path[#](#get-workflow-path "Link to this heading")
 
-scikitplot.cython.get\_workflow\_path(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_templates_api.py#L827)[#](#scikitplot.cython.get_workflow_path "Link to this definition")
+scikitplot.cython.get\_workflow\_path(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_templates_api.py#L827)[#](#scikitplot.cython.get_workflow_path "Link to this definition")
 :   Resolve a workflow name to its on-disk folder path.
 
     Parameters:

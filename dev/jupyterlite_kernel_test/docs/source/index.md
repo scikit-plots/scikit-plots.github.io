@@ -1,0 +1,1 @@
+ On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/jupyterlite_kernel_test/docs/source/index.rst)[Show Source](../../../_sources/jupyterlite_kernel_test/docs/source/index.rst.txt)

@@ -1,6 +1,6 @@
 # import\_artifact\_path[#](#import-artifact-path "Link to this heading")
 
-scikitplot.cython.import\_artifact\_path(**artifact\_path**, **\***, **module\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_public.py#L947)[#](#scikitplot.cython.import_artifact_path "Link to this definition")
+scikitplot.cython.import\_artifact\_path(**artifact\_path**, **\***, **module\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_public.py#L947)[#](#scikitplot.cython.import_artifact_path "Link to this definition")
 :   Import a compiled extension artifact from a path.
 
     Parameters:
@@ -21,3 +21,11 @@ scikitplot.cython.import\_artifact\_path(**artifact\_path**, **\***, **module\_n
 
     Return type:
     :   [**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.14)")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
+
+[Workflow templates (train / hpo / predict) + CLI entry template](../../auto_examples/cython/plot_09_workflow_templates_cli.html)
+
+Workflow templates (train / hpo / predict) + CLI entry template

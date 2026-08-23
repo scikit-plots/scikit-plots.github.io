@@ -1,6 +1,6 @@
 # median\_absolute\_deviation[#](#median-absolute-deviation "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
 :   Calculate the median absolute deviation (MAD).
 
     The MAD is defined as `median(abs(a - median(a)))`.
@@ -36,7 +36,7 @@ scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **ax
         * ****ignore\_nan**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]
+    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | **NDArray**
 
     > **See also**
     > [`mad_std`](scikitplot.cexternals._astropy.stats.mad_std.html#scikitplot.cexternals._astropy.stats.mad_std "scikitplot.cexternals._astropy.stats.mad_std")

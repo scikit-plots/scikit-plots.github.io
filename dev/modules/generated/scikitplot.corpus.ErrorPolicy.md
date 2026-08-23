@@ -1,15 +1,36 @@
 # ErrorPolicy[#](#errorpolicy "Link to this heading")
 
-class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L195)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
-:   Per-document error handling strategy for [`PipelineGuard`](scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard").
+class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L208)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
+:   Per-document error handling **behaviour** for [`PipelineGuard`](scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard").
+
+    > **See also**
+    > `scikitplot.corpus._diagnostics.ErrorRecord`
+    :   what `COLLECT` and `FALLBACK` produce.
 
     Notes
 
-    ****RAISE**** (default) — exceptions propagate immediately; caller handles.
-    ****SKIP**** — broken documents are silently discarded; pipeline continues.
-    ****LOG**** — exception is logged at WARNING level; document is discarded.
-    ****RETRY**** — the document is retried up to `max_retries` times
-    (for transient I/O errors); falls back to LOG on exhaustion.
+    ****User-focused.**** Choose what should happen to a document that fails:
+
+    | value | behaviour |
+    | --- | --- |
+    | `raise` | propagate immediately (default, strictest) |
+    | `skip` | discard and continue, no record kept |
+    | `retry` | retry up to `max_retries`, then `collect` |
+    | `collect` | discard and continue, keeping an `ErrorRecord` |
+    | `fallback` | degrade to a declared alternative, keeping a record |
+
+    ****Developer-focused.**** This enum controls **behaviour only**. Logging is
+    orthogonal and is configured through the standard [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)") module.
+
+    A former `LOG` member was deleted (ADR-R02-001, ADR-C22). It took the
+    **same** dispatch branch as `SKIP` and differed only in whether a
+    `logger.warning` fired, so it encoded a logging decision as a behaviour
+    value – the conflation finding F-R02-01 recorded. Callers who want “skip,
+    and tell me” should use `COLLECT`, which keeps a structured record rather
+    than only a log line.
+
+    `RETRY`’s terminal state is `COLLECT`, not the former `LOG`: exhausted
+    retries used to vanish from the caller’s view except as a log line.
 
     Examples
 
@@ -17,21 +38,34 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
     ```
     >>> ErrorPolicy.SKIP == "skip"
     True
+    >>> ErrorPolicy.COLLECT == "collect"
+    True
 
     ```
     Go BackOpen In Tab
 
-    LOG = 'log'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.LOG "Link to this definition")
-    :   Log failures at WARNING level and discard.
+    COLLECT = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.COLLECT "Link to this definition")
+    :   Discard and continue, recording a structured `ErrorRecord`.
 
-    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
+        This is the policy to choose when a caller wants to know **what** failed
+        without stopping the run – the case `SKIP` cannot express and the former
+        `LOG` expressed only as unstructured text.
+
+    FALLBACK = 'fallback'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.FALLBACK "Link to this definition")
+    :   Degrade to a declared alternative and record that the degradation happened.
+
+        A `FALLBACK` that produces no `ErrorRecord` is invalid: an
+        unobservable fallback is the “plausible success after altered execution”
+        shape this codebase has repeatedly been bitten by.
+
+    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
     :   Propagate exceptions immediately (default, strictest).
 
-    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
-    :   Retry transient failures up to `max_retries` times, then LOG.
+    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
+    :   Retry transient failures up to `max_retries` times, then `COLLECT`.
 
-    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
-    :   Discard failing documents silently.
+    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
+    :   Discard failing documents and continue, keeping no record.
 
     capitalize(**/**)[#](#scikitplot.corpus.ErrorPolicy.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

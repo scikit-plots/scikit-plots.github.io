@@ -1,10 +1,10 @@
 # aucplot[#](#aucplot "Link to this heading")
 
-scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt='.4g'**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/seaborn/_auc.py#L1149)[#](#scikitplot.seaborn.aucplot "Link to this definition")
+scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt='.4g'**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/seaborn/_auc.py#L1149)[#](#scikitplot.seaborn.aucplot "Link to this definition")
 :   Plot PR or ROC curves with a seaborn-like API.
 
     Parameters:
-    :   ****data****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1386.gcb2086a1a4)"), [`numpy.ndarray`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), mapping, or sequence
+    :   ****data****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1590.g8dfcb75ba0)"), [`numpy.ndarray`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), mapping, or sequence
         :   Input data structure. Either a long-form collection of vectors that can be
             assigned to named variables or a wide-form dataset that will be internally
             reshaped.
@@ -29,17 +29,17 @@ scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=
         :   Specify the order of processing and plotting for categorical levels of the
             `hue` semantic.
 
-        ****hue\_norm****tuple or [`matplotlib.colors.Normalize`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Normalize.html#matplotlib.colors.Normalize "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+        ****hue\_norm****tuple or [`matplotlib.colors.Normalize`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Normalize.html#matplotlib.colors.Normalize "(in Matplotlib v3.12.0.dev498+gadecc563e)")
         :   Either a pair of values that set the normalization range in data units
             or an object that will map from data units into a [0, 1] interval. Usage
             implies numeric mapping.
 
-        ****palette****string, list, dict, or [`matplotlib.colors.Colormap`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+        ****palette****string, list, dict, or [`matplotlib.colors.Colormap`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap "(in Matplotlib v3.12.0.dev498+gadecc563e)")
         :   Method for choosing the colors to use when mapping the `hue` semantic.
             String values are passed to `color_palette`. List or dict values
             imply categorical mapping, while a colormap object implies numeric mapping.
 
-        ****color****[`matplotlib color`](https://matplotlib.org/devdocs/api/colors_api.html#module-matplotlib.colors "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+        ****color****[`matplotlib color`](https://matplotlib.org/devdocs/api/colors_api.html#module-matplotlib.colors "(in Matplotlib v3.12.0.dev498+gadecc563e)")
         :   Single color specification for when hue mapping is not used. Otherwise, the
             plot will try to hook into the matplotlib property cycle.
 
@@ -59,8 +59,8 @@ scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=
         ****legend****bool
         :   If False, suppress the legend for semantic variables.
 
-        ****ax****[`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
-        :   Pre-existing axes for the plot. Otherwise, call [`matplotlib.pyplot.gca`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+        ****ax****[`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev498+gadecc563e)")
+        :   Pre-existing axes for the plot. Otherwise, call [`matplotlib.pyplot.gca`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca "(in Matplotlib v3.12.0.dev498+gadecc563e)")
             internally.
 
         ****digits****int, optional, default=4
@@ -87,10 +87,10 @@ scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=
         :   Other keyword arguments are passed to one of the following matplotlib
             functions:
 
-            * [`matplotlib.axes.Axes.plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+            * [`matplotlib.axes.Axes.plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.12.0.dev498+gadecc563e)")
 
     Returns:
-    :   [`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+    :   [`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev498+gadecc563e)")
         :   The matplotlib axes containing the plot.
 
         > **Warning**
@@ -114,7 +114,7 @@ scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=
         * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
     Return type:
-    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev498+gadecc563e)")
 
     > **See also**
     > [`sklearn.metrics.roc_curve`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve "(in scikit-learn v1.10)")
@@ -128,3 +128,11 @@ scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=
     Notes
 
     For PR curves, the score displayed as `AUC` is Average Precision (AP).
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_aucplot_script_thumb.png)
+
+[plot\_aucplot\_script with examples](../../auto_examples/seaborn/plot_aucplot_script.html)
+
+plot\_aucplot\_script with examples

@@ -1,6 +1,6 @@
 # list\_pins[#](#list-pins "Link to this heading")
 
-scikitplot.cython.list\_pins(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_pins.py#L137)[#](#scikitplot.cython.list_pins "Link to this definition")
+scikitplot.cython.list\_pins(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_pins.py#L137)[#](#scikitplot.cython.list_pins "Link to this definition")
 :   List the current alias→key mappings.
 
     Parameters:
@@ -17,3 +17,11 @@ scikitplot.cython.list\_pins(**cache\_dir=None**)[[source]](https://github.com/s
 
     Return type:
     :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
+
+[Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
+
+Pin/Alias: stable handles for cached builds

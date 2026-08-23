@@ -2,21 +2,44 @@
 > [Go to the end](#sphx-glr-download-auto-examples-corpus-plot-corpus-knowledge-script-py)
 to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
-# corpus Knowledge and Information local .png with examples[#](#corpus-knowledge-and-information-local-png-with-examples "Link to this heading")
+# Compare Corpus Chunking Strategies on OCR Text[#](#compare-corpus-chunking-strategies-on-ocr-text "Link to this heading")
 
-Examples related to the [`corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") submodule.
-Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence,
-SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an
-image file containing multi-script text extracted via OCR.
+This example asks one focused question:
 
-## Notes[#](#notes "Link to this heading")
+****How do different chunking strategies divide the same OCR-extracted text?****
 
-****User note:**** Run from any working directory — paths are resolved relative
-to this script’s location, not the caller’s CWD.
+The source image contains multilingual text. OCR is performed once and the
+same extracted text is then passed to every chunker, so the comparison is not
+confounded by repeated OCR runs or CSV export behavior.
 
-****Developer note:**** `FileLink` / `FileLinks` (IPython display utilities)
-are guarded behind `_IN_JUPYTER` so this script executes correctly in
-plain Python, pytest, Docker CI, and notebook contexts alike.
+The executed comparison uses portable Corpus backends:
+
+* [`WordChunker`](../../modules/generated/scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker "scikitplot.corpus.WordChunker") by document,
+* [`WordChunker`](../../modules/generated/scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker "scikitplot.corpus.WordChunker") by sentence,
+* [`SentenceChunker`](../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker") with the REGEX backend,
+* [`FixedWindowChunker`](../../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker "scikitplot.corpus.FixedWindowChunker") by characters,
+* [`FixedWindowChunker`](../../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker "scikitplot.corpus.FixedWindowChunker") by tokens,
+* `SemanticChunker` with the MORPHOLOGICAL backend.
+
+Two NLTK-enhanced variants are shown separately and run only when NLTK and the
+required local NLTK data resources are already installed. No example in this
+file downloads optional data automatically.
+
+If OCR capability is unavailable, the OCR-dependent comparison is reported as
+`SKIP` and the source image is still displayed. A missing optional
+dependency is not treated as a Corpus defect.
+
+## What to look for[#](#what-to-look-for "Link to this heading")
+
+The summary near the end compares:
+
+* number of chunks,
+* average/minimum/maximum chunk size,
+* a bounded sample,
+* the intended use case of each strategy.
+
+This makes the example a decision guide rather than a sequence of unrelated
+configuration snippets.
 
 ```
 # Authors: The scikit-plots developers
@@ -27,825 +50,394 @@ plain Python, pytest, Docker CI, and notebook contexts alike.
 from __future__ import annotations
 
 import os
-import sys
+import importlib.util
+import shutil
 from pathlib import Path
-from pprint import pprint
+from statistics import mean
 
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
-import pandas as pd
 
-import scikitplot as sp  # noqa: F401  (kept for side effects / version logging)
 from scikitplot.corpus import (
-    CorpusPipeline,
-    ExportFormat,
+    DocumentReader,
     FixedWindowChunker,
     FixedWindowChunkerConfig,
-    NLPEnricher,
-    EnricherConfig,
+    LemmatizationBackend,
+    MultilangConfig,
+    SemanticBackend,
+    SemanticChunker,
+    SemanticChunkerConfig,
     SentenceBackend,
     SentenceChunker,
     SentenceChunkerConfig,
-    SourceType,
     StemmingBackend,
     StopwordSource,
     TokenizerBackend,
-    LemmatizationBackend,
     WindowUnit,
     WordChunker,
     WordChunkerConfig,
 )
 
-# ---------------------------------------------------------------------------
-# Path resolution — always relative to this file, not caller's CWD.
-# ---------------------------------------------------------------------------
+# os.environ["SCIKITPLOT_GALLERY_RUN_ASR"] = "1"
+# os.environ["SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS"] = "1"
+_RUN_ASR = os.environ.get("SCIKITPLOT_GALLERY_RUN_ASR", "1").strip().lower() in {
+    "1",
+    "true",
+    "yes",
+    "on",
+}
+_SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS = os.getenv("SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS", "1").strip().lower() in {
+    "1",
+    "true",
+    "yes",
+    "on",
+}
 
-# _SCRIPT_DIR: Path = Path(__file__).resolve().parent
-_SCRIPT_DIR = Path.cwd()
-_DATA_DIR: Path = _SCRIPT_DIR / "data"
-_OUTPUT_DIR: Path = _SCRIPT_DIR / "output"
-_IMAGE_PATH: Path = _DATA_DIR / "echo_of_the_wise" / "AI_Generated_Image_1ix.png"
+```
 
-# Detect Jupyter environment once — used to guard IPython display utilities.
-_IN_JUPYTER: bool = "ipykernel" in sys.modules
+## Resolve the gallery asset[#](#resolve-the-gallery-asset "Link to this heading")
 
-# ---------------------------------------------------------------------------
-# Helper: build a pipeline and run it on the shared image path.
-# ---------------------------------------------------------------------------
+Sphinx-Gallery may execute examples in a generated context where `__file__`
+is not available. The fallback keeps the script usable from notebooks and
+direct Python sessions without changing the caller’s working directory.
+
+```
+def _resolve_example_dir() -> Path:
+    """Resolve the example directory across script and gallery runtimes."""
+    file = globals().get("__file__")
+    if file:
+        return Path(file).resolve().parent
+    return Path.cwd().resolve()
 
 
-def _run(chunker: object, label: str) -> object:
-    """Build a CorpusPipeline, run it, print head, return result.
+_EXAMPLE_DIR = _resolve_example_dir()
+_DATA_DIR = _EXAMPLE_DIR / "data"
+_IMAGE_PATH = _DATA_DIR / "echo_of_the_wise" / "AI_Generated_Image_1ix.png"
 
-    Parameters
-    ----------
-    chunker : object
-        An instantiated chunker (WordChunker, SentenceChunker, etc.).
-    label : str
-        Human-readable label printed before the CSV head.
+```
 
-    Returns
-    -------
-    object
-        The pipeline run result (carries ``output_path`` and ``input_path``).
-    """
-    pipeline = CorpusPipeline(
-        chunker=chunker,
-        output_path=_OUTPUT_DIR,
-        format=ExportFormat.CSV,
-    )
-    result = pipeline.run(_IMAGE_PATH)
+## Optional-capability preflight[#](#optional-capability-preflight "Link to this heading")
 
-    print(f"\n{'=' * 60}")
-    print(label)
-    print("=" * 60)
+Optional functionality is checked **before** executing that scenario.
 
-    # Guard 1: pipeline produced no documents — CSV is header-only.
-    # result.n_documents is always 0 in this case; skip pd.read_csv()
-    # so we never hit EmptyDataError even if the caller does not have
-    # the header-only fix deployed on the exporter side.
-    if result.n_documents == 0:
-        print("[WARNING] Pipeline produced 0 documents — CSV contains no data rows.")
-        return result
+The rule used by this gallery is:
 
-    # Guard 2: output_path may be None when export is skipped (e.g. no
-    # output_path supplied to CorpusPipeline).  Should not happen in this
-    # script, but fail fast with a clear message rather than AttributeError.
-    if result.output_path is None:
-        print("[WARNING] No output_path in result — export was skipped.")
-        return result
+`missing optional package/resource/native capability → SKIP`
 
-    # Guard 3: catch residual EmptyDataError for any edge-case where the
-    # exporter writes a zero-byte file (e.g. older exporter version).
+Unexpected failures after a successful preflight are allowed to propagate,
+because they may indicate a real API, environment, or implementation defect.
+
+```
+def _probe_tesseract() -> tuple[bool, str]:
+    """Return whether the default ImageReader OCR path can be attempted."""
+    if not _IMAGE_PATH.exists():
+        return False, f"gallery asset is missing: {_IMAGE_PATH}"
+    if importlib.util.find_spec("PIL") is None:
+        return False, "Pillow is not installed"
+    if importlib.util.find_spec("pytesseract") is None:
+        return False, "pytesseract is not installed"
+    if shutil.which("tesseract") is None:
+        return False, "the Tesseract executable is not available on PATH"
+    return True, "pytesseract + Tesseract available"
+
+
+def _probe_nltk(*resource_paths: str) -> tuple[bool, str]:
+    """Check NLTK and local data resources without downloading anything."""
+    if importlib.util.find_spec("nltk") is None:
+        return False, "NLTK is not installed"
+
     try:
-        df = pd.read_csv(result.output_path)
-    except pd.errors.EmptyDataError:
-        print(
-            f"[WARNING] CSV at {result.output_path!s} is empty — "
-            "no rows to display.  Check exporter version."
-        )
-        return result
+        import nltk
+    except ImportError:
+        return False, "NLTK could not be imported"
 
-    pprint(df.head().to_dict())
+    missing: list[str] = []
+    for resource_path in resource_paths:
+        try:
+            nltk.data.find(resource_path)
+        except LookupError:
+            missing.append(resource_path)
+
+    if missing and not _SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS:
+        return False, "missing local NLTK resources: " + ", ".join(missing)
+    return True, "NLTK resources available"
+
+```
+
+## Extract OCR text once[#](#extract-ocr-text-once "Link to this heading")
+
+OCR belongs to the reader layer; chunking happens **after** text exists.
+Performing OCR once makes every strategy below consume exactly the same
+source text and avoids repeating an expensive optional operation.
+
+```
+ocr_ready, ocr_reason = _probe_tesseract()
+
+ocr_documents = ()
+ocr_text: str | None = None
+
+if not ocr_ready:
+    print(f"[SKIP] OCR extraction: {ocr_reason}")
+    print("[SKIP] Chunking comparison requires OCR text and is not executed.")
+else:
+    reader = DocumentReader.create(_IMAGE_PATH)
+    ocr_documents = tuple(reader.get_documents())
+
+    if not ocr_documents:
+        print("[SKIP] OCR produced no CorpusDocument evidence.")
+    else:
+        ocr_text = "\n\n".join(
+            doc.text for doc in ocr_documents if doc.text.strip()
+        )
+
+        if not ocr_text.strip():
+            ocr_text = None
+            print("[SKIP] OCR produced documents but no usable text.")
+        else:
+            confidences = [
+                doc.confidence
+                for doc in ocr_documents
+                if doc.confidence is not None
+            ]
+
+            print(f"OCR documents: {len(ocr_documents)}")
+            print(f"OCR characters: {len(ocr_text):,}")
+            if confidences:
+                print(f"Mean OCR confidence: {mean(confidences):.3f}")
+            print("OCR preview:")
+            print(ocr_text[:500])
+
+```
+```
+OCR documents: 1
+OCR characters: 1,300
+Mean OCR confidence: 0.637
+OCR preview:
+
+
+
+ire uursacesced Caraga io
+10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT
+RCO RSP eo ere
+
+Memmnminsane(s)
+erklaren kannst, hast du
+Creerona eats
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brome ccrlhy | |
+ Petesercne | verstanden.
+>
+If you cannot explain
+» Sas ONAN Co oiag
+understand it well enough.
+
+ge VIDA ND TRON
+
+Sa eas
+aE Nia)
+
+
+
+‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert Einstein
+
+384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, USA — Princeton — Pasadena 99-
+
+```
+
+## Compare chunkers on one shared text[#](#compare-chunkers-on-one-shared-text "Link to this heading")
+
+Results are kept in memory. Export is deliberately not part of the primary
+path because this example is about chunk boundaries, not CSV serialization.
+
+```
+comparison_rows: list[dict[str, object]] = []
+
+
+def _record_skip(label: str, use_case: str, reason: str) -> None:
+    """Record one optional strategy that could not run."""
+    print(f"\n[SKIP] {label}: {reason}")
+    comparison_rows.append(
+        {
+            "strategy": label,
+            "status": "SKIP",
+            "chunks": None,
+            "avg_chars": None,
+            "min_chars": None,
+            "max_chars": None,
+            "use_case": use_case,
+            "sample": "",
+        }
+    )
+
+
+def _run_strategy(
+    label: str,
+    chunker: object,
+    *,
+    use_case: str,
+) -> object | None:
+    """Run one chunker against the shared OCR text and record a compact summary."""
+    if ocr_text is None:
+        _record_skip(label, use_case, "OCR text is unavailable")
+        return None
+
+    result = chunker.chunk(
+        ocr_text,
+        doc_id=ocr_documents[0].doc_id if ocr_documents else None,
+    )
+
+    chunks = tuple(result.chunks)
+    lengths = [len(chunk.text) for chunk in chunks]
+
+    comparison_rows.append(
+        {
+            "strategy": label,
+            "status": "OK",
+            "chunks": len(chunks),
+            "avg_chars": round(mean(lengths), 1) if lengths else 0.0,
+            "min_chars": min(lengths) if lengths else 0,
+            "max_chars": max(lengths) if lengths else 0,
+            "use_case": use_case,
+            "sample": chunks[0].text[:140].replace("\n", " ") if chunks else "",
+        }
+    )
+
+    print(f"\n{label}")
+    print("-" * len(label))
+    print(f"chunks: {len(chunks)}")
+    if lengths:
+        print(
+            "chars/chunk: "
+            f"avg={mean(lengths):.1f}, min={min(lengths)}, max={max(lengths)}"
+        )
+    if chunks:
+        print(f"sample: {chunks[0].text[:240]!r}")
+
     return result
 
 ```
 
-## 1. Word chunker — chunk\_by=”document”[#](#word-chunker-chunk-by-document "Link to this heading")
+## 1. Word chunker — one document-level lexical chunk[#](#word-chunker-one-document-level-lexical-chunk "Link to this heading")
 
-One chunk per image (all OCR text joined as a single document).
-Demonstrates PORTER stemming + BUILTIN stopwords.
+This portable configuration uses the built-in SIMPLE tokenizer and disables
+optional stemming/lemmatization resources. It is useful when the entire
+document should share one lexical feature space.
 
 ```
-result_word_doc = _run(
+result_word_doc = _run_strategy(
+    "Word / document",
     WordChunker(
         WordChunkerConfig(
             chunk_by="document",
-            stemmer=StemmingBackend.PORTER,
-            nltk_language="english",
-            tokenizer=TokenizerBackend.NLTK,
-            lemmatizer=LemmatizationBackend.NLTK_WORDNET,
-            stopwords=StopwordSource.BUILTIN,
+            tokenizer=TokenizerBackend.SIMPLE,
+            stemmer=StemmingBackend.NONE,
+            lemmatizer=LemmatizationBackend.NONE,
+            stopwords=StopwordSource.NONE,
             lowercase=True,
             remove_punctuation=False,
             min_token_length=2,
             ngram_range=(1, 1),
         )
     ),
-    label="Word chunker — chunk_by='document' (PORTER stemming)",
+    use_case="whole-document lexical preprocessing",
 )
 
 ```
 ```
-============================================================
-Word chunker — chunk_by='document' (PORTER stemming)
-============================================================
-{'act': {0: nan},
- 'bbox': {0: nan},
- 'char_end': {0: 875},
- 'char_start': {0: 0},
- 'chunk_index': {0: 0},
- 'chunking_strategy': {0: 'custom'},
- 'chunking_unit': {0: 'word'},
- 'codepoint_count': {0: 875},
- 'collection_id': {0: nan},
- 'confidence': {0: 0.6372},
- 'content_hash': {0: 'f7c70479a291e3be3dad4ee0afa545a5'},
- 'determinative_groups': {0: nan},
- 'doc_id': {0: '3f1fd9585949d82f'},
- 'doi': {0: nan},
- 'frame_index': {0: nan},
- 'grapheme_count': {0: 875},
- 'image_height': {0: 1024},
- 'image_width': {0: 1024},
- 'input_path': {0: 'AI_Generated_Image_1ix.png'},
- 'is_mixed_script': {0: False},
- 'isbn': {0: nan},
- 'keywords': {0: nan},
- 'language': {0: nan},
- 'lemmas': {0: nan},
- 'line_number': {0: nan},
- 'modality': {0: 'text'},
- 'morphemes': {0: nan},
- 'normalized_text': {0: nan},
- 'ocr_engine': {0: 'tesseract'},
- 'page_number': {0: 0},
- 'paragraph_index': {0: nan},
- 'parent_doc_id': {0: nan},
- 'raw_dtype': {0: nan},
- 'raw_shape': {0: nan},
- 'raw_text': {0: '  \n'
-                 ' \n'
-                 '\n'
-                 'ire uursacesced Caraga io\n'
-                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-                 'RCO RSP eo ere\n'
-                 '\n'
-                 'Memmnminsane(s)\n'
-                 'erklaren kannst, hast du\n'
-                 'Creerona eats\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 '      \n'
-                 '     \n'
-                 '   \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 ' \n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Brome ccrlhy | |\n'
-                 ' Petesercne | verstanden.\n'
-                 '>\n'
-                 'If you cannot explain\n'
-                 '» Sas ONAN Co oiag\n'
-                 'understand it well enough.\n'
-                 '\n'
-                 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-                 'Einstein\n'
-                 '\n'
-                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender. aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'other person can understand,\n'
-                 '\n'
-                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 '       \n'
-                 ' \n'
-                 '\n'
-                 'Ernest Rutherford F Mevlana\n'
-                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-                 'Konya\n'
-                 '\n'
-                 '           \n'
-                 ' \n'
-                 '\n'
-                 'Sato r le Scholar aCe Is\n'
-                 '\n'
-                 'Simplicity is the mark\n'
-                 '7 Os true knowledge.\n'
-                 '\n'
-                 '“ (Focused)  (Pocused) | (Distracted)\n'
-                 '\n'
-                 'cenit)\n'
-                 '(Innocent)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 'You may know all the worlds, but the conversation sto,\n'
-                 'j at the other person’s intelligence and vision. Knowledge '
-                 'is\n'
-                 'not limited by the speaker. It is limited by the listener.\n'
-                 '\n'
-                 "Mevlana's Wisdom\n"
-                 '1207-1273 | Balkh + Konya\n'
-                 '\n'
-                 ' \n'
-                 '\x0c'},
- 'scene_number': {0: nan},
- 'script': {0: 'latin'},
- 'script_direction': {0: 'ltr'},
- 'script_model_version': {0: nan},
- 'script_spans': {0: nan},
- 'section_type': {0: 'text'},
- 'semanteme_count': {0: nan},
- 'source_author': {0: nan},
- 'source_date': {0: nan},
- 'source_title': {0: nan},
- 'source_type': {0: 'image'},
- 'stems': {0: nan},
- 'text': {0: 'ire uursacesc caraga io 10 bi6dokew erna monet 1b aoe maa ett '
-             'rco rsp eo ere memmnminsan erklaren kannst hast du creerona eat '
-             'brome ccrlhi petesercn verstanden explain sa onan co oiag '
-             'understand well enough ge vida nd tron sa ea ae nia apiotoréanc '
-             'aaseavsp0¢ richard p. feynman albert einstein 384-322 bc 356-323 '
-             'bc mieza macedonia 1918-1988 new york usa princeton pasadena '
-             '99-1955 ulm princeton onsen venient cc ae crore mokoeoeri ae '
-             'bartend aa ve es clenrecemnnc ahupiingao ka taea pombelcuic ssri '
-             'lic pye matterhow much kaov word reach onli far person '
-             'understand ugh glen lat cs lb cle lage ernest rutherford mevlana '
-             '1871-1937 nelson nz cambridg warm ed balkh konya sato le scholar '
-             'ace simplic mark os true knowledge. focus pocus distract cenit '
-             'innoc know world convers sto person intellig vision knowledg '
-             "limit speaker limit listen mevlana 's wisdom 1207-1273 balkh "
-             'konya'},
- 'timecode_end': {0: nan},
- 'timecode_start': {0: nan},
- 'tokens': {0: nan},
- 'total_frames': {0: 1},
- 'url': {0: nan}}
+Word / document
+---------------
+chunks: 1
+chars/chunk: avg=1039.0, min=1039, max=1039
+sample: 'ire uursacesced caraga io 10 bi6dokew erna monet 1b aoe maa ett rco rsp eo ere memmnminsanes erklaren kannst hast du creerona eats brome ccrlhy petesercne verstanden if you cannot explain sas onan co oiag understand it well enough ge vida n'
 
 ```
 
-## 2. Word chunker — chunk\_by=”sentence”[#](#word-chunker-chunk-by-sentence "Link to this heading")
+## 2. Word chunker — sentence-sized lexical chunks[#](#word-chunker-sentence-sized-lexical-chunks "Link to this heading")
 
-One chunk per sentence, each tokenised separately.
-Demonstrates SNOWBALL stemming on English text.
+`chunk_by="sentence"` keeps lexical processing while dividing the document
+into smaller sentence-like units. The internal sentence split uses the
+portable REGEX path for this configuration.
 
 ```
-result_word_sent = _run(
+result_word_sent = _run_strategy(
+    "Word / sentence",
     WordChunker(
         WordChunkerConfig(
             chunk_by="sentence",
-            stemmer=StemmingBackend.SNOWBALL,
-            nltk_language="english",
             tokenizer=TokenizerBackend.SIMPLE,
-            lemmatizer=LemmatizationBackend.NLTK_WORDNET,
-            stopwords=StopwordSource.BUILTIN,
+            stemmer=StemmingBackend.NONE,
+            lemmatizer=LemmatizationBackend.NONE,
+            stopwords=StopwordSource.NONE,
             lowercase=True,
             remove_punctuation=False,
             min_token_length=2,
             ngram_range=(1, 1),
         )
     ),
-    label="Word chunker — chunk_by='sentence' (SNOWBALL stemming)",
+    use_case="lexical features per sentence-like unit",
 )
 
 ```
 ```
-============================================================
-Word chunker — chunk_by='sentence' (SNOWBALL stemming)
-============================================================
-{'act': {0: nan, 1: nan, 2: nan, 3: nan},
- 'bbox': {0: nan, 1: nan, 2: nan, 3: nan},
- 'char_end': {0: 274, 1: 522, 2: 22, 3: 35},
- 'char_start': {0: 0, 1: 0, 2: 0, 3: 0},
- 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 4},
- 'chunking_strategy': {0: 'custom', 1: 'custom', 2: 'custom', 3: 'custom'},
- 'chunking_unit': {0: 'word', 1: 'word', 2: 'word', 3: 'word'},
- 'codepoint_count': {0: 274, 1: 522, 2: 22, 3: 35},
- 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan},
- 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372},
- 'content_hash': {0: '33f68ead927ced8f1830ab83e041f48f',
-                  1: 'b425c02b6305598e94c04a129e24f714',
-                  2: '357043daf50f1a2c8969664f442c153e',
-                  3: '0e3d11aeb9c648a124ea5a868a59f79e'},
- 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan},
- 'doc_id': {0: '176ef0a09cedddcb',
-            1: '90b6c784fa40e214',
-            2: '452d5c3f3a44673a',
-            3: '59b63c0a75171ef4'},
- 'doi': {0: nan, 1: nan, 2: nan, 3: nan},
- 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan},
- 'grapheme_count': {0: 274, 1: 522, 2: 22, 3: 35},
- 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
- 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
- 'input_path': {0: 'AI_Generated_Image_1ix.png',
-                1: 'AI_Generated_Image_1ix.png',
-                2: 'AI_Generated_Image_1ix.png',
-                3: 'AI_Generated_Image_1ix.png'},
- 'is_mixed_script': {0: False, 1: False, 2: False, 3: False},
- 'isbn': {0: nan, 1: nan, 2: nan, 3: nan},
- 'keywords': {0: nan, 1: nan, 2: nan, 3: nan},
- 'language': {0: nan, 1: nan, 2: nan, 3: nan},
- 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan},
- 'line_number': {0: nan, 1: nan, 2: nan, 3: nan},
- 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
- 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan},
- 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan},
- 'ocr_engine': {0: 'tesseract', 1: 'tesseract', 2: 'tesseract', 3: 'tesseract'},
- 'page_number': {0: 0, 1: 0, 2: 0, 3: 0},
- 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan},
- 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan},
- 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan},
- 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan},
- 'raw_text': {0: 'ire uursacesced Caraga io\n'
-                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-                 'RCO RSP eo ere\n'
-                 '\n'
-                 'Memmnminsane(s)\n'
-                 'erklaren kannst, hast du\n'
-                 'Creerona eats\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 '      \n'
-                 '     \n'
-                 '   \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 ' \n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Brome ccrlhy | |\n'
-                 ' Petesercne | verstanden.\n'
-                 '>\n'
-                 'If you cannot explain\n'
-                 '» Sas ONAN Co oiag\n'
-                 'understand it well enough.\n'
-                 '\n'
-                 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P.',
-              1: 'Feynman j Albert Einstein\n'
-                 '\n'
-                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender. aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'other person can understand,\n'
-                 '\n'
-                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 '       \n'
-                 ' \n'
-                 '\n'
-                 'Ernest Rutherford F Mevlana\n'
-                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-                 'Konya\n'
-                 '\n'
-                 '           \n'
-                 ' \n'
-                 '\n'
-                 'Sato r le Scholar aCe Is\n'
-                 '\n'
-                 'Simplicity is the mark\n'
-                 '7 Os true knowledge.\n'
-                 '\n'
-                 '“ (Focused)  (Pocused) | (Distracted)\n'
-                 '\n'
-                 'cenit)\n'
-                 '(Innocent)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 'You may know all the worlds, but the conversation sto,\n'
-                 'j at the other person’s intelligence and vision.',
-              2: 'Knowledge is\nnot limited by the speaker.',
-              3: "Mevlana's Wisdom\n1207-1273 | Balkh + Konya"},
- 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan},
- 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin'},
- 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr'},
- 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan},
- 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan},
- 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
- 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan},
- 'source_author': {0: nan, 1: nan, 2: nan, 3: nan},
- 'source_date': {0: nan, 1: nan, 2: nan, 3: nan},
- 'source_title': {0: nan, 1: nan, 2: nan, 3: nan},
- 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image'},
- 'stems': {0: nan, 1: nan, 2: nan, 3: nan},
- 'text': {0: 'ire uursacesc caraga io 10 bi6dokew erna monet 1b aoe maa ett '
-             'rco rsp eo ere memmnminsan erklaren kannst hast du creerona eat '
-             'brome ccrlhi petesercn verstanden cannot explain sas onan co '
-             'oiag understand well enough ge vida nd tron sa ea ae nia '
-             'apiotoréanc aaseavsp0¢ richard',
-          1: 'feynman albert einstein 384322 bc 356323 bc mieza macedonia '
-             '19181988 new york usa princeton pasadena 991955 ulm princeton '
-             'onsen venient cc ae crore mokoeoeri ae bartend aa ve es '
-             'clenrecemnnc ahupiingao ka taea pombelcuic ssri lic pye '
-             'matterhow much kaov word reach onli far person understand ugh '
-             'glen lat cs lb cle lage ernest rutherford mevlana 18711937 '
-             'nelson nz cambridg warm ed balkh konya sato le scholar ace '
-             'simplic mark os true knowledg focus pocus distract cenit innoc '
-             'know world convers sto person intellig vision',
-          2: 'knowledg limit speaker',
-          3: 'mevlana wisdom 12071273 balkh konya'},
- 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan},
- 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan},
- 'tokens': {0: nan, 1: nan, 2: nan, 3: nan},
- 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1},
- 'url': {0: nan, 1: nan, 2: nan, 3: nan}}
+Word / sentence
+---------------
+chunks: 5
+chars/chunk: avg=207.0, min=29, max=639
+sample: 'ire uursacesced caraga io 10 bi6dokew erna monet 1b aoe maa ett rco rsp eo ere memmnminsanes erklaren kannst hast du creerona eats brome ccrlhy petesercne verstanden if you cannot explain sas onan co oiag understand it well enough ge vida n'
 
 ```
 
-## 3. Sentence chunker (NLTK backend)[#](#sentence-chunker-nltk-backend "Link to this heading")
+## 3. Sentence chunker — REGEX backend[#](#sentence-chunker-regex-backend "Link to this heading")
 
-Splits OCR text into individual sentences; preserves raw text with offsets.
+This is the portable default sentence backend. It preserves natural textual
+boundaries without requiring NLTK data or a spaCy model.
 
 ```
-result_sentence = _run(
+result_sentence_regex = _run_strategy(
+    "Sentence / REGEX",
     SentenceChunker(
         SentenceChunkerConfig(
-            backend=SentenceBackend.NLTK,
-            nltk_language="english",
+            backend=SentenceBackend.REGEX,
             strip_whitespace=True,
             include_offsets=True,
         )
     ),
-    label="Sentence chunker (NLTK backend)",
+    use_case="natural sentence boundaries with minimal dependencies",
 )
 
 ```
 ```
-============================================================
-Sentence chunker (NLTK backend)
-============================================================
-{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'char_end': {0: 229, 1: 299, 2: 607, 3: 1014, 4: 1179},
- 'char_start': {0: 6, 1: 230, 2: 301, 3: 608, 4: 1015},
- 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
- 'chunking_strategy': {0: 'sentence',
-                       1: 'sentence',
-                       2: 'sentence',
-                       3: 'sentence',
-                       4: 'sentence'},
- 'chunking_unit': {0: 'sentence',
-                   1: 'sentence',
-                   2: 'sentence',
-                   3: 'sentence',
-                   4: 'sentence'},
- 'codepoint_count': {0: 223, 1: 69, 2: 306, 3: 406, 4: 164},
- 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
- 'content_hash': {0: '72d9a66ad2010fe6f95c336e9b967aef',
-                  1: '2ae9055ee90f61d3ed9a6ee7a8425acc',
-                  2: '929db36bee285ec5d8f380cacba9e157',
-                  3: '43cecb16baea3f703dd21352d19e51b8',
-                  4: '5083405d4ea1c457649b9e531f9020dc'},
- 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: '987eeb12dd692aaf',
-            1: 'ab83339b31c1ceec',
-            2: '40c598fbca41e847',
-            3: '18c4bc0e2af14c1c',
-            4: '96a4372683debea8'},
- 'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'grapheme_count': {0: 223, 1: 69, 2: 306, 3: 406, 4: 164},
- 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
- 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
- 'input_path': {0: 'AI_Generated_Image_1ix.png',
-                1: 'AI_Generated_Image_1ix.png',
-                2: 'AI_Generated_Image_1ix.png',
-                3: 'AI_Generated_Image_1ix.png',
-                4: 'AI_Generated_Image_1ix.png'},
- 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
- 'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'ocr_engine': {0: 'tesseract',
-                1: 'tesseract',
-                2: 'tesseract',
-                3: 'tesseract',
-                4: 'tesseract'},
- 'page_number': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
- 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_text': {0: 'ire uursacesced Caraga io\n'
-                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-                 'RCO RSP eo ere\n'
-                 '\n'
-                 'Memmnminsane(s)\n'
-                 'erklaren kannst, hast du\n'
-                 'Creerona eats\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 '      \n'
-                 '     \n'
-                 '   \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 ' \n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Brome ccrlhy | |\n'
-                 ' Petesercne | verstanden.',
-              1: '>\n'
-                 'If you cannot explain\n'
-                 '» Sas ONAN Co oiag\n'
-                 'understand it well enough.',
-              2: 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-                 'Einstein\n'
-                 '\n'
-                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender.',
-              3: 'aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'other person can understand,\n'
-                 '\n'
-                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 '       \n'
-                 ' \n'
-                 '\n'
-                 'Ernest Rutherford F Mevlana\n'
-                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-                 'Konya\n'
-                 '\n'
-                 '           \n'
-                 ' \n'
-                 '\n'
-                 'Sato r le Scholar aCe Is\n'
-                 '\n'
-                 'Simplicity is the mark\n'
-                 '7 Os true knowledge.\n'
-                 '\n'
-                 '“',
-              4: '(Focused)  (Pocused) | (Distracted)\n'
-                 '\n'
-                 'cenit)\n'
-                 '(Innocent)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 'You may know all the worlds, but the conversation sto,\n'
-                 'j at the other person’s intelligence and vision.'},
- 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
- 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
- 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
- 'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'text': {0: 'ire uursacesced Caraga io\n'
-             '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-             'RCO RSP eo ere\n'
-             '\n'
-             'Memmnminsane(s)\n'
-             'erklaren kannst, hast du\n'
-             'Creerona eats\n'
-             '\n'
-             ' \n'
-             ' \n'
-             '      \n'
-             '     \n'
-             '   \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             '  \n'
-             ' \n'
-             '\n'
-             ' \n'
-             '\n'
-             'Brome ccrlhy | |\n'
-             ' Petesercne | verstanden.',
-          1: '>\n'
-             'If you cannot explain\n'
-             '» Sas ONAN Co oiag\n'
-             'understand it well enough.',
-          2: 'ge VIDA ND TRON\n'
-             '\n'
-             'Sa eas\n'
-             'aE Nia)\n'
-             '\n'
-             '   \n'
-             '\n'
-             '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-             'Einstein\n'
-             '\n'
-             '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
-             'USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-             '\n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             '  \n'
-             '  \n'
-             ' \n'
-             ' \n'
-             '   \n'
-             '\n'
-             'ONSEN\n'
-             'venient Cc ae\n'
-             '| Crore mokoeoeri ae} A\n'
-             '\n'
-             'to a bartender.',
-          3: 'aa ve, r\n'
-             'es Clenrecemnnc\n'
-             'ahupiingao ka taea\n'
-             'POMBELCUICIC IN\n'
-             'SSRI LIC\n'
-             '\n'
-             ' \n'
-             '\n'
-             'Pye matterhow much you kaov\n'
-             'your words reach only as far as the\n'
-             'other person can understand,\n'
-             '\n'
-             ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-             '\n'
-             ' \n'
-             '\n'
-             '       \n'
-             ' \n'
-             '\n'
-             'Ernest Rutherford F Mevlana\n'
-             '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-             'Konya\n'
-             '\n'
-             '           \n'
-             ' \n'
-             '\n'
-             'Sato r le Scholar aCe Is\n'
-             '\n'
-             'Simplicity is the mark\n'
-             '7 Os true knowledge.\n'
-             '\n'
-             '“',
-          4: '(Focused)  (Pocused) | (Distracted)\n'
-             '\n'
-             'cenit)\n'
-             '(Innocent)\n'
-             '\n'
-             '   \n'
-             '\n'
-             'You may know all the worlds, but the conversation sto,\n'
-             'j at the other person’s intelligence and vision.'},
- 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'tokens': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1, 4: 1},
- 'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
+Sentence / REGEX
+----------------
+chunks: 5
+chars/chunk: avg=256.8, min=30, max=801
+sample: 'ire uursacesced Caraga io\n10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\nRCO RSP eo ere\n\nMemmnminsane(s)\nerklaren kannst, hast du\nCreerona eats\n\n \n \n      \n     \n   \n \n \n \n \n \n  \n \n\n \n\nBrome ccrlhy | |\n Petesercne | verstanden.\n>\nIf you cannot '
 
 ```
 
-## 4. Fixed Window chunker — unit=CHARS[#](#fixed-window-chunker-unit-chars "Link to this heading")
+## 4. Fixed character windows[#](#fixed-character-windows "Link to this heading")
 
-Splits by character count regardless of word/sentence boundaries.
+Character windows provide deterministic size bounds and explicit overlap.
+They do not attempt to preserve linguistic boundaries.
 
 ```
-result_fw_chars = _run(
+result_fw_chars = _run_strategy(
+    "Fixed / characters",
     FixedWindowChunker(
         FixedWindowChunkerConfig(
             unit=WindowUnit.CHARS,
@@ -854,460 +446,28 @@ result_fw_chars = _run(
             min_length=10,
         )
     ),
-    label="Fixed Window chunker — unit=CHARS (window=512, step=256)",
+    use_case="deterministic character-size limits with overlap",
 )
 
 ```
 ```
-============================================================
-Fixed Window chunker — unit=CHARS (window=512, step=256)
-============================================================
-{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'char_end': {0: 506, 1: 768, 2: 1023, 3: 1279, 4: 1293},
- 'char_start': {0: 0, 1: 256, 2: 512, 3: 768, 4: 1024},
- 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
- 'chunking_strategy': {0: 'fixed_window',
-                       1: 'fixed_window',
-                       2: 'fixed_window',
-                       3: 'fixed_window',
-                       4: 'fixed_window'},
- 'chunking_unit': {0: 'fixed_window',
-                   1: 'fixed_window',
-                   2: 'fixed_window',
-                   3: 'fixed_window',
-                   4: 'fixed_window'},
- 'codepoint_count': {0: 506, 1: 512, 2: 511, 3: 511, 4: 269},
- 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
- 'content_hash': {0: '671592852b8acb95a8d8fc55b86a1d65',
-                  1: '04b7e8f4f1e97f02ddf5494b2733a001',
-                  2: 'b2e1a3305d1a2c6cb62f0a85a9139004',
-                  3: 'ed5fb80c57aa1440f5cdbff9c548ddae',
-                  4: '94cbe0d3b596da3d27f721698e46d4d7'},
- 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: 'b5ebc343fe66efa7',
-            1: '9dddf71340821d6d',
-            2: '303eafb8c5903778',
-            3: '0c8c41d734af84e4',
-            4: 'e8a5a46ca14a4e63'},
- 'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'grapheme_count': {0: 506, 1: 512, 2: 511, 3: 511, 4: 269},
- 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
- 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
- 'input_path': {0: 'AI_Generated_Image_1ix.png',
-                1: 'AI_Generated_Image_1ix.png',
-                2: 'AI_Generated_Image_1ix.png',
-                3: 'AI_Generated_Image_1ix.png',
-                4: 'AI_Generated_Image_1ix.png'},
- 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
- 'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'ocr_engine': {0: 'tesseract',
-                1: 'tesseract',
-                2: 'tesseract',
-                3: 'tesseract',
-                4: 'tesseract'},
- 'page_number': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
- 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_text': {0: '  \n'
-                 ' \n'
-                 '\n'
-                 'ire uursacesced Caraga io\n'
-                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-                 'RCO RSP eo ere\n'
-                 '\n'
-                 'Memmnminsane(s)\n'
-                 'erklaren kannst, hast du\n'
-                 'Creerona eats\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 '      \n'
-                 '     \n'
-                 '   \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 ' \n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Brome ccrlhy | |\n'
-                 ' Petesercne | verstanden.\n'
-                 '>\n'
-                 'If you cannot explain\n'
-                 '» Sas ONAN Co oiag\n'
-                 'understand it well enough.\n'
-                 '\n'
-                 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-                 'Einstein\n'
-                 '\n'
-                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 |',
-              1: 'Sas ONAN Co oiag\n'
-                 'understand it well enough.\n'
-                 '\n'
-                 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-                 'Einstein\n'
-                 '\n'
-                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender. aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'other person can unders',
-              2: ' Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender. aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'other person can understand,\n'
-                 '\n'
-                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 '       \n'
-                 ' \n'
-                 '\n'
-                 'Ernest Rutherford F Mevlana\n'
-                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-                 'Konya\n'
-                 '\n'
-                 '           \n'
-                 ' \n'
-                 '\n'
-                 'Sato r le Scholar aCe Is\n'
-                 '\n'
-                 'Simplicity is the mark\n'
-                 '7 Os true knowledge.\n'
-                 '\n'
-                 '“ (Focused',
-              3: 'tand,\n'
-                 '\n'
-                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 '       \n'
-                 ' \n'
-                 '\n'
-                 'Ernest Rutherford F Mevlana\n'
-                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-                 'Konya\n'
-                 '\n'
-                 '           \n'
-                 ' \n'
-                 '\n'
-                 'Sato r le Scholar aCe Is\n'
-                 '\n'
-                 'Simplicity is the mark\n'
-                 '7 Os true knowledge.\n'
-                 '\n'
-                 '“ (Focused)  (Pocused) | (Distracted)\n'
-                 '\n'
-                 'cenit)\n'
-                 '(Innocent)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 'You may know all the worlds, but the conversation sto,\n'
-                 'j at the other person’s intelligence and vision. Knowledge '
-                 'is\n'
-                 'not limited by the speaker. It is limited by the listener.\n'
-                 '\n'
-                 "Mevlana's Wisdom\n"
-                 '1207-1273',
-              4: '  (Pocused) | (Distracted)\n'
-                 '\n'
-                 'cenit)\n'
-                 '(Innocent)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 'You may know all the worlds, but the conversation sto,\n'
-                 'j at the other person’s intelligence and vision. Knowledge '
-                 'is\n'
-                 'not limited by the speaker. It is limited by the listener.\n'
-                 '\n'
-                 "Mevlana's Wisdom\n"
-                 '1207-1273 | Balkh + Kon'},
- 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
- 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
- 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
- 'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'text': {0: 'ire uursacesced Caraga io\n'
-             '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-             'RCO RSP eo ere\n'
-             '\n'
-             'Memmnminsane(s)\n'
-             'erklaren kannst, hast du\n'
-             'Creerona eats\n'
-             '\n'
-             ' \n'
-             ' \n'
-             '      \n'
-             '     \n'
-             '   \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             '  \n'
-             ' \n'
-             '\n'
-             ' \n'
-             '\n'
-             'Brome ccrlhy | |\n'
-             ' Petesercne | verstanden.\n'
-             '>\n'
-             'If you cannot explain\n'
-             '» Sas ONAN Co oiag\n'
-             'understand it well enough.\n'
-             '\n'
-             'ge VIDA ND TRON\n'
-             '\n'
-             'Sa eas\n'
-             'aE Nia)\n'
-             '\n'
-             '   \n'
-             '\n'
-             '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-             'Einstein\n'
-             '\n'
-             '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
-             'USA — Princeton — Pasadena 99-1955 | Ulm —',
-          1: 'Sas ONAN Co oiag\n'
-             'understand it well enough.\n'
-             '\n'
-             'ge VIDA ND TRON\n'
-             '\n'
-             'Sa eas\n'
-             'aE Nia)\n'
-             '\n'
-             '   \n'
-             '\n'
-             '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-             'Einstein\n'
-             '\n'
-             '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
-             'USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-             '\n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             '  \n'
-             '  \n'
-             ' \n'
-             ' \n'
-             '   \n'
-             '\n'
-             'ONSEN\n'
-             'venient Cc ae\n'
-             '| Crore mokoeoeri ae} A\n'
-             '\n'
-             'to a bartender. aa ve, r\n'
-             'es Clenrecemnnc\n'
-             'ahupiingao ka taea\n'
-             'POMBELCUICIC IN\n'
-             'SSRI LIC\n'
-             '\n'
-             ' \n'
-             '\n'
-             'Pye matterhow much you kaov\n'
-             'your words reach only as far as the\n'
-             'other person can unders',
-          2: 'Princeton\n'
-             '\n'
-             ' \n'
-             ' \n'
-             ' \n'
-             ' \n'
-             '  \n'
-             '  \n'
-             ' \n'
-             ' \n'
-             '   \n'
-             '\n'
-             'ONSEN\n'
-             'venient Cc ae\n'
-             '| Crore mokoeoeri ae} A\n'
-             '\n'
-             'to a bartender. aa ve, r\n'
-             'es Clenrecemnnc\n'
-             'ahupiingao ka taea\n'
-             'POMBELCUICIC IN\n'
-             'SSRI LIC\n'
-             '\n'
-             ' \n'
-             '\n'
-             'Pye matterhow much you kaov\n'
-             'your words reach only as far as the\n'
-             'other person can understand,\n'
-             '\n'
-             ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-             '\n'
-             ' \n'
-             '\n'
-             '       \n'
-             ' \n'
-             '\n'
-             'Ernest Rutherford F Mevlana\n'
-             '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-             'Konya\n'
-             '\n'
-             '           \n'
-             ' \n'
-             '\n'
-             'Sato r le Scholar aCe Is\n'
-             '\n'
-             'Simplicity is the mark\n'
-             '7 Os true knowledge.\n'
-             '\n'
-             '“ (Focused)',
-          3: 'tand,\n'
-             '\n'
-             ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-             '\n'
-             ' \n'
-             '\n'
-             '       \n'
-             ' \n'
-             '\n'
-             'Ernest Rutherford F Mevlana\n'
-             '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-             'Konya\n'
-             '\n'
-             '           \n'
-             ' \n'
-             '\n'
-             'Sato r le Scholar aCe Is\n'
-             '\n'
-             'Simplicity is the mark\n'
-             '7 Os true knowledge.\n'
-             '\n'
-             '“ (Focused)  (Pocused) | (Distracted)\n'
-             '\n'
-             'cenit)\n'
-             '(Innocent)\n'
-             '\n'
-             '   \n'
-             '\n'
-             'You may know all the worlds, but the conversation sto,\n'
-             'j at the other person’s intelligence and vision. Knowledge is\n'
-             'not limited by the speaker. It is limited by the listener.\n'
-             '\n'
-             "Mevlana's Wisdom\n"
-             '1207-1273',
-          4: '(Pocused) | (Distracted)\n'
-             '\n'
-             'cenit)\n'
-             '(Innocent)\n'
-             '\n'
-             '   \n'
-             '\n'
-             'You may know all the worlds, but the conversation sto,\n'
-             'j at the other person’s intelligence and vision. Knowledge is\n'
-             'not limited by the speaker. It is limited by the listener.\n'
-             '\n'
-             "Mevlana's Wisdom\n"
-             '1207-1273 | Balkh + Konya'},
- 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'tokens': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1, 4: 1},
- 'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
+Fixed / characters
+------------------
+chunks: 5
+chars/chunk: avg=461.8, min=269, max=512
+sample: 'ire uursacesced Caraga io\n10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\nRCO RSP eo ere\n\nMemmnminsane(s)\nerklaren kannst, hast du\nCreerona eats\n\n \n \n      \n     \n   \n \n \n \n \n \n  \n \n\n \n\nBrome ccrlhy | |\n Petesercne | verstanden.\n>\nIf you cannot '
 
 ```
 
-## 5. Fixed Window chunker — unit=TOKENS[#](#fixed-window-chunker-unit-tokens "Link to this heading")
+## 5. Fixed token windows[#](#fixed-token-windows "Link to this heading")
 
-Splits by whitespace-delimited token count.
-CJK text is auto-handled via character-level fallback.
+Token windows are useful when downstream systems are constrained by
+token-oriented budgets. The Corpus implementation also has writing-system
+fallbacks for text where whitespace tokenization is not sufficient.
 
 ```
-result_fw_tokens = _run(
+result_fw_tokens = _run_strategy(
+    "Fixed / tokens",
     FixedWindowChunker(
         FixedWindowChunkerConfig(
             unit=WindowUnit.TOKENS,
@@ -1316,357 +476,273 @@ result_fw_tokens = _run(
             min_length=10,
         )
     ),
-    label="Fixed Window chunker — unit=TOKENS (window=64, step=32)",
+    use_case="token-budget-like windows with deterministic overlap",
 )
 
 ```
 ```
-============================================================
-Fixed Window chunker — unit=TOKENS (window=64, step=32)
-============================================================
-{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'char_end': {0: 352, 1: 560, 2: 746, 3: 752, 4: 1098},
- 'char_start': {0: 6, 1: 230, 2: 405, 3: 435, 4: 777},
- 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
- 'chunking_strategy': {0: 'fixed_window',
-                       1: 'fixed_window',
-                       2: 'fixed_window',
-                       3: 'fixed_window',
-                       4: 'fixed_window'},
- 'chunking_unit': {0: 'fixed_window',
-                   1: 'fixed_window',
-                   2: 'fixed_window',
-                   3: 'fixed_window',
-                   4: 'fixed_window'},
- 'codepoint_count': {0: 346, 1: 330, 2: 341, 3: 317, 4: 321},
- 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
- 'content_hash': {0: '6ec041942787956ac51b4fe44674856b',
-                  1: 'a4e5f3bc8d179a2e6a4e422d58e632e1',
-                  2: '93c35634eb6d7e679f07d04429d07d85',
-                  3: '7f2941cc0c1702425a21d38c343d735c',
-                  4: '594f83ff7ed721cf3797cc954d9c6c70'},
- 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: 'cca0cb32f1223b2b',
-            1: '2d904ab32b8246ce',
-            2: '640a17a989b49c1f',
-            3: 'cc1a25106ded8c8f',
-            4: '76a06023bb0b5fca'},
- 'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'grapheme_count': {0: 346, 1: 330, 2: 341, 3: 317, 4: 321},
- 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
- 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
- 'input_path': {0: 'AI_Generated_Image_1ix.png',
-                1: 'AI_Generated_Image_1ix.png',
-                2: 'AI_Generated_Image_1ix.png',
-                3: 'AI_Generated_Image_1ix.png',
-                4: 'AI_Generated_Image_1ix.png'},
- 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
- 'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'ocr_engine': {0: 'tesseract',
-                1: 'tesseract',
-                2: 'tesseract',
-                3: 'tesseract',
-                4: 'tesseract'},
- 'page_number': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
- 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_text': {0: 'ire uursacesced Caraga io\n'
-                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
-                 'RCO RSP eo ere\n'
-                 '\n'
-                 'Memmnminsane(s)\n'
-                 'erklaren kannst, hast du\n'
-                 'Creerona eats\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 '      \n'
-                 '     \n'
-                 '   \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 ' \n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Brome ccrlhy | |\n'
-                 ' Petesercne | verstanden.\n'
-                 '>\n'
-                 'If you cannot explain\n'
-                 '» Sas ONAN Co oiag\n'
-                 'understand it well enough.\n'
-                 '\n'
-                 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc ',
-              1: '>\n'
-                 'If you cannot explain\n'
-                 '» Sas ONAN Co oiag\n'
-                 'understand it well enough.\n'
-                 '\n'
-                 'ge VIDA ND TRON\n'
-                 '\n'
-                 'Sa eas\n'
-                 'aE Nia)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
-                 'Einstein\n'
-                 '\n'
-                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient',
-              2: '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
-                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender. aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'o',
-              3: 'a, Macedonia 1918-1988 | New York, USA — Princeton — '
-                 'Pasadena 99-1955 | Ulm — Princeton\n'
-                 '\n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 ' \n'
-                 '  \n'
-                 '  \n'
-                 ' \n'
-                 ' \n'
-                 '   \n'
-                 '\n'
-                 'ONSEN\n'
-                 'venient Cc ae\n'
-                 '| Crore mokoeoeri ae} A\n'
-                 '\n'
-                 'to a bartender. aa ve, r\n'
-                 'es Clenrecemnnc\n'
-                 'ahupiingao ka taea\n'
-                 'POMBELCUICIC IN\n'
-                 'SSRI LIC\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 'Pye matterhow much you kaov\n'
-                 'your words reach only as far as the\n'
-                 'other p',
-              4: 'ugh $9) glen a lat 9 CS lb cle Lage I y\n'
-                 '\n'
-                 ' \n'
-                 '\n'
-                 '       \n'
-                 ' \n'
-                 '\n'
-                 'Ernest Rutherford F Mevlana\n'
-                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-                 'Konya\n'
-                 '\n'
-                 '           \n'
-                 ' \n'
-                 '\n'
-                 'Sato r le Scholar aCe Is\n'
-                 '\n'
-                 'Simplicity is the mark\n'
-                 '7 Os true knowledge.\n'
-                 '\n'
-                 '“ (Focused)  (Pocused) | (Distracted)\n'
-                 '\n'
-                 'cenit)\n'
-                 '(Innocent)\n'
-                 '\n'
-                 '   \n'
-                 '\n'
-                 'You may know all the w'},
- 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
- 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
- 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
- 'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'text': {0: 'ire uursacesced Caraga io 10 Bi6doKew 8 Erna monet) 1b / aoe Maa '
-             'ETT RCO RSP eo ere Memmnminsane(s) erklaren kannst, hast du '
-             'Creerona eats Brome ccrlhy | | Petesercne | verstanden. > If you '
-             'cannot explain » Sas ONAN Co oiag understand it well enough. ge '
-             'VIDA ND TRON Sa eas aE Nia) ‘ApiotoréAnc + AASEavSp0¢ , Richard '
-             'P. Feynman j Albert Einstein',
-          1: '> If you cannot explain » Sas ONAN Co oiag understand it well '
-             'enough. ge VIDA ND TRON Sa eas aE Nia) ‘ApiotoréAnc + AASEavSp0¢ '
-             ', Richard P. Feynman j Albert Einstein 384-322 BC - 356-323 BC | '
-             'Mieza, Macedonia 1918-1988 | New York, USA — Princeton — '
-             'Pasadena 99-1955 | Ulm — Princeton ONSEN venient Cc ae | Crore '
-             'mokoeoeri ae} A to',
-          2: '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
-             'USA — Princeton — Pasadena 99-1955 | Ulm — Princeton ONSEN '
-             'venient Cc ae | Crore mokoeoeri ae} A to a bartender. aa ve, r '
-             'es Clenrecemnnc ahupiingao ka taea POMBELCUICIC IN SSRI LIC Pye '
-             'matterhow much you kaov your words reach only as far as the '
-             'other person can understand, :',
-          3: 'a bartender. aa ve, r es Clenrecemnnc ahupiingao ka taea '
-             'POMBELCUICIC IN SSRI LIC Pye matterhow much you kaov your words '
-             'reach only as far as the other person can understand, : ugh $9) '
-             'glen a lat 9 CS lb cle Lage I y Ernest Rutherford F Mevlana '
-             '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
-             'Konya Sato r',
-          4: 'ugh $9) glen a lat 9 CS lb cle Lage I y Ernest Rutherford F '
-             'Mevlana 1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | '
-             'Balkh > Konya Sato r le Scholar aCe Is Simplicity is the mark 7 '
-             'Os true knowledge. “ (Focused) (Pocused) | (Distracted) cenit) '
-             '(Innocent) You may know all the worlds, but the conversation '
-             'sto, j at the'},
- 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'tokens': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1, 4: 1},
- 'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
+Fixed / tokens
+--------------
+chunks: 6
+chars/chunk: avg=331.7, min=317, max=346
+sample: 'ire uursacesced Caraga io 10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT RCO RSP eo ere Memmnminsane(s) erklaren kannst, hast du Creerona eats Brome ccrlhy | | Petesercne | verstanden. > If you cannot explain » Sas ONAN Co oiag understand it we'
 
 ```
 
-## 6. Semantic Chunker with MultilangConfig[#](#semantic-chunker-with-multilangconfig "Link to this heading")
+## 6. Semantic chunking — morphological backend[#](#semantic-chunking-morphological-backend "Link to this heading")
 
-Every chunk carries chunk.metadata[“multilang”] with:
-:   script, script\_direction, is\_rtl, grapheme\_count, codepoint\_count,
-    token\_count, stopword\_count, unique\_token\_count, avg\_token\_length,
-    char\_count, chunking\_duration\_ms, preprocessing\_duration\_ms,
-    created\_at\_utc, layer2\_strategy,
-    semantemes[{surface, morphemes, lemma, stem, pos\_tag, …}],
-    preprocessing\_trace[{steps, raw\_text, pipeline\_fingerprint}]
+The MORPHOLOGICAL backend is the portable semantic path: it does not download
+a sentence-transformer model. Multilingual metadata is retained so the
+result can be inspected for writing-system and preprocessing information.
 
 ```
-from scikitplot.corpus._chunkers import (
-    MultilangConfig,
-    SemanticChunker,
-    SemanticChunkerConfig,
-    SemanticBackend,
-)
-
-# Build MultilangConfig with all enhanced features enabled.
 ml = MultilangConfig(
-    include_raw_text=True,              # preserve pre-NFC raw text per chunk
-    include_preprocessing_trace=True,   # full audit trail: BOM strip, control strip, NFC
-    include_semantemes=True,            # SemantemeInfo per token
-    include_grapheme_counts=True,       # UAX #29 grapheme cluster counts
-    include_script_spans=True,          # per-script span list for mixed-script chunks
+    include_raw_text=True,
+    include_preprocessing_trace=True,
+    include_semantemes=True,
+    include_grapheme_counts=True,
+    include_script_spans=True,
 )
 
-# Bug fix A: pass multilang_config=ml so the SemanticChunker uses the
-# configured feature flags, not its own default MultilangConfig.
-result_semantic = _run(                 # Bug fix B: renamed from result_fw_tokens
+result_semantic = _run_strategy(
+    "Semantic / morphological",
     SemanticChunker(
         SemanticChunkerConfig(
-            backend=SemanticBackend.HYBRID,
-            model_name="paraphrase-multilingual-mpnet-base-v2",
-            multilang_config=ml,        # <-- was missing: ml was built but discarded
+            backend=SemanticBackend.MORPHOLOGICAL,
+            multilang_config=ml,
         )
     ),
-    label="Semantic chunker (HYBRID backend, multilang enriched)",
+    use_case="content-aware multilingual boundaries without a model download",
 )
 
 ```
 ```
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6140.37it/s]
-
-============================================================
-Semantic chunker (HYBRID backend, multilang enriched)
-============================================================
-[WARNING] Pipeline produced 0 documents — CSV contains no data rows.
+Semantic / morphological
+------------------------
+chunks: 217
+chars/chunk: avg=4.4, min=1, max=15
+sample: 'ire'
 
 ```
 
-## Display the source image[#](#display-the-source-image "Link to this heading")
+## 7. Optional NLTK sentence segmentation[#](#optional-nltk-sentence-segmentation "Link to this heading")
 
-Renders inline in Jupyter; opens a matplotlib window otherwise.
-
-```
-print(f"\nSource image: {result_fw_tokens.input_path}")
-
-if _IN_JUPYTER:
-    # IPython display utilities — only import inside Jupyter to avoid
-    # ImportError in plain Python / CI environments.
-    from IPython.display import FileLink  # noqa: PLC0415
-
-    display(FileLink(str(result_fw_tokens.input_path)))  # noqa: F821
-
-plt.figure(figsize=(4, 4), dpi=150)
-img = mpimg.imread(result_fw_tokens.input_path)
-plt.imshow(img)
-plt.axis("off")
-plt.title("Source image (OCR input)", fontsize=12)
-plt.tight_layout()
-plt.show()
+This is intentionally a separate capability scenario. It runs only when
+NLTK and `punkt_tab` are already installed locally.
 
 ```
-![Source image (OCR input)](../../_images/sphx_glr_plot_corpus_knowledge_script_001.png)
+nltk_sentence_ready, nltk_sentence_reason = _probe_nltk(
+    "tokenizers/punkt_tab",
+)
+
+if not nltk_sentence_ready:
+    _record_skip(
+        "Sentence / NLTK",
+        "NLTK sentence segmentation when its local tokenizer data is available",
+        nltk_sentence_reason,
+    )
+    result_sentence_nltk = None
+else:
+    result_sentence_nltk = _run_strategy(
+        "Sentence / NLTK",
+        SentenceChunker(
+            SentenceChunkerConfig(
+                backend=SentenceBackend.NLTK,
+                nltk_language="english",
+                strip_whitespace=True,
+                include_offsets=True,
+            )
+        ),
+        use_case="NLTK sentence segmentation with pre-provisioned data",
+    )
+
+```
+```
+Sentence / NLTK
+---------------
+chunks: 8
+chars/chunk: avg=160.0, min=30, max=406
+sample: 'ire uursacesced Caraga io\n10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\nRCO RSP eo ere\n\nMemmnminsane(s)\nerklaren kannst, hast du\nCreerona eats\n\n \n \n      \n     \n   \n \n \n \n \n \n  \n \n\n \n\nBrome ccrlhy | |\n Petesercne | verstanden.'
+
+```
+
+## 8. Optional NLTK lexical analysis[#](#optional-nltk-lexical-analysis "Link to this heading")
+
+The original showcase also demonstrated NLTK tokenization, Porter stemming,
+and WordNet lemmatization. Those features are preserved here, but they are
+not allowed to turn a missing optional resource into a gallery failure.
+
+```
+nltk_word_ready, nltk_word_reason = _probe_nltk(
+    "tokenizers/punkt_tab",
+    "corpora/wordnet",
+    "corpora/omw-1.4",
+)
+
+if not nltk_word_ready:
+    _record_skip(
+        "Word / NLTK + WordNet",
+        "NLTK tokenization, Porter stemming, and WordNet lemmatization",
+        nltk_word_reason,
+    )
+    result_word_nltk = None
+else:
+    result_word_nltk = _run_strategy(
+        "Word / NLTK + WordNet",
+        WordChunker(
+            WordChunkerConfig(
+                chunk_by="document",
+                tokenizer=TokenizerBackend.NLTK,
+                stemmer=StemmingBackend.PORTER,
+                lemmatizer=LemmatizationBackend.NLTK_WORDNET,
+                stopwords=StopwordSource.BUILTIN,
+                nltk_language="english",
+                lowercase=True,
+                remove_punctuation=False,
+                min_token_length=2,
+                ngram_range=(1, 1),
+            )
+        ),
+        use_case="richer English lexical preprocessing with local NLTK data",
+    )
+
+```
+```
+Word / NLTK + WordNet
+---------------------
+chunks: 1
+chars/chunk: avg=875.0, min=875, max=875
+sample: 'ire uursacesc caraga io 10 bi6dokew erna monet 1b aoe maa ett rco rsp eo ere memmnminsan erklaren kannst hast du creerona eat brome ccrlhi petesercn verstanden explain sa onan co oiag understand well enough ge vida nd tron sa ea ae nia apio'
+
+```
+
+## Comparison summary[#](#comparison-summary "Link to this heading")
+
+The useful question is not “which chunker is best?” The strategies preserve
+different kinds of boundaries, so the correct choice depends on the
+downstream task.
+
+```
+print("\nChunking comparison")
+print("=" * 108)
+print(
+    f"{'strategy':26s} {'status':7s} {'chunks':>7s} "
+    f"{'avg':>8s} {'min':>7s} {'max':>7s}  use case"
+)
+print("-" * 108)
+
+for row in comparison_rows:
+    chunks = "-" if row["chunks"] is None else str(row["chunks"])
+    avg_chars = "-" if row["avg_chars"] is None else str(row["avg_chars"])
+    min_chars = "-" if row["min_chars"] is None else str(row["min_chars"])
+    max_chars = "-" if row["max_chars"] is None else str(row["max_chars"])
+
+    print(
+        f"{str(row['strategy']):26.26s} "
+        f"{str(row['status']):7s} "
+        f"{chunks:>7s} {avg_chars:>8s} {min_chars:>7s} {max_chars:>7s}  "
+        f"{row['use_case']}"
+    )
+
+print("\nDecision guide")
+print("--------------")
+print("Word/document       → one lexical representation for the whole document")
+print("Word/sentence       → lexical features at sentence-like granularity")
+print("Sentence            → preserve natural language boundaries")
+print("Fixed/characters    → predictable character limits")
+print("Fixed/tokens        → token-budget-like windows")
+print("Semantic            → content-aware multilingual segmentation")
+print("NLTK variants       → richer optional English NLP when resources are present")
+
+```
+```
+Chunking comparison
+============================================================================================================
+strategy                   status   chunks      avg     min     max  use case
+------------------------------------------------------------------------------------------------------------
+Word / document            OK            1     1039    1039    1039  whole-document lexical preprocessing
+Word / sentence            OK            5      207      29     639  lexical features per sentence-like unit
+Sentence / REGEX           OK            5    256.8      30     801  natural sentence boundaries with minimal dependencies
+Fixed / characters         OK            5    461.8     269     512  deterministic character-size limits with overlap
+Fixed / tokens             OK            6    331.7     317     346  token-budget-like windows with deterministic overlap
+Semantic / morphological   OK          217      4.4       1      15  content-aware multilingual boundaries without a model download
+Sentence / NLTK            OK            8      160      30     406  NLTK sentence segmentation with pre-provisioned data
+Word / NLTK + WordNet      OK            1      875     875     875  richer English lexical preprocessing with local NLTK data
+
+Decision guide
+--------------
+Word/document       → one lexical representation for the whole document
+Word/sentence       → lexical features at sentence-like granularity
+Sentence            → preserve natural language boundaries
+Fixed/characters    → predictable character limits
+Fixed/tokens        → token-budget-like windows
+Semantic            → content-aware multilingual segmentation
+NLTK variants       → richer optional English NLP when resources are present
+
+```
+
+## Inspect multilingual semantic metadata[#](#inspect-multilingual-semantic-metadata "Link to this heading")
+
+Semantic/multilingual output can carry much richer metadata than a simple
+fixed window. Show only a bounded set of keys so the gallery stays readable.
+
+```
+if result_semantic is not None and result_semantic.chunks:
+    semantic_meta = result_semantic.chunks[0].metadata
+    print("\nSemantic chunk metadata keys:")
+    print(sorted(semantic_meta.keys())[:20])
+
+```
+```
+Semantic chunk metadata keys:
+['chunk_index', 'chunking_strategy', 'doc_id', 'layer2_strategy', 'multilang']
+
+```
+
+## Display the OCR source image[#](#display-the-ocr-source-image "Link to this heading")
+
+The image remains useful even when OCR capability is absent: the gallery can
+show exactly which source would have been processed and why the comparison
+was skipped.
+
+```
+print(f"\nSource image: {_IMAGE_PATH}")
+
+if _IMAGE_PATH.exists():
+    plt.figure(figsize=(6, 6), dpi=120)
+    img = mpimg.imread(_IMAGE_PATH)
+    plt.imshow(img)
+    plt.axis("off")
+    plt.title("Source image used for OCR", fontsize=12)
+    plt.tight_layout()
+    plt.show()
+else:
+    print(f"[SKIP] Source image is unavailable: {_IMAGE_PATH}")
+
+```
+![Source image used for OCR](../../_images/sphx_glr_plot_corpus_knowledge_script_001.png)
 ```
 Source image: /home/circleci/repo/galleries/examples/corpus/data/echo_of_the_wise/AI_Generated_Image_1ix.png
 
 ```
 
-Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
+## Takeaway[#](#takeaway "Link to this heading")
 
-****Total running time of the script:**** (1 minutes 23.440 seconds)
+Chunking is a downstream design decision, not an OCR decision.
+
+A practical starting point is:
+
+* sentence boundaries when preserving readable units matters,
+* fixed windows when deterministic size limits matter,
+* semantic chunking when content-aware boundaries justify the extra work,
+* word chunking when lexical/token features are the primary output.
+
+Optional NLP backends should be selected intentionally and pre-provisioned in
+reproducible CI/documentation environments.
+
+Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
+
+****Total running time of the script:**** (0 minutes 4.216 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_knowledge_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_knowledge_script.ipynb)
 
@@ -1678,22 +754,22 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
-[corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
+[Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 
-corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
 
-[corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
+[Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
-[corpus WHO European Region YouTube with examples](plot_corpus_who_youtube_script.html)
+[Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 
-corpus WHO European Region YouTube with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
+Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
 
-[Index (cython) python-api benchmark with examples](../annoy/plot_annoy_cython_0benchmark.html)
+[Build and Search a Real Hamlet Corpus with FluentCorpus](plot_corpus_fluent_hamlet_retrieval_script_v1.html)
 
-Index (cython) python-api benchmark with examples
+Build and Search a Real Hamlet Corpus with FluentCorpus
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

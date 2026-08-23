@@ -1,6 +1,6 @@
 # mad\_std[#](#mad-std "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
 :   Calculate a robust standard deviation using the [median absolute deviation (MAD)](https://en.wikipedia.org/wiki/Median_absolute_deviation).
 
     The standard deviation estimator is given by:
@@ -43,7 +43,7 @@ scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=N
         * ****ignore\_nan**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]
+    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | **NDArray**
 
     > **See also**
     > `biweight_midvariance`, `biweight_midcovariance`, [`median_absolute_deviation`](scikitplot.cexternals._astropy.stats.median_absolute_deviation.html#scikitplot.cexternals._astropy.stats.median_absolute_deviation "scikitplot.cexternals._astropy.stats.median_absolute_deviation")

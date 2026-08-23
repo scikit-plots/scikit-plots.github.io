@@ -5,22 +5,22 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="corpus WHO European Region local .zip with examples" property="og:title"/>
+<meta content="Process a Mixed-Media ZIP Archive with Corpus" property="og:title"/>
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/corpus/plot_corpus_who_zip_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content='Examples related to the corpus submodule. ZIP archive with per-extension kwargs: Pass a nested"reader_kwargs" key to configure individual member types inside the archive independently. Gl...' property="og:description"/>
+<meta content="A ZIP archive can contain different source types. ZipReader applies the Corpus archive-safety boundary, extracts supported members into temporary storage, dispatches each member to its registered r..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content='Examples related to the corpus submodule. ZIP archive with per-extension kwargs: Pass a nested"reader_kwargs" key to configure individual member types inside the archive independently. Gl...' name="description"/>
+<meta content="A ZIP archive can contain different source types. ZipReader applies the Corpus archive-safety boundary, extracts supported members into temporary storage, dispatches each member to its registered r..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":false,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:03:54Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-23T18:56:32Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-<title>corpus WHO European Region local .zip with examples — scikit-plots 0.5.dev0 documentation</title>
+<title>Process a Mixed-Media ZIP Archive with Corpus — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -42,18 +42,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
-<link href="../../_static/ai-assistant.css?v=0a983dac" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=7286b3b3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=f676e775" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=fd6457a4" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=6c2c4627" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script defer="" src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -62,18 +62,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
-<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script defer="defer" src="../../_static/ai-assistant.js?v=e747c355"></script>
+<script defer="defer" src="../../_static/ai-assistant.js?v=c938e8b0"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script>let toggleHintShow = 'Click to show';</script>
 <script>let toggleHintHide = 'Click to hide';</script>
 <script>let toggleOpenOnPrint = 'true';</script>
 <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/corpus/plot_corpus_who_zip_script';</script>
@@ -85,14 +85,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
 <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-<link href="https://scikit-plots.github.io/auto_examples/corpus/plot_corpus_who_zip_script.html" rel="canonical"/>
+<link href="https://scikit-plots.github.io/dev/auto_examples/corpus/plot_corpus_who_zip_script.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <link href="../cython/index.html" rel="next" title="Cython"/>
-<link href="plot_corpus_who_youtube_script.html" rel="prev" title="corpus WHO European Region YouTube with examples"/>
+<link href="plot_corpus_who_youtube_script.html" rel="prev" title="Process a YouTube Transcript with Corpus"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="0.5" name="docsearch:version"/>
@@ -153,7 +153,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../learn/index.html">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
@@ -293,7 +293,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../learn/index.html">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
@@ -423,11 +423,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">corpus WHO European Region YouTube with examples</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">corpus WHO European Region local .zip with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v2.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Process a Mixed-Media ZIP Archive with Corpus</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -536,7 +540,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
 <li class="breadcrumb-item"><a class="nav-link" href="index.html">Corpus</a></li>
-<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">corpus WHO European Region local .zip with examples</span></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Process a Mixed-Media ZIP Archive with Corpus</span></li>
 </ul>
 </nav>
 </div>
@@ -546,187 +550,430 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div id="searchbox"></div>
 <article class="bd-article">
 
-<section class="sphx-glr-example-title" id="corpus-who-european-region-local-zip-with-examples">
-<span id="sphx-glr-auto-examples-corpus-plot-corpus-who-zip-script-py"></span><h1>corpus WHO European Region local .zip with examples<a class="headerlink" href="#corpus-who-european-region-local-zip-with-examples" title="Link to this heading">#</a></h1>
-<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.corpus.html#module-scikitplot.corpus" title="scikitplot.corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">corpus</span></code></a> submodule.</p>
+<section class="sphx-glr-example-title" id="process-a-mixed-media-zip-archive-with-corpus">
+<span id="sphx-glr-auto-examples-corpus-plot-corpus-who-zip-script-py"></span><h1>Process a Mixed-Media ZIP Archive with Corpus<a class="headerlink" href="#process-a-mixed-media-zip-archive-with-corpus" title="Link to this heading">#</a></h1>
+<p>A ZIP archive can contain different source types.  <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" title="scikitplot.corpus.ZipReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZipReader</span></code></a> applies
+the Corpus archive-safety boundary, extracts supported members into temporary
+storage, dispatches each member to its registered reader, and yields one
+document stream.</p>
+<p>This example focuses on that routing behavior:</p>
+<ul class="simple">
+<li><p>inspect the archive manifest without extracting it,</p></li>
+<li><p>process the archive through <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a>,</p></li>
+<li><p>preserve <code class="docutils literal notranslate"><span class="pre">archive.zip/member.ext</span></code> provenance,</p></li>
+<li><p>compare documents produced by each member,</p></li>
+<li><p>show generic per-extension reader configuration,</p></li>
+<li><p>keep ASR/model-heavy execution explicitly opt-in.</p></li>
+</ul>
+<p>The primary gallery path does <strong>not</strong> enable Whisper and does not export CSV.
+An MP3 without a companion transcript therefore contributes no text unless ASR
+is intentionally enabled.  OCR/PDF member capabilities are allowed to fail
+softly at the member boundary according to <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" title="scikitplot.corpus.ZipReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZipReader</span></code></a> semantics; other
+successfully readable members remain available.</p>
+<section id="archive-security">
+<h2>Archive security<a class="headerlink" href="#archive-security" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ZipReader</span></code> enforces file-count and expanded-byte limits, rejects path
+traversal and symlink-like unsafe members, filters hidden/system entries, and
+caps nested archive depth.  Security-limit failures are not converted into
+gallery skips.</p>
+</section>
+<section id="optional-capability-rule">
+<h2>Optional capability rule<a class="headerlink" href="#optional-capability-rule" title="Link to this heading">#</a></h2>
+<p>Missing optional reader capabilities may cause an individual archive member to
+produce no documents, but they do not invalidate documents already produced by
+other members.  Optional Whisper execution is separately gated by an explicit
+environment opt-in.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter"><span class="n">Counter</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/collections.html#collections.defaultdict" title="collections.defaultdict"><span class="n">defaultdict</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DocumentReader</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">,</span>
+    <span class="n">DocumentReader</span><span class="p">,</span>
+    <span class="n">SentenceBackend</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">,</span>
-    <span class="n">ExportFormat</span><span class="p">,</span>
-    <span class="n">CorpusDocument</span><span class="p">,</span>
-    <span class="n">SourceType</span><span class="p">,</span>
-    <span class="n">SentenceBackend</span><span class="p">,</span>
-    <span class="n">EnricherConfig</span><span class="p">,</span>
-    <span class="n">NLPEnricher</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-<section id="zip-archive-with-per-extension-kwargs">
-<h2>ZIP archive with per-extension kwargs<a class="headerlink" href="#zip-archive-with-per-extension-kwargs" title="Link to this heading">#</a></h2>
-<p>Pass a nested <code class="docutils literal notranslate"><span class="pre">"reader_kwargs"</span></code> key to configure individual member types
-inside the archive independently.  Global kwargs go alongside it; per-extension
-values always win when both specify the same key.</p>
-<p>The pattern mirrors the <code class="xref py py-class docutils literal notranslate"><span class="pre">ZipReader</span></code>
-constructor signature — the pipeline threads the outer dict straight through.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># zip_to_doc = list(</span>
-<span class="c1">#     DocumentReader.create(</span>
-<span class="c1">#         "data/WHO-EURO-2025-12555-52329-80560-eng.zip",</span>
-<span class="c1">#         reader_kwargs={</span>
-<span class="c1">#             ".mp3": {"transcribe": True, "whisper_model": "small"},</span>
-<span class="c1">#             # ".jpg": {"backend": "easyocr"},   # uncomment to enable OCR on images</span>
-<span class="c1">#         },</span>
-<span class="c1">#     ).get_documents()</span>
-<span class="c1"># )</span>
-<span class="c1"># zip_to_doc</span>
+
+<span class="n">_RUN_ASR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"SCIKITPLOT_GALLERY_RUN_ASR"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"true"</span><span class="p">,</span>
+    <span class="s2">"yes"</span><span class="p">,</span>
+    <span class="s2">"on"</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
-<section id="the-same-zip-via-corpuspipeline">
-<h2>The same ZIP via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a><a class="headerlink" href="#the-same-zip-via-corpuspipeline" title="Link to this heading">#</a></h2>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_zip</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
-    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span><span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.NLTK" title="scikitplot.corpus.SentenceBackend.NLTK"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">NLTK</span></a><span class="p">)),</span>
-    <span class="n">output_path</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
-    <span class="nb">format</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-ExportFormat sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.CSV" title="scikitplot.corpus.ExportFormat.CSV"><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span></a><span class="p">,</span>
+<section id="resolve-the-bundled-zip-asset">
+<h2>Resolve the bundled ZIP asset<a class="headerlink" href="#resolve-the-bundled-zip-asset" title="Link to this heading">#</a></h2>
+<p>Missing gallery assets are reported as a local skip.  The example never
+turns a missing sidecar into an automatic network request.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_resolve_example_dir</span><span class="p">()</span> <span class="o">-&gt;</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Resolve the example directory across scripts and Sphinx-Gallery."""</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"__file__"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">return</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+    <span class="k">return</span> <a class="sphx-glr-backref-module-pathlib-Path sphx-glr-backref-type-py-method" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.cwd" title="pathlib.Path.cwd"><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span></a><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+
+<span class="n">_EXAMPLE_DIR</span> <span class="o">=</span> <span class="n">_resolve_example_dir</span><span class="p">()</span>
+<span class="n">_DATA_DIR</span> <span class="o">=</span> <span class="n">_EXAMPLE_DIR</span> <span class="o">/</span> <span class="s2">"data"</span>
+<span class="n">_ZIP_PATH</span> <span class="o">=</span> <span class="n">_DATA_DIR</span> <span class="o">/</span> <span class="s2">"WHO-EURO-2025-12555-52329-80560-eng.zip"</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-the-archive-manifest">
+<h2>Inspect the archive manifest<a class="headerlink" href="#inspect-the-archive-manifest" title="Link to this heading">#</a></h2>
+<p>Python’s stdlib <code class="docutils literal notranslate"><span class="pre">zipfile</span></code> is used only to list member names and declared
+uncompressed sizes.  <code class="docutils literal notranslate"><span class="pre">ZipReader</span></code> remains responsible for secure extraction
+and reader dispatch.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">manifest</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">_ZIP_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] Bundled ZIP is unavailable: </span><span class="si">{</span><span class="n">_ZIP_PATH</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">with</span> <a class="sphx-glr-backref-module-zipfile sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile" title="zipfile.ZipFile"><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span></a><span class="p">(</span><span class="n">_ZIP_PATH</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+        <span class="n">manifest</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">file_size</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">archive</span><span class="o">.</span><span class="n">infolist</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">info</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span>
+        <span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Archive: </span><span class="si">{</span><span class="n">_ZIP_PATH</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Members: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">60s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">size</span><span class="si">:</span><span class="s2">&gt;10,</span><span class="si">}</span><span class="s2"> bytes"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Archive: WHO-EURO-2025-12555-52329-80560-eng.zip
+Members: 3
+  can-people-afford-to-pay-for-health-care.mp3                    401,709 bytes
+  WHO-EURO-2025-12555-52329-80560-eng.pdf                          80,767 bytes
+  WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg                       8,968 bytes
+</pre></div>
+</div>
+</section>
+<section id="configure-the-portable-archive-pipeline">
+<h2>Configure the portable archive pipeline<a class="headerlink" href="#configure-the-portable-archive-pipeline" title="Link to this heading">#</a></h2>
+<p>The primary path uses the REGEX sentence chunker and <strong>no</strong> media-specific
+reader kwargs.</p>
+<p>Consequences:</p>
+<ul class="simple">
+<li><p>PDF text is extracted when a supported PDF backend is available.</p></li>
+<li><p>Image OCR is attempted by the registered ImageReader; if its optional OCR
+capability is unavailable, ZipReader skips only that member.</p></li>
+<li><p>MP3 transcription remains disabled, so an audio member without a companion
+transcript yields no text rather than initializing a Whisper model.</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">result_zip</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="p">()</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">_ZIP_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] ZIP processing: local archive asset is unavailable."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+        <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span>
+            <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span>
+                <span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.REGEX" title="scikitplot.corpus.SentenceBackend.REGEX"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">REGEX</span></a><span class="p">,</span>
+                <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">include_offsets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">result_zip</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">_ZIP_PATH</span><span class="p">)</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">result_zip</span><span class="o">.</span><span class="n">documents</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Documents produced: </span><span class="si">{</span><span class="n">result_zip</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Documents produced: 112
+</pre></div>
+</div>
+</section>
+<section id="summarize-documents-by-archive-member">
+<h2>Summarize documents by archive member<a class="headerlink" href="#summarize-documents-by-archive-member" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CorpusDocument.input_path</span></code> now preserves the logical archive member path,
+for example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">WHO-....zip/WHO-....pdf</span></code></p>
+<p>This makes routing and provenance inspectable after the archive reader has
+flattened all member streams into one corpus.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">docs_by_member</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <a class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/collections.html#collections.defaultdict" title="collections.defaultdict"><span class="n">defaultdict</span></a><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="n">docs_by_member</span><span class="p">[</span><span class="n">doc</span><span class="o">.</span><span class="n">input_path</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Produced-document summary"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'member'</span><span class="si">:</span><span class="s2">64s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'source type'</span><span class="si">:</span><span class="s2">14s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'docs'</span><span class="si">:</span><span class="s2">&gt;6s</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">member_path</span><span class="p">,</span> <span class="n">member_docs</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">docs_by_member</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="n">source_types</span> <span class="o">=</span> <a class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter"><span class="n">Counter</span></a><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">member_docs</span><span class="p">)</span>
+        <span class="n">source_summary</span> <span class="o">=</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">source_type</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span>
+            <span class="k">for</span> <span class="n">source_type</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">source_types</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">member_path</span><span class="p">[</span><span class="o">-</span><span class="mi">64</span><span class="p">:]</span><span class="si">:</span><span class="s2">64s</span><span class="si">}</span><span class="s2"> "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">source_summary</span><span class="si">:</span><span class="s2">14.14s</span><span class="si">}</span><span class="s2"> "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">member_docs</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;6d</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">"[SKIP] No archive member produced text documents. "</span>
+        <span class="s2">"Optional PDF/OCR capabilities may be unavailable."</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Produced-document summary
+====================================================================================================
+member                                                           source type      docs
+----------------------------------------------------------------------------------------------------
+2555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf research:110      110
+-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg image:2             2
+</pre></div>
+</div>
+</section>
+<section id="compare-manifest-members-with-corpus-output">
+<h2>Compare manifest members with corpus output<a class="headerlink" href="#compare-manifest-members-with-corpus-output" title="Link to this heading">#</a></h2>
+<p>A member can legitimately produce zero text documents.  In this archive the
+MP3 does so in the portable path because <code class="docutils literal notranslate"><span class="pre">transcribe=False</span></code> by default.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">produced_suffixes</span><span class="p">:</span> <a class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter"><span class="n">Counter</span></a><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <a class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter"><span class="n">Counter</span></a><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">member_path</span><span class="p">,</span> <span class="n">member_docs</span> <span class="ow">in</span> <span class="n">docs_by_member</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">suffix</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">member_path</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">produced_suffixes</span><span class="p">[</span><span class="n">suffix</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">member_docs</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">manifest</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Member outcome"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">92</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">member_name</span><span class="p">,</span> <span class="n">_size</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">:</span>
+        <span class="n">suffix</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">member_name</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">n_docs</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">member_docs</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">member_docs</span> <span class="ow">in</span> <span class="n">docs_by_member</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">"/</span><span class="si">{</span><span class="n">member_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="n">path</span> <span class="o">==</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_ZIP_PATH</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">member_name</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n_docs</span><span class="p">:</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n_docs</span><span class="si">}</span><span class="s2"> documents"</span>
+        <span class="k">elif</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">".mp3"</span><span class="p">,</span> <span class="s2">".wav"</span><span class="p">,</span> <span class="s2">".flac"</span><span class="p">,</span> <span class="s2">".ogg"</span><span class="p">,</span> <span class="s2">".m4a"</span><span class="p">}:</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="s2">"0 documents (ASR disabled unless companion text exists)"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="s2">"0 documents (reader produced no text / capability unavailable)"</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">member_name</span><span class="si">:</span><span class="s2">60s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Member outcome
+============================================================================================
+  can-people-afford-to-pay-for-health-care.mp3                 → 0 documents (ASR disabled unless companion text exists)
+  WHO-EURO-2025-12555-52329-80560-eng.pdf                      → 110 documents
+  WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg                  → 2 documents
+</pre></div>
+</div>
+</section>
+<section id="inspect-bounded-member-examples">
+<h2>Inspect bounded member examples<a class="headerlink" href="#inspect-bounded-member-examples" title="Link to this heading">#</a></h2>
+<p>Show one document per contributing member rather than a large dataframe dump.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">member_path</span><span class="p">,</span> <span class="n">member_docs</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">docs_by_member</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">member_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="n">member_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">member_path</span><span class="p">),</span> <span class="mi">88</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"source_type: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">page_number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"page: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">page_number</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">ocr_engine</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ocr_engine: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">ocr_engine</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"text: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">260</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WHO-EURO-2025-12555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf
+-------------------------------------------------------------------------------
+source_type: research
+page: 0
+text: 'Can people afford \nto pay for health care?'
+
+WHO-EURO-2025-12555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg
+-----------------------------------------------------------------------------------
+source_type: image
+page: 0
+ocr_engine: tesseract
+text: '= re\ncan people afford\ntopay for health care?'
+</pre></div>
+</div>
+</section>
+<section id="per-extension-reader-configuration">
+<h2>Per-extension reader configuration<a class="headerlink" href="#per-extension-reader-configuration" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ZipReader.reader_kwargs</span></code> is a mapping from extension to constructor kwargs
+for that member’s reader.</p>
+<p>Extension keys are normalized to lower case and gain a leading dot, so both
+<code class="docutils literal notranslate"><span class="pre">"MP3"</span></code> and <code class="docutils literal notranslate"><span class="pre">".mp3"</span></code> target the audio reader.</p>
+<p>Creating this reader does not process the archive or initialize optional
+backends.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">configured_reader</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">_ZIP_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] Per-extension configuration: ZIP asset is unavailable."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">configured_reader</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus-DocumentReader sphx-glr-backref-type-py-method" href="../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create" title="scikitplot.corpus.DocumentReader.create"><span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span></a><span class="p">(</span>
+        <span class="n">_ZIP_PATH</span><span class="p">,</span>
+        <span class="n">reader_kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">"MP3"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"transcribe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"whisper_model"</span><span class="p">:</span> <span class="s2">"small"</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">".jpg"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"backend"</span><span class="p">:</span> <span class="s2">"tesseract"</span><span class="p">,</span>
+                <span class="s2">"preprocess_grayscale"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">".pdf"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"prefer_backend"</span><span class="p">:</span> <span class="s2">"pypdf"</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Normalized per-extension configuration:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">extension</span><span class="p">,</span> <span class="n">options</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">configured_reader</span><span class="o">.</span><span class="n">reader_kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Normalized per-extension configuration:
+  .jpg: {'backend': 'tesseract', 'preprocess_grayscale': True}
+  .mp3: {'transcribe': True, 'whisper_model': 'small'}
+  .pdf: {'prefer_backend': 'pypdf'}
+</pre></div>
+</div>
+</section>
+<section id="equivalent-nested-corpuspipeline-configuration">
+<h2>Equivalent nested CorpusPipeline configuration<a class="headerlink" href="#equivalent-nested-corpuspipeline-configuration" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CorpusPipeline.reader_kwargs</span></code> configures the <strong>outer</strong> reader.  Because
+the selected outer reader is ZipReader, its own per-extension mapping is
+nested one level deeper under <code class="docutils literal notranslate"><span class="pre">"reader_kwargs"</span></code>.</p>
+<p>This pipeline object is intentionally not executed here; doing so would opt
+the MP3 member into Whisper and could trigger model resolution.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">advanced_pipeline</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.REGEX" title="scikitplot.corpus.SentenceBackend.REGEX"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">REGEX</span></a><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
     <span class="n">reader_kwargs</span><span class="o">=</span><span class="p">{</span>
         <span class="s2">"reader_kwargs"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">".mp3"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"transcribe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"whisper_model"</span><span class="p">:</span> <span class="s2">"small"</span><span class="p">},</span>
-            <span class="c1"># ".jpg": {"backend": "easyocr"},</span>
-        <span class="p">},</span>
+            <span class="s2">".mp3"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"transcribe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"whisper_model"</span><span class="p">:</span> <span class="s2">"small"</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">".jpg"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"backend"</span><span class="p">:</span> <span class="s2">"tesseract"</span><span class="p">,</span>
+                <span class="s2">"preprocess_grayscale"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">".pdf"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"prefer_backend"</span><span class="p">:</span> <span class="s2">"pypdf"</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">)</span>
-<span class="n">result_zip</span> <span class="o">=</span> <span class="n">pipeline_zip</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/WHO-EURO-2025-12555-52329-80560-eng.zip"</span><span class="p">))</span>
-<span class="n">result_zip</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, format=csv, n_documents=123, n_read=143, n_omitted=20, n_embedded=0, elapsed_seconds=11.5s)
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a>
 
-<a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Advanced pipeline configured (not executed by default)."</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'char_end': {0: 50, 1: 33, 2: 60, 3: 78, 4: 61},
- 'char_start': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
- 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
- 'chunking_strategy': {0: 'sentence',
-                       1: 'sentence',
-                       2: 'sentence',
-                       3: 'sentence',
-                       4: 'sentence'},
- 'chunking_unit': {0: 'sentence',
-                   1: 'sentence',
-                   2: 'sentence',
-                   3: 'sentence',
-                   4: 'sentence'},
- 'codepoint_count': {0: 50, 1: 33, 2: 60, 3: 78, 4: 61},
- 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'confidence': {0: 0.8465, 1: 0.8465, 2: 0.8465, 3: 0.8465, 4: 0.8465},
- 'content_hash': {0: '28540b9739ee232fb67a4e1088555ddd',
-                  1: '2c8eb5cb7f068b42310a62d951f9a103',
-                  2: '31a24d3e03ce1119627d5bff9a29dfa6',
-                  3: '14312e5e9f2c77936f3da344dc9d8869',
-                  4: '7c2b137120a08fcffd38c67e655cb899'},
- 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'doc_id': {0: '189e003b0bc8492e',
-            1: '24d964d555c00f6c',
-            2: '328fc49e15798775',
-            3: 'dd7ad441d141a8ea',
-            4: '7538434ddfa2ae0a'},
- 'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'grapheme_count': {0: 50, 1: 33, 2: 60, 3: 78, 4: 61},
- 'image_height': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'image_width': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'input_path': {0: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                1: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                2: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                3: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                4: 'WHO-EURO-2025-12555-52329-80560-eng.zip'},
- 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
- 'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
- 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'ocr_engine': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'page_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'raw_text': {0: 'Can people afford to pay for healthcare in Europe?',
-              1: 'The short answer is not everyone.',
-              2: 'No country in Europe has achieved universal health coverage.',
-              3: 'When people have to pay out of pocket for healthcare and '
-                 "they can't afford it,",
-              4: 'they either have to cut spending on other basic needs '
-                 'like...'},
- 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
- 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
- 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'section_type': {0: 'transcript',
-                  1: 'transcript',
-                  2: 'transcript',
-                  3: 'transcript',
-                  4: 'transcript'},
- 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_type': {0: 'audio', 1: 'audio', 2: 'audio', 3: 'audio', 4: 'audio'},
- 'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'text': {0: 'Can people afford to pay for healthcare in Europe?',
-          1: 'The short answer is not everyone.',
-          2: 'No country in Europe has achieved universal health coverage.',
-          3: 'When people have to pay out of pocket for healthcare and they '
-             "can't afford it,",
-          4: 'they either have to cut spending on other basic needs like...'},
- 'timecode_end': {0: 6.0, 1: 9.0, 2: 14.0, 3: 21.0, 4: 25.0},
- 'timecode_start': {0: 0.0, 1: 6.0, 2: 9.0, 3: 17.0, 4: 21.0},
- 'tokens': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'total_frames': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Advanced pipeline configured (not executed by default).
 </pre></div>
 </div>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.504 seconds)</p>
+</section>
+<section id="optional-real-asr-for-the-mp3-member">
+<h2>Optional real ASR for the MP3 member<a class="headerlink" href="#optional-real-asr-for-the-mp3-member" title="Link to this heading">#</a></h2>
+<p>To execute the model-backed archive path manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SCIKITPLOT_GALLERY_RUN_ASR</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>python<span class="w"> </span>plot_corpus_who_zip_script.py
+</pre></div>
+</div>
+<p>The normal gallery build never enables it.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_probe_whisper_backend</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Check only for an installed Whisper Python backend."""</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"faster_whisper"</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"faster-whisper is installed"</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"whisper"</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"openai-whisper is installed"</span>
+    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"neither faster-whisper nor openai-whisper is installed"</span>
+
+
+<span class="n">whisper_ready</span><span class="p">,</span> <span class="n">whisper_reason</span> <span class="o">=</span> <span class="n">_probe_whisper_backend</span><span class="p">()</span>
+<span class="n">asr_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">_ZIP_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] Archive ASR: ZIP asset is unavailable."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">_RUN_ASR</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">"[SKIP] Archive ASR: optional execution is disabled. "</span>
+        <span class="s2">"Set SCIKITPLOT_GALLERY_RUN_ASR=1 to opt in."</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">whisper_ready</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] Archive ASR: </span><span class="si">{</span><span class="n">whisper_reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># The explicitly enabled runtime may resolve model weights.  Unexpected</span>
+    <span class="c1"># errors after this opt-in are allowed to surface.</span>
+    <span class="n">asr_result</span> <span class="o">=</span> <span class="n">advanced_pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">_ZIP_PATH</span><span class="p">)</span>
+
+    <span class="n">audio_docs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">doc</span>
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">asr_result</span><span class="o">.</span><span class="n">documents</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"audio"</span>
+    <span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ASR-enabled archive documents: </span><span class="si">{</span><span class="n">asr_result</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Audio documents: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">audio_docs</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">audio_docs</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">input_path</span><span class="si">}</span><span class="s2"> "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span><span class="si">!r}</span><span class="s2">→</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span><span class="si">!r}</span><span class="s2"> "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">160</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>ASR-enabled archive documents: 120
+Audio documents: 5
+  WHO-EURO-2025-12555-52329-80560-eng.zip/can-people-afford-to-pay-for-health-care.mp3 0.0→6.0 'Can people afford to pay for healthcare in Europe?'
+  WHO-EURO-2025-12555-52329-80560-eng.zip/can-people-afford-to-pay-for-health-care.mp3 6.0→9.0 'The short answer is not everyone.'
+  WHO-EURO-2025-12555-52329-80560-eng.zip/can-people-afford-to-pay-for-health-care.mp3 9.0→14.0 'No country in Europe has achieved universal health coverage.'
+</pre></div>
+</div>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<p>A practical archive workflow is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">inspect</span> <span class="pre">manifest</span> <span class="pre">→</span> <span class="pre">let</span> <span class="pre">ZipReader</span> <span class="pre">route</span> <span class="pre">members</span> <span class="pre">→</span> <span class="pre">summarize</span> <span class="pre">provenance</span></code>.</p>
+<p>Add per-extension OCR/ASR/PDF backend settings only when those capabilities
+are intentionally provisioned.  Missing optional member capabilities should
+not erase evidence successfully extracted from other members.</p>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.140 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">corpus A Tale of Two Cities .mp3 with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus A Tale of Two Cities .mp3 with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_youtube_script.html"><span class="doc">corpus WHO European Region YouTube with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region YouTube with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule. Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence, SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an image file containing multi-script text extracted via OCR."><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">corpus Knowledge and Information local .png with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus Knowledge and Information local .png with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">corpus WHO European Region local or url per file with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region local or url per file with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the audio ingestion path without making a documentation build depend on a speech model download."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">Process an MP3 with Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Process an MP3 with Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is the broad, explicit integration showcase for scikitplot.corpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">Build a Multi-Source WHO Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Build a Multi-Source WHO Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example asks one focused question:"><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">Compare Corpus Chunking Strategies on OCR Text</span></a></p>
+<div class="sphx-glr-thumbnail-title">Compare Corpus Chunking Strategies on OCR Text</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="YouTube transcript ingestion is a network capability: the reader uses youtube-transcript-api to request caption tracks from YouTube and does not download the video or run a local speech model."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_youtube_script.html"><span class="doc">Process a YouTube Transcript with Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Process a YouTube Transcript with Corpus</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -739,7 +986,7 @@ constructor signature — the pipeline threads the outer dict straight through.<
 <i class="fa-solid fa-angle-left"></i>
 <div class="prev-next-info">
 <p class="prev-next-subtitle">previous</p>
-<p class="prev-next-title">corpus WHO European Region YouTube with examples</p>
+<p class="prev-next-title">Process a YouTube Transcript with Corpus</p>
 </div>
 </a>
 <a class="right-next" href="../cython/index.html" title="next page">
@@ -761,8 +1008,18 @@ constructor signature — the pipeline threads the outer dict straight through.<
   </div>
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zip-archive-with-per-extension-kwargs">ZIP archive with per-extension kwargs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-zip-via-corpuspipeline">The same ZIP via <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archive-security">Archive security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-capability-rule">Optional capability rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resolve-the-bundled-zip-asset">Resolve the bundled ZIP asset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-archive-manifest">Inspect the archive manifest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-portable-archive-pipeline">Configure the portable archive pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-documents-by-archive-member">Summarize documents by archive member</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-manifest-members-with-corpus-output">Compare manifest members with corpus output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-bounded-member-examples">Inspect bounded member examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-extension-reader-configuration">Per-extension reader configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-nested-corpuspipeline-configuration">Equivalent nested CorpusPipeline configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-real-asr-for-the-mp3-member">Optional real ASR for the MP3 member</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
 </nav></div>
 <div class="sidebar-secondary-item">
@@ -831,7 +1088,7 @@ constructor signature — the pipeline threads the outer dict straight through.<
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260823.71eae2e 2026-08-23T18:39Z.
       <br/>
 </p>
 </div>

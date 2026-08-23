@@ -1,6 +1,6 @@
 # bootstrap[#](#bootstrap "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **samples=None**, **bootfunc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/funcs.py#L998)[#](#scikitplot.cexternals._astropy.stats.bootstrap "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **samples=None**, **bootfunc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/funcs.py#L998)[#](#scikitplot.cexternals._astropy.stats.bootstrap "Link to this definition")
 :   Performs bootstrap resampling on numpy arrays.
 
     Bootstrap resampling is used to understand confidence intervals of sample
@@ -34,13 +34,13 @@ scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **sam
             outputs of bootfunc.
 
     Parameters:
-    :   * ****data**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[****\_ScalarT****]****]**)
+    :   * ****data**** (**NDArray**)
         * ****bootnum**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****samples**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
         * ****bootfunc**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.14)") **|** **None**)
 
     Return type:
-    :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]
+    :   **NDArray**
 
     Examples
 

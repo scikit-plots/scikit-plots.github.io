@@ -60,6 +60,17 @@ Go BackOpen In Tab
 
 Class inheritance
 
+![Inheritance diagram of _annoy.Annoy, _annoy.AnnoyIndex](../_images/inheritance-dacc5bbf9c876b294930b282507b8776a8e684a1.png)
+
+
+
+
+
+
+
+
+
+
 |  |  |
 | --- | --- |
 | [`_annoy.annoylib`](../modules/generated/scikitplot.cexternals._annoy.annoylib.html#module-scikitplot.cexternals._annoy.annoylib "scikitplot.cexternals._annoy.annoylib") | Compiled with GCC/Clang(Using 512-bit AVX instructions). |

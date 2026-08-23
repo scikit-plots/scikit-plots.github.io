@@ -1,6 +1,6 @@
 # ExportFormat[#](#exportformat "Link to this heading")
 
-class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L369)[#](#scikitplot.corpus.ExportFormat "Link to this definition")
+class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L435)[#](#scikitplot.corpus.ExportFormat "Link to this definition")
 :   Supported serialisation targets for a completed corpus.
 
     Notes
@@ -19,37 +19,37 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
     ```
     Go BackOpen In Tab
 
-    CSV = 'csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.CSV "Link to this definition")
+    CSV = 'csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.CSV "Link to this definition")
     :   Comma-separated values; universal but loses numpy embedding arrays.
 
-    HUGGINGFACE = 'huggingface'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.HUGGINGFACE "Link to this definition")
+    HUGGINGFACE = 'huggingface'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.HUGGINGFACE "Link to this definition")
     :   HuggingFace `datasets.Dataset` object or saved dataset directory.
 
-    JOBLIB = 'joblib'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JOBLIB "Link to this definition")
+    JOBLIB = 'joblib'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JOBLIB "Link to this definition")
     :   joblib dump — efficient for large numpy arrays inside documents.
 
-    JSON = 'json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSON "Link to this definition")
+    JSON = 'json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSON "Link to this definition")
     :   JSON-lines (one document per line) for maximum interoperability.
 
-    JSONL = 'jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSONL "Link to this definition")
+    JSONL = 'jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSONL "Link to this definition")
     :   Alias for JSON-lines format.
 
-    MLFLOW = 'mlflow'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.MLFLOW "Link to this definition")
+    MLFLOW = 'mlflow'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.MLFLOW "Link to this definition")
     :   MLflow artifact (logs corpus + metadata to active or specified run).
 
-    NUMPY = 'numpy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.NUMPY "Link to this definition")
+    NUMPY = 'numpy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.NUMPY "Link to this definition")
     :   `numpy.savez_compressed` — embeddings only, loses text/metadata.
 
-    PANDAS = 'pandas'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PANDAS "Link to this definition")
+    PANDAS = 'pandas'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PANDAS "Link to this definition")
     :   In-memory `pandas.DataFrame`; returned, not written to disk.
 
-    PARQUET = 'parquet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PARQUET "Link to this definition")
+    PARQUET = 'parquet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PARQUET "Link to this definition")
     :   Column-oriented binary format via `pyarrow` or `polars`.
 
-    PICKLE = 'pickle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PICKLE "Link to this definition")
+    PICKLE = 'pickle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PICKLE "Link to this definition")
     :   Python pickle — fastest round-trip; not portable across Python versions.
 
-    POLARS = 'polars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.POLARS "Link to this definition")
+    POLARS = 'polars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.POLARS "Link to this definition")
     :   In-memory `polars.DataFrame`; returned, not written to disk.
 
     capitalize(**/**)[#](#scikitplot.corpus.ExportFormat.capitalize "Link to this definition")
@@ -356,3 +356,11 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
     :   Pad a numeric string with zeros on the left, to fill a field of the given width.
 
         The string is never truncated.
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
+
+[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
+
+Build and Search a Real Hamlet Corpus with FluentCorpus

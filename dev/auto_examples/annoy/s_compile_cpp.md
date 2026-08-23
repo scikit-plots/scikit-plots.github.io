@@ -135,19 +135,19 @@ if __name__ == "__main__":
 
 Related examples
 
-![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
-
-[Browse and compile templates](../cython/plot_01_browse_and_compile_templates.html)
-
-Browse and compile templates![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
+![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
 
 [Workflow templates (train / hpo / predict) + CLI entry template](../cython/plot_09_workflow_templates_cli.html)
 
-Workflow templates (train / hpo / predict) + CLI entry template![](../../_images/sphx_glr_plot_07_cpp_mode_basics_thumb.png)
+Workflow templates (train / hpo / predict) + CLI entry template![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
 
-[C++ mode basics: cppclass and libcpp containers](../cython/plot_07_cpp_mode_basics.html)
+[Browse and compile templates](../cython/plot_01_browse_and_compile_templates.html)
 
-C++ mode basics: cppclass and libcpp containers![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
+Browse and compile templates![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+
+[Precision annoy.AnnoyIndex with examples](plot_precision_script.html)
+
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
 
 [Cython quickstart: compile\_and\_load](../cython/plot_00_quickstart_compile_and_load.html)
 

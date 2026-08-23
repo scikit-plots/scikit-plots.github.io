@@ -34,8 +34,7 @@ m = compile_and_load("def f(int n):\n    return n*n")
 m.f(10)
 
 ```
-
-****cython templates****
+**cython templates**
 
 * [Cython templates](_templates/templates_index.html)
   * [basic\_cython](_templates/templates_basic_cython.html)

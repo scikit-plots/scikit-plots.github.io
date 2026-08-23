@@ -11,4 +11,5 @@ scikit-plots project.
 | --- | --- |
 | [Anaconda Inc](https://www.anaconda.com) | Storage for our staging and nightly builds |
 | [CircleCI](https://circleci.com/) | CPU time on their Continuous Integration servers |
+| [Read the Docs](https://about.readthedocs.com//) | CPU time on their Continuous Integration servers |
 | [GitHub](https://www.github.com) | Teams account |

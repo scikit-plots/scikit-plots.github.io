@@ -5,22 +5,22 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="corpus WHO European Region YouTube with examples" property="og:title"/>
+<meta content="Process a YouTube Transcript with Corpus" property="og:title"/>
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/corpus/plot_corpus_who_youtube_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="Examples related to the corpus submodule. YouTube: Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio “https://www.youtube.com/watch?v=kEx-gRfuhhk”. Tags: model-type: ..." property="og:description"/>
+<meta content="YouTube transcript ingestion is a network capability: the reader uses youtube-transcript-api to request caption tracks from YouTube and does not download the video or run a local speech model. A no..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="Examples related to the corpus submodule. YouTube: Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio “https://www.youtube.com/watch?v=kEx-gRfuhhk”. Tags: model-type: ..." name="description"/>
+<meta content="YouTube transcript ingestion is a network capability: the reader uses youtube-transcript-api to request caption tracks from YouTube and does not download the video or run a local speech model. A no..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io","pdfUrlModeToggle":true,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":false,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-08T19:03:54Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-23T18:56:32Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-<title>corpus WHO European Region YouTube with examples — scikit-plots 0.5.dev0 documentation</title>
+<title>Process a YouTube Transcript with Corpus — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -42,18 +42,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
-<link href="../../_static/ai-assistant.css?v=0a983dac" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=7286b3b3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=f676e775" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=fd6457a4" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=6c2c4627" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script defer="" src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -62,18 +62,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
-<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script defer="defer" src="../../_static/ai-assistant.js?v=e747c355"></script>
+<script defer="defer" src="../../_static/ai-assistant.js?v=c938e8b0"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script>let toggleHintShow = 'Click to show';</script>
 <script>let toggleHintHide = 'Click to hide';</script>
 <script>let toggleOpenOnPrint = 'true';</script>
 <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/corpus/plot_corpus_who_youtube_script';</script>
@@ -85,14 +85,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
 <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-<link href="https://scikit-plots.github.io/auto_examples/corpus/plot_corpus_who_youtube_script.html" rel="canonical"/>
+<link href="https://scikit-plots.github.io/dev/auto_examples/corpus/plot_corpus_who_youtube_script.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_corpus_who_zip_script.html" rel="next" title="corpus WHO European Region local .zip with examples"/>
-<link href="plot_corpus_who_per_file_script.html" rel="prev" title="corpus WHO European Region local or url per file with examples"/>
+<link href="plot_corpus_who_zip_script.html" rel="next" title="Process a Mixed-Media ZIP Archive with Corpus"/>
+<link href="plot_corpus_who_per_file_script.html" rel="prev" title="Build a Multi-Source WHO Corpus"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="0.5" name="docsearch:version"/>
@@ -153,7 +153,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../learn/index.html">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
@@ -293,7 +293,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../learn/index.html">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
@@ -423,11 +423,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">corpus WHO European Region YouTube with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v2.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -536,7 +540,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
 <li class="breadcrumb-item"><a class="nav-link" href="index.html">Corpus</a></li>
-<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">corpus WHO European Region YouTube with examples</span></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Process a YouTube Transcript with Corpus</span></li>
 </ul>
 </nav>
 </div>
@@ -546,92 +550,456 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div id="searchbox"></div>
 <article class="bd-article">
 
-<section class="sphx-glr-example-title" id="corpus-who-european-region-youtube-with-examples">
-<span id="sphx-glr-auto-examples-corpus-plot-corpus-who-youtube-script-py"></span><h1>corpus WHO European Region YouTube with examples<a class="headerlink" href="#corpus-who-european-region-youtube-with-examples" title="Link to this heading">#</a></h1>
-<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.corpus.html#module-scikitplot.corpus" title="scikitplot.corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">corpus</span></code></a> submodule.</p>
+<section class="sphx-glr-example-title" id="process-a-youtube-transcript-with-corpus">
+<span id="sphx-glr-auto-examples-corpus-plot-corpus-who-youtube-script-py"></span><h1>Process a YouTube Transcript with Corpus<a class="headerlink" href="#process-a-youtube-transcript-with-corpus" title="Link to this heading">#</a></h1>
+<p>YouTube transcript ingestion is a network capability: the reader uses
+<code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code> to request caption tracks from YouTube and does not
+download the video or run a local speech model.</p>
+<p>A normal documentation build should not depend on that external service.
+This example therefore separates three concerns:</p>
+<ol class="arabic simple">
+<li><p><strong>Executed offline path</strong> — a small local transcript-shaped proxy exercises
+the downstream Corpus pipeline deterministically.</p></li>
+<li><p><strong>Real YouTube configuration</strong> — <a class="reference internal" href="../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" title="scikitplot.corpus.DocumentReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentReader</span></code></a> is configured for
+the actual URL without fetching the transcript.</p></li>
+<li><p><strong>Optional live fetch</strong> — enabled only when the user explicitly opts into
+network execution and <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code> is installed.</p></li>
+</ol>
+<p>The local proxy is intentionally synthetic.  It is <strong>not</strong> presented as a
+verbatim transcript of the linked video and does not carry YouTube cue
+timecodes.  Live <a class="reference internal" href="../../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a> documents do carry transcript
+timecodes, video ID, transcript type, and transcript language.</p>
 <section id="youtube">
 <h2>YouTube<a class="headerlink" href="#youtube" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio
+<li><p>Richard Feynman — <em>The Character of Physical Law</em>
 <a class="reference external" href="https://www.youtube.com/watch?v=kEx-gRfuhhk">“https://www.youtube.com/watch?v=kEx-gRfuhhk”</a></p>
 <div class="video_wrapper" style="">
 <iframe allowfullscreen="true" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/kEx-gRfuhhk" style="border: 0; height: 345px; width: 560px">
 </iframe></div></li>
 </ul>
+</section>
+<section id="optional-capability-rule">
+<h2>Optional capability rule<a class="headerlink" href="#optional-capability-rule" title="Link to this heading">#</a></h2>
+<p>Missing <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code> or local NLTK resources are reported as
+<code class="docutils literal notranslate"><span class="pre">SKIP</span></code>.  Live transcript unavailability is also a bounded external-service
+skip after explicit network opt-in.  Invalid Corpus configuration is not
+silently swallowed.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DocumentReader</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">,</span>
+    <span class="n">DocumentReader</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">,</span>
+    <span class="n">SentenceBackend</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">,</span>
-    <span class="n">ExportFormat</span><span class="p">,</span>
-    <span class="n">CorpusDocument</span><span class="p">,</span>
     <span class="n">SourceType</span><span class="p">,</span>
-    <span class="n">SentenceBackend</span><span class="p">,</span>
-    <span class="n">EnricherConfig</span><span class="p">,</span>
-    <span class="n">NLPEnricher</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="c1"># os.environ["SCIKITPLOT_GALLERY_RUN_ASR"] = "1"</span>
+<span class="c1"># os.environ["SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS"] = "1"</span>
+<span class="n">_RUN_ASR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"SCIKITPLOT_GALLERY_RUN_ASR"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"true"</span><span class="p">,</span>
+    <span class="s2">"yes"</span><span class="p">,</span>
+    <span class="s2">"on"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">_SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS</span> <span class="o">=</span> <a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.html#os.getenv" title="os.getenv"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">"SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"true"</span><span class="p">,</span>
+    <span class="s2">"yes"</span><span class="p">,</span>
+    <span class="s2">"on"</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<p>The live URL is stable configuration; no request is made merely by creating
+the reader object.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">YOUTUBE_URL</span> <span class="o">=</span> <span class="s2">"https://www.youtube.com/watch?v=kEx-gRfuhhk"</span>
+
+<span class="n">_RUN_NETWORK</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">"SCIKITPLOT_GALLERY_RUN_NETWORK"</span><span class="p">,</span> <span class="s2">""</span>
+<span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span>
+    <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"true"</span><span class="p">,</span>
+    <span class="s2">"yes"</span><span class="p">,</span>
+    <span class="s2">"on"</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="optional-capability-preflight-helpers">
+<h2>Optional-capability preflight helpers<a class="headerlink" href="#optional-capability-preflight-helpers" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_probe_youtube_api</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Check whether youtube-transcript-api is importable."""</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"youtube_transcript_api"</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"youtube-transcript-api is not installed"</span>
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"youtube-transcript-api is installed"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_probe_nltk</span><span class="p">(</span><span class="o">*</span><span class="n">resource_paths</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Check NLTK resources without downloading them."""</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-importlib-util sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="importlib.util.find_spec"><span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span></a><span class="p">(</span><span class="s2">"nltk"</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"NLTK is not installed"</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"NLTK is not importable"</span>
+
+    <span class="n">missing</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">resource_path</span> <span class="ow">in</span> <span class="n">resource_paths</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">resource_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+            <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resource_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"missing local NLTK resources: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"NLTK resources available"</span>
+</pre></div>
+</div>
+</section>
+<section id="build-a-deterministic-local-transcript-shaped-proxy">
+<h2>Build a deterministic local transcript-shaped proxy<a class="headerlink" href="#build-a-deterministic-local-transcript-shaped-proxy" title="Link to this heading">#</a></h2>
+<p>This text is written specifically for the gallery.  It is not copied from the
+linked video’s transcript.  Its purpose is to let the page execute a real
+Corpus path even when YouTube is offline or unavailable.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">LOCAL_PROXY_TEXT</span> <span class="o">=</span> <span class="s2">"""</span><span class="se">\</span>
+<span class="s2">This local transcript proxy exists only to demonstrate Corpus processing.</span>
+<span class="s2">It is not a verbatim transcript of the linked YouTube video.</span>
+
+<span class="s2">A lecture transcript often contains short spoken sentences and repeated ideas.</span>
+<span class="s2">Corpus can split that text into sentence-sized documents before later</span>
+<span class="s2">normalization, enrichment, storage, or retrieval.</span>
+
+<span class="s2">For a real YouTube source, YouTubeReader obtains caption cues from the external</span>
+<span class="s2">transcript service. Those live cues can include start and end timecodes,</span>
+<span class="s2">transcript language, video identifier, and whether captions were manual or</span>
+<span class="s2">auto-generated.</span>
+<span class="s2">"""</span>
+
+<span class="n">_WORKSPACE</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryDirectory" title="tempfile.TemporaryDirectory"><span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span></a><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"scikitplot-youtube-gallery-"</span><span class="p">)</span>
+<span class="n">_WORK_DIR</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">_PROXY_PATH</span> <span class="o">=</span> <span class="n">_WORK_DIR</span> <span class="o">/</span> <span class="s2">"feynman_youtube_transcript_proxy.txt"</span>
+<span class="n">_PROXY_PATH</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">LOCAL_PROXY_TEXT</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Local proxy:"</span><span class="p">,</span> <span class="n">_PROXY_PATH</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Characters:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">LOCAL_PROXY_TEXT</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Local proxy: /tmp/scikitplot-youtube-gallery-fogqqmjy/feynman_youtube_transcript_proxy.txt
+Characters: 580
+</pre></div>
+</div>
+</section>
+<section id="execute-the-offline-corpus-path">
+<h2>Execute the offline Corpus path<a class="headerlink" href="#execute-the-offline-corpus-path" title="Link to this heading">#</a></h2>
+<p>The proxy is explicitly labelled <code class="docutils literal notranslate"><span class="pre">SourceType.VIDEO</span></code> so downstream code can
+exercise video-source semantics without claiming a live YouTube fetch.</p>
+<p>REGEX sentence chunking keeps this primary path independent of NLTK data.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
-    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span><span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.NLTK" title="scikitplot.corpus.SentenceBackend.NLTK"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">NLTK</span></a><span class="p">)),</span>
-    <span class="n">output_path</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
-    <span class="nb">format</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-ExportFormat sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.CSV" title="scikitplot.corpus.ExportFormat.CSV"><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span></a><span class="p">,</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.REGEX" title="scikitplot.corpus.SentenceBackend.REGEX"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">REGEX</span></a><span class="p">,</span>
+            <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">include_offsets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 <span class="p">)</span>
-<span class="n">pipeline</span>
+
+<span class="n">proxy_reader</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus-DocumentReader sphx-glr-backref-type-py-method" href="../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create" title="scikitplot.corpus.DocumentReader.create"><span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span></a><span class="p">(</span>
+    <span class="n">_PROXY_PATH</span><span class="p">,</span>
+    <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SourceType sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.VIDEO" title="scikitplot.corpus.SourceType.VIDEO"><span class="n">SourceType</span><span class="o">.</span><span class="n">VIDEO</span></a><span class="p">,</span>
+    <span class="n">source_title</span><span class="o">=</span><span class="s2">"Local proxy for The Character of Physical Law"</span><span class="p">,</span>
+    <span class="n">source_author</span><span class="o">=</span><span class="s2">"Gallery-generated teaching text"</span><span class="p">,</span>
+    <span class="n">collection_id</span><span class="o">=</span><span class="s2">"youtube-transcript-gallery-proxy"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># ``CorpusPipeline.run`` performs its own reader dispatch, so the same metadata</span>
+<span class="c1"># is passed through ``reader_kwargs`` for the executed pipeline path.</span>
+<span class="n">proxy_pipeline</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.REGEX" title="scikitplot.corpus.SentenceBackend.REGEX"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">REGEX</span></a><span class="p">,</span>
+            <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">include_offsets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">reader_kwargs</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"source_type"</span><span class="p">:</span> <a class="sphx-glr-backref-module-scikitplot-corpus-SourceType sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.VIDEO" title="scikitplot.corpus.SourceType.VIDEO"><span class="n">SourceType</span><span class="o">.</span><span class="n">VIDEO</span></a><span class="p">,</span>
+        <span class="s2">"source_title"</span><span class="p">:</span> <span class="s2">"Local proxy for The Character of Physical Law"</span><span class="p">,</span>
+        <span class="s2">"source_author"</span><span class="p">:</span> <span class="s2">"Gallery-generated teaching text"</span><span class="p">,</span>
+        <span class="s2">"collection_id"</span><span class="p">:</span> <span class="s2">"youtube-transcript-gallery-proxy"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">proxy_result</span> <span class="o">=</span> <span class="n">proxy_pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">_PROXY_PATH</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Proxy documents: </span><span class="si">{</span><span class="n">proxy_result</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">proxy_result</span><span class="o">.</span><span class="n">documents</span><span class="p">[:</span><span class="mi">5</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] source_type=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="si">}</span><span class="s2"> "</span>
+        <span class="sa">f</span><span class="s2">"title=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">source_title</span><span class="si">!r}</span><span class="s2">"</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;scikitplot.corpus._pipeline.CorpusPipeline object at 0x74f697862b70&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Proxy documents: 6
+[0] source_type=video title='Local proxy for The Character of Physical Law'
+    'This local transcript proxy exists only to demonstrate Corpus processing.'
+[1] source_type=video title='Local proxy for The Character of Physical Law'
+    'It is not a verbatim transcript of the linked YouTube video.'
+[2] source_type=video title='Local proxy for The Character of Physical Law'
+    'A lecture transcript often contains short spoken sentences and repeated ideas.'
+[3] source_type=video title='Local proxy for The Character of Physical Law'
+    'Corpus can split that text into sentence-sized documents before later\nnormalization, enrichment, storage, or retrieval.'
+[4] source_type=video title='Local proxy for The Character of Physical Law'
+    'For a real YouTube source, YouTubeReader obtains caption cues from the external\ntranscript service.'
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unfortunately, most IPs from cloud providers are blocked by YouTube.</span>
-<span class="c1"># result = pipeline.run_url("https://www.youtube.com/shorts/VMZ40dVugAk")</span>
+</section>
+<section id="portable-enrichment">
+<h2>Portable enrichment<a class="headerlink" href="#portable-enrichment" title="Link to this heading">#</a></h2>
+<p>SIMPLE tokenization plus frequency keywords does not require NLTK when
+stopword removal is disabled.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">portable_rich</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">proxy_result</span><span class="o">.</span><span class="n">documents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] Portable enrichment: proxy produced no documents."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">portable_rich</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">(</span>
+            <span class="n">tokenizer</span><span class="o">=</span><span class="s2">"simple"</span><span class="p">,</span>
+            <span class="n">keyword_extractor</span><span class="o">=</span><span class="s2">"frequency"</span><span class="p">,</span>
+            <span class="n">max_keywords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">remove_stopwords</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">min_token_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">enrich_documents</span><span class="p">(</span><span class="n">proxy_result</span><span class="o">.</span><span class="n">documents</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">portable_rich</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Portable tokens:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Portable keywords:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># result = pipeline.run("https://www.youtube.com/shorts/VMZ40dVugAk")</span>
-<span class="c1"># result</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Portable tokens: ['this', 'local', 'transcript', 'proxy', 'exists', 'only', 'to', 'demonstrate', 'corpus', 'processing']
+Portable keywords: ['this', 'local', 'transcript', 'proxy', 'exists', 'only', 'to', 'demonstrate']
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(result.documents)</span>
+</section>
+<section id="optional-nltk-enrichment">
+<h2>Optional NLTK enrichment<a class="headerlink" href="#optional-nltk-enrichment" title="Link to this heading">#</a></h2>
+<p>Richer linguistic processing is useful when its local resources are already
+provisioned.  The gallery never downloads them automatically.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">nltk_ready</span><span class="p">,</span> <span class="n">nltk_reason</span> <span class="o">=</span> <span class="n">_probe_nltk</span><span class="p">(</span>
+    <span class="s2">"tokenizers/punkt_tab"</span><span class="p">,</span>
+    <span class="s2">"corpora/wordnet"</span><span class="p">,</span>
+    <span class="s2">"corpora/omw-1.4"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">proxy_result</span><span class="o">.</span><span class="n">documents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[SKIP] NLTK enrichment: proxy produced no documents."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">nltk_ready</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] NLTK enrichment: </span><span class="si">{</span><span class="n">nltk_reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">nltk_rich</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">(</span>
+            <span class="n">tokenizer</span><span class="o">=</span><span class="s2">"nltk"</span><span class="p">,</span>
+            <span class="n">lemmatizer</span><span class="o">=</span><span class="s2">"nltk"</span><span class="p">,</span>
+            <span class="n">stemmer</span><span class="o">=</span><span class="s2">"snowball"</span><span class="p">,</span>
+            <span class="n">stemmer_language</span><span class="o">=</span><span class="s2">"english"</span><span class="p">,</span>
+            <span class="n">keyword_extractor</span><span class="o">=</span><span class="s2">"frequency"</span><span class="p">,</span>
+            <span class="n">max_keywords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">remove_stopwords</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">min_token_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">enrich_documents</span><span class="p">(</span><span class="n">proxy_result</span><span class="o">.</span><span class="n">documents</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nltk_rich</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"NLTK keywords:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"NLTK lemmas:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">lemmas</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"NLTK stems:"</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">stems</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(result.documents[0].text, result.documents[1].text)</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>NLTK keywords: ['this', 'local', 'transcript', 'proxy', 'exists', 'only', 'to', 'demonstrate']
+NLTK lemmas: None
+NLTK stems: ['this', 'local', 'transcript', 'proxi', 'exist', 'onli', 'to', 'demonstr', 'corpus', 'process']
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># rich1 = NLPEnricher(EnricherConfig("nltk", lemmatizer="nltk", stemmer="snowball")).enrich_documents(result.documents[:1])</span>
-<span class="c1"># rich1</span>
+</section>
+<section id="configure-the-real-youtube-reader-without-fetching">
+<h2>Configure the real YouTube reader without fetching<a class="headerlink" href="#configure-the-real-youtube-reader-without-fetching" title="Link to this heading">#</a></h2>
+<p>URL dispatch happens without a network request for recognised YouTube URLs.
+The object below is the real <a class="reference internal" href="../../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a>; calling
+<code class="docutils literal notranslate"><span class="pre">get_documents()</span></code> is the point at which transcript retrieval begins.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">youtube_reader</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus-DocumentReader sphx-glr-backref-type-py-method" href="../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create" title="scikitplot.corpus.DocumentReader.create"><span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span></a><span class="p">(</span>
+    <span class="n">YOUTUBE_URL</span><span class="p">,</span>
+    <span class="n">preferred_language</span><span class="o">=</span><span class="s2">"en"</span><span class="p">,</span>
+    <span class="n">include_auto_generated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">merge_short_cues</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">min_cue_chars</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Live reader type:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">youtube_reader</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Configured URL:"</span><span class="p">,</span> <span class="n">youtube_reader</span><span class="o">.</span><span class="n">source_uri</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Preferred language:"</span><span class="p">,</span> <span class="n">youtube_reader</span><span class="o">.</span><span class="n">preferred_language</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Auto-generated fallback:"</span><span class="p">,</span> <span class="n">youtube_reader</span><span class="o">.</span><span class="n">include_auto_generated</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(rich1[0].keywords, rich1[0].lemmas, rich1[0].stems)</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Live reader type: YouTubeReader
+Configured URL: https://www.youtube.com/watch?v=kEx-gRfuhhk
+Preferred language: en
+Auto-generated fallback: True
 </pre></div>
 </div>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.001 seconds)</p>
+</section>
+<section id="optional-live-youtube-transcript-fetch">
+<h2>Optional live YouTube transcript fetch<a class="headerlink" href="#optional-live-youtube-transcript-fetch" title="Link to this heading">#</a></h2>
+<p>A normal gallery build never performs this request.</p>
+<p>To opt in manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SCIKITPLOT_GALLERY_RUN_NETWORK</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python<span class="w"> </span>plot_corpus_who_youtube_script.py
+</pre></div>
+</div>
+<p>When enabled, the request still depends on caption availability, YouTube
+policy, network reachability, and the external <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> from YouTubeReader represents the documented external
+transcript-fetch boundary and is reported as a live-service SKIP.  Invalid
+URL/configuration errors are not caught.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">youtube_api_ready</span><span class="p">,</span> <span class="n">youtube_api_reason</span> <span class="o">=</span> <span class="n">_probe_youtube_api</span><span class="p">()</span>
+<span class="n">live_documents</span> <span class="o">=</span> <span class="p">()</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">_RUN_NETWORK</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">"[SKIP] Live YouTube transcript: network execution is disabled. "</span>
+        <span class="s2">"Set SCIKITPLOT_GALLERY_RUN_NETWORK=1 to opt in."</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">youtube_api_ready</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[SKIP] Live YouTube transcript: </span><span class="si">{</span><span class="n">youtube_api_reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">live_documents</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">youtube_reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">"[SKIP] Live YouTube transcript: external transcript service "</span>
+            <span class="sa">f</span><span class="s2">"did not return a usable transcript (</span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">)."</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Live transcript documents: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">live_documents</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">live_documents</span><span class="p">[:</span><span class="mi">5</span><span class="p">]):</span>
+            <span class="n">transcript_type</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"transcript_type"</span><span class="p">)</span>
+            <span class="n">language</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"transcript_language"</span><span class="p">)</span>
+            <span class="n">video_id</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"video_id"</span><span class="p">)</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">"-"</span>
+                <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span> <span class="ow">is</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s"</span>
+            <span class="p">)</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">"-"</span>
+                <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span> <span class="ow">is</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s"</span>
+            <span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"type=</span><span class="si">{</span><span class="n">transcript_type</span><span class="si">}</span><span class="s2"> language=</span><span class="si">{</span><span class="n">language</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"video_id=</span><span class="si">{</span><span class="n">video_id</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">220</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[SKIP] Live YouTube transcript: external transcript service did not return a usable transcript (YouTubeReader: could not retrieve transcripts for video 'kEx-gRfuhhk':
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=kEx-gRfuhhk! This is most likely caused by:
+
+YouTube is blocking requests from your IP. This usually is due to one of the following reasons:
+- You have done too many requests and your IP has been blocked by YouTube
+- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.
+
+There are two things you can do to work around this:
+1. Use proxies to hide your IP address, as explained in the "Working around IP bans" section of the README (https://github.com/jdepoix/youtube-transcript-api?tab=readme-ov-file#working-around-ip-bans-requestblocked-or-ipblocked-exception).
+2. (NOT RECOMMENDED) If you authenticate your requests using cookies, you will be able to continue doing requests for a while. However, YouTube will eventually permanently ban the account that you have used to authenticate with! So only do this if you don't mind your account being banned!
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!).
+</pre></div>
+</div>
+</section>
+<section id="pipeline-url-forms">
+<h2>Pipeline URL forms<a class="headerlink" href="#pipeline-url-forms" title="Link to this heading">#</a></h2>
+<p>When live network execution is intentionally enabled, both forms below are
+supported:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUTUBE_URL</span><span class="p">)</span>
+
+<span class="c1"># Equivalent explicit form:</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run_url</span><span class="p">(</span><span class="n">YOUTUBE_URL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first form is convenient; the second makes URL intent explicit.</p>
+</section>
+<section id="what-the-local-proxy-does-and-does-not-prove">
+<h2>What the local proxy does and does not prove<a class="headerlink" href="#what-the-local-proxy-does-and-does-not-prove" title="Link to this heading">#</a></h2>
+<p>The executed proxy verifies:</p>
+<ul class="simple">
+<li><p>local reader dispatch,</p></li>
+<li><p>video source labelling,</p></li>
+<li><p>sentence chunking,</p></li>
+<li><p>downstream enrichment.</p></li>
+</ul>
+<p>It deliberately does <strong>not</strong> claim to verify:</p>
+<ul class="simple">
+<li><p>current transcript availability for the linked video,</p></li>
+<li><p>YouTube cue timecodes,</p></li>
+<li><p>manual-vs-auto track selection,</p></li>
+<li><p>YouTube network policy.</p></li>
+</ul>
+<p>Those properties belong to the optional live YouTubeReader path.</p>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<p>For deterministic docs and CI, keep network transcript retrieval optional.
+For interactive use, create the same YouTube reader and opt into the live
+request when network access and the transcript dependency are intentionally
+available.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Temporary transcript-proxy workspace cleaned."</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Temporary transcript-proxy workspace cleaned.
+</pre></div>
+</div>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.878 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">corpus A Tale of Two Cities .mp3 with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus A Tale of Two Cities .mp3 with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_zip_script.html"><span class="doc">corpus WHO European Region local .zip with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region local .zip with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">corpus WHO European Region local or url per file with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region local or url per file with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule. Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence, SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an image file containing multi-script text extracted via OCR."><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">corpus Knowledge and Information local .png with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus Knowledge and Information local .png with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This is the broad, explicit integration showcase for scikitplot.corpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">Build a Multi-Source WHO Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Build a Multi-Source WHO Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the audio ingestion path without making a documentation build depend on a speech model download."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">Process an MP3 with Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Process an MP3 with Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A ZIP archive can contain different source types.  ZipReader applies the Corpus archive-safety boundary, extracts supported members into temporary storage, dispatches each member to its registered reader, and yields one document stream."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_zip_script.html"><span class="doc">Process a Mixed-Media ZIP Archive with Corpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Process a Mixed-Media ZIP Archive with Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example takes a real public-domain text excerpt from William Shakespeare's Hamlet and restructures a traditional hand-written retrieval workflow around FluentCorpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html"><span class="doc">Build and Search a Real Hamlet Corpus with FluentCorpus</span></a></p>
+<div class="sphx-glr-thumbnail-title">Build and Search a Real Hamlet Corpus with FluentCorpus</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -644,13 +1012,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <i class="fa-solid fa-angle-left"></i>
 <div class="prev-next-info">
 <p class="prev-next-subtitle">previous</p>
-<p class="prev-next-title">corpus WHO European Region local or url per file with examples</p>
+<p class="prev-next-title">Build a Multi-Source WHO Corpus</p>
 </div>
 </a>
 <a class="right-next" href="plot_corpus_who_zip_script.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">corpus WHO European Region local .zip with examples</p>
+<p class="prev-next-title">Process a Mixed-Media ZIP Archive with Corpus</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -667,6 +1035,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#youtube">YouTube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-capability-rule">Optional capability rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-capability-preflight-helpers">Optional-capability preflight helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-deterministic-local-transcript-shaped-proxy">Build a deterministic local transcript-shaped proxy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-offline-corpus-path">Execute the offline Corpus path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-enrichment">Portable enrichment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-nltk-enrichment">Optional NLTK enrichment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-real-youtube-reader-without-fetching">Configure the real YouTube reader without fetching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-live-youtube-transcript-fetch">Optional live YouTube transcript fetch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-url-forms">Pipeline URL forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-local-proxy-does-and-does-not-prove">What the local proxy does and does not prove</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
 </nav></div>
 <div class="sidebar-secondary-item">
@@ -735,7 +1115,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260808.d6e9440 2026-08-08T18:54Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260823.71eae2e 2026-08-23T18:39Z.
       <br/>
 </p>
 </div>

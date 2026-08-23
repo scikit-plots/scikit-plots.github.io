@@ -1,10 +1,9 @@
 # Brand[#](#brand "Link to this heading")
 
-****cli-banner-mark****
+**cli-banner-mark**
 
 * [CLI Banner](_banner.html)
-
-****logo****
+**logo**
 
 * [Logo](_logo.html)
   * [Variants](_logo.html#variants)

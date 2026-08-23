@@ -1,6 +1,6 @@
 # layered\_view[#](#layered-view "Link to this heading")
 
-scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
+scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
 :   Generates an architectural visualization for a given linear Keras
     [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") model
     (i.e., one input and output tensor for each layer) in a layered style,
@@ -211,8 +211,44 @@ scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**
         * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
     Return type:
-    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev474+gba0ff3afc)")
+    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev498+gadecc563e)")
 
     Notes
 
     This function calls `get_font(font)` internally to normalize the input.
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_dl_ann_conv_dense_thumb.png)
+
+[Visualkeras: Spam Classification Conv1D Dense Example](../../auto_examples/visualkeras/plot_dl_ann_conv_dense.html)
+
+Visualkeras: Spam Classification Conv1D Dense Example![](../../_images/sphx_glr_plot_dl_ann_dense_thumb.png)
+
+[visualkeras: Spam Dense example](../../auto_examples/visualkeras/plot_dl_ann_dense.html)
+
+visualkeras: Spam Dense example![](../../_images/sphx_glr_plot_dl_cnn_autoencoder_thumb.png)
+
+[visualkeras: autoencoder example](../../auto_examples/visualkeras/plot_dl_cnn_autoencoder.html)
+
+visualkeras: autoencoder example![](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_thumb.png)
+
+[visualkeras: custom vgg16 example](../../auto_examples/visualkeras/plot_dl_cnn_custom_vgg16.html)
+
+visualkeras: custom vgg16 example![](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_thumb.png)
+
+[visualkeras: custom vgg16 show dimension example](../../auto_examples/visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html)
+
+visualkeras: custom vgg16 show dimension example![](../../_images/sphx_glr_plot_dl_cnn_efficientnetv2_thumb.png)
+
+[visualkeras: EfficientNetV2 example](../../auto_examples/visualkeras/plot_dl_cnn_efficientnetv2.html)
+
+visualkeras: EfficientNetV2 example![](../../_images/sphx_glr_plot_dl_cnn_resnetv2_thumb.png)
+
+[visualkeras: ResNetV2 example](../../auto_examples/visualkeras/plot_dl_cnn_resnetv2.html)
+
+visualkeras: ResNetV2 example![](../../_images/sphx_glr_plot_dl_cnn_vgg_thumb.png)
+
+[visualkeras: custom VGG example](../../auto_examples/visualkeras/plot_dl_cnn_vgg.html)
+
+visualkeras: custom VGG example

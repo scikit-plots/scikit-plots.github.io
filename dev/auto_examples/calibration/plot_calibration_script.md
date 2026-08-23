@@ -140,8 +140,8 @@ ax = sp.metrics.plot_calibration(
 ```
 ![Calibration Curves (Reliability Diagrams)](../../_images/sphx_glr_plot_calibration_script_001.png)
 ```
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20260807_220846Z.png
-[INFO] Plot saved to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20260807_220846Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20260823_184251Z.png
+[INFO] Plot saved to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20260823_184251Z.png
 
 ```
 > **Interpretation**
@@ -157,7 +157,7 @@ Typical Characteristics:
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [component: model](../../_tags/component-model.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: model](../../_tags/plot-type-model.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.705 seconds)
+****Total running time of the script:**** (0 minutes 2.925 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo1.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/calibration/plot_calibration_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo1.svg)](../../lite/lab/index.html?path=auto_examples/calibration/plot_calibration_script.ipynb)
 

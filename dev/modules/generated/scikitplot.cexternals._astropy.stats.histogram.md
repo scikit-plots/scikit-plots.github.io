@@ -1,6 +1,6 @@
 # histogram[#](#histogram "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None**, **weights=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cexternals/_astropy/stats/histogram.py#L108)[#](#scikitplot.cexternals._astropy.stats.histogram "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None**, **weights=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/histogram.py#L108)[#](#scikitplot.cexternals._astropy.stats.histogram "Link to this definition")
 :   Enhanced histogram function, providing adaptive binnings.
 
     This is a histogram function that enables the use of more sophisticated
@@ -48,7 +48,7 @@ scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None
         * ****weights**** (**ArrayLike** **|** **None**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]], [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]]
+    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[**NDArray**, **NDArray**]
 
     > **See also**
     > [`numpy.histogram`](https://numpy.org/devdocs/reference/generated/numpy.histogram.html#numpy.histogram "(in NumPy v2.6.dev0)")

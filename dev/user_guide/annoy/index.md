@@ -18,7 +18,7 @@ This page documents the Annoy [[1]](#id2) user guide integration shipped with sc
 * Low-level bindings C-API: [`_annoy`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
 * High-level Python-API: [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy")
 
-****VectorDB****
+**VectorDB**
 
 * [Vector Similarity Search](annoy_index_vector_database.html)
   * [Vector similarity search](annoy_index_vector_database.html#vector-similarity-search)
@@ -27,15 +27,13 @@ This page documents the Annoy [[1]](#id2) user guide integration shipped with sc
   * [5 practical tips](annoy_index_vector_database.html#practical-tips)
   * [Open source options](annoy_index_vector_database.html#open-source-options)
   * [How to choose (simple rules)](annoy_index_vector_database.html#how-to-choose-simple-rules)
-
-****Architecture****
+**Architecture**
 
 * [Index Inheritance](annoy_index_inheritance_diagrams.html)
   * [Index + mixins](annoy_index_inheritance_diagrams.html#index-mixins)
   * [Mixins only (independence + MRO scan)](annoy_index_inheritance_diagrams.html#mixins-only-independence-mro-scan)
   * [Notes and Limitations](annoy_index_inheritance_diagrams.html#notes-and-limitations)
-
-****cython****
+**cython**
 
 * [ANNoy Cython](_annoy.html)
 

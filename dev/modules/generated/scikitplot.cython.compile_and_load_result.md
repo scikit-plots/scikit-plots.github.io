@@ -1,6 +1,6 @@
 # compile\_and\_load\_result[#](#compile-and-load-result "Link to this heading")
 
-scikitplot.cython.compile\_and\_load\_result(**source**, **\***, **module\_name=None**, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **annotate=None**, **view\_annotate=False**, **numpy\_support=True**, **numpy\_required=False**, **include\_dirs=None**, **library\_dirs=None**, **libraries=None**, **define\_macros=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **compiler\_directives=None**, **extra\_sources=None**, **support\_files=None**, **support\_paths=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**, **security\_policy=None**, **\_trusted\_include\_dirs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/cython/_public.py#L419)[#](#scikitplot.cython.compile_and_load_result "Link to this definition")
+scikitplot.cython.compile\_and\_load\_result(**source**, **\***, **module\_name=None**, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **annotate=None**, **view\_annotate=False**, **numpy\_support=True**, **numpy\_required=False**, **include\_dirs=None**, **library\_dirs=None**, **libraries=None**, **define\_macros=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **compiler\_directives=None**, **extra\_sources=None**, **support\_files=None**, **support\_paths=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**, **security\_policy=None**, **\_trusted\_include\_dirs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_public.py#L419)[#](#scikitplot.cython.compile_and_load_result "Link to this definition")
 :   Compile and import a Cython extension module from source text.
 
     Parameters:
@@ -86,3 +86,39 @@ scikitplot.cython.compile\_and\_load\_result(**source**, **\***, **module\_name=
 
     Return type:
     :   [**BuildResult**](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
+
+[Cython quickstart: compile\_and\_load](../../auto_examples/cython/plot_00_quickstart_compile_and_load.html)
+
+Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_02_build_profiles_thumb.png)
+
+[Build profiles: fast-debug, release, annotate](../../auto_examples/cython/plot_02_build_profiles.html)
+
+Build profiles: fast-debug, release, annotate![](../../_images/sphx_glr_plot_03_cache_and_restart_reuse_thumb.png)
+
+[Cache and restart reuse](../../auto_examples/cython/plot_03_cache_and_restart_reuse.html)
+
+Cache and restart reuse![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
+
+[Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
+
+Pin/Alias: stable handles for cached builds![](../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png)
+
+[Multi-file builds: .pxi includes and external headers](../../auto_examples/cython/plot_06_multifile_support_files.html)
+
+Multi-file builds: .pxi includes and external headers![](../../_images/sphx_glr_plot_07_cpp_mode_basics_thumb.png)
+
+[C++ mode basics: cppclass and libcpp containers](../../auto_examples/cython/plot_07_cpp_mode_basics.html)
+
+C++ mode basics: cppclass and libcpp containers![](../../_images/sphx_glr_plot_08_vector_ops_without_numpy_thumb.png)
+
+[Vector ops without NumPy: array(‘d’) + memoryviews](../../auto_examples/cython/plot_08_vector_ops_without_numpy.html)
+
+Vector ops without NumPy: array('d') + memoryviews![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
+
+[Workflow templates (train / hpo / predict) + CLI entry template](../../auto_examples/cython/plot_09_workflow_templates_cli.html)
+
+Workflow templates (train / hpo / predict) + CLI entry template

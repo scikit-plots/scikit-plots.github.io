@@ -1,8 +1,10 @@
 # get\_verbosity[#](#get-verbosity "Link to this heading")
 
-scikitplot.logging.get\_verbosity()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6e9440d/scikitplot/logging.py#L1300)[#](#scikitplot.logging.get_verbosity "Link to this definition")
+scikitplot.logging.get\_verbosity()[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/logging.py#L1310)[#](#scikitplot.logging.get_verbosity "Link to this definition")
 :   Return the current verbosity level.
 
     Returns:
     :   int
         :   The effective log level.
+
+ On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/modules/generated/scikitplot.logging.get_verbosity.rst)[Show Source](../../_sources/modules/generated/scikitplot.logging.get_verbosity.rst.txt)
