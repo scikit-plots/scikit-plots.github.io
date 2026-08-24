@@ -1,6 +1,6 @@
 # poisson\_conf\_interval[#](#poisson-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
 :   Poisson parameter confidence interval given observed counts.
 
     Parameters:

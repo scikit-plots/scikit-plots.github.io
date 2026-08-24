@@ -1,6 +1,6 @@
 # running\_in\_docker[#](#running-in-docker "Link to this heading")
 
-scikitplot.mlflow.running\_in\_docker()[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/mlflow/_container.py#L19)[#](#scikitplot.mlflow.running_in_docker "Link to this definition")
+scikitplot.mlflow.running\_in\_docker()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_container.py#L19)[#](#scikitplot.mlflow.running_in_docker "Link to this definition")
 :   Detect whether the current process is running in a Docker container.
 
     Returns:

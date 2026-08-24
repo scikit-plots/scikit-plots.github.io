@@ -22,7 +22,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-23T18:56:31Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-24T15:12:25Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -620,7 +620,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">Jupyter Notebooks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
@@ -694,6 +694,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -825,7 +829,15 @@ span.prompt1:before {
 <span class="prompt1"><span class="c1"># !pip install datasets transformers</span></span>
 <span class="prompt1"><span class="c1"># !pip install nltk gensim langdetect faster-whisper openai-whisper pytesseract youtube-transcript-api</span></span>
 <span class="prompt1"><span class="c1"># sudo apt-get install tesseract-ocr</span></span>
-</pre></div></div><section id="start-here">
+</pre></div></div><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/modelcontextprotocol/python-sdk">modelcontextprotocol/python-sdk</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/semantica-agi/semantica">semantica-agi/semantica</a></p></li>
+<li><p><a class="reference external" href="https://docs.getsemantica.ai/guides/distance-intelligence/#common-pitfalls">https://docs.getsemantica.ai/guides/distance-intelligence/#common-pitfalls</a></p></li>
+</ul>
+</div>
+<section id="start-here">
 <h2>Start here<a class="headerlink" href="#start-here" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Configure Corpus declaratively</strong> — learn <code class="xref py py-class docutils literal notranslate"><span class="pre">FluentCorpus</span></code>, immutable
@@ -1068,7 +1080,7 @@ environment.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260823.71eae2e 2026-08-23T18:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260824.c8953a1 2026-08-24T15:07Z.
       <br/>
     
   </p>

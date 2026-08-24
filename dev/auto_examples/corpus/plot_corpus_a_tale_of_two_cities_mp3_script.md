@@ -182,8 +182,8 @@ A Tale of Two Cities by Charles Dickens.
 ```
 ```
 Bundled MP3: /home/circleci/repo/galleries/examples/corpus/data/tale_of_two_cities_01_dickens_64kb.mp3
-Temporary audio: /tmp/scikitplot-audio-gallery-vthww70r/tale_of_two_cities_01_dickens_64kb.mp3
-Companion: /tmp/scikitplot-audio-gallery-vthww70r/tale_of_two_cities_01_dickens_64kb.srt
+Temporary audio: /tmp/scikitplot-audio-gallery-4pr31jkx/tale_of_two_cities_01_dickens_64kb.mp3
+Companion: /tmp/scikitplot-audio-gallery-4pr31jkx/tale_of_two_cities_01_dickens_64kb.srt
 
 ```
 
@@ -467,7 +467,7 @@ Temporary audio workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 13.759 seconds)
+****Total running time of the script:**** (0 minutes 12.731 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 
@@ -483,15 +483,15 @@ Related examples
 
 [Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 
-Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
-
-Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
 [Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
 
-Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+
+[Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
+
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
 [Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 

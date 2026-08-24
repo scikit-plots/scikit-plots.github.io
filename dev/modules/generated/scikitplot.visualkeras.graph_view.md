@@ -1,6 +1,6 @@
 # graph\_view[#](#graph-view "Link to this heading")
 
-scikitplot.visualkeras.graph\_view(**model**, **to\_file=None**, **color\_map=None**, **node\_size=50**, **background\_fill='white'**, **padding=10**, **layer\_spacing=250**, **node\_spacing=10**, **connector\_fill='gray'**, **connector\_width=1**, **ellipsize\_after=10**, **inout\_as\_tensor=True**, **show\_neurons=True**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/visualkeras/_graph.py#L120)[#](#scikitplot.visualkeras.graph_view "Link to this definition")
+scikitplot.visualkeras.graph\_view(**model**, **to\_file=None**, **color\_map=None**, **node\_size=50**, **background\_fill='white'**, **padding=10**, **layer\_spacing=250**, **node\_spacing=10**, **connector\_fill='gray'**, **connector\_width=1**, **ellipsize\_after=10**, **inout\_as\_tensor=True**, **show\_neurons=True**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/visualkeras/_graph.py#L120)[#](#scikitplot.visualkeras.graph_view "Link to this definition")
 :   Generates an architectural visualization for a given linear Keras
     [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") model
     (i.e., one input and output tensor for each layer) in graph style.
@@ -151,11 +151,3 @@ scikitplot.visualkeras.graph\_view(**model**, **to\_file=None**, **color\_map=No
 
     Return type:
     :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev498+gadecc563e)")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_dl_ann_dense_thumb.png)
-
-[visualkeras: Spam Dense example](../../auto_examples/visualkeras/plot_dl_ann_dense.html)
-
-visualkeras: Spam Dense example

@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":false,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-23T18:56:33Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-24T15:12:27Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Cache and restart reuse — scikit-plots 0.5.dev0 documentation</title>
@@ -390,7 +390,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">Jupyter Notebooks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
@@ -464,6 +464,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -640,47 +644,47 @@ the runtime fingerprint matches).</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BuildResult:
-  module_name: scikitplot_cython_61223c3f05c2beea
-  key        : 61223c3f05c2beea063c2971ae17b67ba16eeb4e47746eebf6aad1ebe90e3652
-  artifact   : /home/circleci/.cache/scikitplot/cython/61223c3f05c2beea063c2971ae17b67ba16eeb4e47746eebf6aad1ebe90e3652/scikitplot_cython_61223c3f05c2beea.cpython-312-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_7024267ad2d3c2af
+  key        : 7024267ad2d3c2afa1443f720ed827a3fda6a73089b625ac96fbae1e4394d000
+  artifact   : /home/circleci/.cache/scikitplot/cython/7024267ad2d3c2afa1443f720ed827a3fda6a73089b625ac96fbae1e4394d000/scikitplot_cython_7024267ad2d3c2af.cpython-312-x86_64-linux-gnu.so
   used_cache : True
 Cache entries: 6
 Last 5 entries:
-  - key: 61223c3f05c2beea063c2971ae17b67ba16eeb4e47746eebf6aad1ebe90e3652
-    module_name: scikitplot_cython_61223c3f05c2beea
-    artifact_path: /home/circleci/.cache/scikitplot/cython/61223c3f05c2beea063c2971ae17b67ba16eeb4e47746eebf6aad1ebe90e3652/scikitplot_cython_61223c3f05c2beea.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-08-23T18:44:01Z
-  - key: 79475d7848e967a8b6f7d62158945219d2e4d1c69fa908070dfde7da4bce5611
-    module_name: scikitplot_cython_79475d7848e967a8
-    artifact_path: /home/circleci/.cache/scikitplot/cython/79475d7848e967a8b6f7d62158945219d2e4d1c69fa908070dfde7da4bce5611/scikitplot_cython_79475d7848e967a8.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-08-23T18:44:08Z
-  - key: d00cb002fa589aa9964e22f4927547b8514f069628f917ca64085f27d9140642
-    module_name: scikitplot_cython_d00cb002fa589aa9
-    artifact_path: /home/circleci/.cache/scikitplot/cython/d00cb002fa589aa9964e22f4927547b8514f069628f917ca64085f27d9140642/scikitplot_cython_d00cb002fa589aa9.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-08-23T18:44:03Z
-  - key: e3397e3200789c52526e16b146e7332b241aca635976af14884f0189d0269a76
-    module_name: scikitplot_cython_e3397e3200789c52
-    artifact_path: /home/circleci/.cache/scikitplot/cython/e3397e3200789c52526e16b146e7332b241aca635976af14884f0189d0269a76/scikitplot_cython_e3397e3200789c52.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-08-23T18:44:05Z
-  - key: f8c79d3320d59093830819e311aa0e22eb5d3e64df2819febfc24ab7a808d55b
-    module_name: scikitplot_cython_f8c79d3320d59093
-    artifact_path: /home/circleci/.cache/scikitplot/cython/f8c79d3320d59093830819e311aa0e22eb5d3e64df2819febfc24ab7a808d55b/scikitplot_cython_f8c79d3320d59093.cpython-312-x86_64-linux-gnu.so
-    created_utc: 2026-08-23T18:44:08Z
+  - key: 27f80730b47a731ea98d0b45195a1399dd2e9f1432926e05614df4f89558db46
+    module_name: scikitplot_cython_27f80730b47a731e
+    artifact_path: /home/circleci/.cache/scikitplot/cython/27f80730b47a731ea98d0b45195a1399dd2e9f1432926e05614df4f89558db46/scikitplot_cython_27f80730b47a731e.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-08-07T22:11:10Z
+  - key: 7024267ad2d3c2afa1443f720ed827a3fda6a73089b625ac96fbae1e4394d000
+    module_name: scikitplot_cython_7024267ad2d3c2af
+    artifact_path: /home/circleci/.cache/scikitplot/cython/7024267ad2d3c2afa1443f720ed827a3fda6a73089b625ac96fbae1e4394d000/scikitplot_cython_7024267ad2d3c2af.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-08-07T22:11:06Z
+  - key: b7dab274e3fd001ea22a772ac180186ac42d98a930de71922e64717c7c18ff9f
+    module_name: scikitplot_cython_b7dab274e3fd001e
+    artifact_path: /home/circleci/.cache/scikitplot/cython/b7dab274e3fd001ea22a772ac180186ac42d98a930de71922e64717c7c18ff9f/scikitplot_cython_b7dab274e3fd001e.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-08-07T22:11:13Z
+  - key: c9fa120136e2f5589f656a08da08fb3845159ab04926b9c67f5df454a2cfffd6
+    module_name: scikitplot_cython_c9fa120136e2f558
+    artifact_path: /home/circleci/.cache/scikitplot/cython/c9fa120136e2f5589f656a08da08fb3845159ab04926b9c67f5df454a2cfffd6/scikitplot_cython_c9fa120136e2f558.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-08-07T22:11:13Z
+  - key: cb68b77d0401864167a3b412a9fcbefd52217bafc03c42b2f69e03022226186e
+    module_name: scikitplot_cython_cb68b77d04018641
+    artifact_path: /home/circleci/.cache/scikitplot/cython/cb68b77d0401864167a3b412a9fcbefd52217bafc03c42b2f69e03022226186e/scikitplot_cython_cb68b77d04018641.cpython-312-x86_64-linux-gnu.so
+    created_utc: 2026-08-07T22:11:06Z
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4466895, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-08-23T18:44:10Z', oldest_mtime_utc='2026-08-23T18:44:02Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4493148, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-08-07T22:11:15Z', oldest_mtime_utc='2026-08-07T22:11:06Z')
 
 Imported from cache (result API):
-  module_name: scikitplot_cython_61223c3f05c2beea
+  module_name: scikitplot_cython_7024267ad2d3c2af
   used_cache : True
-  artifact   : /home/circleci/.cache/scikitplot/cython/61223c3f05c2beea063c2971ae17b67ba16eeb4e47746eebf6aad1ebe90e3652/scikitplot_cython_61223c3f05c2beea.cpython-312-x86_64-linux-gnu.so
+  artifact   : /home/circleci/.cache/scikitplot/cython/7024267ad2d3c2afa1443f720ed827a3fda6a73089b625ac96fbae1e4394d000/scikitplot_cython_7024267ad2d3c2af.cpython-312-x86_64-linux-gnu.so
 import_cached(key).f(11) = 121
 Expected: 121
 Correct: True
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-cython.html"><span class="doc">domain: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-cython.html"><span class="doc">plot-type: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.022 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.025 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
@@ -798,7 +802,7 @@ Correct: True
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260823.71eae2e 2026-08-23T18:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260824.c8953a1 2026-08-24T15:07Z.
       <br/>
 </p>
 </div>

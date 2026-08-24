@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -56,7 +56,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260823.71eae2e
+                   scikitplot: 0.5.dev0+git.20260824.c8953a1
                           pip: 26.2.1
                    setuptools: 84.0.0
                        cython: 3.3.0
@@ -113,7 +113,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260823.71eae2e',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260824.c8953a1',
       'pip': '26.2.1',
       'setuptools': '84.0.0',
       'cython': '3.3.0',
@@ -163,7 +163,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260823.71eae2e
+                   scikitplot: 0.5.dev0+git.20260824.c8953a1
                           pip: 26.2.1
                    setuptools: 84.0.0
                        cython: 3.3.0

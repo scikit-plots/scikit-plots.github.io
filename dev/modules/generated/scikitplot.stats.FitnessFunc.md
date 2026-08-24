@@ -1,6 +1,6 @@
 # FitnessFunc[#](#fitnessfunc "Link to this heading")
 
-class scikitplot.stats.FitnessFunc(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L189)[#](#scikitplot.stats.FitnessFunc "Link to this definition")
+class scikitplot.stats.FitnessFunc(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L189)[#](#scikitplot.stats.FitnessFunc "Link to this definition")
 :   Base class for bayesian blocks fitness functions.
 
     Derived classes should overload the following method:
@@ -44,7 +44,7 @@ class scikitplot.stats.FitnessFunc(**p0=0.05**, **gamma=None**, **ncp\_prior=Non
         * ****gamma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
         * ****ncp\_prior**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
 
-    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.FitnessFunc.compute_ncp_prior "Link to this definition")
+    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.FitnessFunc.compute_ncp_prior "Link to this definition")
     :   If `ncp_prior` is not explicitly defined, compute it from `gamma`
         or `p0`.
 
@@ -54,7 +54,7 @@ class scikitplot.stats.FitnessFunc(**p0=0.05**, **gamma=None**, **ncp\_prior=Non
         Return type:
         :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
 
-    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.FitnessFunc.fit "Link to this definition")
+    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.FitnessFunc.fit "Link to this definition")
     :   Fit the Bayesian Blocks model given the specified fitness function.
 
         Parameters:
@@ -79,9 +79,9 @@ class scikitplot.stats.FitnessFunc(**p0=0.05**, **gamma=None**, **ncp\_prior=Non
         Return type:
         :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
 
-    fitness(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L307)[#](#scikitplot.stats.FitnessFunc.fitness "Link to this definition")
+    fitness(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L307)[#](#scikitplot.stats.FitnessFunc.fitness "Link to this definition")
 
-    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.FitnessFunc.p0_prior "Link to this definition")
+    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.FitnessFunc.p0_prior "Link to this definition")
     :   Empirical prior, parametrized by the false alarm probability `p0`.
 
         See eq. 21 in Scargle (2013).
@@ -96,7 +96,7 @@ class scikitplot.stats.FitnessFunc(**p0=0.05**, **gamma=None**, **ncp\_prior=Non
         Return type:
         :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
 
-    validate\_input(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L236)[#](#scikitplot.stats.FitnessFunc.validate_input "Link to this definition")
+    validate\_input(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L236)[#](#scikitplot.stats.FitnessFunc.validate_input "Link to this definition")
     :   Validate inputs to the model.
 
         Parameters:

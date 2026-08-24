@@ -1,6 +1,6 @@
 # gc\_cache[#](#gc-cache "Link to this heading")
 
-scikitplot.cython.gc\_cache(**\***, **cache\_dir=None**, **keep\_n\_newest=None**, **max\_age\_days=None**, **max\_bytes=None**, **dry\_run=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_gc.py#L145)[#](#scikitplot.cython.gc_cache "Link to this definition")
+scikitplot.cython.gc\_cache(**\***, **cache\_dir=None**, **keep\_n\_newest=None**, **max\_age\_days=None**, **max\_bytes=None**, **dry\_run=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_gc.py#L145)[#](#scikitplot.cython.gc_cache "Link to this definition")
 :   Deterministically garbage-collect cached build entries.
 
     Parameters:

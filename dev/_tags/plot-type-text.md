@@ -11,5 +11,6 @@ With this tag
 * [Build a Multi-Source WHO Corpus](../auto_examples/corpus/plot_corpus_who_per_file_script.html)
 * [Process a YouTube Transcript with Corpus](../auto_examples/corpus/plot_corpus_who_youtube_script.html)
 * [Process a Mixed-Media ZIP Archive with Corpus](../auto_examples/corpus/plot_corpus_who_zip_script.html)
+* [Serve a Real Hamlet Corpus over MCP with Annoy](../auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.html)
 * [Misc Showcase](../auto_examples/misc/plot_misc_script.html)
 * [MLflow](../auto_examples/mlflow/plot_mlflow.html)

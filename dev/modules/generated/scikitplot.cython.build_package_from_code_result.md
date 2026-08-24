@@ -1,6 +1,6 @@
 # build\_package\_from\_code\_result[#](#build-package-from-code-result "Link to this heading")
 
-scikitplot.cython.build\_package\_from\_code\_result(**modules**, **\***, **package\_name**, **profile=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_public.py#L991)[#](#scikitplot.cython.build_package_from_code_result "Link to this definition")
+scikitplot.cython.build\_package\_from\_code\_result(**modules**, **\***, **package\_name**, **profile=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_public.py#L991)[#](#scikitplot.cython.build_package_from_code_result "Link to this definition")
 :   Build and import a multi-module extension package from code strings.
 
     Parameters:
@@ -28,11 +28,3 @@ scikitplot.cython.build\_package\_from\_code\_result(**modules**, **\***, **pack
 
     Return type:
     :   [**PackageBuildResult**](scikitplot.cython.PackageBuildResult.html#scikitplot.cython.PackageBuildResult "scikitplot.cython._result.PackageBuildResult")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png)
-
-[Workflow templates (train / hpo / predict) + CLI entry template](../../auto_examples/cython/plot_09_workflow_templates_cli.html)
-
-Workflow templates (train / hpo / predict) + CLI entry template

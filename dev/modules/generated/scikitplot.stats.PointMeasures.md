@@ -1,6 +1,6 @@
 # PointMeasures[#](#pointmeasures "Link to this heading")
 
-class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L564)[#](#scikitplot.stats.PointMeasures "Link to this definition")
+class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L564)[#](#scikitplot.stats.PointMeasures "Link to this definition")
 :   Bayesian blocks fitness for point measures.
 
     Parameters:
@@ -25,7 +25,7 @@ class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=N
         * ****gamma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
         * ****ncp\_prior**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
 
-    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.PointMeasures.compute_ncp_prior "Link to this definition")
+    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.PointMeasures.compute_ncp_prior "Link to this definition")
     :   If `ncp_prior` is not explicitly defined, compute it from `gamma`
         or `p0`.
 
@@ -35,7 +35,7 @@ class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=N
         Return type:
         :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
 
-    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.PointMeasures.fit "Link to this definition")
+    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.PointMeasures.fit "Link to this definition")
     :   Fit the Bayesian Blocks model given the specified fitness function.
 
         Parameters:
@@ -60,7 +60,7 @@ class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=N
         Return type:
         :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
 
-    fitness(**a\_k**, **b\_k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L592)[#](#scikitplot.stats.PointMeasures.fitness "Link to this definition")
+    fitness(**a\_k**, **b\_k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L592)[#](#scikitplot.stats.PointMeasures.fitness "Link to this definition")
     :   Parameters:
         :   * ****a\_k**** (**NDArray****[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
             * ****b\_k**** (**ArrayLike**)
@@ -68,7 +68,7 @@ class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=N
         Return type:
         :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
 
-    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.PointMeasures.p0_prior "Link to this definition")
+    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.PointMeasures.p0_prior "Link to this definition")
     :   Empirical prior, parametrized by the false alarm probability `p0`.
 
         See eq. 21 in Scargle (2013).
@@ -83,7 +83,7 @@ class scikitplot.stats.PointMeasures(**p0=0.05**, **gamma=None**, **ncp\_prior=N
         Return type:
         :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
 
-    validate\_input(**t**, **x**, **sigma**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L596)[#](#scikitplot.stats.PointMeasures.validate_input "Link to this definition")
+    validate\_input(**t**, **x**, **sigma**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L596)[#](#scikitplot.stats.PointMeasures.validate_input "Link to this definition")
     :   Validate inputs to the model.
 
         Parameters:

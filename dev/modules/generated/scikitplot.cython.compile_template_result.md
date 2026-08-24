@@ -1,6 +1,6 @@
 # compile\_template\_result[#](#compile-template-result "Link to this heading")
 
-scikitplot.cython.compile\_template\_result(**template\_id**, **\***, **module\_name=None**, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **numpy\_support=True**, **numpy\_required=None**, **annotate=None**, **view\_annotate=False**, **compiler\_directives=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **extra\_sources=None**, **support\_files=None**, **support\_paths=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_templates_api.py#L631)[#](#scikitplot.cython.compile_template_result "Link to this definition")
+scikitplot.cython.compile\_template\_result(**template\_id**, **\***, **module\_name=None**, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **numpy\_support=True**, **numpy\_required=None**, **annotate=None**, **view\_annotate=False**, **compiler\_directives=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **extra\_sources=None**, **support\_files=None**, **support\_paths=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L631)[#](#scikitplot.cython.compile_template_result "Link to this definition")
 :   Compile and import a Cython template and return a structured result.
 
     Parameters:
@@ -67,11 +67,3 @@ scikitplot.cython.compile\_template\_result(**template\_id**, **\***, **module\_
         * ****include\_cwd**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****lock\_timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
-
-[Browse and compile templates](../../auto_examples/cython/plot_01_browse_and_compile_templates.html)
-
-Browse and compile templates

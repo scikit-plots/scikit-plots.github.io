@@ -1,6 +1,6 @@
 # pin[#](#pin "Link to this heading")
 
-scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwrite=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_pins.py#L161)[#](#scikitplot.cython.pin "Link to this definition")
+scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwrite=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_pins.py#L161)[#](#scikitplot.cython.pin "Link to this definition")
 :   Pin a cache key under a human-friendly alias.
 
     Parameters:
@@ -36,15 +36,3 @@ scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwri
 
     Return type:
     :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
-
-[Cython quickstart: compile\_and\_load](../../auto_examples/cython/plot_00_quickstart_compile_and_load.html)
-
-Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
-
-[Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
-
-Pin/Alias: stable handles for cached builds

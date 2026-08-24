@@ -1,6 +1,6 @@
 # getEffectiveLevel[#](#geteffectivelevel "Link to this heading")
 
-scikitplot.logging.getEffectiveLevel()[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/logging.py#L1298)[#](#scikitplot.logging.getEffectiveLevel "Link to this definition")
+scikitplot.logging.getEffectiveLevel()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/logging.py#L1298)[#](#scikitplot.logging.getEffectiveLevel "Link to this definition")
 :   Return the effective level for the scikit-plots logger.
 
     Returns:

@@ -6,6 +6,11 @@ Tools for turning files, URLs, media, and text sources into canonical
 [`CorpusDocument`](../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") evidence that can be transformed, embedded, stored,
 searched, adapted, and exported.
 
+> **See also**
+> * [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
+* [semantica-agi/semantica](https://github.com/semantica-agi/semantica)
+* <https://docs.getsemantica.ai/guides/distance-intelligence/#common-pitfalls>
+
 ### Choose the API that matches the job[#](#choose-the-api-that-matches-the-job "Link to this heading")
 
 `CorpusPipeline`

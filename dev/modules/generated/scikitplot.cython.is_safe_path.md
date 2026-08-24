@@ -1,6 +1,6 @@
 # is\_safe\_path[#](#is-safe-path "Link to this heading")
 
-scikitplot.cython.is\_safe\_path(**path**, **\***, **allow\_absolute=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_security.py#L334)[#](#scikitplot.cython.is_safe_path "Link to this definition")
+scikitplot.cython.is\_safe\_path(**path**, **\***, **allow\_absolute=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_security.py#L334)[#](#scikitplot.cython.is_safe_path "Link to this definition")
 :   Return `True` when a filesystem path does not contain traversal sequences.
 
     Parameters:

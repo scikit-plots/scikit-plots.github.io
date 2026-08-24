@@ -1,6 +1,6 @@
 # bridge\_chunker[#](#bridge-chunker "Link to this heading")
 
-scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_chunkers/_chunker_bridge.py#L469)[#](#scikitplot.corpus.bridge_chunker "Link to this definition")
+scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_chunker_bridge.py#L469)[#](#scikitplot.corpus.bridge_chunker "Link to this definition")
 :   Wrap **chunker** in a bridge if it is a new-style chunker.
 
     Parameters:

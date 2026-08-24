@@ -49,6 +49,7 @@ With this tag
 * [plot\_pca\_2d\_projection with examples](../auto_examples/decomposition/plot_pca_2d_projection_script.html)
 * [plot\_pca\_component\_variance with examples](../auto_examples/decomposition/plot_pca_component_variance_script.html)
 * [annoy impute with examples](../auto_examples/impute/plot_impute_script.html)
+* [Serve a Real Hamlet Corpus over MCP with Annoy](../auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.html)
 * [Memory-Mapping Showcase – Basic / Medium / Advanced](../auto_examples/memmap/plot_mman.html)
 * [Misc Showcase](../auto_examples/misc/plot_misc_script.html)
 * [MLflow](../auto_examples/mlflow/plot_mlflow.html)

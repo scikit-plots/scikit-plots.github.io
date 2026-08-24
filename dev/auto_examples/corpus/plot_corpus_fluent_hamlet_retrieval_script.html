@@ -17,7 +17,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":false,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-23T18:56:31Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-24T15:12:26Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <title>Build and Search a Real Hamlet Corpus with FluentCorpus — scikit-plots 0.5.dev0 documentation</title>
@@ -390,7 +390,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">Jupyter Notebooks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
@@ -464,6 +464,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -620,12 +624,12 @@ lifecycle, storage, retrieval, and export all come from the public Corpus API.</
     <span class="n">HashEmbedder</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.InMemoryStorage.html#scikitplot.corpus.InMemoryStorage" title="scikitplot.corpus.InMemoryStorage"><span class="n">InMemoryStorage</span></a><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.ParagraphChunkerConfig.html#scikitplot.corpus.ParagraphChunkerConfig" title="scikitplot.corpus.ParagraphChunkerConfig"><span class="n">ParagraphChunkerConfig</span></a><span class="p">,</span>
-    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><span class="n">RetrievalConfig</span></a><span class="p">,</span>
+    <span class="n">RetrievalConfig</span><span class="p">,</span>
     <span class="n">RuntimePolicy</span><span class="p">,</span>
     <span class="n">SimpleEnricherSpec</span><span class="p">,</span>
     <span class="n">SimpleFrequencyEnricher</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.StorageQuery.html#scikitplot.corpus.StorageQuery" title="scikitplot.corpus.StorageQuery"><span class="n">StorageQuery</span></a><span class="p">,</span>
-    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.TextNormalizerConfig.html#scikitplot.corpus.TextNormalizerConfig" title="scikitplot.corpus.TextNormalizerConfig"><span class="n">TextNormalizerConfig</span></a><span class="p">,</span>
+    <span class="n">TextNormalizerConfig</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -675,9 +679,9 @@ modifying the gallery source tree.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Addendum source:"</span><span class="p">,</span> <span class="n">_HAMLET_ADDENDUM_PATH</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Initial source: /tmp/scikitplot-hamlet-17ebpn82/hamlet_excerpt.txt
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Initial source: /tmp/scikitplot-hamlet-ahwfnzq9/hamlet_excerpt.txt
 Initial characters: 3820
-Addendum source: /tmp/scikitplot-hamlet-17ebpn82/hamlet_addendum.txt
+Addendum source: /tmp/scikitplot-hamlet-ahwfnzq9/hamlet_addendum.txt
 </pre></div>
 </div>
 </section>
@@ -723,7 +727,7 @@ API, but backend-specific constructor settings now belong in generic
     <span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="n">_HAMLET_PATH</span><span class="p">)</span>
     <span class="o">.</span><span class="n">reader</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" title="scikitplot.corpus.DocumentReader"><span class="n">DocumentReader</span></a><span class="p">)</span>
     <span class="o">.</span><span class="n">normalizer</span><span class="p">(</span>
-        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.TextNormalizerConfig.html#scikitplot.corpus.TextNormalizerConfig" title="scikitplot.corpus.TextNormalizerConfig"><span class="n">TextNormalizerConfig</span></a><span class="p">(</span>
+        <span class="n">TextNormalizerConfig</span><span class="p">(</span>
             <span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="s2">"unicode"</span><span class="p">,</span> <span class="s2">"whitespace"</span><span class="p">],</span>
             <span class="n">lowercase</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
@@ -740,12 +744,12 @@ API, but backend-specific constructor settings now belong in generic
     <span class="o">.</span><span class="n">embedder</span><span class="p">(</span><span class="n">HASH_EMBEDDER</span><span class="p">)</span>
     <span class="o">.</span><span class="n">storage</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.InMemoryStorage.html#scikitplot.corpus.InMemoryStorage" title="scikitplot.corpus.InMemoryStorage"><span class="n">InMemoryStorage</span></a><span class="p">)</span>
     <span class="o">.</span><span class="n">index</span><span class="p">(</span>
-        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><span class="n">RetrievalConfig</span></a><span class="p">(</span>
+        <span class="n">RetrievalConfig</span><span class="p">(</span>
             <span class="n">backend</span><span class="o">=</span><span class="s2">"bruteforce"</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">retrieval</span><span class="p">(</span>
-        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><span class="n">RetrievalConfig</span></a><span class="p">(</span>
+        <span class="n">RetrievalConfig</span><span class="p">(</span>
             <span class="n">match_mode</span><span class="o">=</span><span class="s2">"hybrid"</span><span class="p">,</span>
             <span class="n">top_k</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
             <span class="n">hybrid_alpha</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span>
@@ -759,7 +763,7 @@ API, but backend-specific constructor settings now belong in generic
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Validation problems:"</span><span class="p">,</span> <span class="n">fluent</span><span class="o">.</span><span class="n">validate</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] e228ed71d52ba3ec&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 507aca448f7510e3&gt;
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 Validation problems: []
 </pre></div>
@@ -793,7 +797,7 @@ cell.  This makes both <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Runtime type: RuntimeCorpus
-Plan fingerprint: e228ed71d52ba3ec
+Plan fingerprint: 507aca448f7510e3
 Documents before run: 0
 Index before run: None
 </pre></div>
@@ -950,7 +954,7 @@ stays intact.  Keyword mode needs no query embedding; semantic mode is
 embedded automatically by <code class="docutils literal notranslate"><span class="pre">RuntimeCorpus.search</span></code>.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">keyword_response</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
     <span class="s2">"father spirit ghost"</span><span class="p">,</span>
-    <span class="n">config</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><span class="n">RetrievalConfig</span></a><span class="p">(</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">RetrievalConfig</span><span class="p">(</span>
         <span class="n">match_mode</span><span class="o">=</span><span class="s2">"keyword"</span><span class="p">,</span>
         <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
     <span class="p">),</span>
@@ -958,7 +962,7 @@ embedded automatically by <code class="docutils literal notranslate"><span class
 
 <span class="n">semantic_response</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
     <span class="s2">"mortality dreams after death"</span><span class="p">,</span>
-    <span class="n">config</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><span class="n">RetrievalConfig</span></a><span class="p">(</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">RetrievalConfig</span><span class="p">(</span>
         <span class="n">match_mode</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span>
         <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
     <span class="p">),</span>
@@ -1011,7 +1015,7 @@ complete current runtime generation.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Runtime still open after export:"</span><span class="p">,</span> <span class="ow">not</span> <span class="n">runtime</span><span class="o">.</span><span class="n">closed</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Exported: /tmp/scikitplot-hamlet-17ebpn82/hamlet_corpus.jsonl
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Exported: /tmp/scikitplot-hamlet-ahwfnzq9/hamlet_corpus.jsonl
 Bytes: 35993
 Exported documents: 14
 First JSONL row:
@@ -1028,7 +1032,7 @@ should prefer the generic form because it scales to other vector backends.</p>
 <p>This branch is configuration-only: it validates the immutable plan but does
 not materialize/build Annoy, so native Annoy is not required by the gallery.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">annoy</span> <span class="o">=</span> <span class="n">fluent</span><span class="o">.</span><span class="n">replace_index</span><span class="p">(</span>
-    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><span class="n">RetrievalConfig</span></a><span class="p">(</span>
+    <span class="n">RetrievalConfig</span><span class="p">(</span>
         <span class="n">backend</span><span class="o">=</span><span class="s2">"annoy"</span><span class="p">,</span>
         <span class="n">index_kwargs</span><span class="o">=</span><span class="p">{</span>
             <span class="s2">"impl"</span><span class="p">:</span> <span class="s2">"auto"</span><span class="p">,</span>
@@ -1109,7 +1113,7 @@ Temporary workspace cleaned.
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.050 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.172 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example uses a real public-domain Hamlet excerpt to demonstrate the first-class FluentCorpus runtime workflow."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png"/>
@@ -1241,7 +1245,7 @@ Temporary workspace cleaned.
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260823.71eae2e 2026-08-23T18:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260824.c8953a1 2026-08-24T15:07Z.
       <br/>
 </p>
 </div>

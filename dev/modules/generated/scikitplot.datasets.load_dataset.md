@@ -1,6 +1,6 @@
 # load\_dataset[#](#load-dataset "Link to this heading")
 
-scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
+scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
 :   Load an example dataset from the online repository (requires internet).
 
     This function provides quick access to a small number of example datasets
@@ -26,16 +26,8 @@ scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**,
 
         ****kws****keys and values, optional
         :   Additional keyword arguments are passed to passed through to
-            [`pandas.read_csv`](https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv "(in pandas v3.1.0.dev0+1590.g8dfcb75ba0)").
+            [`pandas.read_csv`](https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv "(in pandas v3.1.0.dev0+1654.g328bd893b5)").
 
     Returns:
-    :   ****df****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1590.g8dfcb75ba0)")
+    :   ****df****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1654.g328bd893b5)")
         :   Tabular data, possibly with some preprocessing applied.
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png)
-
-[Comparing DummyCode Encoder with Other Encoders](../../auto_examples/preprocessing/plot_dummy_code_encoder.html)
-
-Comparing DummyCode Encoder with Other Encoders

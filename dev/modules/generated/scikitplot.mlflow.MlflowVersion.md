@@ -1,6 +1,6 @@
 # MlflowVersion[#](#mlflowversion "Link to this heading")
 
-class scikitplot.mlflow.MlflowVersion(**raw=''**, **major=0**, **minor=0**, **patch=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/mlflow/_utils.py#L28)[#](#scikitplot.mlflow.MlflowVersion "Link to this definition")
+class scikitplot.mlflow.MlflowVersion(**raw=''**, **major=0**, **minor=0**, **patch=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_utils.py#L28)[#](#scikitplot.mlflow.MlflowVersion "Link to this definition")
 :   Parsed MLflow version.
 
     Parameters:

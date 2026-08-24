@@ -1,6 +1,6 @@
 🌱 Scikit-plots APIs
   
- 0.5.dev0+git.20260823.71eae2e - August 23, 2026 18:39 UTC
+ 0.5.dev0+git.20260824.c8953a1 - August 24, 2026 15:07 UTC
 
 # APIs Reference[#](#apis-reference "Link to this heading")
 
@@ -387,16 +387,16 @@ reference on concepts repeated across the APIs, see glossary-index.
 | [`TaskLevelStatusMessage`](../modules/generated/scikitplot.logging.TaskLevelStatusMessage.html#scikitplot.logging.TaskLevelStatusMessage "scikitplot.logging.TaskLevelStatusMessage") | Compatibility wrapper for legacy call sites.  [`scikitplot.logging`](scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") |
 | [`critical`](../modules/generated/critical-func.html#scikitplot.logging.critical "scikitplot.logging.critical") | Log a message at the CRITICAL log level.  [`scikitplot.logging`](scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") |
 | [`fatal`](../modules/generated/fatal-func.html#scikitplot.logging.fatal "scikitplot.logging.fatal") | Log a message at the FATAL -> CRITICAL log level.  [`scikitplot.logging`](scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") |
-| [`DocsRetriever`](../modules/generated/scikitplot.mcp.DocsRetriever.html#scikitplot.mcp.DocsRetriever "scikitplot.mcp.DocsRetriever") | Structural contract every retrieval backend must satisfy.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`RetrievedChunk`](../modules/generated/scikitplot.mcp.RetrievedChunk.html#scikitplot.mcp.RetrievedChunk "scikitplot.mcp.RetrievedChunk") | One retrieved passage with the metadata needed to cite it.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`InMemoryBm25Retriever`](../modules/generated/scikitplot.mcp.InMemoryBm25Retriever.html#scikitplot.mcp.InMemoryBm25Retriever "scikitplot.mcp.InMemoryBm25Retriever") | A compact BM25 implementation suitable for demos and small corpora.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`Bm25Retriever`](../modules/generated/scikitplot.mcp.Bm25Retriever.html#scikitplot.mcp.Bm25Retriever "scikitplot.mcp.Bm25Retriever") | Lexical retriever (FTS/BM25) leg backed by a full-text search seam.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`CorpusAnnoyRetriever`](../modules/generated/scikitplot.mcp.CorpusAnnoyRetriever.html#scikitplot.mcp.CorpusAnnoyRetriever "scikitplot.mcp.CorpusAnnoyRetriever") | Docs dense retriever backed by an embedder + a vector index + a document lookup.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`HybridRetriever`](../modules/generated/scikitplot.mcp.HybridRetriever.html#scikitplot.mcp.HybridRetriever "scikitplot.mcp.HybridRetriever") | Fuse several retrievers into one via Reciprocal Rank Fusion.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`build_search_docs_result`](../modules/generated/scikitplot.mcp.build_search_docs_result.html#scikitplot.mcp.build_search_docs_result "scikitplot.mcp.build_search_docs_result") | Format retrieval results as an MCP `tools/call` response with citations.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`builtin_demo_retriever`](../modules/generated/scikitplot.mcp.builtin_demo_retriever.html#scikitplot.mcp.builtin_demo_retriever "scikitplot.mcp.builtin_demo_retriever") | Return a tiny corpus that explains the sample’s own mechanism.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`create_server`](../modules/generated/scikitplot.mcp.create_server.html#scikitplot.mcp.create_server "scikitplot.mcp.create_server") | Create an official MCP Python SDK v2 `MCPServer` instance.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
-| [`reciprocal_rank_fusion`](../modules/generated/scikitplot.mcp.reciprocal_rank_fusion.html#scikitplot.mcp.reciprocal_rank_fusion "scikitplot.mcp.reciprocal_rank_fusion") | Fuse weighted ranked lists into a single `key -> score` map.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `DocsRetriever` | Structural contract every retrieval backend must satisfy.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `RetrievedChunk` | One retrieved passage with the metadata needed to cite it.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `InMemoryBm25Retriever` | A compact BM25 implementation suitable for demos and small corpora.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `Bm25Retriever` | Lexical retriever (FTS/BM25) leg backed by a full-text search seam.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `CorpusAnnoyRetriever` | Docs dense retriever backed by an embedder + a vector index + a document lookup.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `HybridRetriever` | Fuse several retrievers into one via Reciprocal Rank Fusion.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `build_search_docs_result` | Format retrieval results as an MCP `tools/call` response with citations.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `builtin_demo_retriever` | Return a tiny corpus that explains the sample’s own mechanism.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `create_server` | Create an official MCP Python SDK v2 `MCPServer` instance.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
+| `reciprocal_rank_fusion` | Fuse weighted ranked lists into a single `key -> score` map.  [`scikitplot.mcp`](scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") |
 | [`MemoryMap`](../modules/generated/scikitplot.memmap.MemoryMap.html#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap") | Memory-mapped region with automatic resource management.  [`scikitplot.memmap`](scikitplot.memmap.html#module-scikitplot.memmap "scikitplot.memmap") |
 | [`mmap_region`](../modules/generated/scikitplot.memmap.mmap_region.html#scikitplot.memmap.mmap_region "scikitplot.memmap.mmap_region") | mmap\_region(int size: int, int prot: int = 0x3, int flags: int = 0x22, int fd: int = -1, int offset: int = 0) -> MemoryMap  [`scikitplot.memmap`](scikitplot.memmap.html#module-scikitplot.memmap "scikitplot.memmap") |
 | [`DEFAULT_MLFLOW_SERVER_FLAGS`](../modules/generated/scikitplot.mlflow.DEFAULT_MLFLOW_SERVER_FLAGS.html#scikitplot.mlflow.DEFAULT_MLFLOW_SERVER_FLAGS "scikitplot.mlflow.DEFAULT_MLFLOW_SERVER_FLAGS") | frozenset() -> empty frozenset object  [`scikitplot.mlflow`](scikitplot.mlflow.html#module-scikitplot.mlflow "scikitplot.mlflow") |

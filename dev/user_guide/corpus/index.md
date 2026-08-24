@@ -24,6 +24,10 @@ Examples
 * [Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html#sphx-glr-auto-examples-corpus-plot-corpus-who-per-file-script-py): Example notebook.
 
 > **See also**
+> * [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
+* [semantica-agi/semantica](https://github.com/semantica-agi/semantica)
+* <https://docs.getsemantica.ai/guides/distance-intelligence/#common-pitfalls>
+> **See also**
 > Google’s language-detection:
 
 * [google/cld3](https://github.com/google/cld3)

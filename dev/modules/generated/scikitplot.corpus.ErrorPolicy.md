@@ -1,6 +1,6 @@
 # ErrorPolicy[#](#errorpolicy "Link to this heading")
 
-class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L208)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
+class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L208)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
 :   Per-document error handling **behaviour** for [`PipelineGuard`](scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard").
 
     > **See also**
@@ -44,27 +44,27 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
     ```
     Go BackOpen In Tab
 
-    COLLECT = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.COLLECT "Link to this definition")
+    COLLECT = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.COLLECT "Link to this definition")
     :   Discard and continue, recording a structured `ErrorRecord`.
 
         This is the policy to choose when a caller wants to know **what** failed
         without stopping the run – the case `SKIP` cannot express and the former
         `LOG` expressed only as unstructured text.
 
-    FALLBACK = 'fallback'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.FALLBACK "Link to this definition")
+    FALLBACK = 'fallback'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.FALLBACK "Link to this definition")
     :   Degrade to a declared alternative and record that the degradation happened.
 
         A `FALLBACK` that produces no `ErrorRecord` is invalid: an
         unobservable fallback is the “plausible success after altered execution”
         shape this codebase has repeatedly been bitten by.
 
-    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
+    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
     :   Propagate exceptions immediately (default, strictest).
 
-    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
+    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
     :   Retry transient failures up to `max_retries` times, then `COLLECT`.
 
-    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
+    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
     :   Discard failing documents and continue, keeping no record.
 
     capitalize(**/**)[#](#scikitplot.corpus.ErrorPolicy.capitalize "Link to this definition")

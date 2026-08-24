@@ -1,6 +1,6 @@
 # RetrievalHit[#](#retrievalhit "Link to this heading")
 
-class scikitplot.corpus.RetrievalHit(**doc**, **score**, **match\_mode**, **backend=None**, **index\_generation=None**, **native\_score=None**, **native\_metric=None**, **contributions=()**, **rank=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit "Link to this definition")
+class scikitplot.corpus.RetrievalHit(**doc**, **score**, **match\_mode**, **backend=None**, **index\_generation=None**, **native\_score=None**, **native\_metric=None**, **contributions=()**, **rank=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit "Link to this definition")
 :   A single search result.
 
     Parameters:
@@ -59,11 +59,11 @@ class scikitplot.corpus.RetrievalHit(**doc**, **score**, **match\_mode**, **back
         that ranked #1 and #40 used to be indistinguishable – very different
         confidence signals collapsed into one fused float (finding F-R09-02).
 
-    doc: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit.doc "Link to this definition")
+    doc: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit.doc "Link to this definition")
 
     index\_generation: IndexGeneration | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.RetrievalHit.index_generation "Link to this definition")
 
-    match\_mode: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit.match_mode "Link to this definition")
+    match\_mode: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit.match_mode "Link to this definition")
 
     native\_metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.RetrievalHit.native_metric "Link to this definition")
     :   Scale of [`native_score`](#scikitplot.corpus.RetrievalHit.native_score "scikitplot.corpus.RetrievalHit.native_score"), e.g. `"cosine_similarity"`.
@@ -85,4 +85,4 @@ class scikitplot.corpus.RetrievalHit(**doc**, **score**, **match\_mode**, **back
         §19 names rank as the fallback ordering when no validated normalization
         exists – which, per R06, is the case for every non-cosine metric today.
 
-    score: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit.score "Link to this definition")
+    score: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L67)[#](#scikitplot.corpus.RetrievalHit.score "Link to this definition")

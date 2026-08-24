@@ -1,6 +1,6 @@
 # plot\_all[#](#plot-all "Link to this heading")
 
-scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **figsize=(15, 10)**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/decile/_decile_modelplotpy.py#L3124)[#](#scikitplot.decile.plot_all "Link to this definition")
+scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **figsize=(15, 10)**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/decile/_decile_modelplotpy.py#L3124)[#](#scikitplot.decile.plot_all "Link to this definition")
 :   Plot response, cumulative response, cumulative lift, and cumulative gains as a 2x2 panel.
 
     Parameters:
@@ -114,11 +114,3 @@ scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, 
 
     ```
     Go BackOpen In Tab
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_modelplotpy_script_thumb.png)
-
-[Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html)
-
-Introduction to modelplotpy

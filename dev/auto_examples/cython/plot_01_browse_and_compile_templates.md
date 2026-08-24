@@ -158,7 +158,7 @@ else:
 ```
 ```
 Template: basic_cython/t01_square_int
-Path: /home/circleci/.pyenv/versions/3.12.14/lib/python3.12/site-packages/scikitplot/cython/_templates/basic_cython/t01_square_int.pyx
+Path: /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/scikitplot/cython/_templates/basic_cython/t01_square_int.pyx
 
 Source preview:
 
@@ -175,12 +175,12 @@ def square(int n):
 
 
 BuildResult:
-  module_name: scikitplot_cython_e3397e3200789c52
-  key        : e3397e3200789c52526e16b146e7332b241aca635976af14884f0189d0269a76
-  artifact   : /home/circleci/.cache/scikitplot/cython/e3397e3200789c52526e16b146e7332b241aca635976af14884f0189d0269a76/scikitplot_cython_e3397e3200789c52.cpython-312-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_27f80730b47a731e
+  key        : 27f80730b47a731ea98d0b45195a1399dd2e9f1432926e05614df4f89558db46
+  artifact   : /home/circleci/.cache/scikitplot/cython/27f80730b47a731ea98d0b45195a1399dd2e9f1432926e05614df4f89558db46/scikitplot_cython_27f80730b47a731e.cpython-312-x86_64-linux-gnu.so
   used_cache : False
 
-Imported module: scikitplot_cython_e3397e3200789c52
+Imported module: scikitplot_cython_27f80730b47a731e
 Public names: ['square']
 
 No demo_calls declared in template metadata; skipping execution.
@@ -189,7 +189,7 @@ No demo_calls declared in template metadata; skipping execution.
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.622 seconds)
+****Total running time of the script:**** (0 minutes 0.686 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)
 

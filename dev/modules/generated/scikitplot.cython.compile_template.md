@@ -1,6 +1,6 @@
 # compile\_template[#](#compile-template "Link to this heading")
 
-scikitplot.cython.compile\_template(**template\_id**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_templates_api.py#L782)[#](#scikitplot.cython.compile_template "Link to this definition")
+scikitplot.cython.compile\_template(**template\_id**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L782)[#](#scikitplot.cython.compile_template "Link to this definition")
 :   Compile and import a Cython template and return the loaded module.
 
     Parameters:
@@ -21,11 +21,3 @@ scikitplot.cython.compile\_template(**template\_id**, **\***, **module\_name=Non
     :   * ****template\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****module\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_cython_template_thumb.png)
-
-[Cython: Realtime compile\_and\_load (.pyx)](../../auto_examples/cython/plot_cython_template.html)
-
-Cython: Realtime compile\_and\_load (.pyx)

@@ -536,11 +536,3 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         ```
         Go BackOpen In Tab
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_mman_thumb.png)
-
-[Memory-Mapping Showcase – Basic / Medium / Advanced](../../auto_examples/memmap/plot_mman.html)
-
-Memory-Mapping Showcase – Basic / Medium / Advanced

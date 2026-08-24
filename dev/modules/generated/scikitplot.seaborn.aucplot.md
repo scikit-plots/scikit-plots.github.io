@@ -1,10 +1,10 @@
 # aucplot[#](#aucplot "Link to this heading")
 
-scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt='.4g'**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/seaborn/_auc.py#L1149)[#](#scikitplot.seaborn.aucplot "Link to this definition")
+scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt='.4g'**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/seaborn/_auc.py#L1149)[#](#scikitplot.seaborn.aucplot "Link to this definition")
 :   Plot PR or ROC curves with a seaborn-like API.
 
     Parameters:
-    :   ****data****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1590.g8dfcb75ba0)"), [`numpy.ndarray`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), mapping, or sequence
+    :   ****data****[`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+1654.g328bd893b5)"), [`numpy.ndarray`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), mapping, or sequence
         :   Input data structure. Either a long-form collection of vectors that can be
             assigned to named variables or a wide-form dataset that will be internally
             reshaped.
@@ -128,11 +128,3 @@ scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=
     Notes
 
     For PR curves, the score displayed as `AUC` is Average Precision (AP).
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_aucplot_script_thumb.png)
-
-[plot\_aucplot\_script with examples](../../auto_examples/seaborn/plot_aucplot_script.html)
-
-plot\_aucplot\_script with examples

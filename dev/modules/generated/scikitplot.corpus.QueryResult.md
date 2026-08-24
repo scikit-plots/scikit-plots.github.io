@@ -1,6 +1,6 @@
 # QueryResult[#](#queryresult "Link to this heading")
 
-class scikitplot.corpus.QueryResult(**documents**, **total**, **query**, **filter\_support=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult "Link to this definition")
+class scikitplot.corpus.QueryResult(**documents**, **total**, **query**, **filter\_support=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult "Link to this definition")
 :   Result container returned by [`StorageBase.query`](scikitplot.corpus.StorageBase.html#scikitplot.corpus.StorageBase.query "scikitplot.corpus.StorageBase.query").
 
     Parameters:
@@ -39,19 +39,19 @@ class scikitplot.corpus.QueryResult(**documents**, **total**, **query**, **filte
     ```
     Go BackOpen In Tab
 
-    documents: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[CorpusDocument](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.documents "Link to this definition")
+    documents: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[CorpusDocument](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.documents "Link to this definition")
 
     property emulated\_filters: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][#](#scikitplot.corpus.QueryResult.emulated_filters "Link to this definition")
     :   Names of filters answered by a fallback path rather than natively.
 
-    filter\_support: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), FilterSupport][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.filter_support "Link to this definition")
+    filter\_support: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), FilterSupport][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.filter_support "Link to this definition")
 
     property has\_more: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.QueryResult.has_more "Link to this definition")
     :   Return `True` if there are more pages beyond this one.
 
-    query: [StorageQuery](scikitplot.corpus.StorageQuery.html#scikitplot.corpus.StorageQuery "scikitplot.corpus._storage._storage.StorageQuery")[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.query "Link to this definition")
+    query: [StorageQuery](scikitplot.corpus.StorageQuery.html#scikitplot.corpus.StorageQuery "scikitplot.corpus._storage._storage.StorageQuery")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.query "Link to this definition")
 
-    require\_native()[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_storage/_storage.py#L206)[#](#scikitplot.corpus.QueryResult.require_native "Link to this definition")
+    require\_native()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L206)[#](#scikitplot.corpus.QueryResult.require_native "Link to this definition")
     :   Raise if any requested filter was emulated rather than native.
 
         Raises:
@@ -67,4 +67,4 @@ class scikitplot.corpus.QueryResult(**documents**, **total**, **query**, **filte
         when comparing ranking quality across backends, where a substring scan
         and an FTS5 index are not interchangeable.
 
-    total: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.total "Link to this definition")
+    total: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L158)[#](#scikitplot.corpus.QueryResult.total "Link to this definition")

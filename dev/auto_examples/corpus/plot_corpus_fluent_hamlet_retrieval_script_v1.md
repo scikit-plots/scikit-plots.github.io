@@ -227,7 +227,7 @@ print("Characters:", len(HAMLET_TEXT))
 
 ```
 ```
-Source: /tmp/scikitplot-hamlet-k0qwnqzk/hamlet_excerpt.txt
+Source: /tmp/scikitplot-hamlet-k1lmrxg_/hamlet_excerpt.txt
 Characters: 3819
 
 ```
@@ -506,7 +506,7 @@ print("Index backend requested:", plan.get("index").backend)
 
 ```
 ```
-Pipeline: <scikitplot.corpus._pipeline.CorpusPipeline object at 0x7769edbc63f0>
+Pipeline: <scikitplot.corpus._pipeline.CorpusPipeline object at 0x71cc4f867020>
 Storage: InMemoryStorage(n_docs=0)
 Index backend requested: bruteforce
 
@@ -716,7 +716,7 @@ print(_EXPORT_PATH.read_text(encoding="utf-8").splitlines()[0][:300])
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-k0qwnqzk/hamlet_corpus.jsonl
+Exported: /tmp/scikitplot-hamlet-k1lmrxg_/hamlet_corpus.jsonl
 Bytes: 31126
 First JSONL row:
 {"schema_version": "2.0", "doc_id": "778d78ec096f965d", "input_path": "hamlet_excerpt.txt", "chunk_index": 0, "text": "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK", "section_type": "text", "chunking_strategy": "paragraph", "language": null, "char_start": 0, "char_end": 40, "metadata": {}, "source_type"
@@ -820,7 +820,7 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.046 seconds)
+****Total running time of the script:**** (0 minutes 0.041 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)
 

@@ -1,6 +1,6 @@
 # to\_langgraph\_state[#](#to-langgraph-state "Link to this heading")
 
-scikitplot.corpus.to\_langgraph\_state(**documents**, **\***, **query=''**, **match\_mode=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_adapters.py#L226)[#](#scikitplot.corpus.to_langgraph_state "Link to this definition")
+scikitplot.corpus.to\_langgraph\_state(**documents**, **\***, **query=''**, **match\_mode=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L226)[#](#scikitplot.corpus.to_langgraph_state "Link to this definition")
 :   Convert documents to a LangGraph-compatible state dict.
 
     Parameters:

@@ -1,6 +1,6 @@
 # dump\_project\_config\_yaml[#](#dump-project-config-yaml "Link to this heading")
 
-scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\***, **profile='local'**, **source\_config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/mlflow/_project.py#L899)[#](#scikitplot.mlflow.dump_project_config_yaml "Link to this definition")
+scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\***, **profile='local'**, **source\_config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L899)[#](#scikitplot.mlflow.dump_project_config_yaml "Link to this definition")
 :   Write a ProjectConfig to a YAML file.
 
     This function supports two strict modes:
@@ -49,11 +49,3 @@ scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\**
 
     Return type:
     :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_mlflow_thumb.png)
-
-[MLflow](../../auto_examples/mlflow/plot_mlflow.html)
-
-MLflow

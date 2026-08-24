@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20260823.71eae2e - August 23, 2026 18:39 UTC
+ 0.5.dev0+git.20260824.c8953a1 - August 24, 2026 15:07 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -83,9 +83,9 @@
   * [Relationship to other APIs](memmap/index.html#relationship-to-other-apis)
   * [Platform notes](memmap/index.html#platform-notes)
   * [Notes for developers](memmap/index.html#notes-for-developers)
-**mcp**
+**model context protocol**
 
-* [MCP](mcp/index.html)
+* [Mcp](mcp/index.html)
   * [Scientific grounding: evidence, not absolute truth](mcp/index.html#scientific-grounding-evidence-not-absolute-truth)
   * [How the pieces fit](mcp/index.html#how-the-pieces-fit)
   * [At a glance](mcp/index.html#at-a-glance)

@@ -15,6 +15,10 @@ The normal user workflow is intentionally small:
 You do not need to understand the retrieval internals to get started. Retrieval
 finds and ranks evidence; it does not make the underlying data true.
 
+> **See also**
+> * [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
+* [semantica-agi/semantica](https://github.com/semantica-agi/semantica)
+
 ## [Scientific grounding: evidence, not absolute truth](#id7)[#](#scientific-grounding-evidence-not-absolute-truth "Link to this heading")
 
 `scikitplot.mcp` is designed for ****source-grounded**** answers: retrieve relevant

@@ -1,6 +1,6 @@
 # resolve\_pinned\_key[#](#resolve-pinned-key "Link to this heading")
 
-scikitplot.cython.resolve\_pinned\_key(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/cython/_pins.py#L270)[#](#scikitplot.cython.resolve_pinned_key "Link to this definition")
+scikitplot.cython.resolve\_pinned\_key(**alias**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_pins.py#L270)[#](#scikitplot.cython.resolve_pinned_key "Link to this definition")
 :   Resolve an alias to a cache key.
 
     Parameters:

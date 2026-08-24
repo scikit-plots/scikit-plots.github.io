@@ -1,6 +1,6 @@
 # RetrievalConfig[#](#retrievalconfig "Link to this heading")
 
-class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_similarity/_similarity.py#L142)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
+class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L142)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -111,7 +111,7 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
 
     hybrid\_alpha: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
 
-    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/71eae2e/scikitplot/corpus/_similarity/_similarity.py#L142)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L142)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
 
     keyword\_threshold: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
 

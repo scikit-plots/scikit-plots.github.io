@@ -1,4 +1,4 @@
-# scikitplot.experimental.enable\_ann\_imputer[#](#scikitplot-experimental-enable-ann-imputer "Link to this heading")
+# enable\_ann\_imputer[#](#enable-ann-imputer "Link to this heading")
 
 Enables ANNImputer
 
