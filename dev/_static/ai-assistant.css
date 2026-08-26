@@ -4236,7 +4236,12 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
  * The inner padding + 3px gap produce a single-unit visual affordance. */
 .ai-assistant-panel-effort-seg {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* Column count comes from the JS registry via --ai-effort-count, set by
+     * _appendModelSheetSections() from _EFFORT_LEVELS.length. The previous
+     * hard-coded repeat(4, 1fr) meant appending a level silently broke the
+     * layout — the registry's own docstring had to carry a warning about it.
+     * The fallback keeps the control sane if the property is ever missing. */
+    grid-template-columns: repeat(var(--ai-effort-count, 4), 1fr);
     gap: 3px;
     padding: 3px;
     background: var(
@@ -4261,7 +4266,11 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     flex-direction: column;
     align-items: center;
     gap: 2px;
-    padding: 5px 3px;
+    /* min-width: 0 lets a cell shrink below its content width, which is what
+     * makes five equal columns viable in a narrow panel; without it the grid
+     * would be forced wider than its container and overflow. */
+    min-width: 0;
+    padding: 5px 2px;
     border: 1px solid transparent;
     border-radius: 6px;
     background: transparent;
@@ -14683,4 +14692,177 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 [data-bs-theme="dark"] .ai-assistant-export-menu-soon,
 .dark .ai-assistant-export-menu-soon {
     opacity: 0.72;
+}
+
+/* ── Effort segmented control: narrow-panel typography ─────────────────────
+ *
+ * Five levels in a panel that can be ~300 px wide leaves roughly 55 px per
+ * cell. The label always wins that space; the one-word hint is the first
+ * thing to go, because "High" alone still identifies the level while a
+ * clipped "Balan…" identifies nothing.
+ *
+ * The escalation is deliberate and ordered: tighten type first, drop the
+ * hint only when tightening is no longer enough. Nothing here reflows the
+ * grid — the control stays one row of equal cells at every width, so the
+ * position of a level never moves.
+ */
+@media (max-width: 575px) {
+    .ai-assistant-panel-effort-lbl {
+        font-size: 0.72rem;
+    }
+    .ai-assistant-panel-effort-hint {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    /* Hidden, not removed: the hint is aria-hidden decoration, and the
+     * level's own description still appears below the control. */
+    .ai-assistant-panel-effort-hint {
+        display: none;
+    }
+}
+
+/* ── Effort chip on model buttons ──────────────────────────────────────────
+ *
+ * Shows the active effort level beside the active model on every control
+ * that names the model — the footer inline picker and the sub-bar model
+ * link — so "what will answer me" is fully visible without opening the
+ * sheet. Built by the shared _attachEffortChip() helper, so both surfaces
+ * get the identical element and the identical live-update path.
+ *
+ * aria-hidden on the chip: the host button's accessible name already states
+ * the effort, and announcing it twice on focus is noise.
+ *
+ * flex-shrink: 0 — the model name truncates, the effort never does. A
+ * half-rendered "Hi…" would be worse than useless, and the chip is the
+ * shorter of the two by design.
+ */
+.ai-assistant-panel-effort-chip {
+    flex-shrink: 0;
+    font-size: 0.64rem;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 0.02rem 0.32rem;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-secondary, #586069));
+    background: rgba(127, 127, 127, 0.16);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-chip,
+.dark .ai-assistant-panel-effort-chip {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--pst-color-text-muted, rgba(255, 255, 255, 0.72));
+}
+
+/* The two top levels are the ones worth noticing at a glance: they cost the
+ * most time, so a reader who left one selected should be reminded of it.
+ * Accent tint only — never colour alone as the carrier, since the label text
+ * states the level outright. */
+.ai-assistant-panel-effort-chip[data-effort="extra"],
+.ai-assistant-panel-effort-chip[data-effort="max"] {
+    color: #fff;
+    background: var(--pst-color-primary, #2980b9);
+    opacity: 0.82;
+}
+
+/* Narrow screens: both host buttons collapse to icon-only, so the chip goes
+ * with the label and chevron it sits between. Same breakpoint, same rule
+ * block ordering as those elements — see the @media (max-width: 575px)
+ * collapse rules above. */
+@media (max-width: 575px) {
+    .ai-assistant-panel-inline-picker-effort,
+    .ai-assistant-panel-model-link-effort {
+        display: none;
+    }
+}
+
+/* ── Sheet section note ────────────────────────────────────────────────────
+ *
+ * One short paragraph between a section's LABEL ──── rule and its control,
+ * explaining the trade-off the control represents. Built by
+ * _buildSheetSection(label, note, noteId), so every section that needs one
+ * gets the identical DOM and these rules apply everywhere without a
+ * per-section variant.
+ *
+ * Typography is deliberately quieter than .ai-assistant-panel-effort-desc,
+ * the line that sits BELOW the effort control: the two are visible at the
+ * same time and answer different questions. The note is standing context and
+ * never changes; the desc is live feedback about the selected level and must
+ * read as the more prominent of the two, or a reader watching it update will
+ * lose track of which line just changed.
+ *
+ * Referenced by aria-describedby from the control above it, so a screen
+ * reader announces the trade-off on focus instead of leaving it to whoever
+ * happens to read past the buttons.
+ */
+.ai-assistant-panel-sheet-section-note {
+    margin: -0.15rem 0 0.55rem;
+    padding: 0 0.1rem;
+}
+
+.ai-assistant-panel-sheet-section-note-text {
+    margin: 0;
+    font-size: 0.74rem;
+    line-height: 1.45;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #8c959f));
+    /* text-wrap: pretty avoids a one-word last line on the ~2-3 line lengths
+     * these notes run to; harmless where unsupported. */
+    text-wrap: pretty;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-sheet-section-note-text,
+.dark .ai-assistant-panel-sheet-section-note-text {
+    color: var(--pst-color-text-muted, #8b949e);
+}
+
+/* ── Reasoning controls with no declared endpoint support ──────────────────
+ *
+ * When the configured endpoint has not declared that it forwards the effort
+ * and extended-reasoning parameters, the panel does not send them — the
+ * provider's own defaults apply. The controls are shown INERT rather than
+ * hidden: a reader who has seen them on another site, or in a screenshot,
+ * would otherwise be left wondering where they went. The note above each
+ * section states the situation and names who can change it.
+ *
+ * Dimmed and cursor-default, matching .ai-assistant-share-export-card--stub
+ * and .ai-assistant-export-menu-item--stub. Deliberately NO pointer-events:
+ * none — refusal lives in the click handlers so pointer and keyboard behave
+ * identically, which is the rule the export previews established.
+ */
+.ai-assistant-panel-effort-seg[data-unsupported="true"],
+.ai-assistant-panel-thinking-row[data-unsupported="true"] {
+    opacity: 0.45;
+}
+
+.ai-assistant-panel-effort-seg[data-unsupported="true"]
+    .ai-assistant-panel-effort-btn,
+.ai-assistant-panel-thinking-row[data-unsupported="true"]
+    .ai-assistant-panel-thinking-toggle {
+    cursor: default;
+}
+
+/* No hover affordance on a control that will not respond. */
+.ai-assistant-panel-effort-seg[data-unsupported="true"]
+    .ai-assistant-panel-effort-btn:hover {
+    background: transparent;
+}
+
+/* "Default" chip: the provider's own settings apply, so it reads as neutral
+ * information rather than as a level the reader selected. Never the accent
+ * treatment given to Extra and Max — nothing here is worth flagging. */
+.ai-assistant-panel-effort-chip[data-effort="default"] {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #8c959f));
+    background: rgba(127, 127, 127, 0.12);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-chip[data-effort="default"],
+.dark .ai-assistant-panel-effort-chip[data-effort="default"] {
+    background: rgba(255, 255, 255, 0.08);
 }

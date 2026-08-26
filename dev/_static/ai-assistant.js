@@ -12900,10 +12900,12 @@ opts.jsonPayload + '\n' +
      *   ``hint``  – one-word sub-label beneath the button.
      *   ``desc``  – one-sentence description shown below the segmented control.
      *
-     * Extending: append entries here and the builder loop handles them
-     * automatically.  The grid column count is hard-coded to 4 in CSS; adding
-     * a fifth entry requires updating ``grid-template-columns`` on
-     * ``.ai-assistant-panel-effort-seg``.
+     * Extending: append entries here and everything else follows. The
+     * segmented control sizes itself from ``_EFFORT_LEVELS.length`` via the
+     * ``--ai-effort-count`` custom property, so there is no longer a column
+     * count to keep in sync — the previous hard-coded ``repeat(4, 1fr)`` made
+     * adding a level a silent layout break, which is exactly the kind of
+     * coupling a registry is supposed to remove.
      */
     var _EFFORT_LEVELS = [
         { id: 'low',    label: 'Low',    hint: 'Quick',
@@ -12912,9 +12914,283 @@ opts.jsonPayload + '\n' +
           desc: 'Balanced quality and speed — the sweet spot for most tasks.' },
         { id: 'high',   label: 'High',   hint: 'Deep',
           desc: 'Thorough analysis. Best for research, writing, and code review.' },
+        { id: 'extra',  label: 'Extra',  hint: 'Intensive',
+          desc: 'Extended multi-step reasoning. Best for debugging, proofs, and long documents.' },
         { id: 'max',    label: 'Max',    hint: 'Best',
           desc: 'Maximum reasoning quality. Slowest, but most complete and accurate.' },
     ];
+
+    // ── Reasoning capability: does the active model accept these controls? ────
+    //
+    // Effort and extended reasoning were UI state that never reached the wire.
+    // Nothing read _getEffortLevel() or _getThinkingBudget() when building a
+    // request body, so both controls were decorative: a reader could move them
+    // and nothing whatsoever changed about the answer they got.
+    //
+    // Simply sending the parameters would be worse, not better. The panel
+    // targets a dozen OpenAI-compatible providers plus Anthropic plus arbitrary
+    // custom proxies, and a strict endpoint rejects an unknown top-level field
+    // with a 400. A control that silently does nothing is a disappointment; a
+    // control that breaks every request is an outage.
+    //
+    // So support is DECLARED, never guessed:
+    //
+    //   1. the model entry's ``reasoning`` key wins  — the site owner knows
+    //      what their own proxy forwards;
+    //   2. otherwise the global ``panelReasoning`` config;
+    //   3. otherwise NOT SUPPORTED.
+    //
+    // Default-off is the deliberate direction. The failure mode of guessing
+    // "supported" is broken chat for everyone; the failure mode of guessing
+    // "unsupported" is that the model uses its own defaults, which is exactly
+    // what happened before this code existed. Between a regression and the
+    // status quo, the status quo wins.
+    //
+    // When unsupported, the panel says so rather than pretending: the sheet
+    // controls go inert with an explanation, and both model buttons read
+    // "Default" instead of naming a level the request will never carry.
+
+    /**
+     * Wire-format defaults for the two body shapes the panel already builds.
+     *
+     * These are only ever used once a deployment has DECLARED that its
+     * endpoint accepts reasoning parameters; nothing here is applied on a
+     * guess. A deployment whose proxy expects different field names overrides
+     * them per model — see :func:`_reasoningSupport`.
+     *
+     * ``effortValues`` maps this panel's five levels onto the three-value
+     * scale the OpenAI-compatible shape uses. The panel offers more levels
+     * than that scale has, so Extra and Max both resolve to its top value:
+     * collapsing upward keeps the promise the label makes ("more effort than
+     * High") even where the wire cannot express the difference.
+     *
+     * @type {Object}
+     */
+    var _REASONING_WIRE_DEFAULTS = {
+        openai: {
+            effortParam:   'reasoning_effort',
+            effortValues:  { low: 'low', medium: 'medium', high: 'high',
+                             extra: 'high', max: 'high' },
+            thinkingParam: null      // no agreed OpenAI-compat field
+        },
+        anthropic: {
+            effortParam:   null,     // effort is expressed as a token budget
+            effortValues:  null,
+            thinkingParam: 'thinking'
+        }
+    };
+
+    /** Hard bounds for the extended-reasoning token budget. */
+    var _THINKING_BUDGET_MIN = 500;
+    var _THINKING_BUDGET_MAX = 16000;
+
+    /**
+     * Resolve whether the active model accepts the reasoning controls.
+     *
+     * Parameters
+     * ----------
+     * activeModel : Object|null
+     *     Entry from ``panelApiModels``; null on the legacy single-model path.
+     * cfg : Object, optional
+     *     Resolved widget config; read from :func:`_cfg` when omitted.
+     *
+     * Returns
+     * -------
+     * Object
+     *     ``{supported, effort, thinking, effortParam, effortValues,
+     *        thinkingParam, budgetMin, budgetMax, source}``.
+     *     ``supported`` is false unless a declaration says otherwise, and the
+     *     remaining fields are then meaningless — callers check it first.
+     *     ``source`` names where the answer came from, for the sheet to
+     *     explain itself without the reader guessing.
+     */
+    function _reasoningSupport(activeModel, cfg) {
+        cfg = cfg || _cfg();
+
+        var off = {
+            supported: false, effort: false, thinking: false,
+            effortParam: null, effortValues: null, thinkingParam: null,
+            budgetMin: _THINKING_BUDGET_MIN, budgetMax: _THINKING_BUDGET_MAX,
+            source: 'undeclared'
+        };
+
+        // 1. Per-model declaration, 2. global config. Anything else: off.
+        var decl = (activeModel && typeof activeModel === 'object')
+            ? activeModel.reasoning : undefined;
+        var source = 'model';
+        if (decl === undefined || decl === null) {
+            decl = cfg.panelReasoning;
+            source = 'config';
+        }
+        if (decl === undefined || decl === null || decl === false) return off;
+
+        // ``true`` means "my proxy takes the standard fields for this shape".
+        var provider = String((activeModel && activeModel.provider) || 'custom')
+            .toLowerCase();
+        var shape = (provider === 'anthropic') ? 'anthropic' : 'openai';
+        var base  = _REASONING_WIRE_DEFAULTS[shape];
+
+        var spec = (decl === true) ? {} : decl;
+        if (typeof spec !== 'object') return off;
+
+        var effortParam = (spec.effortParam !== undefined)
+            ? spec.effortParam : base.effortParam;
+        var thinkingParam = (spec.thinkingParam !== undefined)
+            ? spec.thinkingParam : base.thinkingParam;
+        var effortValues = spec.effortValues || base.effortValues;
+
+        var min = _safeInt(spec.budgetMin, 1, _THINKING_BUDGET_MAX,
+            _THINKING_BUDGET_MIN);
+        var max = _safeInt(spec.budgetMax, min, _THINKING_BUDGET_MAX,
+            _THINKING_BUDGET_MAX);
+
+        var effort   = !!(effortParam && effortValues);
+        var thinking = !!thinkingParam;
+        if (!effort && !thinking) return off;
+
+        return {
+            supported: true,
+            effort: effort,
+            thinking: thinking,
+            effortParam: effortParam,
+            effortValues: effortValues,
+            thinkingParam: thinkingParam,
+            budgetMin: min,
+            budgetMax: max,
+            source: source
+        };
+    }
+
+    /**
+     * Add the reasoning parameters to a request body object, in place.
+     *
+     * A no-op when the deployment has not declared support — which is the
+     * whole point: the body sent to an undeclared endpoint is byte-identical
+     * to the body sent before this feature existed, so enabling the UI can
+     * never break an existing deployment.
+     *
+     * Anthropic's shape requires ``max_tokens`` to exceed ``budget_tokens``;
+     * a budget at or above the cap would make every request fail, so the
+     * budget is clamped below it rather than sent as-is.
+     *
+     * @param {Object} bodyObj Mutable request body.
+     * @param {Object} support Result of :func:`_reasoningSupport`.
+     * @returns {Object} ``bodyObj``.
+     */
+    function _applyReasoningParams(bodyObj, support) {
+        if (!bodyObj || !support || !support.supported) return bodyObj;
+
+        if (support.effort && support.effortValues) {
+            var wire = support.effortValues[_getEffortLevel()];
+            if (wire) { bodyObj[support.effortParam] = wire; }
+        }
+
+        if (support.thinking && _getThinkingOn()) {
+            var budget = _safeInt(_getThinkingBudget(),
+                support.budgetMin, support.budgetMax, support.budgetMin);
+            var cap = _safeInt(bodyObj.max_tokens, 1, 1000000, 0);
+            if (cap && budget >= cap) { budget = Math.max(support.budgetMin, cap - 1); }
+            if (budget > 0 && (!cap || budget < cap)) {
+                bodyObj[support.thinkingParam] =
+                    { type: 'enabled', budget_tokens: budget };
+            }
+        }
+
+        return bodyObj;
+    }
+
+    /**
+     * Standing explanation of the effort control, shown above the segmented
+     * buttons and referenced by them via ``aria-describedby``.
+     *
+     * The per-level ``desc`` below the control answers "what does THIS level
+     * do?" and changes as the reader moves between levels. This answers the
+     * different question they have before they touch anything: "what am I
+     * trading, and how long does my choice last?" Both are needed; neither
+     * substitutes for the other.
+     *
+     * Sentence two is not padding. The control writes to ``sessionStorage``,
+     * so the choice is scoped to the browsing session and applies to every
+     * later message — a reader who assumes it applies only to the next reply
+     * will be surprised twice, once when it persists and once when it does
+     * not survive a new session.
+     *
+     * @type {string}
+     */
+    /**
+     * Note shown in place of the standard one when the active model has not
+     * declared support for these parameters.
+     *
+     * It states the fact, what happens instead, and who can change it — a
+     * greyed-out control with no explanation is the thing readers file bugs
+     * about. It deliberately does NOT say "your model does not support this":
+     * the panel only knows what the deployment declared, and an endpoint that
+     * quietly supports reasoning is indistinguishable from one that does not.
+     *
+     * @type {string}
+     */
+    var _REASONING_UNSUPPORTED_NOTE =
+        'The configured endpoint has not declared support for these settings, '
+      + 'so requests use the provider\u2019s own defaults and the controls '
+      + 'below are inactive. A site maintainer can enable them per model in '
+      + 'conf.py once the proxy is known to forward them.';
+
+    var _EFFORT_NOTE =
+        'Higher effort means more thorough answers, but each reply takes '
+      + 'longer to arrive and uses more of your usage limit. Your choice '
+      + 'applies to every message for the rest of this browsing session.';
+
+    /**
+     * Standing explanation of the extended-reasoning toggle.
+     *
+     * Names what the toggle actually changes (the model works through the
+     * problem before answering), what it costs (latency and tokens), and that
+     * it stacks with effort rather than replacing it — the two controls sit
+     * next to each other and are easy to read as one dial.
+     *
+     * @type {string}
+     */
+    var _THINKING_NOTE =
+        'Extended reasoning lets the model work through a problem step by '
+      + 'step before answering. It improves hard questions, adds a few '
+      + 'seconds per reply, and spends extra tokens from the budget below. '
+      + 'It applies on top of the effort level, not instead of it.';
+
+    /**
+     * Effort level used when nothing is stored, or when what is stored is not
+     * a level this build knows about.
+     *
+     * ``'high'`` rather than ``'medium'``: documentation questions are mostly
+     * research, code review, and API semantics, and the levels below High
+     * trade accuracy for a latency saving that matters less than being right.
+     * A reader who wants speed can still choose it, and their stored choice is
+     * never overridden by this default.
+     *
+     * @type {string}
+     */
+    var _EFFORT_DEFAULT = 'high';
+
+    /**
+     * Resolve an effort id to its registry entry, falling back to the default.
+     *
+     * Every consumer goes through here so an unknown id can never reach the
+     * UI. Without it a stale or hand-edited sessionStorage value left the
+     * segmented control with NO radio checked and the description blank — a
+     * dead control with no way back short of clearing storage. Ids change
+     * across releases, so this is a live failure mode, not a hypothetical one.
+     *
+     * @param {string} id
+     * @returns {Object} A ``_EFFORT_LEVELS`` entry; never null.
+     */
+    function _effortById(id) {
+        for (var i = 0; i < _EFFORT_LEVELS.length; i++) {
+            if (_EFFORT_LEVELS[i].id === id) return _EFFORT_LEVELS[i];
+        }
+        for (var j = 0; j < _EFFORT_LEVELS.length; j++) {
+            if (_EFFORT_LEVELS[j].id === _EFFORT_DEFAULT) return _EFFORT_LEVELS[j];
+        }
+        return _EFFORT_LEVELS[0];
+    }
 
     /**
      * Coming-soon feature placeholders shown in the model sheet footer.
@@ -12970,13 +13246,19 @@ opts.jsonPayload + '\n' +
     var _EFFORT_KEY = 'ai-assistant-effort-level';
 
     /**
-     * Return the persisted effort level id, defaulting to ``'medium'``.
-     * Falls back silently when sessionStorage is blocked.
+     * Return the persisted effort level id, validated against the registry.
+     *
+     * Always returns an id that exists in ``_EFFORT_LEVELS``: a blocked
+     * sessionStorage, an absent value, and a value from an older release all
+     * resolve to ``_EFFORT_DEFAULT`` rather than propagating an id no UI can
+     * render.
      *
      * @returns {string}
      */
     function _getEffortLevel() {
-        try { return sessionStorage.getItem(_EFFORT_KEY) || 'medium'; } catch (_) { return 'medium'; }
+        var raw;
+        try { raw = sessionStorage.getItem(_EFFORT_KEY); } catch (_) { raw = null; }
+        return _effortById(raw).id;
     }
 
     /**
@@ -12986,7 +13268,115 @@ opts.jsonPayload + '\n' +
      */
     function _setEffortLevel(id) {
         if (typeof id !== 'string' || !id) return;
+        // Refuse to persist an id this build cannot render. Writing it would
+        // survive the session and defeat the validation in _getEffortLevel.
+        if (_effortById(id).id !== id) return;
         try { sessionStorage.setItem(_EFFORT_KEY, id); } catch (_) {}
+    }
+
+    // ── Effort: shared surfacing across model buttons ──────────────────────────
+    //
+    // The active effort is shown on every control that already names the active
+    // model — the footer inline picker and the sub-bar model link — so the
+    // reader can see BOTH halves of "what will answer me" without opening the
+    // sheet. The two buttons are built by different functions, so the chip, its
+    // sync, and the accessible-name format live here once and are called by
+    // both; a second copy is how those two buttons drifted apart before.
+
+    /**
+     * Accessible name for a model button, naming model and effort together.
+     *
+     * @param {string} modelText Active model label.
+     * @param {string} [effortId] Defaults to the live effort level.
+     * @returns {string}
+     */
+    function _modelBtnAccessibleLabel(modelText, effortId) {
+        var word = _reasoningSupport(_getActiveModel(_cfg()), _cfg()).effort
+            ? _effortById(effortId || _getEffortLevel()).label
+            : 'Default';
+        return 'Model Configuration \u2014 current: ' + modelText
+             + ', effort: ' + word;
+    }
+
+    /**
+     * Keep a model button's aria-label and title in step with both halves of
+     * its state.
+     *
+     * The model text is read from ``dataset.modelText`` rather than a closure
+     * so effort changes and model changes — which arrive from different events,
+     * on different code paths — can both call this without either needing to
+     * know the other's value.
+     *
+     * @param {HTMLElement} host
+     */
+    function _syncModelBtnAria(host) {
+        if (!host) return;
+        var text = host.dataset.modelText || 'Model';
+        host.setAttribute('aria-label', _modelBtnAccessibleLabel(text));
+        host.title = text;
+    }
+
+    /**
+     * Write an effort level into a chip element.
+     *
+     * ``data-effort`` carries the id for styling; the visible text is the short
+     * label. aria-hidden: the host button's accessible name already states the
+     * effort, and announcing it twice on focus is noise.
+     *
+     * @param {HTMLElement} chip
+     * @param {string} id
+     */
+    function _syncEffortChip(chip, id) {
+        if (!chip) return;
+
+        // No declared support means the level never reaches the request, so
+        // naming one here would be a lie the reader has no way to detect.
+        // "Default" is the honest word: the provider's own settings apply.
+        if (!_reasoningSupport(_getActiveModel(_cfg()), _cfg()).effort) {
+            chip.textContent = 'Default';
+            chip.dataset.effort = 'default';
+            return;
+        }
+
+        var ef = _effortById(id);
+        chip.textContent = ef.label;
+        chip.dataset.effort = ef.id;
+    }
+
+    /**
+     * Build an effort chip, append it to a model button, and keep it live.
+     *
+     * Returns the chip so the caller can hold a reference, but the caller does
+     * not have to: the listener registered here owns all subsequent updates.
+     *
+     * @param {HTMLElement} host Model button to append to.
+     * @param {string} className Surface-specific chip class.
+     * @returns {HTMLElement} The chip.
+     */
+    function _attachEffortChip(host, className) {
+        var chip = document.createElement('span');
+        chip.className = 'ai-assistant-panel-effort-chip ' + className;
+        chip.setAttribute('aria-hidden', 'true');
+        _syncEffortChip(chip, _getEffortLevel());
+        host.appendChild(chip);
+
+        document.addEventListener('ai-assistant-effort-change', function (ev) {
+            var d = ev && ev.detail;
+            if (!d || typeof d.id !== 'string') return;
+            _syncEffortChip(chip, d.id);
+            _syncModelBtnAria(host);
+        });
+
+        // Support is a property of the ACTIVE MODEL, so switching models can
+        // flip the chip between a level and "Default" without the effort
+        // level itself changing. Listening only to effort-change would leave
+        // the chip asserting a level the new model will never receive.
+        document.addEventListener('ai-assistant-model-change', function () {
+            _syncEffortChip(chip, _getEffortLevel());
+            _syncModelBtnAria(host);
+        });
+
+        return chip;
     }
 
     // ── Thinking: sessionStorage-backed persistence ────────────────────────────
@@ -13044,21 +13434,34 @@ opts.jsonPayload + '\n' +
      *
      * Renders as:
      *   LABEL ───────────────────
+     *   optional explanatory note
      *
      * The rule line is ``aria-hidden`` so screen readers skip it.
+     *
+     * The note is built here rather than by each caller so every section that
+     * needs one produces the identical DOM shape and class names. Callers that
+     * pass no note are unaffected — the element is simply not created, so no
+     * section carries an empty wrapper.
      *
      * Parameters
      * ----------
      * label : string
      *     Section heading text (uppercase by CSS, not by content).
+     * note : string, optional
+     *     One short paragraph explaining the trade-off the section's control
+     *     represents. Omitted entirely when falsy.
+     * noteId : string, optional
+     *     ``id`` for the note paragraph, so the caller can point its control
+     *     at it with ``aria-describedby``. Ignored when there is no note.
      *
      * Returns
      * -------
      * HTMLElement
      *     A ``<div class="ai-assistant-panel-sheet-section">`` containing the
-     *     label + rule row, ready for content to be appended by the caller.
+     *     label + rule row and, when given, the note — ready for content to be
+     *     appended by the caller.
      */
-    function _buildSheetSection(label) {
+    function _buildSheetSection(label, note, noteId) {
         var section = document.createElement('div');
         section.className = 'ai-assistant-panel-sheet-section';
 
@@ -13076,6 +13479,20 @@ opts.jsonPayload + '\n' +
         head.appendChild(lbl);
         head.appendChild(rule);
         section.appendChild(head);
+
+        if (typeof note === 'string' && note) {
+            var noteWrap = document.createElement('div');
+            noteWrap.className = 'ai-assistant-panel-sheet-section-note';
+
+            var noteText = document.createElement('p');
+            noteText.className = 'ai-assistant-panel-sheet-section-note-text';
+            noteText.textContent = note;
+            if (noteId) { noteText.id = noteId; }
+
+            noteWrap.appendChild(noteText);
+            section.appendChild(noteWrap);
+        }
+
         return section;
     }
 
@@ -13112,12 +13529,34 @@ opts.jsonPayload + '\n' +
 
         // ── §A  Effort level ───────────────────────────────────────────────────
 
-        var effortSection = _buildSheetSection('Effort');
+        // Support is resolved ONCE per sheet build and drives every branch
+        // below, so the effort control, the thinking row, and the notes can
+        // never disagree about whether these settings reach the request.
+        var _support = _reasoningSupport(_getActiveModel(_cfg()), _cfg());
+
+        var effortSection = _buildSheetSection(
+            'Effort',
+            _support.effort ? _EFFORT_NOTE : _REASONING_UNSUPPORTED_NOTE,
+            'ai-assistant-panel-effort-note');
 
         var effortSeg = document.createElement('div');
         effortSeg.className = 'ai-assistant-panel-effort-seg';
         effortSeg.setAttribute('role', 'radiogroup');
         effortSeg.setAttribute('aria-label', 'Response effort level');
+        // The note explains the trade-off; describedby means a screen-reader
+        // user hears it on focus instead of only meeting it if they happen to
+        // read past the control.
+        effortSeg.setAttribute('aria-describedby', 'ai-assistant-panel-effort-note');
+        if (!_support.effort) {
+            // Inert, not hidden. Hiding the control would leave a reader who
+            // has seen it elsewhere wondering where it went; showing it inert
+            // with the note above states the situation and names the fix.
+            effortSeg.dataset.unsupported = 'true';
+        }
+        // The grid column count comes from the registry, so appending a level
+        // never requires a matching CSS edit.
+        effortSeg.style.setProperty('--ai-effort-count',
+            String(_EFFORT_LEVELS.length));
 
         var effortDesc = document.createElement('p');
         effortDesc.className = 'ai-assistant-panel-effort-desc';
@@ -13128,6 +13567,12 @@ opts.jsonPayload + '\n' +
             var btn = document.createElement('button');
             btn.className = 'ai-assistant-panel-effort-btn';
             btn.setAttribute('role', 'radio');
+            if (!_support.effort) {
+                // aria-disabled without `disabled`: announced as unavailable,
+                // still reachable and readable — the same treatment the export
+                // preview cards use, for the same reason.
+                btn.setAttribute('aria-disabled', 'true');
+            }
             btn.setAttribute('aria-checked', ef.id === activeEffort ? 'true' : 'false');
             btn.dataset.effortId = ef.id;
             btn.type = 'button';
@@ -13144,10 +13589,14 @@ opts.jsonPayload + '\n' +
             btn.appendChild(efLbl);
             btn.appendChild(efHint);
 
-            // Set initial description for the preselected level.
+            // Set initial description for the preselected level. activeEffort
+            // is registry-validated, so exactly one level always matches and
+            // the description is never left blank.
             if (ef.id === activeEffort) { effortDesc.textContent = ef.desc; }
 
             btn.addEventListener('click', function () {
+                // Refused for pointer and keyboard alike, in one place.
+                if (!_support.effort) return;
                 activeEffort = ef.id;
                 _setEffortLevel(ef.id);
                 effortDesc.textContent = ef.desc;
@@ -13173,7 +13622,10 @@ opts.jsonPayload + '\n' +
 
         // ── §B  Extended reasoning (thinking) ─────────────────────────────────
 
-        var thinkingSection = _buildSheetSection('Thinking');
+        var thinkingSection = _buildSheetSection(
+            'Thinking',
+            _support.thinking ? _THINKING_NOTE : _REASONING_UNSUPPORTED_NOTE,
+            'ai-assistant-panel-thinking-note');
 
         var thinkingRow = document.createElement('div');
         thinkingRow.className = 'ai-assistant-panel-thinking-row';
@@ -13204,6 +13656,15 @@ opts.jsonPayload + '\n' +
         thinkingToggle.setAttribute('role', 'switch');
         thinkingToggle.setAttribute('aria-pressed', thinkingOn ? 'true' : 'false');
         thinkingToggle.setAttribute('aria-label', 'Enable extended reasoning');
+        // Same reasoning as the effort radiogroup: the trade-off is announced
+        // on focus rather than only being available to whoever reads around
+        // the control.
+        thinkingToggle.setAttribute('aria-describedby',
+            'ai-assistant-panel-thinking-note');
+        if (!_support.thinking) {
+            thinkingToggle.setAttribute('aria-disabled', 'true');
+            thinkingRow.dataset.unsupported = 'true';
+        }
 
         var thinkingThumb = document.createElement('span');
         thinkingThumb.className = 'ai-assistant-panel-thinking-toggle-thumb';
@@ -13216,6 +13677,10 @@ opts.jsonPayload + '\n' +
         // Token budget area (visible only when thinking is on)
         var budgetArea = document.createElement('div');
         budgetArea.className = 'ai-assistant-panel-budget-area';
+        // Visibility follows thinkingOn alone — a stale persisted "on" still
+        // shows the area (consistent with the toggle itself rendering as
+        // pressed-on), it just can't be interacted with when unsupported;
+        // that's what budgetRange.disabled below is for.
         if (thinkingOn) { budgetArea.setAttribute('data-visible', 'true'); }
 
         var budgetHeader = document.createElement('div');
@@ -13241,6 +13706,16 @@ opts.jsonPayload + '\n' +
         budgetRange.step = '500';
         budgetRange.value = String(currentBudget);
         budgetRange.setAttribute('aria-label', 'Token budget for extended reasoning');
+        // Two independent gates, both required for the slider to be live:
+        // (1) thinkingOn — the user's stored on/off preference, and
+        // (2) _support.thinking — whether the current model/endpoint even
+        // offers extended reasoning. thinkingOn is read from storage and can
+        // still be `true` from a previous session even when support is
+        // false, so checking thinkingOn alone isn't enough — without the
+        // support check the slider stayed active (and visible) under an
+        // unsupported model even though the toggle above it is correctly
+        // inert.
+        budgetRange.disabled = !thinkingOn || !_support.thinking;
 
         budgetRange.addEventListener('input', function () {
             var v = parseInt(budgetRange.value, 10);
@@ -13273,6 +13748,8 @@ opts.jsonPayload + '\n' +
 
         // Wire the toggle: flip state, update UI, persist, dispatch event.
         thinkingToggle.addEventListener('click', function () {
+            // Refused in one place, for pointer and keyboard alike.
+            if (!_support.thinking) return;
             thinkingOn = !thinkingOn;
             _setThinkingOn(thinkingOn);
             thinkingToggle.setAttribute('aria-pressed', thinkingOn ? 'true' : 'false');
@@ -13280,6 +13757,7 @@ opts.jsonPayload + '\n' +
                 ? 'Deeper analysis, slightly slower responses'
                 : 'Faster, more concise responses';
             budgetArea.setAttribute('data-visible', thinkingOn ? 'true' : 'false');
+            budgetRange.disabled = !thinkingOn;
             try {
                 document.dispatchEvent(new CustomEvent(
                     'ai-assistant-thinking-change',
@@ -17165,8 +17643,8 @@ opts.jsonPayload + '\n' +
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('aria-controls', 'ai-assistant-panel-model-sheet');
         var initLabel = active ? (active.label || active.id) : 'Model';
-        btn.setAttribute('aria-label', 'Model Configuration \u2014 current: ' + initLabel);
-        btn.title = initLabel;
+        btn.dataset.modelText = initLabel;
+        _syncModelBtnAria(btn);
 
         // ── Small-screen icon-only fallback ────────────────────────────────
         // On narrow viewports (≤ 575 px) the pill collapses to this single
@@ -17201,6 +17679,14 @@ opts.jsonPayload + '\n' +
         // ── Chevron ─────────────────────────────────────────────────────────
         // Class added so the narrow-screen rule can hide it by class name
         // (safer than :last-child which depends on DOM order).
+        // ── Effort chip ─────────────────────────────────────────────────────
+        // Placed before the chevron so the pill reads
+        // [dot] [model name] [effort] [chevron] — state first, affordance last.
+        _attachEffortChip(btn, 'ai-assistant-panel-inline-picker-effort');
+
+        // ── Chevron ─────────────────────────────────────────────────────────
+        // Class added so the narrow-screen rule can hide it by class name
+        // (safer than :last-child which depends on DOM order).
         var chev = document.createElement('span');
         chev.className = 'ai-assistant-panel-inline-picker-chev';
         chev.setAttribute('aria-hidden', 'true');
@@ -17219,8 +17705,8 @@ opts.jsonPayload + '\n' +
             );
             var text = m ? (m.label || m.id) : id;
             lbl.textContent = text;
-            btn.title = text;
-            btn.setAttribute('aria-label', 'Model Configuration \u2014 current: ' + text);
+            btn.dataset.modelText = text;
+            _syncModelBtnAria(btn);
             var c = _providerColor((m && m.provider) || '');
             if (c) {
                 dot.style.background = c;
@@ -17644,17 +18130,21 @@ opts.jsonPayload + '\n' +
                 : 'Model';
             modelLink.appendChild(modelLbl);
 
+            // Effort chip — same helper, same placement rule as the footer
+            // inline picker: [icon] [model name] [effort] [chevron].
+            _attachEffortChip(modelLink, 'ai-assistant-panel-model-link-effort');
+
             var modelChev = document.createElement('span');
             modelChev.setAttribute('aria-hidden', 'true');
             modelChev.innerHTML = ICONS.chevronDown;
             modelLink.appendChild(modelChev);
 
-            // Dynamic aria-label and title: mirrors the inline-picker format
-            // "Model Configuration — current: <label>" so screen readers and the
-            // browser tooltip both surface the currently-selected model name.
-            var _initModelText = activeNow ? (activeNow.label || activeNow.id) : 'Model';
-            modelLink.setAttribute('aria-label', 'Model Configuration \u2014 current: ' + _initModelText);
-            modelLink.title = _initModelText;
+            // Accessible name and title come from the shared helper, so this
+            // button and the footer picker cannot describe the same state in
+            // two different ways.
+            modelLink.dataset.modelText =
+                activeNow ? (activeNow.label || activeNow.id) : 'Model';
+            _syncModelBtnAria(modelLink);
         }
 
         // Share button — opens the Share sheet.
@@ -18415,10 +18905,9 @@ opts.jsonPayload + '\n' +
                 var text = m ? (m.label || m.id) : d.id;
                 var lbl = modelLink.querySelector('.ai-assistant-panel-model-link-label');
                 if (lbl) lbl.textContent = text;
-                // Keep aria-label and title in sync with the selected model —
-                // same format used by the inline-picker btn._syncState().
-                modelLink.setAttribute('aria-label', 'Model Configuration \u2014 current: ' + text);
-                modelLink.title = text;
+                // Shared helper keeps model and effort in one accessible name.
+                modelLink.dataset.modelText = text;
+                _syncModelBtnAria(modelLink);
             });
         }
 
@@ -23300,16 +23789,16 @@ opts.jsonPayload + '\n' +
         // Cerebras, Together, Fireworks, SambaNova, Ollama, custom) uses the
         // OpenAI /v1/chat/completions shape.
         var isAnthropic = (provider === 'anthropic');
-        var body;
+        var bodyObj;
         if (isAnthropic) {
-            body = JSON.stringify({
+            bodyObj = {
                 model:      modelName,
                 max_tokens: maxTokens,
                 system:     systemPrompt,
                 messages:   [{ role: 'user', content: question }],
-            });
+            };
         } else {
-            body = JSON.stringify({
+            bodyObj = {
                 model:      modelName,
                 max_tokens: maxTokens,
                 stream:     false,   // overwritten below when streaming is on
@@ -23317,8 +23806,17 @@ opts.jsonPayload + '\n' +
                     { role: 'system', content: systemPrompt },
                     { role: 'user',   content: question },
                 ],
-            });
+            };
         }
+
+        // Effort level and extended reasoning are added ONLY when the
+        // deployment has declared that this endpoint accepts them. For every
+        // other deployment this is a no-op and the body is byte-identical to
+        // what the panel sent before the controls existed — the model uses its
+        // own defaults, which is what the sheet reports as "Default".
+        _applyReasoningParams(bodyObj, _reasoningSupport(activeModel, cfg));
+
+        var body = JSON.stringify(bodyObj);
 
         // ── 5. SSE streaming path (OpenAI-compat providers only) ──────────
         //
