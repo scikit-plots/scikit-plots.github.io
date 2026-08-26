@@ -1978,22 +1978,16 @@
             _bindShortcut();    // R7 — no-op if disabled/invalid in config
             _mountSearchBar();  // R8 — no-op unless explicitly enabled
 
-            // panelStartMinimized (default true): eagerly create the floating
-            // trigger pill so users get 1-click access to the panel on every
-            // page load — without needing to open the panel first.
-            // When false, the pill is created lazily inside createAIPanel()
-            // and only becomes visible after the user minimizes the panel.
-            if (cfg.panelStartMinimized !== false) {
-                if (!_aiTriggerEl) {
-                    var title = cfg.panelTitle || 'AI Assistant';
-                    _aiTriggerEl = _createTriggerPill(title);
-                    // Mirror what minimizeAIPanel() does: mark as minimized
-                    // and make it visible so CSS rules apply correctly.
-                    _aiTriggerEl.setAttribute('data-minimized', 'true');
-                    _aiTriggerEl.style.display = 'flex';
-                    document.body.appendChild(_aiTriggerEl);
-                }
-            }
+            // Idle-state visibility of the floating trigger pill.
+            //
+            // The build default is panelStartMinimized (true → 1-click access
+            // on every page load, without opening the panel first); the
+            // reader's stored preference overrides it unless the site pinned
+            // the value with panelTriggerToggle = False. Creation happens on
+            // demand inside the apply path, so a "hidden" resolution costs no
+            // DOM at all — the pill is built lazily by createAIPanel() if the
+            // reader later opens and minimizes the panel.
+            _applyPanelTriggerVisibility('idle');
         }
     }
 
@@ -2237,6 +2231,298 @@
         }
     }
 
+    // ── AI panel trigger visibility ───────────────────────────────────────────
+    //
+    // The floating "Ask AI" pill (#ai-assistant-trigger) is page furniture: once
+    // shown it sits over the content on every page for the whole visit. That is
+    // right for a reader who uses the assistant and wrong for one who never
+    // opens it, so it belongs to the reader as a preference rather than to the
+    // build as a fixed decision.
+    //
+    // The control is a two-state switch on the AI Assistant row, structurally
+    // identical to the PDF method switch and the Copy mode switch: a sibling
+    // button (never a nested one), role="menuitemcheckbox", the same track/thumb
+    // primitives. Three controls that behave the same way are learned once.
+    //
+    // Resolution order — deliberately the same rule as _copyMode():
+    //   1. cfg.panelTriggerToggle === false → the build value wins outright, no
+    //      switch is rendered, and a stale stored preference cannot resurrect a
+    //      state the site turned off.
+    //   2. a valid stored reader preference.
+    //   3. the build value cfg.panelStartMinimized (default true → shown).
+    //
+    // ``panelStartMinimized`` is reused as the build default rather than adding a
+    // second key with the same meaning: it already answers exactly the question
+    // "is the pill on screen when the panel is not in use". One source of truth.
+    //
+    // The switch is built inside the features.ai_panel branch of createDropdown(),
+    // so a build with the panel disabled renders neither switch nor pill and
+    // never reaches this code — the gate is structural, not another condition.
+
+    /**
+     * localStorage key for the reader's trigger-pill visibility preference.
+     *
+     * Stored as the literal strings ``'true'`` / ``'false'``. localStorage and
+     * not sessionStorage because "I do not want this button on my screen" is a
+     * standing preference rather than a per-tab one — the same reasoning that
+     * puts the Copy mode in localStorage.
+     *
+     * @type {string}
+     */
+    var _PANEL_TRIGGER_KEY = 'ai-assistant-panel-trigger';
+
+    /**
+     * Resolve whether the floating trigger pill should be shown while the panel
+     * is idle (never opened, or fully closed).
+     *
+     * @returns {boolean} True when the pill belongs on screen.
+     */
+    function _panelTriggerVisible() {
+        var cfg = _cfg();
+        var configured = cfg.panelStartMinimized !== false;
+        if (cfg.panelTriggerToggle === false) return configured;
+        try {
+            var stored = localStorage.getItem(_PANEL_TRIGGER_KEY);
+            if (stored === 'true') return true;
+            if (stored === 'false') return false;
+        } catch (_) { /* storage unavailable; fall through to configured */ }
+        return configured;
+    }
+
+    /**
+     * Persist the reader's preference.
+     *
+     * Storage failure is non-fatal by design: the choice still applies to this
+     * page view, it simply will not survive a reload.
+     *
+     * @param {boolean} visible
+     */
+    function _setPanelTriggerPref(visible) {
+        try {
+            localStorage.setItem(_PANEL_TRIGGER_KEY, visible ? 'true' : 'false');
+        } catch (_) { /* non-fatal by design */ }
+    }
+
+    /**
+     * Panel state as the pill sees it.
+     *
+     *   'open'       panel on screen           → pill never shown
+     *   'minimized'  hidden, conversation kept → pill always shown
+     *   'idle'       never created, or closed  → pill follows the preference
+     *
+     * @returns {string} 'idle', 'open', or 'minimized'.
+     */
+    function _panelState() {
+        if (!_aiPanelEl) return 'idle';
+        if (_aiPanelEl.getAttribute('data-minimized') === 'true') return 'minimized';
+        return _aiPanelEl.style.display !== 'none' ? 'open' : 'idle';
+    }
+
+    /**
+     * Create the pill once, on demand.
+     *
+     * Idempotent (C-4): a second pill is never appended, so flipping the
+     * preference on long after load reuses the element already in the DOM.
+     *
+     * @returns {HTMLButtonElement}
+     */
+    function _ensureTriggerPill() {
+        if (!_aiTriggerEl) {
+            _aiTriggerEl = _createTriggerPill(_cfg().panelTitle || 'AI Assistant');
+            document.body.appendChild(_aiTriggerEl);
+        }
+        return _aiTriggerEl;
+    }
+
+    /**
+     * The single apply path for pill visibility.
+     *
+     * Every show/hide goes through here, so the reader's preference cannot be
+     * contradicted by a stray ``style.display`` assignment somewhere else in the
+     * panel lifecycle.
+     *
+     * ``'minimized'`` overrides a "hidden" preference on purpose: minimizing
+     * keeps a live conversation and the pill is the only route back to it.
+     * Honouring "hidden" there would strand the transcript behind two dropdown
+     * clicks, so the fail-safe reading wins over the literal one.
+     *
+     * @param {string} [state] 'idle', 'open', or 'minimized'. Resolved from the
+     *     live panel via :func:`_panelState` when omitted.
+     * @returns {boolean} True when the pill ends up visible.
+     */
+    function _applyPanelTriggerVisibility(state) {
+        var resolved = state || _panelState();
+        var show = resolved === 'minimized' ||
+                   (resolved !== 'open' && _panelTriggerVisible());
+
+        if (!show) {
+            if (_aiTriggerEl) {
+                _aiTriggerEl.removeAttribute('data-minimized');
+                _aiTriggerEl.style.display = 'none';
+            }
+            return false;
+        }
+
+        // data-minimized doubles as the CSS visibility hook for the pill, which
+        // is why the idle-visible state sets it too — unchanged from the original
+        // eager-create path this replaces.
+        var pill = _ensureTriggerPill();
+        pill.setAttribute('data-minimized', 'true');
+        pill.style.display = 'flex';
+        return true;
+    }
+
+    /**
+     * Accessible label for the visibility switch: states what is true now and
+     * what activating the switch will do, never just one of the two.
+     *
+     * @param {boolean} visible
+     * @param {string} [label] Pill label; falls back to the configured one.
+     * @returns {string}
+     */
+    function _panelTriggerAccessibleLabel(visible, label) {
+        var name = label || (_cfg().panelTriggerLabel || 'Ask AI');
+        return visible
+            ? 'The floating ' + name + ' button is shown on every page. Activate to hide it.'
+            : 'The floating ' + name + ' button is hidden. Activate to show it on every page.';
+    }
+
+    /**
+     * Push a resolved preference into the live switch DOM.
+     *
+     * Split from the click handler so the state can also be set
+     * programmatically without synthesising an event.
+     *
+     * @param {boolean} visible
+     */
+    function _syncPanelTriggerUI(visible) {
+        var section = document.querySelector('.ai-assistant-panel-section');
+        if (section) section.dataset.panelTrigger = visible ? 'visible' : 'hidden';
+
+        var sw = document.getElementById('ai-assistant-panel-trigger-toggle');
+        if (!sw) return;
+
+        var text = _panelTriggerAccessibleLabel(visible);
+        sw.setAttribute('aria-checked', visible ? 'true' : 'false');
+        sw.setAttribute('aria-label', text);
+        sw.title = text;
+
+        var stateText = sw.querySelector('.ai-assistant-panel-toggle-text');
+        if (stateText) stateText.textContent = visible ? 'Shown' : 'Hidden';
+    }
+
+    /**
+     * Apply and persist a trigger-pill visibility preference.
+     *
+     * @param {boolean} next True to show the pill while the panel is idle.
+     */
+    function setPanelTriggerVisible(next) {
+        var visible = next === true;
+        _setPanelTriggerPref(visible);
+        _syncPanelTriggerUI(visible);
+        // No explicit state: the live panel decides whether the preference is
+        // allowed to take effect right now (it is not while open or minimized).
+        _applyPanelTriggerVisibility();
+    }
+
+    /**
+     * Build the AI panel row: the "open the panel" menu item plus its
+     * trigger-pill visibility switch.
+     *
+     * The switch is a **sibling** of the menu item, never a child — nested
+     * buttons are invalid HTML and behave unreliably for keyboard and assistive
+     * technology. This mirrors the PDF and Copy rows exactly.
+     *
+     * When ``panelTriggerToggle`` is false the section renders as a plain menu
+     * item with no switch and the pill follows the build value alone.
+     *
+     * @param {string} staticPath
+     * @param {Object} [cfg] Resolved widget config; read from _cfg() when absent.
+     * @returns {HTMLElement}
+     */
+    function createPanelSection(staticPath, cfg) {
+        cfg = cfg || _cfg();
+
+        var panelTitle   = cfg.panelTitle || 'AI Assistant';
+        var triggerLabel = cfg.panelTriggerLabel || 'Ask AI';
+        var hasSwitch    = cfg.panelTriggerToggle !== false;
+        var visible      = _panelTriggerVisible();
+
+        var section = document.createElement('div');
+        section.className = 'ai-assistant-panel-section';
+        section.dataset.panelTrigger   = visible ? 'visible' : 'hidden';
+        section.dataset.panelHasToggle = hasSwitch ? 'true' : 'false';
+
+        var row = document.createElement('div');
+        row.className = 'ai-assistant-panel-row';
+        row.setAttribute('role', 'group');
+        row.setAttribute('aria-label', panelTitle);
+
+        var item = createMenuItem(
+            'ai-panel-open',
+            panelTitle,
+            'Ask ' + panelTitle + ' about this page',
+            getStaticAssetUrl('ai-panel.svg', staticPath)
+        );
+        item.classList.add('ai-assistant-panel-action');
+
+        // Mirrors the PDF and Copy rows: the description is the accessible
+        // explanation of the action, so the item points at it rather than
+        // repeating the text in an aria-label that can drift from it.
+        var itemDesc = item.querySelector('.ai-assistant-menu-item-description');
+        if (itemDesc) {
+            itemDesc.id = 'ai-assistant-panel-desc';
+            itemDesc.classList.add('ai-assistant-panel-desc');
+            item.setAttribute('aria-describedby', 'ai-assistant-panel-desc');
+        }
+
+        row.appendChild(item);
+
+        if (hasSwitch) {
+            var modeSwitch = document.createElement('button');
+            modeSwitch.className = 'ai-assistant-panel-mode-switch ai-assistant-mic-popup-toggle';
+            modeSwitch.id = 'ai-assistant-panel-trigger-toggle';
+            modeSwitch.type = 'button';
+            modeSwitch.setAttribute('role', 'menuitemcheckbox');
+            modeSwitch.setAttribute('aria-checked', visible ? 'true' : 'false');
+
+            var switchLabel = _panelTriggerAccessibleLabel(visible, triggerLabel);
+            modeSwitch.setAttribute('aria-label', switchLabel);
+            modeSwitch.title = switchLabel;
+
+            var track = document.createElement('span');
+            track.className = 'ai-assistant-mic-toggle-track ai-assistant-panel-toggle-track';
+            track.setAttribute('aria-hidden', 'true');
+
+            var thumb = document.createElement('span');
+            thumb.className = 'ai-assistant-mic-toggle-thumb ai-assistant-panel-toggle-thumb';
+            track.appendChild(thumb);
+
+            // Visually hidden, but the authoritative current-state text for
+            // screen readers; sighted feedback is the thumb position and the
+            // pill appearing or disappearing immediately.
+            var stateText = document.createElement('span');
+            stateText.className = 'ai-assistant-panel-toggle-text';
+            stateText.textContent = visible ? 'Shown' : 'Hidden';
+
+            modeSwitch.appendChild(track);
+            modeSwitch.appendChild(stateText);
+
+            modeSwitch.addEventListener('click', function (event) {
+                // Without stopPropagation the click would also reach the menu
+                // item behind the row and open the panel.
+                event.preventDefault();
+                event.stopPropagation();
+                setPanelTriggerVisible(!_panelTriggerVisible());
+            });
+
+            row.appendChild(modeSwitch);
+        }
+
+        section.appendChild(row);
+        return section;
+    }
+
     function createDropdown() {
         var dropdown = document.createElement('div');
         dropdown.className = 'ai-assistant-dropdown';
@@ -2304,11 +2590,11 @@
         }
 
         // 5. AI panel
+        //    createPanelSection() keeps the same #ai-assistant-ai-panel-open
+        //    button id and adds the trigger-pill visibility switch beside it.
         if (features.ai_panel) {
-            var panelTitle = cfg.panelTitle || 'AI Assistant';
             if (hasItems) dropdown.appendChild(createSeparator());
-            var panelItem = createMenuItem('ai-panel-open', panelTitle, 'Ask ' + panelTitle + ' about this page', getStaticAssetUrl('ai-panel.svg', staticPath));
-            dropdown.appendChild(panelItem);
+            dropdown.appendChild(createPanelSection(staticPath, cfg));
         }
 
         return dropdown;
@@ -18309,12 +18595,11 @@ opts.jsonPayload + '\n' +
         document.body.appendChild(panel);
 
         // ── Floating trigger pill (shown when minimized) ──────────────────────
-        // Idempotency guard (C-4): never create a second trigger if one
-        // already exists from a prior createAIPanel() call.
-        if (!_aiTriggerEl) {
-            _aiTriggerEl = _createTriggerPill(title);
-            document.body.appendChild(_aiTriggerEl);
-        }
+        // Idempotency guard (C-4) lives in _ensureTriggerPill(): never create a
+        // second trigger if one already exists from a prior call or from the
+        // idle-visibility path at init. Creation only — visibility is decided
+        // by _applyPanelTriggerVisibility() as the panel changes state.
+        _ensureTriggerPill();
 
         return panel;
     }
@@ -18382,11 +18667,10 @@ opts.jsonPayload + '\n' +
     function _openAIPanel() {
         if (!_aiPanelEl) _aiPanelEl = createAIPanel();
 
-        // If was minimized, hide trigger first
-        if (_aiTriggerEl) {
-            _aiTriggerEl.removeAttribute('data-minimized');
-            _aiTriggerEl.style.display = 'none';
-        }
+        // If was minimized, hide trigger first. The panel itself is now the
+        // affordance, so the pill is hidden regardless of the reader's
+        // idle-visibility preference.
+        _applyPanelTriggerVisibility('open');
         _aiPanelEl.removeAttribute('data-minimized');
         _aiPanelEl.style.display = 'flex';
 
@@ -18426,10 +18710,9 @@ opts.jsonPayload + '\n' +
                 _aiPanelEl.style.display = 'none';
                 _aiPanelEl.setAttribute('data-minimized', 'true');
             }
-            if (_aiTriggerEl) {
-                _aiTriggerEl.setAttribute('data-minimized', 'true');
-                _aiTriggerEl.style.display = 'flex';
-            }
+            // Always shown while minimized, even when the reader hid the idle
+            // pill: the conversation is still live and this is the way back.
+            _applyPanelTriggerVisibility('minimized');
         }, 280);
     }
 
@@ -18444,10 +18727,10 @@ opts.jsonPayload + '\n' +
         if (!_aiPanelEl) return;
         _aiPanelEl.classList.remove('ai-assistant-panel--open');
         _aiPanelEl.removeAttribute('data-minimized');
-        if (_aiTriggerEl) {
-            _aiTriggerEl.removeAttribute('data-minimized');
-            _aiTriggerEl.style.display = 'none';
-        }
+        // Back to the idle state: the pill returns if the reader keeps it
+        // shown, and stays hidden if they turned it off. Closing no longer
+        // silently removes the 1-click affordance until the next page load.
+        _applyPanelTriggerVisibility('idle');
         // Stop speech recognition if active
         _stopSpeechRecognition();
         setTimeout(function () {

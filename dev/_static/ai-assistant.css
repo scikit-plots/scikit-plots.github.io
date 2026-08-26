@@ -14396,3 +14396,106 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     white-space: nowrap !important;
     border: 0 !important;
 }
+
+/* ── AI panel trigger visibility switch ────────────────────────────────────
+ *
+ * Third instance of the same control, deliberately identical to
+ * .ai-assistant-pdf-mode-switch and .ai-assistant-copy-mode-switch: same
+ * track/thumb primitives, same 48px gutter, same accent-on-checked treatment.
+ * A reader learns the interaction once and it holds across all three rows.
+ *
+ *   aria-checked="true"  -> the floating "Ask AI" pill is shown on every page
+ *   aria-checked="false" -> the pill is hidden while the panel is not in use
+ *
+ * The switch is only ever rendered when the ai_panel feature is enabled, so
+ * these rules match nothing on a build without the panel.
+ */
+
+.ai-assistant-panel-section {
+    --ai-pdf-accent: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    display: block;
+}
+
+.ai-assistant-panel-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+}
+
+/* No switch (panelTriggerToggle = False): the row collapses to the plain menu
+   item it was before this control existed. */
+.ai-assistant-panel-section[data-panel-has-toggle="false"] .ai-assistant-panel-row {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.ai-assistant-panel-mode-switch {
+    position: relative;
+    align-self: stretch;
+    justify-content: center;
+    width: 48px;
+    min-width: 48px;
+    margin: 0;
+    border: 0;
+    border-radius: 0 4px 4px 0;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
+    touch-action: manipulation;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.ai-assistant-panel-mode-switch:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-mode-switch:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ai-assistant-panel-mode-switch:focus-visible {
+    outline: 2px solid var(--pst-color-primary, #0a7d91);
+    outline-offset: -2px;
+}
+
+.ai-assistant-panel-mode-switch .ai-assistant-panel-toggle-track {
+    width: 34px;
+    height: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.22);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-mode-switch .ai-assistant-panel-toggle-track {
+    border-color: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.24);
+}
+
+.ai-assistant-panel-mode-switch .ai-assistant-panel-toggle-thumb {
+    top: 1px;
+    left: 1px;
+    width: 14px;
+    height: 14px;
+}
+
+.ai-assistant-panel-mode-switch[aria-checked="true"] .ai-assistant-panel-toggle-track {
+    background: var(--ai-pdf-accent);
+}
+
+.ai-assistant-panel-mode-switch[aria-checked="true"] .ai-assistant-panel-toggle-thumb {
+    transform: translateX(16px);
+}
+
+/* Accessible current-state text. Visual feedback is the moving thumb and the
+ * pill itself appearing or disappearing immediately. */
+.ai-assistant-panel-toggle-text {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
