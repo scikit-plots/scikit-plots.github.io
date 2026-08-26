@@ -12651,8 +12651,13 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
  *
  * WIDE mode (≥ 400 px container, via @container below):
  *   Single-column horizontal rows — icon disc + label + hint on one line.
- *   Stub cards are hidden and replaced by a subtle "more soon" footer.
  *   This covers panels that the user has resized or maximized (max 960 px).
+ *
+ * Across ALL modes the card set and its order are identical: every
+ * implemented format in registry order, then every preview. Only the
+ * arrangement changes with width, never the membership and never the
+ * sequence — a card the reader saw at one size is in the same relative
+ * position at every other size.
  *
  * EXTRA-WIDE mode (≥ 560 px container, via @container below):
  *   Two-column grid of horizontal rows.  Handles the maximized panel state
@@ -12669,6 +12674,27 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     gap: 0.4rem;
     padding: 0.55rem 0 0.3rem;
 }
+
+/* ── "More export formats..." footer ───────────────────────────────────
+    * Participates in the CSS grid as a real grid item (pseudo-elements of
+    * a grid container are grid items per spec).  No DOM change required.
+    */
+/* .ai-assistant-share-export-cards::after {
+    content: 'More export formats...';
+    display: block;
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--pst-color-text-muted,
+                var(--color-foreground-secondary, #586069));
+    text-align: center;
+    padding: 0.15rem 0.5rem 0.05rem;
+    opacity: 0.6;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+} */
 
 /* ─── Individual format cards ─────────────────────────────────────────────── */
 /*
@@ -12724,17 +12750,21 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
  * (JS sets `disabled` + `aria-disabled`) and visually demoted:
  *   • Dashed border — signals "not yet available" vs. solid active cards.
  *   • Reduced opacity — present but clearly secondary.
- *   • `pointer-events: none` — belt-and-suspenders against any accidental
- *     interaction not caught by `disabled` (e.g. programmatic `.click()`).
  *
- * Activation path: remove `stub: true` from the JS formats entry.
- * No CSS changes needed — the modifier class simply disappears.
+ * `pointer-events: none` was REMOVED. It made the card inert to the mouse
+ * while keyboard Enter still reached it, so the two input methods behaved
+ * differently on the same element — and it silently swallowed the click that
+ * now answers "why did nothing happen?". Refusal belongs in one place: the
+ * JS handler preventDefaults and announces, for pointer and keyboard alike.
+ *
+ * Activation path: move the entry from _EXPORT_STUB_FORMATS to
+ * _EXPORT_FORMATS in the JS registry. No CSS changes needed — the modifier
+ * class simply disappears.
  */
 .ai-assistant-share-export-card--stub {
     opacity: 0.46;
     cursor: default;
     border-style: dashed;
-    pointer-events: none;
 }
 
 /* Stub cards must NOT respond to hover — override the active hover rule. */
@@ -12966,10 +12996,9 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
  *   ≥ 560 px   → 2-column horizontal list          (maximized panel)
  *
  * Design decisions:
- *   • Wide mode hides all stub cards — a list of disabled rows clutters the
- *     UI.  A CSS ::after footer delivers the "more soon" message instead.
- *   • The duplicate TOML stub (symmetric bookend design) is redundant at any
- *     width above compact; hiding it avoids confusing duplication.
+ *   • Card membership and order do not change with width. Previews render at
+ *     every size, always last; there is no width at which the "coming soon"
+ *     signal changes mechanism or moves.
  *   • Hint text revealed as single-line truncated row — fully readable at
  *     wide widths without any wrapping or layout thrash.
  *   • Left-accent inset box-shadow on hover — a 2 px primary-color bar
@@ -12990,32 +13019,38 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
         padding: 0.45rem 0 0.2rem;
     }
 
-    /* ── "More formats coming soon" footer ─────────────────────────────────
-     * Participates in the CSS grid as a real grid item (pseudo-elements of
-     * a grid container are grid items per spec).  No DOM change required.
-     * aria-hidden: the TOML stub cards in narrow mode carry the AT signal
-     * ("coming soon"); this footer is decorative reinforcement only.
+    /* ── Preview cards in row layout ───────────────────────────────────────
+     * Wide mode used to HIDE every preview card and substitute a
+     * `::after` footer reading "More export formats coming soon". Two
+     * mechanisms delivering one message, each present at only some widths:
+     * the reader saw a named TOML card below 400 px and an anonymous italic
+     * sentence above it, and neither the card order nor the message survived
+     * a resize intact.
+     *
+     * There is now one mechanism at every width — the preview card itself,
+     * in registry order, last. It says WHICH format is coming, carries a real
+     * accessible name, and is the same element a developer activates by
+     * moving one registry entry. The footer is gone.
+     *
+     * The only width-dependent thing left is styling: previews get no hover
+     * accent bar, because they are not going anywhere when clicked.
      */
-    .ai-assistant-share-export-cards::after {
-        content: 'More export formats coming soon';
-        display: block;
-        font-size: 0.68rem;
-        line-height: 1.4;
-        color: var(--pst-color-text-muted,
-                   var(--color-foreground-secondary, #586069));
-        text-align: center;
-        padding: 0.15rem 0.5rem 0.05rem;
-        opacity: 0.6;
-        font-style: italic;
-        letter-spacing: 0.01em;
-        pointer-events: none;
-        -webkit-user-select: none;
-        user-select: none;
+    .ai-assistant-share-export-card--stub:hover {
+        background: transparent;
+        border-color: rgba(127, 127, 127, 0.2);
+        box-shadow: none;
     }
 
-    /* Stub cards hidden in wide mode — the footer above replaces them */
-    .ai-assistant-share-export-card--stub {
-        display: none;
+    [data-bs-theme="dark"] .ai-assistant-share-export-card--stub:hover,
+    .dark .ai-assistant-share-export-card--stub:hover {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: none;
+    }
+
+    .ai-assistant-share-export-card--stub:hover
+        .ai-assistant-share-export-card-icon {
+        background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 10%, transparent);
     }
 
     /* ── Card: horizontal row ───────────────────────────────────────────────
@@ -13123,27 +13158,23 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 /*
  * Fires at panels wider than ~590 px — covers the maximized state
  * (min(960 px, 100 vw − 1 rem)) and any user-resized panel above that.
- * With 3 active cards + ::after footer, the grid fills as:
  *
- *   [ JSON  ] [ HTML  ]
- *   [ Text  ] [ more soon ]
+ * With 3 implemented formats + 1 preview the grid fills as a complete 2×2
+ * block, in registry order, reading left-to-right then top-to-bottom:
  *
- * ::after spans naturally into col 2, row 2 — no explicit placement needed.
- * grid-column: 1 / -1 is NOT used so the footer aligns right of the last
- * card, giving a balanced two-column appearance.
+ *   [ JSON      ] [ HTML      ]
+ *   [ Plain text] [ TOML soon ]
+ *
+ * That squareness is not a coincidence to preserve at all costs — it is what
+ * four items do in two columns. Adding a second preview gives 5 items and a
+ * ragged final row, which is correct and readable; do not add a filler card
+ * to "balance" it.
  */
 @container share-export-panel (min-width: 560px) {
 
     .ai-assistant-share-export-cards {
         grid-template-columns: 1fr 1fr;
         gap: 0.35rem;
-    }
-
-    /* Footer in 2-col: align text left to match the card beside it */
-    .ai-assistant-share-export-cards::after {
-        text-align: left;
-        padding-left: 0.6rem;
-        align-self: center;
     }
 }
 
@@ -14342,6 +14373,21 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     align-items: center;
 }
 
+/* Quiet divider keeps the integrated row readable without making a card. */
+.ai-assistant-copy-mode-switch::before {
+    position: absolute;
+    top: 13px;
+    bottom: 13px;
+    left: 0;
+    width: 1px;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(0, 0, 0, 0.16))
+    );
+    content: "";
+    opacity: 0.72;
+}
+
 .ai-assistant-copy-mode-switch:hover {
     background: rgba(0, 0, 0, 0.04);
 }
@@ -14445,6 +14491,21 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     align-items: center;
 }
 
+/* Quiet divider keeps the integrated row readable without making a card. */
+.ai-assistant-panel-mode-switch::before {
+    position: absolute;
+    top: 13px;
+    bottom: 13px;
+    left: 0;
+    width: 1px;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(0, 0, 0, 0.16))
+    );
+    content: "";
+    opacity: 0.72;
+}
+
 .ai-assistant-panel-mode-switch:hover {
     background: rgba(0, 0, 0, 0.04);
 }
@@ -14515,4 +14576,111 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     /* Suppress the interactive hover affordance while disabled. */
     background: transparent;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
+}
+
+/* ── Visually-hidden utility ───────────────────────────────────────────────
+ *
+ * Removed from the visual layout, kept in the accessibility tree — the
+ * canonical clip-rect pattern, matching the .*-toggle-text rules above.
+ *
+ * This class was already applied by the JS (the Endpoint Configuration sheet's
+ * live region, and now the export-card live region) but had NO rule anywhere in
+ * this stylesheet, so every element wearing it rendered as ordinary visible
+ * text. Defining it here fixes that for all current and future users of the
+ * class rather than papering over one of them.
+ */
+.ai-assistant-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* ── Export menu: preview ("soon") items ───────────────────────────────────
+ *
+ * The toolbar dropdown renders the same registry as the share sheet's format
+ * cards — same set, same order, same preview logic — so it needs the same
+ * visual vocabulary for a format that is not available yet. These rules are
+ * the menu-row equivalent of .ai-assistant-share-export-card--stub: dashed
+ * left rail instead of a dashed box, since a full-width row reads better with
+ * an edge marker than an outline.
+ *
+ * Deliberately NO `pointer-events: none`. Refusal lives in one place, the
+ * shared _applyExportPreviewSemantics() click handler, so pointer and keyboard
+ * behave identically. Suppressing the click here would silence the very
+ * announcement that tells the reader why nothing happened.
+ *
+ * Activation path: move the entry from _EXPORT_STUB_FORMATS to
+ * _EXPORT_FORMATS in the JS registry. No CSS change — the modifier class
+ * simply stops being applied.
+ */
+.ai-assistant-export-menu-item--stub {
+    position: relative;
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* Dashed leading rail — the row-layout counterpart of the card's dashed box. */
+.ai-assistant-export-menu-item--stub::before {
+    content: "";
+    position: absolute;
+    top: 0.3rem;
+    bottom: 0.3rem;
+    left: 0;
+    width: 0;
+    border-left: 2px dashed rgba(127, 127, 127, 0.45);
+    border-radius: 2px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-item--stub::before,
+.dark .ai-assistant-export-menu-item--stub::before {
+    border-left-color: rgba(255, 255, 255, 0.28);
+}
+
+/* Previews are reachable, so they keep a focus ring — but they must not
+   pretend to be actionable on hover. */
+.ai-assistant-export-menu-item--stub:hover,
+.ai-assistant-export-menu-item--stub:active {
+    background: none;
+    color: inherit;
+}
+
+.ai-assistant-export-menu-item--stub:hover > span:first-child {
+    background: none;
+}
+
+/* ── Export menu: "soon" badge ─────────────────────────────────────────────
+ *
+ * Trailing pill, vertically centred in the row. The card's badge is an
+ * absolutely-positioned corner overlay because a card is a box; a menu row is
+ * a line, so the badge sits at the end of it as a flex item. Same wording,
+ * same accent, same aria-hidden treatment — only the placement differs,
+ * because the two containers differ.
+ */
+.ai-assistant-export-menu-soon {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    padding: 0.05rem 0.27rem;
+    border-radius: 999px;
+    background: var(--pst-color-primary, #2980b9);
+    color: #fff;
+    opacity: 0.82;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+[data-bs-theme="dark"] .ai-assistant-export-menu-soon,
+.dark .ai-assistant-export-menu-soon {
+    opacity: 0.72;
 }

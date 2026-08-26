@@ -7131,13 +7131,258 @@ opts.jsonPayload + '\n' +
         return new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
     }
 
+    // ── Export format registry ────────────────────────────────────────────────
+    //
+    // THE single source of truth for every conversation-export format, consumed
+    // by both surfaces that offer them:
+    //
+    //   • the toolbar "Export ▾" dropdown   (_buildExportDropdownBtn)
+    //   • the share sheet's format cards    (_buildShareExportSection)
+    //
+    // Before this registry existed each surface kept its own hand-written array
+    // with the same fmt/label/hint/icon fields copied between them. Two arrays
+    // meant the two surfaces could — and did — disagree about order and about
+    // which formats exist at all. Order is now defined exactly once, here, and
+    // both surfaces render it in registry order, so a reader who learns the
+    // sequence in one place finds the same sequence in the other.
+    //
+    // Fields
+    // ------
+    // fmt   : string   Format key passed to exportConversation() / share links.
+    //                  Unique across the registry — it is also the value of the
+    //                  card's ``data-fmt`` attribute, so duplicates would make
+    //                  that attribute useless as a selector.
+    // label : string   Short display name.
+    // hint  : string   One-line summary. Used by the dropdown, and by the card's
+    //                  aria-label.
+    // desc  : string   Longer body text for the richer card UI. Defaults to
+    //                  ``hint`` when a format does not need a separate blurb.
+    // icon  : string   Inline SVG markup.
+    // stub  : boolean  True marks a preview of a format that is not implemented
+    //                  yet. See _stubFormat() below.
+
     /**
-     * Build the "Export ▾" header button with a 3-option dropdown.
+     * Generic file icon for preview ("soon") formats.
      *
-     * Format options (in display order):
-     *   1. JSON — pandas-ready (primary, most useful)
-     *   2. HTML — shareable page
-     *   3. TXT  — plain text (back-compat)
+     * Deliberately format-agnostic — a plain document with content lines — so a
+     * developer adding YAML, CSV, or XML needs no new artwork. Pass a custom
+     * ``icon`` to :func:`_stubFormat` only when a format has a genuinely
+     * recognisable symbol worth drawing.
+     *
+     * @type {string}
+     */
+    var _EXPORT_STUB_ICON =
+        '<svg viewBox="0 0 24 24" width="14" height="14" fill="none"' +
+        ' stroke="currentColor" stroke-width="2" stroke-linecap="round"' +
+        ' stroke-linejoin="round">' +
+        '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>' +
+        '<polyline points="14 2 14 8 20 8"/>' +
+        '<line x1="8" y1="13" x2="16" y2="13"/>' +
+        '<line x1="8" y1="17" x2="16" y2="17"/>' +
+        '<line x1="9" y1="9" x2="11" y2="9"/>' +
+        '</svg>';
+
+    /**
+     * Template for a not-yet-implemented format.
+     *
+     * Adding a preview is one line — no icon, no wiring, no CSS::
+     *
+     *     _stubFormat('yaml', 'YAML', 'Human-readable config \u2014 CI and tooling.')
+     *
+     * Shipping it is one edit: implement the format in exportConversation() and
+     * move the entry from _EXPORT_STUB_FORMATS to _EXPORT_FORMATS. Nothing about
+     * the card markup, the ordering, or the styling has to change, because the
+     * only difference between a preview and a live format is the ``stub`` flag
+     * this factory sets.
+     *
+     * @param {string} fmt   Format key. Must be unique across the registry.
+     * @param {string} label Short display name.
+     * @param {string} desc  Longer blurb for the card body.
+     * @param {Object} [opts] ``{icon}`` to override the generic file icon.
+     * @returns {Object} A registry entry with ``stub: true``.
+     */
+    function _stubFormat(fmt, label, desc, opts) {
+        var extra = (opts && typeof opts === 'object') ? opts : {};
+        return {
+            fmt:   fmt,
+            label: label,
+            hint:  'Coming soon',
+            desc:  desc,
+            icon:  extra.icon || _EXPORT_STUB_ICON,
+            stub:  true
+        };
+    }
+
+    /** Implemented formats, in canonical display order. */
+    var _EXPORT_FORMATS = [
+        {
+            fmt:   'json',
+            label: 'JSON',
+            hint:  'Pandas-ready \u00b7 model + ratings',
+            desc:  'Structured data \u2014 import into pandas, re-load ratings, or feed another model.',
+            icon:  ICONS.exportJson
+        },
+        {
+            fmt:   'html',
+            label: 'HTML',
+            hint:  'Shareable page \u00b7 open in browser',
+            desc:  'Self-contained page \u2014 open in any browser or email as an attachment.',
+            icon:  ICONS.exportHtml
+        },
+        {
+            fmt:   'txt',
+            label: 'Plain text',
+            hint:  'Simple \u00b7 human-readable',
+            desc:  'Plain prose \u2014 paste into any editor, doc, or note-taking app.',
+            icon:  ICONS.exportTxt
+        }
+    ];
+
+    /**
+     * Previews of formats on the roadmap. Always rendered AFTER every
+     * implemented format, so shipping one never reorders the live set.
+     */
+    var _EXPORT_STUB_FORMATS = [
+        _stubFormat(
+            'toml',
+            'TOML',
+            'TOML key-value format \u2014 config files and tool integrations.'
+        )
+    ];
+
+    /**
+     * What the share sheet renders: every implemented format, then every
+     * preview. One array, one order, no duplicates.
+     *
+     * The toolbar dropdown deliberately renders ``_EXPORT_FORMATS`` only. A
+     * dropdown is a list of things you can do right now; the roadmap belongs in
+     * the richer card UI where a preview can explain itself.
+     */
+    var _EXPORT_CARD_FORMATS = _EXPORT_FORMATS.concat(_EXPORT_STUB_FORMATS);
+
+    /**
+     * Body text for a format card. Falls back to the short hint so a registry
+     * entry never has to repeat itself just to satisfy the card layout.
+     *
+     * @param {Object} opt Registry entry.
+     * @returns {string}
+     */
+    function _exportFormatDesc(opt) {
+        return opt.desc || opt.hint || '';
+    }
+
+    /**
+     * Accessible name for a format control: the label plus why you would pick
+     * it, or plus its unavailability when it is a preview.
+     *
+     * Shared by both surfaces so a format is named identically wherever it
+     * appears — the whole point of a single registry.
+     *
+     * @param {Object} opt Registry entry.
+     * @returns {string}
+     */
+    function _exportFormatAccessibleLabel(opt) {
+        return opt.stub
+            ? opt.label + ' \u2014 export format, not available yet'
+            : opt.label + ' \u2014 ' + opt.hint;
+    }
+
+    /**
+     * What a preview says when someone tries to use it.
+     *
+     * One sentence, defined once, so the share sheet and the toolbar dropdown
+     * cannot answer the same question differently. It names the ready formats
+     * rather than only refusing — the reader's next question is "then what CAN
+     * I use?", and answering it costs nothing.
+     *
+     * @param {string} label Format label, e.g. 'TOML'.
+     * @returns {string}
+     */
+    function _exportPreviewNotice(label) {
+        var ready = _EXPORT_FORMATS.map(function (f) { return f.label; });
+        var list = ready.length > 1
+            ? ready.slice(0, -1).join(', ') + ' and ' + ready[ready.length - 1]
+            : (ready[0] || '');
+        return label + ' export is not available yet. ' + list + ' are ready now.';
+    }
+
+    /**
+     * A polite live region for preview refusals.
+     *
+     * Visually hidden, aria-atomic, mounted by the caller inside whichever
+     * surface is announcing. One per surface rather than one global node: a
+     * live region inside a closed dropdown or a collapsed sheet is not
+     * announced, so the region has to live with the control it speaks for.
+     *
+     * @returns {HTMLElement}
+     */
+    function _createExportLiveRegion() {
+        var live = document.createElement('div');
+        live.className = 'ai-assistant-visually-hidden';
+        live.setAttribute('aria-live', 'polite');
+        live.setAttribute('aria-atomic', 'true');
+        return live;
+    }
+
+    /**
+     * Apply preview semantics to a format control, on ANY surface.
+     *
+     * Previews are focusable but not activatable:
+     *
+     *   • ``aria-disabled`` WITHOUT the ``disabled`` attribute. The earlier
+     *     card implementation used both, which removed previews from the tab
+     *     order and from the reachable accessibility tree — so keyboard and
+     *     screen-reader users never learned another format was coming. These
+     *     are not controls that do nothing; they are roadmap information
+     *     wearing a button, and WAI-ARIA's treatment for that is
+     *     aria-disabled alone: announced as unavailable, still reachable.
+     *   • Activation is refused HERE, in one handler, for pointer and keyboard
+     *     alike — never by CSS ``pointer-events``, which blocks the mouse while
+     *     Enter still reaches the element.
+     *   • The refusal is announced. A focusable control that swallows Enter
+     *     without a word is worse than an unreachable one.
+     *
+     * @param {HTMLElement} el   The control.
+     * @param {Object} opt       Registry entry (must have ``stub: true``).
+     * @param {HTMLElement} live Live region to announce into.
+     * @returns {HTMLElement} ``el``, for chaining.
+     */
+    function _applyExportPreviewSemantics(el, opt, live) {
+        el.setAttribute('aria-disabled', 'true');
+        el.setAttribute('title', opt.label + ' export is not available yet');
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (live) live.textContent = _exportPreviewNotice(opt.label);
+        });
+        return el;
+    }
+
+    /**
+     * The "soon" badge shown on a preview control. Built here so both surfaces
+     * get the same element and the same aria treatment.
+     *
+     * aria-hidden: the accessible name already says "not available yet", and
+     * repeating it would double-announce.
+     *
+     * @param {string} className Surface-specific class.
+     * @returns {HTMLElement}
+     */
+    function _createExportSoonBadge(className) {
+        var badge = document.createElement('span');
+        badge.className = className;
+        badge.setAttribute('aria-hidden', 'true');
+        badge.textContent = 'soon';
+        return badge;
+    }
+
+    /**
+     * Build the "Export ▾" header button with a dropdown of every implemented
+     * format.
+     *
+     * The option list and its order come from ``_EXPORT_FORMATS`` — the same
+     * registry the share sheet's format cards render — so the two surfaces can
+     * never disagree about what exists or in what order.
      *
      * Behaviour mirrors _buildBubbleMore: the dropdown opens on click of the main
      * button, closes on outside click, and is keyboard-accessible via tabindex.
@@ -7185,33 +7430,21 @@ opts.jsonPayload + '\n' +
         menu.setAttribute('role', 'menu');
         menu.setAttribute('data-open', 'false');
 
-        var formats = [
-            {
-                fmt:   'json',
-                label: 'JSON',
-                hint:  'Pandas-ready \u00b7 model + ratings',
-                icon:  ICONS.exportJson,
-            },
-            {
-                fmt:   'html',
-                label: 'HTML',
-                hint:  'Shareable page \u00b7 open in browser',
-                icon:  ICONS.exportHtml,
-            },
-            {
-                fmt:   'txt',
-                label: 'Plain text',
-                hint:  'Simple \u00b7 human-readable',
-                icon:  ICONS.exportTxt,
-            },
-        ];
+        // Same registry, same order, same preview logic as the share sheet's
+        // format cards. The two surfaces previously rendered different sets —
+        // the menu had no previews at all — so a reader who saw "TOML soon" in
+        // the sheet found no trace of it in the menu and could not tell whether
+        // it had been removed or had never existed. One list answers that.
+        var menuLive = _createExportLiveRegion();
 
-        formats.forEach(function (opt) {
+        _EXPORT_CARD_FORMATS.forEach(function (opt) {
             var item = document.createElement('button');
-            item.className = 'ai-assistant-export-menu-item';
+            item.className = 'ai-assistant-export-menu-item' +
+                (opt.stub ? ' ai-assistant-export-menu-item--stub' : '');
             item.type = 'button';
             item.setAttribute('role', 'menuitem');
             item.setAttribute('tabindex', '-1');
+            item.setAttribute('aria-label', _exportFormatAccessibleLabel(opt));
 
             var icon = document.createElement('span');
             icon.setAttribute('aria-hidden', 'true');
@@ -7233,6 +7466,11 @@ opts.jsonPayload + '\n' +
             textBlock.appendChild(hintEl);
             item.appendChild(textBlock);
 
+            if (opt.stub) {
+                item.appendChild(
+                    _createExportSoonBadge('ai-assistant-export-menu-soon'));
+            }
+
             // Prevent mousedown from moving keyboard focus away from the trigger.
             // Without this, Safari and Firefox fire focusout on the trigger before
             // the click event reaches the item (because tabindex="-1" items do not
@@ -7242,20 +7480,30 @@ opts.jsonPayload + '\n' +
             // focus on the trigger, no focusout fires, and the click lands correctly.
             item.addEventListener('mousedown', function (e) { e.preventDefault(); });
 
-            (function (fmt) {
-                item.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    _closeExportMenu(menu, trigger);
-                    if (_exportLinkMode && onLinkMode) {
-                        onLinkMode(fmt);
-                    } else {
-                        exportConversation(fmt);
-                    }
-                });
-            }(opt.fmt));
+            if (opt.stub) {
+                // Refuse and announce — the shared path, identical to the card.
+                // The menu deliberately stays OPEN: nothing happened, so
+                // closing it would look like the click had worked, and it would
+                // also tear down the live region before it could be read.
+                _applyExportPreviewSemantics(item, opt, menuLive);
+            } else {
+                (function (fmt) {
+                    item.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        _closeExportMenu(menu, trigger);
+                        if (_exportLinkMode && onLinkMode) {
+                            onLinkMode(fmt);
+                        } else {
+                            exportConversation(fmt);
+                        }
+                    });
+                }(opt.fmt));
+            }
 
             menu.appendChild(item);
         });
+
+        menu.appendChild(menuLive);
 
         // ── Mode-toggle row (download ↔ share-link) ───────────────────────────
         // Mirrors the mic hold-toggle pattern: a row with icon + label +
@@ -14997,65 +15245,19 @@ opts.jsonPayload + '\n' +
         var options    = (opts && typeof opts === 'object') ? opts : {};
         var onLinkMode = typeof options.onLinkMode === 'function' ? options.onLinkMode : null;
 
-        // ── Format registry ───────────────────────────────────────────────────
-        // Mirrors the dropdown's local `formats` array but adds:
-        //   `desc`  — longer body text for the richer card UI.
-        //   `stub`  — boolean; marks future-feature placeholder cards.
-        //             Stub cards are disabled, non-interactive, and show a
-        //             "soon" badge.  Removing the flag activates the card
-        //             with no other changes needed.
+        // Formats come from the shared registry — see _EXPORT_CARD_FORMATS.
+        // Order is implemented-formats-then-previews, identical at every width,
+        // because DOM order is the only order: nothing is hidden, moved, or
+        // duplicated by a breakpoint.
         //
-        // Layout order: [TOML-stub] [JSON] [HTML] [TXT] [TOML-stub]
-        // Symmetric bookends let future formats replace stubs naturally —
-        // push inward from either end to grow the active set.
-        var _TOML_ICON = '<svg viewBox="0 0 24 24" width="14" height="14"' +
-            ' fill="none" stroke="currentColor" stroke-width="2"' +
-            ' stroke-linecap="round" stroke-linejoin="round">' +
-            '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>' +
-            '<polyline points="14 2 14 8 20 8"/>' +
-            '<line x1="8" y1="13" x2="16" y2="13"/>' +
-            '<line x1="8" y1="17" x2="16" y2="17"/>' +
-            '<line x1="9" y1="9" x2="11" y2="9"/>' +
-            '</svg>';
-        var formats = [
-            {
-                fmt:   'toml',
-                label: 'TOML',
-                hint:  'Config \u00b7 coming soon',
-                desc:  'TOML key-value format \u2014 config files and tool integrations.',
-                icon:  _TOML_ICON,
-                stub:  true,
-            },
-            {
-                fmt:   'json',
-                label: 'JSON',
-                hint:  'Pandas-ready \u00b7 model + ratings',
-                desc:  'Structured data \u2014 import into pandas, re-load ratings, or feed another model.',
-                icon:  ICONS.exportJson,
-            },
-            {
-                fmt:   'html',
-                label: 'HTML',
-                hint:  'Shareable page \u00b7 open in browser',
-                desc:  'Self-contained page \u2014 open in any browser or email as an attachment.',
-                icon:  ICONS.exportHtml,
-            },
-            {
-                fmt:   'txt',
-                label: 'Plain text',
-                hint:  'Simple \u00b7 human-readable',
-                desc:  'Plain prose \u2014 paste into any editor, doc, or note-taking app.',
-                icon:  ICONS.exportTxt,
-            },
-            {
-                fmt:   'toml',
-                label: 'TOML',
-                hint:  'Config \u00b7 coming soon',
-                desc:  'TOML key-value format \u2014 config files and tool integrations.',
-                icon:  _TOML_ICON,
-                stub:  true,
-            },
-        ];
+        // The previous local array listed the TOML preview TWICE, as symmetric
+        // bookends around the live formats. Two consequences, both bugs:
+        //   • the same data-fmt value appeared on two elements, so it could not
+        //     be used as a selector — which is precisely what its own comment
+        //     claimed it was for;
+        //   • the reflowing auto-fit grid placed the leading preview in a
+        //     different visual position at every container width, so the
+        //     reading order changed as the panel resized.
 
         // ── Section wrapper ───────────────────────────────────────────────────
         var section = document.createElement('div');
@@ -15109,30 +15311,28 @@ opts.jsonPayload + '\n' +
         var cardsGrid = document.createElement('div');
         cardsGrid.className = 'ai-assistant-share-export-cards';
 
-        formats.forEach(function (opt) {
+        // Polite live region: a preview card that is activated says why nothing
+        // happened, instead of being a control that silently ignores the reader.
+        var cardsLive = _createExportLiveRegion();
+
+        _EXPORT_CARD_FORMATS.forEach(function (opt) {
             var card = document.createElement('button');
             card.type = 'button';
-            // data-fmt enables CSS container-query rules to target cards by
-            // format type — used to hide the duplicate TOML stub in wide mode
-            // without nth-child fragility.
+            // data-fmt is unique per card now that the registry holds each
+            // format exactly once, so it is a usable selector for styling and
+            // for tests.
             card.setAttribute('data-fmt', opt.fmt);
             card.className = 'ai-assistant-share-export-card' +
                 (opt.stub ? ' ai-assistant-share-export-card--stub' : '');
-            card.setAttribute('aria-label',
-                opt.stub
-                    ? opt.label + ' \u2014 coming soon'
-                    : opt.label + ' \u2014 ' + opt.hint);
+            card.setAttribute('aria-label', _exportFormatAccessibleLabel(opt));
 
-            // Stub cards: fully disabled and non-interactive.
-            // The `--stub` CSS class handles opacity + dashed border + cursor.
-            // Both `disabled` (HTML contract) and `aria-disabled` (AT contract)
-            // are set so the card is skipped by keyboard navigation AND by screen
-            // readers — neither should present a control that does nothing.
+            // Preview semantics come from the shared helper — see
+            // _applyExportPreviewSemantics. Deliberately NOT re-implemented
+            // here: a second copy of "how a preview behaves" is exactly the
+            // duplication that made the two surfaces diverge in the first
+            // place.
             if (opt.stub) {
-                card.disabled = true;
-                card.setAttribute('aria-disabled', 'true');
-                card.setAttribute('tabindex', '-1');
-                card.setAttribute('title', 'Coming soon');
+                _applyExportPreviewSemantics(card, opt, cardsLive);
             }
 
             var cardIcon = document.createElement('span');
@@ -15146,7 +15346,7 @@ opts.jsonPayload + '\n' +
 
             var cardHint = document.createElement('span');
             cardHint.className = 'ai-assistant-share-export-card-hint';
-            cardHint.textContent = opt.desc;
+            cardHint.textContent = _exportFormatDesc(opt);
 
             card.appendChild(cardIcon);
             card.appendChild(cardLabel);
@@ -15154,12 +15354,8 @@ opts.jsonPayload + '\n' +
 
             if (opt.stub) {
                 // "soon" badge — positional overlay at top-right of card.
-                // aria-hidden: the label already conveys "coming soon".
-                var soonBadge = document.createElement('span');
-                soonBadge.className = 'ai-assistant-share-export-card-soon';
-                soonBadge.setAttribute('aria-hidden', 'true');
-                soonBadge.textContent = 'soon';
-                card.appendChild(soonBadge);
+                card.appendChild(
+                    _createExportSoonBadge('ai-assistant-share-export-card-soon'));
             } else {
                 // Active cards: wire click to export or share-link dispatch.
                 (function (fmt) {
@@ -15178,6 +15374,7 @@ opts.jsonPayload + '\n' +
         });
 
         body.appendChild(cardsGrid);
+        body.appendChild(cardsLive);
 
         // ── Mode-toggle row ───────────────────────────────────────────────────
         // Shares logic with the dropdown's mode row; reuses the same pill CSS
