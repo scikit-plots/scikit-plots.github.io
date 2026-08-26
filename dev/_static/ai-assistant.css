@@ -14499,3 +14499,20 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     white-space: nowrap !important;
     border: 0 !important;
 }
+
+/* Locked: a minimized conversation pins the pill on screen, so the switch is
+ * shown inert rather than live-but-ignored. Mirrors
+ * .ai-assistant-pdf-mode-switch--disabled exactly. */
+.ai-assistant-panel-mode-switch--disabled,
+.ai-assistant-panel-mode-switch[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.ai-assistant-panel-mode-switch:disabled:hover,
+.ai-assistant-panel-mode-switch--disabled:hover,
+.ai-assistant-panel-mode-switch[aria-disabled="true"]:hover {
+    /* Suppress the interactive hover affordance while disabled. */
+    background: transparent;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
+}

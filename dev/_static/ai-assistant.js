@@ -2335,80 +2335,155 @@
     }
 
     /**
-     * The single apply path for pill visibility.
+     * Resolve, in one place, both what the pill should do and what the switch
+     * should say. Two answers derived from one computation cannot disagree; two
+     * computations eventually do.
      *
-     * Every show/hide goes through here, so the reader's preference cannot be
-     * contradicted by a stray ``style.display`` assignment somewhere else in the
-     * panel lifecycle.
+     * Per panel state:
      *
-     * ``'minimized'`` overrides a "hidden" preference on purpose: minimizing
-     * keeps a live conversation and the pill is the only route back to it.
-     * Honouring "hidden" there would strand the transcript behind two dropdown
-     * clicks, so the fail-safe reading wins over the literal one.
+     *   'idle'       pill follows the preference; switch shows the preference
+     *                and is interactive. The steady state.
+     *   'open'       pill hidden — the panel itself is the affordance, and its
+     *                absence is not a preference the reader expressed. The
+     *                switch therefore keeps showing the PREFERENCE and stays
+     *                interactive, so flipping it while the panel is open sets
+     *                what happens once the panel closes.
+     *   'minimized'  pill shown unconditionally, and the switch is LOCKED to
+     *                match. Minimizing keeps a live conversation and the pill
+     *                is the only route back to it, so neither the stored
+     *                preference nor a switch click may remove it. Locked rather
+     *                than silently ignored: an inert, labelled control is
+     *                honest, a live control that does nothing is not.
+     *
+     * @param {string} [state] 'idle', 'open', or 'minimized'. Resolved from the
+     *     live panel via :func:`_panelState` when omitted.
+     * @returns {{panel: string, preference: boolean, pill: boolean,
+     *            checked: boolean, locked: boolean}}
+     */
+    function _panelTriggerState(state) {
+        var panel      = state || _panelState();
+        var preference = _panelTriggerVisible();
+        var minimized  = panel === 'minimized';
+        return {
+            panel:      panel,
+            preference: preference,
+            // Is the pill on screen?
+            pill:       minimized || (panel !== 'open' && preference),
+            // What does the switch read? It tracks the pill except while the
+            // panel is open, where there is no pill on screen to contradict.
+            checked:    minimized || preference,
+            // Is the switch inert?
+            locked:     minimized
+        };
+    }
+
+    /**
+     * The single apply path for pill visibility AND switch state.
+     *
+     * Every show/hide of the pill goes through here, and so does every update
+     * of the switch, so the two cannot drift apart: the reader can never see a
+     * pill on screen while the switch claims it is hidden.
      *
      * @param {string} [state] 'idle', 'open', or 'minimized'. Resolved from the
      *     live panel via :func:`_panelState` when omitted.
      * @returns {boolean} True when the pill ends up visible.
      */
     function _applyPanelTriggerVisibility(state) {
-        var resolved = state || _panelState();
-        var show = resolved === 'minimized' ||
-                   (resolved !== 'open' && _panelTriggerVisible());
+        var info = _panelTriggerState(state);
 
-        if (!show) {
+        if (!info.pill) {
             if (_aiTriggerEl) {
                 _aiTriggerEl.removeAttribute('data-minimized');
                 _aiTriggerEl.style.display = 'none';
             }
-            return false;
+        } else {
+            // data-minimized doubles as the CSS visibility hook for the pill,
+            // which is why the idle-visible state sets it too — unchanged from
+            // the original eager-create path this replaces.
+            var pill = _ensureTriggerPill();
+            pill.setAttribute('data-minimized', 'true');
+            pill.style.display = 'flex';
         }
 
-        // data-minimized doubles as the CSS visibility hook for the pill, which
-        // is why the idle-visible state sets it too — unchanged from the original
-        // eager-create path this replaces.
-        var pill = _ensureTriggerPill();
-        pill.setAttribute('data-minimized', 'true');
-        pill.style.display = 'flex';
-        return true;
+        _syncPanelTriggerUI(info);
+        return info.pill;
     }
 
     /**
      * Accessible label for the visibility switch: states what is true now and
      * what activating the switch will do, never just one of the two.
      *
+     * The locked variant explains WHY the control is inert instead of leaving
+     * a greyed-out switch mysterious — the same treatment the PDF method switch
+     * gets when only one export method exists for the page.
+     *
      * @param {boolean} visible
      * @param {string} [label] Pill label; falls back to the configured one.
+     * @param {boolean} [locked] True while a minimized conversation pins the pill.
      * @returns {string}
      */
-    function _panelTriggerAccessibleLabel(visible, label) {
+    function _panelTriggerAccessibleLabel(visible, label, locked) {
         var name = label || (_cfg().panelTriggerLabel || 'Ask AI');
+        if (locked) {
+            return 'The floating ' + name + ' button stays visible while your '
+                 + 'minimized conversation is waiting. Close the panel to change this.';
+        }
         return visible
             ? 'The floating ' + name + ' button is shown on every page. Activate to hide it.'
             : 'The floating ' + name + ' button is hidden. Activate to show it on every page.';
     }
 
     /**
-     * Push a resolved preference into the live switch DOM.
+     * Push a resolved state into the live switch DOM.
      *
-     * Split from the click handler so the state can also be set
-     * programmatically without synthesising an event.
+     * Called from the single apply path, so it runs on EVERY transition —
+     * reader clicks and panel open/minimize/close alike. That is what keeps the
+     * switch honest: the previous version was reachable only from the click
+     * handler, so a minimize moved the pill and left the switch stale.
      *
-     * @param {boolean} visible
+     * Accepts either the state object from :func:`_panelTriggerState` or a bare
+     * boolean, so a caller that only knows the preference still works.
+     *
+     * @param {Object|boolean} state
      */
-    function _syncPanelTriggerUI(visible) {
+    function _syncPanelTriggerUI(state) {
+        var info = (state && typeof state === 'object')
+            ? state
+            : { pill: state === true, checked: state === true, locked: false };
+
         var section = document.querySelector('.ai-assistant-panel-section');
-        if (section) section.dataset.panelTrigger = visible ? 'visible' : 'hidden';
+        if (section) {
+            section.dataset.panelTrigger = info.pill ? 'visible' : 'hidden';
+            section.dataset.panelTriggerLocked = info.locked ? 'true' : 'false';
+        }
 
         var sw = document.getElementById('ai-assistant-panel-trigger-toggle');
         if (!sw) return;
 
-        var text = _panelTriggerAccessibleLabel(visible);
-        sw.setAttribute('aria-checked', visible ? 'true' : 'false');
+        var text = _panelTriggerAccessibleLabel(info.checked, null, info.locked);
+        sw.setAttribute('aria-checked', info.checked ? 'true' : 'false');
         sw.setAttribute('aria-label', text);
         sw.title = text;
 
+        // Locked: visible but inert. Disabled for pointer AND assistive tech,
+        // removed from the tab order, and labelled with the reason — mirroring
+        // the PDF switch's print-only state exactly.
+        if (info.locked) {
+            sw.disabled = true;
+            sw.setAttribute('aria-disabled', 'true');
+            sw.setAttribute('tabindex', '-1');
+            sw.dataset.panelTriggerLocked = 'true';
+            sw.classList.add('ai-assistant-panel-mode-switch--disabled');
+        } else {
+            sw.disabled = false;
+            sw.removeAttribute('aria-disabled');
+            sw.removeAttribute('tabindex');
+            delete sw.dataset.panelTriggerLocked;
+            sw.classList.remove('ai-assistant-panel-mode-switch--disabled');
+        }
+
         var stateText = sw.querySelector('.ai-assistant-panel-toggle-text');
-        if (stateText) stateText.textContent = visible ? 'Shown' : 'Hidden';
+        if (stateText) stateText.textContent = info.checked ? 'Shown' : 'Hidden';
     }
 
     /**
@@ -2417,12 +2492,18 @@
      * @param {boolean} next True to show the pill while the panel is idle.
      */
     function setPanelTriggerVisible(next) {
+        // Defence in depth: the switch is already `disabled` while a minimized
+        // conversation pins the pill, so this guard only catches a
+        // programmatic call. Silently refusing a click would be worse than
+        // useless, which is why the control is visibly inert rather than live.
+        if (_panelTriggerState().locked) return false;
+
         var visible = next === true;
         _setPanelTriggerPref(visible);
-        _syncPanelTriggerUI(visible);
         // No explicit state: the live panel decides whether the preference is
-        // allowed to take effect right now (it is not while open or minimized).
+        // allowed to take effect right now, and the apply path syncs the switch.
         _applyPanelTriggerVisibility();
+        return true;
     }
 
     /**
@@ -2446,12 +2527,17 @@
         var panelTitle   = cfg.panelTitle || 'AI Assistant';
         var triggerLabel = cfg.panelTriggerLabel || 'Ask AI';
         var hasSwitch    = cfg.panelTriggerToggle !== false;
-        var visible      = _panelTriggerVisible();
+        // Built from the same resolver the runtime uses, so a dropdown
+        // constructed while the panel is already minimized renders the locked
+        // state immediately instead of waiting for the next transition.
+        var info         = _panelTriggerState();
+        var visible      = info.checked;
 
         var section = document.createElement('div');
         section.className = 'ai-assistant-panel-section';
-        section.dataset.panelTrigger   = visible ? 'visible' : 'hidden';
-        section.dataset.panelHasToggle = hasSwitch ? 'true' : 'false';
+        section.dataset.panelTrigger       = info.pill ? 'visible' : 'hidden';
+        section.dataset.panelTriggerLocked = info.locked ? 'true' : 'false';
+        section.dataset.panelHasToggle     = hasSwitch ? 'true' : 'false';
 
         var row = document.createElement('div');
         row.className = 'ai-assistant-panel-row';
@@ -2486,9 +2572,17 @@
             modeSwitch.setAttribute('role', 'menuitemcheckbox');
             modeSwitch.setAttribute('aria-checked', visible ? 'true' : 'false');
 
-            var switchLabel = _panelTriggerAccessibleLabel(visible, triggerLabel);
+            var switchLabel = _panelTriggerAccessibleLabel(visible, triggerLabel, info.locked);
             modeSwitch.setAttribute('aria-label', switchLabel);
             modeSwitch.title = switchLabel;
+
+            if (info.locked) {
+                modeSwitch.disabled = true;
+                modeSwitch.setAttribute('aria-disabled', 'true');
+                modeSwitch.setAttribute('tabindex', '-1');
+                modeSwitch.dataset.panelTriggerLocked = 'true';
+                modeSwitch.classList.add('ai-assistant-panel-mode-switch--disabled');
+            }
 
             var track = document.createElement('span');
             track.className = 'ai-assistant-mic-toggle-track ai-assistant-panel-toggle-track';
