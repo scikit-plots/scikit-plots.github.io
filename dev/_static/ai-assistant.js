@@ -8799,7 +8799,7 @@
 '<head>\n' +
 '<meta charset="utf-8">\n' +
 '<meta name="viewport" content="width=device-width,initial-scale=1">\n' +
-'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'none\'; style-src \'unsafe-inline\'; img-src data:; connect-src \'none\'; font-src \'none\'; object-src \'none\'; base-uri \'none\'; form-action \'none\'">\n' +
+'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'none\'; style-src \'unsafe-inline\'; img-src data:; connect-src \'none\'; font-src \'none\'; media-src \'none\'; object-src \'none\'; frame-src \'none\'; child-src \'none\'; worker-src \'none\'; manifest-src \'none\'; base-uri \'none\'; form-action \'none\'">\n' +
 '<meta name="referrer" content="no-referrer">\n' +
 '<meta name="generator" content="ai-assistant-export/2.1">\n' +
 '<meta name="exported-at" content="' + _escapeHtml(opts.exportedIso) + '">\n' +
@@ -22338,16 +22338,77 @@
         try {
             return 'data:' + mime + ';base64,' + btoa(unescape(encodeURIComponent(content)));
         } catch (_e) {
-            // btoa fallback: percent-encode the content (no base64, larger URL
-            // but UTF-8 safe and supported by all modern browsers).
+            // Generic fallback retained for non-Share callers. Current
+            // self-contained Share deliberately requires base64 and therefore
+            // uses _buildBase64DataUri() below instead of this fallback.
             return 'data:' + mime + ',' + encodeURIComponent(content);
         }
     }
 
-    // ── Self-contained structured URL-hash share ───────────────────────────
-    // c2 never transports rendered HTML. It carries a validated structured
-    // snapshot plus an allowlisted format ID; trusted local serializers render
-    // the snapshot only after decode/validation.
+    /** Build an exact base64 data URL from a UTF-8 string. */
+    function _buildBase64DataUri(content, mime) {
+        if (typeof content !== 'string' || !content || typeof mime !== 'string' || !mime) return '';
+        try {
+            return 'data:' + mime + ';base64,' + btoa(unescape(encodeURIComponent(content)));
+        } catch (_e) { return ''; }
+    }
+
+    /** Remove generated navigation and inert JSON script from portable HTML. */
+    function _makePortableHtmlInert(html) {
+        if (typeof html !== 'string' || !html) return '';
+        var out = html
+            .replace(/<a\b[^>]*>/gi, '')
+            .replace(/<\/a>/gi, '')
+            .replace(/<script\s+type=["']application\/json["']\s+id=["']export-data["'][^>]*>[\s\S]*?<\/script>\s*/i, '')
+            .replace(/<p class=["']chat-footer-hint["']>[\s\S]*?<\/p>\s*/i, '');
+        return out.replace(
+            '<meta name="generator" content="ai-assistant-export/2.1">',
+            '<meta name="generator" content="ai-assistant-export/2.1">\n<meta name="share-transport" content="portable-data-url-v1">'
+        );
+    }
+
+    /** Build a zero-network HTML envelope for any implemented export format. */
+    function _buildPortableSelfContainedHtml(snapshot, fmt) {
+        var normalized = _normalizeShareSnapshot(snapshot);
+        var meta = _getExportFormat(fmt);
+        if (!normalized || !meta || typeof meta.buildStr !== 'function') return '';
+        if (meta.fmt === 'html') {
+            return _makePortableHtmlInert(_buildConvHtmlString(normalized));
+        }
+        var serialized = meta.buildStr(normalized);
+        if (!serialized) return '';
+        var title = _escapeHtml((normalized.session && normalized.session.assistant_name) || 'AI Assistant');
+        var label = _escapeHtml(meta.label || String(meta.fmt || '').toUpperCase());
+        return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8">' +
+            '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+            '<meta name="referrer" content="no-referrer">' +
+            '<meta name="share-transport" content="portable-data-url-v1">' +
+            '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'none\'; style-src \'unsafe-inline\'; img-src data:; connect-src \'none\'; font-src \'none\'; media-src \'none\'; object-src \'none\'; frame-src \'none\'; child-src \'none\'; worker-src \'none\'; manifest-src \'none\'; base-uri \'none\'; form-action \'none\'">' +
+            '<title>' + title + ' — ' + label + ' snapshot</title>' +
+            '<style>:root{font-family:system-ui,sans-serif;color-scheme:light dark}body{margin:0;padding:24px;background:Canvas;color:CanvasText}main{max-width:900px;margin:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid currentColor;border-radius:12px;padding:16px}</style>' +
+            '</head><body><main><h1>' + title + '</h1><p>' + label + ' self-contained snapshot</p><pre>' +
+            _escapeHtml(serialized) + '</pre></main></body></html>';
+    }
+
+    /** Current host-independent self-contained Share transport. */
+    function _buildPortableSelfContainedDataUrl(snapshot, fmt) {
+        var html = _buildPortableSelfContainedHtml(snapshot, fmt);
+        if (!html) return null;
+        var url = _buildBase64DataUri(html, 'text/html;charset=utf-8');
+        if (!url || url.indexOf('data:text/html;charset=utf-8;base64,') !== 0) return null;
+        return {
+            url: url,
+            content: html,
+            mime: 'text/html;charset=utf-8',
+            bytes: _utf8ByteLength(html),
+            urlChars: url.length,
+        };
+    }
+
+    // ── Legacy self-contained structured URL-hash compatibility ───────────
+    // c2 remains decode-only compatibility for links created before portable
+    // data-URL transport became current. New links are generated by
+    // _buildPortableSelfContainedDataUrl().
     var _SHARE_HASH_PREFIX = '#ai-share-c2.';
     var _SHARE_HASH_MAX_DECODED_CHARS = 1024 * 1024;
 
@@ -22540,6 +22601,8 @@
         var _GLOBAL_LEDGER_MAX = 25;
         var SELF_WARN_BYTES = 48 * 1024;
         var SELF_MAX_BYTES = 256 * 1024;
+        // Application cap after base64 expansion; messaging apps may impose smaller limits.
+        var SELF_MAX_URL_CHARS = 384 * 1024;
 
         function _resolveGlobalConfig() {
             var profileUrl = _EP.hasProfiles()
@@ -22622,6 +22685,34 @@
             return value;
         }
 
+
+        /**
+         * Normalize a Global Share response into a copyable public read URL.
+         * Prefer a strictly validated server-supplied public URL. If a compatible
+         * cloud endpoint returns only a UUID, synthesize the current fixed viewer
+         * URL from the configured endpoint so Create global link always yields a
+         * user-visible share link.
+         */
+        function _resolveGlobalPublicReadUrl(response, uuid, endpointBase) {
+            response = response && typeof response === 'object' ? response : {};
+            var raw = response.url || response.publicUrl || response.shareUrl || response.share_url || '';
+            if (raw) {
+                try {
+                    raw = new URL(String(raw), endpointBase || (typeof location !== 'undefined' ? location.href : undefined)).href;
+                } catch (_e) { raw = ''; }
+                var supplied = _safeGlobalLedgerUrl(raw, uuid);
+                if (supplied) return supplied;
+            }
+            if (!uuid || !endpointBase) return '';
+            try {
+                var u = new URL(endpointBase, (typeof location !== 'undefined' ? location.href : undefined));
+                if (!/^https?:$/i.test(u.protocol)) return '';
+                u.username = ''; u.password = ''; u.search = ''; u.hash = '';
+                u.pathname = (u.pathname || '').replace(/\/+$/, '');
+                if (!/\/v1\/share$/i.test(u.pathname)) return '';
+                return _safeGlobalLedgerUrl(u.origin + u.pathname + '#share=' + encodeURIComponent(uuid), uuid);
+            } catch (_e2) { return ''; }
+        }
 
         function _normalizeGlobalLedgerItem(item) {
             if (!item || typeof item !== 'object' || Array.isArray(item)) return null;
@@ -22747,7 +22838,7 @@
 
         var intro = document.createElement('p');
         intro.className = 'ai-assistant-conv-share-subnote ai-assistant-conv-share-v2-intro';
-        intro.textContent = 'Create a local preview, a self-contained link, or an expiring Global link.';
+        intro.textContent = 'Create a local preview, a portable self-contained data link, or an expiring cloud-backed Global link.';
         body.appendChild(intro);
 
         var summary = document.createElement('div');
@@ -22822,11 +22913,11 @@
             'Open a temporary preview in this browser.',
             'Nothing is uploaded · removable from this page');
         _makeDestination('self_contained', 'Self-contained link',
-            'Embed the conversation in the link. No server is used.',
-            'Not encrypted · copied links cannot be revoked');
+            'Create a portable base64 data: URL. No server or source page is required.',
+            'Reviewed static HTML · not encrypted · copied links cannot be revoked');
         _makeDestination('global', 'Global link',
-            'Create a short server link that expires.',
-            'Server-backed · revocable while the private edit capability is available');
+            'Create a short cloud/server read URL you can copy and send to someone else.',
+            'Server-backed · expires · revocable while the private edit capability is available');
         body.appendChild(destWrap);
         var globalUnavailable = document.createElement('p');
         globalUnavailable.className = 'ai-assistant-conv-share-session-note';
@@ -22868,10 +22959,18 @@
             presetButtons[key] = b; presetRow.appendChild(b);
         });
         contentSection.panel.appendChild(presetRow);
+        var presetHint = document.createElement('p');
+        presetHint.className = 'ai-assistant-conv-share-subnote';
+        presetHint.textContent = 'Preset selections are shown below. Change any option to switch to Customize.';
+        contentSection.panel.appendChild(presetHint);
 
         var customGrid = document.createElement('div');
         customGrid.className = 'ai-assistant-conv-share-custom-grid';
-        customGrid.style.display = 'none';
+        // Always show the granular content/privacy options. Presets remain the
+        // active semantic mode until the user actually changes a checkbox;
+        // merely reviewing what Standard/Minimal/Complete include must not
+        // silently turn the selection into Customize.
+        customGrid.style.display = '';
         var customControls = {};
         [
             ['includeTimestamps','Timestamps'],
@@ -22931,6 +23030,8 @@
         var resultNote = document.createElement('p'); resultNote.className = 'ai-assistant-conv-share-session-note';
         var resultInput = document.createElement('input'); resultInput.type = 'text'; resultInput.readOnly = true;
         resultInput.className = 'ai-assistant-conv-share-link-input'; resultInput.style.display = 'none';
+        resultInput.autocomplete = 'off'; resultInput.spellcheck = false;
+        resultInput.setAttribute('aria-label', 'Generated share link');
         resultInput.addEventListener('focus', function () { resultInput.select(); });
         var resultActions = document.createElement('div'); resultActions.className = 'ai-assistant-conv-share-result-actions';
         function _resultButton(label) {
@@ -22988,7 +23089,10 @@
             Object.keys(presetButtons).forEach(function (p) {
                 presetButtons[p].setAttribute('aria-pressed', p === key ? 'true' : 'false');
             });
-            customGrid.style.display = key === 'custom' ? '' : 'none';
+            // Keep the checklist visible for every preset so users can see
+            // exactly what the preset means. Editing any checkbox is the only
+            // automatic transition into Customize.
+            customGrid.style.display = '';
             contentSection.badge.textContent = key === 'custom' ? 'Custom' : key.charAt(0).toUpperCase() + key.slice(1);
             _syncCustomControls();
             _markStale(); _refreshSummary();
@@ -23138,8 +23242,9 @@
             if (artifact.url.indexOf('data:') === 0 && artifact.snapshot) {
                 try {
                     var meta = _getExportFormat(artifact.format);
-                    var content = meta.buildStr(artifact.snapshot);
-                    var blob = new Blob([content], { type: meta.mime });
+                    var content = artifact.previewContent || (meta && meta.buildStr ? meta.buildStr(artifact.snapshot) : '');
+                    var previewMime = artifact.previewMime || (meta && meta.mime) || 'text/plain;charset=utf-8';
+                    var blob = new Blob([content], { type: previewMime });
                     var tempUrl = URL.createObjectURL(blob);
                     var w = window.open(tempUrl, '_blank', 'noopener,noreferrer');
                     if (w) { try { w.opener = null; } catch (_e) {} }
@@ -23325,6 +23430,11 @@
                 meta.textContent = (artifact.format || '').toUpperCase() + ' · ' + (artifact.lifecycle || '');
                 text.appendChild(strong); text.appendChild(meta); row.appendChild(text);
                 var terminalGlobal = artifact.kind === 'global' && ['revoked','expired'].indexOf(artifact.state) >= 0;
+                if (artifact.url && (artifact.kind === 'global' || artifact.kind === 'self_contained') && !terminalGlobal) {
+                    var copyLink = document.createElement('button'); copyLink.type = 'button'; copyLink.className = 'ai-assistant-conv-share-action-btn';
+                    copyLink.textContent = 'Copy link'; copyLink.disabled = !!artifact.busy;
+                    copyLink.addEventListener('click', function () { copyToClipboard(artifact.url, false); }); row.appendChild(copyLink);
+                }
                 if (artifact.url && artifact.kind !== 'download' && !terminalGlobal) {
                     var open = document.createElement('button'); open.type = 'button'; open.className = 'ai-assistant-conv-share-action-btn';
                     open.textContent = 'Open'; open.disabled = !!artifact.busy;
@@ -23361,6 +23471,7 @@
             resultWrap.style.display = '';
             resultInput.style.display = 'none';
             copyResultBtn.style.display = 'none'; openResultBtn.style.display = 'none';
+            copyResultBtn.textContent = 'Copy'; openResultBtn.textContent = 'Open';
             inspectResultBtn.style.display = 'none'; updateResultBtn.style.display = 'none'; removeResultBtn.style.display = '';
             var stale = !!resultState.stale;
             if (resultState.kind === 'local') {
@@ -23372,11 +23483,12 @@
                 openResultBtn.style.display = '';
                 removeResultBtn.textContent = 'Remove preview';
             } else if (resultState.kind === 'self_contained') {
-                resultTitle.textContent = 'Self-contained link ready';
-                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · no server';
+                resultTitle.textContent = 'Self-contained data link ready';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · portable data URL · no server';
                 resultNote.textContent = stale
-                    ? 'Conversation or options changed. This link still contains the earlier snapshot.'
-                    : 'Not encrypted. Removing it here forgets this generated result; copies already shared cannot be revoked.';
+                    ? 'Conversation or options changed. This data link still contains the earlier reviewed snapshot.'
+                    : 'The full reviewed content is base64-encoded in the URL — not encrypted. No server is needed to read it. Some browsers block page-initiated data: navigation; Copy the link and paste it into the recipient browser address bar. Open uses a local Blob preview. Shared copies cannot be revoked.';
+                copyResultBtn.textContent = 'Copy data link';
                 copyResultBtn.style.display = ''; openResultBtn.style.display = ''; inspectResultBtn.style.display = '';
                 removeResultBtn.textContent = 'Remove from browser';
             } else {
@@ -23396,6 +23508,7 @@
                         : 'The server currently reports this Share unavailable. The bounded read URL remains tracked so you can re-check later or Forget it; this does not prove revocation.';
                     resultInput.value = resultState.url || '';
                     resultInput.style.display = '';
+                    copyResultBtn.textContent = 'Copy share link';
                     copyResultBtn.style.display = ''; openResultBtn.style.display = '';
                     removeResultBtn.textContent = artifact && artifact.editToken ? 'Revoke' : 'Forget';
                 } else {
@@ -23409,6 +23522,7 @@
                             : 'Read URL restored without its private edit capability. Use Check status to query the server; remote revoke is unavailable without the edit capability.');
                     resultInput.value = resultState.url || '';
                     resultInput.style.display = '';
+                    copyResultBtn.textContent = 'Copy share link';
                     copyResultBtn.style.display = ''; openResultBtn.style.display = '';
                     if (artifact && artifact.editToken) updateResultBtn.style.display = '';
                     removeResultBtn.textContent = artifact && artifact.editToken ? 'Revoke' : 'Forget';
@@ -23476,16 +23590,23 @@
             }
 
             if (selectedDestination === 'self_contained') {
-                if (bytes > SELF_MAX_BYTES) {
-                    showNotification('Conversation is too large for the configured self-contained-link budget. Use Global link or Download.', true); return;
+                var portable = _buildPortableSelfContainedDataUrl(snapshot, meta.fmt);
+                if (!portable) {
+                    showNotification('Could not create the portable self-contained data link', true); return;
                 }
-                var url = _buildSelfContainedHashUrl(snapshot, meta.fmt);
-                if (!url) url = _buildDataUri(content, meta.mime);
-                var artifact = _addArtifact({ kind: 'self_contained', url: url, snapshot: snapshot, bytes: bytes,
-                    format: meta.fmt, lifecycle: 'non-revocable once copied' });
-                resultState = { kind: 'self_contained', artifactId: artifact.id, url: url, bytes: bytes, format: meta.fmt, stale: false };
+                if (portable.bytes > SELF_MAX_BYTES || portable.urlChars > SELF_MAX_URL_CHARS) {
+                    showNotification('Conversation is too large for the configured portable data-link budget. Use Global link or Download.', true); return;
+                }
+                var url = portable.url;
+                var artifact = _addArtifact({ kind: 'self_contained', url: url, snapshot: snapshot, bytes: portable.bytes,
+                    format: meta.fmt, previewContent: portable.content, previewMime: portable.mime,
+                    lifecycle: 'portable data URL · non-revocable once copied' });
+                resultState = { kind: 'self_contained', artifactId: artifact.id, url: url, bytes: portable.bytes,
+                    urlChars: portable.urlChars, format: meta.fmt, stale: false };
                 _renderResult();
-                if (bytes > SELF_WARN_BYTES) showNotification('Link created, but it is long and may be truncated by some apps.', true);
+                showNotification(portable.bytes > SELF_WARN_BYTES
+                    ? 'Portable data link created. It is long and some messaging apps may truncate it.'
+                    : 'Portable self-contained data link created — copy it to share.', portable.bytes > SELF_WARN_BYTES);
                 return;
             }
 
@@ -23498,11 +23619,23 @@
             function success(res) {
                 if (opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
                 primaryBtn.disabled = false;
-                var url = res.url || (_globalShareState && _globalShareState.url) || '';
-                var uuid = res.uuid || (_globalShareState && _globalShareState.uuid) || '';
-                if (!uuid && url) {
-                    var matchId = String(url).match(/(?:#share=|\/v1\/share\/)((?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}))(?:$|[?#])/i);
+                res = res && typeof res === 'object' ? res : {};
+                var rawUrl = res.url || res.publicUrl || res.shareUrl || res.share_url || (_globalShareState && _globalShareState.url) || '';
+                var uuid = res.uuid || res.shareId || res.share_id || (_globalShareState && _globalShareState.uuid) || '';
+                if (!uuid && rawUrl) {
+                    var matchId = String(rawUrl).match(/(?:#share=|\/v1\/share\/)((?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}))(?:$|[?#])/i);
                     if (matchId) uuid = matchId[1];
+                }
+                uuid = String(uuid || '');
+                if (!/^(?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i.test(uuid)) {
+                    failure({ status: 502, message: 'Share service returned no valid public locator.' }); return;
+                }
+                var url = _resolveGlobalPublicReadUrl(res, uuid, base);
+                if (!url && _globalShareState && _globalShareState.uuid === uuid) {
+                    url = _safeGlobalLedgerUrl(_globalShareState.url, uuid);
+                }
+                if (!url) {
+                    failure({ status: 502, message: 'Share service returned no usable public read URL.' }); return;
                 }
                 var editToken = res.editToken || (_globalShareState && _globalShareState.editToken) || '';
                 _globalShareState = {
@@ -23524,11 +23657,14 @@
                 resultState = { kind: 'global', artifactId: existing.id, url: url, bytes: bytes, format: meta.fmt,
                     expiresAt: _globalShareState.expiresAt, stale: false };
                 _renderArtifacts(); _renderResult(); _updatePrimaryLabel();
+                showNotification('Global share link ready — copy the public read URL to share it.', false);
             }
             function failure(err) {
                 if (opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
                 primaryBtn.disabled = false; _updatePrimaryLabel();
-                showNotification(err && err.status === 429 ? 'Global Share rate limit reached' : 'Global Share failed', true);
+                showNotification(err && err.status === 429 ? 'Global Share rate limit reached'
+                    : err && err.status === 502 ? 'Global Share service did not return a usable public link'
+                    : 'Global Share failed', true);
             }
             var base = g.base.replace(/\/$/, '');
             if (_globalShareState && _globalShareState.uuid && _globalShareState.editToken) {
