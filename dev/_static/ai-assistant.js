@@ -23428,6 +23428,10 @@
                 _deleteGlobalShare(
                     base, revokeUuid, artifact.editToken,
                     function () {
+                        // The revoke request is complete. Clear the operation lock
+                        // before rendering the terminal lifecycle state so the
+                        // newly-labelled Forget action is immediately usable.
+                        artifact.busy = false;
                         if (_globalShareState && _globalShareState.uuid === revokeUuid) {
                             _globalShareState = null; _saveGlobalSS(null);
                         }
