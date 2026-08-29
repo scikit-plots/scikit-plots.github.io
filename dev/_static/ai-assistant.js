@@ -3745,7 +3745,7 @@
     //     so the model can say "a credential was removed from this page"
     //     rather than answering as if the text were complete.
     //
-    // These patterns are duplicated in _hf_spaces_proxy/_stub_model.py, which
+    // These patterns are duplicated in _hf_spaces_proxy/_utils/_stub_model.py, which
     // scans the same text server-side. Two languages, one list — kept in step
     // by a cross-language parity test rather than by memory.
 
@@ -7761,7 +7761,7 @@
 
     // ── JS Privacy Layer v1.0 ────────────────────────────────────────────────
     //
-    // Mirrors the two-layer defence-in-depth design of _shared_logic.py:
+    // Mirrors the two-layer defence-in-depth design of _utils/_shared_logic.py:
     //
     //   Layer 1 — Call-site sanitisation (_sanitizePage)
     //     Strips ?query and #hash from location.href before it enters any
@@ -7784,7 +7784,7 @@
     /**
      * Ordered token/secret redaction patterns for _redactPayloadForLog.
      *
-     * Pattern order matches _REDACT_PATTERNS in _shared_logic.py:
+     * Pattern order matches _REDACT_PATTERNS in _utils/_shared_logic.py:
      *   1. Bearer tokens  — Authorization header values leaked into logs.
      *   2. HF tokens      — ``hf_`` prefix; same class as Python pattern[0].
      *   3. OpenAI-style   — ``sk-`` prefix; common API key format.
@@ -7800,7 +7800,7 @@
     /**
      * Strip ``?query`` and ``#hash`` from a URL, returning origin + pathname.
      *
-     * Mirrors ``_mask_ip()`` in ``_shared_logic.py``:
+     * Mirrors ``_mask_ip()`` in ``_utils/_shared_logic.py``:
      *   - Never raises — parse failure returns ``'<page-redacted>'``.
      *   - Empty / non-string values return ``''`` (no-op, not an error).
      *   - Non-http/https schemes return ``'<page-redacted>'``.
@@ -7842,7 +7842,7 @@
      * Return a shallow, redacted clone of a feedback/contribution detail
      * object that is safe to pass to ``console.log``.
      *
-     * Mirrors ``_RedactingFilter`` in ``_shared_logic.py``:
+     * Mirrors ``_RedactingFilter`` in ``_utils/_shared_logic.py``:
      *   - Never modifies the original object (pure function).
      *   - Never raises — all field access is guarded.
      *   - Always returns an object (callers never need to null-check).
