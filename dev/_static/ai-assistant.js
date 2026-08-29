@@ -505,25 +505,30 @@
     var _exportStateListeners = [];
 
     /**
-     * Whether thumbs-up / thumbs-down ratings are persisted to the
-     * HuggingFace training dataset (durable, survives server restarts) or
-     * kept in-memory only (lost on Space restart).
+     * Whether the reader explicitly opted into sending privacy-minimal rating
+     * telemetry to the configured Feedback endpoint.  This preference does
+     * not control server durability and never authorizes collection of the
+     * question, answer, note, model, page URL, or conversation/session ID.
      *
-     * Mirrors the server-side ``FEEDBACK_PERSIST_ENABLED`` flag.  The client
-     * toggle lets the end-user override the server default for their session.
+     * Server-side ``FEEDBACK_PERSIST_ENABLED`` is an independent operator
+     * policy. Persisted feedback remains ``trainingStatus=telemetry`` and is
+     * excluded from training.
      *
-     * Storage: localStorage key ``'ai-assistant-feedback-persist'``.
-     * Absence of the key → default ``true`` (persist ON).
-     * The string ``'false'`` (written by ``_setFeedbackPersistMode``) → OFF.
-     * Any other stored value → treat as ON (fail-safe to durable).
+     * Storage: localStorage key ``'ai-assistant-feedback-telemetry'``.
+     * Absence of the key defaults to ``false``. Only the exact string
+     * ``'true'`` opts into network telemetry. The historical
+     * ``ai-assistant-feedback-persist`` preference is intentionally not
+     * inherited because its semantics over-collected content.
      *
      * @type {boolean}
      */
     var _feedbackPersistEnabled = (function () {
         try {
-            return localStorage.getItem('ai-assistant-feedback-persist') !== 'false';
+            // Privacy v3: network rating telemetry is explicit opt-in.  Do not
+            // inherit the old ai-assistant-feedback-persist=true preference.
+            return localStorage.getItem('ai-assistant-feedback-telemetry') === 'true';
         } catch (_) {
-            return true;
+            return false;
         }
     }());
 
@@ -3859,6 +3864,415 @@
     var _INVISIBLE_CHARS_RE =
         /[\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u2069\uFEFF]/g;
 
+    // ── Local privacy preflight ─────────────────────────────────────────────
+    //
+    // This is a USER-PROTECTION layer, not a trust boundary.  Open-source
+    // clients can always be bypassed by a direct caller, so server authority,
+    // logging minimisation, Share isolation, and contribution quarantine remain
+    // independently mandatory.  The purpose here is narrower and important:
+    // warn a reader before *their own browser* sends or packages text that looks
+    // like a credential, personal datum, or invisible/bidi control sequence.
+    //
+    // Privacy invariants:
+    //   * matching values never leave this function in a finding object;
+    //   * findings contain category/count only (plus harmless Unicode codepoint
+    //     names for invisible controls);
+    //   * no finding is logged or included in telemetry;
+    //   * absence of a finding is never described as "safe" / "PII free";
+    //   * redaction happens only after the reader explicitly chooses it;
+    //   * the original transcript/composer object is never mutated by redaction.
+
+    var _PRIVACY_EXTRA_SECRET_PATTERNS = [
+        {
+            name: 'bearer_token',
+            label: 'Bearer/access token',
+            re: /\bBearer\s+[A-Za-z0-9\-._~+/]{16,}={0,2}\b/gi
+        },
+        {
+            name: 'credential_assignment',
+            label: 'Credential-like assignment',
+            re: /\b(?:api[_-]?key|access[_-]?token|auth[_-]?token|password|passwd|secret)\s*[:=]\s*["']?[A-Za-z0-9_\-./+~]{8,}["']?/gi
+        }
+    ];
+
+    var _PRIVACY_PERSONAL_PATTERNS = [
+        {
+            name: 'email_address',
+            label: 'Email address',
+            re: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}\b/gi
+        },
+        {
+            name: 'international_phone',
+            label: 'Phone-like number',
+            // Deliberately requires a leading + to avoid warning on ordinary
+            // version/build/benchmark numbers.  This is advisory, not complete.
+            re: /\+[1-9][0-9() .-]{7,}[0-9]\b/g
+        },
+        {
+            name: 'ipv4_address',
+            label: 'IP address',
+            re: /\b(?:(?:25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})\.){3}(?:25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})\b/g
+        }
+    ];
+
+    var _PRIVACY_CARD_CANDIDATE_RE = /\b(?:[0-9][ -]?){13,19}\b/g;
+
+    function _privacyLuhnValid(candidate) {
+        var digits = String(candidate || '').replace(/[^0-9]/g, '');
+        if (digits.length < 13 || digits.length > 19) return false;
+        // Reject degenerate repeated-digit strings before Luhn; they are common
+        // in documentation/examples and not useful payment-card warnings.
+        if (/^(\d)\1+$/.test(digits)) return false;
+        var sum = 0;
+        var doubleDigit = false;
+        for (var i = digits.length - 1; i >= 0; i--) {
+            var n = digits.charCodeAt(i) - 48;
+            if (doubleDigit) {
+                n *= 2;
+                if (n > 9) n -= 9;
+            }
+            sum += n;
+            doubleDigit = !doubleDigit;
+        }
+        return sum % 10 === 0;
+    }
+
+    function _privacyCardFindings(text) {
+        if (typeof text !== 'string' || !text) return [];
+        var rx = _privacyFreshRegex(_PRIVACY_CARD_CANDIDATE_RE);
+        var count = 0;
+        var match;
+        while ((match = rx.exec(text)) !== null) {
+            if (_privacyLuhnValid(match[0])) count++;
+        }
+        return count ? [{
+            pattern: 'payment_card_number',
+            label: 'Payment-card-like number',
+            count: count
+        }] : [];
+    }
+
+    var _PRIVACY_CONTROL_NAMES = {
+        '200B': 'Zero width space',
+        '200C': 'Zero width non-joiner',
+        '200D': 'Zero width joiner',
+        '200E': 'Left-to-right mark',
+        '200F': 'Right-to-left mark',
+        '202A': 'Left-to-right embedding',
+        '202B': 'Right-to-left embedding',
+        '202C': 'Pop directional formatting',
+        '202D': 'Left-to-right override',
+        '202E': 'Right-to-left override',
+        '2060': 'Word joiner',
+        '2061': 'Function application',
+        '2062': 'Invisible times',
+        '2063': 'Invisible separator',
+        '2064': 'Invisible plus',
+        '2066': 'Left-to-right isolate',
+        '2067': 'Right-to-left isolate',
+        '2068': 'First strong isolate',
+        '2069': 'Pop directional isolate',
+        'FEFF': 'Zero width no-break space'
+    };
+
+    function _privacyFreshRegex(re) {
+        return new RegExp(re.source, re.flags.indexOf('g') >= 0 ? re.flags : re.flags + 'g');
+    }
+
+    function _privacyCountPatterns(text, specs) {
+        var out = [];
+        if (typeof text !== 'string' || !text) return out;
+        for (var i = 0; i < specs.length; i++) {
+            var spec = specs[i];
+            var rx = _privacyFreshRegex(spec.re);
+            var count = 0;
+            // exec() is safe because `rx` is fresh and guaranteed global.
+            while (rx.exec(text) !== null) {
+                count++;
+                // Defensive progress guard for any future zero-length regex.
+                if (rx.lastIndex === 0) rx.lastIndex++;
+            }
+            if (count) out.push({
+                pattern: spec.name,
+                label: spec.label || spec.name.replace(/_/g, ' '),
+                count: count
+            });
+        }
+        return out;
+    }
+
+    function _privacyCountInvisible(text) {
+        if (typeof text !== 'string' || !text) return [];
+        var counts = Object.create(null);
+        var rx = _privacyFreshRegex(_INVISIBLE_CHARS_RE);
+        var match;
+        while ((match = rx.exec(text)) !== null) {
+            var cp = match[0].codePointAt(0).toString(16).toUpperCase();
+            while (cp.length < 4) cp = '0' + cp;
+            counts[cp] = (counts[cp] || 0) + 1;
+        }
+        return Object.keys(counts).sort().map(function (cp) {
+            return {
+                codepoint: 'U+' + cp,
+                label: _PRIVACY_CONTROL_NAMES[cp] || 'Invisible/control character',
+                count: counts[cp]
+            };
+        });
+    }
+
+    function _privacyMergeFindings(target, source, key) {
+        var bucket = target[key];
+        for (var i = 0; i < source.length; i++) {
+            var item = source[i];
+            var id = item.pattern || item.codepoint;
+            var found = null;
+            for (var j = 0; j < bucket.length; j++) {
+                if ((bucket[j].pattern || bucket[j].codepoint) === id) {
+                    found = bucket[j]; break;
+                }
+            }
+            if (found) found.count += item.count;
+            else bucket.push(Object.assign({}, item));
+        }
+    }
+
+    /**
+     * Scan a string/object/array without retaining matching values.
+     *
+     * This intentionally does not claim comprehensive PII detection.  The
+     * personal-information patterns are conservative warning signals; users can
+     * always continue unchanged when the match is intentional.
+     */
+    function _privacyPreflightScan(value) {
+        var result = {
+            flagged: false,
+            strings_scanned: 0,
+            secret_findings: [],
+            personal_findings: [],
+            control_findings: []
+        };
+
+        function visit(v) {
+            if (typeof v === 'string') {
+                result.strings_scanned++;
+                var secretSpecs = _SECRET_PATTERNS.map(function (spec) {
+                    return {
+                        name: spec.name,
+                        label: spec.name.replace(/_/g, ' '),
+                        re: spec.re
+                    };
+                }).concat(_PRIVACY_EXTRA_SECRET_PATTERNS);
+                _privacyMergeFindings(
+                    result, _privacyCountPatterns(v, secretSpecs), 'secret_findings');
+                _privacyMergeFindings(
+                    result, _privacyCountPatterns(v, _PRIVACY_PERSONAL_PATTERNS), 'personal_findings');
+                _privacyMergeFindings(
+                    result, _privacyCardFindings(v), 'personal_findings');
+                _privacyMergeFindings(
+                    result, _privacyCountInvisible(v), 'control_findings');
+                return;
+            }
+            if (Array.isArray(v)) {
+                for (var i = 0; i < v.length; i++) visit(v[i]);
+                return;
+            }
+            if (v && typeof v === 'object') {
+                Object.keys(v).forEach(function (k) { visit(v[k]); });
+            }
+        }
+
+        visit(value);
+        result.flagged = !!(
+            result.secret_findings.length ||
+            result.personal_findings.length ||
+            result.control_findings.length
+        );
+        return result;
+    }
+
+    function _privacyRedactText(text) {
+        if (typeof text !== 'string' || !text) return typeof text === 'string' ? text : '';
+        var out = _redactSecrets(text).text;
+        _PRIVACY_EXTRA_SECRET_PATTERNS.forEach(function (spec) {
+            out = out.replace(_privacyFreshRegex(spec.re), '[redacted:' + spec.name + ']');
+        });
+        _PRIVACY_PERSONAL_PATTERNS.forEach(function (spec) {
+            out = out.replace(_privacyFreshRegex(spec.re), '[redacted:' + spec.name + ']');
+        });
+        out = out.replace(_privacyFreshRegex(_PRIVACY_CARD_CANDIDATE_RE), function (candidate) {
+            return _privacyLuhnValid(candidate)
+                ? '[redacted:payment_card_number]' : candidate;
+        });
+        // Only the explicit Redact action alters user-authored invisible/bidi
+        // controls.  Normal archive/export fidelity remains unchanged.
+        out = out.replace(_privacyFreshRegex(_INVISIBLE_CHARS_RE), '');
+        return out;
+    }
+
+    function _privacyRedactValue(value) {
+        if (typeof value === 'string') return _privacyRedactText(value);
+        if (Array.isArray(value)) return value.map(_privacyRedactValue);
+        if (value && typeof value === 'object') {
+            var copy = {};
+            Object.keys(value).forEach(function (k) {
+                copy[k] = _privacyRedactValue(value[k]);
+            });
+            return copy;
+        }
+        return value;
+    }
+
+    async function _privacyPreparePageContext() {
+        var pageMarkdown = '';
+        try {
+            pageMarkdown = await convertToMarkdown();
+        } catch (_e) {
+            _log('debug', 'page-context Markdown conversion failed', _e);
+        }
+        var _cleaned = _stripInvisibleChars(pageMarkdown);
+        var _redacted = _redactSecrets(_cleaned.text);
+        return {
+            text: _redacted.text,
+            redactionFindings: _redacted.findings,
+            invisibleRemoved: _cleaned.removed
+        };
+    }
+
+    function _privacyFindingText(items) {
+        return items.map(function (f) {
+            return (f.codepoint ? f.codepoint + ' ' : '') + f.label +
+                (f.count > 1 ? ' ×' + f.count : '');
+        }).join(', ');
+    }
+
+    /**
+     * Ask the reader what to do with locally detected sensitive-looking data.
+     *
+     * Returns `{action, value, scan}` where action is `continue`, `redact`, or
+     * `cancel`.  The finding object is category/count-only and is never logged.
+     */
+    function _privacyPreflightReview(value, options) {
+        var scan = _privacyPreflightScan(value);
+        if (!scan.flagged) {
+            return Promise.resolve({ action: 'continue', value: value, scan: scan });
+        }
+        if (typeof document === 'undefined' || !document.body) {
+            // A flagged value must not silently pass merely because the warning
+            // UI cannot be constructed (e.g. unusual embedded/browser context).
+            return Promise.resolve({ action: 'cancel', value: value, scan: scan });
+        }
+
+        options = options || {};
+        var destination = options.destination || 'the selected destination';
+        var title = options.title || 'Review before continuing';
+        var priorFocus = document.activeElement;
+
+        return new Promise(function (resolve) {
+            var overlay = document.createElement('div');
+            overlay.className = 'ai-assistant-privacy-preflight-overlay';
+
+            var dialog = document.createElement('section');
+            dialog.className = 'ai-assistant-privacy-preflight-dialog';
+            dialog.setAttribute('role', 'dialog');
+            dialog.setAttribute('aria-modal', 'true');
+            dialog.setAttribute('aria-labelledby', 'ai-assistant-privacy-preflight-title');
+
+            var heading = document.createElement('h3');
+            heading.id = 'ai-assistant-privacy-preflight-title';
+            heading.textContent = title;
+
+            var intro = document.createElement('p');
+            intro.className = 'ai-assistant-privacy-preflight-intro';
+            intro.textContent = 'Possible sensitive information was detected locally before data would go to ' +
+                destination + '.';
+
+            var list = document.createElement('ul');
+            list.className = 'ai-assistant-privacy-preflight-findings';
+            function addFinding(label, items) {
+                if (!items.length) return;
+                var li = document.createElement('li');
+                var strong = document.createElement('strong');
+                strong.textContent = label + ': ';
+                li.appendChild(strong);
+                li.appendChild(document.createTextNode(_privacyFindingText(items)));
+                list.appendChild(li);
+            }
+            addFinding('Credential-like data', scan.secret_findings);
+            addFinding('Possible personal information', scan.personal_findings);
+            addFinding('Invisible / bidi controls', scan.control_findings);
+
+            var advisory = document.createElement('p');
+            advisory.className = 'ai-assistant-privacy-preflight-advisory';
+            advisory.textContent = 'Detection is advisory and incomplete. No matching value is logged or sent by this warning, and no warning does not guarantee that data is non-sensitive.';
+
+            var actions = document.createElement('div');
+            actions.className = 'ai-assistant-privacy-preflight-actions';
+            var backBtn = document.createElement('button');
+            backBtn.type = 'button';
+            backBtn.className = 'ai-assistant-privacy-preflight-btn';
+            backBtn.textContent = options.cancelLabel || 'Go back';
+            var redactBtn = document.createElement('button');
+            redactBtn.type = 'button';
+            redactBtn.className = 'ai-assistant-privacy-preflight-btn ai-assistant-privacy-preflight-btn--primary';
+            redactBtn.textContent = 'Redact & continue';
+            var continueBtn = document.createElement('button');
+            continueBtn.type = 'button';
+            continueBtn.className = 'ai-assistant-privacy-preflight-btn';
+            continueBtn.textContent = options.continueLabel || 'Continue unchanged';
+            actions.appendChild(backBtn);
+            actions.appendChild(redactBtn);
+            actions.appendChild(continueBtn);
+
+            dialog.appendChild(heading);
+            dialog.appendChild(intro);
+            dialog.appendChild(list);
+            dialog.appendChild(advisory);
+            dialog.appendChild(actions);
+            overlay.appendChild(dialog);
+            document.body.appendChild(overlay);
+
+            var settled = false;
+            function finish(action, nextValue) {
+                if (settled) return;
+                settled = true;
+                document.removeEventListener('keydown', onKey, true);
+                overlay.remove();
+                if (priorFocus && typeof priorFocus.focus === 'function') {
+                    try { priorFocus.focus(); } catch (_e) {}
+                }
+                resolve({ action: action, value: nextValue, scan: scan });
+            }
+            function onKey(e) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    finish('cancel', value);
+                    return;
+                }
+                if (e.key === 'Tab') {
+                    var focusables = [backBtn, redactBtn, continueBtn];
+                    var idx = focusables.indexOf(document.activeElement);
+                    if (e.shiftKey && (idx <= 0)) {
+                        e.preventDefault();
+                        continueBtn.focus();
+                    } else if (!e.shiftKey && idx === focusables.length - 1) {
+                        e.preventDefault();
+                        backBtn.focus();
+                    }
+                }
+            }
+            document.addEventListener('keydown', onKey, true);
+            backBtn.addEventListener('click', function () { finish('cancel', value); });
+            redactBtn.addEventListener('click', function () {
+                finish('redact', _privacyRedactValue(value));
+            });
+            continueBtn.addEventListener('click', function () { finish('continue', value); });
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) finish('cancel', value);
+            });
+            backBtn.focus();
+        });
+    }
+
     /**
      * CSS/ARIA conditions that hide an element from the reader but not from
      * text extraction.
@@ -4584,7 +4998,7 @@
         var _STORAGE_CUSTOM_KEY = 'ai-assistant-ep-custom';
 
         // ── Limits ───────────────────────────────────────────────────────────
-        var _SCHEMA_VER          = 2;    // localStorage schema version (base + datasetRepo)
+        var _SCHEMA_VER          = 3;    // v3: endpoint tokens are memory-only and scrubbed from persisted profiles
         var _MAX_CUSTOM_PROFILES = 20;   // hard cap on runtime-added profiles
         var _MAX_LABEL_LEN       = 80;   // max profile label length (display)
         var _MAX_URL_LEN         = 2048; // max absolute URL length per field
@@ -4929,19 +5343,22 @@
             // V-03: must be a plain non-array object.
             if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return;
 
-            // Schema version gate.
+            // Schema version gate. v1/v2 are accepted only so they can be
+            // migrated into v3, which never persists bearer-token values.
             var schemaVer = parsed._v;
             var profilesObj, metaObj;
+            var needsRewrite = false;
 
-            if (typeof schemaVer === 'number' && (schemaVer === 1 || schemaVer === _SCHEMA_VER)) {
-                // Versioned format. v1 profiles are migrated lazily: route fields
-                // remain explicit and `base` is inferred at read/resolve time.
+            if (typeof schemaVer === 'number' &&
+                    (schemaVer === 1 || schemaVer === 2 || schemaVer === _SCHEMA_VER)) {
                 profilesObj = parsed.profiles;
                 metaObj     = parsed.meta;
+                needsRewrite = schemaVer !== _SCHEMA_VER;
             } else if (typeof schemaVer === 'undefined') {
                 // Backward-compat: old format was a flat { key: profile } object.
                 profilesObj = parsed;
                 metaObj     = {};
+                needsRewrite = true;
             } else {
                 // Future schema version — do not attempt to read.
                 return;
@@ -4962,6 +5379,13 @@
 
                 var p = profilesObj[k];
                 if (!_isValidProfileShape(p)) continue;
+                // v1/v2 accidentally persisted secret-bearing fields. Detect them
+                // before sanitising so the raw localStorage blob is rewritten and
+                // the stale secret copy is actually removed, not merely ignored.
+                if (Object.prototype.hasOwnProperty.call(p, 'shareToken') ||
+                        Object.prototype.hasOwnProperty.call(p, 'feedbackToken')) {
+                    needsRewrite = true;
+                }
                 var safeStored = _sanitizeStoredProfile(p);
                 if (!safeStored) continue;
 
@@ -4977,6 +5401,12 @@
                     lastActivated: typeof metaEntry.lastActivated === 'number' ? metaEntry.lastActivated : null,
                 };
             }
+
+            // Function declarations are hoisted within the registry closure, so
+            // this safely rewrites accepted legacy data using the v3 serializer.
+            // The rewrite is best-effort (private/quota storage can fail) but no
+            // token value is copied into the new payload.
+            if (needsRewrite) _persistCustom();
         }());
 
         // ── Internal helpers ──────────────────────────────────────────────────
@@ -5005,21 +5435,21 @@
                 for (var i = 0; i < keys.length; i++) {
                     var k = keys[i];
                     if (_builtin[k]) continue;
-                    // Omit token values from persisted profiles (V-06 mitigation).
-                    // Tokens survive only for the current page session; users are
-                    // warned in the UI.  The conf.py snippet also excludes tokens.
+                    // Secret boundary: endpoint tokens are deliberately absent
+                    // from persistent browser storage. They may exist in the live
+                    // profile object for this page only, but are never serialized
+                    // to localStorage. Do not replace these omissions with empty
+                    // token keys: the raw stored blob itself is a regression gate.
                     var p = _profiles[k];
                     profiles[k] = {
-                        label:         p.label         || '',
-                        base:          p.base          || '',
-                        chat:          p.chat          || '',
-                        share:         p.share         || '',
-                        feedback:      p.feedback      || '',
-                        training:      p.training      || '',
-                        datasetRepo:   p.datasetRepo   || '',
-                        shareToken:    p.shareToken    || '',
-                        feedbackToken: p.feedbackToken || '',
-                        ttlDays:       p.ttlDays       || 30,
+                        label:       p.label       || '',
+                        base:        p.base        || '',
+                        chat:        p.chat        || '',
+                        share:       p.share       || '',
+                        feedback:    p.feedback    || '',
+                        training:    p.training    || '',
+                        datasetRepo: p.datasetRepo || '',
+                        ttlDays:     p.ttlDays     || 30,
                     };
                     if (_metadata[k]) {
                         meta[k] = {
@@ -5352,9 +5782,9 @@
         /**
          * Serialise all custom profiles to a JSON string for user download.
          *
-         * Token values are OMITTED from the export (V-06 mitigation).
-         * The exported object is suitable for pasting into conf.py after
-         * removing the token placeholder fields.
+         * Token values and token fields are OMITTED from the export.
+         * The exported object contains only non-secret routing/preferences and
+         * is suitable for sharing or adapting as static configuration.
          *
          * @returns {string}  Pretty-printed JSON.
          */
@@ -6672,6 +7102,13 @@
         var keepalive = opts.keepalive !== false;
         var headers = { 'Content-Type': 'application/json' };
         if (token) { headers['Authorization'] = 'Bearer ' + token; }
+        if (opts.headers && typeof opts.headers === 'object') {
+            Object.keys(opts.headers).forEach(function (key) {
+                if (opts.headers[key] !== undefined && opts.headers[key] !== null) {
+                    headers[key] = String(opts.headers[key]);
+                }
+            });
+        }
         var payload;
         try {
             payload = JSON.stringify(body);
@@ -6710,7 +7147,7 @@
      *
      * @param {string} url    Endpoint URL from cfg.panelFeedbackEndpoint.
      * @param {string} token  Bearer token from cfg.panelFeedbackToken ('' for none).
-     * @param {Object} detail Complete feedback detail object (schemaVersion 2).
+     * @param {Object} detail Local feedback detail object; network transmission is reduced to schemaVersion 3 telemetry.
      * @returns {void}
      *
      * @remarks
@@ -6719,8 +7156,27 @@
      * fetch is cancelled and the rating is lost.  The detail payload is ~2 KB —
      * well within the browser's keepalive body size limit (~64 KB).
      */
+    function _feedbackTelemetryPayload(detail) {
+        detail = detail || {};
+        return {
+            schemaVersion: 3,
+            action: 'rate',
+            feedbackId: detail.sessionId || detail.feedbackId || null,
+            prevFeedbackId: detail.prevFeedbackId || null,
+            editCount: detail.editCount || 0,
+            answerIndex: typeof detail.answerIndex === 'number' ? detail.answerIndex : null,
+            ratingValue: detail.ratingValue,
+            ratingLabel: detail.ratingLabel || null,
+            ratingTitle: detail.ratingTitle || null,
+            ratingMode: detail.ratingMode || null,
+            ts: detail.ts || Date.now()
+        };
+    }
+
     function _postFeedback(url, token, detail) {
-        _remotePost(url, token, detail, { keepalive: true });
+        // Privacy boundary: query/answer/comment/model/page/conversation identifiers
+        // stay local unless the user separately chooses the contribution flow.
+        _remotePost(url, token, _feedbackTelemetryPayload(detail), { keepalive: true });
     }
 
     /**
@@ -6777,10 +7233,9 @@
         if (!url || !prevSessionId) { return; }
         _remotePost(url, token, {
             action:         'retract',
-            schemaVersion:  2,
-            prevSessionId:  prevSessionId,
+            schemaVersion:  3,
+            prevFeedbackId: prevSessionId,
             answerIndex:    answerIndex,
-            conversationId: conversationId,
             ts:             Date.now(),
         }, { keepalive: true });
     }
@@ -7118,7 +7573,7 @@
      *
      * @param {string}   url       cfg.panelGlobalShareEndpoint.
      * @param {string}   token     cfg.panelGlobalShareToken ('' for none).
-     * @param {Object}   entry     {content, mimeType, ext, title, ttlDays}.
+     * @param {Object}   entry     {snapshot, format, ttlDays}.
      * @param {Function} onSuccess Called with {uuid, url, expiresAt} on success.
      * @param {Function} onError   Called with {status, message} on failure.
      * @returns {void}
@@ -7161,26 +7616,89 @@
      * PATCH support) by discarding stale state and falling back to _postGlobalShare.
      *
      * @param {string}   url       Full path: baseUrl/v1/share/:uuid
-     * @param {string}   token     Bearer token ('' for none).
+     * @param {string}   editToken Per-share mutation capability returned by POST.
      * @param {Object}   entry     Same payload shape as _postGlobalShare.
      * @param {Function} onSuccess Called with server response object.
      * @param {Function} onError   Called with {status, message}.
      * @returns {void}
      */
-    function _patchGlobalShare(url, token, entry, onSuccess, onError) {
-        _remotePost(url, token, entry, {
-            method:    'PATCH',
-            keepalive: false,
-            onSuccess: onSuccess,
-            onError:   onError,
+    /** Parse both current fragment links and legacy /v1/share/<id> links. */
+    function _globalShareLocator(url) {
+        if (!url || typeof url !== 'string') return { base: '', id: '' };
+        try {
+            var u = new URL(url, (typeof location !== 'undefined' ? location.href : undefined));
+            var id = '';
+            var hash = (u.hash || '').replace(/^#/, '');
+            if (hash.indexOf('share=') === 0) hash = hash.slice(6);
+            try { hash = decodeURIComponent(hash); } catch (_e) {}
+            if (/^(?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i.test(hash)) id = hash;
+            var path = (u.pathname || '').replace(/\/+$/, '');
+            var match = path.match(/^(.*\/v1\/share)\/((?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}))$/i);
+            if (!id && match) { id = match[2]; path = match[1]; }
+            if (!/\/v1\/share$/i.test(path)) return { base: '', id: id };
+            return { base: u.origin + path, id: id };
+        } catch (_e2) { return { base: '', id: '' }; }
+    }
+
+    /** Update using a fixed request path; public capability stays in JSON body. */
+    function _patchGlobalShare(base, shareId, editToken, entry, onSuccess, onError) {
+        var payload = Object.assign({}, entry || {}, { shareId: shareId });
+        _remotePost(base.replace(/\/$/, '') + '/update', '', payload, {
+            method: 'POST', keepalive: false,
+            headers: editToken ? { 'X-Share-Edit-Token': editToken } : {},
+            onSuccess: onSuccess, onError: onError,
         });
+    }
+
+    /** Revoke using a fixed request path; public capability stays in JSON body. */
+    function _deleteGlobalShare(base, shareId, editToken, onSuccess, onError) {
+        _remotePost(base.replace(/\/$/, '') + '/revoke', '', { shareId: shareId }, {
+            method: 'POST', keepalive: false,
+            headers: editToken ? { 'X-Share-Edit-Token': editToken } : {},
+            onSuccess: onSuccess, onError: onError,
+        });
+    }
+
+    /**
+     * Check a public Global Share without downloading conversation content.
+     * Current fragment links keep the bearer capability out of the request path;
+     * status uses the fixed /status endpoint with the locator in the JSON body.
+     */
+    function _probeGlobalShareStatus(url, onResult) {
+        if (!url || typeof onResult !== 'function') return;
+        var loc = _globalShareLocator(url);
+        if (!loc.base || !loc.id) { onResult({ status: 0, ok: false }); return; }
+        try {
+            _fetch(loc.base + '/status', {
+                method: 'POST', cache: 'no-store', redirect: 'error',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ shareId: loc.id }),
+            }).then(function (response) {
+                onResult({ status: response.status, ok: !!response.ok });
+            }).catch(function () { onResult({ status: 0, ok: false }); });
+        } catch (_e) { onResult({ status: 0, ok: false }); }
+    }
+
+    function _utf8ByteLength(value) {
+        var text = String(value == null ? '' : value);
+        try {
+            if (typeof TextEncoder !== 'undefined') return new TextEncoder().encode(text).length;
+        } catch (_e) {}
+        try { return unescape(encodeURIComponent(text)).length; } catch (_e2) { return text.length; }
+    }
+
+    function _formatByteSize(bytes) {
+        var n = Number(bytes) || 0;
+        if (n < 1024) return n + ' B';
+        if (n < 1024 * 1024) return (n / 1024).toFixed(n < 10 * 1024 ? 1 : 0) + ' KB';
+        return (n / (1024 * 1024)).toFixed(1) + ' MB';
     }
 
     /**
      * POST a training contribution payload to the configured training endpoint.
      *
      * @param {string}   url       cfg.panelTrainingEndpoint.
-     * @param {Object}   payload   Contribution payload (schemaVersion 2, consentFlag: true).
+     * @param {Object}   payload   Contribution payload (schemaVersion 3, versioned consent).
      * @param {Function} onSuccess Called with {contributed, rows} on success.
      * @param {Function} onError   Called with {status, message} on failure.
      * @returns {void}
@@ -7424,6 +7942,52 @@
         return 'sess-' + Date.now().toString(36);
     }());
 
+    /** Conversation identity persisted alongside a persisted transcript. */
+    var _CONVERSATION_ID_KEY = 'ai-assistant-conversation-id';
+    var _conversationId = null;
+    var _conversationEpoch = 0;
+
+    /**
+     * Generate an identity token for state scoping, not authorization.
+     *
+     * This id exists only to keep share/export UI state attached to the chat
+     * that created it.  It is deliberately not treated as a secret or access
+     * capability; server-side authorization must never depend on it.
+     */
+    function _newConversationId() {
+        _conversationEpoch += 1;
+        return _sessionId + '-conv-' + Date.now().toString(36) + '-' + _conversationEpoch;
+    }
+
+    /** Resolve or create the identity of the currently restored conversation. */
+    function _getConversationId() {
+        if (_conversationId) { return _conversationId; }
+        var restored = '';
+        // A stored id is meaningful only when a transcript was restored too.
+        // This prevents a stale share URL from attaching to an empty fresh chat.
+        if (_persistEnabled() && _transcript.length > 0) {
+            restored = _ssGet(_CONVERSATION_ID_KEY) || '';
+        }
+        _conversationId = restored || _newConversationId();
+        if (_persistEnabled()) {
+            _ssSet(_CONVERSATION_ID_KEY, _conversationId);
+        } else {
+            _ssDel(_CONVERSATION_ID_KEY);
+        }
+        return _conversationId;
+    }
+
+    /** Rotate share-state scope when the reader starts a new conversation. */
+    function _rotateConversationId() {
+        _conversationId = _newConversationId();
+        if (_persistEnabled()) {
+            _ssSet(_CONVERSATION_ID_KEY, _conversationId);
+        } else {
+            _ssDel(_CONVERSATION_ID_KEY);
+        }
+        return _conversationId;
+    }
+
     /**
      * Whether transcript persistence is enabled (config-driven, default on).
      * @returns {boolean}
@@ -7542,6 +8106,16 @@
         _feedbackGivenSet = new Set();
         _feedbackStore    = {};                  // v2 — clears all submitted ratings
         _ssDel(_TRANSCRIPT_KEY);
+        var nextConversationId = _rotateConversationId();
+        // Share panels are panel-lifetime DOM.  Tell them immediately that any
+        // session/permanent/global link UI belongs to the old conversation so
+        // it cannot remain visible after New chat / Clear conversation.
+        try {
+            document.dispatchEvent(new CustomEvent(
+                'ai-assistant-conversation-reset',
+                { detail: { conversationId: nextConversationId } }
+            ));
+        } catch (_e) {}
         var body = document.getElementById('ai-assistant-panel-body');
         if (!body) return;
         body.innerHTML = '';
@@ -7565,10 +8139,10 @@
      *     ``'json'`` | ``'html'`` | ``'txt'`` (default ``'txt'`` for back-compat).
      */
     function exportConversation(format) {
-        var fmt = (typeof format === 'string') ? format : 'txt';
-        if (fmt === 'json') { exportConversationJSON(); }
-        else if (fmt === 'html') { exportConversationHTML(); }
-        else { exportConversationTxt(); }
+        var fmt = (typeof format === 'string') ? format.toLowerCase() : 'txt';
+        var meta = _getExportFormat(fmt) || _getExportFormat('txt');
+        if (!meta) { return; }
+        _downloadConversationFormat(meta.fmt);
     }
 
     /**
@@ -7581,35 +8155,7 @@
      *   for analytics / ML pipelines.
      */
     function exportConversationTxt() {
-        if (_transcript.length === 0) {
-            showNotification('Nothing to export yet', true);
-            return;
-        }
-        var cfg   = _cfg();
-        var title = cfg.panelTitle || 'AI Assistant';
-        var lines = [
-            title + ' — conversation export',
-            'Page: ' + ((typeof location !== 'undefined') ? location.href : ''),
-            'Exported: ' + new Date().toISOString(),
-            '',
-            '----------------------------------------',
-            '',
-        ];
-        _transcript.forEach(function (m) {
-            var who  = m.role === 'user' ? 'You' : m.role === 'assistant' ? title : 'Error';
-            var ts   = m.ts ? '  [' + new Date(m.ts).toISOString() + ']' : '';
-            var mdl  = (m.role === 'assistant' && m.model)
-                ? '  [' + (m.model.model || m.model.id) + ' \u00b7 ' + m.model.provider + ']'
-                : '';
-            lines.push('[' + who + ']' + ts + mdl);
-            lines.push(m.text);
-            lines.push('');
-        });
-        _downloadBlob(
-            lines.join('\n'),
-            'text/plain;charset=utf-8',
-            'ai-conversation-' + _isoFileStamp() + '.txt'
-        );
+        _downloadConversationFormat('txt');
     }
 
     /**
@@ -7626,13 +8172,15 @@
      *
      * @returns {Array<Object>}  Flat row objects, one per message.
      */
-    function _buildExportRecords() {
-        var pageUrl = (typeof location !== 'undefined') ? location.href : '';
-        var sid     = _sessionId;
+    function _buildExportRecords(pageUrl, sid) {
+        var safePage = (typeof pageUrl === 'string')
+            ? pageUrl
+            : _sanitizePage((typeof location !== 'undefined') ? location.href : '');
+        var sessionId = (typeof sid === 'string') ? sid : _sessionId;
 
         var records      = [];
         var turnIndex    = -1;
-        var answerIndex  = 0;   // increments on each assistant|error entry
+        var answerIndex  = 0;
         var messageIndex = 0;
 
         _transcript.forEach(function (m) {
@@ -7644,25 +8192,20 @@
                 : null;
 
             records.push({
-                // ── position ─────────────────────────────────────────────────
                 turn_index:            turnIndex,
                 message_index:         messageIndex,
                 role:                  m.role,
-                // ── content ──────────────────────────────────────────────────
                 text:                  m.text,
                 ts:                    m.ts   || null,
                 ts_iso:                m.ts   ? new Date(m.ts).toISOString() : null,
-                // ── model attribution (assistant only; null for user/error) ──
                 model_id:              model  ? model.id       : null,
                 model_provider:        model  ? model.provider : null,
                 model_name:            model  ? model.model    : null,
-                // ── feedback (assistant/error only; null if not submitted) ────
                 feedback_rating_value: fb     ? fb.ratingValue : null,
                 feedback_rating_label: fb     ? fb.ratingLabel : null,
                 feedback_message:      fb     ? (fb.message || null) : null,
-                // ── session context ───────────────────────────────────────────
-                session_id:            sid,
-                page_url:              pageUrl,
+                session_id:            sessionId,
+                page_url:              safePage,
             });
 
             if (m.role === 'assistant' || m.role === 'error') { answerIndex++; }
@@ -7670,6 +8213,194 @@
         });
 
         return records;
+    }
+
+    function _buildTurnsFromExportRecords(records) {
+        var turns = [];
+        var current = null;
+        var rows = Array.isArray(records) ? records : [];
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            if (!r) continue;
+            if (r.role === 'user') {
+                current = {
+                    turn_index: r.turn_index,
+                    user: { text: r.text, ts: r.ts, ts_iso: r.ts_iso },
+                    assistant: null,
+                };
+                turns.push(current);
+            } else if (r.role === 'assistant' && current && current.assistant === null) {
+                current.assistant = {
+                    text:                  r.text,
+                    ts:                    r.ts,
+                    ts_iso:                r.ts_iso,
+                    model_id:              r.model_id,
+                    model_provider:        r.model_provider,
+                    model_name:            r.model_name,
+                    feedback_rating_value: r.feedback_rating_value,
+                    feedback_rating_label: r.feedback_rating_label,
+                    feedback_message:      r.feedback_message,
+                };
+            }
+        }
+        return turns;
+    }
+
+    /**
+     * Build the canonical conversation snapshot consumed by every serializer.
+     *
+     * Security boundary
+     * -----------------
+     * The source page is privacy-sanitized here, before serialization. Query,
+     * fragment, URL credentials, and non-HTTP(S) filesystem/custom schemes never
+     * enter Share/download payloads. Conversation/model text remains untrusted
+     * data and is not altered by this function.
+     *
+     * @returns {Object|null} schema-v2 snapshot, or null when empty.
+     */
+    function _normalizeConversationContentOptions(options) {
+        var src = (options && typeof options === 'object') ? options : {};
+        var sharePolicy = !!src.sharePolicy;
+        function _flag(name, fallback) {
+            return Object.prototype.hasOwnProperty.call(src, name)
+                ? !!src[name] : fallback;
+        }
+        return {
+            sharePolicy: sharePolicy,
+            includeTimestamps: _flag('includeTimestamps', true),
+            includeModel: _flag('includeModel', true),
+            includeRatings: _flag('includeRatings', true),
+            includeErrors: _flag('includeErrors', true),
+            includePageTitle: _flag('includePageTitle', true),
+            includeSafeSourcePage: _flag('includeSafeSourcePage', true),
+            // Share defaults deliberately omit the stable session identifier.
+            // Local downloads preserve the historical complete export unless
+            // the caller explicitly asks otherwise.
+            includeSessionId: _flag('includeSessionId', !sharePolicy),
+        };
+    }
+
+    /** Resolve one named content preset into canonical snapshot options. */
+    function _conversationContentPreset(name) {
+        var key = String(name || 'standard').toLowerCase();
+        if (key === 'minimal') {
+            return {
+                sharePolicy: true,
+                includeTimestamps: false,
+                includeModel: false,
+                includeRatings: false,
+                includeErrors: true,
+                includePageTitle: false,
+                includeSafeSourcePage: false,
+                includeSessionId: false,
+            };
+        }
+        if (key === 'complete') {
+            return {
+                sharePolicy: true,
+                includeTimestamps: true,
+                includeModel: true,
+                includeRatings: true,
+                includeErrors: true,
+                includePageTitle: true,
+                includeSafeSourcePage: true,
+                // Stable identifiers still require an explicit granular opt-in.
+                includeSessionId: false,
+            };
+        }
+        return {
+            sharePolicy: true,
+            includeTimestamps: true,
+            includeModel: true,
+            includeRatings: true,
+            includeErrors: true,
+            includePageTitle: true,
+            includeSafeSourcePage: true,
+            includeSessionId: false,
+        };
+    }
+
+    /**
+     * Build the canonical conversation snapshot consumed by every serializer.
+     *
+     * ``options`` controls privacy/content selection *before* serialization.
+     * Security invariants (source URL sanitization and untrusted text handling)
+     * are not user-disableable.
+     *
+     * @param {Object} [options]
+     * @returns {Object|null} schema-v2 snapshot, or null when empty.
+     */
+    function _buildConversationSnapshot(options) {
+        if (_transcript.length === 0) return null;
+
+        var opt       = _normalizeConversationContentOptions(options);
+        var cfg       = _cfg();
+        var aiName    = cfg.panelTitle || 'AI Assistant';
+        var rawPage   = (typeof location !== 'undefined') ? location.href : '';
+        var pageUrl   = _sanitizePage(rawPage);
+        var pageTitle = (typeof document !== 'undefined') ? document.title : '';
+        var now       = Date.now();
+        var sessionId = opt.includeSessionId ? _sessionId : null;
+        var records   = _buildExportRecords(
+            opt.includeSafeSourcePage ? pageUrl : null,
+            sessionId
+        );
+
+        records = records.filter(function (r) {
+            return opt.includeErrors || !r || r.role !== 'error';
+        }).map(function (source, index) {
+            var r = Object.assign({}, source || {});
+            r.message_index = index;
+            if (!opt.includeTimestamps) {
+                r.ts = null;
+                r.ts_iso = null;
+            }
+            if (!opt.includeModel) {
+                r.model_id = null;
+                r.model_provider = null;
+                r.model_name = null;
+            }
+            if (!opt.includeRatings) {
+                r.feedback_rating_value = null;
+                r.feedback_rating_label = null;
+                r.feedback_message = null;
+            }
+            if (!opt.includeSessionId) { r.session_id = null; }
+            if (!opt.includeSafeSourcePage) { r.page_url = null; }
+            return r;
+        });
+
+        return {
+            schema_version: '2.0',
+            session: {
+                id:              sessionId,
+                page_url:        opt.includeSafeSourcePage ? pageUrl : null,
+                page_title:      opt.includePageTitle ? pageTitle : null,
+                assistant_name:  aiName,
+                exported_at:     opt.includeTimestamps ? now : null,
+                exported_at_iso: opt.includeTimestamps ? new Date(now).toISOString() : null,
+            },
+            turns: _buildTurnsFromExportRecords(records),
+            records: records,
+        };
+    }
+
+    /**
+     * JSON for an HTML script raw-text element.
+     *
+     * JSON.stringify() alone is not safe inside <script>: a literal </script>
+     * in conversation data terminates the element at the HTML parser layer.
+     * Escape characters with HTML/raw-text significance while preserving JSON
+     * round-trip semantics.
+     */
+    function _jsonForHtmlRawText(value, spacing) {
+        var json = JSON.stringify(value, null, spacing || 0);
+        return json
+            .replace(/</g, '\\u003C')
+            .replace(/>/g, '\\u003E')
+            .replace(/&/g, '\\u0026')
+            .replace(/\u2028/g, '\\u2028')
+            .replace(/\u2029/g, '\\u2029');
     }
 
     /**
@@ -7696,89 +8427,42 @@
      *   friendly nested view of the same data for manual inspection.
      */
     function exportConversationJSON() {
+        _downloadConversationFormat('json');
+    }
+
+    /** One registry-owned serializer path for every direct download. */
+    function _downloadConversationFormat(fmt) {
         if (_transcript.length === 0) {
             showNotification('Nothing to export yet', true);
             return;
         }
-        var cfg       = _cfg();
-        var aiName    = cfg.panelTitle || 'AI Assistant';
-        var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
-        var pageTitle = (typeof document !== 'undefined') ? document.title : '';
-        var now       = Date.now();
-
-        // ── Build nested turns (human-readable companion to flat records) ─────
-        var turns   = [];
-        var turnIdx = -1;
-        var aIdx    = 0;
-        var i       = 0;
-
-        while (i < _transcript.length) {
-            var m = _transcript[i];
-            if (m.role === 'user') {
-                turnIdx++;
-                var turn = {
-                    turn_index: turnIdx,
-                    user: {
-                        text:   m.text,
-                        ts:     m.ts || null,
-                        ts_iso: m.ts ? new Date(m.ts).toISOString() : null,
-                    },
-                    assistant: null,
-                };
-
-                // Pair with following assistant message, if present
-                if (i + 1 < _transcript.length &&
-                        _transcript[i + 1].role === 'assistant') {
-                    var a  = _transcript[i + 1];
-                    var fb = _feedbackStore[aIdx] || null;
-                    var am = a.model || null;
-                    turn.assistant = {
-                        text:                  a.text,
-                        ts:                    a.ts   || null,
-                        ts_iso:                a.ts   ? new Date(a.ts).toISOString() : null,
-                        model_id:              am     ? am.id       : null,
-                        model_provider:        am     ? am.provider : null,
-                        model_name:            am     ? am.model    : null,
-                        feedback_rating_value: fb     ? fb.ratingValue : null,
-                        feedback_rating_label: fb     ? fb.ratingLabel : null,
-                        feedback_message:      fb     ? (fb.message || null) : null,
-                    };
-                    aIdx++;
-                    i += 2;
-                } else {
-                    i += 1;
-                }
-                turns.push(turn);
-            } else {
-                // Orphan assistant or error message (no preceding user message)
-                if (m.role === 'assistant' || m.role === 'error') { aIdx++; }
-                i++;
-            }
+        var meta = _getExportFormat(fmt);
+        if (!meta || typeof meta.buildStr !== 'function') {
+            showNotification('Export format is not available', true);
+            return;
         }
-
-        var payload = {
-            schema_version:  '2.0',
-            session: {
-                id:              _sessionId,
-                page_url:        pageUrl,
-                page_title:      pageTitle,
-                assistant_name:  aiName,
-                exported_at:     now,
-                exported_at_iso: new Date(now).toISOString(),
-            },
-            turns:   turns,
-            records: _buildExportRecords(),
-        };
-
-        _downloadBlob(
-            JSON.stringify(payload, null, 2),
-            'application/json;charset=utf-8',
-            'ai-conversation-' + _isoFileStamp() + '.json'
-        );
-        showNotification(
-            'JSON exported \u2014 load with pd.DataFrame(data[\u201crecords\u201d])',
-            false
-        );
+        var snapshot = _buildConversationSnapshot();
+        var content  = meta.buildStr(snapshot);
+        if (!content) {
+            showNotification('Nothing to export yet', true);
+            return;
+        }
+        var filename = 'ai-conversation-' + _isoFileStamp() + meta.ext;
+        _downloadBlob(content, meta.mime, filename);
+        _registerManagedConversationArtifact({
+            kind: 'download',
+            filename: filename,
+            bytes: _utf8ByteLength(content),
+            format: meta.fmt,
+            lifecycle: 'external device file · delete with file manager',
+        });
+        if (fmt === 'json') {
+            showNotification('JSON exported — load with pd.DataFrame(data[“records”])', false);
+        } else if (fmt === 'html') {
+            showNotification('HTML exported — safe self-contained offline snapshot', false);
+        } else {
+            showNotification(meta.label + ' exported', false);
+        }
     }
 
     /**
@@ -7802,113 +8486,84 @@
      *   invoking this function; the empty-string return is a safety net, not
      *   the primary guard.
      */
-    function _buildConvHtmlString() {
-        if (_transcript.length === 0) return '';
+    function _buildConvHtmlString(snapshot) {
+        var snap = snapshot || _buildConversationSnapshot();
+        if (!snap) return '';
 
-        var cfg         = _cfg();
-        var aiName      = cfg.panelTitle || 'AI Assistant';
-        var pageUrl     = (typeof location !== 'undefined') ? location.href : '';
-        var pageTitle   = (typeof document !== 'undefined') ? document.title : '';
-        var now         = new Date();
-        var exportedIso = now.toISOString();
-        var exportedFmt = now.toLocaleString(
-            (typeof navigator !== 'undefined' && navigator.language) || 'en',
-            { dateStyle: 'long', timeStyle: 'short' }
-        );
+        var session     = snap.session || {};
+        var aiName      = session.assistant_name || 'AI Assistant';
+        var pageUrl     = session.page_url || '';
+        var pageTitle   = session.page_title || '';
+        var exportedIso = session.exported_at_iso || new Date().toISOString();
+        var exportedFmt;
+        try {
+            exportedFmt = new Date(session.exported_at || Date.now()).toLocaleString(
+                (typeof navigator !== 'undefined' && navigator.language) || 'en',
+                { dateStyle: 'long', timeStyle: 'short' }
+            );
+        } catch (_e) { exportedFmt = exportedIso; }
 
-        // ── Build per-turn HTML ────────────────────────────────────────────────
-        var turnsHtml   = '';
-        var answerIndex = 0;
-        var i           = 0;
-
-        while (i < _transcript.length) {
-            var m = _transcript[i];
-
-            if (m.role === 'user') {
-                var tsUser = m.ts ? _htmlTimeFmt(m.ts) : '';
+        var turnsHtml = '';
+        var records = Array.isArray(snap.records) ? snap.records : [];
+        for (var i = 0; i < records.length; i++) {
+            var r = records[i] || {};
+            if (r.role === 'user') {
+                var tsUser = r.ts ? _htmlTimeFmt(r.ts) : '';
                 turnsHtml +=
                     '<article class="msg msg--user">' +
-                        '<div class="msg__bubble">' + _escapeHtml(m.text) + '</div>' +
-                        (tsUser ? '<footer class="msg__meta"><time>' + tsUser + '</time></footer>' : '') +
+                        '<div class="msg__bubble">' + _escapeHtml(String(r.text || '')) + '</div>' +
+                        (tsUser ? '<footer class="msg__meta"><time>' + _escapeHtml(tsUser) + '</time></footer>' : '') +
                     '</article>';
-                i++;
-            } else if (m.role === 'assistant' || m.role === 'error') {
-                var tsAI     = m.ts ? _htmlTimeFmt(m.ts) : '';
-                var am       = m.model || null;
-                var fb       = _feedbackStore[answerIndex] || null;
-                var rendered = (m.role === 'assistant')
-                    ? _mdToHtml(m.text)
-                    : _escapeHtml(m.text);
-
-                // Model badge
-                var modelBadge = '';
-                if (am) {
-                    var provColor = _providerColor(am.provider) || '#888';
-                    modelBadge =
-                        '<span class="badge badge--model">' +
-                            '<span class="badge__dot" style="background:' + _escapeHtml(provColor) + '"></span>' +
-                            _escapeHtml(am.model || am.id) +
-                            ' <span class="badge__provider">\u00b7 ' + _escapeHtml(am.provider) + '</span>' +
-                        '</span>';
-                }
-
-                // Rating chip
-                var ratingChip = '';
-                if (fb) {
-                    var ratingInfo = _ratingDisplay(fb.ratingLabel, fb.ratingValue);
-                    // Display text uses ratingTitle ("Helpful", "Mostly yes") for
-                    // humans; the CSS class keeps the snake_case slug
-                    // (ratingLabel) for stable styling hooks. Falls back to the
-                    // slug if ratingTitle is unavailable (very old records).
-                    var ratingDisplayText = fb.ratingTitle || fb.ratingLabel;
-                    ratingChip =
-                        '<span class="badge badge--rating badge--' + _escapeHtml(fb.ratingLabel) + '">' +
-                            ratingInfo.emoji + ' ' + _escapeHtml(ratingDisplayText) +
-                            (fb.message
-                                ? ' \u2014 \u201c' + _escapeHtml(fb.message.slice(0, 120)) + '\u201d'
-                                : '') +
-                        '</span>';
-                }
-
-                var aiClass = m.role === 'error' ? 'msg msg--ai msg--error' : 'msg msg--ai';
-                turnsHtml +=
-                    '<article class="' + aiClass + '">' +
-                        '<div class="msg__avatar" aria-hidden="true">AI</div>' +
-                        '<div class="msg__body">' +
-                            '<div class="msg__bubble">' + rendered + '</div>' +
-                            '<footer class="msg__meta">' +
-                                (tsAI ? '<time>' + tsAI + '</time>' : '') +
-                                modelBadge +
-                                ratingChip +
-                            '</footer>' +
-                        '</div>' +
-                    '</article>';
-
-                answerIndex++;
-                i++;
-            } else {
-                i++;
+                continue;
             }
+            if (r.role !== 'assistant' && r.role !== 'error') { continue; }
+
+            var tsAI = r.ts ? _htmlTimeFmt(r.ts) : '';
+            var rendered = r.role === 'assistant'
+                ? _mdToHtml(String(r.text || ''))
+                : _escapeHtml(String(r.text || ''));
+
+            var modelBadge = '';
+            if (r.model_provider || r.model_name || r.model_id) {
+                var provColor = _providerColor(r.model_provider || '') || '#888';
+                modelBadge =
+                    '<span class="badge badge--model">' +
+                        '<span class="badge__dot" style="background:' + _escapeHtml(provColor) + '"></span>' +
+                        _escapeHtml(r.model_name || r.model_id || '') +
+                        (r.model_provider
+                            ? ' <span class="badge__provider">· ' + _escapeHtml(r.model_provider) + '</span>'
+                            : '') +
+                    '</span>';
+            }
+
+            var ratingChip = '';
+            if (r.feedback_rating_label || r.feedback_rating_value != null) {
+                var ratingInfo = _ratingDisplay(r.feedback_rating_label, r.feedback_rating_value);
+                var ratingText = r.feedback_rating_label || String(r.feedback_rating_value);
+                ratingChip =
+                    '<span class="badge badge--rating badge--' + _escapeHtml(r.feedback_rating_label || 'rating') + '">' +
+                        ratingInfo.emoji + ' ' + _escapeHtml(ratingText) +
+                        (r.feedback_message
+                            ? ' — “' + _escapeHtml(String(r.feedback_message).slice(0, 120)) + '”'
+                            : '') +
+                    '</span>';
+            }
+
+            var aiClass = r.role === 'error' ? 'msg msg--ai msg--error' : 'msg msg--ai';
+            turnsHtml +=
+                '<article class="' + aiClass + '">' +
+                    '<div class="msg__avatar" aria-hidden="true">AI</div>' +
+                    '<div class="msg__body">' +
+                        '<div class="msg__bubble">' + rendered + '</div>' +
+                        '<footer class="msg__meta">' +
+                            (tsAI ? '<time>' + _escapeHtml(tsAI) + '</time>' : '') +
+                            modelBadge + ratingChip +
+                        '</footer>' +
+                    '</div>' +
+                '</article>';
         }
 
-        // ── Build embedded JSON payload ────────────────────────────────────────
-        var jsonPayload = JSON.stringify({
-            schema_version:  '2.0',
-            session: {
-                id:              _sessionId,
-                page_url:        pageUrl,
-                page_title:      pageTitle,
-                assistant_name:  aiName,
-                exported_at:     now.getTime(),
-                exported_at_iso: exportedIso,
-            },
-            records: _buildExportRecords(),
-        }, null, 2);
-
-        var msgCount = _transcript.filter(function (m) {
-            return m.role === 'user';
-        }).length;
-
+        var msgCount = records.filter(function (r) { return r && r.role === 'user'; }).length;
         return _buildExportHtmlDoc({
             aiName:      aiName,
             pageUrl:     pageUrl,
@@ -7917,7 +8572,7 @@
             exportedIso: exportedIso,
             turnsHtml:   turnsHtml,
             msgCount:    msgCount,
-            jsonPayload: jsonPayload,
+            jsonPayload: _jsonForHtmlRawText(snap, 2),
         });
     }
 
@@ -7926,7 +8581,7 @@
      *
      * Extracted parallel to ``_buildConvHtmlString`` so both the download path
      * (``exportConversationTxt``) and the per-format share sheet
-     * (``_buildFmtShareSheet('txt')``) operate on exactly the same rendered
+     * (``_buildFmtSharePanel('txt')``) operate on exactly the same rendered
      * output — single source of truth, no duplication.
      *
      * Returns
@@ -7940,29 +8595,31 @@
      * Developer: Call the ``_transcript.length === 0`` guard in callers; the
      *   empty-string return is a safety net, not the primary check.
      */
-    function _buildConvTxtString() {
-        if (_transcript.length === 0) return '';
-        var cfg   = _cfg();
-        var title = cfg.panelTitle || 'AI Assistant';
+    function _buildConvTxtString(snapshot) {
+        var snap = snapshot || _buildConversationSnapshot();
+        if (!snap) return '';
+        var session = snap.session || {};
+        var title = session.assistant_name || 'AI Assistant';
         var lines = [
-            title + ' \u2014 conversation export',
-            'Page: ' + ((typeof location !== 'undefined') ? location.href : ''),
-            'Exported: ' + new Date().toISOString(),
+            title + ' — conversation export',
+            'Page: ' + (session.page_url || ''),
+            'Exported: ' + (session.exported_at_iso || new Date().toISOString()),
             '',
             '----------------------------------------',
             '',
         ];
-        _transcript.forEach(function (m) {
-            var who = m.role === 'user' ? 'You'
-                    : m.role === 'assistant' ? title
+        (snap.records || []).forEach(function (r) {
+            if (!r) return;
+            var who = r.role === 'user' ? 'You'
+                    : r.role === 'assistant' ? title
                     : 'Error';
-            var ts  = m.ts ? '  [' + new Date(m.ts).toISOString() + ']' : '';
-            var mdl = (m.role === 'assistant' && m.model)
-                ? '  [' + (m.model.model || m.model.id) +
-                  ' \u00b7 ' + m.model.provider + ']'
+            var ts = r.ts_iso ? '  [' + r.ts_iso + ']' : '';
+            var mdl = (r.role === 'assistant' && (r.model_name || r.model_id))
+                ? '  [' + (r.model_name || r.model_id) +
+                  (r.model_provider ? ' · ' + r.model_provider : '') + ']'
                 : '';
             lines.push('[' + who + ']' + ts + mdl);
-            lines.push(m.text);
+            lines.push(String(r.text || ''));
             lines.push('');
         });
         return lines.join('\n');
@@ -7973,7 +8630,7 @@
      *
      * Extracted parallel to ``_buildConvHtmlString`` so both the download path
      * (``exportConversationJSON``) and the per-format share sheet
-     * (``_buildFmtShareSheet('json')``) use exactly the same payload.
+     * (``_buildFmtSharePanel('json')``) use exactly the same payload.
      *
      * Returns
      * -------
@@ -7986,73 +8643,110 @@
      * Developer: Direct pandas load:
      *   ``df = pd.DataFrame(json.loads(s)['records'])`` — zero preprocessing.
      */
-    function _buildConvJsonString() {
-        if (_transcript.length === 0) return '';
-        var cfg       = _cfg();
-        var aiName    = cfg.panelTitle || 'AI Assistant';
-        var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
-        var pageTitle = (typeof document !== 'undefined') ? document.title : '';
-        var now       = Date.now();
+    function _buildConvJsonString(snapshot) {
+        var snap = snapshot || _buildConversationSnapshot();
+        if (!snap) return '';
+        return JSON.stringify(snap, null, 2);
+    }
 
-        var turns   = [];
-        var turnIdx = -1;
-        var aIdx    = 0;
-        var i       = 0;
 
-        while (i < _transcript.length) {
-            var m = _transcript[i];
-            if (m.role === 'user') {
-                turnIdx++;
-                var turn = {
-                    turn_index: turnIdx,
-                    user: {
-                        text:   m.text,
-                        ts:     m.ts || null,
-                        ts_iso: m.ts ? new Date(m.ts).toISOString() : null,
-                    },
-                    assistant: null,
-                };
-                if (i + 1 < _transcript.length &&
-                        _transcript[i + 1].role === 'assistant') {
-                    var a  = _transcript[i + 1];
-                    var fb = _feedbackStore[aIdx] || null;
-                    var am = a.model || null;
-                    turn.assistant = {
-                        text:                  a.text,
-                        ts:                    a.ts || null,
-                        ts_iso:                a.ts ? new Date(a.ts).toISOString() : null,
-                        model_id:              am ? am.id       : null,
-                        model_provider:        am ? am.provider : null,
-                        model_name:            am ? am.model    : null,
-                        feedback_rating_value: fb ? fb.ratingValue : null,
-                        feedback_rating_label: fb ? fb.ratingLabel : null,
-                        feedback_message:      fb ? (fb.message || null) : null,
-                    };
-                    aIdx++;
-                    i += 2;
-                } else {
-                    i += 1;
-                }
-                turns.push(turn);
-            } else {
-                if (m.role === 'assistant' || m.role === 'error') { aIdx++; }
-                i++;
-            }
+    /** Safe deterministic YAML 1.2 serializer over JSON-like values only. */
+    function _yamlScalar(value) {
+        if (value === null || value === undefined) return 'null';
+        if (typeof value === 'boolean') return value ? 'true' : 'false';
+        if (typeof value === 'number') {
+            return Number.isFinite(value) ? String(value) : 'null';
         }
+        // JSON double-quoted strings are valid YAML double-quoted scalars and
+        // prevent tags/anchors/document markers from gaining syntax authority.
+        return JSON.stringify(String(value));
+    }
 
-        return JSON.stringify({
-            schema_version: '2.0',
-            session: {
-                id:              _sessionId,
-                page_url:        pageUrl,
-                page_title:      pageTitle,
-                assistant_name:  aiName,
-                exported_at:     now,
-                exported_at_iso: new Date(now).toISOString(),
-            },
-            turns:   turns,
-            records: _buildExportRecords(),
-        }, null, 2);
+    function _yamlKey(key) { return JSON.stringify(String(key)); }
+
+    function _serializeYamlValue(value, indent) {
+        var pad = new Array(indent + 1).join(' ');
+        if (Array.isArray(value)) {
+            if (!value.length) return pad + '[]';
+            return value.map(function (item) {
+                if (item && typeof item === 'object') {
+                    var child = _serializeYamlValue(item, indent + 2);
+                    var lines = child.split('\n');
+                    return pad + '- ' + lines[0].slice(indent + 2) +
+                        (lines.length > 1 ? '\n' + lines.slice(1).join('\n') : '');
+                }
+                return pad + '- ' + _yamlScalar(item);
+            }).join('\n');
+        }
+        if (value && typeof value === 'object') {
+            var keys = Object.keys(value);
+            if (!keys.length) return pad + '{}';
+            return keys.map(function (key) {
+                var item = value[key];
+                if (item && typeof item === 'object') {
+                    return pad + _yamlKey(key) + ':\n' + _serializeYamlValue(item, indent + 2);
+                }
+                return pad + _yamlKey(key) + ': ' + _yamlScalar(item);
+            }).join('\n');
+        }
+        return pad + _yamlScalar(value);
+    }
+
+    function _buildConvYamlString(snapshot) {
+        var snap = snapshot || _buildConversationSnapshot();
+        if (!snap) return '';
+        return _serializeYamlValue(snap, 0) + '\n';
+    }
+
+    /** TOML uses JSON-compatible basic strings; null optional values are omitted. */
+    function _tomlString(value) { return JSON.stringify(String(value)); }
+
+    function _tomlScalar(value) {
+        if (typeof value === 'string') return _tomlString(value);
+        if (typeof value === 'boolean') return value ? 'true' : 'false';
+        if (typeof value === 'number' && Number.isFinite(value)) return String(value);
+        return null;
+    }
+
+    function _tomlWriteFields(lines, object, omitKeys) {
+        var skip = omitKeys || {};
+        Object.keys(object || {}).forEach(function (key) {
+            if (skip[key] || object[key] == null) return;
+            var rendered = _tomlScalar(object[key]);
+            if (rendered !== null) lines.push(key + ' = ' + rendered);
+        });
+    }
+
+    function _buildConvTomlString(snapshot) {
+        var snap = snapshot || _buildConversationSnapshot();
+        if (!snap) return '';
+        var lines = [
+            '# AI Assistant conversation export',
+            '# schema v2 semantics: omitted optional values represent null',
+            'schema_version = ' + _tomlString(snap.schema_version || '2.0'),
+            '',
+            '[session]'
+        ];
+        _tomlWriteFields(lines, snap.session || {});
+
+        (snap.turns || []).forEach(function (turn) {
+            lines.push('', '[[turns]]');
+            if (turn && turn.turn_index != null) lines.push('turn_index = ' + String(turn.turn_index));
+            if (turn && turn.user) {
+                lines.push('[turns.user]');
+                _tomlWriteFields(lines, turn.user);
+            }
+            if (turn && turn.assistant) {
+                lines.push('[turns.assistant]');
+                _tomlWriteFields(lines, turn.assistant);
+            }
+        });
+
+        (snap.records || []).forEach(function (record) {
+            lines.push('', '[[records]]');
+            _tomlWriteFields(lines, record || {});
+        });
+        return lines.join('\n') + '\n';
     }
 
     /**
@@ -8075,20 +8769,7 @@
      *   with the share-link sheet) — edit that function to change export output.
      */
     function exportConversationHTML() {
-        if (_transcript.length === 0) {
-            showNotification('Nothing to export yet', true);
-            return;
-        }
-        var html = _buildConvHtmlString();
-        _downloadBlob(
-            html,
-            'text/html;charset=utf-8',
-            'ai-conversation-' + _isoFileStamp() + '.html'
-        );
-        showNotification(
-            'HTML exported \u2014 open in any browser to share the conversation',
-            false
-        );
+        _downloadConversationFormat('html');
     }
 
     /**
@@ -8110,57 +8791,47 @@
      *   that escape each message independently — it is trusted HTML at this point.
      */
     function _buildExportHtmlDoc(opts) {
+        var safePageHref = /^https?:\/\//i.test(opts.pageUrl || '') ? opts.pageUrl : '';
+        var sourceLabel = opts.pageTitle || (safePageHref ? safePageHref : 'Source page redacted');
         return (
 '<!DOCTYPE html>\n' +
 '<html lang="en">\n' +
 '<head>\n' +
 '<meta charset="utf-8">\n' +
 '<meta name="viewport" content="width=device-width,initial-scale=1">\n' +
-'<meta name="generator" content="ai-assistant-export/2.0">\n' +
-'<meta name="exported-at" content="' + opts.exportedIso + '">\n' +
-'<title>' + _escapeHtml(opts.aiName) + ' \u2014 Conversation</title>\n' +
-'<style>\n' +
-_exportCss() +
-'</style>\n' +
+'<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'none\'; style-src \'unsafe-inline\'; img-src data:; connect-src \'none\'; font-src \'none\'; object-src \'none\'; base-uri \'none\'; form-action \'none\'">\n' +
+'<meta name="referrer" content="no-referrer">\n' +
+'<meta name="generator" content="ai-assistant-export/2.1">\n' +
+'<meta name="exported-at" content="' + _escapeHtml(opts.exportedIso) + '">\n' +
+'<title>' + _escapeHtml(opts.aiName) + ' — Conversation</title>\n' +
+'<style>\n' + _exportCss() + '</style>\n' +
 '</head>\n' +
 '<body>\n' +
 '<div class="wrap">\n' +
-
 '<header class="chat-header">\n' +
-    '<div class="chat-meta">\n' +
-        '<div class="chat-meta-row">\n' +
-            '<span class="chat-meta-label">' + _escapeHtml(opts.aiName) + '</span>\n' +
-            '<span class="chat-meta-sep">\u00b7</span>\n' +
-            '<span class="chat-meta-turns">' + opts.msgCount +
-                ' turn' + (opts.msgCount !== 1 ? 's' : '') + '</span>\n' +
-            '<span class="chat-meta-sep">\u00b7</span>\n' +
-            '<time class="chat-meta-date">' + _escapeHtml(opts.exportedFmt) + '</time>\n' +
-        '</div>\n' +
-        (opts.pageUrl
-            ? '<a class="chat-meta-url" href="' + _escapeHtml(opts.pageUrl) +
-              '" rel="noopener noreferrer">' +
-              _escapeHtml(opts.pageTitle || opts.pageUrl) + '</a>\n'
-            : '') +
-    '</div>\n' +
+'  <div class="chat-meta">\n' +
+'    <div class="chat-meta-row">\n' +
+'      <span class="chat-meta-label">' + _escapeHtml(opts.aiName) + '</span>\n' +
+'      <span class="chat-meta-sep">·</span>\n' +
+'      <span class="chat-meta-turns">' + opts.msgCount + ' turn' + (opts.msgCount !== 1 ? 's' : '') + '</span>\n' +
+'      <span class="chat-meta-sep">·</span>\n' +
+'      <time class="chat-meta-date">' + _escapeHtml(opts.exportedFmt) + '</time>\n' +
+'    </div>\n' +
+'    ' + (safePageHref
+            ? '<a class="chat-meta-url" href="' + _escapeHtml(safePageHref) + '" rel="noopener noreferrer">' + _escapeHtml(sourceLabel) + '</a>'
+            : '<span class="chat-meta-url">' + _escapeHtml(sourceLabel) + '</span>') + '\n' +
+'  </div>\n' +
 '</header>\n' +
-
-'<main class="messages" role="log" aria-label="Conversation">\n' +
-opts.turnsHtml +
-'</main>\n' +
-
+'<main class="messages" role="log" aria-label="Conversation">\n' + opts.turnsHtml + '\n</main>\n' +
 '<footer class="chat-footer">\n' +
-    '<p>Generated by <strong>' + _escapeHtml(opts.aiName) + '</strong> \u00b7 ' +
-    '<a href="' + _escapeHtml(opts.pageUrl) + '" rel="noopener noreferrer">' +
-    _escapeHtml(opts.pageUrl) + '</a></p>\n' +
-    '<p class="chat-footer-hint">Extract data: ' +
-        '<code>JSON.parse(document.getElementById(&quot;export-data&quot;).textContent)</code></p>\n' +
+'  <p>Generated by <strong>' + _escapeHtml(opts.aiName) + '</strong> · ' +
+    (safePageHref
+        ? '<a href="' + _escapeHtml(safePageHref) + '" rel="noopener noreferrer">' + _escapeHtml(sourceLabel) + '</a>'
+        : _escapeHtml(sourceLabel)) + '</p>\n' +
+'  <p class="chat-footer-hint">Extract data: <code>JSON.parse(document.getElementById(&quot;export-data&quot;).textContent)</code></p>\n' +
 '</footer>\n' +
-
 '</div>\n' +
-
-'<script type="application/json" id="export-data">\n' +
-opts.jsonPayload + '\n' +
-'</script>\n' +
+'<script type="application/json" id="export-data">\n' + opts.jsonPayload + '\n</script>\n' +
 '</body>\n' +
 '</html>'
         );
@@ -8559,39 +9230,59 @@ opts.jsonPayload + '\n' +
     /** Implemented formats, in canonical display order. */
     var _EXPORT_FORMATS = [
         {
-            fmt:   'json',
-            label: 'JSON',
-            hint:  'Pandas-ready \u00b7 model + ratings',
-            desc:  'Structured data \u2014 import into pandas, re-load ratings, or feed another model.',
-            icon:  ICONS.exportJson
+            fmt: 'json', label: 'JSON',
+            hint: 'Structured · pandas / APIs',
+            desc: 'Complete structured snapshot for pandas, APIs, tests, and model pipelines.',
+            shareDesc: 'Structured JSON snapshot (schema v2.0 · pandas-ready).',
+            mime: 'application/json;charset=utf-8', ext: '.json',
+            buildStr: function (snapshot) { return _buildConvJsonString(snapshot); },
+            icon: ICONS.exportJson,
+            capabilities: { structured: true, humanReadable: true, download: true, localPreview: true, selfContained: true, global: true, activeDocument: false, previewKind: 'code' }
         },
         {
-            fmt:   'html',
-            label: 'HTML',
-            hint:  'Shareable page \u00b7 open in browser',
-            desc:  'Self-contained page \u2014 open in any browser or email as an attachment.',
-            icon:  ICONS.exportHtml
+            fmt: 'html', label: 'HTML',
+            hint: 'Readable · browser view',
+            desc: 'Readable offline conversation page generated by the trusted viewer.',
+            shareDesc: 'Readable offline conversation page generated by the trusted viewer.',
+            mime: 'text/html;charset=utf-8', ext: '.html',
+            buildStr: function (snapshot) { return _buildConvHtmlString(snapshot); },
+            icon: ICONS.exportHtml,
+            capabilities: { structured: true, humanReadable: true, download: true, localPreview: true, selfContained: true, global: true, activeDocument: true, previewKind: 'rendered' }
         },
         {
-            fmt:   'txt',
-            label: 'Plain text',
-            hint:  'Simple \u00b7 human-readable',
-            desc:  'Plain prose \u2014 paste into any editor, doc, or note-taking app.',
-            icon:  ICONS.exportTxt
+            fmt: 'txt', label: 'Text',
+            hint: 'Simple · copy / notes',
+            desc: 'Plain human-readable transcript for editors, notes, and email.',
+            shareDesc: 'Plain human-readable text snapshot.',
+            mime: 'text/plain;charset=utf-8', ext: '.txt',
+            buildStr: function (snapshot) { return _buildConvTxtString(snapshot); },
+            icon: ICONS.exportTxt,
+            capabilities: { structured: false, humanReadable: true, download: true, localPreview: true, selfContained: true, global: true, activeDocument: false, previewKind: 'code' }
+        },
+        {
+            fmt: 'yaml', label: 'YAML',
+            hint: 'Structured · human-readable',
+            desc: 'Deterministic YAML 1.2 snapshot for readable structured-data workflows.',
+            shareDesc: 'YAML 1.2 snapshot with strings kept as inert data; no tags, aliases, or custom object types.',
+            mime: 'application/yaml', ext: '.yaml',
+            buildStr: function (snapshot) { return _buildConvYamlString(snapshot); },
+            icon: ICONS.exportTxt,
+            capabilities: { structured: true, humanReadable: true, download: true, localPreview: true, selfContained: true, global: true, activeDocument: false, previewKind: 'code' }
+        },
+        {
+            fmt: 'toml', label: 'TOML',
+            hint: 'Structured · tooling / config',
+            desc: 'Deterministic TOML snapshot using tables and arrays of tables.',
+            shareDesc: 'TOML snapshot; optional null fields are omitted under schema-v2 semantics.',
+            mime: 'application/toml', ext: '.toml',
+            buildStr: function (snapshot) { return _buildConvTomlString(snapshot); },
+            icon: ICONS.exportTxt,
+            capabilities: { structured: true, humanReadable: true, download: true, localPreview: true, selfContained: true, global: true, activeDocument: false, previewKind: 'code' }
         }
     ];
 
-    /**
-     * Previews of formats on the roadmap. Always rendered AFTER every
-     * implemented format, so shipping one never reorders the live set.
-     */
-    var _EXPORT_STUB_FORMATS = [
-        _stubFormat(
-            'toml',
-            'TOML',
-            'TOML key-value format \u2014 config files and tool integrations.'
-        )
-    ];
+    /** No roadmap previews remain in Run 8; retained for extension compatibility. */
+    var _EXPORT_STUB_FORMATS = [];
 
     /**
      * What the share sheet renders: every implemented format, then every
@@ -8612,6 +9303,25 @@ opts.jsonPayload + '\n' +
      */
     function _exportFormatDesc(opt) {
         return opt.desc || opt.hint || '';
+    }
+
+
+    /**
+     * Resolve one implemented export-format record by key.
+     *
+     * The registry is the canonical owner of serializer, MIME type, extension,
+     * labels, and share-sheet copy.  Callers must not rebuild a private
+     * per-format metadata map: doing so is how the export and share surfaces
+     * drifted in the first place.
+     *
+     * @param {string} fmt Export format key.
+     * @returns {Object|null}
+     */
+    function _getExportFormat(fmt) {
+        for (var i = 0; i < _EXPORT_FORMATS.length; i++) {
+            if (_EXPORT_FORMATS[i].fmt === fmt) { return _EXPORT_FORMATS[i]; }
+        }
+        return null;
     }
 
     /**
@@ -8717,6 +9427,78 @@ opts.jsonPayload + '\n' +
         badge.setAttribute('aria-hidden', 'true');
         badge.textContent = 'soon';
         return badge;
+    }
+
+
+    /**
+     * Build one synchronized Download / Share-link mode control.
+     *
+     * Every export surface receives its own DOM button, but all buttons are
+     * views over the same ``_exportLinkMode`` state.  This avoids duplicate
+     * element ids and the nested-interactive ``div role=button > button``
+     * pattern that previously made secondary sheet toolbars stale or awkward
+     * for keyboard/screen-reader users.
+     *
+     * @param {Object} opts Surface classes and optional state callback.
+     * @returns {HTMLButtonElement}
+     */
+    function _buildExportModeControl(opts) {
+        var options = (opts && typeof opts === 'object') ? opts : {};
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.className = (options.rowClass || '') +
+            ' ai-assistant-mic-popup-toggle ai-assistant-export-mode-control';
+        if (options.menu === true) {
+            row.setAttribute('role', 'menuitemcheckbox');
+            row.setAttribute('tabindex', '-1');
+        }
+
+        var icon = document.createElement('span');
+        icon.className = options.iconClass || '';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = ICONS.linkChain;
+
+        var label = document.createElement('span');
+        label.className = options.labelClass || '';
+
+        var track = document.createElement('span');
+        track.className = 'ai-assistant-mic-toggle-track';
+        track.setAttribute('aria-hidden', 'true');
+        var thumb = document.createElement('span');
+        thumb.className = 'ai-assistant-mic-toggle-thumb';
+        track.appendChild(thumb);
+
+        row.appendChild(icon);
+        row.appendChild(label);
+        row.appendChild(track);
+
+        function sync(state) {
+            var on = !!(state && state.linkMode);
+            var modeText = on ? 'Share link' : 'Download';
+            label.textContent = modeText;
+            row.setAttribute('title', 'Export action: ' + modeText);
+            row.setAttribute('aria-label', 'Export action mode: ' + modeText);
+            if (options.menu === true) {
+                row.setAttribute('aria-checked', on ? 'true' : 'false');
+            } else {
+                row.setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+            if (typeof options.onState === 'function') {
+                options.onState({ linkMode: on });
+            }
+        }
+
+        _exportStateListeners.push(sync);
+        sync({ linkMode: _exportLinkMode });
+
+        if (options.preventMouseDown === true) {
+            row.addEventListener('mousedown', function (e) { e.preventDefault(); });
+        }
+        row.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _setExportLinkMode(!_exportLinkMode);
+        });
+        return row;
     }
 
     /**
@@ -8849,68 +9631,20 @@ opts.jsonPayload + '\n' +
         menu.appendChild(menuLive);
 
         // ── Mode-toggle row (download ↔ share-link) ───────────────────────────
-        // Mirrors the mic hold-toggle pattern: a row with icon + label +
-        // pill toggle.  Clicking the row or just the toggle both call
-        // _setExportLinkMode so the mode state, localStorage, and the
-        // aria-pressed attribute are always in sync.
+        // One real button owns the interaction; the track/thumb are visual
+        // children.  Every dropdown instance subscribes to shared export state,
+        // so sheet toolbars cannot drift from the header dropdown.
         var modeSep = document.createElement('div');
         modeSep.className = 'ai-assistant-export-menu-sep';
         menu.appendChild(modeSep);
 
-        var modeRow = document.createElement('div');
-        modeRow.className = 'ai-assistant-export-menu-mode-row';
-        modeRow.setAttribute('role', 'button');
-        modeRow.setAttribute('tabindex', '-1');
-        modeRow.setAttribute('aria-label', 'Toggle share-link mode');
-
-        var modeIcon = document.createElement('span');
-        modeIcon.className = 'ai-assistant-export-menu-mode-icon';
-        modeIcon.setAttribute('aria-hidden', 'true');
-        modeIcon.innerHTML = ICONS.linkChain;
-
-        var modeLbl = document.createElement('span');
-        modeLbl.className = 'ai-assistant-export-menu-mode-label';
-        // Reflects the current mode on initial render; updated reactively in
-        // _setExportLinkMode via querySelector on this class name (singleton).
-        modeLbl.textContent = _exportLinkMode ? 'Share link' : 'Download';
-
-        // Reuse the mic toggle pill CSS classes so the visual is consistent.
-        var modeToggle = document.createElement('button');
-        modeToggle.className = 'ai-assistant-mic-popup-toggle';
-        modeToggle.id = 'ai-assistant-export-link-toggle';
-        modeToggle.type = 'button';
-        modeToggle.setAttribute('aria-pressed', _exportLinkMode ? 'true' : 'false');
-        modeToggle.setAttribute('aria-label', 'Share-link mode');
-        modeToggle.setAttribute('title',
-            _exportLinkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
-
-        var modeTrack = document.createElement('span');
-        modeTrack.className = 'ai-assistant-mic-toggle-track';
-        var modeThumb = document.createElement('span');
-        modeThumb.className = 'ai-assistant-mic-toggle-thumb';
-        modeTrack.appendChild(modeThumb);
-        modeToggle.appendChild(modeTrack);
-
-        // Prevent mousedown from blurring the trigger (matches format items).
-        modeToggle.addEventListener('mousedown', function (e) { e.preventDefault(); });
-
-        modeToggle.addEventListener('click', function (e) {
-            e.stopPropagation();
-            _setExportLinkMode(!_exportLinkMode);
+        var modeRow = _buildExportModeControl({
+            rowClass: 'ai-assistant-export-menu-mode-row',
+            iconClass: 'ai-assistant-export-menu-mode-icon',
+            labelClass: 'ai-assistant-export-menu-mode-label',
+            menu: true,
+            preventMouseDown: true
         });
-
-        // Clicking the row label/icon (but NOT the toggle pill) also toggles.
-        // stopPropagation on the toggle click normally prevents double-fire, but
-        // the guard here makes the behaviour deterministic even if that ever
-        // changes (e.g. AT synthetic click, keyboard dispatch on role="button").
-        modeRow.addEventListener('click', function (e) {
-            if (modeToggle.contains(e.target)) { return; }
-            _setExportLinkMode(!_exportLinkMode);
-        });
-
-        modeRow.appendChild(modeIcon);
-        modeRow.appendChild(modeLbl);
-        modeRow.appendChild(modeToggle);
         menu.appendChild(modeRow);
 
         // ── Toggle open/close ─────────────────────────────────────────────────
@@ -8922,10 +9656,38 @@ opts.jsonPayload + '\n' +
             if (!isOpen) {
                 menu.setAttribute('data-open', 'true');
                 trigger.setAttribute('aria-expanded', 'true');
-                // Focus first menu item for keyboard navigation.
-                var firstItem = menu.querySelector('.ai-assistant-export-menu-item');
-                if (firstItem) { firstItem.setAttribute('tabindex', '0'); firstItem.focus(); }
+                // Focus the first actionable/announced menu control.
+                _focusExportMenuControl(menu, 0);
             }
+        });
+
+        // Roving keyboard navigation covers live formats, preview formats, and
+        // the Download/Share-link mode control.  Previously only the first
+        // format got tabindex=0, leaving the mode row unreachable by keyboard.
+        menu.addEventListener('keydown', function (e) {
+            var controls = _exportMenuControls(menu);
+            if (!controls.length) { return; }
+            var current = controls.indexOf(document.activeElement);
+            var next = current;
+            if (e.key === 'ArrowDown') {
+                next = current < 0 ? 0 : (current + 1) % controls.length;
+            } else if (e.key === 'ArrowUp') {
+                next = current < 0 ? controls.length - 1
+                    : (current - 1 + controls.length) % controls.length;
+            } else if (e.key === 'Home') {
+                next = 0;
+            } else if (e.key === 'End') {
+                next = controls.length - 1;
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                _closeExportMenu(menu, trigger);
+                trigger.focus();
+                return;
+            } else {
+                return;
+            }
+            e.preventDefault();
+            _focusExportMenuControl(menu, next);
         });
 
         // ── Close on focus-out ────────────────────────────────────────────────
@@ -8952,6 +9714,25 @@ opts.jsonPayload + '\n' +
         return wrapper;
     }
 
+    /** Return every keyboard-addressable control in an export menu. */
+    function _exportMenuControls(menu) {
+        if (!menu) { return []; }
+        return Array.prototype.slice.call(menu.querySelectorAll(
+            '[role="menuitem"], [role="menuitemcheckbox"]'
+        ));
+    }
+
+    /** Move the export menu's single roving tabindex and focus it. */
+    function _focusExportMenuControl(menu, index) {
+        var controls = _exportMenuControls(menu);
+        if (!controls.length) { return; }
+        var safeIndex = Math.max(0, Math.min(index, controls.length - 1));
+        controls.forEach(function (it, i) {
+            it.setAttribute('tabindex', i === safeIndex ? '0' : '-1');
+        });
+        try { controls[safeIndex].focus(); } catch (_e) {}
+    }
+
     /**
      * Close the export dropdown menu and restore trigger state.
      *
@@ -8963,7 +9744,7 @@ opts.jsonPayload + '\n' +
     function _closeExportMenu(menu, trigger) {
         menu.setAttribute('data-open', 'false');
         trigger.setAttribute('aria-expanded', 'false');
-        menu.querySelectorAll('.ai-assistant-export-menu-item').forEach(function (it) {
+        _exportMenuControls(menu).forEach(function (it) {
             it.setAttribute('tabindex', '-1');
         });
     }
@@ -11036,8 +11817,8 @@ opts.jsonPayload + '\n' +
                 _log('log', '[ai-assistant] feedback', _redactPayloadForLog(detail));
             }
             _feedbackGivenSet.add(answerIndex);
-            // v3: persist the full detail schema so share export enrichment,
-            // feedback POST, and training contribution all read a complete tuple.
+            // Keep the full local tuple for UI/edit/share enrichment and explicit contribution.
+            // _postFeedback separately reduces network telemetry to rating metadata only.
             // query/answer/model/sessionId/page were previously dropped here.
             _feedbackStore[answerIndex] = {
                 ratingValue:    chosen.value,
@@ -11050,7 +11831,7 @@ opts.jsonPayload + '\n' +
                 editCount:      detail.editCount,
                 message:        ta.value.trim(),
                 ts:             Date.now(),
-                // Added — required for POST /v1/feedback and training contribution:
+                // Local content retained for explicit contribution only; ordinary feedback POST omits it:
                 query:          detail.query,
                 answer:         detail.answer,
                 model:          detail.model,
@@ -12021,7 +12802,7 @@ opts.jsonPayload + '\n' +
         _wireUrlRisk(fBaseInp, fBaseRisk);
         _wireUrlValidation(fBaseInp, fBaseErr);
 
-        // Advanced mode: per-feature URLs + tokens
+        // Advanced mode: per-feature URLs + optional page-session credentials
         var fAdvWrap = document.createElement('div');
         fAdvWrap.style.display = 'none';
 
@@ -12029,10 +12810,10 @@ opts.jsonPayload + '\n' +
         var fTokenNote = document.createElement('p');
         fTokenNote.className   = 'ai-assistant-panel-ep-hint ai-assistant-panel-ep-hint--warn';
         fTokenNote.textContent =
-            '⚠ Token values entered here are stored in localStorage. ' +
-            'For production deployments, prefer server-side token injection ' +
-            'via conf.py (see §5 snippet generator) — tokens never leave the ' +
-            'server side that way.';
+            '⚠ Tokens entered here are kept in memory for this page only and ' +
+            'are not saved to localStorage. Use only short-lived, least-privilege ' +
+            'credentials. Never put production secrets in conf.py or generated ' +
+            'documentation; static Sphinx configuration is delivered to readers.';
         fAdvWrap.appendChild(fTokenNote);
 
         var _ADV_FIELDS = [
@@ -12062,7 +12843,9 @@ opts.jsonPayload + '\n' +
                 ainp.className   = 'ai-assistant-panel-ep-input';
                 ainp.placeholder = afd.ph;
                 ainp.setAttribute('aria-label', afd.label);
-                ainp.setAttribute('autocomplete', 'off');
+                ainp.setAttribute('autocomplete', afd.type === 'password' ? 'new-password' : 'off');
+                ainp.setAttribute('spellcheck', 'false');
+                ainp.setAttribute('autocapitalize', 'none');
                 fAdvInputs[afd.key] = ainp;
                 arow.appendChild(albl);
                 arow.appendChild(ainp);
@@ -13094,25 +13877,22 @@ opts.jsonPayload + '\n' +
         var fbkIntro = document.createElement('p');
         fbkIntro.className = 'ai-assistant-panel-ep-hint';
         fbkIntro.textContent =
-            'The \uD83D\uDC4D / \uD83D\uDC4E buttons on each answer collect your rating. ' +
-            'When \u201CStore ratings permanently\u201D is ON and the server is ' +
-            'configured, each rating writes a canonical JSON record to the configured ' +
-            'record-storage primary and optional mirrors. When OFF, ratings stay in-memory only ' +
-            'and are lost on page refresh.';
+            'The \uD83D\uDC4D / \uD83D\uDC4E buttons always work locally. Network rating telemetry is OFF by default. ' +
+            'If enabled, only the rating value/mode and bounded event metadata are sent; ' +
+            'your question, the AI answer, optional note, model, page URL and conversation identifier stay local. ' +
+            'Training contribution is a separate explicit-consent action.';
         fbkSub.appendChild(fbkIntro);
 
         // THE missing DOM element — _setFeedbackPersistMode() targets this id.
         var persistToggle = _buildExtToggleRow(
-            'Store ratings permanently',
-            'Writes \uD83D\uDC4D / \uD83D\uDC4E ratings to configured record storage ' +
-            '(durable, survives server restarts). ' +
-            'Requires a configured server-side storage target and token. ' +
-            'The server\u2019s FEEDBACK_PERSIST_ENABLED flag is the authoritative ' +
-            'default; this toggle lets you override it for your browser session.',
+            'Send rating telemetry',
+            'Opt in to sending privacy-minimal rating telemetry to the configured feedback endpoint. ' +
+            'The optional written feedback note stays local unless you explicitly contribute the rated answer. ' +
+            'Server persistence is independently controlled by the operator and cannot be enabled by this browser toggle.',
             _feedbackPersistEnabled,
             'ai-assistant-feedback-persist-toggle'
         );
-        persistToggle.pill.setAttribute('aria-label', 'Store ratings permanently');
+        persistToggle.pill.setAttribute('aria-label', 'Send rating telemetry');
         persistToggle.pill.addEventListener('click', function () {
             _setFeedbackPersistMode(!_feedbackPersistEnabled);
             // aria-checked is synced inside _setFeedbackPersistMode
@@ -13331,6 +14111,15 @@ opts.jsonPayload + '\n' +
                 statusRow.textContent =
                     'Could not reach the proxy root (GET /) to discover the dataset repo. '
                     + 'The Space secret still drives persistence server-side.';
+                return;
+            }
+            if (state === 'server-managed') {
+                statusRow.classList.add('ai-assistant-panel-ep-ext-dataset-status--off');
+                statusRow.textContent =
+                    'Service-managed storage is available, but repository identity and '
+                    + 'storage topology are not exposed by public discovery. Configure '
+                    + 'panelDatasetRepo or a profile dataset override only when you want '
+                    + 'visitors to receive a public dataset link.';
                 return;
             }
 
@@ -13587,7 +14376,10 @@ opts.jsonPayload + '\n' +
                 if (effectiveRepo) {
                     _renderDatasetLinks(statusRow, linksWrap, effectiveRepo, effectiveSource);
                 } else if (!discoveredRepo) {
-                    _renderDatasetLinks(statusRow, linksWrap, null, 'discovery-failed');
+                    _renderDatasetLinks(
+                        statusRow, linksWrap, null,
+                        info.error ? 'discovery-failed' : 'server-managed'
+                    );
                 } else {
                     _renderDatasetLinks(statusRow, linksWrap, discoveredRepo, 'discovered');
                 }
@@ -13601,9 +14393,10 @@ opts.jsonPayload + '\n' +
         var datasetIntro = document.createElement('p');
         datasetIntro.className = 'ai-assistant-panel-ep-hint';
         datasetIntro.textContent =
-            'Read-only service details discovered from the active profile. ' +
-            'Record-storage targets, record links, and token capability are shown without exposing secrets. ' +
-            'Edit the profile above when you need to change the dataset or route topology.';
+            'Privacy-minimized service status discovered from the active profile. ' +
+            'Public discovery reports persistence readiness but does not expose backend ' +
+            'repository identity, storage topology, or credential class. Configure a ' +
+            'dataset override above only when visitors should receive a public dataset link.';
         datasetSub.appendChild(datasetIntro);
 
         // Browser-wide legacy dataset overrides remain readable by the
@@ -13761,9 +14554,9 @@ opts.jsonPayload + '\n' +
             _infoCard.appendChild(makeInfoRow('Name',   prof.label));
             _infoCard.appendChild(makeInfoRow('Key',    activeKey));
             _infoCard.appendChild(makeInfoRow('Source',
-                prof.source === 'custom'   ? 'Runtime (custom, localStorage)' :
-                prof.source === 'imported' ? 'Runtime (imported, localStorage)' :
-                                             'Build-time (conf.py)'
+                prof.source === 'custom'   ? 'Runtime (routing saved locally; credentials memory-only)' :
+                prof.source === 'imported' ? 'Runtime (routing imported locally; credentials memory-only)' :
+                                             'Build-time (public static config)'
             ));
             if (prof.ttlDays > 0) {
                 _infoCard.appendChild(makeInfoRow('Share TTL', prof.ttlDays + ' days'));
@@ -14815,10 +15608,14 @@ opts.jsonPayload + '\n' +
                        'retention are governed by that provider, not by this ' +
                        'extension.</p>')) +
 
+                '<h4>Local sensitive-data review</h4>' +
+                '<p>Before suspicious-looking user text, a Share snapshot, or an explicit training contribution leaves or is packaged by the browser, the panel can warn about high-confidence credential shapes, some possible personal-information patterns, and invisible/bidirectional control characters. The warning shows categories and counts only, never the matching value.</p>' +
+                '<p><strong>Detection is advisory and incomplete.</strong> A missing warning does not mean the data is non-sensitive. When a warning appears you can go back, redact the flagged copy, or deliberately continue unchanged.</p>' +
+
                 '<h4>Your control</h4>' +
                 '<ul>' +
                 '<li>\u201cStart a new chat\u201d erases the stored conversation.</li>' +
-                '<li>\u201cExport as txt\u201d gives you a full local copy.</li>' +
+                '<li>Local downloads stay in your browser unless you choose to send/share them elsewhere.</li>' +
                 '<li>Closing the tab clears in-browser history.</li>' +
                 '</ul>';
         }
@@ -15986,6 +16783,59 @@ opts.jsonPayload + '\n' +
         }
     }
 
+    var _CHAT_CONTRACT_KEY_PREFIX = 'ai-assistant-chat-contract:';
+    var _CHAT_CONTRACT_V1 = 'scikitplot-chat-v1';
+
+    /**
+     * Discover whether this endpoint explicitly implements the bundled proxy
+     * contract.  Never infer trust from provider labels, URL paths or hostnames:
+     * a custom endpoint may use the same OpenAI-compatible path.
+     *
+     * @param {string} endpoint
+     * @returns {Promise<string>} Contract id or ''.
+     */
+    async function _chatContractDiscover(endpoint) {
+        var origin = _capsOrigin(endpoint);
+        if (!origin) return '';
+        var key = _CHAT_CONTRACT_KEY_PREFIX + origin;
+        var cached = _ssGet(key);
+        if (cached !== null && cached !== undefined && cached !== '') {
+            try {
+                var rec = JSON.parse(cached);
+                if (rec && typeof rec.t === 'number' &&
+                        Date.now() - rec.t <= _CAPS_TTL_MS) {
+                    return rec.v === _CHAT_CONTRACT_V1 ? _CHAT_CONTRACT_V1 : '';
+                }
+            } catch (_) {}
+        }
+        var ctrl = null, timer = null;
+        try {
+            if (typeof AbortController === 'function') {
+                ctrl = new AbortController();
+                timer = setTimeout(function () { ctrl.abort(); }, _CAPS_TIMEOUT_MS);
+            }
+            var res = await _fetch(origin + '/health', {
+                method: 'GET', credentials: 'omit', cache: 'no-store',
+                signal: ctrl ? ctrl.signal : undefined
+            });
+            if (timer) { clearTimeout(timer); timer = null; }
+            if (!res || !res.ok) return '';
+            var text = await res.text();
+            if (typeof text !== 'string' || text.length > _CAPS_MAX_BYTES) return '';
+            var doc = JSON.parse(text);
+            var caps = doc && typeof doc === 'object' ? doc.capabilities : null;
+            var chat = caps && typeof caps === 'object' ? caps.chat_request : null;
+            var contract = chat && chat.contract === _CHAT_CONTRACT_V1
+                ? _CHAT_CONTRACT_V1 : '';
+            _ssSet(key, JSON.stringify({ t: Date.now(), v: contract || false }));
+            return contract;
+        } catch (_) {
+            return '';
+        } finally {
+            if (timer) clearTimeout(timer);
+        }
+    }
+
     /**
      * Return whether a provider map covers every id in the CURRENT effort
      * scale with a usable value.
@@ -16129,6 +16979,28 @@ opts.jsonPayload + '\n' +
             budgetMax: max,
             source: source
         };
+    }
+
+    /** Add provider-neutral reasoning intent to the trusted proxy envelope. */
+    function _applyStructuredReasoningIntent(bodyObj, support) {
+        if (!bodyObj || !support || !support.supported) return bodyObj;
+        var intent = {};
+        try {
+            if (support.effort) intent.effort = _getEffortLevel();
+            if (support.thinking) {
+                var on = _getThinkingOn();
+                intent.thinking = !!on;
+                if (on && support.thinkingMode === 'budget') {
+                    intent.budget_tokens = _safeInt(
+                        _getThinkingBudget(), support.budgetMin, support.budgetMax,
+                        support.budgetMin);
+                }
+            }
+            if (Object.keys(intent).length) bodyObj.reasoning = intent;
+        } catch (_) {
+            try { delete bodyObj.reasoning; } catch (_e) {}
+        }
+        return bodyObj;
     }
 
     /**
@@ -21049,7 +21921,7 @@ opts.jsonPayload + '\n' +
      *     ``onLinkMode {function(fmt)}`` — called with the format key
      *     (``'json'`` | ``'html'`` | ``'txt'``) when the user clicks a
      *     format card while share-link mode is ON.  Typically opens the
-     *     corresponding format-specific share sheet via ``_openSheet``.
+     *     unified Share conversation sheet via the central dispatcher.
      *
      * Returns
      * -------
@@ -21063,18 +21935,13 @@ opts.jsonPayload + '\n' +
      *   The toggle is synced with the Export button in the toolbar — both
      *   always show the same mode.
      *
-     * Developer: ``onLinkMode`` closures are safe to reference
-     *   ``convShareSheetJson/Html/Txt`` that are var-hoisted in
-     *   ``createAIPanel`` and assigned after ``_buildShareSheet()`` returns —
-     *   the exact same pattern as the toolbar export dropdown.  No user
-     *   interaction can fire before assignments are reached.
+     * Developer: ``onLinkMode`` delegates to the same central Share dispatcher
+     *   used by toolbar dropdowns.  No caller owns JSON/HTML/TXT sheet refs.
      *
-     * Developer: The mode-toggle ``id`` used here
-     *   (``ai-assistant-share-export-link-toggle``) is intentionally
-     *   distinct from the dropdown toggle id
-     *   (``ai-assistant-export-link-toggle``) so ``_setExportLinkMode``'s
-     *   ``getElementById`` sync covers the dropdown and the observer
-     *   callback covers this one — no ID collision.
+     * Developer: Every Download/Share control is its own button subscribed to
+     *   ``_exportStateListeners``.  There are deliberately no singleton toggle
+     *   ids and no nested interactive controls; state synchronisation is data-
+     *   driven rather than DOM-query-driven.
      *
      * Developer: A listener is pushed onto ``_exportStateListeners`` during
      *   construction.  It lives as long as the panel (panel-lifetime surface)
@@ -21228,78 +22095,20 @@ opts.jsonPayload + '\n' +
         bodyInner.appendChild(cardsLive);
 
         // ── Mode-toggle row ───────────────────────────────────────────────────
-        // Shares logic with the dropdown's mode row; reuses the same pill CSS
-        // classes (.ai-assistant-mic-popup-toggle / -toggle-track / -thumb).
-        // Uses a different ID to avoid colliding with the dropdown's toggle.
         var modeSep = document.createElement('div');
         modeSep.className = 'ai-assistant-share-export-sep';
         bodyInner.appendChild(modeSep);
 
-        var modeRow = document.createElement('div');
-        modeRow.className = 'ai-assistant-share-export-mode-row';
-        modeRow.setAttribute('role', 'button');
-        modeRow.setAttribute('tabindex', '0');
-        modeRow.setAttribute('aria-label', 'Toggle share-link mode');
-
-        var modeIcon = document.createElement('span');
-        modeIcon.className = 'ai-assistant-share-export-mode-icon';
-        modeIcon.setAttribute('aria-hidden', 'true');
-        modeIcon.innerHTML = ICONS.linkChain;
-
-        var modeLbl = document.createElement('span');
-        modeLbl.className = 'ai-assistant-share-export-mode-label';
-        // Reflects the current mode on initial render; updated reactively in
-        // the _exportStateListeners callback registered below.
-        modeLbl.textContent = _exportLinkMode ? 'Share link' : 'Download';
-
-        var modeToggle = document.createElement('button');
-        modeToggle.type = 'button';
-        modeToggle.className = 'ai-assistant-mic-popup-toggle';
-        modeToggle.id = 'ai-assistant-share-export-link-toggle';
-        modeToggle.setAttribute('aria-pressed', _exportLinkMode ? 'true' : 'false');
-        modeToggle.setAttribute('aria-label', 'Share-link mode');
-        modeToggle.setAttribute('title',
-            _exportLinkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
-
-        var modeTrack = document.createElement('span');
-        modeTrack.className = 'ai-assistant-mic-toggle-track';
-        var modeThumb = document.createElement('span');
-        modeThumb.className = 'ai-assistant-mic-toggle-thumb';
-        modeTrack.appendChild(modeThumb);
-        modeToggle.appendChild(modeTrack);
-
-        modeToggle.addEventListener('click', function (e) {
-            e.stopPropagation();
-            _setExportLinkMode(!_exportLinkMode);
-        });
-
-        modeRow.addEventListener('click', function (e) {
-            if (modeToggle.contains(e.target)) { return; }
-            _setExportLinkMode(!_exportLinkMode);
-        });
-        modeRow.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                _setExportLinkMode(!_exportLinkMode);
+        var modeRow = _buildExportModeControl({
+            rowClass: 'ai-assistant-share-export-mode-row',
+            iconClass: 'ai-assistant-share-export-mode-icon',
+            labelClass: 'ai-assistant-share-export-mode-label',
+            onState: function (state) {
+                modeBadge.textContent = state.linkMode ? 'Link' : 'Download';
+                section.setAttribute('data-link-mode', state.linkMode ? 'true' : 'false');
             }
         });
-
-        modeRow.appendChild(modeIcon);
-        modeRow.appendChild(modeLbl);
-        modeRow.appendChild(modeToggle);
         bodyInner.appendChild(modeRow);
-
-        // ── State observer — stay in sync with toolbar dropdown ───────────────
-        // Registered on _exportStateListeners so any call to _setExportLinkMode
-        // (from either this row or the dropdown) updates both surfaces.
-        _exportStateListeners.push(function (state) {
-            modeBadge.textContent  = state.linkMode ? 'Link' : 'Download';
-            // Label mirrors the current mode: "Download" or "Share link".
-            modeLbl.textContent    = state.linkMode ? 'Share link' : 'Download';
-            modeToggle.setAttribute('aria-pressed', state.linkMode ? 'true' : 'false');
-            modeToggle.setAttribute('title',
-                state.linkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
-        });
 
         // ── Accordion toggle ──────────────────────────────────────────────────
         triggerBtn.addEventListener('click', function () {
@@ -21424,75 +22233,64 @@ opts.jsonPayload + '\n' +
     }
 
 
-    // ── Conversation share sheets (format-specific) ───────────────────────────
-    // Three sheets produced by _buildFmtShareSheet below — one per export format.
-    // Replaces the former single _buildConvShareSheet (HTML-only, session-only).
+    // ── Conversation Share: unified format / destination / lifecycle UI ───
+    // Run 8 replaces the former per-format tier panels with one sheet driven by
+    // the canonical export registry.  Format, destination, content/privacy and
+    // artifact lifetime are independent axes; contribution remains a separate
+    // consent workflow under More actions.
+
+    // Page-memory artifact registry.  This intentionally survives New chat so
+    // a Global edit capability created by an older conversation can still be
+    // used to revoke that server object before the page closes.  The registry
+    // also records direct toolbar downloads so every assistant-managed result
+    // has a lifecycle entry.  It is never persisted to Web Storage.
+    var _managedConversationArtifacts = [];
+    var _managedConversationArtifactSeq = 0;
+    var _managedConversationArtifactRenderHook = null;
+
+    function _registerManagedConversationArtifact(artifact) {
+        var entry = Object.assign({
+            id: 'share-artifact-' + (++_managedConversationArtifactSeq),
+            createdAt: Date.now(),
+            conversationId: _getConversationId(),
+        }, artifact || {});
+        _managedConversationArtifacts.unshift(entry);
+        if (typeof _managedConversationArtifactRenderHook === 'function') {
+            try { _managedConversationArtifactRenderHook(); } catch (_e) {}
+        }
+        return entry;
+    }
+
+    function _forgetManagedConversationArtifact(id) {
+        for (var i = _managedConversationArtifacts.length - 1; i >= 0; i--) {
+            if (_managedConversationArtifacts[i].id === id) {
+                _managedConversationArtifacts.splice(i, 1);
+            }
+        }
+        if (typeof _managedConversationArtifactRenderHook === 'function') {
+            try { _managedConversationArtifactRenderHook(); } catch (_e) {}
+        }
+    }
 
     /**
-     * Build a format-specific "Share conversation" slide-over sheet.
+     * Build the unified Share conversation sheet.
      *
-     * Factory function that produces one sheet per export format (JSON, HTML,
-     * TXT).  Each sheet carries format-specific metadata, description, and
-     * content-building logic so the user always sees exactly what they are
-     * sharing and can use the right tool for the job.
+     * Destinations
+     * ------------
+     * Local preview
+     *     Temporary Blob resource; Remove revokes the Blob URL.
+     * Self-contained link
+     *     Snapshot embedded in the URL; Remove forgets the browser-managed
+     *     result, but already copied URLs are inherently non-revocable.
+     * Global link
+     *     Server-backed snapshot; Revoke performs authenticated server DELETE
+     *     while the page-memory edit capability remains available.
+     * Download
+     *     Device-owned file; the assistant can forget its lifecycle record but
+     *     cannot delete a file already saved by the browser/device.
      *
-     * Design
-     * ──────
-     * The sheet follows the exact ``ai-assistant-panel-privacy`` structure
-     * (``data-open`` contract, header + body layout, close-button id pattern)
-     * so it integrates transparently with the existing sheet management system
-     * in ``createAIPanel``:
-     *
-     *   • ``_openSheet`` — mutual-exclusion open/close sweep
-     *   • Close-button re-wire loop — focus restoration on ×
-     *   • Escape-key handler — keyboard close
-     *
-     * Two sharing modes are provided per sheet:
-     *
-     * 1. **Session link** (``Create share link`` button)
-     *    Builds the content string, creates a ``blob:`` URL, and shows it in a
-     *    readonly input.  The link is valid only while the browser tab is open.
-     *    Revoked on mode change or re-generation to prevent memory leaks.
-     *
-     * 2. **Permanent link** (``Save permanently`` button)
-     *    Emits a same-origin self-contained hash URL
-     *    (``#ai-share-c1.{fmt}.{base64url}``) that embeds the full conversation
-     *    in the URL itself — a real navigable link that works in any browser on
-     *    any device with no server. ``_checkShareHash()`` decodes it on load and
-     *    opens the content. For same-browser convenience the content is ALSO
-     *    saved to IndexedDB under a UUID, so the same machine can reopen it
-     *    without re-navigating the long URL; that entry can be deleted at any
-     *    time from the sheet. (If hash encoding is unavailable, the button falls
-     *    back to a ``data:`` URI.)
-     *
-     * Parameters
-     * ----------
-     * fmt : string
-     *     Format key: ``'json'`` | ``'html'`` | ``'txt'``.
-     *
-     * Returns
-     * -------
-     * HTMLElement
-     *     Assembled sheet element (``data-open="false"`` initially).
-     *
-     * Notes
-     * -----
-     * User: Session links close when you close the tab.  Use "Save permanently"
-     *   for a lasting link — the conversation is embedded in the URL, so it
-     *   opens in any browser on any device. (Very long conversations make a long
-     *   URL; keep shared chats reasonably small.)
-     *
-     * Developer: The three sheet instances produced for 'json', 'html', and
-     *   'txt' must ALL be registered in the panel management arrays inside
-     *   ``createAIPanel``:
-     *
-     *     _openSheet([..., convShareSheetJson, convShareSheetHtml, convShareSheetTxt])
-     *     Close-button re-wire loop: same list
-     *     Escape handler openSheets list: same list
-     *
-     *   The ``_buildExportDropdownBtn`` ``onLinkMode`` callback dispatches to
-     *   the correct sheet by ``fmt`` so the dropdown and the sheets are
-     *   decoupled — neither knows the other's DOM reference directly.
+     * Conversation identity scopes UI state and delayed operations only; it is
+     * never authentication or authorization.
      */
 
     // ── Data-URI builder ─────────────────────────────────────────────────────
@@ -21546,1076 +22344,1370 @@ opts.jsonPayload + '\n' +
         }
     }
 
-    // ── Self-contained URL-hash share (serverless, any device, any browser) ───
-    //
-    // A `data:` URI embeds the content but cannot be opened with window.open in
-    // some browsers (Chrome blocks data: navigations for HTML) and is awkward to
-    // bookmark. A same-origin hash link — `{page}#ai-share-c1.{fmt}.{payload}` —
-    // is a real navigable URL on the project's own origin: it works in any
-    // browser on any device with no server and no storage. The page detects the
-    // hash on load (_checkShareHash), decodes the payload, and renders it.
-    //
-    // Encoding chain (UTF-8-safe, dependency-free, symmetric):
-    //   content → encodeURIComponent → unescape → btoa → base64url
-    // base64url = base64 with +,/ replaced by -,_ and trailing '=' stripped, so
-    // the payload is URL-hash-safe and needs no extra percent-encoding.
-    //
-    // Size note: like the data: URI, the whole conversation lives in the URL.
-    // Browsers handle long hash fragments well, but keep shared conversations
-    // reasonably small. Compression (CompressionStream / gzip) is a natural
-    // future upgrade — the `c1` version tag leaves room for a `c2` gzip variant
-    // without breaking existing links.
-    var _SHARE_HASH_PREFIX = '#ai-share-c1.';
+    // ── Self-contained structured URL-hash share ───────────────────────────
+    // c2 never transports rendered HTML. It carries a validated structured
+    // snapshot plus an allowlisted format ID; trusted local serializers render
+    // the snapshot only after decode/validation.
+    var _SHARE_HASH_PREFIX = '#ai-share-c2.';
+    var _SHARE_HASH_MAX_DECODED_CHARS = 1024 * 1024;
 
     /** UTF-8 string → base64url payload. Returns '' on failure. */
     function _encodeShareHashPayload(content) {
         try {
             var b64 = btoa(unescape(encodeURIComponent(content)));
             return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-        } catch (_e) {
-            return '';
-        }
+        } catch (_e) { return ''; }
     }
 
-    /** base64url payload → UTF-8 string. Returns null on failure. */
+    /** base64url payload → UTF-8 string. Returns null on failure/oversize. */
     function _decodeShareHashPayload(payload) {
+        if (typeof payload !== 'string' || !payload || payload.length > 2 * _SHARE_HASH_MAX_DECODED_CHARS) {
+            return null;
+        }
         try {
             var b64 = payload.replace(/-/g, '+').replace(/_/g, '/');
             while (b64.length % 4) { b64 += '='; }
-            return decodeURIComponent(escape(atob(b64)));
-        } catch (_e) {
-            return null;
-        }
+            var decoded = decodeURIComponent(escape(atob(b64)));
+            return decoded.length <= _SHARE_HASH_MAX_DECODED_CHARS ? decoded : null;
+        } catch (_e) { return null; }
     }
+
+    function _normalizeShareSnapshot(snapshot) {
+        if (!snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return null;
+        if (snapshot.schema_version !== '2.0') return null;
+        if (!snapshot.session || typeof snapshot.session !== 'object' || Array.isArray(snapshot.session)) return null;
+        if (!Array.isArray(snapshot.records) || snapshot.records.length > 10000) return null;
+
+        function _str(v, max, allowNull) {
+            if (v == null && allowNull) return null;
+            if (typeof v !== 'string' || v.length > max) return undefined;
+            return v;
+        }
+        function _num(v, allowNull) {
+            if (v == null && allowNull) return null;
+            return (typeof v === 'number' && Number.isFinite(v)) ? v : undefined;
+        }
+
+        var srcSession = snapshot.session;
+        var pageIn = _str(srcSession.page_url, 8192, true);
+        if (pageIn === undefined) return null;
+        var safePage = pageIn === '<page-redacted>' ? '<page-redacted>' : _sanitizePage(pageIn || '');
+        var sid = _str(srcSession.id, 512, true);
+        var title = _str(srcSession.page_title, 8192, true);
+        var aiName = _str(srcSession.assistant_name, 1024, true);
+        var exportedAt = _num(srcSession.exported_at, true);
+        var exportedIso = _str(srcSession.exported_at_iso, 128, true);
+        if ([sid,title,aiName,exportedAt,exportedIso].some(function (v) { return v === undefined; })) return null;
+
+        var records = [];
+        for (var i = 0; i < snapshot.records.length; i++) {
+            var r = snapshot.records[i];
+            if (!r || typeof r !== 'object' || Array.isArray(r)) return null;
+            if (r.role !== 'user' && r.role !== 'assistant' && r.role !== 'error') return null;
+            var text = _str(r.text, 1000000, false);
+            var ts = _num(r.ts, true);
+            var tsIso = _str(r.ts_iso, 128, true);
+            var modelId = _str(r.model_id, 2048, true);
+            var modelProvider = _str(r.model_provider, 512, true);
+            var modelName = _str(r.model_name, 4096, true);
+            var ratingLabel = _str(r.feedback_rating_label, 512, true);
+            var feedbackMessage = _str(r.feedback_message, 10000, true);
+            var ratingValue = r.feedback_rating_value;
+            if (ratingValue != null && typeof ratingValue !== 'number' && typeof ratingValue !== 'string' && typeof ratingValue !== 'boolean') return null;
+            if ([text,ts,tsIso,modelId,modelProvider,modelName,ratingLabel,feedbackMessage].some(function (v) { return v === undefined; })) return null;
+
+            records.push({
+                turn_index: _num(r.turn_index, true),
+                message_index: _num(r.message_index, true),
+                role: r.role,
+                text: text,
+                ts: ts,
+                ts_iso: tsIso,
+                model_id: modelId,
+                model_provider: modelProvider,
+                model_name: modelName,
+                feedback_rating_value: ratingValue == null ? null : ratingValue,
+                feedback_rating_label: ratingLabel,
+                feedback_message: feedbackMessage,
+                session_id: sid,
+                page_url: safePage,
+            });
+            if (records[records.length - 1].turn_index === undefined ||
+                    records[records.length - 1].message_index === undefined) return null;
+        }
+
+        return {
+            schema_version: '2.0',
+            session: {
+                id: sid,
+                page_url: safePage,
+                page_title: title,
+                assistant_name: aiName,
+                exported_at: exportedAt,
+                exported_at_iso: exportedIso,
+            },
+            turns: _buildTurnsFromExportRecords(records),
+            records: records,
+        };
+    }
+
+    function _isValidShareSnapshot(snapshot) {
+        return _normalizeShareSnapshot(snapshot) !== null;
+    }
+
+    function _buildSelfContainedHashUrl(snapshot, fmt) {
+        var meta = _getExportFormat(fmt);
+        if (!meta || !_isValidShareSnapshot(snapshot)) return '';
+        var envelope = {
+            share_schema: 'c2',
+            format: meta.fmt,
+            snapshot: snapshot,
+        };
+        var payload = _encodeShareHashPayload(JSON.stringify(envelope));
+        if (!payload) return '';
+        var base = '';
+        if (typeof location !== 'undefined') {
+            try {
+                var page = new URL(location.href);
+                // A file:/custom-scheme page has no portable public base and would
+                // disclose a local filesystem path. Caller falls back to data:.
+                if (!/^https?:$/i.test(page.protocol)) return '';
+                base = page.origin + page.pathname;
+            } catch (_e) { return ''; }
+        }
+        if (!base) return '';
+        return base + _SHARE_HASH_PREFIX + payload;
+    }
+
+    function _decodeSelfContainedEnvelope(payload) {
+        var raw = _decodeShareHashPayload(payload);
+        if (raw == null) return null;
+        try {
+            var env = JSON.parse(raw);
+            if (!env || typeof env !== 'object' || Array.isArray(env)) return null;
+            if (env.share_schema !== 'c2') return null;
+            if (!_getExportFormat(env.format)) return null;
+            var normalized = _normalizeShareSnapshot(env.snapshot);
+            if (!normalized) return null;
+            return { share_schema: 'c2', format: env.format, snapshot: normalized };
+        } catch (_e) { return null; }
+    }
+
+    function _buildFmtSharePanel(fmt) {
+        var meta = _getExportFormat(fmt) || _EXPORT_FORMATS[0];
+        var panel = document.createElement('div');
+        panel.className = 'ai-assistant-conv-share-format-panel';
+        panel.setAttribute('data-fmt', meta.fmt);
+        var desc = document.createElement('p');
+        desc.className = 'ai-assistant-conv-share-subnote';
+        desc.textContent = meta.shareDesc || meta.desc || '';
+        panel.appendChild(desc);
+        return panel;
+    }
+
 
     /**
-     * Build a same-origin self-contained share URL for the given content.
+     * Build the single Share conversation slide-over.
      *
-     * Parameters
-     * ----------
-     * content : string
-     *     Serialized conversation (JSON / HTML / plain text).
-     * fmt : string
-     *     'json' | 'html' | 'txt'.
+     * Format content is lazy-created and cached per format.  Each cached panel
+     * owns an immutable ``fmt`` closure, while this outer sheet owns only
+     * navigation (header / format switcher / close state).  The split avoids
+     * both the old three-sheet duplication and the async race that a mutable
+     * shared ``fmt`` variable would introduce.
      *
-     * Returns
-     * -------
-     * string
-     *     `{pageOrigin+path}#ai-share-c1.{fmt}.{base64url}`, or '' when the
-     *     content cannot be encoded.
+     * @param {string} initialFmt  Preferred format before the first open.
+     * @returns {HTMLElement} Unified Share conversation sheet.
      */
-    function _buildSelfContainedHashUrl(content, fmt) {
-        var payload = _encodeShareHashPayload(content);
-        if (!payload) { return ''; }
-        var base = (typeof location !== 'undefined')
-            ? location.href.split('#')[0] : '';
-        var safeFmt = /^(json|html|txt)$/i.test(fmt) ? fmt.toLowerCase() : 'txt';
-        return base + _SHARE_HASH_PREFIX + safeFmt + '.' + payload;
-    }
-
-    function _buildFmtShareSheet(fmt) {
-        // Read config once at build-time (window.AI_ASSISTANT_CONFIG is set by
-        // the Python-injected inline script before this file runs and does not
-        // change at runtime). Hoisted here so every code path — including the
-        // conditional global-share and training tiers below — can access it
-        // without a ReferenceError (BUG-FIX: cfg was only declared inside the
-        // permSaveBtn click closure, making it invisible at function-body scope).
+    function _buildConversationShareSheet(initialFmt) {
         var cfg = _cfg();
+        var liveFormats = _EXPORT_FORMATS.filter(function (entry) {
+            return entry && !entry.stub && typeof entry.buildStr === 'function';
+        });
+        var initialMeta = _getExportFormat(initialFmt) || _getExportFormat('html') || liveFormats[0];
+        var selectedFmt = initialMeta ? initialMeta.fmt : 'html';
+        var selectedDestination = 'local';
+        var contentPreset = 'standard';
+        var contentOptions = _conversationContentPreset('standard');
+        var boundConversationId = _getConversationId();
+        var resultState = null;
+        var managedArtifacts = _managedConversationArtifacts;
+        var _globalShareState = null;
+        var _GLOBAL_SS_KEY = 'ai-assistant-global-share:v2';
+        // Session-scoped PUBLIC artifact ledger.  It may retain bearer read URLs
+        // so users can track links this tab handed them across reload/new-chat,
+        // but it never stores editToken, snapshots, message text, or credentials.
+        var _GLOBAL_LEDGER_KEY = 'ai-assistant-global-share-ledger:v1';
+        var _GLOBAL_LEDGER_MAX = 25;
+        var SELF_WARN_BYTES = 48 * 1024;
+        var SELF_MAX_BYTES = 256 * 1024;
 
-        // ── Per-format metadata ────────────────────────────────────────────────
-        var _fmtMeta = {
-            json: {
-                label:    'JSON',
-                mime:     'application/json;charset=utf-8',
-                ext:      '.json',
-                desc:     'Share this conversation as a structured JSON file ' +
-                          '(schema v2.0 \u00b7 pandas-ready). ' +
-                          'Load with: pd.DataFrame(data[\u201crecords\u201d]).',
-                buildStr: function () { return _buildConvJsonString(); },
-            },
-            html: {
-                label:    'HTML',
-                mime:     'text/html;charset=utf-8',
-                ext:      '.html',
-                desc:     'Share as a self-contained web page with inline CSS. ' +
-                          'Works fully offline \u2014 open in any browser, ' +
-                          'no server required.',
-                buildStr: function () { return _buildConvHtmlString(); },
-            },
-            txt: {
-                label:    'Text',
-                mime:     'text/plain;charset=utf-8',
-                ext:      '.txt',
-                desc:     'Share as plain human-readable text. ' +
-                          'Opens in any text editor or email client ' +
-                          'without additional software.',
-                buildStr: function () { return _buildConvTxtString(); },
-            },
-        };
-        var meta = _fmtMeta[fmt] || _fmtMeta.html;
-
-        // ── Sheet-level state ─────────────────────────────────────────────────
-        var _shareMode    = 'private';   // 'private' | 'public'
-        var _activeBlobUrl = null;       // current session blob URL (revoke on reset)
-        var _permUuid          = null;   // UUID of current permanent save (if any)
-        var _globalShareState  = null;   // {uuid,url,expiresAt,contentHash,convFp} — dedup/update
-
-        // ── Global-share sessionStorage persistence ───────────────────────────
-        // Key is format-scoped so html / json / txt sheets never collide.
-        var _SHARE_SS_KEY = 'ai-assistant-global-share:' + fmt;
-
-        /**
-         * Conversation fingerprint — the first transcript entry's timestamp
-         * string, evaluated lazily at call time so it reflects the live
-         * _transcript even when computed inside an async callback.
-         * Returns '' when the transcript is empty (fresh session, nothing to
-         * anchor on).  _saveShareSS always records the fingerprint at save time,
-         * ensuring restore comparisons use the same epoch.
-         *
-         * @returns {string}
-         */
-        function _getConvFp() {
-            return _transcript.length > 0 ? String(_transcript[0].ts) : '';
+        function _resolveGlobalConfig() {
+            var profileUrl = _EP.hasProfiles()
+                ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('share') : _EP.resolve('share')) : '';
+            var base = profileUrl || _resolveFlatFeatureEndpoint(
+                cfg.panelGlobalShareEndpoint || '', '/v1/share');
+            var token = _EP.hasProfiles() ? _EP.resolveToken('shareToken') : (cfg.panelGlobalShareToken || '');
+            var ttl = parseInt(cfg.panelGlobalShareTtlDays, 10);
+            if (!Number.isFinite(ttl) || ttl < 1) ttl = 30;
+            return { base: base, token: token, ttlDays: ttl };
         }
 
-        /**
-         * Read stored share state from sessionStorage.
-         * Returns null on cache miss, storage unavailability, or JSON parse
-         * failure — never throws.
-         *
-         * @returns {Object|null}
-         */
-        function _loadShareSS() {
-            var raw = _ssGet(_SHARE_SS_KEY);
-            if (!raw) { return null; }
-            try { return JSON.parse(raw); } catch (_) { return null; }
-        }
-
-        /**
-         * Write share state to sessionStorage.
-         * Passing null or undefined deletes the key (conversation cleared).
-         * Silently swallows write errors (private-mode / storage-full).
-         *
-         * @param {Object|null} state
-         */
-        function _saveShareSS(state) {
-            if (state) { _ssSet(_SHARE_SS_KEY, JSON.stringify(state)); }
-            else        { _ssDel(_SHARE_SS_KEY); }
-        }
-
-        // Restore persisted share state when the page is refreshed mid-session.
-        // Guards: (a) non-empty fingerprint so empty-transcript collisions are
-        // impossible; (b) matching convFp so stale state from a cleared
-        // conversation is silently discarded; (c) uuid + url present so there
-        // is a valid URL to restore.
-        (function () {
-            var fp     = _getConvFp();
-            if (!fp) { return; }
-            var stored = _loadShareSS();
-            if (stored && stored.convFp === fp &&
-                    stored.uuid && stored.url) {
-                _globalShareState = stored;
+        function _loadGlobalSS() {
+            var raw = _ssGet(_GLOBAL_SS_KEY);
+            if (!raw) return null;
+            try {
+                var state = JSON.parse(raw);
+                if (!state || typeof state !== 'object' || Array.isArray(state) ||
+                    state.conversationId !== boundConversationId) {
+                    _ssDel(_GLOBAL_SS_KEY);
+                    return null;
+                }
+                var uuid = typeof state.uuid === 'string' && /^(?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i.test(state.uuid)
+                    ? state.uuid : '';
+                var url = _safeGlobalLedgerUrl(state.url, uuid);
+                if (!uuid || !url) {
+                    _ssDel(_GLOBAL_SS_KEY);
+                    return null;
+                }
+                // Fail-closed migration: rebuild a fresh allowlisted object instead
+                // of returning the parsed record.  Old/tampered Web Storage may
+                // contain editToken, snapshot, contentHash, credentials, or other
+                // fields that must never regain authority after reload.
+                var safe = {
+                    uuid: uuid,
+                    url: url,
+                    expiresAt: typeof state.expiresAt === 'string' ? state.expiresAt.slice(0, 128) : null,
+                    conversationId: boundConversationId,
+                    format: _getExportFormat(state.format) ? state.format : selectedFmt,
+                };
+                _saveGlobalSS(safe); // destructive scrub of forbidden legacy fields
+                return safe;
+            } catch (_e) {
+                _ssDel(_GLOBAL_SS_KEY);
+                return null;
             }
-        }());
+        }
 
-        // ── Sheet container ───────────────────────────────────────────────────
+        function _saveGlobalSS(state) {
+            if (!state) { _ssDel(_GLOBAL_SS_KEY); return; }
+            // Public recovery only. Mutation/revoke authority and any
+            // conversation-derived fingerprint remain page-memory only.
+            _ssSet(_GLOBAL_SS_KEY, JSON.stringify({
+                uuid: state.uuid || '', url: state.url || '',
+                expiresAt: state.expiresAt || null,
+                conversationId: state.conversationId || '',
+                format: state.format || '',
+            }));
+        }
+
+        function _newGlobalLedgerId() {
+            return 'gla-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+        }
+
+        function _safeGlobalLedgerUrl(value, uuid) {
+            if (typeof value !== 'string' || !value || value.length > 4096) return '';
+            if (!/^https?:\/\//i.test(value) || value.indexOf('?') >= 0) return '';
+            if (/^https?:\/\/[^/]*@/i.test(value)) return '';
+            var hashAt = value.indexOf('#');
+            if (hashAt >= 0) {
+                var base = value.slice(0, hashAt).replace(/\/+$/, '');
+                var hash = value.slice(hashAt + 1);
+                if (hash.indexOf('share=') === 0) hash = hash.slice(6);
+                try { hash = decodeURIComponent(hash); } catch (_e) { return ''; }
+                if (!uuid || hash !== uuid || !/\/v1\/share$/i.test(base)) return '';
+                return base + '#share=' + encodeURIComponent(uuid);
+            }
+            var path = value.replace(/\/+$/, '');
+            if (uuid && path.slice(-(uuid.length + 1)) !== '/' + uuid) return '';
+            return value;
+        }
+
+
+        function _normalizeGlobalLedgerItem(item) {
+            if (!item || typeof item !== 'object' || Array.isArray(item)) return null;
+            var state = String(item.state || 'restored');
+            if (['active','restored','expiry_due','expired','revoked','unavailable'].indexOf(state) < 0) return null;
+            var uuid = typeof item.uuid === 'string' && /^(?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i.test(item.uuid) ? item.uuid : '';
+            var url = _safeGlobalLedgerUrl(item.url, uuid);
+            if ((state === 'active' || state === 'restored' || state === 'expiry_due' || state === 'unavailable') && (!uuid || !url)) return null;
+            var ledgerId = typeof item.ledgerId === 'string' && /^gla-[a-z0-9-]{6,80}$/i.test(item.ledgerId)
+                ? item.ledgerId : _newGlobalLedgerId();
+            return {
+                ledgerId: ledgerId,
+                uuid: uuid,
+                url: url,
+                conversationId: typeof item.conversationId === 'string' ? item.conversationId.slice(0, 512) : '',
+                format: _getExportFormat(item.format) ? item.format : 'html',
+                createdAt: Number.isFinite(item.createdAt) ? item.createdAt : Date.now(),
+                updatedAt: Number.isFinite(item.updatedAt) ? item.updatedAt : Date.now(),
+                expiresAt: typeof item.expiresAt === 'string' ? item.expiresAt.slice(0, 128) : null,
+                state: state,
+            };
+        }
+
+        function _loadGlobalLedger() {
+            var raw = _ssGet(_GLOBAL_LEDGER_KEY);
+            if (!raw) return [];
+            try {
+                var parsed = JSON.parse(raw);
+                var items = parsed && parsed.schemaVersion === 1 && Array.isArray(parsed.items) ? parsed.items : [];
+                return items.map(_normalizeGlobalLedgerItem).filter(Boolean).slice(0, _GLOBAL_LEDGER_MAX);
+            } catch (_e) { return []; }
+        }
+
+        function _saveGlobalLedger() {
+            // Never add editToken, snapshot, contentHash, query/page data, or
+            // credentials here.  This is deliberately only a bounded public-link
+            // history for the current browser tab/session.
+            var safeItems = _globalLedger.map(_normalizeGlobalLedgerItem).filter(Boolean).slice(0, _GLOBAL_LEDGER_MAX);
+            _globalLedger = safeItems;
+            _ssSet(_GLOBAL_LEDGER_KEY, JSON.stringify({ schemaVersion: 1, items: safeItems }));
+        }
+
+        function _findGlobalLedgerItem(ref) {
+            if (!ref) return null;
+            for (var i = 0; i < _globalLedger.length; i++) {
+                if ((ref.ledgerId && _globalLedger[i].ledgerId === ref.ledgerId) ||
+                    (ref.uuid && _globalLedger[i].uuid === ref.uuid)) return _globalLedger[i];
+            }
+            return null;
+        }
+
+        function _upsertGlobalLedger(ref, state) {
+            ref = ref || {};
+            var item = _findGlobalLedgerItem(ref);
+            if (!item) {
+                item = { ledgerId: ref.ledgerId || _newGlobalLedgerId(), createdAt: ref.createdAt || Date.now() };
+                _globalLedger.unshift(item);
+            }
+            item.uuid = ref.uuid || item.uuid || '';
+            item.url = ref.url || item.url || '';
+            item.conversationId = ref.conversationId || item.conversationId || boundConversationId;
+            item.format = ref.format || item.format || selectedFmt;
+            item.expiresAt = ref.expiresAt || item.expiresAt || null;
+            item.updatedAt = Date.now();
+            item.state = state || ref.state || item.state || 'active';
+            // Once the server has confirmed a terminal state, no bearer URL is
+            // needed for lifecycle history and retaining it only increases risk.
+            if (item.state === 'revoked' || item.state === 'expired') {
+                item.uuid = '';
+                item.url = '';
+            }
+            var normalized = _normalizeGlobalLedgerItem(item);
+            if (!normalized) return null;
+            Object.assign(item, normalized);
+            _saveGlobalLedger();
+            return item;
+        }
+
+        function _forgetGlobalLedger(ref) {
+            for (var i = _globalLedger.length - 1; i >= 0; i--) {
+                if ((ref.ledgerId && _globalLedger[i].ledgerId === ref.ledgerId) ||
+                    (ref.uuid && _globalLedger[i].uuid === ref.uuid)) _globalLedger.splice(i, 1);
+            }
+            _saveGlobalLedger();
+        }
+
+        var _globalLedger = _loadGlobalLedger();
+        _globalShareState = _loadGlobalSS();
+        // Migrate the older one-link session state into the bounded ledger.
+        if (_globalShareState && _globalShareState.url) _upsertGlobalLedger(_globalShareState, 'restored');
+
         var sheet = document.createElement('div');
-        sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-conv-share';
-        sheet.id        = 'ai-assistant-panel-conv-share-sheet-' + fmt;
+        sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-conv-share ai-assistant-conv-share-v2';
+        sheet.id = 'ai-assistant-panel-conv-share-sheet';
         sheet.setAttribute('data-open', 'false');
-        sheet.setAttribute('data-fmt',  fmt);
+        sheet.setAttribute('data-fmt', selectedFmt);
+        sheet.setAttribute('data-destination', selectedDestination);
+        sheet.setAttribute('role', 'dialog');
+        sheet.setAttribute('aria-modal', 'true');
+        sheet.setAttribute('aria-labelledby', 'ai-assistant-conv-share-title');
 
-        // ── Header ────────────────────────────────────────────────────────────
         var head = document.createElement('div');
         head.className = 'ai-assistant-panel-privacy-head';
-
         var headLeft = document.createElement('div');
         headLeft.className = 'ai-assistant-conv-share-head-left';
-
         var hStrong = document.createElement('strong');
+        hStrong.id = 'ai-assistant-conv-share-title';
         hStrong.textContent = 'Share conversation';
-
         var fmtBadge = document.createElement('span');
-        fmtBadge.className =
-            'ai-assistant-conv-share-fmt-badge ' +
-            'ai-assistant-conv-share-fmt-' + fmt;
-        fmtBadge.setAttribute('aria-label', meta.label + ' format');
-        fmtBadge.textContent = meta.label;
-
+        fmtBadge.className = 'ai-assistant-conv-share-fmt-badge';
         headLeft.appendChild(hStrong);
         headLeft.appendChild(fmtBadge);
-
-        // Close button — id follows the `*-close` convention so the
-        // createAIPanel close-button re-wire loop picks it up automatically.
-        var hClose = _createIconBtn(
-            'conv-share-' + fmt + '-close', 'Close', ICONS.close);
-        hClose.addEventListener('click', function () {
-            sheet.setAttribute('data-open', 'false');
-        });
-
-        var _fmtHamBtn = _buildSheetHamburgerBtn(sheet, 'conv-share-' + fmt);
-        if (_fmtHamBtn) { head.appendChild(_fmtHamBtn); }
+        var closeBtn = _createIconBtn('conv-share-close', 'Close Share conversation', ICONS.close);
+        closeBtn.addEventListener('click', function () { sheet.setAttribute('data-open', 'false'); });
+        var hamBtn = _buildSheetHamburgerBtn(sheet, 'conv-share');
+        if (hamBtn) head.appendChild(hamBtn);
         head.appendChild(headLeft);
-        head.appendChild(hClose);
+        head.appendChild(closeBtn);
         sheet.appendChild(head);
 
-        // ── Body ──────────────────────────────────────────────────────────────
         var body = document.createElement('div');
-        body.className =
-            'ai-assistant-panel-privacy-body ai-assistant-conv-share-body';
+        body.className = 'ai-assistant-panel-privacy-body ai-assistant-conv-share-body ai-assistant-conv-share-v2-body';
 
-        // Format description
-        var descEl = document.createElement('p');
-        descEl.className  = 'ai-assistant-conv-share-subnote';
-        descEl.textContent = meta.desc;
-        body.appendChild(descEl);
+        var intro = document.createElement('p');
+        intro.className = 'ai-assistant-conv-share-subnote ai-assistant-conv-share-v2-intro';
+        intro.textContent = 'Create a local preview, a self-contained link, or an expiring Global link.';
+        body.appendChild(intro);
 
-        // ── Visibility option buttons ─────────────────────────────────────────
-        // Claude-inspired: icon block → text block → checkmark.
-        // aria-pressed drives checkmark opacity via CSS — no JS needed per
-        // selection; only the mode variable and aria-pressed are managed.
-        var optWrap = document.createElement('div');
-        optWrap.className = 'ai-assistant-conv-share-opts';
+        var summary = document.createElement('div');
+        summary.className = 'ai-assistant-conv-share-summary';
+        summary.setAttribute('aria-live', 'polite');
+        body.appendChild(summary);
 
-        function _mkOpt(key, svgIcon, label, desc) {
+        var warning = document.createElement('button');
+        warning.type = 'button';
+        warning.className = 'ai-assistant-conv-share-warning';
+        warning.style.display = 'none';
+        warning.textContent = 'Invisible formatting characters detected · Inspect';
+        body.appendChild(warning);
+
+        function _sectionTitle(text) {
+            var el = document.createElement('div');
+            el.className = 'ai-assistant-conv-share-section-title';
+            el.textContent = text;
+            return el;
+        }
+
+        body.appendChild(_sectionTitle('Format'));
+        var nav = document.createElement('div');
+        nav.className = 'ai-assistant-conv-share-format-switcher';
+        nav.setAttribute('role', 'tablist');
+        nav.setAttribute('aria-label', 'Conversation export format');
+        var formatButtons = Object.create(null);
+        liveFormats.forEach(function (entry) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'ai-assistant-conv-share-format-' + entry.fmt;
+            btn.className = 'ai-assistant-conv-share-format-btn';
+            btn.setAttribute('role', 'tab');
+            btn.setAttribute('data-fmt', entry.fmt);
+            btn.setAttribute('aria-selected', entry.fmt === selectedFmt ? 'true' : 'false');
+            btn.setAttribute('tabindex', entry.fmt === selectedFmt ? '0' : '-1');
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-conv-share-format-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.innerHTML = entry.icon;
+            var label = document.createElement('span');
+            label.textContent = entry.label;
+            btn.appendChild(icon); btn.appendChild(label);
+            formatButtons[entry.fmt] = btn;
+            nav.appendChild(btn);
+        });
+        body.appendChild(nav);
+        var formatHost = document.createElement('div');
+        formatHost.className = 'ai-assistant-conv-share-format-host';
+        body.appendChild(formatHost);
+
+        body.appendChild(_sectionTitle('Destination'));
+        var destWrap = document.createElement('div');
+        destWrap.className = 'ai-assistant-conv-share-destinations';
+        var destinationButtons = Object.create(null);
+
+        function _makeDestination(key, label, desc, helper) {
             var b = document.createElement('button');
             b.type = 'button';
-            b.className = 'ai-assistant-conv-share-opt';
+            b.className = 'ai-assistant-conv-share-destination';
             b.setAttribute('data-key', key);
-            b.setAttribute('aria-pressed', key === _shareMode ? 'true' : 'false');
-
-            var iconW = document.createElement('span');
-            iconW.className = 'ai-assistant-conv-share-opt-icon';
-            iconW.setAttribute('aria-hidden', 'true');
-            iconW.innerHTML = svgIcon;
-            b.appendChild(iconW);
-
-            var textW = document.createElement('span');
-            textW.className = 'ai-assistant-conv-share-opt-text';
-            var lbl = document.createElement('span');
-            lbl.className = 'ai-assistant-conv-share-opt-lbl';
-            lbl.textContent = label;
-            var dsc = document.createElement('span');
-            dsc.className = 'ai-assistant-conv-share-opt-dsc';
-            dsc.textContent = desc;
-            textW.appendChild(lbl);
-            textW.appendChild(dsc);
-            b.appendChild(textW);
-
-            var chkW = document.createElement('span');
-            chkW.className = 'ai-assistant-conv-share-opt-chk';
-            chkW.setAttribute('aria-hidden', 'true');
-            chkW.innerHTML = ICONS.convCheck;
-            b.appendChild(chkW);
+            b.setAttribute('aria-pressed', key === selectedDestination ? 'true' : 'false');
+            var strong = document.createElement('strong'); strong.textContent = label;
+            var d = document.createElement('span'); d.textContent = desc;
+            var h = document.createElement('small'); h.textContent = helper || '';
+            b.appendChild(strong); b.appendChild(d); b.appendChild(h);
+            destinationButtons[key] = b;
+            destWrap.appendChild(b);
             return b;
         }
+        _makeDestination('local', 'Local preview',
+            'Open a temporary preview in this browser.',
+            'Nothing is uploaded · removable from this page');
+        _makeDestination('self_contained', 'Self-contained link',
+            'Embed the conversation in the link. No server is used.',
+            'Not encrypted · copied links cannot be revoked');
+        _makeDestination('global', 'Global link',
+            'Create a short server link that expires.',
+            'Server-backed · revocable while the private edit capability is available');
+        body.appendChild(destWrap);
+        var globalUnavailable = document.createElement('p');
+        globalUnavailable.className = 'ai-assistant-conv-share-session-note';
+        globalUnavailable.style.display = 'none';
+        body.appendChild(globalUnavailable);
 
-        var privOpt = _mkOpt(
-            'private', ICONS.convLock,
-            'Keep private', 'Only you have access'
-        );
-        var pubOpt = _mkOpt(
-            'public', ICONS.convGlobe,
-            'Create public link', 'Anyone with the link can view'
-        );
-        optWrap.appendChild(privOpt);
-        optWrap.appendChild(pubOpt);
-        body.appendChild(optWrap);
-
-        // ── Session link row (blob URL — tab lifetime) ────────────────────────
-        var linkRow = document.createElement('div');
-        linkRow.className = 'ai-assistant-conv-share-link-row';
-        linkRow.setAttribute('aria-live', 'polite');
-        linkRow.style.display = 'none';
-
-        var linkInput = document.createElement('input');
-        linkInput.type = 'text';
-        linkInput.readOnly = true;
-        linkInput.className = 'ai-assistant-conv-share-link-input';
-        linkInput.setAttribute('aria-label', 'Session share link');
-        linkInput.addEventListener('focus', function () { linkInput.select(); });
-
-        var copyBtn = document.createElement('button');
-        copyBtn.type = 'button';
-        copyBtn.className = 'ai-assistant-conv-share-action-btn';
-        copyBtn.setAttribute('aria-label', 'Copy share link');
-        copyBtn.textContent = 'Copy';
-        copyBtn.addEventListener('click', function () {
-            if (linkInput.value) { copyToClipboard(linkInput.value, false); }
-        });
-
-        var openBtn = document.createElement('button');
-        openBtn.type = 'button';
-        openBtn.className = 'ai-assistant-conv-share-action-btn';
-        openBtn.setAttribute('aria-label', 'Open in new tab');
-        openBtn.textContent = 'Open';
-        openBtn.addEventListener('click', function () {
-            if (!linkInput.value) return;
-            var urlToOpen = linkInput.value;
-
-            // Chrome, Firefox, and Safari block navigation to data: URIs via
-            // window.open() (data-URI navigation security policy, enforced since
-            // ~2019). In public mode _activeBlobUrl is a data: URI — calling
-            // window.open() on it opens an empty tab.
-            //
-            // Fix: when the active URL is a data: URI, rebuild the conversation
-            // content as a fresh Blob URL solely for this open action.  The Blob
-            // URL is never stored in _activeBlobUrl so the data: URI in the input
-            // field is preserved for copy / share / bookmarking purposes.
-            // The Blob URL is revoked after 30 s — enough for any browser to
-            // start loading the content; it does NOT close the tab.
-            if (urlToOpen.indexOf('data:') === 0) {
-                try {
-                    var content = meta.buildStr();
-                    if (!content) {
-                        showNotification('Nothing to open yet', true);
-                        return;
-                    }
-                    var openBlob   = new Blob([content], { type: meta.mime });
-                    var openBlobUrl = URL.createObjectURL(openBlob);
-                    var w = window.open(openBlobUrl, '_blank', 'noopener,noreferrer');
-                    if (w) { try { w.opener = null; } catch (_oe) {} }
-                    // Schedule revocation — a no-op if the browser already
-                    // navigated; safe to call on any Blob URL after use.
-                    setTimeout(function () {
-                        try { URL.revokeObjectURL(openBlobUrl); } catch (_re) {}
-                    }, 30000);
-                } catch (_e) {}
-                return;
-            }
-
-            // Private mode: linkInput holds a blob: URL — window.open works.
-            try {
-                var w = window.open(urlToOpen, '_blank', 'noopener,noreferrer');
-                if (w) { try { w.opener = null; } catch (_e) {} }
-            } catch (_e) {}
-        });
-
-        linkRow.appendChild(linkInput);
-        linkRow.appendChild(copyBtn);
-        linkRow.appendChild(openBtn);
-        body.appendChild(linkRow);
-
-        // Session-only explanatory note (always visible once link row appears)
-        var sessionNote = document.createElement('p');
-        sessionNote.className = 'ai-assistant-conv-share-session-note';
-        sessionNote.textContent =
-            '\u26A0\uFE0F Session link \u2014 valid only while this browser tab is open. ' +
-            'Close this tab and the link stops working. ' +
-            'Use \u201cSave permanently\u201d or \u201cSave globally\u201d below for a lasting link.';
-        // Hidden until the session link row is shown — displaying the warning
-        // before any link exists confuses users who have not yet clicked
-        // "Create share link".  Revealed alongside linkRow in generateBtn's
-        // click handler below.
-        sessionNote.style.display = 'none';
-        body.appendChild(sessionNote);
-
-        // ── Permanent storage section (self-contained URL + IndexedDB) ────────
-        //
-        // The "Save permanently" button emits a same-origin self-contained hash
-        // URL (#ai-share-c1.{fmt}.{base64url}) that embeds the whole conversation
-        // — a real navigable link that works in any browser on any device with
-        // no server. The content is ALSO saved to IndexedDB under a UUID so the
-        // same browser can reopen it without re-navigating the long URL; the
-        // entry persists until the user deletes it or clears browser data.
-        var permSection = document.createElement('div');
-        permSection.className = 'ai-assistant-conv-share-perm';
-
-        var permHead = document.createElement('div');
-        permHead.className = 'ai-assistant-conv-share-perm-head';
-
-        var permLbl = document.createElement('span');
-        permLbl.className   = 'ai-assistant-conv-share-perm-lbl';
-        permLbl.textContent = '\uD83D\uDCBE Permanent link';
-
-        var permHint = document.createElement('span');
-        permHint.className   = 'ai-assistant-conv-share-perm-hint';
-        permHint.textContent = 'Any device \u00B7 embedded in the URL \u00B7 no server';
-
-        permHead.appendChild(permLbl);
-        permHead.appendChild(permHint);
-        permSection.appendChild(permHead);
-
-        // Permanent link input + Copy + Delete — hidden until first save
-        var permLinkRow = document.createElement('div');
-        permLinkRow.className   = 'ai-assistant-conv-share-perm-link-row';
-        permLinkRow.style.display = 'none';
-
-        var permInput = document.createElement('input');
-        permInput.type     = 'text';
-        permInput.readOnly = true;
-        permInput.className =
-            'ai-assistant-conv-share-link-input ai-assistant-conv-share-perm-input';
-        permInput.setAttribute('aria-label', 'Permanent share link');
-        permInput.addEventListener('focus', function () { permInput.select(); });
-
-        var permCopyBtn = document.createElement('button');
-        permCopyBtn.type = 'button';
-        permCopyBtn.className = 'ai-assistant-conv-share-action-btn';
-        permCopyBtn.setAttribute('aria-label', 'Copy permanent link');
-        permCopyBtn.textContent = 'Copy';
-        permCopyBtn.addEventListener('click', function () {
-            if (permInput.value) { copyToClipboard(permInput.value, false); }
-        });
-
-        var permDeleteBtn = document.createElement('button');
-        permDeleteBtn.type = 'button';
-        permDeleteBtn.className =
-            'ai-assistant-conv-share-action-btn ai-assistant-conv-share-perm-delete';
-        permDeleteBtn.setAttribute('aria-label', 'Delete permanent link');
-        permDeleteBtn.textContent = 'Delete';
-        permDeleteBtn.addEventListener('click', function () {
-            if (!_permUuid) return;
-            var uuidToDelete = _permUuid;
-            _idbDeleteShare(uuidToDelete, function (ok, _err) {
-                if (ok) {
-                    _permUuid           = null;
-                    permLinkRow.style.display = 'none';
-                    permInput.value     = '';
-                    permSaveBtn.style.display = '';
-                    showNotification('Permanent link deleted', false);
-                } else {
-                    showNotification('Delete failed \u2014 check console', true);
-                }
+        function _collapsible(titleText, suffix) {
+            var wrap = document.createElement('div');
+            wrap.className = 'ai-assistant-conv-share-collapse';
+            var toggle = document.createElement('button');
+            toggle.type = 'button';
+            toggle.className = 'ai-assistant-conv-share-collapse-toggle';
+            toggle.setAttribute('aria-expanded', 'false');
+            var label = document.createElement('span'); label.textContent = titleText;
+            var badge = document.createElement('span'); badge.textContent = suffix || '';
+            toggle.appendChild(label); toggle.appendChild(badge);
+            var panel = document.createElement('div');
+            panel.className = 'ai-assistant-conv-share-collapse-panel';
+            panel.style.display = 'none';
+            toggle.addEventListener('click', function () {
+                var open = toggle.getAttribute('aria-expanded') !== 'true';
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                panel.style.display = open ? '' : 'none';
             });
-        });
-
-        permLinkRow.appendChild(permInput);
-        permLinkRow.appendChild(permCopyBtn);
-        permLinkRow.appendChild(permDeleteBtn);
-
-        // Permanent note — scope and limitation explanation
-        var permNote = document.createElement('p');
-        permNote.className =
-            'ai-assistant-conv-share-session-note ai-assistant-conv-share-perm-note';
-        permNote.textContent =
-            'Self-contained link \u2014 full conversation embedded in the URL. ' +
-            'Works in any browser on any device without a server. ' +
-            'Bookmark it for quick access; same-browser visits also reopen via local storage.';
-        permSection.appendChild(permNote);
-        permSection.appendChild(permLinkRow);
-
-        // "Save permanently" action button
-        var permSaveBtn = document.createElement('button');
-        permSaveBtn.type = 'button';
-        permSaveBtn.className = 'ai-assistant-conv-share-perm-save-btn';
-        permSaveBtn.textContent = 'Save permanently';
-
-        permSaveBtn.addEventListener('click', function () {
-            if (_transcript.length === 0) {
-                showNotification('Nothing to save yet', true);
-                return;
-            }
-            var content = meta.buildStr();
-            if (!content) { showNotification('Nothing to save yet', true); return; }
-
-            // cfg is read from function-body scope (hoisted above _fmtMeta).
-            var uuid = _idbGenUuid();
-            var entry = {
-                uuid:     uuid,
-                fmt:      fmt,
-                content:  content,
-                mimeType: meta.mime,
-                ext:      meta.ext,
-                title:    (cfg.panelTitle || 'AI Assistant') + ' \u2014 ' +
-                          new Date().toLocaleDateString(),
-                pageUrl:  (typeof location !== 'undefined')
-                          ? location.href.split('#')[0] : '',
-                ts:       Date.now(),
-            };
-
-            permSaveBtn.disabled  = true;
-            permSaveBtn.textContent = 'Saving\u2026';
-
-            _idbSaveShare(entry, function (savedUuid, err) {
-                permSaveBtn.disabled    = false;
-                permSaveBtn.textContent = 'Save permanently';
-                if (err || !savedUuid) {
-                    showNotification(
-                        'Storage failed \u2014 ' + (err ? err.message : 'unknown'),
-                        true
-                    );
-                    return;
-                }
-                _permUuid = savedUuid;
-
-                // Build a data URI — embeds the full conversation content directly
-                // in the URL so it works in any browser on any device without
-                // needing this browser's local IndexedDB.
-                // The IDB entry is kept alongside for same-browser convenience:
-                // _checkShareHash() detects the hash fragment on revisit and
-                // reopens the content without requiring the user to navigate the
-                // long data URI again.
-                // Build a same-origin self-contained hash URL — a real
-                // navigable link that embeds the full conversation and works in
-                // any browser on any device with no server. Falls back to a
-                // data: URI only if hash encoding is unavailable. The IDB entry
-                // is kept alongside for same-browser convenience (_checkShareHash
-                // reopens it without re-navigating the long URL).
-                var shareUrl = _buildSelfContainedHashUrl(content, fmt)
-                    || _buildDataUri(content, meta.mime);
-                permInput.value         = shareUrl;
-                permLinkRow.style.display = '';
-                permSaveBtn.style.display = 'none';
-
-                if (_shareMode === 'public') {
-                    copyToClipboard(shareUrl, false);
-                    showNotification(
-                        'Link saved \u2014 copied to clipboard. Works in any browser.', false);
-                } else {
-                    showNotification('Link saved \u2014 works in any browser', false);
-                }
-            });
-        });
-
-        permSection.appendChild(permSaveBtn);
-        body.appendChild(permSection);
-
-        // ── Global share tier (Option B: third card, conditional) ─────────────
-        // Rendered only when a share endpoint is reachable from the active
-        // configuration — via a profile or the legacy flat key.
-        //
-        // ── Global share endpoint — profile-aware with legacy fallback ──
-        //
-        // Resolution priority (first non-empty wins):
-        //   1. Active profile's resolved Share endpoint
-        //   2. cfg.panelGlobalShareEndpoint  (legacy flat key)
-        //
-        // When a profile exists but its `share` field is '' (e.g. an
-        // Advanced-mode custom profile where "Share URL" was left blank,
-        // or a conf.py profile with "share": ""), the active profile's URL
-        // is empty and we fall through to the legacy key — the "Save
-        // globally" button still appears without a rebuild or profile re-add.
-        var _profileShareUrl = _EP.hasProfiles()
-            ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('share') : _EP.resolve('share')) : '';
-        var _shBase  = _profileShareUrl ||
-            _resolveFlatFeatureEndpoint(cfg.panelGlobalShareEndpoint || '', '/v1/share');
-        var _shToken = _profileShareUrl
-            ? _EP.resolveToken('shareToken')
-            : (cfg.panelGlobalShareToken || '');
-        var _shTtl   = _EP.resolveTtlDays(cfg);
-
-        if (_shBase) {
-            var globalSep = document.createElement('hr');
-            globalSep.className = 'ai-assistant-conv-share-sep';
-            body.appendChild(globalSep);
-
-            var globalWrap = document.createElement('div');
-            globalWrap.className = 'ai-assistant-conv-share-global';
-
-            var globalHead = document.createElement('div');
-            globalHead.className = 'ai-assistant-conv-share-perm-head';
-
-            var globalLbl = document.createElement('span');
-            globalLbl.className   = 'ai-assistant-conv-share-perm-lbl';
-            globalLbl.textContent = '\uD83C\uDF10 Global link';
-
-            var gTtlDays = _shTtl;  // resolved above (profile-aware)
-            var globalHint = document.createElement('span');
-            globalHint.className   = 'ai-assistant-conv-share-perm-hint';
-            globalHint.textContent = 'Any device · expires in ' + gTtlDays + ' day' + (gTtlDays === 1 ? '' : 's');
-
-            globalHead.appendChild(globalLbl);
-            globalHead.appendChild(globalHint);
-
-            var globalLinkRow = document.createElement('div');
-            globalLinkRow.className    = 'ai-assistant-conv-share-perm-link';
-            globalLinkRow.style.display = 'none';
-            var globalInput = document.createElement('input');
-            globalInput.type      = 'text';
-            globalInput.readOnly  = true;
-            globalInput.className = 'ai-assistant-conv-share-link-input ai-assistant-conv-share-perm-input';
-            globalInput.setAttribute('aria-label', 'Global share link');
-            globalInput.addEventListener('focus', function () { globalInput.select(); });
-            var globalCopyBtn = document.createElement('button');
-            globalCopyBtn.type      = 'button';
-            globalCopyBtn.className = 'ai-assistant-conv-share-perm-copy-btn';
-            globalCopyBtn.textContent = 'Copy';
-            globalCopyBtn.addEventListener('click', function () {
-                if (!globalInput.value) { return; }
-                // Use the module-level copyToClipboard helper for consistent
-                // clipboard behaviour, fallback handling, and notification
-                // integration — matches permCopyBtn, copyBtn, and every other
-                // copy action in this file.  The raw navigator.clipboard path
-                // was incorrect here: it set textContent = 'Copied!' synchronously
-                // before the async write resolved, so the label appeared even
-                // when the clipboard write failed silently.
-                copyToClipboard(globalInput.value, false);
-                globalCopyBtn.textContent = 'Copied!';
-                setTimeout(function () { globalCopyBtn.textContent = 'Copy'; }, 2000);
-            });
-            var globalOpenBtn = document.createElement('button');
-            globalOpenBtn.type        = 'button';
-            globalOpenBtn.className   = 'ai-assistant-conv-share-perm-copy-btn';
-            globalOpenBtn.textContent = 'Open';
-            globalOpenBtn.setAttribute('aria-label', 'Open global share link in new tab');
-            globalOpenBtn.addEventListener('click', function () {
-                if (!globalInput.value) { return; }
-                window.open(globalInput.value, '_blank', 'noopener,noreferrer');
-            });
-            globalLinkRow.appendChild(globalInput);
-            globalLinkRow.appendChild(globalCopyBtn);
-            globalLinkRow.appendChild(globalOpenBtn);
-
-            // "Update" button — re-runs the same save/patch logic as "Save globally"
-            // so the user can push new conversation content to the same share URL
-            // without generating a new link.  Visible whenever the link row is shown.
-            //
-            // Developer: globalSaveBtn is hidden after first save but stays in the
-            // DOM and responds to programmatic .click() regardless of visibility.
-            // var-hoisting makes globalUpdateBtn visible inside _applyResult /
-            // _applyError even though the element is declared after those closures.
-            var globalUpdateBtn = document.createElement('button');
-            globalUpdateBtn.type      = 'button';
-            globalUpdateBtn.className = 'ai-assistant-conv-share-perm-copy-btn';
-            globalUpdateBtn.textContent = 'Update';
-            globalUpdateBtn.setAttribute(
-                'aria-label',
-                'Update shared snapshot with current conversation content'
-            );
-            globalLinkRow.appendChild(globalUpdateBtn);
-
-            var globalExpiry = document.createElement('p');
-            globalExpiry.className    = 'ai-assistant-conv-share-perm-note';
-            globalExpiry.style.display = 'none';
-
-            var globalSaveBtn = document.createElement('button');
-            globalSaveBtn.type      = 'button';
-            globalSaveBtn.className = 'ai-assistant-conv-share-perm-save-btn';
-            globalSaveBtn.textContent = 'Save globally';
-
-            var globalStatus = document.createElement('p');
-            globalStatus.className    = 'ai-assistant-conv-share-perm-note';
-            globalStatus.style.display = 'none';
-
-            globalSaveBtn.addEventListener('click', function () {
-                // Prevent double-submit while a network call is in flight.
-                // Both "Save globally" and the "Update" button route here.
-                if (globalSaveBtn.disabled) { return; }
-                var gContent = meta.buildStr ? meta.buildStr() : '';
-                if (!gContent) {
-                    globalStatus.textContent = 'Nothing to save yet.';
-                    globalStatus.style.display = '';
-                    return;
-                }
-                var gHash = _strHash(gContent);
-
-                // ── Case 1: Content unchanged — restore existing URL, no network ──
-                if (_globalShareState && _globalShareState.contentHash === gHash) {
-                    globalInput.value           = _globalShareState.url;
-                    globalLinkRow.style.display = '';
-                    globalSaveBtn.style.display = 'none';
-                    globalExpiry.textContent    = 'Expires ' + (_globalShareState.expiresAt
-                        ? new Date(_globalShareState.expiresAt).toLocaleDateString()
-                        : 'in ' + gTtlDays + ' days');
-                    globalExpiry.style.display  = '';
-                    return;
-                }
-
-                var isUpdate = !!(_globalShareState && _globalShareState.uuid);
-                globalSaveBtn.disabled    = true;
-                globalSaveBtn.textContent = isUpdate ? 'Updating\u2026' : 'Saving\u2026';
-                globalUpdateBtn.disabled  = true;
-                globalStatus.style.display = 'none';
-
-                var payload = {
-                    content:  gContent,
-                    mimeType: meta.mime || 'text/html;charset=utf-8',
-                    ext:      meta.ext  || '.html',
-                    title:    (cfg.panelTitle || 'AI Assistant') + ' \u2014 ' +
-                              new Date().toLocaleDateString(),
-                    ttlDays:  gTtlDays,
-                };
-
-                // Shared success handler — updates closure state and refreshes UI.
-                function _applyResult(result) {
-                    globalSaveBtn.disabled    = false;
-                    globalSaveBtn.textContent = 'Save globally';
-                    globalUpdateBtn.disabled  = false;
-                    var url  = result.url
-                        || (_globalShareState && _globalShareState.url) || '';
-                    // UUID: prefer explicit field, else parse from URL tail, else keep old.
-                    var uuid = result.uuid
-                        || (url ? url.split('/').pop() : '')
-                        || (_globalShareState && _globalShareState.uuid) || '';
-                    _globalShareState = {
-                        uuid:        uuid,
-                        url:         url,
-                        expiresAt:   result.expiresAt || null,
-                        contentHash: gHash,
-                        convFp:      _getConvFp(),
-                    };
-                    // Persist so a page refresh restores the link without re-POSTing.
-                    _saveShareSS(_globalShareState);
-                    globalInput.value           = url;
-                    globalLinkRow.style.display = '';
-                    globalSaveBtn.style.display = 'none';
-                    globalExpiry.textContent    = 'Expires ' + (result.expiresAt
-                        ? new Date(result.expiresAt).toLocaleDateString()
-                        : 'in ' + gTtlDays + ' days');
-                    globalExpiry.style.display  = '';
-                }
-
-                // Shared error handler.
-                function _applyError(err) {
-                    globalSaveBtn.disabled    = false;
-                    globalSaveBtn.textContent = 'Save globally';
-                    globalUpdateBtn.disabled  = false;
-                    var gMsg = err.status === 429
-                        ? 'Rate limit reached \u2014 try again in an hour.'
-                        : err.status === 401
-                        ? 'Not authorized. Check endpoint configuration.'
-                        : 'Global save failed \u2014 try again or save locally.';
-                    globalStatus.textContent   = gMsg;
-                    globalStatus.style.display = '';
-                }
-
-                var base = _shBase.replace(/\/$/, '');
-
-                // ── Case 2: Content changed, UUID known — PATCH (stable URL) ──
-                if (_globalShareState && _globalShareState.uuid) {
-                    _patchGlobalShare(
-                        base + '/' + _globalShareState.uuid,
-                        _shToken, payload, _applyResult,
-                        function (err) {
-                            // 404 = entry expired/removed; 405 = no PATCH support.
-                            // Discard stale state and fall back to a fresh POST.
-                            if (err.status === 404 || err.status === 405) {
-                                _globalShareState = null;
-                                _postGlobalShare(
-                                    base,
-                                    _shToken, payload, _applyResult, _applyError
-                                );
-                            } else {
-                                _applyError(err);
-                            }
-                        }
-                    );
-                    return;
-                }
-
-                // ── Case 3: First save ────────────────────────────────────────
-                _postGlobalShare(
-                    base,
-                    _shToken, payload, _applyResult, _applyError
-                );
-            });
-
-            // "Update" delegates to the Save button's full save/patch logic.
-            // The Save button is hidden after first save but remains functional
-            // when triggered programmatically — the disabled guard at the top of
-            // its handler prevents double-submit while a request is in flight.
-            globalUpdateBtn.addEventListener('click', function () {
-                globalSaveBtn.click();
-            });
-
-            var globalDesc = document.createElement('p');
-            globalDesc.className   = 'ai-assistant-conv-share-session-note ai-assistant-conv-share-perm-note';
-            globalDesc.textContent = 'Saves the conversation to the share server and returns a URL ' +
-                'that opens on any device or browser. Anyone with the link can view a read-only ' +
-                'snapshot until it expires.';
-
-            globalWrap.appendChild(globalHead);
-            globalWrap.appendChild(globalDesc);
-            globalWrap.appendChild(globalSaveBtn);
-            globalWrap.appendChild(globalLinkRow);
-            globalWrap.appendChild(globalExpiry);
-            globalWrap.appendChild(globalStatus);
-
-            // ── Restore UI from persisted share state (page-refresh recovery) ──
-            // _globalShareState was already hydrated from sessionStorage in the
-            // restore IIFE above.  Reconstruct the link row immediately so the
-            // user sees their previously saved URL without clicking "Save" again.
-            if (_globalShareState) {
-                globalInput.value           = _globalShareState.url;
-                globalLinkRow.style.display = '';
-                globalSaveBtn.style.display = 'none';
-                globalExpiry.textContent    = 'Expires ' + (_globalShareState.expiresAt
-                    ? new Date(_globalShareState.expiresAt).toLocaleDateString()
-                    : 'in ' + gTtlDays + ' days');
-                globalExpiry.style.display  = '';
-            }
-
-            body.appendChild(globalWrap);
+            wrap.appendChild(toggle); wrap.appendChild(panel);
+            return { wrap: wrap, toggle: toggle, badge: badge, panel: panel };
         }
 
-        // ── Training contribution tier (P3, conditional) ──────────────────────
-        //
-        // Resolution priority (first non-empty wins):
-        //   1. Active profile's resolved Training endpoint
-        //   2. cfg.panelTrainingEndpoint         (legacy flat key)
-        //
-        // Same graceful fallback as _shBase: an Advanced-mode profile with
-        // training: '' falls through to the legacy key so the training section
-        // renders without requiring the user to delete and re-add the profile.
-        var _profileTrainingUrl = _EP.hasProfiles()
-            ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('training') : _EP.resolve('training')) : '';
-        var _trBase = _profileTrainingUrl ||
-            _resolveFlatFeatureEndpoint(cfg.panelTrainingEndpoint || '', '/v1/contribute');
-
-        if (_trBase) {
-            // Reserved for future use: consent-version tracking is not yet
-            // enforced server-side (dataset_schema.py CONSENT_VERSION_ENABLED
-            // is False, so consentVersion is always normalised to null
-            // regardless of what is sent here).  When that flag is flipped to
-            // True, uncomment the line below, set RESERVED_CONSENT_VERSION in
-            // dataset_schema.py to match, and change `consentVersion: null`
-            // to `consentVersion: CONSENT_VERSION` in the /v1/contribute
-            // payload a few lines down.
-            // var CONSENT_VERSION = '1.0.0';
-
-            var trainSep = document.createElement('hr');
-            trainSep.className = 'ai-assistant-conv-share-sep';
-            body.appendChild(trainSep);
-
-            var trainWrap = document.createElement('div');
-            trainWrap.className = 'ai-assistant-conv-share-training';
-
-            var trainHead = document.createElement('div');
-            trainHead.className = 'ai-assistant-conv-share-perm-head';
-            var trainLbl = document.createElement('span');
-            trainLbl.className   = 'ai-assistant-conv-share-perm-lbl';
-            trainLbl.textContent = '\uD83C\uDF93 Contribute to training';
-            var trainHint = document.createElement('span');
-            trainHint.className   = 'ai-assistant-conv-share-perm-hint';
-            trainHint.textContent = 'Only rated answers (\uD83D\uDC4D/\uD83D\uDC4E) are included';
-            trainHead.appendChild(trainLbl);
-            trainHead.appendChild(trainHint);
-
-            // Explanation note — shown between the heading and the consent checkbox
-            // so a first-time user understands what they are agreeing to before they
-            // are asked to consent.
-            var trainNote = document.createElement('p');
-            trainNote.className = 'ai-assistant-conv-share-session-note ai-assistant-conv-share-perm-note';
-            trainNote.textContent =
-                'Submits rated question-and-answer pairs \u2014 your message, the AI\u2019s reply, ' +
-                'and your \uD83D\uDC4D\uD83D\uDC4E rating \u2014 to the training server to help improve ' +
-                'the model. Only answers you have explicitly rated are included; unrated messages ' +
-                'are never sent. Consent is required each time and is not stored between sessions.';
-
-            var consentRow = document.createElement('label');
-            consentRow.className = 'ai-assistant-conv-share-consent';
-            var consentChk = document.createElement('input');
-            consentChk.type = 'checkbox';
-            var consentTxt = document.createElement('span');
-            consentTxt.textContent = 'I consent to this conversation being used to train the AI';
-            consentRow.appendChild(consentChk);
-            consentRow.appendChild(consentTxt);
-
-            var trainBtn = document.createElement('button');
-            trainBtn.type      = 'button';
-            trainBtn.className = 'ai-assistant-conv-share-perm-save-btn';
-            trainBtn.textContent = 'Contribute';
-            trainBtn.disabled    = true;   // gated on consent checkbox
-
-            consentChk.addEventListener('change', function () {
-                trainBtn.disabled = !consentChk.checked;
-            });
-
-            var trainStatus = document.createElement('p');
-            trainStatus.className    = 'ai-assistant-conv-share-perm-note';
-            trainStatus.style.display = 'none';
-
-            trainBtn.addEventListener('click', function () {
-                if (!consentChk.checked) { return; }
-                var tRecords = [];
-                // BUG-02 FIX: _answerCount was never declared anywhere in this file,
-                // causing a ReferenceError on every Contribute button click.
-                //
-                // Root cause: the loop was intended to enumerate rated answers by
-                // their 0-based answerIndex, but the upper-bound variable was never
-                // introduced alongside _feedbackStore (declared at module level as {}).
-                //
-                // Correct fix: iterate Object.keys(_feedbackStore) directly.
-                // _feedbackStore is keyed by answerIndex (integer-valued), so its
-                // keys are exactly the set of answers the user has rated — no need
-                // for a separate counter.  Sort numerically so records are emitted
-                // in ascending transcript order, matching the server's expected schema.
-                var tFbKeys = Object.keys(_feedbackStore).sort(function (a, b) { return a - b; });
-                for (var ti = 0; ti < tFbKeys.length; ti++) {
-                    var tidx = parseInt(tFbKeys[ti], 10);
-                    var tfb  = _feedbackStore[tidx] || {};
-                    if (!tfb.query && !tfb.answer) { continue; }
-                    tRecords.push({
-                        answerIndex: tidx,
-                        query:       tfb.query       || '',
-                        answer:      tfb.answer      || '',
-                        ratingValue: tfb.ratingValue != null ? tfb.ratingValue : null,
-                        ratingLabel: tfb.ratingLabel || '',
-                        ratingTitle: tfb.ratingTitle || null,  // "Helpful" / "Mostly yes"
-                        ratingMode:  tfb.ratingMode  || null,  // "quick" | "panel"
-                        // feedbackId: links this contribution row back to the
-                        // per-answer feedback event (POST /v1/feedback) that
-                        // produced this rating, if the user rated this answer
-                        // individually before contributing.  null if they
-                        // contributed without ever rating this specific answer.
-                        feedbackId:     tfb.sessionId      || null,
-                        // prevFeedbackId / editCount: edit-chain linkage,
-                        // forwarded unchanged from the feedback event (see
-                        // ai-assistant-feedback handlers for how these are set).
-                        prevFeedbackId: tfb.prevFeedbackId || null,
-                        editCount:      tfb.editCount      || 0,
-                        message:     tfb.message     || '',
-                        ts:          tfb.ts          || Date.now(),
-                        // Self-describing provenance tag.  The server overwrites
-                        // this with the same value (``_source: "contribution"``)
-                        // when writing the JSONL record, so the payload and the
-                        // stored record are always consistent.  Training pipelines
-                        // must prefer "contribution" over "feedback" when both
-                        // sources carry the same _dedup_key.  See
-                        // DATASET_COLLECTION_GUIDANCE.md for the canonical rule.
-                        _source:     'contribution',
-                    });
-                }
-                if (!tRecords.length) {
-                    trainStatus.textContent   = 'No rated answers to contribute yet.';
-                    trainStatus.style.display = '';
-                    return;
-                }
-                trainBtn.disabled    = true;
-                trainBtn.textContent = 'Contributing…';
-                trainStatus.style.display = 'none';
-                _postTrainingContribution(
-                    _trBase.replace(/\/$/, ''),
-                    {
-                        schemaVersion:  2,
-                        consentFlag:    true,
-                        consentVersion: null,  // reserved — see CONSENT_VERSION comment above
-                        sessionId:      _sessionId,
-                        page:           _sanitizePage(location ? location.href : ''),
-                        // _buildModelInfo gives the same canonical 8-key shape
-                        // as feedback's detail.model (see definition near
-                        // _getActiveModel) — was previously the raw
-                        // _getActiveModel(cfg) object (8 keys but NOT
-                        // normalised: missing keys were absent rather than null).
-                        model:          _buildModelInfo(cfg),
-                        records:        tRecords,
-                    },
-                    function onContributeSuccess(result) {
-                        trainBtn.disabled    = false;
-                        trainBtn.textContent = 'Contribute';
-                        consentChk.checked   = false;
-                        trainBtn.disabled    = true;
-                        trainStatus.textContent   = 'Thank you! ' + (result.rows || 0) + ' record(s) contributed.';
-                        trainStatus.style.display = '';
-                    },
-                    function onContributeError(err) {
-                        trainBtn.disabled    = false;
-                        trainBtn.textContent = 'Contribute';
-                        var tMsg = err.status === 429
-                            ? 'Rate limit reached — try again in an hour.'
-                            : err.status === 422
-                            ? 'Contribution rejected: check consent version.'
-                            : 'Contribution failed. Please try again.';
-                        trainStatus.textContent   = tMsg;
-                        trainStatus.style.display = '';
-                    }
-                );
-            });
-
-            trainWrap.appendChild(trainHead);
-            trainWrap.appendChild(trainNote);
-            trainWrap.appendChild(consentRow);
-            trainWrap.appendChild(trainBtn);
-            trainWrap.appendChild(trainStatus);
-            body.appendChild(trainWrap);
-        }
-
-        // ── Action row — Create share link (session blob) ─────────────────────
-        var actionRow = document.createElement('div');
-        actionRow.className = 'ai-assistant-conv-share-actions';
-
-        var generateBtn = document.createElement('button');
-        generateBtn.type = 'button';
-        generateBtn.className = 'ai-assistant-conv-share-generate-btn';
-        generateBtn.textContent = 'Create share link';
-
-        generateBtn.addEventListener('click', function () {
-            if (_transcript.length === 0) {
-                showNotification('Nothing to share yet', true);
-                return;
-            }
-            // Revoke previous blob URL only (data: URIs are not registered with
-            // the Blob URL store; revokeObjectURL on them is a no-op but guard
-            // explicitly so browser devtools show clean resource lifetimes).
-            if (_activeBlobUrl && _activeBlobUrl.indexOf('blob:') === 0) {
-                try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
-            }
-            _activeBlobUrl = null;
-            var content = meta.buildStr();
-            if (!content) { showNotification('Nothing to share yet', true); return; }
-
-            if (_shareMode === 'public') {
-                // ── Public mode: data URI ──────────────────────────────────────
-                // Embed the full conversation content in the URL itself so the
-                // link works in any browser on any device without a server or
-                // local browser storage (no Blob URL, no IndexedDB required).
-                _activeBlobUrl = _buildDataUri(content, meta.mime);
-                linkInput.value       = _activeBlobUrl;
-                linkRow.style.display = '';
-                sessionNote.textContent =
-                    '\u2139\uFE0F Public link \u2014 conversation content embedded in the URL. ' +
-                    'Copy and paste into any browser\u2019s address bar, or use the Open button. ' +
-                    'No server required.';
-                sessionNote.style.display = '';
-                copyToClipboard(_activeBlobUrl, false);
-                // Do NOT call window.open here — generating and displaying the
-                // link is the sole job of this button.  Opening is handled by
-                // the dedicated "Open" button in the link row, which also shows
-                // a format-aware message when the browser restricts navigation.
-                showNotification(
-                    'Public link created \u2014 copied to clipboard. Works in any browser.', false);
-            } else {
-                // ── Private mode: blob URL ─────────────────────────────────────
-                // Blob URL is session-scoped: valid only while this browser tab
-                // is open.  Memory is released when the tab is closed or the
-                // mode is changed.  Use "Save permanently" for a lasting link.
-                var blob = new Blob([content], { type: meta.mime });
-                _activeBlobUrl = URL.createObjectURL(blob);
-                linkInput.value       = _activeBlobUrl;
-                linkRow.style.display = '';
-                sessionNote.textContent =
-                    '\u26A0\uFE0F Session link \u2014 valid only while this browser tab is open. ' +
-                    'Close this tab and the link stops working. ' +
-                    'Use \u201cSave permanently\u201d or \u201cSave globally\u201d below for a lasting link.';
-                sessionNote.style.display = '';
-                showNotification('Share link created \u2014 valid while this tab is open', false);
-            }
+        var contentSection = _collapsible('Content & privacy', 'Standard');
+        body.appendChild(contentSection.wrap);
+        var presetRow = document.createElement('div');
+        presetRow.className = 'ai-assistant-conv-share-preset-row';
+        var presetButtons = Object.create(null);
+        ['standard','minimal','complete','custom'].forEach(function (key) {
+            var b = document.createElement('button'); b.type = 'button';
+            b.className = 'ai-assistant-conv-share-preset';
+            b.textContent = key === 'custom' ? 'Customize' : key.charAt(0).toUpperCase() + key.slice(1);
+            b.setAttribute('aria-pressed', key === contentPreset ? 'true' : 'false');
+            presetButtons[key] = b; presetRow.appendChild(b);
         });
+        contentSection.panel.appendChild(presetRow);
 
-        actionRow.appendChild(generateBtn);
-        // Primary action at the top of the save-tier list — insert before the
-        // session link row (which is hidden until the button is clicked) so the
-        // user sees the button first rather than scrolling past all three save
-        // tiers to find it at the bottom.
-        body.insertBefore(actionRow, linkRow);
+        var customGrid = document.createElement('div');
+        customGrid.className = 'ai-assistant-conv-share-custom-grid';
+        customGrid.style.display = 'none';
+        var customControls = {};
+        [
+            ['includeTimestamps','Timestamps'],
+            ['includeModel','Model and provider'],
+            ['includeRatings','Ratings and feedback'],
+            ['includeErrors','Error messages'],
+            ['includePageTitle','Page title'],
+            ['includeSafeSourcePage','Safe source page'],
+            ['includeSessionId','Session identifier']
+        ].forEach(function (item) {
+            var lab = document.createElement('label');
+            var chk = document.createElement('input'); chk.type = 'checkbox';
+            var txt = document.createElement('span'); txt.textContent = item[1];
+            lab.appendChild(chk); lab.appendChild(txt); customGrid.appendChild(lab);
+            customControls[item[0]] = chk;
+        });
+        var locked = document.createElement('p');
+        locked.className = 'ai-assistant-conv-share-locked';
+        locked.textContent = '🔒 URL query, fragment, credentials, and local filesystem paths are always removed from Share output.';
+        customGrid.appendChild(locked);
+        contentSection.panel.appendChild(customGrid);
+
+        var advanced = _collapsible('Advanced', '');
+        body.appendChild(advanced.wrap);
+        var advancedStats = document.createElement('div');
+        advancedStats.className = 'ai-assistant-conv-share-advanced-stats';
+        advanced.panel.appendChild(advancedStats);
+        var sizeNote = document.createElement('p');
+        sizeNote.className = 'ai-assistant-conv-share-session-note';
+        advanced.panel.appendChild(sizeNote);
+        var downloadBtn = document.createElement('button');
+        downloadBtn.type = 'button'; downloadBtn.className = 'ai-assistant-conv-share-action-btn';
+        downloadBtn.textContent = 'Download current snapshot';
+        advanced.panel.appendChild(downloadBtn);
+        var downloadNote = document.createElement('p');
+        downloadNote.className = 'ai-assistant-conv-share-session-note';
+        downloadNote.textContent = 'Downloaded files leave this page’s control. Delete them later from your browser Downloads or device file manager.';
+        advanced.panel.appendChild(downloadNote);
+        var clearLegacyBtn = document.createElement('button');
+        clearLegacyBtn.type = 'button'; clearLegacyBtn.className = 'ai-assistant-conv-share-action-btn';
+        clearLegacyBtn.textContent = 'Delete legacy local Share artifacts';
+        advanced.panel.appendChild(clearLegacyBtn);
+
+        var primaryRow = document.createElement('div');
+        primaryRow.className = 'ai-assistant-conv-share-actions ai-assistant-conv-share-primary-row';
+        var primaryBtn = document.createElement('button');
+        primaryBtn.type = 'button'; primaryBtn.className = 'ai-assistant-conv-share-generate-btn';
+        primaryRow.appendChild(primaryBtn);
+        body.appendChild(primaryRow);
+
+        var resultWrap = document.createElement('section');
+        resultWrap.className = 'ai-assistant-conv-share-result';
+        resultWrap.style.display = 'none';
+        resultWrap.setAttribute('aria-live', 'polite');
+        var resultTitle = document.createElement('strong');
+        var resultMeta = document.createElement('div'); resultMeta.className = 'ai-assistant-conv-share-result-meta';
+        var resultNote = document.createElement('p'); resultNote.className = 'ai-assistant-conv-share-session-note';
+        var resultInput = document.createElement('input'); resultInput.type = 'text'; resultInput.readOnly = true;
+        resultInput.className = 'ai-assistant-conv-share-link-input'; resultInput.style.display = 'none';
+        resultInput.addEventListener('focus', function () { resultInput.select(); });
+        var resultActions = document.createElement('div'); resultActions.className = 'ai-assistant-conv-share-result-actions';
+        function _resultButton(label) {
+            var b = document.createElement('button'); b.type = 'button';
+            b.className = 'ai-assistant-conv-share-action-btn'; b.textContent = label;
+            resultActions.appendChild(b); return b;
+        }
+        var copyResultBtn = _resultButton('Copy');
+        var openResultBtn = _resultButton('Open');
+        var inspectResultBtn = _resultButton('Inspect');
+        var updateResultBtn = _resultButton('Update');
+        var removeResultBtn = _resultButton('Remove');
+        resultWrap.appendChild(resultTitle); resultWrap.appendChild(resultMeta);
+        resultWrap.appendChild(resultNote); resultWrap.appendChild(resultInput); resultWrap.appendChild(resultActions);
+        body.appendChild(resultWrap);
+
+        body.appendChild(_sectionTitle('Created artifacts'));
+        var artifactsIntro = document.createElement('p');
+        artifactsIntro.className = 'ai-assistant-conv-share-subnote';
+        artifactsIntro.textContent = 'Manage links and temporary artifacts created during this page session. Removal semantics are shown per item.';
+        body.appendChild(artifactsIntro);
+        var artifactsList = document.createElement('div');
+        artifactsList.className = 'ai-assistant-conv-share-artifacts';
+        body.appendChild(artifactsList);
+
+        var more = _collapsible('More actions', '');
+        body.appendChild(more.wrap);
+        var contributeBtn = document.createElement('button');
+        contributeBtn.type = 'button'; contributeBtn.className = 'ai-assistant-conv-share-action-btn';
+        contributeBtn.textContent = 'Contribute rated answers…';
+        more.panel.appendChild(contributeBtn);
+        var contributionWrap = document.createElement('div');
+        contributionWrap.className = 'ai-assistant-conv-share-training ai-assistant-conv-share-contribution-separated';
+        contributionWrap.style.display = 'none';
+        more.panel.appendChild(contributionWrap);
+
         sheet.appendChild(body);
 
-        // ── Option selection ──────────────────────────────────────────────────
-        // Selecting a new visibility mode resets any existing session link so
-        // the user always generates a fresh link for the chosen visibility.
-        function _selectMode(key) {
-            _shareMode = key;
-            privOpt.setAttribute('aria-pressed', key === 'private' ? 'true' : 'false');
-            pubOpt.setAttribute('aria-pressed',  key === 'public'  ? 'true' : 'false');
-            // Reset session link row, note, and any active URL.
-            linkRow.style.display         = 'none';
-            sessionNote.style.display     = 'none';
-            linkInput.value               = '';
-            // Revoke blob URLs only (data: URIs are not registered with the
-            // Blob URL store — revokeObjectURL is a safe no-op on them, but
-            // explicitly guard to avoid confusion in profilers/devtools).
-            if (_activeBlobUrl && _activeBlobUrl.indexOf('blob:') === 0) {
-                try { URL.revokeObjectURL(_activeBlobUrl); } catch (_e) {}
-            }
-            _activeBlobUrl = null;
+        function _markStale() {
+            if (!resultState) return;
+            resultState.stale = true;
+            _renderResult();
         }
 
-        privOpt.addEventListener('click', function () { _selectMode('private'); });
-        pubOpt.addEventListener('click',  function () { _selectMode('public');  });
+        function _syncCustomControls() {
+            Object.keys(customControls).forEach(function (key) {
+                customControls[key].checked = !!contentOptions[key];
+            });
+        }
 
+        function _setPreset(key) {
+            contentPreset = key;
+            if (key !== 'custom') contentOptions = _conversationContentPreset(key);
+            else contentOptions = Object.assign({}, contentOptions, { sharePolicy: true });
+            Object.keys(presetButtons).forEach(function (p) {
+                presetButtons[p].setAttribute('aria-pressed', p === key ? 'true' : 'false');
+            });
+            customGrid.style.display = key === 'custom' ? '' : 'none';
+            contentSection.badge.textContent = key === 'custom' ? 'Custom' : key.charAt(0).toUpperCase() + key.slice(1);
+            _syncCustomControls();
+            _markStale(); _refreshSummary();
+        }
+        Object.keys(presetButtons).forEach(function (key) {
+            presetButtons[key].addEventListener('click', function () { _setPreset(key); });
+        });
+        Object.keys(customControls).forEach(function (key) {
+            customControls[key].addEventListener('change', function () {
+                contentPreset = 'custom';
+                contentOptions[key] = !!customControls[key].checked;
+                contentOptions.sharePolicy = true;
+                _setPreset('custom');
+            });
+        });
+
+        function _currentSnapshot() {
+            return _buildConversationSnapshot(contentOptions);
+        }
+        function _currentMeta() { return _getExportFormat(selectedFmt) || liveFormats[0]; }
+        function _serializedCurrent(snapshot) {
+            var meta = _currentMeta();
+            return meta && meta.buildStr ? meta.buildStr(snapshot || _currentSnapshot()) : '';
+        }
+
+        function _refreshSummary() {
+            var snapshot = _currentSnapshot();
+            var meta = _currentMeta();
+            if (!snapshot || !meta) {
+                summary.textContent = 'No conversation yet';
+                advancedStats.textContent = 'Nothing to serialize yet.';
+                warning.style.display = 'none';
+                return;
+            }
+            var content = meta.buildStr(snapshot) || '';
+            var bytes = _utf8ByteLength(content);
+            summary.textContent = (snapshot.turns || []).length + ' turns · ' +
+                (snapshot.records || []).length + ' messages · ' + _formatByteSize(bytes);
+            advancedStats.textContent = meta.label + ' · ' + _formatByteSize(bytes) + ' · ' +
+                (snapshot.records || []).length + ' messages · source URL sanitized';
+            var scan = _privacyPreflightScan(snapshot);
+            var controls = scan.control_findings.reduce(function (n, item) { return n + item.count; }, 0);
+            warning.style.display = controls ? '' : 'none';
+            warning.textContent = controls
+                ? ('⚠ Invisible formatting characters detected (' + controls + ') · Inspect')
+                : '';
+            if (selectedDestination === 'self_contained') {
+                if (bytes > SELF_MAX_BYTES) {
+                    sizeNote.textContent = 'Too large for the configured self-contained-link budget. Use Global link or Download.';
+                } else if (bytes > SELF_WARN_BYTES) {
+                    sizeNote.textContent = 'Long self-contained link: some apps may truncate it. Global link or Download is safer.';
+                } else {
+                    sizeNote.textContent = _formatByteSize(bytes) + ' — within the conservative self-contained-link budget.';
+                }
+            } else {
+                sizeNote.textContent = 'Self-contained links warn above ' + _formatByteSize(SELF_WARN_BYTES) +
+                    ' and block above ' + _formatByteSize(SELF_MAX_BYTES) + '.';
+            }
+        }
+        warning.addEventListener('click', function () {
+            advanced.toggle.setAttribute('aria-expanded', 'true');
+            advanced.panel.style.display = '';
+            if (advanced.toggle.focus) advanced.toggle.focus();
+        });
+
+        function _renderFormat() {
+            var meta = _currentMeta();
+            if (!meta) return;
+            sheet.setAttribute('data-fmt', meta.fmt);
+            fmtBadge.className = 'ai-assistant-conv-share-fmt-badge ai-assistant-conv-share-fmt-' + meta.fmt;
+            fmtBadge.textContent = meta.label;
+            fmtBadge.setAttribute('aria-label', meta.label + ' format');
+            Object.keys(formatButtons).forEach(function (key) {
+                var selected = key === meta.fmt;
+                formatButtons[key].setAttribute('aria-selected', selected ? 'true' : 'false');
+                formatButtons[key].setAttribute('tabindex', selected ? '0' : '-1');
+            });
+            while (formatHost.firstChild) formatHost.removeChild(formatHost.firstChild);
+            formatHost.appendChild(_buildFmtSharePanel(meta.fmt));
+            _updatePrimaryLabel(); _refreshSummary();
+        }
+
+        function _selectFormat(fmt, focus) {
+            var meta = _getExportFormat(fmt);
+            if (!meta) return false;
+            if (selectedFmt !== meta.fmt) { selectedFmt = meta.fmt; _markStale(); }
+            _renderFormat();
+            if (focus && formatButtons[selectedFmt] && formatButtons[selectedFmt].focus) formatButtons[selectedFmt].focus();
+            return true;
+        }
+        liveFormats.forEach(function (entry, idx) {
+            var btn = formatButtons[entry.fmt];
+            btn.addEventListener('click', function () { _selectFormat(entry.fmt, false); });
+            btn.addEventListener('keydown', function (event) {
+                var next = null;
+                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (idx + 1) % liveFormats.length;
+                else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (idx - 1 + liveFormats.length) % liveFormats.length;
+                else if (event.key === 'Home') next = 0;
+                else if (event.key === 'End') next = liveFormats.length - 1;
+                if (next !== null) { event.preventDefault(); _selectFormat(liveFormats[next].fmt, true); }
+            });
+        });
+
+        function _refreshGlobalAvailability() {
+            var g = _resolveGlobalConfig();
+            var available = !!g.base;
+            destinationButtons.global.disabled = !available;
+            destinationButtons.global.setAttribute('aria-disabled', available ? 'false' : 'true');
+            globalUnavailable.style.display = available ? 'none' : '';
+            globalUnavailable.textContent = available
+                ? '' : 'Global Share is not configured. Configure a Share endpoint in Endpoint Configuration.';
+            if (!available && selectedDestination === 'global') _selectDestination('local');
+        }
+
+        function _selectDestination(key) {
+            if (!destinationButtons[key] || destinationButtons[key].disabled) return false;
+            if (selectedDestination !== key) { selectedDestination = key; _markStale(); }
+            sheet.setAttribute('data-destination', key);
+            Object.keys(destinationButtons).forEach(function (k) {
+                destinationButtons[k].setAttribute('aria-pressed', k === key ? 'true' : 'false');
+            });
+            _updatePrimaryLabel(); _refreshSummary();
+            return true;
+        }
+        Object.keys(destinationButtons).forEach(function (key) {
+            destinationButtons[key].addEventListener('click', function () { _selectDestination(key); });
+        });
+
+        function _addArtifact(artifact) {
+            return _registerManagedConversationArtifact(Object.assign({
+                conversationId: boundConversationId,
+                format: selectedFmt,
+            }, artifact || {}));
+        }
+        function _findArtifact(id) {
+            for (var i = 0; i < managedArtifacts.length; i++) if (managedArtifacts[i].id === id) return managedArtifacts[i];
+            return null;
+        }
+        function _dropArtifact(id) {
+            _forgetManagedConversationArtifact(id);
+            if (resultState && resultState.artifactId === id) resultState = null;
+            _renderResult();
+        }
+
+        function _openArtifact(artifact) {
+            if (!artifact || !artifact.url) return;
+            if (artifact.url.indexOf('data:') === 0 && artifact.snapshot) {
+                try {
+                    var meta = _getExportFormat(artifact.format);
+                    var content = meta.buildStr(artifact.snapshot);
+                    var blob = new Blob([content], { type: meta.mime });
+                    var tempUrl = URL.createObjectURL(blob);
+                    var w = window.open(tempUrl, '_blank', 'noopener,noreferrer');
+                    if (w) { try { w.opener = null; } catch (_e) {} }
+                    setTimeout(function () { try { URL.revokeObjectURL(tempUrl); } catch (_e2) {} }, 30000);
+                } catch (_e3) {}
+                return;
+            }
+            try {
+                var win = window.open(artifact.url, '_blank', 'noopener,noreferrer');
+                if (win) { try { win.opener = null; } catch (_e4) {} }
+            } catch (_e5) {}
+        }
+
+        function _globalLifecycleText(artifact) {
+            var state = artifact && artifact.state ? artifact.state : 'active';
+            if (state === 'revoked') return 'revoked on server';
+            if (state === 'expired') return 'expired';
+            if (state === 'unavailable') return 'unavailable · reason unknown · recheck or forget';
+            if (state === 'expiry_due') return 'saved expiry reached · status not checked';
+            if (artifact && artifact.editToken) return 'active · server-revocable';
+            return state === 'restored' ? 'read-only restored · status not checked' : 'active · read-only';
+        }
+
+        function _detachCurrentGlobalState(artifact) {
+            if (!artifact || !_globalShareState || !artifact.uuid ||
+                _globalShareState.uuid !== artifact.uuid) return;
+            // Current-conversation update state is not lifecycle history.  Once a
+            // server check says the object is unavailable/expired, stop treating
+            // it as the implicit PATCH target.  The artifact may still retain its
+            // page-memory edit token when 404 leaves the reason unknown.
+            _globalShareState = null;
+            _saveGlobalSS(null);
+            _updatePrimaryLabel();
+        }
+
+        function _markGlobalArtifactState(artifact, state) {
+            if (!artifact) return;
+            if (state === 'unavailable' || state === 'revoked' || state === 'expired') {
+                _detachCurrentGlobalState(artifact);
+            }
+            artifact.state = state;
+            artifact.lifecycle = _globalLifecycleText(artifact);
+            var ledger = _upsertGlobalLedger(artifact, state);
+            if (ledger) artifact.ledgerId = ledger.ledgerId;
+            // Only terminal states destroy the public capability and live edit
+            // capability.  HTTP 404 is intentionally non-terminal because it
+            // does not distinguish revoke, storage loss, deployment replacement,
+            // or a transient backend miss; retaining the bounded record permits
+            // an explicit later re-check.
+            if (state === 'revoked' || state === 'expired') {
+                artifact.editToken = '';
+                artifact.uuid = '';
+                artifact.url = '';
+            }
+            _renderArtifacts();
+            _renderResult();
+        }
+
+        function _checkGlobalArtifactStatus(artifact) {
+            if (!artifact || artifact.kind !== 'global' || !artifact.url || artifact.busy) return;
+            artifact.busy = true; _renderArtifacts();
+            _probeGlobalShareStatus(artifact.url, function (res) {
+                artifact.busy = false;
+                if (res.status === 200) {
+                    artifact.state = artifact.editToken ? 'active' : 'restored';
+                    artifact.lifecycle = _globalLifecycleText(artifact);
+                    _upsertGlobalLedger(artifact, artifact.state === 'active' ? 'active' : 'restored');
+                    // Re-adopt only the current conversation's live-capability
+                    // artifact.  An older chat must never become this chat's
+                    // implicit PATCH target merely because its status recovered.
+                    if (artifact.editToken && artifact.conversationId === boundConversationId) {
+                        _globalShareState = {
+                            uuid: artifact.uuid, url: artifact.url, editToken: artifact.editToken,
+                            expiresAt: artifact.expiresAt || null,
+                            conversationId: artifact.conversationId,
+                            format: artifact.format || selectedFmt,
+                        };
+                        _saveGlobalSS(_globalShareState);
+                        _updatePrimaryLabel();
+                    }
+                    showNotification('Global link is active', false);
+                } else if (res.status === 410 || (res.status === 404 && artifact.expiresAt && Date.parse(artifact.expiresAt) <= Date.now())) {
+                    _markGlobalArtifactState(artifact, 'expired');
+                    showNotification('Global link is expired', true);
+                    return;
+                } else if (res.status === 404) {
+                    _markGlobalArtifactState(artifact, 'unavailable');
+                    showNotification('Global link is no longer available on the server', true);
+                    return;
+                } else {
+                    showNotification('Could not check Global link status', true);
+                }
+                _renderArtifacts(); _renderResult();
+            });
+        }
+
+        function _forgetGlobalArtifactRecord(artifact) {
+            if (!artifact || artifact.kind !== 'global') return;
+            var oldUuid = artifact.uuid;
+            _forgetGlobalLedger(artifact);
+            _dropArtifact(artifact.id);
+            if (_globalShareState && oldUuid && _globalShareState.uuid === oldUuid) {
+                _globalShareState = null; _saveGlobalSS(null); _updatePrimaryLabel();
+            }
+            showNotification('Global artifact record forgotten in this browser. This does not prove or perform remote revocation.', false);
+        }
+
+        function _removeArtifact(artifact) {
+            if (!artifact) return;
+            if (artifact.kind === 'local') {
+                if (artifact.url && artifact.url.indexOf('blob:') === 0) {
+                    try { URL.revokeObjectURL(artifact.url); } catch (_e) {}
+                }
+                _dropArtifact(artifact.id);
+                showNotification('Local preview removed and Blob URL revoked', false);
+                return;
+            }
+            if (artifact.kind === 'self_contained') {
+                _dropArtifact(artifact.id);
+                showNotification('Removed from this browser. Already copied self-contained links cannot be revoked.', false);
+                return;
+            }
+            if (artifact.kind === 'download') {
+                _dropArtifact(artifact.id);
+                showNotification('Download record removed. Delete the file itself from your device.', false);
+                return;
+            }
+            if (artifact.kind === 'global') {
+                if (!artifact.editToken || artifact.state === 'revoked' || artifact.state === 'expired') {
+                    _forgetGlobalArtifactRecord(artifact);
+                    return;
+                }
+                var g = _resolveGlobalConfig();
+                var base = (g.base || '').replace(/\/$/, '');
+                if (!base || !artifact.uuid) {
+                    showNotification('Cannot revoke: Share endpoint is unavailable', true); return;
+                }
+                artifact.busy = true; _renderArtifacts();
+                var revokeUuid = artifact.uuid;
+                _deleteGlobalShare(
+                    base, revokeUuid, artifact.editToken,
+                    function () {
+                        if (_globalShareState && _globalShareState.uuid === revokeUuid) {
+                            _globalShareState = null; _saveGlobalSS(null);
+                        }
+                        _markGlobalArtifactState(artifact, 'revoked');
+                        showNotification('Global link revoked on the server. Lifecycle history remains until you Forget it.', false);
+                    },
+                    function (err) {
+                        artifact.busy = false; _renderArtifacts();
+                        if (err && (err.status === 404 || err.status === 410)) {
+                            _markGlobalArtifactState(artifact, artifact.expiresAt && Date.parse(artifact.expiresAt) <= Date.now() ? 'expired' : 'unavailable');
+                            showNotification('Global link was already unavailable on the server', true);
+                        } else {
+                            showNotification('Global revoke failed', true);
+                        }
+                    }
+                );
+            }
+        }
+
+        function _renderArtifacts() {
+            while (artifactsList.firstChild) artifactsList.removeChild(artifactsList.firstChild);
+            if (!managedArtifacts.length) {
+                var empty = document.createElement('p'); empty.className = 'ai-assistant-conv-share-session-note';
+                empty.textContent = 'No managed artifacts in this page session.'; artifactsList.appendChild(empty); return;
+            }
+            managedArtifacts.forEach(function (artifact) {
+                if (artifact.kind === 'global' && (artifact.state === 'active' || artifact.state === 'restored') &&
+                    artifact.expiresAt && Date.parse(artifact.expiresAt) <= Date.now()) {
+                    artifact.state = 'expiry_due';
+                    artifact.lifecycle = _globalLifecycleText(artifact);
+                    _upsertGlobalLedger(artifact, 'expiry_due');
+                }
+                if (artifact.kind === 'global') artifact.lifecycle = _globalLifecycleText(artifact);
+                var row = document.createElement('div'); row.className = 'ai-assistant-conv-share-artifact';
+                var text = document.createElement('div'); text.className = 'ai-assistant-conv-share-artifact-text';
+                var strong = document.createElement('strong');
+                strong.textContent = artifact.kind === 'global' ? 'Global link'
+                    : artifact.kind === 'self_contained' ? 'Self-contained link'
+                    : artifact.kind === 'download' ? 'Downloaded artifact' : 'Local preview';
+                var meta = document.createElement('span');
+                meta.textContent = (artifact.format || '').toUpperCase() + ' · ' + (artifact.lifecycle || '');
+                text.appendChild(strong); text.appendChild(meta); row.appendChild(text);
+                var terminalGlobal = artifact.kind === 'global' && ['revoked','expired'].indexOf(artifact.state) >= 0;
+                if (artifact.url && artifact.kind !== 'download' && !terminalGlobal) {
+                    var open = document.createElement('button'); open.type = 'button'; open.className = 'ai-assistant-conv-share-action-btn';
+                    open.textContent = 'Open'; open.disabled = !!artifact.busy;
+                    open.addEventListener('click', function () { _openArtifact(artifact); }); row.appendChild(open);
+                }
+                if (artifact.kind === 'global' && artifact.url && !terminalGlobal) {
+                    var check = document.createElement('button'); check.type = 'button'; check.className = 'ai-assistant-conv-share-action-btn';
+                    check.textContent = artifact.busy ? 'Checking…' : 'Check status'; check.disabled = !!artifact.busy;
+                    check.addEventListener('click', function () { _checkGlobalArtifactStatus(artifact); }); row.appendChild(check);
+                }
+                var remove = document.createElement('button'); remove.type = 'button'; remove.className = 'ai-assistant-conv-share-action-btn';
+                remove.disabled = !!artifact.busy;
+                remove.textContent = artifact.kind === 'global'
+                    ? (artifact.editToken && !terminalGlobal ? 'Revoke' : 'Forget')
+                    : artifact.kind === 'local' ? 'Remove' : artifact.kind === 'download' ? 'Forget' : 'Remove';
+                remove.addEventListener('click', function () { _removeArtifact(artifact); }); row.appendChild(remove);
+                // A reason-unknown 404 may retain a live edit capability. Revoke
+                // can therefore keep failing with 404; provide an explicit local
+                // Forget escape hatch without mislabeling it as remote deletion.
+                if (artifact.kind === 'global' && artifact.state === 'unavailable' && artifact.editToken) {
+                    var forgetUnavailable = document.createElement('button');
+                    forgetUnavailable.type = 'button'; forgetUnavailable.className = 'ai-assistant-conv-share-action-btn';
+                    forgetUnavailable.textContent = 'Forget'; forgetUnavailable.disabled = !!artifact.busy;
+                    forgetUnavailable.addEventListener('click', function () { _forgetGlobalArtifactRecord(artifact); });
+                    row.appendChild(forgetUnavailable);
+                }
+                artifactsList.appendChild(row);
+            });
+        }
+
+        function _renderResult() {
+            if (!resultState) { resultWrap.style.display = 'none'; return; }
+            var artifact = _findArtifact(resultState.artifactId);
+            resultWrap.style.display = '';
+            resultInput.style.display = 'none';
+            copyResultBtn.style.display = 'none'; openResultBtn.style.display = 'none';
+            inspectResultBtn.style.display = 'none'; updateResultBtn.style.display = 'none'; removeResultBtn.style.display = '';
+            var stale = !!resultState.stale;
+            if (resultState.kind === 'local') {
+                resultTitle.textContent = 'Preview ready';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · temporary';
+                resultNote.textContent = stale
+                    ? 'Conversation or options changed. This preview still contains the earlier snapshot.'
+                    : 'Temporary browser artifact. Remove revokes its Blob URL.';
+                openResultBtn.style.display = '';
+                removeResultBtn.textContent = 'Remove preview';
+            } else if (resultState.kind === 'self_contained') {
+                resultTitle.textContent = 'Self-contained link ready';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · no server';
+                resultNote.textContent = stale
+                    ? 'Conversation or options changed. This link still contains the earlier snapshot.'
+                    : 'Not encrypted. Removing it here forgets this generated result; copies already shared cannot be revoked.';
+                copyResultBtn.style.display = ''; openResultBtn.style.display = ''; inspectResultBtn.style.display = '';
+                removeResultBtn.textContent = 'Remove from browser';
+            } else {
+                var globalState = artifact && artifact.state ? artifact.state : 'active';
+                if (globalState === 'revoked' || globalState === 'expired') {
+                    resultTitle.textContent = globalState === 'revoked' ? 'Global link revoked' : 'Global link expired';
+                    resultMeta.textContent = resultState.format.toUpperCase() + ' · lifecycle tracked';
+                    resultNote.textContent = globalState === 'revoked'
+                        ? 'The server share was revoked. This history row can now be forgotten.'
+                        : 'The Global Share has expired. This history row can now be forgotten.';
+                    removeResultBtn.textContent = 'Forget';
+                } else if (globalState === 'unavailable') {
+                    resultTitle.textContent = 'Global link unavailable';
+                    resultMeta.textContent = resultState.format.toUpperCase() + ' · status 404 · reason unknown';
+                    resultNote.textContent = artifact && artifact.editToken
+                        ? 'The server currently reports this Share unavailable. The read URL and live edit capability remain page-memory tracked so you can re-check or attempt Revoke; this does not prove revocation.'
+                        : 'The server currently reports this Share unavailable. The bounded read URL remains tracked so you can re-check later or Forget it; this does not prove revocation.';
+                    resultInput.value = resultState.url || '';
+                    resultInput.style.display = '';
+                    copyResultBtn.style.display = ''; openResultBtn.style.display = '';
+                    removeResultBtn.textContent = artifact && artifact.editToken ? 'Revoke' : 'Forget';
+                } else {
+                    resultTitle.textContent = 'Global link ready';
+                    resultMeta.textContent = resultState.format.toUpperCase() + ' · ' +
+                        (resultState.expiresAt ? ('expires ' + new Date(resultState.expiresAt).toLocaleDateString()) : 'server-backed');
+                    resultNote.textContent = stale
+                        ? 'Conversation or options changed. Update/create a link to publish the latest snapshot.'
+                        : (artifact && artifact.editToken
+                            ? 'Anyone with the read URL can view it. Revoke permanently removes the server share.'
+                            : 'Read URL restored without its private edit capability. Use Check status to query the server; remote revoke is unavailable without the edit capability.');
+                    resultInput.value = resultState.url || '';
+                    resultInput.style.display = '';
+                    copyResultBtn.style.display = ''; openResultBtn.style.display = '';
+                    if (artifact && artifact.editToken) updateResultBtn.style.display = '';
+                    removeResultBtn.textContent = artifact && artifact.editToken ? 'Revoke' : 'Forget';
+                }
+            }
+            if (resultState.kind !== 'global') resultInput.value = resultState.url || '';
+        }
+
+        copyResultBtn.addEventListener('click', function () {
+            if (resultState && resultState.url) copyToClipboard(resultState.url, false);
+        });
+        openResultBtn.addEventListener('click', function () {
+            var a = resultState ? _findArtifact(resultState.artifactId) : null; if (a) _openArtifact(a);
+        });
+        inspectResultBtn.addEventListener('click', function () {
+            if (!resultState || resultState.kind !== 'self_contained') return;
+            resultInput.value = resultState.url || '';
+            resultInput.style.display = resultInput.style.display === 'none' ? '' : 'none';
+        });
+        updateResultBtn.addEventListener('click', function () { primaryBtn.click(); });
+        removeResultBtn.addEventListener('click', function () {
+            var a = resultState ? _findArtifact(resultState.artifactId) : null;
+            if (a) _removeArtifact(a); else { resultState = null; _renderResult(); }
+        });
+
+        function _updatePrimaryLabel() {
+            if (selectedDestination === 'local') primaryBtn.textContent = 'Open preview';
+            else if (selectedDestination === 'self_contained') primaryBtn.textContent = 'Create link';
+            else primaryBtn.textContent = (_globalShareState && _globalShareState.editToken) ? 'Update global link' : 'Create global link';
+        }
+
+        async function _reviewShareSnapshot(destinationLabel) {
+            var opConversationId = boundConversationId;
+            var snapshot = _currentSnapshot();
+            if (!snapshot) { showNotification('Nothing to share yet', true); return null; }
+            var reviewed = await _privacyPreflightReview(snapshot, {
+                title: 'Review before sharing', destination: destinationLabel,
+                cancelLabel: 'Go back', continueLabel: 'Share unchanged'
+            });
+            if (reviewed.action === 'cancel' || opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return null;
+            if (reviewed.action === 'redact') showNotification('Flagged values redacted in the shared copy', false);
+            return reviewed.value;
+        }
+
+        primaryBtn.addEventListener('click', async function () {
+            if (primaryBtn.disabled) return;
+            var meta = _currentMeta(); if (!meta) return;
+            var destinationLabel = selectedDestination === 'global' ? 'the configured Global Share service'
+                : selectedDestination === 'self_contained' ? 'a self-contained link' : 'a temporary local preview';
+            var snapshot = await _reviewShareSnapshot(destinationLabel);
+            if (!snapshot) return;
+            var content = meta.buildStr(snapshot); if (!content) return;
+            var bytes = _utf8ByteLength(content);
+
+            if (selectedDestination === 'local') {
+                try {
+                    var blob = new Blob([content], { type: meta.mime });
+                    var url = URL.createObjectURL(blob);
+                    var artifact = _addArtifact({ kind: 'local', url: url, snapshot: snapshot, bytes: bytes,
+                        format: meta.fmt, lifecycle: 'removable local Blob URL' });
+                    resultState = { kind: 'local', artifactId: artifact.id, url: url, bytes: bytes, format: meta.fmt, stale: false };
+                    _renderResult(); _openArtifact(artifact);
+                } catch (_e) { showNotification('Could not create local preview', true); }
+                return;
+            }
+
+            if (selectedDestination === 'self_contained') {
+                if (bytes > SELF_MAX_BYTES) {
+                    showNotification('Conversation is too large for the configured self-contained-link budget. Use Global link or Download.', true); return;
+                }
+                var url = _buildSelfContainedHashUrl(snapshot, meta.fmt);
+                if (!url) url = _buildDataUri(content, meta.mime);
+                var artifact = _addArtifact({ kind: 'self_contained', url: url, snapshot: snapshot, bytes: bytes,
+                    format: meta.fmt, lifecycle: 'non-revocable once copied' });
+                resultState = { kind: 'self_contained', artifactId: artifact.id, url: url, bytes: bytes, format: meta.fmt, stale: false };
+                _renderResult();
+                if (bytes > SELF_WARN_BYTES) showNotification('Link created, but it is long and may be truncated by some apps.', true);
+                return;
+            }
+
+            var g = _resolveGlobalConfig();
+            if (!g.base) { showNotification('Global Share endpoint is not configured', true); return; }
+            var opConversationId = boundConversationId;
+            var payload = { snapshot: snapshot, format: meta.fmt, ttlDays: g.ttlDays };
+            primaryBtn.disabled = true; primaryBtn.textContent = _globalShareState && _globalShareState.editToken ? 'Updating…' : 'Creating…';
+
+            function success(res) {
+                if (opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
+                primaryBtn.disabled = false;
+                var url = res.url || (_globalShareState && _globalShareState.url) || '';
+                var uuid = res.uuid || (_globalShareState && _globalShareState.uuid) || '';
+                if (!uuid && url) {
+                    var matchId = String(url).match(/(?:#share=|\/v1\/share\/)((?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}))(?:$|[?#])/i);
+                    if (matchId) uuid = matchId[1];
+                }
+                var editToken = res.editToken || (_globalShareState && _globalShareState.editToken) || '';
+                _globalShareState = {
+                    uuid: uuid, url: url, editToken: editToken,
+                    expiresAt: res.expiresAt || (_globalShareState && _globalShareState.expiresAt) || null,
+                    conversationId: opConversationId, format: meta.fmt
+                };
+                _saveGlobalSS(_globalShareState);
+                var ledger = _upsertGlobalLedger({ uuid: uuid, url: url, expiresAt: _globalShareState.expiresAt,
+                    conversationId: opConversationId, format: meta.fmt }, 'active');
+                var existing = managedArtifacts.find(function (a) { return a.kind === 'global' && a.uuid === uuid; });
+                if (existing) Object.assign(existing, { url: url, editToken: editToken, expiresAt: _globalShareState.expiresAt,
+                    snapshot: snapshot, bytes: bytes, format: meta.fmt, state: 'active', ledgerId: ledger && ledger.ledgerId,
+                    lifecycle: editToken ? 'active · server-revocable' : 'active · read-only' });
+                else existing = _addArtifact({ kind: 'global', uuid: uuid, url: url, editToken: editToken,
+                    expiresAt: _globalShareState.expiresAt, snapshot: snapshot, bytes: bytes, format: meta.fmt,
+                    state: 'active', ledgerId: ledger && ledger.ledgerId,
+                    lifecycle: editToken ? 'active · server-revocable' : 'active · read-only' });
+                resultState = { kind: 'global', artifactId: existing.id, url: url, bytes: bytes, format: meta.fmt,
+                    expiresAt: _globalShareState.expiresAt, stale: false };
+                _renderArtifacts(); _renderResult(); _updatePrimaryLabel();
+            }
+            function failure(err) {
+                if (opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
+                primaryBtn.disabled = false; _updatePrimaryLabel();
+                showNotification(err && err.status === 429 ? 'Global Share rate limit reached' : 'Global Share failed', true);
+            }
+            var base = g.base.replace(/\/$/, '');
+            if (_globalShareState && _globalShareState.uuid && _globalShareState.editToken) {
+                _patchGlobalShare(base, _globalShareState.uuid, _globalShareState.editToken,
+                    payload, success, function (err) {
+                        if (err.status === 404 || err.status === 405 || err.status === 410) {
+                            _globalShareState = null; _saveGlobalSS(null);
+                            _postGlobalShare(base, g.token, payload, success, failure);
+                        } else failure(err);
+                    });
+            } else {
+                _postGlobalShare(base, g.token, payload, success, failure);
+            }
+        });
+
+        downloadBtn.addEventListener('click', function () {
+            var snapshot = _currentSnapshot(); var meta = _currentMeta();
+            if (!snapshot || !meta) return;
+            var content = meta.buildStr(snapshot); if (!content) return;
+            var filename = 'ai-conversation-' + _isoFileStamp() + meta.ext;
+            _downloadBlob(content, meta.mime, filename);
+            _addArtifact({ kind: 'download', filename: filename, bytes: _utf8ByteLength(content), format: meta.fmt,
+                lifecycle: 'external device file · delete with file manager' });
+            showNotification(meta.label + ' downloaded. The saved file is controlled by your device.', false);
+        });
+        clearLegacyBtn.addEventListener('click', function () {
+            _idbClearShares(function (ok) {
+                showNotification(ok ? 'Legacy local Share artifacts deleted' : 'Could not clear legacy local Share storage', !ok);
+            });
+        });
+
+        function _buildContributionSection() {
+            while (contributionWrap.firstChild) contributionWrap.removeChild(contributionWrap.firstChild);
+            var profileUrl = _EP.hasProfiles()
+                ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('training') : _EP.resolve('training')) : '';
+            var endpoint = profileUrl || _resolveFlatFeatureEndpoint(cfg.panelTrainingEndpoint || '', '/v1/contribute');
+            if (!endpoint) {
+                var none = document.createElement('p'); none.className = 'ai-assistant-conv-share-session-note';
+                none.textContent = 'Training contribution endpoint is not configured.'; contributionWrap.appendChild(none); return;
+            }
+            var heading = document.createElement('strong'); heading.textContent = 'Contribute rated answers for review';
+            var note = document.createElement('p'); note.className = 'ai-assistant-conv-share-session-note';
+            note.textContent = 'This is separate from Share. Only explicitly rated Q&A pairs are submitted to the quarantine/review workflow; they are not training-eligible on receipt. Before promotion, your receipt capability removes the pending copy from the active review ledger. After promotion, the same action withdraws the rows from training and requests current-view removal, but versioned provider history may retain prior bytes.';
+            var consent = document.createElement('label'); consent.className = 'ai-assistant-conv-share-consent';
+            var chk = document.createElement('input'); chk.type = 'checkbox';
+            var txt = document.createElement('span'); txt.textContent = 'I consent to the rated question, AI answer, rating, optional note, model label, and safe page reference being submitted for review and possible training use.';
+            consent.appendChild(chk); consent.appendChild(txt);
+            var submit = document.createElement('button'); submit.type = 'button'; submit.className = 'ai-assistant-conv-share-perm-save-btn';
+            submit.textContent = 'Contribute'; submit.disabled = true;
+            var status = document.createElement('p'); status.className = 'ai-assistant-conv-share-session-note';
+            chk.addEventListener('change', function () { submit.disabled = !chk.checked; });
+            submit.addEventListener('click', async function () {
+                if (!chk.checked) return;
+                var opConversationId = boundConversationId;
+                var records = [];
+                Object.keys(_feedbackStore).sort(function (a,b) { return a-b; }).forEach(function (k) {
+                    var idx = parseInt(k,10), fb = _feedbackStore[idx] || {};
+                    if (!fb.query && !fb.answer) return;
+                    records.push({ answerIndex: idx, query: fb.query || '', answer: fb.answer || '',
+                        ratingValue: fb.ratingValue != null ? fb.ratingValue : null,
+                        ratingLabel: fb.ratingLabel || '', ratingTitle: fb.ratingTitle || null,
+                        ratingMode: fb.ratingMode || null, message: fb.message || '', ts: fb.ts || Date.now(),
+                        _source: 'contribution' });
+                });
+                if (!records.length) { status.textContent = 'No rated answers to contribute yet.'; return; }
+                var payload = { schemaVersion: 3, consentFlag: true, consentVersion: '1.0.0',
+                    page: _sanitizePage(location ? location.href : ''), model: _buildModelInfo(cfg), records: records };
+                var review = await _privacyPreflightReview(payload, { title: 'Review training contribution',
+                    destination: 'the training review queue', cancelLabel: 'Review contribution', continueLabel: 'Contribute unchanged' });
+                if (review.action === 'cancel' || opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
+                submit.disabled = true; submit.textContent = 'Contributing…';
+                _postTrainingContribution(endpoint.replace(/\/$/, ''), review.value, function (res) {
+                    submit.textContent = 'Contribute'; chk.checked = false; submit.disabled = true;
+                    status.textContent = res && res.status === 'quarantined'
+                        ? 'Submitted for review. Pending data is not training-eligible yet.' : 'Contribution submitted.';
+                    if (res && res.receiptId && res.deleteToken) {
+                        var del = document.createElement('button'); del.type = 'button'; del.className = 'ai-assistant-conv-share-action-btn';
+                        del.textContent = 'Delete pending / withdraw training use';
+                        del.addEventListener('click', function () {
+                            _remotePost(endpoint.replace(/\/$/, '') + '/' + encodeURIComponent(res.receiptId), '', {}, {
+                                method: 'DELETE', keepalive: false,
+                                headers: { 'X-Contribution-Delete-Token': res.deleteToken },
+                                onSuccess: function (lifecycle) {
+                                    del.disabled = true;
+                                    if (lifecycle && lifecycle.status === 'deleted') {
+                                        del.textContent = 'Pending data deleted';
+                                        status.textContent = 'Pending contribution removed from the active review ledger before promotion. This does not claim forensic deletion from database pages, backups, or infrastructure snapshots.';
+                                    } else if (lifecycle && lifecycle.status === 'withdrawn') {
+                                        del.textContent = 'Training use withdrawn';
+                                        status.textContent = 'Training withdrawal recorded. Current provider views were removed where possible; versioned provider history is not claimed physically erased.';
+                                    } else {
+                                        del.textContent = 'Contribution lifecycle updated';
+                                        status.textContent = 'Contribution management request completed.';
+                                    }
+                                },
+                                onError: function (err) {
+                                    status.textContent = err && err.status === 409
+                                        ? 'A review or withdrawal operation is already in progress; try again after it finishes.'
+                                        : 'Contribution deletion/withdrawal could not be completed.';
+                                }
+                            });
+                        });
+                        contributionWrap.appendChild(del);
+                    }
+                }, function (err) {
+                    submit.disabled = false; submit.textContent = 'Contribute';
+                    status.textContent = err.status === 422 ? 'Contribution rejected: reload and review the current consent text.' : 'Contribution failed. Please try again.';
+                });
+            });
+            contributionWrap.appendChild(heading); contributionWrap.appendChild(note);
+            contributionWrap.appendChild(consent); contributionWrap.appendChild(submit); contributionWrap.appendChild(status);
+        }
+        contributeBtn.addEventListener('click', function () {
+            var show = contributionWrap.style.display === 'none';
+            contributionWrap.style.display = show ? '' : 'none';
+            if (show) _buildContributionSection();
+        });
+
+        function _restoreReadOnlyGlobalArtifact() {
+            if (_globalShareState && _globalShareState.url) _upsertGlobalLedger(_globalShareState, 'restored');
+            var currentArtifact = null;
+            _globalLedger.forEach(function (item) {
+                var existing = managedArtifacts.find(function (a) {
+                    return a.kind === 'global' && ((item.ledgerId && a.ledgerId === item.ledgerId) || (item.uuid && a.uuid === item.uuid));
+                });
+                if (!existing) {
+                    var restoredState = item.state === 'active' ? 'restored' : item.state;
+                    if ((restoredState === 'active' || restoredState === 'restored') && item.expiresAt && Date.parse(item.expiresAt) <= Date.now()) {
+                        restoredState = 'expiry_due';
+                    }
+                    existing = _addArtifact({ kind: 'global', uuid: item.uuid, url: item.url,
+                        editToken: '', expiresAt: item.expiresAt, format: item.format || selectedFmt,
+                        conversationId: item.conversationId || '', ledgerId: item.ledgerId,
+                        state: restoredState, lifecycle: restoredState === 'restored'
+                            ? 'read-only restored · status not checked' : '' });
+                    existing.lifecycle = _globalLifecycleText(existing);
+                }
+                if (_globalShareState && item.uuid && item.uuid === _globalShareState.uuid) currentArtifact = existing;
+            });
+            if (currentArtifact) {
+                resultState = { kind: 'global', artifactId: currentArtifact.id, url: currentArtifact.url,
+                    bytes: 0, format: currentArtifact.format, expiresAt: currentArtifact.expiresAt, stale: false };
+                _renderResult();
+            }
+        }
+
+        document.addEventListener('ai-assistant-conversation-reset', function (event) {
+            boundConversationId = event && event.detail && event.detail.conversationId
+                ? event.detail.conversationId : _getConversationId();
+            // Do not discard managed artifacts or the public Global ledger:
+            // links previously handed to the user remain trackable across chats.
+            // Live edit tokens stay only in page memory; current-conversation
+            // recovery state is cleared so a new chat cannot update the old link.
+            resultState = null;
+            _globalShareState = null;
+            _saveGlobalSS(null);
+            _setPreset('standard');
+            _renderResult(); _renderArtifacts(); _refreshSummary(); _updatePrimaryLabel();
+        });
+
+        _managedConversationArtifactRenderHook = _renderArtifacts;
+        _setPreset('standard');
+        _renderFormat();
+        _refreshGlobalAvailability();
+        _selectDestination('local');
+        _renderArtifacts();
+        _restoreReadOnlyGlobalArtifact();
+
+        sheet._selectExportFormat = function (fmt) {
+            _refreshGlobalAvailability();
+            return _selectFormat(fmt, false);
+        };
+        sheet._getSelectedExportFormat = function () { return selectedFmt; };
+        sheet._getSelectedShareDestination = function () { return selectedDestination; };
+        sheet._getManagedShareArtifactCount = function () { return _managedConversationArtifacts.length; };
+        sheet._getTrackedGlobalArtifactCount = function () { return _globalLedger.length; };
         return sheet;
     }
+
 
     /**
      * Build the "Project Links" slide-over sheet.
@@ -23717,18 +24809,13 @@ opts.jsonPayload + '\n' +
         newChatBtn.addEventListener('click', clearConversation);
 
         // R4 v3: multi-format export dropdown (JSON · HTML · TXT).
-        // In share-link mode (toggle ON) each format item opens its OWN
-        // format-specific share sheet so the user always shares the exact format
-        // they selected — JSON as JSON blob, HTML as HTML page, TXT as text file.
-        // The onLinkMode callback dispatches by fmt to the correct sheet.
-        // convShareSheetJson / Html / Txt are var-hoisted in createAIPanel and
-        // assigned below — the closures are safe because no user interaction
-        // can fire before the assignments are reached.
+        // Download mode exports immediately. Share-link mode routes every live
+        // format through one dispatcher, which selects that format inside the
+        // unified Share conversation sheet. ``convShareSheet`` is var-hoisted
+        // and assigned before any user interaction can occur.
         var exportDropdown = _buildExportDropdownBtn({
             onLinkMode: function (fmt) {
-                if (fmt === 'json')       { _openSheet(convShareSheetJson); }
-                else if (fmt === 'html')  { _openSheet(convShareSheetHtml); }
-                else                      { _openSheet(convShareSheetTxt);  }
+                _openConversationShare(fmt);
             },
         });
 
@@ -24470,13 +25557,11 @@ opts.jsonPayload + '\n' +
         if (termsSheet) panel.appendChild(termsSheet);
 
         var shareSheet = (cfgRef.panelShare !== false) ? _buildShareSheet({
-            // convShareSheetJson / Html / Txt are var-hoisted in createAIPanel
+            // convShareSheet is var-hoisted in createAIPanel
             // and assigned below — closures are safe (same pattern as the
             // toolbar exportDropdown wiring a few lines above).
             onLinkMode: function (fmt) {
-                if (fmt === 'json')       { _openSheet(convShareSheetJson); }
-                else if (fmt === 'html')  { _openSheet(convShareSheetHtml); }
-                else                      { _openSheet(convShareSheetTxt);  }
+                _openConversationShare(fmt);
             },
         }) : null;
         if (shareSheet) panel.appendChild(shareSheet);
@@ -24488,22 +25573,40 @@ opts.jsonPayload + '\n' +
         var linksSheet = (cfgRef.panelLinks !== false) ? _buildLinksSheet() : null;
         if (linksSheet) panel.appendChild(linksSheet);
 
-        // "Share conversation" sheets — one per export format (JSON, HTML, TXT).
-        // Opened by the export dropdown's onLinkMode dispatch when share-link mode
-        // is active.  All three are always built so _openSheet() can include them
-        // in its close-all sweep even when the toggle has never been used.
-        var convShareSheetJson = _buildFmtShareSheet('json');
-        var convShareSheetHtml = _buildFmtShareSheet('html');
-        var convShareSheetTxt  = _buildFmtShareSheet('txt');
-        panel.appendChild(convShareSheetJson);
-        panel.appendChild(convShareSheetHtml);
-        panel.appendChild(convShareSheetTxt);
+        // One Share conversation sheet for every implemented export format.
+        // Its JSON/HTML/TXT content panels are created lazily on first use, so
+        // format switching stays inside one stable UI surface without paying
+        // the DOM/state cost of three eagerly-built slide-overs.
+        var convShareSheet = _buildConversationShareSheet('json');
+        panel.appendChild(convShareSheet);
 
         // ── Endpoint Configuration Sheet ──────────────────────────────────────
         // Always built and appended so _openSheet() can include it in its
         // close-all sweep.  Content adapts gracefully to zero/one/many profiles.
         var epSheet = _buildEndpointConfigSheet();
         panel.appendChild(epSheet);
+
+        // ── Canonical slide-over registry ───────────────────────────────────
+        // Every cross-sheet concern consumes this registry: open/close sweeps,
+        // toolbar injection, Escape handling, and close-button focus wiring.
+        // Adding a new sheet therefore has one registration point instead of
+        // several hand-maintained arrays that can drift apart.
+        var _sheetRegistry = [
+            { key: 'model',              sheet: modelSheet,       toolbarId: 'model' },
+            { key: 'privacy',            sheet: privacySheet,     toolbarId: 'privacy' },
+            { key: 'usage-policy',       sheet: usagePolicySheet, toolbarId: 'usage-policy' },
+            { key: 'shortcuts',          sheet: shortcutsSheet,   toolbarId: 'shortcuts' },
+            { key: 'terms',              sheet: termsSheet,       toolbarId: 'terms' },
+            { key: 'share-export',       sheet: shareSheet,       toolbarId: 'share' },
+            { key: 'project-links',      sheet: linksSheet,       toolbarId: 'links' },
+            { key: 'conversation-share', sheet: convShareSheet,   toolbarId: 'conv-share' },
+            { key: 'endpoints',          sheet: epSheet,          toolbarId: 'ep' }
+        ];
+
+        function _allPanelSheets() {
+            return _sheetRegistry.map(function (entry) { return entry.sheet; })
+                .filter(function (sheet) { return !!sheet; });
+        }
 
         /**
          * Open exactly one sheet at a time.  Pass null to close all.
@@ -24537,11 +25640,10 @@ opts.jsonPayload + '\n' +
          * User: Escape key and the close (×) button both route through
          *   _closeSheet which restores focus to the originating button.
          */
-        function _openSheet(target) {
-            [modelSheet, privacySheet, usagePolicySheet, shortcutsSheet, termsSheet, shareSheet, linksSheet,
-             convShareSheetJson, convShareSheetHtml, convShareSheetTxt, epSheet].forEach(function (s) {
-                if (!s) return;
-                s.setAttribute('data-open', (s === target) ? 'true' : 'false');
+        function _openSheet(target, openerOverride) {
+            var opener = (arguments.length > 1) ? openerOverride : document.activeElement;
+            _allPanelSheets().forEach(function (sheet) {
+                sheet.setAttribute('data-open', (sheet === target) ? 'true' : 'false');
             });
 
             // Update aria-expanded on the sub-bar model trigger.
@@ -24556,7 +25658,7 @@ opts.jsonPayload + '\n' +
             }
 
             if (target) {
-                _sheetOpenerEl = document.activeElement;
+                _sheetOpenerEl = opener;
                 // Defer focus until the visibility transition has rendered.
                 requestAnimationFrame(function () {
                     // Prefer the checked radio in the model sheet; fall back to
@@ -24570,6 +25672,27 @@ opts.jsonPayload + '\n' +
                     if (firstFocus) firstFocus.focus();
                 });
             }
+        }
+
+        /**
+         * Select a format in the unified Share conversation sheet and open it.
+         *
+         * When invoked from another slide-over, preserve that slide-over's root
+         * opener rather than remembering the now-hidden format/export control.
+         * Closing Share therefore returns focus to a visible control.
+         */
+        function _openConversationShare(fmt) {
+            if (!convShareSheet ||
+                    typeof convShareSheet._selectExportFormat !== 'function') { return; }
+            if (!convShareSheet._selectExportFormat(fmt)) { return; }
+
+            var opener = document.activeElement;
+            var transitioningFromSheet = _allPanelSheets().some(function (sheet) {
+                return sheet !== convShareSheet &&
+                    sheet.getAttribute('data-open') === 'true';
+            });
+            if (transitioningFromSheet && _sheetOpenerEl) { opener = _sheetOpenerEl; }
+            _openSheet(convShareSheet, opener);
         }
 
         /**
@@ -24749,9 +25872,9 @@ opts.jsonPayload + '\n' +
                         if (hamburgerBtn) { try { hamburgerBtn.focus(); } catch (_) {} }
                         return;
                     }
-                    var openSheets = [privacySheet, usagePolicySheet, shortcutsSheet, modelSheet, termsSheet, shareSheet, linksSheet,
-                                      convShareSheetJson, convShareSheetHtml, convShareSheetTxt]
-                        .filter(function (sheet) { return sheet && sheet.getAttribute('data-open') === 'true'; });
+                    var openSheets = _allPanelSheets().filter(function (sheet) {
+                        return sheet.getAttribute('data-open') === 'true';
+                    });
                     if (openSheets.length > 0) {
                         openSheets.forEach(function (sheet) { _closeSheet(sheet); });
                         return;
@@ -25033,9 +26156,7 @@ opts.jsonPayload + '\n' +
 
             var exportDropdown2 = _buildExportDropdownBtn({
                 onLinkMode: function (fmt) {
-                    if (fmt === 'json')       { _openSheet(convShareSheetJson); }
-                    else if (fmt === 'html')  { _openSheet(convShareSheetHtml); }
-                    else                      { _openSheet(convShareSheetTxt);  }
+                    _openConversationShare(fmt);
                 },
             });
             wrap.appendChild(exportDropdown2);
@@ -25095,24 +26216,12 @@ opts.jsonPayload + '\n' +
         // the endpoint sheet's hamburger/close callbacks; these toolbar
         // controls do not touch that lifecycle, so keeping Endpoint visually
         // and behaviorally aligned with Model Configuration is safe.
-        [
-            { sheet: linksSheet,          id: 'links'      },
-            { sheet: privacySheet,        id: 'privacy'    },
-            { sheet: usagePolicySheet,    id: 'usage-policy' },
-            { sheet: shortcutsSheet,      id: 'shortcuts'  },
-            { sheet: termsSheet,          id: 'terms'      },
-            { sheet: modelSheet,          id: 'model'      },
-            { sheet: epSheet,             id: 'ep'         },
-            { sheet: shareSheet,          id: 'share'      },
-            { sheet: convShareSheetJson,  id: 'share-json' },
-            { sheet: convShareSheetHtml,  id: 'share-html' },
-            { sheet: convShareSheetTxt,   id: 'share-txt'  }
-        ].forEach(function (entry) {
+        _sheetRegistry.forEach(function (entry) {
             if (!entry.sheet) return;
             var head = entry.sheet.querySelector('.ai-assistant-panel-privacy-head');
             var closeBtnEl = entry.sheet.querySelector('button[id$="-close"]');
             if (!head || !closeBtnEl) return;
-            head.insertBefore(_buildSheetToolbar(entry.id), closeBtnEl);
+            head.insertBefore(_buildSheetToolbar(entry.toolbarId), closeBtnEl);
         });
 
         // Issue 4: Re-wire all sheet close (×) buttons to go through _closeSheet
@@ -25120,11 +26229,9 @@ opts.jsonPayload + '\n' +
         // registered inside each sheet builder call sheet.setAttribute directly
         // (they run before _closeSheet exists); we add a second listener here
         // which performs the focus restoration after the flag is already 'false'.
-        // convShareSheet replaced by three format-specific sheets; all three
-        // must appear here so _closeSheet restores focus for every variant.
-        [modelSheet, privacySheet, usagePolicySheet, shortcutsSheet, termsSheet, shareSheet, linksSheet,
-         convShareSheetJson, convShareSheetHtml, convShareSheetTxt].forEach(function (s) {
-            if (!s) return;
+        // The unified conversation Share sheet is registered once, so the same
+        // close/focus path covers every selected format.
+        _allPanelSheets().forEach(function (s) {
             var closeBtn = s.querySelector('button[id$="-close"]');
             if (!closeBtn) return;
             closeBtn.addEventListener('click', function () { _closeSheet(s); });
@@ -25756,24 +26863,9 @@ opts.jsonPayload + '\n' +
                 _EXPORT_LINK_MODE_KEY, _exportLinkMode ? 'true' : 'false');
         } catch (_e) {}
 
-        // Sync toggle pill in the export dropdown menu.
-        var toggle = document.getElementById('ai-assistant-export-link-toggle');
-        if (toggle) {
-            toggle.setAttribute('aria-pressed', _exportLinkMode ? 'true' : 'false');
-            toggle.setAttribute('title',
-                _exportLinkMode ? 'Share-link mode: ON' : 'Share-link mode: OFF');
-        }
-
-        // Sync mode label in the export dropdown menu.
-        // The share-sheet label is handled via _exportStateListeners below.
-        // querySelector is safe here: .ai-assistant-export-menu-mode-label is a
-        // singleton — only one dropdown exists at a time in the toolbar.
-        var menuModeLbl = document.querySelector('.ai-assistant-export-menu-mode-label');
-        if (menuModeLbl) {
-            menuModeLbl.textContent = _exportLinkMode ? 'Share link' : 'Download';
-        }
-
-        // Notify all registered surfaces (e.g. share-sheet export section).
+        // Every rendered control is an observer.  No DOM id or singleton
+        // query is authoritative here because the panel may contain several
+        // independent export dropdowns at once (header + open sheet toolbar).
         _notifyExportState();
     }
 
@@ -25808,7 +26900,7 @@ opts.jsonPayload + '\n' +
         // Persist preference across page reloads.
         try {
             localStorage.setItem(
-                'ai-assistant-feedback-persist',
+                'ai-assistant-feedback-telemetry',
                 _feedbackPersistEnabled ? 'true' : 'false'
             );
         } catch (_e) {}
@@ -26022,6 +27114,24 @@ opts.jsonPayload + '\n' +
         });
     }
 
+
+    /** Delete every legacy IndexedDB Share artifact created by pre-Run-8 UI. */
+    function _idbClearShares(callback) {
+        _idbOpen(function (db, err) {
+            if (err || !db) {
+                if (callback) callback(false, err || new Error('IDB open failed'));
+                return;
+            }
+            try {
+                var tx = db.transaction(_IDB_SHARE_STORE, 'readwrite');
+                var store = tx.objectStore(_IDB_SHARE_STORE);
+                var req = store.clear();
+                req.onsuccess = function () { if (callback) callback(true, null); };
+                req.onerror = function (e) { if (callback) callback(false, e.target.error); };
+            } catch (e2) { if (callback) callback(false, e2); }
+        });
+    }
+
     /**
      * Build the permanent share URL for a given UUID + format pair.
      *
@@ -26116,40 +27226,56 @@ opts.jsonPayload + '\n' +
     function _checkShareHash() {
         var hash = (typeof location !== 'undefined') ? location.hash : '';
 
-        // Self-contained tier (any device / browser, no storage). Checked first
-        // because its payload contains dots and never matches the IndexedDB
-        // pattern below. Format: #ai-share-c1.{fmt}.{base64url}
-        var sc = hash.match(/^#ai-share-c1\.(json|html|txt)\.([A-Za-z0-9_-]+)$/i);
-        if (sc) {
-            var scFmt     = sc[1].toLowerCase();
-            var scContent = _decodeShareHashPayload(sc[2]);
-            if (scContent == null) { return; }
-            var scMime =
-                scFmt === 'json' ? 'application/json;charset=utf-8' :
-                scFmt === 'txt'  ? 'text/plain;charset=utf-8'       :
-                'text/html;charset=utf-8';
+        // c2: structured envelope only. Render using trusted local serializer.
+        var c2 = hash.match(/^#ai-share-c2\.([A-Za-z0-9_-]+)$/i);
+        if (c2) {
+            var env = _decodeSelfContainedEnvelope(c2[1]);
+            if (!env) { return; }
+            var meta = _getExportFormat(env.format);
+            if (!meta) { return; }
+            var content = meta.buildStr(env.snapshot);
+            if (!content) { return; }
             try {
-                var scBlob = new Blob([scContent], { type: scMime });
-                var scUrl  = URL.createObjectURL(scBlob);
-                var scWin  = window.open(scUrl, '_blank', 'noopener,noreferrer');
-                if (scWin) { try { scWin.opener = null; } catch (_e) {} }
+                var safeBlob = new Blob([content], { type: meta.mime });
+                var safeUrl  = URL.createObjectURL(safeBlob);
+                var safeWin  = window.open(safeUrl, '_blank', 'noopener,noreferrer');
+                if (safeWin) { try { safeWin.opener = null; } catch (_e) {} }
             } catch (_e) {}
             return;
         }
 
-        var m    = hash.match(/^#ai-share-([A-Za-z0-9_-]+)-(json|html|txt)$/i);
+        // c1 is legacy and untrusted. JSON/TXT can remain inert data. HTML is
+        // NEVER opened as text/html because c1 allowed arbitrary caller bytes.
+        var c1 = hash.match(/^#ai-share-c1\.(json|html|txt)\.([A-Za-z0-9_-]+)$/i);
+        if (c1) {
+            var legacyFmt = c1[1].toLowerCase();
+            var legacyContent = _decodeShareHashPayload(c1[2]);
+            if (legacyContent == null) return;
+            var legacyMime = legacyFmt === 'json'
+                ? 'application/json;charset=utf-8'
+                : 'text/plain;charset=utf-8';
+            try {
+                var legacyBlob = new Blob([legacyContent], { type: legacyMime });
+                var legacyUrl  = URL.createObjectURL(legacyBlob);
+                var legacyWin  = window.open(legacyUrl, '_blank', 'noopener,noreferrer');
+                if (legacyWin) { try { legacyWin.opener = null; } catch (_e2) {} }
+            } catch (_e3) {}
+            return;
+        }
+
+        // Legacy same-browser IndexedDB links. HTML entries are rendered inert
+        // as text/plain; new self-contained links use c2 and never depend on IDB.
+        var m = hash.match(/^#ai-share-([A-Za-z0-9_-]+)-(json|html|txt)$/i);
         if (!m) return;
         var uuid = m[1];
         var fmt  = m[2].toLowerCase();
         _idbLoadShare(uuid, function (entry, err) {
-            if (err || !entry) return;   // deleted or IDB unavailable — silent
-            var mime = entry.mimeType || (
-                fmt === 'json' ? 'application/json;charset=utf-8' :
-                fmt === 'txt'  ? 'text/plain;charset=utf-8'       :
-                'text/html;charset=utf-8'
-            );
+            if (err || !entry) return;
+            var mime = fmt === 'json'
+                ? 'application/json;charset=utf-8'
+                : 'text/plain;charset=utf-8';
             try {
-                var blob = new Blob([entry.content], { type: mime });
+                var blob = new Blob([String(entry.content || '')], { type: mime });
                 var url  = URL.createObjectURL(blob);
                 var w    = window.open(url, '_blank', 'noopener,noreferrer');
                 if (w) { try { w.opener = null; } catch (_e) {} }
@@ -29379,6 +30505,46 @@ opts.jsonPayload + '\n' +
         var rawText = input.value.trim();
         if (!rawText) return;
 
+        var cfg = _cfg();
+        var MAX_CHARS    = 4000;
+        var questionText = rawText.length > MAX_CHARS
+            ? rawText.slice(0, MAX_CHARS) + '\u2026 [truncated]'
+            : rawText;
+
+        // Run the user-protection preflight before we mutate the composer,
+        // transcript, or any in-flight request.  Cancel therefore means exactly
+        // "go back and edit"; the user's text remains in place untouched.
+        var preparedPageContext = null;
+        var privacyConversationId = _getConversationId();
+        if (cfg.panelApiEnabled) {
+            // Page context is part of the same outbound privacy decision.  Its
+            // high-confidence credentials and invisible controls are already
+            // removed automatically because the reader did not author them;
+            // possible personal data remains advisory and can be redacted by
+            // the reader before any network request is started.
+            preparedPageContext = await _privacyPreparePageContext();
+            var outboundCandidate = {
+                user_message: questionText,
+                page_context: preparedPageContext.text
+            };
+            var privacyDecision = await _privacyPreflightReview(outboundCandidate, {
+                title: 'Review before sending',
+                destination: 'the configured AI endpoint',
+                cancelLabel: 'Edit message',
+                continueLabel: 'Send unchanged'
+            });
+            if (privacyDecision.action === 'cancel' ||
+                    privacyConversationId !== _getConversationId()) {
+                input.focus();
+                return;
+            }
+            questionText = privacyDecision.value.user_message;
+            preparedPageContext.text = privacyDecision.value.page_context;
+            if (privacyDecision.action === 'redact') {
+                showNotification('Flagged values redacted before sending', false);
+            }
+        }
+
         // ── Cancel any in-flight request before starting a new one ───────
         // Without this, rapid submits fire multiple concurrent fetches; the
         // older response can arrive AFTER the newer one, producing
@@ -29401,11 +30567,6 @@ opts.jsonPayload + '\n' +
         _bannerStop(false);
         _dismissSpeakBanner();
 
-        var MAX_CHARS    = 4000;
-        var questionText = rawText.length > MAX_CHARS
-            ? rawText.slice(0, MAX_CHARS) + '\u2026 [truncated]'
-            : rawText;
-
         _appendPanelMessage(questionText, 'user');
         input.value = '';
         _updateSendBtnState();
@@ -29416,11 +30577,10 @@ opts.jsonPayload + '\n' +
         var body = document.getElementById('ai-assistant-panel-body');
         if (body) { _showTypingIndicator(body); }
 
-        var cfg = _cfg();
         try {
             if (cfg.panelApiEnabled) {
                 _panelActiveRequestController = requestController;
-                await _panelApiCall(questionText, cfg);
+                await _panelApiCall(questionText, cfg, preparedPageContext);
             } else {
                 await _panelStubReply(questionText);
             }
@@ -29503,8 +30663,9 @@ opts.jsonPayload + '\n' +
      *
      * @param {string} question  User question text (already length-truncated).
      * @param {object} cfg       window.AI_ASSISTANT_CONFIG
+     * @param {object|null} preparedPageContext  Locally privacy-reviewed page context.
      */
-    async function _panelApiCall(question, cfg) {
+    async function _panelApiCall(question, cfg, preparedPageContext) {
         // ── 1. Resolve active model and endpoint ──────────────────────────
         var activeModel = _getActiveModel(cfg);
         var endpoint = '';
@@ -29553,9 +30714,10 @@ opts.jsonPayload + '\n' +
             );
         }
 
-        // ── 3. Build page context (best-effort; never throws) ─────────────
-        var pageMarkdown = '';
-        try { pageMarkdown = await convertToMarkdown(); } catch (_e) { _log('debug', 'page-context Markdown conversion failed', _e); }
+        // ── 3. Use the privacy-reviewed page context ─────────────────────
+        // `handleAIPanelSubmit` prepares this before transcript/network mutation.
+        // Keep a defensive fallback for direct/internal callers of _panelApiCall.
+        var prepared = preparedPageContext || await _privacyPreparePageContext();
 
         // FIX Issue 7: configurable token and context limits.
         // Global defaults come from cfg; per-model overrides take precedence.
@@ -29588,20 +30750,18 @@ opts.jsonPayload + '\n' +
             'sections, and LaTeX (\\(...\\) / \\[...\\]) renders as math. If ' +
             'asked about downloading, copying, or reading a long answer, ' +
             'mention these rather than saying it isn\'t possible.';
-        // Neutralise, then contain. Invisible codepoints come out of the text
-        // (the DOM-level pass already ran in convertToMarkdown), and what is
-        // left is fenced with a per-request nonce and labelled as data.
-        var _cleaned = _stripInvisibleChars(pageMarkdown);
-
-        // Redact BEFORE fencing and before truncation. Redacting afterwards
-        // would leave a secret that fell past the context limit unexamined
-        // while reporting the page as clean.
-        var _redacted = _redactSecrets(_cleaned.text);
+        // Credentials and invisible controls were neutralised before the
+        // reader's preflight decision.  Announce automatic page-secret redaction
+        // here so the existing user-visible behaviour is preserved.
+        var _redacted = {
+            text: prepared && typeof prepared.text === 'string' ? prepared.text : '',
+            findings: prepared && Array.isArray(prepared.redactionFindings)
+                ? prepared.redactionFindings : []
+        };
         _announceRedaction(_redacted.findings);
 
-        // Scanned after redaction so a redacted key cannot itself look like an
-        // opaque blob. Purely informational: the text is sent unchanged either
-        // way, and the fence is what actually contains it.
+        // Scanned after redaction/privacy review so a removed key cannot itself
+        // look like an opaque blob. Purely informational; fencing is authority.
         var _injection = _scanInjection(_redacted.text);
         _announceInjection(_injection);
 
@@ -29627,6 +30787,10 @@ opts.jsonPayload + '\n' +
             ? cfg.panelSystemPrompt.replace('{context}', _fenced)
             : defaultSystemPrompt;
 
+        // Security authority is negotiated, never guessed from the provider
+        // label or URL. Bundled proxies advertise this contract from /health.
+        var proxyContract = await _chatContractDiscover(endpoint);
+        var useStructuredProxy = (proxyContract === _CHAT_CONTRACT_V1);
 
         // ── 4. Build request body ─────────────────────────────────────────
         // Anthropic uses a distinct body shape (system at top level).
@@ -29635,7 +30799,27 @@ opts.jsonPayload + '\n' +
         // OpenAI /v1/chat/completions shape.
         var isAnthropic = (provider === 'anthropic');
         var bodyObj;
-        if (isAnthropic) {
+        if (useStructuredProxy) {
+            var safePage = _sanitizePage(window.location && window.location.href || '');
+            var descriptorParts = [];
+            if (document && typeof document.title === 'string' && document.title) {
+                descriptorParts.push(document.title.slice(0, 512));
+            }
+            if (safePage && safePage !== '<page-redacted>') descriptorParts.push(safePage);
+            bodyObj = {
+                contract: _CHAT_CONTRACT_V1,
+                model: modelName,
+                user_message: question,
+                context: {
+                    // Server owns the fence/policy. Send cleaned + redacted
+                    // page data, not a client-authored system prompt.
+                    page_text: _redacted.text.slice(0, contextLimit),
+                    page_descriptor: descriptorParts.join(' · ').slice(0, 2048)
+                },
+                max_tokens: maxTokens,
+                stream: false
+            };
+        } else if (isAnthropic) {
             bodyObj = {
                 model:      modelName,
                 max_tokens: maxTokens,
@@ -29666,7 +30850,11 @@ opts.jsonPayload + '\n' +
         // what the panel sent before the controls existed — the model uses its
         // own defaults, which is what the sheet reports as "Default".
         var reasoningSupport = _reasoningSupport(activeModel, cfg);
-        _applyReasoningParams(bodyObj, reasoningSupport);
+        if (useStructuredProxy) {
+            _applyStructuredReasoningIntent(bodyObj, reasoningSupport);
+        } else {
+            _applyReasoningParams(bodyObj, reasoningSupport);
+        }
 
         var body = JSON.stringify(bodyObj);
         var reasoningFallbackBody = (body !== providerDefaultBody)
