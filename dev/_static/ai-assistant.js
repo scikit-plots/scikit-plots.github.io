@@ -23747,7 +23747,9 @@
                     message = status === 429 ? 'Global Share rate limit reached.'
                         : status === 502 ? 'The Share service did not return a usable JSON public-link response.'
                         : status ? ('The Share service returned HTTP ' + status + '.')
-                        : 'The browser could not reach the configured Share service. Check network, CORS, and endpoint configuration.';
+                        : ((window.location && window.location.protocol === 'file:')
+                            ? 'Local-file Global Share could not reach the service. The proxy must explicitly enable SHARE_ALLOW_OPAQUE_ORIGIN=true; Origin:null is not trusted by default.'
+                            : 'The browser could not reach the configured Share service. Check network, CORS, and endpoint configuration.');
                 }
                 resultState = { kind: 'global', phase: 'error', status: status, message: message,
                     bytes: bytes, format: meta.fmt, stale: false };
