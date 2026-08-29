@@ -13028,6 +13028,16 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
 }
 /* Hairline separator between rows */
+.ai-assistant-fbk-popup-hint {
+    margin: -0.12rem 0.68rem 0.5rem 2.35rem;
+    font-size: 0.71rem;
+    line-height: 1.38;
+    color: var(--pst-color-text-muted, #64748b);
+}
+[data-bs-theme="dark"] .ai-assistant-fbk-popup-hint {
+    color: #9ca3af;
+}
+
 .ai-assistant-fbk-popup-sep {
     height: 1px;
     background: var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
@@ -17282,4 +17292,131 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
   .ai-assistant-conv-share-custom-grid { grid-template-columns:1fr; }
   .ai-assistant-conv-share-format-switcher { overflow-x:auto; flex-wrap:nowrap; }
   .ai-assistant-conv-share-artifact { align-items:flex-start; flex-wrap:wrap; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   B36 — DATASET CONTRIBUTION SHEET
+   Contribution is a first-class surface, separate from Share and telemetry.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ai-assistant-panel-contribution-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.ai-assistant-panel-contribution-intro,
+.ai-assistant-panel-contribution-endpoint,
+.ai-assistant-panel-contribution-hint,
+.ai-assistant-panel-contribution-included p,
+.ai-assistant-panel-contribution-excluded p {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+}
+.ai-assistant-panel-contribution-endpoint[data-ready="true"] {
+    font-weight: 600;
+}
+.ai-assistant-panel-contribution-scopes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+}
+.ai-assistant-panel-contribution-scope {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 0.65rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d1d5db));
+    border-radius: 0.65rem;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #111827));
+    text-align: left;
+    cursor: pointer;
+}
+.ai-assistant-panel-contribution-scope span {
+    font-size: 0.68rem;
+    line-height: 1.35;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+}
+.ai-assistant-panel-contribution-scope[data-active="true"] {
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    box-shadow: 0 0 0 1px var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+.ai-assistant-panel-contribution-scope:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+.ai-assistant-panel-contribution-summary,
+.ai-assistant-panel-contribution-included,
+.ai-assistant-panel-contribution-excluded,
+.ai-assistant-panel-contribution-result {
+    padding: 0.7rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+    border-radius: 0.65rem;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    font-size: 0.76rem;
+    line-height: 1.45;
+}
+.ai-assistant-panel-contribution-summary[data-error="true"] {
+    font-weight: 600;
+}
+.ai-assistant-panel-contribution-note {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+.ai-assistant-panel-contribution-note textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 4.5rem;
+    padding: 0.55rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d1d5db));
+    border-radius: 0.55rem;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #111827));
+    font: inherit;
+    font-weight: 400;
+}
+.ai-assistant-panel-contribution-inspect-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+.ai-assistant-panel-contribution-size {
+    font-size: 0.72rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+}
+.ai-assistant-panel-contribution-preview {
+    margin: 0;
+    max-height: 18rem;
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    padding: 0.7rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d1d5db));
+    border-radius: 0.55rem;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    font-size: 0.7rem;
+    line-height: 1.45;
+}
+.ai-assistant-panel-contribution-consent {
+    margin: 0;
+}
+.ai-assistant-panel-contribution-result:empty {
+    display: none;
+}
+.ai-assistant-panel-contribute-link {
+    white-space: nowrap;
+}
+@media (max-width: 720px) {
+    .ai-assistant-panel-contribution-scopes {
+        grid-template-columns: 1fr;
+    }
 }

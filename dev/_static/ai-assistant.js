@@ -505,32 +505,49 @@
     var _exportStateListeners = [];
 
     /**
-     * Whether the reader explicitly opted into sending privacy-minimal rating
-     * telemetry to the configured Feedback endpoint.  This preference does
-     * not control server durability and never authorizes collection of the
-     * question, answer, note, model, page URL, or conversation/session ID.
+     * Feedback telemetry permission is a versioned, explicit browser-side
+     * consent. Local ratings never require it. Network telemetry does.
      *
-     * Server-side ``FEEDBACK_PERSIST_ENABLED`` is an independent operator
-     * policy. Persisted feedback remains ``trainingStatus=telemetry`` and is
-     * excluded from training.
+     * Security / migration rules:
+     *   - absent, malformed, stale-version, or storage-inaccessible state => OFF;
+     *   - historical boolean keys are deliberately ignored;
+     *   - only this UI writes the current consent record;
+     *   - the server independently requires the matching consent marker on
+     *     every /v1/feedback request, so client-side gating is not the sole
+     *     enforcement boundary.
      *
-     * Storage: localStorage key ``'ai-assistant-feedback-telemetry'``.
-     * Absence of the key defaults to ``false``. Only the exact string
-     * ``'true'`` opts into network telemetry. The historical
-     * ``ai-assistant-feedback-persist`` preference is intentionally not
-     * inherited because its semantics over-collected content.
-     *
-     * @type {boolean}
+     * Turning telemetry off stops future network sends. It does not claim to
+     * erase telemetry that was already accepted by a remote provider.
      */
-    var _feedbackPersistEnabled = (function () {
+    var _FEEDBACK_TELEMETRY_CONSENT_VERSION = '1.0.0';
+    var _FEEDBACK_TELEMETRY_PREF_KEY = 'ai-assistant-feedback-telemetry-consent';
+    var _feedbackTelemetryGrantedAt = null;
+
+    function _readFeedbackTelemetryConsent() {
         try {
-            // Privacy v3: network rating telemetry is explicit opt-in.  Do not
-            // inherit the old ai-assistant-feedback-persist=true preference.
-            return localStorage.getItem('ai-assistant-feedback-telemetry') === 'true';
+            var raw = localStorage.getItem(_FEEDBACK_TELEMETRY_PREF_KEY);
+            if (!raw) { return false; }
+            var saved = JSON.parse(raw);
+            if (!saved || saved.enabled !== true ||
+                    saved.version !== _FEEDBACK_TELEMETRY_CONSENT_VERSION) {
+                return false;
+            }
+            var grantedAt = Number(saved.grantedAt);
+            if (!Number.isFinite(grantedAt) || grantedAt <= 0) { return false; }
+            _feedbackTelemetryGrantedAt = grantedAt;
+            return true;
         } catch (_) {
             return false;
         }
-    }());
+    }
+
+    var _feedbackPersistEnabled = _readFeedbackTelemetryConsent();
+
+    function _feedbackTelemetryStatusText() {
+        return _feedbackPersistEnabled
+            ? 'Permission active — rating metadata may be sent to the configured feedback endpoint.'
+            : 'Local only — no network telemetry. Ratings stay in this browser unless you explicitly contribute content.';
+    }
 
     /**
      * Selected microphone device ID.
@@ -7198,8 +7215,11 @@
     function _feedbackTelemetryPayload(detail) {
         detail = detail || {};
         return {
-            schemaVersion: 3,
+            schemaVersion: 4,
             action: 'rate',
+            telemetryConsent: true,
+            telemetryConsentVersion: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
+            telemetryConsentAt: _feedbackTelemetryGrantedAt,
             feedbackId: detail.sessionId || detail.feedbackId || null,
             prevFeedbackId: detail.prevFeedbackId || null,
             editCount: detail.editCount || 0,
@@ -7212,10 +7232,26 @@
         };
     }
 
+    function _feedbackLocalEventPayload(detail) {
+        // Public DOM hooks are intentionally content-free. Page scripts can
+        // observe the user's local rating interaction, but this extension never
+        // broadcasts the question, answer, note, model, page, or stable browser
+        // conversation identifier through the feedback event.
+        var out = _feedbackTelemetryPayload(detail);
+        delete out.telemetryConsent;
+        delete out.telemetryConsentVersion;
+        delete out.telemetryConsentAt;
+        return out;
+    }
+
     function _postFeedback(url, token, detail) {
+        // Defence in depth: callers cannot accidentally bypass the UI consent
+        // gate by invoking this helper directly.
+        if (!_feedbackPersistEnabled || !_feedbackTelemetryGrantedAt) { return false; }
         // Privacy boundary: query/answer/comment/model/page/conversation identifiers
         // stay local unless the user separately chooses the contribution flow.
         _remotePost(url, token, _feedbackTelemetryPayload(detail), { keepalive: true });
+        return true;
     }
 
     /**
@@ -7269,14 +7305,23 @@
      *   }
      */
     function _postFeedbackRetract(url, token, prevSessionId, answerIndex, conversationId) {
-        if (!url || !prevSessionId) { return; }
+        // Retraction is still a network telemetry operation. Never transmit it
+        // after permission has been turned off; stopping telemetry must be a
+        // true network stop, not a final hidden request.
+        if (!url || !prevSessionId || !_feedbackPersistEnabled || !_feedbackTelemetryGrantedAt) {
+            return false;
+        }
         _remotePost(url, token, {
             action:         'retract',
-            schemaVersion:  3,
+            schemaVersion:  4,
+            telemetryConsent: true,
+            telemetryConsentVersion: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
+            telemetryConsentAt: _feedbackTelemetryGrantedAt,
             prevFeedbackId: prevSessionId,
             answerIndex:    answerIndex,
             ts:             Date.now(),
         }, { keepalive: true });
+        return true;
     }
 
     /**
@@ -7549,7 +7594,7 @@
             // skipped regardless of persist mode).
             try {
                 document.dispatchEvent(new CustomEvent(
-                    'ai-assistant-feedback', { detail: detail }));
+                    'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
             } catch (_) {}
 
             var _fbBase  = _EP.hasProfiles()
@@ -7734,10 +7779,10 @@
     }
 
     /**
-     * POST a training contribution payload to the configured training endpoint.
+     * POST an explicit dataset contribution payload to the configured contribution endpoint.
      *
-     * @param {string}   url       cfg.panelTrainingEndpoint.
-     * @param {Object}   payload   Contribution payload (schemaVersion 3, versioned consent).
+     * @param {string}   url       Active dataset contribution endpoint.
+     * @param {Object}   payload   Contribution payload (schemaVersion 4, versioned consent).
      * @param {Function} onSuccess Called with {contributed, rows} on success.
      * @param {Function} onError   Called with {status, message} on failure.
      * @returns {void}
@@ -7752,6 +7797,164 @@
             onSuccess: onSuccess,
             onError:   onError,
         });
+    }
+
+    var _CONTRIBUTION_SCHEMA_VERSION = 4;
+    var _CONTRIBUTION_CONSENT_VERSION = '2.0.0';
+    var _CONTRIBUTION_MAX_CLIENT_BYTES = 240 * 1024;
+    var _CONTRIBUTION_NOTE_MAX_CHARS = 1000;
+
+    /** Resolve the active dataset-contribution endpoint without UI ownership. */
+    function _resolveContributionEndpoint() {
+        var cfg = _cfg();
+        var profileUrl = _EP.hasProfiles()
+            ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('training') : _EP.resolve('training'))
+            : '';
+        return profileUrl || _resolveFlatFeatureEndpoint(
+            cfg.panelTrainingEndpoint || '', '/v1/contribute');
+    }
+
+    /** Return one transcript Q&A by rendered answer index. Error entries count for alignment. */
+    function _contributionQaAtIndex(targetIndex) {
+        var idx = Number(targetIndex);
+        if (!Number.isInteger(idx) || idx < 0) return null;
+        var answerIndex = 0;
+        var latestUser = '';
+        for (var i = 0; i < _transcript.length; i++) {
+            var m = _transcript[i] || {};
+            if (m.role === 'user') {
+                latestUser = typeof m.text === 'string' ? m.text : '';
+                continue;
+            }
+            if (m.role === 'assistant' || m.role === 'error') {
+                if (answerIndex === idx) {
+                    if (m.role !== 'assistant') return null;
+                    return {
+                        answerIndex: idx,
+                        query: latestUser,
+                        answer: typeof m.text === 'string' ? m.text : '',
+                        ts: m.ts || Date.now(),
+                        model: m.model || null,
+                    };
+                }
+                answerIndex++;
+            }
+        }
+        return null;
+    }
+
+    function _contributionQaRecord(answerIndex, requireRating) {
+        var qa = _contributionQaAtIndex(answerIndex);
+        if (!qa || (!qa.query && !qa.answer)) return null;
+        var fb = _feedbackStore[answerIndex] || null;
+        if (requireRating && !fb) return null;
+        return {
+            recordType: 'qa',
+            answerIndex: answerIndex,
+            query: qa.query || '',
+            answer: qa.answer || '',
+            ratingValue: fb && fb.ratingValue != null ? fb.ratingValue : null,
+            ratingLabel: fb ? (fb.ratingLabel || '') : '',
+            ratingTitle: fb ? (fb.ratingTitle || null) : null,
+            ratingMode: fb ? (fb.ratingMode || null) : null,
+            message: fb ? (fb.message || '') : '',
+            ts: fb ? (fb.ts || qa.ts || Date.now()) : (qa.ts || Date.now()),
+            _source: 'contribution',
+        };
+    }
+
+    /** Build the historical rated-Q&A record family from the current conversation. */
+    function _buildRatedContributionRecords() {
+        var records = [];
+        Object.keys(_feedbackStore).sort(function (a, b) { return Number(a) - Number(b); })
+            .forEach(function (key) {
+                var idx = parseInt(key, 10);
+                var rec = _contributionQaRecord(idx, true);
+                if (rec) records.push(rec);
+            });
+        return records;
+    }
+
+    /** Build one ordered conversation record. Error rows are intentionally excluded. */
+    function _buildWholeConversationContributionRecord(note) {
+        var messages = [];
+        var answerIndex = 0;
+        _transcript.forEach(function (m) {
+            if (!m || typeof m.text !== 'string') return;
+            if (m.role === 'user') {
+                messages.push({ role: 'user', content: m.text, ts: m.ts || null });
+                return;
+            }
+            if (m.role === 'assistant') {
+                var fb = _feedbackStore[answerIndex] || null;
+                messages.push({
+                    role: 'assistant',
+                    content: m.text,
+                    ts: m.ts || null,
+                    model: m.model ? {
+                        id: m.model.id || null,
+                        provider: m.model.provider || null,
+                        model: m.model.model || null,
+                        label: m.model.label || null,
+                    } : null,
+                    feedback: fb ? {
+                        ratingValue: fb.ratingValue != null ? fb.ratingValue : null,
+                        ratingLabel: fb.ratingLabel || '',
+                        ratingTitle: fb.ratingTitle || null,
+                        ratingMode: fb.ratingMode || null,
+                        note: fb.message || '',
+                    } : null,
+                });
+                answerIndex++;
+                return;
+            }
+            // Error rows are not training/evaluation conversation content, but they
+            // still consume a rendered answer index so later ratings stay aligned.
+            if (m.role === 'error') answerIndex++;
+        });
+        if (!messages.length) return null;
+        return {
+            recordType: 'conversation',
+            messages: messages,
+            message: String(note || '').slice(0, _CONTRIBUTION_NOTE_MAX_CHARS),
+            ts: Date.now(),
+            _source: 'contribution',
+        };
+    }
+
+    /** Build the exact schema-v4 payload previewed, privacy-reviewed, and submitted. */
+    function _buildDatasetContributionPayload(scope, context, note) {
+        var cfg = _cfg();
+        var normalizedScope = scope === 'qa' ? 'qa'
+            : scope === 'rated' ? 'rated' : 'conversation';
+        var records = [];
+        if (normalizedScope === 'qa') {
+            var answerIndex = context && Number.isInteger(context.answerIndex)
+                ? context.answerIndex : null;
+            var one = answerIndex != null ? _contributionQaRecord(answerIndex, false) : null;
+            if (one) records.push(one);
+        } else if (normalizedScope === 'rated') {
+            records = _buildRatedContributionRecords();
+        } else {
+            var conversation = _buildWholeConversationContributionRecord(note);
+            if (conversation) records.push(conversation);
+        }
+        if (!records.length) return null;
+        return {
+            schemaVersion: _CONTRIBUTION_SCHEMA_VERSION,
+            consentFlag: true,
+            consentVersion: _CONTRIBUTION_CONSENT_VERSION,
+            page: _sanitizePage((typeof location !== 'undefined') ? location.href : ''),
+            // Q&A records retain the existing envelope-level model contract.
+            // Conversation records carry model evidence per assistant message.
+            model: normalizedScope === 'conversation' ? null : _buildModelInfo(cfg),
+            records: records,
+        };
+    }
+
+    function _datasetContributionPayloadBytes(payload) {
+        if (!payload) return 0;
+        try { return _utf8ByteLength(JSON.stringify(payload)); } catch (_) { return 0; }
     }
 
     function _escapeHtml(str) {
@@ -11384,7 +11587,7 @@
                 // CustomEvent fires unconditionally for doc-author listeners.
                 try {
                     document.dispatchEvent(new CustomEvent(
-                        'ai-assistant-feedback', { detail: detail }));
+                        'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
                 } catch (_) {}
 
                 var _fbBase = _EP.hasProfiles()
@@ -11489,14 +11692,14 @@
 
         var persistLabel = document.createElement('span');
         persistLabel.className = 'ai-assistant-fbk-popup-label';
-        persistLabel.textContent = 'Save to dataset';
+        persistLabel.textContent = 'Send rating telemetry';
 
         var miniPill = document.createElement('button');
         miniPill.type = 'button';
         miniPill.className = 'ai-assistant-fbk-popup-mini-pill';
         miniPill.setAttribute('role', 'switch');
         miniPill.setAttribute('aria-checked', _feedbackPersistEnabled ? 'true' : 'false');
-        miniPill.setAttribute('aria-label', 'Save ratings to HuggingFace dataset');
+        miniPill.setAttribute('aria-label', 'Send privacy-minimal rating telemetry');
         var miniThumb = document.createElement('span');
         miniThumb.className = 'ai-assistant-fbk-popup-mini-pill-thumb';
         miniPill.appendChild(miniThumb);
@@ -11509,12 +11712,55 @@
         persistRow.appendChild(miniPill);
         popup.appendChild(persistRow);
 
+        var persistHint = document.createElement('p');
+        persistHint.className = 'ai-assistant-fbk-popup-hint';
+        persistHint.textContent = _feedbackTelemetryStatusText();
+        popup.appendChild(persistHint);
+
         var popSep1 = document.createElement('div');
         popSep1.className = 'ai-assistant-fbk-popup-sep';
         popSep1.setAttribute('aria-hidden', 'true');
         popup.appendChild(popSep1);
 
-        // Row 2: Toggle full feedback form
+        // Row 2: Explicit content contribution. This is intentionally separate
+        // from the telemetry toggle above and opens the canonical contribution sheet.
+        var contributeRow = document.createElement('div');
+        contributeRow.className = 'ai-assistant-fbk-popup-row';
+        contributeRow.style.cursor = 'pointer';
+        contributeRow.setAttribute('role', 'button');
+        contributeRow.setAttribute('tabindex', '0');
+        contributeRow.setAttribute('aria-label', 'Contribute this question and answer to dataset review');
+        var contributeIcon = document.createElement('span');
+        contributeIcon.className = 'ai-assistant-fbk-popup-icon';
+        contributeIcon.textContent = '\uD83E\uDD1D';
+        contributeIcon.setAttribute('aria-hidden', 'true');
+        var contributeLabel = document.createElement('span');
+        contributeLabel.className = 'ai-assistant-fbk-popup-label';
+        contributeLabel.textContent = 'Contribute this Q&A\u2026';
+        contributeRow.appendChild(contributeIcon);
+        contributeRow.appendChild(contributeLabel);
+        function _openQaContribution() {
+            popup.setAttribute('data-pinned', 'false');
+            expBtn.setAttribute('aria-expanded', 'false');
+            wrapper.setAttribute('data-active', 'false');
+            try {
+                document.dispatchEvent(new CustomEvent('ai-assistant-open-contribution', {
+                    detail: { scope: 'qa', answerIndex: answerIndex }
+                }));
+            } catch (_) {}
+        }
+        contributeRow.addEventListener('click', _openQaContribution);
+        contributeRow.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _openQaContribution(); }
+        });
+        popup.appendChild(contributeRow);
+
+        var popSepContribution = document.createElement('div');
+        popSepContribution.className = 'ai-assistant-fbk-popup-sep';
+        popSepContribution.setAttribute('aria-hidden', 'true');
+        popup.appendChild(popSepContribution);
+
+        // Row 3: Toggle full feedback form
         var formRow = document.createElement('div');
         formRow.className = 'ai-assistant-fbk-popup-row';
         formRow.style.cursor = 'pointer';
@@ -11555,7 +11801,7 @@
         popSep2.setAttribute('aria-hidden', 'true');
         popup.appendChild(popSep2);
 
-        // Row 3: Future features placeholder
+        // Row 4: Future features placeholder
         var futureRow = document.createElement('div');
         futureRow.className = 'ai-assistant-fbk-popup-future';
         futureRow.setAttribute('aria-hidden', 'true');
@@ -11801,7 +12047,7 @@
             // Dev-friendly hook — doc authors attach their own analytics.
             try {
                 document.dispatchEvent(new CustomEvent(
-                    'ai-assistant-feedback', { detail: detail }));
+                    'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
             } catch (_) {}
             // HTTP persistence — fires only when endpoint is configured.
             // CustomEvent always dispatches first to preserve backward
@@ -11853,7 +12099,7 @@
             }
             if (cfg.panelFeedbackLog) {
                 // eslint-disable-next-line no-console
-                _log('log', '[ai-assistant] feedback', _redactPayloadForLog(detail));
+                _log('log', '[ai-assistant] feedback', _feedbackLocalEventPayload(detail));
             }
             _feedbackGivenSet.add(answerIndex);
             // Keep the full local tuple for UI/edit/share enrichment and explicit contribution.
@@ -12035,7 +12281,7 @@
             { key: 'chat',     label: 'Chat',     suffix: '/v1/chat/completions', priority: 'P0' },
             { key: 'share',    label: 'Share',    suffix: '/v1/share',            priority: 'P1' },
             { key: 'feedback', label: 'Feedback', suffix: '/v1/feedback',         priority: 'P3' },
-            { key: 'training', label: 'Training', suffix: '/v1/contribute',       priority: 'P2' },
+            { key: 'training', label: 'Dataset contribution', suffix: '/v1/contribute', priority: 'P2' },
         ];
         var _MAX_LABEL   = 100;
         var _MAX_CUSTOM  = (_epSafe && _epSafe.MAX_CUSTOM_PROFILES) ? _epSafe.MAX_CUSTOM_PROFILES : 20;
@@ -12860,7 +13106,7 @@
             { key: 'chat',          label: 'Chat endpoint',   type: 'text',     ph: 'Absolute URL, relative v1/chat/completions, or blank to inherit' },
             { key: 'share',         label: 'Share endpoint',  type: 'text',     ph: 'Absolute URL, relative v1/share, or blank to inherit' },
             { key: 'feedback',      label: 'Feedback endpoint', type: 'text',   ph: 'Absolute URL, relative v1/feedback, or blank to inherit' },
-            { key: 'training',      label: 'Training endpoint', type: 'text',   ph: 'Absolute URL, relative v1/contribute, or blank to inherit' },
+            { key: 'training',      label: 'Dataset contribution endpoint', type: 'text', ph: 'Absolute URL, relative v1/contribute, or blank to inherit' },
             { key: 'datasetRepo',   label: 'Dataset override', type: 'text',    ph: 'Auto-discover, or owner/repo' },
             { key: 'shareToken',    label: 'Share token',    type: 'password', ph: '(optional Bearer token)'   },
             { key: 'feedbackToken', label: 'Feedback token', type: 'password', ph: '(optional Bearer token)'   },
@@ -13801,7 +14047,7 @@
         // CSS: .ai-assistant-panel-ep-ext-* (see ai-assistant.css D4-a block).
         // All toggles are localStorage-backed or read-only server-state mirrors.
         // ══════════════════════════════════════════════════════════════════════
-        var extSection = _buildSheetSection('Runtime & Feedback');
+        var extSection = _buildSheetSection('Runtime & Data');
         // Keep operational controls close to the active profile.  The later
         // Service diagnostics block is inserted after this section and before
         // Add Custom Profile, giving the sheet the intended reading order:
@@ -13911,21 +14157,23 @@
         // of Endpoint Configuration avoids two visible controls for one state.
 
         // ── C: Feedback Configuration ─────────────────────────────────────
-        var fbkSub = _buildExtSub('Feedback');
+        var fbkSub = _buildExtSub('Feedback telemetry');
 
         var fbkIntro = document.createElement('p');
         fbkIntro.className = 'ai-assistant-panel-ep-hint';
         fbkIntro.textContent =
-            'The \uD83D\uDC4D / \uD83D\uDC4E buttons always work locally. Network rating telemetry is OFF by default. ' +
+            'The rating buttons always work locally with zero network telemetry. Network rating telemetry is OFF by default and requires an explicit, versioned permission stored in this browser. ' +
             'If enabled, only the rating value/mode and bounded event metadata are sent; ' +
             'your question, the AI answer, optional note, model, page URL and conversation identifier stay local. ' +
-            'Training contribution is a separate explicit-consent action.';
+            'Turning telemetry off stops future sends but does not claim erasure of previously accepted remote telemetry. ' +
+            'Dataset contribution is a separate explicit-consent action and is never implied by this telemetry toggle.';
         fbkSub.appendChild(fbkIntro);
 
         // THE missing DOM element — _setFeedbackPersistMode() targets this id.
         var persistToggle = _buildExtToggleRow(
             'Send rating telemetry',
             'Opt in to sending privacy-minimal rating telemetry to the configured feedback endpoint. ' +
+            'This permission is remembered in this browser only for the current telemetry-consent version; stale or malformed stored state fails closed to Off. ' +
             'The optional written feedback note stays local unless you explicitly contribute the rated answer. ' +
             'Server persistence is independently controlled by the operator and cannot be enabled by this browser toggle.',
             _feedbackPersistEnabled,
@@ -13938,11 +14186,43 @@
         });
         fbkSub.appendChild(persistToggle.row);
 
+        var telemetryStatus = document.createElement('p');
+        telemetryStatus.id = 'ai-assistant-feedback-telemetry-status';
+        telemetryStatus.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-status';
+        telemetryStatus.textContent = _feedbackTelemetryStatusText();
+        fbkSub.appendChild(telemetryStatus);
+
         var _fbkServerRow = document.createElement('div');
         _fbkServerRow.id = 'ai-assistant-ep-ext-fbk-server-info';
         fbkSub.appendChild(_fbkServerRow);
 
         extBody.appendChild(fbkSub);
+
+        var contribSub = _buildExtSub('Dataset contributions');
+        var contribIntro = document.createElement('p');
+        contribIntro.className = 'ai-assistant-panel-ep-hint';
+        contribIntro.textContent = 'Content-bearing contributions use a separate explicit review workflow. The active contribution endpoint receives only the JSON you inspect, privacy-review, and consent to submit; accepted content enters quarantine before any training/evaluation eligibility.';
+        contribSub.appendChild(contribIntro);
+        var contribEndpoint = _resolveContributionEndpoint();
+        contribSub.appendChild(_buildExtInfoRow(
+            'Contribution endpoint',
+            contribEndpoint || 'Not configured',
+            contribEndpoint ? 'Ready' : 'Off',
+            !!contribEndpoint
+        ));
+        var openContribution = document.createElement('button');
+        openContribution.type = 'button';
+        openContribution.className = 'ai-assistant-panel-ep-ext-dataset-refresh-btn ai-assistant-panel-ep-open-contribution';
+        openContribution.textContent = 'Open contribution sheet';
+        openContribution.addEventListener('click', function () {
+            try {
+                document.dispatchEvent(new CustomEvent('ai-assistant-open-contribution', {
+                    detail: { scope: 'conversation' }
+                }));
+            } catch (_) {}
+        });
+        contribSub.appendChild(openContribution);
+        extBody.appendChild(contribSub);
 
         // Training routing is represented by the active profile's Advanced
         // override fields above; do not duplicate the resolved URL here.
@@ -13989,6 +14269,23 @@
         var _HF_DATASET_ORIGIN = 'https://huggingface.co';
         var _HF_DATASET_PATH_PREFIX = '/datasets/';
 
+        function _renderFeedbackTelemetryServerInfo(info) {
+            if (!_fbkServerRow) { return; }
+            _fbkServerRow.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-server';
+            if (!info || info.error) {
+                _fbkServerRow.textContent = 'Service telemetry contract: unavailable. Local ratings still work; network telemetry remains subject to the server gate.';
+                return;
+            }
+            var compatible = info.feedbackTelemetrySchemaVersion === 4 &&
+                info.feedbackTelemetryConsentVersion === _FEEDBACK_TELEMETRY_CONSENT_VERSION;
+            if (!compatible) {
+                _fbkServerRow.textContent = 'Service telemetry contract: incompatible or legacy. Keep telemetry Off until the deployed service advertises schema 4 / consent 1.0.0.';
+                return;
+            }
+            _fbkServerRow.textContent = 'Service telemetry contract: compatible · schema 4 · consent 1.0.0 · server persistence ' +
+                (info.feedbackPersistEnabled ? 'enabled' : 'disabled') + '. Browser permission is still required either way.';
+        }
+
         /**
          * Fetch the proxy root endpoint and extract dataset + token metadata.
          *
@@ -14018,7 +14315,10 @@
                 if (done) { return; }
                 done = true;
                 cb({ repoId: null, contributeReady: false,
-                     feedbackPersistEnabled: false, tokenType: null,
+                     feedbackPersistEnabled: false,
+                     feedbackTelemetrySchemaVersion: null,
+                     feedbackTelemetryConsentVersion: null,
+                     tokenType: null,
                      writeTokenType: null, leastPrivilege: false, storage: null,
                      error: errStr });
             }
@@ -14046,6 +14346,10 @@
                         repoId:                 tr.dataset_repo || null,
                         contributeReady:        !!tr.contribute_ready,
                         feedbackPersistEnabled: !!tr.feedback_persist_enabled,
+                        feedbackTelemetrySchemaVersion: Number.isInteger(tr.feedback_telemetry_schema_version)
+                            ? tr.feedback_telemetry_schema_version : null,
+                        feedbackTelemetryConsentVersion: typeof tr.feedback_telemetry_consent_version === 'string'
+                            ? tr.feedback_telemetry_consent_version : null,
                         tokenType:              tk.hf_token_type || null,
                         writeTokenType:         tk.hf_dataset_token_type || tk.hf_write_token_type || null,
                         leastPrivilege:         !!tk.least_privilege_mode,
@@ -14141,7 +14445,7 @@
             if (state === 'not-configured') {
                 statusRow.classList.add('ai-assistant-panel-ep-ext-dataset-status--off');
                 statusRow.textContent =
-                    'Not configured. Set a training URL or panelDatasetRepo in conf.py, '
+                    'Not configured. Set a dataset contribution URL or panelDatasetRepo in conf.py, '
                     + 'or keep using the Space repository secret.';
                 return;
             }
@@ -14379,6 +14683,7 @@
             var proxyBase = _proxyBaseFromTrainingUrl(trainingUrl);
 
             if (effectiveRepo && !proxyBase) {
+                _renderFeedbackTelemetryServerInfo({ error: 'not-discoverable' });
                 // Config/override only, nothing to discover.
                 _renderDatasetLinks(statusRow, linksWrap, effectiveRepo, effectiveSource);
                 if (tokenRow) { tokenRow.textContent = ''; }
@@ -14386,6 +14691,7 @@
             }
 
             if (!effectiveRepo && !proxyBase) {
+                _renderFeedbackTelemetryServerInfo({ error: 'not-configured' });
                 _renderDatasetLinks(statusRow, linksWrap, null, 'not-configured');
                 if (tokenRow) { tokenRow.textContent = ''; }
                 return;
@@ -14401,6 +14707,7 @@
             statusRow.appendChild(spinner); statusRow.appendChild(loadTxt);
 
             _fetchProxyDatasetInfo(proxyBase, function (info) {
+                _renderFeedbackTelemetryServerInfo(info);
                 // New provider-neutral manifest wins when available. It contains
                 // already-resolved public links for HF/GitHub/GitLab/Bitbucket.
                 if (info.storage && _renderStorageTargets(
@@ -14469,7 +14776,7 @@
 
         // Service diagnostics belongs to the active-profile flow, so mount it
         // immediately before Add Custom Profile rather than inside the later
-        // Runtime & Feedback operator block.  It remains read-only and uses
+        // Runtime & Data operator block.  It remains read-only and uses
         // the same discovery/rendering helpers.
         var diagnosticsSection = _buildSheetSection('Service diagnostics');
         diagnosticsSection.classList.add('ai-assistant-panel-ep-diagnostics-section');
@@ -15648,7 +15955,7 @@
                        'extension.</p>')) +
 
                 '<h4>Local sensitive-data review</h4>' +
-                '<p>Before suspicious-looking user text, a Share snapshot, or an explicit training contribution leaves or is packaged by the browser, the panel can warn about high-confidence credential shapes, some possible personal-information patterns, and invisible/bidirectional control characters. The warning shows categories and counts only, never the matching value.</p>' +
+                '<p>Before suspicious-looking user text, a Share snapshot, or an explicit dataset contribution leaves or is packaged by the browser, the panel can warn about high-confidence credential shapes, some possible personal-information patterns, and invisible/bidirectional control characters. The warning shows categories and counts only, never the matching value.</p>' +
                 '<p><strong>Detection is advisory and incomplete.</strong> A missing warning does not mean the data is non-sensitive. When a warning appears you can go back, redact the flagged copy, or deliberately continue unchanged.</p>' +
 
                 '<h4>Your control</h4>' +
@@ -21782,10 +22089,335 @@
                 '<li>Do not use the assistant to bypass access controls, permissions, rate limits, or provider safeguards.</li>' +
                 '<li>Do not treat generated output as authoritative when an error could cause harm; verify against primary documentation and project policy.</li>' +
                 '</ul>' +
+                '<h4>Feedback telemetry and dataset contribution are different</h4>' +
+                '<p>Rating telemetry can send only a bounded rating signal when you opt in. It does not send the question or answer. Dataset contribution is a separate explicit action that lets you inspect selected content, run the privacy review, and consent before submission.</p>' +
+                '<p>Accepted contributions enter quarantine first: contribution &rarr; quarantine &rarr; review &rarr; authorized promotion &rarr; possible training/evaluation use. Pending content can be deleted with its receipt capability; after promotion, withdrawal removes training eligibility and requests current-view removal without claiming physical erasure of provider history, backups, or caches.</p>' +
                 '<h4>Provider-specific rules still apply</h4>' +
                 '<p>When API mode is enabled, the selected endpoint or model provider may impose additional acceptable-use rules. The stricter applicable rule should be followed.</p>';
         }
         sheet.appendChild(body);
+        return sheet;
+    }
+
+    // ── Dataset contribution sheet ────────────────────────────────────────────
+
+    function _buildDatasetContributionSheet() {
+        var sheet = document.createElement('div');
+        sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-contribution';
+        sheet.id = 'ai-assistant-panel-contribution-sheet';
+        sheet.setAttribute('data-open', 'false');
+
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-privacy-head';
+        var hStrong = document.createElement('strong');
+        hStrong.textContent = 'Contribute to dataset';
+        var hClose = _createIconBtn('contribution-close', 'Close Contribute to dataset', ICONS.close);
+        hClose.addEventListener('click', function () { sheet.setAttribute('data-open', 'false'); });
+        var ham = _buildSheetHamburgerBtn(sheet, 'contribution');
+        if (ham) head.appendChild(ham);
+        head.appendChild(hStrong);
+        head.appendChild(hClose);
+        sheet.appendChild(head);
+
+        var body = document.createElement('div');
+        body.className = 'ai-assistant-panel-privacy-body ai-assistant-panel-contribution-body';
+
+        var intro = document.createElement('p');
+        intro.className = 'ai-assistant-panel-contribution-intro';
+        intro.textContent = 'Voluntarily submit selected conversation content to the quarantine/review queue for possible training or evaluation use. Nothing is submitted automatically.';
+        body.appendChild(intro);
+
+        var endpointNote = document.createElement('p');
+        endpointNote.className = 'ai-assistant-panel-contribution-endpoint';
+        body.appendChild(endpointNote);
+
+        var scopeHeading = document.createElement('h4');
+        scopeHeading.textContent = 'What would you like to contribute?';
+        body.appendChild(scopeHeading);
+
+        var scopeGroup = document.createElement('div');
+        scopeGroup.className = 'ai-assistant-panel-contribution-scopes';
+        scopeGroup.setAttribute('role', 'radiogroup');
+        scopeGroup.setAttribute('aria-label', 'Contribution scope');
+        body.appendChild(scopeGroup);
+
+        var context = { answerIndex: null };
+        var selectedScope = 'conversation';
+        var preparedPayload = null;
+        var scopeButtons = Object.create(null);
+
+        function _scopeButton(key, title, desc) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'ai-assistant-panel-contribution-scope';
+            btn.dataset.scope = key;
+            btn.setAttribute('role', 'radio');
+            var strong = document.createElement('strong'); strong.textContent = title;
+            var small = document.createElement('span'); small.textContent = desc;
+            btn.appendChild(strong); btn.appendChild(small);
+            btn.addEventListener('click', function () {
+                if (btn.disabled) return;
+                selectedScope = key;
+                preparedPayload = null;
+                _refresh(true);
+            });
+            scopeButtons[key] = btn;
+            scopeGroup.appendChild(btn);
+            return btn;
+        }
+
+        _scopeButton('qa', 'This Q&A', 'One selected question and answer');
+        _scopeButton('rated', 'Rated answers', 'Only answers you explicitly rated');
+        _scopeButton('conversation', 'Whole conversation', 'One structured multi-turn JSON record');
+
+        var summary = document.createElement('div');
+        summary.className = 'ai-assistant-panel-contribution-summary';
+        body.appendChild(summary);
+
+        var included = document.createElement('div');
+        included.className = 'ai-assistant-panel-contribution-included';
+        body.appendChild(included);
+
+        var excluded = document.createElement('div');
+        excluded.className = 'ai-assistant-panel-contribution-excluded';
+        var excludedTitle = document.createElement('strong');
+        excludedTitle.textContent = 'Never included';
+        var excludedText = document.createElement('p');
+        excludedText.textContent = 'Bearer/API credentials, endpoint tokens, Share edit/revoke capabilities, contribution management capabilities, browser storage keys, raw URL query strings, and raw URL fragments are structurally excluded.';
+        excluded.appendChild(excludedTitle); excluded.appendChild(excludedText);
+        body.appendChild(excluded);
+
+        var noteWrap = document.createElement('label');
+        noteWrap.className = 'ai-assistant-panel-contribution-note';
+        var noteLabel = document.createElement('span');
+        noteLabel.textContent = 'Why is this conversation useful? (optional)';
+        var noteInput = document.createElement('textarea');
+        noteInput.maxLength = _CONTRIBUTION_NOTE_MAX_CHARS;
+        noteInput.rows = 3;
+        noteInput.placeholder = 'Optional context for dataset reviewers…';
+        noteWrap.appendChild(noteLabel); noteWrap.appendChild(noteInput);
+        body.appendChild(noteWrap);
+
+        var inspectRow = document.createElement('div');
+        inspectRow.className = 'ai-assistant-panel-contribution-inspect-row';
+        var inspectBtn = document.createElement('button');
+        inspectBtn.type = 'button';
+        inspectBtn.className = 'ai-assistant-conv-share-action-btn';
+        inspectBtn.textContent = 'Inspect JSON';
+        var sizeLabel = document.createElement('span');
+        sizeLabel.className = 'ai-assistant-panel-contribution-size';
+        inspectRow.appendChild(inspectBtn); inspectRow.appendChild(sizeLabel);
+        body.appendChild(inspectRow);
+
+        var inspectHint = document.createElement('p');
+        inspectHint.className = 'ai-assistant-panel-contribution-hint';
+        inspectHint.textContent = 'Inspection shows the exact payload entering privacy review. If you choose Redact, only the reviewed/redacted copy is sent; the contribution payload is never rebuilt independently afterward.';
+        body.appendChild(inspectHint);
+
+        var preview = document.createElement('pre');
+        preview.className = 'ai-assistant-panel-contribution-preview';
+        preview.hidden = true;
+        preview.setAttribute('aria-label', 'Contribution JSON preview');
+        body.appendChild(preview);
+
+        var consent = document.createElement('label');
+        consent.className = 'ai-assistant-conv-share-consent ai-assistant-panel-contribution-consent';
+        var consentCheck = document.createElement('input');
+        consentCheck.type = 'checkbox';
+        var consentText = document.createElement('span');
+        consentText.textContent = 'I understand that the selected content, ratings, optional notes, model labels, and selected safe metadata will be submitted for review and possible training/evaluation use. Submissions enter quarantine first.';
+        consent.appendChild(consentCheck); consent.appendChild(consentText);
+        body.appendChild(consent);
+
+        var submit = document.createElement('button');
+        submit.type = 'button';
+        submit.className = 'ai-assistant-conv-share-perm-save-btn ai-assistant-panel-contribution-submit';
+        submit.textContent = 'Submit for review';
+        submit.disabled = true;
+        body.appendChild(submit);
+
+        var result = document.createElement('div');
+        result.className = 'ai-assistant-panel-contribution-result';
+        result.setAttribute('aria-live', 'polite');
+        body.appendChild(result);
+
+        sheet.appendChild(body);
+
+        function _ratedCount() { return _buildRatedContributionRecords().length; }
+
+        function _currentPayload(forceRebuild) {
+            if (forceRebuild || !preparedPayload) {
+                preparedPayload = _buildDatasetContributionPayload(
+                    selectedScope, context, noteInput.value || '');
+            }
+            return preparedPayload;
+        }
+
+        function _setIncludedText(payload) {
+            included.textContent = '';
+            var title = document.createElement('strong');
+            title.textContent = 'Included after review';
+            var p = document.createElement('p');
+            if (selectedScope === 'qa') {
+                p.textContent = 'The selected question and assistant answer, its rating/note when present, client-reported model label, and a sanitized source page reference.';
+            } else if (selectedScope === 'rated') {
+                p.textContent = 'Only explicitly rated Q&A pairs, their optional feedback notes, client-reported model label, and a sanitized source page reference.';
+            } else {
+                p.textContent = 'Ordered user and assistant messages as one record, per-assistant client-reported model metadata, ratings/notes when present, your optional contribution note, and a sanitized source page reference. Error messages are excluded.';
+            }
+            included.appendChild(title); included.appendChild(p);
+        }
+
+        function _refresh(rebuildPayload) {
+            var endpoint = _resolveContributionEndpoint();
+            endpointNote.textContent = endpoint
+                ? 'Dataset contribution endpoint is configured. Content is not sent until you review and submit.'
+                : 'Dataset contribution endpoint is not configured.';
+            endpointNote.dataset.ready = endpoint ? 'true' : 'false';
+
+            scopeButtons.qa.disabled = !Number.isInteger(context.answerIndex);
+            Object.keys(scopeButtons).forEach(function (key) {
+                var active = key === selectedScope;
+                scopeButtons[key].setAttribute('aria-checked', active ? 'true' : 'false');
+                scopeButtons[key].dataset.active = active ? 'true' : 'false';
+            });
+
+            noteWrap.hidden = selectedScope !== 'conversation';
+            var payload = _currentPayload(!!rebuildPayload);
+            var bytes = _datasetContributionPayloadBytes(payload);
+            sizeLabel.textContent = payload ? _formatByteSize(bytes) : 'No eligible content';
+            _setIncludedText(payload);
+
+            if (!payload) {
+                summary.textContent = selectedScope === 'rated'
+                    ? 'No rated answers to contribute yet.'
+                    : selectedScope === 'qa'
+                        ? 'This answer is unavailable for contribution.'
+                        : 'No conversation content to contribute yet.';
+            } else if (selectedScope === 'conversation') {
+                var messages = payload.records[0].messages || [];
+                summary.textContent = messages.length + ' messages · one conversation record · ' + _formatByteSize(bytes);
+            } else if (selectedScope === 'rated') {
+                summary.textContent = payload.records.length + ' rated Q&A record' + (payload.records.length === 1 ? '' : 's') + ' · ' + _formatByteSize(bytes);
+            } else {
+                summary.textContent = '1 Q&A record · ' + _formatByteSize(bytes);
+            }
+
+            var tooLarge = bytes > _CONTRIBUTION_MAX_CLIENT_BYTES;
+            if (tooLarge) {
+                summary.textContent += ' · Too large for one contribution request';
+                summary.dataset.error = 'true';
+            } else {
+                delete summary.dataset.error;
+            }
+            submit.disabled = !consentCheck.checked || !payload || !endpoint || tooLarge;
+            if (!preview.hidden) {
+                preview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
+            }
+        }
+
+        inspectBtn.addEventListener('click', function () {
+            var payload = _currentPayload();
+            preview.hidden = !preview.hidden;
+            inspectBtn.textContent = preview.hidden ? 'Inspect JSON' : 'Hide JSON';
+            preview.textContent = (!preview.hidden && payload) ? JSON.stringify(payload, null, 2) : '';
+        });
+        noteInput.addEventListener('input', function () { preparedPayload = null; _refresh(true); });
+        consentCheck.addEventListener('change', function () { _refresh(false); });
+
+        function _renderReceipt(res, endpoint) {
+            result.textContent = '';
+            var title = document.createElement('strong');
+            title.textContent = res && res.status === 'quarantined'
+                ? 'Submitted for review' : 'Contribution submitted';
+            var text = document.createElement('p');
+            text.textContent = res && res.status === 'quarantined'
+                ? 'Status: QUARANTINED · not training-eligible until an authorized review promotes it.'
+                : 'The contribution service accepted the submission.';
+            result.appendChild(title); result.appendChild(text);
+            if (!(res && res.receiptId && res.deleteToken)) return;
+
+            var manage = document.createElement('button');
+            manage.type = 'button';
+            manage.className = 'ai-assistant-conv-share-action-btn';
+            manage.textContent = 'Delete pending / withdraw training use';
+            manage.addEventListener('click', function () {
+                manage.disabled = true;
+                _remotePost(endpoint.replace(/\/$/, '') + '/' + encodeURIComponent(res.receiptId), '', {}, {
+                    method: 'DELETE', keepalive: false,
+                    headers: { 'X-Contribution-Delete-Token': res.deleteToken },
+                    onSuccess: function (lifecycle) {
+                        if (lifecycle && lifecycle.status === 'deleted') {
+                            manage.textContent = 'Pending data deleted';
+                            text.textContent = 'Pending contribution removed from the active review ledger before promotion. This does not claim forensic deletion from database pages, backups, or infrastructure snapshots.';
+                        } else if (lifecycle && lifecycle.status === 'withdrawn') {
+                            manage.textContent = 'Training use withdrawn';
+                            text.textContent = 'Training withdrawal recorded. Current provider views were removed where possible; versioned provider history is not claimed physically erased.';
+                        } else {
+                            manage.textContent = 'Contribution lifecycle updated';
+                            text.textContent = 'Contribution management request completed.';
+                        }
+                    },
+                    onError: function (err) {
+                        manage.disabled = false;
+                        text.textContent = err && err.status === 409
+                            ? 'A review or withdrawal operation is already in progress; try again after it finishes.'
+                            : 'Contribution deletion/withdrawal could not be completed.';
+                    }
+                });
+            });
+            result.appendChild(manage);
+        }
+
+        submit.addEventListener('click', async function () {
+            if (!consentCheck.checked) return;
+            var endpoint = _resolveContributionEndpoint();
+            var payload = _currentPayload();
+            if (!endpoint || !payload) { _refresh(false); return; }
+            if (_datasetContributionPayloadBytes(payload) > _CONTRIBUTION_MAX_CLIENT_BYTES) {
+                result.textContent = 'Contribution is too large for one request. Reduce the selected scope.';
+                return;
+            }
+            var opConversationId = _getConversationId();
+            var review = await _privacyPreflightReview(payload, {
+                title: 'Review dataset contribution',
+                destination: 'the dataset quarantine/review queue',
+                cancelLabel: 'Review contribution',
+                continueLabel: 'Submit reviewed JSON'
+            });
+            if (review.action === 'cancel' || opConversationId !== _getConversationId()) return;
+            submit.disabled = true;
+            submit.textContent = 'Submitting…';
+            result.textContent = 'Submitting reviewed contribution…';
+            _postTrainingContribution(endpoint.replace(/\/$/, ''), review.value, function (res) {
+                submit.textContent = 'Submit for review';
+                consentCheck.checked = false;
+                _refresh(false);
+                _renderReceipt(res, endpoint);
+            }, function (err) {
+                submit.textContent = 'Submit for review';
+                _refresh(false);
+                result.textContent = err && err.status === 422
+                    ? 'Contribution rejected: reload and review the current consent text.'
+                    : 'Contribution failed. Please try again.';
+            });
+        });
+
+        sheet._setContext = function (detail) {
+            var d = detail && typeof detail === 'object' ? detail : {};
+            context.answerIndex = Number.isInteger(d.answerIndex) ? d.answerIndex : null;
+            preparedPayload = null;
+            selectedScope = d.scope === 'qa' && context.answerIndex != null ? 'qa'
+                : d.scope === 'rated' ? 'rated' : 'conversation';
+            result.textContent = '';
+            consentCheck.checked = false;
+            preview.hidden = true;
+            preview.textContent = '';
+            inspectBtn.textContent = 'Inspect JSON';
+            _refresh(true);
+        };
+        sheet._refreshContribution = function () { preparedPayload = null; _refresh(true); };
+        sheet._setContext({ scope: 'conversation' });
         return sheet;
     }
 
@@ -22275,8 +22907,8 @@
     // ── Conversation Share: unified format / destination / lifecycle UI ───
     // Run 8 replaces the former per-format tier panels with one sheet driven by
     // the canonical export registry.  Format, destination, content/privacy and
-    // artifact lifetime are independent axes; contribution remains a separate
-    // consent workflow under More actions.
+    // artifact lifetime are independent axes. Dataset contribution is owned by the
+    // dedicated Contribute to dataset sheet and must not re-enter Share.
 
     // Page-memory artifact registry.  This intentionally survives New chat so
     // a Global edit capability created by an older conversation can still be
@@ -23096,17 +23728,6 @@
         artifactsList.className = 'ai-assistant-conv-share-artifacts';
         body.appendChild(artifactsList);
 
-        var more = _collapsible('More actions', '');
-        body.appendChild(more.wrap);
-        var contributeBtn = document.createElement('button');
-        contributeBtn.type = 'button'; contributeBtn.className = 'ai-assistant-conv-share-action-btn';
-        contributeBtn.textContent = 'Contribute rated answers…';
-        more.panel.appendChild(contributeBtn);
-        var contributionWrap = document.createElement('div');
-        contributionWrap.className = 'ai-assistant-conv-share-training ai-assistant-conv-share-contribution-separated';
-        contributionWrap.style.display = 'none';
-        more.panel.appendChild(contributionWrap);
-
         sheet.appendChild(body);
 
         function _markStale() {
@@ -23793,93 +24414,6 @@
             });
         });
 
-        function _buildContributionSection() {
-            while (contributionWrap.firstChild) contributionWrap.removeChild(contributionWrap.firstChild);
-            var profileUrl = _EP.hasProfiles()
-                ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('training') : _EP.resolve('training')) : '';
-            var endpoint = profileUrl || _resolveFlatFeatureEndpoint(cfg.panelTrainingEndpoint || '', '/v1/contribute');
-            if (!endpoint) {
-                var none = document.createElement('p'); none.className = 'ai-assistant-conv-share-session-note';
-                none.textContent = 'Training contribution endpoint is not configured.'; contributionWrap.appendChild(none); return;
-            }
-            var heading = document.createElement('strong'); heading.textContent = 'Contribute rated answers for review';
-            var note = document.createElement('p'); note.className = 'ai-assistant-conv-share-session-note';
-            note.textContent = 'This is separate from Share. Only explicitly rated Q&A pairs are submitted to the quarantine/review workflow; they are not training-eligible on receipt. Before promotion, your receipt capability removes the pending copy from the active review ledger. After promotion, the same action withdraws the rows from training and requests current-view removal, but versioned provider history may retain prior bytes.';
-            var consent = document.createElement('label'); consent.className = 'ai-assistant-conv-share-consent';
-            var chk = document.createElement('input'); chk.type = 'checkbox';
-            var txt = document.createElement('span'); txt.textContent = 'I consent to the rated question, AI answer, rating, optional note, model label, and safe page reference being submitted for review and possible training use.';
-            consent.appendChild(chk); consent.appendChild(txt);
-            var submit = document.createElement('button'); submit.type = 'button'; submit.className = 'ai-assistant-conv-share-perm-save-btn';
-            submit.textContent = 'Contribute'; submit.disabled = true;
-            var status = document.createElement('p'); status.className = 'ai-assistant-conv-share-session-note';
-            chk.addEventListener('change', function () { submit.disabled = !chk.checked; });
-            submit.addEventListener('click', async function () {
-                if (!chk.checked) return;
-                var opConversationId = boundConversationId;
-                var records = [];
-                Object.keys(_feedbackStore).sort(function (a,b) { return a-b; }).forEach(function (k) {
-                    var idx = parseInt(k,10), fb = _feedbackStore[idx] || {};
-                    if (!fb.query && !fb.answer) return;
-                    records.push({ answerIndex: idx, query: fb.query || '', answer: fb.answer || '',
-                        ratingValue: fb.ratingValue != null ? fb.ratingValue : null,
-                        ratingLabel: fb.ratingLabel || '', ratingTitle: fb.ratingTitle || null,
-                        ratingMode: fb.ratingMode || null, message: fb.message || '', ts: fb.ts || Date.now(),
-                        _source: 'contribution' });
-                });
-                if (!records.length) { status.textContent = 'No rated answers to contribute yet.'; return; }
-                var payload = { schemaVersion: 3, consentFlag: true, consentVersion: '1.0.0',
-                    page: _sanitizePage(location ? location.href : ''), model: _buildModelInfo(cfg), records: records };
-                var review = await _privacyPreflightReview(payload, { title: 'Review training contribution',
-                    destination: 'the training review queue', cancelLabel: 'Review contribution', continueLabel: 'Contribute unchanged' });
-                if (review.action === 'cancel' || opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
-                submit.disabled = true; submit.textContent = 'Contributing…';
-                _postTrainingContribution(endpoint.replace(/\/$/, ''), review.value, function (res) {
-                    submit.textContent = 'Contribute'; chk.checked = false; submit.disabled = true;
-                    status.textContent = res && res.status === 'quarantined'
-                        ? 'Submitted for review. Pending data is not training-eligible yet.' : 'Contribution submitted.';
-                    if (res && res.receiptId && res.deleteToken) {
-                        var del = document.createElement('button'); del.type = 'button'; del.className = 'ai-assistant-conv-share-action-btn';
-                        del.textContent = 'Delete pending / withdraw training use';
-                        del.addEventListener('click', function () {
-                            _remotePost(endpoint.replace(/\/$/, '') + '/' + encodeURIComponent(res.receiptId), '', {}, {
-                                method: 'DELETE', keepalive: false,
-                                headers: { 'X-Contribution-Delete-Token': res.deleteToken },
-                                onSuccess: function (lifecycle) {
-                                    del.disabled = true;
-                                    if (lifecycle && lifecycle.status === 'deleted') {
-                                        del.textContent = 'Pending data deleted';
-                                        status.textContent = 'Pending contribution removed from the active review ledger before promotion. This does not claim forensic deletion from database pages, backups, or infrastructure snapshots.';
-                                    } else if (lifecycle && lifecycle.status === 'withdrawn') {
-                                        del.textContent = 'Training use withdrawn';
-                                        status.textContent = 'Training withdrawal recorded. Current provider views were removed where possible; versioned provider history is not claimed physically erased.';
-                                    } else {
-                                        del.textContent = 'Contribution lifecycle updated';
-                                        status.textContent = 'Contribution management request completed.';
-                                    }
-                                },
-                                onError: function (err) {
-                                    status.textContent = err && err.status === 409
-                                        ? 'A review or withdrawal operation is already in progress; try again after it finishes.'
-                                        : 'Contribution deletion/withdrawal could not be completed.';
-                                }
-                            });
-                        });
-                        contributionWrap.appendChild(del);
-                    }
-                }, function (err) {
-                    submit.disabled = false; submit.textContent = 'Contribute';
-                    status.textContent = err.status === 422 ? 'Contribution rejected: reload and review the current consent text.' : 'Contribution failed. Please try again.';
-                });
-            });
-            contributionWrap.appendChild(heading); contributionWrap.appendChild(note);
-            contributionWrap.appendChild(consent); contributionWrap.appendChild(submit); contributionWrap.appendChild(status);
-        }
-        contributeBtn.addEventListener('click', function () {
-            var show = contributionWrap.style.display === 'none';
-            contributionWrap.style.display = show ? '' : 'none';
-            if (show) _buildContributionSection();
-        });
-
         function _restoreReadOnlyGlobalArtifact() {
             if (_globalShareState && _globalShareState.url) _upsertGlobalLedger(_globalShareState, 'restored');
             var currentArtifact = null;
@@ -24130,7 +24664,7 @@
                     ICONS.globe,
                     (typeof cfg.panelHfDatasetLabel === 'string' && cfg.panelHfDatasetLabel)
                         ? cfg.panelHfDatasetLabel : 'HuggingFace Dataset',
-                    'Feedback & training contributions collected from this panel',
+                    'Feedback telemetry and dataset contributions from this panel',
                     _hfDatasetUrl,
                     'var(--ai-hf-accent, #ff9d00)'
                 );
@@ -24321,6 +24855,7 @@
         { group: 'primary', section: 'config', icon: 'model',    label: 'Model Configuration',    key: 'M', hook: 'onModel' },
         { group: 'primary', section: 'config', icon: 'endpoint', label: 'Endpoint Configuration', key: 'C', hook: 'onEndpoints' },
         { group: 'primary', section: 'conversation', icon: 'share', label: 'Share',               key: 'S', hook: 'onShare' },
+        { group: 'primary', section: 'conversation', icon: 'dataset', label: 'Contribute',          key: '',  hook: 'onContribute' },
         { group: 'primary', section: 'conversation', icon: 'trash', label: 'Delete conversation', key: 'D', hook: 'onClear',
           danger: true,
           confirm: 'Clear this conversation? The transcript cannot be recovered.' },
@@ -25258,6 +25793,23 @@
             shareLink.title = 'Share this page';
         }
 
+        // Dataset contribution button — a first-class action, separate from Share.
+        var contributeLink = null;
+        if (cfgRef.panelContribution !== false) {
+            contributeLink = document.createElement('button');
+            contributeLink.className = 'ai-assistant-panel-privacy-link ai-assistant-panel-contribute-link';
+            contributeLink.type = 'button';
+            var contributeIc = document.createElement('span');
+            contributeIc.setAttribute('aria-hidden', 'true');
+            contributeIc.innerHTML = ICONS.dataset || ICONS.feedback || ICONS.share;
+            contributeLink.appendChild(contributeIc);
+            var contributeLbl = document.createElement('span');
+            contributeLbl.textContent = 'Contribute';
+            contributeLink.appendChild(contributeLbl);
+            contributeLink.setAttribute('aria-label', 'Contribute conversation content to dataset review');
+            contributeLink.title = 'Contribute to dataset';
+        }
+
         // Append right-cluster items in visual left→right order:
         //   Model | Endpoints | Privacy | Terms | Share | Site | ⋯
         // Items that are null (feature-flagged off) are silently skipped.
@@ -25316,6 +25868,7 @@
         rightCluster.appendChild(privacyLink);
         if (termsLink)  rightCluster.appendChild(termsLink);
         if (shareLink)  rightCluster.appendChild(shareLink);
+        if (contributeLink) rightCluster.appendChild(contributeLink);
 
         // ── Right cluster: Site (website) button — after Share ────────────────
         // The other entry point to the Project Links sheet (alongside the
@@ -25783,6 +26336,10 @@
             ? _buildUsagePolicySheet() : null;
         if (usagePolicySheet) panel.appendChild(usagePolicySheet);
 
+        var contributionSheet = (cfgRef.panelContribution !== false)
+            ? _buildDatasetContributionSheet() : null;
+        if (contributionSheet) panel.appendChild(contributionSheet);
+
         var shortcutsSheet = _buildKeyboardShortcutsSheet();
         panel.appendChild(shortcutsSheet);
 
@@ -25828,6 +26385,7 @@
             { key: 'model',              sheet: modelSheet,       toolbarId: 'model' },
             { key: 'privacy',            sheet: privacySheet,     toolbarId: 'privacy' },
             { key: 'usage-policy',       sheet: usagePolicySheet, toolbarId: 'usage-policy' },
+            { key: 'contribution',       sheet: contributionSheet, toolbarId: 'contribution' },
             { key: 'shortcuts',          sheet: shortcutsSheet,   toolbarId: 'shortcuts' },
             { key: 'terms',              sheet: termsSheet,       toolbarId: 'terms' },
             { key: 'share-export',       sheet: shareSheet,       toolbarId: 'share' },
@@ -26009,6 +26567,18 @@
             shareLink.addEventListener('click', function () { _openSheet(shareSheet); });
         }
 
+        if (contributeLink && contributionSheet) {
+            contributeLink.addEventListener('click', function () {
+                contributionSheet._setContext({ scope: 'conversation' });
+                _openSheet(contributionSheet);
+            });
+        }
+        document.addEventListener('ai-assistant-open-contribution', function (event) {
+            if (!contributionSheet) return;
+            contributionSheet._setContext((event && event.detail) || { scope: 'conversation' });
+            _openSheet(contributionSheet, document.activeElement);
+        });
+
         // Wire Source and Site buttons → linksSheet (or direct URL fallback).
         // When the links sheet is disabled (panelLinks: false), each button
         // falls back to opening its configured URL directly in a new tab so the
@@ -26087,6 +26657,10 @@
                 onTerms:     termsSheet  ? function () { _openSheet(termsSheet); }   : null,
                 onKeyboardShortcuts: function () { _openSheet(shortcutsSheet); },
                 onShare:     shareSheet  ? function () { _openSheet(shareSheet); }   : null,
+                onContribute: contributionSheet ? function () {
+                    contributionSheet._setContext({ scope: 'conversation' });
+                    _openSheet(contributionSheet);
+                } : null,
                 onLinks:     linksSheet  ? function () { _openSheet(linksSheet); }   : null,
                 onExit: function () {
                     // E exits the lightest open AI surface first.  It is kept
@@ -27103,9 +27677,9 @@
     }
 
     /**
-     * Enable or disable persistent feedback storage and keep all dependents in sync.
+     * Enable or disable consent-gated network feedback telemetry and keep all dependents in sync.
      *
-     * This is the single source of truth for ``_feedbackPersistEnabled``.
+     * This is the single source of truth for ``_feedbackPersistEnabled`` and its versioned browser consent record.
      * Always call this function instead of mutating the variable directly so
      * that localStorage, the privacy-sheet toggle's ``aria-pressed``, and the
      * hint text all stay consistent.
@@ -27113,8 +27687,8 @@
      * Parameters
      * ----------
      * enabled : boolean
-     *     ``true``  → ratings POSTed to the HF dataset (durable).
-     *     ``false`` → ratings discarded after the CustomEvent dispatch (in-memory only).
+     *     ``true``  → future ratings may POST only through the consent-gated telemetry path.
+     *     ``false`` → ratings remain local and no feedback network helper may transmit.
      *
      * Notes
      * -----
@@ -27129,14 +27703,27 @@
      */
     function _setFeedbackPersistMode(enabled) {
         _feedbackPersistEnabled = !!enabled;
+        _feedbackTelemetryGrantedAt = _feedbackPersistEnabled ? Date.now() : null;
 
-        // Persist preference across page reloads.
+        // Persist only a current, structured user-consent record. Historical
+        // boolean preferences are removed so an old opt-in cannot silently gain
+        // authority under a materially different telemetry contract.
         try {
-            localStorage.setItem(
-                'ai-assistant-feedback-telemetry',
-                _feedbackPersistEnabled ? 'true' : 'false'
-            );
-        } catch (_e) {}
+            localStorage.removeItem('ai-assistant-feedback-telemetry');
+            localStorage.removeItem('ai-assistant-feedback-persist');
+            if (_feedbackPersistEnabled) {
+                localStorage.setItem(_FEEDBACK_TELEMETRY_PREF_KEY, JSON.stringify({
+                    enabled: true,
+                    version: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
+                    grantedAt: _feedbackTelemetryGrantedAt
+                }));
+            } else {
+                localStorage.removeItem(_FEEDBACK_TELEMETRY_PREF_KEY);
+            }
+        } catch (_e) {
+            // Storage failure must never turn telemetry on. Keep an explicit
+            // in-session click effective, but it will not survive reload.
+        }
 
         // Sync the main persist pill in §6 Extended Settings (role="switch"
         // uses aria-checked, not aria-pressed — ARIA 1.2 §5.3.22).
@@ -27152,6 +27739,13 @@
                 'aria-checked',
                 _feedbackPersistEnabled ? 'true' : 'false'
             );
+        }
+
+        var telemetryStatus = document.getElementById('ai-assistant-feedback-telemetry-status');
+        if (telemetryStatus) { telemetryStatus.textContent = _feedbackTelemetryStatusText(); }
+        var popupHints = document.querySelectorAll('.ai-assistant-fbk-popup-hint');
+        for (var _ph = 0; _ph < popupHints.length; _ph++) {
+            popupHints[_ph].textContent = _feedbackTelemetryStatusText();
         }
     }
 
