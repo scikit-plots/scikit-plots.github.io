@@ -7097,8 +7097,14 @@
 
 
     function _remotePost(url, token, body, opts) {
-        if (!url) { return; }
         opts = opts || {};
+        function fail(status, message) {
+            if (typeof opts.onError !== 'function') return;
+            var text = String(message || '').replace(/\s+/g, ' ').trim();
+            if (text.length > 240) text = text.slice(0, 237) + '...';
+            opts.onError({ status: Number(status) || 0, message: text || 'Request failed' });
+        }
+        if (!url) { fail(0, 'Endpoint is not configured.'); return; }
         var keepalive = opts.keepalive !== false;
         var headers = { 'Content-Type': 'application/json' };
         if (token) { headers['Authorization'] = 'Bearer ' + token; }
@@ -7114,6 +7120,7 @@
             payload = JSON.stringify(body);
         } catch (e) {
             _log('warn', '[ai-assistant] _remotePost: serialisation failed', e);
+            fail(0, 'Could not serialize the request body.');
             return;
         }
         try {
@@ -7122,23 +7129,55 @@
                 headers:   headers,
                 body:      payload,
                 keepalive: keepalive,
-            }).then(function (r) {
-                if (r.ok && typeof opts.onSuccess === 'function') {
-                    r.json().then(opts.onSuccess).catch(function () {});
-                } else if (!r.ok) {
-                    _log('warn', '[ai-assistant] _remotePost HTTP', r.status, url);
-                    if (typeof opts.onError === 'function') {
-                        opts.onError({ status: r.status, message: r.statusText });
+            }).then(async function (r) {
+                if (r.ok) {
+                    if (typeof opts.onSuccess !== 'function') return;
+                    var successText = '';
+                    try { successText = await r.text(); }
+                    catch (_readErr) { fail(502, 'The service response could not be read.'); return; }
+                    if (!String(successText || '').trim()) {
+                        fail(502, 'The service returned an empty success response.');
+                        return;
                     }
+                    var successData;
+                    try { successData = JSON.parse(successText); }
+                    catch (_jsonErr) {
+                        fail(502, 'The service returned a non-JSON success response.');
+                        return;
+                    }
+                    if (!successData || typeof successData !== 'object' || Array.isArray(successData)) {
+                        fail(502, 'The service returned an invalid JSON success response.');
+                        return;
+                    }
+                    opts.onSuccess(successData);
+                    return;
                 }
+
+                _log('warn', '[ai-assistant] _remotePost HTTP', r.status, url);
+                if (typeof opts.onError !== 'function') return;
+                var message = r.statusText || ('HTTP ' + r.status);
+                try {
+                    var errorText = await r.text();
+                    if (String(errorText || '').trim()) {
+                        try {
+                            var errorData = JSON.parse(errorText);
+                            if (errorData && typeof errorData === 'object') {
+                                var candidate = errorData.detail || errorData.message || errorData.error;
+                                if (typeof candidate === 'string' && candidate.trim()) message = candidate;
+                            }
+                        } catch (_errorJsonErr) {
+                            // Do not reflect arbitrary HTML/proxy bodies into the UI.
+                        }
+                    }
+                } catch (_errorReadErr) {}
+                fail(r.status, message);
             }).catch(function (e) {
                 _log('warn', '[ai-assistant] _remotePost fetch error', url, e);
-                if (typeof opts.onError === 'function') {
-                    opts.onError({ status: 0, message: String(e) });
-                }
+                fail(0, 'Network/CORS request failed.');
             });
         } catch (e) {
             _log('warn', '[ai-assistant] _remotePost sync error', e);
+            fail(0, 'The request could not be started.');
         }
     }
 
@@ -23239,23 +23278,25 @@
 
         function _openArtifact(artifact) {
             if (!artifact || !artifact.url) return;
-            if (artifact.url.indexOf('data:') === 0 && artifact.snapshot) {
-                try {
-                    var meta = _getExportFormat(artifact.format);
-                    var content = artifact.previewContent || (meta && meta.buildStr ? meta.buildStr(artifact.snapshot) : '');
-                    var previewMime = artifact.previewMime || (meta && meta.mime) || 'text/plain;charset=utf-8';
-                    var blob = new Blob([content], { type: previewMime });
-                    var tempUrl = URL.createObjectURL(blob);
-                    var w = window.open(tempUrl, '_blank', 'noopener,noreferrer');
-                    if (w) { try { w.opener = null; } catch (_e) {} }
-                    setTimeout(function () { try { URL.revokeObjectURL(tempUrl); } catch (_e2) {} }, 30000);
-                } catch (_e3) {}
-                return;
-            }
+            // Open the artifact's canonical URL exactly as generated. In
+            // particular, Self-contained artifacts remain portable
+            // data:text/html;charset=utf-8;base64,... URLs; do not silently
+            // replace them with origin-bound blob: previews. A browser may
+            // still block page-initiated top-level data: navigation as a local
+            // security policy; in that case the copied data URL remains the
+            // canonical portable artifact and can be opened explicitly by the
+            // recipient.
             try {
                 var win = window.open(artifact.url, '_blank', 'noopener,noreferrer');
-                if (win) { try { win.opener = null; } catch (_e4) {} }
-            } catch (_e5) {}
+                if (win) { try { win.opener = null; } catch (_e) {} }
+                else if (artifact.url.indexOf('data:text/html;charset=utf-8;base64,') === 0) {
+                    showNotification('Browser blocked direct data-link navigation. Copy the data link and open it explicitly in the address bar.', true);
+                }
+            } catch (_e2) {
+                if (artifact.url.indexOf('data:text/html;charset=utf-8;base64,') === 0) {
+                    showNotification('Browser blocked direct data-link navigation. Copy the data link and open it explicitly in the address bar.', true);
+                }
+            }
         }
 
         function _globalLifecycleText(artifact) {
@@ -23430,7 +23471,7 @@
                 meta.textContent = (artifact.format || '').toUpperCase() + ' · ' + (artifact.lifecycle || '');
                 text.appendChild(strong); text.appendChild(meta); row.appendChild(text);
                 var terminalGlobal = artifact.kind === 'global' && ['revoked','expired'].indexOf(artifact.state) >= 0;
-                if (artifact.url && (artifact.kind === 'global' || artifact.kind === 'self_contained') && !terminalGlobal) {
+                if (artifact.url && (artifact.kind === 'global' || artifact.kind === 'self_contained' || artifact.kind === 'local') && !terminalGlobal) {
                     var copyLink = document.createElement('button'); copyLink.type = 'button'; copyLink.className = 'ai-assistant-conv-share-action-btn';
                     copyLink.textContent = 'Copy link'; copyLink.disabled = !!artifact.busy;
                     copyLink.addEventListener('click', function () { copyToClipboard(artifact.url, false); }); row.appendChild(copyLink);
@@ -23466,28 +23507,55 @@
         }
 
         function _renderResult() {
-            if (!resultState) { resultWrap.style.display = 'none'; return; }
+            if (!resultState) {
+                resultWrap.style.display = 'none';
+                resultWrap.removeAttribute('data-state');
+                resultWrap.removeAttribute('aria-busy');
+                return;
+            }
             var artifact = _findArtifact(resultState.artifactId);
             resultWrap.style.display = '';
+            resultWrap.setAttribute('data-state', resultState.phase || 'ready');
+            resultWrap.setAttribute('aria-busy', resultState.phase === 'pending' ? 'true' : 'false');
             resultInput.style.display = 'none';
             copyResultBtn.style.display = 'none'; openResultBtn.style.display = 'none';
             copyResultBtn.textContent = 'Copy'; openResultBtn.textContent = 'Open';
             inspectResultBtn.style.display = 'none'; updateResultBtn.style.display = 'none'; removeResultBtn.style.display = '';
+            updateResultBtn.textContent = 'Update'; removeResultBtn.textContent = 'Remove';
             var stale = !!resultState.stale;
+            if (resultState.kind === 'global' && resultState.phase === 'pending') {
+                resultTitle.textContent = resultState.operation === 'update' ? 'Updating global link…' : 'Creating global link…';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · contacting configured Share service';
+                resultNote.textContent = 'The reviewed snapshot is being sent to the configured cloud Share endpoint. This panel will show the public read URL or a concrete error here.';
+                removeResultBtn.style.display = 'none';
+                return;
+            }
+            if (resultState.kind === 'global' && resultState.phase === 'error') {
+                resultTitle.textContent = 'Global link not created';
+                resultMeta.textContent = resultState.status
+                    ? (resultState.format.toUpperCase() + ' · HTTP ' + resultState.status)
+                    : (resultState.format.toUpperCase() + ' · network / CORS / configuration failure');
+                resultNote.textContent = resultState.message || 'The configured Share service did not return a usable public read URL.';
+                updateResultBtn.textContent = 'Retry';
+                updateResultBtn.style.display = '';
+                removeResultBtn.textContent = 'Dismiss';
+                return;
+            }
             if (resultState.kind === 'local') {
                 resultTitle.textContent = 'Preview ready';
-                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · temporary';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · temporary · browser-local';
                 resultNote.textContent = stale
-                    ? 'Conversation or options changed. This preview still contains the earlier snapshot.'
-                    : 'Temporary browser artifact. Remove revokes its Blob URL.';
-                openResultBtn.style.display = '';
-                removeResultBtn.textContent = 'Remove preview';
+                    ? 'Conversation or options changed. This preview still contains the earlier snapshot. Its copied Blob link remains browser/session-local.'
+                    : 'Temporary browser artifact. Copy link and Inspect expose this browser-local Blob URL only; it is not portable or uploaded. Remove from browser revokes the Blob URL.';
+                copyResultBtn.textContent = 'Copy link';
+                copyResultBtn.style.display = ''; openResultBtn.style.display = ''; inspectResultBtn.style.display = '';
+                removeResultBtn.textContent = 'Remove from browser';
             } else if (resultState.kind === 'self_contained') {
                 resultTitle.textContent = 'Self-contained data link ready';
                 resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · portable data URL · no server';
                 resultNote.textContent = stale
                     ? 'Conversation or options changed. This data link still contains the earlier reviewed snapshot.'
-                    : 'The full reviewed content is base64-encoded in the URL — not encrypted. No server is needed to read it. Some browsers block page-initiated data: navigation; Copy the link and paste it into the recipient browser address bar. Open uses a local Blob preview. Shared copies cannot be revoked.';
+                    : 'The full reviewed content is base64-encoded in the URL — not encrypted. No server is needed to read it. Open uses this exact portable data URL, not a Blob URL. If the browser blocks page-initiated data: navigation, copy the same data link and open it explicitly in the address bar. Shared copies cannot be revoked.';
                 copyResultBtn.textContent = 'Copy data link';
                 copyResultBtn.style.display = ''; openResultBtn.style.display = ''; inspectResultBtn.style.display = '';
                 removeResultBtn.textContent = 'Remove from browser';
@@ -23538,7 +23606,7 @@
             var a = resultState ? _findArtifact(resultState.artifactId) : null; if (a) _openArtifact(a);
         });
         inspectResultBtn.addEventListener('click', function () {
-            if (!resultState || resultState.kind !== 'self_contained') return;
+            if (!resultState || (resultState.kind !== 'self_contained' && resultState.kind !== 'local')) return;
             resultInput.value = resultState.url || '';
             resultInput.style.display = resultInput.style.display === 'none' ? '' : 'none';
         });
@@ -23582,7 +23650,7 @@
                     var blob = new Blob([content], { type: meta.mime });
                     var url = URL.createObjectURL(blob);
                     var artifact = _addArtifact({ kind: 'local', url: url, snapshot: snapshot, bytes: bytes,
-                        format: meta.fmt, lifecycle: 'removable local Blob URL' });
+                        format: meta.fmt, lifecycle: 'removable local Blob URL · current browser session only' });
                     resultState = { kind: 'local', artifactId: artifact.id, url: url, bytes: bytes, format: meta.fmt, stale: false };
                     _renderResult(); _openArtifact(artifact);
                 } catch (_e) { showNotification('Could not create local preview', true); }
@@ -23598,9 +23666,8 @@
                     showNotification('Conversation is too large for the configured portable data-link budget. Use Global link or Download.', true); return;
                 }
                 var url = portable.url;
-                var artifact = _addArtifact({ kind: 'self_contained', url: url, snapshot: snapshot, bytes: portable.bytes,
-                    format: meta.fmt, previewContent: portable.content, previewMime: portable.mime,
-                    lifecycle: 'portable data URL · non-revocable once copied' });
+                var artifact = _addArtifact({ kind: 'self_contained', url: url, bytes: portable.bytes,
+                    format: meta.fmt, lifecycle: 'portable data URL · non-revocable once copied' });
                 resultState = { kind: 'self_contained', artifactId: artifact.id, url: url, bytes: portable.bytes,
                     urlChars: portable.urlChars, format: meta.fmt, stale: false };
                 _renderResult();
@@ -23611,10 +23678,21 @@
             }
 
             var g = _resolveGlobalConfig();
-            if (!g.base) { showNotification('Global Share endpoint is not configured', true); return; }
+            if (!g.base) {
+                resultState = { kind: 'global', phase: 'error', status: 0,
+                    message: 'Global Share endpoint is not configured. Configure a Share endpoint in Endpoint Configuration.',
+                    bytes: bytes, format: meta.fmt, stale: false };
+                _renderResult();
+                showNotification('Global Share endpoint is not configured', true);
+                return;
+            }
             var opConversationId = boundConversationId;
             var payload = { snapshot: snapshot, format: meta.fmt, ttlDays: g.ttlDays };
-            primaryBtn.disabled = true; primaryBtn.textContent = _globalShareState && _globalShareState.editToken ? 'Updating…' : 'Creating…';
+            var globalOperation = (_globalShareState && _globalShareState.editToken) ? 'update' : 'create';
+            resultState = { kind: 'global', phase: 'pending', operation: globalOperation,
+                bytes: bytes, format: meta.fmt, stale: false };
+            _renderResult();
+            primaryBtn.disabled = true; primaryBtn.textContent = globalOperation === 'update' ? 'Updating…' : 'Creating…';
 
             function success(res) {
                 if (opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
@@ -23654,7 +23732,7 @@
                     expiresAt: _globalShareState.expiresAt, snapshot: snapshot, bytes: bytes, format: meta.fmt,
                     state: 'active', ledgerId: ledger && ledger.ledgerId,
                     lifecycle: editToken ? 'active · server-revocable' : 'active · read-only' });
-                resultState = { kind: 'global', artifactId: existing.id, url: url, bytes: bytes, format: meta.fmt,
+                resultState = { kind: 'global', phase: 'ready', artifactId: existing.id, url: url, bytes: bytes, format: meta.fmt,
                     expiresAt: _globalShareState.expiresAt, stale: false };
                 _renderArtifacts(); _renderResult(); _updatePrimaryLabel();
                 showNotification('Global share link ready — copy the public read URL to share it.', false);
@@ -23662,9 +23740,22 @@
             function failure(err) {
                 if (opConversationId !== boundConversationId || opConversationId !== _getConversationId()) return;
                 primaryBtn.disabled = false; _updatePrimaryLabel();
-                showNotification(err && err.status === 429 ? 'Global Share rate limit reached'
-                    : err && err.status === 502 ? 'Global Share service did not return a usable public link'
-                    : 'Global Share failed', true);
+                var status = Number(err && err.status) || 0;
+                var message = String(err && err.message || '').replace(/\s+/g, ' ').trim();
+                if (message.length > 240) message = message.slice(0, 237) + '...';
+                if (!message) {
+                    message = status === 429 ? 'Global Share rate limit reached.'
+                        : status === 502 ? 'The Share service did not return a usable JSON public-link response.'
+                        : status ? ('The Share service returned HTTP ' + status + '.')
+                        : 'The browser could not reach the configured Share service. Check network, CORS, and endpoint configuration.';
+                }
+                resultState = { kind: 'global', phase: 'error', status: status, message: message,
+                    bytes: bytes, format: meta.fmt, stale: false };
+                _renderResult();
+                showNotification(status === 429 ? 'Global Share rate limit reached'
+                    : status === 502 ? 'Global Share service did not return a usable public link'
+                    : status ? ('Global Share failed (HTTP ' + status + ')')
+                    : 'Global Share network/CORS request failed', true);
             }
             var base = g.base.replace(/\/$/, '');
             if (_globalShareState && _globalShareState.uuid && _globalShareState.editToken) {
