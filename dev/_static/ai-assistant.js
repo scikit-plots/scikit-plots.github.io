@@ -543,6 +543,27 @@
 
     var _feedbackPersistEnabled = _readFeedbackTelemetryConsent();
 
+    // Public same-origin DOM integration is a separate egress boundary from
+    // network telemetry. It is OFF by default and requires its own versioned
+    // permission; enabling telemetry never enables page-script observation.
+    var _FEEDBACK_DOM_CONSENT_VERSION = '1.0.0';
+    var _FEEDBACK_DOM_PREF_KEY = 'ai-assistant-feedback-page-integration-consent';
+    function _readFeedbackDomConsent() {
+        try {
+            var raw = localStorage.getItem(_FEEDBACK_DOM_PREF_KEY);
+            if (!raw) return false;
+            var saved = JSON.parse(raw);
+            return !!(saved && saved.enabled === true && saved.version === _FEEDBACK_DOM_CONSENT_VERSION);
+        } catch (_) { return false; }
+    }
+    var _feedbackDomIntegrationEnabled = _readFeedbackDomConsent();
+
+    function _feedbackDomStatusText() {
+        return _feedbackDomIntegrationEnabled
+            ? 'Page integration active — same-origin page scripts may observe content-free rating event metadata.'
+            : 'Page integration off — rating events are not broadcast to page scripts.';
+    }
+
     function _feedbackTelemetryStatusText() {
         return _feedbackPersistEnabled
             ? 'Permission active — rating metadata may be sent to the configured feedback endpoint.'
@@ -557,12 +578,12 @@
      * calling SpeechRecognition.start() — the browser reuses the active track.
      *
      * Empty string = browser default (no getUserMedia pre-pin).
-     * Persisted to localStorage so the preference survives page reloads.
+     * Stored only in sessionStorage so the device identifier does not become long-lived browser residue.
      * Silently falls back when storage is unavailable (private mode, quota, etc.).
      */
     var _micDeviceId = (function () {
         try {
-            return localStorage.getItem('ai-assistant-mic-device-id') || '';
+            return sessionStorage.getItem('ai-assistant-mic-device-id') || '';
         } catch (_) {
             return '';
         }
@@ -5135,6 +5156,27 @@
             return '';
         }
 
+        /** Return true when a query parameter name appears to carry a credential. */
+        function _endpointHasSecretQueryName(query) {
+            var raw = String(query || '').replace(/^\?/, '');
+            if (!raw) return false;
+            var secretName = /^(?:api[_-]?key|access[_-]?token|auth[_-]?token|authorization|bearer|secret|password|passwd|refresh[_-]?token|client[_-]?secret|signature|sig)$/i;
+            try {
+                var params = new URLSearchParams(raw);
+                var found = false;
+                params.forEach(function (_value, key) { if (secretName.test(String(key || ''))) found = true; });
+                return found;
+            } catch (_) {
+                // If the browser cannot parse a query here, fail closed only when
+                // a raw key-shaped token is still visibly credential-like.
+                return raw.split('&').some(function (part) {
+                    var key = part.split('=', 1)[0];
+                    try { key = decodeURIComponent(key.replace(/\+/g, ' ')); } catch (_) {}
+                    return secretName.test(String(key || '').trim());
+                });
+            }
+        }
+
         /** Privacy-safe diagnostic: never include the rejected URL/profile value. */
         function _endpointSecurityWarn(code, field) {
             try {
@@ -5200,6 +5242,9 @@
             }
             if (String(parsed.search || '').length > _MAX_QUERY_LEN) {
                 return { ok: false, url: '', code: 'URL_QUERY_TOO_LONG', error: 'Endpoint query string is too long.' };
+            }
+            if (_endpointHasSecretQueryName(parsed.search)) {
+                return { ok: false, url: '', code: 'URL_SECRET_QUERY', error: 'Credentials or signatures must use dedicated token fields, not endpoint query strings.' };
             }
             if (String(parsed.pathname || '').length > _MAX_ROUTE_LEN) {
                 return { ok: false, url: '', code: 'URL_PATH_TOO_LONG', error: 'Endpoint path is too long.' };
@@ -5267,6 +5312,9 @@
             var query = pieces.length > 1 ? pieces[1] : '';
             if (!pathOnly || query.length > _MAX_QUERY_LEN) {
                 return { ok: false, url: '', code: query.length > _MAX_QUERY_LEN ? 'ROUTE_QUERY_TOO_LONG' : 'ROUTE_EMPTY', error: 'Relative endpoint path/query is invalid.' };
+            }
+            if (_endpointHasSecretQueryName(query)) {
+                return { ok: false, url: '', code: 'ROUTE_SECRET_QUERY', error: 'Credentials or signatures must use dedicated token fields, not endpoint query strings.' };
             }
             var segments = pathOnly.split('/');
             if (segments.length > 64) {
@@ -7113,6 +7161,67 @@
     // ── end _MODEL_STORE ─────────────────────────────────────────────────────
 
 
+    function _base64UrlBytes(bytes) {
+        var bin = '';
+        for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+        return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+    }
+
+    function _hexBytes(bytes) {
+        return Array.prototype.map.call(bytes, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+    }
+
+    async function _newOperationEnvelope() {
+        try {
+            if (!window.crypto || typeof window.crypto.getRandomValues !== 'function' || !window.crypto.subtle) return null;
+            var tokenBytes = new Uint8Array(32);
+            var resourceBytes = new Uint8Array(16);
+            window.crypto.getRandomValues(tokenBytes);
+            window.crypto.getRandomValues(resourceBytes);
+            var opId = '';
+            if (typeof window.crypto.randomUUID === 'function') opId = window.crypto.randomUUID().replace(/-/g, '');
+            if (!opId) {
+                var idBytes = new Uint8Array(16); window.crypto.getRandomValues(idBytes);
+                opId = _hexBytes(idBytes);
+            }
+            var managementToken = _base64UrlBytes(tokenBytes);
+            var tokenHashRaw = new Uint8Array(await window.crypto.subtle.digest(
+                'SHA-256', new TextEncoder().encode(managementToken)));
+            return {
+                operationId: opId,
+                resourceId: _hexBytes(resourceBytes),
+                managementToken: managementToken,
+                managementTokenHash: _hexBytes(tokenHashRaw),
+                operationCreatedAt: Date.now()
+            };
+        } catch (_) { return null; }
+    }
+
+    function _operationHeaders(envelope) {
+        if (!envelope) return {};
+        return {
+            'X-AI-Operation-Id': envelope.operationId,
+            'X-AI-Resource-Id': envelope.resourceId,
+            'X-AI-Management-Token-Hash': envelope.managementTokenHash,
+            'X-AI-Operation-Created-At': String(envelope.operationCreatedAt)
+        };
+    }
+
+    async function _deriveOperationManagement(envelope, purpose) {
+        void purpose;
+        if (!envelope || !/^[0-9a-f]{32}$/i.test(String(envelope.resourceId || '')) ||
+                typeof envelope.managementToken !== 'string' || envelope.managementToken.length < 32) return null;
+        return { resourceId: envelope.resourceId, managementToken: envelope.managementToken };
+    }
+
+    function _safeUrlForLog(url) {
+        try {
+            var parsed = new URL(String(url || ''), (typeof location !== 'undefined' ? location.href : undefined));
+            if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '[non-http endpoint]';
+            return parsed.protocol + '//' + parsed.host + parsed.pathname;
+        } catch (_) { return '[invalid endpoint]'; }
+    }
+
     function _remotePost(url, token, body, opts) {
         opts = opts || {};
         function fail(status, message) {
@@ -7141,12 +7250,10 @@
             return;
         }
         try {
-            _fetch(url, {
-                method:    opts.method || 'POST',
-                headers:   headers,
-                body:      payload,
-                keepalive: keepalive,
-            }).then(async function (r) {
+            var method = String(opts.method || 'POST').toUpperCase();
+            var fetchOptions = { method: method, headers: headers, keepalive: keepalive };
+            if (method !== 'GET' && method !== 'HEAD') fetchOptions.body = payload;
+            _fetch(url, fetchOptions).then(async function (r) {
                 if (r.ok) {
                     if (typeof opts.onSuccess !== 'function') return;
                     var successText = '';
@@ -7170,7 +7277,7 @@
                     return;
                 }
 
-                _log('warn', '[ai-assistant] _remotePost HTTP', r.status, url);
+                _log('warn', '[ai-assistant] _remotePost HTTP', r.status, _safeUrlForLog(url));
                 if (typeof opts.onError !== 'function') return;
                 var message = r.statusText || ('HTTP ' + r.status);
                 try {
@@ -7189,7 +7296,7 @@
                 } catch (_errorReadErr) {}
                 fail(r.status, message);
             }).catch(function (e) {
-                _log('warn', '[ai-assistant] _remotePost fetch error', url, e);
+                _log('warn', '[ai-assistant] _remotePost fetch error', _safeUrlForLog(url), e);
                 fail(0, 'Network/CORS request failed.');
             });
         } catch (e) {
@@ -7203,7 +7310,7 @@
      *
      * @param {string} url    Endpoint URL from cfg.panelFeedbackEndpoint.
      * @param {string} token  Bearer token from cfg.panelFeedbackToken ('' for none).
-     * @param {Object} detail Local feedback detail object; network transmission is reduced to schemaVersion 3 telemetry.
+     * @param {Object} detail Local feedback detail object; network transmission is reduced to schemaVersion 4 telemetry.
      * @returns {void}
      *
      * @remarks
@@ -7244,6 +7351,15 @@
         return out;
     }
 
+    function _dispatchFeedbackIntegrationEvent(detail) {
+        if (!_feedbackDomIntegrationEnabled) return false;
+        try {
+            document.dispatchEvent(new CustomEvent(
+                'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
+            return true;
+        } catch (_) { return false; }
+    }
+
     function _postFeedback(url, token, detail) {
         // Defence in depth: callers cannot accidentally bypass the UI consent
         // gate by invoking this helper directly.
@@ -7255,54 +7371,12 @@
     }
 
     /**
-     * POST a retraction tombstone for a previously submitted feedback record.
+     * POST a content-free telemetry supersession marker.
      *
-     * When a user edits their feedback the original record must be invalidated
-     * before the replacement is written so the training pipeline never sees two
-     * live, contradictory ratings for the same ``(conversationId, answerIndex)``
-     * pair.
-     *
-     * Parameters
-     * ----------
-     * url : string
-     *     Endpoint URL — the same ``/v1/feedback`` path used by
-     *     ``_postFeedback``.
-     * token : string
-     *     Bearer token (empty string for none).
-     * prevSessionId : string
-     *     The ``sessionId`` of the original record to retract.  The server
-     *     MUST mark any record whose ``sessionId`` matches a retraction's
-     *     ``prevSessionId`` as ``status: 'retracted'`` and exclude it from
-     *     every downstream training-dataset build.
-     * answerIndex : number
-     *     Zero-based answer position — lets the server narrow its lookup
-     *     without a full-table scan.
-     * conversationId : string
-     *     Stable per-page-load UUID for cross-record correlation.
-     *
-     * Returns
-     * -------
-     * void
-     *
-     * Notes
-     * -----
-     * Developer: The retraction is fire-and-forget (``keepalive: true``).
-     * Both the retraction and the new record are POSTed in sequence; a
-     * short server-side race is acceptable because the two records carry
-     * distinct ``sessionId`` values and the server deduplicates on
-     * ``conversationId:answerIndex``.  Do NOT add a delay between the two
-     * POSTs — the keepalive budget is shared and a forced pause would block
-     * the new record on slow connections.
-     *
-     * Server contract (``action: 'retract'`` record schema):
-     *   {
-     *     action:         'retract',      // discriminator
-     *     schemaVersion:  1,
-     *     prevSessionId:  '<uuid>',       // the record to invalidate
-     *     answerIndex:    <number>,
-     *     conversationId: '<uuid>',
-     *     ts:             <ms-epoch>,
-     *   }
+     * This is rating-mechanics telemetry only. It never carries Q&A text,
+     * written feedback, model/page data, or a stable conversation identifier.
+     * It is subject to the same explicit telemetry permission as a rating POST
+     * and stops immediately when that permission is disabled.
      */
     function _postFeedbackRetract(url, token, prevSessionId, answerIndex, conversationId) {
         // Retraction is still a network telemetry operation. Never transmit it
@@ -7590,12 +7664,9 @@
                 conversationId: _sessionId,
             };
 
-            // CustomEvent fires unconditionally (doc-author listeners must not be
-            // skipped regardless of persist mode).
-            try {
-                document.dispatchEvent(new CustomEvent(
-                    'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
-            } catch (_) {}
+            // Optional page-integration event. This is a separate explicit
+            // permission from network telemetry and is Off by default.
+            _dispatchFeedbackIntegrationEvent(detail);
 
             var _fbBase  = _EP.hasProfiles()
                 ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('feedback') : _EP.resolve('feedback'))
@@ -7605,10 +7676,9 @@
                 : (cfg.panelFeedbackToken || '');
 
             if (_fbBase && _feedbackPersistEnabled) {
-                // Retract the previous entry before posting the new one so the
-                // training pipeline never sees two live records for the same
-                // (conversationId, answerIndex) pair.  The _pendingRetract flag
-                // is set by _showFeedbackThanks's Edit button handler.
+                // Supersede the previous rating-mechanics event before posting
+                // the replacement. This never grants dataset/training authority.
+                // The _pendingRetract flag is set by the Edit button handler.
                 var _curEntry = _feedbackStore[answerIndex];
                 if (_curEntry && _curEntry._pendingRetract && _curEntry.sessionId) {
                     _postFeedbackRetract(
@@ -7667,10 +7737,17 @@
      * and must receive the UUID to display the resulting link.  keepalive:true
      * would suppress connection errors and leave the UI spinning forever.
      */
-    function _postGlobalShare(url, token, entry, onSuccess, onError) {
+    function _postGlobalShare(url, token, entry, envelope, onSuccess, onError) {
         _remotePost(url, token, entry, {
             keepalive: false,
-            onSuccess: onSuccess,
+            headers: _operationHeaders(envelope),
+            onSuccess: function (res) {
+                res = res && typeof res === 'object' ? res : {};
+                if (envelope && envelope.managementToken && !res.editToken) {
+                    res.editToken = envelope.managementToken;
+                }
+                if (typeof onSuccess === 'function') onSuccess(res);
+            },
             onError:   onError,
         });
     }
@@ -7791,10 +7868,17 @@
      * Developer: No auth token — the HF proxy uses its own HF_TOKEN server-side.
      * keepalive:false because the UI shows a spinner and must receive the response.
      */
-    function _postTrainingContribution(url, payload, onSuccess, onError) {
+    function _postTrainingContribution(url, payload, envelope, onSuccess, onError) {
         _remotePost(url, '', payload, {
             keepalive: false,
-            onSuccess: onSuccess,
+            headers: _operationHeaders(envelope),
+            onSuccess: function (res) {
+                res = res && typeof res === 'object' ? res : {};
+                if (envelope && envelope.managementToken && !res.deleteToken) {
+                    res.deleteToken = envelope.managementToken;
+                }
+                if (typeof onSuccess === 'function') onSuccess(res);
+            },
             onError:   onError,
         });
     }
@@ -7802,7 +7886,10 @@
     var _CONTRIBUTION_SCHEMA_VERSION = 4;
     var _CONTRIBUTION_CONSENT_VERSION = '2.0.0';
     var _CONTRIBUTION_MAX_CLIENT_BYTES = 240 * 1024;
-    var _CONTRIBUTION_NOTE_MAX_CHARS = 1000;
+    var _CONTRIBUTION_NOTE_MAX_CHARS = 2000;
+    var _CONTRIBUTION_MAX_RECORDS = 100;
+    var _CONTRIBUTION_MAX_MESSAGES = 100;
+    var _CONTRIBUTION_MAX_MESSAGE_CHARS = 100000;
 
     /** Resolve the active dataset-contribution endpoint without UI ownership. */
     function _resolveContributionEndpoint() {
@@ -7916,7 +8003,7 @@
         return {
             recordType: 'conversation',
             messages: messages,
-            message: String(note || '').slice(0, _CONTRIBUTION_NOTE_MAX_CHARS),
+            message: String(note || ''),
             ts: Date.now(),
             _source: 'contribution',
         };
@@ -7950,6 +8037,32 @@
             model: normalizedScope === 'conversation' ? null : _buildModelInfo(cfg),
             records: records,
         };
+    }
+
+    function _validateDatasetContributionPayload(payload) {
+        if (!payload || !Array.isArray(payload.records) || !payload.records.length) return 'No eligible contribution content.';
+        if (payload.records.length > _CONTRIBUTION_MAX_RECORDS) return 'This selection has more than ' + _CONTRIBUTION_MAX_RECORDS + ' records.';
+        for (var r = 0; r < payload.records.length; r++) {
+            var rec = payload.records[r] || {};
+            if (String(rec.message || '').length > _CONTRIBUTION_NOTE_MAX_CHARS) return 'A contribution note exceeds ' + _CONTRIBUTION_NOTE_MAX_CHARS + ' characters.';
+            if (rec.recordType === 'qa') {
+                if (String(rec.query || '').length > _CONTRIBUTION_MAX_MESSAGE_CHARS || String(rec.answer || '').length > _CONTRIBUTION_MAX_MESSAGE_CHARS) {
+                    return 'A Q&A message exceeds ' + _CONTRIBUTION_MAX_MESSAGE_CHARS + ' characters.';
+                }
+            } else if (rec.recordType === 'conversation') {
+                if (!Array.isArray(rec.messages) || !rec.messages.length) return 'Conversation contribution has no messages.';
+                if (rec.messages.length > _CONTRIBUTION_MAX_MESSAGES) return 'Whole conversation has more than ' + _CONTRIBUTION_MAX_MESSAGES + ' messages; choose a smaller scope.';
+                for (var m = 0; m < rec.messages.length; m++) {
+                    var msg = rec.messages[m] || {};
+                    if (typeof msg.content !== 'string' || !msg.content.length) return 'Conversation contains an empty or invalid message.';
+                    if (msg.content.length > _CONTRIBUTION_MAX_MESSAGE_CHARS) return 'A conversation message exceeds ' + _CONTRIBUTION_MAX_MESSAGE_CHARS + ' characters.';
+                    if (msg.feedback && String(msg.feedback.note || '').length > _CONTRIBUTION_NOTE_MAX_CHARS) return 'A feedback note exceeds ' + _CONTRIBUTION_NOTE_MAX_CHARS + ' characters.';
+                }
+            } else {
+                return 'Contribution contains an unsupported record type.';
+            }
+        }
+        return '';
     }
 
     function _datasetContributionPayloadBytes(payload) {
@@ -8230,13 +8343,41 @@
         return _conversationId;
     }
 
+    var _TRANSCRIPT_PERSIST_PERMISSION_KEY = 'ai-assistant-remember-conversation-this-tab-v1';
+    var _TRANSCRIPT_RESTORE_MAX_ENTRIES = 200;
+    var _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS = 100000;
+    var _TRANSCRIPT_RESTORE_MAX_STORAGE_CHARS = 2000000;
+
+    function _rememberConversationPermission() {
+        try { return window.sessionStorage.getItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY) === 'true'; }
+        catch (_) { return false; }
+    }
+
     /**
-     * Whether transcript persistence is enabled (config-driven, default on).
-     * @returns {boolean}
+     * Conversation persistence requires both site feature availability and an
+     * explicit per-tab user choice. Missing/inaccessible storage => OFF.
      */
     function _persistEnabled() {
         var cfg = _cfg();
-        return cfg.panelPersist !== false;   // default true
+        return cfg.panelPersist !== false && _rememberConversationPermission();
+    }
+
+    function _setRememberConversationInTab(enabled) {
+        var cfg = _cfg();
+        var allow = cfg.panelPersist !== false && !!enabled;
+        try {
+            if (allow) window.sessionStorage.setItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY, 'true');
+            else window.sessionStorage.removeItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY);
+        } catch (_) { allow = false; }
+        if (allow) {
+            _saveTranscript();
+            if (_conversationId) _ssSet(_CONVERSATION_ID_KEY, _conversationId);
+        } else {
+            _ssDel(_TRANSCRIPT_KEY);
+            _ssDel(_CONVERSATION_ID_KEY);
+        }
+        var toggle = document.getElementById('ai-assistant-remember-conversation-toggle');
+        if (toggle) toggle.setAttribute('aria-checked', allow ? 'true' : 'false');
     }
 
     /** Safely read sessionStorage (private-mode / disabled storage safe). */
@@ -8261,18 +8402,36 @@
      * Defensive: any malformed entry is dropped, never thrown.
      */
     function _loadTranscript() {
-        if (!_persistEnabled()) return;
+        if (!_persistEnabled()) { _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); return; }
         var raw = _ssGet(_TRANSCRIPT_KEY);
         if (!raw) return;
+        if (raw.length > _TRANSCRIPT_RESTORE_MAX_STORAGE_CHARS) {
+            _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); return;
+        }
         try {
             var arr = JSON.parse(raw);
-            if (Array.isArray(arr)) {
-                _transcript = arr.filter(function (e) {
-                    return e && typeof e.text === 'string' &&
-                        (e.role === 'user' || e.role === 'assistant' || e.role === 'error');
-                });
+            if (!Array.isArray(arr) || arr.length > _TRANSCRIPT_RESTORE_MAX_ENTRIES) throw new Error('invalid transcript bounds');
+            var restored = [];
+            for (var i = 0; i < arr.length; i++) {
+                var e = arr[i];
+                if (!e || typeof e.text !== 'string' || e.text.length > _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS ||
+                        (e.role !== 'user' && e.role !== 'assistant' && e.role !== 'error')) {
+                    throw new Error('invalid transcript entry');
+                }
+                var model = null;
+                if (e.role === 'assistant' && e.model && typeof e.model === 'object' && !Array.isArray(e.model)) {
+                    model = {};
+                    ['id','provider','model','label'].forEach(function (key) {
+                        var value = e.model[key];
+                        model[key] = typeof value === 'string' ? value.slice(0, 1000) : null;
+                    });
+                }
+                restored.push({ role: e.role, text: e.text, ts: Number.isFinite(Number(e.ts)) ? Number(e.ts) : null, model: model });
             }
-        } catch (_) { _transcript = []; }
+            _transcript = restored;
+        } catch (_) {
+            _transcript = []; _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY);
+        }
     }
 
     /**
@@ -8531,7 +8690,7 @@
                 includeTimestamps: false,
                 includeModel: false,
                 includeRatings: false,
-                includeErrors: true,
+                includeErrors: false,
                 includePageTitle: false,
                 includeSafeSourcePage: false,
                 includeSessionId: false,
@@ -8550,14 +8709,18 @@
                 includeSessionId: false,
             };
         }
+        // Standard deliberately avoids diagnostic/behavioral metadata. It adds
+        // only a human-readable page title to the conversation itself; users
+        // choose Complete when model, rating, error, timestamp, or source-path
+        // metadata is actually needed.
         return {
             sharePolicy: true,
-            includeTimestamps: true,
-            includeModel: true,
-            includeRatings: true,
-            includeErrors: true,
+            includeTimestamps: false,
+            includeModel: false,
+            includeRatings: false,
+            includeErrors: false,
             includePageTitle: true,
-            includeSafeSourcePage: true,
+            includeSafeSourcePage: false,
             includeSessionId: false,
         };
     }
@@ -11584,11 +11747,9 @@
                     conversationId: _sessionId,
                 };
 
-                // CustomEvent fires unconditionally for doc-author listeners.
-                try {
-                    document.dispatchEvent(new CustomEvent(
-                        'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
-                } catch (_) {}
+                // Optional content-free page integration hook. It has its own
+                // explicit permission and remains Off by default.
+                _dispatchFeedbackIntegrationEvent(detail);
 
                 var _fbBase = _EP.hasProfiles()
                     ? (_EP.resolveEndpoint ? _EP.resolveEndpoint('feedback') : _EP.resolve('feedback'))
@@ -11987,9 +12148,8 @@
             //      cfg.panelApiModels so this label is accurate.
             //   3. Null when neither is configured (stub-mode reply).
             //
-            // The training pipeline reads ``model.id`` and ``model.provider``
-            // to group ratings per model; the ``answerIndex`` + ``sessionId``
-            // pair below is the idempotency key.
+            // modelInfo remains available to the local feedback/contribution UI.
+            // The network telemetry serializer intentionally omits it.
             var modelInfo = _buildModelInfo(cfg);
 
             // Edit-chain linkage.  Normally an edit goes through
@@ -12028,30 +12188,19 @@
                 answerIndex:    answerIndex,
                 page:           _sanitizePage(location ? location.href : ''),
                 ts:             Date.now(),
-                // ``sessionId`` is a per-click idempotency UUID (regenerated on
-                // every submit click to guard against double-sends).  Back-compat
-                // field; new consumers should prefer ``conversationId``.
+                // ``sessionId`` is local edit-chain state. The network telemetry
+                // serializer maps this to an ephemeral feedbackId only.
                 sessionId:      sid,
-                // ``conversationId`` is the stable per-page-load session UUID
-                // (``_sessionId``, set once at module load, never re-generated).
-                // The server (POST /v1/feedback) uses this as the first component
-                // of ``_dedup_key = "{conversationId}:{answerIndex}"`` so that
-                // feedback records can be matched against contribution records
-                // (which use the same key format via ``payload.sessionId``).
-                // Without this field the server falls back to ``""`` and all
-                // feedback dedup keys collapse to ``":{answerIndex}"`` — making
-                // cross-conversation deduplication impossible.
+                // Stable local conversation identity. It is never serialized by
+                // the schema-v4 network telemetry payload and does not link
+                // telemetry to dataset contributions.
                 conversationId: _sessionId,
             };
 
-            // Dev-friendly hook — doc authors attach their own analytics.
-            try {
-                document.dispatchEvent(new CustomEvent(
-                    'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
-            } catch (_) {}
-            // HTTP persistence — fires only when endpoint is configured.
-            // CustomEvent always dispatches first to preserve backward
-            // compatibility for doc authors' custom listeners.
+            // Optional content-free page integration hook. It is independently
+            // permission-gated and Off by default.
+            _dispatchFeedbackIntegrationEvent(detail);
+            // HTTP telemetry is separately permission-gated.
             // ── HTTP feedback persistence ─────────────────────────────────
             // Profile-aware: _EP.resolve('feedback') wins when profiles are
             // defined.  Falls back to legacy cfg.panelFeedbackEndpoint so
@@ -12063,10 +12212,10 @@
                 ? _EP.resolveToken('feedbackToken')
                 : (cfg.panelFeedbackToken || '');
             if (_fbBase) {
-                // Gate: only POST to the server when persist is enabled.
-                // The CustomEvent above has already fired unconditionally so
-                // doc-author listeners and the _feedbackStore update (below)
-                // are never skipped — only the durable HF write is suppressed.
+                // Gate: only POST to the server when telemetry permission is
+                // active. Page-integration events are independently gated;
+                // the local _feedbackStore update below does not depend on
+                // either egress permission.
                 if (_feedbackPersistEnabled) {
                     // Retract any earlier submission flagged by the Edit button
                     // before writing the new record.  This path is reached when
@@ -12121,9 +12270,9 @@
                 answer:         detail.answer,
                 model:          detail.model,
                 sessionId:      detail.sessionId,
-                // Added — stable per-page-load conversation UUID; needed so that
-                // training contribution records are self-describing and consistent
-                // with the dedup key written by POST /v1/feedback.
+                // Stable local conversation UUID used only by browser-side UI
+                // state. Schema-v4 feedback telemetry omits it, and the dataset
+                // contribution controller does not export it as participant identity.
                 conversationId: detail.conversationId,
                 page:           detail.page,
             };
@@ -14151,6 +14300,23 @@
             try { localStorage.setItem(_STREAMING_KEY, _streamingOn ? 'true' : 'false'); } catch (_) {}
         });
         chatSub.appendChild(streamToggle.row);
+
+        var rememberToggle = _buildExtToggleRow(
+            'Remember conversation in this tab',
+            'OFF by default. When enabled, the transcript is stored only in sessionStorage for this tab so a reload can restore it. Same-origin page scripts can read sessionStorage, so leave this off on pages you do not fully trust.',
+            _persistEnabled(),
+            'ai-assistant-remember-conversation-toggle'
+        );
+        rememberToggle.pill.setAttribute('aria-label', 'Remember conversation in this tab');
+        if (_cfg().panelPersist === false) {
+            rememberToggle.pill.disabled = true;
+            rememberToggle.pill.title = 'Conversation persistence is disabled by site configuration.';
+        } else {
+            rememberToggle.pill.addEventListener('click', function () {
+                _setRememberConversationInTab(!_persistEnabled());
+            });
+        }
+        chatSub.appendChild(rememberToggle.row);
         extBody.appendChild(chatSub);
 
         // Share-link mode is configured in the Share sheet. Keeping it out
@@ -14191,6 +14357,23 @@
         telemetryStatus.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-status';
         telemetryStatus.textContent = _feedbackTelemetryStatusText();
         fbkSub.appendChild(telemetryStatus);
+
+        var domToggle = _buildExtToggleRow(
+            'Allow page integration events',
+            'Optional same-origin integration hook for documentation authors. OFF by default. When enabled, page scripts may observe only content-free rating mechanics; question, answer, note, model, URL and stable conversation identity are never included. This permission is separate from network telemetry.',
+            _feedbackDomIntegrationEnabled,
+            'ai-assistant-feedback-dom-toggle'
+        );
+        domToggle.pill.setAttribute('aria-label', 'Allow page integration events');
+        domToggle.pill.addEventListener('click', function () {
+            _setFeedbackDomIntegrationMode(!_feedbackDomIntegrationEnabled);
+        });
+        fbkSub.appendChild(domToggle.row);
+        var domStatus = document.createElement('p');
+        domStatus.id = 'ai-assistant-feedback-dom-status';
+        domStatus.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-dom-status';
+        domStatus.textContent = _feedbackDomStatusText();
+        fbkSub.appendChild(domStatus);
 
         var _fbkServerRow = document.createElement('div');
         _fbkServerRow.id = 'ai-assistant-ep-ext-fbk-server-info';
@@ -22144,6 +22327,7 @@
         var context = { answerIndex: null };
         var selectedScope = 'conversation';
         var preparedPayload = null;
+        var pendingContributionOperation = null;
         var scopeButtons = Object.create(null);
 
         function _scopeButton(key, title, desc) {
@@ -22241,6 +22425,17 @@
         result.setAttribute('aria-live', 'polite');
         body.appendChild(result);
 
+        var importReceipt = document.createElement('button');
+        importReceipt.type = 'button';
+        importReceipt.className = 'ai-assistant-conv-share-action-btn ai-assistant-panel-contribution-import';
+        importReceipt.textContent = 'Import management receipt';
+        var importReceiptFile = document.createElement('input');
+        importReceiptFile.type = 'file';
+        importReceiptFile.accept = 'application/json,.json';
+        importReceiptFile.hidden = true;
+        body.appendChild(importReceipt);
+        body.appendChild(importReceiptFile);
+
         sheet.appendChild(body);
 
         function _ratedCount() { return _buildRatedContributionRecords().length; }
@@ -22304,13 +22499,14 @@
             }
 
             var tooLarge = bytes > _CONTRIBUTION_MAX_CLIENT_BYTES;
-            if (tooLarge) {
-                summary.textContent += ' · Too large for one contribution request';
+            var validationError = payload ? _validateDatasetContributionPayload(payload) : '';
+            if (tooLarge || validationError) {
+                summary.textContent += ' · ' + (validationError || 'Too large for one contribution request');
                 summary.dataset.error = 'true';
             } else {
                 delete summary.dataset.error;
             }
-            submit.disabled = !consentCheck.checked || !payload || !endpoint || tooLarge;
+            submit.disabled = !consentCheck.checked || !payload || !endpoint || tooLarge || !!validationError;
             if (!preview.hidden) {
                 preview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
             }
@@ -22325,21 +22521,71 @@
         noteInput.addEventListener('input', function () { preparedPayload = null; _refresh(true); });
         consentCheck.addEventListener('change', function () { _refresh(false); });
 
+        function _managementReceiptObject(res) {
+            if (!(res && res.receiptId && res.deleteToken)) return null;
+            return {
+                schemaVersion: 1,
+                kind: 'dataset-contribution-management',
+                receiptId: String(res.receiptId),
+                deleteToken: String(res.deleteToken),
+                expiresAt: res.expiresAt || null,
+                consentVersion: res.consentVersion || _CONTRIBUTION_CONSENT_VERSION,
+                savedAt: Date.now()
+            };
+        }
+
+        function _saveManagementReceipt(res) {
+            var receipt = _managementReceiptObject(res);
+            if (!receipt) return false;
+            _downloadBlob(JSON.stringify(receipt, null, 2), 'application/json',
+                'ai-contribution-management-' + _isoFileStamp() + '.json');
+            showNotification('Management receipt saved. Keep it private: it can delete or withdraw this contribution.', false);
+            return true;
+        }
+
         function _renderReceipt(res, endpoint) {
             result.textContent = '';
             var title = document.createElement('strong');
             title.textContent = res && res.status === 'quarantined'
-                ? 'Submitted for review' : 'Contribution submitted';
+                ? 'Submitted for review' : (res && res.status === 'outcome_unknown' ? 'Outcome unknown' : 'Contribution management');
             var text = document.createElement('p');
             text.textContent = res && res.status === 'quarantined'
                 ? 'Status: QUARANTINED · not training-eligible until an authorized review promotes it.'
-                : 'The contribution service accepted the submission.';
+                : res && res.status === 'outcome_unknown'
+                    ? 'The request may have reached the server. The recovery capability below resolves the deterministic receipt without resubmitting content.'
+                    : 'Management capability loaded. Check status before acting if this receipt was imported.';
             result.appendChild(title); result.appendChild(text);
             if (!(res && res.receiptId && res.deleteToken)) return;
 
+            var save = document.createElement('button');
+            save.type = 'button'; save.className = 'ai-assistant-conv-share-action-btn';
+            save.textContent = 'Save management receipt';
+            save.addEventListener('click', function () { _saveManagementReceipt(res); });
+            result.appendChild(save);
+
+            var check = document.createElement('button');
+            check.type = 'button'; check.className = 'ai-assistant-conv-share-action-btn'; check.textContent = 'Check status';
+            check.addEventListener('click', function () {
+                check.disabled = true;
+                _remotePost(endpoint.replace(/\/$/, '') + '/' + encodeURIComponent(res.receiptId), '', {}, {
+                    method: 'GET', keepalive: false,
+                    headers: { 'X-Contribution-Delete-Token': res.deleteToken },
+                    onSuccess: function (lifecycle) {
+                        check.disabled = false;
+                        text.textContent = 'Status: ' + String(lifecycle && lifecycle.status || 'unknown').toUpperCase() + '.';
+                    },
+                    onError: function (err) {
+                        check.disabled = false;
+                        text.textContent = err && err.status === 404
+                            ? 'No receipt exists at the configured service. If this came from an outcome-unknown recovery file, the original create did not persist or its lifecycle window ended.'
+                            : 'Contribution status could not be checked.';
+                    }
+                });
+            });
+            result.appendChild(check);
+
             var manage = document.createElement('button');
-            manage.type = 'button';
-            manage.className = 'ai-assistant-conv-share-action-btn';
+            manage.type = 'button'; manage.className = 'ai-assistant-conv-share-action-btn';
             manage.textContent = 'Delete pending / withdraw training use';
             manage.addEventListener('click', function () {
                 manage.disabled = true;
@@ -22362,46 +22608,103 @@
                         manage.disabled = false;
                         text.textContent = err && err.status === 409
                             ? 'A review or withdrawal operation is already in progress; try again after it finishes.'
-                            : 'Contribution deletion/withdrawal could not be completed.';
+                            : err && err.status === 404
+                                ? 'No matching contribution receipt exists at this service.'
+                                : 'Contribution deletion/withdrawal could not be completed.';
                     }
                 });
             });
             result.appendChild(manage);
         }
 
+        importReceipt.addEventListener('click', function () { importReceiptFile.click(); });
+        importReceiptFile.addEventListener('change', function () {
+            var file = importReceiptFile.files && importReceiptFile.files[0];
+            importReceiptFile.value = '';
+            if (!file || file.size > 64 * 1024) { result.textContent = 'Management receipt is missing or too large.'; return; }
+            var reader = new FileReader();
+            reader.onload = function () {
+                try {
+                    var saved = JSON.parse(String(reader.result || ''));
+                    if (!saved || saved.kind !== 'dataset-contribution-management' || saved.schemaVersion !== 1 ||
+                            !/^[0-9a-f]{32}$/i.test(String(saved.receiptId || '')) ||
+                            typeof saved.deleteToken !== 'string' || saved.deleteToken.length < 32 || saved.deleteToken.length > 256) {
+                        throw new Error('invalid management receipt');
+                    }
+                    var endpoint = _resolveContributionEndpoint();
+                    if (!endpoint) { result.textContent = 'Configure the contribution endpoint before importing a management receipt.'; return; }
+                    _renderReceipt(saved, endpoint);
+                } catch (_) { result.textContent = 'Management receipt is invalid or unsupported.'; }
+            };
+            reader.onerror = function () { result.textContent = 'Management receipt could not be read.'; };
+            reader.readAsText(file);
+        });
+
+
+        async function _sendReviewedContribution(endpoint, reviewedPayload, envelope) {
+            pendingContributionOperation = { endpoint: endpoint, payload: reviewedPayload, envelope: envelope };
+            submit.disabled = true; submit.textContent = 'Submitting…';
+            result.textContent = 'Submitting reviewed contribution…';
+            _postTrainingContribution(endpoint.replace(/\/$/, ''), reviewedPayload, envelope, function (res) {
+                pendingContributionOperation = null;
+                submit.textContent = 'Submit for review'; consentCheck.checked = false; _refresh(false);
+                _renderReceipt(res, endpoint);
+            }, async function (err) {
+                submit.textContent = 'Submit for review'; _refresh(false);
+                var status = Number(err && err.status) || 0;
+                if (status === 0 || status >= 500) {
+                    var derived = await _deriveOperationManagement(envelope, 'contribution');
+                    if (derived) {
+                        _renderReceipt({
+                            status: 'outcome_unknown', receiptId: derived.resourceId,
+                            deleteToken: derived.managementToken, expiresAt: null,
+                            consentVersion: _CONTRIBUTION_CONSENT_VERSION
+                        }, endpoint);
+                        var retry = document.createElement('button');
+                        retry.type = 'button'; retry.className = 'ai-assistant-conv-share-action-btn'; retry.textContent = 'Retry same operation safely';
+                        retry.addEventListener('click', function () {
+                            if (!pendingContributionOperation) return;
+                            _sendReviewedContribution(endpoint, pendingContributionOperation.payload, pendingContributionOperation.envelope);
+                        });
+                        result.appendChild(retry);
+                    } else {
+                        result.textContent = 'Outcome unknown. The request may have been accepted, but this browser cannot derive its recovery capability.';
+                    }
+                    return;
+                }
+                pendingContributionOperation = null;
+                result.textContent = status === 422
+                    ? 'Contribution rejected: the reviewed payload does not match the current consent/schema limits.'
+                    : status === 409 ? 'Contribution operation conflict or recovery window expired. Review the content again before starting a new operation.'
+                    : 'Contribution failed. No retry identity is being retained for this definite response.';
+            });
+        }
+
         submit.addEventListener('click', async function () {
             if (!consentCheck.checked) return;
-            var endpoint = _resolveContributionEndpoint();
-            var payload = _currentPayload();
+            var endpoint = _resolveContributionEndpoint(); var payload = _currentPayload();
             if (!endpoint || !payload) { _refresh(false); return; }
-            if (_datasetContributionPayloadBytes(payload) > _CONTRIBUTION_MAX_CLIENT_BYTES) {
-                result.textContent = 'Contribution is too large for one request. Reduce the selected scope.';
-                return;
+            var initialError = _validateDatasetContributionPayload(payload);
+            if (initialError || _datasetContributionPayloadBytes(payload) > _CONTRIBUTION_MAX_CLIENT_BYTES) {
+                result.textContent = initialError || 'Contribution is too large for one request. Reduce the selected scope.'; return;
             }
             var opConversationId = _getConversationId();
             var review = await _privacyPreflightReview(payload, {
-                title: 'Review dataset contribution',
-                destination: 'the dataset quarantine/review queue',
-                cancelLabel: 'Review contribution',
-                continueLabel: 'Submit reviewed JSON'
+                title: 'Review dataset contribution', destination: 'the dataset quarantine/review queue',
+                cancelLabel: 'Review contribution', continueLabel: 'Submit reviewed JSON'
             });
             if (review.action === 'cancel' || opConversationId !== _getConversationId()) return;
-            submit.disabled = true;
-            submit.textContent = 'Submitting…';
-            result.textContent = 'Submitting reviewed contribution…';
-            _postTrainingContribution(endpoint.replace(/\/$/, ''), review.value, function (res) {
-                submit.textContent = 'Submit for review';
-                consentCheck.checked = false;
-                _refresh(false);
-                _renderReceipt(res, endpoint);
-            }, function (err) {
-                submit.textContent = 'Submit for review';
-                _refresh(false);
-                result.textContent = err && err.status === 422
-                    ? 'Contribution rejected: reload and review the current consent text.'
-                    : 'Contribution failed. Please try again.';
-            });
+            var reviewedError = _validateDatasetContributionPayload(review.value);
+            if (reviewedError || _datasetContributionPayloadBytes(review.value) > _CONTRIBUTION_MAX_CLIENT_BYTES) {
+                result.textContent = reviewedError || 'The reviewed contribution is too large for one request.'; return;
+            }
+            var envelope = await _newOperationEnvelope();
+            if (!envelope) {
+                result.textContent = 'Secure browser randomness is unavailable, so a recoverable contribution cannot be created.'; return;
+            }
+            await _sendReviewedContribution(endpoint, review.value, envelope);
         });
+
 
         sheet._setContext = function (detail) {
             var d = detail && typeof detail === 'object' ? detail : {};
@@ -22550,13 +22853,15 @@
                 'its own terms; consult the model\u2019s information page ' +
                 '(\u2139 icon in the model picker) for the canonical link.</p>' +
 
-                '<h4>Feedback</h4>' +
-                '<p>If you submit feedback through the \u201cWas this ' +
-                'helpful?\u201d block, your rating, optional message, the ' +
-                'question, and the model\u2019s answer may be collected by ' +
-                'the documentation owner for the purpose of improving the ' +
-                'documentation or the model. The documentation owner\u2019s ' +
-                'privacy policy governs that collection.</p>';
+                '<h4>Feedback and dataset contribution</h4>' +
+                '<p>Ratings are local by default. If you explicitly enable ' +
+                'rating telemetry, only bounded rating/event metadata may be ' +
+                'sent to the configured feedback endpoint; your question, ' +
+                'answer, written feedback note, model details, page URL, and ' +
+                'conversation identity are not part of that telemetry. ' +
+                'Content leaves through the dataset contribution workflow only ' +
+                'after separate scope review, privacy preflight, and explicit ' +
+                'contribution consent.</p>';
         }
         sheet.appendChild(bodyEl);
         return sheet;
@@ -23264,6 +23569,7 @@
         var resultState = null;
         var managedArtifacts = _managedConversationArtifacts;
         var _globalShareState = null;
+        var _pendingGlobalCreate = null; // page-memory only: exact reviewed payload + recovery envelope
         var _GLOBAL_SS_KEY = 'ai-assistant-global-share:v2';
         // Session-scoped PUBLIC artifact ledger.  It may retain bearer read URLs
         // so users can track links this tab handed them across reload/new-chat,
@@ -23938,6 +24244,7 @@
             // it as the implicit PATCH target.  The artifact may still retain its
             // page-memory edit token when 404 leaves the reason unknown.
             _globalShareState = null;
+            _pendingGlobalCreate = null;
             _saveGlobalSS(null);
             _updatePrimaryLabel();
         }
@@ -24155,6 +24462,14 @@
                 removeResultBtn.style.display = 'none';
                 return;
             }
+            if (resultState.kind === 'global' && resultState.phase === 'outcome_unknown') {
+                resultTitle.textContent = 'Global link outcome unknown';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · server may have created the link';
+                resultNote.textContent = 'No new operation will be created. Retry safely sends the exact same reviewed snapshot with the same recovery identity so a compliant service resolves to one Share, not a duplicate/orphan.';
+                updateResultBtn.textContent = 'Retry safely'; updateResultBtn.style.display = '';
+                removeResultBtn.textContent = 'Dismiss';
+                return;
+            }
             if (resultState.kind === 'global' && resultState.phase === 'error') {
                 resultTitle.textContent = 'Global link not created';
                 resultMeta.textContent = resultState.status
@@ -24206,8 +24521,12 @@
                     removeResultBtn.textContent = artifact && artifact.editToken ? 'Revoke' : 'Forget';
                 } else {
                     resultTitle.textContent = 'Global link ready';
-                    resultMeta.textContent = resultState.format.toUpperCase() + ' · ' +
-                        (resultState.expiresAt ? ('expires ' + new Date(resultState.expiresAt).toLocaleDateString()) : 'server-backed');
+                    var storageLabel = resultState.storage && resultState.storage.durable && resultState.storage.shared
+                        ? 'durable/shared' : resultState.storage && resultState.storage.durable
+                            ? 'durable/local' : resultState.storage && resultState.storage.shared
+                                ? 'shared/durability unverified' : resultState.storage ? 'process-local / non-durable' : 'server-backed';
+                    resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + storageLabel + ' · ' +
+                        (resultState.expiresAt ? ('expires ' + new Date(resultState.expiresAt).toLocaleDateString()) : 'expiry managed by service');
                     resultNote.textContent = stale
                         ? 'Conversation or options changed. Update/create a link to publish the latest snapshot.'
                         : (artifact && artifact.editToken
@@ -24263,10 +24582,12 @@
         primaryBtn.addEventListener('click', async function () {
             if (primaryBtn.disabled) return;
             var meta = _currentMeta(); if (!meta) return;
+            var recoveringGlobal = selectedDestination === 'global' && _pendingGlobalCreate && resultState && resultState.phase === 'outcome_unknown';
             var destinationLabel = selectedDestination === 'global' ? 'the configured Global Share service'
                 : selectedDestination === 'self_contained' ? 'a self-contained link' : 'a temporary local preview';
-            var snapshot = await _reviewShareSnapshot(destinationLabel);
+            var snapshot = recoveringGlobal ? _pendingGlobalCreate.snapshot : await _reviewShareSnapshot(destinationLabel);
             if (!snapshot) return;
+            if (recoveringGlobal && _pendingGlobalCreate.format !== meta.fmt) meta = _getExportFormat(_pendingGlobalCreate.format) || meta;
             var content = meta.buildStr(snapshot); if (!content) return;
             var bytes = _utf8ByteLength(content);
 
@@ -24312,8 +24633,20 @@
                 return;
             }
             var opConversationId = boundConversationId;
-            var payload = { snapshot: snapshot, format: meta.fmt, ttlDays: g.ttlDays };
+            var payload = recoveringGlobal ? _pendingGlobalCreate.payload : { snapshot: snapshot, format: meta.fmt, ttlDays: g.ttlDays };
             var globalOperation = (_globalShareState && _globalShareState.editToken) ? 'update' : 'create';
+            var createEnvelope = null;
+            if (globalOperation === 'create') {
+                if (recoveringGlobal) createEnvelope = _pendingGlobalCreate.envelope;
+                else {
+                    createEnvelope = await _newOperationEnvelope();
+                    if (!createEnvelope) {
+                        resultState = { kind: 'global', phase: 'error', status: 0, message: 'Secure browser randomness is unavailable; a recoverable Global Share cannot be created.', bytes: bytes, format: meta.fmt, stale: false };
+                        _renderResult(); return;
+                    }
+                    _pendingGlobalCreate = { envelope: createEnvelope, payload: payload, snapshot: snapshot, format: meta.fmt, bytes: bytes };
+                }
+            }
             resultState = { kind: 'global', phase: 'pending', operation: globalOperation,
                 bytes: bytes, format: meta.fmt, stale: false };
             _renderResult();
@@ -24357,8 +24690,9 @@
                     expiresAt: _globalShareState.expiresAt, snapshot: snapshot, bytes: bytes, format: meta.fmt,
                     state: 'active', ledgerId: ledger && ledger.ledgerId,
                     lifecycle: editToken ? 'active · server-revocable' : 'active · read-only' });
+                _pendingGlobalCreate = null;
                 resultState = { kind: 'global', phase: 'ready', artifactId: existing.id, url: url, bytes: bytes, format: meta.fmt,
-                    expiresAt: _globalShareState.expiresAt, stale: false };
+                    expiresAt: _globalShareState.expiresAt, storage: res.storage || null, stale: false };
                 _renderArtifacts(); _renderResult(); _updatePrimaryLabel();
                 showNotification('Global share link ready — copy the public read URL to share it.', false);
             }
@@ -24376,25 +24710,31 @@
                             ? 'Local-file Global Share could not reach the service. The proxy must explicitly enable SHARE_ALLOW_OPAQUE_ORIGIN=true; Origin:null is not trusted by default.'
                             : 'The browser could not reach the configured Share service. Check network, CORS, and endpoint configuration.');
                 }
-                resultState = { kind: 'global', phase: 'error', status: status, message: message,
+                var outcomeUnknown = globalOperation === 'create' && (status === 0 || status >= 500);
+                if (!outcomeUnknown) _pendingGlobalCreate = null;
+                resultState = { kind: 'global', phase: outcomeUnknown ? 'outcome_unknown' : 'error', status: status, message: message,
                     bytes: bytes, format: meta.fmt, stale: false };
                 _renderResult();
-                showNotification(status === 429 ? 'Global Share rate limit reached'
-                    : status === 502 ? 'Global Share service did not return a usable public link'
+                showNotification(outcomeUnknown ? 'Global Share outcome unknown — retry safely to resolve the same operation'
+                    : status === 429 ? 'Global Share rate limit reached'
                     : status ? ('Global Share failed (HTTP ' + status + ')')
-                    : 'Global Share network/CORS request failed', true);
+                    : 'Global Share request failed before a server result was established', true);
             }
             var base = g.base.replace(/\/$/, '');
             if (_globalShareState && _globalShareState.uuid && _globalShareState.editToken) {
                 _patchGlobalShare(base, _globalShareState.uuid, _globalShareState.editToken,
-                    payload, success, function (err) {
+                    payload, success, async function (err) {
                         if (err.status === 404 || err.status === 405 || err.status === 410) {
                             _globalShareState = null; _saveGlobalSS(null);
-                            _postGlobalShare(base, g.token, payload, success, failure);
+                            createEnvelope = await _newOperationEnvelope();
+                            if (!createEnvelope) { failure({ status: 0, message: 'Secure browser randomness is unavailable.' }); return; }
+                            globalOperation = 'create';
+                            _pendingGlobalCreate = { envelope: createEnvelope, payload: payload, snapshot: snapshot, format: meta.fmt, bytes: bytes };
+                            _postGlobalShare(base, g.token, payload, createEnvelope, success, failure);
                         } else failure(err);
                     });
             } else {
-                _postGlobalShare(base, g.token, payload, success, failure);
+                _postGlobalShare(base, g.token, payload, createEnvelope, success, failure);
             }
         });
 
@@ -27701,6 +28041,23 @@
      *   may throw in Safari private mode, cross-origin iframes, and when storage
      *   quota is exceeded.
      */
+    function _setFeedbackDomIntegrationMode(enabled) {
+        _feedbackDomIntegrationEnabled = !!enabled;
+        try {
+            if (_feedbackDomIntegrationEnabled) {
+                localStorage.setItem(_FEEDBACK_DOM_PREF_KEY, JSON.stringify({
+                    enabled: true, version: _FEEDBACK_DOM_CONSENT_VERSION, grantedAt: Date.now()
+                }));
+            } else {
+                localStorage.removeItem(_FEEDBACK_DOM_PREF_KEY);
+            }
+        } catch (_) {}
+        var toggle = document.getElementById('ai-assistant-feedback-dom-toggle');
+        if (toggle) toggle.setAttribute('aria-checked', _feedbackDomIntegrationEnabled ? 'true' : 'false');
+        var status = document.getElementById('ai-assistant-feedback-dom-status');
+        if (status) status.textContent = _feedbackDomStatusText();
+    }
+
     function _setFeedbackPersistMode(enabled) {
         _feedbackPersistEnabled = !!enabled;
         _feedbackTelemetryGrantedAt = _feedbackPersistEnabled ? Date.now() : null;
@@ -27750,15 +28107,15 @@
     }
 
     // ══════════════════════════════════════════════════════════════════════════
-    // PERMANENT SHARE STORAGE — IndexedDB module
+    // LEGACY LOCAL SHARE STORAGE — IndexedDB compatibility/quarantine module
     //
     // Purpose
     // ───────
     // Blob URLs created by URL.createObjectURL() are ephemeral: they are tied
     // to the browser tab session and evicted when the tab closes.  The IndexedDB
-    // module provides truly persistent storage so share links survive page
-    // reloads indefinitely (until the user explicitly deletes them or clears
-    // browser data).
+    // This module exists only to decode/manage browser-local links created by
+    // older releases and to support explicit cleanup. Current Global Share and
+    // portable Share creation paths do not write new authoritative content here.
     //
     // Storage scheme
     // ──────────────
@@ -27789,14 +28146,11 @@
     //   the content store.  Content is never embedded in the URL itself —
     //   the URL stays short and shareable.
     //
-    // Cross-device limitation
-    // ───────────────────────
-    //   IndexedDB is browser-local.  A link generated on device A is only
-    //   functional on that same browser on device A.  For cross-device or
-    //   cross-user sharing, the user should use the download option (which
-    //   produces a self-contained file) or the session blob URL (valid only
-    //   while the tab is open).  Both the permanent-link note and the session-
-    //   note in the share sheet make this distinction explicit.
+    // Security boundary
+    // ─────────────────
+    //   IndexedDB is same-origin browser storage, not a cross-device authority.
+    //   New Global Share authority lives on the configured server store; this
+    //   database must never be treated as a durable or secret-capability vault.
     // ══════════════════════════════════════════════════════════════════════════
 
     /** IndexedDB database name for all share entries. @type {string} */
@@ -28334,9 +28688,9 @@
         _micDeviceId = newId;
         try {
             if (_micDeviceId) {
-                localStorage.setItem('ai-assistant-mic-device-id', _micDeviceId);
+                sessionStorage.setItem('ai-assistant-mic-device-id', _micDeviceId);
             } else {
-                localStorage.removeItem('ai-assistant-mic-device-id');
+                sessionStorage.removeItem('ai-assistant-mic-device-id');
             }
         } catch (_) {}
         _syncMicDeviceUI();
