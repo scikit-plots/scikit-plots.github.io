@@ -22671,6 +22671,32 @@
         var body = document.createElement('div');
         body.className = 'ai-assistant-panel-privacy-body ai-assistant-panel-contribution-body';
 
+        function _contributionSection(label, note) {
+            var section = document.createElement('div');
+            section.className = 'ai-assistant-panel-contribution-section';
+            var sectionHead = document.createElement('div');
+            sectionHead.className = 'ai-assistant-panel-contribution-section-head';
+            var sectionLabel = document.createElement('span');
+            sectionLabel.className = 'ai-assistant-panel-contribution-section-label';
+            sectionLabel.textContent = label;
+            var sectionRule = document.createElement('span');
+            sectionRule.className = 'ai-assistant-panel-contribution-section-rule';
+            sectionRule.setAttribute('aria-hidden', 'true');
+            sectionHead.appendChild(sectionLabel);
+            sectionHead.appendChild(sectionRule);
+            section.appendChild(sectionHead);
+            if (note) {
+                var noteWrap = document.createElement('div');
+                noteWrap.className = 'ai-assistant-panel-contribution-section-note';
+                var noteText = document.createElement('p');
+                noteText.className = 'ai-assistant-panel-contribution-section-note-text';
+                noteText.textContent = note;
+                noteWrap.appendChild(noteText);
+                section.appendChild(noteWrap);
+            }
+            return section;
+        }
+
         var intro = document.createElement('p');
         intro.className = 'ai-assistant-panel-contribution-intro';
         intro.textContent = 'Voluntarily submit selected conversation content to the quarantine/review queue for possible training or evaluation use. Nothing is submitted automatically.';
@@ -22680,15 +22706,17 @@
         endpointNote.className = 'ai-assistant-panel-contribution-endpoint';
         body.appendChild(endpointNote);
 
-        var scopeHeading = document.createElement('h4');
-        scopeHeading.textContent = 'What would you like to contribute?';
-        body.appendChild(scopeHeading);
+        var scopeSection = _contributionSection(
+            'Choose content',
+            'Pick the smallest useful scope. You can inspect the exact JSON before anything is submitted.'
+        );
+        body.appendChild(scopeSection);
 
         var scopeGroup = document.createElement('div');
         scopeGroup.className = 'ai-assistant-panel-contribution-scopes';
         scopeGroup.setAttribute('role', 'radiogroup');
         scopeGroup.setAttribute('aria-label', 'Contribution scope');
-        body.appendChild(scopeGroup);
+        scopeSection.appendChild(scopeGroup);
 
         var context = { answerIndex: null };
         var selectedScope = 'conversation';
@@ -22722,11 +22750,21 @@
 
         var summary = document.createElement('div');
         summary.className = 'ai-assistant-panel-contribution-summary';
-        body.appendChild(summary);
+        scopeSection.appendChild(summary);
+
+        var reviewSection = _contributionSection(
+            'Review details',
+            'See what is eligible, what is structurally excluded, and add optional reviewer context.'
+        );
+        body.appendChild(reviewSection);
+
+        var reviewGrid = document.createElement('div');
+        reviewGrid.className = 'ai-assistant-panel-contribution-review-grid';
+        reviewSection.appendChild(reviewGrid);
 
         var included = document.createElement('div');
         included.className = 'ai-assistant-panel-contribution-included';
-        body.appendChild(included);
+        reviewGrid.appendChild(included);
 
         var excluded = document.createElement('div');
         excluded.className = 'ai-assistant-panel-contribution-excluded';
@@ -22735,40 +22773,68 @@
         var excludedText = document.createElement('p');
         excludedText.textContent = 'Bearer/API credentials, endpoint tokens, Share edit/revoke capabilities, contribution management capabilities, browser storage keys, raw URL query strings, and raw URL fragments are structurally excluded.';
         excluded.appendChild(excludedTitle); excluded.appendChild(excludedText);
-        body.appendChild(excluded);
+        reviewGrid.appendChild(excluded);
 
         var noteWrap = document.createElement('label');
         noteWrap.className = 'ai-assistant-panel-contribution-note';
+        var noteHead = document.createElement('span');
+        noteHead.className = 'ai-assistant-panel-contribution-note-head';
         var noteLabel = document.createElement('span');
-        noteLabel.textContent = 'Why is this conversation useful? (optional)';
+        noteLabel.textContent = 'Why is this conversation useful?';
+        var noteOptional = document.createElement('span');
+        noteOptional.className = 'ai-assistant-panel-contribution-optional';
+        noteOptional.textContent = 'Optional';
+        var noteCounter = document.createElement('span');
+        noteCounter.className = 'ai-assistant-panel-contribution-note-count';
+        noteCounter.textContent = '0 / ' + _CONTRIBUTION_NOTE_MAX_CHARS;
+        noteHead.appendChild(noteLabel); noteHead.appendChild(noteOptional); noteHead.appendChild(noteCounter);
         var noteInput = document.createElement('textarea');
         noteInput.maxLength = _CONTRIBUTION_NOTE_MAX_CHARS;
-        noteInput.rows = 3;
+        noteInput.rows = 2;
         noteInput.placeholder = 'Optional context for dataset reviewers…';
-        noteWrap.appendChild(noteLabel); noteWrap.appendChild(noteInput);
-        body.appendChild(noteWrap);
+        noteInput.setAttribute('aria-describedby', 'ai-assistant-contribution-note-help');
+        var noteHelp = document.createElement('small');
+        noteHelp.id = 'ai-assistant-contribution-note-help';
+        noteHelp.className = 'ai-assistant-panel-contribution-note-help';
+        noteHelp.textContent = 'Keep it concise and avoid secrets or personal information.';
+        noteWrap.appendChild(noteHead); noteWrap.appendChild(noteInput); noteWrap.appendChild(noteHelp);
+        reviewSection.appendChild(noteWrap);
+
+        var inspectSection = _contributionSection(
+            'Inspect payload',
+            'This is the exact client payload entering privacy review. Redaction, when chosen, applies to this reviewed copy.'
+        );
+        body.appendChild(inspectSection);
 
         var inspectRow = document.createElement('div');
         inspectRow.className = 'ai-assistant-panel-contribution-inspect-row';
         var inspectBtn = document.createElement('button');
         inspectBtn.type = 'button';
-        inspectBtn.className = 'ai-assistant-conv-share-action-btn';
+        inspectBtn.className = 'ai-assistant-conv-share-action-btn ai-assistant-panel-contribution-inspect-btn';
         inspectBtn.textContent = 'Inspect JSON';
         var sizeLabel = document.createElement('span');
         sizeLabel.className = 'ai-assistant-panel-contribution-size';
         inspectRow.appendChild(inspectBtn); inspectRow.appendChild(sizeLabel);
-        body.appendChild(inspectRow);
+        inspectSection.appendChild(inspectRow);
 
         var inspectHint = document.createElement('p');
         inspectHint.className = 'ai-assistant-panel-contribution-hint';
         inspectHint.textContent = 'Inspection shows the exact payload entering privacy review. If you choose Redact, only the reviewed/redacted copy is sent; the contribution payload is never rebuilt independently afterward.';
-        body.appendChild(inspectHint);
+        inspectSection.appendChild(inspectHint);
 
         var preview = document.createElement('pre');
         preview.className = 'ai-assistant-panel-contribution-preview';
         preview.hidden = true;
         preview.setAttribute('aria-label', 'Contribution JSON preview');
-        body.appendChild(preview);
+        preview.setAttribute('tabindex', '0');
+        preview.dataset.size = 'compact';
+        inspectSection.appendChild(preview);
+
+        var submitSection = _contributionSection(
+            'Consent & manage',
+            'Submission is explicit. Accepted content enters quarantine first and remains separately manageable by its receipt capability.'
+        );
+        body.appendChild(submitSection);
 
         var consent = document.createElement('label');
         consent.className = 'ai-assistant-conv-share-consent ai-assistant-panel-contribution-consent';
@@ -22777,19 +22843,19 @@
         var consentText = document.createElement('span');
         consentText.textContent = 'I understand that the selected content, ratings, optional notes, model labels, and selected safe metadata will be submitted for review and possible training/evaluation use. Submissions enter quarantine first.';
         consent.appendChild(consentCheck); consent.appendChild(consentText);
-        body.appendChild(consent);
+        submitSection.appendChild(consent);
 
         var submit = document.createElement('button');
         submit.type = 'button';
         submit.className = 'ai-assistant-conv-share-perm-save-btn ai-assistant-panel-contribution-submit';
         submit.textContent = 'Submit for review';
         submit.disabled = true;
-        body.appendChild(submit);
+        submitSection.appendChild(submit);
 
         var result = document.createElement('div');
         result.className = 'ai-assistant-panel-contribution-result';
         result.setAttribute('aria-live', 'polite');
-        body.appendChild(result);
+        submitSection.appendChild(result);
 
         var importReceipt = document.createElement('button');
         importReceipt.type = 'button';
@@ -22799,8 +22865,8 @@
         importReceiptFile.type = 'file';
         importReceiptFile.accept = 'application/json,.json';
         importReceiptFile.hidden = true;
-        body.appendChild(importReceipt);
-        body.appendChild(importReceiptFile);
+        submitSection.appendChild(importReceipt);
+        submitSection.appendChild(importReceiptFile);
 
         sheet.appendChild(body);
 
@@ -22827,6 +22893,13 @@
                 p.textContent = 'Ordered user and assistant messages as one record, per-assistant client-reported model metadata, ratings/notes when present, your optional contribution note, and a sanitized source page reference. Error messages are excluded.';
             }
             included.appendChild(title); included.appendChild(p);
+        }
+
+        function _syncContributionPreviewDensity() {
+            if (preview.hidden) return;
+            var text = preview.textContent || '';
+            var lines = text ? text.split('\n').length : 0;
+            preview.dataset.size = lines <= 14 ? 'compact' : (lines <= 32 ? 'medium' : 'large');
         }
 
         function _refresh(rebuildPayload) {
@@ -22875,6 +22948,7 @@
             submit.disabled = !consentCheck.checked || !payload || !endpoint || tooLarge || !!validationError;
             if (!preview.hidden) {
                 preview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
+                _syncContributionPreviewDensity();
             }
         }
 
@@ -22883,8 +22957,13 @@
             preview.hidden = !preview.hidden;
             inspectBtn.textContent = preview.hidden ? 'Inspect JSON' : 'Hide JSON';
             preview.textContent = (!preview.hidden && payload) ? JSON.stringify(payload, null, 2) : '';
+            _syncContributionPreviewDensity();
         });
-        noteInput.addEventListener('input', function () { preparedPayload = null; _refresh(true); });
+        noteInput.addEventListener('input', function () {
+            noteCounter.textContent = noteInput.value.length + ' / ' + _CONTRIBUTION_NOTE_MAX_CHARS;
+            preparedPayload = null;
+            _refresh(true);
+        });
         consentCheck.addEventListener('change', function () { _refresh(false); });
 
         function _managementReceiptObject(res) {
