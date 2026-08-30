@@ -504,6 +504,78 @@
      */
     var _exportStateListeners = [];
 
+    // B40 — Internal lifecycle coordination is private to the assistant.
+    // Public document events are a separate, explicit same-origin integration
+    // surface and are OFF by default.  Do not use document as an internal bus:
+    // arbitrary same-origin scripts can subscribe and exfiltrate event detail.
+    var _assistantEvents = (function () {
+        var listeners = Object.create(null);
+        function addEventListener(type, fn) {
+            if (typeof type !== 'string' || typeof fn !== 'function') return;
+            if (!listeners[type]) listeners[type] = [];
+            if (listeners[type].indexOf(fn) === -1) listeners[type].push(fn);
+        }
+        function removeEventListener(type, fn) {
+            var list = listeners[type];
+            if (!list) return;
+            var idx = list.indexOf(fn);
+            if (idx !== -1) list.splice(idx, 1);
+        }
+        function dispatchEvent(event) {
+            if (!event || typeof event.type !== 'string') return true;
+            var list = (listeners[event.type] || []).slice();
+            for (var i = 0; i < list.length; i++) {
+                try { list[i](event); } catch (_) { /* isolate internal subscribers */ }
+            }
+            return !event.defaultPrevented;
+        }
+        return { addEventListener: addEventListener, removeEventListener: removeEventListener, dispatchEvent: dispatchEvent };
+    }());
+
+    function _publicAssistantEventDetail(type, detail) {
+        detail = detail && typeof detail === 'object' ? detail : {};
+        switch (type) {
+        case 'ai-assistant-feedback':
+            return _feedbackLocalEventPayload(detail);
+        case 'ai-assistant:profile-changed':
+            return { activeLabel: String(detail.activeLabel || '').slice(0, 80), isBuiltin: !!detail.isBuiltin };
+        case 'ai-assistant-conversation-reset':
+            return { reset: true };
+        case 'ai-assistant-open-contribution':
+            return { scope: detail.scope === 'qa' ? 'qa' : 'conversation',
+                answerIndex: Number.isInteger(detail.answerIndex) ? detail.answerIndex : null };
+        case 'ai-assistant-effort-change':
+            return { id: String(detail.id || '').slice(0, 32), scaleChanged: !!detail.scaleChanged };
+        case 'ai-assistant-thinking-change':
+            return { enabled: !!detail.enabled };
+        case 'ai-assistant-thinking-budget-change':
+            return { budget: Number.isFinite(Number(detail.budget)) ? Number(detail.budget) : null };
+        case 'ai-assistant-model-change':
+            return { reason: String(detail.reason || 'changed').slice(0, 64) };
+        case 'ai-assistant-model-edit':
+            return { isCustom: !!detail.isCustom };
+        case 'ai-assistant-model-removed':
+            return { isCustom: !!detail.isCustom };
+        default:
+            return null;
+        }
+    }
+
+    function _dispatchAssistantEvent(event) {
+        if (!event || typeof event.type !== 'string') return true;
+        var internalResult = _assistantEvents.dispatchEvent(event);
+        if (!_feedbackDomIntegrationEnabled) return internalResult;
+        var projected = _publicAssistantEventDetail(event.type, event.detail);
+        if (projected === null) return internalResult;
+        try {
+            // The only deliberate crossing from the private bus to document.
+            document.dispatchEvent(new CustomEvent(event.type, {
+                detail: projected, bubbles: false, cancelable: false
+            }));
+        } catch (_) {}
+        return internalResult;
+    }
+
     /**
      * Feedback telemetry permission is a versioned, explicit browser-side
      * consent. Local ratings never require it. Network telemetry does.
@@ -546,8 +618,8 @@
     // Public same-origin DOM integration is a separate egress boundary from
     // network telemetry. It is OFF by default and requires its own versioned
     // permission; enabling telemetry never enables page-script observation.
-    var _FEEDBACK_DOM_CONSENT_VERSION = '1.0.0';
-    var _FEEDBACK_DOM_PREF_KEY = 'ai-assistant-feedback-page-integration-consent';
+    var _FEEDBACK_DOM_CONSENT_VERSION = '2.0.0';
+    var _FEEDBACK_DOM_PREF_KEY = 'ai-assistant-page-integration-consent';
     function _readFeedbackDomConsent() {
         try {
             var raw = localStorage.getItem(_FEEDBACK_DOM_PREF_KEY);
@@ -560,8 +632,8 @@
 
     function _feedbackDomStatusText() {
         return _feedbackDomIntegrationEnabled
-            ? 'Page integration active — same-origin page scripts may observe content-free rating event metadata.'
-            : 'Page integration off — rating events are not broadcast to page scripts.';
+            ? 'Page integration active — same-origin page scripts may observe bounded assistant lifecycle events.'
+            : 'Page integration off — assistant lifecycle events stay on the private internal event bus.';
     }
 
     function _feedbackTelemetryStatusText() {
@@ -4987,6 +5059,11 @@
      * console.warn only.  It must never disrupt the user's UI flow on error.
      */
 
+    function _runtimeTokensAllowed() {
+        try { return !!(_cfg() && _cfg().allowRuntimeTokens === true); }
+        catch (_) { return false; }
+    }
+
     // ── Endpoint Profile Registry ────────────────────────────────────────────
     /**
      * Runtime-switchable proxy endpoint registry — Security-hardened v2.
@@ -4998,7 +5075,7 @@
      * V-03 localStorage reads go through a schema-versioned validator.
      * V-04 Runtime-added URLs are checked against _isBlockedHost (SSRF guard).
      * V-05 Custom profile count is capped at _MAX_CUSTOM_PROFILES (20).
-     * V-07 ai-assistant:profile-changed CustomEvent dispatched on every setActive.
+     * V-07 ai-assistant:profile-changed is emitted on the private bus; an optional bounded public projection requires explicit page-integration permission.
      * V-09 _appendProfileCard now reads _EP.getProfile() instead of raw global.
      *
      * PUBLIC API (backward-compatible; new additions marked +)
@@ -5023,13 +5100,23 @@
      *
      * EVENTS
      * ======
-     * document fires 'ai-assistant:profile-changed' after every setActive().
+     * private bus emits 'ai-assistant:profile-changed' after every setActive(); document receives only a consent-gated bounded projection.
      * detail: { activeKey, activeLabel, isBuiltin }
      *
      * @namespace _EP
      */
     var _EP = (function () {
         'use strict';
+
+        // Keep the token policy inside the registry too: security-sensitive
+        // validation must remain intact when this closure is tested/extracted
+        // independently from the rest of the UI bundle.
+        function _runtimeTokensAllowed() {
+            try {
+                return !!(window.AI_ASSISTANT_CONFIG &&
+                    window.AI_ASSISTANT_CONFIG.allowRuntimeTokens === true);
+            } catch (_) { return false; }
+        }
 
         // ── Storage keys ─────────────────────────────────────────────────────
         var _STORAGE_KEY        = 'ai-assistant-ep';
@@ -5528,7 +5615,7 @@
             } catch (_) {}
         }
 
-        /** Dispatch ai-assistant:profile-changed on document (V-07). */
+        /** Dispatch ai-assistant:profile-changed on the private assistant bus (V-07). */
         function _dispatchProfileChange(key) {
             try {
                 var label = (_profiles[key] && _profiles[key].label) || key;
@@ -5536,7 +5623,13 @@
                     bubbles: true, cancelable: false,
                     detail: { activeKey: key, activeLabel: label, isBuiltin: !!_builtin[key] }
                 });
-                document.dispatchEvent(ev);
+                if (typeof _dispatchAssistantEvent === 'function') {
+                    _dispatchAssistantEvent(ev);
+                } else if (typeof document !== 'undefined' && document.dispatchEvent) {
+                    // Isolated registry harness fallback only. In the complete
+                    // bundle internal coordination uses the private event bus.
+                    document.dispatchEvent(ev);
+                }
             } catch (_) {}
         }
 
@@ -5646,6 +5739,7 @@
 
         // ── Public: resolveToken ──────────────────────────────────────────────
         function resolveToken(tokenKey) {
+            if (!_runtimeTokensAllowed()) return '';
             var key = getActive();
             if (!key) return '';
             var profile = _profiles[key];
@@ -5667,7 +5761,7 @@
         /**
          * Persist a profile key and update the in-memory cache.
          *
-         * Dispatches 'ai-assistant:profile-changed' on success.
+         * Emits 'ai-assistant:profile-changed' on the private assistant bus on success.
          *
          * @param {string} profileKey
          * @returns {boolean}  true when the key exists in the registry.
@@ -5738,8 +5832,8 @@
                 feedback:      p.feedback      !== undefined && p.feedback      !== null ? String(p.feedback)      : '',
                 training:      p.training      !== undefined && p.training      !== null ? String(p.training)      : '',
                 datasetRepo:   p.datasetRepo   !== undefined && p.datasetRepo   !== null ? String(p.datasetRepo)   : '',
-                shareToken:    p.shareToken    !== undefined && p.shareToken    !== null ? String(p.shareToken)    : '',
-                feedbackToken: p.feedbackToken !== undefined && p.feedbackToken !== null ? String(p.feedbackToken) : '',
+                shareToken:    _runtimeTokensAllowed() && p.shareToken    !== undefined && p.shareToken    !== null ? String(p.shareToken)    : '',
+                feedbackToken: _runtimeTokensAllowed() && p.feedbackToken !== undefined && p.feedbackToken !== null ? String(p.feedbackToken) : '',
                 ttlDays:       typeof p.ttlDays === 'number' ? p.ttlDays : 30,
                 source:        _builtin[key] ? 'build' : 'custom',
                 // _warn: build-time SSRF advisory list (array of field names).
@@ -5804,7 +5898,7 @@
             var tok_keys = ['shareToken', 'feedbackToken'];
             for (var j = 0; j < tok_keys.length; j++) {
                 var tok = profile[tok_keys[j]];
-                sanitized[tok_keys[j]] = (typeof tok === 'string')
+                sanitized[tok_keys[j]] = (_runtimeTokensAllowed() && typeof tok === 'string')
                     ? tok.trim().replace(/[\x00-\x1f\x7f]/g, '') : '';
             }
             _profiles[key] = sanitized;
@@ -6154,9 +6248,9 @@
                     try { cb(payload); } catch (_err) { /* isolate subscriber errors */ }
                 };
 
-                document.addEventListener('ai-assistant:profile-changed', handler);
+                (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant:profile-changed', handler);
                 return function unsubscribe() {
-                    document.removeEventListener('ai-assistant:profile-changed', handler);
+                    (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).removeEventListener('ai-assistant:profile-changed', handler);
                 };
             };
 
@@ -7352,10 +7446,17 @@
     }
 
     function _dispatchFeedbackIntegrationEvent(detail) {
-        if (!_feedbackDomIntegrationEnabled) return false;
         try {
-            document.dispatchEvent(new CustomEvent(
-                'ai-assistant-feedback', { detail: _feedbackLocalEventPayload(detail) }));
+            if (typeof _dispatchAssistantEvent === 'function') {
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-feedback', { detail: detail || {} }));
+                return _feedbackDomIntegrationEnabled;
+            }
+            // Isolated helper-test fallback. The complete bundle never takes
+            // this branch because _dispatchAssistantEvent is defined globally.
+            if (!_feedbackDomIntegrationEnabled) return false;
+            document.dispatchEvent(new CustomEvent('ai-assistant-feedback', {
+                detail: _feedbackLocalEventPayload(detail || {})
+            }));
             return true;
         } catch (_) { return false; }
     }
@@ -8512,7 +8613,7 @@
         // session/permanent/global link UI belongs to the old conversation so
         // it cannot remain visible after New chat / Clear conversation.
         try {
-            document.dispatchEvent(new CustomEvent(
+            _dispatchAssistantEvent(new CustomEvent(
                 'ai-assistant-conversation-reset',
                 { detail: { conversationId: nextConversationId } }
             ));
@@ -11905,7 +12006,7 @@
             expBtn.setAttribute('aria-expanded', 'false');
             wrapper.setAttribute('data-active', 'false');
             try {
-                document.dispatchEvent(new CustomEvent('ai-assistant-open-contribution', {
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-open-contribution', {
                     detail: { scope: 'qa', answerIndex: answerIndex }
                 }));
             } catch (_) {}
@@ -13243,11 +13344,9 @@
         // Token security warning (advanced only)
         var fTokenNote = document.createElement('p');
         fTokenNote.className   = 'ai-assistant-panel-ep-hint ai-assistant-panel-ep-hint--warn';
-        fTokenNote.textContent =
-            '⚠ Tokens entered here are kept in memory for this page only and ' +
-            'are not saved to localStorage. Use only short-lived, least-privilege ' +
-            'credentials. Never put production secrets in conf.py or generated ' +
-            'documentation; static Sphinx configuration is delivered to readers.';
+        fTokenNote.textContent = _runtimeTokensAllowed()
+            ? '⚠ Runtime bearer entry is explicitly enabled by the site owner. Tokens stay in memory for this page only and are never saved to localStorage. Use only short-lived, least-privilege credentials; production authorization belongs at the server boundary.'
+            : 'Runtime bearer-token entry is disabled by the site owner. This is the secure default: static documentation and same-origin page scripts must not become a credential vault. Configure authorization at the server boundary.';
         fAdvWrap.appendChild(fTokenNote);
 
         var _ADV_FIELDS = [
@@ -13266,6 +13365,9 @@
             (function (afd) {
                 var arow = document.createElement('div');
                 arow.className = 'ai-assistant-panel-ep-form-row';
+                if (afd.type === 'password' && !_runtimeTokensAllowed()) {
+                    arow.hidden = true;
+                }
                 var albl = document.createElement('label');
                 albl.className   = 'ai-assistant-panel-ep-url-label';
                 albl.textContent = afd.label;
@@ -14360,7 +14462,7 @@
 
         var domToggle = _buildExtToggleRow(
             'Allow page integration events',
-            'Optional same-origin integration hook for documentation authors. OFF by default. When enabled, page scripts may observe only content-free rating mechanics; question, answer, note, model, URL and stable conversation identity are never included. This permission is separate from network telemetry.',
+            'Optional same-origin integration hook for documentation authors. OFF by default. Internal assistant coordination stays on a private bus. When enabled, page scripts receive only bounded projections of selected lifecycle events; raw model objects, endpoint URLs, bearer tokens, provider model identifiers, Q&A text, notes and stable conversation identifiers are never exposed. This permission is separate from network telemetry.',
             _feedbackDomIntegrationEnabled,
             'ai-assistant-feedback-dom-toggle'
         );
@@ -14399,7 +14501,7 @@
         openContribution.textContent = 'Open contribution sheet';
         openContribution.addEventListener('click', function () {
             try {
-                document.dispatchEvent(new CustomEvent('ai-assistant-open-contribution', {
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-open-contribution', {
                     detail: { scope: 'conversation' }
                 }));
             } catch (_) {}
@@ -16729,11 +16831,11 @@
      */
     function _announceEffortScaleChange(activeId) {
         try {
-            document.dispatchEvent(new CustomEvent(
+            _dispatchAssistantEvent(new CustomEvent(
                 'ai-assistant-effort-change',
                 { detail: { id: activeId, scaleChanged: true }, bubbles: false }
             ));
-            document.dispatchEvent(new CustomEvent(
+            _dispatchAssistantEvent(new CustomEvent(
                 'ai-assistant-model-change',
                 { detail: { reason: 'effort-scale-change' }, bubbles: false }
             ));
@@ -16901,7 +17003,7 @@
             '[ai-assistant][reasoning-fallback] Optional effort/thinking settings ' +
             'were rejected or interrupted; using provider defaults for this model.');
         try {
-            document.dispatchEvent(new CustomEvent('ai-assistant-model-change', {
+            _dispatchAssistantEvent(new CustomEvent('ai-assistant-model-change', {
                 detail: { reason: reason || 'reasoning-fallback' }, bubbles: false
             }));
         } catch (_) {}
@@ -17876,7 +17978,7 @@
         _syncEffortChip(chip, _getEffortLevel());
         host.appendChild(chip);
 
-        document.addEventListener('ai-assistant-effort-change', function (ev) {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-effort-change', function (ev) {
             var d = ev && ev.detail;
             if (!d || typeof d.id !== 'string') return;
             _syncEffortChip(chip, d.id);
@@ -17887,7 +17989,7 @@
         // flip the chip between a level and "Default" without the effort
         // level itself changing. Listening only to effort-change would leave
         // the chip asserting a level the new model will never receive.
-        document.addEventListener('ai-assistant-model-change', function () {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-change', function () {
             _syncEffortChip(chip, _getEffortLevel());
             _syncModelBtnAria(host);
         });
@@ -18426,7 +18528,7 @@
         };
 
         effortCancelBtn.addEventListener('click', function () { api.setOpen(false); });
-        document.addEventListener('ai-assistant-model-change', function () {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-change', function () {
             if (api.isOpen()) _syncPresetSuggestion();
         });
 
@@ -18773,7 +18875,7 @@
                     'warning');
             }
             try {
-                document.dispatchEvent(new CustomEvent('ai-assistant-model-change', {
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-model-change', {
                     detail: { reason: 'thinking-config-saved', id: active.id },
                     bubbles: false
                 }));
@@ -18816,7 +18918,7 @@
             _syncFromModel(true);
             _setStatus('Thinking mapping reset. Model capability and Effort settings were preserved.', 'success');
             try {
-                document.dispatchEvent(new CustomEvent('ai-assistant-model-change', {
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-model-change', {
                     detail: { reason: 'thinking-config-reset', id: active.id },
                     bubbles: false
                 }));
@@ -18846,7 +18948,7 @@
         };
 
         thinkingCancelBtn.addEventListener('click', function () { api.setOpen(false); });
-        document.addEventListener('ai-assistant-model-change', function () {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-change', function () {
             if (api.isOpen()) api.syncFromModel(false);
         });
         _syncFromModel(true);
@@ -18918,7 +19020,7 @@
             _capsDiscover(_reasoningEndpoint(_am, _cfg())).then(function (found) {
                 if (found === null) return;
                 try {
-                    document.dispatchEvent(new CustomEvent(
+                    _dispatchAssistantEvent(new CustomEvent(
                         'ai-assistant-model-change',
                         { detail: { reason: 'capability-discovery' }, bubbles: false }
                     ));
@@ -19038,7 +19140,7 @@
                                 b.dataset.effortId === activeEffort ? 'true' : 'false');
                         });
                     try {
-                        document.dispatchEvent(new CustomEvent(
+                        _dispatchAssistantEvent(new CustomEvent(
                             'ai-assistant-effort-change',
                             { detail: { id: ef.id }, bubbles: false }
                         ));
@@ -19249,7 +19351,7 @@
             budgetValue.textContent = v.toLocaleString();
             _setThinkingBudget(v);
             try {
-                document.dispatchEvent(new CustomEvent(
+                _dispatchAssistantEvent(new CustomEvent(
                     'ai-assistant-thinking-budget-change',
                     { detail: { budget: v }, bubbles: false }
                 ));
@@ -19286,7 +19388,7 @@
             budgetArea.setAttribute('data-visible', thinkingOn ? 'true' : 'false');
             _syncBudgetEnabled();
             try {
-                document.dispatchEvent(new CustomEvent(
+                _dispatchAssistantEvent(new CustomEvent(
                     'ai-assistant-thinking-change',
                     { detail: { on: thinkingOn, budget: _getThinkingBudget() },
                       bubbles: false }
@@ -19400,7 +19502,7 @@
         // these controls while every other model leaves them inert — without
         // rebuilding the sheet or reloading the page.
         _applyReasoningUI();
-        document.addEventListener('ai-assistant-model-change', _applyReasoningUI);
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-change', _applyReasoningUI);
     }
 
     // ── Phase B: Model selection sheet (sibling of privacy sheet) ─────────────
@@ -19865,7 +19967,7 @@
                     var liveM = _findModel(
                         Array.isArray(liveModels) ? liveModels : models, id
                     );
-                    document.dispatchEvent(new CustomEvent(
+                    _dispatchAssistantEvent(new CustomEvent(
                         'ai-assistant-model-change',
                         { detail: liveM
                             ? { id: liveM.id, provider: liveM.provider,
@@ -19988,7 +20090,7 @@
                 }
                 _setActionMenuOpen(false);
                 try {
-                    document.dispatchEvent(new CustomEvent(
+                    _dispatchAssistantEvent(new CustomEvent(
                         'ai-assistant-model-edit',
                         { detail: { id: m.id, model: m, isCustom: !!m._isCustom } }
                     ));
@@ -20065,13 +20167,13 @@
                 }
 
                 try {
-                    document.dispatchEvent(new CustomEvent(
+                    _dispatchAssistantEvent(new CustomEvent(
                         'ai-assistant-model-removed',
                         { detail: { id: m.id, isCustom: !!m._isCustom,
                                     fallbackId: fallbackId } }
                     ));
                     if (wasActive && fallbackId) {
-                        document.dispatchEvent(new CustomEvent(
+                        _dispatchAssistantEvent(new CustomEvent(
                             'ai-assistant-model-change',
                             { detail: { reason: 'model-removed', id: fallbackId } }
                         ));
@@ -20113,7 +20215,7 @@
                         _clearReasoningCircuit({ id: m.id });
                         _removeOverrideActions();
                         try {
-                            document.dispatchEvent(new CustomEvent(
+                            _dispatchAssistantEvent(new CustomEvent(
                                 'ai-assistant-model-change',
                                 { detail: { reason: 'override-reset', id: m.id } }
                             ));
@@ -21747,13 +21849,13 @@
         // Rows request an edit by event rather than calling into this closure
         // directly: the row builder runs before this section exists, and a
         // direct reference would make the two construction orders load-bearing.
-        document.addEventListener('ai-assistant-model-edit', function (ev) {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-edit', function (ev) {
             var d = ev && ev.detail;
             if (!d || !d.model) return;
             _loadIntoForm(d.model, !d.isCustom);
         });
 
-        document.addEventListener('ai-assistant-model-removed', function (ev) {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-removed', function (ev) {
             var d = ev && ev.detail;
             if (!d || typeof d.id !== 'string' || !d.id) return;
 
@@ -21835,7 +21937,7 @@
             _updateCount();
 
             try {
-                document.dispatchEvent(new CustomEvent('ai-assistant-model-change', {
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-model-change', {
                     detail: { reason: 'models-reverted', id: restoredActive || '' }
                 }));
             } catch (_) {}
@@ -21878,7 +21980,7 @@
             _setEditorOpen(false);
             // Announce so every surface re-reads the now-restored definition.
             try {
-                document.dispatchEvent(new CustomEvent('ai-assistant-model-change',
+                _dispatchAssistantEvent(new CustomEvent('ai-assistant-model-change',
                     { detail: { reason: 'override-reset', id: resetId } }));
             } catch (_) {}
         });
@@ -22079,7 +22181,7 @@
                 // being reopened or the page reloaded -- which is the entire
                 // point of editing here rather than in conf.py.
                 try {
-                    document.dispatchEvent(new CustomEvent('ai-assistant-model-change',
+                    _dispatchAssistantEvent(new CustomEvent('ai-assistant-model-change',
                         { detail: { reason: 'model-edited', id: editedId } }));
                 } catch (_) {}
                 return;
@@ -24782,7 +24884,7 @@
             }
         }
 
-        document.addEventListener('ai-assistant-conversation-reset', function (event) {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-conversation-reset', function (event) {
             boundConversationId = event && event.detail && event.detail.conversationId
                 ? event.detail.conversationId : _getConversationId();
             // Do not discard managed artifacts or the public Global ledger:
@@ -26328,7 +26430,9 @@
         footerActions.className = 'ai-assistant-panel-footer-actions';
 
         // + (attach / add context) button — left anchor, mirrors Claude.ai.
-        // Dispatches a custom event so doc authors can hook file-upload flows.
+        // This is a page-integration surface, not an internal coordination event.
+        // It is therefore disabled by default unless the reader explicitly grants
+        // the separate page-integration permission.
         var attachBtn = document.createElement('button');
         attachBtn.className = 'ai-assistant-panel-footer-btn ai-assistant-panel-footer-btn--attach';
         attachBtn.type = 'button';
@@ -26337,8 +26441,12 @@
         attachBtn.innerHTML = ICONS.plus;   // ICONS constant — safe.
         attachBtn.addEventListener('click', function () {
             _hapticFeedback([8]);
+            if (!_feedbackDomIntegrationEnabled) {
+                showNotification('Attachment integration is off. Enable page integration events first.', false);
+                return;
+            }
             panel.dispatchEvent(new CustomEvent('ai-assistant-attach', {
-                bubbles: true, cancelable: true,
+                detail: {}, bubbles: true, cancelable: true,
             }));
         });
         footerActions.appendChild(attachBtn);
@@ -26913,7 +27021,7 @@
                 _openSheet(contributionSheet);
             });
         }
-        document.addEventListener('ai-assistant-open-contribution', function (event) {
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-open-contribution', function (event) {
             if (!contributionSheet) return;
             contributionSheet._setContext((event && event.detail) || { scope: 'conversation' });
             _openSheet(contributionSheet, document.activeElement);
@@ -26945,7 +27053,7 @@
         // one source-of-truth for the active model id (sessionStorage), and
         // every UI surface listens to the same change signal.
         if (modelLink) {
-            document.addEventListener('ai-assistant-model-change', function (ev) {
+            (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant-model-change', function (ev) {
                 var d = ev && ev.detail;
                 if (!d || typeof d.id !== 'string' || !d.id) return;
                 // Search overrides + custom models too, not just the static
@@ -26972,7 +27080,7 @@
         // single listener is the authoritative update point — no querySelector
         // lookups in individual call sites are needed.
         if (epRightBtn) {
-            document.addEventListener('ai-assistant:profile-changed', function (ev) {
+            (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document).addEventListener('ai-assistant:profile-changed', function (ev) {
                 var d = ev && ev.detail;
                 if (!d || typeof d.activeLabel !== 'string') return;
                 epRightLbl.textContent = d.activeLabel;
