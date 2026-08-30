@@ -256,24 +256,202 @@
     }());
 
     var _SENSITIVE_KEY = /(?:token|authorization|auth|api[_-]?key|secret|bearer|cookie|password|refresh)/i;
+    var _DIAGNOSTIC_MAX_CHARS = 320;
+    var _DIAGNOSTIC_MAX_ARRAY = 32;
+    var _DIAGNOSTIC_MAX_KEYS = 64;
+
+    /**
+     * Sanitize diagnostic text before it reaches DevTools.
+     *
+     * Error messages are useful (HTTP status, "Failed to fetch", bounded-read
+     * failures) but they are still untrusted strings: browser/network errors,
+     * extension code, or future callers may embed URLs, credentials or control
+     * characters.  Keep the useful class/reason while refusing raw endpoints,
+     * tokens, e-mail addresses, PEM material and log-forging characters.
+     */
+    function _sanitizeDiagnosticText(value, maxChars) {
+        var text;
+        try { text = String(value == null ? '' : value); }
+        catch (_) { return '<unprintable>'; }
+        maxChars = Math.max(32, Math.min(1024,
+            Math.floor(Number(maxChars) || _DIAGNOSTIC_MAX_CHARS)));
+        text = text
+            .replace(/-----BEGIN [^-\r\n]{1,80} PRIVATE KEY-----[\s\S]*?-----END [^-\r\n]{1,80} PRIVATE KEY-----/gi,
+                '<private-key-redacted>')
+            .replace(/\bBearer\s+[^\s,;]+/gi, 'Bearer <credential-redacted>')
+            .replace(/\bhf_[A-Za-z0-9]{4,}\b/g, '<credential-redacted>')
+            .replace(/\bsk-[A-Za-z0-9._-]{12,}\b/g, '<credential-redacted>')
+            .replace(/\bgithub_pat_[A-Za-z0-9_]{8,}\b/gi, '<credential-redacted>')
+            .replace(/\bgh[pousr]_[A-Za-z0-9]{20,}\b/gi, '<credential-redacted>')
+            .replace(/\bAKIA[0-9A-Z]{16}\b/g, '<credential-redacted>')
+            .replace(/\bAIza[0-9A-Za-z_-]{20,}\b/g, '<credential-redacted>')
+            .replace(/\beyJ[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{6,}\b/g,
+                '<credential-redacted>')
+            .replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, '<email-redacted>')
+            .replace(/\b(?:https?|file):\/\/[^\s"'<>]+/gi, '<url-redacted>')
+            .replace(/\b(?:token|api[_-]?key|secret|password|authorization)=([^\s&;,]+)/gi,
+                function (m) { return m.split('=')[0] + '=<credential-redacted>'; })
+            .replace(/\u0000/g, '<nul>')
+            .replace(/\r/g, '\\r')
+            .replace(/\n/g, '\\n')
+            .replace(/\t/g, '\\t');
+        if (text.length > maxChars) text = text.slice(0, maxChars) + '\u2026<truncated>';
+        return text;
+    }
+
+    /**
+     * Convert native/cross-realm Error and DOMException values into a bounded,
+     * privacy-safe diagnostic.  Raw stacks are intentionally excluded: stack
+     * strings can contain private document URLs, local paths and query tokens.
+     */
+    function _safeErrorDiagnostic(v) {
+        if (!v || (typeof v !== 'object' && typeof v !== 'function')) return null;
+        var tag = '';
+        try { tag = Object.prototype.toString.call(v); } catch (_) {}
+        var name = '';
+        var message = '';
+        try { name = typeof v.name === 'string' ? v.name : ''; } catch (_) {}
+        try { message = typeof v.message === 'string' ? v.message : ''; } catch (_) {}
+        var isError = false;
+        try { isError = v instanceof Error; } catch (_) {}
+        if (!isError && tag !== '[object Error]' && tag !== '[object DOMException]' &&
+                !(/(?:Error|Exception)$/i.test(name) && message)) return null;
+
+        var out = { name: _sanitizeDiagnosticText(name || 'Error', 64) || 'Error' };
+        var status = 0;
+        try { status = Number(v.status || 0); } catch (_) {}
+        if (!status && message) {
+            var httpMatch = message.match(/\bHTTP\s+(\d{3})\b/i);
+            if (httpMatch) status = Number(httpMatch[1]);
+        }
+        if (status >= 100 && status <= 599) {
+            out.status = status;
+            out.code = 'AI_HTTP_ERROR';
+            out.message = 'AI request failed (HTTP ' + status + ').';
+            return out;
+        }
+
+        // Preserve only known, non-content-bearing request diagnostics.  An
+        // arbitrary Error.message may itself contain the user's prompt or a
+        // provider body, so "sanitize then print everything" is not enough.
+        if (/^(?:AI|REMOTE)_[A-Z0-9_]{2,64}$/.test(message)) {
+            out.code = message;
+            if (message === 'REMOTE_RESPONSE_TOO_LARGE' || message === 'AI_RESPONSE_TOO_LARGE') {
+                out.message = 'AI response exceeded the configured byte limit.';
+            } else if (message === 'REMOTE_RESPONSE_STREAM_UNAVAILABLE') {
+                out.message = 'Bounded response streaming is unavailable in this transport.';
+            } else if (message === 'AI_RESPONSE_LINE_TOO_LARGE') {
+                out.message = 'AI streaming response contained an oversized SSE line.';
+            } else {
+                out.message = 'AI request failed with a bounded diagnostic code.';
+            }
+            return out;
+        }
+        if (/^API mode is enabled but no proxy endpoint is configured\./.test(message)) {
+            out.code = 'AI_ENDPOINT_NOT_CONFIGURED';
+            out.message = 'API mode is enabled but no proxy endpoint is configured.';
+            return out;
+        }
+        if (/^(?:Failed to fetch|Load failed|Network request failed|fetch is not available)$/i.test(message) ||
+                /^NetworkError when attempting to fetch resource\.?$/i.test(message)) {
+            out.code = 'AI_NETWORK_ERROR';
+            out.message = 'AI endpoint could not be reached (network, CORS, or connection failure).';
+            return out;
+        }
+        if (out.name === 'TimeoutError') {
+            out.code = 'AI_TIMEOUT';
+            out.message = 'AI request timed out.';
+            return out;
+        }
+        if (out.name === 'SyntaxError') {
+            out.code = 'AI_RESPONSE_INVALID_JSON';
+            out.message = 'AI response could not be parsed as valid JSON.';
+            return out;
+        }
+
+        out.code = 'AI_REQUEST_ERROR';
+        out.message = 'AI request failed.';
+        return out;
+    }
+
+    /**
+     * Reader-facing request failure copy derived only from the safe diagnostic.
+     * Never includes endpoint URLs, provider bodies, prompt text or raw errors.
+     */
+    function _requestFailureDisplayText(err) {
+        var d = _safeErrorDiagnostic(err) || { code: 'AI_REQUEST_ERROR' };
+        if (d.code === 'AI_HTTP_ERROR') {
+            if (d.status === 401 || d.status === 403) {
+                return 'The AI proxy rejected the request (HTTP ' + d.status + '). Check server-side authentication and endpoint permissions.';
+            }
+            if (d.status === 404) {
+                return 'The configured AI endpoint was not found (HTTP 404). Check the proxy route in Endpoint Configuration.';
+            }
+            if (d.status === 408 || d.status === 504) {
+                return 'The AI request timed out (HTTP ' + d.status + '). Please retry.';
+            }
+            if (d.status === 429) {
+                return 'The AI service is rate-limited (HTTP 429). Please retry later.';
+            }
+            if (d.status >= 500) {
+                return 'The AI proxy or upstream service failed (HTTP ' + d.status + '). Please retry.';
+            }
+            return 'The AI endpoint rejected the request (HTTP ' + d.status + '). Check model and proxy configuration.';
+        }
+        if (d.code === 'AI_NETWORK_ERROR') {
+            return 'The browser could not reach the AI endpoint. Check network access, CORS, and Endpoint Configuration.';
+        }
+        if (d.code === 'AI_ENDPOINT_NOT_CONFIGURED') {
+            return 'API mode is enabled, but no AI proxy endpoint is configured. Open Endpoint Configuration and add one.';
+        }
+        if (d.code === 'AI_TIMEOUT') {
+            return 'The AI request timed out. Please retry.';
+        }
+        if (d.code === 'REMOTE_RESPONSE_TOO_LARGE' || d.code === 'AI_RESPONSE_TOO_LARGE' ||
+                d.code === 'AI_RESPONSE_LINE_TOO_LARGE') {
+            return 'The AI response exceeded the configured safety size limit.';
+        }
+        if (d.code === 'REMOTE_RESPONSE_STREAM_UNAVAILABLE') {
+            return 'This browser transport cannot safely read the AI response. Try a modern browser or compatible proxy.';
+        }
+        if (d.code === 'AI_RESPONSE_INVALID_JSON') {
+            return 'The AI endpoint returned a response that could not be parsed as valid JSON.';
+        }
+        return 'Sorry, the AI request could not be completed. Please retry.';
+    }
 
     function _scrubArg(v, depth) {
-        if (v instanceof Error) {
-            return { name: String(v.name || 'Error').slice(0, 64) };
-        }
-        if (v == null || typeof v !== 'object') return v;
+        var errorDiagnostic = _safeErrorDiagnostic(v);
+        if (errorDiagnostic) return errorDiagnostic;
+        if (typeof v === 'string') return _sanitizeDiagnosticText(v, _DIAGNOSTIC_MAX_CHARS);
+        if (v == null || (typeof v !== 'object' && typeof v !== 'function')) return v;
         if (depth > 2) return '[...]';
-        var out, k;
-        if (Object.prototype.toString.call(v) === '[object Array]') {
+        var out, k, keys, limit;
+        var isArray = false;
+        try { isArray = Object.prototype.toString.call(v) === '[object Array]'; } catch (_) {}
+        if (isArray) {
             out = [];
-            for (k = 0; k < v.length; k++) { out.push(_scrubArg(v[k], depth + 1)); }
+            limit = Math.min(v.length >>> 0, _DIAGNOSTIC_MAX_ARRAY);
+            for (k = 0; k < limit; k++) {
+                try { out.push(_scrubArg(v[k], depth + 1)); }
+                catch (_) { out.push('<unreadable>'); }
+            }
+            if ((v.length >>> 0) > limit) out.push('[+' + ((v.length >>> 0) - limit) + ' more]');
             return out;
         }
         out = {};
-        for (k in v) {
-            if (!Object.prototype.hasOwnProperty.call(v, k)) { continue; }
-            out[k] = _SENSITIVE_KEY.test(k) ? '[redacted]' : _scrubArg(v[k], depth + 1);
+        try { keys = Object.keys(v); } catch (_) { return { value: '<unreadable>' }; }
+        limit = Math.min(keys.length, _DIAGNOSTIC_MAX_KEYS);
+        for (k = 0; k < limit; k++) {
+            var key = keys[k];
+            if (_SENSITIVE_KEY.test(key)) {
+                out[key] = '[redacted]';
+                continue;
+            }
+            try { out[key] = _scrubArg(v[key], depth + 1); }
+            catch (_) { out[key] = '<unreadable>'; }
         }
+        if (keys.length > limit) out.__truncatedKeys = keys.length - limit;
         return out;
     }
 
@@ -32228,7 +32406,7 @@
             } else {
                 _log('error', '[ai-assistant][request] AI request failed.', err);
                 _appendPanelMessage(
-                    'Sorry, the AI request could not be completed. Please retry.',
+                    _requestFailureDisplayText(err),
                     'error'
                 );
             }
