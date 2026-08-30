@@ -1837,6 +1837,22 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     display: flex;
 }
 
+/* B52: once the shared panel-body coordinator has measured this menu, its
+ * inline top/left coordinates become authoritative.  Keep oversized action
+ * sets usable inside a short/narrow transcript instead of clipping outside. */
+.ai-assistant-panel-bubble-action-more-menu[data-boundary-positioned="true"] {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    box-sizing: border-box;
+}
+.ai-assistant-panel-bubble-action-more-menu[data-placement="top"]    { transform-origin: bottom left; }
+.ai-assistant-panel-bubble-action-more-menu[data-placement="bottom"] { transform-origin: top left; }
+.ai-assistant-panel-bubble-action-more-menu[data-placement="left"]   { transform-origin: center right; }
+.ai-assistant-panel-bubble-action-more-menu[data-placement="right"]  { transform-origin: center left; }
+
 [data-bs-theme="dark"] .ai-assistant-panel-bubble-action-more-menu {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45),
                 0 2px  6px rgba(0, 0, 0, 0.28);

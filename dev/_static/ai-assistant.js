@@ -11554,6 +11554,10 @@
             var isOpen = menu.getAttribute('data-open') === 'true';
             menu.setAttribute('data-open', isOpen ? 'false' : 'true');
             toggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            if (!isOpen) {
+                _ensureFeedbackPopupBoundaryObservers();
+                _positionBubbleMoreMenuWithinPanelBody(menu);
+            }
         });
 
         // ── Close menu when focus leaves the wrapper ──────────────────────
@@ -12177,11 +12181,17 @@
     var _fbkPopupBoundaryWindowBound = false;
     var _fbkPopupPositionRaf = 0;
 
-    function _positionFbkPopupWithinPanelBody(popup) {
-        if (!popup || popup.getAttribute('data-pinned') !== 'true') return;
+    function _positionAnchoredPopupWithinPanelBody(popup, options) {
+        options = options || {};
+        if (!popup) return;
+
+        var activeAttr = options.activeAttr || null;
+        var activeValue = options.activeValue || 'true';
+        if (activeAttr && popup.getAttribute(activeAttr) !== activeValue) return;
 
         var body = document.getElementById('ai-assistant-panel-body');
-        var wrapper = popup.closest && popup.closest('.ai-assistant-fbk-float-wrapper');
+        var wrapperSelector = options.wrapperSelector || '';
+        var wrapper = wrapperSelector && popup.closest ? popup.closest(wrapperSelector) : null;
         if (!body || !wrapper || typeof body.getBoundingClientRect !== 'function' ||
                 typeof wrapper.getBoundingClientRect !== 'function' ||
                 typeof popup.getBoundingClientRect !== 'function') return;
@@ -12190,10 +12200,10 @@
         var anchorRect = wrapper.getBoundingClientRect();
         if (!bodyRect || !anchorRect || bodyRect.width <= 0 || bodyRect.height <= 0) return;
 
-        // Keep a quiet inset from the scroll/body edges.  The popup itself owns
-        // any required internal scrolling when the body is unusually short.
+        // Keep a quiet inset from the scroll/body edges.  Each popup owns any
+        // required internal scrolling when the panel body is unusually short.
         var edge = Math.min(8, Math.max(0, Math.min(bodyRect.width, bodyRect.height) / 4));
-        var gap = 7;
+        var gap = typeof options.gap === 'number' ? options.gap : 7;
         var innerLeft = bodyRect.left + edge;
         var innerRight = bodyRect.right - edge;
         var innerTop = bodyRect.top + edge;
@@ -12201,13 +12211,17 @@
         var boundaryWidth = Math.max(1, innerRight - innerLeft);
         var boundaryHeight = Math.max(1, innerBottom - innerTop);
 
-        popup.style.minWidth = Math.min(190, boundaryWidth) + 'px';
-        popup.style.maxWidth = Math.min(250, boundaryWidth) + 'px';
+        var requestedMinWidth = typeof options.minWidth === 'number' ? options.minWidth : 0;
+        var requestedMaxWidth = typeof options.maxWidth === 'number' ? options.maxWidth : 250;
+        if (requestedMinWidth > 0) {
+            popup.style.minWidth = Math.min(requestedMinWidth, boundaryWidth) + 'px';
+        }
+        popup.style.maxWidth = Math.min(requestedMaxWidth, boundaryWidth) + 'px';
         popup.style.maxHeight = boundaryHeight + 'px';
         popup.setAttribute('data-boundary-positioned', 'true');
 
-        // Measure after applying the panel-body caps.  Opacity/pointer-events do
-        // not affect layout, so this is safe while the opening transition runs.
+        // Measure after applying the panel-body caps.  Hidden menus are always
+        // made visible by their open-state attribute before this helper runs.
         var popupRect = popup.getBoundingClientRect();
         var popupWidth = Math.min(popupRect.width || 0, boundaryWidth);
         var popupHeight = Math.min(popupRect.height || 0, boundaryHeight);
@@ -12220,13 +12234,16 @@
             left: anchorRect.left - innerLeft - gap
         };
 
-        // Natural transcript UX prefers above, then below.  Side placement is a
-        // fallback when vertical room is tight (short/maximized/mobile panels).
+        // Feedback dialogs visually align their right edge to the action group;
+        // the compact More menu historically aligns its left edge to its toggle.
+        // Preserve those natural alignments while sharing side selection/clamp.
+        var alignStart = options.horizontalAlign === 'start';
+        var verticalX = alignStart ? anchorRect.left : anchorRect.right - popupWidth;
         var candidates = [
             { name: 'top', need: popupHeight, space: spaces.top,
-              x: anchorRect.right - popupWidth, y: anchorRect.top - gap - popupHeight },
+              x: verticalX, y: anchorRect.top - gap - popupHeight },
             { name: 'bottom', need: popupHeight, space: spaces.bottom,
-              x: anchorRect.right - popupWidth, y: anchorRect.bottom + gap },
+              x: verticalX, y: anchorRect.bottom + gap },
             { name: 'right', need: popupWidth, space: spaces.right,
               x: anchorRect.right + gap,
               y: anchorRect.top + ((anchorRect.height - popupHeight) / 2) },
@@ -12245,8 +12262,8 @@
         }
         if (!chosen) {
             // No side fully fits: choose the side with the best proportional
-            // room, then clamp both axes.  This keeps the dialog usable even
-            // when the panel body is smaller than its natural dimensions.
+            // room, then clamp both axes.  This keeps the menu usable even when
+            // the panel body is smaller than its natural dimensions.
             chosen = candidates[0];
             var bestRatio = chosen.space / Math.max(1, chosen.need);
             for (i = 1; i < candidates.length; i++) {
@@ -12261,7 +12278,7 @@
         var x = Math.min(Math.max(chosen.x, innerLeft), innerRight - popupWidth);
         var y = Math.min(Math.max(chosen.y, innerTop), innerBottom - popupHeight);
 
-        // popup is absolutely positioned in wrapper coordinates.  Correct for
+        // Popup is absolutely positioned in wrapper coordinates.  Correct for
         // a transformed/scaled panel as well as the normal 1:1 case.
         var scaleX = wrapper.offsetWidth > 0 ? anchorRect.width / wrapper.offsetWidth : 1;
         var scaleY = wrapper.offsetHeight > 0 ? anchorRect.height / wrapper.offsetHeight : 1;
@@ -12275,11 +12292,40 @@
         popup.setAttribute('data-placement', chosen.name);
     }
 
+    function _positionFbkPopupWithinPanelBody(popup) {
+        _positionAnchoredPopupWithinPanelBody(popup, {
+            activeAttr: 'data-pinned',
+            activeValue: 'true',
+            wrapperSelector: '.ai-assistant-fbk-float-wrapper',
+            minWidth: 190,
+            maxWidth: 250,
+            horizontalAlign: 'end'
+        });
+    }
+
+    function _positionBubbleMoreMenuWithinPanelBody(menu) {
+        _positionAnchoredPopupWithinPanelBody(menu, {
+            activeAttr: 'data-open',
+            activeValue: 'true',
+            wrapperSelector: '.ai-assistant-panel-bubble-action-more',
+            minWidth: 144,
+            maxWidth: 220,
+            horizontalAlign: 'start'
+        });
+    }
+
     function _positionPinnedFeedbackPopups() {
         _fbkPopupPositionRaf = 0;
         var popups = document.querySelectorAll('.ai-assistant-fbk-popup[data-pinned="true"]');
-        for (var i = 0; i < popups.length; i++) {
+        var i;
+        for (i = 0; i < popups.length; i++) {
             _positionFbkPopupWithinPanelBody(popups[i]);
+        }
+        var moreMenus = document.querySelectorAll(
+            '.ai-assistant-panel-bubble-action-more-menu[data-open="true"]'
+        );
+        for (i = 0; i < moreMenus.length; i++) {
+            _positionBubbleMoreMenuWithinPanelBody(moreMenus[i]);
         }
     }
 
