@@ -259,6 +259,7 @@
     var _DIAGNOSTIC_MAX_CHARS = 320;
     var _DIAGNOSTIC_MAX_ARRAY = 32;
     var _DIAGNOSTIC_MAX_KEYS = 64;
+    var _SAFE_PROXY_ERROR_CODE_RE = /^(?:PROXY_(?:ORIGIN_NOT_ALLOWED|CHAT_CONTRACT_INVALID|MODEL_NOT_ALLOWED|USER_MESSAGE_INVALID|CONTEXT_INVALID|REASONING_INVALID)|UPSTREAM_(?:AUTH_OR_ACCESS_REJECTED|MODEL_OR_ROUTE_NOT_FOUND|RATE_LIMITED|SERVICE_ERROR|REQUEST_REJECTED))$/;
 
     /**
      * Sanitize diagnostic text before it reaches DevTools.
@@ -324,6 +325,14 @@
             var httpMatch = message.match(/\bHTTP\s+(\d{3})\b/i);
             if (httpMatch) status = Number(httpMatch[1]);
         }
+        var remoteCode = '';
+        try { remoteCode = typeof v.code === 'string' ? v.code : ''; } catch (_) {}
+        if (_SAFE_PROXY_ERROR_CODE_RE.test(remoteCode)) {
+            if (status >= 100 && status <= 599) out.status = status;
+            out.code = remoteCode;
+            out.message = 'AI request failed with a proxy-owned diagnostic category.';
+            return out;
+        }
         if (status >= 100 && status <= 599) {
             out.status = status;
             out.code = 'AI_HTTP_ERROR';
@@ -336,7 +345,9 @@
         // provider body, so "sanitize then print everything" is not enough.
         if (/^(?:AI|REMOTE)_[A-Z0-9_]{2,64}$/.test(message)) {
             out.code = message;
-            if (message === 'REMOTE_RESPONSE_TOO_LARGE' || message === 'AI_RESPONSE_TOO_LARGE') {
+            if (message === 'AI_DIRECT_PROVIDER_ENDPOINT') {
+                out.message = 'Direct browser-to-provider AI endpoints are not allowed.';
+            } else if (message === 'REMOTE_RESPONSE_TOO_LARGE' || message === 'AI_RESPONSE_TOO_LARGE') {
                 out.message = 'AI response exceeded the configured byte limit.';
             } else if (message === 'REMOTE_RESPONSE_STREAM_UNAVAILABLE') {
                 out.message = 'Bounded response streaming is unavailable in this transport.';
@@ -380,6 +391,42 @@
      */
     function _requestFailureDisplayText(err) {
         var d = _safeErrorDiagnostic(err) || { code: 'AI_REQUEST_ERROR' };
+        if (d.code === 'AI_DIRECT_PROVIDER_ENDPOINT') {
+            return 'This model points directly at an AI provider. Static documentation must use a server-side proxy; update Endpoint Configuration and keep provider tokens server-side.';
+        }
+        if (d.code === 'PROXY_MODEL_NOT_ALLOWED') {
+            return 'The selected model is not allowed by this AI proxy (HTTP 400). Add it to ALLOWED_MODELS / ALLOWED_MODEL_NAMESPACES on the proxy, or choose an allowed model.';
+        }
+        if (d.code === 'PROXY_CHAT_CONTRACT_INVALID') {
+            return 'The browser and AI proxy disagree on the chat request contract (HTTP 400). Deploy matching client/proxy versions.';
+        }
+        if (d.code === 'PROXY_CONTEXT_INVALID') {
+            return 'The AI proxy rejected the page context safety envelope (HTTP 400). Reduce context size or update the matching proxy/client contract.';
+        }
+        if (d.code === 'PROXY_REASONING_INVALID') {
+            return 'The AI proxy rejected optional reasoning settings (HTTP 400). Use provider defaults or update the proxy capability contract.';
+        }
+        if (d.code === 'PROXY_USER_MESSAGE_INVALID') {
+            return 'The AI proxy rejected the message envelope (HTTP 400). Shorten the message or update the matching proxy/client contract.';
+        }
+        if (d.code === 'PROXY_ORIGIN_NOT_ALLOWED') {
+            return 'This documentation origin is not allowed by the AI proxy (HTTP 403). Add the exact site origin to ALLOWED_ORIGINS on the proxy.';
+        }
+        if (d.code === 'UPSTREAM_AUTH_OR_ACCESS_REJECTED') {
+            return 'The upstream AI provider rejected the proxy credential or model access (HTTP ' + (d.status || 403) + '). Check the server-side HF_TOKEN/provider permissions and model access.';
+        }
+        if (d.code === 'UPSTREAM_MODEL_OR_ROUTE_NOT_FOUND') {
+            return 'The upstream AI provider could not resolve the selected model or route (HTTP 404). Verify the model has an active inference provider.';
+        }
+        if (d.code === 'UPSTREAM_RATE_LIMITED') {
+            return 'The upstream AI provider is rate-limited (HTTP 429). Please retry later or check provider quota.';
+        }
+        if (d.code === 'UPSTREAM_SERVICE_ERROR') {
+            return 'The upstream AI provider is currently failing (HTTP ' + (d.status || '5xx') + '). Please retry later.';
+        }
+        if (d.code === 'UPSTREAM_REQUEST_REJECTED') {
+            return 'The upstream AI provider rejected the server-side request (HTTP ' + (d.status || 400) + '). Check model/provider compatibility on the proxy.';
+        }
         if (d.code === 'AI_HTTP_ERROR') {
             if (d.status === 401 || d.status === 403) {
                 return 'The AI proxy rejected the request (HTTP ' + d.status + '). Check server-side authentication and endpoint permissions.';
@@ -32477,6 +32524,41 @@
      * @param {object} cfg       window.AI_ASSISTANT_CONFIG
      * @param {object|null} preparedPageContext  Locally privacy-reviewed page context.
      */
+    function _isDirectProviderEndpoint(endpoint, provider) {
+        var host = '';
+        try {
+            var base = (typeof location !== 'undefined' && location.href)
+                ? location.href : 'https://docs.invalid/';
+            host = new URL(endpoint, base).hostname.toLowerCase();
+        } catch (_) { return false; }
+        provider = String(provider || '').toLowerCase();
+        if (provider === 'huggingface') {
+            return host === 'router.huggingface.co' ||
+                host === 'api-inference.huggingface.co';
+        }
+        if (provider === 'openai') return host === 'api.openai.com';
+        if (provider === 'anthropic') return host === 'api.anthropic.com';
+        if (provider === 'google') return host === 'generativelanguage.googleapis.com';
+        if (provider === 'mistral') return host === 'api.mistral.ai';
+        if (provider === 'deepseek') return host === 'api.deepseek.com';
+        return false;
+    }
+
+    async function _responseFailureError(response) {
+        var status = response && Number(response.status || 0);
+        var code = '';
+        try {
+            var text = await _readResponseTextBounded(response, 4096);
+            var doc = text ? JSON.parse(text) : null;
+            var candidate = doc && typeof doc.code === 'string' ? doc.code : '';
+            if (_SAFE_PROXY_ERROR_CODE_RE.test(candidate)) code = candidate;
+        } catch (_) { /* status-only fallback */ }
+        var err = new Error('AI request failed (HTTP ' + status + ').');
+        if (status >= 100 && status <= 599) err.status = status;
+        if (code) err.code = code;
+        return err;
+    }
+
     async function _panelApiCall(question, cfg, preparedPageContext) {
         // ── 1. Resolve active model and endpoint ──────────────────────────
         var activeModel = _getActiveModel(cfg);
@@ -32524,6 +32606,10 @@
                 'Set ai_assistant_panel_api_url (single-model) or add an\n' +
                 '"endpoint" key to each ai_assistant_panel_api_models entry.'
             );
+        }
+
+        if (_isDirectProviderEndpoint(endpoint, provider)) {
+            throw new Error('AI_DIRECT_PROVIDER_ENDPOINT');
         }
 
         // ── 3. Use the privacy-reviewed page context ─────────────────────
@@ -32732,10 +32818,9 @@
         }, reasoningFallbackBody, activeModel);
 
         if (!response.ok) {
-            // Provider bodies may contain internal routing, account or policy
-            // details.  Status is sufficient for diagnostics; never echo the
-            // raw body into the console, transcript or reader-visible bubble.
-            throw new Error('AI request failed (HTTP ' + response.status + ').');
+            // Read only a tiny proxy-owned diagnostic envelope. Provider bodies
+            // are never trusted or echoed; unknown shapes collapse to status.
+            throw await _responseFailureError(response);
         }
 
         var data = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
@@ -32786,7 +32871,7 @@
         }, fallbackBodyStr, activeModel);
 
         if (!response.ok) {
-            throw new Error('AI request failed (HTTP ' + response.status + ').');
+            throw await _responseFailureError(response);
         }
 
         // ── Graceful fallback: proxy returned JSON instead of SSE ─────────
