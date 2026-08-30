@@ -12983,6 +12983,24 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
         opacity   0.14s ease,
         transform 0.14s ease;
 }
+/* Once JS has measured the live panel body, top/left become authoritative.
+ * The popup stays inside the transcript viewport and owns its own small scroll
+ * area when the panel is shorter than the menu's natural height. */
+.ai-assistant-fbk-popup[data-boundary-positioned="true"] {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+}
+.ai-assistant-fbk-popup[data-placement="top"]    { transform-origin: bottom right; }
+.ai-assistant-fbk-popup[data-placement="bottom"] { transform-origin: top right; }
+.ai-assistant-fbk-popup[data-placement="left"]   { transform-origin: center right; }
+.ai-assistant-fbk-popup[data-placement="right"]  { transform-origin: center left; }
+.ai-assistant-fbk-popup[data-placement="top"]:not([data-pinned="true"])    { transform: translateY(3px); }
+.ai-assistant-fbk-popup[data-placement="bottom"]:not([data-pinned="true"]) { transform: translateY(-3px); }
+.ai-assistant-fbk-popup[data-placement="left"]:not([data-pinned="true"])   { transform: translateX(3px); }
+.ai-assistant-fbk-popup[data-placement="right"]:not([data-pinned="true"])  { transform: translateX(-3px); }
 .ai-assistant-fbk-popup[data-pinned="true"] {
     opacity: 1;
     pointer-events: auto;

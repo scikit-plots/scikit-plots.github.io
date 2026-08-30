@@ -12167,6 +12167,157 @@
      *   duplicated — the expand button toggles
      *   ``.ai-assistant-panel-feedback--revealed`` on the existing block.
      */
+    // Feedback popups are anchored to per-answer action rows but bounded by the
+    // panel's scrollable body.  CSS alone cannot choose a safe side because the
+    // available space changes as the transcript scrolls, the panel resizes, or a
+    // mobile keyboard changes the visual layout.  Keep one shared coordinator so
+    // a long conversation does not install resize/scroll handlers per answer.
+    var _fbkPopupBoundaryBody = null;
+    var _fbkPopupBoundaryResizeObserver = null;
+    var _fbkPopupBoundaryWindowBound = false;
+    var _fbkPopupPositionRaf = 0;
+
+    function _positionFbkPopupWithinPanelBody(popup) {
+        if (!popup || popup.getAttribute('data-pinned') !== 'true') return;
+
+        var body = document.getElementById('ai-assistant-panel-body');
+        var wrapper = popup.closest && popup.closest('.ai-assistant-fbk-float-wrapper');
+        if (!body || !wrapper || typeof body.getBoundingClientRect !== 'function' ||
+                typeof wrapper.getBoundingClientRect !== 'function' ||
+                typeof popup.getBoundingClientRect !== 'function') return;
+
+        var bodyRect = body.getBoundingClientRect();
+        var anchorRect = wrapper.getBoundingClientRect();
+        if (!bodyRect || !anchorRect || bodyRect.width <= 0 || bodyRect.height <= 0) return;
+
+        // Keep a quiet inset from the scroll/body edges.  The popup itself owns
+        // any required internal scrolling when the body is unusually short.
+        var edge = Math.min(8, Math.max(0, Math.min(bodyRect.width, bodyRect.height) / 4));
+        var gap = 7;
+        var innerLeft = bodyRect.left + edge;
+        var innerRight = bodyRect.right - edge;
+        var innerTop = bodyRect.top + edge;
+        var innerBottom = bodyRect.bottom - edge;
+        var boundaryWidth = Math.max(1, innerRight - innerLeft);
+        var boundaryHeight = Math.max(1, innerBottom - innerTop);
+
+        popup.style.minWidth = Math.min(190, boundaryWidth) + 'px';
+        popup.style.maxWidth = Math.min(250, boundaryWidth) + 'px';
+        popup.style.maxHeight = boundaryHeight + 'px';
+        popup.setAttribute('data-boundary-positioned', 'true');
+
+        // Measure after applying the panel-body caps.  Opacity/pointer-events do
+        // not affect layout, so this is safe while the opening transition runs.
+        var popupRect = popup.getBoundingClientRect();
+        var popupWidth = Math.min(popupRect.width || 0, boundaryWidth);
+        var popupHeight = Math.min(popupRect.height || 0, boundaryHeight);
+        if (popupWidth <= 0 || popupHeight <= 0) return;
+
+        var spaces = {
+            top: anchorRect.top - innerTop - gap,
+            bottom: innerBottom - anchorRect.bottom - gap,
+            right: innerRight - anchorRect.right - gap,
+            left: anchorRect.left - innerLeft - gap
+        };
+
+        // Natural transcript UX prefers above, then below.  Side placement is a
+        // fallback when vertical room is tight (short/maximized/mobile panels).
+        var candidates = [
+            { name: 'top', need: popupHeight, space: spaces.top,
+              x: anchorRect.right - popupWidth, y: anchorRect.top - gap - popupHeight },
+            { name: 'bottom', need: popupHeight, space: spaces.bottom,
+              x: anchorRect.right - popupWidth, y: anchorRect.bottom + gap },
+            { name: 'right', need: popupWidth, space: spaces.right,
+              x: anchorRect.right + gap,
+              y: anchorRect.top + ((anchorRect.height - popupHeight) / 2) },
+            { name: 'left', need: popupWidth, space: spaces.left,
+              x: anchorRect.left - gap - popupWidth,
+              y: anchorRect.top + ((anchorRect.height - popupHeight) / 2) }
+        ];
+
+        var chosen = null;
+        var i;
+        for (i = 0; i < candidates.length; i++) {
+            if (candidates[i].space >= candidates[i].need) {
+                chosen = candidates[i];
+                break;
+            }
+        }
+        if (!chosen) {
+            // No side fully fits: choose the side with the best proportional
+            // room, then clamp both axes.  This keeps the dialog usable even
+            // when the panel body is smaller than its natural dimensions.
+            chosen = candidates[0];
+            var bestRatio = chosen.space / Math.max(1, chosen.need);
+            for (i = 1; i < candidates.length; i++) {
+                var ratio = candidates[i].space / Math.max(1, candidates[i].need);
+                if (ratio > bestRatio) {
+                    chosen = candidates[i];
+                    bestRatio = ratio;
+                }
+            }
+        }
+
+        var x = Math.min(Math.max(chosen.x, innerLeft), innerRight - popupWidth);
+        var y = Math.min(Math.max(chosen.y, innerTop), innerBottom - popupHeight);
+
+        // popup is absolutely positioned in wrapper coordinates.  Correct for
+        // a transformed/scaled panel as well as the normal 1:1 case.
+        var scaleX = wrapper.offsetWidth > 0 ? anchorRect.width / wrapper.offsetWidth : 1;
+        var scaleY = wrapper.offsetHeight > 0 ? anchorRect.height / wrapper.offsetHeight : 1;
+        if (!isFinite(scaleX) || scaleX <= 0) scaleX = 1;
+        if (!isFinite(scaleY) || scaleY <= 0) scaleY = 1;
+
+        popup.style.right = 'auto';
+        popup.style.bottom = 'auto';
+        popup.style.left = ((x - anchorRect.left) / scaleX) + 'px';
+        popup.style.top = ((y - anchorRect.top) / scaleY) + 'px';
+        popup.setAttribute('data-placement', chosen.name);
+    }
+
+    function _positionPinnedFeedbackPopups() {
+        _fbkPopupPositionRaf = 0;
+        var popups = document.querySelectorAll('.ai-assistant-fbk-popup[data-pinned="true"]');
+        for (var i = 0; i < popups.length; i++) {
+            _positionFbkPopupWithinPanelBody(popups[i]);
+        }
+    }
+
+    function _schedulePinnedFeedbackPopupPosition() {
+        if (_fbkPopupPositionRaf) return;
+        if (typeof requestAnimationFrame === 'function') {
+            _fbkPopupPositionRaf = requestAnimationFrame(_positionPinnedFeedbackPopups);
+        } else {
+            _positionPinnedFeedbackPopups();
+        }
+    }
+
+    function _ensureFeedbackPopupBoundaryObservers() {
+        var body = document.getElementById('ai-assistant-panel-body');
+        if (!body) return;
+
+        if (_fbkPopupBoundaryBody !== body) {
+            if (_fbkPopupBoundaryBody) {
+                try { _fbkPopupBoundaryBody.removeEventListener('scroll', _schedulePinnedFeedbackPopupPosition); } catch (_) {}
+            }
+            if (_fbkPopupBoundaryResizeObserver) {
+                try { _fbkPopupBoundaryResizeObserver.disconnect(); } catch (_) {}
+                _fbkPopupBoundaryResizeObserver = null;
+            }
+            _fbkPopupBoundaryBody = body;
+            body.addEventListener('scroll', _schedulePinnedFeedbackPopupPosition, { passive: true });
+            if (typeof ResizeObserver === 'function') {
+                _fbkPopupBoundaryResizeObserver = new ResizeObserver(_schedulePinnedFeedbackPopupPosition);
+                _fbkPopupBoundaryResizeObserver.observe(body);
+            }
+        }
+
+        if (!_fbkPopupBoundaryWindowBound && typeof window !== 'undefined' && window.addEventListener) {
+            window.addEventListener('resize', _schedulePinnedFeedbackPopupPosition, { passive: true });
+            _fbkPopupBoundaryWindowBound = true;
+        }
+    }
+
     function _buildFbkFloat(answerIndex, answerText, questionText) {
         var cfg = _cfg();
         if (cfg.panelFeedback === false) return null;
@@ -12457,6 +12608,7 @@
         miniPill.appendChild(miniThumb);
         miniPill.addEventListener('click', function () {
             _setFeedbackPersistMode(!_feedbackPersistEnabled);
+            _schedulePinnedFeedbackPopupPosition();
         });
 
         persistRow.appendChild(persistIcon);
@@ -12566,9 +12718,15 @@
         expBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             var isPinned = popup.getAttribute('data-pinned') === 'true';
-            popup.setAttribute('data-pinned', isPinned ? 'false' : 'true');
-            expBtn.setAttribute('aria-expanded', isPinned ? 'false' : 'true');
-            wrapper.setAttribute('data-active', isPinned ? 'false' : 'true');
+            var nextPinned = !isPinned;
+            popup.setAttribute('data-pinned', nextPinned ? 'true' : 'false');
+            expBtn.setAttribute('aria-expanded', nextPinned ? 'true' : 'false');
+            wrapper.setAttribute('data-active', nextPinned ? 'true' : 'false');
+            if (nextPinned) {
+                _ensureFeedbackPopupBoundaryObservers();
+                _positionFbkPopupWithinPanelBody(popup);
+                _schedulePinnedFeedbackPopupPosition();
+            }
         });
 
         // Close popup on outside click
