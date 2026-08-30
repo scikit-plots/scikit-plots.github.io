@@ -133,6 +133,29 @@
 (function () {
     'use strict';
 
+    // B41: when the page requested separate-origin isolation, the parent page
+    // runs only ai-assistant-isolation-host.js. The full assistant runtime is
+    // loaded inside the isolated frame after a validated MessageChannel handshake.
+    if ((window.SphinxAIAssistantIsolationHostActive ||
+            (window.AI_ASSISTANT_CONFIG && window.AI_ASSISTANT_CONFIG.isolationOrigin)) &&
+            !window.SphinxAIAssistantIsolationFrame) return;
+
+    // In the isolated frame, namespace all browser-storage keys by the exact
+    // validated parent origin. This prevents one shared assistant origin from
+    // mixing state between unrelated documentation origins.
+    function _scopedStorage(nativeStore, scope) {
+        if (!nativeStore || !scope) return nativeStore;
+        var prefix = 'ai-assistant-isolated:' + encodeURIComponent(scope) + ':';
+        return {
+            getItem: function (k) { return nativeStore.getItem(prefix + String(k)); },
+            setItem: function (k, v) { return nativeStore.setItem(prefix + String(k), String(v)); },
+            removeItem: function (k) { return nativeStore.removeItem(prefix + String(k)); }
+        };
+    }
+    var _storageScope = window.AI_ASSISTANT_CONFIG && window.AI_ASSISTANT_CONFIG.isolationStorageScope || '';
+    var localStorage = _scopedStorage((function () { try { return window.localStorage; } catch (_) { return null; } }()), _storageScope); // eslint-disable-line no-redeclare
+    var sessionStorage = _scopedStorage((function () { try { return window.sessionStorage; } catch (_) { return null; } }()), _storageScope); // eslint-disable-line no-redeclare
+
     // Guard against multiple injections
     if (window.SphinxAIAssistantInitialized) return;
     window.SphinxAIAssistantInitialized = true;
@@ -141,6 +164,29 @@
     // Single source for the page-injected configuration; always returns an
     // object, so callers can do _cfg().foo without guarding.
     function _cfg() { return window.AI_ASSISTANT_CONFIG || {}; }
+
+    // B41 page environment abstraction. In isolated mode, document/location
+    // belong to the assistant origin; page identity is supplied by the narrow
+    // host bridge and is query/fragment stripped before crossing origins.
+    function _pageUrl() {
+        var b = window.AI_ASSISTANT_ISOLATION_BRIDGE;
+        if (b && b.page && typeof b.page.url === 'string') return b.page.url;
+        try { return location.href || ''; } catch (_) { return ''; }
+    }
+    function _pageTitle() {
+        var b = window.AI_ASSISTANT_ISOLATION_BRIDGE;
+        if (b && b.page && typeof b.page.title === 'string') return b.page.title;
+        return (typeof document !== 'undefined' && document.title) ? String(document.title) : '';
+    }
+    function _pageName() {
+        var b = window.AI_ASSISTANT_ISOLATION_BRIDGE;
+        if (b && b.page && typeof b.page.pageName === 'string') return b.page.pageName;
+        return '';
+    }
+    function _isolationRequest(cap, payload) {
+        var b = window.AI_ASSISTANT_ISOLATION_BRIDGE;
+        return b && typeof b.request === 'function' ? b.request(cap, payload || null) : null;
+    }
 
     // ── Footer branding: "Powered by …" credit line ──────────────────────────
     // White-label point for downstream/custom deployments. Override per-page
@@ -277,7 +323,7 @@
      *
      * @type {function(string, Object=): Promise}
      */
-    var _fetch = (window.AI_COMPAT && typeof window.AI_COMPAT.safeFetch === 'function')
+    var _fetchTransport = (window.AI_COMPAT && typeof window.AI_COMPAT.safeFetch === 'function')
         ? window.AI_COMPAT.safeFetch.bind(window.AI_COMPAT)
         : function _fetchFallback(url, opts) {
             if (typeof fetch !== 'function') {
@@ -285,6 +331,88 @@
             }
             return fetch(url, opts);
         };
+
+    /**
+     * Assistant-service fetch boundary. Browser ambient cookies/session state are
+     * not API credentials and are omitted by default. Site owners may explicitly
+     * opt into same-origin credentials for compatibility, but callers can never
+     * escalate this wrapper to credentials="include". Explicit `omit` remains
+     * omit even when compatibility is enabled. Canonical documentation reads use
+     * their separate page-content path and are intentionally unaffected.
+     */
+    function _fetch(url, opts) {
+        var input = opts && typeof opts === 'object' ? opts : {};
+        var safe = {};
+        Object.keys(input).forEach(function (k) { safe[k] = input[k]; });
+        if (input.credentials === 'omit') {
+            safe.credentials = 'omit';
+        } else {
+            safe.credentials = (_cfg().allowCredentialedFetch === true) ? 'same-origin' : 'omit';
+        }
+        return _fetchTransport(url, safe);
+    }
+
+    // B43: remote response ceilings are enforced while bytes are arriving.
+    // A transport without ReadableStream cannot enforce a pre-buffer memory
+    // ceiling, so it fails closed instead of silently falling back to text()/json().
+    var _CONTROL_RESPONSE_MAX_BYTES = 512 * 1024;
+    var _CANONICAL_RESPONSE_MAX_BYTES = 1024 * 1024;
+    var _CHAT_RESPONSE_MAX_BYTES = 8 * 1024 * 1024;
+    var _SSE_LINE_MAX_CHARS = 256 * 1024;
+
+    function _responseDeclaredBytes(response) {
+        try {
+            var raw = response && response.headers && response.headers.get
+                ? response.headers.get('content-length') : null;
+            if (raw === null || raw === undefined || String(raw).trim() === '') return 0;
+            raw = String(raw).trim();
+            if (!/^\d+$/.test(raw)) throw new Error('REMOTE_RESPONSE_INVALID_LENGTH');
+            var n = Number(raw);
+            if (!Number.isSafeInteger(n) || n < 0) throw new Error('REMOTE_RESPONSE_INVALID_LENGTH');
+            return n;
+        } catch (err) {
+            if (err && err.message === 'REMOTE_RESPONSE_INVALID_LENGTH') throw err;
+            return 0;
+        }
+    }
+
+    async function _readResponseTextBounded(response, maxBytes) {
+        maxBytes = Math.max(1024, Math.floor(Number(maxBytes) || 0));
+        var declared = _responseDeclaredBytes(response);
+        if (declared > maxBytes) throw new Error('REMOTE_RESPONSE_TOO_LARGE');
+        if (response && response.body && typeof response.body.getReader === 'function' &&
+                typeof TextDecoder === 'function') {
+            var reader = response.body.getReader();
+            var decoder = new TextDecoder('utf-8', { fatal:false });
+            var text = ''; var total = 0;
+            try {
+                while (true) {
+                    var part = await reader.read();
+                    if (part.done) break;
+                    var value = part.value || new Uint8Array(0);
+                    total += Number(value.byteLength || value.length || 0);
+                    if (total > maxBytes) throw new Error('REMOTE_RESPONSE_TOO_LARGE');
+                    text += decoder.decode(value, { stream:true });
+                    // UTF-16 character count is a conservative secondary cap.
+                    if (text.length > maxBytes) throw new Error('REMOTE_RESPONSE_TOO_LARGE');
+                }
+                text += decoder.decode();
+            } catch (err) {
+                try { await reader.cancel(); } catch (_) {}
+                throw err;
+            } finally {
+                try { reader.releaseLock(); } catch (_) {}
+            }
+            if (text.length > maxBytes) throw new Error('REMOTE_RESPONSE_TOO_LARGE');
+            return text;
+        }
+        throw new Error('REMOTE_RESPONSE_STREAM_UNAVAILABLE');
+    }
+
+    async function _readResponseJsonBounded(response, maxBytes) {
+        var text = await _readResponseTextBounded(response, maxBytes);
+        return JSON.parse(text);
+    }
 
     /**
      * Stable radio-group name for the model sheet.
@@ -568,10 +696,20 @@
         var projected = _publicAssistantEventDetail(event.type, event.detail);
         if (projected === null) return internalResult;
         try {
-            // The only deliberate crossing from the private bus to document.
-            document.dispatchEvent(new CustomEvent(event.type, {
-                detail: projected, bubbles: false, cancelable: false
-            }));
+            // The only deliberate crossing from the private bus. In B41
+            // isolated mode the bounded projection is sent through the
+            // capability bridge and re-emitted on the host document only after
+            // the host independently validates its type and detail schema.
+            var isolationBridge = (typeof window !== 'undefined') ? window.AI_ASSISTANT_ISOLATION_BRIDGE : null;
+            if (isolationBridge && typeof isolationBridge.notify === 'function') {
+                isolationBridge.notify('page.integration.emit', {
+                    eventType: event.type, detail: projected
+                }).catch(function () {});
+            } else {
+                document.dispatchEvent(new CustomEvent(event.type, {
+                    detail: projected, bubbles: false, cancelable: false
+                }));
+            }
         } catch (_) {}
         return internalResult;
     }
@@ -971,6 +1109,9 @@
         // GitHub Octicon "database" — additive and not wired to a control yet.
         // Mirrors database.svg / _SVG_DATABASE in _static/__init__.py.
         database: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 3.5c0-.626.292-1.165.7-1.59.406-.422.956-.767 1.579-1.041C4.525.32 6.195 0 8 0c1.805 0 3.475.32 4.722.869.622.274 1.172.62 1.578 1.04.408.426.7.965.7 1.591v9c0 .626-.292 1.165-.7 1.59-.406.422-.956.767-1.579 1.041C11.476 15.68 9.806 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.62-1.579-1.04-.408-.426-.7-.965-.7-1.591Zm1.5 0c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55 0-.133-.058-.318-.282-.551-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5c-1.646 0-3.101.295-4.118.742-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55Zm0 4.5c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 9.705 6.353 10 8 10c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55V5.724c-.241.15-.503.286-.778.407C11.475 6.68 9.805 7 8 7c-1.805 0-3.475-.32-4.721-.869a6.15 6.15 0 0 1-.779-.407Zm0 2.225V12.5c0 .133.058.318.282.55.227.237.592.484 1.1.708 1.016.447 2.471.742 4.118.742 1.647 0 3.102-.295 4.117-.742.51-.224.874-.47 1.101-.707.224-.233.282-.418.282-.551v-2.275c-.241.15-.503.285-.778.406-1.247.549-2.917.869-4.722.869-1.805 0-3.475-.32-4.721-.869a6.327 6.327 0 0 1-.779-.406Z"/></svg>',
+        // GitHub Octicon "cache" — dataset/contribution action.
+        // Mirrors dataset.svg / _SVG_DATASET in _static/__init__.py.
+        dataset: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M2.5 5.724V8c0 .248.238.7 1.169 1.159.874.43 2.144.745 3.62.822a.75.75 0 1 1-.078 1.498c-1.622-.085-3.102-.432-4.204-.975a5.565 5.565 0 0 1-.507-.28V12.5c0 .133.058.318.282.551.227.237.591.483 1.101.707 1.015.447 2.47.742 4.117.742.406 0 .802-.018 1.183-.052a.751.751 0 1 1 .134 1.494C8.89 15.98 8.45 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.619-1.579-1.041-.408-.425-.7-.964-.7-1.59v-9c0-.626.292-1.165.7-1.591.406-.42.956-.766 1.579-1.04C4.525.32 6.195 0 8 0c1.806 0 3.476.32 4.721.869.623.274 1.173.619 1.579 1.041.408.425.7.964.7 1.59 0 .626-.292 1.165-.7 1.591-.406.42-.956.766-1.578 1.04C11.475 6.68 9.805 7 8 7c-1.805 0-3.475-.32-4.721-.869a6.15 6.15 0 0 1-.779-.407Zm0-2.224c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55 0-.133-.058-.318-.282-.551-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5c-1.646 0-3.101.295-4.118.742-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55Z"/><path d="M14.49 7.582a.375.375 0 0 0-.66-.313l-3.625 4.625a.375.375 0 0 0 .295.606h2.127l-.619 2.922a.375.375 0 0 0 .666.304l3.125-4.125A.375.375 0 0 0 15.5 11h-1.778l.769-3.418Z"/></svg>',
         // Octicon-style printer — used by the inline PDF method switch and
         // mirrored by _SVG_PRINTER / printer.svg.
         printer: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.75C4 1.784 4.784 1 5.75 1h4.5C11.216 1 12 1.784 12 2.75V5h.25A2.75 2.75 0 0 1 15 7.75v3.5A1.75 1.75 0 0 1 13.25 13H12v.25A1.75 1.75 0 0 1 10.25 15h-4.5A1.75 1.75 0 0 1 4 13.25V13H2.75A1.75 1.75 0 0 1 1 11.25v-3.5A2.75 2.75 0 0 1 3.75 5H4V2.75Zm1.5 0V5h5V2.75a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25ZM3.75 6.5A1.25 1.25 0 0 0 2.5 7.75v3.5c0 .138.112.25.25.25H4v-.75C4 9.784 4.784 9 5.75 9h4.5c.966 0 1.75.784 1.75 1.75v.75h1.25a.25.25 0 0 0 .25-.25v-3.5a1.25 1.25 0 0 0-1.25-1.25h-8.5Zm1.75 4.25v2.5c0 .138.112.25.25.25h4.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25ZM12 8a.75.75 0 1 1 1.5 0A.75.75 0 0 1 12 8Z"/></svg>',
@@ -2892,6 +3033,9 @@
     ];
 
     function _getSphinxDocsRootUrl() {
+        if (window.AI_ASSISTANT_ISOLATION_BRIDGE && _cfg().hostDocsRootUrl) {
+            return String(_cfg().hostDocsRootUrl);
+        }
         var options = window.DOCUMENTATION_OPTIONS || {};
         var urlRoot = typeof options.URL_ROOT === 'string' ? options.URL_ROOT.trim() : '';
 
@@ -2909,6 +3053,7 @@
     }
 
     function _getCurrentSphinxPageName(docsRootUrl) {
+        if (window.AI_ASSISTANT_ISOLATION_BRIDGE && _pageName()) return _pageName();
         var options = window.DOCUMENTATION_OPTIONS || {};
         var configured = typeof options.pagename === 'string'
             ? options.pagename.trim().replace(/^\/+|\/+$/g, '')
@@ -2916,7 +3061,7 @@
         if (configured) return configured;
 
         try {
-            var current = new URL(window.location.href);
+            var current = new URL(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : '')));
             var root = new URL(docsRootUrl || current.origin + '/');
             var currentPath = decodeURIComponent(current.pathname || '');
             var rootPath = decodeURIComponent(root.pathname || '/');
@@ -2938,6 +3083,9 @@
     }
 
     function _getCurrentPageHeading() {
+        if (window.AI_ASSISTANT_ISOLATION_BRIDGE) {
+            return String(((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : '')) || '').split(/\s+[—-]\s+/)[0].replace(/\s*[¶#]\s*$/, '').replace(/\s+/g, ' ').trim();
+        }
         var heading = document.querySelector('main h1, article h1, h1');
         var value = heading && heading.textContent
             ? heading.textContent
@@ -4403,6 +4551,67 @@
     ];
 
     /**
+     * Prune a clone using visibility facts measured on the LIVE rendered DOM.
+     * Detached clones are not layout authorities: class-based CSS, clipping,
+     * geometry and reachable-scroll bounds can all disappear after cloning.
+     */
+    function _stripModelOnlyLiveNodes(liveRoot, cloneRoot) {
+        if (!liveRoot || !cloneRoot || !liveRoot.querySelectorAll ||
+                typeof window.getComputedStyle !== 'function') return 0;
+        var live = [liveRoot].concat(Array.prototype.slice.call(liveRoot.querySelectorAll('*')));
+        var copies = [cloneRoot].concat(Array.prototype.slice.call(cloneRoot.querySelectorAll('*')));
+        var docEl = document.documentElement || {};
+        var body = document.body || {};
+        var maxX = Math.max(Number(docEl.scrollWidth) || 0, Number(body.scrollWidth) || 0,
+                            Number(docEl.clientWidth) || 0, Number(window.innerWidth) || 0);
+        var maxY = Math.max(Number(docEl.scrollHeight) || 0, Number(body.scrollHeight) || 0,
+                            Number(docEl.clientHeight) || 0, Number(window.innerHeight) || 0);
+        var sx = Number(window.scrollX || window.pageXOffset || 0);
+        var sy = Number(window.scrollY || window.pageYOffset || 0);
+        var doomed = [];
+        for (var i = 0; i < live.length && i < copies.length; i++) {
+            var el = live[i];
+            var copy = copies[i];
+            if (!el || !copy) continue;
+            try {
+                var cs = window.getComputedStyle(el);
+                if (!cs) continue;
+                var hidden = cs.display === 'none' || cs.visibility === 'hidden' ||
+                    cs.visibility === 'collapse' || cs.contentVisibility === 'hidden' ||
+                    Number.parseFloat(cs.opacity) === 0;
+                var rect = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+                var text = String(el.textContent || '').trim();
+                var leafText = !!text && !(el.children && el.children.length);
+                var zeroLeaf = leafText && rect &&
+                    ((rect.width <= 0 || rect.height <= 0) || Number.parseFloat(cs.fontSize) <= 0);
+                var clip = String(cs.clip || '').replace(/\s+/g, '').toLowerCase();
+                var clipPath = String(cs.clipPath || cs.webkitClipPath || '').replace(/\s+/g, '').toLowerCase();
+                var classicallyClipped = leafText && (
+                    clip === 'rect(0px,0px,0px,0px)' || clip === 'rect(0,0,0,0)' ||
+                    clipPath === 'inset(50%)' || clipPath === 'inset(100%)');
+                var indent = Number.parseFloat(cs.textIndent);
+                var extremeIndent = leafText && cs.overflow === 'hidden' && Number.isFinite(indent) &&
+                    Math.abs(indent) >= 10000;
+                var unreachable = false;
+                if (leafText && rect && maxX > 0 && maxY > 0 && cs.position !== 'fixed') {
+                    var left = rect.left + sx, right = rect.right + sx;
+                    var top = rect.top + sy, bottom = rect.bottom + sy;
+                    unreachable = right < 0 || bottom < 0 || left > maxX || top > maxY;
+                }
+                if (hidden || zeroLeaf || classicallyClipped || extremeIndent || unreachable) doomed.push(copy);
+            } catch (_) { /* fail open to preserve ordinary documentation */ }
+        }
+        var removed = 0;
+        for (var j = doomed.length - 1; j >= 0; j--) {
+            if (doomed[j] !== cloneRoot && doomed[j] && doomed[j].parentNode) {
+                doomed[j].parentNode.removeChild(doomed[j]);
+                removed++;
+            }
+        }
+        return removed;
+    }
+
+    /**
      * Remove elements the reader cannot see, and HTML comments, from a cloned
      * subtree.
      *
@@ -4541,11 +4750,29 @@
 
     function convertToMarkdown() {
         var contentSelector = (_cfg().content_selector) || 'article';
+        var bridgeRequest = _isolationRequest('page.context.read', null);
+        if (bridgeRequest) {
+            return bridgeRequest.then(function (snapshot) {
+                if (!snapshot || typeof snapshot.content !== 'string') {
+                    throw new Error('Isolated page context is unavailable.');
+                }
+                if (snapshot.format === 'text') {
+                    return snapshot.content + (snapshot.truncated ? '\n\n[page context truncated at isolation boundary]' : '');
+                }
+                var parsed = new DOMParser().parseFromString(snapshot.content, 'text/html');
+                var holder = parsed && parsed.body;
+                if (!holder) throw new Error('Isolated page context could not be parsed.');
+                return _convertContentElementToMarkdown(holder);
+            });
+        }
         var content = _resolveContentElement();
-
         if (!content) return Promise.reject(new Error('Could not find page content (selector: ' + contentSelector + ')'));
+        return Promise.resolve(_convertContentElementToMarkdown(content));
+    }
 
+    function _convertContentElementToMarkdown(content) {
         var cloned = content.cloneNode(true);
+        _stripModelOnlyLiveNodes(content, cloned);
         ['.headerlink', '.ai-assistant-container', 'script', 'style', '.sidebar', 'nav'].forEach(function (sel) {
             cloned.querySelectorAll(sel).forEach(function (el) { el.remove(); });
         });
@@ -4570,7 +4797,7 @@
             },
         });
 
-        return Promise.resolve(ts.turndown(cloned.innerHTML));
+        return ts.turndown(cloned.innerHTML);
     }
 
     /**
@@ -4703,13 +4930,22 @@
      * names the alternative instead.
      */
     function fetchStaticMarkdown() {
+        var bridgeRequest = _isolationRequest('page.canonical.read', null);
+        if (bridgeRequest) {
+            return bridgeRequest.then(function (result) {
+                if (!result || typeof result.text !== 'string' || !result.text.trim()) {
+                    throw new Error('Isolated canonical Markdown is unavailable.');
+                }
+                return result.text;
+            });
+        }
         var url = getMarkdownUrl();
         return fetch(url, { credentials: 'same-origin' })
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error('No static Markdown at ' + url + ' (HTTP ' + response.status + ')');
                 }
-                return response.text();
+                return _readResponseTextBounded(response, _CANONICAL_RESPONSE_MAX_BYTES);
             })
             .then(function (text) {
                 if (!text || !text.trim()) {
@@ -4725,7 +4961,7 @@
         // leaves ?query=params.  A URL like "/page.html?v=2" ends in "?v=2",
         // so /\.html$/ would never match — the .md URL would be wrong.
         // Splitting on both '?' and '#' gives the bare path every time.
-        var bare = window.location.href.split('?')[0].split('#')[0];
+        var bare = ((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : '')).split('?')[0].split('#')[0];
         if (bare.endsWith('.html')) return bare.replace(/\.html$/, '.md');
         if (bare.endsWith('/'))     return bare + 'index.md';
         return bare + '.md';
@@ -4888,6 +5124,11 @@
      * (no header) if that stylesheet is absent.
      */
     function _printWithHeader() {
+        var bridgeRequest = _isolationRequest('page.print', null);
+        if (bridgeRequest) {
+            bridgeRequest.catch(function () { showNotification('Host-page print request was denied.', true); });
+            return;
+        }
         var contentSel = (_cfg().content_selector) || 'article';
         var mount = document.querySelector(contentSel) || document.body;
         if (!mount) { try { window.print(); } catch (_e) {} return; }
@@ -7351,7 +7592,7 @@
                 if (r.ok) {
                     if (typeof opts.onSuccess !== 'function') return;
                     var successText = '';
-                    try { successText = await r.text(); }
+                    try { successText = await _readResponseTextBounded(r, _CONTROL_RESPONSE_MAX_BYTES); }
                     catch (_readErr) { fail(502, 'The service response could not be read.'); return; }
                     if (!String(successText || '').trim()) {
                         fail(502, 'The service returned an empty success response.');
@@ -7375,7 +7616,7 @@
                 if (typeof opts.onError !== 'function') return;
                 var message = r.statusText || ('HTTP ' + r.status);
                 try {
-                    var errorText = await r.text();
+                    var errorText = await _readResponseTextBounded(r, 64 * 1024);
                     if (String(errorText || '').trim()) {
                         try {
                             var errorData = JSON.parse(errorText);
@@ -7759,7 +8000,7 @@
                 answer:         (typeof answerText === 'string') ? answerText : '',
                 model:          modelInfo,
                 answerIndex:    answerIndex,
-                page:           _sanitizePage(location ? location.href : ''),
+                page:           _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
                 ts:             Date.now(),
                 sessionId:      sid,
                 conversationId: _sessionId,
@@ -8132,7 +8373,7 @@
             schemaVersion: _CONTRIBUTION_SCHEMA_VERSION,
             consentFlag: true,
             consentVersion: _CONTRIBUTION_CONSENT_VERSION,
-            page: _sanitizePage((typeof location !== 'undefined') ? location.href : ''),
+            page: _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
             // Q&A records retain the existing envelope-level model contract.
             // Conversation records carry model evidence per assistant message.
             model: normalizedScope === 'conversation' ? null : _buildModelInfo(cfg),
@@ -8450,7 +8691,7 @@
     var _TRANSCRIPT_RESTORE_MAX_STORAGE_CHARS = 2000000;
 
     function _rememberConversationPermission() {
-        try { return window.sessionStorage.getItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY) === 'true'; }
+        try { return sessionStorage.getItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY) === 'true'; }
         catch (_) { return false; }
     }
 
@@ -8467,8 +8708,8 @@
         var cfg = _cfg();
         var allow = cfg.panelPersist !== false && !!enabled;
         try {
-            if (allow) window.sessionStorage.setItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY, 'true');
-            else window.sessionStorage.removeItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY);
+            if (allow) sessionStorage.setItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY, 'true');
+            else sessionStorage.removeItem(_TRANSCRIPT_PERSIST_PERMISSION_KEY);
         } catch (_) { allow = false; }
         if (allow) {
             _saveTranscript();
@@ -8483,13 +8724,13 @@
 
     /** Safely read sessionStorage (private-mode / disabled storage safe). */
     function _ssGet(key) {
-        try { return window.sessionStorage.getItem(key); } catch (_) { return null; }
+        try { return sessionStorage.getItem(key); } catch (_) { return null; }
     }
     function _ssSet(key, val) {
-        try { window.sessionStorage.setItem(key, val); } catch (_) { /* ignore */ }
+        try { sessionStorage.setItem(key, val); } catch (_) { /* ignore */ }
     }
     function _ssDel(key) {
-        try { window.sessionStorage.removeItem(key); } catch (_) { /* ignore */ }
+        try { sessionStorage.removeItem(key); } catch (_) { /* ignore */ }
     }
 
     /** Persist `_transcript` if persistence is enabled. */
@@ -8677,7 +8918,7 @@
     function _buildExportRecords(pageUrl, sid) {
         var safePage = (typeof pageUrl === 'string')
             ? pageUrl
-            : _sanitizePage((typeof location !== 'undefined') ? location.href : '');
+            : _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : '')));
         var sessionId = (typeof sid === 'string') ? sid : _sessionId;
 
         var records      = [];
@@ -8842,9 +9083,9 @@
         var opt       = _normalizeConversationContentOptions(options);
         var cfg       = _cfg();
         var aiName    = cfg.panelTitle || 'AI Assistant';
-        var rawPage   = (typeof location !== 'undefined') ? location.href : '';
+        var rawPage   = ((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''));
         var pageUrl   = _sanitizePage(rawPage);
-        var pageTitle = (typeof document !== 'undefined') ? document.title : '';
+        var pageTitle = ((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : ''));
         var now       = Date.now();
         var sessionId = opt.includeSessionId ? _sessionId : null;
         var records   = _buildExportRecords(
@@ -9937,6 +10178,21 @@
 
 
     /**
+     * Resolve the action glyph for the current export mode.
+     *
+     * Share-link mode uses the existing Octicon upload/outward glyph while
+     * download mode deliberately preserves the established exportTxt glyph.
+     * Keeping this in one helper prevents the header trigger and Share-sheet
+     * trigger from drifting visually as the shared mode changes.
+     *
+     * @param {boolean} linkMode
+     * @returns {string}
+     */
+    function _exportActionModeIcon(linkMode) {
+        return linkMode ? ICONS.upload : ICONS.exportTxt;
+    }
+
+    /**
      * Build one synchronized Download / Share-link mode control.
      *
      * Every export surface receives its own DOM button, but all buttons are
@@ -9981,6 +10237,7 @@
         function sync(state) {
             var on = !!(state && state.linkMode);
             var modeText = on ? 'Share link' : 'Download';
+            icon.innerHTML = on ? ICONS.linkChain : ICONS.exportTxt;
             label.textContent = modeText;
             row.setAttribute('title', 'Export action: ' + modeText);
             row.setAttribute('aria-label', 'Export action mode: ' + modeText);
@@ -10047,7 +10304,7 @@
         // making the icon render at full viewBox size when hosted.
         var iconSpan = document.createElement('span');
         iconSpan.setAttribute('aria-hidden', 'true');
-        iconSpan.innerHTML = ICONS.exportTxt;
+        iconSpan.innerHTML = _exportActionModeIcon(_exportLinkMode);
         trigger.appendChild(iconSpan);
         var triggerLbl = document.createElement('span');
         triggerLbl.className = 'ai-assistant-export-trigger-chevron';
@@ -10149,7 +10406,11 @@
             iconClass: 'ai-assistant-export-menu-mode-icon',
             labelClass: 'ai-assistant-export-menu-mode-label',
             menu: true,
-            preventMouseDown: true
+            preventMouseDown: true,
+            onState: function (state) {
+                iconSpan.innerHTML = _exportActionModeIcon(state.linkMode);
+                wrapper.setAttribute('data-link-mode', state.linkMode ? 'true' : 'false');
+            }
         });
         menu.appendChild(modeRow);
 
@@ -10583,7 +10844,7 @@
         var raw    = (bubbleEl && bubbleEl.getAttribute('data-raw')) || answerText;
         var cfg    = _cfg();
         var aiName = cfg.panelTitle || 'AI Assistant';
-        var pageUrl = (typeof location !== 'undefined') ? location.href : '';
+        var pageUrl = ((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''));
 
         // ── Resolve model attribution from transcript ─────────────────────────
         var modelLine = '';
@@ -11112,7 +11373,7 @@
         // 2. A grounded question keyed to the page's real subject. Strip a
         //    trailing site suffix (" — Project", " · scikit-plots", " | Docs")
         //    so the subject is the page's own topic, not the site name.
-        var subject = String(_getCurrentPageHeading() || document.title || '').trim();
+        var subject = String(_getCurrentPageHeading() || ((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : '')) || '').trim();
         subject = subject.split(/\s[\u2013\u2014|\u00b7]\s/)[0].trim();
         if (subject) {
             return 'How do I use ' + subject +
@@ -11842,7 +12103,7 @@
                     answer:         (typeof answerText === 'string')   ? answerText   : '',
                     model:          _quickModelInfo,
                     answerIndex:    answerIndex,
-                    page:           _sanitizePage((typeof location !== 'undefined') ? location.href : ''),
+                    page:           _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
                     ts:             Date.now(),
                     sessionId:      sid,
                     conversationId: _sessionId,
@@ -12287,7 +12548,7 @@
                 answer:         (typeof answerText === 'string') ? answerText : '',
                 model:          modelInfo,
                 answerIndex:    answerIndex,
-                page:           _sanitizePage(location ? location.href : ''),
+                page:           _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
                 ts:             Date.now(),
                 // ``sessionId`` is local edit-chain state. The network telemetry
                 // serializer maps this to an ephemeral feedbackId only.
@@ -14619,7 +14880,7 @@
                     headers: { 'Accept': 'application/json' },
                     signal:  ac ? ac.signal : undefined
                 }).then(function (resp) {
-                    return resp.ok ? resp.json()
+                    return resp.ok ? _readResponseJsonBounded(resp, _CONTROL_RESPONSE_MAX_BYTES)
                                    : Promise.reject('http-' + resp.status);
                 }).then(function (data) {
                     if (done) { return; }
@@ -17393,8 +17654,8 @@
             if (timer) { clearTimeout(timer); timer = null; }
             if (!res || !res.ok) return null;
 
-            var text = await res.text();
-            if (typeof text !== 'string' || text.length > _CAPS_MAX_BYTES) return null;
+            var text = await _readResponseTextBounded(res, _CAPS_MAX_BYTES);
+            if (typeof text !== 'string') return null;
 
             var parsed = _capsParse(JSON.parse(text));
             if (parsed === null) {
@@ -17451,8 +17712,8 @@
             });
             if (timer) { clearTimeout(timer); timer = null; }
             if (!res || !res.ok) return '';
-            var text = await res.text();
-            if (typeof text !== 'string' || text.length > _CAPS_MAX_BYTES) return '';
+            var text = await _readResponseTextBounded(res, _CAPS_MAX_BYTES);
+            if (typeof text !== 'string') return '';
             var doc = JSON.parse(text);
             var caps = doc && typeof doc === 'object' ? doc.capabilities : null;
             var chat = caps && typeof caps === 'object' ? caps.chat_request : null;
@@ -23061,7 +23322,7 @@
         var triggerIcon = document.createElement('span');
         triggerIcon.setAttribute('aria-hidden', 'true');
         triggerIcon.className = 'ai-assistant-share-export-trigger-icon';
-        triggerIcon.innerHTML = ICONS.exportTxt;
+        triggerIcon.innerHTML = _exportActionModeIcon(_exportLinkMode);
 
         var triggerLabel = document.createElement('span');
         triggerLabel.textContent = 'Export';
@@ -23182,6 +23443,7 @@
             iconClass: 'ai-assistant-share-export-mode-icon',
             labelClass: 'ai-assistant-share-export-mode-label',
             onState: function (state) {
+                triggerIcon.innerHTML = _exportActionModeIcon(state.linkMode);
                 modeBadge.textContent = state.linkMode ? 'Link' : 'Download';
                 section.setAttribute('data-link-mode', state.linkMode ? 'true' : 'false');
             }
@@ -23259,7 +23521,7 @@
         var urlInput = document.createElement('input');
         urlInput.type = 'text';
         urlInput.readOnly = true;
-        urlInput.value = (typeof location !== 'undefined') ? location.href : '';
+        urlInput.value = ((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''));
         urlInput.setAttribute('aria-label', 'Page URL');
         urlInput.addEventListener('focus', function () { urlInput.select(); });
         urlRow.appendChild(urlInput);
@@ -23289,8 +23551,8 @@
                     return;
                 }
                 // Build target URL with {url} and {title} placeholders.
-                var pageUrl   = (typeof location !== 'undefined') ? location.href : '';
-                var pageTitle = (typeof document !== 'undefined' && document.title) || '';
+                var pageUrl   = ((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''));
+                var pageTitle = ((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : ''));
                 var u = String(t.url_template)
                     .replace(/\{url\}/g,   encodeURIComponent(pageUrl))
                     .replace(/\{title\}/g, encodeURIComponent(pageTitle));
@@ -32089,10 +32351,10 @@
         var isAnthropic = (provider === 'anthropic');
         var bodyObj;
         if (useStructuredProxy) {
-            var safePage = _sanitizePage(window.location && window.location.href || '');
+            var safePage = _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : '')));
             var descriptorParts = [];
-            if (document && typeof document.title === 'string' && document.title) {
-                descriptorParts.push(document.title.slice(0, 512));
+            if (((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : ''))) {
+                descriptorParts.push(((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : '')).slice(0, 512));
             }
             if (safePage && safePage !== '<page-redacted>') descriptorParts.push(safePage);
             bodyObj = {
@@ -32215,7 +32477,7 @@
             throw new Error('AI request failed (HTTP ' + response.status + ').');
         }
 
-        var data = await response.json();
+        var data = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
         var reply = '';
 
         if (isAnthropic) {
@@ -32274,7 +32536,7 @@
         // reply rather than "(no response)".
         var contentType = response.headers.get('content-type') || '';
         if (contentType.indexOf('text/event-stream') === -1 || !response.body) {
-            var data2 = await response.json();
+            var data2 = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
             var reply2 = '';
             // OpenAI shape
             if (Array.isArray(data2.choices) && data2.choices.length > 0) {
@@ -32315,7 +32577,7 @@
             // non-null body but throw on getReader(). Fall back to JSON parsing.
             _log('warn', '[ai-assistant] ReadableStream.getReader() failed; JSON fallback', readerErr);
             try {
-                var fbData = await response.clone().json().catch(function () { return {}; });
+                var fbData = await _readResponseJsonBounded(response.clone(), _CHAT_RESPONSE_MAX_BYTES).catch(function () { return {}; });
                 var fbReply = (fbData && (fbData.reply || fbData.answer || fbData.text)) || '';
                 _appendPanelMessage(fbReply || '(no response)', 'assistant');
             } catch (_fbErr) {
@@ -32325,6 +32587,7 @@
         }
         var decoder = new TextDecoder();
         var sseBuf = '';
+        var streamBytes = 0;
         // Track the current SSE event type (RFC 6455 §10.1):
         // Lines beginning with "event:" set the event type for the NEXT
         // "data:" line.  Reset to "message" after each dispatch.
@@ -32334,7 +32597,16 @@
             while (true) {
                 var chk = await reader.read();
                 if (chk.done) break;
+                streamBytes += Number(chk.value && (chk.value.byteLength || chk.value.length) || 0);
+                if (streamBytes > _CHAT_RESPONSE_MAX_BYTES) {
+                    try { await reader.cancel(); } catch (_) {}
+                    throw new Error('AI_RESPONSE_TOO_LARGE');
+                }
                 sseBuf += decoder.decode(chk.value, { stream: true });
+                if (sseBuf.length > _SSE_LINE_MAX_CHARS && sseBuf.indexOf('\n') === -1) {
+                    try { await reader.cancel(); } catch (_) {}
+                    throw new Error('AI_RESPONSE_LINE_TOO_LARGE');
+                }
                 var lines = sseBuf.split('\n');
                 sseBuf = lines.pop();
                 for (var li = 0; li < lines.length; li++) {
@@ -32397,6 +32669,18 @@
             }
         } catch (streamErr) {
             if (streamErr && streamErr.name === 'AbortError') throw streamErr;
+            if (streamErr && (streamErr.message === 'AI_RESPONSE_TOO_LARGE' ||
+                    streamErr.message === 'AI_RESPONSE_LINE_TOO_LARGE')) {
+                try { await reader.cancel(); } catch (_) {}
+                _log('warn', '[ai-assistant][stream] Response stopped at the browser safety limit.');
+                if (!accumulated) {
+                    if (streamBubble && streamBubble.parentNode) streamBubble.parentNode.removeChild(streamBubble);
+                    _appendPanelMessage('The AI response exceeded the browser safety limit.', 'error');
+                    return;
+                }
+                _appendPanelMessage('The AI response was stopped at the browser safety limit; the partial answer above was preserved.', 'error');
+                // Preserve visible partial output, but never retry a response-limit failure.
+            } else {
 
             // A connection closed before the first token is equivalent to the
             // browser-side form of a broken pipe.  Only retry when the request
@@ -32428,6 +32712,7 @@
             // Preserve already-visible partial output instead of replacing it
             // with provider/error text. The normal finalization below records
             // exactly what the reader already saw.
+            }
         } finally {
             try { reader.releaseLock(); } catch (_) {}
         }
@@ -32638,6 +32923,14 @@
         };
     }());
 
+    // B41 diagnostic surface contains no secret/capability material.
+    window.AI_ASSISTANT = window.AI_ASSISTANT || {};
+    window.AI_ASSISTANT.isolation = Object.freeze({
+        active: !!window.AI_ASSISTANT_ISOLATION_BRIDGE,
+        protocolVersion: window.AI_ASSISTANT_ISOLATION_BRIDGE ? String(window.AI_ASSISTANT_ISOLATION_BRIDGE.protocolVersion || '') : '',
+        trustBoundary: window.AI_ASSISTANT_ISOLATION_BRIDGE ? 'separate-origin-frame' : 'same-origin'
+    });
+
     // ── Bootstrap ─────────────────────────────────────────────────────────────
 
     if (document.readyState === 'loading') {
@@ -32650,6 +32943,12 @@
 
 (function () {
     'use strict';
+
+    // B41: the model-group observer belongs with the isolated runtime, not the
+    // documentation-origin host bridge.
+    if ((window.SphinxAIAssistantIsolationHostActive ||
+            (window.AI_ASSISTANT_CONFIG && window.AI_ASSISTANT_CONFIG.isolationOrigin)) &&
+            !window.SphinxAIAssistantIsolationFrame) return;
 
     // ── Symbols ────────────────────────────────────────────────────────────
     var CLS_BODY  = 'ai-assistant-panel-model-list';
