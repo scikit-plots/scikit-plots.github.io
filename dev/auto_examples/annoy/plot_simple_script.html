@@ -1,394 +1,615 @@
 
+
 <!DOCTYPE html>
 
-<html data-content_root="../../" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Simple annoy.AnnoyIndex with examples" property="og:title"/>
-<meta content="website" property="og:type"/>
-<meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_simple_script.html" property="og:url"/>
-<meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the AnnoyIndex class. from annoy import AnnoyIndex from scikitplot.annoy import AnnoyIndex Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total ..." property="og:description"/>
-<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
-<meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the AnnoyIndex class. from annoy import AnnoyIndex from scikitplot.annoy import AnnoyIndex Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total ..." name="description"/>
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Simple annoy.AnnoyIndex with examples" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_simple_script.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="An example showing the AnnoyIndex class. from annoy import AnnoyIndex from scikitplot.annoy import AnnoyIndex Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total ..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="An example showing the AnnoyIndex class. from annoy import AnnoyIndex from scikitplot.annoy import AnnoyIndex Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total ..." />
+
 <script>
-window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":false,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"Source Repository","panelSourceDesc":"","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Project Website","panelSiteDesc":"","panelSiteBtnLabel":"Website","panelDatasetRepo":"","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Test model. Reports exactly what the browser sent \u2014 body keys, reasoning fields and their values, credential headers by shape, and any secret-shaped strings in the page context. No model is called and no credential is read.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Test model. Deterministic replies from a fixture table \u2014 try \"ping\". Sends no reasoning fields, for comparison with the echo entry.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Test model. Replies containing prompt-injection text, script tags, and malformed markup, to check how this panel renders a reply that should not be trusted.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelFeedbackLog":false,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","panelFeedbackEndpoint":"","panelFeedbackToken":"","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareEndpoint":"","panelGlobalShareToken":"","panelGlobalShareTtlDays":30,"panelTrainingEndpoint":""};
 </script>
+
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","_schemaV":2,"chat":"https://scikit-plots-ai.hf.space","share":"https://scikit-plots-ai.hf.space","feedback":"https://scikit-plots-ai.hf.space","training":"https://scikit-plots-ai.hf.space","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":2,"buildId":"2026-08-24T15:12:24Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":3,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","feedback":"","training":"","shareToken":"","feedbackToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":3,"buildId":"2026-08-30T23:28:58Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-<title>Simple annoy.AnnoyIndex with examples — scikit-plots 0.5.dev0 documentation</title>
-<script data-cfasync="false">
+
+    <title>Simple annoy.AnnoyIndex with examples &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-<!--
+  <!--
     this give us a css class that will be invisible only if js is disabled
   -->
-<noscript>
-<style>
+  <noscript>
+    <style>
       .pst-js-only { display: none !important; }
 
     </style>
-</noscript>
-<!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet"/>
-<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
-<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
-<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
-<link href="../../_static/ai-assistant.css?v=7286b3b3" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
-<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=f676e775" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sg_gallery.css?v=fd6457a4" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=6c2c4627" rel="stylesheet" type="text/css"/>
-<!-- So that users can add custom icons -->
-<script defer="" src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
-<!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=de0fc20e"></script>
-<script src="../../_static/doctools.js?v=fd6eb6e6"></script>
-<script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
-<script defer="defer" src="../../_static/ai-assistant.js?v=c938e8b0"></script>
-<script src="../../_static/thebelab-helper.js"></script>
-<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
-<script>let toggleHintShow = 'Click to show';</script>
-<script>let toggleHintHide = 'Click to hide';</script>
-<script>let toggleOpenOnPrint = 'true';</script>
-<script src="../../_static/togglebutton.js?v=b8b12719"></script>
-<script src="../../_static/design-tabs.js?v=f930bc37"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
-<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/annoy/plot_simple_script';</script>
-<script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=357f05e2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=6c2c4627" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css?v=ded7c6a7" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script defer="defer" src="../../_static/ai-assistant-isolation-host.js?v=2c722d0e"></script>
+    <script defer="defer" src="../../_static/ai-assistant.js?v=0e2a15fd"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/annoy/plot_simple_script';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
-<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-<script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
-<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-<link href="https://scikit-plots.github.io/dev/auto_examples/annoy/plot_simple_script.html" rel="canonical"/>
-<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
-<link href="../../genindex.html" rel="index" title="Index"/>
-<link href="../../search.html" rel="search" title="Search"/>
-<link href="s_compile_cpp.html" rel="next" title="Compile and run the C++ Annoy with examples"/>
-<link href="plot_precision_script.html" rel="prev" title="Precision annoy.AnnoyIndex with examples"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="en" name="docsearch:language"/>
-<meta content="0.5" name="docsearch:version"/>
-<script src="../../_static/searchtools.js"></script>
-<script src="../../_static/language_data.js"></script>
-<script src="../../searchindex.js"></script>
-</head>
-<body data-default-mode="">
-<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
-<div id="pst-scroll-pixel-helper"></div>
-<button class="btn rounded-pill" id="pst-back-to-top" type="button">
-<i class="fa-solid fa-arrow-up"></i>Back to top</button>
-<dialog id="pst-search-dialog">
-<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
-<i class="fa-solid fa-magnifying-glass"></i>
-<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
-<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
+    <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <script src="../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/dev/auto_examples/annoy/plot_simple_script.html" />
+    <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compile and run the C++ Annoy with examples" href="s_compile_cpp.html" />
+    <link rel="prev" title="Precision annoy.AnnoyIndex with examples" href="plot_precision_script.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-</dialog>
-<div class="pst-async-banner-revealer d-none">
-<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
-<span class="fa-solid fa-bars"></span>
-</button>
-<div class="navbar-header-items__start">
-<div class="navbar-item">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
 <a class="navbar-brand logo" href="../../index.html">
-<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
-<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
 </a></div>
-</div>
-<div class="navbar-header-items">
-<div class="me-auto navbar-header-items__center">
-<div class="navbar-item">
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
 <nav>
-<ul class="bd-navbar-elements navbar-nav">
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../introduction/index.html">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
     Introduction
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../user_guide/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
     User Guide
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../apis/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
+
+
 <li class="nav-item current active">
-<a class="nav-link nav-internal" href="../index.html">
+  <a class="nav-link nav-internal" href="../index.html">
     Tutorials
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
-<li class="nav-item dropdown">
-<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
-<ul class="dropdown-menu" id="pst-nav-more-links">
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
     Tags
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
     Code of Conduct
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
     Community
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
     Developer's Guide
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
     Governance Process
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
     Release History
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
 </li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
     About Us | Project
   </a>
 </li>
-</ul>
-</li>
-</ul>
+
+                </ul>
+            </li>
+            
+  </ul>
 </nav></div>
-</div>
-<div class="navbar-header-items__end">
-<div class="navbar-item navbar-persistent--container">
-<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
-<i class="fa-solid fa-magnifying-glass"></i>
-<span class="search-button__default-text">Search</span>
-<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
 </button>
-</div>
-<div class="navbar-item">
-<div class="theme-switch-container dropdown pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Color mode">
-<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" data-bs-toggle="dropdown">
-<i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-<i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
-</button>
-<ul class="dropdown-menu dropdown-menu-end">
-<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
-</ul>
-</div></div>
-<div class="navbar-item">
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
 <div class="version-switcher__container dropdown pst-js-only">
-<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
     Choose version  <!-- this text may get changed later by javascript -->
-<span class="caret"></span>
-</button>
-<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
-<!-- dropdown will be populated by javascript on page load -->
-</div>
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
 </div></div>
-<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
-</li>
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.svg"/></a>
-</li>
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
-</li>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
 </ul></div>
-</div>
-</div>
-<div class="navbar-persistent--mobile">
-<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
-<i class="fa-solid fa-magnifying-glass"></i>
-<span class="search-button__default-text">Search</span>
-<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
 </button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
-<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
-<span class="fa-solid fa-outdent"></span>
-</button>
-</div>
-</header>
-<div class="bd-container">
-<div class="bd-container__inner bd-page-width">
-<dialog id="pst-primary-sidebar-modal"></dialog>
-<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
-<div class="sidebar-header-items sidebar-primary__section">
-<div class="sidebar-header-items__center">
-<div class="navbar-item">
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
 <nav>
-<ul class="bd-navbar-elements navbar-nav">
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../introduction/index.html">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
     Introduction
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../user_guide/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
     User Guide
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../apis/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
+
+
 <li class="nav-item current active">
-<a class="nav-link nav-internal" href="../index.html">
+  <a class="nav-link nav-internal" href="../index.html">
     Tutorials
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
     Learn
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
     Tags
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
     Code of Conduct
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../project/community.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
     Community
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../devel/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../devel/index.html">
     Developer's Guide
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../project/governance.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/governance.html">
     Governance Process
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../whats_new/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../project/roadmap.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
 </li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../project/index.html">
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/index.html">
     About Us | Project
   </a>
 </li>
-</ul>
+
+  </ul>
 </nav></div>
-</div>
-<div class="sidebar-header-items__end">
-<div class="navbar-item">
-<div class="theme-switch-container dropdown pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Color mode">
-<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" data-bs-toggle="dropdown">
-<i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-<i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
-</button>
-<ul class="dropdown-menu dropdown-menu-end">
-<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
-</ul>
-</div></div>
-<div class="navbar-item">
-<div class="version-switcher__container dropdown pst-js-only">
-<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
-    Choose version  <!-- this text may get changed later by javascript -->
-<span class="caret"></span>
-</button>
-<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
-<!-- dropdown will be populated by javascript on page load -->
-</div>
-</div></div>
-<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
-</li>
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.svg"/></a>
-</li>
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
-</li>
-</ul></div>
-</div>
-</div>
-<div class="sidebar-primary-items__start sidebar-primary__section">
-<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button">
-<svg aria-hidden="true" class="pst-icon" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
-</svg>
-<span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
-<span class="pst-expand-sidebar-label">Expand Sidebar</span>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
-<div class="sidebar-primary-item">
-<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
-<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
-<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/pypi-logo.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">Jupyter Notebooks</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Annoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
@@ -524,46 +745,82 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </div>
 </nav></div>
-</div>
-<div class="sidebar-primary-items__end sidebar-primary__section">
-</div>
-</div>
-<main class="bd-main" id="main-content" role="main">
-<div class="bd-content">
-<div class="bd-article-container">
-<div class="bd-header-article d-print-none">
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+  
+  
+  
+
+  
+  
+  
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-<div class="header-article-items__start">
-<div class="header-article-item">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
 <nav aria-label="Breadcrumb" class="d-print-none">
-<ul class="bd-breadcrumbs">
-<li class="breadcrumb-item breadcrumb-home">
-<a aria-label="Home" class="nav-link" href="../../index.html">
-<i class="fa-solid fa-home"></i>
-</a>
-</li>
-<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
-<li class="breadcrumb-item"><a class="nav-link" href="index.html">Annoy</a></li>
-<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Simple annoy.AnnoyIndex with examples</span></li>
-</ul>
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Examples</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Annoy</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Simple annoy.AnnoyIndex with examples</span></li>
+  </ul>
 </nav>
 </div>
+      
+    </div>
+  
+  
 </div>
 </div>
-</div>
+              
+              
+              
+                
 <div id="searchbox"></div>
-<article class="bd-article">
-
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-annoy-plot-simple-script-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
+</div>
 <section class="sphx-glr-example-title" id="simple-annoy-annoyindex-with-examples">
 <span id="sphx-glr-auto-examples-annoy-plot-simple-script-py"></span><h1>Simple annoy.AnnoyIndex with examples<a class="headerlink" href="#simple-annoy-annoyindex-with-examples" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a> class.</p>
 <p>from annoy import AnnoyIndex
 from scikitplot.annoy import AnnoyIndex</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Index</span> <span class="k">as</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Index</span> <span class="k">as</span> <span class="n">AnnoyIndex</span>
 
-<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span>
     <span class="n">f</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
@@ -578,7 +835,7 @@ from scikitplot.annoy import AnnoyIndex</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0, 1, 2]
 [0, 1, 2]
 
-{'f': 3, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': None, 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 3, 'n_trees': 3, 'memory_usage_byte': 416, 'memory_usage_mib': 0.000396728515625}
+{&#39;f&#39;: 3, &#39;metric&#39;: &#39;angular&#39;, &#39;n_neighbors&#39;: 5, &#39;on_disk_path&#39;: None, &#39;prefault&#39;: False, &#39;seed&#39;: None, &#39;verbose&#39;: None, &#39;schema_version&#39;: 0, &#39;n_items&#39;: 3, &#39;n_trees&#39;: 3, &#39;memory_usage_byte&#39;: 416, &#39;memory_usage_mib&#39;: 0.000396728515625}
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -586,24 +843,24 @@ from scikitplot.annoy import AnnoyIndex</p>
     <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy._plotting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">utils</span>
 
-    <span class="n">single</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">single</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">double</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.uniform.html#numpy.random.uniform" title="numpy.random.uniform"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+        <span class="n">double</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
 
     <span class="c1"># single vs double</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"alpha"</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
     <span class="n">y2</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">plot_annoy_index</span><span class="p">(</span>
         <span class="n">idx</span><span class="p">,</span>
         <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)),</span>
-        <span class="n">plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"draw_legend"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="n">plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;draw_legend&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
     <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">utils</span><span class="o">.</span><span class="n">plot_annoy_knn_edges</span><span class="p">(</span>
         <span class="n">idx</span><span class="p">,</span>
         <span class="n">y2</span><span class="p">,</span>
         <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">line_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"alpha"</span><span class="p">:</span> <span class="n">alpha</span><span class="p">},</span>
+        <span class="n">line_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="n">alpha</span><span class="p">},</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
     <span class="p">)</span>
 
@@ -612,89 +869,150 @@ from scikitplot.annoy import AnnoyIndex</p>
 <span class="n">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="plot simple script" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_simple_script_001.png" srcset="../../_images/sphx_glr_plot_simple_script_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.050 seconds)</p>
-
+<img src="../../_images/sphx_glr_plot_simple_script_001.png" srcset="../../_images/sphx_glr_plot_simple_script_001.png" alt="plot simple script" class = "sphx-glr-single-img"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.788 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-annoy-plot-simple-script-py">
+<div class="binder-badge docutils container">
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_simple_script.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" style="width: 150px;" />
+</a>
+</div>
+<div class="lite-badge docutils container">
+<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/annoy/plot_simple_script.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo.svg" style="width: 150px;" />
+</a>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/16260b78606421fbc96a8c6141d5af60/plot_simple_script.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_simple_script.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f46f8ce9677c623d4dfea7fc15363897/plot_simple_script.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_simple_script.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0ef812ca29113f7330ebeb16c3ad7a4e/plot_simple_script.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_simple_script.zip</span></code></a></p>
+</div>
+</div>
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png" />
 <p><a class="reference internal" href="plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
+  <div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png" />
 <p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
+  <div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png" />
 <p><a class="reference internal" href="plot_precision_script.html"><span class="doc">Precision annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png"/>
+  <div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png" />
 <p><a class="reference internal" href="plot_annoy_to_NPY_CSV.html"><span class="doc">annoy.Index to NPY or CSV with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Index to NPY or CSV with examples</div>
+  <div class="sphx-glr-thumbnail-title">annoy.Index to NPY or CSV with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
-</article>
-<footer class="bd-footer-article">
-<div class="footer-article-items footer-article__inner">
-<div class="footer-article-item">
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
 <div class="prev-next-area">
-<a class="left-prev" href="plot_precision_script.html" title="previous page">
-<i class="fa-solid fa-angle-left"></i>
-<div class="prev-next-info">
-<p class="prev-next-subtitle">previous</p>
-<p class="prev-next-title">Precision annoy.AnnoyIndex with examples</p>
-</div>
-</a>
-<a class="right-next" href="s_compile_cpp.html" title="next page">
-<div class="prev-next-info">
-<p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">Compile and run the C++ Annoy with examples</p>
-</div>
-<i class="fa-solid fa-angle-right"></i>
-</a>
+    <a class="left-prev"
+       href="plot_precision_script.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Precision annoy.AnnoyIndex with examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="s_compile_cpp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compile and run the C++ Annoy with examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
+  
 </div>
-</footer>
-</div>
-<dialog id="pst-secondary-sidebar-modal"></dialog>
-<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
-<div class="sidebar-secondary-item">
-<div class="sphx-glr-sidebar-component">
-<div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_simple_script.py">
-<a download="" href="../../_downloads/f46f8ce9677c623d4dfea7fc15363897/plot_simple_script.py">
-<i class="fa-solid fa-download"></i>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+
+  <div class="sphx-glr-sidebar-component">
+    
+      
+        <div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_simple_script.py">
+          <a download href="../../_downloads/f46f8ce9677c623d4dfea7fc15363897/plot_simple_script.py">
+            <i class="fa-solid fa-download"></i>
             Download source code
           </a>
-</div>
-<div class="sphx-glr-sidebar-item sphx-glr-download-jupyter-sidebar" title="plot_simple_script.ipynb">
-<a download="" href="../../_downloads/16260b78606421fbc96a8c6141d5af60/plot_simple_script.ipynb">
-<i class="fa-solid fa-download"></i>
+        </div>
+      
+    
+      
+        <div class="sphx-glr-sidebar-item sphx-glr-download-jupyter-sidebar" title="plot_simple_script.ipynb">
+          <a download href="../../_downloads/16260b78606421fbc96a8c6141d5af60/plot_simple_script.ipynb">
+            <i class="fa-solid fa-download"></i>
             Download Jupyter notebook
           </a>
-</div>
-<div class="sphx-glr-sidebar-item sphx-glr-download-zip-sidebar" title="plot_simple_script.zip">
-<a download="" href="../../_downloads/0ef812ca29113f7330ebeb16c3ad7a4e/plot_simple_script.zip">
-<i class="fa-solid fa-download"></i>
+        </div>
+      
+    
+      
+        <div class="sphx-glr-sidebar-item sphx-glr-download-zip-sidebar" title="plot_simple_script.zip">
+          <a download href="../../_downloads/0ef812ca29113f7330ebeb16c3ad7a4e/plot_simple_script.zip">
+            <i class="fa-solid fa-download"></i>
             Download zipped
           </a>
+        </div>
+      
+    
+  </div>
 </div>
+
+  <div class="sidebar-secondary-item">
+
+
+  <div class="sphx-glr-sidebar-component">
+    
+      
+        <div class="sphx-glr-sidebar-item lite-badge-sidebar">
+          <a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_simple_script.ipynb">
+            <img src="../../_images/jupyterlite_badge_logo.svg" alt="Launch JupyterLite">
+          </a>
+        </div>
+      
+    
+      
+        <div class="sphx-glr-sidebar-item binder-badge-sidebar">
+          <a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_simple_script.ipynb">
+            <img src="../../_images/binder_badge_logo.svg" alt="Launch binder">
+          </a>
+        </div>
+      
+    
+  </div>
 </div>
-</div>
-<div class="sidebar-secondary-item">
-<div class="sphx-glr-sidebar-component">
-<div class="sphx-glr-sidebar-item lite-badge-sidebar">
-<a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_simple_script.ipynb">
-<img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo.svg"/>
-</a>
-</div>
-<div class="sphx-glr-sidebar-item binder-badge-sidebar">
-<a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_simple_script.ipynb">
-<img alt="Launch binder" src="../../_images/binder_badge_logo.svg"/>
-</a>
-</div>
-</div>
-</div>
-<div class="sidebar-secondary-item">
-<div class="tocsection editthispage">
-<a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/auto_examples/annoy/plot_simple_script.rst">
-<i class="fa-solid fa-pencil"></i>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/auto_examples/annoy/plot_simple_script.rst">
+      <i class="fa-solid fa-pencil"></i>
       
       
         
@@ -702,31 +1020,61 @@ from scikitplot.annoy import AnnoyIndex</p>
         
       
     </a>
-</div>
+  </div>
 </div>
 
-<div class="sidebar-secondary-item"><div title="plot_simple_script.py"><a download="" href="../../_downloads/f46f8ce9677c623d4dfea7fc15363897/plot_simple_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_simple_script.ipynb"><a download="" href="../../_downloads/16260b78606421fbc96a8c6141d5af60/plot_simple_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_simple_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_simple_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo.svg"/></a></div></div></div></div>
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/auto_examples/annoy/plot_simple_script.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
 </div>
-<footer class="bd-footer-content">
-</footer>
-</main>
-</div>
-</div>
-<!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
-<footer class="bd-footer">
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+
+  
+  
+  
+
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
-<div class="footer-items__start">
-<div class="footer-item">
-<p class="copyright">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260824.c8953a1 2026-08-24T15:07Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260824.221fae1 2026-08-30T23:11Z.
       <br/>
-</p>
+    
+  </p>
 </div>
+      
+    </div>
+  
+  
+  
 </div>
-</div>
-</footer>
-</body>
+
+  </footer>
+  </body>
 </html>
