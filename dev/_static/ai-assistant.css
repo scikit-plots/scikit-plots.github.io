@@ -5906,10 +5906,14 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 
 /* ─── Device list container ──────────────────────────────────────────────── */
 /*
- * Size to content for ordinary device counts.  The old 130px cap clipped the
- * third radio row when Default + Communications + one physical microphone
- * were present (~157px total).  Only genuinely long lists become scrollable.
- * The viewport-aware cap prevents the popup from growing beyond the screen.
+ * Content-sized for the normal Default / Communications / physical-device
+ * set.  The old 130px cap was smaller than the observed ~157-160px five-row
+ * content and left the last microphone partly outside the interactive
+ * scrollport.  Only genuinely long device lists should scroll.
+ *
+ * min-height is intentionally only loader-sized; populated refreshes keep the
+ * previous rows mounted and use an atomic JS swap, so a hard 160px floor is not
+ * needed (and would waste space for denied/one-device states).
  */
 
 .ai-assistant-mic-device-list {
@@ -5917,16 +5921,15 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     flex-direction: column;
     gap: 0;
     height: auto;
-    max-height: 400px;
-    max-height: min(400px, 42vh);
+    min-height: 2.5rem;
+    max-height: min(24rem, 46vh);
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
     position: relative;
     z-index: 1;
+    transition: none;
 }
 
 /* Thin custom scrollbar — keeps the popup visually tight */
@@ -5965,7 +5968,7 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     display: flex;
     flex: 0 0 auto;
     width: 100%;
-    min-height: 38px;
+    min-height: 2.4rem;
     border: 0;
     background: transparent;
     color: inherit;
@@ -5982,26 +5985,18 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     transition: background-color 0.1s ease;
 }
 
+@media (pointer: coarse) {
+    .ai-assistant-mic-device-item {
+        min-height: 44px;
+    }
+}
+
 .ai-assistant-mic-device-item:hover {
     background: rgba(0, 0, 0, 0.05);
 }
 
 [data-bs-theme="dark"] .ai-assistant-mic-device-item:hover {
     background: rgba(255, 255, 255, 0.07);
-}
-
-.ai-assistant-mic-device-item:active {
-    background: rgba(0, 0, 0, 0.085);
-}
-
-[data-bs-theme="dark"] .ai-assistant-mic-device-item:active {
-    background: rgba(255, 255, 255, 0.11);
-}
-
-@media (pointer: coarse) {
-    .ai-assistant-mic-device-item {
-        min-height: 44px;
-    }
 }
 
 .ai-assistant-mic-device-item:focus-visible {

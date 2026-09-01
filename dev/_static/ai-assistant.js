@@ -1163,6 +1163,42 @@
     var _micDevices = [];
 
     /**
+     * Microphone list render/interaction transaction state.
+     *
+     * IMPORTANT — DO NOT reintroduce a clear-then-async-rebuild pattern here.
+     *
+     * Historical failure mode (Run 77 / B96):
+     *
+     *   pointerdown / mousedown on a microphone row
+     *       -> devicechange/permission/open refresh starts
+     *       -> _refreshMicDeviceList() executes `listEl.innerHTML = ''`
+     *       -> the pressed <button role="radio"> is removed from the DOM
+     *       -> mouseup/click no longer targets the same element
+     *       -> _selectMicDevice() never runs, so selection appears stuck on Default
+     *       -> the empty flex list can collapse briefly and visibly "blink"
+     *
+     * A click is a multi-event browser transaction; removing the pressed target
+     * between pointerdown/mousedown and click invalidates that transaction.  The
+     * correct contract is therefore:
+     *
+     *   1. Keep the current device rows mounted while enumeration is pending.
+     *   2. Build replacement rows OFF-DOM.
+     *   3. Generation-guard async enumeration so stale results cannot overwrite a
+     *      newer refresh.
+     *   4. If a pointer selection is in progress, defer the DOM commit until the
+     *      click (or pointer-cancel fallback) has completed.
+     *   5. Commit all replacement children atomically with replaceChildren().
+     *
+     * Do not "simplify" this back to `innerHTML = ''` before _enumMicDevices().
+     * That one-line clear caused both the lost-click selection bug and the empty-
+     * list flash observed in live DevTools testing.
+     */
+    var _micDeviceListRenderGeneration = 0;
+    var _micDeviceListPointerActive = false;
+    var _micDeviceListRefreshQueued = false;
+    var _micDeviceListDeferredCommit = null;
+
+    /**
      * MediaStreamTrack acquired to pin a non-default device for Web Speech API.
      *
      * Kept live only for the current recording plus a short reuse grace period.
@@ -33615,6 +33651,29 @@
      * Delegating from the radiogroup keeps one listener alive across those refreshes
      * and uses closest() so clicks on nested labels/check SVGs select the row.
      */
+    function _finishMicDeviceListPointerInteraction(listEl) {
+        if (!_micDeviceListPointerActive) return;
+        _micDeviceListPointerActive = false;
+
+        // A refresh requested during the press wins over an older deferred
+        // render. Start it on the next task so the current click/focus lifecycle
+        // is fully complete before any row can be replaced.
+        if (_micDeviceListRefreshQueued) {
+            _micDeviceListRefreshQueued = false;
+            _micDeviceListDeferredCommit = null;
+            setTimeout(function () {
+                if (listEl && listEl.isConnected !== false) _refreshMicDeviceList(listEl);
+            }, 0);
+            return;
+        }
+
+        if (_micDeviceListDeferredCommit) {
+            var pending = _micDeviceListDeferredCommit;
+            _micDeviceListDeferredCommit = null;
+            setTimeout(function () { pending(); }, 0);
+        }
+    }
+
     function _bindMicDeviceListInteractions(listEl) {
         if (!listEl || listEl.getAttribute('data-interactions-bound') === 'true') return;
         listEl.setAttribute('data-interactions-bound', 'true');
@@ -33626,6 +33685,13 @@
             return item && listEl.contains(item) ? item : null;
         }
 
+        // Mark the entire pointer press as one transaction. A devicechange or
+        // permission refresh that happens between pointerdown and click must not
+        // replace the pressed radio button, otherwise the browser drops click.
+        listEl.addEventListener('pointerdown', function (e) {
+            if (_itemFromTarget(e.target)) _micDeviceListPointerActive = true;
+        });
+
         listEl.addEventListener('click', function (e) {
             var item = _itemFromTarget(e.target);
             if (!item) return;
@@ -33636,6 +33702,20 @@
             _selectMicDevice(item.getAttribute('data-device-id') || 'default');
             try { item.focus({ preventScroll: true }); }
             catch (_) { try { item.focus(); } catch (_e) {} }
+            _finishMicDeviceListPointerInteraction(listEl);
+        });
+
+        // If pointerup does not produce click (drag-away/cancelled activation),
+        // release the transaction on the next task.  The timeout is deliberate:
+        // for a normal activation click is dispatched after pointerup, and must
+        // get first chance to select the still-mounted row.
+        listEl.addEventListener('pointerup', function () {
+            setTimeout(function () {
+                _finishMicDeviceListPointerInteraction(listEl);
+            }, 0);
+        });
+        listEl.addEventListener('pointercancel', function () {
+            _finishMicDeviceListPointerInteraction(listEl);
         });
 
         listEl.addEventListener('keydown', function (e) {
@@ -33699,14 +33779,6 @@
         }
         var requestedId = deviceId || 'default';
         _setMicDevice(requestedId);
-        // Keep the newly selected radio fully visible in long/scrolling device
-        // lists.  block:"nearest" is a no-op when the row is already visible.
-        try {
-            var selectedItem = document.querySelector('.ai-assistant-mic-device-item[aria-checked="true"]');
-            if (selectedItem && selectedItem.scrollIntoView) {
-                selectedItem.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-            }
-        } catch (_) {}
         showNotification('Microphone selected. It will be verified when recording starts.', false);
     }
 
@@ -34467,10 +34539,11 @@
     /**
      * Populate the device list element with available microphone options.
      *
-     * Renders a loading placeholder, then replaces it with one radio-style item
-     * per device once enumeration resolves.  A synthetic "Default microphone"
-     * entry (deviceId: 'default') is always prepended so the user can revert to
-     * the browser default.  Updates the permission bar after each enumeration.
+     * Rendering is deliberately atomic. Existing rows remain mounted while
+     * enumerateDevices() is pending; the replacement tree is built off-DOM and
+     * swapped in only when complete. This is not merely cosmetic: destroying a
+     * pressed radio row between pointerdown and click causes the browser to drop
+     * the click and leaves the routing preference unchanged.
      *
      * Parameters
      * ----------
@@ -34480,24 +34553,48 @@
      * Notes
      * -----
      * User: Device labels are empty strings until microphone permission is
-     *   granted.  The popup re-enumerates on every open so real labels appear
+     *   granted. The popup re-enumerates on every open so real labels appear
      *   automatically after the first successful recording session.
      *
-     * Developer: Re-entrant calls (e.g. fast open/close) are naturally serialised
-     *   because each call clears listEl.innerHTML first — only the last async
-     *   result is visible.  If strict serialisation is ever needed, replace the
-     *   innerHTML clear with a generation counter guard.
+     * Developer — interaction invariant (Run 77 / B96):
+     *   NEVER clear listEl before the async enumeration callback. In the broken
+     *   implementation, `listEl.innerHTML = ''` ran at refresh start and again
+     *   before rebuilding. A refresh triggered during mousedown/pointerdown
+     *   physically removed the button before mouseup/click, so selection could
+     *   not complete and the list visibly collapsed. Keep old rows mounted,
+     *   generation-guard the async result, build a DocumentFragment off-DOM,
+     *   and perform one replaceChildren() commit after pointer interaction ends.
      */
     function _refreshMicDeviceList(listEl) {
-        listEl.innerHTML = '';
-        var loader = document.createElement('div');
-        loader.className = 'ai-assistant-mic-devices-loading';
-        loader.textContent = 'Loading\u2026';
-        listEl.appendChild(loader);
+        if (!listEl) return;
+
+        // Do not even start a new enumeration during an active row press. The
+        // latest requested refresh is queued and replayed after click/cancel.
+        if (_micDeviceListPointerActive) {
+            _micDeviceListRefreshQueued = true;
+            return;
+        }
+
+        var generation = ++_micDeviceListRenderGeneration;
+        listEl.setAttribute('aria-busy', 'true');
+        listEl.setAttribute('data-refreshing', 'true');
+
+        // First open has no existing rows to preserve. Show a stable placeholder
+        // without using destructive clear-then-build rendering.
+        if (!listEl.children.length) {
+            var initialLoader = document.createElement('div');
+            initialLoader.className = 'ai-assistant-mic-devices-loading';
+            initialLoader.setAttribute('role', 'status');
+            initialLoader.textContent = 'Loading…';
+            if (typeof listEl.replaceChildren === 'function') listEl.replaceChildren(initialLoader);
+            else listEl.appendChild(initialLoader);
+        }
 
         // Opening/pinning the popup enumerates only; it never calls getUserMedia.
         _enumMicDevices(function (devices, permState) {
-            listEl.innerHTML = '';
+            // A newer refresh already owns the UI; discard stale async results.
+            if (generation !== _micDeviceListRenderGeneration) return;
+
             var hasRealLabels = devices.some(function (d) {
                 return d.label && !(/^Microphone \d+$/.test(d.label));
             });
@@ -34527,72 +34624,98 @@
 
             var effectiveId = _micDeviceId || 'default';
             var selectedExists = all.some(function (d) { return d.deviceId === effectiveId; });
+            var fragment = document.createDocumentFragment();
+
             if (!selectedExists && effectiveId !== 'default') {
                 var gone = document.createElement('div');
                 gone.className = 'ai-assistant-mic-devices-empty ai-assistant-mic-device-unavailable';
                 gone.setAttribute('role', 'status');
                 gone.textContent = 'Selected microphone is unavailable. Reconnect it or choose another microphone.';
-                listEl.appendChild(gone);
+                fragment.appendChild(gone);
             }
+
             if (permState === 'denied') {
                 var deniedEl = document.createElement('div');
                 deniedEl.className = 'ai-assistant-mic-devices-empty';
-                deniedEl.textContent = 'Microphone blocked \u2014 see instructions above.';
-                listEl.appendChild(deniedEl);
+                deniedEl.textContent = 'Microphone blocked — see instructions above.';
+                fragment.appendChild(deniedEl);
+            } else {
+                if (real.length === 0 && !browserComms && permState === 'prompt' && !hasRealLabels) {
+                    var emptyEl = document.createElement('div');
+                    emptyEl.className = 'ai-assistant-mic-devices-empty';
+                    emptyEl.textContent = 'Permission is required to reveal all microphone devices.';
+                    fragment.appendChild(emptyEl);
+                }
+
+                function appendGroupLabel(text) {
+                    var groupLabel = document.createElement('div');
+                    groupLabel.className = 'ai-assistant-mic-device-group-label';
+                    groupLabel.setAttribute('role', 'presentation');
+                    groupLabel.textContent = text;
+                    fragment.appendChild(groupLabel);
+                }
+                appendGroupLabel('System routing');
+                all.forEach(function (dev, itemIndex) {
+                    if (itemIndex > 0 && dev.deviceId !== 'communications' && all[itemIndex - 1].deviceId === 'communications') {
+                        appendGroupLabel('Devices');
+                    } else if (itemIndex > 0 && dev.deviceId !== 'communications' && all[itemIndex - 1].deviceId === 'default') {
+                        appendGroupLabel('Devices');
+                    }
+                    var item = document.createElement('button');
+                    item.type = 'button';
+                    item.className = 'ai-assistant-mic-device-item';
+                    item.setAttribute('role', 'radio');
+                    item.setAttribute('data-device-id', dev.deviceId);
+                    item.setAttribute('aria-checked', dev.deviceId === effectiveId ? 'true' : 'false');
+                    item.setAttribute('tabindex', dev.deviceId === effectiveId ? '0' : '-1');
+
+                    var labelWrap = document.createElement('span');
+                    labelWrap.className = 'ai-assistant-mic-device-label-wrap';
+                    var nameSpan = document.createElement('span');
+                    nameSpan.className = 'ai-assistant-mic-device-name';
+                    nameSpan.textContent = dev.label;
+                    nameSpan.title = dev.label;
+                    labelWrap.appendChild(nameSpan);
+                    if (dev.subtitle) {
+                        var subSpan = document.createElement('span');
+                        subSpan.className = 'ai-assistant-mic-device-subtitle';
+                        subSpan.textContent = dev.subtitle;
+                        labelWrap.appendChild(subSpan);
+                    }
+                    var checkSpan = document.createElement('span');
+                    checkSpan.className = 'ai-assistant-mic-device-check';
+                    checkSpan.setAttribute('aria-hidden', 'true');
+                    checkSpan.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 5"/></svg>';
+                    item.appendChild(labelWrap);
+                    item.appendChild(checkSpan);
+                    fragment.appendChild(item);
+                });
+            }
+
+            function commitRender() {
+                if (generation !== _micDeviceListRenderGeneration) return;
+                // replaceChildren is a single synchronous DOM commit: there is
+                // no observable empty intermediate frame. The fallback is also
+                // synchronous and is reached only on older engines.
+                if (typeof listEl.replaceChildren === 'function') {
+                    listEl.replaceChildren(fragment);
+                } else {
+                    while (listEl.firstChild) listEl.removeChild(listEl.firstChild);
+                    listEl.appendChild(fragment);
+                }
+                listEl.removeAttribute('aria-busy');
+                listEl.removeAttribute('data-refreshing');
                 _syncMicDeviceUI();
+            }
+
+            // Enumeration can finish during a physical press that began after
+            // this refresh started. Do not replace that pressed DOM node until
+            // click has selected it (or pointercancel releases the transaction).
+            if (_micDeviceListPointerActive) {
+                _micDeviceListDeferredCommit = commitRender;
                 return;
             }
-            if (real.length === 0 && !browserComms && permState === 'prompt' && !hasRealLabels) {
-                var emptyEl = document.createElement('div');
-                emptyEl.className = 'ai-assistant-mic-devices-empty';
-                emptyEl.textContent = 'Permission is required to reveal all microphone devices.';
-                listEl.appendChild(emptyEl);
-            }
-
-            function appendGroupLabel(text) {
-                var groupLabel = document.createElement('div');
-                groupLabel.className = 'ai-assistant-mic-device-group-label';
-                groupLabel.setAttribute('role', 'presentation');
-                groupLabel.textContent = text;
-                listEl.appendChild(groupLabel);
-            }
-            appendGroupLabel('System routing');
-            all.forEach(function (dev, itemIndex) {
-                if (itemIndex > 0 && dev.deviceId !== 'communications' && all[itemIndex - 1].deviceId === 'communications') {
-                    appendGroupLabel('Devices');
-                } else if (itemIndex > 0 && dev.deviceId !== 'communications' && all[itemIndex - 1].deviceId === 'default') {
-                    appendGroupLabel('Devices');
-                }
-                var item = document.createElement('button');
-                item.type = 'button';
-                item.className = 'ai-assistant-mic-device-item';
-                item.setAttribute('role', 'radio');
-                item.setAttribute('data-device-id', dev.deviceId);
-                item.setAttribute('aria-checked', dev.deviceId === effectiveId ? 'true' : 'false');
-                item.setAttribute('tabindex', dev.deviceId === effectiveId ? '0' : '-1');
-
-                var labelWrap = document.createElement('span');
-                labelWrap.className = 'ai-assistant-mic-device-label-wrap';
-                var nameSpan = document.createElement('span');
-                nameSpan.className = 'ai-assistant-mic-device-name';
-                nameSpan.textContent = dev.label;
-                nameSpan.title = dev.label;
-                labelWrap.appendChild(nameSpan);
-                if (dev.subtitle) {
-                    var subSpan = document.createElement('span');
-                    subSpan.className = 'ai-assistant-mic-device-subtitle';
-                    subSpan.textContent = dev.subtitle;
-                    labelWrap.appendChild(subSpan);
-                }
-                var checkSpan = document.createElement('span');
-                checkSpan.className = 'ai-assistant-mic-device-check';
-                checkSpan.setAttribute('aria-hidden', 'true');
-                checkSpan.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 5"/></svg>';
-                item.appendChild(labelWrap);
-                item.appendChild(checkSpan);
-                listEl.appendChild(item);
-            });
-            _syncMicDeviceUI();
+            commitRender();
         });
     }
 
