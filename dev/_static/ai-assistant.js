@@ -30924,8 +30924,12 @@
         var attachInput = document.createElement('input');
         attachInput.type = 'file';
         attachInput.id = 'ai-assistant-panel-file-input';
+        attachInput.className = 'ai-assistant-panel-file-input';
         attachInput.multiple = true;
-        attachInput.hidden = true;
+        // Keep the native file control in the document tree rather than using
+        // hidden/display:none.  iOS/WebKit is more reliable when a picker is
+        // triggered from a real, rendered (but visually clipped) file input.
+        attachInput.tabIndex = -1;
         attachInput.setAttribute('aria-hidden', 'true');
 
         var attachMenu = document.createElement('div');
@@ -31008,6 +31012,15 @@
         function _openAttachmentPicker() {
             _closeAttachMenu(false);
             attachInput.value = '';
+            // Prefer the platform picker API when exposed. It keeps the file
+            // chooser tied to the current transient user activation on modern
+            // WebKit/iOS; synthetic click remains the broad compatibility path.
+            try {
+                if (typeof attachInput.showPicker === 'function') {
+                    attachInput.showPicker();
+                    return;
+                }
+            } catch (_e) {}
             attachInput.click();
         }
 
@@ -31028,9 +31041,14 @@
             }));
         });
         attachInput.addEventListener('change', function () {
-            var files = attachInput.files;
+            // FileList is a live browser-owned collection.  Some WebKit/iOS
+            // engines empty it synchronously when the input value is reset.
+            // Snapshot File objects BEFORE clearing the input so selecting the
+            // same file again remains possible without losing the current batch.
+            var files = [];
+            try { files = Array.prototype.slice.call(attachInput.files || []); } catch (_e) {}
             attachInput.value = '';
-            _queueComposerFiles(files);
+            if (files.length) _queueComposerFiles(files);
         });
         attachMenu.addEventListener('keydown', function (e) {
             var items = Array.prototype.slice.call(attachMenu.querySelectorAll('[role="menuitem"]:not(:disabled)'));
@@ -33681,6 +33699,14 @@
         }
         var requestedId = deviceId || 'default';
         _setMicDevice(requestedId);
+        // Keep the newly selected radio fully visible in long/scrolling device
+        // lists.  block:"nearest" is a no-op when the row is already visible.
+        try {
+            var selectedItem = document.querySelector('.ai-assistant-mic-device-item[aria-checked="true"]');
+            if (selectedItem && selectedItem.scrollIntoView) {
+                selectedItem.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+            }
+        } catch (_) {}
         showNotification('Microphone selected. It will be verified when recording starts.', false);
     }
 

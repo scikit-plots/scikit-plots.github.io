@@ -5906,18 +5906,25 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 
 /* ─── Device list container ──────────────────────────────────────────────── */
 /*
- * max-height + overflow-y:auto → compact scroll for 4+ devices.
- * overscroll-behavior:contain   → prevents page scroll while scrolling list.
+ * Size to content for ordinary device counts.  The old 130px cap clipped the
+ * third radio row when Default + Communications + one physical microphone
+ * were present (~157px total).  Only genuinely long lists become scrollable.
+ * The viewport-aware cap prevents the popup from growing beyond the screen.
  */
 
 .ai-assistant-mic-device-list {
     display: flex;
     flex-direction: column;
     gap: 0;
-    max-height: 130px;
+    height: auto;
+    max-height: 400px;
+    max-height: min(400px, 42vh);
+    overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     position: relative;
     z-index: 1;
 }
@@ -5943,6 +5950,7 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 
 
 .ai-assistant-mic-device-group-label {
+    flex: 0 0 auto;
     padding: 0.32rem 0.55rem 0.18rem;
     font-size: 0.56rem;
     font-weight: 700;
@@ -5955,7 +5963,9 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 
 .ai-assistant-mic-device-item {
     display: flex;
+    flex: 0 0 auto;
     width: 100%;
+    min-height: 38px;
     border: 0;
     background: transparent;
     color: inherit;
@@ -5978,6 +5988,20 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 
 [data-bs-theme="dark"] .ai-assistant-mic-device-item:hover {
     background: rgba(255, 255, 255, 0.07);
+}
+
+.ai-assistant-mic-device-item:active {
+    background: rgba(0, 0, 0, 0.085);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-device-item:active {
+    background: rgba(255, 255, 255, 0.11);
+}
+
+@media (pointer: coarse) {
+    .ai-assistant-mic-device-item {
+        min-height: 44px;
+    }
 }
 
 .ai-assistant-mic-device-item:focus-visible {
@@ -19183,4 +19207,23 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-panel-attachment-replay-remove:hover,
 .ai-assistant-panel-attachment-replay-remove:focus-visible {
     background: rgba(128,128,128,.12);
+}
+
+/* Run 76 — iOS/WebKit attachment picker reliability.
+ * Keep the native file input rendered but visually clipped instead of using
+ * hidden/display:none. This preserves a dependable user-activation target on
+ * iPhone browsers (all of which use WebKit) while keeping it out of layout. */
+.ai-assistant-panel-file-input {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
