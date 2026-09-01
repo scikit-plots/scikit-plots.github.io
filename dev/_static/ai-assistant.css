@@ -5807,7 +5807,7 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
          .ai-assistant-mic-devices-header-icon
          .ai-assistant-mic-devices-header-label
        .ai-assistant-mic-device-list
-         .ai-assistant-mic-device-item ×N  (role=menuitemradio)
+         .ai-assistant-mic-device-item ×N  (role=radio)
            .ai-assistant-mic-device-name
            .ai-assistant-mic-device-check
    State:
@@ -5909,10 +5909,26 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 }
 
 
+
+.ai-assistant-mic-device-group-label {
+    padding: 0.32rem 0.55rem 0.18rem;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #777));
+}
+
 /* ─── Individual device row ──────────────────────────────────────────────── */
 
 .ai-assistant-mic-device-item {
     display: flex;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
     align-items: center;
     gap: 0.3rem;
     padding: 0.28rem 0.55rem;
@@ -6062,6 +6078,34 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
 }
 
 
+
+.ai-assistant-mic-device-item[data-selecting="true"] {
+    opacity: 0.65;
+    cursor: progress;
+}
+
+.ai-assistant-mic-device-unavailable {
+    color: var(--pst-color-danger, #c0392b);
+}
+
+.ai-assistant-mic-device-capability {
+    margin: 0.28rem 0.55rem 0;
+    font-size: 0.61rem;
+    line-height: 1.35;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #777));
+}
+
+.ai-assistant-mic-shortcut-kbd {
+    margin-left: auto;
+    padding: 0.05rem 0.28rem;
+    border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-radius: 4px;
+    font: inherit;
+    font-size: 0.62rem;
+    line-height: 1.25;
+    opacity: 0.72;
+}
+
 /* ─── Loading and empty states ───────────────────────────────────────────── */
 
 .ai-assistant-mic-devices-loading,
@@ -6209,6 +6253,29 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     width: 13px;
     height: 13px;
     color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+
+.ai-assistant-mic-perm-allow {
+    flex: 0 0 auto;
+    border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    padding: 0.12rem 0.42rem;
+    font-size: 0.62rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ai-assistant-mic-perm-allow:hover,
+.ai-assistant-mic-perm-allow:focus-visible {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.ai-assistant-mic-perm-allow:disabled {
+    opacity: 0.55;
+    cursor: progress;
 }
 
 /* Denied → red icon */
@@ -16455,7 +16522,8 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
    expand inline so the same popover works from either left or right anchor
    without a flyout escaping a narrow panel. */
 .ai-assistant-panel-hamburger-more-btn {
-    grid-template-columns: 0.95rem minmax(0, 1fr) 1.55rem;
+    /* O keycap + disclosure chevron share the trailing rail. */
+    grid-template-columns: 0.95rem minmax(0, 1fr) 2.3rem;
 }
 .ai-assistant-panel-hamburger-more-btn .ai-assistant-panel-hamburger-item-icon {
     width: 0.95rem;
@@ -16464,12 +16532,31 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     line-height: 1;
     letter-spacing: 0.04em;
 }
+.ai-assistant-panel-hamburger-more-tail {
+    display: inline-flex;
+    align-items: center;
+    justify-self: end;
+    justify-content: flex-end;
+    gap: 0.2rem;
+    min-width: 1.55rem;
+}
+.ai-assistant-panel-hamburger-more-tail > .ai-assistant-kbd-group {
+    width: auto;
+    justify-content: center;
+}
+.ai-assistant-panel-hamburger-more-tail .ai-assistant-kbd {
+    box-sizing: border-box;
+    width: 1.35rem;
+    min-width: 1.35rem;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
 .ai-assistant-panel-hamburger-more-chevron {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.55rem;
-    justify-self: end;
+    width: 0.65rem;
     font-size: 0.55rem;
     line-height: 1;
     transform: rotate(0deg);
@@ -16500,7 +16587,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     margin-right: 0.25rem;
 }
 
-/* Bottom hint: panel chord on the left, single-letter E on the right. */
+/* Bottom hint: panel chord on the left, Escape on the right. */
 .ai-assistant-panel-hamburger-kbd-row {
     width: 100%;
     box-sizing: border-box;
@@ -16514,15 +16601,15 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     border-left: 1px solid rgba(127, 127, 127, 0.2);
 }
 
-/* Match the footer E cap to the exact accelerator rail used by menu rows. */
+/* Escape is wider than the single-letter accelerator rail; keep it compact but readable. */
 .ai-assistant-panel-hamburger-kbd-exit > .ai-assistant-kbd-group {
-    width: 1.55rem;
+    width: auto;
     justify-content: center;
 }
 .ai-assistant-panel-hamburger-kbd-exit .ai-assistant-kbd {
     box-sizing: border-box;
-    width: 1.35rem;
-    min-width: 1.35rem;
+    width: auto;
+    min-width: 2.1rem;
     padding-left: 0;
     padding-right: 0;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -17992,7 +18079,38 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 @media (max-width: 720px) {
     .ai-assistant-panel-feedback-channel-grid { grid-template-columns: 1fr; }
 }
-.ai-assistant-panel-feedback-activity-actions { margin-top: 4px; }
+
+.ai-assistant-panel-feedback-activity-actions {
+    margin-top: 6px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+.ai-assistant-panel-feedback-activity-forget-all {
+    flex: 0 0 auto;
+    padding: 0.22rem 0.48rem;
+    font-size: 0.68rem;
+    line-height: 1.2;
+}
+.ai-assistant-panel-feedback-activity-forget {
+    margin-inline-start: auto;
+}
+@media (max-width: 720px) {
+    .ai-assistant-panel-feedback-activity-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+    .ai-assistant-panel-feedback-activity-actions .ai-assistant-panel-ep-io-btn {
+        width: 100%;
+        margin-inline-start: 0;
+    }
+    .ai-assistant-panel-feedback-activity-forget-all {
+        max-width: 9rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
 
 /* Run 46 — feedback review payload/model evidence */
 .ai-assistant-fbk-popup-icon svg {

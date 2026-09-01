@@ -940,13 +940,15 @@
     }
 
     /**
-     * Feedback telemetry permission is a versioned, explicit browser-side
-     * consent. Local ratings never require it. Network telemetry does.
+     * Feedback telemetry permission is a versioned browser-side preference.
+     * Local ratings never require it. Network telemetry does. The Sphinx site
+     * config supplies only the initial state when no valid reader choice exists.
      *
-     * Security / migration rules:
-     *   - absent, malformed, stale-version, or storage-inaccessible state => OFF;
+     * Security / precedence rules:
+     *   - valid stored reader ON/OFF wins over the site default;
+     *   - absent state uses the configured site default (built-in: OFF);
+     *   - malformed, stale-version, or storage-inaccessible state fails OFF;
      *   - historical boolean keys are deliberately ignored;
-     *   - only this UI writes the current consent record;
      *   - the server independently requires the matching consent marker on
      *     every /v1/feedback request, so client-side gating is not the sole
      *     enforcement boundary.
@@ -1054,8 +1056,10 @@
     }
 
     // Content-bearing maintainer feedback is a separate authority from rating
-    // telemetry.  Enabling telemetry never enables this permission and vice
-    // versa.  The review permission authorizes one Q&A + rating + optional
+    // telemetry. Enabling telemetry never enables this permission and vice
+    // versa. The Sphinx config supplies only the initial review state; a valid
+    // stored reader ON/OFF preference wins thereafter. The review permission
+    // authorizes one Q&A + rating + optional
     // note to enter the configured repository review workflow. In consent
     // v2 the same visible permission also authorizes training use only after
     // an authorized maintainer merges that review.
@@ -1133,11 +1137,12 @@
     /**
      * Selected microphone device ID.
      *
-     * The Web Speech API exposes no direct device-selection parameter.
-     * Workaround: acquire a getUserMedia stream on the chosen device BEFORE
-     * calling SpeechRecognition.start() — the browser reuses the active track.
+     * Specific microphone selection is verified with exact getUserMedia
+     * constraints. Where supported, the live MediaStreamTrack is passed to
+     * SpeechRecognition.start(track); older engines may still choose their own
+     * system-default recognition input and the UI states that limitation.
      *
-     * Empty string = browser default (no getUserMedia pre-pin).
+     * Empty string = browser/system default.
      * Stored only in sessionStorage so the device identifier does not become long-lived browser residue.
      * Silently falls back when storage is unavailable (private mode, quota, etc.).
      */
@@ -1160,30 +1165,53 @@
     /**
      * MediaStreamTrack acquired to pin a non-default device for Web Speech API.
      *
-     * Kept alive ACROSS hold-to-record presses for the same device so the
-     * browser never needs to re-prompt.  Released only when the selected device
-     * changes (via _setMicDevice) or when _releaseMicPinTrack is called explicitly.
+     * Kept live only for the current recording plus a short reuse grace period.
+     * Released on source changes and by _scheduleMicStreamRelease().
      *
      * @type {MediaStreamTrack|null}
      */
     var _micPinTrack = null;
 
     /**
-     * Persistent warm MediaStream that keeps the microphone permission live for
-     * the entire page session.
-     *
-     * Acquired once (on first popup open or first recording) via
-     * _acquireMicWarmStream().  Holding an active track prevents Chromium and
-     * Safari from revoking the origin's mic permission between recognition
-     * sessions, which is what causes the browser to re-prompt on every
-     * hold-to-record press.
-     *
-     * Released only via _releaseMicWarmStream() when the selected device changes
-     * so the next call to _acquireMicWarmStream() re-acquires on the new device.
+     * Short-lived MediaStream used by the active recording/VU path.
+     * It may be reused during the small post-recording grace window, but is not
+     * intentionally held for the page lifetime. Popup inspection never creates it.
      *
      * @type {MediaStream|null}
      */
     var _micWarmStream = null;
+
+    // Microphone source-manager state. Live media tracks are intentionally
+    // short-lived; the selected device id may survive in sessionStorage, but
+    // hardware capture is released shortly after recording stops.
+    var _MIC_STREAM_GRACE_MS = 3000;
+    var _micReleaseTimer = null;
+    var _micSelectionGeneration = 0;
+    var _micSpaceHeld = false;
+    var _micRequiresHeldActivation = false;
+
+    function _micTrackInputSupported() {
+        try {
+            var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            return !!(SR && SR.prototype && SR.prototype.start && SR.prototype.start.length >= 1);
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function _micConstraintsForDevice(deviceId) {
+        if (!deviceId || deviceId === 'default') return { audio: true };
+        return { audio: { deviceId: { exact: deviceId } } };
+    }
+
+    function _scheduleMicStreamRelease() {
+        clearTimeout(_micReleaseTimer);
+        _micReleaseTimer = setTimeout(function () {
+            _micReleaseTimer = null;
+            _releaseMicPinTrack();
+            _releaseMicWarmStream();
+        }, _MIC_STREAM_GRACE_MS);
+    }
 
     // ── Web Audio API visualisation — module-level singletons ────────────────
 
@@ -8799,16 +8827,58 @@
             reviewPath: String(receipt.reviewPath || ''),
             endpoint: String(endpoint || ''),
             fingerprint: String(fingerprint || ''),
-            status: String(receipt.status || 'in_review')
+            status: String(receipt.status || 'in_review'),
+            reviewStatus: String(receipt.reviewStatus || ''),
+            savedAt: Date.now()
         };
+        // Keep tab-local management state bounded even when a user reviews many
+        // different Q&As during one long documentation session.
+        var keys = Object.keys(map);
+        if (keys.length > 24) {
+            keys.sort(function (a, b) { return Number(map[a].savedAt || 0) - Number(map[b].savedAt || 0); });
+            keys.slice(0, keys.length - 24).forEach(function (key) { delete map[key]; });
+        }
         _writeActiveFeedbackReviews(map);
         return map[slot];
     }
 
-    function _forgetActiveFeedbackReview(answerIndex) {
+    function _forgetActiveFeedbackReviewSlot(slot) {
+        var key = String(slot || '');
+        if (!key) return false;
         var map = _readActiveFeedbackReviews();
-        delete map[_feedbackReviewSlot(answerIndex)];
+        var existed = Object.prototype.hasOwnProperty.call(map, key);
+        delete map[key];
+        delete _activeFeedbackReviewMemory[key];
         _writeActiveFeedbackReviews(map);
+        // Explicit Forget is stronger than the current persistence toggle: also
+        // scrub a previously remembered sessionStorage entry so it cannot
+        // reappear if tab persistence is enabled again later.
+        try {
+            var stored = JSON.parse(_ssGet(_ACTIVE_FEEDBACK_REVIEW_KEY) || '{}');
+            if (stored && typeof stored === 'object' && !Array.isArray(stored)) {
+                delete stored[key];
+                _ssSet(_ACTIVE_FEEDBACK_REVIEW_KEY, JSON.stringify(stored));
+            }
+        } catch (_) {}
+        return existed;
+    }
+
+    function _forgetActiveFeedbackReview(answerIndex) {
+        return _forgetActiveFeedbackReviewSlot(_feedbackReviewSlot(answerIndex));
+    }
+
+    function _forgetAllActiveFeedbackReviews() {
+        var count = Object.keys(_readActiveFeedbackReviews()).length;
+        _activeFeedbackReviewMemory = {};
+        try { _ssSet(_ACTIVE_FEEDBACK_REVIEW_KEY, '{}'); } catch (_) {}
+        return count;
+    }
+
+    function _reviewTrackingTerminal(status, reviewStatus) {
+        var state = String(status || '').toLowerCase();
+        var review = String(reviewStatus || '').toLowerCase();
+        return ['eligible', 'reviewed', 'merged', 'withdrawn', 'rejected', 'deleted', 'expired', 'closed'].indexOf(state) >= 0 ||
+            ['merged', 'closed', 'rejected', 'deleted', 'expired'].indexOf(review) >= 0;
     }
 
     function _resolveFeedbackReviewEndpoint() {
@@ -8818,11 +8888,15 @@
     }
 
     function _feedbackReviewFingerprint(payload) {
-        // Fingerprint the exact filtered request. Content/privacy changes must
-        // update the existing provider review rather than being suppressed as
-        // an unchanged rating-only edit. The payload contains no management
-        // capability and uses stable local timestamps for an existing rating.
-        return JSON.stringify(payload || {});
+        // Fingerprint the semantically saved request. Content/privacy changes
+        // must update the existing provider review, but consentAt is a volatile
+        // browser permission timestamp and is not a canonical dataset field. A
+        // site-default ON state can legitimately recreate that timestamp after
+        // navigation/reload; allowing it into the fingerprint would turn an
+        // unchanged rating into a spurious provider-review revision.
+        var stable = Object.assign({}, payload || {});
+        delete stable.consentAt;
+        return JSON.stringify(stable);
     }
 
     function _feedbackReviewPayload(detail) {
@@ -8969,7 +9043,7 @@
             method: 'GET', keepalive: false, headers: { 'X-Feedback-Review-Token': active.deleteToken },
             onSuccess: function (res) {
                 res = res && typeof res === 'object' ? res : {};
-                if (res.status === 'withdrawn' || res.status === 'rejected' || res.status === 'deleted' || res.status === 'expired') {
+                if (_reviewTrackingTerminal(res.status, res.reviewStatus)) {
                     _forgetActiveFeedbackReview(answerIndex);
                 } else {
                     res.deleteToken = active.deleteToken; res.receiptId = active.receiptId;
@@ -8977,7 +9051,11 @@
                 }
                 if (typeof onResult === 'function') onResult(res);
             },
-            onError: function (err) { if (typeof onResult === 'function') onResult({ error: true, status: err && err.status }); }
+            onError: function (err) {
+                var status = Number(err && err.status) || 0;
+                if (status === 404 || status === 410) _forgetActiveFeedbackReview(answerIndex);
+                if (typeof onResult === 'function') onResult({ error: true, status: status });
+            }
         });
         return true;
     }
@@ -9052,6 +9130,8 @@
             reviewId: String(res.reviewId || ''),
             reviewPath: String(res.reviewPath || ''),
             reviewRevision: Math.max(1, Number(res.reviewRevision) || 1),
+            status: String(res.status || 'quarantined'),
+            reviewStatus: String(res.reviewStatus || ''),
             expiresAt: res.expiresAt || null,
             savedAt: Date.now()
         };
@@ -9068,13 +9148,32 @@
         _ssSet(_ACTIVE_CONTRIBUTION_REVIEW_KEY, JSON.stringify(all));
     }
 
-    function _forgetActiveContributionReview(scope, answerIndex) {
-        var slot = _contributionReviewSlot(scope, answerIndex);
-        delete _activeContributionReviewMemory[slot];
-        if (!_persistEnabled()) return;
+    function _forgetActiveContributionReviewSlot(slot) {
+        var key = String(slot || '');
+        if (!key) return false;
         var all = _readActiveContributionReviews();
-        delete all[slot];
-        _ssSet(_ACTIVE_CONTRIBUTION_REVIEW_KEY, JSON.stringify(all));
+        var existed = Object.prototype.hasOwnProperty.call(all, key);
+        delete all[key];
+        delete _activeContributionReviewMemory[key];
+        try {
+            var stored = JSON.parse(_ssGet(_ACTIVE_CONTRIBUTION_REVIEW_KEY) || '{}');
+            if (stored && typeof stored === 'object' && !Array.isArray(stored)) {
+                delete stored[key];
+                _ssSet(_ACTIVE_CONTRIBUTION_REVIEW_KEY, JSON.stringify(stored));
+            }
+        } catch (_) {}
+        return existed;
+    }
+
+    function _forgetActiveContributionReview(scope, answerIndex) {
+        return _forgetActiveContributionReviewSlot(_contributionReviewSlot(scope, answerIndex));
+    }
+
+    function _forgetAllActiveContributionReviews() {
+        var count = Object.keys(_readActiveContributionReviews()).length;
+        _activeContributionReviewMemory = {};
+        try { _ssSet(_ACTIVE_CONTRIBUTION_REVIEW_KEY, '{}'); } catch (_) {}
+        return count;
     }
 
     /** Resolve the active dataset-contribution endpoint without UI ownership. */
@@ -25388,7 +25487,7 @@
                 manageActions.className = 'ai-assistant-panel-ep-io-row ai-assistant-panel-contribution-action-row';
                 var check = _feedbackWorkspaceButton('↻ Check status');
                 check.addEventListener('click', function () {
-                    _feedbackReviewStatus(review, function (res) {
+                    _feedbackReviewStatus(context.answerIndex, function (res) {
                         if (res && res.status) review.status = res.status;
                         if (res && res.reviewRevision) review.reviewRevision = res.reviewRevision;
                         _refreshFeedbackWorkspace();
@@ -25408,6 +25507,30 @@
             }
         }
 
+        function _armActivityForget(button, confirmText, onConfirm) {
+            var armed = false;
+            var timer = null;
+            var original = button.textContent;
+            button.addEventListener('click', function () {
+                if (!armed) {
+                    armed = true;
+                    button.textContent = confirmText;
+                    button.classList.add('ai-assistant-panel-ep-io-btn--confirm');
+                    if (timer) clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        armed = false;
+                        button.textContent = original;
+                        button.classList.remove('ai-assistant-panel-ep-io-btn--confirm');
+                    }, 4000);
+                    return;
+                }
+                armed = false;
+                if (timer) clearTimeout(timer);
+                button.classList.remove('ai-assistant-panel-ep-io-btn--confirm');
+                if (typeof onConfirm === 'function') onConfirm();
+            });
+        }
+
         function _activityCard(kind, item, slot) {
             var card = document.createElement('div');
             card.className = 'ai-assistant-panel-feedback-activity-card';
@@ -25424,7 +25547,7 @@
             manage.addEventListener('click', function () {
                 var prefix = _getConversationId() + '|';
                 if (String(slot).indexOf(prefix) !== 0) {
-                    showNotification('This receipt belongs to an earlier conversation in this tab. Use its saved management receipt or support reference if needed.', false);
+                    showNotification('This receipt belongs to an earlier conversation in this tab. Forget it here if you no longer need the private management capability, or use its separately saved receipt if management is still required.', false);
                     return;
                 }
                 var suffix = String(slot).slice(prefix.length);
@@ -25448,8 +25571,42 @@
                 _setWorkspaceTab('contribution');
             });
             actions.appendChild(manage);
+
+            var forget = _feedbackWorkspaceButton('Forget', '', 'danger');
+            forget.classList.add('ai-assistant-panel-feedback-activity-forget');
+            forget.setAttribute('aria-label', 'Forget tracked ' + String(kind || 'review').toLowerCase() + ' from this tab');
+            forget.title = 'Remove only this tab-local tracking receipt. This does not delete, close, merge, withdraw, or otherwise change the remote review or dataset record.';
+            _armActivityForget(forget, 'Confirm forget', function () {
+                if (kind === 'Feedback') _forgetActiveFeedbackReviewSlot(slot);
+                else _forgetActiveContributionReviewSlot(slot);
+                _refreshActivityWorkspace();
+                showNotification('Forgot the tab-local ' + (kind === 'Feedback' ? 'feedback review' : 'dataset contribution') + ' receipt. Remote data and provider review state were not changed.', false);
+            });
+            actions.appendChild(forget);
             card.appendChild(actions);
             return card;
+        }
+
+        function _attachActivityForgetAll(section, kind, count, onForgetAll) {
+            if (!section || !count) return;
+            var head = section.querySelector('.ai-assistant-panel-contribution-section-head');
+            if (!head) return;
+            var button = _feedbackWorkspaceButton('Forget all', '', 'danger');
+            button.classList.add('ai-assistant-panel-feedback-activity-forget-all');
+            button.setAttribute('aria-label', 'Forget all tracked ' + kind + ' from this tab');
+            button.title = 'Clear only the tab-local tracking ledger. Remote reviews, branches, dataset records, and training state are not changed.';
+            head.appendChild(button);
+            _armActivityForget(button, 'Confirm all', function () {
+                var removed = typeof onForgetAll === 'function' ? Number(onForgetAll()) || 0 : 0;
+                _refreshActivityWorkspace();
+                showNotification('Forgot ' + removed + ' tracked ' + kind + ' from this tab. No remote data was changed.', false);
+            });
+        }
+
+        function _activityNewestKeys(map) {
+            return Object.keys(map || {}).sort(function (a, b) {
+                return Number((map[b] && map[b].savedAt) || 0) - Number((map[a] && map[a].savedAt) || 0);
+            });
         }
 
         function _refreshActivityWorkspace() {
@@ -25459,18 +25616,20 @@
             activityPane.appendChild(wrap);
             var intro = document.createElement('p');
             intro.className = 'ai-assistant-panel-contribution-intro';
-            intro.textContent = 'Tab-local activity keeps feedback reviews and dataset contributions visibly separate. Provider merge/close state can be refreshed from each management view.';
+            intro.textContent = 'Tab-local activity remembers private management receipts only while they may still be useful. Forget removes local tracking only. Merged, closed, rejected, deleted, expired, withdrawn, or missing reviews are dropped automatically when their status is checked; no background status requests are made.';
             wrap.appendChild(intro);
-            var fbSec = _contributionSection('Feedback reviews', 'One Q&A per feedback lifecycle. Training-eligible only after explicit permission and maintainer merge.');
+            var fbSec = _contributionSection('Feedback reviews', 'One Q&A per active feedback lifecycle. Forgetting a receipt does not withdraw feedback or change the provider review.');
             wrap.appendChild(fbSec);
             var fbs = _readActiveFeedbackReviews();
-            var fbKeys = Object.keys(fbs);
+            var fbKeys = _activityNewestKeys(fbs);
+            _attachActivityForgetAll(fbSec, 'feedback reviews', fbKeys.length, _forgetAllActiveFeedbackReviews);
             if (!fbKeys.length) { var fbe = document.createElement('p'); fbe.className='ai-assistant-panel-ep-hint'; fbe.textContent='No active feedback reviews remembered in this tab.'; fbSec.appendChild(fbe); }
             fbKeys.forEach(function (key) { fbSec.appendChild(_activityCard('Feedback', fbs[key], key)); });
-            var cSec = _contributionSection('Dataset contributions', 'Only merged/authorized contribution records may become training-eligible.');
+            var cSec = _contributionSection('Dataset contributions', 'Only active/manageable contribution receipts stay tracked. Forgetting removes the private tab-local receipt only; it never deletes remote data.');
             wrap.appendChild(cSec);
             var cs = _readActiveContributionReviews();
-            var cKeys = Object.keys(cs);
+            var cKeys = _activityNewestKeys(cs);
+            _attachActivityForgetAll(cSec, 'dataset contributions', cKeys.length, _forgetAllActiveContributionReviews);
             if (!cKeys.length) { var ce = document.createElement('p'); ce.className='ai-assistant-panel-ep-hint'; ce.textContent='No active dataset contribution reviews remembered in this tab.'; cSec.appendChild(ce); }
             cKeys.forEach(function (key) { cSec.appendChild(_activityCard('Dataset contribution', cs[key], key)); });
         }
@@ -25864,14 +26023,22 @@
                         if (lifecycle && lifecycle.reviewId) res.reviewId = String(lifecycle.reviewId);
                         if (lifecycle && lifecycle.reviewPath) res.reviewPath = String(lifecycle.reviewPath);
                         res.reviewRevision = liveRevision;
-                        if (state === 'eligible') {
+                        if (state === 'eligible' || reviewState === 'merged') {
                             _forgetActiveContributionReview(selectedScope, context.answerIndex);
-                            text.textContent = 'Status: APPROVED · revision ' + liveRevision + ' merged into the canonical training-eligible branch.';
-                        } else if (state === 'quarantined' && lifecycle && lifecycle.reviewMode === 'provider-pr' && (reviewState === 'closed' || reviewState === 'rejected')) {
+                            text.textContent = 'Status: APPROVED · revision ' + liveRevision + ' merged into the canonical training-eligible branch. Local tracking was cleared because this review is no longer pending.';
+                        } else if (_reviewTrackingTerminal(state, reviewState)) {
                             _forgetActiveContributionReview(selectedScope, context.answerIndex);
-                            text.textContent = 'Status: NOT ACCEPTED · the repository review was closed without merge.';
+                            if (state === 'rejected' || state === 'closed' || reviewState === 'closed' || reviewState === 'rejected') {
+                                text.textContent = 'Status: NOT ACCEPTED · the repository review was closed without merge. Local tracking was cleared because no active review remains.';
+                            } else if (state === 'deleted' || state === 'withdrawn') {
+                                text.textContent = 'Status: ' + state.toUpperCase() + ' · local tracking cleared because no active review remains.';
+                            } else {
+                                text.textContent = 'Status: NOT ACTIVE · the repository review is expired, deleted, or otherwise no longer manageable. Local tracking was cleared.';
+                            }
                         } else if (state === 'quarantined' && lifecycle && lifecycle.reviewMode === 'provider-pr') {
                             res.reviewRevision = liveRevision;
+                            res.status = state;
+                            res.reviewStatus = reviewState;
                             _rememberActiveContributionReview(res, endpoint, selectedScope, context.answerIndex);
                             text.textContent = 'Status: IN REVIEW · revision ' + liveRevision + ' awaiting maintainer merge or close in the repository review UI.';
                         } else {
@@ -25881,9 +26048,14 @@
                     },
                     onError: function (err) {
                         check.disabled = false;
-                        text.textContent = err && err.status === 404
-                            ? 'No receipt exists at the configured service. If this came from an outcome-unknown recovery file, the original create did not persist or its lifecycle window ended.'
-                            : 'Contribution status could not be checked.';
+                        var status = Number(err && err.status) || 0;
+                        if (status === 404 || status === 410) {
+                            _forgetActiveContributionReview(selectedScope, context.answerIndex);
+                            _refresh(false);
+                            text.textContent = 'This contribution receipt or provider review is no longer available. Local tracking was cleared; no remote deletion was attempted.';
+                            return;
+                        }
+                        text.textContent = 'Contribution status could not be checked.';
                     }
                 });
             });
@@ -26145,11 +26317,17 @@
         if (chord) {
             shortcutRow('Minimize panel', chord.split('+').map(function (t) { return t.trim(); }));
         }
-        shortcutRow('Exit current menu or sheet', ['E']);
-        shortcutRow('Stop model response', ['Escape'], 'Available while a live model response is generating.');
+        shortcutRow('Exit current menu or sheet', ['Escape'],
+            'While a live response is generating, Escape stops that response first.');
         sectionTitle('Composer');
         shortcutRow('Send message', ['Enter']);
         shortcutRow('New line', ['Shift', 'Enter']);
+        if (cfg.panelSpeakBanner !== false && cfg.panelMicSpaceShortcut !== false) {
+            sectionTitle('Microphone');
+            shortcutRow('Hold to speak', ['Space'], 'Only while interaction is inside the assistant panel and no text field/menu/sheet owns Space.');
+            shortcutRow('Release to stop and transcribe', ['Space']);
+            shortcutRow('Stop microphone capture', ['Escape']);
+        }
 
         sheet.appendChild(body);
         return sheet;
@@ -28558,22 +28736,37 @@
      * @type {Array<Object>}
      */
     var _MENU_ITEMS = [
-        // Primary menu: frequent operational actions only.
+        // Primary menu: frequent operational actions only. Prefer the first
+        // letter of the visible label; when it collides, use the next obvious
+        // mnemonic from that same label. The whole visible menu (including the
+        // More disclosure) therefore has one unique, guessable key per row.
         { group: 'primary', section: 'config', icon: 'model',    label: 'Model Configuration',    key: 'M', hook: 'onModel' },
-        { group: 'primary', section: 'config', icon: 'endpoint', label: 'Endpoint Configuration', key: 'C', hook: 'onEndpoints' },
+        { group: 'primary', section: 'config', icon: 'endpoint', label: 'Endpoint Configuration', key: 'E', hook: 'onEndpoints' },
         { group: 'primary', section: 'conversation', icon: 'share', label: 'Share',               key: 'S', hook: 'onShare' },
-        { group: 'primary', section: 'conversation', icon: 'dataset', label: 'Contribute',          key: '',  hook: 'onContribute' },
+        { group: 'primary', section: 'conversation', icon: 'dataset', label: 'Contribute',         key: 'C', hook: 'onContribute' },
         { group: 'primary', section: 'conversation', icon: 'trash', label: 'Delete conversation', key: 'D', hook: 'onClear',
           danger: true,
           confirm: 'Clear this conversation? The transcript cannot be recovered.' },
 
+        // More begins with M, already owned by Model Configuration. O is the
+        // next strong mnemonic in “More”, so the disclosure is reachable too.
+        { group: 'disclosure', section: 'more', icon: 'more', label: 'More', key: 'O', hook: 'onMore' },
+
         // Secondary “More” disclosure: lower-frequency reference/help actions.
+        // Project Links uses L so Privacy can keep the stronger P mnemonic.
         { group: 'more', section: 'project', icon: 'github',     label: 'Project Links',            key: 'L', hook: 'onLinks' },
         { group: 'more', section: 'policy',  icon: 'errorAlert', label: 'Usage Policy',             key: 'U', hook: 'onUsagePolicy' },
         { group: 'more', section: 'policy',  icon: 'privacy',    label: 'Privacy & Responsibility', key: 'P', hook: 'onPrivacy' },
         { group: 'more', section: 'policy',  icon: 'terms',      label: 'Terms of Service',         key: 'T', hook: 'onTerms' },
         { group: 'more', section: 'help',    icon: 'keyboard',   label: 'Keyboard shortcuts',       key: 'K', hook: 'onKeyboardShortcuts' }
     ];
+
+    function _menuItemByHook(hook) {
+        for (var i = 0; i < _MENU_ITEMS.length; i++) {
+            if (_MENU_ITEMS[i].hook === hook) return _MENU_ITEMS[i];
+        }
+        return null;
+    }
 
     function _buildHamburgerMenu(hooks) {
         var pop = document.createElement('div');
@@ -28680,6 +28873,7 @@
         // “More” is an inline disclosure rather than a second floating menu.
         // This remains predictable for both left- and right-anchored hamburger
         // positions and cannot fall off-screen on narrow panels.
+        var moreSpec = _menuItemByHook('onMore');
         var moreBtn = document.createElement('button');
         moreBtn.type = 'button';
         moreBtn.className = 'ai-assistant-panel-hamburger-item ai-assistant-panel-hamburger-more-btn';
@@ -28687,7 +28881,14 @@
         moreBtn.setAttribute('aria-haspopup', 'menu');
         moreBtn.setAttribute('aria-expanded', 'false');
         moreBtn.setAttribute('aria-controls', 'ai-assistant-panel-hamburger-more');
-        moreBtn.setAttribute('aria-label', 'More menu');
+        moreBtn.dataset.accel = (moreSpec && moreSpec.key) || '';
+        if (moreSpec && moreSpec.key) {
+            moreBtn.setAttribute('aria-keyshortcuts', moreSpec.key);
+            moreBtn.setAttribute('aria-label',
+                moreSpec.label + ', shortcut ' + _shortcutSpokenList([moreSpec.key]));
+        } else {
+            moreBtn.setAttribute('aria-label', 'More menu');
+        }
 
         var moreIcon = document.createElement('span');
         moreIcon.className = 'ai-assistant-panel-hamburger-item-icon';
@@ -28695,14 +28896,20 @@
         moreIcon.textContent = '…';
         var moreLabel = document.createElement('span');
         moreLabel.className = 'ai-assistant-panel-hamburger-item-label';
-        moreLabel.textContent = 'More';
+        moreLabel.textContent = (moreSpec && moreSpec.label) || 'More';
+        var moreTail = document.createElement('span');
+        moreTail.className = 'ai-assistant-panel-hamburger-more-tail';
+        if (moreSpec && moreSpec.key) {
+            moreTail.appendChild(_createShortcutCaps([moreSpec.key]));
+        }
         var moreChevron = document.createElement('span');
         moreChevron.className = 'ai-assistant-panel-hamburger-more-chevron';
         moreChevron.setAttribute('aria-hidden', 'true');
         moreChevron.textContent = '›';
+        moreTail.appendChild(moreChevron);
         moreBtn.appendChild(moreIcon);
         moreBtn.appendChild(moreLabel);
-        moreBtn.appendChild(moreChevron);
+        moreBtn.appendChild(moreTail);
         pop.appendChild(moreBtn);
 
         var moreRegion = document.createElement('div');
@@ -28724,9 +28931,22 @@
                 if (firstMore) { try { firstMore.focus(); } catch (_) {} }
             }
         }
-        moreBtn.addEventListener('click', function () {
+        function activateMore() {
+            // A panel-wide mnemonic must never open an invisible submenu. If O
+            // is pressed while the hamburger itself is closed, reveal the
+            // shared popover first, preserving whichever left/right anchor was
+            // used most recently (left is the CSS/default fallback).
+            if (pop.getAttribute('data-open') !== 'true') {
+                pop.setAttribute('data-open', 'true');
+                setMoreOpen(true, true);
+                return;
+            }
             setMoreOpen(moreBtn.getAttribute('aria-expanded') !== 'true', true);
-        });
+        }
+        moreBtn.addEventListener('click', activateMore);
+        if (moreSpec && moreSpec.key) {
+            accelerators[moreSpec.key.toUpperCase()] = activateMore;
+        }
         moreBtn.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowRight') {
                 e.preventDefault();
@@ -28763,8 +28983,8 @@
             kbdRow.className = 'ai-assistant-panel-hamburger-kbd-row';
             kbdRow.setAttribute('role', 'menuitem');
             kbdRow.setAttribute('tabindex', '0');
-            kbdRow.setAttribute('aria-label', 'Minimize panel \u00b7 E: exit current menu or sheet \u00b7 Escape: stop model response while generating \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
-            kbdRow.title = 'Left-click: minimize  \u00b7  E: exit current menu or sheet  \u00b7  Esc: stop model response while generating  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
+            kbdRow.setAttribute('aria-label', 'Minimize panel \u00b7 Escape: exit current menu or sheet; while generating, stop the model response first \u00b7 Right-click: close \u00b7 Shift+Right-click: browser menu');
+            kbdRow.title = 'Left-click: minimize  \u00b7  Esc: exit current menu or sheet; stops a live response first  \u00b7  Right-click: close  \u00b7  Shift+Right-click: browser menu';
 
             var kbdIcon = document.createElement('span');
             kbdIcon.setAttribute('aria-hidden', 'true');
@@ -28781,9 +29001,9 @@
             var kbdExit = document.createElement('span');
             kbdExit.className = 'ai-assistant-panel-hamburger-kbd-exit';
             kbdExit.setAttribute('aria-hidden', 'true');
-            kbdExit.appendChild(_createShortcutCaps(['E']));
+            kbdExit.appendChild(_createShortcutCaps(['Escape']));
             kbdRow.appendChild(kbdExit);
-            kbdRow.setAttribute('aria-keyshortcuts', kbdHintLabel + ' E');
+            kbdRow.setAttribute('aria-keyshortcuts', kbdHintLabel + ' Escape');
 
             // Left-click: close hamburger menu then minimize panel.
             kbdRow.addEventListener('click', function () {
@@ -28812,12 +29032,11 @@
             pop.appendChild(kbdRow);
         }
 
-        // Exit is intentionally a normal single-letter accelerator like the
-        // menu rows, but it is a surface command rather than a menu destination.
-        // Endpoint Configuration uses C so E is unambiguous.
-        if (hooks && typeof hooks.onExit === 'function') {
-            accelerators.E = hooks.onExit;
-        }
+        // Escape is a surface command, not a bare-letter accelerator. Publish
+        // the same exit action separately so the panel-level Escape handler can
+        // stop a live response first and otherwise close the lightest open
+        // hamburger/sheet surface. This frees E for Endpoint Configuration.
+        pop._exit = (hooks && typeof hooks.onExit === 'function') ? hooks.onExit : null;
 
         // The accelerator map is published on the element rather than being
         // bound to a listener here.
@@ -29211,6 +29430,7 @@
         // Quick-suggestion chips are now built by _renderWelcome (shared with
         // clearConversation) so they are no longer constructed here.
         var speakBanner = cfg.panelSpeakBanner !== false;   // default true
+        var micSpaceShortcut = cfg.panelMicSpaceShortcut !== false; // default true
         var hasSpeech   = _speechSupported();
 
         // ── Outer panel ──────────────────────────────────────────────────────
@@ -29652,16 +29872,26 @@
             speakBannerEl.className = 'ai-assistant-panel-speak-banner';
             speakBannerEl.id = 'ai-assistant-panel-speak-banner';
             speakBannerEl.type = 'button';
-            speakBannerEl.setAttribute('aria-label', 'Speak with your assistant');
+            speakBannerEl.setAttribute('aria-label', 'Speak with your assistant. Hold Space to speak.');
+            if (micSpaceShortcut) speakBannerEl.setAttribute('aria-keyshortcuts', 'Space');
             speakBannerEl.innerHTML = ICONS.mic;   // ICONS constant — safe.
 
             var speakText = document.createElement('span');
             speakText.textContent = 'Speak with your assistant';
             speakBannerEl.appendChild(speakText);
+            if (micSpaceShortcut) {
+                var speakKbd = document.createElement('kbd');
+                speakKbd.className = 'ai-assistant-mic-shortcut-kbd';
+                speakKbd.setAttribute('aria-hidden', 'true');
+                speakKbd.textContent = 'Space';
+                speakBannerEl.appendChild(speakKbd);
+            }
 
+            // Banner and footer are two views of ONE recognition controller.
             speakBannerEl.addEventListener('click', function () {
                 _hapticFeedback([8]);
-                _bannerToggle();
+                _micRequiresHeldActivation = false;
+                _toggleSpeechRecognition();
             });
         }
 
@@ -29775,6 +30005,7 @@
             micBtnEl.setAttribute('aria-label', _micInitLabel);
             micBtnEl.setAttribute('title', _micInitLabel);
             micBtnEl.setAttribute('data-hold', _micHoldMode ? 'true' : 'false');
+            if (micSpaceShortcut) micBtnEl.setAttribute('aria-keyshortcuts', 'Space');
             micBtnEl.innerHTML = ICONS.mic;   // ICONS constant — safe.
 
             // Hold-to-record: pointerdown → start, pointerup/pointerleave → stop
@@ -29787,6 +30018,7 @@
                     micBtnEl.setPointerCapture(e.pointerId);
                 } catch (_) {}
                 if (!_isListening) {
+                    _micRequiresHeldActivation = true;
                     _toggleSpeechRecognition();
                 }
             });
@@ -29828,6 +30060,7 @@
             micBtnEl.addEventListener('click', function () {
                 if (!_micHoldMode) {
                     _hapticFeedback([8]);
+                    _micRequiresHeldActivation = false;
                     _toggleSpeechRecognition();
                 }
             });
@@ -30384,8 +30617,8 @@
                 } : null,
                 onLinks:     linksSheet  ? function () { _openSheet(linksSheet); }   : null,
                 onExit: function () {
-                    // E exits the lightest open AI surface first.  It is kept
-                    // separate from Escape so Escape can stop generation.
+                    // Escape exits the lightest open menu/sheet surface after the
+                    // panel-level handler has first offered it to live-response cancellation.
                     var exportMenuEl = exportDropdown &&
                         exportDropdown.querySelector('.ai-assistant-export-menu');
                     if (exportMenuEl && exportMenuEl.getAttribute('data-open') === 'true') {
@@ -30405,9 +30638,7 @@
                     });
                     if (openSheets.length > 0) {
                         openSheets.forEach(function (sheet) { _closeSheet(sheet); });
-                        return;
                     }
-                    closeAIPanel();
                 },
                 // Destructive, so the registry entry carries a confirm string;
                 // the menu enforces it for both click and accelerator.
@@ -30806,13 +31037,83 @@
         input.addEventListener('input', _updateSendBtnState);
 
         panel.addEventListener('keydown', function (e) {
-            // Escape is reserved for stopping a live model response.  It is
-            // deliberately NOT a panel/menu/sheet Exit shortcut; E owns Exit.
             if (e.key !== 'Escape') return;
-            if (!_stopActivePanelResponse()) return;
-            e.preventDefault();
-            e.stopPropagation();
+            if (e.defaultPrevented) return;
+
+            // Escape has one conventional priority order: active capture,
+            // model cancellation, then navigation. This prevents a lost keyup or
+            // focus change from leaving microphone capture running.
+            if (_isListening || _speechStartPending || _micSpaceHeld) {
+                _micSpaceHeld = false;
+                _micRequiresHeldActivation = false;
+                _stopSpeechRecognition();
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+            if (_stopActivePanelResponse()) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+            if (hamburgerMenuEl && typeof hamburgerMenuEl._exit === 'function') {
+                var hasMenu = hamburgerMenuEl.getAttribute('data-open') === 'true';
+                var hasSheet = _allPanelSheets().some(function (sheet) {
+                    return sheet.getAttribute('data-open') === 'true';
+                });
+                if (hasMenu || hasSheet) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hamburgerMenuEl._exit();
+                }
+            }
         });
+
+        // Hold-Space push-to-talk. Scoped to the assistant panel so ordinary
+        // page scrolling is untouched. Text entry, IME composition, menus/sheets,
+        // and ordinary controls keep their native Space semantics.
+        (function _bindMicSpacePushToTalk() {
+            if (!hasSpeech || !micSpaceShortcut) return;
+            function isMicButton(target) {
+                return target && (target.id === 'ai-assistant-panel-mic' || target.id === 'ai-assistant-panel-speak-banner');
+            }
+            function blockedSurfaceOpen() {
+                if (hamburgerMenuEl && hamburgerMenuEl.getAttribute('data-open') === 'true') return true;
+                return _allPanelSheets().some(function (sheet) { return sheet.getAttribute('data-open') === 'true'; });
+            }
+            panel.addEventListener('keydown', function (e) {
+                if (e.key !== ' ' && e.code !== 'Space') return;
+                if (e.defaultPrevented || e.repeat || e.altKey || e.ctrlKey || e.metaKey) return;
+                if (e.isComposing || e.keyCode === 229) return;
+                if (_isTextEntryTarget(e.target) === true) return;
+                if (!isMicButton(e.target) && e.target && /^(BUTTON|A|INPUT|SELECT|SUMMARY)$/.test(String(e.target.tagName || '').toUpperCase())) return;
+                if (!isMicButton(e.target) && blockedSurfaceOpen()) return;
+                e.preventDefault();
+                e.stopPropagation();
+                if (_micSpaceHeld) return;
+                _micSpaceHeld = true;
+                _micRequiresHeldActivation = true;
+                if (!_isListening && !_speechStartPending) _toggleSpeechRecognition();
+            });
+            panel.addEventListener('keyup', function (e) {
+                if (e.key !== ' ' && e.code !== 'Space') return;
+                if (!_micSpaceHeld) return;
+                e.preventDefault();
+                e.stopPropagation();
+                _micSpaceHeld = false;
+                _stopSpeechRecognition();
+            });
+            window.addEventListener('blur', function () {
+                if (!_micSpaceHeld) return;
+                _micSpaceHeld = false;
+                _stopSpeechRecognition();
+            });
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState !== 'hidden' || !_micSpaceHeld) return;
+                _micSpaceHeld = false;
+                _stopSpeechRecognition();
+            });
+        }());
 
         document.body.appendChild(panel);
 
@@ -31060,9 +31361,15 @@
         // Device list — populated asynchronously when popup is pinned open
         var devList = document.createElement('div');
         devList.className = 'ai-assistant-mic-device-list';
-        devList.setAttribute('role', 'group');
+        devList.setAttribute('role', 'radiogroup');
         devList.setAttribute('aria-label', 'Select microphone');
         devSection.appendChild(devList);
+
+        var devCapability = document.createElement('p');
+        devCapability.className = 'ai-assistant-mic-device-capability';
+        devCapability.id = 'ai-assistant-mic-device-capability';
+        devCapability.setAttribute('aria-live', 'polite');
+        devSection.appendChild(devCapability);
 
         popup.appendChild(devSection);
 
@@ -31845,8 +32152,8 @@
      *
      * Notes
      * -----
-     * Do NOT call this on recognition end/stop — the track must stay alive across
-     * hold-to-record presses to prevent browser permission re-prompts.
+     * Normal stop paths schedule this through _scheduleMicStreamRelease() so
+     * rapid successive recordings can reuse the same source briefly.
      */
     function _releaseMicPinTrack() {
         if (_micPinTrack) {
@@ -31864,8 +32171,7 @@
      *
      * Notes
      * -----
-     * Do NOT call this on recognition end/stop.  The stream must stay alive
-     * across hold-to-record presses to prevent permission re-prompts.
+     * Normal stop paths release this after the bounded grace interval.
      */
     function _releaseMicWarmStream() {
         if (_micWarmStream) {
@@ -31877,7 +32183,7 @@
     }
 
     /**
-     * Acquire (or reuse) the persistent warm MediaStream.
+     * Acquire (or briefly reuse) the active microphone MediaStream.
      *
      * If _micWarmStream already contains at least one live track the callback
      * is invoked synchronously and no new getUserMedia call is issued — this is
@@ -32041,38 +32347,81 @@
      */
     function _setMicDevice(deviceId) {
         var newId = (deviceId === 'default') ? '' : (deviceId || '');
-
-        // Only release existing tracks when the device actually changes.
-        // Re-selecting the same device must not interrupt a live warm stream.
         if (newId !== _micDeviceId) {
             _releaseMicPinTrack();
             _releaseMicWarmStream();
         }
-
         _micDeviceId = newId;
         try {
-            if (_micDeviceId) {
-                sessionStorage.setItem('ai-assistant-mic-device-id', _micDeviceId);
-            } else {
-                sessionStorage.removeItem('ai-assistant-mic-device-id');
-            }
+            if (_micDeviceId) sessionStorage.setItem('ai-assistant-mic-device-id', _micDeviceId);
+            else sessionStorage.removeItem('ai-assistant-mic-device-id');
         } catch (_) {}
         _syncMicDeviceUI();
     }
 
     /**
-     * Sync all .ai-assistant-mic-device-item aria-checked attributes to the
-     * current _micDeviceId.
-     *
-     * Decoupled from _setMicDevice so _refreshMicDeviceList can call it after
-     * re-rendering without triggering a redundant localStorage write cycle.
+     * Transactionally verify a requested microphone before committing it.
+     * A failed or disconnected device never silently changes the user's
+     * selected input and never falls back to another physical microphone.
      */
+    function _selectMicDevice(deviceId) {
+        if (_isListening || _speechStartPending) {
+            showNotification('Stop recording before changing microphones.', false);
+            return;
+        }
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            showNotification('Microphone device selection is not supported by this browser.', true);
+            return;
+        }
+        var requestedId = deviceId || 'default';
+        var generation = ++_micSelectionGeneration;
+        navigator.mediaDevices.getUserMedia(_micConstraintsForDevice(requestedId))
+            .then(function (stream) {
+                if (generation !== _micSelectionGeneration) {
+                    try { stream.getTracks().forEach(function (t) { t.stop(); }); } catch (_) {}
+                    return;
+                }
+                var tracks = stream.getAudioTracks ? stream.getAudioTracks() : [];
+                var track = tracks && tracks.length ? tracks[0] : null;
+                if (!track || track.readyState !== 'live') throw new Error('No live microphone track returned');
+                try { stream.getTracks().forEach(function (t) { t.stop(); }); } catch (_) {}
+                _setMicDevice(requestedId);
+                showNotification('Microphone selected.', false);
+                var listEl = document.querySelector('.ai-assistant-mic-device-list');
+                if (listEl) _refreshMicDeviceList(listEl);
+            })
+            .catch(function (err) {
+                _log('warn', 'AI Assistant: microphone selection failed:', err);
+                showNotification('That microphone is unavailable. Your previous selection was kept.', true);
+                _syncMicDeviceUI();
+            });
+    }
+
     function _syncMicDeviceUI() {
         var items = document.querySelectorAll('.ai-assistant-mic-device-item');
         var effectiveId = _micDeviceId || 'default';
+        var activeFound = false;
         for (var i = 0; i < items.length; i++) {
             var active = items[i].getAttribute('data-device-id') === effectiveId;
+            if (active) activeFound = true;
             items[i].setAttribute('aria-checked', active ? 'true' : 'false');
+            items[i].setAttribute('tabindex', active ? '0' : '-1');
+        }
+        // A remembered device can disappear after hot-unplug. Preserve that
+        // selection (do not silently choose a replacement), but leave one
+        // keyboard entry point so the user can choose a new microphone.
+        if (!activeFound && items.length) items[0].setAttribute('tabindex', '0');
+        var cap = document.getElementById('ai-assistant-mic-device-capability');
+        if (cap) {
+            if (_micDeviceId && !activeFound) {
+                cap.textContent = 'Selected microphone is unavailable; capture will not start until it is reconnected or another input is selected.';
+            } else if (!_micDeviceId) {
+                cap.textContent = 'Speech recognition uses the system-default input.';
+            } else if (_micTrackInputSupported()) {
+                cap.textContent = 'Selected input will be passed directly to speech recognition.';
+            } else {
+                cap.textContent = 'Selected input is verified for capture; this browser may still use its system-default input for speech recognition.';
+            }
         }
     }
 
@@ -32126,6 +32475,9 @@
             + '<line x1="5.5" y1="5.5" x2="10.5" y2="10.5"/>'
             + '</svg>';
 
+        var allowBtn = bar.querySelector('.ai-assistant-mic-perm-allow');
+        if (allowBtn) allowBtn.style.display = (permState === 'prompt') ? '' : 'none';
+
         if (permState === 'granted') {
             iconEl.innerHTML = SVG_CHECK;
             textEl.textContent = 'Microphone permitted';
@@ -32144,7 +32496,7 @@
                 bar.setAttribute('data-permission', 'granted');
             } else {
                 iconEl.innerHTML = SVG_INFO;
-                textEl.textContent = 'Click the mic icon in your address bar to allow';
+                textEl.textContent = 'Allow microphone to view and verify available devices';
             }
         }
 
@@ -32603,6 +32955,25 @@
 
         statusRow.appendChild(iconEl);
         statusRow.appendChild(textEl);
+        var allowBtn = document.createElement('button');
+        allowBtn.type = 'button';
+        allowBtn.className = 'ai-assistant-mic-perm-allow';
+        allowBtn.textContent = 'Allow';
+        allowBtn.setAttribute('aria-label', 'Allow microphone and show available devices');
+        allowBtn.addEventListener('click', function () {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+            allowBtn.disabled = true;
+            navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+                try { stream.getTracks().forEach(function (t) { t.stop(); }); } catch (_) {}
+                var listEl = document.querySelector('.ai-assistant-mic-device-list');
+                if (listEl) _refreshMicDeviceList(listEl);
+            }).catch(function () {
+                showNotification('Microphone permission was not granted.', true);
+                var listEl = document.querySelector('.ai-assistant-mic-device-list');
+                if (listEl) _refreshMicDeviceList(listEl);
+            }).finally(function () { allowBtn.disabled = false; });
+        });
+        statusRow.appendChild(allowBtn);
         bar.appendChild(statusRow);
 
         // ── Localhost / file:// warning ──────────────────────────────────────
@@ -32805,203 +33176,126 @@
      *   innerHTML clear with a generation counter guard.
      */
     function _refreshMicDeviceList(listEl) {
-        // Show loading state immediately (synchronous)
         listEl.innerHTML = '';
         var loader = document.createElement('div');
         loader.className = 'ai-assistant-mic-devices-loading';
         loader.textContent = 'Loading\u2026';
         listEl.appendChild(loader);
 
-        // Proactively acquire the warm stream before enumerating.
-        //
-        // Browsers only populate real device labels and non-empty deviceIds in
-        // enumerateDevices() AFTER the user has granted microphone permission.
-        // Without a prior getUserMedia call the list shows only placeholder
-        // "Microphone N" labels with deviceId === '' — which this function
-        // filters out, leaving only "Default microphone".
-        //
-        // By calling _acquireMicWarmStream first we:
-        //   (a) trigger the one-time permission dialog (if not yet granted),
-        //   (b) ensure enumerateDevices returns all real devices with labels, and
-        //   (c) establish the warm stream that prevents re-prompting on recording.
-        //
-        // On failure (permission denied, no mediaDevices) we fall through to
-        // _enumMicDevices which handles denied/unsupported states correctly.
-        function doRefresh() {
-            _enumMicDevices(function (devices, permState) {
-                listEl.innerHTML = '';
-
-                // Determine whether labels are real OS names (permission was granted)
-                var hasRealLabels = devices.some(function (d) {
-                    return d.label && !(/^Microphone \d+$/.test(d.label));
-                });
-
-                // Update permission bar — always, regardless of device count
-                _updateMicPermissionBar(permState, hasRealLabels || permState === 'granted');
-
-                // ── Device list assembly ────────────────────────────────────
-                //
-                // Strategy:
-                //   1. "default" entry (deviceId='default') — the OS/browser system
-                //      default.  Chrome/Edge return this with a label like
-                //      "Default – Microphone (Device Name)".  We use the real label
-                //      when available; fall back to "System Default".
-                //   2. "communications" entry (deviceId='communications') — Windows
-                //      Communications Audio Device (separate from the default).
-                //      Included when present; labelled "Communications Device" if
-                //      the browser withholds its name before permission is granted.
-                //   3. All other real audioinput devices — physical mics, loopback
-                //      monitors, virtual cables, Bluetooth headsets, etc.
-                //   4. Phantom entries (deviceId='', label='') — browser is hiding
-                //      device identity before permission.  Excluded; only the
-                //      synthetic "System Default" entry is shown in this state.
-                //
-                // This guarantees at least one selectable entry (System Default)
-                // even before permission is granted, and surfaces every available
-                // input once permission is given.
-
-                // Separate the browser-provided special entries from real devices
-                var browserDefault = null;
-                var browserComms   = null;
-                var real           = [];
-
-                devices.forEach(function (d) {
-                    if (d.deviceId === 'default') {
-                        browserDefault = d;
-                    } else if (d.deviceId === 'communications') {
-                        browserComms = d;
-                    } else if (d.deviceId !== '') {
-                        // Real device with a unique ID — include regardless of label
-                        real.push(d);
-                    }
-                    // deviceId === '' with label === '' → pre-permission phantom, skip
-                });
-
-                // Build ordered list
-                var all = [];
-
-                // 1. System Default — always first
-                all.push({
-                    deviceId: 'default',
-                    label: (browserDefault && browserDefault.label)
-                        ? browserDefault.label
-                        : 'System Default',
-                    subtitle: 'System default'
-                });
-
-                // 2. Communications device (Windows)
-                if (browserComms) {
-                    all.push({
-                        deviceId: 'communications',
-                        label: browserComms.label || 'Communications Device',
-                        subtitle: 'Communications'
-                    });
-                }
-
-                // 3. Physical, loopback, and virtual devices — with category subtitle
-                real.forEach(function (d) {
-                    all.push({
-                        deviceId: d.deviceId,
-                        label:    d.label,
-                        subtitle: _categorizeMicDevice(d.label)
-                    });
-                });
-
-                // Show contextual empty message for denied or no-hardware cases
-                if (permState === 'denied') {
-                    var deniedEl = document.createElement('div');
-                    deniedEl.className = 'ai-assistant-mic-devices-empty';
-                    deniedEl.textContent = 'Microphone blocked \u2014 see instructions above.';
-                    listEl.appendChild(deniedEl);
-                    return;   // do not render device rows when access is blocked
-                }
-
-                if (real.length === 0 && !browserComms) {
-                    var emptyEl = document.createElement('div');
-                    emptyEl.className = 'ai-assistant-mic-devices-empty';
-                    emptyEl.textContent = (permState === 'prompt' && !hasRealLabels)
-                        ? 'Allow microphone to see all available devices'
-                        : 'No microphones found';
-                    listEl.appendChild(emptyEl);
-                    // Fall through — still render the System Default entry
-                }
-
-                all.forEach(function (dev) {
-                    var item = document.createElement('div');
-                    item.className = 'ai-assistant-mic-device-item';
-                    item.setAttribute('role', 'menuitemradio');
-                    item.setAttribute('tabindex', '0');
-                    item.setAttribute('data-device-id', dev.deviceId);
-
-                    var effectiveId = _micDeviceId || 'default';
-                    item.setAttribute('aria-checked', (dev.deviceId === effectiveId) ? 'true' : 'false');
-
-                    // Label + subtitle wrapper
-                    var labelWrap = document.createElement('span');
-                    labelWrap.className = 'ai-assistant-mic-device-label-wrap';
-
-                    var nameSpan = document.createElement('span');
-                    nameSpan.className = 'ai-assistant-mic-device-name';
-                    nameSpan.textContent = dev.label;
-                    nameSpan.title = dev.label;
-                    labelWrap.appendChild(nameSpan);
-
-                    // Subtitle (device category) — omitted when empty
-                    if (dev.subtitle) {
-                        var subSpan = document.createElement('span');
-                        subSpan.className = 'ai-assistant-mic-device-subtitle';
-                        subSpan.textContent = dev.subtitle;
-                        subSpan.setAttribute('aria-hidden', 'true');
-                        labelWrap.appendChild(subSpan);
-                    }
-
-                    // Checkmark (CSS opacity: 0 → 1 on aria-checked="true")
-                    var checkSpan = document.createElement('span');
-                    checkSpan.className = 'ai-assistant-mic-device-check';
-                    checkSpan.setAttribute('aria-hidden', 'true');
-                    checkSpan.innerHTML =
-                        '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
-                        + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
-                        + '<polyline points="3 8 7 12 13 5"/>'
-                        + '</svg>';
-
-                    item.appendChild(labelWrap);
-                    item.appendChild(checkSpan);
-
-                    // Click + keyboard activation (IIFE captures stable devId)
-                    (function (devId) {
-                        item.addEventListener('click', function () {
-                            _setMicDevice(devId);
-                        });
-                        item.addEventListener('keydown', function (e) {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                _setMicDevice(devId);
-                            } else if (e.key === 'ArrowDown') {
-                                e.preventDefault();
-                                var next = item.nextElementSibling;
-                                if (next) { next.focus(); }
-                            } else if (e.key === 'ArrowUp') {
-                                e.preventDefault();
-                                var prev = item.previousElementSibling;
-                                if (prev) { prev.focus(); }
-                            }
-                        });
-                    }(dev.deviceId));
-
-                    listEl.appendChild(item);
-                });
+        // Opening/pinning the popup enumerates only; it never calls getUserMedia.
+        _enumMicDevices(function (devices, permState) {
+            listEl.innerHTML = '';
+            var hasRealLabels = devices.some(function (d) {
+                return d.label && !(/^Microphone \d+$/.test(d.label));
             });
-        }
+            _updateMicPermissionBar(permState, hasRealLabels || permState === 'granted');
 
-        // Acquire the warm stream first to ensure real labels are available.
-        // If acquisition fails (denied / no API) doRefresh still runs — the
-        // _enumMicDevices callback will surface the appropriate denied/empty state.
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            _acquireMicWarmStream(function () { doRefresh(); });
-        } else {
-            doRefresh();
-        }
+            var browserDefault = null;
+            var browserComms = null;
+            var real = [];
+            devices.forEach(function (d) {
+                if (d.deviceId === 'default') browserDefault = d;
+                else if (d.deviceId === 'communications') browserComms = d;
+                else if (d.deviceId !== '') real.push(d);
+            });
+            var all = [{
+                deviceId: 'default',
+                label: (browserDefault && browserDefault.label) ? browserDefault.label : 'System Default',
+                subtitle: 'System default'
+            }];
+            if (browserComms) all.push({
+                deviceId: 'communications',
+                label: browserComms.label || 'Communications Device',
+                subtitle: 'Communications'
+            });
+            real.forEach(function (d) {
+                all.push({ deviceId: d.deviceId, label: d.label, subtitle: _categorizeMicDevice(d.label) });
+            });
+
+            var effectiveId = _micDeviceId || 'default';
+            var selectedExists = all.some(function (d) { return d.deviceId === effectiveId; });
+            if (!selectedExists && effectiveId !== 'default') {
+                var gone = document.createElement('div');
+                gone.className = 'ai-assistant-mic-devices-empty ai-assistant-mic-device-unavailable';
+                gone.setAttribute('role', 'status');
+                gone.textContent = 'Selected microphone is unavailable. Reconnect it or choose another microphone.';
+                listEl.appendChild(gone);
+            }
+            if (permState === 'denied') {
+                var deniedEl = document.createElement('div');
+                deniedEl.className = 'ai-assistant-mic-devices-empty';
+                deniedEl.textContent = 'Microphone blocked \u2014 see instructions above.';
+                listEl.appendChild(deniedEl);
+                _syncMicDeviceUI();
+                return;
+            }
+            if (real.length === 0 && !browserComms && permState === 'prompt' && !hasRealLabels) {
+                var emptyEl = document.createElement('div');
+                emptyEl.className = 'ai-assistant-mic-devices-empty';
+                emptyEl.textContent = 'Permission is required to reveal all microphone devices.';
+                listEl.appendChild(emptyEl);
+            }
+
+            function appendGroupLabel(text) {
+                var groupLabel = document.createElement('div');
+                groupLabel.className = 'ai-assistant-mic-device-group-label';
+                groupLabel.setAttribute('role', 'presentation');
+                groupLabel.textContent = text;
+                listEl.appendChild(groupLabel);
+            }
+            appendGroupLabel('System routing');
+            all.forEach(function (dev, itemIndex) {
+                if (itemIndex > 0 && dev.deviceId !== 'communications' && all[itemIndex - 1].deviceId === 'communications') {
+                    appendGroupLabel('Devices');
+                } else if (itemIndex > 0 && dev.deviceId !== 'communications' && all[itemIndex - 1].deviceId === 'default') {
+                    appendGroupLabel('Devices');
+                }
+                var item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'ai-assistant-mic-device-item';
+                item.setAttribute('role', 'radio');
+                item.setAttribute('data-device-id', dev.deviceId);
+                item.setAttribute('aria-checked', dev.deviceId === effectiveId ? 'true' : 'false');
+                item.setAttribute('tabindex', dev.deviceId === effectiveId ? '0' : '-1');
+
+                var labelWrap = document.createElement('span');
+                labelWrap.className = 'ai-assistant-mic-device-label-wrap';
+                var nameSpan = document.createElement('span');
+                nameSpan.className = 'ai-assistant-mic-device-name';
+                nameSpan.textContent = dev.label;
+                nameSpan.title = dev.label;
+                labelWrap.appendChild(nameSpan);
+                if (dev.subtitle) {
+                    var subSpan = document.createElement('span');
+                    subSpan.className = 'ai-assistant-mic-device-subtitle';
+                    subSpan.textContent = dev.subtitle;
+                    labelWrap.appendChild(subSpan);
+                }
+                var checkSpan = document.createElement('span');
+                checkSpan.className = 'ai-assistant-mic-device-check';
+                checkSpan.setAttribute('aria-hidden', 'true');
+                checkSpan.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 5"/></svg>';
+                item.appendChild(labelWrap);
+                item.appendChild(checkSpan);
+                item.addEventListener('click', function () { _selectMicDevice(dev.deviceId); });
+                item.addEventListener('keydown', function (e) {
+                    var items = Array.prototype.slice.call(listEl.querySelectorAll('.ai-assistant-mic-device-item'));
+                    var pos = items.indexOf(item);
+                    var target = null;
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') target = items[(pos + 1) % items.length];
+                    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') target = items[(pos - 1 + items.length) % items.length];
+                    else if (e.key === 'Home') target = items[0];
+                    else if (e.key === 'End') target = items[items.length - 1];
+                    if (target) {
+                        e.preventDefault();
+                        target.focus();
+                        _selectMicDevice(target.getAttribute('data-device-id'));
+                    }
+                });
+                listEl.appendChild(item);
+            });
+            _syncMicDeviceUI();
+        });
     }
 
     // ── Speech recognition──────────────────────────────────────────────────── ────────────────────────────────────────────────────
@@ -33129,7 +33423,7 @@
 
             _speechRecognition.onstart = function () {
                 _speechStartPending = false;
-                if (_micHoldMode && !_micPointerHeld) {
+                if (_micRequiresHeldActivation && !(_micPointerHeld || _micSpaceHeld)) {
                     _speechStartPending = false;
                     _pendingSpeechStart = false;
                     _stopSpeechRecognition();
@@ -33243,9 +33537,9 @@
                 }
             };
 
-            // NOTE: Do NOT release _micPinTrack or _micWarmStream here.
-            // Both streams must survive across recognition sessions so the browser
-            // never re-prompts on the next hold-to-record press.
+            // Source tracks are released shortly after onend/onerror. Keeping the
+            // recognition instance itself stable avoids needless engine churn while
+            // live hardware capture remains bounded.
             //
             // IMPORTANT: Do NOT null _speechRecognition here.  Keeping the same
             // instance alive is the mechanism that prevents Chrome from opening a
@@ -33268,14 +33562,16 @@
                 _isListening = false;
 
                 _setMicActiveState(false);
+                _scheduleMicStreamRelease();
 
                 // Only restart if user is STILL holding
                 if (
                     _pendingSpeechStart &&
                     !_recognitionFlushing &&
                     (
-                        !_micHoldMode ||
-                        _micPointerHeld
+                        !_micRequiresHeldActivation ||
+                        _micPointerHeld ||
+                        _micSpaceHeld
                     )
                 ) {
 
@@ -33297,13 +33593,15 @@
                 _isListening = false;
 
                 _setMicActiveState(false);
+                _scheduleMicStreamRelease();
 
                 if (
                     _pendingSpeechStart &&
                     e.error !== 'aborted' &&
                     (
-                        !_micHoldMode ||
-                        _micPointerHeld
+                        !_micRequiresHeldActivation ||
+                        _micPointerHeld ||
+                        _micSpaceHeld
                     )
                 ) {
 
@@ -33333,28 +33631,18 @@
 
         // ── Device pin / warm-stream: guarantee mic permission is held ─────────
         //
-        // The Web Speech API has no direct device-selection parameter.
-        //
-        // Strategy A (specific device selected):
-        //   Acquire a getUserMedia pin track for the chosen device BEFORE calling
-        //   .start().  The browser reuses the active track for the recognition
-        //   session.  The track is kept alive across hold presses (readyState
-        //   check) so getUserMedia is called at most once per device per page load.
-        //
-        // Strategy B (browser default):
-        //   Acquire (or reuse) the persistent warm stream via _acquireMicWarmStream.
-        //   This holds the permission open so .start() never re-prompts, regardless
-        //   of how many times the user presses and releases the hold button.
-        //
-        // In both cases the streams survive recognition end/error — they are only
-        // released when the user changes the selected device in _setMicDevice.
+        // Specific-device capture always uses exact getUserMedia constraints.
+        // Where the browser exposes SpeechRecognition.start(audioTrack), the
+        // verified live track is passed directly. Older implementations fall back
+        // to start() and the UI states that speech recognition may use the browser
+        // system default. Live capture is released shortly after each recording.
 
         function _doStart() {
             if (_speechStartPending) {
                 return;
             }
             // User already released button while startup was pending
-            if (_micHoldMode && !_micPointerHeld) {
+            if (_micRequiresHeldActivation && !(_micPointerHeld || _micSpaceHeld)) {
                 _pendingSpeechStart = false;
                 return;
             }
@@ -33369,7 +33657,13 @@
             try {
                 _speechRecognitionEnded = false;
                 _speechStartPending = true;
-                _speechRecognition.start();
+                clearTimeout(_micReleaseTimer);
+                _micReleaseTimer = null;
+                if (_micPinTrack && _micPinTrack.readyState === 'live' && _micTrackInputSupported()) {
+                    _speechRecognition.start(_micPinTrack);
+                } else {
+                    _speechRecognition.start();
+                }
 
             } catch (err) {
 
@@ -33386,6 +33680,7 @@
                     'Could not start microphone. Check browser permissions.',
                     true
                 );
+                _scheduleMicStreamRelease();
             }
         }
 
@@ -33403,20 +33698,44 @@
             }).then(function (stream) {
                 var tracks = stream.getAudioTracks();
                 _micPinTrack = tracks.length ? tracks[0] : null;
+                if (_micPinTrack && typeof _micPinTrack.addEventListener === 'function') {
+                    _micPinTrack.addEventListener('ended', function () {
+                        if (!_isListening && !_speechStartPending) return;
+                        _stopSpeechRecognition();
+                        showNotification('The selected microphone disconnected. Choose another microphone or reconnect it.', true);
+                    }, { once: true });
+                }
                 // Keep the full stream as the warm stream so _acquireMicWarmStream
                 // can reuse it and avoid a redundant getUserMedia call.
                 _micWarmStream = stream;
                 _doStart();
             }).catch(function (err) {
-                // Device unavailable (disconnected, permission denied) — fall back
-                // to the browser default silently so recording still works.
-                _log('warn', 'AI Assistant: Device pin failed, using browser default:', err);
+                _log('warn', 'AI Assistant: selected microphone is unavailable:', err);
                 _micPinTrack = null;
-                _acquireMicWarmStream(function () { _doStart(); });
+                _isListening = false;
+                _setMicActiveState(false);
+                showNotification('Selected microphone is unavailable. Choose another microphone or reconnect it.', true);
             });
         } else {
-            // Strategy B: browser default — ensure warm stream is live then start.
-            _acquireMicWarmStream(function () { _doStart(); });
+            // System default: acquire explicitly on the user's recording action.
+            _acquireMicWarmStream(function (stream) {
+                if (!stream) {
+                    _isListening = false;
+                    _setMicActiveState(false);
+                    showNotification('Could not access the system-default microphone.', true);
+                    return;
+                }
+                var tracks = stream.getAudioTracks ? stream.getAudioTracks() : [];
+                _micPinTrack = tracks.length ? tracks[0] : null;
+                if (_micPinTrack && typeof _micPinTrack.addEventListener === 'function') {
+                    _micPinTrack.addEventListener('ended', function () {
+                        if (!_isListening && !_speechStartPending) return;
+                        _stopSpeechRecognition();
+                        showNotification('Microphone capture ended. Start again when an input is available.', true);
+                    }, { once: true });
+                }
+                _doStart();
+            });
         }
     }
 
@@ -33454,16 +33773,16 @@
         if (_speechRecognition && _isListening) {
             try { _speechRecognition.stop(); } catch (_) {}
         }
-        // NOTE: _micPinTrack and _micWarmStream are intentionally NOT released here.
-        // Keeping them alive means the browser retains the permission grant between
-        // hold-to-record presses so it never re-prompts.  Tracks are released only
-        // when the selected device changes (see _setMicDevice).
+        // Live hardware is released by the bounded grace timer rather than kept
+        // open for the entire page session.
         _isListening = false;
         _setMicActiveState(false);
+        _scheduleMicStreamRelease();
     }
 
 
-    // ── Banner-only independent speech recognition engine ─────────────────────
+    // ── Legacy banner-only recognition engine ─────────────────────────────────
+    // The visible banner now routes through the shared microphone controller.
     //
     // Purpose
     // ───────
@@ -34637,14 +34956,18 @@
         var bannerBtn = document.getElementById('ai-assistant-panel-speak-banner');
         if (micBtn) {
             micBtn.classList.toggle('recording', active);
+            var shortcutHint = (_cfg().panelMicSpaceShortcut !== false) ? ' Hold Space to speak.' : '';
             var activeLabel = active
                 ? 'Stop recording'
-                : (_micHoldMode ? 'Press and hold to record' : 'Speak your question');
+                : ((_micHoldMode ? 'Press and hold to record.' : 'Speak your question.') + shortcutHint);
             micBtn.setAttribute('aria-label', activeLabel);
             micBtn.setAttribute('title',      activeLabel);
         }
         if (bannerBtn) {
             bannerBtn.classList.toggle('recording', active);
+            bannerBtn.setAttribute('aria-label', active ? 'Listening. Release Space or activate to stop.' : 'Speak with your assistant. Hold Space to speak.');
+            var bannerText = bannerBtn.querySelector('span');
+            if (bannerText) bannerText.textContent = active ? 'Listening…' : 'Speak with your assistant';
         }
 
         // Drive voice-level bars colour via data attribute.
