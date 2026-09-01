@@ -1005,6 +1005,20 @@
             : 'Local only — no network telemetry. Ratings stay in this browser unless you explicitly contribute content.';
     }
 
+
+    function _feedbackTelemetryServerStateText() {
+        return _feedbackReviewServerInfo === null
+            ? 'Server persistence: unknown until service discovery completes.'
+            : ('Server persistence: ' + (_feedbackReviewServerInfo.telemetryPersistEnabled ? 'On' : 'Off') +
+                (_feedbackReviewServerInfo.telemetryCompatible ? ' · contract compatible' : ' · contract incompatible/unknown'));
+    }
+
+    function _feedbackReviewServerStateText() {
+        return _feedbackReviewServerInfo === null
+            ? 'Service readiness: unknown until discovery completes.'
+            : ('Service readiness: ' + (_feedbackReviewServerInfo.ready ? 'Ready' : 'Not ready') + ' · ' + (_feedbackReviewServerInfo.mode || 'disabled'));
+    }
+
     // Content-bearing maintainer feedback is a separate authority from rating
     // telemetry.  Enabling telemetry never enables this permission and vice
     // versa.  The review permission authorizes one Q&A + rating + optional
@@ -15814,62 +15828,16 @@
         // Share-link mode is configured in the Share sheet. Keeping it out
         // of Endpoint Configuration avoids two visible controls for one state.
 
-        // ── C: Feedback Configuration ─────────────────────────────────────
-        var fbkSub = _buildExtSub('Feedback telemetry');
-
-        var fbkIntro = document.createElement('p');
-        fbkIntro.className = 'ai-assistant-panel-ep-hint';
-        fbkIntro.textContent =
-            'The rating buttons always work locally with zero network telemetry. Network rating telemetry is OFF by default and requires an explicit, versioned permission stored in this browser. ' +
-            'If enabled, only the rating value/mode and bounded event metadata are sent; ' +
-            'your question, the AI answer, optional note, model, page URL and conversation identifier stay local. ' +
-            'Turning telemetry off stops future sends but does not claim erasure of previously accepted remote telemetry. ' +
-            'Dataset contribution is a separate explicit-consent action and is never implied by this telemetry toggle.';
-        fbkSub.appendChild(fbkIntro);
-
-        // THE missing DOM element — _setFeedbackPersistMode() targets this id.
-        var persistToggle = _buildExtToggleRow(
-            'Send anonymous rating telemetry',
-            'Opt in to sending privacy-minimal rating mechanics to the configured feedback endpoint. ' +
-            'This permission is remembered in this browser only for the current telemetry-consent version; stale or malformed stored state fails closed to Off. ' +
-            'Question text, answer text, written notes, model identity, page URL and conversation identifiers are excluded from telemetry. ' +
-            'Server persistence is independently controlled by the operator and cannot be enabled by this browser toggle.',
-            _feedbackPersistEnabled,
-            'ai-assistant-feedback-persist-toggle'
-        );
-        persistToggle.pill.setAttribute('aria-label', 'Send anonymous rating telemetry');
-        persistToggle.pill.setAttribute('data-feedback-telemetry-toggle', 'true');
-        persistToggle.pill.addEventListener('click', function () {
-            _setFeedbackPersistMode(!_feedbackPersistEnabled);
-            // aria-checked is synced inside _setFeedbackPersistMode
-        });
-        fbkSub.appendChild(persistToggle.row);
-
-        var telemetryStatus = document.createElement('p');
-        telemetryStatus.id = 'ai-assistant-feedback-telemetry-status';
-        telemetryStatus.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-status';
-        telemetryStatus.setAttribute('data-feedback-telemetry-status', 'true');
-        telemetryStatus.textContent = _feedbackTelemetryStatusText();
-        fbkSub.appendChild(telemetryStatus);
-
-        var reviewToggle = _buildExtToggleRow(
-            'Share feedback for review & model improvement',
-            'Separate from anonymous telemetry and whole-conversation contribution. A merge approves this single Q&A + normalized quality signal for training. When enabled, a quick rating or saved detailed feedback may create or update one provider-native review containing exactly this Q&A, the rating, and the optional written note. Repeated unchanged feedback is a no-op; changed feedback updates the same review. Only a maintainer merge can make the explicitly consented reviewed Q&A training-eligible.',
-            _feedbackReviewEnabled,
-            null
-        );
-        reviewToggle.pill.setAttribute('data-feedback-review-toggle', 'true');
-        reviewToggle.pill.setAttribute('aria-label', 'Share feedback for review & model improvement');
-        reviewToggle.pill.addEventListener('click', function () {
-            _setFeedbackReviewMode(!_feedbackReviewEnabled);
-        });
-        fbkSub.appendChild(reviewToggle.row);
-
-        var reviewStatus = document.createElement('p');
-        reviewStatus.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-review-status';
-        reviewStatus.setAttribute('data-feedback-review-status', 'true');
-        reviewStatus.textContent = _feedbackReviewStatusText();
-        fbkSub.appendChild(reviewStatus);
+        // ── C: Page integration ────────────────────────────────────────────
+        // Feedback telemetry/review permissions intentionally live only in the
+        // Feedback workspace. Endpoint Configuration owns transport/runtime
+        // integration settings, not duplicate feedback consent controls.
+        var integrationSub = _buildExtSub('Page integration events');
+        var integrationIntro = document.createElement('p');
+        integrationIntro.className = 'ai-assistant-panel-ep-hint';
+        integrationIntro.textContent =
+            'Feedback privacy and maintainer-review permissions are managed in the Feedback workspace so one setting has one visible owner. This section only controls optional same-origin page integration events.';
+        integrationSub.appendChild(integrationIntro);
 
         var domToggle = _buildExtToggleRow(
             'Allow page integration events',
@@ -15881,18 +15849,18 @@
         domToggle.pill.addEventListener('click', function () {
             _setFeedbackDomIntegrationMode(!_feedbackDomIntegrationEnabled);
         });
-        fbkSub.appendChild(domToggle.row);
+        integrationSub.appendChild(domToggle.row);
         var domStatus = document.createElement('p');
         domStatus.id = 'ai-assistant-feedback-dom-status';
         domStatus.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-dom-status';
         domStatus.textContent = _feedbackDomStatusText();
-        fbkSub.appendChild(domStatus);
+        integrationSub.appendChild(domStatus);
+        extBody.appendChild(integrationSub);
 
-        var _fbkServerRow = document.createElement('div');
-        _fbkServerRow.id = 'ai-assistant-ep-ext-fbk-server-info';
-        fbkSub.appendChild(_fbkServerRow);
-
-        extBody.appendChild(fbkSub);
+        // Kept as a nullable compatibility hook for discovery refresh. The
+        // server contract state is stored in _feedbackReviewServerInfo and is
+        // rendered by the Feedback workspace rather than duplicated here.
+        var _fbkServerRow = null;
 
         var contribSub = _buildExtSub('Dataset contributions');
         var contribIntro = document.createElement('p');
@@ -15966,10 +15934,18 @@
         var _HF_DATASET_PATH_PREFIX = '/datasets/';
 
         function _renderFeedbackTelemetryServerInfo(info) {
-            if (!_fbkServerRow) { return; }
-            _fbkServerRow.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-server';
             if (!info || info.error) {
-                _fbkServerRow.textContent = 'Service telemetry contract: unavailable. Local ratings still work; network telemetry remains subject to the server gate.';
+                _feedbackReviewServerInfo = null;
+                document.querySelectorAll('[data-feedback-telemetry-server-state]').forEach(function (el) {
+                    el.textContent = _feedbackTelemetryServerStateText();
+                });
+                document.querySelectorAll('[data-feedback-review-server-state]').forEach(function (el) {
+                    el.textContent = _feedbackReviewServerStateText();
+                });
+                if (_fbkServerRow) {
+                    _fbkServerRow.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-server';
+                    _fbkServerRow.textContent = 'Service telemetry contract: unavailable. Local ratings still work; network telemetry remains subject to the server gate.';
+                }
                 return;
             }
             _feedbackReviewServerInfo = {
@@ -15984,6 +15960,14 @@
             document.querySelectorAll('[data-feedback-review-status]').forEach(function (el) {
                 el.textContent = _feedbackReviewStatusText();
             });
+            document.querySelectorAll('[data-feedback-telemetry-server-state]').forEach(function (el) {
+                el.textContent = _feedbackTelemetryServerStateText();
+            });
+            document.querySelectorAll('[data-feedback-review-server-state]').forEach(function (el) {
+                el.textContent = _feedbackReviewServerStateText();
+            });
+            if (!_fbkServerRow) { return; }
+            _fbkServerRow.className = 'ai-assistant-panel-ep-hint ai-assistant-feedback-telemetry-server';
             var compatible = info.feedbackTelemetrySchemaVersion === 4 &&
                 info.feedbackTelemetryConsentVersion === _FEEDBACK_TELEMETRY_CONSENT_VERSION;
             if (!compatible) {
@@ -23924,6 +23908,16 @@
         }).join('\n');
     }
 
+    // Human-readable JSONL inspection. The repository/download representation
+    // remains strict NDJSON via _jsonlPreview(); this only expands each record
+    // inside the local code viewer so users can audit fields without scanning
+    // one very long line.
+    function _jsonlReadablePreview(rows) {
+        return (Array.isArray(rows) ? rows : []).map(function (row) {
+            return JSON.stringify(row, null, 2);
+        }).join('\n\n');
+    }
+
     function _contributionSavedJsonStructure(payload) {
         if (!payload || !Array.isArray(payload.records)) return [];
         return payload.records.map(function (rec, index) {
@@ -24108,6 +24102,11 @@
     }
 
     function _buildDatasetContributionSheet() {
+        function _readableJsonl(rows) {
+            return (Array.isArray(rows) ? rows : []).map(function (row) {
+                return JSON.stringify(row, null, 2);
+            }).join('\n\n');
+        }
         var sheet = document.createElement('div');
         sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-contribution';
         sheet.id = 'ai-assistant-panel-contribution-sheet';
@@ -24273,7 +24272,7 @@
 
         var inspectSection = _contributionSection(
             'Inspect payload',
-            'Inspect the canonical contributions/*.jsonl projection produced by your Content & privacy choices. Request JSON remains available separately because the browser envelope and repository JSONL are intentionally different contracts.'
+            'Use JSON to inspect the exact browser request envelope and JSONL to inspect the canonical contributions/*.jsonl repository record. Both formats reflect the same Content & privacy choices.'
         );
         body.appendChild(inspectSection);
 
@@ -24308,52 +24307,126 @@
             return { root: group, row: row };
         }
 
+        var contributionInspectFormat = 'jsonl';
         var inspectRow = document.createElement('div');
-        inspectRow.className = 'ai-assistant-panel-ep-io-row ai-assistant-panel-contribution-inspect-row';
-        var inspectBtn = _contributionActionButton('Inspect saved JSONL', 'ai-assistant-panel-contribution-inspect-btn');
-        inspectBtn.setAttribute('aria-expanded', 'false');
-        var copyPayloadBtn = _contributionActionButton('⎘ Copy saved JSONL', 'ai-assistant-panel-contribution-copy-json');
-        var downloadPayloadBtn = _contributionActionButton('↓ Download saved JSONL', 'ai-assistant-panel-contribution-download-json');
-        var savedStructureBtn = _contributionActionButton('Request JSON', 'ai-assistant-panel-contribution-saved-json');
-        savedStructureBtn.setAttribute('aria-expanded', 'false');
+        inspectRow.className = 'ai-assistant-panel-payload-inspector-toolbar ai-assistant-panel-contribution-inspect-row';
+        var formatTabs = document.createElement('div');
+        formatTabs.className = 'ai-assistant-panel-payload-format-tabs';
+        formatTabs.setAttribute('role', 'tablist');
+        formatTabs.setAttribute('aria-label', 'Contribution payload format');
+        var savedStructureBtn = _contributionActionButton('JSON', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-contribution-json-tab');
+        var inspectBtn = _contributionActionButton('JSONL', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-contribution-jsonl-tab');
+        savedStructureBtn.setAttribute('role', 'tab');
+        inspectBtn.setAttribute('role', 'tab');
+        formatTabs.appendChild(savedStructureBtn);
+        formatTabs.appendChild(inspectBtn);
         var sizeLabel = document.createElement('span');
         sizeLabel.className = 'ai-assistant-panel-contribution-size';
-        inspectRow.appendChild(inspectBtn);
-        inspectRow.appendChild(copyPayloadBtn);
-        inspectRow.appendChild(downloadPayloadBtn);
-        inspectRow.appendChild(savedStructureBtn);
+        inspectRow.appendChild(formatTabs);
         inspectRow.appendChild(sizeLabel);
         inspectSection.appendChild(inspectRow);
 
         var inspectHint = document.createElement('p');
-        inspectHint.className = 'ai-assistant-panel-contribution-hint';
-        inspectHint.textContent = 'The saved projection updates immediately as Content & privacy changes. It mirrors the provider-review/future-main JSONL bytes; <server-assigned> and <receipt-id> remain placeholders until the service creates the review.';
+        inspectHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-payload-inspector-intro';
+        inspectHint.textContent = 'JSON shows the exact browser request envelope. JSONL shows the canonical contribution record written to provider review/future main. Both views update immediately when Content & privacy changes.';
         inspectSection.appendChild(inspectHint);
 
-        var preview = document.createElement('pre');
-        preview.className = 'ai-assistant-panel-contribution-preview';
-        preview.id = 'ai-assistant-panel-contribution-preview-json';
-        preview.hidden = true;
-        preview.setAttribute('aria-label', 'Contribution canonical saved JSONL preview');
-        preview.setAttribute('tabindex', '0');
-        preview.dataset.size = 'compact';
-        inspectBtn.setAttribute('aria-controls', preview.id);
-        inspectSection.appendChild(preview);
+        var payloadViews = document.createElement('div');
+        payloadViews.className = 'ai-assistant-panel-payload-views';
+        inspectSection.appendChild(payloadViews);
 
+        var savedStructurePanel = document.createElement('section');
+        savedStructurePanel.className = 'ai-assistant-panel-payload-view';
+        savedStructurePanel.dataset.payloadFormat = 'json';
+        savedStructurePanel.hidden = true;
+        var savedStructureHead = document.createElement('div');
+        savedStructureHead.className = 'ai-assistant-panel-payload-view-head';
+        var savedStructureTitle = document.createElement('div');
+        savedStructureTitle.className = 'ai-assistant-panel-payload-view-title';
+        var savedStructureStrong = document.createElement('strong');
+        savedStructureStrong.textContent = 'Request JSON';
+        var savedStructureBadge = document.createElement('span');
+        savedStructureBadge.className = 'ai-assistant-panel-payload-badge';
+        savedStructureBadge.textContent = 'exact request';
+        savedStructureTitle.appendChild(savedStructureStrong);
+        savedStructureTitle.appendChild(savedStructureBadge);
+        savedStructureHead.appendChild(savedStructureTitle);
+        savedStructurePanel.appendChild(savedStructureHead);
         var savedStructureHint = document.createElement('p');
         savedStructureHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
-        savedStructureHint.hidden = true;
-        savedStructureHint.textContent = 'Browser request envelope sent to /v1/contribute. It is not the repository JSONL row. The canonical saved projection is the primary inspection view above.';
-        inspectSection.appendChild(savedStructureHint);
+        savedStructureHint.textContent = 'Browser request envelope sent to /v1/contribute. It is not the repository JSONL row.';
+        savedStructurePanel.appendChild(savedStructureHint);
         var savedStructurePreview = document.createElement('pre');
-        savedStructurePreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview';
-        savedStructurePreview.hidden = true;
+        savedStructurePreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview ai-assistant-panel-payload-code';
         savedStructurePreview.id = 'ai-assistant-panel-contribution-saved-structure';
         savedStructurePreview.setAttribute('aria-label', 'Contribution request JSON preview');
         savedStructurePreview.setAttribute('tabindex', '0');
         savedStructurePreview.dataset.size = 'medium';
-        savedStructureBtn.setAttribute('aria-controls', savedStructurePreview.id);
-        inspectSection.appendChild(savedStructurePreview);
+        savedStructurePanel.appendChild(savedStructurePreview);
+        payloadViews.appendChild(savedStructurePanel);
+
+        var previewPanel = document.createElement('section');
+        previewPanel.className = 'ai-assistant-panel-payload-view';
+        previewPanel.dataset.payloadFormat = 'jsonl';
+        var previewHead = document.createElement('div');
+        previewHead.className = 'ai-assistant-panel-payload-view-head';
+        var previewTitle = document.createElement('div');
+        previewTitle.className = 'ai-assistant-panel-payload-view-title';
+        var previewStrong = document.createElement('strong');
+        previewStrong.textContent = 'Saved JSONL';
+        var previewBadge = document.createElement('span');
+        previewBadge.className = 'ai-assistant-panel-payload-badge';
+        previewBadge.textContent = 'readable view';
+        previewTitle.appendChild(previewStrong);
+        previewTitle.appendChild(previewBadge);
+        previewHead.appendChild(previewTitle);
+        previewPanel.appendChild(previewHead);
+        var previewHelp = document.createElement('p');
+        previewHelp.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
+        previewHelp.textContent = 'Readable expanded view of the canonical JSONL row(s). Copy/Download still emits strict one-JSON-object-per-line NDJSON; <server-assigned> and <receipt-id> remain placeholders until save time.';
+        previewPanel.appendChild(previewHelp);
+        var preview = document.createElement('pre');
+        preview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-payload-code';
+        preview.id = 'ai-assistant-panel-contribution-preview-json';
+        preview.setAttribute('aria-label', 'Contribution canonical saved JSONL readable preview');
+        preview.setAttribute('tabindex', '0');
+        preview.dataset.size = 'medium';
+        previewPanel.appendChild(preview);
+        payloadViews.appendChild(previewPanel);
+
+        var inspectActions = document.createElement('div');
+        inspectActions.className = 'ai-assistant-panel-payload-actions';
+        var copyPayloadBtn = _contributionActionButton('⎘ Copy', 'ai-assistant-panel-contribution-copy-json');
+        var downloadPayloadBtn = _contributionActionButton('↓ Download', 'ai-assistant-panel-contribution-download-json');
+        inspectActions.appendChild(copyPayloadBtn);
+        inspectActions.appendChild(downloadPayloadBtn);
+        inspectSection.appendChild(inspectActions);
+
+        function _syncContributionInspectorSize(payload) {
+            if (!payload) {
+                sizeLabel.textContent = 'No eligible content';
+                return;
+            }
+            var text = contributionInspectFormat === 'json'
+                ? JSON.stringify(payload)
+                : _jsonlPreview(_contributionSavedJsonStructure(payload));
+            sizeLabel.textContent = _formatByteSize(_utf8ByteLength(text));
+        }
+
+        function _setContributionInspectFormat(format) {
+            contributionInspectFormat = format === 'json' ? 'json' : 'jsonl';
+            var jsonOn = contributionInspectFormat === 'json';
+            savedStructurePanel.hidden = !jsonOn;
+            previewPanel.hidden = jsonOn;
+            savedStructureBtn.setAttribute('aria-selected', jsonOn ? 'true' : 'false');
+            inspectBtn.setAttribute('aria-selected', jsonOn ? 'false' : 'true');
+            savedStructureBtn.setAttribute('aria-pressed', jsonOn ? 'true' : 'false');
+            inspectBtn.setAttribute('aria-pressed', jsonOn ? 'false' : 'true');
+            _syncContributionInspectorSize(_currentPayload(false));
+        }
+        savedStructureBtn.addEventListener('click', function () { _setContributionInspectFormat('json'); });
+        inspectBtn.addEventListener('click', function () { _setContributionInspectFormat('jsonl'); });
+        _setContributionInspectFormat('jsonl');
 
         var submitSection = _contributionSection(
             'Consent & manage',
@@ -24591,6 +24664,7 @@
             telemetryToggle.appendChild(telemetryThumb);
             telemetryToggle.addEventListener('click', function () {
                 _setFeedbackPersistMode(!_feedbackPersistEnabled);
+                _refreshFeedbackWorkspace();
             });
             telemetryHead.appendChild(telemetryIdentity);
             telemetryHead.appendChild(telemetryToggle);
@@ -24601,24 +24675,50 @@
             telemetryHint.textContent = _feedbackTelemetryStatusText();
             telemetryCard.appendChild(telemetryHint);
             var telemetryPersist = document.createElement('small');
-            telemetryPersist.textContent = _feedbackReviewServerInfo === null
-                ? 'Server persistence: unknown until service discovery completes.'
-                : ('Server persistence: ' + (_feedbackReviewServerInfo.telemetryPersistEnabled ? 'On' : 'Off') +
-                    (_feedbackReviewServerInfo.telemetryCompatible ? ' · contract compatible' : ' · contract incompatible/unknown'));
+            telemetryPersist.setAttribute('data-feedback-telemetry-server-state', 'true');
+            telemetryPersist.textContent = _feedbackTelemetryServerStateText();
             telemetryCard.appendChild(telemetryPersist);
 
             var reviewCard = document.createElement('div');
             reviewCard.className = 'ai-assistant-panel-feedback-channel-card';
             reviewCard.dataset.channel = 'review';
+            var reviewHead = document.createElement('div');
+            reviewHead.className = 'ai-assistant-panel-feedback-channel-head';
+            var reviewIdentity = document.createElement('div');
+            reviewIdentity.className = 'ai-assistant-panel-feedback-channel-identity';
+            var reviewIcon = document.createElement('span');
+            reviewIcon.className = 'ai-assistant-panel-feedback-channel-icon';
+            reviewIcon.textContent = '↗';
+            reviewIcon.setAttribute('aria-hidden', 'true');
             var reviewTitle = document.createElement('strong');
             reviewTitle.textContent = 'Maintainer feedback review';
-            var reviewPermissionState = document.createElement('span');
-            reviewPermissionState.textContent = 'Browser permission: ' + (_feedbackReviewEnabled ? 'On' : 'Off');
+            reviewIdentity.appendChild(reviewIcon);
+            reviewIdentity.appendChild(reviewTitle);
+            var reviewToggle = document.createElement('button');
+            reviewToggle.type = 'button';
+            reviewToggle.className = 'ai-assistant-panel-ep-ext-pill ai-assistant-panel-feedback-channel-toggle';
+            reviewToggle.setAttribute('role', 'switch');
+            reviewToggle.setAttribute('data-feedback-review-toggle', 'true');
+            reviewToggle.setAttribute('aria-label', 'Share feedback with maintainers');
+            reviewToggle.setAttribute('aria-checked', _feedbackReviewEnabled ? 'true' : 'false');
+            var reviewThumb = document.createElement('span');
+            reviewThumb.className = 'ai-assistant-panel-ep-ext-pill-thumb';
+            reviewToggle.appendChild(reviewThumb);
+            reviewToggle.addEventListener('click', function () {
+                _setFeedbackReviewMode(!_feedbackReviewEnabled);
+                _refreshFeedbackWorkspace();
+            });
+            reviewHead.appendChild(reviewIdentity);
+            reviewHead.appendChild(reviewToggle);
+            reviewCard.appendChild(reviewHead);
+            var reviewPermissionState = document.createElement('p');
+            reviewPermissionState.className = 'ai-assistant-panel-feedback-channel-status';
+            reviewPermissionState.setAttribute('data-feedback-review-status', 'true');
+            reviewPermissionState.textContent = _feedbackReviewStatusText();
             var reviewReady = document.createElement('small');
-            reviewReady.textContent = _feedbackReviewServerInfo === null
-                ? 'Service readiness: unknown until discovery completes.'
-                : ('Service readiness: ' + (_feedbackReviewServerInfo.ready ? 'Ready' : 'Not ready') + ' · ' + (_feedbackReviewServerInfo.mode || 'disabled'));
-            reviewCard.appendChild(reviewTitle); reviewCard.appendChild(reviewPermissionState); reviewCard.appendChild(reviewReady);
+            reviewReady.setAttribute('data-feedback-review-server-state', 'true');
+            reviewReady.textContent = _feedbackReviewServerStateText();
+            reviewCard.appendChild(reviewPermissionState); reviewCard.appendChild(reviewReady);
             channelGrid.appendChild(telemetryCard); channelGrid.appendChild(reviewCard);
             channelGroup.appendChild(channelGrid);
 
@@ -24650,7 +24750,7 @@
             var feedbackNoteHelp = document.createElement('small');
             feedbackNoteHelp.id = 'ai-assistant-feedback-note-help';
             feedbackNoteHelp.className = 'ai-assistant-panel-contribution-note-help';
-            feedbackNoteHelp.textContent = 'This is the same optional feedback note used by the detailed-feedback form. Keep it concise and avoid secrets or personal information.';
+            feedbackNoteHelp.textContent = 'This is the same optional note used by detailed feedback. Editing it here changes local feedback immediately; the next quick/detailed save updates the maintainer review when sharing is enabled. Keep it concise and avoid secrets or personal information.';
             feedbackNoteWrap.appendChild(feedbackNoteHead);
             feedbackNoteWrap.appendChild(feedbackNoteInput);
             feedbackNoteWrap.appendChild(feedbackNoteHelp);
@@ -24680,11 +24780,9 @@
                     noteSummary.textContent = current.message ? ('Note: ' + current.message) : 'No written note.';
                 }
                 var state = _feedbackWorkspacePayloadState();
-                feedbackSize.textContent = state.payload && !state.issue
-                    ? _formatByteSize(_utf8ByteLength(JSON.stringify(state.payload)))
-                    : state.issue;
+                _syncFeedbackInspectorSize(state.payload, state.issue);
                 if (!feedbackPreview.hidden) {
-                    feedbackPreview.textContent = state.payload && !state.issue ? _jsonlPreview(_feedbackSavedJsonStructure(state.payload)) : '';
+                    feedbackPreview.textContent = state.payload && !state.issue ? _readableJsonl(_feedbackSavedJsonStructure(state.payload)) : '';
                     _syncFeedbackPreviewDensity();
                 }
                 if (typeof feedbackSavedStructurePreview !== 'undefined' && feedbackSavedStructurePreview && !feedbackSavedStructurePreview.hidden) {
@@ -24704,11 +24802,9 @@
                     _feedbackReviewContentPreset = preset;
                     _feedbackReviewContentOptions = options;
                     var state = _feedbackWorkspacePayloadState();
-                    feedbackSize.textContent = state.payload && !state.issue
-                        ? _formatByteSize(_utf8ByteLength(JSON.stringify(state.payload)))
-                        : state.issue;
+                    _syncFeedbackInspectorSize(state.payload, state.issue);
                     if (!feedbackPreview.hidden) {
-                        feedbackPreview.textContent = state.payload && !state.issue ? _jsonlPreview(_feedbackSavedJsonStructure(state.payload)) : '';
+                        feedbackPreview.textContent = state.payload && !state.issue ? _readableJsonl(_feedbackSavedJsonStructure(state.payload)) : '';
                         _syncFeedbackPreviewDensity();
                     }
                     if (typeof feedbackSavedStructurePreview !== 'undefined' && feedbackSavedStructurePreview && !feedbackSavedStructurePreview.hidden) {
@@ -24718,10 +24814,11 @@
             );
             wrap.appendChild(feedbackContentControl.root);
 
-            // 4) Exact-payload inspection parity with Dataset contribution.
+            // 4) Centralized payload inspection. JSON and JSONL are
+            // separate stable views instead of independent show/hide actions.
             var inspectGroup = _contributionSection(
                 'Inspect payload',
-                'Inspect the canonical feedback-review JSONL projection produced by your Content & privacy choices. The request envelope and optional anonymous telemetry row are separate views because they are different storage/privacy contracts.'
+                'JSON is the exact feedback-review request envelope. JSONL is the canonical repository record projection. Both stay synchronized with Content & privacy; anonymous telemetry is shown separately inside the JSONL view because it is a different privacy contract.'
             );
             wrap.appendChild(inspectGroup);
 
@@ -24743,197 +24840,226 @@
             modelEvidence.appendChild(modelText);
             inspectGroup.appendChild(modelEvidence);
 
+            var feedbackInspectFormat = 'jsonl';
             var feedbackInspectRow = document.createElement('div');
-            feedbackInspectRow.className = 'ai-assistant-panel-ep-io-row ai-assistant-panel-contribution-inspect-row ai-assistant-panel-feedback-inspect-row';
-            var feedbackInspectBtn = _feedbackWorkspaceButton('Inspect saved JSONL', 'ai-assistant-panel-feedback-inspect-btn');
-            var feedbackCopyBtn = _feedbackWorkspaceButton('⎘ Copy saved JSONL', 'ai-assistant-panel-feedback-copy-json');
-            var feedbackDownloadBtn = _feedbackWorkspaceButton('↓ Download saved JSONL', 'ai-assistant-panel-feedback-download-json');
-            var feedbackSavedStructureBtn = _feedbackWorkspaceButton('Request JSON', 'ai-assistant-panel-feedback-saved-json');
-            feedbackSavedStructureBtn.setAttribute('aria-expanded', 'false');
+            feedbackInspectRow.className = 'ai-assistant-panel-payload-inspector-toolbar ai-assistant-panel-feedback-inspect-row';
+            var feedbackFormatTabs = document.createElement('div');
+            feedbackFormatTabs.className = 'ai-assistant-panel-payload-format-tabs';
+            feedbackFormatTabs.setAttribute('role', 'tablist');
+            feedbackFormatTabs.setAttribute('aria-label', 'Feedback payload format');
+            var feedbackSavedStructureBtn = _feedbackWorkspaceButton('JSON', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-feedback-json-tab');
+            var feedbackInspectBtn = _feedbackWorkspaceButton('JSONL', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-feedback-jsonl-tab');
+            feedbackSavedStructureBtn.setAttribute('role', 'tab');
+            feedbackInspectBtn.setAttribute('role', 'tab');
+            feedbackFormatTabs.appendChild(feedbackSavedStructureBtn);
+            feedbackFormatTabs.appendChild(feedbackInspectBtn);
             var feedbackSize = document.createElement('span');
             feedbackSize.className = 'ai-assistant-panel-contribution-size ai-assistant-panel-feedback-payload-size';
-            var feedbackPreview = document.createElement('pre');
-            feedbackPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-feedback-preview';
-            feedbackPreview.id = 'ai-assistant-panel-feedback-preview-json';
-            feedbackPreview.hidden = true;
-            feedbackPreview.setAttribute('aria-label', 'Feedback canonical review JSONL preview');
-            feedbackPreview.setAttribute('tabindex', '0');
-            feedbackPreview.dataset.size = 'compact';
-            feedbackInspectBtn.setAttribute('aria-expanded', 'false');
-            feedbackInspectBtn.setAttribute('aria-controls', feedbackPreview.id);
-            feedbackInspectBtn.disabled = !!reviewPayloadIssue;
-            feedbackCopyBtn.disabled = !!reviewPayloadIssue;
-            feedbackDownloadBtn.disabled = !!reviewPayloadIssue;
-            feedbackSavedStructureBtn.disabled = !!reviewPayloadIssue;
             feedbackSize.textContent = reviewPayload && !reviewPayloadIssue
                 ? _formatByteSize(_utf8ByteLength(JSON.stringify(reviewPayload)))
                 : reviewPayloadIssue;
-            feedbackInspectRow.appendChild(feedbackInspectBtn);
-            feedbackInspectRow.appendChild(feedbackCopyBtn);
-            feedbackInspectRow.appendChild(feedbackDownloadBtn);
-            feedbackInspectRow.appendChild(feedbackSavedStructureBtn);
+            feedbackInspectRow.appendChild(feedbackFormatTabs);
             feedbackInspectRow.appendChild(feedbackSize);
             inspectGroup.appendChild(feedbackInspectRow);
 
             var feedbackInspectHint = document.createElement('p');
-            feedbackInspectHint.className = 'ai-assistant-panel-contribution-hint';
+            feedbackInspectHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-payload-inspector-intro';
             feedbackInspectHint.textContent = reviewPayloadIssue
                 ? reviewPayloadIssue + ' Reviewable feedback is not sent until complete Q&A + model evidence is available.'
-                : 'The canonical review projection updates immediately with Content & privacy. It represents the feedback-review file on the provider review ref/future canonical branch; <server-assigned> and <receipt-id> are the only pre-save placeholders.';
+                : 'Switch formats without losing either code view. JSONL is expanded for readability here; copied/downloaded JSONL remains strict one-record-per-line NDJSON.';
             inspectGroup.appendChild(feedbackInspectHint);
-            inspectGroup.appendChild(feedbackPreview);
+
+            var feedbackPayloadViews = document.createElement('div');
+            feedbackPayloadViews.className = 'ai-assistant-panel-payload-views';
+            inspectGroup.appendChild(feedbackPayloadViews);
+
+            var feedbackSavedStructurePanel = document.createElement('section');
+            feedbackSavedStructurePanel.className = 'ai-assistant-panel-payload-view';
+            feedbackSavedStructurePanel.dataset.payloadFormat = 'json';
+            feedbackSavedStructurePanel.hidden = true;
+            var feedbackSavedHead = document.createElement('div');
+            feedbackSavedHead.className = 'ai-assistant-panel-payload-view-head';
+            var feedbackSavedTitle = document.createElement('div');
+            feedbackSavedTitle.className = 'ai-assistant-panel-payload-view-title';
+            var feedbackSavedStrong = document.createElement('strong');
+            feedbackSavedStrong.textContent = 'Request JSON';
+            var feedbackSavedBadge = document.createElement('span');
+            feedbackSavedBadge.className = 'ai-assistant-panel-payload-badge';
+            feedbackSavedBadge.textContent = 'exact request';
+            feedbackSavedTitle.appendChild(feedbackSavedStrong);
+            feedbackSavedTitle.appendChild(feedbackSavedBadge);
+            feedbackSavedHead.appendChild(feedbackSavedTitle);
+            feedbackSavedStructurePanel.appendChild(feedbackSavedHead);
             var feedbackSavedStructureHint = document.createElement('p');
             feedbackSavedStructureHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
-            feedbackSavedStructureHint.hidden = true;
-            feedbackSavedStructureHint.textContent = 'Browser request envelope sent to /v1/feedback/review. It is content-bearing and intentionally differs from both the canonical review JSONL row and anonymous /v1/feedback telemetry.';
-            inspectGroup.appendChild(feedbackSavedStructureHint);
+            feedbackSavedStructureHint.textContent = 'Browser request envelope sent to /v1/feedback/review. It is content-bearing and intentionally differs from both the canonical review JSONL row and anonymous telemetry.';
+            feedbackSavedStructurePanel.appendChild(feedbackSavedStructureHint);
             var feedbackSavedStructurePreview = document.createElement('pre');
-            feedbackSavedStructurePreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview';
-            feedbackSavedStructurePreview.hidden = true;
+            feedbackSavedStructurePreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview ai-assistant-panel-payload-code';
             feedbackSavedStructurePreview.id = 'ai-assistant-panel-feedback-saved-structure';
             feedbackSavedStructurePreview.setAttribute('aria-label', 'Feedback review request JSON preview');
             feedbackSavedStructurePreview.setAttribute('tabindex', '0');
             feedbackSavedStructurePreview.dataset.size = 'medium';
-            feedbackSavedStructureBtn.setAttribute('aria-controls', feedbackSavedStructurePreview.id);
-            inspectGroup.appendChild(feedbackSavedStructurePreview);
+            feedbackSavedStructurePreview.textContent = reviewPayload && !reviewPayloadIssue ? JSON.stringify(reviewPayload, null, 2) : '';
+            feedbackSavedStructurePanel.appendChild(feedbackSavedStructurePreview);
+            feedbackPayloadViews.appendChild(feedbackSavedStructurePanel);
 
-            var telemetrySavedBtn = _feedbackWorkspaceButton('Telemetry JSONL', 'ai-assistant-panel-feedback-telemetry-json');
-            telemetrySavedBtn.setAttribute('aria-expanded', 'false');
-            telemetrySavedBtn.disabled = !entry || !_feedbackPersistEnabled;
-            telemetrySavedBtn.title = _feedbackPersistEnabled
-                ? 'Inspect the separate privacy-minimal /v1/feedback row that may be persisted when telemetry permission is on.'
-                : 'Anonymous rating telemetry is off; no telemetry JSONL is sent.';
-            feedbackInspectRow.insertBefore(telemetrySavedBtn, feedbackSize);
+            var feedbackPreviewPanel = document.createElement('section');
+            feedbackPreviewPanel.className = 'ai-assistant-panel-payload-view';
+            feedbackPreviewPanel.dataset.payloadFormat = 'jsonl';
+            var feedbackPreviewHead = document.createElement('div');
+            feedbackPreviewHead.className = 'ai-assistant-panel-payload-view-head';
+            var feedbackPreviewTitle = document.createElement('div');
+            feedbackPreviewTitle.className = 'ai-assistant-panel-payload-view-title';
+            var feedbackPreviewStrong = document.createElement('strong');
+            feedbackPreviewStrong.textContent = 'Saved JSONL';
+            var feedbackPreviewBadge = document.createElement('span');
+            feedbackPreviewBadge.className = 'ai-assistant-panel-payload-badge';
+            feedbackPreviewBadge.textContent = 'readable view';
+            feedbackPreviewTitle.appendChild(feedbackPreviewStrong);
+            feedbackPreviewTitle.appendChild(feedbackPreviewBadge);
+            feedbackPreviewHead.appendChild(feedbackPreviewTitle);
+            feedbackPreviewPanel.appendChild(feedbackPreviewHead);
+            var feedbackJsonlHint = document.createElement('p');
+            feedbackJsonlHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
+            feedbackJsonlHint.textContent = 'Expanded local view of the canonical feedback-review JSONL row. Copy/Download keeps strict NDJSON. <server-assigned> and <receipt-id> are the only pre-save placeholders.';
+            feedbackPreviewPanel.appendChild(feedbackJsonlHint);
+            var feedbackPreview = document.createElement('pre');
+            feedbackPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-feedback-preview ai-assistant-panel-payload-code';
+            feedbackPreview.id = 'ai-assistant-panel-feedback-preview-json';
+            feedbackPreview.setAttribute('aria-label', 'Feedback canonical review JSONL readable preview');
+            feedbackPreview.setAttribute('tabindex', '0');
+            feedbackPreview.dataset.size = 'medium';
+            feedbackPreview.textContent = reviewPayload && !reviewPayloadIssue
+                ? _readableJsonl(_feedbackSavedJsonStructure(reviewPayload)) : '';
+            feedbackPreviewPanel.appendChild(feedbackPreview);
+
+            var telemetryDetails = document.createElement('details');
+            telemetryDetails.className = 'ai-assistant-panel-feedback-telemetry-details';
+            telemetryDetails.hidden = !entry || !_feedbackPersistEnabled;
+            var telemetrySummary = document.createElement('summary');
+            telemetrySummary.textContent = 'Anonymous telemetry JSONL · separate privacy-minimal row';
+            telemetryDetails.appendChild(telemetrySummary);
             var telemetrySavedHint = document.createElement('p');
             telemetrySavedHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
-            telemetrySavedHint.hidden = true;
-            telemetrySavedHint.textContent = 'Separate anonymous /v1/feedback telemetry row in feedback/*.jsonl. It intentionally contains rating mechanics only: no Q&A, note, model, page, consent-version, or conversation identifier.';
-            inspectGroup.appendChild(telemetrySavedHint);
+            telemetrySavedHint.textContent = 'This is the separate /v1/feedback telemetry record. It intentionally contains rating mechanics only: no Q&A, note, model, page, consent version, or conversation identifier.';
+            telemetryDetails.appendChild(telemetrySavedHint);
             var telemetrySavedPreview = document.createElement('pre');
-            telemetrySavedPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview ai-assistant-panel-feedback-telemetry-preview';
-            telemetrySavedPreview.hidden = true;
+            telemetrySavedPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview ai-assistant-panel-feedback-telemetry-preview ai-assistant-panel-payload-code';
             telemetrySavedPreview.id = 'ai-assistant-panel-feedback-telemetry-saved-structure';
-            telemetrySavedPreview.setAttribute('aria-label', 'Anonymous feedback telemetry saved JSONL preview');
+            telemetrySavedPreview.setAttribute('aria-label', 'Anonymous feedback telemetry JSONL readable preview');
             telemetrySavedPreview.setAttribute('tabindex', '0');
-            telemetrySavedBtn.setAttribute('aria-controls', telemetrySavedPreview.id);
-            inspectGroup.appendChild(telemetrySavedPreview);
-            telemetrySavedBtn.addEventListener('click', function () {
-                var current = Number.isInteger(context.answerIndex) ? (_feedbackStore[context.answerIndex] || null) : null;
-                if (!current || !_feedbackPersistEnabled) return;
-                telemetrySavedPreview.hidden = !telemetrySavedPreview.hidden;
-                telemetrySavedHint.hidden = telemetrySavedPreview.hidden;
-                telemetrySavedBtn.textContent = telemetrySavedPreview.hidden ? 'Telemetry JSONL' : 'Hide telemetry JSONL';
-                telemetrySavedBtn.setAttribute('aria-expanded', telemetrySavedPreview.hidden ? 'false' : 'true');
-                telemetrySavedPreview.textContent = telemetrySavedPreview.hidden ? '' : _jsonlPreview(_feedbackTelemetrySavedJsonStructure(current));
-            });
+            telemetrySavedPreview.dataset.size = 'medium';
+            telemetrySavedPreview.textContent = entry && _feedbackPersistEnabled
+                ? _readableJsonl(_feedbackTelemetrySavedJsonStructure(entry)) : '';
+            telemetryDetails.appendChild(telemetrySavedPreview);
+            feedbackPreviewPanel.appendChild(telemetryDetails);
+            feedbackPayloadViews.appendChild(feedbackPreviewPanel);
+
+            var feedbackInspectActions = document.createElement('div');
+            feedbackInspectActions.className = 'ai-assistant-panel-payload-actions';
+            var feedbackCopyBtn = _feedbackWorkspaceButton('⎘ Copy', 'ai-assistant-panel-feedback-copy-json');
+            var feedbackDownloadBtn = _feedbackWorkspaceButton('↓ Download', 'ai-assistant-panel-feedback-download-json');
+            feedbackCopyBtn.disabled = !!reviewPayloadIssue;
+            feedbackDownloadBtn.disabled = !!reviewPayloadIssue;
+            feedbackInspectActions.appendChild(feedbackCopyBtn);
+            feedbackInspectActions.appendChild(feedbackDownloadBtn);
+            inspectGroup.appendChild(feedbackInspectActions);
+
+            function _syncFeedbackInspectorSize(payload, issue) {
+                if (!payload || issue) {
+                    feedbackSize.textContent = issue || 'No reviewable feedback';
+                    return;
+                }
+                var text = feedbackInspectFormat === 'json'
+                    ? JSON.stringify(payload)
+                    : _jsonlPreview(_feedbackSavedJsonStructure(payload));
+                feedbackSize.textContent = _formatByteSize(_utf8ByteLength(text));
+            }
+
+            function _setFeedbackInspectFormat(format) {
+                feedbackInspectFormat = format === 'json' ? 'json' : 'jsonl';
+                var jsonOn = feedbackInspectFormat === 'json';
+                feedbackSavedStructurePanel.hidden = !jsonOn;
+                feedbackPreviewPanel.hidden = jsonOn;
+                feedbackSavedStructureBtn.setAttribute('aria-selected', jsonOn ? 'true' : 'false');
+                feedbackInspectBtn.setAttribute('aria-selected', jsonOn ? 'false' : 'true');
+                feedbackSavedStructureBtn.setAttribute('aria-pressed', jsonOn ? 'true' : 'false');
+                feedbackInspectBtn.setAttribute('aria-pressed', jsonOn ? 'false' : 'true');
+                var state = _feedbackWorkspacePayloadState();
+                _syncFeedbackInspectorSize(state.payload, state.issue);
+            }
+            feedbackSavedStructureBtn.addEventListener('click', function () { _setFeedbackInspectFormat('json'); });
+            feedbackInspectBtn.addEventListener('click', function () { _setFeedbackInspectFormat('jsonl'); });
+            _setFeedbackInspectFormat('jsonl');
 
             function _syncFeedbackPreviewDensity() {
-                if (feedbackPreview.hidden) return;
                 var text = feedbackPreview.textContent || '';
                 var lines = text ? text.split('\n').length : 0;
                 feedbackPreview.dataset.size = lines <= 14 ? 'compact' : (lines <= 32 ? 'medium' : 'large');
             }
-            feedbackInspectBtn.addEventListener('click', function () {
-                var state = _feedbackWorkspacePayloadState();
-                if (!state.payload || state.issue) return;
-                feedbackPreview.hidden = !feedbackPreview.hidden;
-                feedbackInspectBtn.textContent = feedbackPreview.hidden ? 'Inspect saved JSONL' : 'Hide saved JSONL';
-                feedbackInspectBtn.setAttribute('aria-expanded', feedbackPreview.hidden ? 'false' : 'true');
-                feedbackPreview.textContent = feedbackPreview.hidden ? '' : _jsonlPreview(_feedbackSavedJsonStructure(state.payload));
-                feedbackSize.textContent = _formatByteSize(_utf8ByteLength(JSON.stringify(state.payload)));
-                _syncFeedbackPreviewDensity();
-            });
-            feedbackSavedStructureBtn.addEventListener('click', function () {
-                var state = _feedbackWorkspacePayloadState();
-                if (!state.payload || state.issue) return;
-                feedbackSavedStructurePreview.hidden = !feedbackSavedStructurePreview.hidden;
-                feedbackSavedStructureHint.hidden = feedbackSavedStructurePreview.hidden;
-                feedbackSavedStructureBtn.textContent = feedbackSavedStructurePreview.hidden ? 'Request JSON' : 'Hide request JSON';
-                feedbackSavedStructureBtn.setAttribute('aria-expanded', feedbackSavedStructurePreview.hidden ? 'false' : 'true');
-                feedbackSavedStructurePreview.textContent = feedbackSavedStructurePreview.hidden ? '' : JSON.stringify(state.payload, null, 2);
-            });
+            _syncFeedbackPreviewDensity();
             feedbackCopyBtn.addEventListener('click', function () {
                 var state = _feedbackWorkspacePayloadState();
                 if (!state.payload || state.issue) return;
+                if (feedbackInspectFormat === 'json') {
+                    _copyContributionText(JSON.stringify(state.payload, null, 2), 'Feedback review request JSON copied locally. Nothing was submitted.');
+                    return;
+                }
                 _copyContributionText(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'Projected feedback-review JSONL copied locally. Nothing was submitted.');
             });
             feedbackDownloadBtn.addEventListener('click', function () {
                 var state = _feedbackWorkspacePayloadState();
                 if (!state.payload || state.issue) return;
+                if (feedbackInspectFormat === 'json') {
+                    _downloadBlob(JSON.stringify(state.payload, null, 2), 'application/json',
+                        'ai-feedback-review-request-' + _isoFileStamp() + '.json');
+                    showNotification('Feedback review request JSON saved locally. Nothing was submitted.', false);
+                    return;
+                }
                 _downloadBlob(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'application/x-ndjson',
                     'ai-feedback-review-saved-projection-' + _isoFileStamp() + '.jsonl');
                 showNotification('Projected feedback-review JSONL saved locally. Nothing was submitted.', false);
             });
 
-            // 5) Consent & lifecycle parity: permission, explicit share/update,
-            // provider state, and withdrawal live together in one final section.
+            // 5) Lifecycle only. Quick/detailed rating saves already own
+            // review creation/update, so the workspace does not expose a second
+            // submission button for the same operation.
             var consentGroup = _contributionSection(
-                'Consent & manage',
-                'Sharing is explicit and separate from anonymous telemetry. One logical feedback item keeps one provider review; changed feedback updates that same review.'
+                'Review status',
+                'When Maintainer feedback review is On, saving a quick rating or detailed feedback creates or updates the same provider review automatically. This section is only for status and lifecycle management.'
             );
             wrap.appendChild(consentGroup);
-            var toggleRow = document.createElement('div');
-            toggleRow.className = 'ai-assistant-panel-feedback-review-toggle-row';
-            var toggleText = document.createElement('div');
-            var toggleStrong = document.createElement('strong');
-            toggleStrong.textContent = 'Share with maintainers';
-            var toggleHint = document.createElement('small');
-            toggleHint.textContent = 'Allow this one Q&A, rating quality signal, originating model evidence, and optional note to enter maintainer review. Only a maintainer merge can make it training-eligible.';
-            toggleText.appendChild(toggleStrong); toggleText.appendChild(toggleHint);
-            var toggle = document.createElement('button');
-            toggle.type = 'button';
-            toggle.className = 'ai-assistant-panel-ep-ext-pill';
-            toggle.setAttribute('role', 'switch');
-            toggle.setAttribute('data-feedback-review-toggle', 'true');
-            toggle.setAttribute('aria-label', 'Share feedback with maintainers for review and model improvement');
-            toggle.setAttribute('aria-checked', _feedbackReviewEnabled ? 'true' : 'false');
-            var thumb = document.createElement('span');
-            thumb.className = 'ai-assistant-panel-ep-ext-pill-thumb';
-            toggle.appendChild(thumb);
-            toggle.addEventListener('click', function () {
-                _setFeedbackReviewMode(!_feedbackReviewEnabled);
-                _refreshFeedbackWorkspace();
-            });
-            toggleRow.appendChild(toggleText); toggleRow.appendChild(toggle);
-            consentGroup.appendChild(toggleRow);
-            var status = document.createElement('p');
-            status.className = 'ai-assistant-panel-ep-hint ai-assistant-panel-feedback-review-status';
-            status.setAttribute('data-feedback-review-status', 'true');
-            status.textContent = _feedbackReviewStatusText();
-            consentGroup.appendChild(status);
-
-            var consentActions = document.createElement('div');
-            consentActions.className = 'ai-assistant-panel-ep-io-row ai-assistant-panel-feedback-workspace-actions ai-assistant-panel-feedback-consent-actions';
-            var share = _feedbackWorkspaceButton(_getActiveFeedbackReview(context.answerIndex) ? 'Update maintainer review' : 'Share current feedback');
-            share.addEventListener('click', function () {
-                var current = Number.isInteger(context.answerIndex) ? (_feedbackStore[context.answerIndex] || null) : null;
-                var state = _feedbackWorkspacePayloadState();
-                if (!current || state.issue) return;
-                _queueFeedbackReview(
-                    current,
-                    context.answerIndex,
-                    context.answerText || current.answer || '',
-                    context.questionText || current.query || '',
-                    _cfg()
-                );
-                setTimeout(_refreshFeedbackWorkspace, 0);
-            });
-            share.disabled = !entry || !_feedbackReviewEnabled || !!reviewPayloadIssue;
-            if (reviewPayloadIssue) share.title = reviewPayloadIssue;
-            consentActions.appendChild(share);
-            consentGroup.appendChild(consentActions);
 
             var review = Number.isInteger(context.answerIndex)
                 ? _getActiveFeedbackReview(context.answerIndex)
                 : null;
-            if (review) {
+            if (!review) {
+                var idle = document.createElement('div');
+                idle.className = 'ai-assistant-panel-feedback-review-idle';
+                var idleStrong = document.createElement('strong');
+                idleStrong.textContent = 'No active maintainer review';
+                var idleText = document.createElement('span');
+                if (!_feedbackReviewEnabled) {
+                    idleText.textContent = 'Sharing is Off. Ratings still work locally; turn on Maintainer feedback review above only if you want future rating saves reviewed.';
+                } else if (!entry) {
+                    idleText.textContent = 'Choose and save a quick or detailed rating for this Q&A to create the review.';
+                } else if (reviewPayloadIssue) {
+                    idleText.textContent = reviewPayloadIssue;
+                } else {
+                    idleText.textContent = 'The next quick/detailed feedback save will create or update the maintainer review automatically.';
+                }
+                idle.appendChild(idleStrong);
+                idle.appendChild(idleText);
+                consentGroup.appendChild(idle);
+            } else {
                 var lifecycle = document.createElement('div');
                 lifecycle.className = 'ai-assistant-panel-contribution-action-group ai-assistant-panel-feedback-lifecycle';
                 lifecycle.dataset.kind = 'lifecycle';
                 var lifecycleHead = document.createElement('div');
                 lifecycleHead.className = 'ai-assistant-panel-contribution-action-group-head';
                 var lifecycleTitle = document.createElement('strong');
-                lifecycleTitle.textContent = 'Review lifecycle';
+                lifecycleTitle.textContent = 'Maintainer review';
                 var lifecycleHint = document.createElement('span');
                 lifecycleHint.textContent = 'Merge/close happens in the provider review UI. Withdrawal remains a separate participant authority.';
                 lifecycleHead.appendChild(lifecycleTitle);
@@ -25098,7 +25224,7 @@
             noteWrap.hidden = selectedScope !== 'conversation';
             var payload = _currentPayload(!!rebuildPayload);
             var bytes = _datasetContributionPayloadBytes(payload);
-            sizeLabel.textContent = payload ? _formatByteSize(bytes) : 'No eligible content';
+            _syncContributionInspectorSize(payload);
             _setIncludedText(payload);
 
             if (!payload) {
@@ -25135,15 +25261,12 @@
             }
             submit.disabled = !consentCheck.checked || !payload || !endpoint || tooLarge || !!validationError;
             inspectBtn.disabled = !payload;
+            savedStructureBtn.disabled = !payload;
             copyPayloadBtn.disabled = !payload;
             downloadPayloadBtn.disabled = !payload;
-            if (!preview.hidden) {
-                preview.textContent = payload ? _jsonlPreview(_contributionSavedJsonStructure(payload)) : '';
-                _syncContributionPreviewDensity();
-            }
-            if (!savedStructurePreview.hidden) {
-                savedStructurePreview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
-            }
+            preview.textContent = payload ? _readableJsonl(_contributionSavedJsonStructure(payload)) : '';
+            savedStructurePreview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
+            _syncContributionPreviewDensity();
             // Closing/reopening the panel must not hide an authority the tab still owns.
             // Rehydrate the management actions whenever this logical conversation has
             // an active receipt but the result card was cleared by sheet/context reset.
@@ -25162,31 +25285,24 @@
             }
         }
 
-        inspectBtn.addEventListener('click', function () {
-            var payload = _currentPayload();
-            preview.hidden = !preview.hidden;
-            inspectBtn.textContent = preview.hidden ? 'Inspect saved JSONL' : 'Hide saved JSONL';
-            inspectBtn.setAttribute('aria-expanded', preview.hidden ? 'false' : 'true');
-            preview.textContent = (!preview.hidden && payload) ? _jsonlPreview(_contributionSavedJsonStructure(payload)) : '';
-            _syncContributionPreviewDensity();
-        });
-        savedStructureBtn.addEventListener('click', function () {
-            var payload = _currentPayload();
-            savedStructurePreview.hidden = !savedStructurePreview.hidden;
-            savedStructureHint.hidden = savedStructurePreview.hidden;
-            savedStructureBtn.textContent = savedStructurePreview.hidden ? 'Request JSON' : 'Hide request JSON';
-            savedStructureBtn.setAttribute('aria-expanded', savedStructurePreview.hidden ? 'false' : 'true');
-            savedStructurePreview.textContent = (!savedStructurePreview.hidden && payload)
-                ? JSON.stringify(payload, null, 2) : '';
-        });
         copyPayloadBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             if (!payload) return;
+            if (contributionInspectFormat === 'json') {
+                _copyContributionText(JSON.stringify(payload, null, 2), 'Contribution request JSON copied locally. Nothing was submitted.');
+                return;
+            }
             _copyContributionText(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'Projected contribution JSONL copied locally. Nothing was submitted.');
         });
         downloadPayloadBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             if (!payload) return;
+            if (contributionInspectFormat === 'json') {
+                _downloadBlob(JSON.stringify(payload, null, 2), 'application/json',
+                    'ai-contribution-request-' + _isoFileStamp() + '.json');
+                showNotification('Contribution request JSON saved locally. Nothing was submitted.', false);
+                return;
+            }
             _downloadBlob(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'application/x-ndjson',
                 'ai-contribution-saved-projection-' + _isoFileStamp() + '.jsonl');
             showNotification('Projected contribution JSONL saved locally. Nothing was submitted.', false);
@@ -25647,15 +25763,9 @@
                 : d.scope === 'rated' ? 'rated' : 'conversation';
             result.textContent = '';
             consentCheck.checked = false;
-            preview.hidden = true;
             preview.textContent = '';
-            savedStructurePreview.hidden = true;
             savedStructurePreview.textContent = '';
-            savedStructureHint.hidden = true;
-            savedStructureBtn.textContent = 'Request JSON';
-            savedStructureBtn.setAttribute('aria-expanded', 'false');
-            inspectBtn.textContent = 'Inspect saved JSONL';
-            inspectBtn.setAttribute('aria-expanded', 'false');
+            _setContributionInspectFormat('jsonl');
             _refresh(true);
             _setWorkspaceTab(d.tab === 'feedback' ? 'feedback' : d.tab === 'activity' ? 'activity' : 'contribution');
         };

@@ -18148,3 +18148,153 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-panel-storage-preview {
     margin-top: .45rem;
 }
+
+/* Run 51 — centralized Feedback controls + JSON/JSONL inspector
+   -------------------------------------------------------------
+   One visible owner per feedback permission; payload formats are persistent
+   tabbed views instead of a row of show/hide actions. JSONL is expanded only
+   for local readability while copy/download remains strict NDJSON. */
+.ai-assistant-panel-payload-inspector-toolbar {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    margin-top: .15rem;
+}
+.ai-assistant-panel-payload-inspector-toolbar .ai-assistant-panel-contribution-size {
+    margin-left: auto;
+}
+.ai-assistant-panel-payload-format-tabs {
+    display: inline-grid;
+    grid-template-columns: repeat(2, minmax(4.3rem, 1fr));
+    gap: .18rem;
+    padding: .2rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d1d5db));
+    border-radius: .72rem;
+    background: var(--pst-color-on-background, var(--color-background-secondary, #f6f8fa));
+}
+.ai-assistant-panel-payload-format-btn {
+    min-height: 2rem;
+    border-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-weight: 650;
+}
+.ai-assistant-panel-payload-format-btn[aria-selected="true"] {
+    border-color: var(--pst-color-border, var(--color-foreground-border, #d1d5db)) !important;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff)) !important;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    box-shadow: 0 1px 2px rgba(0,0,0,.06) !important;
+}
+.ai-assistant-panel-payload-inspector-intro {
+    margin-bottom: .55rem;
+    text-wrap: pretty;
+}
+.ai-assistant-panel-payload-views {
+    min-width: 0;
+}
+.ai-assistant-panel-payload-view[hidden] {
+    display: none !important;
+}
+.ai-assistant-panel-payload-view {
+    min-width: 0;
+    padding: .72rem;
+    border: 1px solid rgba(127,127,127,.22);
+    border-radius: .78rem;
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 96%, transparent);
+}
+.ai-assistant-panel-payload-view-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    margin-bottom: .35rem;
+}
+.ai-assistant-panel-payload-view-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .42rem;
+    min-width: 0;
+}
+.ai-assistant-panel-payload-view-title strong {
+    font-size: .76rem;
+}
+.ai-assistant-panel-payload-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.35rem;
+    padding: 0 .42rem;
+    border: 1px solid rgba(127,127,127,.22);
+    border-radius: 999px;
+    color: var(--pst-color-text-muted, #64748b);
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+}
+.ai-assistant-panel-payload-code {
+    margin-top: .5rem;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+    line-height: 1.52;
+}
+.ai-assistant-panel-payload-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: .4rem;
+    margin-top: .5rem;
+}
+.ai-assistant-panel-payload-actions .ai-assistant-panel-ep-io-btn {
+    min-width: 5.4rem;
+}
+.ai-assistant-panel-feedback-telemetry-details {
+    margin-top: .75rem;
+    padding-top: .65rem;
+    border-top: 1px solid rgba(127,127,127,.18);
+}
+.ai-assistant-panel-feedback-telemetry-details summary {
+    cursor: pointer;
+    color: var(--pst-color-text-muted, #64748b);
+    font-size: .7rem;
+    font-weight: 650;
+}
+.ai-assistant-panel-feedback-review-idle {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: .72rem .78rem;
+    border: 1px dashed rgba(127,127,127,.3);
+    border-radius: .72rem;
+    background: var(--pst-color-on-background, var(--color-background-secondary, #f6f8fa));
+}
+.ai-assistant-panel-feedback-review-idle strong {
+    font-size: .75rem;
+}
+.ai-assistant-panel-feedback-review-idle span {
+    color: var(--pst-color-text-muted, #64748b);
+    font-size: .69rem;
+    line-height: 1.45;
+    text-wrap: pretty;
+}
+
+@media (max-width: 720px) {
+    .ai-assistant-panel-payload-inspector-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .ai-assistant-panel-payload-inspector-toolbar .ai-assistant-panel-contribution-size {
+        align-self: flex-start;
+        margin-left: 0;
+    }
+    .ai-assistant-panel-payload-format-tabs {
+        width: 100%;
+    }
+    .ai-assistant-panel-payload-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    .ai-assistant-panel-payload-actions .ai-assistant-panel-ep-io-btn {
+        width: 100%;
+        min-width: 0;
+    }
+}
