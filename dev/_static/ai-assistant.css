@@ -5917,6 +5917,9 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     max-height: 130px;
     overflow-y: auto;
     overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    position: relative;
+    z-index: 1;
 }
 
 /* Thin custom scrollbar — keeps the popup visually tight */
@@ -6127,6 +6130,11 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     font-size: 0.61rem;
     line-height: 1.35;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #777));
+    /* Informational status only. Never let this paragraph intercept a device
+       row if browser/font rounding makes their painted boxes touch/overlap. */
+    pointer-events: none;
+    position: relative;
+    z-index: 0;
 }
 
 .ai-assistant-mic-shortcut-kbd {

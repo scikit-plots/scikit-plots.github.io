@@ -32617,6 +32617,10 @@
         devList.className = 'ai-assistant-mic-device-list';
         devList.setAttribute('role', 'radiogroup');
         devList.setAttribute('aria-label', 'Select microphone');
+        // Bind once to the stable radiogroup. _refreshMicDeviceList() replaces
+        // its child rows asynchronously, so delegation avoids per-refresh
+        // listener drift and handles clicks on nested spans/SVGs via closest().
+        _bindMicDeviceListInteractions(devList);
         devSection.appendChild(devList);
 
         var devCapability = document.createElement('p');
@@ -33587,6 +33591,55 @@
     }
 
     /**
+     * Bind microphone radio interactions to the stable list container.
+     *
+     * The device rows are rebuilt after enumerateDevices()/permission/devicechange.
+     * Delegating from the radiogroup keeps one listener alive across those refreshes
+     * and uses closest() so clicks on nested labels/check SVGs select the row.
+     */
+    function _bindMicDeviceListInteractions(listEl) {
+        if (!listEl || listEl.getAttribute('data-interactions-bound') === 'true') return;
+        listEl.setAttribute('data-interactions-bound', 'true');
+
+        function _itemFromTarget(target) {
+            if (!target) return null;
+            var element = target.nodeType === 1 ? target : target.parentElement;
+            var item = element && element.closest ? element.closest('.ai-assistant-mic-device-item') : null;
+            return item && listEl.contains(item) ? item : null;
+        }
+
+        listEl.addEventListener('click', function (e) {
+            var item = _itemFromTarget(e.target);
+            if (!item) return;
+            // Keep the explicitly pinned picker open while the user compares
+            // routes; do not let future ancestor click-dismiss logic consume it.
+            e.preventDefault();
+            e.stopPropagation();
+            _selectMicDevice(item.getAttribute('data-device-id') || 'default');
+            try { item.focus({ preventScroll: true }); }
+            catch (_) { try { item.focus(); } catch (_e) {} }
+        });
+
+        listEl.addEventListener('keydown', function (e) {
+            var item = _itemFromTarget(e.target);
+            if (!item) return;
+            var items = Array.prototype.slice.call(listEl.querySelectorAll('.ai-assistant-mic-device-item'));
+            if (!items.length) return;
+            var pos = items.indexOf(item);
+            if (pos < 0) return;
+            var target = null;
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') target = items[(pos + 1) % items.length];
+            else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') target = items[(pos - 1 + items.length) % items.length];
+            else if (e.key === 'Home') target = items[0];
+            else if (e.key === 'End') target = items[items.length - 1];
+            if (!target) return;
+            e.preventDefault();
+            target.focus();
+            _selectMicDevice(target.getAttribute('data-device-id') || 'default');
+        });
+    }
+
+    /**
      * Select a microphone device and persist the choice.
      *
      * Updates all .ai-assistant-mic-device-item aria-checked states in the DOM.
@@ -34511,31 +34564,6 @@
                 checkSpan.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 5"/></svg>';
                 item.appendChild(labelWrap);
                 item.appendChild(checkSpan);
-                item.addEventListener('click', function (e) {
-                    // Keep the microphone picker open after a routing choice so
-                    // users can compare/select other inputs without reopening it.
-                    // pointerdown on the popup already marks it explicitly pinned;
-                    // stop bubbling here is an extra guard against future parent
-                    // click-to-dismiss logic.
-                    e.stopPropagation();
-                    _selectMicDevice(dev.deviceId);
-                    try { item.focus({ preventScroll: true }); }
-                    catch (_) { try { item.focus(); } catch (_e) {} }
-                });
-                item.addEventListener('keydown', function (e) {
-                    var items = Array.prototype.slice.call(listEl.querySelectorAll('.ai-assistant-mic-device-item'));
-                    var pos = items.indexOf(item);
-                    var target = null;
-                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') target = items[(pos + 1) % items.length];
-                    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') target = items[(pos - 1 + items.length) % items.length];
-                    else if (e.key === 'Home') target = items[0];
-                    else if (e.key === 'End') target = items[items.length - 1];
-                    if (target) {
-                        e.preventDefault();
-                        target.focus();
-                        _selectMicDevice(target.getAttribute('data-device-id'));
-                    }
-                });
                 listEl.appendChild(item);
             });
             _syncMicDeviceUI();
