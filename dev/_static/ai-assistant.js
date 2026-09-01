@@ -959,12 +959,20 @@
     var _feedbackTelemetryGrantedAt = null;
 
     function _readFeedbackTelemetryConsent() {
+        var configuredDefault = (typeof _cfg === 'function' && _cfg().panelFeedbackTelemetryDefault === true);
         try {
             var raw = localStorage.getItem(_FEEDBACK_TELEMETRY_PREF_KEY);
-            if (!raw) { return false; }
+            if (!raw) {
+                _feedbackTelemetryGrantedAt = configuredDefault ? Date.now() : null;
+                return configuredDefault;
+            }
             var saved = JSON.parse(raw);
-            if (!saved || saved.enabled !== true ||
-                    saved.version !== _FEEDBACK_TELEMETRY_CONSENT_VERSION) {
+            if (!saved || saved.version !== _FEEDBACK_TELEMETRY_CONSENT_VERSION ||
+                    typeof saved.enabled !== 'boolean') {
+                return false;
+            }
+            if (saved.enabled === false) {
+                _feedbackTelemetryGrantedAt = null;
                 return false;
             }
             var grantedAt = Number(saved.grantedAt);
@@ -984,14 +992,40 @@
     var _FEEDBACK_DOM_CONSENT_VERSION = '2.0.0';
     var _FEEDBACK_DOM_PREF_KEY = 'ai-assistant-page-integration-consent';
     function _readFeedbackDomConsent() {
+        var configuredDefault = (typeof _cfg === 'function' && _cfg().panelPageIntegrationDefault === true);
         try {
             var raw = localStorage.getItem(_FEEDBACK_DOM_PREF_KEY);
-            if (!raw) return false;
+            if (!raw) return configuredDefault;
             var saved = JSON.parse(raw);
-            return !!(saved && saved.enabled === true && saved.version === _FEEDBACK_DOM_CONSENT_VERSION);
+            if (!saved || saved.version !== _FEEDBACK_DOM_CONSENT_VERSION ||
+                    typeof saved.enabled !== 'boolean') return false;
+            return saved.enabled;
         } catch (_) { return false; }
     }
     var _feedbackDomIntegrationEnabled = _readFeedbackDomConsent();
+
+    var _STREAMING_KEY = 'ai-assistant-streaming-on';
+    function _readStreamingPreference() {
+        try {
+            var raw = localStorage.getItem(_STREAMING_KEY);
+            if (raw === 'true') return true;
+            if (raw === 'false') return false;
+        } catch (_) {}
+        return !(typeof _cfg === 'function' && _cfg().panelStreamingDefault === false);
+    }
+    var _streamingOn = _readStreamingPreference();
+    function _effectiveStreamingEnabled() {
+        return !(typeof _cfg === 'function' && _cfg().panelApiStreaming === false) && _streamingOn;
+    }
+    function _setStreamingMode(enabled) {
+        _streamingOn = !!enabled;
+        try { localStorage.setItem(_STREAMING_KEY, _streamingOn ? 'true' : 'false'); } catch (_) {}
+        var effective = _effectiveStreamingEnabled();
+        document.querySelectorAll('[data-streaming-toggle]').forEach(function (el) {
+            el.setAttribute('aria-checked', effective ? 'true' : 'false');
+        });
+        return effective;
+    }
 
     function _feedbackDomStatusText() {
         return _feedbackDomIntegrationEnabled
@@ -1031,12 +1065,20 @@
     var _feedbackReviewGrantedAt = null;
 
     function _readFeedbackReviewConsent() {
+        var configuredDefault = !(typeof _cfg === 'function' && _cfg().panelFeedbackReviewDefault === false);
         try {
             var raw = localStorage.getItem(_FEEDBACK_REVIEW_PREF_KEY);
-            if (!raw) return false;
+            if (!raw) {
+                _feedbackReviewGrantedAt = configuredDefault ? Date.now() : null;
+                return configuredDefault;
+            }
             var saved = JSON.parse(raw);
-            if (!saved || saved.enabled !== true ||
-                    saved.version !== _FEEDBACK_REVIEW_CONSENT_VERSION) return false;
+            if (!saved || saved.version !== _FEEDBACK_REVIEW_CONSENT_VERSION ||
+                    typeof saved.enabled !== 'boolean') return false;
+            if (saved.enabled === false) {
+                _feedbackReviewGrantedAt = null;
+                return false;
+            }
             var grantedAt = Number(saved.grantedAt);
             if (!Number.isFinite(grantedAt) || grantedAt <= 0) return false;
             _feedbackReviewGrantedAt = grantedAt;
@@ -1063,15 +1105,11 @@
         _feedbackReviewEnabled = !!enabled;
         _feedbackReviewGrantedAt = enabled ? Date.now() : null;
         try {
-            if (enabled) {
-                localStorage.setItem(_FEEDBACK_REVIEW_PREF_KEY, JSON.stringify({
-                    enabled: true,
-                    version: _FEEDBACK_REVIEW_CONSENT_VERSION,
-                    grantedAt: _feedbackReviewGrantedAt
-                }));
-            } else {
-                localStorage.removeItem(_FEEDBACK_REVIEW_PREF_KEY);
-            }
+            localStorage.setItem(_FEEDBACK_REVIEW_PREF_KEY, JSON.stringify({
+                enabled: _feedbackReviewEnabled,
+                version: _FEEDBACK_REVIEW_CONSENT_VERSION,
+                grantedAt: _feedbackReviewGrantedAt
+            }));
         } catch (_) {
             if (enabled) {
                 _feedbackReviewEnabled = false;
@@ -7980,8 +8018,10 @@
             telemetryConsent: true,
             telemetryConsentVersion: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
             telemetryConsentAt: _feedbackTelemetryGrantedAt,
-            feedbackId: detail.sessionId || detail.feedbackId || null,
+            feedbackId: detail.feedbackId || null,
+            feedbackChainId: detail.feedbackChainId || null,
             prevFeedbackId: detail.prevFeedbackId || null,
+            prevFeedbackIds: Array.isArray(detail.prevFeedbackIds) ? detail.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
             editCount: detail.editCount || 0,
             answerIndex: typeof detail.answerIndex === 'number' ? detail.answerIndex : null,
             ratingValue: detail.ratingValue,
@@ -8038,11 +8078,12 @@
      * It is subject to the same explicit telemetry permission as a rating POST
      * and stops immediately when that permission is disabled.
      */
-    function _postFeedbackRetract(url, token, prevSessionId, answerIndex, conversationId) {
+    function _postFeedbackRetract(url, token, priorEntry, answerIndex) {
         // Retraction is still a network telemetry operation. Never transmit it
         // after permission has been turned off; stopping telemetry must be a
         // true network stop, not a final hidden request.
-        if (!url || !prevSessionId || !_feedbackPersistEnabled || !_feedbackTelemetryGrantedAt) {
+        var lineage = _feedbackRetractionLineage(priorEntry);
+        if (!url || !lineage || !_feedbackPersistEnabled || !_feedbackTelemetryGrantedAt) {
             return false;
         }
         _remotePost(url, token, {
@@ -8051,7 +8092,10 @@
             telemetryConsent: true,
             telemetryConsentVersion: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
             telemetryConsentAt: _feedbackTelemetryGrantedAt,
-            prevFeedbackId: prevSessionId,
+            feedbackChainId: lineage.feedbackChainId,
+            prevFeedbackId:  lineage.prevFeedbackId,
+            prevFeedbackIds: lineage.prevFeedbackIds,
+            editCount:      lineage.prevFeedbackIds.length,
             answerIndex:    answerIndex,
             ts:             Date.now(),
         }, { keepalive: true });
@@ -8131,6 +8175,7 @@
     function _clearFeedbackAfterWithdrawal(answerIndex, answerText, questionText) {
         delete _feedbackStore[answerIndex];
         _feedbackGivenSet.delete(answerIndex);
+        _saveFeedbackState();
         _syncFeedbackRatingControls(answerIndex);
         var block = document.querySelector('.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]');
         if (block) {
@@ -8437,24 +8482,24 @@
             // Edit-chain linkage: prevEntry (above) is the rating being
             // replaced, if any (gated on _pendingRetract — set by the Edit
             // button).  null/0 for a first-time rating.
-            var _supersededFeedbackId = (prevEntry && prevEntry.sessionId) || null;
-            var _supersededEditCount  = (prevEntry && prevEntry.editCount) || 0;
+            var _lineage = _feedbackLineageFromPrior(prevEntry, sid);
 
             var detail = {
                 schemaVersion:  2,
                 ratingValue:    chosen.value,
                 // ratingLabel is the snake_case slug (e.g. "mostly_positive").
                 // ratingTitle carries the human-readable string ("Mostly yes").
-                // rating is kept as a deprecated alias of ratingLabel.
                 ratingLabel:    chosen.label,
                 ratingTitle:    chosen.title,
                 ratingMode:     'panel',
                 ratingScaleMin: Math.min.apply(null, scale),
                 ratingScaleMax: Math.max.apply(null, scale),
-                rating:         chosen.label,  // @deprecated: alias of ratingLabel
-                // prevFeedbackId / editCount: edit-chain linkage (see above).
-                prevFeedbackId: _supersededFeedbackId,
-                editCount:      _supersededFeedbackId ? (_supersededEditCount + 1) : 0,
+                // Schema-v5 lineage: stable root + immediate parent + complete
+                // oldest→newest ancestry for terminal-rating resolution.
+                feedbackChainId: _lineage.feedbackChainId,
+                prevFeedbackId:  _lineage.prevFeedbackId,
+                prevFeedbackIds: _lineage.prevFeedbackIds,
+                editCount:       _lineage.editCount,
                 message:        ta.value.trim(),
                 query:          (typeof questionText === 'string') ? questionText : '',
                 answer:         (typeof answerText === 'string') ? answerText : '',
@@ -8462,7 +8507,7 @@
                 answerIndex:    answerIndex,
                 page:           _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
                 ts:             Date.now(),
-                sessionId:      sid,
+                feedbackId:     sid,
                 conversationId: _sessionId,
             };
 
@@ -8482,10 +8527,9 @@
                 // the replacement. This never grants dataset/training authority.
                 // The _pendingRetract flag is set by the Edit button handler.
                 var _curEntry = _feedbackStore[answerIndex];
-                if (_curEntry && _curEntry._pendingRetract && _curEntry.sessionId) {
+                if (_curEntry && _curEntry._pendingRetract && _curEntry.feedbackId) {
                     _postFeedbackRetract(
-                        _fbBase, _fbToken,
-                        _curEntry.sessionId, answerIndex, _curEntry.conversationId
+                        _fbBase, _fbToken, _curEntry, answerIndex
                     );
                     // Clear immediately — defensive against rapid double-submit.
                     _curEntry._pendingRetract = false;
@@ -8507,18 +8551,21 @@
                 ratingScaleMin: Math.min.apply(null, scale),
                 ratingScaleMax: Math.max.apply(null, scale),
                 // Edit-chain linkage — forwarded into tRecords by
-                // /v1/contribute (see _supersededFeedbackId above).
-                prevFeedbackId: detail.prevFeedbackId,
-                editCount:      detail.editCount,
+                // /v1/contribute (see feedback lineage fields above).
+                feedbackChainId: detail.feedbackChainId,
+                prevFeedbackId:  detail.prevFeedbackId,
+                prevFeedbackIds: detail.prevFeedbackIds,
+                editCount:       detail.editCount,
                 message:        ta.value.trim(),
                 ts:             Date.now(),
                 query:          detail.query,
                 answer:         detail.answer,
                 model:          detail.model,
-                sessionId:      detail.sessionId,
+                feedbackId:     detail.feedbackId,
                 conversationId: detail.conversationId,
                 page:           detail.page,
             };
+            _saveFeedbackState();
             _syncFeedbackRatingControls(answerIndex);
             _queueFeedbackReview(detail, answerIndex, answerText, questionText, cfg);
 
@@ -8796,8 +8843,10 @@
             consentAt: _feedbackReviewGrantedAt || Date.now(),
             trainingConsentFlag: true,
             trainingConsentVersion: _FEEDBACK_TRAINING_CONSENT_VERSION,
-            feedbackId: detail.sessionId || detail.feedbackId || null,
+            feedbackId: detail.feedbackId || null,
+            feedbackChainId: detail.feedbackChainId || null,
             prevFeedbackId: detail.prevFeedbackId || null,
+            prevFeedbackIds: Array.isArray(detail.prevFeedbackIds) ? detail.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
             editCount: detail.editCount || 0,
             answerIndex: answerIndex,
             ratingValue: detail.ratingValue,
@@ -9077,6 +9126,11 @@
             answerIndex: answerIndex,
             query: qa.query || '',
             answer: qa.answer || '',
+            feedbackId: fb ? (fb.feedbackId || null) : null,
+            feedbackChainId: fb ? (fb.feedbackChainId || null) : null,
+            prevFeedbackId: fb ? (fb.prevFeedbackId || null) : null,
+            prevFeedbackIds: fb && Array.isArray(fb.prevFeedbackIds) ? fb.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
+            editCount: fb ? (Number.isInteger(fb.editCount) ? fb.editCount : 0) : 0,
             ratingValue: fb && fb.ratingValue != null ? fb.ratingValue : null,
             ratingLabel: fb ? (fb.ratingLabel || '') : '',
             ratingTitle: fb ? (fb.ratingTitle || null) : null,
@@ -9122,6 +9176,11 @@
                         label: m.model.label || null,
                     } : null,
                     feedback: fb ? {
+                        feedbackId: fb.feedbackId || null,
+                        feedbackChainId: fb.feedbackChainId || null,
+                        prevFeedbackId: fb.prevFeedbackId || null,
+                        prevFeedbackIds: Array.isArray(fb.prevFeedbackIds) ? fb.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
+                        editCount: Number.isInteger(fb.editCount) ? fb.editCount : 0,
                         ratingValue: fb.ratingValue != null ? fb.ratingValue : null,
                         ratingLabel: fb.ratingLabel || '',
                         ratingTitle: fb.ratingTitle || null,
@@ -9216,6 +9275,11 @@
                 return;
             }
             if (!opt.includeRatings) {
+                rec.feedbackId = null;
+                rec.feedbackChainId = null;
+                rec.prevFeedbackId = null;
+                rec.prevFeedbackIds = [];
+                rec.editCount = 0;
                 rec.ratingValue = null;
                 rec.ratingLabel = '';
                 rec.ratingTitle = null;
@@ -9240,7 +9304,9 @@
         if (!opt.includeSafeSourcePage) out.page = '';
         if (!opt.includeIdentifiers) {
             out.feedbackId = null;
+            out.feedbackChainId = null;
             out.prevFeedbackId = null;
+            out.prevFeedbackIds = [];
             out.editCount = 0;
         }
         return out;
@@ -9486,12 +9552,98 @@
      *
      * Cleared by clearConversation() alongside _feedbackGivenSet.
      *
-     * Schema per entry:
-     *   { ratingValue: number, ratingLabel: string, message: string, ts: number }
+     * Schema per entry includes canonical feedbackId + schema-v5 lineage, the
+     * rating fields, optional note, originating Q&A/model context, and timestamp.
      *
      * @type {Object<number, {ratingValue:number, ratingLabel:string, message:string, ts:number}>}
      */
     var _feedbackStore = {};
+
+    // Feedback revision lineage is intentionally per-answer and per-rating, not a
+    // stable participant identity.  Current writers retain the complete bounded
+    // oldest→newest ancestry so a later dataset pass can identify the terminal
+    // rating even when intermediate provider-review revisions were overwritten.
+    var _FEEDBACK_LINEAGE_MAX_IDS = 1000;
+    var _FEEDBACK_STATE_KEY = 'ai-assistant-feedback-state-v2';
+
+    function _feedbackLineageFromPrior(prior, currentFeedbackId) {
+        var currentId = typeof currentFeedbackId === 'string' && currentFeedbackId ? currentFeedbackId : null;
+        if (!prior) {
+            return {
+                feedbackChainId: currentId,
+                prevFeedbackId: null,
+                prevFeedbackIds: [],
+                editCount: 0
+            };
+        }
+        var previousId = typeof prior.feedbackId === 'string' && prior.feedbackId ? prior.feedbackId : null;
+        var ancestors = Array.isArray(prior.prevFeedbackIds) ? prior.prevFeedbackIds.slice() : null;
+        var chainId = typeof prior.feedbackChainId === 'string' && prior.feedbackChainId ? prior.feedbackChainId : null;
+        var editCount = Number.isInteger(prior.editCount) ? prior.editCount : -1;
+        var valid = !!previousId && !!chainId && ancestors !== null &&
+            ancestors.length <= _FEEDBACK_LINEAGE_MAX_IDS &&
+            editCount === ancestors.length;
+        if (valid) {
+            var seen = Object.create(null);
+            for (var i = 0; i < ancestors.length; i++) {
+                var id = ancestors[i];
+                if (typeof id !== 'string' || !id || id.length > 256 || seen[id] || id === previousId || id === currentId) {
+                    valid = false; break;
+                }
+                seen[id] = true;
+            }
+        }
+        if (valid && ancestors.length) {
+            valid = prior.prevFeedbackId === ancestors[ancestors.length - 1] && chainId === ancestors[0];
+        } else if (valid) {
+            valid = prior.prevFeedbackId == null && chainId === previousId;
+        }
+        // Never heuristically reconstruct a retired/scalar-only lineage. A
+        // malformed prior state starts a new independent chain rather than
+        // inventing ancestry that the dataset resolver could misinterpret.
+        if (!valid) {
+            return {
+                feedbackChainId: currentId,
+                prevFeedbackId: null,
+                prevFeedbackIds: [],
+                editCount: 0
+            };
+        }
+        var nextAncestors = ancestors.concat([previousId]);
+        return {
+            feedbackChainId: chainId,
+            prevFeedbackId: previousId,
+            prevFeedbackIds: nextAncestors,
+            editCount: nextAncestors.length
+        };
+    }
+
+    function _feedbackRetractionLineage(prior) {
+        if (!prior || typeof prior.feedbackId !== 'string' || !prior.feedbackId ||
+                typeof prior.feedbackChainId !== 'string' || !prior.feedbackChainId ||
+                !Array.isArray(prior.prevFeedbackIds) || !Number.isInteger(prior.editCount) ||
+                prior.editCount !== prior.prevFeedbackIds.length) return null;
+        var targetId = prior.feedbackId;
+        var ancestors = prior.prevFeedbackIds.slice();
+        var seen = Object.create(null);
+        for (var i = 0; i < ancestors.length; i++) {
+            var id = ancestors[i];
+            if (typeof id !== 'string' || !id || id.length > 256 || seen[id] || id === targetId) return null;
+            seen[id] = true;
+        }
+        if (ancestors.length) {
+            if (prior.prevFeedbackId !== ancestors[ancestors.length - 1] || prior.feedbackChainId !== ancestors[0]) return null;
+        } else if (prior.prevFeedbackId != null || prior.feedbackChainId !== targetId) {
+            return null;
+        }
+        if (ancestors.length >= _FEEDBACK_LINEAGE_MAX_IDS) return null;
+        ancestors.push(targetId);
+        return {
+            feedbackChainId: prior.feedbackChainId,
+            prevFeedbackId: targetId,
+            prevFeedbackIds: ancestors
+        };
+    }
 
     /**
      * Unique session id — stable across this page visit, new on reload.
@@ -9624,10 +9776,12 @@
         } catch (_) { allow = false; }
         if (allow) {
             _saveTranscript();
+            _saveFeedbackState();
             if (_conversationId) _ssSet(_CONVERSATION_ID_KEY, _conversationId);
         } else {
             _ssDel(_TRANSCRIPT_KEY);
             _ssDel(_CONVERSATION_ID_KEY);
+            _ssDel(_FEEDBACK_STATE_KEY);
             _ssDel('ai-assistant-active-contribution-review-v1');
         }
         var toggle = document.getElementById('ai-assistant-remember-conversation-toggle');
@@ -9649,6 +9803,88 @@
     function _saveTranscript() {
         if (!_persistEnabled()) return;
         try { _ssSet(_TRANSCRIPT_KEY, JSON.stringify(_transcript)); } catch (_) {}
+    }
+
+    function _saveFeedbackState() {
+        if (!_persistEnabled()) return;
+        var out = {};
+        Object.keys(_feedbackStore).slice(0, _TRANSCRIPT_RESTORE_MAX_ENTRIES).forEach(function (key) {
+            var fb = _feedbackStore[key];
+            if (!fb || !fb.feedbackId) return;
+            out[key] = {
+                ratingValue: Number.isFinite(Number(fb.ratingValue)) ? Number(fb.ratingValue) : null,
+                ratingLabel: typeof fb.ratingLabel === 'string' ? fb.ratingLabel.slice(0, 64) : '',
+                ratingTitle: typeof fb.ratingTitle === 'string' ? fb.ratingTitle.slice(0, 128) : null,
+                ratingMode: fb.ratingMode === 'quick' ? 'quick' : 'panel',
+                ratingScaleMin: Number.isFinite(Number(fb.ratingScaleMin)) ? Number(fb.ratingScaleMin) : null,
+                ratingScaleMax: Number.isFinite(Number(fb.ratingScaleMax)) ? Number(fb.ratingScaleMax) : null,
+                feedbackChainId: typeof fb.feedbackChainId === 'string' ? fb.feedbackChainId.slice(0, 256) : null,
+                prevFeedbackId: typeof fb.prevFeedbackId === 'string' ? fb.prevFeedbackId.slice(0, 256) : null,
+                prevFeedbackIds: Array.isArray(fb.prevFeedbackIds) ? fb.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
+                editCount: Number.isInteger(fb.editCount) ? Math.max(0, Math.min(_FEEDBACK_LINEAGE_MAX_IDS, fb.editCount)) : 0,
+                message: typeof fb.message === 'string' ? fb.message.slice(0, _CONTRIBUTION_NOTE_MAX_CHARS) : '',
+                ts: Number.isFinite(Number(fb.ts)) ? Number(fb.ts) : null,
+                feedbackId: String(fb.feedbackId).slice(0, 256)
+            };
+        });
+        _ssSet(_FEEDBACK_STATE_KEY, JSON.stringify(out));
+    }
+
+    function _loadFeedbackState() {
+        _feedbackStore = {}; _feedbackGivenSet = new Set();
+        if (!_persistEnabled() || !_transcript.length) { _ssDel(_FEEDBACK_STATE_KEY); return; }
+        var raw = _ssGet(_FEEDBACK_STATE_KEY);
+        if (!raw || raw.length > 500000) return;
+        try {
+            var parsed = JSON.parse(raw);
+            if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('invalid feedback state');
+            Object.keys(parsed).slice(0, _TRANSCRIPT_RESTORE_MAX_ENTRIES).forEach(function (key) {
+                var idx = Number(key); var fb = parsed[key];
+                if (!Number.isInteger(idx) || idx < 0 || !fb || typeof fb !== 'object' || typeof fb.feedbackId !== 'string' || !fb.feedbackId) return;
+                // A restored feedback index must still point at a rendered assistant
+                // slot (errors consume an index but cannot own feedback). This stops
+                // stale/tampered same-tab state from attaching a rating to another Q&A.
+                if (!_contributionQaAtIndex(idx)) return;
+                var currentId = fb.feedbackId.slice(0, 256);
+                var ids = Array.isArray(fb.prevFeedbackIds) ? fb.prevFeedbackIds : [];
+                if (ids.length > _FEEDBACK_LINEAGE_MAX_IDS) return;
+                if (ids.some(function (id) { return typeof id !== 'string' || !id || id.length > 256; })) return;
+                ids = ids.slice();
+                var seen = Object.create(null);
+                for (var lineageI = 0; lineageI < ids.length; lineageI++) {
+                    if (seen[ids[lineageI]] || ids[lineageI] === currentId) return;
+                    seen[ids[lineageI]] = true;
+                }
+                var restoredPrev = typeof fb.prevFeedbackId === 'string' && fb.prevFeedbackId ? fb.prevFeedbackId.slice(0, 256) : null;
+                var restoredChain = typeof fb.feedbackChainId === 'string' && fb.feedbackChainId ? fb.feedbackChainId.slice(0, 256) : null;
+                var restoredEdit = Number.isInteger(fb.editCount) ? fb.editCount : ids.length;
+                if (restoredEdit < 0 || restoredEdit > _FEEDBACK_LINEAGE_MAX_IDS) return;
+                if (ids.length) {
+                    if (restoredPrev !== ids[ids.length - 1] || restoredChain !== ids[0] || restoredEdit !== ids.length) return;
+                } else if (restoredPrev || restoredEdit !== 0 || (restoredChain && restoredChain !== currentId)) {
+                    return;
+                }
+                var entry = {
+                    ratingValue: Number.isFinite(Number(fb.ratingValue)) ? Number(fb.ratingValue) : null,
+                    ratingLabel: typeof fb.ratingLabel === 'string' ? fb.ratingLabel.slice(0, 64) : '',
+                    ratingTitle: typeof fb.ratingTitle === 'string' ? fb.ratingTitle.slice(0, 128) : null,
+                    ratingMode: fb.ratingMode === 'quick' ? 'quick' : 'panel',
+                    ratingScaleMin: Number.isFinite(Number(fb.ratingScaleMin)) ? Number(fb.ratingScaleMin) : null,
+                    ratingScaleMax: Number.isFinite(Number(fb.ratingScaleMax)) ? Number(fb.ratingScaleMax) : null,
+                    feedbackChainId: restoredChain || currentId,
+                    prevFeedbackId: restoredPrev,
+                    prevFeedbackIds: ids,
+                    editCount: restoredEdit,
+                    message: typeof fb.message === 'string' ? fb.message.slice(0, _CONTRIBUTION_NOTE_MAX_CHARS) : '',
+                    ts: Number.isFinite(Number(fb.ts)) ? Number(fb.ts) : null,
+                    feedbackId: currentId,
+                    conversationId: _getConversationId()
+                };
+                _feedbackStore[idx] = entry; _feedbackGivenSet.add(idx);
+            });
+        } catch (_) {
+            _feedbackStore = {}; _feedbackGivenSet = new Set(); _ssDel(_FEEDBACK_STATE_KEY);
+        }
     }
 
     /**
@@ -9761,6 +9997,7 @@
         _feedbackGivenSet = new Set();
         _feedbackStore    = {};                  // v2 — clears all submitted ratings
         _ssDel(_TRANSCRIPT_KEY);
+        _ssDel(_FEEDBACK_STATE_KEY);
         var nextConversationId = _rotateConversationId();
         // Share panels are panel-lifetime DOM.  Tell them immediately that any
         // session/permanent/global link UI belongs to the old conversation so
@@ -12779,7 +13016,6 @@
      *       schemaVersion : 2,                  // for forward compatibility
      *       ratingValue   : -1 | 0 | +1 | ...,  // SIGNED INT (training signal)
      *       ratingLabel   : "negative" | ...,   // string (humans / dashboards)
-     *       rating        : "negative" | ...,   // legacy alias = ratingLabel
      *       message       : "free-text...",
      *       query         : "the user's question",   // NEW
      *       answer        : "the model's full reply", // NEW
@@ -12787,12 +13023,8 @@
      *       answerIndex   : 0,
      *       page          : "https://docs.example.com/x.html",
      *       ts            : 1716517200000,
-     *       sessionId     : "c0c5f8a0-..."    // crypto.randomUUID — idempotency
+     *       feedbackId    : "c0c5f8a0-..."    // crypto.randomUUID — idempotency
      *     }
-     *
-     * Backward compatibility: the legacy ``detail.rating`` string field is
-     * preserved as an alias of ``ratingLabel`` so existing listeners keep
-     * working without change.
      *
      * User note: each answer carries its own independent feedback block so
      * every exchange can be rated separately.  The numeric value of each
@@ -13112,13 +13344,11 @@
                 // Capture BEFORE any retraction/overwrite below: if this answer
                 // already has a stored rating (quick re-toggle, or panel rating
                 // marked _pendingRetract via the Edit button), this click
-                // SUPERSEDES it.  _supersededFeedbackId becomes
+                // SUPERSEDES it.  the prior feedbackId becomes
                 // detail.prevFeedbackId (sent to /v1/feedback) and is forwarded
                 // into _feedbackStore so /v1/contribute's tRecords can carry it
                 // too.  null on a first-time rating for this answer.
-                var _priorQEntry          = _feedbackStore[answerIndex] || null;
-                var _supersededFeedbackId = (_priorQEntry && _priorQEntry.sessionId) || null;
-                var _supersededEditCount  = (_priorQEntry && _priorQEntry.editCount) || 0;
+                var _priorQEntry = _feedbackStore[answerIndex] || null;
 
                 // ── Edit path ────────────────────────────────────────────────
                 // If feedback was already given for this answer:
@@ -13137,11 +13367,9 @@
                         ? _EP.resolveToken('feedbackToken')
                         : (cfg.panelFeedbackToken || '');
                     if (_fbBaseQ && _feedbackPersistEnabled &&
-                            _prevQEntry && _prevQEntry.sessionId) {
+                            _prevQEntry && _prevQEntry.feedbackId) {
                         _postFeedbackRetract(
-                            _fbBaseQ, _fbTokenQ,
-                            _prevQEntry.sessionId, answerIndex,
-                            _prevQEntry.conversationId
+                            _fbBaseQ, _fbTokenQ, _prevQEntry, answerIndex
                         );
                     }
                     // Remove the guard so the normal submit block runs below.
@@ -13159,10 +13387,10 @@
                 // is configured (graceful degradation).
                 var _quickModelInfo = _buildModelInfo(cfg);
 
-                // sessionId is THIS submission's own idempotency identifier,
-                // stored as `feedbackId` in the dataset (see
+                // feedbackId is THIS submission's own idempotency identifier,
+                // stored directly as `feedbackId` in the dataset (see
                 // _dataset_schema.CANONICAL_COLUMNS).  Also used as the
-                // prevSessionId/prevFeedbackId target if a later edit
+                // prevFeedbackId target if a later edit
                 // retracts/supersedes THIS record.
                 //
                 // Historically this was
@@ -13193,6 +13421,7 @@
                     // Privacy: pathname omitted — raw page path leaks to server.
                     sid = 'fb-anon-' + answerIndex + '-' + Date.now();
                 }
+                var _quickLineage = _feedbackLineageFromPrior(_priorQEntry, sid);
 
                 var detail = {
                     schemaVersion:  2,
@@ -13200,18 +13429,15 @@
                     // ratingLabel is now always a snake_case slug matching the
                     // panel feedback vocabulary (e.g. "not_helpful", "helpful").
                     // ratingTitle carries the human-readable display string.
-                    // rating is kept as a deprecated alias of ratingLabel for
-                    // server-side back-compat; new consumers should use ratingSlug.
                     ratingLabel:    opt.slug,
                     ratingTitle:    opt.title,
                     ratingMode:     'quick',
                     ratingScaleMin: -1,
                     ratingScaleMax: 1,
-                    rating:         opt.slug,   // @deprecated: alias of ratingLabel
-                    // prevFeedbackId / editCount: edit-chain linkage (see top of
-                    // this handler).  null / 0 for a first-time rating.
-                    prevFeedbackId: _supersededFeedbackId,
-                    editCount:      _supersededFeedbackId ? (_supersededEditCount + 1) : 0,
+                    feedbackChainId: _quickLineage.feedbackChainId,
+                    prevFeedbackId:  _quickLineage.prevFeedbackId,
+                    prevFeedbackIds: _quickLineage.prevFeedbackIds,
+                    editCount:       _quickLineage.editCount,
                     message:        '',
                     query:          (typeof questionText === 'string') ? questionText : '',
                     answer:         (typeof answerText === 'string')   ? answerText   : '',
@@ -13219,7 +13445,7 @@
                     answerIndex:    answerIndex,
                     page:           _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
                     ts:             Date.now(),
-                    sessionId:      sid,
+                    feedbackId:     sid,
                     conversationId: _sessionId,
                 };
 
@@ -13238,11 +13464,9 @@
                     // Also retract any pending entry set by the detailed-block's
                     // Edit button (covers: quick → fbBlock Edit → click quick).
                     var _pendQEntry = _feedbackStore[answerIndex];
-                    if (_pendQEntry && _pendQEntry._pendingRetract && _pendQEntry.sessionId) {
+                    if (_pendQEntry && _pendQEntry._pendingRetract && _pendQEntry.feedbackId) {
                         _postFeedbackRetract(
-                            _fbBase, _fbToken,
-                            _pendQEntry.sessionId, answerIndex,
-                            _pendQEntry.conversationId
+                            _fbBase, _fbToken, _pendQEntry, answerIndex
                         );
                         _pendQEntry._pendingRetract = false;
                     }
@@ -13260,17 +13484,20 @@
                     // Edit-chain linkage — forwarded into tRecords by
                     // /v1/contribute so contributions can also carry the
                     // supersession chain (see _priorQEntry above).
-                    prevFeedbackId: detail.prevFeedbackId,
-                    editCount:      detail.editCount,
+                    feedbackChainId: detail.feedbackChainId,
+                    prevFeedbackId:  detail.prevFeedbackId,
+                    prevFeedbackIds: detail.prevFeedbackIds,
+                    editCount:       detail.editCount,
                     message:        '',
                     ts:             Date.now(),
                     query:          detail.query,
                     answer:         detail.answer,
                     model:          _quickModelInfo, // populated so contributions carry model attr
-                    sessionId:      detail.sessionId,
+                    feedbackId:     detail.feedbackId,
                     conversationId: detail.conversationId,
                     page:           detail.page,
                 };
+                _saveFeedbackState();
                 _syncFeedbackRatingControls(answerIndex);
                 _queueFeedbackReview(detail, answerIndex, answerText, questionText, cfg);
 
@@ -13657,12 +13884,8 @@
             // _bfbEntry comment below), so gate on _pendingRetract: only claim
             // supersession when an edit was actually flagged for this answer.
             var _priorBfbEntry        = _feedbackStore[answerIndex] || null;
-            var _supersededFeedbackId = (_priorBfbEntry && _priorBfbEntry._pendingRetract && _priorBfbEntry.sessionId)
-                ? _priorBfbEntry.sessionId
-                : null;
-            var _supersededEditCount  = (_priorBfbEntry && _priorBfbEntry._pendingRetract)
-                ? (_priorBfbEntry.editCount || 0)
-                : 0;
+            var _lineagePrior = (_priorBfbEntry && _priorBfbEntry._pendingRetract) ? _priorBfbEntry : null;
+            var _blockLineage = _feedbackLineageFromPrior(_lineagePrior, sid);
 
             var detail = {
                 schemaVersion:  2,
@@ -13677,10 +13900,10 @@
                 ratingMode:     'panel',
                 ratingScaleMin: Math.min.apply(null, scale),
                 ratingScaleMax: Math.max.apply(null, scale),
-                rating:         chosen.label,        // legacy alias (back-compat)
-                // prevFeedbackId / editCount: edit-chain linkage (see above).
-                prevFeedbackId: _supersededFeedbackId,
-                editCount:      _supersededFeedbackId ? (_supersededEditCount + 1) : 0,
+                feedbackChainId: _blockLineage.feedbackChainId,
+                prevFeedbackId:  _blockLineage.prevFeedbackId,
+                prevFeedbackIds: _blockLineage.prevFeedbackIds,
+                editCount:       _blockLineage.editCount,
                 message:        ta.value.trim(),
                 query:          (typeof questionText === 'string') ? questionText : '',
                 answer:         (typeof answerText === 'string') ? answerText : '',
@@ -13688,9 +13911,8 @@
                 answerIndex:    answerIndex,
                 page:           _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
                 ts:             Date.now(),
-                // ``sessionId`` is local edit-chain state. The network telemetry
-                // serializer maps this to an ephemeral feedbackId only.
-                sessionId:      sid,
+                // ``feedbackId`` is the canonical local/network edit-chain identity.
+                feedbackId:     sid,
                 // Stable local conversation identity. It is never serialized by
                 // the schema-v4 network telemetry payload and does not link
                 // telemetry to dataset contributions.
@@ -13730,11 +13952,9 @@
                     // prevFeedbackId/editCount) is the SAME entry — reuse it
                     // rather than re-reading _feedbackStore[answerIndex].
                     var _bfbEntry = _priorBfbEntry;
-                    if (_bfbEntry && _bfbEntry._pendingRetract && _bfbEntry.sessionId) {
+                    if (_bfbEntry && _bfbEntry._pendingRetract && _bfbEntry.feedbackId) {
                         _postFeedbackRetract(
-                            _fbBase, _fbToken,
-                            _bfbEntry.sessionId, answerIndex,
-                            _bfbEntry.conversationId
+                            _fbBase, _fbToken, _bfbEntry, answerIndex
                         );
                         // Clear immediately — defensive against rapid double-submit.
                         _bfbEntry._pendingRetract = false;
@@ -13762,22 +13982,25 @@
                 ratingScaleMin: Math.min.apply(null, scale),
                 ratingScaleMax: Math.max.apply(null, scale),
                 // Edit-chain linkage — forwarded into tRecords by
-                // /v1/contribute (see _supersededFeedbackId above).
-                prevFeedbackId: detail.prevFeedbackId,
-                editCount:      detail.editCount,
+                // /v1/contribute (see feedback lineage fields above).
+                feedbackChainId: detail.feedbackChainId,
+                prevFeedbackId:  detail.prevFeedbackId,
+                prevFeedbackIds: detail.prevFeedbackIds,
+                editCount:       detail.editCount,
                 message:        ta.value.trim(),
                 ts:             Date.now(),
                 // Local content retained for explicit contribution only; ordinary feedback POST omits it:
                 query:          detail.query,
                 answer:         detail.answer,
                 model:          detail.model,
-                sessionId:      detail.sessionId,
+                feedbackId:     detail.feedbackId,
                 // Stable local conversation UUID used only by browser-side UI
                 // state. Schema-v4 feedback telemetry omits it, and the dataset
                 // contribution controller does not export it as participant identity.
                 conversationId: detail.conversationId,
                 page:           detail.page,
             };
+            _saveFeedbackState();
             _syncFeedbackRatingControls(answerIndex);
             _queueFeedbackReview(detail, answerIndex, answerText, questionText, cfg);
             // Delegate thank-you rendering to _showFeedbackThanks so the
@@ -15785,25 +16008,25 @@
         // ── A: Chat Configuration ─────────────────────────────────────────
         var chatSub = _buildExtSub('Runtime');
 
-        var _STREAMING_KEY = 'ai-assistant-streaming-on';
-        var _streamingOn = (function () {
-            try { return localStorage.getItem(_STREAMING_KEY) !== 'false'; } catch (_) { return true; }
-        }());
-
+        var streamDefaultOn = _cfg().panelStreamingDefault !== false;
         var streamToggle = _buildExtToggleRow(
             'Streaming responses',
-            'Responses appear word-by-word as the model generates them. ' +
+            (streamDefaultOn ? 'ON' : 'OFF') + ' by site default. Responses appear word-by-word as the model generates them. ' +
             'Disable to wait for the complete answer \u2014 useful on slow ' +
             'connections where partial text can be confusing.',
-            _streamingOn,
+            _effectiveStreamingEnabled(),
             null
         );
         streamToggle.pill.setAttribute('aria-label', 'Streaming responses');
-        streamToggle.pill.addEventListener('click', function () {
-            _streamingOn = !_streamingOn;
-            streamToggle.pill.setAttribute('aria-checked', _streamingOn ? 'true' : 'false');
-            try { localStorage.setItem(_STREAMING_KEY, _streamingOn ? 'true' : 'false'); } catch (_) {}
-        });
+        streamToggle.pill.setAttribute('data-streaming-toggle', 'true');
+        if (_cfg().panelApiStreaming === false) {
+            streamToggle.pill.disabled = true;
+            streamToggle.pill.title = 'Streaming is disabled by site configuration.';
+        } else {
+            streamToggle.pill.addEventListener('click', function () {
+                _setStreamingMode(!_streamingOn);
+            });
+        }
         chatSub.appendChild(streamToggle.row);
 
         var rememberDefaultOn = _cfg().panelRememberConversation !== false;
@@ -15841,7 +16064,7 @@
 
         var domToggle = _buildExtToggleRow(
             'Allow page integration events',
-            'Optional same-origin integration hook for documentation authors. OFF by default. Internal assistant coordination stays on a private bus. When enabled, page scripts receive only bounded projections of selected lifecycle events; raw model objects, endpoint URLs, bearer tokens, provider model identifiers, Q&A text, notes and stable conversation identifiers are never exposed. This permission is separate from network telemetry.',
+            ((_cfg().panelPageIntegrationDefault === true) ? 'ON' : 'OFF') + ' by site default. Optional same-origin integration hook for documentation authors. Internal assistant coordination stays on a private bus when disabled. When enabled, page scripts receive only bounded projections of selected lifecycle events; raw model objects, endpoint URLs, bearer tokens, provider model identifiers, Q&A text, notes and stable conversation identifiers are never exposed. This permission is separate from network telemetry.',
             _feedbackDomIntegrationEnabled,
             'ai-assistant-feedback-dom-toggle'
         );
@@ -23828,16 +24051,18 @@
             ? Math.max(0, Math.min(1, (value - min) / (max - min))) : null;
         var ratingSlug = payload.ratingLabel || null;
         return [{
-            schemaVersion: 4,
+            schemaVersion: 5,
             _source: 'feedback',
             _ts: '<server-assigned>',
             _dedup_key: '<receipt-id>:feedback',
             conversationId: null,
             feedbackId: payload.feedbackId || null,
+            feedbackChainId: payload.feedbackChainId || null,
             recordType: 'qa',
             answerIndex: Number.isInteger(payload.answerIndex) ? payload.answerIndex : null,
             action: 'review',
             prevFeedbackId: payload.prevFeedbackId || null,
+            prevFeedbackIds: Array.isArray(payload.prevFeedbackIds) ? payload.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
             editCount: Number.isFinite(Number(payload.editCount)) ? Number(payload.editCount) : 0,
             status: 'active',
             trainingStatus: 'eligible',
@@ -23868,16 +24093,18 @@
         var feedbackId = payload.feedbackId || null;
         var ratingSlug = payload.ratingLabel || null;
         return [{
-            schemaVersion: 4,
+            schemaVersion: 5,
             _source: 'feedback',
             _ts: '<server-assigned>',
             _dedup_key: feedbackId ? (String(feedbackId) + ':feedback') : null,
             conversationId: null,
             feedbackId: feedbackId,
+            feedbackChainId: payload.feedbackChainId || null,
             recordType: null,
             answerIndex: Number.isInteger(payload.answerIndex) ? payload.answerIndex : null,
             action: 'rate',
             prevFeedbackId: payload.prevFeedbackId || null,
+            prevFeedbackIds: Array.isArray(payload.prevFeedbackIds) ? payload.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
             editCount: Number.isFinite(Number(payload.editCount)) ? Number(payload.editCount) : 0,
             status: 'active',
             trainingStatus: 'telemetry',
@@ -23908,16 +24135,6 @@
         }).join('\n');
     }
 
-    // Human-readable JSONL inspection. The repository/download representation
-    // remains strict NDJSON via _jsonlPreview(); this only expands each record
-    // inside the local code viewer so users can audit fields without scanning
-    // one very long line.
-    function _jsonlReadablePreview(rows) {
-        return (Array.isArray(rows) ? rows : []).map(function (row) {
-            return JSON.stringify(row, null, 2);
-        }).join('\n\n');
-    }
-
     function _contributionSavedJsonStructure(payload) {
         if (!payload || !Array.isArray(payload.records)) return [];
         return payload.records.map(function (rec, index) {
@@ -23933,6 +24150,11 @@
                         item.model = _storagePreviewModel(msg.model);
                         var fb = msg.feedback;
                         item.feedback = fb && typeof fb === 'object' ? {
+                            feedbackId: fb.feedbackId || null,
+                            feedbackChainId: fb.feedbackChainId || null,
+                            prevFeedbackId: fb.prevFeedbackId || null,
+                            prevFeedbackIds: Array.isArray(fb.prevFeedbackIds) ? fb.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : [],
+                            editCount: Number.isFinite(Number(fb.editCount)) ? Number(fb.editCount) : 0,
                             ratingValue: fb.ratingValue == null ? null : fb.ratingValue,
                             ratingSlug: fb.ratingLabel || null,
                             ratingTitle: fb.ratingTitle || null,
@@ -23946,17 +24168,19 @@
             var ratingSlug = !isConversation ? (rec.ratingLabel || null) : null;
             var answerIndex = !isConversation && Number.isInteger(rec.answerIndex) ? rec.answerIndex : null;
             return {
-                schemaVersion: 4,
+                schemaVersion: 5,
                 _source: 'contribution',
                 _ts: '<server-assigned>',
                 _dedup_key: isConversation ? '<receipt-id>:conversation' : ('<receipt-id>:' + (answerIndex == null ? index : answerIndex)),
                 conversationId: null,
-                feedbackId: null,
+                feedbackId: isConversation ? null : (rec.feedbackId || null),
+                feedbackChainId: isConversation ? null : (rec.feedbackChainId || null),
                 recordType: isConversation ? 'conversation' : 'qa',
                 answerIndex: answerIndex,
                 action: 'rate',
-                prevFeedbackId: null,
-                editCount: 0,
+                prevFeedbackId: isConversation ? null : (rec.prevFeedbackId || null),
+                prevFeedbackIds: isConversation ? [] : (Array.isArray(rec.prevFeedbackIds) ? rec.prevFeedbackIds.slice(0, _FEEDBACK_LINEAGE_MAX_IDS) : []),
+                editCount: isConversation ? 0 : (Number.isFinite(Number(rec.editCount)) ? Number(rec.editCount) : 0),
                 status: 'active',
                 trainingStatus: 'eligible',
                 ratingValue: isConversation ? null : (rec.ratingValue == null ? null : rec.ratingValue),
@@ -24106,6 +24330,58 @@
             return (Array.isArray(rows) ? rows : []).map(function (row) {
                 return JSON.stringify(row, null, 2);
             }).join('\n\n');
+        }
+
+        // Safe local syntax emphasis for JSON/JSONL inspectors. Every token
+        // is attached with textContent so Q&A text remains inert.
+        function _renderPayloadCode(pre, text) {
+            if (!pre) return;
+            var source = String(text || '');
+            pre.textContent = '';
+            if (!source) return;
+            // Minimal DOM harnesses and older embedded viewers may not expose
+            // DocumentFragment. Preserve a fully readable inert preview there.
+            if (typeof document.createDocumentFragment !== 'function') {
+                pre.textContent = source;
+                return;
+            }
+            var frag = document.createDocumentFragment();
+            var i = 0;
+            function _append(value, kind) {
+                if (!value) return;
+                if (!kind) { frag.appendChild(document.createTextNode(value)); return; }
+                var span = document.createElement('span');
+                span.className = 'ai-assistant-panel-json-token ai-assistant-panel-json-token--' + kind;
+                span.textContent = value;
+                frag.appendChild(span);
+            }
+            while (i < source.length) {
+                var ch = source[i];
+                if (ch === '"') {
+                    var stringStart = i++;
+                    var escaped = false;
+                    while (i < source.length) {
+                        var c = source[i++];
+                        if (escaped) { escaped = false; continue; }
+                        if (c === '\\') { escaped = true; continue; }
+                        if (c === '"') break;
+                    }
+                    var j = i;
+                    while (j < source.length && /\s/.test(source[j])) j++;
+                    _append(source.slice(stringStart, i), source[j] === ':' ? 'key' : 'string');
+                    continue;
+                }
+                var numberMatch = source.slice(i).match(/^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/);
+                if (numberMatch) { _append(numberMatch[0], 'number'); i += numberMatch[0].length; continue; }
+                if (source.slice(i, i + 4) === 'true') { _append('true', 'boolean'); i += 4; continue; }
+                if (source.slice(i, i + 5) === 'false') { _append('false', 'boolean'); i += 5; continue; }
+                if (source.slice(i, i + 4) === 'null') { _append('null', 'null'); i += 4; continue; }
+                if ('{}[],:'.indexOf(ch) >= 0) { _append(ch, 'punct'); i++; continue; }
+                var plainStart = i++;
+                while (i < source.length && source[i] !== '"' && '{}[],:'.indexOf(source[i]) < 0 && !/[0-9tfn-]/.test(source[i])) i++;
+                _append(source.slice(plainStart, i), '');
+            }
+            pre.appendChild(frag);
         }
         var sheet = document.createElement('div');
         sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-contribution';
@@ -24307,21 +24583,48 @@
             return { root: group, row: row };
         }
 
+        function _wirePayloadFormatTabs(tablist, jsonBtn, jsonlBtn, jsonPanel, jsonlPanel, onSelect) {
+            var tabs = [jsonBtn, jsonlBtn];
+            function _formatForTab(index) { return index === 0 ? 'json' : 'jsonl'; }
+            tablist.setAttribute('role', 'tablist');
+            tabs.forEach(function (tab, index) {
+                tab.setAttribute('role', 'tab');
+                tab.setAttribute('aria-controls', index === 0 ? jsonPanel.id : jsonlPanel.id);
+                tab.addEventListener('click', function () { onSelect(_formatForTab(index)); });
+                tab.addEventListener('keydown', function (event) {
+                    var key = event.key;
+                    var next = index;
+                    if (key === 'ArrowRight' || key === 'ArrowDown') next = (index + 1) % tabs.length;
+                    else if (key === 'ArrowLeft' || key === 'ArrowUp') next = (index + tabs.length - 1) % tabs.length;
+                    else if (key === 'Home') next = 0;
+                    else if (key === 'End') next = tabs.length - 1;
+                    else return;
+                    event.preventDefault();
+                    tabs[next].focus();
+                    onSelect(_formatForTab(next));
+                });
+            });
+            jsonPanel.setAttribute('role', 'tabpanel');
+            jsonlPanel.setAttribute('role', 'tabpanel');
+            jsonPanel.setAttribute('aria-labelledby', jsonBtn.id);
+            jsonlPanel.setAttribute('aria-labelledby', jsonlBtn.id);
+        }
+
         var contributionInspectFormat = 'jsonl';
         var inspectRow = document.createElement('div');
         inspectRow.className = 'ai-assistant-panel-payload-inspector-toolbar ai-assistant-panel-contribution-inspect-row';
         var formatTabs = document.createElement('div');
         formatTabs.className = 'ai-assistant-panel-payload-format-tabs';
-        formatTabs.setAttribute('role', 'tablist');
         formatTabs.setAttribute('aria-label', 'Contribution payload format');
         var savedStructureBtn = _contributionActionButton('JSON', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-contribution-json-tab');
         var inspectBtn = _contributionActionButton('JSONL', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-contribution-jsonl-tab');
-        savedStructureBtn.setAttribute('role', 'tab');
-        inspectBtn.setAttribute('role', 'tab');
+        savedStructureBtn.id = 'ai-assistant-panel-contribution-json-tab';
+        inspectBtn.id = 'ai-assistant-panel-contribution-jsonl-tab';
         formatTabs.appendChild(savedStructureBtn);
         formatTabs.appendChild(inspectBtn);
         var sizeLabel = document.createElement('span');
         sizeLabel.className = 'ai-assistant-panel-contribution-size';
+        sizeLabel.setAttribute('aria-live', 'polite');
         inspectRow.appendChild(formatTabs);
         inspectRow.appendChild(sizeLabel);
         inspectSection.appendChild(inspectRow);
@@ -24338,6 +24641,7 @@
         var savedStructurePanel = document.createElement('section');
         savedStructurePanel.className = 'ai-assistant-panel-payload-view';
         savedStructurePanel.dataset.payloadFormat = 'json';
+        savedStructurePanel.id = 'ai-assistant-panel-contribution-json-panel';
         savedStructurePanel.hidden = true;
         var savedStructureHead = document.createElement('div');
         savedStructureHead.className = 'ai-assistant-panel-payload-view-head';
@@ -24368,6 +24672,7 @@
         var previewPanel = document.createElement('section');
         previewPanel.className = 'ai-assistant-panel-payload-view';
         previewPanel.dataset.payloadFormat = 'jsonl';
+        previewPanel.id = 'ai-assistant-panel-contribution-jsonl-panel';
         var previewHead = document.createElement('div');
         previewHead.className = 'ai-assistant-panel-payload-view-head';
         var previewTitle = document.createElement('div');
@@ -24410,7 +24715,7 @@
             var text = contributionInspectFormat === 'json'
                 ? JSON.stringify(payload)
                 : _jsonlPreview(_contributionSavedJsonStructure(payload));
-            sizeLabel.textContent = _formatByteSize(_utf8ByteLength(text));
+            sizeLabel.textContent = contributionInspectFormat.toUpperCase() + ' · ' + _formatByteSize(_utf8ByteLength(text));
         }
 
         function _setContributionInspectFormat(format) {
@@ -24420,12 +24725,15 @@
             previewPanel.hidden = jsonOn;
             savedStructureBtn.setAttribute('aria-selected', jsonOn ? 'true' : 'false');
             inspectBtn.setAttribute('aria-selected', jsonOn ? 'false' : 'true');
-            savedStructureBtn.setAttribute('aria-pressed', jsonOn ? 'true' : 'false');
-            inspectBtn.setAttribute('aria-pressed', jsonOn ? 'false' : 'true');
+            savedStructureBtn.tabIndex = jsonOn ? 0 : -1;
+            inspectBtn.tabIndex = jsonOn ? -1 : 0;
+            copyPayloadBtn.textContent = jsonOn ? '⎘ Copy JSON' : '⎘ Copy JSONL';
+            downloadPayloadBtn.textContent = jsonOn ? '↓ Download JSON' : '↓ Download JSONL';
+            copyPayloadBtn.setAttribute('aria-label', jsonOn ? 'Copy contribution request JSON' : 'Copy contribution saved JSONL');
+            downloadPayloadBtn.setAttribute('aria-label', jsonOn ? 'Download contribution request JSON' : 'Download contribution saved JSONL');
             _syncContributionInspectorSize(_currentPayload(false));
         }
-        savedStructureBtn.addEventListener('click', function () { _setContributionInspectFormat('json'); });
-        inspectBtn.addEventListener('click', function () { _setContributionInspectFormat('jsonl'); });
+        _wirePayloadFormatTabs(formatTabs, savedStructureBtn, inspectBtn, savedStructurePanel, previewPanel, _setContributionInspectFormat);
         _setContributionInspectFormat('jsonl');
 
         var submitSection = _contributionSection(
@@ -24782,12 +25090,12 @@
                 var state = _feedbackWorkspacePayloadState();
                 _syncFeedbackInspectorSize(state.payload, state.issue);
                 if (!feedbackPreview.hidden) {
-                    feedbackPreview.textContent = state.payload && !state.issue ? _readableJsonl(_feedbackSavedJsonStructure(state.payload)) : '';
+                    _renderPayloadCode(feedbackPreview, state.payload && !state.issue ? _readableJsonl(_feedbackSavedJsonStructure(state.payload)) : '');
                     _syncFeedbackPreviewDensity();
                 }
                 if (typeof feedbackSavedStructurePreview !== 'undefined' && feedbackSavedStructurePreview && !feedbackSavedStructurePreview.hidden) {
-                    feedbackSavedStructurePreview.textContent = state.payload && !state.issue
-                        ? JSON.stringify(state.payload, null, 2) : '';
+                    _renderPayloadCode(feedbackSavedStructurePreview, state.payload && !state.issue
+                        ? JSON.stringify(state.payload, null, 2) : '');
                 }
             });
 
@@ -24804,11 +25112,11 @@
                     var state = _feedbackWorkspacePayloadState();
                     _syncFeedbackInspectorSize(state.payload, state.issue);
                     if (!feedbackPreview.hidden) {
-                        feedbackPreview.textContent = state.payload && !state.issue ? _readableJsonl(_feedbackSavedJsonStructure(state.payload)) : '';
+                        _renderPayloadCode(feedbackPreview, state.payload && !state.issue ? _readableJsonl(_feedbackSavedJsonStructure(state.payload)) : '');
                         _syncFeedbackPreviewDensity();
                     }
                     if (typeof feedbackSavedStructurePreview !== 'undefined' && feedbackSavedStructurePreview && !feedbackSavedStructurePreview.hidden) {
-                        feedbackSavedStructurePreview.textContent = state.payload && !state.issue ? JSON.stringify(state.payload, null, 2) : '';
+                        _renderPayloadCode(feedbackSavedStructurePreview, state.payload && !state.issue ? JSON.stringify(state.payload, null, 2) : '');
                     }
                 }
             );
@@ -24845,16 +25153,16 @@
             feedbackInspectRow.className = 'ai-assistant-panel-payload-inspector-toolbar ai-assistant-panel-feedback-inspect-row';
             var feedbackFormatTabs = document.createElement('div');
             feedbackFormatTabs.className = 'ai-assistant-panel-payload-format-tabs';
-            feedbackFormatTabs.setAttribute('role', 'tablist');
             feedbackFormatTabs.setAttribute('aria-label', 'Feedback payload format');
             var feedbackSavedStructureBtn = _feedbackWorkspaceButton('JSON', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-feedback-json-tab');
             var feedbackInspectBtn = _feedbackWorkspaceButton('JSONL', 'ai-assistant-panel-payload-format-btn ai-assistant-panel-feedback-jsonl-tab');
-            feedbackSavedStructureBtn.setAttribute('role', 'tab');
-            feedbackInspectBtn.setAttribute('role', 'tab');
+            feedbackSavedStructureBtn.id = 'ai-assistant-panel-feedback-json-tab';
+            feedbackInspectBtn.id = 'ai-assistant-panel-feedback-jsonl-tab';
             feedbackFormatTabs.appendChild(feedbackSavedStructureBtn);
             feedbackFormatTabs.appendChild(feedbackInspectBtn);
             var feedbackSize = document.createElement('span');
             feedbackSize.className = 'ai-assistant-panel-contribution-size ai-assistant-panel-feedback-payload-size';
+            feedbackSize.setAttribute('aria-live', 'polite');
             feedbackSize.textContent = reviewPayload && !reviewPayloadIssue
                 ? _formatByteSize(_utf8ByteLength(JSON.stringify(reviewPayload)))
                 : reviewPayloadIssue;
@@ -24876,6 +25184,7 @@
             var feedbackSavedStructurePanel = document.createElement('section');
             feedbackSavedStructurePanel.className = 'ai-assistant-panel-payload-view';
             feedbackSavedStructurePanel.dataset.payloadFormat = 'json';
+            feedbackSavedStructurePanel.id = 'ai-assistant-panel-feedback-json-panel';
             feedbackSavedStructurePanel.hidden = true;
             var feedbackSavedHead = document.createElement('div');
             feedbackSavedHead.className = 'ai-assistant-panel-payload-view-head';
@@ -24900,13 +25209,14 @@
             feedbackSavedStructurePreview.setAttribute('aria-label', 'Feedback review request JSON preview');
             feedbackSavedStructurePreview.setAttribute('tabindex', '0');
             feedbackSavedStructurePreview.dataset.size = 'medium';
-            feedbackSavedStructurePreview.textContent = reviewPayload && !reviewPayloadIssue ? JSON.stringify(reviewPayload, null, 2) : '';
+            _renderPayloadCode(feedbackSavedStructurePreview, reviewPayload && !reviewPayloadIssue ? JSON.stringify(reviewPayload, null, 2) : '');
             feedbackSavedStructurePanel.appendChild(feedbackSavedStructurePreview);
             feedbackPayloadViews.appendChild(feedbackSavedStructurePanel);
 
             var feedbackPreviewPanel = document.createElement('section');
             feedbackPreviewPanel.className = 'ai-assistant-panel-payload-view';
             feedbackPreviewPanel.dataset.payloadFormat = 'jsonl';
+            feedbackPreviewPanel.id = 'ai-assistant-panel-feedback-jsonl-panel';
             var feedbackPreviewHead = document.createElement('div');
             feedbackPreviewHead.className = 'ai-assistant-panel-payload-view-head';
             var feedbackPreviewTitle = document.createElement('div');
@@ -24930,8 +25240,8 @@
             feedbackPreview.setAttribute('aria-label', 'Feedback canonical review JSONL readable preview');
             feedbackPreview.setAttribute('tabindex', '0');
             feedbackPreview.dataset.size = 'medium';
-            feedbackPreview.textContent = reviewPayload && !reviewPayloadIssue
-                ? _readableJsonl(_feedbackSavedJsonStructure(reviewPayload)) : '';
+            _renderPayloadCode(feedbackPreview, reviewPayload && !reviewPayloadIssue
+                ? _readableJsonl(_feedbackSavedJsonStructure(reviewPayload)) : '');
             feedbackPreviewPanel.appendChild(feedbackPreview);
 
             var telemetryDetails = document.createElement('details');
@@ -24950,8 +25260,8 @@
             telemetrySavedPreview.setAttribute('aria-label', 'Anonymous feedback telemetry JSONL readable preview');
             telemetrySavedPreview.setAttribute('tabindex', '0');
             telemetrySavedPreview.dataset.size = 'medium';
-            telemetrySavedPreview.textContent = entry && _feedbackPersistEnabled
-                ? _readableJsonl(_feedbackTelemetrySavedJsonStructure(entry)) : '';
+            _renderPayloadCode(telemetrySavedPreview, entry && _feedbackPersistEnabled
+                ? _readableJsonl(_feedbackTelemetrySavedJsonStructure(entry)) : '');
             telemetryDetails.appendChild(telemetrySavedPreview);
             feedbackPreviewPanel.appendChild(telemetryDetails);
             feedbackPayloadViews.appendChild(feedbackPreviewPanel);
@@ -24974,7 +25284,7 @@
                 var text = feedbackInspectFormat === 'json'
                     ? JSON.stringify(payload)
                     : _jsonlPreview(_feedbackSavedJsonStructure(payload));
-                feedbackSize.textContent = _formatByteSize(_utf8ByteLength(text));
+                feedbackSize.textContent = feedbackInspectFormat.toUpperCase() + ' · ' + _formatByteSize(_utf8ByteLength(text));
             }
 
             function _setFeedbackInspectFormat(format) {
@@ -24984,13 +25294,16 @@
                 feedbackPreviewPanel.hidden = jsonOn;
                 feedbackSavedStructureBtn.setAttribute('aria-selected', jsonOn ? 'true' : 'false');
                 feedbackInspectBtn.setAttribute('aria-selected', jsonOn ? 'false' : 'true');
-                feedbackSavedStructureBtn.setAttribute('aria-pressed', jsonOn ? 'true' : 'false');
-                feedbackInspectBtn.setAttribute('aria-pressed', jsonOn ? 'false' : 'true');
+                feedbackSavedStructureBtn.tabIndex = jsonOn ? 0 : -1;
+                feedbackInspectBtn.tabIndex = jsonOn ? -1 : 0;
+                feedbackCopyBtn.textContent = jsonOn ? '⎘ Copy JSON' : '⎘ Copy JSONL';
+                feedbackDownloadBtn.textContent = jsonOn ? '↓ Download JSON' : '↓ Download JSONL';
+                feedbackCopyBtn.setAttribute('aria-label', jsonOn ? 'Copy feedback review request JSON' : 'Copy feedback review saved JSONL');
+                feedbackDownloadBtn.setAttribute('aria-label', jsonOn ? 'Download feedback review request JSON' : 'Download feedback review saved JSONL');
                 var state = _feedbackWorkspacePayloadState();
                 _syncFeedbackInspectorSize(state.payload, state.issue);
             }
-            feedbackSavedStructureBtn.addEventListener('click', function () { _setFeedbackInspectFormat('json'); });
-            feedbackInspectBtn.addEventListener('click', function () { _setFeedbackInspectFormat('jsonl'); });
+            _wirePayloadFormatTabs(feedbackFormatTabs, feedbackSavedStructureBtn, feedbackInspectBtn, feedbackSavedStructurePanel, feedbackPreviewPanel, _setFeedbackInspectFormat);
             _setFeedbackInspectFormat('jsonl');
 
             function _syncFeedbackPreviewDensity() {
@@ -25264,8 +25577,8 @@
             savedStructureBtn.disabled = !payload;
             copyPayloadBtn.disabled = !payload;
             downloadPayloadBtn.disabled = !payload;
-            preview.textContent = payload ? _readableJsonl(_contributionSavedJsonStructure(payload)) : '';
-            savedStructurePreview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
+            _renderPayloadCode(preview, payload ? _readableJsonl(_contributionSavedJsonStructure(payload)) : '');
+            _renderPayloadCode(savedStructurePreview, payload ? JSON.stringify(payload, null, 2) : '');
             _syncContributionPreviewDensity();
             // Closing/reopening the panel must not hide an authority the tab still owns.
             // Rehydrate the management actions whenever this logical conversation has
@@ -29320,6 +29633,7 @@
         // _renderWelcome is the SAME path used by clearConversation() so the
         // welcome markup is defined exactly once (no duplication).
         _loadTranscript();
+        _loadFeedbackState();
         if (_transcript.length > 0) {
             _replayTranscript(body);
         } else {
@@ -31111,13 +31425,11 @@
     function _setFeedbackDomIntegrationMode(enabled) {
         _feedbackDomIntegrationEnabled = !!enabled;
         try {
-            if (_feedbackDomIntegrationEnabled) {
-                localStorage.setItem(_FEEDBACK_DOM_PREF_KEY, JSON.stringify({
-                    enabled: true, version: _FEEDBACK_DOM_CONSENT_VERSION, grantedAt: Date.now()
-                }));
-            } else {
-                localStorage.removeItem(_FEEDBACK_DOM_PREF_KEY);
-            }
+            localStorage.setItem(_FEEDBACK_DOM_PREF_KEY, JSON.stringify({
+                enabled: _feedbackDomIntegrationEnabled,
+                version: _FEEDBACK_DOM_CONSENT_VERSION,
+                changedAt: Date.now()
+            }));
         } catch (_) {}
         var toggle = document.getElementById('ai-assistant-feedback-dom-toggle');
         if (toggle) toggle.setAttribute('aria-checked', _feedbackDomIntegrationEnabled ? 'true' : 'false');
@@ -31129,31 +31441,17 @@
         _feedbackPersistEnabled = !!enabled;
         _feedbackTelemetryGrantedAt = _feedbackPersistEnabled ? Date.now() : null;
 
-        // Persist only a current, structured user-consent record. Historical
-        // boolean preferences are removed so an old opt-in cannot silently gain
-        // authority under a materially different telemetry contract.
+        // Persist both outcomes so an explicit OFF remains authoritative even
+        // when the documentation site's configured initial value is ON.
         try {
-            localStorage.removeItem('ai-assistant-feedback-telemetry');
-            localStorage.removeItem('ai-assistant-feedback-persist');
-            if (_feedbackPersistEnabled) {
-                localStorage.setItem(_FEEDBACK_TELEMETRY_PREF_KEY, JSON.stringify({
-                    enabled: true,
-                    version: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
-                    grantedAt: _feedbackTelemetryGrantedAt
-                }));
-            } else {
-                localStorage.removeItem(_FEEDBACK_TELEMETRY_PREF_KEY);
-            }
+            localStorage.setItem(_FEEDBACK_TELEMETRY_PREF_KEY, JSON.stringify({
+                enabled: _feedbackPersistEnabled,
+                version: _FEEDBACK_TELEMETRY_CONSENT_VERSION,
+                grantedAt: _feedbackTelemetryGrantedAt
+            }));
         } catch (_e) {
             // Storage failure must never turn telemetry on. Keep an explicit
             // in-session click effective, but it will not survive reload.
-        }
-
-        // Sync the main persist pill in §6 Extended Settings (role="switch"
-        // uses aria-checked, not aria-pressed — ARIA 1.2 §5.3.22).
-        var toggle = document.getElementById('ai-assistant-feedback-persist-toggle');
-        if (toggle) {
-            toggle.setAttribute('aria-checked', _feedbackPersistEnabled ? 'true' : 'false');
         }
 
         // Sync every telemetry control by semantic role. Do not target the
@@ -35179,7 +35477,7 @@
             'custom',        // Any user-defined OpenAI-compat endpoint
         ];
 
-        var streamingEnabled = (cfg.panelApiStreaming !== false);
+        var streamingEnabled = _effectiveStreamingEnabled();
 
         if (streamingEnabled && !isAnthropic &&
                 _STREAMING_PROVIDERS.indexOf(provider) !== -1) {

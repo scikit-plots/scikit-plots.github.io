@@ -18298,3 +18298,41 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
         min-width: 0;
     }
 }
+
+/* Run 52 — inspector readability + keyboard accessibility
+   -------------------------------------------------------
+   JSON/JSONL are true tabs with roving focus. The visible code is a local,
+   syntax-emphasized audit view; copy/download still uses the original strict
+   serialized bytes rather than the styled DOM. */
+.ai-assistant-panel-payload-format-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    outline-offset: 2px;
+}
+.ai-assistant-panel-payload-code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    font-variant-ligatures: none;
+}
+.ai-assistant-panel-json-token--key {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    font-weight: 650;
+}
+.ai-assistant-panel-json-token--string {
+    color: var(--pst-color-success, #16803a);
+}
+.ai-assistant-panel-json-token--number {
+    color: var(--pst-color-warning, #b45309);
+    font-variant-numeric: tabular-nums;
+}
+.ai-assistant-panel-json-token--boolean {
+    color: var(--pst-color-secondary, #7c3aed);
+    font-weight: 650;
+}
+.ai-assistant-panel-json-token--null {
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+    font-style: italic;
+}
+.ai-assistant-panel-json-token--punct {
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+}
