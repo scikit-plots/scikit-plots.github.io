@@ -23879,6 +23879,51 @@
         }];
     }
 
+    function _feedbackTelemetrySavedJsonStructure(detail) {
+        var payload = _feedbackTelemetryPayload(detail || {});
+        var feedbackId = payload.feedbackId || null;
+        var ratingSlug = payload.ratingLabel || null;
+        return [{
+            schemaVersion: 4,
+            _source: 'feedback',
+            _ts: '<server-assigned>',
+            _dedup_key: feedbackId ? (String(feedbackId) + ':feedback') : null,
+            conversationId: null,
+            feedbackId: feedbackId,
+            recordType: null,
+            answerIndex: Number.isInteger(payload.answerIndex) ? payload.answerIndex : null,
+            action: 'rate',
+            prevFeedbackId: payload.prevFeedbackId || null,
+            editCount: Number.isFinite(Number(payload.editCount)) ? Number(payload.editCount) : 0,
+            status: 'active',
+            trainingStatus: 'telemetry',
+            ratingValue: payload.ratingValue,
+            ratingSlug: ratingSlug,
+            ratingTitle: payload.ratingTitle || null,
+            ratingMode: ratingSlug ? (payload.ratingMode || null) : null,
+            ratingScaleMin: null,
+            ratingScaleMax: null,
+            qualityScore: null,
+            qualityPercent: null,
+            message: '',
+            query: '',
+            answer: '',
+            messages: null,
+            model: null,
+            modelEvidence: null,
+            page: '',
+            consentVersion: null,
+            trainingConsentVersion: null,
+            ts: payload.ts == null ? null : payload.ts
+        }];
+    }
+
+    function _jsonlPreview(rows) {
+        return (Array.isArray(rows) ? rows : []).map(function (row) {
+            return JSON.stringify(row);
+        }).join('\n');
+    }
+
     function _contributionSavedJsonStructure(payload) {
         if (!payload || !Array.isArray(payload.records)) return [];
         return payload.records.map(function (rec, index) {
@@ -23919,7 +23964,7 @@
                 prevFeedbackId: null,
                 editCount: 0,
                 status: 'active',
-                trainingStatus: 'quarantined',
+                trainingStatus: 'eligible',
                 ratingValue: isConversation ? null : (rec.ratingValue == null ? null : rec.ratingValue),
                 ratingSlug: ratingSlug,
                 ratingTitle: isConversation ? null : (rec.ratingTitle || null),
@@ -24228,7 +24273,7 @@
 
         var inspectSection = _contributionSection(
             'Inspect payload',
-            'This is the exact JSON sent to the contribution service after your content/privacy choices. The saved JSONL record keeps the same selected content; server-owned receipt/dedup and write-time fields are assigned only when saved.'
+            'Inspect the canonical contributions/*.jsonl projection produced by your Content & privacy choices. Request JSON remains available separately because the browser envelope and repository JSONL are intentionally different contracts.'
         );
         body.appendChild(inspectSection);
 
@@ -24265,11 +24310,11 @@
 
         var inspectRow = document.createElement('div');
         inspectRow.className = 'ai-assistant-panel-ep-io-row ai-assistant-panel-contribution-inspect-row';
-        var inspectBtn = _contributionActionButton('Inspect JSON', 'ai-assistant-panel-contribution-inspect-btn');
+        var inspectBtn = _contributionActionButton('Inspect saved JSONL', 'ai-assistant-panel-contribution-inspect-btn');
         inspectBtn.setAttribute('aria-expanded', 'false');
-        var copyPayloadBtn = _contributionActionButton('⎘ Copy JSON to clipboard', 'ai-assistant-panel-contribution-copy-json');
-        var downloadPayloadBtn = _contributionActionButton('↓ Download JSON file', 'ai-assistant-panel-contribution-download-json');
-        var savedStructureBtn = _contributionActionButton('Saved JSONL structure', 'ai-assistant-panel-contribution-saved-json');
+        var copyPayloadBtn = _contributionActionButton('⎘ Copy saved JSONL', 'ai-assistant-panel-contribution-copy-json');
+        var downloadPayloadBtn = _contributionActionButton('↓ Download saved JSONL', 'ai-assistant-panel-contribution-download-json');
+        var savedStructureBtn = _contributionActionButton('Request JSON', 'ai-assistant-panel-contribution-saved-json');
         savedStructureBtn.setAttribute('aria-expanded', 'false');
         var sizeLabel = document.createElement('span');
         sizeLabel.className = 'ai-assistant-panel-contribution-size';
@@ -24282,14 +24327,14 @@
 
         var inspectHint = document.createElement('p');
         inspectHint.className = 'ai-assistant-panel-contribution-hint';
-        inspectHint.textContent = 'Open this while changing Content & privacy to see the submitted JSON update immediately. The server normalizes it into the fixed contribution JSONL schema and adds only server-owned lifecycle fields such as write time and deduplication key.';
+        inspectHint.textContent = 'The saved projection updates immediately as Content & privacy changes. It mirrors the provider-review/future-main JSONL bytes; <server-assigned> and <receipt-id> remain placeholders until the service creates the review.';
         inspectSection.appendChild(inspectHint);
 
         var preview = document.createElement('pre');
         preview.className = 'ai-assistant-panel-contribution-preview';
         preview.id = 'ai-assistant-panel-contribution-preview-json';
         preview.hidden = true;
-        preview.setAttribute('aria-label', 'Contribution JSON preview');
+        preview.setAttribute('aria-label', 'Contribution canonical saved JSONL preview');
         preview.setAttribute('tabindex', '0');
         preview.dataset.size = 'compact';
         inspectBtn.setAttribute('aria-controls', preview.id);
@@ -24298,13 +24343,13 @@
         var savedStructureHint = document.createElement('p');
         savedStructureHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
         savedStructureHint.hidden = true;
-        savedStructureHint.textContent = 'Canonical contributions/*.jsonl row structure. <server-assigned> and <receipt-id> are preview placeholders only; the service writes their actual values when the record is accepted.';
+        savedStructureHint.textContent = 'Browser request envelope sent to /v1/contribute. It is not the repository JSONL row. The canonical saved projection is the primary inspection view above.';
         inspectSection.appendChild(savedStructureHint);
         var savedStructurePreview = document.createElement('pre');
         savedStructurePreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview';
         savedStructurePreview.hidden = true;
         savedStructurePreview.id = 'ai-assistant-panel-contribution-saved-structure';
-        savedStructurePreview.setAttribute('aria-label', 'Contribution saved JSONL structure preview');
+        savedStructurePreview.setAttribute('aria-label', 'Contribution request JSON preview');
         savedStructurePreview.setAttribute('tabindex', '0');
         savedStructurePreview.dataset.size = 'medium';
         savedStructureBtn.setAttribute('aria-controls', savedStructurePreview.id);
@@ -24639,12 +24684,12 @@
                     ? _formatByteSize(_utf8ByteLength(JSON.stringify(state.payload)))
                     : state.issue;
                 if (!feedbackPreview.hidden) {
-                    feedbackPreview.textContent = state.payload && !state.issue ? JSON.stringify(state.payload, null, 2) : '';
+                    feedbackPreview.textContent = state.payload && !state.issue ? _jsonlPreview(_feedbackSavedJsonStructure(state.payload)) : '';
                     _syncFeedbackPreviewDensity();
                 }
                 if (typeof feedbackSavedStructurePreview !== 'undefined' && feedbackSavedStructurePreview && !feedbackSavedStructurePreview.hidden) {
                     feedbackSavedStructurePreview.textContent = state.payload && !state.issue
-                        ? JSON.stringify(_feedbackSavedJsonStructure(state.payload), null, 2) : '';
+                        ? JSON.stringify(state.payload, null, 2) : '';
                 }
             });
 
@@ -24663,8 +24708,11 @@
                         ? _formatByteSize(_utf8ByteLength(JSON.stringify(state.payload)))
                         : state.issue;
                     if (!feedbackPreview.hidden) {
-                        feedbackPreview.textContent = state.payload && !state.issue ? JSON.stringify(state.payload, null, 2) : '';
+                        feedbackPreview.textContent = state.payload && !state.issue ? _jsonlPreview(_feedbackSavedJsonStructure(state.payload)) : '';
                         _syncFeedbackPreviewDensity();
+                    }
+                    if (typeof feedbackSavedStructurePreview !== 'undefined' && feedbackSavedStructurePreview && !feedbackSavedStructurePreview.hidden) {
+                        feedbackSavedStructurePreview.textContent = state.payload && !state.issue ? JSON.stringify(state.payload, null, 2) : '';
                     }
                 }
             );
@@ -24673,7 +24721,7 @@
             // 4) Exact-payload inspection parity with Dataset contribution.
             var inspectGroup = _contributionSection(
                 'Inspect payload',
-                'This is the exact JSON sent to the feedback-review service after your Content & privacy choices. Required Q&A, rating, and originating-model evidence cannot be disabled.'
+                'Inspect the canonical feedback-review JSONL projection produced by your Content & privacy choices. The request envelope and optional anonymous telemetry row are separate views because they are different storage/privacy contracts.'
             );
             wrap.appendChild(inspectGroup);
 
@@ -24697,10 +24745,10 @@
 
             var feedbackInspectRow = document.createElement('div');
             feedbackInspectRow.className = 'ai-assistant-panel-ep-io-row ai-assistant-panel-contribution-inspect-row ai-assistant-panel-feedback-inspect-row';
-            var feedbackInspectBtn = _feedbackWorkspaceButton('Inspect JSON', 'ai-assistant-panel-feedback-inspect-btn');
-            var feedbackCopyBtn = _feedbackWorkspaceButton('⎘ Copy JSON to clipboard', 'ai-assistant-panel-feedback-copy-json');
-            var feedbackDownloadBtn = _feedbackWorkspaceButton('↓ Download JSON file', 'ai-assistant-panel-feedback-download-json');
-            var feedbackSavedStructureBtn = _feedbackWorkspaceButton('Saved JSONL structure', 'ai-assistant-panel-feedback-saved-json');
+            var feedbackInspectBtn = _feedbackWorkspaceButton('Inspect saved JSONL', 'ai-assistant-panel-feedback-inspect-btn');
+            var feedbackCopyBtn = _feedbackWorkspaceButton('⎘ Copy saved JSONL', 'ai-assistant-panel-feedback-copy-json');
+            var feedbackDownloadBtn = _feedbackWorkspaceButton('↓ Download saved JSONL', 'ai-assistant-panel-feedback-download-json');
+            var feedbackSavedStructureBtn = _feedbackWorkspaceButton('Request JSON', 'ai-assistant-panel-feedback-saved-json');
             feedbackSavedStructureBtn.setAttribute('aria-expanded', 'false');
             var feedbackSize = document.createElement('span');
             feedbackSize.className = 'ai-assistant-panel-contribution-size ai-assistant-panel-feedback-payload-size';
@@ -24708,7 +24756,7 @@
             feedbackPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-feedback-preview';
             feedbackPreview.id = 'ai-assistant-panel-feedback-preview-json';
             feedbackPreview.hidden = true;
-            feedbackPreview.setAttribute('aria-label', 'Feedback review JSON preview');
+            feedbackPreview.setAttribute('aria-label', 'Feedback canonical review JSONL preview');
             feedbackPreview.setAttribute('tabindex', '0');
             feedbackPreview.dataset.size = 'compact';
             feedbackInspectBtn.setAttribute('aria-expanded', 'false');
@@ -24731,23 +24779,53 @@
             feedbackInspectHint.className = 'ai-assistant-panel-contribution-hint';
             feedbackInspectHint.textContent = reviewPayloadIssue
                 ? reviewPayloadIssue + ' Reviewable feedback is not sent until complete Q&A + model evidence is available.'
-                : 'Inspection is local-only and updates immediately when Content & privacy changes. The server writes the same selected content into the feedback JSONL schema, adding only server-owned write-time, deduplication, and lifecycle fields.';
+                : 'The canonical review projection updates immediately with Content & privacy. It represents the feedback-review file on the provider review ref/future canonical branch; <server-assigned> and <receipt-id> are the only pre-save placeholders.';
             inspectGroup.appendChild(feedbackInspectHint);
             inspectGroup.appendChild(feedbackPreview);
             var feedbackSavedStructureHint = document.createElement('p');
             feedbackSavedStructureHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
             feedbackSavedStructureHint.hidden = true;
-            feedbackSavedStructureHint.textContent = 'Canonical feedback/*.jsonl row structure. <server-assigned> and <receipt-id> are preview placeholders only; the service writes their actual values when the review is created or updated.';
+            feedbackSavedStructureHint.textContent = 'Browser request envelope sent to /v1/feedback/review. It is content-bearing and intentionally differs from both the canonical review JSONL row and anonymous /v1/feedback telemetry.';
             inspectGroup.appendChild(feedbackSavedStructureHint);
             var feedbackSavedStructurePreview = document.createElement('pre');
             feedbackSavedStructurePreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview';
             feedbackSavedStructurePreview.hidden = true;
             feedbackSavedStructurePreview.id = 'ai-assistant-panel-feedback-saved-structure';
-            feedbackSavedStructurePreview.setAttribute('aria-label', 'Feedback saved JSONL structure preview');
+            feedbackSavedStructurePreview.setAttribute('aria-label', 'Feedback review request JSON preview');
             feedbackSavedStructurePreview.setAttribute('tabindex', '0');
             feedbackSavedStructurePreview.dataset.size = 'medium';
             feedbackSavedStructureBtn.setAttribute('aria-controls', feedbackSavedStructurePreview.id);
             inspectGroup.appendChild(feedbackSavedStructurePreview);
+
+            var telemetrySavedBtn = _feedbackWorkspaceButton('Telemetry JSONL', 'ai-assistant-panel-feedback-telemetry-json');
+            telemetrySavedBtn.setAttribute('aria-expanded', 'false');
+            telemetrySavedBtn.disabled = !entry || !_feedbackPersistEnabled;
+            telemetrySavedBtn.title = _feedbackPersistEnabled
+                ? 'Inspect the separate privacy-minimal /v1/feedback row that may be persisted when telemetry permission is on.'
+                : 'Anonymous rating telemetry is off; no telemetry JSONL is sent.';
+            feedbackInspectRow.insertBefore(telemetrySavedBtn, feedbackSize);
+            var telemetrySavedHint = document.createElement('p');
+            telemetrySavedHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
+            telemetrySavedHint.hidden = true;
+            telemetrySavedHint.textContent = 'Separate anonymous /v1/feedback telemetry row in feedback/*.jsonl. It intentionally contains rating mechanics only: no Q&A, note, model, page, consent-version, or conversation identifier.';
+            inspectGroup.appendChild(telemetrySavedHint);
+            var telemetrySavedPreview = document.createElement('pre');
+            telemetrySavedPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-storage-preview ai-assistant-panel-feedback-telemetry-preview';
+            telemetrySavedPreview.hidden = true;
+            telemetrySavedPreview.id = 'ai-assistant-panel-feedback-telemetry-saved-structure';
+            telemetrySavedPreview.setAttribute('aria-label', 'Anonymous feedback telemetry saved JSONL preview');
+            telemetrySavedPreview.setAttribute('tabindex', '0');
+            telemetrySavedBtn.setAttribute('aria-controls', telemetrySavedPreview.id);
+            inspectGroup.appendChild(telemetrySavedPreview);
+            telemetrySavedBtn.addEventListener('click', function () {
+                var current = Number.isInteger(context.answerIndex) ? (_feedbackStore[context.answerIndex] || null) : null;
+                if (!current || !_feedbackPersistEnabled) return;
+                telemetrySavedPreview.hidden = !telemetrySavedPreview.hidden;
+                telemetrySavedHint.hidden = telemetrySavedPreview.hidden;
+                telemetrySavedBtn.textContent = telemetrySavedPreview.hidden ? 'Telemetry JSONL' : 'Hide telemetry JSONL';
+                telemetrySavedBtn.setAttribute('aria-expanded', telemetrySavedPreview.hidden ? 'false' : 'true');
+                telemetrySavedPreview.textContent = telemetrySavedPreview.hidden ? '' : _jsonlPreview(_feedbackTelemetrySavedJsonStructure(current));
+            });
 
             function _syncFeedbackPreviewDensity() {
                 if (feedbackPreview.hidden) return;
@@ -24759,9 +24837,9 @@
                 var state = _feedbackWorkspacePayloadState();
                 if (!state.payload || state.issue) return;
                 feedbackPreview.hidden = !feedbackPreview.hidden;
-                feedbackInspectBtn.textContent = feedbackPreview.hidden ? 'Inspect JSON' : 'Hide JSON';
+                feedbackInspectBtn.textContent = feedbackPreview.hidden ? 'Inspect saved JSONL' : 'Hide saved JSONL';
                 feedbackInspectBtn.setAttribute('aria-expanded', feedbackPreview.hidden ? 'false' : 'true');
-                feedbackPreview.textContent = feedbackPreview.hidden ? '' : JSON.stringify(state.payload, null, 2);
+                feedbackPreview.textContent = feedbackPreview.hidden ? '' : _jsonlPreview(_feedbackSavedJsonStructure(state.payload));
                 feedbackSize.textContent = _formatByteSize(_utf8ByteLength(JSON.stringify(state.payload)));
                 _syncFeedbackPreviewDensity();
             });
@@ -24770,21 +24848,21 @@
                 if (!state.payload || state.issue) return;
                 feedbackSavedStructurePreview.hidden = !feedbackSavedStructurePreview.hidden;
                 feedbackSavedStructureHint.hidden = feedbackSavedStructurePreview.hidden;
-                feedbackSavedStructureBtn.textContent = feedbackSavedStructurePreview.hidden ? 'Saved JSONL structure' : 'Hide saved JSONL';
+                feedbackSavedStructureBtn.textContent = feedbackSavedStructurePreview.hidden ? 'Request JSON' : 'Hide request JSON';
                 feedbackSavedStructureBtn.setAttribute('aria-expanded', feedbackSavedStructurePreview.hidden ? 'false' : 'true');
-                feedbackSavedStructurePreview.textContent = feedbackSavedStructurePreview.hidden ? '' : JSON.stringify(_feedbackSavedJsonStructure(state.payload), null, 2);
+                feedbackSavedStructurePreview.textContent = feedbackSavedStructurePreview.hidden ? '' : JSON.stringify(state.payload, null, 2);
             });
             feedbackCopyBtn.addEventListener('click', function () {
                 var state = _feedbackWorkspacePayloadState();
                 if (!state.payload || state.issue) return;
-                _copyContributionText(JSON.stringify(state.payload, null, 2), 'Feedback review JSON copied locally. Nothing was submitted.');
+                _copyContributionText(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'Projected feedback-review JSONL copied locally. Nothing was submitted.');
             });
             feedbackDownloadBtn.addEventListener('click', function () {
                 var state = _feedbackWorkspacePayloadState();
                 if (!state.payload || state.issue) return;
-                _downloadBlob(JSON.stringify(state.payload, null, 2), 'application/json',
-                    'ai-feedback-review-payload-' + _isoFileStamp() + '.json');
-                showNotification('Feedback review JSON file saved locally. Nothing was submitted.', false);
+                _downloadBlob(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'application/x-ndjson',
+                    'ai-feedback-review-saved-projection-' + _isoFileStamp() + '.jsonl');
+                showNotification('Projected feedback-review JSONL saved locally. Nothing was submitted.', false);
             });
 
             // 5) Consent & lifecycle parity: permission, explicit share/update,
@@ -25060,11 +25138,11 @@
             copyPayloadBtn.disabled = !payload;
             downloadPayloadBtn.disabled = !payload;
             if (!preview.hidden) {
-                preview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
+                preview.textContent = payload ? _jsonlPreview(_contributionSavedJsonStructure(payload)) : '';
                 _syncContributionPreviewDensity();
             }
             if (!savedStructurePreview.hidden) {
-                savedStructurePreview.textContent = payload ? JSON.stringify(_contributionSavedJsonStructure(payload), null, 2) : '';
+                savedStructurePreview.textContent = payload ? JSON.stringify(payload, null, 2) : '';
             }
             // Closing/reopening the panel must not hide an authority the tab still owns.
             // Rehydrate the management actions whenever this logical conversation has
@@ -25087,31 +25165,31 @@
         inspectBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             preview.hidden = !preview.hidden;
-            inspectBtn.textContent = preview.hidden ? 'Inspect JSON' : 'Hide JSON';
+            inspectBtn.textContent = preview.hidden ? 'Inspect saved JSONL' : 'Hide saved JSONL';
             inspectBtn.setAttribute('aria-expanded', preview.hidden ? 'false' : 'true');
-            preview.textContent = (!preview.hidden && payload) ? JSON.stringify(payload, null, 2) : '';
+            preview.textContent = (!preview.hidden && payload) ? _jsonlPreview(_contributionSavedJsonStructure(payload)) : '';
             _syncContributionPreviewDensity();
         });
         savedStructureBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             savedStructurePreview.hidden = !savedStructurePreview.hidden;
             savedStructureHint.hidden = savedStructurePreview.hidden;
-            savedStructureBtn.textContent = savedStructurePreview.hidden ? 'Saved JSONL structure' : 'Hide saved JSONL';
+            savedStructureBtn.textContent = savedStructurePreview.hidden ? 'Request JSON' : 'Hide request JSON';
             savedStructureBtn.setAttribute('aria-expanded', savedStructurePreview.hidden ? 'false' : 'true');
             savedStructurePreview.textContent = (!savedStructurePreview.hidden && payload)
-                ? JSON.stringify(_contributionSavedJsonStructure(payload), null, 2) : '';
+                ? JSON.stringify(payload, null, 2) : '';
         });
         copyPayloadBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             if (!payload) return;
-            _copyContributionText(JSON.stringify(payload, null, 2), 'Contribution JSON copied locally. Nothing was submitted.');
+            _copyContributionText(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'Projected contribution JSONL copied locally. Nothing was submitted.');
         });
         downloadPayloadBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             if (!payload) return;
-            _downloadBlob(JSON.stringify(payload, null, 2), 'application/json',
-                'ai-contribution-review-payload-' + _isoFileStamp() + '.json');
-            showNotification('Contribution JSON file saved locally. Nothing was submitted.', false);
+            _downloadBlob(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'application/x-ndjson',
+                'ai-contribution-saved-projection-' + _isoFileStamp() + '.jsonl');
+            showNotification('Projected contribution JSONL saved locally. Nothing was submitted.', false);
         });
         noteInput.addEventListener('input', function () {
             noteCounter.textContent = noteInput.value.length + ' / ' + _CONTRIBUTION_NOTE_MAX_CHARS;
@@ -25574,9 +25652,9 @@
             savedStructurePreview.hidden = true;
             savedStructurePreview.textContent = '';
             savedStructureHint.hidden = true;
-            savedStructureBtn.textContent = 'Saved JSONL structure';
+            savedStructureBtn.textContent = 'Request JSON';
             savedStructureBtn.setAttribute('aria-expanded', 'false');
-            inspectBtn.textContent = 'Inspect JSON';
+            inspectBtn.textContent = 'Inspect saved JSONL';
             inspectBtn.setAttribute('aria-expanded', 'false');
             _refresh(true);
             _setWorkspaceTab(d.tab === 'feedback' ? 'feedback' : d.tab === 'activity' ? 'activity' : 'contribution');
