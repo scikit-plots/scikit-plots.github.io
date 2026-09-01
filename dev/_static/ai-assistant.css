@@ -17282,7 +17282,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
   }
 }
 
-/* ========================================================================== 
+/* ==========================================================================
  * Run 8 — Share conversation v2 information architecture
  * Format → Destination → Content & privacy → Advanced → Result → Artifacts.
  * ========================================================================== */
@@ -17619,15 +17619,21 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 }
 
 .ai-assistant-panel-contribution-inspect-row {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.55rem;
-    flex-wrap: wrap;
+    margin-bottom: 0;
 }
-.ai-assistant-panel-contribution-inspect-btn {
+.ai-assistant-panel-contribution-inspect-row .ai-assistant-panel-contribution-size {
+    margin-left: auto;
+}
+.ai-assistant-panel-contribution-action-btn {
     min-height: 2rem;
-    border-radius: 0.62rem;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+}
+.ai-assistant-panel-contribution-action-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
 }
 .ai-assistant-panel-contribution-size {
     display: inline-flex;
@@ -17682,6 +17688,27 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     border-radius: 0.72rem;
     background: var(--pst-color-surface, var(--color-background-primary, #fff));
 }
+.ai-assistant-panel-contribution-continuity {
+    display: grid;
+    gap: 0.18rem;
+    margin-top: 0.55rem;
+    padding: 0.62rem 0.72rem;
+    border: 1px dashed var(--pst-color-border, var(--color-foreground-border, #d1d5db));
+    border-radius: 0.7rem;
+    background: color-mix(in srgb, var(--pst-color-primary, #2563eb) 4%, transparent);
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+    font-size: 0.72rem;
+    line-height: 1.42;
+}
+.ai-assistant-panel-contribution-continuity strong {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2937));
+    font-size: 0.74rem;
+}
+.ai-assistant-panel-contribution-continuity[data-active="true"] {
+    border-style: solid;
+    background: color-mix(in srgb, var(--pst-color-primary, #2563eb) 8%, transparent);
+}
+
 .ai-assistant-panel-contribution-submit {
     width: 100%;
     min-height: 2.45rem;
@@ -17693,11 +17720,99 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     margin-top: 0.55rem;
 }
 .ai-assistant-panel-contribution-result:empty { display: none; }
-.ai-assistant-panel-contribution-result .ai-assistant-conv-share-action-btn {
-    margin: 0.45rem 0.35rem 0 0;
+.ai-assistant-panel-contribution-action-group {
+    margin-top: 0.62rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid color-mix(in srgb, var(--pst-color-border, #d1d5db) 72%, transparent);
+}
+.ai-assistant-panel-contribution-action-group-head {
+    display: grid;
+    gap: 0.08rem;
+    margin-bottom: 0.38rem;
+}
+.ai-assistant-panel-contribution-action-group-head strong {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2937));
+    font-size: 0.69rem;
+    line-height: 1.3;
+}
+.ai-assistant-panel-contribution-action-group-head span {
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+    font-size: 0.64rem;
+    line-height: 1.38;
+}
+.ai-assistant-panel-contribution-action-row {
+    margin-bottom: 0;
+    align-items: stretch;
+}
+.ai-assistant-panel-contribution-action-row .ai-assistant-panel-ep-io-btn {
+    flex: 1 1 10.5rem;
+}
+.ai-assistant-panel-contribution-action-group[data-kind="private"] {
+    border-top-color: color-mix(in srgb, var(--pst-color-primary, #2563eb) 30%, transparent);
+}
+.ai-assistant-panel-contribution-action-group[data-kind="support"] {
+    border-top-style: dashed;
+}
+.ai-assistant-panel-contribution-action-group[data-kind="lifecycle"] {
+    border-top-color: color-mix(in srgb, var(--pst-color-warning, #d97706) 32%, transparent);
 }
 .ai-assistant-panel-contribution-import {
+    margin-top: 0;
+}
+.ai-assistant-panel-contribution-recovery {
+    margin-top: 0.6rem;
+    padding: 0.58rem 0.65rem;
+    border: 1px dashed var(--pst-color-border, var(--color-foreground-border, #d1d5db));
+    border-radius: 0.7rem;
+    background: var(--pst-color-on-background, var(--color-background-secondary, #f6f8fa));
+}
+.ai-assistant-panel-contribution-recovery > summary {
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 650;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2937));
+}
+.ai-assistant-panel-contribution-recovery > p {
+    margin: 0.45rem 0;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+    font-size: 0.68rem;
+    line-height: 1.45;
+}
+.ai-assistant-panel-contribution-recovery-code {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 2.15rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.66rem;
+}
+.ai-assistant-panel-contribution-recovery-actions {
+    margin-top: 0.45rem;
+    margin-bottom: 0;
+    align-items: stretch;
+}
+.ai-assistant-panel-contribution-recovery-actions .ai-assistant-panel-ep-io-btn {
+    flex: 1 1 10rem;
+}
+.ai-assistant-panel-contribution-support-ref {
+    display: grid;
+    gap: 0.16rem;
     margin-top: 0.5rem;
+    padding: 0.5rem 0.58rem;
+    border-radius: 0.58rem;
+    background: color-mix(in srgb, var(--pst-color-primary, #2563eb) 5%, transparent);
+    overflow-wrap: anywhere;
+}
+.ai-assistant-panel-contribution-support-ref strong {
+    font-size: 0.7rem;
+}
+.ai-assistant-panel-contribution-support-ref span {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.64rem;
+}
+.ai-assistant-panel-contribution-support-ref small {
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+    font-size: 0.64rem;
+    line-height: 1.4;
 }
 .ai-assistant-panel-contribute-link { white-space: nowrap; }
 
@@ -17720,6 +17835,15 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     .ai-assistant-panel-contribution-preview {
         max-height: min(46vh, 24rem);
         font-size: 0.66rem;
+    }
+    .ai-assistant-panel-contribution-inspect-row .ai-assistant-panel-contribution-size {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+    .ai-assistant-panel-contribution-action-row .ai-assistant-panel-ep-io-btn,
+    .ai-assistant-panel-contribution-recovery-actions .ai-assistant-panel-ep-io-btn {
+        flex-basis: 100%;
     }
 }
 
@@ -17750,4 +17874,277 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     position: fixed; right: 12px; bottom: 12px; z-index: 2147483000;
     max-width: 360px; padding: 10px 12px; border: 1px solid currentColor;
     border-radius: 8px; background: Canvas; color: CanvasText; font: 13px/1.4 sans-serif;
+}
+
+/* ── Feedback & contribution workspace (Run 45 / B64) ─────────────────── */
+.ai-assistant-panel-feedback-workspace-tabs {
+    padding-inline: 14px;
+}
+
+.ai-assistant-panel-feedback-workspace-pane[hidden] {
+    display: none !important;
+}
+
+.ai-assistant-panel-feedback-workspace-pane {
+    min-height: 0;
+    overflow: auto;
+}
+
+.ai-assistant-panel-feedback-workspace-body,
+.ai-assistant-panel-feedback-activity-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ai-assistant-panel-feedback-review-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 10px;
+    background: var(--color-background-secondary, rgba(127, 127, 127, 0.05));
+}
+
+.ai-assistant-panel-feedback-review-toggle-row > div {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 2px;
+}
+
+.ai-assistant-panel-feedback-review-toggle-row small,
+.ai-assistant-panel-feedback-current-card small,
+.ai-assistant-panel-feedback-activity-card small {
+    color: var(--color-foreground-secondary, #6e7781);
+    overflow-wrap: anywhere;
+}
+
+.ai-assistant-panel-feedback-current-card,
+.ai-assistant-panel-feedback-activity-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 10px;
+    background: var(--color-background-secondary, rgba(127, 127, 127, 0.04));
+}
+
+.ai-assistant-panel-feedback-workspace-actions {
+    margin-top: 8px;
+}
+
+.ai-assistant-panel-feedback-review-line {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.ai-assistant-panel-feedback-review-status {
+    margin-top: 8px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-feedback-review-toggle-row,
+[data-bs-theme="dark"] .ai-assistant-panel-feedback-current-card,
+[data-bs-theme="dark"] .ai-assistant-panel-feedback-activity-card,
+.dark .ai-assistant-panel-feedback-review-toggle-row,
+.dark .ai-assistant-panel-feedback-current-card,
+.dark .ai-assistant-panel-feedback-activity-card {
+    border-color: var(--pst-color-border, #30363d);
+}
+
+@media (max-width: 720px) {
+    .ai-assistant-panel-feedback-review-toggle-row {
+        align-items: flex-start;
+    }
+    .ai-assistant-panel-feedback-workspace-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .ai-assistant-panel-feedback-workspace-actions .ai-assistant-panel-ep-io-btn {
+        width: 100%;
+    }
+}
+
+.ai-assistant-panel-feedback-channel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.ai-assistant-panel-feedback-channel-card {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 10px;
+}
+
+.ai-assistant-panel-feedback-channel-card small {
+    color: var(--color-foreground-secondary, #6e7781);
+}
+
+@media (max-width: 720px) {
+    .ai-assistant-panel-feedback-channel-grid { grid-template-columns: 1fr; }
+}
+.ai-assistant-panel-feedback-activity-actions { margin-top: 4px; }
+
+/* Run 46 — feedback review payload/model evidence */
+.ai-assistant-fbk-popup-icon svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+.ai-assistant-panel-feedback-model-evidence {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0.2rem 0 0.5rem;
+    font-size: 0.76rem;
+    line-height: 1.4;
+}
+.ai-assistant-panel-feedback-model-evidence strong {
+    flex: 0 0 auto;
+}
+.ai-assistant-panel-feedback-model-evidence span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--pst-color-text-muted, #64748b);
+}
+
+/* Run 47 — Feedback workspace UX parity with Dataset contribution
+   -----------------------------------------------------------------
+   Feedback now follows the same review rhythm as contribution:
+   Current Q&A → Privacy channels + optional note → Inspect payload →
+   Consent & manage.  Channel permissions remain independent. */
+.ai-assistant-panel-feedback-workspace-body {
+    gap: 0.85rem;
+    padding-bottom: 1.5rem;
+}
+
+.ai-assistant-panel-feedback-channel-card {
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+}
+
+.ai-assistant-panel-feedback-channel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+    min-width: 0;
+}
+
+.ai-assistant-panel-feedback-channel-identity {
+    display: flex;
+    align-items: center;
+    gap: 0.42rem;
+    min-width: 0;
+}
+
+.ai-assistant-panel-feedback-channel-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.82rem;
+    line-height: 1;
+}
+
+.ai-assistant-panel-feedback-channel-toggle {
+    flex: 0 0 auto;
+}
+
+.ai-assistant-panel-feedback-channel-status {
+    margin: 0.35rem 0 0;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6b7280));
+    font-size: 0.69rem;
+    line-height: 1.42;
+    text-wrap: pretty;
+}
+
+.ai-assistant-panel-feedback-note {
+    margin-top: 0.65rem;
+}
+
+.ai-assistant-panel-feedback-note textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.58;
+}
+
+.ai-assistant-panel-feedback-consent-actions {
+    align-items: stretch;
+    margin-top: 0.55rem;
+}
+
+.ai-assistant-panel-feedback-consent-actions .ai-assistant-panel-ep-io-btn {
+    flex: 1 1 100%;
+    min-height: 2.35rem;
+    font-weight: 650;
+}
+
+.ai-assistant-panel-feedback-lifecycle {
+    margin-top: 0.7rem;
+}
+
+.ai-assistant-panel-feedback-lifecycle .ai-assistant-panel-feedback-review-line {
+    margin: 0.2rem 0 0.5rem;
+}
+
+@media (max-width: 720px) {
+    .ai-assistant-panel-feedback-channel-head {
+        align-items: flex-start;
+    }
+    .ai-assistant-panel-feedback-channel-toggle {
+        margin-top: 0.05rem;
+    }
+}
+
+/* Run 48 — review Content & privacy parity
+   ----------------------------------------
+   Feedback and Dataset contribution share the same compact disclosure/preset
+   surface as Share, but only expose fields that map to their actual review
+   contracts. Required/forbidden fields are visibly locked. */
+.ai-assistant-panel-review-content-privacy {
+    border: 1px solid rgba(127,127,127,.22);
+    border-radius: .8rem;
+    padding: 0 .72rem;
+    background: var(--pst-color-surface, var(--color-background-primary, transparent));
+}
+.ai-assistant-panel-review-content-privacy .ai-assistant-conv-share-collapse-toggle {
+    padding: .72rem 0;
+}
+.ai-assistant-panel-review-content-privacy .ai-assistant-conv-share-collapse-panel {
+    border-top: 1px solid rgba(127,127,127,.14);
+    padding-top: .68rem;
+}
+.ai-assistant-panel-review-content-grid {
+    margin-bottom: .12rem;
+}
+.ai-assistant-panel-review-content-locked-option {
+    opacity: .72;
+}
+.ai-assistant-panel-review-content-locked-option input {
+    cursor: not-allowed;
+}
+.ai-assistant-panel-review-content-privacy [data-content-privacy-option]:focus-visible,
+.ai-assistant-panel-review-content-privacy button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.ai-assistant-panel-storage-preview-hint {
+    margin-top: .55rem;
+    padding: .45rem .55rem;
+    border: 1px dashed rgba(127,127,127,.26);
+    border-radius: .55rem;
+}
+.ai-assistant-panel-storage-preview {
+    margin-top: .45rem;
 }
