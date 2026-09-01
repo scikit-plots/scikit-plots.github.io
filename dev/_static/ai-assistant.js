@@ -31264,11 +31264,12 @@
             //
             // Popup interactivity contract:
             //   data-pinned="true"  → popup visible + pointer-events:auto (CSS)
-            //   data-pinned="false" → back to hover-only visibility
+            //   data-pinned="false" → popup hidden
             //
-            // Keyboard: focusin inside the popup pins it; focusout unpins when
-            //   focus truly leaves (relatedTarget outside popup + wrapper).
-            //   Outside-click handler closes pinned popup.  The outside-click
+            // Keyboard: focusin can reveal the popup for programmatic/keyboard
+            //   access, but an explicitly pinned popup is not dismissed by focusout.
+            //   Outside-click / Escape / the expand trigger close pinned popup.
+            //   The outside-click
             //   listener removes itself when the wrapper leaves the DOM so
             //   no ghost listeners accumulate across panel rebuilds.
 
@@ -31294,52 +31295,68 @@
                 + '<polyline points="18 15 12 9 6 15"/>'
                 + '</svg>';
 
+            // ── Popup ownership helpers ────────────────────────────────────────
+            //
+            // data-pinned is the single visibility authority.  Keep all writes
+            // centralized so aria-expanded and drag-state cleanup cannot drift.
+            var _micPopupFocusCloseTimer = null;
+            var _micPopupExplicitPinned = false;
+            function _setMicPopupPinned(open, explicit) {
+                if (_micPopupFocusCloseTimer !== null) {
+                    clearTimeout(_micPopupFocusCloseTimer);
+                    _micPopupFocusCloseTimer = null;
+                }
+                if (open && explicit === true) _micPopupExplicitPinned = true;
+                if (!open) _micPopupExplicitPinned = false;
+                var value = open ? 'true' : 'false';
+                micPopup.setAttribute('data-pinned', value);
+                micExpandBtn.setAttribute('aria-expanded', value);
+                if (!open) micPopup.removeAttribute('data-dragged');
+            }
+
             // ── Click: pin / unpin popup ──────────────────────────────────────
             micExpandBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
-                var nowPinned = micPopup.getAttribute('data-pinned') === 'true';
-                var next = nowPinned ? 'false' : 'true';
-                micPopup.setAttribute('data-pinned', next);
-                micExpandBtn.setAttribute('aria-expanded', next);
-                // When the popup is closed (next="false"), clear data-dragged so
-                // the next open uses the slide-in animation rather than the
-                // drag-mode opacity-only transition.  If not cleared, a popup
-                // that was dragged in a previous session would permanently suppress
-                // its entry animation on every subsequent open.
-                if (next === 'false') {
-                    micPopup.removeAttribute('data-dragged');
-                }
+                var opening = micPopup.getAttribute('data-pinned') !== 'true';
+                _setMicPopupPinned(opening, opening);
             });
 
-            // ── Keyboard: pin while focus is inside popup ─────────────────────
-            // focusin fires when any descendant receives focus (bubbles).
-            micPopup.addEventListener('focusin', function () {
-                micPopup.setAttribute('data-pinned', 'true');
-                micExpandBtn.setAttribute('aria-expanded', 'true');
-            });
-            // focusout fires when focus leaves any descendant.
-            // relatedTarget is the element that WILL receive focus next.
-            // Only unpin when focus truly leaves both the popup and the wrapper.
+            // ── Focus / pointer ownership ─────────────────────────────────────
+            // A device row click follows the browser sequence
+            // pointerdown/mousedown → focusout → focusin → mouseup → click.
+            // Closing synchronously from focusout can therefore hide the popup
+            // (pointer-events:none) BEFORE the click event reaches the radio row.
+            // That was the root cause of device choices appearing stuck on the
+            // system default.
             //
-            // Guard: skip while the popup is being dragged.  mousedown on the
-            // level row calls e.preventDefault() which usually prevents focus
-            // movement, but an external event (OS permission dialog, window blur
-            // on some browsers) can still emit focusout with relatedTarget=null
-            // — which matches the !focusTarget branch and closes the popup
-            // mid-drag.  data-dragged="true" is set by the drag IIFE (inside
-            // _buildMicHoverPopup) the moment a real drag begins (≥3px move),
-            // so reading it here is a zero-extra-variable guard that fully
-            // decouples the two code sections.
-            micPopup.addEventListener('focusout', function (e) {
-                if (micPopup.getAttribute('data-dragged') === 'true') { return; }
-                var focusTarget = e.relatedTarget;
-                if (!focusTarget
-                        || (!micPopup.contains(focusTarget)
-                            && !micWrapper.contains(focusTarget))) {
-                    micPopup.setAttribute('data-pinned', 'false');
-                    micExpandBtn.setAttribute('aria-expanded', 'false');
-                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
+            // Explicitly pinned popups are user-owned surfaces: focus changes
+            // inside/outside them must NOT dismiss them.  They close only via
+            // the expand trigger, Escape, or an outside click.  Focus-only opens
+            // (kept for keyboard/programmatic accessibility) may still dismiss
+            // after focus genuinely leaves, but only on the next task so click
+            // dispatch can finish first.
+            micPopup.addEventListener('pointerdown', function () {
+                _setMicPopupPinned(true, true);
+            });
+            micPopup.addEventListener('focusin', function () {
+                if (micPopup.getAttribute('data-pinned') !== 'true') {
+                    _setMicPopupPinned(true, false);
+                } else if (_micPopupFocusCloseTimer !== null) {
+                    clearTimeout(_micPopupFocusCloseTimer);
+                    _micPopupFocusCloseTimer = null;
                 }
+            });
+            micPopup.addEventListener('focusout', function () {
+                if (_micPopupExplicitPinned) return;
+                if (micPopup.getAttribute('data-dragged') === 'true') { return; }
+                if (_micPopupFocusCloseTimer !== null) clearTimeout(_micPopupFocusCloseTimer);
+                _micPopupFocusCloseTimer = setTimeout(function () {
+                    _micPopupFocusCloseTimer = null;
+                    if (!micWrapper.isConnected || _micPopupExplicitPinned) return;
+                    var active = document.activeElement;
+                    if (active && (micPopup.contains(active) || micWrapper.contains(active))) return;
+                    _setMicPopupPinned(false);
+                }, 0);
             });
 
             // ── Outside-click: close pinned popup ─────────────────────────────
@@ -31353,9 +31370,7 @@
                         return;
                     }
                     if (micWrapper.contains(e.target)) return;
-                    micPopup.setAttribute('data-pinned', 'false');
-                    micExpandBtn.setAttribute('aria-expanded', 'false');
-                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
+                    _setMicPopupPinned(false);
                 }
                 // Use capture so the handler fires before any inner stopPropagation
                 document.addEventListener('click', _closePinnedMicPopup, true);
@@ -31364,9 +31379,7 @@
             // ── Escape: close from keyboard ───────────────────────────────────
             micExpandBtn.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
-                    micPopup.setAttribute('data-pinned', 'false');
-                    micExpandBtn.setAttribute('aria-expanded', 'false');
-                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
+                    _setMicPopupPinned(false);
                     micExpandBtn.focus();
                 }
             });
@@ -32517,9 +32530,9 @@
      *      Clicking the row or the toggle calls `_setMicHoldMode`.
      *
      * Visibility contract (CSS-driven):
-     *   • `.ai-assistant-mic-wrapper:hover .ai-assistant-mic-popup` → visible.
-     *   • The popup stays visible while interacting with the toggle (hover does
-     *     not leave the wrapper).
+     *   • `.ai-assistant-mic-popup[data-pinned="true"]` → visible/interactable.
+     *   • The popup is explicitly pinned by the expand trigger or direct
+     *     pointer/keyboard interaction; hover alone never opens it.
      *
      * @returns {HTMLElement}
      */
@@ -34498,7 +34511,17 @@
                 checkSpan.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 5"/></svg>';
                 item.appendChild(labelWrap);
                 item.appendChild(checkSpan);
-                item.addEventListener('click', function () { _selectMicDevice(dev.deviceId); });
+                item.addEventListener('click', function (e) {
+                    // Keep the microphone picker open after a routing choice so
+                    // users can compare/select other inputs without reopening it.
+                    // pointerdown on the popup already marks it explicitly pinned;
+                    // stop bubbling here is an extra guard against future parent
+                    // click-to-dismiss logic.
+                    e.stopPropagation();
+                    _selectMicDevice(dev.deviceId);
+                    try { item.focus({ preventScroll: true }); }
+                    catch (_) { try { item.focus(); } catch (_e) {} }
+                });
                 item.addEventListener('keydown', function (e) {
                     var items = Array.prototype.slice.call(listEl.querySelectorAll('.ai-assistant-mic-device-item'));
                     var pos = items.indexOf(item);
