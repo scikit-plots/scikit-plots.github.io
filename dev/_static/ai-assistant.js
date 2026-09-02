@@ -13426,7 +13426,101 @@
      * HTMLElement
      *     The wrapper element (relative-positioned anchor).
      */
+    // One delegated outside-dismiss controller owns every answer-level More
+    // menu.  A per-bubble document listener would grow with conversation
+    // length/re-renders; focusout alone is insufficient on touch because a tap
+    // on non-focusable transcript/background content may not move focus at all.
+    var _bubbleMoreOutsideDismissBound = false;
+
+    function _closeBubbleMoreWrapper(wrapper, restoreFocus) {
+        if (!wrapper) return;
+        var rootMenu = wrapper.querySelector(
+            '.ai-assistant-panel-bubble-action-more-menu'
+        );
+        var rootToggle = wrapper.querySelector(
+            '.ai-assistant-panel-bubble-action--more-toggle'
+        );
+        var secondaryToggle = wrapper.querySelector(
+            '.ai-assistant-panel-bubble-action--secondary-toggle'
+        );
+        var secondaryBody = wrapper.querySelector(
+            '.ai-assistant-panel-bubble-action-more-secondary'
+        );
+
+        if (rootMenu) rootMenu.setAttribute('data-open', 'false');
+        if (rootToggle) rootToggle.setAttribute('aria-expanded', 'false');
+        if (secondaryToggle) secondaryToggle.setAttribute('aria-expanded', 'false');
+        if (secondaryBody) {
+            secondaryBody.setAttribute('data-open', 'false');
+            secondaryBody.hidden = true;
+        }
+        if (restoreFocus && rootToggle && typeof rootToggle.focus === 'function') {
+            try { rootToggle.focus({ preventScroll: true }); }
+            catch (_) { try { rootToggle.focus(); } catch (_e) {} }
+        }
+    }
+
+    function _ensureBubbleMoreOutsideDismissal() {
+        if (_bubbleMoreOutsideDismissBound || typeof document === 'undefined' || !document.addEventListener) return;
+        _bubbleMoreOutsideDismissBound = true;
+
+        // Capture phase is intentional.  Menu/toggle handlers call
+        // stopPropagation(), and touch browsers may never produce a useful
+        // focusout.  Capture sees the physical pointer interaction first.
+        function _dismissBubbleMoreOnOutsidePointer(e) {
+            var openMenus = document.querySelectorAll(
+                '.ai-assistant-panel-bubble-action-more-menu[data-open="true"]'
+            );
+            for (var i = 0; i < openMenus.length; i++) {
+                var wrapper = openMenus[i].parentElement;
+                if (!wrapper) continue;
+                if (wrapper.contains && wrapper.contains(e.target)) continue;
+                _closeBubbleMoreWrapper(wrapper, false);
+            }
+        }
+
+        if (typeof window !== 'undefined' && 'PointerEvent' in window) {
+            document.addEventListener('pointerdown', _dismissBubbleMoreOnOutsidePointer, true);
+        } else {
+            // Old WebKit fallback: touchstart gives immediate tap dismissal;
+            // mousedown covers mouse/trackpad environments without PointerEvent.
+            document.addEventListener('touchstart', _dismissBubbleMoreOnOutsidePointer, true);
+            document.addEventListener('mousedown', _dismissBubbleMoreOnOutsidePointer, true);
+        }
+
+        // Match the other transient menus: Escape is a reliable keyboard
+        // dismissal path and restores focus to the owning More trigger.
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape') return;
+            var openMenus = document.querySelectorAll(
+                '.ai-assistant-panel-bubble-action-more-menu[data-open="true"]'
+            );
+            if (!openMenus.length) return;
+            var restoreWrapper = null;
+            for (var i = 0; i < openMenus.length; i++) {
+                var wrapper = openMenus[i].parentElement;
+                if (!wrapper) continue;
+                if (!restoreWrapper && wrapper.contains &&
+                    wrapper.contains(document.activeElement)) {
+                    restoreWrapper = wrapper;
+                }
+                _closeBubbleMoreWrapper(wrapper, false);
+            }
+            if (!restoreWrapper && openMenus[0]) restoreWrapper = openMenus[0].parentElement;
+            if (restoreWrapper) {
+                var rootToggle = restoreWrapper.querySelector(
+                    '.ai-assistant-panel-bubble-action--more-toggle'
+                );
+                if (rootToggle && typeof rootToggle.focus === 'function') {
+                    try { rootToggle.focus({ preventScroll: true }); }
+                    catch (_) { try { rootToggle.focus(); } catch (_e) {} }
+                }
+            }
+        });
+    }
+
     function _buildBubbleMore(answerText, shareOpts, retryOpts) {
+        _ensureBubbleMoreOutsideDismissal();
         var wrapper = document.createElement('div');
         wrapper.className = 'ai-assistant-panel-bubble-action-more';
 
@@ -13628,8 +13722,7 @@
         homeMenuBtn.appendChild(homeMenuLbl);
         homeMenuBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            menu.setAttribute('data-open', 'false');
-            toggleBtn.setAttribute('aria-expanded', 'false');
+            _closeBubbleMoreWrapper(wrapper, false);
             var handled = false;
             try {
                 var homeEvent = new CustomEvent('ai-assistant-open-home', {
@@ -13661,21 +13754,21 @@
         toggleBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             var isOpen = menu.getAttribute('data-open') === 'true';
-            menu.setAttribute('data-open', isOpen ? 'false' : 'true');
-            toggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-            if (isOpen) _setBubbleSecondaryOpen(false);
-            if (!isOpen) {
-                _ensureFeedbackPopupBoundaryObservers();
-                _positionBubbleMoreMenuWithinPanelBody(menu);
+            if (isOpen) {
+                _closeBubbleMoreWrapper(wrapper, false);
+                return;
             }
+            menu.setAttribute('data-open', 'true');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            _ensureFeedbackPopupBoundaryObservers();
+            _positionBubbleMoreMenuWithinPanelBody(menu);
         });
 
-        // ── Close menu when focus leaves the wrapper ──────────────────────
+        // Keyboard focus is still a useful secondary dismissal signal.  The
+        // delegated pointerdown controller above is the touch/pointer authority.
         wrapper.addEventListener('focusout', function (e) {
             if (!wrapper.contains(e.relatedTarget)) {
-                menu.setAttribute('data-open', 'false');
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                _setBubbleSecondaryOpen(false);
+                _closeBubbleMoreWrapper(wrapper, false);
             }
         });
 
