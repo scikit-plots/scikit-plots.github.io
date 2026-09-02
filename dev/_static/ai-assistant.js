@@ -31029,19 +31029,37 @@
         function _positionAttachMenu() {
             var bodyRect = null;
             var buttonRect = null;
+            var wrapRect = null;
             try {
                 var panelBody = document.getElementById('ai-assistant-panel-body');
                 bodyRect = panelBody && panelBody.getBoundingClientRect ? panelBody.getBoundingClientRect() : null;
                 buttonRect = attachBtn.getBoundingClientRect ? attachBtn.getBoundingClientRect() : null;
+                wrapRect = attachWrap.getBoundingClientRect ? attachWrap.getBoundingClientRect() : null;
             } catch (_e) {}
-            if (bodyRect && buttonRect) {
+            if (bodyRect && buttonRect && wrapRect) {
                 var available = Math.max(112, Math.floor(buttonRect.top - bodyRect.top - 10));
-                var bodyWidth = Math.max(180, Math.floor(Number(bodyRect.width) || 0));
+                // Run 84: body width alone is not a safe menu width because the
+                // menu is offset slightly left of the + trigger.  On a 300–320px
+                // panel that old calculation could put the right edge several
+                // pixels outside the panel.  Resolve the real local left offset,
+                // clamp it inside the body, then derive width from the remaining
+                // right-side capacity.  This works identically on phone, tablet,
+                // and a manually narrowed desktop panel.
+                var menuStyle = window.getComputedStyle ? window.getComputedStyle(attachMenu) : null;
+                var cssLeft = menuStyle ? parseFloat(menuStyle.left) : 0;
+                if (!Number.isFinite(cssLeft)) cssLeft = 0;
+                var edgeInset = 6;
+                var localLeft = Math.max(cssLeft, bodyRect.left + edgeInset - wrapRect.left);
+                var rightBudget = Math.max(180,
+                    Math.floor(bodyRect.right - edgeInset - (wrapRect.left + localLeft)));
+                var menuWidth = Math.min(324, rightBudget);
+                attachMenu.style.left = localLeft + 'px';
                 attachMenu.style.maxHeight = available + 'px';
-                attachMenu.style.width = Math.min(324, bodyWidth) + 'px';
-                attachMenu.style.maxWidth = bodyWidth + 'px';
-                attachMenu.style.minWidth = Math.min(272, bodyWidth) + 'px';
+                attachMenu.style.width = menuWidth + 'px';
+                attachMenu.style.maxWidth = menuWidth + 'px';
+                attachMenu.style.minWidth = Math.min(272, menuWidth) + 'px';
             } else {
+                attachMenu.style.left = '';
                 attachMenu.style.maxHeight = '18rem';
                 attachMenu.style.width = '';
                 attachMenu.style.maxWidth = '';
@@ -31241,6 +31259,10 @@
         // Hold-to-record: when _micHoldMode is true, pointerdown/up drives recognition
         //   instead of click-toggle — matching the Claude.ai "press and hold" pattern.
         var micBtnEl = null;
+        // Run 84: popup fitting is assigned when speech UI exists and invoked
+        // from the shared panel ResizeObserver via _syncFooterActionFit().
+        // A no-op keeps the later fit path branch-free when speech is absent.
+        var _syncMicPopupFit = function () {};
         if (hasSpeech) {
             // ── Wrapper ───────────────────────────────────────────────────────
             var micWrapper = document.createElement('div');
@@ -31350,7 +31372,9 @@
 
             var micExpandWrapper = document.createElement('div');
             micExpandWrapper.className = 'ai-assistant-mic-expand-wrapper';
-            micExpandWrapper.setAttribute('aria-hidden', 'true');   // wrapper is decorative
+            // Do NOT put aria-hidden on this wrapper: it owns a focusable button.
+            // aria-hidden on an ancestor suppresses the entire subtree, and a
+            // child cannot opt back into the accessibility tree.
 
             var micExpandBtn = document.createElement('button');
             micExpandBtn.className = 'ai-assistant-mic-expand-btn';
@@ -31360,7 +31384,7 @@
             micExpandBtn.setAttribute('aria-haspopup', 'true');
             micExpandBtn.setAttribute('aria-expanded', 'false');
             micExpandBtn.setAttribute('aria-controls', 'ai-assistant-mic-popup');
-            micExpandBtn.removeAttribute('aria-hidden');   // focusable — override wrapper
+            micExpandBtn.removeAttribute('aria-hidden');   // explicit: trigger remains exposed
 
             // Chevron-up SVG: points up (popup appears above); rotates on open
             micExpandBtn.innerHTML =
@@ -31369,6 +31393,50 @@
                 + ' aria-hidden="true">'
                 + '<polyline points="18 15 12 9 6 15"/>'
                 + '</svg>';
+
+            // Run 84 — panel-bounded microphone options surface.
+            // The legacy popup used min-width:330px and right:0 relative to the
+            // mic wrapper.  That is fine on a roomy panel but can escape both a
+            // 320px phone and a 300px manually resized desktop panel.  Fit the
+            // popup to the panel BODY rather than the viewport and use the space
+            // to the right of the mic (including Send) when centring its right
+            // edge.  Vertical capacity is likewise bounded above the composer so
+            // short landscape/tablet layouts scroll the popup instead of pushing
+            // controls off-screen.
+            _syncMicPopupFit = function () {
+                if (!micPopup || !micWrapper || !panel ||
+                        !micPopup.getBoundingClientRect || !micWrapper.getBoundingClientRect) return;
+                var panelBody = document.getElementById('ai-assistant-panel-body');
+                var panelRect = panel.getBoundingClientRect ? panel.getBoundingClientRect() : null;
+                var bodyRect = panelBody && panelBody.getBoundingClientRect
+                    ? panelBody.getBoundingClientRect() : panelRect;
+                var wrapperRect = micWrapper.getBoundingClientRect();
+                if (!panelRect || !bodyRect || !wrapperRect) return;
+
+                var edgeInset = 8;
+                var boundaryLeft = Math.max(panelRect.left, bodyRect.left) + edgeInset;
+                var boundaryRight = Math.min(panelRect.right, bodyRect.right) - edgeInset;
+                var boundaryWidth = Math.max(1, boundaryRight - boundaryLeft);
+                var popupWidth = Math.min(330, Math.floor(boundaryWidth));
+                micPopup.style.width = popupWidth + 'px';
+                micPopup.style.minWidth = '0';
+                micPopup.style.maxWidth = popupWidth + 'px';
+                micPopup.setAttribute('data-compact', popupWidth < 315 ? 'true' : 'false');
+
+                // Preserve explicit drag coordinates until the popup is closed;
+                // natural anchored popups may use the free space to the right of
+                // the mic so their right edge stays inside the panel body.
+                if (micPopup.getAttribute('data-dragged') !== 'true') {
+                    var targetRight = boundaryRight;
+                    micPopup.style.right = (wrapperRect.right - targetRight) + 'px';
+                    micPopup.style.left = '';
+                }
+
+                var availableHeight = Math.floor(wrapperRect.top - bodyRect.top - 10);
+                if (availableHeight > 0) {
+                    micPopup.style.maxHeight = Math.max(96, availableHeight) + 'px';
+                }
+            };
 
             // ── Popup ownership helpers ────────────────────────────────────────
             //
@@ -31383,6 +31451,7 @@
                 }
                 if (open && explicit === true) _micPopupExplicitPinned = true;
                 if (!open) _micPopupExplicitPinned = false;
+                if (open) _syncMicPopupFit();
                 var value = open ? 'true' : 'false';
                 micPopup.setAttribute('data-pinned', value);
                 micExpandBtn.setAttribute('aria-expanded', value);
@@ -32049,6 +32118,7 @@
                 ? actionsWidth < Math.ceil(required + _FOOTER_FIT_HYSTERESIS_PX)
                 : actionsWidth < Math.ceil(required);
             panel.setAttribute('data-footer-compact', compact ? 'true' : 'false');
+            _syncMicPopupFit();
         }
 
         // ResizeObserver: toggle data-narrow on the panel root when the panel
@@ -32140,6 +32210,35 @@
                 _updateSubbarOverflow(w);
             });
             _subbarRO.observe(panel);
+        } else {
+            // Run 84 fallback: the composer is JS-generated, so a viewport CSS
+            // breakpoint is not needed to emulate panel responsiveness.  Older
+            // engines without ResizeObserver still receive panel-fit updates on
+            // window/orientation/visual-viewport changes.  This keeps one layout
+            // authority instead of allowing mobile CSS and panel JS to disagree.
+            var _footerFallbackRaf = null;
+            function _fallbackResponsiveSync() {
+                if (!panel.isConnected) {
+                    window.removeEventListener('resize', _fallbackResponsiveSync);
+                    if (window.visualViewport) {
+                        window.visualViewport.removeEventListener('resize', _fallbackResponsiveSync);
+                    }
+                    return;
+                }
+                if (_footerFallbackRaf !== null) return;
+                var fallbackRaf = window.requestAnimationFrame || function (cb) { return setTimeout(cb, 16); };
+                _footerFallbackRaf = fallbackRaf(function () {
+                    _footerFallbackRaf = null;
+                    var rect = panel.getBoundingClientRect ? panel.getBoundingClientRect() : null;
+                    var w = rect && rect.width ? rect.width : 0;
+                    _syncFooterActionFit(w);
+                    _syncSheetHeaderOverflow(w);
+                });
+            }
+            window.addEventListener('resize', _fallbackResponsiveSync, { passive: true });
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', _fallbackResponsiveSync, { passive: true });
+            }
         }
 
         // ── Events ────────────────────────────────────────────────────────────

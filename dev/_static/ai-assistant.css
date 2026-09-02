@@ -965,6 +965,12 @@
        room left on that line and wraps onto its own row underneath it. */
     flex-wrap: wrap;
     padding: 0.625rem 0.75rem;
+    /* Run 84: when the panel sits edge-to-edge on mobile/landscape, keep the
+     * composer controls clear of notches and the home indicator.  Desktop env()
+     * values are zero, so these preserve the existing spacing there. */
+    padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+    padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+    padding-bottom: max(0.625rem, env(safe-area-inset-bottom, 0px));
     border-top: 1px solid var(
         --pst-color-border,
         var(--color-foreground-border, #e1e4e5)
@@ -3515,12 +3521,9 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     height: 0.95rem;
 }
 
-/* On narrow viewports collapse the right-cluster labels — keep icons only.
- * Hamburger preserves access to every entry-point.
- *
- * Also collapses the footer inline model picker from its full pill form
- * (dot + label + chevron) to a single model icon — same breakpoint, same
- * logic as .ai-assistant-panel-model-link-label above. */
+/* On narrow viewports collapse the sub-bar right-cluster labels — keep icons
+ * only.  The COMPOSER below deliberately does not use this viewport breakpoint:
+ * Run 84 makes its model picker panel-fit-owned on phone, tablet, and desktop. */
 @media (max-width: 575px) {
     /* Sub-bar right-cluster: hide text labels, keep icons.
      * ep-btn-label is excluded — it manages its own collapse via [data-narrow]. */
@@ -3529,38 +3532,16 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     .ai-assistant-panel-share-link span:not([aria-hidden]) {
         display: none;
     }
-
-    /* Footer inline model picker: collapse pill → bare icon button.
-     * Reset the pill chrome (border, min-width, padding) so the button
-     * looks and feels like the other icon-only footer buttons (mic, send). */
-    .ai-assistant-panel-inline-model-picker {
-        min-width: unset;
-        max-width: unset;
-        border: none;
-        border-radius: 6px;
-        padding: 0.35rem 0.4rem;    /* matches .ai-assistant-panel-footer-btn */
-        background: transparent;
-    }
-    /* Show the model SVG icon (hidden by default above) */
-    .ai-assistant-panel-inline-picker-icon {
-        display: inline-flex;
-    }
-    /* Hide the pill-only elements: dot, label, chevron */
-    .ai-assistant-panel-inline-picker-dot,
-    .ai-assistant-panel-inline-picker-label,
-    .ai-assistant-panel-inline-picker-chev {
-        display: none;
-    }
 }
 
 
-/* Run 83 — panel-owned footer contraction.
+/* Run 83/84 — panel-owned footer contraction.
  *
- * The mobile @media fallback above remains for old browsers and preserves the
- * existing phone/tablet appearance.  Modern browsers additionally receive the
- * fit-based data-footer-compact state from the panel ResizeObserver, so a
- * manually narrowed desktop panel behaves exactly like the same-width panel on
- * a phone.  The picker contracts atomically; attach/mic/send stay stable. */
+ * data-footer-compact is the single model-picker representation authority on
+ * every device.  A roomy landscape phone/tablet may therefore keep the full
+ * pill, while a manually narrowed desktop panel uses the icon-only form.
+ * Initial fit runs after DOM connection; ResizeObserver (or the Run 84 window/
+ * visualViewport fallback) owns subsequent changes. */
 .ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-model-picker {
     min-width: unset;
     max-width: unset;
@@ -5759,6 +5740,44 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     transform: rotate(180deg);
 }
 
+/* Run 84 — touch/coarse-pointer composer contract.
+ * Touch has no reliable hover discovery, so microphone options must be visible
+ * without hover.  Footer controls also receive dense-but-usable 40px targets;
+ * the panel-fit controller measures their REAL sizes, so this does not re-open
+ * the overflow bug fixed in Run 83.  The desktop hover bridge is disabled on
+ * touch because it would otherwise create an invisible hit strip above the mic. */
+@media (hover: none), (pointer: coarse) {
+    .ai-assistant-panel-footer-btn,
+    .ai-assistant-panel-inline-model-picker {
+        min-width: 2.5rem;
+        min-height: 2.5rem;
+    }
+    .ai-assistant-panel-footer-btn--attach,
+    .ai-assistant-panel-footer-btn--send {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .ai-assistant-mic-expand-wrapper,
+    .ai-assistant-mic-wrapper:hover .ai-assistant-mic-expand-wrapper {
+        width: 2.5rem;
+    }
+    .ai-assistant-mic-expand-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        opacity: 1;
+    }
+    .ai-assistant-mic-wrapper::before {
+        display: none;
+    }
+    .ai-assistant-mic-popup-row--hold,
+    .ai-assistant-panel-attach-menu-item {
+        min-height: 44px;
+    }
+    .ai-assistant-panel-attach-menu-shortcut {
+        display: none;
+    }
+}
+
 /* ─── Popup container ────────────────────────────────────────────────────── */
 /*
  * bottom: calc(100% + 0.45rem)  — floats above the action bar with a gap.
@@ -5777,7 +5796,17 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     flex-direction: column;
     gap: 0;
 
-    min-width: 330px;   /* 100 bars×2px + 99 gaps×1px = 299px; net content ≈ 303px after padding */
+    /* Run 84: 330px remains the roomy target, but JS supplies a panel-
+     * bounded inline width for narrow phones/tablets/resized desktop panels.
+     * The viewport max is a defensive no-JS/early-paint fallback. */
+    width: min(330px, calc(100vw - 1rem));
+    min-width: 0;
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
     padding: 0.3rem;
 
     background: var(
@@ -5914,9 +5943,17 @@ details.ai-md-section[open] > summary .ai-md-section-chevron {
     display: flex;
     align-items: flex-end;
     gap: 1px;
+    width: 100%;
+    min-width: 0;
     height: 24px;
-    /* 100 bars × 2px + 99 gaps × 1px = 299px — popup min-width is 330px (≈ 303px net) */
-    overflow: hidden;   /* clip any sub-pixel overflow on fractional viewports */
+    /* 100 bars × 2px + 99 gaps × 1px = 299px at the roomy size. */
+    overflow: hidden;   /* clip only fractional rounding overflow */
+}
+/* Preserve all 100 VU zones in a panel-bounded popup instead of clipping the
+ * high-level red zone off the right edge.  0.5px gaps reduce the full strip
+ * to ~249.5px, which fits the 300px minimum panel after popup padding. */
+.ai-assistant-mic-popup[data-compact="true"] .ai-assistant-mic-level-bars {
+    gap: 0.5px;
 }
 
 /* ─── Individual bar: JS-driven height from AnalyserNode, smooth transition ─── */
