@@ -3360,11 +3360,12 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     opacity: 0.6;
 }
 
-/* ── Small-screen icon-only fallback ──────────────────────────────────────
- * Mirrors the model-link sub-bar pattern: always in the DOM, visibility
- * toggled by CSS at ≤ 575 px (same breakpoint as .ai-assistant-panel-
- * model-link-label collapse).  The icon is 15 × 15 px to match the other
- * .ai-assistant-panel-footer-btn SVG icons in the same action bar. */
+/* ── Compact model-picker icon ────────────────────────────────────────────
+ * Always present in the DOM. Run 83/84 made the footer representation
+ * panel-fit-owned rather than viewport-owned: the icon appears only when
+ * data-footer-compact=true. The effort chip deliberately survives that
+ * contraction so the compact control still answers both “which model?” and
+ * “which effort?”. The icon is 15 × 15 px to match the other footer icons. */
 .ai-assistant-panel-inline-picker-icon {
     display: none;              /* hidden at wide widths — full pill shown */
     align-items: center;
@@ -3557,6 +3558,20 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 .ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-label,
 .ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-chev {
     display: none;
+}
+
+/* Run 85 — preserve effort visibility in the compact model control.
+ * The chip may contain administrator-defined labels, so compact mode gives it
+ * a bounded, ellipsising flex slot instead of assuming every label is “High”.
+ * The host button's aria-label continues to carry the complete effort label. */
+.ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-effort {
+    display: inline-block;
+    min-width: 0;
+    max-width: 4.25rem;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ─── Right overflow toggle button ──────────────────────────────────────────
@@ -16395,12 +16410,13 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     opacity: 0.82;
 }
 
-/* Narrow screens: both host buttons collapse to icon-only, so the chip goes
- * with the label and chevron it sits between. Same breakpoint, same rule
- * block ordering as those elements — see the @media (max-width: 575px)
- * collapse rules above. */
+/* The footer effort badge is persistent state, not verbose decoration.
+ * Run 85: do NOT hide .ai-assistant-panel-inline-picker-effort by viewport.
+ * The footer is panel-fit-owned, so a phone with room may show the full pill
+ * and a narrow desktop may show the compact icon + effort badge. The sub-bar
+ * model-link badge remains viewport-collapsible because that separate sub-bar
+ * still has its own narrow-label policy. */
 @media (max-width: 575px) {
-    .ai-assistant-panel-inline-picker-effort,
     .ai-assistant-panel-model-link-effort {
         display: none;
     }
