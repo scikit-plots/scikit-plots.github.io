@@ -13503,13 +13503,12 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     /* Responsive range instead of one flat min-width. Absolutely-positioned
      * with only `right` set (no `left`), so this already shrink-to-fits its
      * content between the two bounds — no explicit `width` needed:
-     *   • min-width: 190px  — floor so the two toggle rows never feel
+     *   • min-width: 190px  — floor so compact action rows never feel
      *                         cramped, even now that the anchor (the
      *                         collapsed icon-only Copy button) is narrower
      *                         than it used to be.
-     *   • max-width: min(230px, 100vw - 2rem) — ceiling that keeps the
-     *                         "🔮 Coming soon: Flag · Correct · Bookmark"
-     *                         row readable on normal screens, but yields to
+     *   • max-width: min(250px, 100vw - 2rem) — ceiling that keeps the
+     *                         long action labels readable on normal screens, but yields to
      *                         `calc(100vw - 2rem)` on a narrow phone
      *                         viewport so `right: 0` can never push this
      *                         past the left edge of the screen — the
@@ -13518,7 +13517,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
      *                         smaller anchor.
      */
     min-width: 190px;
-    max-width: min(230px, calc(100vw - 2rem));
+    max-width: min(250px, calc(100vw - 2rem));
     padding: 0.35rem;
     background: var(--pst-color-surface, var(--color-background-primary, #fff));
     border: 1px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
@@ -13568,14 +13567,29 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.35rem 0.45rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0.38rem 0.45rem;
+    border: 0;
     border-radius: 0.45rem;
+    background: transparent;
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+    font: inherit;
     font-size: 0.78rem;
-    cursor: default;
-}
-.ai-assistant-fbk-popup-row[role="button"] {
+    line-height: 1.2;
+    text-align: left;
     cursor: pointer;
+    touch-action: manipulation;
+}
+.ai-assistant-fbk-popup-row:focus {
+    outline: none;
+}
+.ai-assistant-fbk-popup-row:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: -2px;
+}
+.ai-assistant-fbk-popup-row[aria-pressed="true"] .ai-assistant-fbk-popup-icon {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
 }
 .ai-assistant-fbk-popup-row:hover {
     background: rgba(0, 0, 0, 0.04);
@@ -13594,6 +13608,62 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     font-size: 0.76rem;
     line-height: 1.35;
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+/* Progressive-disclosure footer inside the feedback popup.  Reuse the visual
+ * grammar of the header Export trigger (icon + label + chevron), but stretch it
+ * to a full-width menu row.  This is an inline accordion, not a nested flyout,
+ * so it remains safe inside narrow/short panel-body boundaries. */
+.ai-assistant-fbk-more-trigger {
+    width: 100%;
+    height: auto;
+    min-height: 2rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.38rem 0.45rem;
+    border-radius: 0.45rem;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+.ai-assistant-fbk-more-trigger:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+[data-bs-theme="dark"] .ai-assistant-fbk-more-trigger:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+.ai-assistant-fbk-more-trigger > span:first-child {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #64748b));
+}
+.ai-assistant-fbk-more-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    text-align: left;
+}
+.ai-assistant-fbk-more-trigger[aria-expanded="true"]
+    .ai-assistant-export-trigger-chevron svg {
+    transform: rotate(180deg);
+}
+.ai-assistant-fbk-more-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 0.1rem;
+    padding: 0.15rem 0 0.05rem 0.65rem;
+    border-left: 2px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+}
+.ai-assistant-fbk-more-body[hidden] {
+    display: none !important;
+}
+.ai-assistant-fbk-more-body .ai-assistant-fbk-popup-row {
+    padding-left: 0.4rem;
+}
+
+@media (pointer: coarse) {
+    .ai-assistant-fbk-popup-row,
+    .ai-assistant-fbk-more-trigger {
+        min-height: 2.5rem;
+    }
 }
 /* Hairline separator between rows */
 .ai-assistant-fbk-popup-hint {
@@ -13642,14 +13712,6 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-fbk-popup-mini-pill[aria-checked="true"]
     .ai-assistant-fbk-popup-mini-pill-thumb {
     transform: translateX(0.85rem);
-}
-/* Future features placeholder row */
-.ai-assistant-fbk-popup-future {
-    opacity: 0.45;
-    cursor: default;
-    font-size: 0.70rem;
-    padding: 0.25rem 0.45rem;
-    color: var(--pst-color-text-muted, #888);
 }
 /* Existing inline feedback block: hidden by default, revealed by expand btn */
 .ai-assistant-panel-feedback--inline:not(.ai-assistant-panel-feedback--revealed) {

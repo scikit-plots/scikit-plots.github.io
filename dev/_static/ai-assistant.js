@@ -1591,6 +1591,8 @@
         // overflow surfaces can choose the direction that matches their layout.
         overflowH:   '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
         overflowV:   '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>',
+        bookmark:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v19l-6-4-6 4Z"/></svg>',
+        home:        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg>',
         // ── Export format icons (v2 multi-format export) ──────────────────────
         // JSON file icon: document with code-like decoration (file + data nodes).
         exportJson:  '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13a2 2 0 0 1 0 4"/><path d="M14 13c1.1 0 2 .9 2 2s-.9 2-2 2"/></svg>',
@@ -14149,6 +14151,62 @@
     // available space changes as the transcript scrolls, the panel resizes, or a
     // mobile keyboard changes the visual layout.  Keep one shared coordinator so
     // a long conversation does not install resize/scroll handlers per answer.
+    // Answer bookmarks are deliberately privacy-minimal.  Persistence stores
+    // only opaque content fingerprints, never question/answer text.  The future
+    // Home workspace can resolve those markers against conversation records it
+    // already owns instead of creating a second content store here.
+    var _ANSWER_BOOKMARKS_KEY = 'ai-assistant-answer-bookmarks-v1';
+    var _ANSWER_BOOKMARKS_MAX = 500;
+
+    function _answerBookmarkId(answerText, questionText) {
+        var pageKey = '';
+        try {
+            pageKey = String(location.origin || '') + String(location.pathname || '');
+        } catch (_) {}
+        var q = typeof questionText === 'string' ? questionText : '';
+        var a = typeof answerText === 'string' ? answerText : '';
+        return 'abm-' + _strHash(pageKey + '\u241f' + q + '\u241f' + a) +
+            '-' + (q.length + a.length).toString(36);
+    }
+
+    function _readAnswerBookmarkIds() {
+        try {
+            var raw = localStorage.getItem(_ANSWER_BOOKMARKS_KEY);
+            if (!raw) return [];
+            var parsed = JSON.parse(raw);
+            var ids = Array.isArray(parsed) ? parsed : (parsed && Array.isArray(parsed.ids) ? parsed.ids : []);
+            var seen = Object.create(null);
+            return ids.filter(function (id) {
+                id = typeof id === 'string' ? id : '';
+                if (!/^abm-[0-9a-f]{8}-[0-9a-z]+$/i.test(id) || seen[id]) return false;
+                seen[id] = true;
+                return true;
+            }).slice(-_ANSWER_BOOKMARKS_MAX);
+        } catch (_) {
+            return [];
+        }
+    }
+
+    function _isAnswerBookmarked(bookmarkId) {
+        return _readAnswerBookmarkIds().indexOf(bookmarkId) !== -1;
+    }
+
+    function _setAnswerBookmarked(bookmarkId, enabled) {
+        var ids = _readAnswerBookmarkIds().filter(function (id) { return id !== bookmarkId; });
+        if (enabled) ids.push(bookmarkId);
+        if (ids.length > _ANSWER_BOOKMARKS_MAX) ids = ids.slice(-_ANSWER_BOOKMARKS_MAX);
+        try {
+            localStorage.setItem(_ANSWER_BOOKMARKS_KEY, JSON.stringify({
+                schemaVersion: 1,
+                ids: ids,
+                updatedAt: Date.now()
+            }));
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
+
     var _fbkPopupBoundaryBody = null;
     var _fbkPopupBoundaryResizeObserver = null;
     var _fbkPopupBoundaryWindowBound = false;
@@ -14608,30 +14666,100 @@
         popup.setAttribute('aria-label', 'Feedback options');
 
         // Privacy-sensitive permissions live only in the full Feedback workspace.
-        // The compact popup is navigation/action-only: no consent authority is
-        // duplicated here, which avoids conflicting mental models.
+        // This compact surface is intentionally action/navigation-only: it does
+        // not duplicate consent, deletion, telemetry, or review authority.
+        //
+        // Information architecture (feedback workflow first, personal utilities second):
+        //   1. Detailed feedback  — immediate answer-level feedback action.
+        //   2. Feedback center    — feedback/privacy/review workspace.
+        //   3. Contribute Q&A     — explicit dataset workflow (opens its sheet).
+        //   4. More               — secondary/global/personal utilities:
+        //                            Home, Bookmark answer, and future low-frequency
+        //                            destinations that do not belong in the primary
+        //                            feedback workflow.
+        // This keeps the primary block semantically coherent while preserving
+        // Bookmark as a nearby, reversible answer utility under disclosure.
+        function _makeFbkAction(options) {
+            options = options || {};
+            var row = document.createElement('button');
+            row.type = 'button';
+            row.className = 'ai-assistant-fbk-popup-row';
+            if (options.className) row.classList.add(options.className);
+            if (options.ariaLabel) row.setAttribute('aria-label', options.ariaLabel);
+            if (options.ariaPressed !== undefined) {
+                row.setAttribute('aria-pressed', options.ariaPressed ? 'true' : 'false');
+            }
+            if (options.ariaExpanded !== undefined) {
+                row.setAttribute('aria-expanded', options.ariaExpanded ? 'true' : 'false');
+            }
+            if (options.ariaControls) row.setAttribute('aria-controls', options.ariaControls);
 
-        // Feedback management. Opens the shared workspace on the Feedback tab;
-        // this never grants telemetry, maintainer-review, or contribution authority.
-        var feedbackCenterRow = document.createElement('div');
-        feedbackCenterRow.className = 'ai-assistant-fbk-popup-row';
-        feedbackCenterRow.style.cursor = 'pointer';
-        feedbackCenterRow.setAttribute('role', 'button');
-        feedbackCenterRow.setAttribute('tabindex', '0');
-        feedbackCenterRow.setAttribute('aria-label', 'Manage feedback privacy, sharing, and review status');
-        var feedbackCenterIcon = document.createElement('span');
-        feedbackCenterIcon.className = 'ai-assistant-fbk-popup-icon';
-        feedbackCenterIcon.innerHTML = ICONS.pulse || '<span>〽</span>';
-        feedbackCenterIcon.setAttribute('aria-hidden', 'true');
-        var feedbackCenterLabel = document.createElement('span');
-        feedbackCenterLabel.className = 'ai-assistant-fbk-popup-label';
-        feedbackCenterLabel.textContent = 'Manage feedback & sharing…';
-        feedbackCenterRow.appendChild(feedbackCenterIcon);
-        feedbackCenterRow.appendChild(feedbackCenterLabel);
-        function _openFeedbackCenter() {
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-fbk-popup-icon';
+            icon.innerHTML = options.icon || '';
+            icon.setAttribute('aria-hidden', 'true');
+
+            var label = document.createElement('span');
+            label.className = 'ai-assistant-fbk-popup-label';
+            label.textContent = options.label || '';
+
+            row.appendChild(icon);
+            row.appendChild(label);
+            if (typeof options.onClick === 'function') row.addEventListener('click', options.onClick);
+            return { row: row, icon: icon, label: label };
+        }
+
+        function _dismissFbkPopup() {
             popup.setAttribute('data-pinned', 'false');
             expBtn.setAttribute('aria-expanded', 'false');
-            wrapper.setAttribute('data-active', 'false');
+            wrapper.removeAttribute('data-active');
+        }
+
+        // 1 — Detailed feedback: the most direct next step after a quick rating.
+        var feedbackDetailId = 'ai-assistant-panel-feedback-detail-' + answerIndex;
+        var formAction = _makeFbkAction({
+            label: 'Detailed feedback',
+            icon: ICONS.commentDiscussion || ICONS.chat,
+            ariaLabel: 'Show detailed feedback form',
+            ariaExpanded: false,
+            ariaControls: feedbackDetailId,
+            className: 'ai-assistant-fbk-popup-row--detail'
+        });
+        function _syncDetailedFeedbackAction() {
+            var fbBlock = document.querySelector(
+                '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
+            );
+            var isOpen = !!(fbBlock && fbBlock.classList.contains('ai-assistant-panel-feedback--revealed'));
+            formAction.row.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            formAction.row.setAttribute('aria-label', isOpen ? 'Hide detailed feedback form' : 'Show detailed feedback form');
+            formAction.label.textContent = isOpen ? 'Hide detailed feedback' : 'Detailed feedback';
+        }
+        formAction.row.addEventListener('click', function () {
+            var fbBlock = document.querySelector(
+                '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
+            );
+            if (!fbBlock) return;
+            fbBlock.classList.toggle('ai-assistant-panel-feedback--revealed');
+            _syncDetailedFeedbackAction();
+            _schedulePinnedFeedbackPopupPosition();
+        });
+        popup.appendChild(formAction.row);
+
+        // 2 — Feedback center stays in the primary feedback action group. It
+        // navigates to the full feedback/privacy/review workspace but does not
+        // duplicate any consent, deletion, telemetry, or submission authority
+        // inside this compact answer-level popup.
+        var feedbackCenterAction = _makeFbkAction({
+            label: 'Feedback center\u2026',
+            ariaLabel: 'Open feedback center for privacy, review, and submission status',
+            className: 'ai-assistant-fbk-popup-row--center'
+        });
+        // Keep the icon assignment explicit: historical harnesses assert this
+        // privacy/feedback destination continues to use the pulse glyph.
+        var feedbackCenterIcon = feedbackCenterAction.icon;
+        feedbackCenterIcon.innerHTML = ICONS.pulse;
+        feedbackCenterAction.row.addEventListener('click', function () {
+            _dismissFbkPopup();
             try {
                 _dispatchAssistantEvent(new CustomEvent('ai-assistant-open-feedback-center', {
                     detail: {
@@ -14641,103 +14769,122 @@
                     }
                 }));
             } catch (_) {}
-        }
-        feedbackCenterRow.addEventListener('click', _openFeedbackCenter);
-        feedbackCenterRow.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _openFeedbackCenter(); }
         });
-        popup.appendChild(feedbackCenterRow);
+        popup.appendChild(feedbackCenterAction.row);
 
-        var popSepFeedback = document.createElement('div');
-        popSepFeedback.className = 'ai-assistant-fbk-popup-sep';
-        popSepFeedback.setAttribute('aria-hidden', 'true');
-        popup.appendChild(popSepFeedback);
-
-        // Row 2: Explicit content contribution. This is intentionally separate
-        // from telemetry and feedback review, and opens the Contribution tab.
-        var contributeRow = document.createElement('div');
-        contributeRow.className = 'ai-assistant-fbk-popup-row';
-        contributeRow.style.cursor = 'pointer';
-        contributeRow.setAttribute('role', 'button');
-        contributeRow.setAttribute('tabindex', '0');
-        contributeRow.setAttribute('aria-label', 'Contribute this question and answer to dataset review');
-        var contributeIcon = document.createElement('span');
-        contributeIcon.className = 'ai-assistant-fbk-popup-icon';
-        contributeIcon.textContent = '\uD83E\uDD1D';
-        contributeIcon.setAttribute('aria-hidden', 'true');
-        var contributeLabel = document.createElement('span');
-        contributeLabel.className = 'ai-assistant-fbk-popup-label';
-        contributeLabel.textContent = 'Contribute this Q&A\u2026';
-        contributeRow.appendChild(contributeIcon);
-        contributeRow.appendChild(contributeLabel);
-        function _openQaContribution() {
-            popup.setAttribute('data-pinned', 'false');
-            expBtn.setAttribute('aria-expanded', 'false');
-            wrapper.setAttribute('data-active', 'false');
+        // 3 — Contribution remains a separate explicit workflow; no consent or
+        // submission authority is duplicated in this popup.
+        var contributeAction = _makeFbkAction({
+            label: 'Contribute this Q&A\u2026',
+            icon: ICONS.dataset || ICONS.database,
+            ariaLabel: 'Contribute this question and answer to dataset review',
+            className: 'ai-assistant-fbk-popup-row--contribute'
+        });
+        contributeAction.row.addEventListener('click', function () {
+            _dismissFbkPopup();
             try {
                 _dispatchAssistantEvent(new CustomEvent('ai-assistant-open-contribution', {
                     detail: { scope: 'qa', answerIndex: answerIndex, tab: 'contribution' }
                 }));
             } catch (_) {}
-        }
-        contributeRow.addEventListener('click', _openQaContribution);
-        contributeRow.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _openQaContribution(); }
         });
-        popup.appendChild(contributeRow);
+        popup.appendChild(contributeAction.row);
 
-        var popSepContribution = document.createElement('div');
-        popSepContribution.className = 'ai-assistant-fbk-popup-sep';
-        popSepContribution.setAttribute('aria-hidden', 'true');
-        popup.appendChild(popSepContribution);
+        var popSepPrimary = document.createElement('div');
+        popSepPrimary.className = 'ai-assistant-fbk-popup-sep';
+        popSepPrimary.setAttribute('aria-hidden', 'true');
+        popup.appendChild(popSepPrimary);
 
-        // Row 3: Toggle full feedback form
-        var formRow = document.createElement('div');
-        formRow.className = 'ai-assistant-fbk-popup-row';
-        formRow.style.cursor = 'pointer';
-        formRow.setAttribute('role', 'button');
-        formRow.setAttribute('tabindex', '0');
-        formRow.setAttribute('aria-label', 'Open detailed feedback form');
+        // Progressive disclosure: secondary/global/personal utilities live behind one
+        // inline expander rather than spawning a nested flyout (safer on small
+        // panels and short mobile heights).
+        var moreBodyId = popupId + '-more';
+        var moreBtn = document.createElement('button');
+        moreBtn.type = 'button';
+        moreBtn.className = 'ai-assistant-panel-icon-btn ai-assistant-export-trigger ai-assistant-fbk-more-trigger';
+        moreBtn.setAttribute('aria-expanded', 'false');
+        moreBtn.setAttribute('aria-controls', moreBodyId);
+        moreBtn.setAttribute('aria-label', 'More feedback actions');
+        moreBtn.title = 'More';
 
-        var formIcon = document.createElement('span');
-        formIcon.className = 'ai-assistant-fbk-popup-icon';
-        formIcon.textContent = '\uD83D\uDCAC';
-        formIcon.setAttribute('aria-hidden', 'true');
+        var moreIcon = document.createElement('span');
+        moreIcon.setAttribute('aria-hidden', 'true');
+        moreIcon.innerHTML = ICONS.overflowV;
+        var moreLabel = document.createElement('span');
+        moreLabel.className = 'ai-assistant-fbk-more-label';
+        moreLabel.textContent = 'More';
+        var moreChevron = document.createElement('span');
+        moreChevron.className = 'ai-assistant-export-trigger-chevron';
+        moreChevron.setAttribute('aria-hidden', 'true');
+        moreChevron.innerHTML = ICONS.chevronDown;
+        moreBtn.appendChild(moreIcon);
+        moreBtn.appendChild(moreLabel);
+        moreBtn.appendChild(moreChevron);
+        popup.appendChild(moreBtn);
 
-        var formLabel = document.createElement('span');
-        formLabel.className = 'ai-assistant-fbk-popup-label';
-        formLabel.textContent = 'Detailed feedback \u2193';
+        var moreBody = document.createElement('div');
+        moreBody.className = 'ai-assistant-fbk-more-body';
+        moreBody.id = moreBodyId;
+        moreBody.setAttribute('data-open', 'false');
+        moreBody.hidden = true;
 
-        formRow.appendChild(formIcon);
-        formRow.appendChild(formLabel);
-
-        function _toggleFullForm() {
-            var fbBlock = document.querySelector(
-                '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
-            );
-            if (!fbBlock) return;
-            fbBlock.classList.toggle('ai-assistant-panel-feedback--revealed');
-            formLabel.textContent = fbBlock.classList.contains(
-                'ai-assistant-panel-feedback--revealed'
-            ) ? 'Detailed feedback \u2191' : 'Detailed feedback \u2193';
-        }
-        formRow.addEventListener('click', _toggleFullForm);
-        formRow.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _toggleFullForm(); }
+        // Home is a stable navigation hook.  The dedicated Home sheet is the
+        // next design run; until that listener exists, the action fails visibly
+        // rather than becoming a silent dead control.
+        var homeAction = _makeFbkAction({
+            label: 'Home',
+            icon: ICONS.home,
+            ariaLabel: 'Open AI Assistant Home',
+            className: 'ai-assistant-fbk-popup-row--home'
         });
-        popup.appendChild(formRow);
+        homeAction.row.addEventListener('click', function () {
+            _dismissFbkPopup();
+            var handled = false;
+            try {
+                var homeEvent = new CustomEvent('ai-assistant-open-home', {
+                    cancelable: true,
+                    detail: { source: 'answer-feedback', answerIndex: answerIndex }
+                });
+                handled = _dispatchAssistantEvent(homeEvent) === false;
+            } catch (_) {}
+            if (!handled) {
+                _notify('Home workspace is not configured yet.', 'info');
+            }
+        });
+        moreBody.appendChild(homeAction.row);
 
-        var popSep2 = document.createElement('div');
-        popSep2.className = 'ai-assistant-fbk-popup-sep';
-        popSep2.setAttribute('aria-hidden', 'true');
-        popup.appendChild(popSep2);
+        // More / Bookmark — persistent but privacy-minimal. Only an opaque marker
+        // is stored locally; answer/question text never enters bookmark storage.
+        var bookmarkId = _answerBookmarkId(answerText, questionText);
+        var bookmarked = _isAnswerBookmarked(bookmarkId);
+        var bookmarkAction = _makeFbkAction({
+            label: bookmarked ? 'Remove bookmark' : 'Bookmark answer',
+            icon: ICONS.bookmark,
+            ariaLabel: bookmarked ? 'Remove bookmark from this answer' : 'Bookmark this answer',
+            ariaPressed: bookmarked,
+            className: 'ai-assistant-fbk-popup-row--bookmark'
+        });
+        bookmarkAction.row.addEventListener('click', function () {
+            var next = bookmarkAction.row.getAttribute('aria-pressed') !== 'true';
+            if (!_setAnswerBookmarked(bookmarkId, next)) {
+                _notify('Bookmark could not be saved in this browser.', 'warning');
+                return;
+            }
+            bookmarkAction.row.setAttribute('aria-pressed', next ? 'true' : 'false');
+            bookmarkAction.row.setAttribute('aria-label', next ? 'Remove bookmark from this answer' : 'Bookmark this answer');
+            bookmarkAction.label.textContent = next ? 'Remove bookmark' : 'Bookmark answer';
+        });
+        moreBody.appendChild(bookmarkAction.row);
+        popup.appendChild(moreBody);
 
-        // Row 4: Future features placeholder
-        var futureRow = document.createElement('div');
-        futureRow.className = 'ai-assistant-fbk-popup-future';
-        futureRow.setAttribute('aria-hidden', 'true');
-        futureRow.textContent = '\uD83D\uDD2E Coming soon: Flag \u00B7 Correct \u00B7 Bookmark';
-        popup.appendChild(futureRow);
+        moreBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var open = moreBtn.getAttribute('aria-expanded') !== 'true';
+            moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            moreBody.setAttribute('data-open', open ? 'true' : 'false');
+            moreBody.hidden = !open;
+            _schedulePinnedFeedbackPopupPosition();
+        });
 
         wrapper.appendChild(popup);
 
@@ -14807,6 +14954,8 @@
 
         var wrap = document.createElement('div');
         wrap.className = 'ai-assistant-panel-feedback ai-assistant-panel-feedback--inline';
+        wrap.id = 'ai-assistant-panel-feedback-detail-' + answerIndex;
+        wrap.setAttribute('data-answer-index', String(answerIndex));
 
         var q = document.createElement('p');
         q.className = 'ai-assistant-panel-feedback-q';
