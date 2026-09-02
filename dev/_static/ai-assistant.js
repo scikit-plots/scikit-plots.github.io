@@ -14526,6 +14526,92 @@
         }
     }
 
+    /**
+     * Reveal one inline detailed-feedback block without making the user hunt for
+     * it below the current transcript viewport.
+     *
+     * The panel body — never the page — is the scroll authority.  After the
+     * hidden block participates in layout, reveal only a useful leading slice
+     * of the form (up to 55% of the body / 220px).  This keeps some answer
+     * context above the form on short panels instead of blindly centering the
+     * entire, potentially taller-than-viewport block.
+     */
+    function _revealDetailedFeedbackInPanelBody(fbBlock, focusFirstControl) {
+        if (!fbBlock) return;
+
+        function _afterLayout() {
+            var body = document.getElementById('ai-assistant-panel-body');
+            if (!body || !body.contains(fbBlock) ||
+                    typeof body.getBoundingClientRect !== 'function' ||
+                    typeof fbBlock.getBoundingClientRect !== 'function') return;
+
+            var bodyRect = body.getBoundingClientRect();
+            var blockRect = fbBlock.getBoundingClientRect();
+            if (!bodyRect || !blockRect || bodyRect.height <= 0) return;
+
+            var edge = Math.min(12, Math.max(6, bodyRect.height * 0.03));
+            var safeTop = bodyRect.top + edge;
+            var safeBottom = bodyRect.bottom - edge;
+            var usableHeight = Math.max(1, safeBottom - safeTop);
+
+            // We do not need the whole form visible to make the reveal useful;
+            // on a short panel that would erase the Q/A context the user just
+            // acted on.  Reveal the beginning plus enough controls to make the
+            // next action obvious, then let normal user scrolling continue.
+            var usefulReveal = Math.min(
+                Math.max(0, blockRect.height),
+                Math.max(96, Math.min(220, usableHeight * 0.55))
+            );
+            var delta = 0;
+            if (blockRect.top < safeTop) {
+                delta = blockRect.top - safeTop;
+            } else if (blockRect.top + usefulReveal > safeBottom) {
+                delta = (blockRect.top + usefulReveal) - safeBottom;
+            }
+
+            if (Math.abs(delta) > 1) {
+                var maxScroll = Math.max(0, body.scrollHeight - body.clientHeight);
+                var target = Math.min(maxScroll, Math.max(0, body.scrollTop + delta));
+                var reduced = false;
+                try {
+                    reduced = !!(window.matchMedia &&
+                        window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+                } catch (_) {}
+                if (typeof body.scrollTo === 'function') {
+                    try {
+                        body.scrollTo({ top: target, behavior: reduced ? 'auto' : 'smooth' });
+                    } catch (_) {
+                        body.scrollTop = target;
+                    }
+                } else {
+                    body.scrollTop = target;
+                }
+            }
+
+            if (focusFirstControl) {
+                var firstControl = fbBlock.querySelector(
+                    '.ai-assistant-panel-feedback-btn, .ai-assistant-panel-feedback-text, ' +
+                    '.ai-assistant-panel-feedback-submit'
+                );
+                if (firstControl && typeof firstControl.focus === 'function') {
+                    try { firstControl.focus({ preventScroll: true }); }
+                    catch (_) { try { firstControl.focus(); } catch (_ignoreFocus) {} }
+                }
+            }
+        }
+
+        // Two frames deliberately separate "display:none -> layout participant"
+        // from geometry measurement.  This avoids stale pre-reveal rectangles in
+        // WebKit and during panel resize/scroll animations.
+        if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(function () {
+                requestAnimationFrame(_afterLayout);
+            });
+        } else {
+            _afterLayout();
+        }
+    }
+
     function _buildFbkFloat(answerIndex, answerText, questionText) {
         var cfg = _cfg();
         if (cfg.panelFeedback === false) return null;
@@ -14866,9 +14952,22 @@
                 '.ai-assistant-panel-feedback[data-answer-index="' + answerIndex + '"]'
             );
             if (!fbBlock) return;
-            fbBlock.classList.toggle('ai-assistant-panel-feedback--revealed');
+
+            var opening = !fbBlock.classList.contains('ai-assistant-panel-feedback--revealed');
+            fbBlock.classList.toggle('ai-assistant-panel-feedback--revealed', opening);
             _syncDetailedFeedbackAction();
-            _schedulePinnedFeedbackPopupPosition();
+
+            if (opening) {
+                // This menu item is a reveal/navigation action.  Once chosen,
+                // retire the floating menu so it does not consume scarce panel
+                // viewport while the inline form opens below the answer.
+                _dismissFbkPopup();
+                _revealDetailedFeedbackInPanelBody(fbBlock, true);
+            } else {
+                // The popup remains open on an explicit Hide action, allowing
+                // the user to choose another feedback destination immediately.
+                _schedulePinnedFeedbackPopupPosition();
+            }
         });
         popup.appendChild(formAction.row);
 
@@ -14990,7 +15089,10 @@
 
         var q = document.createElement('p');
         q.className = 'ai-assistant-panel-feedback-q';
+        q.id = 'ai-assistant-panel-feedback-question-' + answerIndex;
         q.textContent = question;
+        wrap.setAttribute('role', 'group');
+        wrap.setAttribute('aria-labelledby', q.id);
         wrap.appendChild(q);
 
         var optRow = document.createElement('div');
