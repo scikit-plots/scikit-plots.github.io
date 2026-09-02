@@ -13416,8 +13416,10 @@
      *     Optional. When provided, a Share menu item is rendered inside the
      *     dropdown (below Listen). Shape:
      *       { text: string, question: string|null, bubble: HTMLElement, answerIndex: number }
-     *     Moved here from the flat action row so the visible row stays compact:
-     *     time | copy | 👍👎 | retry | more.
+     *     Moved here from the flat action row so the visible row stays compact.
+     *     The canonical More menu also owns answer-scoped Bookmark and the
+     *     inline secondary disclosure used for global Home navigation.
+     *     Visible row: time | copy | 👍👎 | more.
      *
      * Returns
      * -------
@@ -13505,7 +13507,7 @@
         }
 
         // ── Share button (moved from flat action row into menu) ───────────
-        // Menu order: retry (first) | listen | share
+        // Menu order: retry (first) | listen | share | bookmark | divider | More → Home
         // Row order:  time | copy | 👍👎⌃ | more
         // shareOpts is null for legacy/streaming paths that don't pass it.
         if (shareOpts && shareOpts.text !== undefined) {
@@ -13528,12 +13530,140 @@
             }(shareOpts));
         }
 
+        // ── Bookmark — answer-scoped utility in the canonical answer menu ──
+        // Keep bookmark state beside the answer it belongs to rather than in
+        // the feedback popup. Persistence remains privacy-minimal: only the
+        // opaque marker is stored; raw question/answer text is never persisted.
+        var bubbleQuestion = '';
+        if (shareOpts && typeof shareOpts.question === 'string') {
+            bubbleQuestion = shareOpts.question;
+        } else if (retryOpts && typeof retryOpts.question === 'string') {
+            bubbleQuestion = retryOpts.question;
+        }
+        var bubbleAnswerIndex = shareOpts && isFinite(shareOpts.answerIndex)
+            ? Number(shareOpts.answerIndex)
+            : null;
+        var bookmarkId = _answerBookmarkId(answerText, bubbleQuestion);
+        var bookmarked = _isAnswerBookmarked(bookmarkId);
+        var bookmarkMenuBtn = document.createElement('button');
+        bookmarkMenuBtn.className =
+            'ai-assistant-panel-bubble-action ' +
+            'ai-assistant-panel-bubble-action--bookmark';
+        bookmarkMenuBtn.type = 'button';
+        bookmarkMenuBtn.setAttribute('role', 'menuitem');
+        bookmarkMenuBtn.setAttribute('aria-pressed', bookmarked ? 'true' : 'false');
+        bookmarkMenuBtn.setAttribute(
+            'aria-label',
+            bookmarked ? 'Remove bookmark from this answer' : 'Bookmark this answer'
+        );
+        bookmarkMenuBtn.innerHTML = ICONS.bookmark;
+        var bookmarkMenuLbl = document.createElement('span');
+        bookmarkMenuLbl.textContent = bookmarked ? 'Remove bookmark' : 'Bookmark answer';
+        bookmarkMenuBtn.appendChild(bookmarkMenuLbl);
+        bookmarkMenuBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var next = bookmarkMenuBtn.getAttribute('aria-pressed') !== 'true';
+            if (!_setAnswerBookmarked(bookmarkId, next)) {
+                _notify('Bookmark could not be saved in this browser.', 'warning');
+                return;
+            }
+            bookmarkMenuBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
+            bookmarkMenuBtn.setAttribute(
+                'aria-label',
+                next ? 'Remove bookmark from this answer' : 'Bookmark this answer'
+            );
+            bookmarkMenuLbl.textContent = next ? 'Remove bookmark' : 'Bookmark answer';
+        });
+        menu.appendChild(bookmarkMenuBtn);
+
+        // ── Secondary disclosure — global navigation only ─────────────────
+        // This is an inline disclosure inside the existing answer menu, not a
+        // second floating popup. It keeps the answer menu boundary coordinator
+        // authoritative on narrow panels and short mobile/tablet heights.
+        var secondarySep = document.createElement('div');
+        secondarySep.className = 'ai-assistant-panel-bubble-action-more-sep';
+        secondarySep.setAttribute('aria-hidden', 'true');
+        menu.appendChild(secondarySep);
+
+        var secondaryId = 'ai-assistant-panel-bubble-more-secondary-' +
+            (bubbleAnswerIndex !== null ? String(bubbleAnswerIndex) : _strHash(String(answerText || '')));
+        var secondaryToggle = document.createElement('button');
+        secondaryToggle.className =
+            'ai-assistant-panel-bubble-action ' +
+            'ai-assistant-panel-bubble-action--secondary-toggle';
+        secondaryToggle.type = 'button';
+        secondaryToggle.setAttribute('role', 'menuitem');
+        secondaryToggle.setAttribute('aria-expanded', 'false');
+        secondaryToggle.setAttribute('aria-controls', secondaryId);
+        secondaryToggle.setAttribute('aria-label', 'More answer actions');
+        secondaryToggle.innerHTML = ICONS.overflowV;
+        var secondaryLabel = document.createElement('span');
+        secondaryLabel.textContent = 'More';
+        var secondaryChevron = document.createElement('span');
+        secondaryChevron.className = 'ai-assistant-panel-bubble-action-more-chevron';
+        secondaryChevron.setAttribute('aria-hidden', 'true');
+        secondaryChevron.innerHTML = ICONS.chevronDown;
+        secondaryToggle.appendChild(secondaryLabel);
+        secondaryToggle.appendChild(secondaryChevron);
+        menu.appendChild(secondaryToggle);
+
+        var secondaryBody = document.createElement('div');
+        secondaryBody.className = 'ai-assistant-panel-bubble-action-more-secondary';
+        secondaryBody.id = secondaryId;
+        secondaryBody.setAttribute('role', 'group');
+        secondaryBody.setAttribute('aria-label', 'Additional answer actions');
+        secondaryBody.setAttribute('data-open', 'false');
+        secondaryBody.hidden = true;
+
+        var homeMenuBtn = document.createElement('button');
+        homeMenuBtn.className =
+            'ai-assistant-panel-bubble-action ' +
+            'ai-assistant-panel-bubble-action--home';
+        homeMenuBtn.type = 'button';
+        homeMenuBtn.setAttribute('role', 'menuitem');
+        homeMenuBtn.setAttribute('aria-label', 'Open AI Assistant Home');
+        homeMenuBtn.innerHTML = ICONS.home;
+        var homeMenuLbl = document.createElement('span');
+        homeMenuLbl.textContent = 'Home';
+        homeMenuBtn.appendChild(homeMenuLbl);
+        homeMenuBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            menu.setAttribute('data-open', 'false');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            var handled = false;
+            try {
+                var homeEvent = new CustomEvent('ai-assistant-open-home', {
+                    cancelable: true,
+                    detail: { source: 'answer-actions', answerIndex: bubbleAnswerIndex }
+                });
+                handled = _dispatchAssistantEvent(homeEvent) === false;
+            } catch (_) {}
+            if (!handled) {
+                _notify('Home workspace is not configured yet.', 'info');
+            }
+        });
+        secondaryBody.appendChild(homeMenuBtn);
+        menu.appendChild(secondaryBody);
+
+        function _setBubbleSecondaryOpen(open) {
+            secondaryToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            secondaryBody.setAttribute('data-open', open ? 'true' : 'false');
+            secondaryBody.hidden = !open;
+            if (open) _schedulePinnedFeedbackPopupPosition();
+        }
+
+        secondaryToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _setBubbleSecondaryOpen(secondaryToggle.getAttribute('aria-expanded') !== 'true');
+        });
+
         // ── Toggle click handler ──────────────────────────────────────────
         toggleBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             var isOpen = menu.getAttribute('data-open') === 'true';
             menu.setAttribute('data-open', isOpen ? 'false' : 'true');
             toggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            if (isOpen) _setBubbleSecondaryOpen(false);
             if (!isOpen) {
                 _ensureFeedbackPopupBoundaryObservers();
                 _positionBubbleMoreMenuWithinPanelBody(menu);
@@ -13545,6 +13675,7 @@
             if (!wrapper.contains(e.relatedTarget)) {
                 menu.setAttribute('data-open', 'false');
                 toggleBtn.setAttribute('aria-expanded', 'false');
+                _setBubbleSecondaryOpen(false);
             }
         });
 
@@ -14669,16 +14800,12 @@
         // This compact surface is intentionally action/navigation-only: it does
         // not duplicate consent, deletion, telemetry, or review authority.
         //
-        // Information architecture (feedback workflow first, personal utilities second):
+        // Information architecture: this popup owns feedback context only.
         //   1. Detailed feedback  — immediate answer-level feedback action.
         //   2. Feedback center    — feedback/privacy/review workspace.
         //   3. Contribute Q&A     — explicit dataset workflow (opens its sheet).
-        //   4. More               — secondary/global/personal utilities:
-        //                            Home, Bookmark answer, and future low-frequency
-        //                            destinations that do not belong in the primary
-        //                            feedback workflow.
-        // This keeps the primary block semantically coherent while preserving
-        // Bookmark as a nearby, reversible answer utility under disclosure.
+        // Answer utilities such as Bookmark and global navigation such as Home
+        // belong to the existing bubble-action More menu, not to feedback.
         function _makeFbkAction(options) {
             options = options || {};
             var row = document.createElement('button');
@@ -14789,102 +14916,6 @@
             } catch (_) {}
         });
         popup.appendChild(contributeAction.row);
-
-        var popSepPrimary = document.createElement('div');
-        popSepPrimary.className = 'ai-assistant-fbk-popup-sep';
-        popSepPrimary.setAttribute('aria-hidden', 'true');
-        popup.appendChild(popSepPrimary);
-
-        // Progressive disclosure: secondary/global/personal utilities live behind one
-        // inline expander rather than spawning a nested flyout (safer on small
-        // panels and short mobile heights).
-        var moreBodyId = popupId + '-more';
-        var moreBtn = document.createElement('button');
-        moreBtn.type = 'button';
-        moreBtn.className = 'ai-assistant-panel-icon-btn ai-assistant-export-trigger ai-assistant-fbk-more-trigger';
-        moreBtn.setAttribute('aria-expanded', 'false');
-        moreBtn.setAttribute('aria-controls', moreBodyId);
-        moreBtn.setAttribute('aria-label', 'More feedback actions');
-        moreBtn.title = 'More';
-
-        var moreIcon = document.createElement('span');
-        moreIcon.setAttribute('aria-hidden', 'true');
-        moreIcon.innerHTML = ICONS.overflowV;
-        var moreLabel = document.createElement('span');
-        moreLabel.className = 'ai-assistant-fbk-more-label';
-        moreLabel.textContent = 'More';
-        var moreChevron = document.createElement('span');
-        moreChevron.className = 'ai-assistant-export-trigger-chevron';
-        moreChevron.setAttribute('aria-hidden', 'true');
-        moreChevron.innerHTML = ICONS.chevronDown;
-        moreBtn.appendChild(moreIcon);
-        moreBtn.appendChild(moreLabel);
-        moreBtn.appendChild(moreChevron);
-        popup.appendChild(moreBtn);
-
-        var moreBody = document.createElement('div');
-        moreBody.className = 'ai-assistant-fbk-more-body';
-        moreBody.id = moreBodyId;
-        moreBody.setAttribute('data-open', 'false');
-        moreBody.hidden = true;
-
-        // Home is a stable navigation hook.  The dedicated Home sheet is the
-        // next design run; until that listener exists, the action fails visibly
-        // rather than becoming a silent dead control.
-        var homeAction = _makeFbkAction({
-            label: 'Home',
-            icon: ICONS.home,
-            ariaLabel: 'Open AI Assistant Home',
-            className: 'ai-assistant-fbk-popup-row--home'
-        });
-        homeAction.row.addEventListener('click', function () {
-            _dismissFbkPopup();
-            var handled = false;
-            try {
-                var homeEvent = new CustomEvent('ai-assistant-open-home', {
-                    cancelable: true,
-                    detail: { source: 'answer-feedback', answerIndex: answerIndex }
-                });
-                handled = _dispatchAssistantEvent(homeEvent) === false;
-            } catch (_) {}
-            if (!handled) {
-                _notify('Home workspace is not configured yet.', 'info');
-            }
-        });
-        moreBody.appendChild(homeAction.row);
-
-        // More / Bookmark — persistent but privacy-minimal. Only an opaque marker
-        // is stored locally; answer/question text never enters bookmark storage.
-        var bookmarkId = _answerBookmarkId(answerText, questionText);
-        var bookmarked = _isAnswerBookmarked(bookmarkId);
-        var bookmarkAction = _makeFbkAction({
-            label: bookmarked ? 'Remove bookmark' : 'Bookmark answer',
-            icon: ICONS.bookmark,
-            ariaLabel: bookmarked ? 'Remove bookmark from this answer' : 'Bookmark this answer',
-            ariaPressed: bookmarked,
-            className: 'ai-assistant-fbk-popup-row--bookmark'
-        });
-        bookmarkAction.row.addEventListener('click', function () {
-            var next = bookmarkAction.row.getAttribute('aria-pressed') !== 'true';
-            if (!_setAnswerBookmarked(bookmarkId, next)) {
-                _notify('Bookmark could not be saved in this browser.', 'warning');
-                return;
-            }
-            bookmarkAction.row.setAttribute('aria-pressed', next ? 'true' : 'false');
-            bookmarkAction.row.setAttribute('aria-label', next ? 'Remove bookmark from this answer' : 'Bookmark this answer');
-            bookmarkAction.label.textContent = next ? 'Remove bookmark' : 'Bookmark answer';
-        });
-        moreBody.appendChild(bookmarkAction.row);
-        popup.appendChild(moreBody);
-
-        moreBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            var open = moreBtn.getAttribute('aria-expanded') !== 'true';
-            moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            moreBody.setAttribute('data-open', open ? 'true' : 'false');
-            moreBody.hidden = !open;
-            _schedulePinnedFeedbackPopupPosition();
-        });
 
         wrapper.appendChild(popup);
 
@@ -37424,12 +37455,12 @@
                 '.ai-assistant-panel-feedback').length;
 
             // ── Quick-rate 👍 👎 (always visible — mobile-first, see CSS D4-c) ──
-            // Row order: time | copy | 👍👎⌃ | more(retry | listen | share)
+            // Row order: time | copy | 👍👎⌃ | more(answer utilities + Home disclosure)
             var fbkFloat = _buildFbkFloat(answerIndex, text, retryQ);
             if (fbkFloat) actions.appendChild(fbkFloat);
 
-            // ── "⋯ More ▾" expandable submenu (Retry + Listen + Share)
-            // Retry is the first menu item — flat row stays compact on all devices.
+            // ── "⋯ More ▾" canonical answer menu
+            // Retry stays first; Bookmark and Home navigation remain contextual here.
             var moreWrapper = _buildBubbleMore(text, {
                 text:        text,
                 question:    retryQ,
@@ -38351,14 +38382,14 @@
             acts.appendChild(cb2);
 
             // ── Quick-rate 👍 👎 (always visible — mobile-first, see CSS D4-c) ──
-            // Row order: time | copy | 👍👎⌃ | more(retry | listen | share)
+            // Row order: time | copy | 👍👎⌃ | more(answer utilities + Home disclosure)
             (function (idx, txt, q) {
                 var fbkF2 = _buildFbkFloat(idx, txt, q);
                 if (fbkF2) acts.appendChild(fbkF2);
             }(fbIdx2, accumulated, retryQ2));
 
-            // "⋯ More ▾" — extensible submenu (Retry + Listen + Share)
-            // Retry is the first menu item — flat row stays compact on all devices.
+            // "⋯ More ▾" — canonical answer menu (utilities + Home disclosure).
+            // Retry stays first so the flat row remains compact on all devices.
             var moreW2 = _buildBubbleMore(accumulated, {
                 text:        accumulated,
                 question:    retryQ2,

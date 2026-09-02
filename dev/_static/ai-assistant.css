@@ -1985,6 +1985,69 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border-radius: 5px;
 }
 
+/* Run 89: contextual utilities live in the canonical answer-action menu.
+ * Bookmark is answer-scoped and immediately visible; Home is a lower-frequency
+ * global destination disclosed inline under a second-level More row.  Keep this
+ * inline instead of spawning another floating submenu so the existing panel-body
+ * boundary coordinator remains the single positioning authority. */
+.ai-assistant-panel-bubble-action-more-sep {
+    height: 1px;
+    margin: 0.18rem 0.2rem;
+    background: var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+}
+
+.ai-assistant-panel-bubble-action--bookmark[aria-pressed="true"] {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+.ai-assistant-panel-bubble-action--secondary-toggle {
+    gap: 0.42rem;
+}
+.ai-assistant-panel-bubble-action--secondary-toggle > span:not(.ai-assistant-panel-bubble-action-more-chevron) {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+}
+.ai-assistant-panel-bubble-action-more-chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+.ai-assistant-panel-bubble-action-more-chevron svg {
+    width: 0.7rem;
+    height: 0.7rem;
+    transition: transform 0.15s ease;
+}
+.ai-assistant-panel-bubble-action--secondary-toggle[aria-expanded="true"]
+    .ai-assistant-panel-bubble-action-more-chevron svg {
+    transform: rotate(180deg);
+}
+
+.ai-assistant-panel-bubble-action-more-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin: 0.05rem 0 0.05rem 0.45rem;
+    padding: 0.08rem 0 0.08rem 0.35rem;
+    border-left: 2px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+}
+.ai-assistant-panel-bubble-action-more-secondary[hidden] {
+    display: none !important;
+}
+.ai-assistant-panel-bubble-action-more-secondary
+    .ai-assistant-panel-bubble-action {
+    padding-left: 0.42rem;
+}
+
+@media (pointer: coarse) {
+    .ai-assistant-panel-bubble-action-more-menu
+        .ai-assistant-panel-bubble-action {
+        min-height: 2.5rem;
+    }
+}
+
 /* ─── Listen (TTS) button state ──────────────────────────────────────────────
  *
  * Three states:
@@ -13610,58 +13673,8 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
 }
 
-/* Progressive-disclosure footer inside the feedback popup.  Reuse the visual
- * grammar of the header Export trigger (icon + label + chevron), but stretch it
- * to a full-width menu row.  This is an inline accordion, not a nested flyout,
- * so it remains safe inside narrow/short panel-body boundaries. */
-.ai-assistant-fbk-more-trigger {
-    width: 100%;
-    height: auto;
-    min-height: 2rem;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    padding: 0.38rem 0.45rem;
-    border-radius: 0.45rem;
-    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
-}
-.ai-assistant-fbk-more-trigger:hover {
-    background: rgba(0, 0, 0, 0.04);
-}
-[data-bs-theme="dark"] .ai-assistant-fbk-more-trigger:hover {
-    background: rgba(255, 255, 255, 0.06);
-}
-.ai-assistant-fbk-more-trigger > span:first-child {
-    color: var(--pst-color-text-muted, var(--color-foreground-muted, #64748b));
-}
-.ai-assistant-fbk-more-label {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-size: 0.76rem;
-    line-height: 1.35;
-    text-align: left;
-}
-.ai-assistant-fbk-more-trigger[aria-expanded="true"]
-    .ai-assistant-export-trigger-chevron svg {
-    transform: rotate(180deg);
-}
-.ai-assistant-fbk-more-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 0.1rem;
-    padding: 0.15rem 0 0.05rem 0.65rem;
-    border-left: 2px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
-}
-.ai-assistant-fbk-more-body[hidden] {
-    display: none !important;
-}
-.ai-assistant-fbk-more-body .ai-assistant-fbk-popup-row {
-    padding-left: 0.4rem;
-}
-
 @media (pointer: coarse) {
-    .ai-assistant-fbk-popup-row,
-    .ai-assistant-fbk-more-trigger {
+    .ai-assistant-fbk-popup-row {
         min-height: 2.5rem;
     }
 }
