@@ -12477,6 +12477,9 @@
     function _buildExportDropdownBtn(opts) {
         var options    = (opts && typeof opts === 'object') ? opts : {};
         var onLinkMode = typeof options.onLinkMode === 'function' ? options.onLinkMode : null;
+        var onSelect = typeof options.onSelect === 'function' ? options.onSelect : null;
+        var triggerLabelText = typeof options.triggerLabel === 'string'
+            ? options.triggerLabel : '';
 
         var wrapper = document.createElement('div');
         wrapper.className = 'ai-assistant-export-dropdown';
@@ -12501,6 +12504,12 @@
         iconSpan.setAttribute('aria-hidden', 'true');
         iconSpan.innerHTML = _exportActionModeIcon(_exportLinkMode);
         trigger.appendChild(iconSpan);
+        if (triggerLabelText) {
+            var visibleTriggerLabel = document.createElement('span');
+            visibleTriggerLabel.className = 'ai-assistant-export-trigger-label';
+            visibleTriggerLabel.textContent = triggerLabelText;
+            trigger.appendChild(visibleTriggerLabel);
+        }
         var triggerLbl = document.createElement('span');
         triggerLbl.className = 'ai-assistant-export-trigger-chevron';
         triggerLbl.innerHTML = ICONS.chevronDown;
@@ -12574,6 +12583,7 @@
                     item.addEventListener('click', function (e) {
                         e.stopPropagation();
                         _closeExportMenu(menu, trigger);
+                        if (onSelect) { onSelect(fmt); }
                         if (_exportLinkMode && onLinkMode) {
                             onLinkMode(fmt);
                         } else {
@@ -30419,15 +30429,20 @@
         var titleSpan = document.createElement('span');
         titleSpan.textContent = title;
 
-        // ── Hamburger button — lives in the header-title, before the logo ──────
-        // Declared here (not in the subbar section) so all downstream wiring
-        // (click handler, outside-click closer, Escape handler) can reference
-        // the same variable without any hoisting gap.
+        // ── Hamburger button — stable leading header control ─────────────────
+        // Run 82: keep the hamburger outside the branded title region.  The
+        // main header now has the same semantic ownership as slide-over sheets:
+        // menu | title/brand | secondary actions-or-overflow | close.  This lets
+        // the action cluster collapse atomically to ⋮ without squeezing the
+        // logo/title or moving Close into a hidden menu.
         var hamburgerBtn = null;
         if (cfg.panelHamburger !== false) {
             hamburgerBtn = _createIconBtn('hamburger', 'Open menu', ICONS.menu);
             hamburgerBtn.title = 'Open menu';
-            headerTitle.appendChild(hamburgerBtn);
+            hamburgerBtn.classList.add('ai-assistant-panel-header-menu');
+            header.appendChild(hamburgerBtn);
+        } else {
+            header.classList.add('ai-assistant-panel-header--no-menu');
         }
 
         headerTitle.appendChild(logo);
@@ -30472,10 +30487,15 @@
         headerActions.appendChild(minimizeBtn);
         headerActions.appendChild(maximizeBtn);
         headerActions.appendChild(collapseBtn);
-        headerActions.appendChild(closeBtn);
 
+        // Run 82: Close is a primary escape control and remains visible in both
+        // wide and compact states.  Do not bury it inside the secondary action
+        // cluster that may collapse into the vertical-overflow menu.
+        closeBtn.classList.add('ai-assistant-panel-header-close');
+        header.classList.add('ai-assistant-panel-header--adaptive');
         header.appendChild(headerTitle);
         header.appendChild(headerActions);
+        header.appendChild(closeBtn);
 
         // ── Sub-bar: keyboard hint (R7) + privacy link (R2) ──────────────────
         //
@@ -30492,7 +30512,7 @@
         subbar.className = 'ai-assistant-panel-subbar';
 
         // ── Left cluster ──────────────────────────────────────────────────────
-        // Note: hamburger button is in div.ai-assistant-panel-header-title now.
+        // Note: hamburger button now occupies the main header's stable leading region.
         // The subbar left cluster holds only the kbd hint (the Source button
         // that used to live here was removed — see note below).
         var leftCluster = document.createElement('div');
@@ -31188,8 +31208,9 @@
 
         // ── Footer soundbar: container only — bars built dynamically in _startVizLoops
         //
-        // Bar count is determined at recording-start from the viewport width
-        // (_computeSoundbarBarCount) so it is always right for the device.
+        // Bar count follows the panel's own inline width, not the browser
+        // viewport.  A desktop user can resize this panel to phone-like widths,
+        // so device width is not a reliable layout authority (Run 83).
         // CSS controls visibility (max-width: 0 → active max-width);
         // JS manages bar elements, heights, and opacity per tick.
         (function () {
@@ -31945,6 +31966,91 @@
         // R1: top-left resize grip (also restores any persisted size).
         _attachResizer(panel);
 
+        // Run 83 — footer fit controller.  The composer is independently
+        // resizable from the browser viewport, so responsive ownership belongs to
+        // the footer/panel itself.  Decorative waveform width yields first; if the
+        // full model pill plus stable controls still cannot coexist (including the
+        // mic options reveal width), the model picker contracts atomically to its
+        // established compact representation.  A small hysteresis prevents resize-boundary
+        // chatter when the user drags the panel edge slowly.
+        var _FOOTER_FIT_HYSTERESIS_PX = 12;
+        var _footerWidePickerWidth = 0;
+
+        function _footerElementWidth(el) {
+            if (!el) return 0;
+            var rect = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+            return rect && rect.width ? rect.width : (el.offsetWidth || 0);
+        }
+
+        function _footerCssPx(style, prop) {
+            if (!style) return 0;
+            var n = parseFloat(style[prop]);
+            return Number.isFinite(n) ? n : 0;
+        }
+
+        function _syncFooterActionFit(panelWidth) {
+            if (!footerActions || !footerActionsRight) return;
+            var actionsWidth = footerActions.clientWidth ||
+                _footerElementWidth(footerActions) || panelWidth || 0;
+            if (!actionsWidth) return;
+
+            var actionsStyle = window.getComputedStyle
+                ? window.getComputedStyle(footerActions) : null;
+            var rightStyle = window.getComputedStyle
+                ? window.getComputedStyle(footerActionsRight) : null;
+            var pad = _footerCssPx(actionsStyle, 'paddingLeft') +
+                _footerCssPx(actionsStyle, 'paddingRight');
+            var outerGap = _footerCssPx(actionsStyle, 'columnGap') ||
+                _footerCssPx(actionsStyle, 'gap') || 0;
+            var rightGap = _footerCssPx(rightStyle, 'columnGap') ||
+                _footerCssPx(rightStyle, 'gap') || 0;
+
+            var wasCompact = panel.getAttribute('data-footer-compact') === 'true';
+            if (inlinePicker && !wasCompact) {
+                var pickerStyle = window.getComputedStyle
+                    ? window.getComputedStyle(inlinePicker) : null;
+                var currentPickerW = _footerElementWidth(inlinePicker);
+                var declaredMaxW = pickerStyle ? parseFloat(pickerStyle.maxWidth) : 0;
+                // Cache the wide representation so compact-mode measurement does
+                // not create a self-collapsing threshold on the next resize tick.
+                _footerWidePickerWidth = Math.max(
+                    _footerWidePickerWidth,
+                    currentPickerW,
+                    Number.isFinite(declaredMaxW) ? declaredMaxW : 0
+                );
+            }
+
+            var attachW = _footerElementWidth(attachWrap);
+            var pickerW = inlinePicker ?
+                (_footerWidePickerWidth || _footerElementWidth(inlinePicker)) : 0;
+            var micW = _footerElementWidth(micBtnEl);
+            // Reserve the reveal affordance even while its wrapper width is zero;
+            // otherwise hovering the mic can create overflow after a fit decision.
+            var micRevealW = (typeof micExpandBtn !== 'undefined' && micExpandBtn)
+                ? _footerElementWidth(micExpandBtn) : 0;
+            // The active send affordance scales to 1.08 via transform; transforms
+            // do not participate in flex sizing, so reserve that visual footprint
+            // explicitly to avoid a 1–2 px edge protrusion at the fit boundary.
+            var sendW = _footerElementWidth(sendBtn) * 1.08;
+            var soundbarEl = footerActionsRight.querySelector(
+                '.ai-assistant-footer-soundbar');
+
+            // The soundbar intentionally contributes zero required width.  Its
+            // flex item is shrinkable and overflow-clipped, so controls win.
+            var rightItemCount = 0;
+            if (soundbarEl) rightItemCount++;
+            if (inlinePicker) rightItemCount++;
+            if (micBtnEl) rightItemCount++;
+            if (sendBtn) rightItemCount++;
+            var required = pad + attachW + outerGap + pickerW + micW +
+                micRevealW + sendW + (Math.max(0, rightItemCount - 1) * rightGap);
+
+            var compact = wasCompact
+                ? actionsWidth < Math.ceil(required + _FOOTER_FIT_HYSTERESIS_PX)
+                : actionsWidth < Math.ceil(required);
+            panel.setAttribute('data-footer-compact', compact ? 'true' : 'false');
+        }
+
         // ResizeObserver: toggle data-narrow on the panel root when the panel
         // is narrower than the breakpoint so CSS collapses the subbar clusters
         // gracefully.  Falls back to the existing viewport-based @media rule on
@@ -32017,6 +32123,16 @@
                 }
                 // Left cluster: kbd-hint collapses only at very narrow widths.
                 panel.setAttribute('data-narrow', w < 300 ? 'true' : 'false');
+                // Run 83: footer contraction follows the live panel width too;
+                // desktop manual resize must behave like an equivalently narrow
+                // mobile panel rather than inheriting the desktop viewport mode.
+                _syncFooterActionFit(w);
+                // Run 81: sheet-header compactness is fit-based rather than
+                // device-width based. The shared observer supplies the live panel
+                // width, while _syncSheetHeaderOverflow measures the real toolbar
+                // and preserves a stable readable-title budget. Compact mode stays
+                // one row and swaps the toolbar atomically for ⋮.
+                _syncSheetHeaderOverflow(w);
             }
             var _subbarRO = new ResizeObserver(function (entries) {
                 var w = entries[0] && entries[0].contentRect && entries[0].contentRect.width;
@@ -32150,6 +32266,294 @@
          *   container, ready to insert into a sheet's
          *   `.ai-assistant-panel-privacy-head`.
          */
+        // Run 81 — shared sheet-header overflow controller.
+        //
+        // Compactness is intentionally not tied to a named device breakpoint.
+        // The panel can become constrained because of manual resizing, browser
+        // zoom, larger text, localization, side-by-side windows, or future
+        // toolbar actions. We therefore compare the measured wide toolbar with
+        // the live header width and reserve one stable title readability budget.
+        var _SHEET_HEAD_TITLE_BUDGET_PX = 112;
+        var _sheetActionOverflowEntries = [];
+
+        function _closeSheetActionOverflow(entry, restoreFocus) {
+            if (!entry) return false;
+            var wasOpen = entry.menu.getAttribute('data-open') === 'true';
+            var nestedExport = entry.menu.querySelector('.ai-assistant-export-menu');
+            var nestedTrigger = entry.menu.querySelector('.ai-assistant-export-trigger');
+            if (nestedExport && nestedTrigger) {
+                _closeExportMenu(nestedExport, nestedTrigger);
+            }
+            entry.menu.setAttribute('data-open', 'false');
+            entry.button.setAttribute('aria-expanded', 'false');
+            if (wasOpen && restoreFocus) {
+                try { entry.button.focus(); } catch (_) {}
+            }
+            return wasOpen;
+        }
+
+        function _closeAnySheetActionOverflow(restoreFocus) {
+            var closed = false;
+            _sheetActionOverflowEntries.forEach(function (entry) {
+                closed = _closeSheetActionOverflow(entry, restoreFocus && !closed) || closed;
+            });
+            return closed;
+        }
+
+        function _sheetOverflowControls(menu) {
+            if (!menu) return [];
+            return Array.prototype.slice.call(menu.querySelectorAll(
+                '[data-sheet-overflow-control="true"]'
+            )).filter(function (el) {
+                return el.style.display !== 'none' && !el.disabled;
+            });
+        }
+
+        function _focusSheetOverflowControl(menu, index) {
+            var controls = _sheetOverflowControls(menu);
+            if (!controls.length) return;
+            var safe = Math.max(0, Math.min(index, controls.length - 1));
+            controls.forEach(function (el, i) {
+                el.setAttribute('tabindex', i === safe ? '0' : '-1');
+            });
+            try { controls[safe].focus(); } catch (_) {}
+        }
+
+        function _positionSheetActionOverflow(entry) {
+            if (!entry || !entry.menu || !entry.button) return;
+            var panelRect = panel.getBoundingClientRect ? panel.getBoundingClientRect() : null;
+            var btnRect = entry.button.getBoundingClientRect ? entry.button.getBoundingClientRect() : null;
+            if (!panelRect || !btnRect) return;
+            // Keep a small breathing margin above the panel bottom. The menu can
+            // scroll internally rather than growing the header or leaving panel.
+            var below = Math.floor(panelRect.bottom - btnRect.bottom - 10);
+            entry.menu.style.maxHeight = Math.max(72, below) + 'px';
+        }
+
+        function _openSheetActionOverflow(entry) {
+            if (!entry) return;
+            _sheetActionOverflowEntries.forEach(function (other) {
+                if (other !== entry) _closeSheetActionOverflow(other, false);
+            });
+            _positionSheetActionOverflow(entry);
+            entry.menu.setAttribute('data-open', 'true');
+            entry.button.setAttribute('aria-expanded', 'true');
+            _focusSheetOverflowControl(entry.menu, 0);
+        }
+
+        function _syncSheetHeaderOverflow(panelWidth) {
+            var width = typeof panelWidth === 'number' ? panelWidth :
+                (panel.getBoundingClientRect ? panel.getBoundingClientRect().width : 0);
+            if (!width) return;
+
+            _sheetActionOverflowEntries.forEach(function (entry) {
+                var head = entry.head;
+                var toolbar = entry.toolbar;
+                if (!head || !toolbar) return;
+
+                // Temporarily inspect the intrinsic toolbar width through scrollWidth;
+                // unlike viewport labels this remains stable across sheet titles.
+                var style = window.getComputedStyle ? window.getComputedStyle(head) : null;
+                var padLeft = style ? (parseFloat(style.paddingLeft) || 0) : 0;
+                var padRight = style ? (parseFloat(style.paddingRight) || 0) : 0;
+                var gap = style ? (parseFloat(style.columnGap) || 4) : 4;
+                var menuBtn = entry.leadingMenu ||
+                    head.querySelector('.ai-assistant-panel-sheet-head-menu');
+                var close = entry.close ||
+                    head.querySelector('.ai-assistant-panel-sheet-head-close');
+                // Main-header branding already owns its menu as an independent
+                // grid region.  Sheets use the same accounting.  A feature-
+                // flagged missing menu therefore costs zero rather than a ghost
+                // 28px slot.
+                var menuW = menuBtn ? Math.max(28, menuBtn.offsetWidth || 0) : 0;
+                var closeW = close ? Math.max(28, close.offsetWidth || 0) : 28;
+                var measuredToolbarW = toolbar.scrollWidth || toolbar.offsetWidth || 0;
+                if (measuredToolbarW > 0) {
+                    entry.toolbarWideWidth = Math.max(
+                        entry.toolbarWideWidth || 0, measuredToolbarW);
+                }
+                var toolbarW = entry.toolbarWideWidth || measuredToolbarW;
+                var headWidth = head.getBoundingClientRect
+                    ? head.getBoundingClientRect().width : width;
+                // Regular grid has three inter-region gaps: menu/title,
+                // title/toolbar, toolbar/close.
+                var needed = padLeft + padRight + menuW + closeW + toolbarW +
+                    _SHEET_HEAD_TITLE_BUDGET_PX + (gap * 3);
+                var compact = headWidth < Math.ceil(needed);
+                var compactAttr = entry.compactAttr || 'data-sheet-head-compact';
+                head.setAttribute(compactAttr, compact ? 'true' : 'false');
+                if (compact) {
+                    // If fit changes while the wide Export picker is open,
+                    // close that hidden surface before removing its toolbar
+                    // from layout.  This prevents a ghost popover from outliving
+                    // the representation that owns it.
+                    var wideExportMenu = toolbar.querySelector(
+                        '.ai-assistant-export-menu[data-open="true"]');
+                    var wideExportTrigger = toolbar.querySelector(
+                        '.ai-assistant-export-trigger');
+                    if (wideExportMenu && wideExportTrigger) {
+                        _closeExportMenu(wideExportMenu, wideExportTrigger);
+                    }
+                } else {
+                    _closeSheetActionOverflow(entry, false);
+                }
+            });
+        }
+
+        function _makeSheetOverflowAction(idSuffix, actionId, label, iconHtml, handler) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'ai-assistant-panel-sheet-overflow-' + actionId + '-' + idSuffix;
+            btn.className = 'ai-assistant-panel-sheet-overflow-item';
+            btn.setAttribute('role', 'menuitem');
+            btn.setAttribute('tabindex', '-1');
+            btn.setAttribute('data-sheet-overflow-control', 'true');
+            btn.setAttribute('aria-label', label);
+            btn.title = label;
+            var ic = document.createElement('span');
+            ic.setAttribute('aria-hidden', 'true');
+            ic.innerHTML = iconHtml;
+            var lbl = document.createElement('span');
+            lbl.className = 'ai-assistant-panel-sheet-overflow-label';
+            lbl.textContent = label;
+            btn.appendChild(ic);
+            btn.appendChild(lbl);
+            btn.addEventListener('click', handler);
+            return btn;
+        }
+
+        function _buildSheetActionOverflow(idSuffix, head, toolbar, options) {
+            options = options || {};
+            var anchor = document.createElement('div');
+            anchor.className = 'ai-assistant-panel-sheet-head-overflow';
+
+            var btn = document.createElement('button');
+            btn.className = 'ai-assistant-panel-subbar-overflow-btn ai-assistant-panel-sheet-overflow-btn';
+            btn.type = 'button';
+            btn.id = 'ai-assistant-panel-sheet-overflow-' + idSuffix;
+            btn.setAttribute('aria-label', 'More actions');
+            btn.setAttribute('aria-haspopup', 'menu');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('data-overflow-visible', '');
+            btn.title = 'More actions';
+            btn.innerHTML = ICONS.overflowV;
+
+            var menu = document.createElement('div');
+            menu.className = 'ai-assistant-panel-sheet-overflow-menu';
+            menu.id = 'ai-assistant-panel-sheet-overflow-menu-' + idSuffix;
+            menu.setAttribute('role', 'menu');
+            menu.setAttribute('aria-label', 'Panel actions');
+            menu.setAttribute('data-open', 'false');
+            btn.setAttribute('aria-controls', menu.id);
+
+            var entry = {
+                head: head,
+                toolbar: toolbar,
+                anchor: anchor,
+                button: btn,
+                menu: menu,
+            };
+            // Keep element references separate from the popover menu.  The
+            // historical `menu` property above is the action popover itself;
+            // `leadingMenu` is the persistent hamburger region used only for
+            // fit accounting.
+            entry.leadingMenu = options.leadingMenu || null;
+            entry.close = options.close || null;
+            entry.compactAttr = options.compactAttr || 'data-sheet-head-compact';
+            _sheetActionOverflowEntries.push(entry);
+
+            var newChat = _makeSheetOverflowAction(
+                idSuffix, 'new-chat', 'Start a new chat', ICONS.newChatCompose,
+                function () {
+                    _closeSheetActionOverflow(entry, false);
+                    _hapticFeedback([8]);
+                    clearConversation();
+                });
+            menu.appendChild(newChat);
+
+            // Same canonical export builder as the wide toolbar. A visible label
+            // is optional in that builder and enabled only for this menu surface.
+            var compactExport = _buildExportDropdownBtn({
+                triggerLabel: 'Export conversation',
+                onSelect: function () { _closeSheetActionOverflow(entry, false); },
+                onLinkMode: function (fmt) { _openConversationShare(fmt); },
+            });
+            compactExport.classList.add('ai-assistant-panel-sheet-overflow-export');
+            var compactExportTrigger = compactExport.querySelector('.ai-assistant-export-trigger');
+            if (compactExportTrigger) {
+                compactExportTrigger.id = 'ai-assistant-panel-sheet-overflow-export-' + idSuffix;
+                compactExportTrigger.setAttribute('role', 'menuitem');
+                compactExportTrigger.setAttribute('tabindex', '-1');
+                compactExportTrigger.setAttribute('data-sheet-overflow-control', 'true');
+                compactExportTrigger.setAttribute('aria-haspopup', 'menu');
+            }
+            menu.appendChild(compactExport);
+
+            var minimize = _makeSheetOverflowAction(
+                idSuffix, 'minimize', 'Minimize panel', ICONS.minimize,
+                function () {
+                    _closeSheetActionOverflow(entry, false);
+                    _hapticFeedback([8]);
+                    minimizeAIPanel();
+                });
+            menu.appendChild(minimize);
+
+            var maximize = _makeSheetOverflowAction(
+                idSuffix, 'maximize', 'Maximize panel', ICONS.maximize,
+                function () {
+                    _closeSheetActionOverflow(entry, false);
+                    _hapticFeedback([8]);
+                    _setMaximized(true);
+                });
+            var collapse = _makeSheetOverflowAction(
+                idSuffix, 'collapse', 'Collapse full screen', ICONS.minimizeCollapse,
+                function () {
+                    _closeSheetActionOverflow(entry, false);
+                    _hapticFeedback([8]);
+                    _setMaximized(false);
+                });
+            var alreadyMax = panel.getAttribute('data-maximized') === 'true';
+            maximize.style.display = alreadyMax ? 'none' : '';
+            collapse.style.display = alreadyMax ? '' : 'none';
+            _extraMaxPairs.push({ max: maximize, col: collapse });
+            menu.appendChild(maximize);
+            menu.appendChild(collapse);
+
+            btn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var open = menu.getAttribute('data-open') === 'true';
+                if (open) _closeSheetActionOverflow(entry, true);
+                else _openSheetActionOverflow(entry);
+            });
+
+            menu.addEventListener('keydown', function (e) {
+                // A nested export picker owns its own arrows/Escape while open.
+                var nestedExport = menu.querySelector('.ai-assistant-export-menu[data-open="true"]');
+                if (nestedExport && nestedExport.contains(e.target)) return;
+                var controls = _sheetOverflowControls(menu);
+                if (!controls.length) return;
+                var current = controls.indexOf(document.activeElement);
+                var next = current;
+                if (e.key === 'ArrowDown') next = current < 0 ? 0 : (current + 1) % controls.length;
+                else if (e.key === 'ArrowUp') next = current < 0 ? controls.length - 1 : (current - 1 + controls.length) % controls.length;
+                else if (e.key === 'Home') next = 0;
+                else if (e.key === 'End') next = controls.length - 1;
+                else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    _closeSheetActionOverflow(entry, true);
+                    return;
+                } else return;
+                e.preventDefault();
+                _focusSheetOverflowControl(menu, next);
+            });
+
+            anchor.appendChild(btn);
+            anchor.appendChild(menu);
+            return anchor;
+        }
+
         function _buildSheetToolbar(idSuffix) {
             var wrap = document.createElement('div');
             wrap.className =
@@ -32212,6 +32616,22 @@
             return wrap;
         }
 
+        // Run 82 — main-page header parity.  The main header uses the exact
+        // same fit-based action-overflow factory as every slide-over sheet.
+        // Its branded title remains the main title region, while hamburger and
+        // Close are persistent controls.  Only the secondary action cluster is
+        // swapped for ⋮ when space is constrained.
+        headerTitle.classList.add('ai-assistant-panel-header-brand');
+        headerActions.classList.add('ai-assistant-panel-header-toolbar');
+        var mainHeaderOverflow = _buildSheetActionOverflow(
+            'main', header, headerActions, {
+                leadingMenu: hamburgerBtn,
+                close: closeBtn,
+                compactAttr: 'data-panel-head-compact',
+            });
+        mainHeaderOverflow.classList.add('ai-assistant-panel-header-overflow');
+        header.insertBefore(mainHeaderOverflow, closeBtn);
+
         // Inject a copy of the header action cluster (new chat / export /
         // minimize / maximize) into every slide-over sheet's head, so those
         // controls stay reachable while browsing any sheet. Previously they
@@ -32229,8 +32649,60 @@
             var head = entry.sheet.querySelector('.ai-assistant-panel-privacy-head');
             var closeBtnEl = entry.sheet.querySelector('button[id$="-close"]');
             if (!head || !closeBtnEl) return;
-            head.insertBefore(_buildSheetToolbar(entry.toolbarId), closeBtnEl);
+
+            /* Run 80: normalize every sheet head into semantic layout regions
+             * before inserting the shared toolbar. Keeping this classification
+             * centralized means future sheets inherit the same responsive
+             * contract without copying breakpoint logic into each builder. */
+            head.classList.add('ai-assistant-panel-sheet-head-layout');
+            closeBtnEl.classList.add('ai-assistant-panel-sheet-head-close');
+
+            var menuBtnEl = null;
+            var titleRegionEl = null;
+            Array.prototype.forEach.call(head.children, function (child) {
+                if (child === closeBtnEl) return;
+                if (child.tagName === 'BUTTON' &&
+                    child.id.indexOf('ai-assistant-panel-sheet-ham-') === 0) {
+                    menuBtnEl = child;
+                    return;
+                }
+                // Before toolbar insertion, the remaining direct child is the
+                // sheet's title region: either <strong> or the Share title+badge
+                // wrapper. Treat it atomically so its internals never split.
+                if (!titleRegionEl) titleRegionEl = child;
+            });
+
+            if (menuBtnEl) {
+                menuBtnEl.classList.add('ai-assistant-panel-sheet-head-menu');
+            }
+            if (titleRegionEl) {
+                titleRegionEl.classList.add('ai-assistant-panel-sheet-head-title');
+            }
+
+            var sheetToolbar = _buildSheetToolbar(entry.toolbarId);
+            sheetToolbar.classList.add('ai-assistant-panel-sheet-head-toolbar');
+            head.insertBefore(sheetToolbar, closeBtnEl);
+
+            var sheetOverflow = _buildSheetActionOverflow(
+                entry.toolbarId, head, sheetToolbar);
+            head.insertBefore(sheetOverflow, closeBtnEl);
         });
+
+        // Establish the initial state synchronously so a sheet opened on first
+        // paint does not briefly show a squeezed wide toolbar. The existing
+        // panel ResizeObserver keeps this updated thereafter.
+        _syncSheetHeaderOverflow(
+            panel.getBoundingClientRect ? panel.getBoundingClientRect().width : 0);
+
+        // One outside-click closer covers every sheet overflow surface rather
+        // than registering N document listeners as sheets are added over time.
+        document.addEventListener('mousedown', function (e) {
+            _sheetActionOverflowEntries.forEach(function (entry) {
+                if (entry.menu.getAttribute('data-open') !== 'true') return;
+                if (entry.anchor.contains(e.target)) return;
+                _closeSheetActionOverflow(entry, false);
+            });
+        }, true);
 
         // Issue 4: Re-wire all sheet close (×) buttons to go through _closeSheet
         // so focus is always returned to the opener.  The hClose listeners
@@ -32352,6 +32824,11 @@
                 e.stopPropagation();
                 return;
             }
+            if (_closeAnySheetActionOverflow(true)) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
             if (hamburgerMenuEl && typeof hamburgerMenuEl._exit === 'function') {
                 var hasMenu = hamburgerMenuEl.getAttribute('data-open') === 'true';
                 var hasSheet = _allPanelSheets().some(function (sheet) {
@@ -32420,6 +32897,10 @@
         }());
 
         document.body.appendChild(panel);
+        // Establish footer fit after the panel is connected so computed widths
+        // are real on first paint; the shared ResizeObserver owns later updates.
+        _syncFooterActionFit(panel.getBoundingClientRect
+            ? panel.getBoundingClientRect().width : 0);
 
         // ── Floating trigger pill (shown when minimized) ──────────────────────
         // Idempotency guard (C-4) lives in _ensureTriggerPill(): never create a
@@ -36108,20 +36589,30 @@
      * current height.  CSS also applies static heights as a fallback.
      */
     /**
-     * Return the number of footer soundbar bars that fit for the current
-     * viewport width.  Matches the CSS responsive max-width breakpoints so
-     * the bar count and CSS-revealed width are always in sync.
+     * Return the number of footer soundbar bars that fit the current panel
+     * width.  The panel is independently resizable, so browser/device viewport
+     * width is not a valid proxy for composer capacity.
      *
      * Returns
      * -------
      * number
-     *     One of: 8 (< 360 px) | 12 (360–479 px) | 16 (480–767 px) | 24 (≥ 768 px).
+     *     One of: 8 (< 330 px) | 12 (330–449 px) | 16 (450–719 px) | 24 (≥ 720 px).
      */
-    function _computeSoundbarBarCount() {
-        var vw = (window.innerWidth || document.documentElement.clientWidth || 320);
-        if (vw < 360) return 8;
-        if (vw < 480) return 12;
-        if (vw < 768) return 16;
+    function _computeSoundbarBarCount(panelWidth) {
+        var w = Number(panelWidth);
+        if (!Number.isFinite(w) || w <= 0) {
+            var panelEl = document.getElementById('ai-assistant-panel');
+            var rect = panelEl && panelEl.getBoundingClientRect
+                ? panelEl.getBoundingClientRect() : null;
+            w = rect && rect.width ? rect.width :
+                (window.innerWidth || document.documentElement.clientWidth || 320);
+        }
+        // Panel-space tiers rather than device tiers.  The default ~360px panel
+        // uses 12 bars even on a 4K desktop; only genuinely roomy panels spend
+        // the width for 24.  The waveform is decorative and clips oldest samples.
+        if (w < 330) return 8;
+        if (w < 450) return 12;
+        if (w < 720) return 16;
         return 24;
     }
 
@@ -36290,6 +36781,20 @@
                 }
 
                 _soundbarTickId = setInterval(function () {
+                    // Run 83: resize can happen while recording.  Re-evaluate
+                    // panel capacity inside the existing 80 ms loop so bar DOM,
+                    // ring-buffer length, and layout never drift apart.
+                    var _nextSbCount = _computeSoundbarBarCount();
+                    if (_nextSbCount !== _sbCount) {
+                        _sbCount = _nextSbCount;
+                        _sbBarEls = _rebuildSoundbarBars(soundbarEl, _sbCount);
+                        if (_soundbarHeights.length > _sbCount) {
+                            _soundbarHeights = _soundbarHeights.slice(-_sbCount);
+                        }
+                        while (_soundbarHeights.length < _sbCount) {
+                            _soundbarHeights.unshift(_SOUNDBAR_MIN_H);
+                        }
+                    }
                     var rms = _readRmsAmplitude();
                     var h   = _SOUNDBAR_MIN_H
                         + rms * (_SOUNDBAR_MAX_H - _SOUNDBAR_MIN_H);

@@ -514,6 +514,87 @@
     overflow: visible;
 }
 
+/* Run 82 — main header consumes the same single-row adaptive contract as
+ * slide-over sheets.  Branding remains visible; only secondary actions swap
+ * atomically for ⋮.  No viewport/device breakpoint is involved. */
+.ai-assistant-panel-header.ai-assistant-panel-header--adaptive {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) max-content 28px;
+    grid-template-areas: "menu title toolbar close";
+    align-items: center;
+    column-gap: 0.25rem;
+    row-gap: 0;
+    position: relative;
+}
+
+.ai-assistant-panel-header-menu {
+    grid-area: menu;
+    justify-self: start;
+}
+
+.ai-assistant-panel-header-brand {
+    grid-area: title;
+    min-width: 0;
+    justify-self: stretch;
+}
+
+.ai-assistant-panel-header-toolbar {
+    grid-area: toolbar;
+    min-width: max-content;
+    justify-self: end;
+    flex-wrap: nowrap;
+}
+
+.ai-assistant-panel-header-close {
+    grid-area: close;
+    justify-self: end;
+}
+
+.ai-assistant-panel-header-overflow {
+    grid-area: overflow;
+    display: none;
+    position: relative;
+    justify-self: end;
+    min-width: 0;
+}
+
+.ai-assistant-panel-header-overflow .ai-assistant-panel-subbar-overflow-btn {
+    width: 28px;
+    height: 28px;
+    max-width: 28px;
+    margin-left: 0;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.ai-assistant-panel-header.ai-assistant-panel-header--adaptive[data-panel-head-compact="true"] {
+    grid-template-columns: 28px minmax(0, 1fr) 28px 28px;
+    grid-template-areas: "menu title overflow close";
+}
+
+.ai-assistant-panel-header.ai-assistant-panel-header--adaptive[data-panel-head-compact="true"]
+    .ai-assistant-panel-header-toolbar {
+    display: none;
+}
+
+.ai-assistant-panel-header.ai-assistant-panel-header--adaptive[data-panel-head-compact="true"]
+    .ai-assistant-panel-header-overflow {
+    display: block;
+}
+
+/* Feature-flagged hamburger-off mode should not reserve an invisible 28px
+ * leading column.  It retains the same title/actions-or-overflow/close policy. */
+.ai-assistant-panel-header.ai-assistant-panel-header--adaptive.ai-assistant-panel-header--no-menu {
+    grid-template-columns: minmax(0, 1fr) max-content 28px;
+    grid-template-areas: "title toolbar close";
+}
+
+.ai-assistant-panel-header.ai-assistant-panel-header--adaptive.ai-assistant-panel-header--no-menu[data-panel-head-compact="true"] {
+    grid-template-columns: minmax(0, 1fr) 28px 28px;
+    grid-template-areas: "title overflow close";
+}
+
 .ai-assistant-panel-header-title {
     display: flex;
     align-items: center;
@@ -2476,15 +2557,229 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border-bottom: 1px solid
         var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
     flex-shrink: 0;
-    /* Defensive fallback for very narrow viewports now that the sheet
-       toolbar (new chat / export / minimize / maximize) can add ~150px of
-       fixed-width chrome alongside the hamburger + close buttons — see
-       .ai-assistant-panel-sheet-toolbar below. Wraps to a second line
-       instead of overflowing if min-width:0 on the title (below) still
-       isn't enough room. */
-    flex-wrap: wrap;
-    row-gap: 0.35rem;
 }
+
+/* Run 81 — single-row adaptive sheet-header architecture.
+ *
+ * A sheet header has four semantic regions in its regular state:
+ *
+ *   [menu] [title................] [new · export · min · resize] [close]
+ *
+ * When those regions no longer fit while preserving a readable title budget,
+ * JavaScript marks that *individual header* data-sheet-head-compact="true".
+ * The action cluster then swaps atomically for a vertical-overflow control:
+ *
+ *   [menu] [title...................................] [⋮] [close]
+ *
+ * The important invariant is height: compact mode remains exactly one header
+ * row. This avoids the Run-80 two-row solution, which consumed scarce vertical
+ * space on short phones, landscape devices, browser zoom, and manually short
+ * desktop panels. The ⋮ menu is panel-bounded and scrollable instead.
+ */
+.ai-assistant-panel-privacy-head.ai-assistant-panel-sheet-head-layout {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) max-content 28px;
+    grid-template-areas: "menu title toolbar close";
+    align-items: center;
+    column-gap: 0.25rem;
+    row-gap: 0;
+    /* Header owns anchored compact menus; no overflow clipping. */
+    position: relative;
+    overflow: visible;
+}
+
+.ai-assistant-panel-sheet-head-menu {
+    grid-area: menu;
+    justify-self: start;
+}
+
+.ai-assistant-panel-sheet-head-title {
+    grid-area: title;
+    min-width: 0;
+    justify-self: stretch;
+}
+
+.ai-assistant-panel-sheet-head-toolbar {
+    grid-area: toolbar;
+    min-width: max-content;
+    justify-self: end;
+    flex-wrap: nowrap;
+}
+
+.ai-assistant-panel-sheet-head-close {
+    grid-area: close;
+    justify-self: end;
+}
+
+/* Compact action anchor is always present so the transition is atomic, but is
+ * removed from layout until the fit controller marks this header compact. */
+.ai-assistant-panel-sheet-head-overflow {
+    grid-area: overflow;
+    display: none;
+    position: relative;
+    justify-self: end;
+    min-width: 0;
+}
+
+.ai-assistant-panel-sheet-head-overflow .ai-assistant-panel-subbar-overflow-btn {
+    /* Reuse the established ⋮ control visual language, but sheet-header
+     * visibility is governed by the wrapper rather than subbar train-collapse. */
+    width: 28px;
+    height: 28px;
+    max-width: 28px;
+    margin-left: 0;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+/* Fit-based compact state. No second row: toolbar is replaced, not wrapped. */
+.ai-assistant-panel-privacy-head.ai-assistant-panel-sheet-head-layout[data-sheet-head-compact="true"] {
+    grid-template-columns: 28px minmax(0, 1fr) 28px 28px;
+    grid-template-areas: "menu title overflow close";
+}
+
+.ai-assistant-panel-privacy-head.ai-assistant-panel-sheet-head-layout[data-sheet-head-compact="true"]
+    .ai-assistant-panel-sheet-head-toolbar {
+    display: none;
+}
+
+.ai-assistant-panel-privacy-head.ai-assistant-panel-sheet-head-layout[data-sheet-head-compact="true"]
+    .ai-assistant-panel-sheet-head-overflow {
+    display: block;
+}
+
+/* Safe-area padding is orthogonal to compactness. It therefore applies to all
+ * sheet headers on phone-sized viewports without forcing a second row. */
+@media (max-width: 480px) {
+    .ai-assistant-panel-header.ai-assistant-panel-header--adaptive,
+    .ai-assistant-panel-privacy-head.ai-assistant-panel-sheet-head-layout {
+        padding-left: max(0.75rem, env(safe-area-inset-left));
+        padding-right: max(0.75rem, env(safe-area-inset-right));
+    }
+}
+
+/* Sheet action overflow popover. The same semantic actions as the wide toolbar
+ * are rebuilt from shared factories; no business logic is duplicated. The menu
+ * stays inside the panel's available vertical space via JS max-height and uses
+ * scrolling as the last resort on very short devices. */
+.ai-assistant-panel-sheet-overflow-menu {
+    z-index: 1022;
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    right: 0;
+    left: auto;
+    width: min(13rem, calc(100vw - 1rem));
+    min-width: 11.5rem;
+    max-width: calc(100vw - 1rem);
+    flex-direction: column;
+    gap: 0.12rem;
+    padding: 0.35rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: var(--pst-color-surface,
+                    var(--color-background-primary, #fff));
+    color: var(--pst-color-text-base,
+               var(--color-foreground-primary, #1a1a1a));
+    border: 1px solid var(--pst-color-border,
+                          var(--color-foreground-border, #e1e4e5));
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14),
+                0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.ai-assistant-panel-sheet-overflow-menu[data-open="true"] {
+    display: flex;
+}
+
+.ai-assistant-panel-sheet-overflow-item,
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.55rem;
+    width: 100%;
+    min-height: 2rem;
+    padding: 0.4rem 0.5rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    font-size: 0.72rem;
+    line-height: 1.3;
+}
+
+.ai-assistant-panel-sheet-overflow-item:hover,
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger:hover {
+    background: rgba(127, 127, 127, 0.12);
+}
+
+.ai-assistant-panel-sheet-overflow-item:focus-visible,
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: -1px;
+}
+
+.ai-assistant-panel-sheet-overflow-item > span:first-child,
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger > span:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+    overflow: hidden;
+}
+
+.ai-assistant-panel-sheet-overflow-item > span:first-child svg,
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger > span:first-child svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    max-width: 1rem !important;
+    max-height: 1rem !important;
+}
+
+.ai-assistant-panel-sheet-overflow-label,
+.ai-assistant-export-trigger-label {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* The export picker becomes an inline disclosure inside the compact ⋮ menu.
+ * This avoids a second sideways flyout that would exceed a 320px/375px panel,
+ * and the parent menu's max-height/scrolling handles small-height devices. */
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-dropdown {
+    display: block;
+    width: 100%;
+}
+
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger {
+    height: auto;
+}
+
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-trigger-chevron {
+    margin-left: auto;
+}
+
+.ai-assistant-panel-sheet-overflow-menu .ai-assistant-export-menu {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0.2rem;
+    box-shadow: none;
+    border-radius: 6px;
+    max-height: none;
+}
+
 .ai-assistant-panel-privacy-head strong {
     font-size: 0.95rem;
     color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
@@ -3258,6 +3553,31 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     }
 }
 
+
+/* Run 83 — panel-owned footer contraction.
+ *
+ * The mobile @media fallback above remains for old browsers and preserves the
+ * existing phone/tablet appearance.  Modern browsers additionally receive the
+ * fit-based data-footer-compact state from the panel ResizeObserver, so a
+ * manually narrowed desktop panel behaves exactly like the same-width panel on
+ * a phone.  The picker contracts atomically; attach/mic/send stay stable. */
+.ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-model-picker {
+    min-width: unset;
+    max-width: unset;
+    border: none;
+    border-radius: 6px;
+    padding: 0.35rem 0.4rem;
+    background: transparent;
+}
+.ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-icon {
+    display: inline-flex;
+}
+.ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-dot,
+.ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-label,
+.ai-assistant-panel[data-footer-compact="true"] .ai-assistant-panel-inline-picker-chev {
+    display: none;
+}
+
 /* ─── Right overflow toggle button ──────────────────────────────────────────
    Fades in progressively as items collapse; JS sets [data-overflow-visible]
    once any right-cluster item is hidden.  opacity + max-width participates in
@@ -3419,6 +3739,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     align-items: center;
     gap: 0.1rem;
     margin-left: auto;
+    /* Run 83: this is a flex item inside a user-resizable panel.  Without
+     * min-width:0 its min-content width (notably the model pill) can force the
+     * whole composer wider than the panel on a wide desktop viewport. */
+    min-width: 0;
+    max-width: 100%;
 }
 
 /* Attach (+) button: square, matches other footer buttons. */
@@ -6873,8 +7198,13 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     justify-content: flex-end;      /* newest bars anchored to RIGHT edge     */
     gap: 2px;
     height: 20px;
-    flex-shrink: 0;
-    overflow: hidden;               /* clips oldest (left) bars on narrow vp  */
+    /* Run 83: the waveform is decorative capacity, not a control.  It must be
+     * the first footer consumer allowed to surrender width.  min-width:0 plus
+     * flex-shrink:1 lets overflow:hidden clip the oldest bars without moving
+     * attach/model/mic/send outside the panel. */
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;               /* clips oldest (left) bars when constrained */
     max-width: 0;
     opacity: 0;
     transition: max-width 0.22s ease, opacity 0.18s ease;
