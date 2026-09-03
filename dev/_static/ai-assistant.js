@@ -30467,70 +30467,110 @@
     var _PIN_CURRENT_PAGE_COMMAND = '/Pin current page';
     var _ADD_FILES_COMMAND = '/Add files or photos';
 
-    // Run 103 — canonical local slash-command registry.  Commands are friendly
-    // user-facing phrases rather than implementation identifiers.  Discovery,
-    // keyboard selection and execution all read from this registry so future
-    // local actions can be added without another composer-specific parser.
-    // Dynamic descriptions expose useful current state, but merely listing the
-    // commands remains local-only and never starts page extraction or network IO.
+    // Run 104 — resilient canonical local slash-command registry.  Keep the
+    // command catalog itself static and side-effect free; dynamic page/pin state
+    // only decorates rows.  A page-context/storage failure must never turn the
+    // bare `/` discovery palette into an empty menu.
+    var _LOCAL_SLASH_COMMAND_BASE = [
+        {
+            id: 'add-current-page-context',
+            command: _ADD_CURRENT_PAGE_CONTEXT_COMMAND,
+            title: 'Add current page context',
+            description: 'Include the page you are reading in this conversation context.',
+            keywords: ['page', 'context', 'current', 'documentation', 'add'],
+            action: 'add-current-page-context',
+            badge: 'Context',
+            enabled: true
+        },
+        {
+            id: 'pin-current-page',
+            command: _PIN_CURRENT_PAGE_COMMAND,
+            title: 'Pin current page',
+            description: 'Keep a bounded Markdown snapshot available for later questions and navigation.',
+            keywords: ['pin', 'page', 'markdown', 'reference', 'context'],
+            action: 'pin-current-page',
+            badge: 'Keep',
+            enabled: true
+        },
+        {
+            id: 'add-files',
+            command: _ADD_FILES_COMMAND,
+            title: 'Add files or photos',
+            description: 'Open the local file picker and stage files for this conversation.',
+            keywords: ['add', 'file', 'files', 'photo', 'photos', 'upload', 'attach'],
+            action: 'add-files',
+            badge: 'Local',
+            enabled: true
+        },
+        {
+            id: 'skill-creator',
+            command: _SKILL_CREATOR_COMMAND,
+            title: 'Skill Creator',
+            description: 'Create, refine, validate, and package a portable Agent Skill from visible context.',
+            keywords: ['skill', 'creator', 'agent', 'eval', 'benchmark', 'reference'],
+            argumentHint: 'optional goal',
+            action: 'skill-creator',
+            enabled: true
+        }
+    ];
+
+    function _localSlashCommandBaseDefinitions() {
+        return _LOCAL_SLASH_COMMAND_BASE.map(function (item) {
+            var copy = {};
+            Object.keys(item).forEach(function (key) { copy[key] = item[key]; });
+            if (Array.isArray(item.keywords)) copy.keywords = item.keywords.slice();
+            return copy;
+        });
+    }
+
     function _localSlashCommandDefinitions() {
-        var currentUrl = _currentContextPageUrl();
-        var currentEnabled = _currentPageContextEnabled();
-        var currentExcluded = currentEnabled && _isCurrentPageContextExcluded(currentUrl);
-        var currentActive = currentEnabled && !currentExcluded;
-        var currentPinned = !!_findPinnedPageContext(currentUrl);
-        return [
-            {
-                id: 'add-current-page-context',
-                command: _ADD_CURRENT_PAGE_CONTEXT_COMMAND,
-                title: 'Add current page context',
-                description: currentActive
-                    ? 'Current page is already included in this conversation.'
-                    : (currentEnabled
-                        ? 'Add this page back to the active conversation context.'
-                        : 'Enable current-page context for this tab and include the page you are reading.'),
-                keywords: ['page', 'context', 'current', 'documentation', 'add'],
-                action: 'add-current-page-context',
-                badge: currentActive ? 'Added' : 'Context',
-                enabled: true
-            },
-            {
-                id: 'pin-current-page',
-                command: _PIN_CURRENT_PAGE_COMMAND,
-                title: 'Pin current page',
-                description: currentPinned
-                    ? 'Current page is already pinned as a bounded Markdown snapshot.'
-                    : 'Keep a bounded Markdown snapshot available for later questions and navigation.',
-                keywords: ['pin', 'page', 'markdown', 'reference', 'context'],
-                action: 'pin-current-page',
-                badge: currentPinned ? 'Pinned' : 'Keep',
-                enabled: true
-            },
-            {
-                id: 'add-files',
-                command: _ADD_FILES_COMMAND,
-                title: 'Add files or photos',
-                description: 'Open the local file picker and stage files for this conversation.',
-                keywords: ['add', 'file', 'files', 'photo', 'photos', 'upload', 'attach'],
-                action: 'add-files',
-                badge: 'Local',
-                enabled: true
-            },
-            {
-                id: 'skill-creator',
-                command: _SKILL_CREATOR_COMMAND,
-                title: 'Skill Creator',
-                description: 'Create, refine, validate, and package a portable Agent Skill from visible context.',
-                keywords: ['skill', 'creator', 'agent', 'eval', 'benchmark', 'reference'],
-                argumentHint: 'optional goal',
-                action: 'skill-creator',
-                enabled: _cfg().panelSkillGenerator !== false
-            }
-        ];
+        var definitions = _localSlashCommandBaseDefinitions();
+        var current = definitions[0];
+        var pin = definitions[1];
+        var skill = definitions[3];
+
+        // Page-context decoration is best effort only.  Storage can be blocked,
+        // state can be mid-hydration, and host integrations can fail; none of
+        // those conditions should erase the command catalog itself.
+        try {
+            var currentUrl = _currentContextPageUrl();
+            var currentEnabled = _currentPageContextEnabled();
+            var currentExcluded = currentEnabled && _isCurrentPageContextExcluded(currentUrl);
+            var currentActive = currentEnabled && !currentExcluded;
+            current.description = currentActive
+                ? 'Current page is already included in this conversation.'
+                : (currentEnabled
+                    ? 'Add this page back to the active conversation context.'
+                    : 'Enable current-page context for this tab and include the page you are reading.');
+            current.badge = currentActive ? 'Added' : 'Context';
+
+            var currentPinned = !!_findPinnedPageContext(currentUrl);
+            pin.description = currentPinned
+                ? 'Current page is already pinned as a bounded Markdown snapshot.'
+                : 'Keep a bounded Markdown snapshot available for later questions and navigation.';
+            pin.badge = currentPinned ? 'Pinned' : 'Keep';
+        } catch (_stateError) {
+            // Keep the static, truthful fallback labels above.
+        }
+
+        // Feature availability is independent from page-context decoration.
+        // If configuration itself is temporarily unreadable, keep discovery
+        // available and let the execution guard enforce the feature policy.
+        try { skill.enabled = _cfg().panelSkillGenerator !== false; } catch (_cfgError) {}
+        return definitions;
     }
 
     function _availableLocalSlashCommands() {
-        return _localSlashCommandDefinitions().filter(function (item) { return item.enabled !== false; });
+        var definitions;
+        try {
+            definitions = _localSlashCommandDefinitions();
+        } catch (_registryError) {
+            definitions = _localSlashCommandBaseDefinitions();
+        }
+        if (!Array.isArray(definitions) || !definitions.length) {
+            definitions = _localSlashCommandBaseDefinitions();
+        }
+        return definitions.filter(function (item) { return item && item.enabled !== false; });
     }
 
     function _normalizeSlashCommandText(value) {
@@ -30594,6 +30634,12 @@
         return words.some(function (word) {
             var normalized = _normalizeSlashCommandText(word);
             return normalized.indexOf(query) === 0 || (query.length >= 2 && normalized.indexOf(query) >= 0);
+        });
+    }
+
+    function _slashCommandResults(query) {
+        return _availableLocalSlashCommands().filter(function (item) {
+            return _slashCommandMatches(item, query);
         });
     }
 
@@ -33661,9 +33707,11 @@
             // without pretending we can place proportional-font text at the caret.
             slashInlineHint.hidden = !(active.start === 0 && active.raw === '');
 
-            var commands = _availableLocalSlashCommands().filter(function (item) {
-                return _slashCommandMatches(item, active.query);
-            });
+            var commands = _slashCommandResults(active.query);
+            // Bare `/` is the discovery affordance itself.  Never show an open
+            // but empty shell for it: if a future matcher regression rejects an
+            // empty query, fall back to the currently available catalog.
+            if (!commands.length && active.query === '') commands = _availableLocalSlashCommands();
 
             // Once an argument-taking command is complete and the user commits
             // a following space, leave discovery mode so the remainder is free
