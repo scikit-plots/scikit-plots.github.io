@@ -9697,8 +9697,18 @@
     var _pinnedPageContextsLoaded = false;
     var _currentPageContextExclusions = [];
     var _currentPageContextExclusionsLoaded = false;
+    // In-memory fallback for the per-tab current-page preference.  The feature
+    // itself does not require persistence, so a blocked/private sessionStorage
+    // must not make an explicit ON/OFF click ineffective.  When storage is
+    // readable again, the stored value remains authoritative (e.g. BFCache).
+    var _currentPageContextPermissionMemory = null;
     var _currentPageContextCache = null;
     var _currentPageContextPromise = null;
+    // Async page pinning performs privacy preparation before mutating state.
+    // Generation/revision guards prevent a late completion from resurrecting a
+    // pin after New Chat or after the user removed/unpinned that page.
+    var _pageContextConversationGeneration = 0;
+    var _pageContextPinRevisions = Object.create(null);
 
     function _normalizeContextPageUrl(value) {
         var raw = String(value || '');
@@ -9732,9 +9742,14 @@
     function _currentPageContextEnabled() {
         try {
             var stored = sessionStorage.getItem(_CURRENT_PAGE_CONTEXT_PERMISSION_KEY);
-            if (stored === 'true') return true;
-            if (stored === 'false') return false;
-        } catch (_) {}
+            if (stored === 'true' || stored === 'false') {
+                _currentPageContextPermissionMemory = stored === 'true';
+                return _currentPageContextPermissionMemory;
+            }
+        } catch (_) {
+            if (_currentPageContextPermissionMemory !== null) return _currentPageContextPermissionMemory;
+        }
+        if (_currentPageContextPermissionMemory !== null) return _currentPageContextPermissionMemory;
         return _cfg().panelCurrentPageContext !== false;
     }
 
@@ -9825,6 +9840,7 @@
 
     function _setCurrentPageContextInTab(enabled) {
         var on = !!enabled;
+        _currentPageContextPermissionMemory = on;
         try { sessionStorage.setItem(_CURRENT_PAGE_CONTEXT_PERMISSION_KEY, on ? 'true' : 'false'); } catch (_) {}
         var toggle = document.getElementById('ai-assistant-current-page-context-toggle');
         if (toggle) toggle.setAttribute('aria-checked', on ? 'true' : 'false');
@@ -10039,6 +10055,22 @@
         }));
     }
 
+    function _pageContextPinRevision(sourceUrl) {
+        var key = _normalizeContextPageUrl(sourceUrl);
+        if (!key) return 0;
+        return Number(_pageContextPinRevisions[key]) || 0;
+    }
+
+    function _invalidatePageContextPin(sourceUrl) {
+        var key = _normalizeContextPageUrl(sourceUrl);
+        if (!key) return 0;
+        var next = _pageContextPinRevision(key) + 1;
+        // Keep the revision finite and monotonic for practical session lengths.
+        if (!Number.isSafeInteger(next) || next > Number.MAX_SAFE_INTEGER - 2) next = 1;
+        _pageContextPinRevisions[key] = next;
+        return next;
+    }
+
     function _findPinnedPageContext(sourceUrl) {
         _loadPinnedPageContexts();
         var target = _normalizeContextPageUrl(sourceUrl);
@@ -10051,6 +10083,7 @@
     function _removePinnedPageContext(sourceUrl) {
         _loadPinnedPageContexts();
         var target = _normalizeContextPageUrl(sourceUrl);
+        _invalidatePageContextPin(target);
         var before = _pinnedPageContexts.length;
         _pinnedPageContexts = _pinnedPageContexts.filter(function (item) {
             return _normalizeContextPageUrl(item && item.sourceUrl) !== target;
@@ -10072,6 +10105,7 @@
         _loadCurrentPageContextExclusions(false);
         var target = _normalizeContextPageUrl(sourceUrl || _currentContextPageUrl());
         if (!target) return false;
+        _invalidatePageContextPin(target);
 
         var changed = false;
         var before = _pinnedPageContexts.length;
@@ -10145,8 +10179,17 @@
 
     async function _pinCurrentPageContext() {
         _loadPinnedPageContexts();
+        var requestedUrl = _currentContextPageUrl();
+        var expectedConversationGeneration = _pageContextConversationGeneration;
+        var expectedPinRevision = _invalidatePageContextPin(requestedUrl);
         var current = await _prepareCurrentPageContextItem(true);
-        if (!current || !current.text) throw new Error('CURRENT_PAGE_CONTEXT_EMPTY');
+        if (expectedConversationGeneration !== _pageContextConversationGeneration ||
+            expectedPinRevision !== _pageContextPinRevision(requestedUrl)) {
+            throw new Error('PAGE_CONTEXT_PIN_STALE');
+        }
+        if (!current || !current.text || _normalizeContextPageUrl(current.sourceUrl) !== requestedUrl) {
+            throw new Error('CURRENT_PAGE_CONTEXT_EMPTY');
+        }
         var existing = _findPinnedPageContext(current.sourceUrl);
         var snapshot = _sanitizePinnedPageContext({
             name: current.name,
@@ -11719,6 +11762,8 @@
      *   reappears every time the user starts a new chat session.
      */
     function clearConversation() {
+        _pageContextConversationGeneration += 1;
+        _pageContextPinRevisions = Object.create(null);
         _transcript       = [];
         _feedbackGivenSet = new Set();
         _feedbackStore    = {};                  // v2 — clears all submitted ratings
@@ -32118,6 +32163,8 @@
             var pinned = !!_findPinnedPageContext(_currentContextPageUrl());
             var autoOn = _currentPageContextEnabled();
             var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
+            var persistenceAvailable = _cfg().panelPersist !== false;
+            var persistenceOn = _persistEnabled();
 
             currentPageContextItem.innerHTML =
                 '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.terms + '</span>' +
@@ -32139,10 +32186,18 @@
                 (pinned ? 'Unpin current page' : 'Pin current page') +
                 '</strong><small>' +
                 (pinned
-                    ? 'Stop keeping this Markdown snapshot after you navigate away.'
-                    : (autoOn && !excluded
-                        ? 'Current page is already included automatically. Pin it to keep this Markdown context after navigation.'
-                        : 'Keep a bounded Markdown snapshot available across later questions and same-tab navigation.')) +
+                    ? (persistenceOn
+                        ? 'Stop keeping this Markdown snapshot after you navigate away.'
+                        : (persistenceAvailable
+                            ? 'Remove this page snapshot. While Remember conversation is off, it is available only on this page.'
+                            : 'Remove this page snapshot. Same-tab persistence is disabled by site configuration.'))
+                    : (!persistenceAvailable
+                        ? 'Keep a bounded Markdown snapshot on this page only; same-tab persistence is disabled by site configuration.'
+                        : (!persistenceOn
+                            ? 'Keep a bounded Markdown snapshot on this page. Turn on Remember conversation to keep it after navigation.'
+                            : (autoOn && !excluded
+                                ? 'Current page is already included automatically. Pin it to keep this Markdown context after navigation.'
+                                : 'Keep a bounded Markdown snapshot available across later questions and same-tab navigation.')))) +
                 '</small></span>';
             currentPageItem.setAttribute('aria-label', pinned ? 'Unpin current page context' : 'Pin current page context');
         }
@@ -32294,8 +32349,16 @@
             _pinCurrentPageContext().then(function () {
                 showNotification(_persistEnabled()
                     ? 'Current page pinned for this conversation and same-tab navigation.'
-                    : 'Current page pinned for this page. Turn on Remember conversation to keep it across navigation.', false);
+                    : (_cfg().panelPersist === false
+                        ? 'Current page pinned for this page. Conversation persistence is disabled by site configuration.'
+                        : 'Current page pinned for this page. Turn on Remember conversation to keep it across navigation.'), false);
             }).catch(function (err) {
+                if (err && err.message === 'PAGE_CONTEXT_PIN_STALE') {
+                    // A later remove/unpin/New Chat owns the state now.  Silent
+                    // cancellation avoids a false error toast after deliberate
+                    // user action invalidated this async pin request.
+                    return;
+                }
                 if (err && err.message === 'PINNED_PAGE_CONTEXT_LIMIT') {
                     showNotification('Pinned-page limit reached. Remove a pinned page before adding another.', false);
                 } else {
