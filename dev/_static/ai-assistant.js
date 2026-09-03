@@ -9766,36 +9766,55 @@
         };
     }
 
-    function _loadPinnedPageContexts() {
-        if (_pinnedPageContextsLoaded) return _pinnedPageContexts;
-        _pinnedPageContextsLoaded = true;
-        _pinnedPageContexts = [];
+    function _loadPinnedPageContexts(force) {
+        // A disabled/unavailable persistence authority is NOT the same state as
+        // "loaded successfully and there are zero pinned pages".  In Run 92 the
+        // loaded flag was flipped before this check, so an early render could
+        // permanently cache an empty shelf even though same-tab sessionStorage
+        // still contained explicitly pinned Markdown snapshots.  This is most
+        // visible when automatic current-page context is OFF: there is no PAGE
+        // card to mask the missing restored MD cards.
+        if (_pinnedPageContextsLoaded && !force) return _pinnedPageContexts;
         if (!_persistEnabled()) return _pinnedPageContexts;
+
+        var restored = [];
         var raw = _ssGet(_PINNED_PAGE_CONTEXT_KEY);
-        if (!raw) return _pinnedPageContexts;
-        try {
-            var parsed = JSON.parse(raw);
-            var list = parsed && parsed.schemaVersion === _PINNED_PAGE_CONTEXT_SCHEMA && Array.isArray(parsed.items)
-                ? parsed.items : [];
-            var total = 0;
-            list.slice(0, _PINNED_PAGE_CONTEXT_MAX_ITEMS).forEach(function (entry) {
-                var item = _sanitizePinnedPageContext(entry);
-                if (!item) return;
-                var room = _PINNED_PAGE_CONTEXT_TOTAL_CHARS - total;
-                if (room <= 0) return;
-                if (item.text.length > room) {
-                    item.text = item.text.slice(0, room);
-                    item.previewText = item.text;
-                    item.lineCount = _attachmentLineCount(item.text);
-                    item.size = item.text.length;
-                }
-                total += item.text.length;
-                _pinnedPageContexts.push(item);
-            });
-        } catch (_) {
-            _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+        if (raw) {
+            try {
+                var parsed = JSON.parse(raw);
+                var list = parsed && parsed.schemaVersion === _PINNED_PAGE_CONTEXT_SCHEMA && Array.isArray(parsed.items)
+                    ? parsed.items : [];
+                var total = 0;
+                list.slice(0, _PINNED_PAGE_CONTEXT_MAX_ITEMS).forEach(function (entry) {
+                    var item = _sanitizePinnedPageContext(entry);
+                    if (!item) return;
+                    var room = _PINNED_PAGE_CONTEXT_TOTAL_CHARS - total;
+                    if (room <= 0) return;
+                    if (item.text.length > room) {
+                        item.text = item.text.slice(0, room);
+                        item.previewText = item.text;
+                        item.lineCount = _attachmentLineCount(item.text);
+                        item.size = item.text.length;
+                    }
+                    total += item.text.length;
+                    restored.push(item);
+                });
+            } catch (_) {
+                _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+            }
         }
+        _pinnedPageContexts = restored;
+        _pinnedPageContextsLoaded = true;
         return _pinnedPageContexts;
+    }
+
+    function _refreshPinnedPageContextShelf() {
+        // Re-read the tab-scoped snapshots before rendering.  `pageshow` is
+        // intentional: browsers may restore documentation pages from BFCache,
+        // reviving an older in-memory shelf while sessionStorage contains newer
+        // pins created on another page in the same tab.
+        if (_persistEnabled()) _loadPinnedPageContexts(true);
+        _renderComposerAttachments();
     }
 
     function _savePinnedPageContexts() {
@@ -11230,6 +11249,11 @@
             }
         } catch (_) { allow = false; }
         if (allow) {
+            // If this document has not hydrated its pinned-page shelf yet,
+            // restore it now before saving.  This prevents enabling Remember
+            // conversation from overwriting an existing same-tab pin set with
+            // a transient empty in-memory array.
+            _loadPinnedPageContexts(false);
             _saveTranscript();
             _saveFeedbackState();
             _savePinnedPageContexts();
@@ -11243,6 +11267,7 @@
         }
         var toggle = document.getElementById('ai-assistant-remember-conversation-toggle');
         if (toggle) toggle.setAttribute('aria-checked', allow ? 'true' : 'false');
+        _renderComposerAttachments();
     }
 
     /** Safely read sessionStorage (private-mode / disabled storage safe). */
@@ -31744,8 +31769,16 @@
         attachmentTray.setAttribute('aria-label', 'Context and attached files');
         attachmentTray.hidden = true;
         inputGroup.appendChild(attachmentTray);
-        _loadPinnedPageContexts();
+        _loadPinnedPageContexts(true);
         _renderComposerAttachments();
+        // Keep explicit pinned-page context visible across normal navigation
+        // and BFCache restores even when automatic current-page context is OFF.
+        if (!window._aiAssistantPinnedPageShelfPageshowBound) {
+            window._aiAssistantPinnedPageShelfPageshowBound = true;
+            window.addEventListener('pageshow', function () {
+                _refreshPinnedPageContextShelf();
+            });
+        }
         if (_currentPageContextEnabled()) {
             _prepareCurrentPageContextItem(false).then(function () {
                 _renderComposerAttachments();
