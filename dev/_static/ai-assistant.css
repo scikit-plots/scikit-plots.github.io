@@ -19697,3 +19697,59 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     opacity: 0 !important;
     pointer-events: none !important;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Run 99 — context-aware Agent Skill Generator
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ai-assistant-panel-skill-scroll { padding-bottom: 1rem; }
+.ai-assistant-panel-skill-hero {
+    margin: .8rem 1rem .1rem; padding: .75rem; display: flex; gap: .65rem;
+    align-items: flex-start; border: 1px solid var(--pst-color-border, #d0d7de);
+    border-radius: 10px; background: var(--pst-color-on-background, #f6f8fa);
+}
+.ai-assistant-panel-skill-hero-icon { width: 1.3rem; height: 1.3rem; flex: 0 0 auto; color: var(--pst-color-primary, #2563eb); }
+.ai-assistant-panel-skill-hero-icon svg { width: 100%; height: 100%; }
+.ai-assistant-panel-skill-hero span:last-child { min-width: 0; display:flex; flex-direction:column; gap:.2rem; }
+.ai-assistant-panel-skill-hero strong { font-size:.83rem; line-height:1.3; }
+.ai-assistant-panel-skill-hero small { font-size:.69rem; line-height:1.4; color:var(--pst-color-text-muted,#6a737d); }
+.ai-assistant-panel-skill-modes { display:grid; grid-template-columns:1fr 1fr; gap:3px; padding:3px; border-radius:8px; background:var(--pst-color-on-background,#f0f1f2); }
+.ai-assistant-panel-skill-modes button { border:0; border-radius:6px; padding:.42rem .55rem; font:inherit; font-size:.76rem; background:transparent; color:inherit; cursor:pointer; }
+.ai-assistant-panel-skill-modes button[aria-pressed="true"] { background:var(--pst-color-surface,#fff); box-shadow:0 1px 3px rgba(0,0,0,.12); font-weight:600; }
+.ai-assistant-panel-skill-field { display:flex; flex-direction:column; gap:.28rem; margin:.55rem 0; font-size:.72rem; }
+.ai-assistant-panel-skill-field > span { font-weight:600; color:var(--pst-color-text-base,#1f2328); }
+textarea.ai-assistant-panel-skill-input { min-height:4.2rem; resize:vertical; font-family:inherit; line-height:1.45; }
+.ai-assistant-panel-skill-guided textarea.ai-assistant-panel-skill-input { min-height:5rem; }
+.ai-assistant-panel-skill-source-tools { display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-bottom:.45rem; }
+.ai-assistant-panel-skill-small-btn, .ai-assistant-panel-skill-action { border:1px solid var(--pst-color-border,#d0d7de); background:var(--pst-color-surface,#fff); color:inherit; border-radius:7px; padding:.35rem .5rem; font:inherit; font-size:.7rem; cursor:pointer; }
+.ai-assistant-panel-skill-source-count { font-size:.67rem; color:var(--pst-color-text-muted,#6a737d); }
+.ai-assistant-panel-skill-sources { display:flex; flex-direction:column; gap:.35rem; }
+.ai-assistant-panel-skill-source-row { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:.48rem; align-items:center; padding:.48rem .55rem; border:1px solid var(--pst-color-border,#d8dee4); border-radius:8px; cursor:pointer; }
+.ai-assistant-panel-skill-source-row:has(input:checked) { border-color:var(--pst-color-primary,#2563eb); background:color-mix(in srgb, var(--pst-color-primary,#2563eb) 6%, transparent); }
+.ai-assistant-panel-skill-source-copy { min-width:0; display:flex; flex-direction:column; gap:.08rem; }
+.ai-assistant-panel-skill-source-copy strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:.74rem; }
+.ai-assistant-panel-skill-source-copy small { color:var(--pst-color-text-muted,#6a737d); font-size:.64rem; }
+.ai-assistant-panel-skill-source-badge { font-size:.58rem; font-weight:700; letter-spacing:.05em; color:var(--pst-color-text-muted,#6a737d); }
+.ai-assistant-panel-skill-details { border:1px solid var(--pst-color-border,#d8dee4); border-radius:8px; padding:.15rem .55rem .4rem; }
+.ai-assistant-panel-skill-details summary { cursor:pointer; padding:.4rem 0; font-size:.74rem; font-weight:600; }
+.ai-assistant-panel-skill-status { display:flex; flex-wrap:wrap; gap:.3rem; margin-bottom:.5rem; }
+.ai-assistant-panel-skill-status span { border-radius:999px; padding:.16rem .4rem; font-size:.61rem; background:var(--pst-color-on-background,#f0f1f2); }
+.ai-assistant-panel-skill-status span[data-ok="false"] { color:#b42318; background:rgba(180,35,24,.08); }
+.ai-assistant-panel-skill-generate { width:100%; display:flex; align-items:center; justify-content:center; gap:.4rem; border:0; border-radius:8px; padding:.55rem .7rem; font:inherit; font-size:.76rem; font-weight:650; color:#fff; background:var(--pst-color-primary,#2563eb); cursor:pointer; }
+.ai-assistant-panel-skill-generate:disabled { opacity:.5; cursor:not-allowed; }
+.ai-assistant-panel-skill-generate svg { width:1rem; height:1rem; }
+.ai-assistant-panel-skill-tree { margin:.55rem 0 0; max-height:8rem; overflow:auto; padding:.55rem; border-radius:8px; background:var(--pst-color-on-background,#f6f8fa); font-size:.66rem; }
+.ai-assistant-panel-skill-preview { box-sizing:border-box; width:100%; min-height:18rem; margin-top:.55rem; resize:vertical; padding:.65rem; border:1px solid var(--pst-color-border,#d0d7de); border-radius:8px; background:var(--pst-color-surface,#fff); color:inherit; font: .68rem/1.45 'SFMono-Regular','Consolas','Liberation Mono',monospace; }
+.ai-assistant-panel-skill-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.35rem; margin-top:.45rem; }
+.ai-assistant-panel-skill-action { min-width:0; white-space:normal; }
+[data-bs-theme="dark"] .ai-assistant-panel-skill-hero,
+[data-bs-theme="dark"] .ai-assistant-panel-skill-tree,
+[data-bs-theme="dark"] .ai-assistant-panel-skill-modes { background:rgba(255,255,255,.05); }
+[data-bs-theme="dark"] .ai-assistant-panel-skill-modes button[aria-pressed="true"],
+[data-bs-theme="dark"] .ai-assistant-panel-skill-preview,
+[data-bs-theme="dark"] .ai-assistant-panel-skill-small-btn,
+[data-bs-theme="dark"] .ai-assistant-panel-skill-action { background:rgba(255,255,255,.07); }
+@media (max-width: 420px) {
+    .ai-assistant-panel-skill-actions { grid-template-columns:1fr; }
+    .ai-assistant-panel-skill-source-row { padding:.52rem .45rem; }
+}
