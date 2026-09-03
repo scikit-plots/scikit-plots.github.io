@@ -4320,6 +4320,184 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
+
+/* Run 106 — consumed one-turn files move into the owning user turn.
+ *
+ * Persistent PAGE/MD context remains in the composer shelf; ordinary uploads
+ * are staged only until Send, then represented here as immutable metadata.
+ * No file bytes or attachment body text are rendered into the transcript UI.
+ */
+.ai-assistant-panel-bubble--user[data-has-turn-attachments="true"] {
+    width: min(88%, 34rem);
+    min-width: min(20rem, 88%);
+    padding: 0.45rem;
+}
+.ai-assistant-panel-user-turn-files {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0 0 0.45rem;
+    padding: 0.42rem;
+    border: 1px solid rgba(255,255,255,0.24);
+    border-radius: 0.78rem;
+    background: rgba(255,255,255,0.10);
+}
+.ai-assistant-panel-user-turn-files-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-width: 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 0.68rem;
+    line-height: 1.2;
+}
+.ai-assistant-panel-user-turn-files-head strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: inherit;
+    font-weight: 700;
+}
+.ai-assistant-panel-user-turn-files-head > span {
+    flex: 0 0 auto;
+    min-width: 1.35rem;
+    padding: 0.12rem 0.38rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.16);
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 750;
+}
+.ai-assistant-panel-user-turn-files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+    min-width: 0;
+}
+.ai-assistant-panel-user-turn-file {
+    display: flex;
+    align-items: center;
+    gap: 0.48rem;
+    min-width: 0;
+    padding: 0.34rem 0.4rem;
+    border-radius: 0.58rem;
+    background: rgba(255,255,255,0.10);
+}
+.ai-assistant-panel-user-turn-file[hidden] { display: none !important; }
+.ai-assistant-panel-user-turn-file-badge {
+    flex: 0 0 auto;
+    max-width: 4.4rem;
+    padding: 0.15rem 0.34rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.17);
+    color: #fff;
+    font-size: 0.56rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+}
+.ai-assistant-panel-user-turn-file-copy {
+    min-width: 0;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 0.08rem;
+}
+.ai-assistant-panel-user-turn-file-copy strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 650;
+    line-height: 1.2;
+}
+.ai-assistant-panel-user-turn-file-copy small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgba(255,255,255,0.76);
+    font-size: 0.6rem;
+    line-height: 1.25;
+}
+.ai-assistant-panel-user-turn-files-toggle,
+.ai-assistant-panel-user-turn-question-toggle {
+    align-self: flex-start;
+    min-height: 1.65rem;
+    padding: 0.18rem 0.4rem;
+    border: 0;
+    border-radius: 0.45rem;
+    background: transparent;
+    color: rgba(255,255,255,0.90);
+    font: inherit;
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.ai-assistant-panel-user-turn-files-toggle:hover,
+.ai-assistant-panel-user-turn-question-toggle:hover {
+    background: rgba(255,255,255,0.13);
+}
+.ai-assistant-panel-user-turn-files-toggle:focus-visible,
+.ai-assistant-panel-user-turn-question-toggle:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.94);
+    outline-offset: 1px;
+}
+.ai-assistant-panel-user-turn-question-wrap {
+    min-width: 0;
+}
+.ai-assistant-panel-user-turn-question {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+.ai-assistant-panel-user-turn-question[data-collapsed="true"] {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+}
+.ai-assistant-panel-user-turn-question[data-collapsed="false"] {
+    display: block;
+    overflow: visible;
+}
+.ai-assistant-panel-bubble--user[data-has-turn-attachments="true"] .ai-assistant-panel-user-turn-question-wrap {
+    padding: 0.08rem 0.3rem 0.22rem;
+}
+@media (hover: none), (pointer: coarse) {
+    .ai-assistant-panel-user-turn-files-toggle,
+    .ai-assistant-panel-user-turn-question-toggle {
+        min-height: 40px;
+        min-width: 40px;
+    }
+}
+@media (max-width: 480px) {
+    .ai-assistant-panel-bubble--user[data-has-turn-attachments="true"] {
+        width: 92%;
+        min-width: 0;
+    }
+    .ai-assistant-panel-user-turn-file-copy small {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-user-turn-files-toggle,
+    .ai-assistant-panel-user-turn-question-toggle {
+        transition: none;
+    }
+}
+
 /* Assistant bubble: left-anchored, subtle border */
 .ai-assistant-panel-bubble--assistant {
     border-radius: 0.2rem 1.1rem 1.1rem 1.1rem;

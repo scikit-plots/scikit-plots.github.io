@@ -10532,19 +10532,90 @@
         return parts.join('\n\n');
     }
 
-    function _composerAttachmentDisplaySummary() {
-        var sent = [];
-        var local = [];
-        _composerAttachments.forEach(function (item) {
-            if (!item) return;
-            if (item.kind === 'text' && typeof item.text === 'string') sent.push(_attachmentSafeName(item.name));
-            else local.push(_attachmentSafeName(item.name));
+    // Immutable, content-free attachment metadata stored with a user turn.
+    // File bytes/text remain in the canonical turn only where required for
+    // Retry/Edit; the visible transcript stores names + bounded display facts
+    // so consumed files can move out of the composer without losing provenance.
+    var _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS = 12;
+
+    function _sanitizeTurnAttachmentSummaries(items) {
+        if (!Array.isArray(items)) return [];
+        var out = [];
+        for (var i = 0; i < items.length && out.length < _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS; i++) {
+            var item = items[i];
+            if (!item || typeof item !== 'object') continue;
+            var kind = String(item.kind || 'file').toLowerCase();
+            if (kind !== 'text' && kind !== 'image' && kind !== 'file' && kind !== 'replay') kind = 'file';
+            var status = String(item.status || '').slice(0, 64);
+            var name = _attachmentSafeName(item.name || (kind === 'replay' ? 'Prior attachment context' : 'file'));
+            out.push({
+                name: name,
+                badge: String(item.badge || _attachmentExtension(name)).replace(/[^A-Za-z0-9+._-]/g, '').slice(0, 12).toUpperCase() || 'FILE',
+                kind: kind,
+                size: Math.max(0, Math.min(1024 * 1024 * 1024, Number(item.size) || 0)),
+                lineCount: Math.max(0, Math.min(1000000, Number(item.lineCount) || 0)),
+                included: item.included === true,
+                localOnly: item.localOnly === true,
+                replay: item.replay === true,
+                status: status
+            });
+        }
+        return out;
+    }
+
+    function _replayAttachmentNames(context) {
+        var names = [];
+        String(context || '').split(/\r?\n/).forEach(function (line) {
+            var match = /^Attachment:\s+(.+)$/.exec(line);
+            if (!match) return;
+            var name = match[1].trim().replace(/\s+\([A-Za-z0-9.+-]+\/[A-Za-z0-9.+-]+\)$/, '');
+            name = _attachmentSafeName(name);
+            if (name && names.indexOf(name) < 0) names.push(name);
         });
-        var lines = [];
-        if (sent.length) lines.push('Files: ' + sent.join(', '));
-        if (_composerReplayAttachmentContext) lines.push('Prior attachment context reused');
-        if (local.length) lines.push('Local-only attachments (not sent): ' + local.join(', '));
-        return lines.join(' · ');
+        return names.slice(0, _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS);
+    }
+
+    function _composerTurnAttachmentSnapshot(finalAttachmentContext) {
+        var out = [];
+        var finalContext = String(finalAttachmentContext || '');
+        var hasOutboundText = !!finalContext.trim();
+        _composerAttachments.forEach(function (item) {
+            if (!item || out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
+            var itemHeader = 'Attachment: ' + _attachmentSafeName(item.name);
+            var textIncluded = item.kind === 'text' && typeof item.text === 'string' &&
+                hasOutboundText && finalContext.indexOf(itemHeader) >= 0;
+            var localOnly = !textIncluded;
+            out.push({
+                name: _attachmentSafeName(item.name),
+                badge: _attachmentItemBadge(item),
+                kind: item.kind || 'file',
+                size: item.size || 0,
+                lineCount: item.lineCount || 0,
+                included: textIncluded,
+                localOnly: localOnly,
+                replay: false,
+                status: textIncluded ? 'Included once' : 'Local only · not sent'
+            });
+        });
+        if (_composerReplayAttachmentContext && out.length < _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) {
+            var replayNames = _replayAttachmentNames(_composerReplayAttachmentContext);
+            if (!replayNames.length) replayNames = ['Prior attachment context'];
+            replayNames.forEach(function (name) {
+                if (out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
+                out.push({
+                    name: name,
+                    badge: _attachmentExtension(name),
+                    kind: 'replay',
+                    size: 0,
+                    lineCount: 0,
+                    included: hasOutboundText,
+                    localOnly: false,
+                    replay: true,
+                    status: hasOutboundText ? 'Reused once' : 'Not sent'
+                });
+            });
+        }
+        return _sanitizeTurnAttachmentSummaries(out);
     }
 
     var _ATTACHMENT_CANONICAL_PREFIX = '\n\n' +
@@ -10642,6 +10713,10 @@
         if (!item) return '';
         var parts = [];
         if (item.kind === 'page') {
+            // Page cards are persistent conversation context, not one-turn
+            // uploads. Say that explicitly so they cannot be mistaken for files
+            // that will be consumed by the next Send action.
+            parts.push('Persistent');
             if (item.contextRole === 'current') {
                 parts.push('Current · Auto');
                 if (item.pinned) parts.push('Pinned');
@@ -10652,6 +10727,10 @@
             if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
             return parts.join(' · ');
         }
+        // Ordinary uploaded files are a one-turn staging surface. They are
+        // consumed by the next question and then removed from the composer.
+        parts.push('Next message');
+        if (item.kind === 'text' && typeof item.text === 'string') parts.push('One turn');
         if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
         else parts.push(_formatByteSize(item.size || 0));
         if (item.kind === 'image') parts.push('Photo · local only');
@@ -11679,7 +11758,15 @@
                 }
                 var displayText = (typeof e.displayText === 'string' &&
                     e.displayText.length <= _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS) ? e.displayText : null;
-                restored.push({ role: e.role, text: e.text, displayText: displayText, ts: Number.isFinite(Number(e.ts)) ? Number(e.ts) : null, model: model });
+                var attachments = _sanitizeTurnAttachmentSummaries(e.attachments);
+                restored.push({
+                    role: e.role,
+                    text: e.text,
+                    displayText: displayText,
+                    attachments: attachments.length ? attachments : undefined,
+                    ts: Number.isFinite(Number(e.ts)) ? Number(e.ts) : null,
+                    model: model
+                });
             }
             _transcript = restored;
         } catch (_) {
@@ -11690,8 +11777,9 @@
     /**
      * Record a message in the single source of truth (_transcript) and persist.
      *
-     * Transcript entry schema v3:
-     *   { role: string, text: string, displayText?: string, ts: number, model: Object|null }
+     * Transcript entry schema v4:
+     *   { role: string, text: string, displayText?: string,
+     *     attachments?: Array<Object>, ts: number, model: Object|null }
      * `text` is the canonical turn used for retry/share/feedback/contribution.
      * `displayText` is an optional concise UI projection (for attachment turns).
      *
@@ -11718,7 +11806,7 @@
      *   carries the model that generated it.  Callers that cannot resolve the model
      *   (stub mode, error path) pass null or omit the argument.
      */
-    function _recordMessage(role, text, modelInfo, displayText) {
+    function _recordMessage(role, text, modelInfo, displayText, turnMeta) {
         var cfg = _cfg();
         var maxTurns = (typeof cfg.panelMaxTranscriptTurns === 'number' &&
                         cfg.panelMaxTranscriptTurns > 0)
@@ -11733,6 +11821,10 @@
         };
         if (typeof displayText === 'string' && displayText !== text) {
             entry.displayText = displayText.slice(0, _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS);
+        }
+        if (role === 'user' && turnMeta && Array.isArray(turnMeta.attachments)) {
+            var turnAttachments = _sanitizeTurnAttachmentSummaries(turnMeta.attachments);
+            if (turnAttachments.length) entry.attachments = turnAttachments;
         }
         _transcript.push(entry);
 
@@ -14688,7 +14780,15 @@
      */
     function _replayTranscript(body) {
         _transcript.forEach(function (m) {
-            _renderBubble(body, (typeof m.displayText === 'string' ? m.displayText : m.text), m.role, undefined, m.ts, m.text);
+            _renderBubble(
+                body,
+                (typeof m.displayText === 'string' ? m.displayText : m.text),
+                m.role,
+                undefined,
+                m.ts,
+                m.text,
+                { attachments: m.attachments }
+            );
         });
         body.scrollTop = body.scrollHeight;
     }
@@ -33185,7 +33285,7 @@
         var attachmentTray = document.createElement('div');
         attachmentTray.id = 'ai-assistant-panel-attachments';
         attachmentTray.className = 'ai-assistant-panel-attachments';
-        attachmentTray.setAttribute('aria-label', 'Context and attached files');
+        attachmentTray.setAttribute('aria-label', 'Persistent context and files for the next message');
         attachmentTray.hidden = true;
         inputGroup.appendChild(attachmentTray);
         // Do not render the Context Shelf while the panel subtree is detached.
@@ -40027,6 +40127,8 @@
 
     // ── Message bubbles ───────────────────────────────────────────────────────
 
+    var _userQuestionRenderSeq = 0;
+
     /**
      * Render one bubble into `body`.  Pure view helper — does NOT touch the
      * `_transcript` source of truth (callers do).  Reused by live messages
@@ -40043,7 +40145,7 @@
      *                                  If omitted, Retry walks _transcript
      *                                  to find the preceding user turn.
      */
-    function _renderBubble(body, text, role, question, ts, canonicalText) {
+    function _renderBubble(body, text, role, question, ts, canonicalText, turnMeta) {
         var bubble = document.createElement('div');
         bubble.className = 'ai-assistant-panel-bubble ai-assistant-panel-bubble--' + role;
 
@@ -40057,8 +40159,124 @@
             _makeSectionsCollapsible(bubble);
             _typesetMath(bubble);
             _appendArtifactCards(bubble);
+        } else if (role === 'user') {
+            // A user turn owns the one-shot file provenance that was consumed by
+            // this question. File contents are never reconstructed here; only
+            // bounded metadata is rendered above the question text.
+            var turnAttachments = _sanitizeTurnAttachmentSummaries(
+                turnMeta && turnMeta.attachments
+            );
+            if (turnAttachments.length) {
+                bubble.setAttribute('data-has-turn-attachments', 'true');
+                var files = document.createElement('div');
+                files.className = 'ai-assistant-panel-user-turn-files';
+                files.setAttribute('aria-label', 'Files for this question');
+
+                var filesHead = document.createElement('div');
+                filesHead.className = 'ai-assistant-panel-user-turn-files-head';
+                var filesTitle = document.createElement('strong');
+                filesTitle.textContent = turnAttachments.length === 1
+                    ? 'File for this question'
+                    : 'Files for this question';
+                var filesCount = document.createElement('span');
+                filesCount.textContent = String(turnAttachments.length);
+                filesHead.appendChild(filesTitle);
+                filesHead.appendChild(filesCount);
+                files.appendChild(filesHead);
+
+                var filesList = document.createElement('div');
+                filesList.className = 'ai-assistant-panel-user-turn-files-list';
+                turnAttachments.forEach(function (item, index) {
+                    var row = document.createElement('div');
+                    row.className = 'ai-assistant-panel-user-turn-file';
+                    if (index >= 3) {
+                        row.hidden = true;
+                        row.setAttribute('data-overflow-file', 'true');
+                    }
+
+                    var badge = document.createElement('span');
+                    badge.className = 'ai-assistant-panel-user-turn-file-badge';
+                    badge.textContent = item.badge || 'FILE';
+                    badge.setAttribute('aria-hidden', 'true');
+
+                    var copy = document.createElement('span');
+                    copy.className = 'ai-assistant-panel-user-turn-file-copy';
+                    var name = document.createElement('strong');
+                    name.textContent = item.name;
+                    name.title = item.name;
+                    var meta = document.createElement('small');
+                    var details = [];
+                    if (item.status) details.push(item.status);
+                    if (item.lineCount) details.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
+                    else if (item.size) details.push(_formatByteSize(item.size));
+                    meta.textContent = details.join(' · ');
+                    copy.appendChild(name);
+                    copy.appendChild(meta);
+
+                    row.appendChild(badge);
+                    row.appendChild(copy);
+                    filesList.appendChild(row);
+                });
+                files.appendChild(filesList);
+
+                if (turnAttachments.length > 3) {
+                    var moreFiles = document.createElement('button');
+                    moreFiles.type = 'button';
+                    moreFiles.className = 'ai-assistant-panel-user-turn-files-toggle';
+                    moreFiles.setAttribute('aria-expanded', 'false');
+                    moreFiles.textContent = 'Show ' + (turnAttachments.length - 3) + ' more';
+                    moreFiles.addEventListener('click', function () {
+                        var expanded = moreFiles.getAttribute('aria-expanded') === 'true';
+                        var next = !expanded;
+                        moreFiles.setAttribute('aria-expanded', next ? 'true' : 'false');
+                        filesList.querySelectorAll('[data-overflow-file="true"]').forEach(function (row) {
+                            row.hidden = !next;
+                        });
+                        moreFiles.textContent = next
+                            ? 'Show fewer'
+                            : 'Show ' + (turnAttachments.length - 3) + ' more';
+                    });
+                    files.appendChild(moreFiles);
+                }
+                bubble.appendChild(files);
+            }
+
+            var questionWrap = document.createElement('div');
+            questionWrap.className = 'ai-assistant-panel-user-turn-question-wrap';
+            var questionText = document.createElement('div');
+            questionText.className = 'ai-assistant-panel-user-turn-question';
+            questionText.textContent = text;
+
+            var lineCount = String(text || '').split(/\r\n|\r|\n/).length;
+            var collapsible = String(text || '').length > 560 || lineCount > 8;
+            if (collapsible) {
+                questionText.setAttribute('data-collapsed', 'true');
+                var questionId = 'ai-assistant-user-question-' +
+                    String(Number.isFinite(Number(ts)) ? Number(ts) : Date.now()) +
+                    '-' + String(++_userQuestionRenderSeq);
+                questionText.id = questionId;
+
+                var questionToggle = document.createElement('button');
+                questionToggle.type = 'button';
+                questionToggle.className = 'ai-assistant-panel-user-turn-question-toggle';
+                questionToggle.setAttribute('aria-controls', questionId);
+                questionToggle.setAttribute('aria-expanded', 'false');
+                questionToggle.textContent = 'Show more';
+                questionToggle.addEventListener('click', function () {
+                    var expanded = questionToggle.getAttribute('aria-expanded') === 'true';
+                    var next = !expanded;
+                    questionToggle.setAttribute('aria-expanded', next ? 'true' : 'false');
+                    questionText.setAttribute('data-collapsed', next ? 'false' : 'true');
+                    questionToggle.textContent = next ? 'Show less' : 'Show more';
+                });
+                questionWrap.appendChild(questionText);
+                questionWrap.appendChild(questionToggle);
+            } else {
+                questionWrap.appendChild(questionText);
+            }
+            bubble.appendChild(questionWrap);
         } else {
-            // User / error bubbles: plain text only (XSS-safe by design).
+            // Error bubbles: plain text only (XSS-safe by design).
             bubble.textContent = text;
         }
 
@@ -40310,7 +40528,7 @@
      * @param {string} text
      * @param {string} role  'user' | 'assistant' | 'error'
      */
-    function _appendPanelMessage(text, role, recordText) {
+    function _appendPanelMessage(text, role, recordText, turnMeta) {
         var body = document.getElementById('ai-assistant-panel-body');
         if (!body) return;
 
@@ -40327,11 +40545,24 @@
             ? _getActiveModel(_cfg())
             : null;
 
-        _recordMessage(role, (typeof recordText === 'string' ? recordText : text), modelInfo, text);
+        _recordMessage(
+            role,
+            (typeof recordText === 'string' ? recordText : text),
+            modelInfo,
+            text,
+            turnMeta
+        );
         // Read the timestamp just stored — _recordMessage always pushes before
         // returning and JS is single-threaded, so the last entry is ours.
-        _renderBubble(body, text, role, undefined, _transcript[_transcript.length - 1].ts,
-            (typeof recordText === 'string' ? recordText : text));
+        _renderBubble(
+            body,
+            text,
+            role,
+            undefined,
+            _transcript[_transcript.length - 1].ts,
+            (typeof recordText === 'string' ? recordText : text),
+            turnMeta
+        );
         // _renderBubble already appended: bubble → action row → feedback block.
         // No further DOM manipulation needed here.
 
@@ -40397,7 +40628,6 @@
             ? rawText.slice(0, MAX_CHARS) + '\u2026 [truncated]'
             : rawText;
         if (!questionText && attachmentText) questionText = 'Please review the attached file(s).';
-        var attachmentDisplay = _composerAttachmentDisplaySummary();
 
         // Run the user-protection preflight before we mutate the composer,
         // transcript, or any in-flight request.  Cancel therefore means exactly
@@ -40436,6 +40666,7 @@
         }
 
         var requestQuestion = _composeQuestionWithAttachments(questionText, attachmentText);
+        var turnAttachments = _composerTurnAttachmentSnapshot(attachmentText);
 
         // ── Cancel any in-flight request before starting a new one ───────
         // Without this, rapid submits fire multiple concurrent fetches; the
@@ -40459,8 +40690,14 @@
         _bannerStop(false);
         _dismissSpeakBanner();
 
-        _appendPanelMessage(questionText + (attachmentDisplay ? ('\n\n' + attachmentDisplay) : ''), 'user', requestQuestion);
+        _appendPanelMessage(questionText, 'user', requestQuestion, {
+            attachments: turnAttachments
+        });
         input.value = '';
+        // One-turn upload contract: staged files and replay context are consumed
+        // synchronously by this question and can never remain armed for the next
+        // send. Persistent PAGE/MD context is separate and is re-rendered by the
+        // Context Shelf according to its own explicit lifecycle.
         _clearComposerAttachments();
         _updateSendBtnState();
         input.disabled = true;
