@@ -31805,8 +31805,11 @@
         attachmentTray.setAttribute('aria-label', 'Context and attached files');
         attachmentTray.hidden = true;
         inputGroup.appendChild(attachmentTray);
-        _loadPinnedPageContexts(true);
-        _renderComposerAttachments();
+        // Do not render the Context Shelf while the panel subtree is detached.
+        // _renderComposerAttachments() resolves the tray through document.getElementById(),
+        // so rendering here is necessarily a no-op until document.body owns `panel`.
+        // The canonical post-mount refresh below hydrates persisted pins and renders
+        // them on the first visible frame even when automatic current-page context is OFF.
         // Keep explicit pinned-page context visible across navigation, BFCache
         // restoration, and ordinary browser-tab activation even when automatic
         // current-page context is OFF.
@@ -33946,6 +33949,17 @@
         }());
 
         document.body.appendChild(panel);
+
+        // Context Shelf mount contract: persistence hydration and DOM projection
+        // happen only after the panel is connected. This removes the accidental
+        // dependency on the async current-page preparation callback to perform the
+        // first real render. In particular:
+        //   pin page A -> navigate to page B -> A is visible immediately,
+        // even when `Use current page as context` is OFF. Pinning B then simply
+        // adds B to the already-visible pinned set instead of making A appear as
+        // a side effect.
+        _refreshPinnedPageContextShelf();
+
         // Establish footer fit after the panel is connected so computed widths
         // are real on first paint; the shared ResizeObserver owns later updates.
         _syncFooterActionFit(panel.getBoundingClientRect
