@@ -19360,6 +19360,23 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     letter-spacing: 0.035em;
 }
 
+/* Visible documentation-context cards share the attachment shelf while
+ * remaining semantically distinct from one-turn file uploads. */
+.ai-assistant-panel-attachment-tile[data-kind="page"] .ai-assistant-panel-attachment-card {
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 5%, var(--pst-color-surface, #fff));
+    border-color: color-mix(in srgb, var(--pst-color-primary, #2980b9) 30%, var(--pst-color-border, #d8dce1));
+}
+.ai-assistant-panel-attachment-tile[data-context-role="current"] .ai-assistant-panel-attachment-card {
+    border-style: dashed;
+}
+.ai-assistant-panel-attachment-tile[data-kind="page"] .ai-assistant-panel-attachment-card-badge {
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 12%, transparent);
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+.ai-assistant-panel-page-context-note {
+    border-inline-start: 3px solid color-mix(in srgb, var(--pst-color-primary, #2980b9) 45%, transparent);
+}
+
 .ai-assistant-panel-attachment-thumb-image {
     position: absolute;
     inset: 0;

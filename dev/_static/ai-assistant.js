@@ -9672,6 +9672,373 @@
     var _transcript = [];
 
 
+    // ── Visible documentation context shelf ────────────────────────────────
+    //
+    // The assistant has two intentionally different documentation-context
+    // lifecycles:
+    //   * current page — automatic/live, follows navigation, reader-toggleable;
+    //   * pinned page  — explicit snapshot, survives navigation in this tab
+    //                    when conversation persistence is enabled.
+    //
+    // Both are rendered in the same composer shelf as ordinary attachments so
+    // the model's page awareness is visible rather than a hidden prompt-side
+    // operation.  Ordinary uploaded files remain one-turn composer items and
+    // keep their existing transport rules.
+    var _CURRENT_PAGE_CONTEXT_PERMISSION_KEY = 'ai-assistant-current-page-context-this-tab-v1';
+    var _PINNED_PAGE_CONTEXT_KEY = 'ai-assistant-pinned-page-contexts-v1';
+    var _PINNED_PAGE_CONTEXT_SCHEMA = 1;
+    var _PINNED_PAGE_CONTEXT_MAX_ITEMS = 6;
+    var _PINNED_PAGE_CONTEXT_MAX_CHARS = 24000;
+    var _PINNED_PAGE_CONTEXT_TOTAL_CHARS = 96000;
+    var _pinnedPageContexts = [];
+    var _pinnedPageContextsLoaded = false;
+    var _currentPageContextCache = null;
+    var _currentPageContextPromise = null;
+
+    function _normalizeContextPageUrl(value) {
+        var raw = String(value || '');
+        try {
+            var base = (typeof location !== 'undefined' && location.href) ? location.href : undefined;
+            var u = new URL(raw, base);
+            if (!/^(?:https?:|file:)$/.test(String(u.protocol || '').toLowerCase())) return '';
+            u.hash = '';
+            u.search = '';
+            return u.href;
+        } catch (_) {
+            return raw.split('#')[0].split('?')[0].slice(0, 2048);
+        }
+    }
+
+    function _currentContextPageUrl() {
+        return _normalizeContextPageUrl(
+            (typeof _pageUrl === 'function') ? _pageUrl() :
+            ((typeof location !== 'undefined') ? location.href : '')
+        );
+    }
+
+    function _currentContextPageTitle() {
+        var heading = '';
+        try { if (typeof _getCurrentPageHeading === 'function') heading = _getCurrentPageHeading() || ''; } catch (_) {}
+        var title = heading || ((typeof _pageTitle === 'function') ? _pageTitle() :
+            ((typeof document !== 'undefined' && document.title) ? String(document.title) : 'Current page'));
+        return String(title || 'Current page').replace(/\s+/g, ' ').trim().slice(0, 240) || 'Current page';
+    }
+
+    function _currentPageContextEnabled() {
+        try {
+            var stored = sessionStorage.getItem(_CURRENT_PAGE_CONTEXT_PERMISSION_KEY);
+            if (stored === 'true') return true;
+            if (stored === 'false') return false;
+        } catch (_) {}
+        return _cfg().panelCurrentPageContext !== false;
+    }
+
+    function _setCurrentPageContextInTab(enabled) {
+        var on = !!enabled;
+        try { sessionStorage.setItem(_CURRENT_PAGE_CONTEXT_PERMISSION_KEY, on ? 'true' : 'false'); } catch (_) {}
+        var toggle = document.getElementById('ai-assistant-current-page-context-toggle');
+        if (toggle) toggle.setAttribute('aria-checked', on ? 'true' : 'false');
+        if (on) {
+            _prepareCurrentPageContextItem(false).then(function () { _renderComposerAttachments(); }).catch(function () {});
+        }
+        _renderComposerAttachments();
+    }
+
+    function _sanitizePinnedPageContext(raw) {
+        if (!raw || typeof raw !== 'object') return null;
+        var sourceUrl = _normalizeContextPageUrl(raw.sourceUrl || '');
+        var text = typeof raw.text === 'string' ? raw.text.slice(0, _PINNED_PAGE_CONTEXT_MAX_CHARS) : '';
+        if (!sourceUrl || !text) return null;
+        return {
+            id: 'page:' + sourceUrl,
+            kind: 'page',
+            contextRole: 'pinned',
+            name: String(raw.name || raw.title || 'Documentation page').replace(/\s+/g, ' ').trim().slice(0, 240) || 'Documentation page',
+            title: String(raw.title || raw.name || '').replace(/\s+/g, ' ').trim().slice(0, 240),
+            sourceUrl: sourceUrl,
+            markdownUrl: _normalizeContextPageUrl(raw.markdownUrl || sourceUrl.replace(/\.html?$/i, '.md')),
+            text: text,
+            previewText: text,
+            lineCount: _attachmentLineCount(text),
+            size: text.length,
+            pinnedAt: Math.max(0, Number(raw.pinnedAt) || Date.now()),
+            localOnly: false
+        };
+    }
+
+    function _loadPinnedPageContexts() {
+        if (_pinnedPageContextsLoaded) return _pinnedPageContexts;
+        _pinnedPageContextsLoaded = true;
+        _pinnedPageContexts = [];
+        if (!_persistEnabled()) return _pinnedPageContexts;
+        var raw = _ssGet(_PINNED_PAGE_CONTEXT_KEY);
+        if (!raw) return _pinnedPageContexts;
+        try {
+            var parsed = JSON.parse(raw);
+            var list = parsed && parsed.schemaVersion === _PINNED_PAGE_CONTEXT_SCHEMA && Array.isArray(parsed.items)
+                ? parsed.items : [];
+            var total = 0;
+            list.slice(0, _PINNED_PAGE_CONTEXT_MAX_ITEMS).forEach(function (entry) {
+                var item = _sanitizePinnedPageContext(entry);
+                if (!item) return;
+                var room = _PINNED_PAGE_CONTEXT_TOTAL_CHARS - total;
+                if (room <= 0) return;
+                if (item.text.length > room) {
+                    item.text = item.text.slice(0, room);
+                    item.previewText = item.text;
+                    item.lineCount = _attachmentLineCount(item.text);
+                    item.size = item.text.length;
+                }
+                total += item.text.length;
+                _pinnedPageContexts.push(item);
+            });
+        } catch (_) {
+            _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+        }
+        return _pinnedPageContexts;
+    }
+
+    function _savePinnedPageContexts() {
+        if (!_persistEnabled()) {
+            _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+            return;
+        }
+        var total = 0;
+        var items = [];
+        _pinnedPageContexts.slice(0, _PINNED_PAGE_CONTEXT_MAX_ITEMS).forEach(function (item) {
+            if (!item || typeof item.text !== 'string' || !item.text) return;
+            var room = _PINNED_PAGE_CONTEXT_TOTAL_CHARS - total;
+            if (room <= 0) return;
+            var text = item.text.slice(0, Math.min(_PINNED_PAGE_CONTEXT_MAX_CHARS, room));
+            total += text.length;
+            items.push({
+                name: item.name,
+                title: item.title,
+                sourceUrl: item.sourceUrl,
+                markdownUrl: item.markdownUrl,
+                text: text,
+                pinnedAt: item.pinnedAt || Date.now()
+            });
+        });
+        _ssSet(_PINNED_PAGE_CONTEXT_KEY, JSON.stringify({
+            schemaVersion: _PINNED_PAGE_CONTEXT_SCHEMA,
+            items: items
+        }));
+    }
+
+    function _findPinnedPageContext(sourceUrl) {
+        _loadPinnedPageContexts();
+        var target = _normalizeContextPageUrl(sourceUrl);
+        for (var i = 0; i < _pinnedPageContexts.length; i++) {
+            if (_normalizeContextPageUrl(_pinnedPageContexts[i].sourceUrl) === target) return _pinnedPageContexts[i];
+        }
+        return null;
+    }
+
+    function _removePinnedPageContext(sourceUrl) {
+        _loadPinnedPageContexts();
+        var target = _normalizeContextPageUrl(sourceUrl);
+        var before = _pinnedPageContexts.length;
+        _pinnedPageContexts = _pinnedPageContexts.filter(function (item) {
+            return _normalizeContextPageUrl(item && item.sourceUrl) !== target;
+        });
+        if (_pinnedPageContexts.length !== before) {
+            _savePinnedPageContexts();
+            _renderComposerAttachments();
+            return true;
+        }
+        return false;
+    }
+
+    function _currentPageContextPlaceholder() {
+        var sourceUrl = _currentContextPageUrl();
+        var pinned = _findPinnedPageContext(sourceUrl);
+        return {
+            id: 'current:' + sourceUrl,
+            kind: 'page',
+            contextRole: 'current',
+            name: _currentContextPageTitle(),
+            title: _currentContextPageTitle(),
+            sourceUrl: sourceUrl,
+            markdownUrl: getMarkdownUrl(),
+            previewText: '',
+            text: '',
+            lineCount: 0,
+            size: 0,
+            pinned: !!pinned,
+            loading: true,
+            localOnly: false
+        };
+    }
+
+    function _prepareCurrentPageContextItem(force) {
+        var sourceUrl = _currentContextPageUrl();
+        if (!force && _currentPageContextCache && _currentPageContextCache.sourceUrl === sourceUrl && _currentPageContextCache.text) {
+            return Promise.resolve(_currentPageContextCache);
+        }
+        if (!force && _currentPageContextPromise) return _currentPageContextPromise;
+        _currentPageContextPromise = _privacyPreparePageContext().then(function (prepared) {
+            var text = String(prepared && prepared.text || '');
+            var item = {
+                id: 'current:' + sourceUrl,
+                kind: 'page',
+                contextRole: 'current',
+                name: _currentContextPageTitle(),
+                title: _currentContextPageTitle(),
+                sourceUrl: sourceUrl,
+                markdownUrl: getMarkdownUrl(),
+                previewText: text,
+                text: text,
+                lineCount: _attachmentLineCount(text),
+                size: text.length,
+                pinned: !!_findPinnedPageContext(sourceUrl),
+                loading: false,
+                localOnly: false,
+                redactionFindings: prepared && Array.isArray(prepared.redactionFindings) ? prepared.redactionFindings : [],
+                invisibleRemoved: prepared && Number(prepared.invisibleRemoved) || 0
+            };
+            _currentPageContextCache = item;
+            return item;
+        }).finally(function () { _currentPageContextPromise = null; });
+        return _currentPageContextPromise;
+    }
+
+    async function _pinCurrentPageContext() {
+        _loadPinnedPageContexts();
+        var current = await _prepareCurrentPageContextItem(true);
+        if (!current || !current.text) throw new Error('CURRENT_PAGE_CONTEXT_EMPTY');
+        var existing = _findPinnedPageContext(current.sourceUrl);
+        var snapshot = _sanitizePinnedPageContext({
+            name: current.name,
+            title: current.title,
+            sourceUrl: current.sourceUrl,
+            markdownUrl: current.markdownUrl,
+            text: current.text,
+            pinnedAt: Date.now()
+        });
+        if (!snapshot) throw new Error('CURRENT_PAGE_CONTEXT_INVALID');
+        if (existing) {
+            var idx = _pinnedPageContexts.indexOf(existing);
+            if (idx >= 0) _pinnedPageContexts[idx] = snapshot;
+        } else {
+            if (_pinnedPageContexts.length >= _PINNED_PAGE_CONTEXT_MAX_ITEMS) {
+                throw new Error('PINNED_PAGE_CONTEXT_LIMIT');
+            }
+            _pinnedPageContexts.push(snapshot);
+        }
+        _savePinnedPageContexts();
+        if (_currentPageContextCache && _currentPageContextCache.sourceUrl === current.sourceUrl) {
+            _currentPageContextCache.pinned = true;
+        }
+        _renderComposerAttachments();
+        return snapshot;
+    }
+
+    function _contextShelfItems() {
+        _loadPinnedPageContexts();
+        var out = [];
+        var currentUrl = _currentContextPageUrl();
+        if (_currentPageContextEnabled()) {
+            var current = (_currentPageContextCache && _currentPageContextCache.sourceUrl === currentUrl)
+                ? Object.assign({}, _currentPageContextCache)
+                : _currentPageContextPlaceholder();
+            current.pinned = !!_findPinnedPageContext(currentUrl);
+            out.push(current);
+        }
+        _pinnedPageContexts.forEach(function (item) {
+            if (_currentPageContextEnabled() && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
+            out.push(Object.assign({}, item, { kind: 'page', contextRole: 'pinned', loading: false }));
+        });
+        _composerAttachments.forEach(function (item, index) {
+            if (!item) return;
+            item._composerIndex = index;
+            out.push(item);
+        });
+        return out;
+    }
+
+    function _effectivePanelContextLimit(cfg) {
+        cfg = cfg || _cfg();
+        var limit = _safeInt(cfg.panelContextLimit, 100, 200000, 8000);
+        var active = null;
+        try { active = _getActiveModel(cfg); } catch (_) {}
+        if (active && active.context_limit) {
+            limit = _safeInt(active.context_limit, 100, 200000, limit);
+        }
+        return limit;
+    }
+
+    function _assembleDocumentationContextSources(sources, maxChars) {
+        var list = (sources || []).filter(function (item) {
+            return item && typeof item.text === 'string' && item.text.trim();
+        });
+        if (!list.length) return '';
+        var limit = Math.max(100, Number(maxChars) || 8000);
+        var headers = list.map(function (item, index) {
+            var role = item.contextRole === 'current' ? 'Current page · automatic' : 'Pinned page · reader-selected';
+            return '## Context source ' + (index + 1) + ' — ' + role + '\n' +
+                'Title: ' + String(item.title || item.name || 'Documentation page').slice(0, 240) + '\n' +
+                'URL: ' + String(item.sourceUrl || '').slice(0, 2048) + '\n' +
+                'Representation: Markdown\n\n';
+        });
+        var overhead = headers.reduce(function (n, h) { return n + h.length + 2; }, 0);
+        var bodyBudget = Math.max(0, limit - overhead);
+        var quota = Math.max(0, Math.floor(bodyBudget / list.length));
+        var allocations = list.map(function (item) { return Math.min(item.text.length, quota); });
+        var used = allocations.reduce(function (n, v) { return n + v; }, 0);
+        var remaining = Math.max(0, bodyBudget - used);
+        for (var round = 0; round < 2 && remaining > 0; round++) {
+            var open = [];
+            for (var i = 0; i < list.length; i++) if (allocations[i] < list[i].text.length) open.push(i);
+            if (!open.length) break;
+            var share = Math.max(1, Math.floor(remaining / open.length));
+            for (var j = 0; j < open.length && remaining > 0; j++) {
+                var idx = open[j];
+                var add = Math.min(share, list[idx].text.length - allocations[idx], remaining);
+                allocations[idx] += add;
+                remaining -= add;
+            }
+        }
+        var parts = [];
+        list.forEach(function (item, index) {
+            var body = item.text.slice(0, allocations[index]);
+            var truncated = body.length < item.text.length;
+            parts.push(headers[index] + body + (truncated ? '\n\n[context source truncated to shared budget]' : ''));
+        });
+        return parts.join('\n\n').slice(0, limit);
+    }
+
+    async function _privacyPrepareDocumentationContext(cfg) {
+        _loadPinnedPageContexts();
+        var sources = [];
+        var redactionFindings = [];
+        var invisibleRemoved = 0;
+        var currentUrl = _currentContextPageUrl();
+        if (_currentPageContextEnabled()) {
+            try {
+                var current = await _prepareCurrentPageContextItem(false);
+                if (current && current.text) {
+                    sources.push(current);
+                    redactionFindings = current.redactionFindings || [];
+                    invisibleRemoved = current.invisibleRemoved || 0;
+                }
+            } catch (_e) {
+                _log('debug', 'current-page context preparation failed', _e);
+            }
+        }
+        _pinnedPageContexts.forEach(function (item) {
+            if (!item || !item.text) return;
+            if (_currentPageContextEnabled() && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
+            sources.push(item);
+        });
+        return {
+            text: _assembleDocumentationContextSources(sources, _effectivePanelContextLimit(cfg || _cfg())),
+            sources: sources,
+            redactionFindings: redactionFindings,
+            invisibleRemoved: invisibleRemoved
+        };
+    }
+
     // Composer-local attachments. Files never leave the browser merely because
     // they were selected: supported text content is included only when the user
     // submits the message, after the same privacy preflight used for typed text.
@@ -9982,12 +10349,24 @@
     };
 
     function _attachmentItemBadge(item) {
+        if (item && item.kind === 'page') return item.contextRole === 'current' ? 'PAGE' : 'MD';
         return _attachmentExtension(item && item.name);
     }
 
     function _attachmentItemMeta(item) {
         if (!item) return '';
         var parts = [];
+        if (item.kind === 'page') {
+            if (item.contextRole === 'current') {
+                parts.push('Current · Auto');
+                if (item.pinned) parts.push('Pinned');
+                if (item.loading) parts.push('Preparing preview');
+            } else {
+                parts.push('Pinned page');
+            }
+            if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
+            return parts.join(' · ');
+        }
         if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
         else parts.push(_formatByteSize(item.size || 0));
         if (item.kind === 'image') parts.push('Photo · local only');
@@ -9998,7 +10377,14 @@
 
     function _attachmentPreviewMeta(item) {
         if (!item) return '';
-        var parts = [_formatByteSize(item.size || 0)];
+        var parts = [];
+        if (item.kind === 'page') {
+            parts.push(item.contextRole === 'current' ? 'Current page · automatic context' : 'Pinned page · persistent context');
+            if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
+            parts.push('Markdown');
+            return parts.join(' · ');
+        }
+        parts.push(_formatByteSize(item.size || 0));
         if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
         if (item.kind === 'image') parts.push('Local image preview');
         else if (item.kind === 'text') {
@@ -10226,12 +10612,20 @@
             }
         }
 
-        if (item && item.kind === 'text' && typeof item.previewText === 'string') {
+        if (item && (item.kind === 'text' || item.kind === 'page') && typeof item.previewText === 'string') {
+            if (item.kind === 'page') {
+                var contextNote = document.createElement('p');
+                contextNote.className = 'ai-assistant-panel-attachment-preview-note ai-assistant-panel-page-context-note';
+                contextNote.textContent = item.contextRole === 'current'
+                    ? 'Automatic current-page context. This privacy-prepared Markdown is the page representation available to the assistant while this option is on.'
+                    : 'Pinned documentation context. This bounded Markdown snapshot remains available until you remove it; with Remember conversation enabled it also survives same-tab navigation.';
+                st.body.appendChild(contextNote);
+            }
             var pre = document.createElement('pre');
             pre.className = 'ai-assistant-panel-attachment-preview-code';
             pre.textContent = item.previewText;
             st.body.appendChild(pre);
-            if (typeof item.text !== 'string') {
+            if (item.kind === 'text' && typeof item.text !== 'string') {
                 var note = document.createElement('p');
                 note.className = 'ai-assistant-panel-attachment-preview-note';
                 note.textContent = 'Local preview only — this file exceeds the bounded model-context limit and will not be sent.';
@@ -10288,7 +10682,7 @@
         tray.toggleAttribute('data-overflow', overflowing);
         tray.toggleAttribute('data-overflow-start', overflowing && left > 2);
         tray.toggleAttribute('data-overflow-end', overflowing && left < max - 2);
-        tray.setAttribute('aria-label', overflowing ? 'Attached files. Scroll horizontally for more files.' : 'Attached files');
+        tray.setAttribute('aria-label', overflowing ? 'Context and attached files. Scroll horizontally for more items.' : 'Context and attached files');
     }
 
     function _bindAttachmentTrayScrolling(tray) {
@@ -10326,10 +10720,11 @@
     function _renderComposerAttachments() {
         var tray = document.getElementById('ai-assistant-panel-attachments');
         if (!tray) return;
+        var items = _contextShelfItems();
         var previousCount = Number(tray.getAttribute('data-attachment-count') || 0);
         var previousScrollLeft = Math.max(0, tray.scrollLeft || 0);
         while (tray.firstChild) tray.removeChild(tray.firstChild);
-        if (!_composerAttachments.length) {
+        if (!items.length) {
             tray.hidden = true;
             tray.setAttribute('data-attachment-count', '0');
             tray.removeAttribute('data-overflow');
@@ -10340,10 +10735,11 @@
         }
         tray.hidden = false;
         _bindAttachmentTrayScrolling(tray);
-        _composerAttachments.forEach(function (item, index) {
+        items.forEach(function (item) {
             var tile = document.createElement('div');
             tile.className = 'ai-assistant-panel-attachment-tile';
             tile.setAttribute('data-kind', item.kind || 'file');
+            if (item.kind === 'page') tile.setAttribute('data-context-role', item.contextRole || 'pinned');
 
             var preview = document.createElement('button');
             preview.type = 'button';
@@ -10383,26 +10779,50 @@
                 preview.appendChild(body);
             }
 
-            preview.addEventListener('click', function () { _openAttachmentPreview(item, preview); });
-
-            var remove = document.createElement('button');
-            remove.type = 'button';
-            remove.className = 'ai-assistant-panel-attachment-remove';
-            remove.setAttribute('aria-label', 'Remove ' + _attachmentSafeName(item.name));
-            remove.innerHTML = ICONS.close;
-            remove.addEventListener('click', function (e) {
-                e.stopPropagation();
-                if (_attachmentPreviewState.item === item) _closeAttachmentPreview(false);
-                _attachmentRevokeObjectUrl(item);
-                _composerAttachments.splice(index, 1);
-                _renderComposerAttachments();
+            preview.addEventListener('click', function () {
+                if (item.kind === 'page' && item.contextRole === 'current' && (!item.previewText || item.loading)) {
+                    preview.disabled = true;
+                    _prepareCurrentPageContextItem(false).then(function (prepared) {
+                        _openAttachmentPreview(prepared, preview);
+                    }).catch(function () {
+                        showNotification('Current-page context preview is unavailable.', false);
+                    }).finally(function () { preview.disabled = false; });
+                    return;
+                }
+                _openAttachmentPreview(item, preview);
             });
 
             tile.appendChild(preview);
-            tile.appendChild(remove);
+
+            // Automatic current-page context is a live source, not a disposable
+            // file. It is disabled from Endpoint Configuration. Pinned pages and
+            // uploaded files remain explicitly removable from the shelf.
+            if (!(item.kind === 'page' && item.contextRole === 'current')) {
+                var remove = document.createElement('button');
+                remove.type = 'button';
+                remove.className = 'ai-assistant-panel-attachment-remove';
+                remove.setAttribute('aria-label', 'Remove ' + _attachmentSafeName(item.name));
+                remove.innerHTML = ICONS.close;
+                remove.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (_attachmentPreviewState.item === item) _closeAttachmentPreview(false);
+                    if (item.kind === 'page') {
+                        _removePinnedPageContext(item.sourceUrl);
+                        return;
+                    }
+                    _attachmentRevokeObjectUrl(item);
+                    var composerIndex = Number(item._composerIndex);
+                    if (Number.isInteger(composerIndex) && composerIndex >= 0 && composerIndex < _composerAttachments.length) {
+                        _composerAttachments.splice(composerIndex, 1);
+                    }
+                    _renderComposerAttachments();
+                });
+                tile.appendChild(remove);
+            }
+
             tray.appendChild(tile);
         });
-        var currentCount = _composerAttachments.length;
+        var currentCount = items.length;
         tray.setAttribute('data-attachment-count', String(currentCount));
         requestAnimationFrame(function () {
             if (!tray || tray.hidden) return;
@@ -10812,11 +11232,13 @@
         if (allow) {
             _saveTranscript();
             _saveFeedbackState();
+            _savePinnedPageContexts();
             if (_conversationId) _ssSet(_CONVERSATION_ID_KEY, _conversationId);
         } else {
             _ssDel(_TRANSCRIPT_KEY);
             _ssDel(_CONVERSATION_ID_KEY);
             _ssDel(_FEEDBACK_STATE_KEY);
+            _ssDel(_PINNED_PAGE_CONTEXT_KEY);
             _ssDel('ai-assistant-active-contribution-review-v1');
         }
         var toggle = document.getElementById('ai-assistant-remember-conversation-toggle');
@@ -11039,7 +11461,15 @@
         _transcript       = [];
         _feedbackGivenSet = new Set();
         _feedbackStore    = {};                  // v2 — clears all submitted ratings
+        _pinnedPageContexts = [];
+        _pinnedPageContextsLoaded = true;
+        _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+        _currentPageContextCache = null;
         _clearComposerAttachments();
+        _renderComposerAttachments();
+        if (_currentPageContextEnabled()) {
+            _prepareCurrentPageContextItem(false).then(function () { _renderComposerAttachments(); }).catch(function () {});
+        }
         var attachMenuReset = document.getElementById('ai-assistant-panel-attach-menu');
         var attachBtnReset = document.getElementById('ai-assistant-panel-attach');
         if (attachMenuReset) { attachMenuReset.hidden = true; attachMenuReset.setAttribute('data-open', 'false'); }
@@ -17465,7 +17895,7 @@
         var rememberDefaultOn = _cfg().panelRememberConversation !== false;
         var rememberToggle = _buildExtToggleRow(
             'Remember conversation in this tab',
-            (rememberDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the transcript is stored only in sessionStorage for this tab so same-tab page changes and reloads can restore it. Your explicit choice is remembered only for this tab. Same-origin page scripts can read sessionStorage, so turn this off on pages you do not fully trust.',
+            (rememberDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the transcript and any explicitly pinned documentation-page Markdown snapshots are stored only in sessionStorage for this tab so same-tab page changes and reloads can restore the conversation context. The automatic current-page PAGE item is live and is not stored as a snapshot unless you pin it. Your explicit choice is remembered only for this tab. Same-origin page scripts can read sessionStorage, so turn this off on pages you do not fully trust.',
             _persistEnabled(),
             'ai-assistant-remember-conversation-toggle'
         );
@@ -17479,6 +17909,19 @@
             });
         }
         chatSub.appendChild(rememberToggle.row);
+
+        var currentPageDefaultOn = _cfg().panelCurrentPageContext !== false;
+        var currentPageToggle = _buildExtToggleRow(
+            'Use current page as context',
+            (currentPageDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the page you are reading appears visibly in the composer as a PAGE context card and its privacy-prepared Markdown is available to the assistant. Pin a page from the + menu to keep a bounded Markdown snapshot after navigating elsewhere. Your explicit ON/OFF choice is remembered only for this tab.',
+            _currentPageContextEnabled(),
+            'ai-assistant-current-page-context-toggle'
+        );
+        currentPageToggle.pill.setAttribute('aria-label', 'Use current page as context');
+        currentPageToggle.pill.addEventListener('click', function () {
+            _setCurrentPageContextInTab(!_currentPageContextEnabled());
+        });
+        chatSub.appendChild(currentPageToggle.row);
         extBody.appendChild(chatSub);
 
         // Share-link mode is configured in the Share sheet. Keeping it out
@@ -31298,9 +31741,19 @@
         var attachmentTray = document.createElement('div');
         attachmentTray.id = 'ai-assistant-panel-attachments';
         attachmentTray.className = 'ai-assistant-panel-attachments';
-        attachmentTray.setAttribute('aria-label', 'Attached files');
+        attachmentTray.setAttribute('aria-label', 'Context and attached files');
         attachmentTray.hidden = true;
         inputGroup.appendChild(attachmentTray);
+        _loadPinnedPageContexts();
+        _renderComposerAttachments();
+        if (_currentPageContextEnabled()) {
+            _prepareCurrentPageContextItem(false).then(function () {
+                _renderComposerAttachments();
+            }).catch(function () {
+                // The visible placeholder remains truthful even if preview
+                // preparation fails; Send will retry context preparation.
+            });
+        }
 
         var attachmentStageStatus = document.createElement('div');
         attachmentStageStatus.id = 'ai-assistant-panel-attachment-stage-status';
@@ -31370,6 +31823,36 @@
         attachMenu.setAttribute('aria-label', 'Add to conversation');
         attachMenu.setAttribute('data-open', 'false');
         attachMenu.hidden = true;
+
+        var pageLabel = document.createElement('div');
+        pageLabel.className = 'ai-assistant-panel-attach-menu-label';
+        pageLabel.setAttribute('role', 'presentation');
+        pageLabel.textContent = 'Pages';
+        attachMenu.appendChild(pageLabel);
+
+        var currentPageItem = document.createElement('button');
+        currentPageItem.type = 'button';
+        currentPageItem.className = 'ai-assistant-panel-attach-menu-item ai-assistant-panel-attach-menu-item--page';
+        currentPageItem.setAttribute('role', 'menuitem');
+        attachMenu.appendChild(currentPageItem);
+
+        function _syncCurrentPageAttachMenuItem() {
+            var pinned = !!_findPinnedPageContext(_currentContextPageUrl());
+            var autoOn = _currentPageContextEnabled();
+            currentPageItem.innerHTML =
+                '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.terms + '</span>' +
+                '<span class="ai-assistant-panel-attach-menu-copy"><strong>' +
+                (pinned ? 'Unpin current page' : 'Pin current page') +
+                '</strong><small>' +
+                (pinned
+                    ? 'Stop keeping this Markdown snapshot after you navigate away.'
+                    : (autoOn
+                        ? 'Current page is already included automatically. Pin it to keep this Markdown context after navigation.'
+                        : 'Add this page as bounded Markdown context and keep it available across later questions.')) +
+                '</small></span>';
+            currentPageItem.setAttribute('aria-label', pinned ? 'Unpin current page context' : 'Pin current page context');
+        }
+        _syncCurrentPageAttachMenuItem();
 
         var uploadLabel = document.createElement('div');
         uploadLabel.className = 'ai-assistant-panel-attach-menu-label';
@@ -31450,6 +31933,7 @@
         }
 
         function _openAttachMenu() {
+            _syncCurrentPageAttachMenuItem();
             _positionAttachMenu();
             attachMenu.hidden = false;
             attachMenu.setAttribute('data-open', 'true');
@@ -31477,6 +31961,32 @@
             _hapticFeedback([8]);
             if (attachMenu.getAttribute('data-open') === 'true') _closeAttachMenu(false);
             else _openAttachMenu();
+        });
+        currentPageItem.addEventListener('click', function () {
+            var sourceUrl = _currentContextPageUrl();
+            if (_findPinnedPageContext(sourceUrl)) {
+                _removePinnedPageContext(sourceUrl);
+                _syncCurrentPageAttachMenuItem();
+                _closeAttachMenu(false);
+                showNotification('Current page unpinned. Automatic current-page context is unchanged.', false);
+                return;
+            }
+            currentPageItem.disabled = true;
+            _closeAttachMenu(false);
+            _pinCurrentPageContext().then(function () {
+                showNotification(_persistEnabled()
+                    ? 'Current page pinned for this conversation and same-tab navigation.'
+                    : 'Current page pinned for this page. Turn on Remember conversation to keep it across navigation.', false);
+            }).catch(function (err) {
+                if (err && err.message === 'PINNED_PAGE_CONTEXT_LIMIT') {
+                    showNotification('Pinned-page limit reached. Remove a pinned page before adding another.', false);
+                } else {
+                    showNotification('Current page could not be pinned as context.', false);
+                }
+            }).finally(function () {
+                currentPageItem.disabled = false;
+                _syncCurrentPageAttachMenuItem();
+            });
         });
         uploadItem.addEventListener('click', _openAttachmentPicker);
         integrationItem.addEventListener('click', function () {
@@ -37815,7 +38325,7 @@
             // removed automatically because the reader did not author them;
             // possible personal data remains advisory and can be redacted by
             // the reader before any network request is started.
-            preparedPageContext = await _privacyPreparePageContext();
+            preparedPageContext = await _privacyPrepareDocumentationContext(cfg);
             var outboundCandidate = {
                 user_message: questionText,
                 attachment_context: attachmentText,
@@ -38055,20 +38565,19 @@
         // ── 3. Use the privacy-reviewed page context ─────────────────────
         // `handleAIPanelSubmit` prepares this before transcript/network mutation.
         // Keep a defensive fallback for direct/internal callers of _panelApiCall.
-        var prepared = preparedPageContext || await _privacyPreparePageContext();
+        var prepared = preparedPageContext || await _privacyPrepareDocumentationContext(cfg);
 
         // FIX Issue 7: configurable token and context limits.
         // Global defaults come from cfg; per-model overrides take precedence.
         // _safeInt(val, min, max, fallback) — defined at module level.
         var maxTokens    = _safeInt(cfg.panelMaxTokens,    1, 32000,  1000);
-        var contextLimit = _safeInt(cfg.panelContextLimit, 100, 200000, 8000);
+        var contextLimit = _effectivePanelContextLimit(cfg);
         if (activeModel) {
-            // Per-model entry can override the global limits — e.g. a smaller
-            // model on a free-tier endpoint may need a tighter context window.
+            // Per-model entry can override the global response-token limit.
+            // Documentation context uses the shared helper above so the visible
+            // multi-page assembler and the final request cannot disagree.
             if (activeModel.max_tokens)
-                maxTokens    = _safeInt(activeModel.max_tokens,    1, 32000,  maxTokens);
-            if (activeModel.context_limit)
-                contextLimit = _safeInt(activeModel.context_limit, 100, 200000, contextLimit);
+                maxTokens = _safeInt(activeModel.max_tokens, 1, 32000, maxTokens);
         }
 
         // FIX Issue 7: configurable system prompt via cfg.panelSystemPrompt.
@@ -38104,7 +38613,7 @@
         _announceInjection(_injection);
 
         var _fenced = _fenceUntrusted(
-            'the documentation page the user is reading',
+            'the documentation context visibly selected in the assistant panel',
             _redacted.text,
             contextLimit,
             _redactionSummary(_redacted.findings)
@@ -38112,7 +38621,7 @@
 
         var defaultSystemPrompt = _fenced
             ? 'You are a helpful documentation assistant. Answer questions ' +
-              'about the documentation page below.\n\n' +
+              'about the documentation context below. It may contain the current page and reader-pinned related pages.\n\n' +
               panelCapabilities + '\n\n' + _fenced
             : 'You are a helpful documentation assistant.\n\n' + panelCapabilities;
 
