@@ -9809,12 +9809,48 @@
     }
 
     function _refreshPinnedPageContextShelf() {
-        // Re-read the tab-scoped snapshots before rendering.  `pageshow` is
-        // intentional: browsers may restore documentation pages from BFCache,
-        // reviving an older in-memory shelf while sessionStorage contains newer
-        // pins created on another page in the same tab.
+        // Re-read the tab-scoped snapshots before rendering.  This helper is
+        // intentionally independent of automatic current-page context: a tab
+        // may have PAGE context disabled while still owning explicit persisted
+        // MD pins that must remain visible and actionable.
         if (_persistEnabled()) _loadPinnedPageContexts(true);
         _renderComposerAttachments();
+    }
+
+    var _pinnedPageContextLifecycleBound = false;
+    var _pinnedPageContextRefreshQueued = false;
+
+    function _schedulePinnedPageContextShelfRefresh() {
+        // Tab activation commonly emits visibilitychange + focus back-to-back.
+        // Coalesce them so one activation means one sessionStorage hydration
+        // and one shelf render rather than duplicate DOM work.
+        if (_pinnedPageContextRefreshQueued) return;
+        _pinnedPageContextRefreshQueued = true;
+        var run = function () {
+            _pinnedPageContextRefreshQueued = false;
+            try {
+                if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
+            } catch (_) {}
+            _refreshPinnedPageContextShelf();
+        };
+        if (typeof queueMicrotask === 'function') queueMicrotask(run);
+        else Promise.resolve().then(run);
+    }
+
+    function _bindPinnedPageContextLifecycle() {
+        if (_pinnedPageContextLifecycleBound) return;
+        _pinnedPageContextLifecycleBound = true;
+
+        // Navigation/BFCache restore within this top-level tab.
+        window.addEventListener('pageshow', _schedulePinnedPageContextShelfRefresh);
+
+        // Ordinary browser-tab switching does not fire pageshow.  Rehydrate on
+        // activation so a live document cannot keep an older empty shelf after
+        // the tab-scoped persisted pin set already exists.
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') _schedulePinnedPageContextShelfRefresh();
+        });
+        window.addEventListener('focus', _schedulePinnedPageContextShelfRefresh);
     }
 
     function _savePinnedPageContexts() {
@@ -31771,14 +31807,10 @@
         inputGroup.appendChild(attachmentTray);
         _loadPinnedPageContexts(true);
         _renderComposerAttachments();
-        // Keep explicit pinned-page context visible across normal navigation
-        // and BFCache restores even when automatic current-page context is OFF.
-        if (!window._aiAssistantPinnedPageShelfPageshowBound) {
-            window._aiAssistantPinnedPageShelfPageshowBound = true;
-            window.addEventListener('pageshow', function () {
-                _refreshPinnedPageContextShelf();
-            });
-        }
+        // Keep explicit pinned-page context visible across navigation, BFCache
+        // restoration, and ordinary browser-tab activation even when automatic
+        // current-page context is OFF.
+        _bindPinnedPageContextLifecycle();
         if (_currentPageContextEnabled()) {
             _prepareCurrentPageContextItem(false).then(function () {
                 _renderComposerAttachments();
