@@ -9766,6 +9766,61 @@
         };
     }
 
+    function _mergePinnedPageContextSets(restoredItems, memoryItems) {
+        // Reconciliation rule for the tab-scoped Context Shelf:
+        //   * explicit in-memory pins are the freshest user intent and win
+        //     duplicate/capacity conflicts;
+        //   * persisted pins fill the remaining capacity;
+        //   * source URL is the stable identity;
+        //   * count and total-text bounds are re-applied after merging.
+        //
+        // This is intentionally used during hydration instead of blindly
+        // replacing memory with storage.  A common transition is:
+        //   Remember OFF -> pin page A -> Remember ON.
+        // There is no persisted A yet, so replacement hydration would erase the
+        // just-pinned in-memory page before it can be saved.
+        var selected = [];
+        var seen = Object.create(null);
+
+        function addUnique(raw) {
+            var item = _sanitizePinnedPageContext(raw);
+            if (!item) return;
+            var key = _normalizeContextPageUrl(item.sourceUrl);
+            if (!key || seen[key]) return;
+            if (selected.length >= _PINNED_PAGE_CONTEXT_MAX_ITEMS) return;
+            seen[key] = true;
+            selected.push(item);
+        }
+
+        // Current-document memory wins.  This protects unsaved explicit user
+        // actions and any freshly refreshed snapshot for a URL already present
+        // in sessionStorage.
+        (memoryItems || []).forEach(addUnique);
+        (restoredItems || []).forEach(addUnique);
+
+        var total = 0;
+        var bounded = [];
+        selected.forEach(function (item) {
+            var room = _PINNED_PAGE_CONTEXT_TOTAL_CHARS - total;
+            if (room <= 0) return;
+            if (item.text.length > room) {
+                item.text = item.text.slice(0, room);
+                item.previewText = item.text;
+                item.lineCount = _attachmentLineCount(item.text);
+                item.size = item.text.length;
+            }
+            total += item.text.length;
+            bounded.push(item);
+        });
+
+        // Presentation remains chronological even though capacity priority is
+        // given to the active document's explicit in-memory selections.
+        bounded.sort(function (a, b) {
+            return (Number(a.pinnedAt) || 0) - (Number(b.pinnedAt) || 0);
+        });
+        return bounded;
+    }
+
     function _loadPinnedPageContexts(force) {
         // A disabled/unavailable persistence authority is NOT the same state as
         // "loaded successfully and there are zero pinned pages".  In Run 92 the
@@ -9777,6 +9832,10 @@
         if (_pinnedPageContextsLoaded && !force) return _pinnedPageContexts;
         if (!_persistEnabled()) return _pinnedPageContexts;
 
+        // Preserve any explicit pins created in this live document.  Hydration
+        // reconciles with them; it never assumes sessionStorage is newer merely
+        // because persistence has just become enabled.
+        var memory = _pinnedPageContexts.slice();
         var restored = [];
         var raw = _ssGet(_PINNED_PAGE_CONTEXT_KEY);
         if (raw) {
@@ -9803,7 +9862,7 @@
                 _ssDel(_PINNED_PAGE_CONTEXT_KEY);
             }
         }
-        _pinnedPageContexts = restored;
+        _pinnedPageContexts = _mergePinnedPageContextSets(restored, memory);
         _pinnedPageContextsLoaded = true;
         return _pinnedPageContexts;
     }
