@@ -9690,8 +9690,13 @@
     var _PINNED_PAGE_CONTEXT_MAX_ITEMS = 6;
     var _PINNED_PAGE_CONTEXT_MAX_CHARS = 24000;
     var _PINNED_PAGE_CONTEXT_TOTAL_CHARS = 96000;
+    var _CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY = 'ai-assistant-current-page-context-exclusions-v1';
+    var _CURRENT_PAGE_CONTEXT_EXCLUSIONS_SCHEMA = 1;
+    var _CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS = 32;
     var _pinnedPageContexts = [];
     var _pinnedPageContextsLoaded = false;
+    var _currentPageContextExclusions = [];
+    var _currentPageContextExclusionsLoaded = false;
     var _currentPageContextCache = null;
     var _currentPageContextPromise = null;
 
@@ -9733,12 +9738,101 @@
         return _cfg().panelCurrentPageContext !== false;
     }
 
+    function _loadCurrentPageContextExclusions(force) {
+        if (_currentPageContextExclusionsLoaded && !force) return _currentPageContextExclusions;
+        if (!_persistEnabled()) return _currentPageContextExclusions;
+
+        var wasLoaded = _currentPageContextExclusionsLoaded;
+        var memory = _currentPageContextExclusions.slice();
+        var restored = [];
+        var raw = _ssGet(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY);
+        if (raw) {
+            try {
+                var parsed = JSON.parse(raw);
+                var list = parsed && parsed.schemaVersion === _CURRENT_PAGE_CONTEXT_EXCLUSIONS_SCHEMA && Array.isArray(parsed.items)
+                    ? parsed.items : [];
+                list.slice(0, _CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS).forEach(function (entry) {
+                    var url = _normalizeContextPageUrl(entry);
+                    if (url && restored.indexOf(url) < 0) restored.push(url);
+                });
+            } catch (_) {
+                _ssDel(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY);
+            }
+        }
+
+        // First hydration reconciles live memory so Remember OFF -> remove page
+        // -> Remember ON cannot erase the user's unsaved intent.  A forced
+        // refresh of an already-hydrated document is different: that document
+        // may have been revived from BFCache, so sessionStorage is the newer
+        // same-tab authority and stale in-memory exclusions must not resurrect.
+        if (!(force && wasLoaded)) {
+            memory.forEach(function (entry) {
+                var url = _normalizeContextPageUrl(entry);
+                if (url && restored.indexOf(url) < 0) restored.push(url);
+            });
+        }
+        _currentPageContextExclusions = restored.slice(-_CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS);
+        _currentPageContextExclusionsLoaded = true;
+        return _currentPageContextExclusions;
+    }
+
+    function _saveCurrentPageContextExclusions() {
+        if (!_persistEnabled()) {
+            _ssDel(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY);
+            return;
+        }
+        var items = [];
+        _currentPageContextExclusions.slice(-_CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS).forEach(function (entry) {
+            var url = _normalizeContextPageUrl(entry);
+            if (url && items.indexOf(url) < 0) items.push(url);
+        });
+        _ssSet(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY, JSON.stringify({
+            schemaVersion: _CURRENT_PAGE_CONTEXT_EXCLUSIONS_SCHEMA,
+            items: items
+        }));
+    }
+
+    function _isCurrentPageContextExcluded(sourceUrl) {
+        _loadCurrentPageContextExclusions(false);
+        var target = _normalizeContextPageUrl(sourceUrl || _currentContextPageUrl());
+        return !!target && _currentPageContextExclusions.indexOf(target) >= 0;
+    }
+
+    function _setCurrentPageContextExcluded(sourceUrl, excluded, render) {
+        _loadCurrentPageContextExclusions(false);
+        var target = _normalizeContextPageUrl(sourceUrl || _currentContextPageUrl());
+        if (!target) return false;
+        var index = _currentPageContextExclusions.indexOf(target);
+        var changed = false;
+        if (excluded && index < 0) {
+            _currentPageContextExclusions.push(target);
+            if (_currentPageContextExclusions.length > _CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS) {
+                _currentPageContextExclusions = _currentPageContextExclusions.slice(-_CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS);
+            }
+            changed = true;
+        } else if (!excluded && index >= 0) {
+            _currentPageContextExclusions.splice(index, 1);
+            changed = true;
+        }
+        if (changed) _saveCurrentPageContextExclusions();
+        if (render !== false) _renderComposerAttachments();
+        return changed;
+    }
+
+    function _currentPageContextActive() {
+        return _currentPageContextEnabled() && !_isCurrentPageContextExcluded(_currentContextPageUrl());
+    }
+
     function _setCurrentPageContextInTab(enabled) {
         var on = !!enabled;
         try { sessionStorage.setItem(_CURRENT_PAGE_CONTEXT_PERMISSION_KEY, on ? 'true' : 'false'); } catch (_) {}
         var toggle = document.getElementById('ai-assistant-current-page-context-toggle');
         if (toggle) toggle.setAttribute('aria-checked', on ? 'true' : 'false');
         if (on) {
+            // Explicitly switching the feature ON is also an explicit request
+            // to include the page currently being read, even if it was removed
+            // earlier in this conversation.
+            _setCurrentPageContextExcluded(_currentContextPageUrl(), false, false);
             _prepareCurrentPageContextItem(false).then(function () { _renderComposerAttachments(); }).catch(function () {});
         }
         _renderComposerAttachments();
@@ -9832,9 +9926,11 @@
         if (_pinnedPageContextsLoaded && !force) return _pinnedPageContexts;
         if (!_persistEnabled()) return _pinnedPageContexts;
 
-        // Preserve any explicit pins created in this live document.  Hydration
-        // reconciles with them; it never assumes sessionStorage is newer merely
-        // because persistence has just become enabled.
+        var wasLoaded = _pinnedPageContextsLoaded;
+        // Preserve any explicit pins created in this live document on first
+        // hydration.  A forced refresh of an already-hydrated document instead
+        // treats sessionStorage as authoritative because BFCache may have
+        // revived stale pre-navigation memory.
         var memory = _pinnedPageContexts.slice();
         var restored = [];
         var raw = _ssGet(_PINNED_PAGE_CONTEXT_KEY);
@@ -9862,7 +9958,7 @@
                 _ssDel(_PINNED_PAGE_CONTEXT_KEY);
             }
         }
-        _pinnedPageContexts = _mergePinnedPageContextSets(restored, memory);
+        _pinnedPageContexts = _mergePinnedPageContextSets(restored, (force && wasLoaded) ? [] : memory);
         _pinnedPageContextsLoaded = true;
         return _pinnedPageContexts;
     }
@@ -9872,7 +9968,10 @@
         // intentionally independent of automatic current-page context: a tab
         // may have PAGE context disabled while still owning explicit persisted
         // MD pins that must remain visible and actionable.
-        if (_persistEnabled()) _loadPinnedPageContexts(true);
+        if (_persistEnabled()) {
+            _loadPinnedPageContexts(true);
+            _loadCurrentPageContextExclusions(true);
+        }
         _renderComposerAttachments();
     }
 
@@ -9964,6 +10063,33 @@
         return false;
     }
 
+    function _removeCurrentPageFromConversationContext(sourceUrl) {
+        // Card-level Remove means "this page should not participate in the
+        // active conversation context".  If the current page is also pinned,
+        // remove that snapshot in the same transaction; otherwise the MD card
+        // would immediately replace the PAGE card and make Remove appear broken.
+        _loadPinnedPageContexts();
+        _loadCurrentPageContextExclusions(false);
+        var target = _normalizeContextPageUrl(sourceUrl || _currentContextPageUrl());
+        if (!target) return false;
+
+        var changed = false;
+        var before = _pinnedPageContexts.length;
+        _pinnedPageContexts = _pinnedPageContexts.filter(function (item) {
+            return _normalizeContextPageUrl(item && item.sourceUrl) !== target;
+        });
+        if (_pinnedPageContexts.length !== before) {
+            _savePinnedPageContexts();
+            changed = true;
+        }
+        if (_setCurrentPageContextExcluded(target, true, false)) changed = true;
+        if (_currentPageContextCache && _normalizeContextPageUrl(_currentPageContextCache.sourceUrl) === target) {
+            _currentPageContextCache.pinned = false;
+        }
+        _renderComposerAttachments();
+        return changed;
+    }
+
     function _currentPageContextPlaceholder() {
         var sourceUrl = _currentContextPageUrl();
         var pinned = _findPinnedPageContext(sourceUrl);
@@ -10052,7 +10178,8 @@
         _loadPinnedPageContexts();
         var out = [];
         var currentUrl = _currentContextPageUrl();
-        if (_currentPageContextEnabled()) {
+        var currentActive = _currentPageContextActive();
+        if (currentActive) {
             var current = (_currentPageContextCache && _currentPageContextCache.sourceUrl === currentUrl)
                 ? Object.assign({}, _currentPageContextCache)
                 : _currentPageContextPlaceholder();
@@ -10060,7 +10187,7 @@
             out.push(current);
         }
         _pinnedPageContexts.forEach(function (item) {
-            if (_currentPageContextEnabled() && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
+            if (currentActive && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
             out.push(Object.assign({}, item, { kind: 'page', contextRole: 'pinned', loading: false }));
         });
         _composerAttachments.forEach(function (item, index) {
@@ -10128,7 +10255,8 @@
         var redactionFindings = [];
         var invisibleRemoved = 0;
         var currentUrl = _currentContextPageUrl();
-        if (_currentPageContextEnabled()) {
+        var currentActive = _currentPageContextActive();
+        if (currentActive) {
             try {
                 var current = await _prepareCurrentPageContextItem(false);
                 if (current && current.text) {
@@ -10142,7 +10270,7 @@
         }
         _pinnedPageContexts.forEach(function (item) {
             if (!item || !item.text) return;
-            if (_currentPageContextEnabled() && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
+            if (currentActive && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
             sources.push(item);
         });
         return {
@@ -10908,31 +11036,41 @@
 
             tile.appendChild(preview);
 
-            // Automatic current-page context is a live source, not a disposable
-            // file. It is disabled from Endpoint Configuration. Pinned pages and
-            // uploaded files remain explicitly removable from the shelf.
-            if (!(item.kind === 'page' && item.contextRole === 'current')) {
-                var remove = document.createElement('button');
-                remove.type = 'button';
-                remove.className = 'ai-assistant-panel-attachment-remove';
-                remove.setAttribute('aria-label', 'Remove ' + _attachmentSafeName(item.name));
-                remove.innerHTML = ICONS.close;
-                remove.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    if (_attachmentPreviewState.item === item) _closeAttachmentPreview(false);
-                    if (item.kind === 'page') {
-                        _removePinnedPageContext(item.sourceUrl);
-                        return;
-                    }
-                    _attachmentRevokeObjectUrl(item);
-                    var composerIndex = Number(item._composerIndex);
-                    if (Number.isInteger(composerIndex) && composerIndex >= 0 && composerIndex < _composerAttachments.length) {
-                        _composerAttachments.splice(composerIndex, 1);
-                    }
-                    _renderComposerAttachments();
-                });
-                tile.appendChild(remove);
-            }
+            // Every visible context item is directly controllable.  For the
+            // automatic PAGE card, Remove creates a per-conversation exclusion
+            // for this URL while leaving the global "Use current page as
+            // context" preference ON for future pages.  If this same page is
+            // pinned, remove the pin atomically too so an MD copy does not pop
+            // straight back into the shelf.
+            var remove = document.createElement('button');
+            remove.type = 'button';
+            remove.className = 'ai-assistant-panel-attachment-remove';
+            remove.setAttribute('aria-label', 'Remove ' + _attachmentSafeName(item.name));
+            remove.innerHTML = ICONS.close;
+            remove.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var previewItem = _attachmentPreviewState.item;
+                if (previewItem === item || (
+                    item.kind === 'page' && previewItem && previewItem.kind === 'page' &&
+                    _normalizeContextPageUrl(previewItem.sourceUrl) === _normalizeContextPageUrl(item.sourceUrl)
+                )) _closeAttachmentPreview(false);
+                if (item.kind === 'page' && item.contextRole === 'current') {
+                    _removeCurrentPageFromConversationContext(item.sourceUrl);
+                    showNotification('Current page removed from this conversation context. Use + → Pages to add it back.', false);
+                    return;
+                }
+                if (item.kind === 'page') {
+                    _removePinnedPageContext(item.sourceUrl);
+                    return;
+                }
+                _attachmentRevokeObjectUrl(item);
+                var composerIndex = Number(item._composerIndex);
+                if (Number.isInteger(composerIndex) && composerIndex >= 0 && composerIndex < _composerAttachments.length) {
+                    _composerAttachments.splice(composerIndex, 1);
+                }
+                _renderComposerAttachments();
+            });
+            tile.appendChild(remove);
 
             tray.appendChild(tile);
         });
@@ -11349,15 +11487,18 @@
             // conversation from overwriting an existing same-tab pin set with
             // a transient empty in-memory array.
             _loadPinnedPageContexts(false);
+            _loadCurrentPageContextExclusions(false);
             _saveTranscript();
             _saveFeedbackState();
             _savePinnedPageContexts();
+            _saveCurrentPageContextExclusions();
             if (_conversationId) _ssSet(_CONVERSATION_ID_KEY, _conversationId);
         } else {
             _ssDel(_TRANSCRIPT_KEY);
             _ssDel(_CONVERSATION_ID_KEY);
             _ssDel(_FEEDBACK_STATE_KEY);
             _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+            _ssDel(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY);
             _ssDel('ai-assistant-active-contribution-review-v1');
         }
         var toggle = document.getElementById('ai-assistant-remember-conversation-toggle');
@@ -11584,10 +11725,13 @@
         _pinnedPageContexts = [];
         _pinnedPageContextsLoaded = true;
         _ssDel(_PINNED_PAGE_CONTEXT_KEY);
+        _currentPageContextExclusions = [];
+        _currentPageContextExclusionsLoaded = true;
+        _ssDel(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY);
         _currentPageContextCache = null;
         _clearComposerAttachments();
         _renderComposerAttachments();
-        if (_currentPageContextEnabled()) {
+        if (_currentPageContextActive()) {
             _prepareCurrentPageContextItem(false).then(function () { _renderComposerAttachments(); }).catch(function () {});
         }
         var attachMenuReset = document.getElementById('ai-assistant-panel-attach-menu');
@@ -18015,7 +18159,7 @@
         var rememberDefaultOn = _cfg().panelRememberConversation !== false;
         var rememberToggle = _buildExtToggleRow(
             'Remember conversation in this tab',
-            (rememberDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the transcript and any explicitly pinned documentation-page Markdown snapshots are stored only in sessionStorage for this tab so same-tab page changes and reloads can restore the conversation context. The automatic current-page PAGE item is live and is not stored as a snapshot unless you pin it. Your explicit choice is remembered only for this tab. Same-origin page scripts can read sessionStorage, so turn this off on pages you do not fully trust.',
+            (rememberDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the transcript, explicitly pinned documentation-page Markdown snapshots, and bounded current-page include/exclude preferences are stored only in sessionStorage for this tab so same-tab page changes and reloads can restore the conversation context. The automatic current-page PAGE item is live and is not stored as a snapshot unless you pin it. Your explicit choice is remembered only for this tab. Same-origin page scripts can read sessionStorage, so turn this off on pages you do not fully trust.',
             _persistEnabled(),
             'ai-assistant-remember-conversation-toggle'
         );
@@ -18033,7 +18177,7 @@
         var currentPageDefaultOn = _cfg().panelCurrentPageContext !== false;
         var currentPageToggle = _buildExtToggleRow(
             'Use current page as context',
-            (currentPageDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the page you are reading appears visibly in the composer as a PAGE context card and its privacy-prepared Markdown is available to the assistant. Pin a page from the + menu to keep a bounded Markdown snapshot after navigating elsewhere. Your explicit ON/OFF choice is remembered only for this tab.',
+            (currentPageDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the page you are reading appears visibly in the composer as a PAGE context card and its privacy-prepared Markdown is available to the assistant. Remove the PAGE card to exclude only this page from the active conversation without turning the setting off for later pages; use + → Pages to add it back. Pin a page to keep a bounded Markdown snapshot after navigating elsewhere. Your explicit ON/OFF choice is remembered only for this tab.',
             _currentPageContextEnabled(),
             'ai-assistant-current-page-context-toggle'
         );
@@ -31873,7 +32017,7 @@
         // restoration, and ordinary browser-tab activation even when automatic
         // current-page context is OFF.
         _bindPinnedPageContextLifecycle();
-        if (_currentPageContextEnabled()) {
+        if (_currentPageContextActive()) {
             _prepareCurrentPageContextItem(false).then(function () {
                 _renderComposerAttachments();
             }).catch(function () {
@@ -31957,15 +32101,38 @@
         pageLabel.textContent = 'Pages';
         attachMenu.appendChild(pageLabel);
 
+        var currentPageContextItem = document.createElement('button');
+        currentPageContextItem.type = 'button';
+        currentPageContextItem.className = 'ai-assistant-panel-attach-menu-item ai-assistant-panel-attach-menu-item--page ai-assistant-panel-attach-menu-item--current-context';
+        currentPageContextItem.setAttribute('role', 'menuitem');
+        attachMenu.appendChild(currentPageContextItem);
+
         var currentPageItem = document.createElement('button');
         currentPageItem.type = 'button';
-        currentPageItem.className = 'ai-assistant-panel-attach-menu-item ai-assistant-panel-attach-menu-item--page';
+        currentPageItem.className = 'ai-assistant-panel-attach-menu-item ai-assistant-panel-attach-menu-item--page ai-assistant-panel-attach-menu-item--pin';
         currentPageItem.setAttribute('role', 'menuitem');
         attachMenu.appendChild(currentPageItem);
 
         function _syncCurrentPageAttachMenuItem() {
+            var sourceUrl = _currentContextPageUrl();
             var pinned = !!_findPinnedPageContext(_currentContextPageUrl());
             var autoOn = _currentPageContextEnabled();
+            var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
+
+            currentPageContextItem.innerHTML =
+                '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.terms + '</span>' +
+                '<span class="ai-assistant-panel-attach-menu-copy"><strong>' +
+                (!autoOn ? 'Enable current page context' : (excluded ? 'Add current page context' : 'Remove current page context')) +
+                '</strong><small>' +
+                (!autoOn
+                    ? 'Turn on automatic current-page context for this tab and include the page you are reading.'
+                    : (excluded
+                        ? 'Add this page back to the active conversation. Future pages remain automatic while the setting is on.'
+                        : 'Exclude only this page from the active conversation. The setting stays on and later pages still appear automatically.')) +
+                '</small></span>';
+            currentPageContextItem.setAttribute('aria-label',
+                !autoOn ? 'Enable current page context' : (excluded ? 'Add current page context' : 'Remove current page context'));
+
             currentPageItem.innerHTML =
                 '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.terms + '</span>' +
                 '<span class="ai-assistant-panel-attach-menu-copy"><strong>' +
@@ -31973,9 +32140,9 @@
                 '</strong><small>' +
                 (pinned
                     ? 'Stop keeping this Markdown snapshot after you navigate away.'
-                    : (autoOn
+                    : (autoOn && !excluded
                         ? 'Current page is already included automatically. Pin it to keep this Markdown context after navigation.'
-                        : 'Add this page as bounded Markdown context and keep it available across later questions.')) +
+                        : 'Keep a bounded Markdown snapshot available across later questions and same-tab navigation.')) +
                 '</small></span>';
             currentPageItem.setAttribute('aria-label', pinned ? 'Unpin current page context' : 'Pin current page context');
         }
@@ -32088,6 +32255,30 @@
             _hapticFeedback([8]);
             if (attachMenu.getAttribute('data-open') === 'true') _closeAttachMenu(false);
             else _openAttachMenu();
+        });
+        currentPageContextItem.addEventListener('click', function () {
+            var sourceUrl = _currentContextPageUrl();
+            var autoOn = _currentPageContextEnabled();
+            var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
+            _closeAttachMenu(false);
+            if (!autoOn) {
+                _setCurrentPageContextInTab(true);
+                showNotification('Current-page context enabled and this page was added.', false);
+                return;
+            }
+            if (excluded) {
+                _setCurrentPageContextExcluded(sourceUrl, false, false);
+                _prepareCurrentPageContextItem(false).then(function () {
+                    _renderComposerAttachments();
+                }).catch(function () {
+                    _renderComposerAttachments();
+                });
+                showNotification('Current page added back to this conversation context.', false);
+            } else {
+                _setCurrentPageContextExcluded(sourceUrl, true, true);
+                showNotification('Current page excluded from this conversation. Future pages are still added automatically.', false);
+            }
+            _syncCurrentPageAttachMenuItem();
         });
         currentPageItem.addEventListener('click', function () {
             var sourceUrl = _currentContextPageUrl();
