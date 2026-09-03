@@ -170,12 +170,22 @@
         {
             id: 'stub-echo', model: 'stub/echo', provider: 'custom',
             label: 'Stub · echo request', reasoning: true,
-            description: 'Diagnostic stub. Reports the browser-to-proxy request shape without echoing credential values.'
+            description: 'Concise browser-to-proxy transport diagnostic without credential values.'
         },
         {
             id: 'stub-mirror', model: 'stub/mirror', provider: 'custom',
-            label: 'Stub · mirror model input', reasoning: true,
-            description: 'Diagnostic stub. Mirrors the effective model-facing question and documentation context without calling a model.'
+            label: 'Stub · mirror client request', reasoning: true,
+            description: 'Advanced bounded client-send inspector: user text, one-turn files, page context, controls, and security diagnostics.'
+        },
+        {
+            id: 'stub-error', model: 'stub/error:503', provider: 'custom',
+            label: 'Stub · error 503',
+            description: 'Deterministic HTTP 503 fixture for error, retry, and fail-closed UI tests.'
+        },
+        {
+            id: 'stub-hostile', model: 'stub/hostile', provider: 'custom',
+            label: 'Stub · hostile output',
+            description: 'Deliberately hostile inert text for renderer and trust-boundary tests.'
         },
         {
             id: 'stub-qa', model: 'stub/qa', provider: 'custom',
@@ -183,13 +193,14 @@
             description: 'Deterministic fixture replies for repeatable chat UI tests.'
         },
         {
-            id: 'stub-hostile', model: 'stub/hostile', provider: 'custom',
-            label: 'Stub · hostile output',
-            description: 'Deliberately hostile inert text for renderer and trust-boundary tests.'
+            id: 'stub-slow', model: 'stub/slow:1500', provider: 'custom',
+            label: 'Stub · slow 1.5 s',
+            description: 'Delayed deterministic fixture for loading, cancellation, timeout, and streaming tests.'
         }
     ];
     var _JS_STUB_MODEL_IDS = {
-        'stub-echo': true, 'stub-mirror': true, 'stub-qa': true, 'stub-hostile': true
+        'stub-echo': true, 'stub-mirror': true, 'stub-error': true,
+        'stub-hostile': true, 'stub-qa': true, 'stub-slow': true
     };
 
     function _stubModelsEnabled(cfg) {
@@ -41552,13 +41563,19 @@
         if (!model || typeof model !== 'object') return false;
         var id = typeof model.id === 'string' ? model.id : '';
         var name = typeof model.model === 'string' ? model.model : '';
-        return !!_JS_STUB_MODEL_IDS[id] || /^stub\/(?:echo|mirror|qa|hostile)$/i.test(name);
+        return !!_JS_STUB_MODEL_IDS[id] || /^stub\/(?:echo|mirror|error(?::[0-9]+)?|hostile|qa|slow(?::[0-9]+)?)$/i.test(name);
     }
 
     function _stubModeName(model) {
         var name = model && typeof model.model === 'string' ? model.model.trim().toLowerCase() : '';
         var m = /^stub\/([a-z0-9_]+)/.exec(name);
         return m ? m[1] : 'echo';
+    }
+
+    function _stubModeArg(model) {
+        var name = model && typeof model.model === 'string' ? model.model.trim().toLowerCase() : '';
+        var m = /^stub\/[a-z0-9_]+(?::([^\s]+))?/.exec(name);
+        return m && m[1] ? m[1] : '';
     }
 
     function _indentStubText(value) {
@@ -41575,7 +41592,7 @@
         if (q.indexOf('streaming') !== -1) return 'Streaming fixture selected. No network request was made.';
         if (q.indexOf('hello') !== -1) return 'Hello from the browser-local stub model. No inference was performed.';
         if (q.indexOf('ping') !== -1) return 'pong';
-        if (q.indexOf('context') !== -1) return 'Context is available. Use Stub · mirror model input to inspect its text.';
+        if (q.indexOf('context') !== -1) return 'Context is available. Use Stub · mirror client request to inspect what the panel would send.';
         return 'No fixture matched. Known fixtures: context, hello, ping, streaming, who are you.';
     }
 
@@ -41588,9 +41605,45 @@
         '```\nunterminated fence'
     ].join('\n\n');
 
+    function _localMirrorRedact(value) {
+        var text = String(value == null ? '' : value);
+        // Mirror display is persisted as an assistant turn, so redact the whole
+        // PEM block before the ordinary structured-secret pass can replace only
+        // its BEGIN marker.
+        text = text.replace(
+            /-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----[\s\S]*?-----END (?:[A-Z ]+ )?PRIVATE KEY-----/g,
+            '[redacted:private_key_block]'
+        );
+        return _redactSecrets(text);
+    }
+
+    function _localMirrorSecurityLine(label, scan) {
+        var kinds = scan && Array.isArray(scan.kinds) ? scan.kinds : [];
+        return '- injection indicators in ' + label + ': ' + (kinds.length ? kinds.join(', ') : 'none');
+    }
+
     async function _panelLocalStubReply(question, cfg, preparedPageContext, activeModel) {
-        await new Promise(function (resolve) { setTimeout(resolve, 120); });
         var mode = _stubModeName(activeModel);
+        var arg = _stubModeArg(activeModel);
+        var delay = 120;
+        if (mode === 'slow') {
+            var requested = parseInt(arg || '1500', 10);
+            delay = Number.isFinite(requested) ? Math.max(0, Math.min(requested, 60000)) : 1500;
+        }
+        await new Promise(function (resolve) { setTimeout(resolve, delay); });
+
+        if (mode === 'error') {
+            var status = parseInt(arg || '503', 10);
+            if (!Number.isFinite(status) || status < 400 || status > 599) status = 503;
+            var err = new Error('AI request failed (HTTP ' + status + ').');
+            err.status = status;
+            err.code = 'STUB_ERROR';
+            throw err;
+        }
+        if (mode === 'slow') {
+            _appendPanelMessage('Delayed stub reply (' + delay + ' ms). No network request or inference was performed.', 'assistant');
+            return;
+        }
         if (mode === 'qa') {
             _appendPanelMessage(_localStubQa(question), 'assistant');
             return;
@@ -41611,13 +41664,46 @@
                 if (url && url !== '<page-redacted>') parts.push(url);
                 descriptor = parts.join(' · ').slice(0, 2048);
             } catch (_) {}
+
+            var split = _splitQuestionWithAttachments(question);
+            var redUser = _localMirrorRedact(split.question);
+            var redFiles = _localMirrorRedact(split.attachmentContext);
+            var redPage = _localMirrorRedact(pageText);
+            var redDescriptor = _localMirrorRedact(descriptor);
+            var fileNames = _replayAttachmentNames(split.attachmentContext);
+            var userScan = _scanInjection(split.question);
+            var fileScan = _scanInjection(split.attachmentContext);
+            var pageScan = _scanInjection(pageText);
+            var findings = [];
+            [redUser, redFiles, redPage, redDescriptor].forEach(function (result) {
+                if (result && Array.isArray(result.findings)) findings = findings.concat(result.findings);
+            });
+            var findingText = findings.length
+                ? findings.map(function (f) { return f.pattern + ' ×' + f.count; }).join(', ')
+                : 'none';
+
             _appendPanelMessage(
-                '**Stub mirror · browser-local pre-transport view**\n\n' +
-                'No proxy endpoint is configured, so this shows the exact question/context ' +
-                'the browser would hand to the proxy, not a server-owned system prompt.\n\n' +
-                '**Question**\n\n' + _indentStubText(question) + '\n\n' +
-                '**Documentation context**\n\n' + _indentStubText(pageText) + '\n\n' +
-                '**Page descriptor**\n\n' + _indentStubText(descriptor),
+                '**Stub mirror · browser-local request inspector**\n\n' +
+                'No proxy endpoint is configured, so **no HTTP request exists to mirror**. ' +
+                'This is the panel input that would participate in a request. Recognized secret-shaped ' +
+                'values are redacted in this diagnostic answer.\n\n' +
+                '**System / authority boundary**\n\n' +
+                '- client→server wire: `not created`\n' +
+                '- server-owned system policy: `not available without a proxy`\n' +
+                '- page/file content remains untrusted reference data\n\n' +
+                '**User input text**\n\n' + _indentStubText(redUser.text || '(empty)') + '\n\n' +
+                '**Uploaded one-turn files**\n\n' +
+                (fileNames.length ? '- files detected: `' + fileNames.join('`, `') + '`\n\n' : '- files detected: none\n\n') +
+                _indentStubText(redFiles.text || '(none)') + '\n\n' +
+                '**Documentation / page context**\n\n' + _indentStubText(redPage.text || '(none)') + '\n\n' +
+                '**Page descriptor**\n\n' + _indentStubText(redDescriptor.text || '(none)') + '\n\n' +
+                '**Security diagnostics**\n\n' +
+                '- recognized secret-shaped values in displayed inputs: ' + findingText + '\n' +
+                _localMirrorSecurityLine('user text', userScan) + '\n' +
+                _localMirrorSecurityLine('uploaded file text', fileScan) + '\n' +
+                _localMirrorSecurityLine('page context', pageScan) + '\n\n' +
+                '**Available stub modes**\n\n' +
+                '`echo`, `mirror`, `error`, `hostile`, `qa`, `slow`',
                 'assistant'
             );
             return;
@@ -41627,7 +41713,7 @@
             '- upstream called: `false`\n' +
             '- proxy endpoint: `not configured`\n' +
             '- user message chars: `' + String(question || '').length + '`\n' +
-            '- available local modes: `echo`, `mirror`, `qa`, `hostile`',
+            '- available local modes: `echo`, `mirror`, `error`, `hostile`, `qa`, `slow`',
             'assistant'
         );
     }
