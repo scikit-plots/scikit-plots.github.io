@@ -30643,6 +30643,25 @@
         });
     }
 
+    function _slashCommandCommittedItem(raw, commands) {
+        var normalizedRaw = _normalizeSlashCommandText(raw);
+        var hasTrailingWhitespace = /[ \t]$/.test(String(raw == null ? '' : raw));
+        var available = Array.isArray(commands) ? commands : [];
+        for (var i = 0; i < available.length; i++) {
+            var commandBody = _normalizeSlashCommandText(String(available[i] && available[i].command || '').replace(/^\//, ''));
+            if (!commandBody) continue;
+            // `/skill-creator ` commits the command token immediately; later
+            // argument characters must not reopen autocomplete.  The normalized
+            // prefix branch covers `/skill-creator build ...` on every later
+            // input event.  Multi-word utility commands follow the same rule.
+            if ((normalizedRaw === commandBody && hasTrailingWhitespace) ||
+                    normalizedRaw.indexOf(commandBody + ' ') === 0) {
+                return available[i];
+            }
+        }
+        return null;
+    }
+
     /**
      * Parse the local Skill Studio slash command without stealing ordinary chat.
      *
@@ -33535,6 +33554,11 @@
             slashPaletteItems = [];
             slashPaletteIndex = 0;
             slashPaletteDiscovery = null;
+            // Keep the hidden DOM truthful too.  Stale menuitem nodes are not
+            // useful while closed and make runtime/debug snapshots imply that
+            // a command set is still active when it is not.
+            try { slashPaletteList.replaceChildren(); } catch (_e) {}
+            slashPaletteStatus.textContent = '';
         }
 
         function _highlightSlashCommand(index) {
@@ -33690,6 +33714,63 @@
             return false;
         }
 
+        function _buildSlashCommandPaletteRows(commands) {
+            var fragment = document.createDocumentFragment();
+            var rows = [];
+            (Array.isArray(commands) ? commands : []).forEach(function (item, index) {
+                var row = document.createElement('button');
+                row.type = 'button';
+                row.id = 'ai-assistant-panel-slash-command-' + item.id;
+                row.className = 'ai-assistant-panel-slash-command-item';
+                row.setAttribute('role', 'menuitem');
+                row.setAttribute('tabindex', '-1');
+                row.setAttribute('data-command', item.command);
+
+                // Dynamic command content is built with textContent, never HTML
+                // interpolation.  This removes an entire escaping-helper
+                // dependency from the composer and makes future registry entries
+                // safe even when titles/descriptions contain markup characters.
+                var commandIcon = document.createElement('span');
+                commandIcon.className = 'ai-assistant-panel-slash-command-icon';
+                commandIcon.setAttribute('aria-hidden', 'true');
+                commandIcon.textContent = '/';
+                row.appendChild(commandIcon);
+
+                var commandCopy = document.createElement('span');
+                commandCopy.className = 'ai-assistant-panel-slash-command-copy';
+                var commandName = document.createElement('strong');
+                // The icon already renders the slash, so the visible label drops
+                // only that leading glyph.  Canonical data-command still keeps
+                // the full `/command` value for execution and accessibility.
+                commandName.textContent = String(item.command || '').replace(/^\//, '');
+                var commandDescription = document.createElement('small');
+                commandDescription.textContent = String(item.description || item.title || '');
+                commandCopy.appendChild(commandName);
+                commandCopy.appendChild(commandDescription);
+                row.appendChild(commandCopy);
+
+                if (item.argumentHint || item.badge) {
+                    var commandArg = document.createElement('span');
+                    commandArg.className = 'ai-assistant-panel-slash-command-arg';
+                    commandArg.textContent = String(item.argumentHint || item.badge || '');
+                    row.appendChild(commandArg);
+                }
+                row.addEventListener('pointermove', function () { _highlightSlashCommand(index); });
+                row.addEventListener('click', function () { _executeSlashCommand(item); });
+                fragment.appendChild(row);
+                rows.push(row);
+            });
+
+            if (!rows.length) {
+                var empty = document.createElement('div');
+                empty.className = 'ai-assistant-panel-slash-command-empty';
+                empty.setAttribute('role', 'presentation');
+                empty.textContent = 'No matching local commands';
+                fragment.appendChild(empty);
+            }
+            return { fragment: fragment, rows: rows };
+        }
+
         function _renderSlashCommandPalette(force) {
             var value = String(input.value || '');
             var active = _composerSlashDiscovery();
@@ -33702,60 +33783,43 @@
             if (!force && slashPaletteDismissedValue === dismissKey) return;
             slashPaletteDismissedValue = null;
             slashPaletteDiscovery = active;
-            // The simple inline hint is positioned for a leading slash only.
-            // Mid-sentence discovery still gets the full palette header hint
-            // without pretending we can place proportional-font text at the caret.
-            slashInlineHint.hidden = !(active.start === 0 && active.raw === '');
+            var availableCommands = _availableLocalSlashCommands();
+            // A command token is committed once whitespace follows its complete
+            // name.  Keep discovery closed for all subsequent argument/prose
+            // characters instead of reopening a misleading no-match menu on the
+            // next input event (for example `/skill-creator build ...`).
+            if (_slashCommandCommittedItem(active.raw, availableCommands)) {
+                _closeSlashCommandPalette(false);
+                return;
+            }
 
             var commands = _slashCommandResults(active.query);
             // Bare `/` is the discovery affordance itself.  Never show an open
             // but empty shell for it: if a future matcher regression rejects an
             // empty query, fall back to the currently available catalog.
-            if (!commands.length && active.query === '') commands = _availableLocalSlashCommands();
+            if (!commands.length && active.query === '') commands = availableCommands;
 
-            // Once an argument-taking command is complete and the user commits
-            // a following space, leave discovery mode so the remainder is free
-            // text (for example `/skill-creator build an API skill`).
-            var rawLower = _normalizeSlashCommandText(active.raw);
-            var rawHasTrailingSpace = /[ \t]$/.test(active.raw);
-            var exactCompletedCommand = commands.find(function (item) {
-                return _normalizeSlashCommandText(String(item.command || '').replace(/^\//, '')) === rawLower;
-            });
-            if (rawHasTrailingSpace && exactCompletedCommand) {
+            // Build off-DOM first.  Opening the palette is a commit step: if row
+            // construction ever regresses, close cleanly rather than exposing a
+            // hint/open shell that disagrees with the available command state.
+            var built;
+            try {
+                built = _buildSlashCommandPaletteRows(commands);
+            } catch (renderError) {
                 _closeSlashCommandPalette(false);
+                _log('warn', '[ai-assistant][slash-commands] Palette render failed; command discovery was closed safely.');
                 return;
-            }
-            slashPaletteList.replaceChildren();
-            slashPaletteItems = [];
-            slashPaletteIndex = 0;
-
-            commands.forEach(function (item, index) {
-                var row = document.createElement('button');
-                row.type = 'button';
-                row.id = 'ai-assistant-panel-slash-command-' + item.id;
-                row.className = 'ai-assistant-panel-slash-command-item';
-                row.setAttribute('role', 'menuitem');
-                row.setAttribute('tabindex', '-1');
-                row.setAttribute('data-command', item.command);
-                row.innerHTML =
-                    '<span class="ai-assistant-panel-slash-command-icon" aria-hidden="true">/</span>' +
-                    '<span class="ai-assistant-panel-slash-command-copy"><strong>' + _esc(item.command) + '</strong><small>' + _esc(item.description || item.title || '') + '</small></span>' +
-                    ((item.argumentHint || item.badge) ? '<span class="ai-assistant-panel-slash-command-arg">' + _esc(item.argumentHint || item.badge) + '</span>' : '');
-                row.addEventListener('pointermove', function () { _highlightSlashCommand(index); });
-                row.addEventListener('click', function () { _executeSlashCommand(item); });
-                slashPaletteList.appendChild(row);
-                slashPaletteItems.push(row);
-            });
-
-            if (!commands.length) {
-                var empty = document.createElement('div');
-                empty.className = 'ai-assistant-panel-slash-command-empty';
-                empty.setAttribute('role', 'presentation');
-                empty.textContent = 'No matching local commands';
-                slashPaletteList.appendChild(empty);
             }
 
             _closeAttachMenu(false);
+            slashPaletteList.replaceChildren(built.fragment);
+            slashPaletteItems = built.rows;
+            slashPaletteIndex = 0;
+            slashPaletteDiscovery = active;
+            // The simple inline hint is positioned for a leading slash only.
+            // Mid-sentence discovery still gets the full palette header hint
+            // without pretending we can place proportional-font text at the caret.
+            slashInlineHint.hidden = !(active.start === 0 && active.raw === '');
             slashPalette.hidden = false;
             slashPalette.setAttribute('data-open', 'true');
             input.setAttribute('aria-expanded', 'true');
