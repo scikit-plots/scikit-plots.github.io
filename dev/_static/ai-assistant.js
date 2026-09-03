@@ -30463,6 +30463,139 @@
     var _SKILL_GENERATOR_ASSET_TOTAL_BYTES = 12 * 1024 * 1024;
     var _SKILL_CREATOR_COMMAND = '/skill-creator';
     var _SKILL_CREATOR_COMMAND_GOAL_MAX_CHARS = 4000;
+    var _ADD_CURRENT_PAGE_CONTEXT_COMMAND = '/Add current page context';
+    var _PIN_CURRENT_PAGE_COMMAND = '/Pin current page';
+    var _ADD_FILES_COMMAND = '/Add files or photos';
+
+    // Run 103 — canonical local slash-command registry.  Commands are friendly
+    // user-facing phrases rather than implementation identifiers.  Discovery,
+    // keyboard selection and execution all read from this registry so future
+    // local actions can be added without another composer-specific parser.
+    // Dynamic descriptions expose useful current state, but merely listing the
+    // commands remains local-only and never starts page extraction or network IO.
+    function _localSlashCommandDefinitions() {
+        var currentUrl = _currentContextPageUrl();
+        var currentEnabled = _currentPageContextEnabled();
+        var currentExcluded = currentEnabled && _isCurrentPageContextExcluded(currentUrl);
+        var currentActive = currentEnabled && !currentExcluded;
+        var currentPinned = !!_findPinnedPageContext(currentUrl);
+        return [
+            {
+                id: 'add-current-page-context',
+                command: _ADD_CURRENT_PAGE_CONTEXT_COMMAND,
+                title: 'Add current page context',
+                description: currentActive
+                    ? 'Current page is already included in this conversation.'
+                    : (currentEnabled
+                        ? 'Add this page back to the active conversation context.'
+                        : 'Enable current-page context for this tab and include the page you are reading.'),
+                keywords: ['page', 'context', 'current', 'documentation', 'add'],
+                action: 'add-current-page-context',
+                badge: currentActive ? 'Added' : 'Context',
+                enabled: true
+            },
+            {
+                id: 'pin-current-page',
+                command: _PIN_CURRENT_PAGE_COMMAND,
+                title: 'Pin current page',
+                description: currentPinned
+                    ? 'Current page is already pinned as a bounded Markdown snapshot.'
+                    : 'Keep a bounded Markdown snapshot available for later questions and navigation.',
+                keywords: ['pin', 'page', 'markdown', 'reference', 'context'],
+                action: 'pin-current-page',
+                badge: currentPinned ? 'Pinned' : 'Keep',
+                enabled: true
+            },
+            {
+                id: 'add-files',
+                command: _ADD_FILES_COMMAND,
+                title: 'Add files or photos',
+                description: 'Open the local file picker and stage files for this conversation.',
+                keywords: ['add', 'file', 'files', 'photo', 'photos', 'upload', 'attach'],
+                action: 'add-files',
+                badge: 'Local',
+                enabled: true
+            },
+            {
+                id: 'skill-creator',
+                command: _SKILL_CREATOR_COMMAND,
+                title: 'Skill Creator',
+                description: 'Create, refine, validate, and package a portable Agent Skill from visible context.',
+                keywords: ['skill', 'creator', 'agent', 'eval', 'benchmark', 'reference'],
+                argumentHint: 'optional goal',
+                action: 'skill-creator',
+                enabled: _cfg().panelSkillGenerator !== false
+            }
+        ];
+    }
+
+    function _availableLocalSlashCommands() {
+        return _localSlashCommandDefinitions().filter(function (item) { return item.enabled !== false; });
+    }
+
+    function _normalizeSlashCommandText(value) {
+        return String(value == null ? '' : value).replace(/\s+/g, ' ').trim().toLowerCase();
+    }
+
+    /**
+     * Resolve the active slash phrase at a collapsed caret.  A slash may start
+     * at the beginning of the composer or after whitespace, which permits
+     * natural discovery in `hello /` and ` /skill`.  Immediate whitespace after
+     * the slash (`/ `) explicitly opts out and leaves ordinary text alone.
+     * Spaces later in the phrase are allowed because friendly commands such as
+     * `/Add current page context` are multi-word.
+     *
+     * @returns {object|null} {start,end,raw,query} or null when no active phrase
+     */
+    function _slashCommandDiscoveryAt(value, selectionStart, selectionEnd) {
+        var text = String(value == null ? '' : value);
+        var start = Number.isFinite(Number(selectionStart)) ? Number(selectionStart) : text.length;
+        var end = Number.isFinite(Number(selectionEnd)) ? Number(selectionEnd) : start;
+        start = Math.max(0, Math.min(text.length, start));
+        end = Math.max(0, Math.min(text.length, end));
+        if (start !== end) return null;
+
+        var lineStart = text.lastIndexOf('\n', Math.max(0, end - 1)) + 1;
+        var slash = -1;
+        for (var i = end - 1; i >= lineStart; i--) {
+            if (text.charAt(i) !== '/') continue;
+            if (i === 0 || /\s/.test(text.charAt(i - 1))) {
+                slash = i;
+                break;
+            }
+        }
+        if (slash < 0) return null;
+        var raw = text.slice(slash + 1, end);
+        if (/^[ \t]/.test(raw) || /[\r\n]/.test(raw)) return null;
+        return {
+            start: slash,
+            end: end,
+            raw: raw,
+            query: _normalizeSlashCommandText(raw)
+        };
+    }
+
+    // Compatibility wrapper retained for tests/integrations that only need the
+    // query value at the end of the composer.
+    function _slashCommandFilterQuery(value) {
+        var text = String(value == null ? '' : value);
+        var active = _slashCommandDiscoveryAt(text, text.length, text.length);
+        return active ? active.query : null;
+    }
+
+    function _slashCommandMatches(item, query) {
+        query = _normalizeSlashCommandText(query);
+        if (!query) return true;
+        var command = _normalizeSlashCommandText(String(item && item.command || '').replace(/^\//, ''));
+        var title = _normalizeSlashCommandText(item && item.title || '');
+        if (command.indexOf(query) === 0 || title.indexOf(query) === 0) return true;
+        if (query.length >= 2 && (command.indexOf(query) >= 0 || title.indexOf(query) >= 0)) return true;
+        var words = Array.isArray(item && item.keywords) ? item.keywords : [];
+        return words.some(function (word) {
+            var normalized = _normalizeSlashCommandText(word);
+            return normalized.indexOf(query) === 0 || (query.length >= 2 && normalized.indexOf(query) >= 0);
+        });
+    }
 
     /**
      * Parse the local Skill Studio slash command without stealing ordinary chat.
@@ -32935,8 +33068,54 @@
         input.rows = 2;
         input.placeholder = placeholder;
         input.setAttribute('aria-label', 'Your question');
+        input.setAttribute('aria-autocomplete', 'list');
+        input.setAttribute('aria-haspopup', 'menu');
+        input.setAttribute('aria-expanded', 'false');
+        input.setAttribute('aria-controls', 'ai-assistant-panel-slash-command-menu');
 
         inputGroup.appendChild(input);
+
+        // Slash-command palette lives inside the composer stacking context but
+        // opens upward into the panel body.  It does not affect textarea layout.
+        var slashInlineHint = document.createElement('span');
+        slashInlineHint.className = 'ai-assistant-panel-slash-inline-hint';
+        slashInlineHint.textContent = 'Type to filter';
+        slashInlineHint.setAttribute('aria-hidden', 'true');
+        slashInlineHint.hidden = true;
+        inputGroup.appendChild(slashInlineHint);
+
+        var slashPalette = document.createElement('div');
+        slashPalette.id = 'ai-assistant-panel-slash-command-menu';
+        slashPalette.className = 'ai-assistant-panel-slash-command-menu';
+        slashPalette.setAttribute('role', 'menu');
+        slashPalette.setAttribute('aria-label', 'Slash commands');
+        slashPalette.setAttribute('data-open', 'false');
+        slashPalette.hidden = true;
+
+        var slashPaletteHead = document.createElement('div');
+        slashPaletteHead.className = 'ai-assistant-panel-slash-command-head';
+        slashPaletteHead.setAttribute('role', 'presentation');
+        slashPaletteHead.innerHTML = '<strong>Commands</strong><span>Type to filter</span>';
+        slashPalette.appendChild(slashPaletteHead);
+
+        var slashPaletteList = document.createElement('div');
+        slashPaletteList.className = 'ai-assistant-panel-slash-command-list';
+        slashPaletteList.setAttribute('role', 'presentation');
+        slashPalette.appendChild(slashPaletteList);
+
+        var slashPaletteFoot = document.createElement('div');
+        slashPaletteFoot.className = 'ai-assistant-panel-slash-command-foot';
+        slashPaletteFoot.setAttribute('role', 'presentation');
+        slashPaletteFoot.innerHTML = '<span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>Tab</kbd> complete</span><span><kbd>Enter</kbd> run</span><span><kbd>Esc</kbd> close</span>';
+        slashPalette.appendChild(slashPaletteFoot);
+        inputGroup.appendChild(slashPalette);
+
+        var slashPaletteStatus = document.createElement('span');
+        slashPaletteStatus.className = 'ai-assistant-panel-sr-only';
+        slashPaletteStatus.setAttribute('role', 'status');
+        slashPaletteStatus.setAttribute('aria-live', 'polite');
+        slashPaletteStatus.setAttribute('aria-atomic', 'true');
+        inputGroup.appendChild(slashPaletteStatus);
 
         var attachmentTray = document.createElement('div');
         attachmentTray.id = 'ai-assistant-panel-attachments';
@@ -33247,6 +33426,7 @@
         }
 
         function _openAttachMenu() {
+            _closeSlashCommandPalette(false);
             _syncCurrentPageAttachMenuItem();
             _positionAttachMenu();
             attachMenu.hidden = false;
@@ -33254,6 +33434,321 @@
             attachBtn.setAttribute('aria-expanded', 'true');
             var first = attachMenu.querySelector('[role="menuitem"]:not(:disabled)');
             if (first) first.focus();
+        }
+
+        // ── Slash command palette (Run 102) ────────────────────────────────
+        // Keep focus in the textarea while navigating. aria-activedescendant
+        // exposes the highlighted command to assistive technology and avoids a
+        // focus round-trip that would interrupt typing on touch/virtual keyboards.
+        var slashPaletteItems = [];
+        var slashPaletteIndex = 0;
+        var slashPaletteDismissedValue = null;
+        var slashPaletteDiscovery = null;
+        var slashImeComposing = false;
+
+        function _composerSlashDiscovery() {
+            if (slashImeComposing) return null;
+            var value = String(input.value || '');
+            var start = value.length, end = value.length;
+            try {
+                start = input.selectionStart;
+                end = input.selectionEnd;
+            } catch (_e) {}
+            return _slashCommandDiscoveryAt(value, start, end);
+        }
+
+        function _composerSlashFilterQuery() {
+            var active = _composerSlashDiscovery();
+            return active ? active.query : null;
+        }
+
+        function _positionSlashCommandPalette() {
+            if (!slashPalette || slashPalette.hidden) return;
+            var bodyRect = null, groupRect = null;
+            try {
+                var panelBody = document.getElementById('ai-assistant-panel-body');
+                bodyRect = panelBody && panelBody.getBoundingClientRect ? panelBody.getBoundingClientRect() : null;
+                groupRect = inputGroup.getBoundingClientRect ? inputGroup.getBoundingClientRect() : null;
+            } catch (_e) {}
+            if (bodyRect && groupRect) {
+                var availableAbove = Math.max(96, Math.floor(groupRect.top - bodyRect.top - 8));
+                slashPalette.style.maxHeight = Math.min(384, availableAbove) + 'px';
+            } else {
+                slashPalette.style.maxHeight = '24rem';
+            }
+        }
+
+        function _closeSlashCommandPalette(markDismissed) {
+            if (!slashPalette) return;
+            if (markDismissed) slashPaletteDismissedValue = String(input.value || '') + '|' + String(input.selectionEnd == null ? '' : input.selectionEnd);
+            slashPalette.hidden = true;
+            slashPalette.setAttribute('data-open', 'false');
+            input.setAttribute('aria-expanded', 'false');
+            input.removeAttribute('aria-activedescendant');
+            slashInlineHint.hidden = true;
+            slashPaletteItems = [];
+            slashPaletteIndex = 0;
+            slashPaletteDiscovery = null;
+        }
+
+        function _highlightSlashCommand(index) {
+            if (!slashPaletteItems.length) {
+                input.removeAttribute('aria-activedescendant');
+                return;
+            }
+            slashPaletteIndex = (index + slashPaletteItems.length) % slashPaletteItems.length;
+            slashPaletteItems.forEach(function (row, i) {
+                var active = i === slashPaletteIndex;
+                row.setAttribute('data-highlighted', active ? 'true' : 'false');
+                row.setAttribute('aria-current', active ? 'true' : 'false');
+            });
+            var selected = slashPaletteItems[slashPaletteIndex];
+            if (selected && selected.id) input.setAttribute('aria-activedescendant', selected.id);
+            try { selected.scrollIntoView({ block: 'nearest' }); } catch (_e) {}
+        }
+
+        function _replaceActiveSlashCommand(item) {
+            if (!item || !item.command) return false;
+            var active = _composerSlashDiscovery() || slashPaletteDiscovery;
+            if (!active) return false;
+            var value = String(input.value || '');
+            var inserted = String(item.command) + (item.argumentHint ? ' ' : '');
+            input.value = value.slice(0, active.start) + inserted + value.slice(active.end);
+            var caret = active.start + inserted.length;
+            slashPaletteDismissedValue = input.value + '|' + caret;
+            _closeSlashCommandPalette(false);
+            _updateSendBtnState();
+            input.focus();
+            try { input.setSelectionRange(caret, caret); } catch (_e) {}
+            if (!item.argumentHint) {
+                // Utility commands remain selected after Tab completion so the
+                // next Enter executes locally rather than falling through to
+                // chat submission.  Argument commands intentionally close so
+                // the user can type free-form arguments.
+                slashPaletteDismissedValue = null;
+                _renderSlashCommandPalette(true);
+            }
+            return true;
+        }
+
+        function _removeActiveSlashPhrase(active) {
+            active = active || _composerSlashDiscovery() || slashPaletteDiscovery;
+            if (!active) return { text: String(input.value || ''), caret: null };
+            var value = String(input.value || '');
+            var next = value.slice(0, active.start) + value.slice(active.end);
+            input.value = next;
+            var caret = Math.min(active.start, next.length);
+            _updateSendBtnState();
+            try { input.setSelectionRange(caret, caret); } catch (_e) {}
+            return { text: next, caret: caret };
+        }
+
+        function _addCurrentPageContextFromCommand() {
+            var sourceUrl = _currentContextPageUrl();
+            var autoOn = _currentPageContextEnabled();
+            var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
+            if (autoOn && !excluded) {
+                showNotification('Current page is already included in this conversation context.', false);
+                return Promise.resolve(false);
+            }
+            if (!autoOn) {
+                _setCurrentPageContextInTab(true);
+                _syncCurrentPageAttachMenuItem();
+                showNotification('Current-page context enabled and this page was added.', false);
+                return Promise.resolve(true);
+            }
+            _setCurrentPageContextExcluded(sourceUrl, false, false);
+            _syncCurrentPageAttachMenuItem();
+            return _prepareCurrentPageContextItem(false).then(function () {
+                _renderComposerAttachments();
+                showNotification('Current page added back to this conversation context.', false);
+                return true;
+            }).catch(function () {
+                _renderComposerAttachments();
+                showNotification('Current page was added back; its preview will refresh when available.', false);
+                return true;
+            });
+        }
+
+        function _pinCurrentPageFromCommand() {
+            var sourceUrl = _currentContextPageUrl();
+            if (_findPinnedPageContext(sourceUrl)) {
+                showNotification('Current page is already pinned.', false);
+                return Promise.resolve(false);
+            }
+            currentPageItem.disabled = true;
+            return _pinCurrentPageContext().then(function () {
+                showNotification(_persistEnabled()
+                    ? 'Current page pinned for this conversation and same-tab navigation.'
+                    : (_cfg().panelPersist === false
+                        ? 'Current page pinned for this page. Conversation persistence is disabled by site configuration.'
+                        : 'Current page pinned for this page. Turn on Remember conversation to keep it across navigation.'), false);
+                return true;
+            }).catch(function (err) {
+                if (err && err.message === 'PAGE_CONTEXT_PIN_STALE') return false;
+                if (err && err.message === 'PINNED_PAGE_CONTEXT_LIMIT') {
+                    showNotification('Pinned-page limit reached. Remove a pinned page before adding another.', false);
+                } else {
+                    showNotification('Current page could not be pinned as context.', false);
+                }
+                return false;
+            }).finally(function () {
+                currentPageItem.disabled = false;
+                _syncCurrentPageAttachMenuItem();
+            });
+        }
+
+        function _executeSlashCommand(item) {
+            if (!item) return false;
+            var active = _composerSlashDiscovery() || slashPaletteDiscovery;
+            if (!active) return false;
+            var commandId = String(item.action || item.id || '');
+            var remaining = _removeActiveSlashPhrase(active);
+            _closeSlashCommandPalette(false);
+            input.focus();
+
+            if (commandId === 'add-current-page-context') {
+                _addCurrentPageContextFromCommand();
+                return true;
+            }
+            if (commandId === 'pin-current-page') {
+                _pinCurrentPageFromCommand();
+                return true;
+            }
+            if (commandId === 'add-files') {
+                _openAttachmentPicker();
+                return true;
+            }
+            if (commandId === 'skill-creator') {
+                if (_cfg().panelSkillGenerator === false) {
+                    showNotification('Skill Generator is disabled by this documentation site.', false);
+                    return true;
+                }
+                var goal = String(remaining.text || '').trim();
+                if (goal.length > _SKILL_CREATOR_COMMAND_GOAL_MAX_CHARS) {
+                    goal = goal.slice(0, _SKILL_CREATOR_COMMAND_GOAL_MAX_CHARS);
+                }
+                input.value = '';
+                _updateSendBtnState();
+                _requestSkillGeneratorOpen({
+                    source: 'slash-command',
+                    mode: 'guide',
+                    goal: goal,
+                    selectComposerFiles: true
+                });
+                showNotification(goal
+                    ? 'Skill Generator opened with your surrounding draft as the goal.'
+                    : 'Skill Generator opened. Describe what the skill should enable.', true);
+                return true;
+            }
+            return false;
+        }
+
+        function _renderSlashCommandPalette(force) {
+            var value = String(input.value || '');
+            var active = _composerSlashDiscovery();
+            if (!active) {
+                slashPaletteDismissedValue = null;
+                _closeSlashCommandPalette(false);
+                return;
+            }
+            var dismissKey = value + '|' + String(active.end);
+            if (!force && slashPaletteDismissedValue === dismissKey) return;
+            slashPaletteDismissedValue = null;
+            slashPaletteDiscovery = active;
+            // The simple inline hint is positioned for a leading slash only.
+            // Mid-sentence discovery still gets the full palette header hint
+            // without pretending we can place proportional-font text at the caret.
+            slashInlineHint.hidden = !(active.start === 0 && active.raw === '');
+
+            var commands = _availableLocalSlashCommands().filter(function (item) {
+                return _slashCommandMatches(item, active.query);
+            });
+
+            // Once an argument-taking command is complete and the user commits
+            // a following space, leave discovery mode so the remainder is free
+            // text (for example `/skill-creator build an API skill`).
+            var rawLower = _normalizeSlashCommandText(active.raw);
+            var rawHasTrailingSpace = /[ \t]$/.test(active.raw);
+            var exactCompletedCommand = commands.find(function (item) {
+                return _normalizeSlashCommandText(String(item.command || '').replace(/^\//, '')) === rawLower;
+            });
+            if (rawHasTrailingSpace && exactCompletedCommand) {
+                _closeSlashCommandPalette(false);
+                return;
+            }
+            slashPaletteList.replaceChildren();
+            slashPaletteItems = [];
+            slashPaletteIndex = 0;
+
+            commands.forEach(function (item, index) {
+                var row = document.createElement('button');
+                row.type = 'button';
+                row.id = 'ai-assistant-panel-slash-command-' + item.id;
+                row.className = 'ai-assistant-panel-slash-command-item';
+                row.setAttribute('role', 'menuitem');
+                row.setAttribute('tabindex', '-1');
+                row.setAttribute('data-command', item.command);
+                row.innerHTML =
+                    '<span class="ai-assistant-panel-slash-command-icon" aria-hidden="true">/</span>' +
+                    '<span class="ai-assistant-panel-slash-command-copy"><strong>' + _esc(item.command) + '</strong><small>' + _esc(item.description || item.title || '') + '</small></span>' +
+                    ((item.argumentHint || item.badge) ? '<span class="ai-assistant-panel-slash-command-arg">' + _esc(item.argumentHint || item.badge) + '</span>' : '');
+                row.addEventListener('pointermove', function () { _highlightSlashCommand(index); });
+                row.addEventListener('click', function () { _executeSlashCommand(item); });
+                slashPaletteList.appendChild(row);
+                slashPaletteItems.push(row);
+            });
+
+            if (!commands.length) {
+                var empty = document.createElement('div');
+                empty.className = 'ai-assistant-panel-slash-command-empty';
+                empty.setAttribute('role', 'presentation');
+                empty.textContent = 'No matching local commands';
+                slashPaletteList.appendChild(empty);
+            }
+
+            _closeAttachMenu(false);
+            slashPalette.hidden = false;
+            slashPalette.setAttribute('data-open', 'true');
+            input.setAttribute('aria-expanded', 'true');
+            if (slashPaletteItems.length) _highlightSlashCommand(0);
+            _positionSlashCommandPalette();
+            slashPaletteStatus.textContent = commands.length
+                ? (commands.length + (commands.length === 1 ? ' command available.' : ' commands available.') + ' Use Up and Down arrows to navigate.')
+                : 'No matching local commands.';
+        }
+
+        function _handleSlashCommandKeydown(e) {
+            if (!slashPalette || slashPalette.getAttribute('data-open') !== 'true') return false;
+            if (e.key === 'Escape') {
+                e.preventDefault(); e.stopPropagation();
+                _closeSlashCommandPalette(true);
+                return true;
+            }
+            if (!slashPaletteItems.length) return false;
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Home' || e.key === 'End') {
+                e.preventDefault(); e.stopPropagation();
+                if (e.key === 'Home') _highlightSlashCommand(0);
+                else if (e.key === 'End') _highlightSlashCommand(slashPaletteItems.length - 1);
+                else _highlightSlashCommand(slashPaletteIndex + (e.key === 'ArrowDown' ? 1 : -1));
+                return true;
+            }
+            if (e.key === 'Tab' || (e.key === 'Enter' && !e.shiftKey)) {
+                var itemEl = slashPaletteItems[slashPaletteIndex];
+                if (!itemEl) return false;
+                var commandName = itemEl.getAttribute('data-command') || '';
+                var item = _availableLocalSlashCommands().find(function (entry) { return entry.command === commandName; });
+                if (!item) return false;
+
+                // Menu semantics: Enter runs the highlighted local action;
+                // Tab is the non-destructive completion gesture.  This remains
+                // predictable even when the slash phrase appears after prose.
+                e.preventDefault(); e.stopPropagation();
+                if (e.key === 'Tab') _replaceActiveSlashCommand(item);
+                else _executeSlashCommand(item);
+                return true;
+            }
+            return false;
         }
 
         function _openAttachmentPicker() {
@@ -35146,10 +35641,43 @@
         sendBtn.addEventListener('click', handleAIPanelSubmit);
 
         input.addEventListener('keydown', function (e) {
+            if (_handleSlashCommandKeydown(e)) return;
             if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleAIPanelSubmit(); }
         });
 
-        input.addEventListener('input', _updateSendBtnState);
+        input.addEventListener('input', function () {
+            _updateSendBtnState();
+            _renderSlashCommandPalette(false);
+        });
+        input.addEventListener('focus', function () {
+            if (_composerSlashFilterQuery() !== null) _renderSlashCommandPalette(false);
+        });
+        input.addEventListener('click', function () { _renderSlashCommandPalette(false); });
+        input.addEventListener('keyup', function (e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') _renderSlashCommandPalette(false);
+        });
+        input.addEventListener('compositionstart', function () {
+            slashImeComposing = true;
+            _closeSlashCommandPalette(false);
+        });
+        input.addEventListener('compositionend', function () {
+            slashImeComposing = false;
+            _renderSlashCommandPalette(false);
+        });
+        slashPalette.addEventListener('pointerdown', function (e) {
+            // Keep the text caret stable until the menuitem click commits the
+            // command. This is especially important on mobile virtual keyboards.
+            if (e.target && e.target.closest && e.target.closest('[role="menuitem"]')) e.preventDefault();
+        });
+        document.addEventListener('pointerdown', function (e) {
+            if (slashPalette.getAttribute('data-open') !== 'true') return;
+            if ((slashPalette.contains && slashPalette.contains(e.target)) || e.target === input) return;
+            _closeSlashCommandPalette(false);
+        }, true);
+        window.addEventListener('resize', _positionSlashCommandPalette, { passive: true });
+        if (window.visualViewport && typeof window.visualViewport.addEventListener === 'function') {
+            window.visualViewport.addEventListener('resize', _positionSlashCommandPalette, { passive: true });
+        }
 
         // Panel-scoped upload shortcut. Alt+U deliberately works even while the
         // composer has focus, but never claims the chord elsewhere on the page.

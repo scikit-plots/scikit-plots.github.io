@@ -991,6 +991,7 @@
  *     the hover gap, destroying hover continuity as the cursor moves into the popup.
  */
 .ai-assistant-panel-input-group {
+    position: relative;          /* slash palette + inline hint anchor */
     display: flex;
     flex-direction: column;    /* Claude-style: textarea on top, action bar below */
     align-items: stretch;
@@ -1046,6 +1047,171 @@
 
 .ai-assistant-panel-input::placeholder {
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #aaa));
+}
+
+/* Run 102 — slash command autocomplete.  The textarea remains the sole text
+ * editor; these are non-layout overlays anchored by input-group position:relative.
+ * The palette opens upward because the composer owns the bottom edge of the
+ * panel. JS caps max-height against #ai-assistant-panel-body for short panels. */
+.ai-assistant-panel-slash-inline-hint {
+    position: absolute;
+    z-index: 2;
+    top: 0.6rem;
+    left: calc(0.65rem + 0.58em);
+    max-width: calc(100% - 3rem);
+    overflow: hidden;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #8a8f98));
+    font-size: 0.875rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0.72;
+    user-select: none;
+}
+.ai-assistant-panel-slash-inline-hint[hidden] { display: none !important; }
+
+.ai-assistant-panel-slash-command-menu {
+    position: absolute;
+    left: 0.35rem;
+    bottom: calc(100% + 0.45rem);
+    z-index: 1096;
+    display: flex;
+    flex-direction: column;
+    width: min(34rem, calc(100% - 0.7rem));
+    min-width: min(15rem, calc(100% - 0.7rem));
+    max-height: 24rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d8dce1));
+    border-radius: 10px;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.ai-assistant-panel-slash-command-menu[hidden] { display: none !important; }
+[data-bs-theme="dark"] .ai-assistant-panel-slash-command-menu {
+    box-shadow: 0 -14px 34px rgba(0, 0, 0, 0.48), 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+.ai-assistant-panel-slash-command-head,
+.ai-assistant-panel-slash-command-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #71717a));
+    font-size: 0.68rem;
+    line-height: 1.2;
+}
+.ai-assistant-panel-slash-command-head {
+    padding: 0.46rem 0.58rem 0.34rem;
+    border-bottom: 1px solid var(--pst-color-border, var(--color-foreground-border, #e5e7eb));
+}
+.ai-assistant-panel-slash-command-head strong {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2328));
+    font-size: 0.72rem;
+    font-weight: 650;
+}
+.ai-assistant-panel-slash-command-list {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding: 0.3rem;
+}
+.ai-assistant-panel-slash-command-item {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.54rem 0.52rem;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2328));
+    text-align: left;
+    cursor: pointer;
+}
+.ai-assistant-panel-slash-command-item:hover,
+.ai-assistant-panel-slash-command-item[data-highlighted="true"] {
+    background: rgba(128, 128, 128, 0.12);
+}
+.ai-assistant-panel-slash-command-item:focus { outline: none; }
+.ai-assistant-panel-slash-command-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d8dce1));
+    border-radius: 5px;
+    background: rgba(128, 128, 128, 0.07);
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
+    font: 750 0.82rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ai-assistant-panel-slash-command-copy {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+}
+.ai-assistant-panel-slash-command-copy strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font: 650 0.8rem/1.25 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ai-assistant-panel-slash-command-copy small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #71717a));
+    font-size: 0.68rem;
+    line-height: 1.3;
+}
+.ai-assistant-panel-slash-command-arg {
+    flex: 0 0 auto;
+    max-width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0.1rem 0.34rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d8dce1));
+    border-radius: 999px;
+    background: rgba(128, 128, 128, 0.07);
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #71717a));
+    font-size: 0.62rem;
+    font-weight: 600;
+}
+.ai-assistant-panel-slash-command-empty {
+    padding: 0.72rem 0.58rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #71717a));
+    font-size: 0.74rem;
+    text-align: center;
+}
+.ai-assistant-panel-slash-command-foot {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0.34rem 0.58rem 0.42rem;
+    border-top: 1px solid var(--pst-color-border, var(--color-foreground-border, #e5e7eb));
+}
+.ai-assistant-panel-slash-command-foot span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.16rem;
+}
+.ai-assistant-panel-slash-command-foot kbd {
+    min-width: 1.15rem;
+    padding: 0.06rem 0.2rem;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d8dce1));
+    border-radius: 4px;
+    background: rgba(128, 128, 128, 0.07);
+    color: inherit;
+    font: inherit;
+    font-size: 0.62rem;
+    text-align: center;
 }
 
 /* Icon buttons inside the input group action bar (attach, model, mic, send) */
@@ -19683,6 +19849,15 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 }
 
 @media (max-width: 480px) {
+    .ai-assistant-panel-slash-command-menu {
+        left: 0.25rem;
+        width: calc(100% - 0.5rem);
+        min-width: 0;
+    }
+    .ai-assistant-panel-slash-command-copy small,
+    .ai-assistant-panel-slash-command-arg,
+    .ai-assistant-panel-slash-command-foot { display: none; }
+    .ai-assistant-panel-slash-command-item { min-height: 44px; }
     .ai-assistant-panel-attach-menu {
         width: min(310px, calc(100vw - 1.5rem));
         min-width: min(250px, calc(100vw - 1.5rem));
