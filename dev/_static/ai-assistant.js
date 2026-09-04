@@ -174,8 +174,8 @@
         },
         {
             id: 'stub-mirror', model: 'stub/mirror', provider: 'custom',
-            label: 'Stub · mirror client request', reasoning: true,
-            description: 'Advanced bounded client-send inspector: user text, one-turn files, page context, controls, and security diagnostics.'
+            label: 'Stub · mirror request chain', reasoning: true,
+            description: 'Security inspector for Boundary A (actual browser→proxy request) and Boundary B (effective AI input after trusted server policy, dry-run only).'
         },
         {
             id: 'stub-error', model: 'stub/error:503', provider: 'custom',
@@ -9769,16 +9769,15 @@
 
     // ── Visible documentation context shelf ────────────────────────────────
     //
-    // The assistant has two intentionally different documentation-context
-    // lifecycles:
-    //   * current page — automatic/live, follows navigation, reader-toggleable;
-    //   * pinned page  — explicit snapshot, survives navigation in this tab
-    //                    when conversation persistence is enabled.
+    // Documentation sources have two SOURCE lifecycles but one TRANSPORT
+    // lifecycle:
+    //   * current page — an automatic/default source that may follow navigation;
+    //   * pinned page  — a saved snapshot source that may survive navigation;
+    //   * transport    — always one turn. A staged PAGE/MD source is consumed
+    //                    by Send and is never silently reused on the next query.
     //
-    // Both are rendered in the same composer shelf as ordinary attachments so
-    // the model's page awareness is visible rather than a hidden prompt-side
-    // operation.  Ordinary uploaded files remain one-turn composer items and
-    // keep their existing transport rules.
+    // PAGE/MD and uploaded files therefore share the same composer shelf: every
+    // visible card means "will participate in the next message only".
     var _CURRENT_PAGE_CONTEXT_PERMISSION_KEY = 'ai-assistant-current-page-context-this-tab-v1';
     var _PINNED_PAGE_CONTEXT_KEY = 'ai-assistant-pinned-page-contexts-v1';
     var _PINNED_PAGE_CONTEXT_SCHEMA = 1;
@@ -9788,10 +9787,14 @@
     var _CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY = 'ai-assistant-current-page-context-exclusions-v1';
     var _CURRENT_PAGE_CONTEXT_EXCLUSIONS_SCHEMA = 1;
     var _CURRENT_PAGE_CONTEXT_EXCLUSIONS_MAX_ITEMS = 32;
+    var _CONSUMED_PAGE_CONTEXT_KEY = 'ai-assistant-consumed-page-contexts-v1';
+    var _CONSUMED_PAGE_CONTEXT_SCHEMA = 1;
+    var _CONSUMED_PAGE_CONTEXT_MAX_ITEMS = 64;
     var _pinnedPageContexts = [];
     var _pinnedPageContextsLoaded = false;
     var _currentPageContextExclusions = [];
     var _currentPageContextExclusionsLoaded = false;
+    var _consumedPageContextUrlsLoaded = false;
     // In-memory fallback for the per-tab current-page preference.  The feature
     // itself does not require persistence, so a blocked/private sessionStorage
     // must not make an explicit ON/OFF click ineffective.  When storage is
@@ -9804,6 +9807,102 @@
     // pin after New Chat or after the user removed/unpinned that page.
     var _pageContextConversationGeneration = 0;
     var _pageContextPinRevisions = Object.create(null);
+    // Turn-scoped page selections. Current/pinned page sources are conveniences
+    // for staging the NEXT question, never implicit context for every later
+    // question. Once a page source participates in a send it is marked consumed
+    // for this conversation/page lifecycle and disappears from the composer
+    // until the reader explicitly stages it again (or a new chat/page lifecycle
+    // creates a fresh initial selection). Pinned storage remains a saved-source
+    // library; it is not transport authority.
+    var _consumedPageContextUrls = Object.create(null);
+
+    function _loadConsumedPageContexts(force) {
+        if (_consumedPageContextUrlsLoaded && !force) return _consumedPageContextUrls;
+        if (!_persistEnabled()) return _consumedPageContextUrls;
+
+        var wasLoaded = _consumedPageContextUrlsLoaded;
+        var memory = Object.keys(_consumedPageContextUrls || {});
+        var restored = [];
+        var raw = _ssGet(_CONSUMED_PAGE_CONTEXT_KEY);
+        if (raw) {
+            try {
+                var parsed = JSON.parse(raw);
+                var list = parsed && parsed.schemaVersion === _CONSUMED_PAGE_CONTEXT_SCHEMA && Array.isArray(parsed.items)
+                    ? parsed.items : [];
+                list.slice(-_CONSUMED_PAGE_CONTEXT_MAX_ITEMS).forEach(function (entry) {
+                    var url = _normalizeContextPageUrl(entry);
+                    if (url && restored.indexOf(url) < 0) restored.push(url);
+                });
+            } catch (_) {
+                _ssDel(_CONSUMED_PAGE_CONTEXT_KEY);
+            }
+        }
+
+        // First hydration reconciles one-turn sends that happened before the
+        // reader enabled Remember. A forced BFCache/navigation refresh uses
+        // sessionStorage as the newer same-tab authority so stale memory cannot
+        // silently re-arm a page that was already consumed in another document.
+        if (!(force && wasLoaded)) {
+            memory.forEach(function (entry) {
+                var url = _normalizeContextPageUrl(entry);
+                if (url && restored.indexOf(url) < 0) restored.push(url);
+            });
+        }
+        _consumedPageContextUrls = Object.create(null);
+        restored.slice(-_CONSUMED_PAGE_CONTEXT_MAX_ITEMS).forEach(function (url) {
+            _consumedPageContextUrls[url] = true;
+        });
+        _consumedPageContextUrlsLoaded = true;
+        return _consumedPageContextUrls;
+    }
+
+    function _saveConsumedPageContexts() {
+        if (!_persistEnabled()) {
+            _ssDel(_CONSUMED_PAGE_CONTEXT_KEY);
+            return;
+        }
+        var items = Object.keys(_consumedPageContextUrls || {})
+            .map(_normalizeContextPageUrl)
+            .filter(Boolean)
+            .slice(-_CONSUMED_PAGE_CONTEXT_MAX_ITEMS);
+        _ssSet(_CONSUMED_PAGE_CONTEXT_KEY, JSON.stringify({
+            schemaVersion: _CONSUMED_PAGE_CONTEXT_SCHEMA,
+            items: items
+        }));
+    }
+
+    function _pageContextConsumed(sourceUrl) {
+        _loadConsumedPageContexts(false);
+        var key = _normalizeContextPageUrl(sourceUrl);
+        return !!(key && _consumedPageContextUrls[key]);
+    }
+
+    function _setPageContextConsumed(sourceUrl, consumed, render) {
+        _loadConsumedPageContexts(false);
+        var key = _normalizeContextPageUrl(sourceUrl);
+        if (!key) return false;
+        var had = !!_consumedPageContextUrls[key];
+        if (consumed) _consumedPageContextUrls[key] = true;
+        else delete _consumedPageContextUrls[key];
+        var changed = had !== !!consumed;
+        if (changed) _saveConsumedPageContexts();
+        if (render !== false && changed) _renderComposerAttachments();
+        return changed;
+    }
+
+    function _stagePageContextForNextTurn(sourceUrl, render) {
+        return _setPageContextConsumed(sourceUrl, false, render);
+    }
+
+    function _consumePreparedPageContexts(prepared, render) {
+        var changed = false;
+        var sources = prepared && Array.isArray(prepared.sources) ? prepared.sources : [];
+        sources.forEach(function (item) {
+            if (item && item.sourceUrl) changed = _setPageContextConsumed(item.sourceUrl, true, false) || changed;
+        });
+        if (render !== false && changed) _renderComposerAttachments();
+        return changed;
+    }
 
     function _normalizeContextPageUrl(value) {
         var raw = String(value || '');
@@ -9940,10 +10039,11 @@
         var toggle = document.getElementById('ai-assistant-current-page-context-toggle');
         if (toggle) toggle.setAttribute('aria-checked', on ? 'true' : 'false');
         if (on) {
-            // Explicitly switching the feature ON is also an explicit request
-            // to include the page currently being read, even if it was removed
-            // earlier in this conversation.
-            _setCurrentPageContextExcluded(_currentContextPageUrl(), false, false);
+            // The setting is a default/staging convenience, not perpetual
+            // transport authority. Turning it ON stages the current page once.
+            var currentUrl = _currentContextPageUrl();
+            _setCurrentPageContextExcluded(currentUrl, false, false);
+            _stagePageContextForNextTurn(currentUrl, false);
             _prepareCurrentPageContextItem(false).then(function () { _renderComposerAttachments(); }).catch(function () {});
         }
         _renderComposerAttachments();
@@ -10082,6 +10182,7 @@
         if (_persistEnabled()) {
             _loadPinnedPageContexts(true);
             _loadCurrentPageContextExclusions(true);
+            _loadConsumedPageContexts(true);
         }
         _renderComposerAttachments();
     }
@@ -10192,31 +10293,13 @@
     }
 
     function _removeCurrentPageFromConversationContext(sourceUrl) {
-        // Card-level Remove means "this page should not participate in the
-        // active conversation context".  If the current page is also pinned,
-        // remove that snapshot in the same transaction; otherwise the MD card
-        // would immediately replace the PAGE card and make Remove appear broken.
-        _loadPinnedPageContexts();
-        _loadCurrentPageContextExclusions(false);
+        // Compatibility helper for older integrations. Run 109 makes visible
+        // page context strictly one-turn: removing a PAGE card only unstages
+        // that source for the next message. It must never delete a saved pin,
+        // disable the current-page default, or create perpetual transport state.
         var target = _normalizeContextPageUrl(sourceUrl || _currentContextPageUrl());
         if (!target) return false;
-        _invalidatePageContextPin(target);
-
-        var changed = false;
-        var before = _pinnedPageContexts.length;
-        _pinnedPageContexts = _pinnedPageContexts.filter(function (item) {
-            return _normalizeContextPageUrl(item && item.sourceUrl) !== target;
-        });
-        if (_pinnedPageContexts.length !== before) {
-            _savePinnedPageContexts();
-            changed = true;
-        }
-        if (_setCurrentPageContextExcluded(target, true, false)) changed = true;
-        if (_currentPageContextCache && _normalizeContextPageUrl(_currentPageContextCache.sourceUrl) === target) {
-            _currentPageContextCache.pinned = false;
-        }
-        _renderComposerAttachments();
-        return changed;
+        return _setPageContextConsumed(target, true, true);
     }
 
     function _currentPageContextPlaceholder() {
@@ -10308,6 +10391,9 @@
         if (_currentPageContextCache && _currentPageContextCache.sourceUrl === current.sourceUrl) {
             _currentPageContextCache.pinned = true;
         }
+        // Saving a pin is also an explicit one-time staging action. The saved
+        // snapshot may remain available, but Send consumes this staged use.
+        _stagePageContextForNextTurn(current.sourceUrl, false);
         _renderComposerAttachments();
         return snapshot;
     }
@@ -10317,7 +10403,7 @@
         var out = [];
         var currentUrl = _currentContextPageUrl();
         var currentActive = _currentPageContextActive();
-        if (currentActive) {
+        if (currentActive && !_pageContextConsumed(currentUrl)) {
             var current = (_currentPageContextCache && _currentPageContextCache.sourceUrl === currentUrl)
                 ? Object.assign({}, _currentPageContextCache)
                 : _currentPageContextPlaceholder();
@@ -10325,7 +10411,9 @@
             out.push(current);
         }
         _pinnedPageContexts.forEach(function (item) {
-            if (currentActive && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
+            var sourceUrl = _normalizeContextPageUrl(item && item.sourceUrl);
+            if (!sourceUrl || _pageContextConsumed(sourceUrl)) return;
+            if (currentActive && sourceUrl === currentUrl) return;
             out.push(Object.assign({}, item, { kind: 'page', contextRole: 'pinned', loading: false }));
         });
         _composerAttachments.forEach(function (item, index) {
@@ -10394,7 +10482,7 @@
         var invisibleRemoved = 0;
         var currentUrl = _currentContextPageUrl();
         var currentActive = _currentPageContextActive();
-        if (currentActive) {
+        if (currentActive && !_pageContextConsumed(currentUrl)) {
             try {
                 var current = await _prepareCurrentPageContextItem(false);
                 if (current && current.text) {
@@ -10408,7 +10496,9 @@
         }
         _pinnedPageContexts.forEach(function (item) {
             if (!item || !item.text) return;
-            if (currentActive && _normalizeContextPageUrl(item.sourceUrl) === currentUrl) return;
+            var sourceUrl = _normalizeContextPageUrl(item.sourceUrl);
+            if (!sourceUrl || _pageContextConsumed(sourceUrl)) return;
+            if (currentActive && sourceUrl === currentUrl) return;
             sources.push(item);
         });
         return {
@@ -10640,12 +10730,12 @@
             var item = items[i];
             if (!item || typeof item !== 'object') continue;
             var kind = String(item.kind || 'file').toLowerCase();
-            if (kind !== 'text' && kind !== 'image' && kind !== 'file' && kind !== 'replay') kind = 'file';
-            var status = String(item.status || '').slice(0, 64);
-            var name = _attachmentSafeName(item.name || (kind === 'replay' ? 'Prior attachment context' : 'file'));
-            out.push({
+            if (kind !== 'text' && kind !== 'image' && kind !== 'file' && kind !== 'replay' && kind !== 'page') kind = 'file';
+            var status = String(item.status || '').slice(0, 96);
+            var name = _attachmentSafeName(item.name || (kind === 'replay' ? 'Prior attachment context' : (kind === 'page' ? 'Documentation page' : 'file')));
+            var row = {
                 name: name,
-                badge: String(item.badge || _attachmentExtension(name)).replace(/[^A-Za-z0-9+._-]/g, '').slice(0, 12).toUpperCase() || 'FILE',
+                badge: String(item.badge || _attachmentItemBadge(item) || _attachmentExtension(name)).replace(/[^A-Za-z0-9+._-]/g, '').slice(0, 12).toUpperCase() || 'FILE',
                 kind: kind,
                 size: Math.max(0, Math.min(1024 * 1024 * 1024, Number(item.size) || 0)),
                 lineCount: Math.max(0, Math.min(1000000, Number(item.lineCount) || 0)),
@@ -10653,9 +10743,33 @@
                 localOnly: item.localOnly === true,
                 replay: item.replay === true,
                 status: status
-            });
+            };
+            if (kind === 'page') {
+                row.contextRole = item.contextRole === 'current' ? 'current' : 'pinned';
+                row.sourceUrl = _normalizeContextPageUrl(item.sourceUrl || '').slice(0, 2048);
+            }
+            out.push(row);
         }
         return out;
+    }
+
+    function _turnResourceLiveView(item) {
+        if (!item || typeof item !== 'object') return null;
+        var summary = _sanitizeTurnAttachmentSummaries([item])[0];
+        if (!summary) return null;
+        // Live-only preview capabilities are intentionally NOT persisted by
+        // _recordMessage. They let the just-rendered user turn use the same
+        // attachment preview UI without duplicating file/page bytes in storage.
+        summary.turnScoped = true;
+        if ((summary.kind === 'page' || summary.kind === 'text') && typeof item.previewText === 'string') {
+            summary.previewText = item.previewText.slice(0, _ATTACHMENT_MAX_PREVIEW_BYTES);
+        } else if (summary.kind === 'text' && typeof item.text === 'string') {
+            summary.previewText = item.text.slice(0, _ATTACHMENT_MAX_PREVIEW_BYTES);
+        }
+        if (item.file) summary.file = item.file;
+        summary.rasterPreview = item.rasterPreview === true;
+        summary.type = typeof item.type === 'string' ? item.type.slice(0, 120) : '';
+        return summary;
     }
 
     function _replayAttachmentNames(context) {
@@ -10670,34 +10784,54 @@
         return names.slice(0, _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS);
     }
 
-    function _composerTurnAttachmentSnapshot(finalAttachmentContext) {
+    function _composerTurnAttachmentSnapshot(finalAttachmentContext, preparedPageContext) {
         var out = [];
         var finalContext = String(finalAttachmentContext || '');
         var hasOutboundText = !!finalContext.trim();
+
+        // Page selections are first-class turn resources. They are transport
+        // one-shots just like uploaded text, even when their source is a saved
+        // pin or the automatic current-page default.
+        var pageSources = preparedPageContext && Array.isArray(preparedPageContext.sources)
+            ? preparedPageContext.sources : [];
+        pageSources.forEach(function (item) {
+            if (!item || out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
+            var live = _turnResourceLiveView({
+                name: item.name || item.title || 'Documentation page',
+                badge: item.contextRole === 'current' ? 'PAGE' : 'MD',
+                kind: 'page',
+                contextRole: item.contextRole === 'current' ? 'current' : 'pinned',
+                sourceUrl: item.sourceUrl || '',
+                size: item.size || String(item.text || '').length,
+                lineCount: item.lineCount || _attachmentLineCount(item.text || ''),
+                included: true,
+                localOnly: false,
+                status: item.contextRole === 'current' ? 'Current page · used once' : 'Pinned page · used once',
+                previewText: String(item.previewText || item.text || '')
+            });
+            if (live) out.push(live);
+        });
+
         _composerAttachments.forEach(function (item) {
             if (!item || out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
             var itemHeader = 'Attachment: ' + _attachmentSafeName(item.name);
             var textIncluded = item.kind === 'text' && typeof item.text === 'string' &&
                 hasOutboundText && finalContext.indexOf(itemHeader) >= 0;
-            var localOnly = !textIncluded;
-            out.push({
-                name: _attachmentSafeName(item.name),
+            var live = _turnResourceLiveView(Object.assign({}, item, {
                 badge: _attachmentItemBadge(item),
-                kind: item.kind || 'file',
-                size: item.size || 0,
-                lineCount: item.lineCount || 0,
                 included: textIncluded,
-                localOnly: localOnly,
+                localOnly: !textIncluded,
                 replay: false,
                 status: textIncluded ? 'Included once' : 'Local only · not sent'
-            });
+            }));
+            if (live) out.push(live);
         });
         if (_composerReplayAttachmentContext && out.length < _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) {
             var replayNames = _replayAttachmentNames(_composerReplayAttachmentContext);
             if (!replayNames.length) replayNames = ['Prior attachment context'];
             replayNames.forEach(function (name) {
                 if (out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
-                out.push({
+                var live = _turnResourceLiveView({
                     name: name,
                     badge: _attachmentExtension(name),
                     kind: 'replay',
@@ -10708,9 +10842,10 @@
                     replay: true,
                     status: hasOutboundText ? 'Reused once' : 'Not sent'
                 });
+                if (live) out.push(live);
             });
         }
-        return _sanitizeTurnAttachmentSummaries(out);
+        return out;
     }
 
     var _ATTACHMENT_CANONICAL_PREFIX = '\n\n' +
@@ -10808,16 +10943,17 @@
         if (!item) return '';
         var parts = [];
         if (item.kind === 'page') {
-            // Page cards are persistent conversation context, not one-turn
-            // uploads. Say that explicitly so they cannot be mistaken for files
-            // that will be consumed by the next Send action.
-            parts.push('Persistent');
+            // PAGE/MD cards are turn-scoped just like uploaded text. Current-page
+            // and pinned settings merely pre-stage convenient sources; Send
+            // consumes them once so they cannot silently inflate later turns.
+            parts.push('Next message');
+            parts.push('One turn');
             if (item.contextRole === 'current') {
-                parts.push('Current · Auto');
-                if (item.pinned) parts.push('Pinned');
+                parts.push('Current · Auto-selected');
+                if (item.pinned) parts.push('Saved pin');
                 if (item.loading) parts.push('Preparing preview');
             } else {
-                parts.push('Pinned page');
+                parts.push('Pinned page · saved source');
             }
             if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
             return parts.join(' · ');
@@ -10838,7 +10974,7 @@
         if (!item) return '';
         var parts = [];
         if (item.kind === 'page') {
-            parts.push(item.contextRole === 'current' ? 'Current page · automatic context' : 'Pinned page · persistent context');
+            parts.push(item.contextRole === 'current' ? 'Current page · staged for next question only' : 'Pinned page · saved source staged for next question only');
             if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
             parts.push('Markdown');
             return parts.join(' · ');
@@ -10890,6 +11026,7 @@
         st.layer.hidden = true;
         st.layer.setAttribute('data-open', 'false');
         st.layer.removeAttribute('data-pinned');
+        var closingItem = st.item;
         st.item = null;
         if (st.dialog) {
             st.dialog.removeAttribute('data-dragged');
@@ -10899,6 +11036,7 @@
         }
         var trigger = st.trigger;
         st.trigger = null;
+        if (closingItem && closingItem.turnScoped === true) _attachmentRevokeObjectUrl(closingItem);
         if (restoreFocus && trigger && typeof trigger.focus === 'function' && document.contains(trigger)) trigger.focus();
     }
 
@@ -11076,8 +11214,8 @@
                 var contextNote = document.createElement('p');
                 contextNote.className = 'ai-assistant-panel-attachment-preview-note ai-assistant-panel-page-context-note';
                 contextNote.textContent = item.contextRole === 'current'
-                    ? 'Automatic current-page context. This privacy-prepared Markdown is the page representation available to the assistant while this option is on.'
-                    : 'Pinned documentation context. This bounded Markdown snapshot remains available until you remove it; with Remember conversation enabled it also survives same-tab navigation.';
+                    ? 'Current-page Markdown staged for the next question only. Sending consumes this selection; the setting only controls future automatic staging.'
+                    : 'Saved pinned-page Markdown staged for the next question only. Sending consumes this selection; the saved pin remains available for explicit reuse.';
                 st.body.appendChild(contextNote);
             }
             var pre = document.createElement('pre');
@@ -11104,12 +11242,19 @@
             msg.textContent = 'A safe inline preview is not available for ' + _attachmentSafeName(item && item.name) + '.';
         }
         fallback.appendChild(msg);
-        var dl = document.createElement('button');
-        dl.type = 'button';
-        dl.className = 'ai-assistant-panel-attachment-preview-download';
-        dl.innerHTML = '<span aria-hidden="true">\u2193</span><span>Download</span>';
-        dl.addEventListener('click', function () { _downloadAttachmentItem(item); });
-        fallback.appendChild(dl);
+        if (item && item.file) {
+            var dl = document.createElement('button');
+            dl.type = 'button';
+            dl.className = 'ai-assistant-panel-attachment-preview-download';
+            dl.innerHTML = '<span aria-hidden="true">\u2193</span><span>Download</span>';
+            dl.addEventListener('click', function () { _downloadAttachmentItem(item); });
+            fallback.appendChild(dl);
+        } else if (item && item.turnScoped !== true) {
+            var retained = document.createElement('p');
+            retained.className = 'ai-assistant-panel-attachment-preview-note';
+            retained.textContent = 'This historical turn keeps metadata only; the original local preview was not persisted.';
+            fallback.appendChild(retained);
+        }
         st.body.appendChild(fallback);
     }
 
@@ -11271,13 +11416,14 @@
                     item.kind === 'page' && previewItem && previewItem.kind === 'page' &&
                     _normalizeContextPageUrl(previewItem.sourceUrl) === _normalizeContextPageUrl(item.sourceUrl)
                 )) _closeAttachmentPreview(false);
-                if (item.kind === 'page' && item.contextRole === 'current') {
-                    _removeCurrentPageFromConversationContext(item.sourceUrl);
-                    showNotification('Current page removed from this conversation context. Use + → Pages to add it back.', false);
-                    return;
-                }
                 if (item.kind === 'page') {
-                    _removePinnedPageContext(item.sourceUrl);
+                    _setPageContextConsumed(item.sourceUrl, true, true);
+                    showNotification(
+                        item.contextRole === 'current'
+                            ? 'Current page removed from the next message. The automatic setting is unchanged.'
+                            : 'Pinned page removed from the next message. The saved pin is unchanged.',
+                        false
+                    );
                     return;
                 }
                 _attachmentRevokeObjectUrl(item);
@@ -11705,10 +11851,12 @@
             // a transient empty in-memory array.
             _loadPinnedPageContexts(false);
             _loadCurrentPageContextExclusions(false);
+            _loadConsumedPageContexts(false);
             _saveTranscript();
             _saveFeedbackState();
             _savePinnedPageContexts();
             _saveCurrentPageContextExclusions();
+            _saveConsumedPageContexts();
             if (_conversationId) _ssSet(_CONVERSATION_ID_KEY, _conversationId);
         } else {
             _ssDel(_TRANSCRIPT_KEY);
@@ -11716,6 +11864,7 @@
             _ssDel(_FEEDBACK_STATE_KEY);
             _ssDel(_PINNED_PAGE_CONTEXT_KEY);
             _ssDel(_CURRENT_PAGE_CONTEXT_EXCLUSIONS_KEY);
+            _ssDel(_CONSUMED_PAGE_CONTEXT_KEY);
             _ssDel('ai-assistant-active-contribution-review-v1');
         }
         var toggle = document.getElementById('ai-assistant-remember-conversation-toggle');
@@ -11951,6 +12100,9 @@
     function clearConversation() {
         _pageContextConversationGeneration += 1;
         _pageContextPinRevisions = Object.create(null);
+        _consumedPageContextUrls = Object.create(null);
+        _consumedPageContextUrlsLoaded = true;
+        _ssDel(_CONSUMED_PAGE_CONTEXT_KEY);
         _transcript       = [];
         _feedbackGivenSet = new Set();
         _feedbackStore    = {};                  // v2 — clears all submitted ratings
@@ -18421,7 +18573,7 @@
         var currentPageDefaultOn = _cfg().panelCurrentPageContext !== false;
         var currentPageToggle = _buildExtToggleRow(
             'Use current page as context',
-            (currentPageDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the page you are reading appears visibly in the composer as a PAGE context card and its privacy-prepared Markdown is available to the assistant. Remove the PAGE card to exclude only this page from the active conversation without turning the setting off for later pages; use + → Pages to add it back. Pin a page to keep a bounded Markdown snapshot after navigating elsewhere. Your explicit ON/OFF choice is remembered only for this tab.',
+            (currentPageDefaultOn ? 'ON' : 'OFF') + ' by site default. When enabled, the page you are reading is pre-staged as a PAGE card for the next question only. Sending consumes that PAGE selection; it is not silently resent on later questions. Remove only unstages the card. Pin saves a bounded Markdown source for easy reuse after navigation, but a saved pin is also sent only when explicitly staged for one question. Your explicit ON/OFF choice is remembered only for this tab.',
             _currentPageContextEnabled(),
             'ai-assistant-current-page-context-toggle'
         );
@@ -20288,6 +20440,10 @@
      * persistence philosophy as the chat transcript.
      */
     var _PANEL_MODEL_KEY = 'ai-assistant-active-model-id';
+    // Runtime authority for the most recent explicit selection. sessionStorage
+    // is persistence, not correctness: blocked/private storage must never let
+    // the header show one model while the request silently uses another.
+    var _activeModelIdMemory = null;
 
     /**
      * Return the active model id (sessionStorage → cfg default → first valid).
@@ -20306,13 +20462,27 @@
         var ids = {};
         models.forEach(function (m) { ids[m.id] = m; });
 
+        // The most recent explicit click is the live runtime authority. This
+        // prevents a failed sessionStorage write from creating a split-brain UI
+        // where the picker says Mirror but the request falls back to Echo.
+        if (_activeModelIdMemory && ids[_activeModelIdMemory]) {
+            return _activeModelIdMemory;
+        }
+
         var stored = null;
         try { stored = sessionStorage.getItem(_PANEL_MODEL_KEY); } catch (_) {}
-        if (stored && ids[stored]) return stored;
+        if (stored && ids[stored]) {
+            _activeModelIdMemory = stored;
+            return stored;
+        }
 
         for (var i = 0; i < models.length; i++) {
-            if (models[i].default === true) return models[i].id;
+            if (models[i].default === true) {
+                _activeModelIdMemory = models[i].id;
+                return models[i].id;
+            }
         }
+        _activeModelIdMemory = models[0].id;
         return models[0].id;
     }
 
@@ -20325,6 +20495,7 @@
      */
     function _setActiveModelId(id) {
         if (typeof id !== 'string' || !id) return;
+        _activeModelIdMemory = id;
         try { sessionStorage.setItem(_PANEL_MODEL_KEY, id); } catch (_) {}
     }
 
@@ -30671,7 +30842,7 @@
             id: 'add-current-page-context',
             command: _ADD_CURRENT_PAGE_CONTEXT_COMMAND,
             title: 'Add current page context',
-            description: 'Include the page you are reading in this conversation context.',
+            description: 'Stage the page you are reading for the next question only.',
             keywords: ['page', 'context', 'current', 'documentation', 'add'],
             action: 'add-current-page-context',
             badge: 'Context',
@@ -30681,17 +30852,17 @@
             id: 'pin-current-page',
             command: _PIN_CURRENT_PAGE_COMMAND,
             title: 'Pin current page',
-            description: 'Keep a bounded Markdown snapshot available for later questions and navigation.',
+            description: 'Save a bounded Markdown source and stage it for the next question only.',
             keywords: ['pin', 'page', 'markdown', 'reference', 'context'],
             action: 'pin-current-page',
-            badge: 'Keep',
+            badge: 'Save',
             enabled: true
         },
         {
             id: 'add-files',
             command: _ADD_FILES_COMMAND,
             title: 'Add files or photos',
-            description: 'Open the local file picker and stage files for this conversation.',
+            description: 'Open the local file picker and stage files for the next question only.',
             keywords: ['add', 'file', 'files', 'photo', 'photos', 'upload', 'attach'],
             action: 'add-files',
             badge: 'Local',
@@ -30731,19 +30902,22 @@
             var currentUrl = _currentContextPageUrl();
             var currentEnabled = _currentPageContextEnabled();
             var currentExcluded = currentEnabled && _isCurrentPageContextExcluded(currentUrl);
-            var currentActive = currentEnabled && !currentExcluded;
-            current.description = currentActive
-                ? 'Current page is already included in this conversation.'
+            var currentConsumed = _pageContextConsumed(currentUrl);
+            var currentStaged = currentEnabled && !currentExcluded && !currentConsumed;
+            current.description = currentStaged
+                ? 'Current page is staged for the next question only.'
                 : (currentEnabled
-                    ? 'Add this page back to the active conversation context.'
-                    : 'Enable current-page context for this tab and include the page you are reading.');
-            current.badge = currentActive ? 'Added' : 'Context';
+                    ? 'Stage this page for the next question only.'
+                    : 'Enable the current-page default and stage this page once.');
+            current.badge = currentStaged ? 'Staged' : 'Context';
 
             var currentPinned = !!_findPinnedPageContext(currentUrl);
             pin.description = currentPinned
-                ? 'Current page is already pinned as a bounded Markdown snapshot.'
-                : 'Keep a bounded Markdown snapshot available for later questions and navigation.';
-            pin.badge = currentPinned ? 'Pinned' : 'Keep';
+                ? (currentConsumed
+                    ? 'Saved pin is available; stage it for the next question only.'
+                    : 'Saved pin is staged for the next question only.')
+                : 'Save a bounded Markdown source and stage it for the next question only.';
+            pin.badge = currentPinned ? (currentConsumed ? 'Saved' : 'Staged') : 'Save';
         } catch (_stateError) {
             // Keep the static, truthful fallback labels above.
         }
@@ -33380,7 +33554,7 @@
         var attachmentTray = document.createElement('div');
         attachmentTray.id = 'ai-assistant-panel-attachments';
         attachmentTray.className = 'ai-assistant-panel-attachments';
-        attachmentTray.setAttribute('aria-label', 'Persistent context and files for the next message');
+        attachmentTray.setAttribute('aria-label', 'Pages and files staged for the next message only');
         attachmentTray.hidden = true;
         inputGroup.appendChild(attachmentTray);
         // Do not render the Context Shelf while the panel subtree is detached.
@@ -33493,43 +33667,45 @@
             var pinned = !!_findPinnedPageContext(_currentContextPageUrl());
             var autoOn = _currentPageContextEnabled();
             var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
+            var consumed = _pageContextConsumed(sourceUrl);
             var persistenceAvailable = _cfg().panelPersist !== false;
             var persistenceOn = _persistEnabled();
+            var currentAction = !autoOn ? 'Enable current page context'
+                : (excluded ? 'Add current page to next message'
+                : (consumed ? 'Add current page to next message' : 'Remove current page from next message'));
+            var currentHelp = !autoOn
+                ? 'Turn on the default and stage the page you are reading for the next question only.'
+                : ((excluded || consumed)
+                    ? 'Stage this page for the next question only. Sending consumes it once.'
+                    : 'Remove this page only from the next question. The automatic default remains unchanged.');
 
             currentPageContextItem.innerHTML =
                 '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.terms + '</span>' +
-                '<span class="ai-assistant-panel-attach-menu-copy"><strong>' +
-                (!autoOn ? 'Enable current page context' : (excluded ? 'Add current page context' : 'Remove current page context')) +
-                '</strong><small>' +
-                (!autoOn
-                    ? 'Turn on automatic current-page context for this tab and include the page you are reading.'
-                    : (excluded
-                        ? 'Add this page back to the active conversation. Future pages remain automatic while the setting is on.'
-                        : 'Exclude only this page from the active conversation. The setting stays on and later pages still appear automatically.')) +
-                '</small></span>';
-            currentPageContextItem.setAttribute('aria-label',
-                !autoOn ? 'Enable current page context' : (excluded ? 'Add current page context' : 'Remove current page context'));
+                '<span class="ai-assistant-panel-attach-menu-copy"><strong>' + currentAction +
+                '</strong><small>' + currentHelp + '</small></span>';
+            currentPageContextItem.setAttribute('aria-label', currentAction);
 
             currentPageItem.innerHTML =
                 '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.terms + '</span>' +
                 '<span class="ai-assistant-panel-attach-menu-copy"><strong>' +
-                (pinned ? 'Unpin current page' : 'Pin current page') +
+                (pinned && consumed ? 'Add pinned page to next message' : (pinned ? 'Unpin current page' : 'Pin current page')) +
                 '</strong><small>' +
-                (pinned
-                    ? (persistenceOn
-                        ? 'Stop keeping this Markdown snapshot after you navigate away.'
-                        : (persistenceAvailable
-                            ? 'Remove this page snapshot. While Remember conversation is off, it is available only on this page.'
-                            : 'Remove this page snapshot. Same-tab persistence is disabled by site configuration.'))
-                    : (!persistenceAvailable
-                        ? 'Keep a bounded Markdown snapshot on this page only; same-tab persistence is disabled by site configuration.'
-                        : (!persistenceOn
-                            ? 'Keep a bounded Markdown snapshot on this page. Turn on Remember conversation to keep it after navigation.'
-                            : (autoOn && !excluded
-                                ? 'Current page is already included automatically. Pin it to keep this Markdown context after navigation.'
-                                : 'Keep a bounded Markdown snapshot available across later questions and same-tab navigation.')))) +
+                (pinned && consumed
+                    ? 'The saved pin is inactive. Stage it for one question; sending consumes it again.'
+                    : (pinned
+                        ? (persistenceOn
+                            ? 'Remove the saved page snapshot. Saving a pin does not send it automatically.'
+                            : (persistenceAvailable
+                                ? 'Remove this saved page snapshot. Saving a pin does not send it automatically.'
+                                : 'Remove this saved page snapshot.'))
+                        : (!persistenceAvailable
+                            ? 'Save a bounded Markdown snapshot and stage it for the next question only.'
+                            : (!persistenceOn
+                                ? 'Save a bounded Markdown snapshot and stage it once. Turn on Remember conversation to retain the saved source after navigation.'
+                                : 'Save a bounded Markdown snapshot for easy reuse. It is sent only when staged for a specific question.')))) +
                 '</small></span>';
-            currentPageItem.setAttribute('aria-label', pinned ? 'Unpin current page context' : 'Pin current page context');
+            currentPageItem.setAttribute('aria-label',
+                pinned && consumed ? 'Add pinned page to next message' : (pinned ? 'Unpin current page context' : 'Pin current page context'));
         }
         _syncCurrentPageAttachMenuItem();
 
@@ -33812,25 +33988,22 @@
             var sourceUrl = _currentContextPageUrl();
             var autoOn = _currentPageContextEnabled();
             var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
-            if (autoOn && !excluded) {
-                showNotification('Current page is already included in this conversation context.', false);
+            var consumed = _pageContextConsumed(sourceUrl);
+            if (autoOn && !excluded && !consumed) {
+                showNotification('Current page is already staged for the next question.', false);
                 return Promise.resolve(false);
             }
-            if (!autoOn) {
-                _setCurrentPageContextInTab(true);
-                _syncCurrentPageAttachMenuItem();
-                showNotification('Current-page context enabled and this page was added.', false);
-                return Promise.resolve(true);
-            }
-            _setCurrentPageContextExcluded(sourceUrl, false, false);
+            _stagePageContextForNextTurn(sourceUrl, false);
+            if (!autoOn) _setCurrentPageContextInTab(true);
+            if (excluded) _setCurrentPageContextExcluded(sourceUrl, false, false);
             _syncCurrentPageAttachMenuItem();
             return _prepareCurrentPageContextItem(false).then(function () {
                 _renderComposerAttachments();
-                showNotification('Current page added back to this conversation context.', false);
+                showNotification('Current page staged for the next question only.', false);
                 return true;
             }).catch(function () {
                 _renderComposerAttachments();
-                showNotification('Current page was added back; its preview will refresh when available.', false);
+                showNotification('Current page staged; its preview will refresh when available.', false);
                 return true;
             });
         }
@@ -33838,16 +34011,21 @@
         function _pinCurrentPageFromCommand() {
             var sourceUrl = _currentContextPageUrl();
             if (_findPinnedPageContext(sourceUrl)) {
-                showNotification('Current page is already pinned.', false);
+                if (_pageContextConsumed(sourceUrl)) {
+                    _stagePageContextForNextTurn(sourceUrl, true);
+                    showNotification('Pinned page staged for the next question only.', false);
+                    return Promise.resolve(true);
+                }
+                showNotification('Current page is already pinned and staged for the next question.', false);
                 return Promise.resolve(false);
             }
             currentPageItem.disabled = true;
             return _pinCurrentPageContext().then(function () {
                 showNotification(_persistEnabled()
-                    ? 'Current page pinned for this conversation and same-tab navigation.'
+                    ? 'Current page saved as a pin and staged for the next question only.'
                     : (_cfg().panelPersist === false
-                        ? 'Current page pinned for this page. Conversation persistence is disabled by site configuration.'
-                        : 'Current page pinned for this page. Turn on Remember conversation to keep it across navigation.'), false);
+                        ? 'Current page saved as a pin for this page and staged once. Conversation persistence is disabled by site configuration.'
+                        : 'Current page saved as a pin and staged once. Turn on Remember conversation to retain the saved source across navigation.'), false);
                 return true;
             }).catch(function (err) {
                 if (err && err.message === 'PAGE_CONTEXT_PIN_STALE') return false;
@@ -34082,43 +34260,50 @@
             var sourceUrl = _currentContextPageUrl();
             var autoOn = _currentPageContextEnabled();
             var excluded = autoOn && _isCurrentPageContextExcluded(sourceUrl);
+            var consumed = _pageContextConsumed(sourceUrl);
             _closeAttachMenu(false);
             if (!autoOn) {
+                _stagePageContextForNextTurn(sourceUrl, false);
                 _setCurrentPageContextInTab(true);
-                showNotification('Current-page context enabled and this page was added.', false);
+                showNotification('Current-page default enabled. This page is staged for the next question only.', false);
+                _syncCurrentPageAttachMenuItem();
                 return;
             }
-            if (excluded) {
-                _setCurrentPageContextExcluded(sourceUrl, false, false);
-                _prepareCurrentPageContextItem(false).then(function () {
-                    _renderComposerAttachments();
-                }).catch(function () {
-                    _renderComposerAttachments();
-                });
-                showNotification('Current page added back to this conversation context.', false);
+            if (excluded) _setCurrentPageContextExcluded(sourceUrl, false, false);
+            if (excluded || consumed) {
+                _stagePageContextForNextTurn(sourceUrl, false);
+                _prepareCurrentPageContextItem(false).then(_renderComposerAttachments).catch(_renderComposerAttachments);
+                showNotification('Current page staged for the next question only.', false);
             } else {
-                _setCurrentPageContextExcluded(sourceUrl, true, true);
-                showNotification('Current page excluded from this conversation. Future pages are still added automatically.', false);
+                _setPageContextConsumed(sourceUrl, true, true);
+                showNotification('Current page removed from the next question. The automatic default is unchanged.', false);
             }
             _syncCurrentPageAttachMenuItem();
         });
         currentPageItem.addEventListener('click', function () {
             var sourceUrl = _currentContextPageUrl();
+            if (_findPinnedPageContext(sourceUrl) && _pageContextConsumed(sourceUrl)) {
+                _stagePageContextForNextTurn(sourceUrl, true);
+                _syncCurrentPageAttachMenuItem();
+                _closeAttachMenu(false);
+                showNotification('Pinned page staged for the next question only.', false);
+                return;
+            }
             if (_findPinnedPageContext(sourceUrl)) {
                 _removePinnedPageContext(sourceUrl);
                 _syncCurrentPageAttachMenuItem();
                 _closeAttachMenu(false);
-                showNotification('Current page unpinned. Automatic current-page context is unchanged.', false);
+                showNotification('Current page unpinned. Any staged send state is unchanged.', false);
                 return;
             }
             currentPageItem.disabled = true;
             _closeAttachMenu(false);
             _pinCurrentPageContext().then(function () {
                 showNotification(_persistEnabled()
-                    ? 'Current page pinned for this conversation and same-tab navigation.'
+                    ? 'Current page saved as a pin and staged for the next question only.'
                     : (_cfg().panelPersist === false
-                        ? 'Current page pinned for this page. Conversation persistence is disabled by site configuration.'
-                        : 'Current page pinned for this page. Turn on Remember conversation to keep it across navigation.'), false);
+                        ? 'Current page saved as a pin for this page and staged once. Conversation persistence is disabled by site configuration.'
+                        : 'Current page saved as a pin and staged once. Turn on Remember conversation to retain the saved source across navigation.'), false);
             }).catch(function (err) {
                 if (err && err.message === 'PAGE_CONTEXT_PIN_STALE') {
                     // A later remove/unpin/New Chat owns the state now.  Silent
@@ -40258,81 +40443,62 @@
             // A user turn owns the one-shot file provenance that was consumed by
             // this question. File contents are never reconstructed here; only
             // bounded metadata is rendered above the question text.
-            var turnAttachments = _sanitizeTurnAttachmentSummaries(
-                turnMeta && turnMeta.attachments
-            );
+            var liveTurnResources = Array.isArray(turnMeta && turnMeta.attachments)
+                ? turnMeta.attachments : [];
+            var turnAttachments = liveTurnResources.length
+                ? liveTurnResources.slice(0, _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS)
+                : _sanitizeTurnAttachmentSummaries(turnMeta && turnMeta.attachments);
             if (turnAttachments.length) {
                 bubble.setAttribute('data-has-turn-attachments', 'true');
                 var files = document.createElement('div');
-                files.className = 'ai-assistant-panel-user-turn-files';
-                files.setAttribute('aria-label', 'Files for this question');
+                // Reuse the exact composer attachment-strip anatomy so files and
+                // PAGE/MD context look and behave the same before and after Send.
+                files.className = 'ai-assistant-panel-attachments ai-assistant-panel-user-turn-attachments';
+                files.setAttribute('aria-label', 'Files and pages used for this question');
+                files.setAttribute('data-scroll-bound', 'true');
+                files.setAttribute('data-attachment-count', String(turnAttachments.length));
 
-                var filesHead = document.createElement('div');
-                filesHead.className = 'ai-assistant-panel-user-turn-files-head';
-                var filesTitle = document.createElement('strong');
-                filesTitle.textContent = turnAttachments.length === 1
-                    ? 'File for this question'
-                    : 'Files for this question';
-                var filesCount = document.createElement('span');
-                filesCount.textContent = String(turnAttachments.length);
-                filesHead.appendChild(filesTitle);
-                filesHead.appendChild(filesCount);
-                files.appendChild(filesHead);
+                turnAttachments.forEach(function (item) {
+                    if (!item) return;
+                    var tile = document.createElement('div');
+                    tile.className = 'ai-assistant-panel-attachment-tile';
+                    tile.setAttribute('data-kind', item.kind || 'file');
+                    if (item.kind === 'page') tile.setAttribute('data-context-role', item.contextRole || 'pinned');
 
-                var filesList = document.createElement('div');
-                filesList.className = 'ai-assistant-panel-user-turn-files-list';
-                turnAttachments.forEach(function (item, index) {
-                    var row = document.createElement('div');
-                    row.className = 'ai-assistant-panel-user-turn-file';
-                    if (index >= 3) {
-                        row.hidden = true;
-                        row.setAttribute('data-overflow-file', 'true');
-                    }
+                    var preview = document.createElement('button');
+                    preview.type = 'button';
+                    preview.className = 'ai-assistant-panel-attachment-card';
+                    preview.setAttribute('aria-label', 'Preview ' + _attachmentSafeName(item.name));
+                    preview.title = _attachmentSafeName(item.name);
 
-                    var badge = document.createElement('span');
-                    badge.className = 'ai-assistant-panel-user-turn-file-badge';
-                    badge.textContent = item.badge || 'FILE';
-                    badge.setAttribute('aria-hidden', 'true');
+                    var cardBody = document.createElement('span');
+                    cardBody.className = 'ai-assistant-panel-attachment-card-body';
+                    var cardName = document.createElement('span');
+                    cardName.className = 'ai-assistant-panel-attachment-card-name';
+                    cardName.textContent = _attachmentSafeName(item.name);
+                    cardName.setAttribute('aria-hidden', 'true');
+                    var cardMeta = document.createElement('span');
+                    cardMeta.className = 'ai-assistant-panel-attachment-card-meta';
+                    var metaParts = [];
+                    if (item.status) metaParts.push(String(item.status));
+                    if (item.lineCount) metaParts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
+                    else if (item.size) metaParts.push(_formatByteSize(item.size));
+                    cardMeta.textContent = metaParts.join(' · ');
+                    var cardBadge = document.createElement('span');
+                    cardBadge.className = 'ai-assistant-panel-attachment-card-badge';
+                    cardBadge.textContent = item.badge || _attachmentItemBadge(item);
+                    cardBody.appendChild(cardName);
+                    cardBody.appendChild(cardMeta);
+                    cardBody.appendChild(cardBadge);
+                    preview.appendChild(cardBody);
 
-                    var copy = document.createElement('span');
-                    copy.className = 'ai-assistant-panel-user-turn-file-copy';
-                    var name = document.createElement('strong');
-                    name.textContent = item.name;
-                    name.title = item.name;
-                    var meta = document.createElement('small');
-                    var details = [];
-                    if (item.status) details.push(item.status);
-                    if (item.lineCount) details.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
-                    else if (item.size) details.push(_formatByteSize(item.size));
-                    meta.textContent = details.join(' · ');
-                    copy.appendChild(name);
-                    copy.appendChild(meta);
-
-                    row.appendChild(badge);
-                    row.appendChild(copy);
-                    filesList.appendChild(row);
-                });
-                files.appendChild(filesList);
-
-                if (turnAttachments.length > 3) {
-                    var moreFiles = document.createElement('button');
-                    moreFiles.type = 'button';
-                    moreFiles.className = 'ai-assistant-panel-user-turn-files-toggle';
-                    moreFiles.setAttribute('aria-expanded', 'false');
-                    moreFiles.textContent = 'Show ' + (turnAttachments.length - 3) + ' more';
-                    moreFiles.addEventListener('click', function () {
-                        var expanded = moreFiles.getAttribute('aria-expanded') === 'true';
-                        var next = !expanded;
-                        moreFiles.setAttribute('aria-expanded', next ? 'true' : 'false');
-                        filesList.querySelectorAll('[data-overflow-file="true"]').forEach(function (row) {
-                            row.hidden = !next;
-                        });
-                        moreFiles.textContent = next
-                            ? 'Show fewer'
-                            : 'Show ' + (turnAttachments.length - 3) + ' more';
+                    preview.addEventListener('click', function () {
+                        _openAttachmentPreview(item, preview);
                     });
-                    files.appendChild(moreFiles);
-                }
+                    tile.appendChild(preview);
+                    files.appendChild(tile);
+                });
+                _bindAttachmentTrayScrolling(files);
                 bubble.appendChild(files);
             }
 
@@ -40762,8 +40928,15 @@
             }
         }
 
+        // Even browser-local stubs need the same staged page snapshot so turn
+        // provenance and Mirror diagnostics describe the exact context selected
+        // for this send. Network privacy review remains network-only above.
+        if (!preparedPageContext) {
+            preparedPageContext = await _privacyPrepareDocumentationContext(cfg);
+        }
+
         var requestQuestion = _composeQuestionWithAttachments(questionText, attachmentText);
-        var turnAttachments = _composerTurnAttachmentSnapshot(attachmentText);
+        var turnAttachments = _composerTurnAttachmentSnapshot(attachmentText, preparedPageContext);
 
         // ── Cancel any in-flight request before starting a new one ───────
         // Without this, rapid submits fire multiple concurrent fetches; the
@@ -40791,10 +40964,10 @@
             attachments: turnAttachments
         });
         input.value = '';
-        // One-turn upload contract: staged files and replay context are consumed
-        // synchronously by this question and can never remain armed for the next
-        // send. Persistent PAGE/MD context is separate and is re-rendered by the
-        // Context Shelf according to its own explicit lifecycle.
+        // Every selected context source is one-turn transport state. Current-page
+        // defaults and saved pins only make sources easy to stage; they do not
+        // authorize silent reuse on the following question.
+        _consumePreparedPageContexts(preparedPageContext, false);
         _clearComposerAttachments();
         _updateSendBtnState();
         input.disabled = true;
@@ -41592,7 +41765,7 @@
         if (q.indexOf('streaming') !== -1) return 'Streaming fixture selected. No network request was made.';
         if (q.indexOf('hello') !== -1) return 'Hello from the browser-local stub model. No inference was performed.';
         if (q.indexOf('ping') !== -1) return 'pong';
-        if (q.indexOf('context') !== -1) return 'Context is available. Use Stub · mirror client request to inspect what the panel would send.';
+        if (q.indexOf('context') !== -1) return 'Context is available. Use Stub · mirror request chain to inspect what the panel sends and what the proxy would pass to the AI.';
         return 'No fixture matched. Known fixtures: context, hello, ping, streaming, who are you.';
     }
 
@@ -41683,7 +41856,7 @@
                 : 'none';
 
             _appendPanelMessage(
-                '**Stub mirror · browser-local request inspector**\n\n' +
+                '**Stub mirror · browser-local request-chain inspector**\n\n' +
                 'No proxy endpoint is configured, so **no HTTP request exists to mirror**. ' +
                 'This is the panel input that would participate in a request. Recognized secret-shaped ' +
                 'values are redacted in this diagnostic answer.\n\n' +
