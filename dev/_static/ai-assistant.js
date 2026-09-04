@@ -10509,39 +10509,49 @@
         };
     }
 
-    // Composer-local attachments. Files never leave the browser merely because
-    // they were selected: supported text content is included only when the user
-    // submits the message, after the same privacy preflight used for typed text.
-    // Image files may be staged for UI parity but remain local until a future
-    // explicitly negotiated multimodal transport exists.
+    // Composer-local attachments. Selection is metadata-first: File/Blob
+    // handles and bounded metadata are staged immediately, while bytes are read
+    // only when the reader previews a file or explicitly sends the next turn.
+    // This keeps 100+ file batches cheap and prevents file-count growth from
+    // multiplying model context. All safe text files share ONE fixed 48k-char
+    // outbound budget; images/PDFs/unknown binaries remain local-only.
     var _composerAttachments = [];
-    // Picker, keyboard shortcut, and drag/drop all serialize through this queue.
-    // The generation invalidates reads that were in flight when Send/New chat
-    // cleared the composer, preventing late FileReader completions from
-    // resurrecting attachments into a fresh turn.
     var _attachmentStageQueue = Promise.resolve();
     var _attachmentStageGeneration = 0;
-    // Number of queued/in-flight staging batches for the current generation.
-    // Sending is gated while this is non-zero so an async FileReader cannot
-    // make a just-added text attachment silently miss the outbound turn.
     var _attachmentStagePending = 0;
-    // Bounded attachment context recovered from a prior canonical user turn
-    // for Retry/Edit. It stays separate from the textarea so hidden file text
-    // is never dumped into the editor or truncated by the question limit.
+    // Incremented for every visible composer mutation. Async Send preparation
+    // snapshots this value and aborts if the batch changes before commit.
+    var _attachmentMutationRevision = 0;
     var _composerReplayAttachmentContext = '';
-    // Number of queued/in-flight staging batches for the current generation.
-    // Sending is gated while this is non-zero so an async FileReader cannot
-    // make a just-added text attachment silently miss the outbound turn.
-    var _attachmentStagePending = 0;
-    var _ATTACHMENT_MAX_FILES = 8;
-    // Outbound text remains deliberately smaller than the local preview cap.
-    // A larger text/notebook may therefore be inspectable/downloadable without
-    // being silently added to the model request.
+
+    var _ATTACHMENT_MAX_FILES = 256;
+    // Read limits are byte caps, not promises that the whole file is small.
+    // A huge text file may still contribute a bounded prefix on Send.
     var _ATTACHMENT_MAX_READ_BYTES = 256 * 1024;
     var _ATTACHMENT_MAX_PREVIEW_BYTES = 512 * 1024;
+    var _ATTACHMENT_MAX_CONTEXT_READ_BYTES = 64 * 1024;
+    var _ATTACHMENT_MAX_FILE_CONTEXT_CHARS = 12000;
     var _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES = 12 * 1024 * 1024;
+    var _ATTACHMENT_PDF_SIGNATURE_BYTES = 8;
+    var _ATTACHMENT_PDF_INLINE_MAX_BYTES = 64 * 1024 * 1024;
     var _ATTACHMENT_MAX_TEXT_CHARS = 48000;
+    var _ATTACHMENT_THUMBNAIL_NORMAL_MAX = 24;
+    var _ATTACHMENT_THUMBNAIL_LARGE_MAX = 8;
+    var _ATTACHMENT_LARGE_BATCH_THRESHOLD = 32;
+    // Run 113 import bounds. Directory and archive discovery are inventory-only:
+    // they may enumerate metadata beyond the 256 staged-file limit, but bytes are
+    // never read from directory files and ZIP payload bytes are never inflated
+    // until the reader explicitly selects entries in the import manager.
+    var _ATTACHMENT_IMPORT_MAX_ENTRIES = 4096;
+    var _ATTACHMENT_IMPORT_MAX_PATH_CHARS = 1024;
+    var _ATTACHMENT_DIRECTORY_MAX_DEPTH = 24;
+    var _ATTACHMENT_ZIP_EOCD_TAIL_BYTES = 22 + 65535;
+    var _ATTACHMENT_ZIP_MAX_CENTRAL_DIRECTORY_BYTES = 8 * 1024 * 1024;
+    var _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES = 64 * 1024 * 1024;
+    var _ATTACHMENT_ZIP_MAX_SELECTED_UNCOMPRESSED_BYTES = 256 * 1024 * 1024;
+    var _ATTACHMENT_ZIP_MAX_COMPRESSION_RATIO = 500;
     var _ATTACHMENT_TEXT_EXT_RE = /\.(?:txt|md|markdown|rst|py|pyi|js|mjs|cjs|ts|tsx|jsx|json|jsonl|ipynb|ya?ml|toml|csv|tsv|xml|html?|css|scss|less|ini|cfg|conf|log|sql|sh|bash|zsh|fish|ps1|bat|cmd|c|cc|cpp|cxx|h|hpp|java|kt|kts|go|rs|rb|php|swift|scala|r|jl)$/i;
+    var _ATTACHMENT_ZIP_EXT_RE = /\.zip$/i;
 
     function _attachmentSafeName(value) {
         return String(value || 'file').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 240) || 'file';
@@ -10554,6 +10564,12 @@
     function _attachmentIsRasterPreview(file) {
         if (!file || typeof file.type !== 'string') return false;
         return /^image\/(?:png|jpe?g|gif|webp|avif|bmp|x-icon|vnd\.microsoft\.icon)$/i.test(file.type);
+    }
+
+    function _attachmentIsPdfCandidate(file) {
+        if (!file) return false;
+        var type = String(file.type || '').toLowerCase().trim();
+        return type === 'application/pdf' || /\.pdf$/i.test(String(file.name || ''));
     }
 
     function _attachmentIsText(file) {
@@ -10570,6 +10586,417 @@
         if (dot <= 0 || dot >= name.length - 1) return 'FILE';
         var ext = name.slice(dot + 1).replace(/[^A-Za-z0-9+-]/g, '').slice(0, 10).toUpperCase();
         return ext || 'FILE';
+    }
+
+    function _attachmentIsZipCandidate(file) {
+        if (!file) return false;
+        var type = String(file.type || '').toLowerCase().trim();
+        return type === 'application/zip' || type === 'application/x-zip-compressed' ||
+            _ATTACHMENT_ZIP_EXT_RE.test(String(file.name || ''));
+    }
+
+    function _attachmentSafeRelativePath(value) {
+        var raw = String(value || '').replace(/\\/g, '/');
+        if (!raw || raw.length > _ATTACHMENT_IMPORT_MAX_PATH_CHARS) return '';
+        // C0/DEL and bidi-format controls can create invisible path aliases or
+        // misleading traversal displays. They are rejected at the import edge.
+        if(/[\u0000-\u001f\u007f\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/.test(raw)) return '';
+        if (raw.charAt(0) === '/' || /^[A-Za-z]:\//.test(raw) || /^\/\//.test(raw)) return '';
+        var parts = raw.split('/');
+        var normalized = [];
+        for (var i = 0; i < parts.length; i++) {
+            var part = parts[i];
+            if (!part || part === '.' || part === '..') return '';
+            if (part.length > 255) return '';
+            normalized.push(part);
+        }
+        return normalized.join('/');
+    }
+
+    function _attachmentPathAlias(value) {
+        var path = _attachmentSafeRelativePath(value);
+        if (!path) return '';
+        try { if (typeof path.normalize === 'function') path = path.normalize('NFC'); } catch (_e) {}
+        return path.split('/').map(function (part) {
+            // Catch aliases that collapse on Windows/macOS-style filesystems.
+            return part.replace(/[ .]+$/g, '').toLowerCase();
+        }).join('/');
+    }
+
+    function _attachmentGuessMimeFromName(value) {
+        var name = String(value || '').toLowerCase();
+        if (/\.pdf$/.test(name)) return 'application/pdf';
+        if (/\.zip$/.test(name)) return 'application/zip';
+        if (/\.png$/.test(name)) return 'image/png';
+        if (/\.jpe?g$/.test(name)) return 'image/jpeg';
+        if (/\.gif$/.test(name)) return 'image/gif';
+        if (/\.webp$/.test(name)) return 'image/webp';
+        if (/\.avif$/.test(name)) return 'image/avif';
+        if (/\.bmp$/.test(name)) return 'image/bmp';
+        if (/\.svg$/.test(name)) return 'image/svg+xml';
+        if (_ATTACHMENT_TEXT_EXT_RE.test(name)) return 'text/plain';
+        return '';
+    }
+
+    function _attachmentClassifyMetadata(file, name) {
+        var probe = file || {};
+        var probeName = String(name || probe.name || 'file');
+        var proxy = {
+            name: probeName,
+            type: String(probe.type || _attachmentGuessMimeFromName(probeName))
+        };
+        if (_attachmentIsZipCandidate(proxy)) return { kind: 'archive', localOnly: true, sendEligible: false };
+        if (_attachmentIsPdfCandidate(proxy)) return { kind: 'pdf', localOnly: true, sendEligible: false };
+        if (_attachmentIsImage(proxy)) return {
+            kind: 'image', localOnly: true, sendEligible: false,
+            rasterPreview: _attachmentIsRasterPreview(proxy)
+        };
+        if (_attachmentIsText(proxy)) return { kind: 'text', localOnly: false, sendEligible: true };
+        return { kind: 'file', localOnly: true, sendEligible: false };
+    }
+
+    function _readAttachmentBlobSlice(file, start, length) {
+        if (!file || typeof file.slice !== 'function') return Promise.reject(new Error('ATTACHMENT_READ_FAILED'));
+        var size = Math.max(0, Number(file.size) || 0);
+        var from = Math.max(0, Math.floor(Number(start) || 0));
+        var count = Math.max(0, Math.floor(Number(length) || 0));
+        if (from > size || count > size - from) return Promise.reject(new Error('ATTACHMENT_READ_BOUNDS'));
+        var blob = file.slice(from, from + count);
+        if (blob && typeof blob.arrayBuffer === 'function') {
+            return blob.arrayBuffer().then(function (buffer) { return new Uint8Array(buffer); });
+        }
+        return new Promise(function (resolve, reject) {
+            if (typeof FileReader !== 'function') { reject(new Error('ATTACHMENT_READER_UNAVAILABLE')); return; }
+            var reader = new FileReader();
+            reader.onload = function () {
+                try { resolve(new Uint8Array(reader.result || new ArrayBuffer(0))); }
+                catch (_e) { reject(new Error('ATTACHMENT_READ_FAILED')); }
+            };
+            reader.onerror = function () { reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.readAsArrayBuffer(blob);
+        });
+    }
+
+    function _zipU16(view, offset) { return view.getUint16(offset, true); }
+    function _zipU32(view, offset) { return view.getUint32(offset, true); }
+
+    function _zipDecodeName(bytes, utf8Flag) {
+        if (!utf8Flag) {
+            for (var i = 0; i < bytes.length; i++) if (bytes[i] >= 0x80) return '';
+        }
+        try {
+            var decoder = new TextDecoder('utf-8', { fatal: true });
+            return decoder.decode(bytes);
+        } catch (_e) {
+            // TextDecoder may not exist in very old engines. ASCII names remain
+            // safe to reconstruct manually; non-ASCII legacy encodings do not.
+            var ascii = '';
+            for (var j = 0; j < bytes.length; j++) {
+                if (bytes[j] >= 0x80) return '';
+                ascii += String.fromCharCode(bytes[j]);
+            }
+            return ascii;
+        }
+    }
+
+    function _zipEntryReject(entry, code, detail) {
+        entry.selectable = false;
+        entry.rejected = true;
+        entry.reason = code;
+        entry.reasonDetail = detail || '';
+        return entry;
+    }
+
+    async function _inspectZipArchive(file) {
+        if (!file || !_attachmentIsZipCandidate(file)) throw new Error('ZIP_NOT_CANDIDATE');
+        var size = Math.max(0, Number(file.size) || 0);
+        if (size < 22) throw new Error('ZIP_EOCD_MISSING');
+        // Fast path: an ordinary no-comment ZIP needs only its final 22
+        // bytes to locate EOCD. Expand to the bounded maximum-comment tail only
+        // when that probe cannot prove the record location.
+        var tailLength = Math.min(size, 22);
+        var tailStart = size - tailLength;
+        var tail = await _readAttachmentBlobSlice(file, tailStart, tailLength);
+        var tailView = new DataView(tail.buffer, tail.byteOffset, tail.byteLength);
+        var eocdIndex = tail.length >= 22 && _zipU32(tailView, tail.length - 22) === 0x06054b50 &&
+            _zipU16(tailView, tail.length - 2) === 0 ? tail.length - 22 : -1;
+        if (eocdIndex < 0) {
+            tailLength = Math.min(size, _ATTACHMENT_ZIP_EOCD_TAIL_BYTES);
+            tailStart = size - tailLength;
+            tail = await _readAttachmentBlobSlice(file, tailStart, tailLength);
+            tailView = new DataView(tail.buffer, tail.byteOffset, tail.byteLength);
+            for (var p = tail.length - 22; p >= 0; p--) {
+                if (_zipU32(tailView, p) === 0x06054b50) {
+                    var commentLength = _zipU16(tailView, p + 20);
+                    if (p + 22 + commentLength === tail.length) { eocdIndex = p; break; }
+                }
+            }
+        }
+        if (eocdIndex < 0) throw new Error('ZIP_EOCD_MISSING');
+        var diskNo = _zipU16(tailView, eocdIndex + 4);
+        var centralDisk = _zipU16(tailView, eocdIndex + 6);
+        var entriesOnDisk = _zipU16(tailView, eocdIndex + 8);
+        var totalEntries = _zipU16(tailView, eocdIndex + 10);
+        var centralSize = _zipU32(tailView, eocdIndex + 12);
+        var centralOffset = _zipU32(tailView, eocdIndex + 16);
+        var eocdAbsolute = tailStart + eocdIndex;
+        if (diskNo !== 0 || centralDisk !== 0 || entriesOnDisk !== totalEntries) throw new Error('ZIP_MULTI_DISK_UNSUPPORTED');
+        if (totalEntries === 0xffff || centralSize === 0xffffffff || centralOffset === 0xffffffff) throw new Error('ZIP64_UNSUPPORTED');
+        if (totalEntries > _ATTACHMENT_IMPORT_MAX_ENTRIES) throw new Error('ZIP_TOO_MANY_ENTRIES');
+        if (centralSize > _ATTACHMENT_ZIP_MAX_CENTRAL_DIRECTORY_BYTES) throw new Error('ZIP_CENTRAL_DIRECTORY_TOO_LARGE');
+        if (centralOffset > eocdAbsolute || centralSize > eocdAbsolute - centralOffset) throw new Error('ZIP_CENTRAL_DIRECTORY_BOUNDS');
+        var central = await _readAttachmentBlobSlice(file, centralOffset, centralSize);
+        var view = new DataView(central.buffer, central.byteOffset, central.byteLength);
+        var offset = 0;
+        var entries = [];
+        var aliases = Object.create(null);
+        var localOffsets = Object.create(null);
+        var rejectedCount = 0;
+        for (var i = 0; i < totalEntries; i++) {
+            if (offset + 46 > central.length || _zipU32(view, offset) !== 0x02014b50) throw new Error('ZIP_CENTRAL_DIRECTORY_MALFORMED');
+            var versionMadeBy = _zipU16(view, offset + 4);
+            var flags = _zipU16(view, offset + 8);
+            var method = _zipU16(view, offset + 10);
+            var crc32 = _zipU32(view, offset + 16);
+            var compressedSize = _zipU32(view, offset + 20);
+            var uncompressedSize = _zipU32(view, offset + 24);
+            var nameLength = _zipU16(view, offset + 28);
+            var extraLength = _zipU16(view, offset + 30);
+            var commentLength2 = _zipU16(view, offset + 32);
+            var diskStart = _zipU16(view, offset + 34);
+            var externalAttributes = _zipU32(view, offset + 38);
+            var localHeaderOffset = _zipU32(view, offset + 42);
+            var recordEnd = offset + 46 + nameLength + extraLength + commentLength2;
+            if (recordEnd > central.length) throw new Error('ZIP_CENTRAL_DIRECTORY_MALFORMED');
+            var nameBytes = central.slice(offset + 46, offset + 46 + nameLength);
+            var decodedName = _zipDecodeName(nameBytes, !!(flags & 0x0800));
+            var directory = /[\\\/]$/.test(decodedName);
+            var safePath = directory ? _attachmentSafeRelativePath(decodedName.replace(/[\\\/]+$/, '')) : _attachmentSafeRelativePath(decodedName);
+            var displayName = safePath ? safePath.split('/').pop() : (decodedName || 'invalid-entry');
+            var entry = {
+                index: i,
+                name: _attachmentSafeName(displayName),
+                relativePath: safePath,
+                size: uncompressedSize,
+                compressedSize: compressedSize,
+                compressionMethod: method,
+                crc32: crc32 >>> 0,
+                flags: flags,
+                localHeaderOffset: localHeaderOffset,
+                centralDirectoryOffset: centralOffset,
+                directory: directory,
+                selectable: !directory,
+                rejected: false,
+                reason: '',
+                sourceKind: 'zip'
+            };
+            var unixHost = (versionMadeBy >>> 8) === 3 || (versionMadeBy >>> 8) === 19;
+            var unixModeType = unixHost ? ((externalAttributes >>> 16) & 0xf000) : 0;
+            if (!decodedName || !safePath) _zipEntryReject(entry, 'ZIP_PATH_UNSAFE');
+            else if (diskStart !== 0) _zipEntryReject(entry, 'ZIP_MULTI_DISK_ENTRY');
+            else if ((flags & 0x0001) || (flags & 0x0040)) _zipEntryReject(entry, 'ZIP_ENCRYPTED_ENTRY');
+            else if (method !== 0 && method !== 8) _zipEntryReject(entry, 'ZIP_UNSUPPORTED_COMPRESSION');
+            else if (unixModeType === 0xa000) _zipEntryReject(entry, 'ZIP_SYMLINK_BLOCKED');
+            else if (unixModeType && unixModeType !== 0x8000 && unixModeType !== 0x4000) _zipEntryReject(entry, 'ZIP_SPECIAL_FILE_BLOCKED');
+            else if (uncompressedSize === 0xffffffff || compressedSize === 0xffffffff || localHeaderOffset === 0xffffffff) _zipEntryReject(entry, 'ZIP64_ENTRY_UNSUPPORTED');
+            else if (uncompressedSize > _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES) _zipEntryReject(entry, 'ZIP_ENTRY_TOO_LARGE');
+            else if (method === 0 && compressedSize !== uncompressedSize) _zipEntryReject(entry, 'ZIP_STORED_SIZE_MISMATCH');
+            else if (uncompressedSize > 0 && compressedSize === 0) _zipEntryReject(entry, 'ZIP_COMPRESSION_RATIO');
+            else if (compressedSize > 0 && uncompressedSize / compressedSize > _ATTACHMENT_ZIP_MAX_COMPRESSION_RATIO) _zipEntryReject(entry, 'ZIP_COMPRESSION_RATIO');
+            else if (localHeaderOffset + 30 > centralOffset) _zipEntryReject(entry, 'ZIP_LOCAL_HEADER_BOUNDS');
+            if (!entry.rejected && !directory) {
+                var alias = _attachmentPathAlias(safePath);
+                var localOffsetKey = String(localHeaderOffset >>> 0);
+                if (!alias || aliases[alias]) _zipEntryReject(entry, 'ZIP_DUPLICATE_PATH_ALIAS');
+                else if (localOffsets[localOffsetKey]) _zipEntryReject(entry, 'ZIP_DUPLICATE_LOCAL_HEADER');
+                else {
+                    aliases[alias] = true;
+                    localOffsets[localOffsetKey] = true;
+                }
+            }
+            if (entry.rejected) rejectedCount++;
+            entries.push(entry);
+            offset = recordEnd;
+        }
+        return {
+            kind: 'zip',
+            name: _attachmentSafeName(file.name || 'archive.zip'),
+            file: file,
+            entries: entries,
+            totalEntries: totalEntries,
+            rejectedCount: rejectedCount,
+            centralDirectoryBytes: centralSize,
+            sourceBytes: size,
+            truncated: false
+        };
+    }
+
+    function _directoryEntryFile(entry) {
+        return new Promise(function (resolve, reject) {
+            if (!entry || !entry.isFile || typeof entry.file !== 'function') { reject(new Error('DIRECTORY_FILE_INVALID')); return; }
+            try { entry.file(resolve, reject); } catch (_e) { reject(_e); }
+        });
+    }
+
+    function _directoryReadBatch(reader) {
+        return new Promise(function (resolve, reject) {
+            if (!reader || typeof reader.readEntries !== 'function') { reject(new Error('DIRECTORY_READER_UNAVAILABLE')); return; }
+            try { reader.readEntries(resolve, reject); } catch (_e) { reject(_e); }
+        });
+    }
+
+    async function _inventoryDirectoryEntries(rootEntries) {
+        var roots = Array.prototype.slice.call(rootEntries || []).filter(function (entry) { return entry && entry.isDirectory; });
+        var queue = roots.map(function (entry) {
+            return { entry: entry, path: _attachmentSafeName(entry.name || 'folder'), depth: 0 };
+        });
+        var entries = [];
+        var rejectedCount = 0;
+        var truncated = false;
+        while (queue.length && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES) {
+            var current = queue.shift();
+            if (!current || current.depth > _ATTACHMENT_DIRECTORY_MAX_DEPTH) { rejectedCount++; continue; }
+            var reader;
+            try { reader = current.entry.createReader(); } catch (_e) { rejectedCount++; continue; }
+            var finished = false;
+            while (!finished && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES) {
+                var batch;
+                try { batch = await _directoryReadBatch(reader); }
+                catch (_e2) { rejectedCount++; break; }
+                if (!batch || !batch.length) { finished = true; break; }
+                var filePromises = [];
+                for (var i = 0; i < batch.length; i++) {
+                    var child = batch[i];
+                    if (!child) continue;
+                    var childName = _attachmentSafeName(child.name || 'entry');
+                    var relativePath = _attachmentSafeRelativePath(current.path + '/' + childName);
+                    if (!relativePath) { rejectedCount++; continue; }
+                    if (child.isDirectory) {
+                        if (current.depth + 1 > _ATTACHMENT_DIRECTORY_MAX_DEPTH) { rejectedCount++; continue; }
+                        queue.push({ entry: child, path: relativePath, depth: current.depth + 1 });
+                    } else if (child.isFile) {
+                        filePromises.push((function (entryRef, pathRef) {
+                            return _directoryEntryFile(entryRef).then(function (file) {
+                                return { file: file, relativePath: pathRef, sourceKind: 'directory' };
+                            }).catch(function () { rejectedCount++; return null; });
+                        }(child, relativePath)));
+                    }
+                }
+                var resolved = await Promise.all(filePromises);
+                for (var j = 0; j < resolved.length && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES; j++) {
+                    if (resolved[j]) entries.push(resolved[j]);
+                }
+            }
+        }
+        if (queue.length || entries.length >= _ATTACHMENT_IMPORT_MAX_ENTRIES) truncated = true;
+        return { kind: 'directory', entries: entries, rejectedCount: rejectedCount, truncated: truncated };
+    }
+
+    function _inventoryDirectoryFileList(fileList) {
+        var files = Array.prototype.slice.call(fileList || []);
+        var entries = [];
+        var rejectedCount = 0;
+        var truncated = files.length > _ATTACHMENT_IMPORT_MAX_ENTRIES;
+        for (var i = 0; i < files.length && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES; i++) {
+            var file = files[i];
+            if (!file) continue;
+            var rawPath = String(file.webkitRelativePath || file.name || 'file');
+            var path = _attachmentSafeRelativePath(rawPath);
+            if (!path) { rejectedCount++; continue; }
+            entries.push({ file: file, relativePath: path, sourceKind: 'directory' });
+        }
+        return { kind: 'directory', entries: entries, rejectedCount: rejectedCount, truncated: truncated };
+    }
+
+    var _zipCrcTable = null;
+    function _zipCrc32(bytes) {
+        if (!_zipCrcTable) {
+            _zipCrcTable = new Uint32Array(256);
+            for (var n = 0; n < 256; n++) {
+                var c = n;
+                for (var k = 0; k < 8; k++) c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+                _zipCrcTable[n] = c >>> 0;
+            }
+        }
+        var crc = 0xffffffff;
+        for (var i = 0; i < bytes.length; i++) crc = _zipCrcTable[(crc ^ bytes[i]) & 0xff] ^ (crc >>> 8);
+        return (crc ^ 0xffffffff) >>> 0;
+    }
+
+    async function _zipInflateBounded(blob, expectedSize) {
+        if (typeof DecompressionStream !== 'function') throw new Error('ZIP_DEFLATE_UNAVAILABLE');
+        var stream;
+        try { stream = blob.stream().pipeThrough(new DecompressionStream('deflate-raw')); }
+        catch (_e) { throw new Error('ZIP_DEFLATE_UNAVAILABLE'); }
+        var reader = stream.getReader();
+        var chunks = [];
+        var total = 0;
+        try {
+            while (true) {
+                var result = await reader.read();
+                if (result.done) break;
+                var value = result.value instanceof Uint8Array ? result.value : new Uint8Array(result.value || 0);
+                total += value.byteLength;
+                if (total > expectedSize || total > _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES) {
+                    try { await reader.cancel('ZIP_OUTPUT_LIMIT'); } catch (_ignoreCancel) {}
+                    throw new Error('ZIP_OUTPUT_LIMIT');
+                }
+                chunks.push(value);
+            }
+        } finally {
+            try { reader.releaseLock(); } catch (_e2) {}
+        }
+        if (total !== expectedSize) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+        var out = new Uint8Array(total);
+        var pos = 0;
+        chunks.forEach(function (chunk) { out.set(chunk, pos); pos += chunk.byteLength; });
+        return out;
+    }
+
+    async function _extractZipEntry(job, entry) {
+        if (!job || !job.file || !entry || entry.rejected || !entry.selectable) throw new Error('ZIP_ENTRY_NOT_SELECTABLE');
+        var head = await _readAttachmentBlobSlice(job.file, entry.localHeaderOffset, 30);
+        var view = new DataView(head.buffer, head.byteOffset, head.byteLength);
+        if (_zipU32(view, 0) !== 0x04034b50) throw new Error('ZIP_LOCAL_HEADER_MALFORMED');
+        var localFlags = _zipU16(view, 6);
+        var localMethod = _zipU16(view, 8);
+        var nameLength = _zipU16(view, 26);
+        var extraLength = _zipU16(view, 28);
+        if ((localFlags & 0x0001) || (localFlags & 0x0040)) throw new Error('ZIP_ENCRYPTED_ENTRY');
+        if (localMethod !== entry.compressionMethod) throw new Error('ZIP_METHOD_MISMATCH');
+        if ((localFlags & 0x0809) !== (entry.flags & 0x0809)) throw new Error('ZIP_FLAGS_MISMATCH');
+        var localNameBytes = await _readAttachmentBlobSlice(job.file, entry.localHeaderOffset + 30, nameLength);
+        var localName = _zipDecodeName(localNameBytes, !!(localFlags & 0x0800));
+        var localSafePath = _attachmentSafeRelativePath(localName);
+        if (!localSafePath || _attachmentPathAlias(localSafePath) !== _attachmentPathAlias(entry.relativePath)) {
+            throw new Error('ZIP_LOCAL_NAME_MISMATCH');
+        }
+        var dataStart = entry.localHeaderOffset + 30 + nameLength + extraLength;
+        var dataEnd = dataStart + entry.compressedSize;
+        if (dataStart < entry.localHeaderOffset || dataEnd > entry.centralDirectoryOffset || dataEnd > Number(job.file.size || 0)) {
+            throw new Error('ZIP_ENTRY_DATA_BOUNDS');
+        }
+        var compressedBlob = job.file.slice(dataStart, dataEnd);
+        var bytes;
+        if (entry.compressionMethod === 0) {
+            var stored = await compressedBlob.arrayBuffer();
+            bytes = new Uint8Array(stored);
+            if (bytes.length !== entry.size) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+        } else if (entry.compressionMethod === 8) {
+            bytes = await _zipInflateBounded(compressedBlob, entry.size);
+        } else {
+            throw new Error('ZIP_UNSUPPORTED_COMPRESSION');
+        }
+        if (_zipCrc32(bytes) !== (entry.crc32 >>> 0)) throw new Error('ZIP_CRC_MISMATCH');
+        var filename = entry.relativePath.split('/').pop() || entry.name || 'file';
+        var mime = _attachmentGuessMimeFromName(filename);
+        var file;
+        if (typeof File === 'function') file = new File([bytes], filename, { type: mime, lastModified: Date.now() });
+        else {
+            file = new Blob([bytes], { type: mime });
+            try { Object.defineProperty(file, 'name', { value: filename, configurable: true }); } catch (_e) { file.name = filename; }
+        }
+        return { file: file, relativePath: entry.relativePath, sourceKind: 'zip', archiveName: job.name };
     }
 
     function _attachmentDragHasFiles(eventOrTransfer) {
@@ -10596,8 +11023,9 @@
 
     function _attachmentFilesFromDrop(dataTransfer) {
         var out = [];
-        var skippedDirectories = 0;
-        if (!dataTransfer) return { files: out, skippedDirectories: 0 };
+        var directoryEntries = [];
+        var skippedDirectories = 0; // legacy diagnostic name: not in `files`.
+        if (!dataTransfer) return { files: out, directoryEntries: directoryEntries, skippedDirectories: 0 };
         try {
             var items = dataTransfer.items;
             if (items && typeof items.length === 'number' && items.length) {
@@ -10608,13 +11036,17 @@
                     try {
                         if (typeof item.webkitGetAsEntry === 'function') entry = item.webkitGetAsEntry();
                     } catch (_e) {}
-                    if (entry && entry.isDirectory) { skippedDirectories++; continue; }
+                    if (entry && entry.isDirectory) {
+                        skippedDirectories++;
+                        directoryEntries.push(entry);
+                        continue;
+                    }
                     var file = null;
                     try { if (typeof item.getAsFile === 'function') file = item.getAsFile(); } catch (_e2) {}
                     if (file) out.push(file);
                 }
-                if (out.length || skippedDirectories) {
-                    return { files: out, skippedDirectories: skippedDirectories };
+                if (out.length || directoryEntries.length) {
+                    return { files: out, directoryEntries: directoryEntries, skippedDirectories: skippedDirectories };
                 }
                 // Some engines expose DataTransfer.items but return null from
                 // getAsFile() until drop. Fall through to DataTransfer.files.
@@ -10624,7 +11056,7 @@
             var files = dataTransfer.files;
             for (var j = 0; files && j < files.length; j++) if (files[j]) out.push(files[j]);
         } catch (_e4) {}
-        return { files: out, skippedDirectories: skippedDirectories };
+        return { files: out, directoryEntries: directoryEntries, skippedDirectories: skippedDirectories };
     }
 
     function _attachmentLineCount(text) {
@@ -10651,10 +11083,86 @@
                 if (sample.length && nulCount > Math.max(2, sample.length * 0.01)) {
                     reject(new Error('ATTACHMENT_BINARY_CONTENT')); return;
                 }
-                resolve(text.slice(0, cap));
+                resolve(text);
             };
             reader.onerror = function () { reject(new Error('ATTACHMENT_READ_FAILED')); };
             reader.readAsText(source, 'utf-8');
+        });
+    }
+
+    function _readAttachmentPrefixBytes(file, maxBytes) {
+        if (!file) return Promise.reject(new Error('ATTACHMENT_READ_FAILED'));
+        var cap = Math.max(1, Math.min(64, Number(maxBytes) || _ATTACHMENT_PDF_SIGNATURE_BYTES));
+        var source = file;
+        try {
+            if (typeof file.slice === 'function') source = file.slice(0, cap);
+        } catch (_e) {}
+        if (source && typeof source.arrayBuffer === 'function') {
+            return source.arrayBuffer().then(function (buffer) {
+                return new Uint8Array(buffer).slice(0, cap);
+            });
+        }
+        return new Promise(function (resolve, reject) {
+            if (typeof FileReader !== 'function') {
+                reject(new Error('ATTACHMENT_READ_FAILED')); return;
+            }
+            var reader = new FileReader();
+            reader.onload = function () {
+                try { resolve(new Uint8Array(reader.result || new ArrayBuffer(0)).slice(0, cap)); }
+                catch (_e) { reject(new Error('ATTACHMENT_READ_FAILED')); }
+            };
+            reader.onerror = function () { reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.readAsArrayBuffer(source);
+        });
+    }
+
+    function _ensurePdfSignature(item) {
+        if (!item || item.kind !== 'pdf' || !item.file) return Promise.resolve(false);
+        if (item.pdfVerified === true) return Promise.resolve(true);
+        if (item.previewError === 'ATTACHMENT_PDF_SIGNATURE') return Promise.resolve(false);
+        if (item.pdfVerifyPromise) return item.pdfVerifyPromise;
+        item.pdfVerifyPromise = _readAttachmentPrefixBytes(item.file, _ATTACHMENT_PDF_SIGNATURE_BYTES)
+            .then(function (bytes) {
+                var valid = bytes && bytes.length >= 5 &&
+                    bytes[0] === 0x25 && bytes[1] === 0x50 && bytes[2] === 0x44 &&
+                    bytes[3] === 0x46 && bytes[4] === 0x2d; // "%PDF-"
+                item.pdfVerified = valid;
+                item.previewError = valid ? '' : 'ATTACHMENT_PDF_SIGNATURE';
+                return valid;
+            }).catch(function () {
+                item.pdfVerified = false;
+                item.previewError = 'ATTACHMENT_PDF_READ_FAILED';
+                return false;
+            }).finally(function () {
+                item.pdfVerifyPromise = null;
+            });
+        return item.pdfVerifyPromise;
+    }
+
+    function _openLocalPdf(item) {
+        if (!item || item.kind !== 'pdf') return;
+        _ensurePdfSignature(item).then(function (valid) {
+            if (!valid) {
+                showNotification('PDF preview blocked because the local file did not pass the PDF signature check.', false);
+                return;
+            }
+            var href = _attachmentEnsureObjectUrl(item);
+            if (!href || typeof document === 'undefined') {
+                showNotification('This browser could not create a local PDF view.', false);
+                return;
+            }
+            try {
+                var a = document.createElement('a');
+                a.href = href;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } catch (_e) {
+                showNotification('This browser could not open the local PDF view.', false);
+            }
         });
     }
 
@@ -10698,51 +11206,136 @@
 
     function _composerAttachmentUsableCount() {
         return _composerAttachments.reduce(function (n, item) {
-            return n + (item && item.kind === 'text' && typeof item.text === 'string' ? 1 : 0);
+            return n + (item && item.kind === 'text' && item.file && item.sendEligible !== false ? 1 : 0);
         }, 0);
     }
 
-    function _composerAttachmentContext() {
-        var remaining = _ATTACHMENT_MAX_TEXT_CHARS;
-        var parts = [];
-        _composerAttachments.forEach(function (item) {
-            if (!item || item.kind !== 'text' || typeof item.text !== 'string' || remaining <= 0) return;
-            var header = 'Attachment: ' + _attachmentSafeName(item.name) +
-                (item.type ? ' (' + String(item.type).slice(0, 120) + ')' : '');
-            var room = Math.max(0, remaining - header.length - 32);
-            var body = item.text.slice(0, room);
-            parts.push(header + '\n' + body);
-            remaining -= header.length + body.length + 2;
-        });
-        return parts.join('\n\n');
+    function _attachmentHeader(item) {
+        return 'Attachment: ' + _attachmentSafeName(item && item.name) +
+            (item && item.type ? ' (' + String(item.type).slice(0, 120) + ')' : '');
     }
 
-    // Immutable, content-free attachment metadata stored with a user turn.
-    // File bytes/text remain in the canonical turn only where required for
-    // Retry/Edit; the visible transcript stores names + bounded display facts
-    // so consumed files can move out of the composer without losing provenance.
-    var _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS = 12;
+    function _attachmentSelectContextCandidates(items) {
+        var candidates = (items || []).filter(function (item) {
+            return item && item.kind === 'text' && item.file && item.sendEligible !== false;
+        }).map(function (item) {
+            return { item: item, header: _attachmentHeader(item) };
+        });
+        var selected = [];
+        var overhead = 0;
+        for (var i = 0; i < candidates.length; i++) {
+            // Account exactly for header + newline + inter-part separator, then
+            // reserve at least one body character for every selected file. This
+            // prevents a long-name batch from selecting more headers than the
+            // fixed budget can represent usefully.
+            var nextOverhead = overhead + candidates[i].header.length + 1 + (selected.length ? 2 : 0);
+            var nextCount = selected.length + 1;
+            if (nextOverhead + nextCount > _ATTACHMENT_MAX_TEXT_CHARS) break;
+            selected.push(candidates[i]);
+            overhead = nextOverhead;
+        }
+        return { selected: selected, headerOverhead: overhead };
+    }
 
-    function _sanitizeTurnAttachmentSummaries(items) {
+    async function _prepareComposerAttachmentPlan(items) {
+        var source = Array.isArray(items) ? items.slice() : _composerAttachments.slice();
+        var pick = _attachmentSelectContextCandidates(source);
+        var selected = pick.selected;
+        var totalBodyBudget = Math.max(0, _ATTACHMENT_MAX_TEXT_CHARS - pick.headerOverhead);
+        var fairShare = selected.length
+            ? Math.min(_ATTACHMENT_MAX_FILE_CONTEXT_CHARS, Math.floor(totalBodyBudget / selected.length))
+            : 0;
+        var parts = [];
+        var included = [];
+        var budgetExcluded = source.filter(function (item) {
+            return item && item.kind === 'text' && item.file && item.sendEligible !== false &&
+                !selected.some(function (row) { return row.item === item; });
+        });
+
+        for (var i = 0; i < selected.length; i++) {
+            var row = selected[i];
+            var item = row.item;
+            var desiredChars = Math.max(0, fairShare);
+            if (!desiredChars) { budgetExcluded.push(item); continue; }
+            try {
+                var readBytes = Math.min(
+                    _ATTACHMENT_MAX_CONTEXT_READ_BYTES,
+                    Math.max(1024, desiredChars * 4)
+                );
+                var text = await _readAttachmentText(item.file, readBytes);
+                var body = text.slice(0, desiredChars);
+                var bounded = body.length < text.length || (Number(item.size) || 0) > readBytes;
+                item.sendEligible = true;
+                item.lastContextError = '';
+                included.push({ item: item, boundedExcerpt: bounded, bodyChars: body.length });
+                parts.push(row.header + '\n' + body);
+            } catch (err) {
+                // Mislabeled/binary-looking text remains a local attachment.
+                item.sendEligible = false;
+                item.lastContextError = err && err.message ? String(err.message) : 'ATTACHMENT_READ_FAILED';
+            }
+        }
+
+        var text = parts.join('\n\n');
+        // This should already fit by construction. The guard is defensive and
+        // refuses to manufacture a partial attachment if an invariant changes.
+        if (text.length > _ATTACHMENT_MAX_TEXT_CHARS) {
+            while (parts.length && parts.join('\n\n').length > _ATTACHMENT_MAX_TEXT_CHARS) {
+                var removed = included.pop();
+                if (removed) budgetExcluded.unshift(removed.item);
+                parts.pop();
+            }
+            text = parts.join('\n\n');
+        }
+        return {
+            text: text,
+            included: included,
+            budgetExcluded: budgetExcluded,
+            selectedCount: selected.length,
+            candidateCount: source.filter(function (item) {
+                return item && item.kind === 'text' && item.file;
+            }).length
+        };
+    }
+
+    // Immutable, content-free resource metadata stored with a user turn.
+    //
+    // File intake is capped separately at 256. A turn can also own current/pinned
+    // PAGE resources and replay provenance, so the live manifest has a slightly
+    // wider independent ceiling. Persistence deliberately keeps only 24 rows but
+    // preserves exact aggregate counts/bytes and explicitly marks incompleteness.
+    var _TURN_RESOURCE_LIVE_MAX_ITEMS = 512;
+    var _TURN_RESOURCE_PERSIST_MAX_ITEMS = 24;
+    var _TURN_RESOURCE_VISIBLE_MAX_ITEMS = 32;
+
+    function _sanitizeTurnAttachmentSummaries(items, maxItems) {
         if (!Array.isArray(items)) return [];
+        var limit = Number.isFinite(Number(maxItems))
+            ? Math.max(0, Math.min(_TURN_RESOURCE_LIVE_MAX_ITEMS, Math.floor(Number(maxItems))))
+            : _TURN_RESOURCE_LIVE_MAX_ITEMS;
         var out = [];
-        for (var i = 0; i < items.length && out.length < _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS; i++) {
+        for (var i = 0; i < items.length && out.length < limit; i++) {
             var item = items[i];
             if (!item || typeof item !== 'object') continue;
             var kind = String(item.kind || 'file').toLowerCase();
-            if (kind !== 'text' && kind !== 'image' && kind !== 'file' && kind !== 'replay' && kind !== 'page') kind = 'file';
+            if (kind !== 'text' && kind !== 'image' && kind !== 'file' && kind !== 'replay' && kind !== 'page' && kind !== 'pdf' && kind !== 'archive') kind = 'file';
             var status = String(item.status || '').slice(0, 96);
             var name = _attachmentSafeName(item.name || (kind === 'replay' ? 'Prior attachment context' : (kind === 'page' ? 'Documentation page' : 'file')));
             var row = {
                 name: name,
                 badge: String(item.badge || _attachmentItemBadge(item) || _attachmentExtension(name)).replace(/[^A-Za-z0-9+._-]/g, '').slice(0, 12).toUpperCase() || 'FILE',
                 kind: kind,
-                size: Math.max(0, Math.min(1024 * 1024 * 1024, Number(item.size) || 0)),
+                size: Math.max(0, Math.min(Number.MAX_SAFE_INTEGER, Number(item.size) || 0)),
                 lineCount: Math.max(0, Math.min(1000000, Number(item.lineCount) || 0)),
                 included: item.included === true,
                 localOnly: item.localOnly === true,
                 replay: item.replay === true,
-                status: status
+                boundedExcerpt: item.boundedExcerpt === true,
+                status: status,
+                type: typeof item.type === 'string' ? item.type.slice(0, 120) : '',
+                relativePath: item.relativePath ? _attachmentSafeRelativePath(item.relativePath) : '',
+                sourceKind: typeof item.sourceKind === 'string' ? item.sourceKind.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 24) : '',
+                archiveName: item.archiveName ? _attachmentSafeName(item.archiveName) : ''
             };
             if (kind === 'page') {
                 row.contextRole = item.contextRole === 'current' ? 'current' : 'pinned';
@@ -10753,18 +11346,106 @@
         return out;
     }
 
+    function _safeTurnResourceTotal(value) {
+        var n = Number(value);
+        if (!Number.isFinite(n) || n < 0) return 0;
+        return Math.min(Number.MAX_SAFE_INTEGER, Math.floor(n));
+    }
+
+    function _turnResourceAggregates(items) {
+        var rows = Array.isArray(items) ? items : [];
+        var totalBytes = 0;
+        var includedCount = 0;
+        var localOnlyCount = 0;
+        var pageCount = 0;
+        var replayCount = 0;
+        rows.forEach(function (item) {
+            if (!item || typeof item !== 'object') return;
+            if (item.included === true) includedCount++;
+            if (item.localOnly === true) localOnlyCount++;
+            if (item.kind === 'page') pageCount++;
+            if (item.kind === 'replay' || item.replay === true) replayCount++;
+            var size = _safeTurnResourceTotal(item.size);
+            totalBytes = Math.min(Number.MAX_SAFE_INTEGER, totalBytes + size);
+        });
+        return {
+            totalCount: rows.length,
+            includedCount: includedCount,
+            localOnlyCount: localOnlyCount,
+            pageCount: pageCount,
+            replayCount: replayCount,
+            totalBytes: totalBytes
+        };
+    }
+
+    function _buildTurnResourceManifest(items, maxItems) {
+        var source = Array.isArray(items) ? items.filter(function (item) {
+            return !!(item && typeof item === 'object');
+        }) : [];
+        var aggregates = _turnResourceAggregates(source);
+        var rows = _sanitizeTurnAttachmentSummaries(source, maxItems);
+        var omitted = Math.max(0, aggregates.totalCount - rows.length);
+        return {
+            version: 1,
+            totalCount: aggregates.totalCount,
+            includedCount: aggregates.includedCount,
+            localOnlyCount: aggregates.localOnlyCount,
+            pageCount: aggregates.pageCount,
+            replayCount: aggregates.replayCount,
+            totalBytes: aggregates.totalBytes,
+            itemCount: rows.length,
+            omittedCount: omitted,
+            complete: omitted === 0,
+            items: rows
+        };
+    }
+
+    function _sanitizeTurnResourceManifest(value, maxItems) {
+        if (Array.isArray(value)) return _buildTurnResourceManifest(value, maxItems);
+        if (!value || typeof value !== 'object' || Array.isArray(value)) {
+            return _buildTurnResourceManifest([], maxItems);
+        }
+        var rows = _sanitizeTurnAttachmentSummaries(value.items, maxItems);
+        var derived = _turnResourceAggregates(rows);
+        var totalCount = Math.max(derived.totalCount, _safeTurnResourceTotal(value.totalCount));
+        var includedCount = Math.max(derived.includedCount, Math.min(totalCount, _safeTurnResourceTotal(value.includedCount)));
+        var localOnlyCount = Math.max(
+            derived.localOnlyCount,
+            Math.min(Math.max(0, totalCount - includedCount), _safeTurnResourceTotal(value.localOnlyCount))
+        );
+        var pageCount = Math.max(derived.pageCount, Math.min(totalCount, _safeTurnResourceTotal(value.pageCount)));
+        var replayCount = Math.max(derived.replayCount, Math.min(totalCount, _safeTurnResourceTotal(value.replayCount)));
+        var totalBytes = Math.max(derived.totalBytes, _safeTurnResourceTotal(value.totalBytes));
+        var omittedCount = Math.max(
+            _safeTurnResourceTotal(value.omittedCount),
+            Math.max(0, totalCount - rows.length)
+        );
+        return {
+            version: 1,
+            totalCount: totalCount,
+            includedCount: includedCount,
+            localOnlyCount: localOnlyCount,
+            pageCount: pageCount,
+            replayCount: replayCount,
+            totalBytes: totalBytes,
+            itemCount: rows.length,
+            omittedCount: omittedCount,
+            complete: value.complete === true && omittedCount === 0 && totalCount === rows.length,
+            items: rows
+        };
+    }
+
+    function _compactTurnResourceManifest(value) {
+        return _sanitizeTurnResourceManifest(value, _TURN_RESOURCE_PERSIST_MAX_ITEMS);
+    }
+
     function _turnResourceLiveView(item) {
         if (!item || typeof item !== 'object') return null;
         var summary = _sanitizeTurnAttachmentSummaries([item])[0];
         if (!summary) return null;
-        // Live-only preview capabilities are intentionally NOT persisted by
-        // _recordMessage. They let the just-rendered user turn use the same
-        // attachment preview UI without duplicating file/page bytes in storage.
         summary.turnScoped = true;
         if ((summary.kind === 'page' || summary.kind === 'text') && typeof item.previewText === 'string') {
             summary.previewText = item.previewText.slice(0, _ATTACHMENT_MAX_PREVIEW_BYTES);
-        } else if (summary.kind === 'text' && typeof item.text === 'string') {
-            summary.previewText = item.text.slice(0, _ATTACHMENT_MAX_PREVIEW_BYTES);
         }
         if (item.file) summary.file = item.file;
         summary.rasterPreview = item.rasterPreview === true;
@@ -10781,21 +11462,24 @@
             name = _attachmentSafeName(name);
             if (name && names.indexOf(name) < 0) names.push(name);
         });
-        return names.slice(0, _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS);
+        return names.slice(0, _TURN_RESOURCE_LIVE_MAX_ITEMS);
     }
 
-    function _composerTurnAttachmentSnapshot(finalAttachmentContext, preparedPageContext) {
+    function _composerTurnAttachmentSnapshot(plan, preparedPageContext) {
         var out = [];
-        var finalContext = String(finalAttachmentContext || '');
-        var hasOutboundText = !!finalContext.trim();
+        var finalContext = plan && typeof plan.text === 'string' ? plan.text : '';
+        var includedRows = plan && Array.isArray(plan.included) ? plan.included : [];
+        var budgetExcluded = plan && Array.isArray(plan.budgetExcluded) ? plan.budgetExcluded : [];
+        function _includedInfo(item) {
+            for (var x = 0; x < includedRows.length; x++) if (includedRows[x].item === item) return includedRows[x];
+            return null;
+        }
+        function _budgetMiss(item) { return budgetExcluded.indexOf(item) >= 0; }
 
-        // Page selections are first-class turn resources. They are transport
-        // one-shots just like uploaded text, even when their source is a saved
-        // pin or the automatic current-page default.
         var pageSources = preparedPageContext && Array.isArray(preparedPageContext.sources)
             ? preparedPageContext.sources : [];
         pageSources.forEach(function (item) {
-            if (!item || out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
+            if (!item || out.length >= _TURN_RESOURCE_LIVE_MAX_ITEMS) return;
             var live = _turnResourceLiveView({
                 name: item.name || item.title || 'Documentation page',
                 badge: item.contextRole === 'current' ? 'PAGE' : 'MD',
@@ -10813,34 +11497,38 @@
         });
 
         _composerAttachments.forEach(function (item) {
-            if (!item || out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
-            var itemHeader = 'Attachment: ' + _attachmentSafeName(item.name);
-            var textIncluded = item.kind === 'text' && typeof item.text === 'string' &&
-                hasOutboundText && finalContext.indexOf(itemHeader) >= 0;
+            if (!item || out.length >= _TURN_RESOURCE_LIVE_MAX_ITEMS) return;
+            var info = _includedInfo(item);
+            var textIncluded = !!info;
+            var status = textIncluded
+                ? (info.boundedExcerpt ? 'Included once · bounded excerpt' : 'Included once')
+                : (_budgetMiss(item) ? 'Not sent · shared context budget' : 'Local only · not sent');
             var live = _turnResourceLiveView(Object.assign({}, item, {
                 badge: _attachmentItemBadge(item),
                 included: textIncluded,
                 localOnly: !textIncluded,
                 replay: false,
-                status: textIncluded ? 'Included once' : 'Local only · not sent'
+                boundedExcerpt: !!(info && info.boundedExcerpt),
+                status: status
             }));
             if (live) out.push(live);
         });
-        if (_composerReplayAttachmentContext && out.length < _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) {
+        if (_composerReplayAttachmentContext && out.length < _TURN_RESOURCE_LIVE_MAX_ITEMS) {
             var replayNames = _replayAttachmentNames(_composerReplayAttachmentContext);
             if (!replayNames.length) replayNames = ['Prior attachment context'];
             replayNames.forEach(function (name) {
-                if (out.length >= _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS) return;
+                if (out.length >= _TURN_RESOURCE_LIVE_MAX_ITEMS) return;
+                var included = finalContext.indexOf('Attachment: ' + name) >= 0;
                 var live = _turnResourceLiveView({
                     name: name,
                     badge: _attachmentExtension(name),
                     kind: 'replay',
                     size: 0,
                     lineCount: 0,
-                    included: hasOutboundText,
+                    included: included,
                     localOnly: false,
                     replay: true,
-                    status: hasOutboundText ? 'Reused once' : 'Not sent'
+                    status: included ? 'Reused once' : 'Not sent · shared context budget'
                 });
                 if (live) out.push(live);
             });
@@ -10881,7 +11569,9 @@
         var b = String(secondary || '');
         if (!a) return b.slice(0, _ATTACHMENT_MAX_TEXT_CHARS);
         if (!b) return a.slice(0, _ATTACHMENT_MAX_TEXT_CHARS);
-        return (a + '\n\n' + b).slice(0, _ATTACHMENT_MAX_TEXT_CHARS);
+        var remaining = Math.max(0, _ATTACHMENT_MAX_TEXT_CHARS - a.length - 2);
+        if (!remaining) return a;
+        return a + '\n\n' + b.slice(0, remaining);
     }
 
     function _updateReplayAttachmentUi() {
@@ -10894,6 +11584,7 @@
 
     function _setComposerReplayAttachmentContext(value) {
         _composerReplayAttachmentContext = String(value || '').slice(0, _ATTACHMENT_MAX_TEXT_CHARS);
+        _attachmentMutationRevision++;
         _updateReplayAttachmentUi();
         _updateSendBtnState();
     }
@@ -10901,14 +11592,491 @@
     function _clearComposerReplayAttachmentContext() {
         if (!_composerReplayAttachmentContext) return;
         _composerReplayAttachmentContext = '';
+        _attachmentMutationRevision++;
         _updateReplayAttachmentUi();
         _updateSendBtnState();
     }
 
-    function _composerEffectiveAttachmentContext() {
+    async function _prepareComposerEffectiveAttachmentPlan(snapshotItems) {
         // Newly staged files take precedence when the combined context reaches
-        // the cap; they represent the reader's most recent explicit action.
-        return _mergeAttachmentContexts(_composerAttachmentContext(), _composerReplayAttachmentContext);
+        // the cap; replay receives only the remaining fixed budget.
+        var plan = await _prepareComposerAttachmentPlan(snapshotItems);
+        plan.text = _mergeAttachmentContexts(plan.text, _composerReplayAttachmentContext);
+        return plan;
+    }
+
+    // ── Directory / ZIP import inventory ──────────────────────────────────
+    // Import jobs are intentionally separate from `_composerAttachments`.
+    // Inventory metadata can therefore scale beyond the 256 staged-file limit,
+    // while model context remains impossible until explicit reader selection.
+    var _attachmentImportState = {
+        layer: null,
+        dialog: null,
+        title: null,
+        count: null,
+        search: null,
+        filter: null,
+        list: null,
+        selected: null,
+        add: null,
+        selectAll: null,
+        clearSelection: null,
+        queue: [],
+        active: null,
+        trigger: null,
+        busy: false
+    };
+
+    function _attachmentImportEntryFromDescriptor(descriptor, index) {
+        var file = descriptor && descriptor.file ? descriptor.file : descriptor;
+        if (!file) return null;
+        var relativePath = _attachmentSafeRelativePath(
+            descriptor && descriptor.relativePath ? descriptor.relativePath : (file.webkitRelativePath || file.name || 'file')
+        );
+        if (!relativePath) return null;
+        var name = relativePath.split('/').pop() || file.name || 'file';
+        var cls = _attachmentClassifyMetadata(file, name);
+        return {
+            index: index,
+            name: _attachmentSafeName(name),
+            relativePath: relativePath,
+            type: String(file.type || _attachmentGuessMimeFromName(name) || '').slice(0, 120),
+            size: Math.max(0, Number(file.size) || 0),
+            kind: cls.kind,
+            localOnly: cls.localOnly,
+            selectable: true,
+            selected: false,
+            rejected: false,
+            reason: '',
+            descriptor: {
+                file: file,
+                relativePath: relativePath,
+                sourceKind: descriptor && descriptor.sourceKind ? descriptor.sourceKind : 'directory',
+                archiveName: descriptor && descriptor.archiveName ? descriptor.archiveName : ''
+            }
+        };
+    }
+
+    function _attachmentDirectoryImportJob(inventory, label) {
+        var entries = [];
+        var aliases = Object.create(null);
+        var rejectedCount = Math.max(0, Number(inventory && inventory.rejectedCount) || 0);
+        (inventory && Array.isArray(inventory.entries) ? inventory.entries : []).forEach(function (descriptor, index) {
+            var entry = _attachmentImportEntryFromDescriptor(descriptor, index);
+            if (!entry) { rejectedCount++; return; }
+            var alias = _attachmentPathAlias(entry.relativePath);
+            if (!alias || aliases[alias]) {
+                entry.selectable = false;
+                entry.rejected = true;
+                entry.reason = 'DIRECTORY_DUPLICATE_PATH_ALIAS';
+                rejectedCount++;
+            } else {
+                aliases[alias] = true;
+            }
+            entries.push(entry);
+        });
+        return {
+            kind: 'directory',
+            name: _attachmentSafeName(label || 'Folder'),
+            entries: entries,
+            rejectedCount: rejectedCount,
+            truncated: !!(inventory && inventory.truncated)
+        };
+    }
+
+    function _attachmentZipImportJob(info) {
+        var entries = [];
+        (info && Array.isArray(info.entries) ? info.entries : []).forEach(function (raw) {
+            if (!raw || raw.directory) return;
+            var cls = _attachmentClassifyMetadata({ name: raw.name, type: _attachmentGuessMimeFromName(raw.name) }, raw.name);
+            entries.push(Object.assign({}, raw, {
+                kind: cls.kind,
+                localOnly: cls.localOnly,
+                selected: false,
+                type: _attachmentGuessMimeFromName(raw.name)
+            }));
+        });
+        return {
+            kind: 'zip',
+            name: _attachmentSafeName(info && info.name || 'archive.zip'),
+            file: info && info.file,
+            entries: entries,
+            rejectedCount: Math.max(0, Number(info && info.rejectedCount) || 0),
+            truncated: !!(info && info.truncated),
+            centralDirectoryBytes: Math.max(0, Number(info && info.centralDirectoryBytes) || 0),
+            sourceBytes: Math.max(0, Number(info && info.sourceBytes) || 0)
+        };
+    }
+
+    function _attachmentImportReasonLabel(reason) {
+        var labels = {
+            ZIP_PATH_UNSAFE: 'unsafe path',
+            ZIP_MULTI_DISK_ENTRY: 'multi-disk entry',
+            ZIP_ENCRYPTED_ENTRY: 'encrypted',
+            ZIP_UNSUPPORTED_COMPRESSION: 'unsupported compression',
+            ZIP_SYMLINK_BLOCKED: 'symlink blocked',
+            ZIP_SPECIAL_FILE_BLOCKED: 'special file blocked',
+            ZIP64_ENTRY_UNSUPPORTED: 'ZIP64 entry unsupported',
+            ZIP_ENTRY_TOO_LARGE: 'entry exceeds 64 MiB extraction limit',
+            ZIP_STORED_SIZE_MISMATCH: 'stored-size mismatch',
+            ZIP_COMPRESSION_RATIO: 'compression-ratio limit',
+            ZIP_LOCAL_HEADER_BOUNDS: 'invalid local-header offset',
+            ZIP_DUPLICATE_PATH_ALIAS: 'duplicate path alias',
+            ZIP_DUPLICATE_LOCAL_HEADER: 'duplicate local-header target',
+            ZIP_SELECTED_TOTAL_LIMIT: 'selected ZIP output exceeds 256 MiB',
+            DIRECTORY_DUPLICATE_PATH_ALIAS: 'duplicate path alias'
+        };
+        return labels[reason] || String(reason || 'not selectable').replace(/_/g, ' ').toLowerCase();
+    }
+
+    function _attachmentImportVisibleEntries() {
+        var st = _attachmentImportState;
+        var job = st.active;
+        if (!job) return [];
+        var query = st.search ? String(st.search.value || '').trim().toLowerCase() : '';
+        var filter = st.filter ? String(st.filter.value || 'all') : 'all';
+        return job.entries.filter(function (entry) {
+            if (!entry) return false;
+            if (filter === 'text' && entry.kind !== 'text') return false;
+            if (filter === 'pdf' && entry.kind !== 'pdf') return false;
+            if (filter === 'image' && entry.kind !== 'image') return false;
+            if (filter === 'archive' && entry.kind !== 'archive') return false;
+            if (filter === 'local' && !entry.localOnly) return false;
+            if (filter === 'rejected' && !entry.rejected) return false;
+            if (!query) return true;
+            return [entry.name, entry.relativePath, entry.type, entry.kind, entry.reason]
+                .filter(Boolean).join('\n').toLowerCase().indexOf(query) >= 0;
+        });
+    }
+
+    function _renderAttachmentImportList() {
+        var st = _attachmentImportState;
+        var job = st.active;
+        if (!st.layer || st.layer.hidden || !job || !st.list) return;
+        var rows = _attachmentImportVisibleEntries();
+        var selectedCount = job.entries.reduce(function (n, entry) { return n + (entry && entry.selected === true ? 1 : 0); }, 0);
+        var selectedBytes = job.entries.reduce(function (n, entry) { return n + (entry && entry.selected === true ? Math.max(0, Number(entry.size) || 0) : 0); }, 0);
+        var selectableCount = job.entries.reduce(function (n, entry) { return n + (entry && entry.selectable && !entry.rejected ? 1 : 0); }, 0);
+        var composerRoom = Math.max(0, _ATTACHMENT_MAX_FILES - _composerAttachments.length);
+        if (st.title) st.title.textContent = job.kind === 'zip' ? 'Choose ZIP entries' : 'Choose folder files';
+        if (st.count) {
+            st.count.textContent = rows.length + ' shown · ' + job.entries.length + ' files · ' + selectableCount + ' eligible' +
+                (job.rejectedCount ? ' · ' + job.rejectedCount + ' blocked' : '') +
+                (job.truncated ? ' · inventory truncated' : '');
+        }
+        if (st.selected) st.selected.textContent = selectedCount + ' selected · ' + _formatByteSize(selectedBytes) + ' · ' +
+            composerRoom + ' composer slots available';
+        if (st.add) st.add.disabled = !selectedCount || !composerRoom || st.busy;
+        if (st.selectAll) st.selectAll.disabled = st.busy || !rows.some(function (entry) { return entry.selectable && !entry.rejected; });
+        if (st.clearSelection) st.clearSelection.disabled = st.busy || !selectedCount;
+        while (st.list.firstChild) st.list.removeChild(st.list.firstChild);
+        if (!rows.length) {
+            var empty = document.createElement('p');
+            empty.className = 'ai-assistant-panel-attachment-manager-empty';
+            empty.textContent = 'No import entries match this search and filter.';
+            st.list.appendChild(empty);
+            return;
+        }
+        rows.forEach(function (entry) {
+            var row = document.createElement('label');
+            row.className = 'ai-assistant-panel-attachment-import-row';
+            row.setAttribute('data-kind', entry.kind || 'file');
+            row.setAttribute('data-rejected', entry.rejected ? 'true' : 'false');
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = entry.selected === true;
+            checkbox.disabled = st.busy || !entry.selectable || entry.rejected;
+            checkbox.setAttribute('aria-label', 'Select ' + _attachmentSafeName(entry.relativePath || entry.name));
+            checkbox.addEventListener('change', function () {
+                entry.selected = checkbox.checked;
+                _renderAttachmentImportList();
+            });
+            var badge = document.createElement('span');
+            badge.className = 'ai-assistant-panel-attachment-manager-badge';
+            badge.textContent = _attachmentExtension(entry.name);
+            var copy = document.createElement('span');
+            copy.className = 'ai-assistant-panel-attachment-manager-copy';
+            var strong = document.createElement('strong');
+            strong.textContent = _attachmentSafeName(entry.name);
+            var meta = document.createElement('span');
+            meta.textContent = [
+                entry.relativePath,
+                _formatByteSize(entry.size || 0),
+                entry.rejected ? ('Blocked · ' + _attachmentImportReasonLabel(entry.reason)) :
+                    (entry.kind === 'text' ? 'bounded text may be read only on Send' : 'local-only after import')
+            ].filter(Boolean).join(' · ');
+            copy.appendChild(strong);
+            copy.appendChild(meta);
+            row.appendChild(checkbox);
+            row.appendChild(badge);
+            row.appendChild(copy);
+            st.list.appendChild(row);
+        });
+    }
+
+    function _attachmentImportAdvance(discardActive) {
+        var st = _attachmentImportState;
+        if (discardActive !== false) st.active = null;
+        if (!st.active && st.queue.length) st.active = st.queue.shift();
+        if (!st.active) {
+            if (st.layer) { st.layer.hidden = true; st.layer.setAttribute('data-open', 'false'); }
+            var trigger = st.trigger;
+            st.trigger = null;
+            if (trigger && trigger.focus && document.documentElement.contains(trigger)) {
+                requestAnimationFrame(function () { try { trigger.focus(); } catch (_e) {} });
+            }
+            return;
+        }
+        if (st.search) st.search.value = '';
+        if (st.filter) st.filter.value = 'all';
+        if (st.layer) { st.layer.hidden = false; st.layer.setAttribute('data-open', 'true'); }
+        _renderAttachmentImportList();
+        requestAnimationFrame(function () { if (st.search) st.search.focus(); });
+    }
+
+    function _enqueueAttachmentImportJob(job, trigger) {
+        if (!job || !Array.isArray(job.entries)) return;
+        var st = _ensureAttachmentImportLayer();
+        if (!st.active) {
+            st.active = job;
+            st.trigger = trigger || document.activeElement;
+            _attachmentImportAdvance(false);
+        } else {
+            st.queue.push(job);
+            showNotification('Another import inventory is queued behind the one already open.', false);
+        }
+    }
+
+    function _clearAttachmentImportJobs() {
+        var st = _attachmentImportState;
+        st.queue = [];
+        st.active = null;
+        st.busy = false;
+        st.trigger = null;
+        if (st.layer) { st.layer.hidden = true; st.layer.setAttribute('data-open', 'false'); }
+    }
+
+    function _queueZipImport(file, generation) {
+        var expectedGeneration = generation == null ? _attachmentStageGeneration : generation;
+        _attachmentStagePending++;
+        _updateAttachmentStageUi();
+        var batch = _attachmentStageQueue.then(async function () {
+            if (expectedGeneration !== _attachmentStageGeneration) return;
+            try {
+                var info = await _inspectZipArchive(file);
+                if (expectedGeneration !== _attachmentStageGeneration) return;
+                _enqueueAttachmentImportJob(_attachmentZipImportJob(info));
+                showNotification('ZIP inventory ready. Select entries explicitly before anything is extracted.', true);
+            } catch (err) {
+                if (expectedGeneration !== _attachmentStageGeneration) return;
+                // A malformed/unsupported archive is still useful as a local
+                // artifact. It is staged as local-only and can never enter the
+                // model request merely because ZIP parsing failed.
+                await _stageComposerFiles([{
+                    file: file,
+                    relativePath: _attachmentSafeName(file && file.name || 'archive.zip'),
+                    sourceKind: 'zip-invalid'
+                }], expectedGeneration);
+                showNotification('ZIP browsing was blocked (' + String(err && err.message || 'invalid archive') + '). The archive itself was kept local-only.', false);
+            }
+        }).catch(function () {
+            if (expectedGeneration === _attachmentStageGeneration) showNotification('The ZIP inventory could not be prepared locally.', false);
+        }).finally(function () {
+            if (expectedGeneration === _attachmentStageGeneration) {
+                _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
+                _updateAttachmentStageUi();
+            }
+        });
+        _attachmentStageQueue = batch;
+        return batch;
+    }
+
+    function _queueDirectoryEntryImport(rootEntries, label, generation) {
+        var roots = Array.prototype.slice.call(rootEntries || []);
+        if (!roots.length) return Promise.resolve();
+        var expectedGeneration = generation == null ? _attachmentStageGeneration : generation;
+        _attachmentStagePending++;
+        _updateAttachmentStageUi();
+        var batch = _attachmentStageQueue.then(async function () {
+            if (expectedGeneration !== _attachmentStageGeneration) return;
+            var inventory = await _inventoryDirectoryEntries(roots);
+            if (expectedGeneration !== _attachmentStageGeneration) return;
+            var rootLabel = label || roots.map(function (entry) { return entry && entry.name; }).filter(Boolean).join(', ') || 'Folder';
+            _enqueueAttachmentImportJob(_attachmentDirectoryImportJob(inventory, rootLabel));
+            showNotification('Folder inventory ready. Select files explicitly before staging them.', true);
+        }).catch(function () {
+            if (expectedGeneration === _attachmentStageGeneration) showNotification('This folder could not be inventoried safely.', false);
+        }).finally(function () {
+            if (expectedGeneration === _attachmentStageGeneration) {
+                _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
+                _updateAttachmentStageUi();
+            }
+        });
+        _attachmentStageQueue = batch;
+        return batch;
+    }
+
+    function _queueDirectoryFileListImport(fileList, label, generation) {
+        var inventory = _inventoryDirectoryFileList(fileList);
+        var job = _attachmentDirectoryImportJob(inventory, label || 'Folder');
+        if (!job.entries.length) {
+            showNotification('No safely addressable files were found in that folder.', false);
+            return Promise.resolve();
+        }
+        _enqueueAttachmentImportJob(job);
+        showNotification('Folder inventory ready. Select files explicitly before staging them.', true);
+        return Promise.resolve();
+    }
+
+    function _queueAttachmentImportCommit(job) {
+        var st = _attachmentImportState;
+        if (!job || st.busy) return Promise.resolve();
+        var selected = job.entries.filter(function (entry) { return entry && entry.selected && entry.selectable && !entry.rejected; });
+        if (!selected.length) return Promise.resolve();
+        var room = Math.max(0, _ATTACHMENT_MAX_FILES - _composerAttachments.length);
+        if (!room) { showNotification('Remove an attachment before importing more files.', false); return Promise.resolve(); }
+        if (selected.length > room) {
+            showNotification('Only the first ' + room + ' selected entries can be staged because the 256-file composer limit would be exceeded.', false);
+            selected = selected.slice(0, room);
+        }
+        var generation = _attachmentStageGeneration;
+        st.busy = true;
+        _renderAttachmentImportList();
+        _attachmentStagePending++;
+        _updateAttachmentStageUi();
+        var batch = _attachmentStageQueue.then(async function () {
+            if (generation !== _attachmentStageGeneration) return;
+            var descriptors = [];
+            var failed = 0;
+            var claimedTotal = 0;
+            for (var i = 0; i < selected.length; i++) {
+                var entry = selected[i];
+                if (generation !== _attachmentStageGeneration) return;
+                if (job.kind === 'directory') {
+                    if (entry.descriptor && entry.descriptor.file) descriptors.push(entry.descriptor);
+                    else failed++;
+                    continue;
+                }
+                if (job.kind === 'zip') {
+                    if (entry.size > _ATTACHMENT_ZIP_MAX_SELECTED_UNCOMPRESSED_BYTES - claimedTotal) {
+                        failed++;
+                        entry.reason = 'ZIP_SELECTED_TOTAL_LIMIT';
+                        continue;
+                    }
+                    claimedTotal += entry.size;
+                    try {
+                        descriptors.push(await _extractZipEntry(job, entry));
+                    } catch (err) {
+                        failed++;
+                        entry.reason = err && err.message ? String(err.message) : 'ZIP_EXTRACTION_FAILED';
+                    }
+                }
+            }
+            if (descriptors.length) await _stageComposerFiles(descriptors, generation);
+            if (generation !== _attachmentStageGeneration) return;
+            if (failed) showNotification(failed + ' selected archive/folder entr' + (failed === 1 ? 'y was' : 'ies were') + ' blocked or could not be verified.', false);
+            if (descriptors.length) showNotification(descriptors.length + ' selected file' + (descriptors.length === 1 ? '' : 's') + ' staged for this turn.', true);
+        }).finally(function () {
+            if (generation === _attachmentStageGeneration) {
+                _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
+                _updateAttachmentStageUi();
+            }
+            st.busy = false;
+            if (st.active === job) _attachmentImportAdvance(true);
+        });
+        _attachmentStageQueue = batch;
+        return batch;
+    }
+
+    function _ensureAttachmentImportLayer() {
+        var st = _attachmentImportState;
+        if (st.layer && document.documentElement.contains(st.layer)) return st;
+        var layer = document.createElement('div');
+        layer.className = 'ai-assistant-panel-attachment-manager-layer ai-assistant-panel-attachment-import-layer';
+        layer.hidden = true;
+        layer.setAttribute('data-open', 'false');
+        var dialog = document.createElement('section');
+        dialog.className = 'ai-assistant-panel-attachment-manager ai-assistant-panel-attachment-import';
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-labelledby', 'ai-assistant-panel-attachment-import-title');
+        var head = document.createElement('header');
+        head.className = 'ai-assistant-panel-attachment-manager-head';
+        var heading = document.createElement('div');
+        var title = document.createElement('h3');
+        title.id = 'ai-assistant-panel-attachment-import-title';
+        var count = document.createElement('p');
+        count.className = 'ai-assistant-panel-attachment-manager-count';
+        heading.appendChild(title); heading.appendChild(count);
+        var close = document.createElement('button');
+        close.type = 'button'; close.className = 'ai-assistant-panel-attachment-manager-close';
+        close.setAttribute('aria-label', 'Cancel this import inventory'); close.innerHTML = ICONS.close;
+        close.addEventListener('click', function () { if (!st.busy) _attachmentImportAdvance(true); });
+        head.appendChild(heading); head.appendChild(close);
+        var notice = document.createElement('p');
+        notice.className = 'ai-assistant-panel-attachment-import-notice';
+        notice.textContent = 'Inventory is metadata-only. ZIP payload bytes are extracted only for selected entries; folder files are staged only after selection.';
+        var controls = document.createElement('div');
+        controls.className = 'ai-assistant-panel-attachment-manager-controls';
+        var search = document.createElement('input');
+        search.type = 'search'; search.className = 'ai-assistant-panel-attachment-manager-search';
+        search.placeholder = 'Search path, filename, type…'; search.setAttribute('aria-label', 'Search import inventory');
+        var filter = document.createElement('select');
+        filter.className = 'ai-assistant-panel-attachment-manager-filter'; filter.setAttribute('aria-label', 'Filter import inventory');
+        [['all','All'],['text','Text'],['pdf','PDF'],['image','Images'],['archive','ZIP/archive'],['local','Local only'],['rejected','Blocked']].forEach(function (row) {
+            var option = document.createElement('option'); option.value = row[0]; option.textContent = row[1]; filter.appendChild(option);
+        });
+        controls.appendChild(search); controls.appendChild(filter);
+        var actions = document.createElement('div');
+        actions.className = 'ai-assistant-panel-attachment-import-selection-actions';
+        var selectAll = document.createElement('button'); selectAll.type = 'button'; selectAll.textContent = 'Select shown eligible';
+        var clearSelection = document.createElement('button'); clearSelection.type = 'button'; clearSelection.textContent = 'Clear selection';
+        actions.appendChild(selectAll); actions.appendChild(clearSelection);
+        var list = document.createElement('div');
+        list.className = 'ai-assistant-panel-attachment-manager-list ai-assistant-panel-attachment-import-list'; list.setAttribute('role', 'group');
+        var foot = document.createElement('footer'); foot.className = 'ai-assistant-panel-attachment-manager-foot';
+        var selected = document.createElement('p'); selected.className = 'ai-assistant-panel-attachment-import-selected';
+        var add = document.createElement('button'); add.type = 'button'; add.className = 'ai-assistant-panel-attachment-import-add'; add.textContent = 'Add selected';
+        foot.appendChild(selected); foot.appendChild(add);
+        dialog.appendChild(head); dialog.appendChild(notice); dialog.appendChild(controls); dialog.appendChild(actions); dialog.appendChild(list); dialog.appendChild(foot);
+        layer.appendChild(dialog); document.body.appendChild(layer);
+        layer.addEventListener('pointerdown', function (e) { if (e.target === layer && !st.busy) _attachmentImportAdvance(true); });
+        layer.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !st.busy) { e.preventDefault(); _attachmentImportAdvance(true); return; }
+            if (e.key !== 'Tab' || layer.hidden) return;
+            var focusable = Array.prototype.slice.call(dialog.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+            if (!focusable.length) { e.preventDefault(); dialog.focus(); return; }
+            var first = focusable[0], last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+        search.addEventListener('input', _renderAttachmentImportList);
+        filter.addEventListener('change', _renderAttachmentImportList);
+        selectAll.addEventListener('click', function () {
+            var room = Math.max(0, _ATTACHMENT_MAX_FILES - _composerAttachments.length);
+            var selectedNow = st.active ? st.active.entries.reduce(function (n, entry) { return n + (entry && entry.selected ? 1 : 0); }, 0) : 0;
+            var remaining = Math.max(0, room - selectedNow);
+            var zipBytes = st.active && st.active.kind === 'zip' ? st.active.entries.reduce(function (n, entry) {
+                return n + (entry && entry.selected ? Math.max(0, Number(entry.size) || 0) : 0);
+            }, 0) : 0;
+            _attachmentImportVisibleEntries().forEach(function (entry) {
+                if (!remaining || !entry.selectable || entry.rejected || entry.selected) return;
+                var size = Math.max(0, Number(entry.size) || 0);
+                if (st.active && st.active.kind === 'zip' && size > _ATTACHMENT_ZIP_MAX_SELECTED_UNCOMPRESSED_BYTES - zipBytes) return;
+                entry.selected = true;
+                remaining--;
+                zipBytes += size;
+            });
+            _renderAttachmentImportList();
+        });
+        clearSelection.addEventListener('click', function () {
+            if (st.active) st.active.entries.forEach(function (entry) { if (entry) entry.selected = false; });
+            _renderAttachmentImportList();
+        });
+        add.addEventListener('click', function () { if (st.active) _queueAttachmentImportCommit(st.active); });
+        st.layer=layer; st.dialog=dialog; st.title=title; st.count=count; st.search=search; st.filter=filter;
+        st.list=list; st.selected=selected; st.add=add; st.selectAll=selectAll; st.clearSelection=clearSelection;
+        return st;
     }
 
     // ── Composer attachment cards + viewport attachment preview dialog ───────
@@ -10943,9 +12111,6 @@
         if (!item) return '';
         var parts = [];
         if (item.kind === 'page') {
-            // PAGE/MD cards are turn-scoped just like uploaded text. Current-page
-            // and pinned settings merely pre-stage convenient sources; Send
-            // consumes them once so they cannot silently inflate later turns.
             parts.push('Next message');
             parts.push('One turn');
             if (item.contextRole === 'current') {
@@ -10958,15 +12123,20 @@
             if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
             return parts.join(' · ');
         }
-        // Ordinary uploaded files are a one-turn staging surface. They are
-        // consumed by the next question and then removed from the composer.
         parts.push('Next message');
-        if (item.kind === 'text' && typeof item.text === 'string') parts.push('One turn');
-        if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
-        else parts.push(_formatByteSize(item.size || 0));
-        if (item.kind === 'image') parts.push('Photo · local only');
-        else if (item.kind === 'file') parts.push('Local only');
-        else if (item.kind === 'text' && typeof item.text !== 'string') parts.push('Local preview only');
+        if (item.relativePath) parts.push(item.relativePath);
+        if (item.kind === 'text') {
+            parts.push('One turn');
+            if (item.lineCount) parts.push(item.lineCount + ' preview line' + (item.lineCount === 1 ? '' : 's'));
+            else parts.push(_formatByteSize(item.size || 0));
+            parts.push(item.sendEligible === false ? 'Local only' : 'Read on Send');
+        } else {
+            parts.push(_formatByteSize(item.size || 0));
+            if (item.kind === 'image') parts.push('Photo · local only');
+            else if (item.kind === 'pdf') parts.push('PDF · local only');
+            else if (item.kind === 'archive') parts.push('Archive · local only');
+            else parts.push('Local only');
+        }
         return parts.join(' · ');
     }
 
@@ -10980,12 +12150,16 @@
             return parts.join(' · ');
         }
         parts.push(_formatByteSize(item.size || 0));
-        if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
+        if (item.lineCount) parts.push(item.lineCount + ' preview line' + (item.lineCount === 1 ? '' : 's'));
         if (item.kind === 'image') parts.push('Local image preview');
-        else if (item.kind === 'text') {
-            parts.push('Formatting may differ from source');
-            if (typeof item.text !== 'string') parts.push('Not included in model request');
-        } else if (item.kind === 'file') parts.push('Local file only');
+        else if (item.kind === 'pdf') {
+            parts.push(item.pdfVerified === true ? 'Verified local PDF' : 'Local PDF preview');
+            parts.push('Not included in model request');
+        } else if (item.kind === 'text') {
+            parts.push('Bounded local preview');
+            parts.push(item.sendEligible === false ? 'Not included in model request' : 'Bounded excerpt may be read on Send');
+        } else if (item.kind === 'archive') parts.push('Local archive only · nested archives are not opened automatically');
+        else if (item.kind === 'file') parts.push('Local file only');
         return parts.join(' · ');
     }
 
@@ -11184,6 +12358,47 @@
         return st;
     }
 
+    function _ensureAttachmentTextPreview(item) {
+        if (!item || item.kind !== 'text' || !item.file) return Promise.resolve(item);
+        if (typeof item.previewText === 'string' || item.previewError) return Promise.resolve(item);
+        if (item.previewPromise) return item.previewPromise;
+        item.previewLoading = true;
+        item.previewPromise = _readAttachmentText(item.file, _ATTACHMENT_MAX_PREVIEW_BYTES).then(function (text) {
+            item.previewText = String(text || '').slice(0, _ATTACHMENT_MAX_PREVIEW_BYTES);
+            item.previewTruncated = (Number(item.size) || 0) > _ATTACHMENT_MAX_PREVIEW_BYTES;
+            item.lineCount = _attachmentLineCount(item.previewText);
+            item.previewError = '';
+            return item;
+        }).catch(function (err) {
+            item.previewError = err && err.message ? String(err.message) : 'ATTACHMENT_READ_FAILED';
+            if (item.previewError === 'ATTACHMENT_BINARY_CONTENT') item.sendEligible = false;
+            return item;
+        }).finally(function () {
+            item.previewLoading = false;
+            item.previewPromise = null;
+        });
+        return item.previewPromise;
+    }
+
+    function _appendLocalPdfActions(parent, item) {
+        if (!parent || !item) return;
+        var actions = document.createElement('div');
+        actions.className = 'ai-assistant-panel-attachment-preview-pdf-actions';
+        var open = document.createElement('button');
+        open.type = 'button';
+        open.className = 'ai-assistant-panel-attachment-preview-download';
+        open.textContent = 'Open local PDF';
+        open.addEventListener('click', function () { _openLocalPdf(item); });
+        var dl = document.createElement('button');
+        dl.type = 'button';
+        dl.className = 'ai-assistant-panel-attachment-preview-download';
+        dl.innerHTML = '<span aria-hidden="true">↓</span><span>Download</span>';
+        dl.addEventListener('click', function () { _downloadAttachmentItem(item); });
+        actions.appendChild(open);
+        actions.appendChild(dl);
+        parent.appendChild(actions);
+    }
+
     function _renderAttachmentPreviewBody(item) {
         var st = _attachmentPreviewState;
         if (!st.body) return;
@@ -11209,6 +12424,67 @@
             }
         }
 
+        if (item && item.kind === 'pdf' && item.pdfVerified !== true && !item.previewError) {
+            var pdfLoading = document.createElement('p');
+            pdfLoading.className = 'ai-assistant-panel-attachment-preview-note';
+            pdfLoading.textContent = 'Verifying the local PDF signature…';
+            st.body.appendChild(pdfLoading);
+            _ensurePdfSignature(item).then(function () {
+                if (_attachmentPreviewState.item === item) {
+                    _attachmentPreviewState.meta.textContent = _attachmentPreviewMeta(item);
+                    _renderAttachmentPreviewBody(item);
+                }
+                _renderComposerAttachments();
+            });
+            return;
+        }
+
+        if (item && item.kind === 'pdf' && item.pdfVerified === true) {
+            var pdfNote = document.createElement('p');
+            pdfNote.className = 'ai-assistant-panel-attachment-preview-note ai-assistant-panel-attachment-preview-pdf-note';
+            pdfNote.textContent = 'Local PDF preview only. No PDF text is extracted or sent to the model.';
+            st.body.appendChild(pdfNote);
+            _appendLocalPdfActions(st.body, item);
+
+            if ((Number(item.size) || 0) <= _ATTACHMENT_PDF_INLINE_MAX_BYTES) {
+                var pdfUrl = _attachmentEnsureObjectUrl(item);
+                if (pdfUrl) {
+                    var frame = document.createElement('iframe');
+                    frame.className = 'ai-assistant-panel-attachment-preview-pdf';
+                    frame.src = pdfUrl;
+                    frame.title = 'Local PDF preview: ' + _attachmentSafeName(item.name);
+                    frame.setAttribute('sandbox', 'allow-same-origin');
+                    frame.setAttribute('referrerpolicy', 'no-referrer');
+                    frame.setAttribute('loading', 'lazy');
+                    st.body.appendChild(frame);
+                    return;
+                }
+            }
+
+            var pdfLarge = document.createElement('p');
+            pdfLarge.className = 'ai-assistant-panel-attachment-preview-note';
+            pdfLarge.textContent = (Number(item.size) || 0) > _ATTACHMENT_PDF_INLINE_MAX_BYTES
+                ? 'This PDF is larger than the 64 MiB automatic inline-view limit. Use Open local PDF to decode it explicitly in a browser tab.'
+                : 'This browser could not create the inline local PDF viewer. Use Open local PDF instead.';
+            st.body.appendChild(pdfLarge);
+            return;
+        }
+
+        if (item && item.kind === 'text' && typeof item.previewText !== 'string' && !item.previewError) {
+            var loading = document.createElement('p');
+            loading.className = 'ai-assistant-panel-attachment-preview-note';
+            loading.textContent = 'Preparing a bounded local preview…';
+            st.body.appendChild(loading);
+            _ensureAttachmentTextPreview(item).then(function () {
+                if (_attachmentPreviewState.item === item) {
+                    _attachmentPreviewState.meta.textContent = _attachmentPreviewMeta(item);
+                    _renderAttachmentPreviewBody(item);
+                }
+                _renderComposerAttachments();
+            });
+            return;
+        }
+
         if (item && (item.kind === 'text' || item.kind === 'page') && typeof item.previewText === 'string') {
             if (item.kind === 'page') {
                 var contextNote = document.createElement('p');
@@ -11222,10 +12498,12 @@
             pre.className = 'ai-assistant-panel-attachment-preview-code';
             pre.textContent = item.previewText;
             st.body.appendChild(pre);
-            if (item.kind === 'text' && typeof item.text !== 'string') {
+            if (item.kind === 'text') {
                 var note = document.createElement('p');
                 note.className = 'ai-assistant-panel-attachment-preview-note';
-                note.textContent = 'Local preview only — this file exceeds the bounded model-context limit and will not be sent.';
+                note.textContent = item.previewTruncated
+                    ? 'Showing only the bounded preview prefix. Send uses a separate shared 48k context budget.'
+                    : 'Local preview only until Send. Any model excerpt is prepared later under the shared 48k context budget.';
                 st.body.appendChild(note);
             }
             return;
@@ -11235,9 +12513,17 @@
         fallback.className = 'ai-assistant-panel-attachment-preview-fallback';
         var msg = document.createElement('p');
         if (item && item.kind === 'image' && item.rasterPreview === true && item.size > _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES) {
-            msg.textContent = _attachmentSafeName(item.name) + ' (' + _formatByteSize(item.size || 0) + ') is too large for an inline image preview.';
-        } else if (item && item.kind === 'text' && item.size > _ATTACHMENT_MAX_PREVIEW_BYTES) {
-            msg.textContent = _attachmentSafeName(item.name) + ' (' + _formatByteSize(item.size || 0) + ') is too large to preview.';
+            msg.textContent = _attachmentSafeName(item.name) + ' (' + _formatByteSize(item.size || 0) + ') is too large for an automatic inline image preview.';
+        } else if (item && item.kind === 'pdf' && item.previewError === 'ATTACHMENT_PDF_SIGNATURE') {
+            msg.textContent = _attachmentSafeName(item.name) + ' is labeled as PDF but does not begin with a valid %PDF- signature. The local PDF viewer was blocked.';
+        } else if (item && item.kind === 'pdf' && item.previewError) {
+            msg.textContent = 'The local PDF signature could not be verified for ' + _attachmentSafeName(item.name) + '.';
+        } else if (item && item.kind === 'text' && item.previewError === 'ATTACHMENT_BINARY_CONTENT') {
+            msg.textContent = _attachmentSafeName(item.name) + ' looks binary despite its text label. It will stay local and will not be sent.';
+        } else if (item && item.kind === 'text' && item.previewError) {
+            msg.textContent = 'The bounded local preview could not be read for ' + _attachmentSafeName(item.name) + '.';
+        } else if (item && item.kind === 'archive') {
+            msg.textContent = _attachmentSafeName(item.name) + ' is kept as a local-only archive. Nested archives are never expanded automatically.';
         } else {
             msg.textContent = 'A safe inline preview is not available for ' + _attachmentSafeName(item && item.name) + '.';
         }
@@ -11246,7 +12532,7 @@
             var dl = document.createElement('button');
             dl.type = 'button';
             dl.className = 'ai-assistant-panel-attachment-preview-download';
-            dl.innerHTML = '<span aria-hidden="true">\u2193</span><span>Download</span>';
+            dl.innerHTML = '<span aria-hidden="true">↓</span><span>Download</span>';
             dl.addEventListener('click', function () { _downloadAttachmentItem(item); });
             fallback.appendChild(dl);
         } else if (item && item.turnScoped !== true) {
@@ -11321,6 +12607,317 @@
         }
     }
 
+    var _attachmentManagerState = {
+        layer: null,
+        dialog: null,
+        trigger: null,
+        mode: 'composer',
+        manifest: null,
+        search: null,
+        filter: null,
+        count: null,
+        list: null,
+        omitted: null,
+        clear: null
+    };
+
+    function _closeAttachmentManager(restoreFocus) {
+        var st = _attachmentManagerState;
+        if (!st.layer || st.layer.hidden) return;
+        st.layer.hidden = true;
+        st.layer.setAttribute('data-open', 'false');
+        var trigger = st.trigger;
+        st.trigger = null;
+        st.manifest = null;
+        st.mode = 'composer';
+        if (restoreFocus !== false && trigger && typeof trigger.focus === 'function') {
+            try { trigger.focus(); } catch (_) {}
+        }
+    }
+
+    function _attachmentManagerSourceManifest() {
+        var st = _attachmentManagerState;
+        if (st.mode === 'turn') {
+            return _sanitizeTurnResourceManifest(st.manifest, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        }
+        return _buildTurnResourceManifest(_contextShelfItems(), _TURN_RESOURCE_LIVE_MAX_ITEMS);
+    }
+
+    function _attachmentManagerFilterMatch(item, filter) {
+        if (!item) return false;
+        if (filter === 'page') return item.kind === 'page';
+        if (filter === 'text') return item.kind === 'text';
+        if (filter === 'pdf') return item.kind === 'pdf';
+        if (filter === 'image') return item.kind === 'image';
+        if (filter === 'archive') return item.kind === 'archive';
+        if (filter === 'local') return item.localOnly === true ||
+            (item.kind !== 'text' && item.kind !== 'page' && item.included !== true);
+        return true;
+    }
+
+    function _removeComposerResourceItem(item) {
+        if (!item) return false;
+        var previewItem = _attachmentPreviewState.item;
+        if (previewItem === item || (
+            item.kind === 'page' && previewItem && previewItem.kind === 'page' &&
+            _normalizeContextPageUrl(previewItem.sourceUrl) === _normalizeContextPageUrl(item.sourceUrl)
+        )) _closeAttachmentPreview(false);
+        if (item.kind === 'page') {
+            return _setPageContextConsumed(item.sourceUrl, true, false);
+        }
+        _attachmentRevokeObjectUrl(item);
+        var composerIndex = Number(item._composerIndex);
+        if (!Number.isInteger(composerIndex) || composerIndex < 0 ||
+                composerIndex >= _composerAttachments.length ||
+                _composerAttachments[composerIndex] !== item) {
+            composerIndex = _composerAttachments.indexOf(item);
+        }
+        if (composerIndex >= 0) {
+            _composerAttachments.splice(composerIndex, 1);
+            _attachmentMutationRevision++;
+            return true;
+        }
+        return false;
+    }
+
+    function _clearComposerResourceStaging() {
+        var pages = _contextShelfItems().filter(function (item) { return item && item.kind === 'page'; });
+        pages.forEach(function (item) { _setPageContextConsumed(item.sourceUrl, true, false); });
+        _clearComposerAttachments();
+        _renderComposerAttachments();
+        _renderAttachmentManagerList();
+    }
+
+    function _renderAttachmentManagerList() {
+        var st = _attachmentManagerState;
+        if (!st.layer || st.layer.hidden || !st.list) return;
+        var manifest = _attachmentManagerSourceManifest();
+        var query = st.search ? String(st.search.value || '').trim().toLowerCase() : '';
+        var filter = st.filter ? String(st.filter.value || 'all') : 'all';
+        var rows = manifest.items.filter(function (item) {
+            if (!_attachmentManagerFilterMatch(item, filter)) return false;
+            if (!query) return true;
+            var hay = [
+                item.name,
+                item.relativePath,
+                item.path,
+                item.type,
+                item.badge,
+                item.kind,
+                item.status
+            ].filter(Boolean).join('\n').toLowerCase();
+            return hay.indexOf(query) >= 0;
+        });
+        if (st.count) {
+            st.count.textContent = rows.length + ' shown · ' + manifest.totalCount + ' total' +
+                (manifest.complete ? '' : ' · restored metadata incomplete');
+        }
+        if (st.omitted) {
+            st.omitted.hidden = !manifest.omittedCount;
+            st.omitted.textContent = manifest.omittedCount
+                ? manifest.omittedCount + ' resource metadata row' +
+                    (manifest.omittedCount === 1 ? '' : 's') +
+                    ' were intentionally omitted from restored conversation state.'
+                : '';
+        }
+        while (st.list.firstChild) st.list.removeChild(st.list.firstChild);
+        if (!rows.length) {
+            var empty = document.createElement('p');
+            empty.className = 'ai-assistant-panel-attachment-manager-empty';
+            empty.textContent = 'No resources match this search and filter.';
+            st.list.appendChild(empty);
+            return;
+        }
+        rows.forEach(function (item) {
+            var row = document.createElement('div');
+            row.className = 'ai-assistant-panel-attachment-manager-row';
+            row.setAttribute('data-kind', item.kind || 'file');
+
+            var info = document.createElement('div');
+            info.className = 'ai-assistant-panel-attachment-manager-info';
+            var badge = document.createElement('span');
+            badge.className = 'ai-assistant-panel-attachment-manager-badge';
+            badge.textContent = item.badge || _attachmentItemBadge(item);
+            var copy = document.createElement('span');
+            copy.className = 'ai-assistant-panel-attachment-manager-copy';
+            var name = document.createElement('strong');
+            name.textContent = _attachmentSafeName(item.name);
+            var meta = document.createElement('span');
+            meta.textContent = [
+                item.status || _attachmentItemMeta(item),
+                item.size ? _formatByteSize(item.size) : '',
+                item.relativePath || item.path || ''
+            ].filter(Boolean).join(' · ');
+            copy.appendChild(name);
+            copy.appendChild(meta);
+            info.appendChild(badge);
+            info.appendChild(copy);
+
+            var actions = document.createElement('div');
+            actions.className = 'ai-assistant-panel-attachment-manager-actions';
+            var preview = document.createElement('button');
+            preview.type = 'button';
+            preview.className = 'ai-assistant-panel-attachment-manager-btn';
+            preview.textContent = 'Preview';
+            preview.addEventListener('click', function () { _openAttachmentPreview(item, preview); });
+            actions.appendChild(preview);
+
+            if (st.mode === 'composer') {
+                var remove = document.createElement('button');
+                remove.type = 'button';
+                remove.className = 'ai-assistant-panel-attachment-manager-btn ai-assistant-panel-attachment-manager-btn--danger';
+                remove.textContent = 'Remove';
+                remove.addEventListener('click', function () {
+                    if (_removeComposerResourceItem(item)) {
+                        _renderComposerAttachments();
+                        _renderAttachmentManagerList();
+                    }
+                });
+                actions.appendChild(remove);
+            }
+            row.appendChild(info);
+            row.appendChild(actions);
+            st.list.appendChild(row);
+        });
+    }
+
+    function _ensureAttachmentManagerLayer() {
+        var st = _attachmentManagerState;
+        if (st.layer && document.documentElement.contains(st.layer)) return st;
+
+        var layer = document.createElement('div');
+        layer.className = 'ai-assistant-panel-attachment-manager-layer';
+        layer.hidden = true;
+        layer.setAttribute('data-open', 'false');
+
+        var dialog = document.createElement('section');
+        dialog.className = 'ai-assistant-panel-attachment-manager';
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-labelledby', 'ai-assistant-panel-attachment-manager-title');
+
+        var head = document.createElement('header');
+        head.className = 'ai-assistant-panel-attachment-manager-head';
+        var heading = document.createElement('div');
+        var title = document.createElement('h3');
+        title.id = 'ai-assistant-panel-attachment-manager-title';
+        title.textContent = 'Manage resources';
+        var count = document.createElement('p');
+        count.className = 'ai-assistant-panel-attachment-manager-count';
+        heading.appendChild(title);
+        heading.appendChild(count);
+        var close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'ai-assistant-panel-attachment-manager-close';
+        close.setAttribute('aria-label', 'Close resource manager');
+        close.innerHTML = ICONS.close;
+        close.addEventListener('click', function () { _closeAttachmentManager(true); });
+        head.appendChild(heading);
+        head.appendChild(close);
+
+        var controls = document.createElement('div');
+        controls.className = 'ai-assistant-panel-attachment-manager-controls';
+        var search = document.createElement('input');
+        search.type = 'search';
+        search.className = 'ai-assistant-panel-attachment-manager-search';
+        search.placeholder = 'Search filename, path, type…';
+        search.setAttribute('aria-label', 'Search resources');
+        var filter = document.createElement('select');
+        filter.className = 'ai-assistant-panel-attachment-manager-filter';
+        filter.setAttribute('aria-label', 'Filter resources');
+        [
+            ['all', 'All'],
+            ['page', 'Pages'],
+            ['text', 'Text'],
+            ['pdf', 'PDF'],
+            ['image', 'Images'],
+            ['archive', 'ZIP/archive'],
+            ['local', 'Local only']
+        ].forEach(function (option) {
+            var el = document.createElement('option');
+            el.value = option[0];
+            el.textContent = option[1];
+            filter.appendChild(el);
+        });
+        controls.appendChild(search);
+        controls.appendChild(filter);
+
+        var omitted = document.createElement('p');
+        omitted.className = 'ai-assistant-panel-attachment-manager-omitted';
+        omitted.hidden = true;
+
+        var list = document.createElement('div');
+        list.className = 'ai-assistant-panel-attachment-manager-list';
+        list.setAttribute('role', 'list');
+
+        var foot = document.createElement('footer');
+        foot.className = 'ai-assistant-panel-attachment-manager-foot';
+        var clear = document.createElement('button');
+        clear.type = 'button';
+        clear.className = 'ai-assistant-panel-attachment-manager-clear';
+        clear.textContent = 'Clear all';
+        clear.addEventListener('click', function () { _clearComposerResourceStaging(); });
+        foot.appendChild(clear);
+
+        dialog.appendChild(head);
+        dialog.appendChild(controls);
+        dialog.appendChild(omitted);
+        dialog.appendChild(list);
+        dialog.appendChild(foot);
+        layer.appendChild(dialog);
+        document.body.appendChild(layer);
+
+        layer.addEventListener('pointerdown', function (e) {
+            if (e.target === layer) _closeAttachmentManager(true);
+        });
+        layer.addEventListener('keydown', function (e) {
+            if (!e) return;
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                _closeAttachmentManager(true);
+                return;
+            }
+            if (e.key !== 'Tab') return;
+            var focusable = Array.prototype.slice.call(dialog.querySelectorAll(
+                'button:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])'
+            )).filter(function (el) { return !el.hidden; });
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault(); last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault(); first.focus();
+            }
+        });
+        search.addEventListener('input', _renderAttachmentManagerList);
+        filter.addEventListener('change', _renderAttachmentManagerList);
+
+        st.layer = layer;
+        st.dialog = dialog;
+        st.search = search;
+        st.filter = filter;
+        st.count = count;
+        st.list = list;
+        st.omitted = omitted;
+        st.clear = clear;
+        return st;
+    }
+
+    function _openAttachmentManager(trigger, manifest) {
+        var st = _ensureAttachmentManagerLayer();
+        st.trigger = trigger || document.activeElement;
+        st.mode = manifest ? 'turn' : 'composer';
+        st.manifest = manifest || null;
+        if (st.search) st.search.value = '';
+        if (st.filter) st.filter.value = 'all';
+        if (st.clear) st.clear.hidden = st.mode !== 'composer';
+        st.layer.hidden = false;
+        st.layer.setAttribute('data-open', 'true');
+        _renderAttachmentManagerList();
+        requestAnimationFrame(function () { if (st.search) st.search.focus(); });
+    }
+
     function _renderComposerAttachments() {
         var tray = document.getElementById('ai-assistant-panel-attachments');
         if (!tray) return;
@@ -11339,7 +12936,52 @@
         }
         tray.hidden = false;
         _bindAttachmentTrayScrolling(tray);
-        items.forEach(function (item) {
+        var largeBatch = _composerAttachments.length > _TURN_RESOURCE_VISIBLE_MAX_ITEMS;
+        var visibleComposer = largeBatch
+            ? _composerAttachments.slice(0, _TURN_RESOURCE_VISIBLE_MAX_ITEMS)
+            : _composerAttachments.slice();
+        var displayItems = items.filter(function (item) { return item && item.kind === 'page'; })
+            .concat(visibleComposer);
+        var hiddenComposerCount = Math.max(0, _composerAttachments.length - visibleComposer.length);
+
+        if (largeBatch) {
+            var summary = document.createElement('div');
+            summary.className = 'ai-assistant-panel-attachment-batch-summary';
+            var counts = _composerAttachments.reduce(function (acc, item) {
+                if (item && item.kind === 'text') acc.text++;
+                if (item && (item.localOnly === true || item.kind !== 'text')) acc.local++;
+                return acc;
+            }, { text: 0, local: 0 });
+            var summaryCopy = document.createElement('div');
+            summaryCopy.className = 'ai-assistant-panel-attachment-batch-summary-copy';
+            var summaryTitle = document.createElement('strong');
+            summaryTitle.textContent = _composerAttachments.length + ' staged';
+            var summaryMeta = document.createElement('span');
+            summaryMeta.textContent = counts.text + ' text · ' + counts.local + ' local-only';
+            summaryCopy.appendChild(summaryTitle);
+            summaryCopy.appendChild(summaryMeta);
+            var summaryActions = document.createElement('div');
+            summaryActions.className = 'ai-assistant-panel-attachment-batch-summary-actions';
+            var manage = document.createElement('button');
+            manage.type = 'button';
+            manage.textContent = 'Manage';
+            manage.addEventListener('click', function () { _openAttachmentManager(manage); });
+            var clear = document.createElement('button');
+            clear.type = 'button';
+            clear.textContent = 'Clear';
+            clear.addEventListener('click', function () { _clearComposerResourceStaging(); });
+            summaryActions.appendChild(manage);
+            summaryActions.appendChild(clear);
+            summary.appendChild(summaryCopy);
+            summary.appendChild(summaryActions);
+            tray.appendChild(summary);
+        }
+
+        var thumbnailBudget = _composerAttachments.length > _ATTACHMENT_LARGE_BATCH_THRESHOLD
+            ? _ATTACHMENT_THUMBNAIL_LARGE_MAX
+            : _ATTACHMENT_THUMBNAIL_NORMAL_MAX;
+        var thumbnailsUsed = 0;
+        displayItems.forEach(function (item) {
             var tile = document.createElement('div');
             tile.className = 'ai-assistant-panel-attachment-tile';
             tile.setAttribute('data-kind', item.kind || 'file');
@@ -11352,15 +12994,23 @@
             preview.title = _attachmentSafeName(item.name);
 
             if (item.kind === 'image' && item.rasterPreview === true && item.size <= _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES) {
-                var objectUrl = _attachmentEnsureObjectUrl(item);
-                if (objectUrl) {
-                    var img = document.createElement('img');
-                    img.className = 'ai-assistant-panel-attachment-thumb-image';
-                    img.src = objectUrl;
-                    img.alt = '';
-                    img.loading = 'lazy';
-                    img.decoding = 'async';
-                    preview.appendChild(img);
+                if (thumbnailsUsed < thumbnailBudget) {
+                    thumbnailsUsed++;
+                    var objectUrl = _attachmentEnsureObjectUrl(item);
+                    if (objectUrl) {
+                        var img = document.createElement('img');
+                        img.className = 'ai-assistant-panel-attachment-thumb-image';
+                        img.src = objectUrl;
+                        img.alt = '';
+                        img.loading = 'lazy';
+                        img.decoding = 'async';
+                        preview.appendChild(img);
+                    }
+                } else if (_attachmentPreviewState.item !== item) {
+                    // Large batches do not keep hundreds of Blob URLs alive merely
+                    // to decorate the horizontal shelf. Explicit preview can still
+                    // create a local URL on demand.
+                    _attachmentRevokeObjectUrl(item);
                 }
             }
 
@@ -11411,32 +13061,51 @@
             remove.innerHTML = ICONS.close;
             remove.addEventListener('click', function (e) {
                 e.stopPropagation();
-                var previewItem = _attachmentPreviewState.item;
-                if (previewItem === item || (
-                    item.kind === 'page' && previewItem && previewItem.kind === 'page' &&
-                    _normalizeContextPageUrl(previewItem.sourceUrl) === _normalizeContextPageUrl(item.sourceUrl)
-                )) _closeAttachmentPreview(false);
-                if (item.kind === 'page') {
-                    _setPageContextConsumed(item.sourceUrl, true, true);
+                var wasPage = item.kind === 'page';
+                if (_removeComposerResourceItem(item)) {
+                    _renderComposerAttachments();
+                    _renderAttachmentManagerList();
+                }
+                if (wasPage) {
                     showNotification(
                         item.contextRole === 'current'
                             ? 'Current page removed from the next message. The automatic setting is unchanged.'
                             : 'Pinned page removed from the next message. The saved pin is unchanged.',
                         false
                     );
-                    return;
                 }
-                _attachmentRevokeObjectUrl(item);
-                var composerIndex = Number(item._composerIndex);
-                if (Number.isInteger(composerIndex) && composerIndex >= 0 && composerIndex < _composerAttachments.length) {
-                    _composerAttachments.splice(composerIndex, 1);
-                }
-                _renderComposerAttachments();
             });
             tile.appendChild(remove);
 
             tray.appendChild(tile);
         });
+        if (hiddenComposerCount) {
+            _composerAttachments.slice(visibleComposer.length).forEach(function (item) {
+                if (item && item.kind === 'image' && _attachmentPreviewState.item !== item) {
+                    _attachmentRevokeObjectUrl(item);
+                }
+            });
+            var moreTile = document.createElement('div');
+            moreTile.className = 'ai-assistant-panel-attachment-tile ai-assistant-panel-attachment-more-tile';
+            var more = document.createElement('button');
+            more.type = 'button';
+            more.className = 'ai-assistant-panel-attachment-card ai-assistant-panel-attachment-more-card';
+            more.setAttribute('aria-label', 'Manage ' + hiddenComposerCount + ' more attachments');
+            var moreBody = document.createElement('span');
+            moreBody.className = 'ai-assistant-panel-attachment-card-body';
+            var moreName = document.createElement('strong');
+            moreName.className = 'ai-assistant-panel-attachment-more-count';
+            moreName.textContent = '+' + hiddenComposerCount + ' more';
+            var moreMeta = document.createElement('span');
+            moreMeta.className = 'ai-assistant-panel-attachment-card-meta';
+            moreMeta.textContent = 'Open manager';
+            moreBody.appendChild(moreName);
+            moreBody.appendChild(moreMeta);
+            more.appendChild(moreBody);
+            more.addEventListener('click', function () { _openAttachmentManager(more); });
+            moreTile.appendChild(more);
+            tray.appendChild(moreTile);
+        }
         var currentCount = items.length;
         tray.setAttribute('data-attachment-count', String(currentCount));
         requestAnimationFrame(function () {
@@ -11479,32 +13148,46 @@
 
     function _queueComposerFiles(fileList) {
         // Snapshot FileList/DataTransfer immediately; native collections may be
-        // cleared by the browser after the event callback returns.
-        var files = Array.prototype.slice.call(fileList || []);
-        if (!files.length) return Promise.resolve();
-        var generation = _attachmentStageGeneration;
-        _attachmentStagePending++;
-        _updateAttachmentStageUi();
-        var batch = _attachmentStageQueue.then(function () {
-            if (generation !== _attachmentStageGeneration) return;
-            return _stageComposerFiles(files, generation);
-        }).catch(function () {
-            // Local file staging failures never escape as unhandled promise
-            // rejections or cause a network fallback. A stale generation means
-            // Send/New chat already cleared the composer, so do not surface a
-            // late notification into the next turn either.
-            if (generation === _attachmentStageGeneration) {
-                showNotification('One or more files could not be staged locally.', false);
-            }
-        }).finally(function () {
-            // Clear/New chat invalidates the entire generation and resets the
-            // pending count itself; stale batches must not decrement the new one.
-            if (generation === _attachmentStageGeneration) {
-                _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
-                _updateAttachmentStageUi();
-            }
+        // cleared by the browser after the event callback returns. Plain top-
+        // level ZIPs are routed to inventory; descriptors coming from a folder
+        // or an already-extracted ZIP are never recursively opened.
+        var incoming = Array.prototype.slice.call(fileList || []);
+        if (!incoming.length) return Promise.resolve();
+        var files = [];
+        var archives = [];
+        incoming.forEach(function (row) {
+            var file = row && row.file ? row.file : row;
+            var nestedOrExplicit = !!(row && row.file && (row.sourceKind || row.archiveName));
+            if (file && _attachmentIsZipCandidate(file) && !nestedOrExplicit) archives.push(file);
+            else if (file) files.push(row);
         });
-        _attachmentStageQueue = batch;
+        var generation = _attachmentStageGeneration;
+        var batch = Promise.resolve();
+        if (files.length) {
+            _attachmentStagePending++;
+            _updateAttachmentStageUi();
+            batch = _attachmentStageQueue.then(function () {
+                if (generation !== _attachmentStageGeneration) return;
+                return _stageComposerFiles(files, generation);
+            }).catch(function () {
+                // Local file staging failures never escape as unhandled promise
+                // rejections or cause a network fallback. A stale generation means
+                // Send/New chat already cleared the composer, so do not surface a
+                // late notification into the next turn either.
+                if (generation === _attachmentStageGeneration) {
+                    showNotification('One or more files could not be staged locally.', false);
+                }
+            }).finally(function () {
+                // Clear/New chat invalidates the entire generation and resets the
+                // pending count itself; stale batches must not decrement the new one.
+                if (generation === _attachmentStageGeneration) {
+                    _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
+                    _updateAttachmentStageUi();
+                }
+            });
+            _attachmentStageQueue = batch;
+        }
+        archives.forEach(function (archive) { batch = _queueZipImport(archive, generation); });
         return batch;
     }
 
@@ -11525,74 +13208,69 @@
         var localOnlyAdded = false;
         for (var i = 0; i < files.length; i++) {
             if (expectedGeneration !== _attachmentStageGeneration) return;
-            var file = files[i];
+            var source = files[i];
+            var file = source && source.file ? source.file : source;
+            if (!file) continue;
+            var sourceName = source && source.relativePath
+                ? String(source.relativePath).split('/').pop()
+                : file.name;
             var base = {
-                name: _attachmentSafeName(file && file.name),
-                type: String(file && file.type || '').slice(0, 120),
-                size: Math.max(0, Number(file && file.size) || 0),
+                name: _attachmentSafeName(sourceName || file.name),
+                type: String(file.type || '').slice(0, 120),
+                size: Math.max(0, Number(file.size) || 0),
                 file: file,
-                objectUrl: ''
+                objectUrl: '',
+                previewText: undefined,
+                previewError: '',
+                sendEligible: true,
+                relativePath: source && source.relativePath ? String(source.relativePath).slice(0, 1024) : '',
+                sourceKind: source && source.sourceKind ? String(source.sourceKind).slice(0, 24) : '',
+                archiveName: source && source.archiveName ? _attachmentSafeName(source.archiveName) : ''
             };
-            if (_attachmentIsImage(file)) {
+            var baseTypeLower = String(base.type || '').toLowerCase().trim();
+            if (baseTypeLower === 'application/zip' || baseTypeLower === 'application/x-zip-compressed' || /\.zip$/i.test(base.name)) {
+                base.kind = 'archive';
+                base.localOnly = true;
+                base.sendEligible = false;
+                localOnlyAdded = true;
+            } else if (_attachmentIsPdfCandidate(file)) {
+                base.kind = 'pdf';
+                base.localOnly = true;
+                base.sendEligible = false;
+                base.pdfVerified = false;
+                localOnlyAdded = true;
+            } else if (_attachmentIsImage(file)) {
                 base.kind = 'image';
                 base.rasterPreview = _attachmentIsRasterPreview(file);
                 base.localOnly = true;
-                _composerAttachments.push(base);
+                base.sendEligible = false;
                 localOnlyAdded = true;
-                continue;
-            }
-            if (_attachmentIsText(file)) {
+            } else if (_attachmentIsText(file)) {
                 base.kind = 'text';
-                if (base.size <= _ATTACHMENT_MAX_PREVIEW_BYTES) {
-                    try {
-                        base.previewText = await _readAttachmentText(file, _ATTACHMENT_MAX_PREVIEW_BYTES);
-                        if (expectedGeneration !== _attachmentStageGeneration) return;
-                        base.lineCount = _attachmentLineCount(base.previewText);
-                        if (base.size <= _ATTACHMENT_MAX_READ_BYTES) {
-                            base.text = base.previewText.slice(0, _ATTACHMENT_MAX_READ_BYTES);
-                            base.localOnly = false;
-                        } else {
-                            base.localOnly = true;
-                            localOnlyAdded = true;
-                        }
-                    } catch (_e) {
-                        // A mislabeled/binary-looking text file is still safe to
-                        // stage/download locally; it simply does not enter the prompt.
-                        base.kind = 'file';
-                        base.localOnly = true;
-                        localOnlyAdded = true;
-                    }
-                    if (expectedGeneration !== _attachmentStageGeneration) return;
-                } else {
-                    base.localOnly = true;
-                    base.previewTooLarge = true;
-                    localOnlyAdded = true;
-                }
-                _composerAttachments.push(base);
-                continue;
+                base.localOnly = false;
+            } else {
+                base.kind = 'file';
+                base.localOnly = true;
+                base.sendEligible = false;
+                localOnlyAdded = true;
             }
-            // Arbitrary files are allowed in the local composer so the user can
-            // inspect/remove/download them.  The current text-only model path
-            // never serializes their bytes.
-            base.kind = 'file';
-            base.localOnly = true;
             _composerAttachments.push(base);
-            localOnlyAdded = true;
+            _attachmentMutationRevision++;
         }
         if (expectedGeneration !== _attachmentStageGeneration) return;
         _renderComposerAttachments();
         if (localOnlyAdded) {
-            showNotification('Some attachments are local-only. Only bounded safe text is included when you send.', false);
+            showNotification('Some attachments are local-only. Text is read lazily and only bounded excerpts can enter the next request.', false);
         }
     }
 
     function _clearComposerAttachments() {
         _attachmentStageGeneration++;
+        _attachmentMutationRevision++;
         _attachmentStageQueue = Promise.resolve();
         _attachmentStagePending = 0;
-        _updateAttachmentStageUi();
-        _attachmentStagePending = 0;
         _composerReplayAttachmentContext = '';
+        _clearAttachmentImportJobs();
         _updateAttachmentStageUi();
         _updateReplayAttachmentUi();
         _closeAttachmentPreview(false);
@@ -11883,10 +13561,28 @@
         try { sessionStorage.removeItem(key); } catch (_) { /* ignore */ }
     }
 
-    /** Persist `_transcript` if persistence is enabled. */
+    /** Persist `_transcript` if persistence is enabled.
+     *
+     * Live turns may own hundreds of resource rows. Session persistence keeps
+     * exact manifest totals but only the first 24 sanitized rows so a long
+     * remembered conversation cannot amplify attachment metadata into megabytes.
+     */
     function _saveTranscript() {
         if (!_persistEnabled()) return;
-        try { _ssSet(_TRANSCRIPT_KEY, JSON.stringify(_transcript)); } catch (_) {}
+        try {
+            var persisted = _transcript.map(function (entry) {
+                var row = Object.assign({}, entry || {});
+                if (row.role === 'user') {
+                    var resourceSource = row.resources || row.attachments;
+                    var compact = _compactTurnResourceManifest(resourceSource);
+                    if (compact.totalCount) row.resources = compact;
+                    else delete row.resources;
+                    delete row.attachments;
+                }
+                return row;
+            });
+            _ssSet(_TRANSCRIPT_KEY, JSON.stringify(persisted));
+        } catch (_) {}
     }
 
     function _saveFeedbackState() {
@@ -12002,12 +13698,15 @@
                 }
                 var displayText = (typeof e.displayText === 'string' &&
                     e.displayText.length <= _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS) ? e.displayText : null;
-                var attachments = _sanitizeTurnAttachmentSummaries(e.attachments);
+                var resources = _sanitizeTurnResourceManifest(
+                    e.resources || e.attachments,
+                    _TURN_RESOURCE_PERSIST_MAX_ITEMS
+                );
                 restored.push({
                     role: e.role,
                     text: e.text,
                     displayText: displayText,
-                    attachments: attachments.length ? attachments : undefined,
+                    resources: resources.totalCount ? resources : undefined,
                     ts: Number.isFinite(Number(e.ts)) ? Number(e.ts) : null,
                     model: model
                 });
@@ -12021,9 +13720,9 @@
     /**
      * Record a message in the single source of truth (_transcript) and persist.
      *
-     * Transcript entry schema v4:
+     * Transcript entry schema v5:
      *   { role: string, text: string, displayText?: string,
-     *     attachments?: Array<Object>, ts: number, model: Object|null }
+     *     resources?: ResourceManifest, ts: number, model: Object|null }
      * `text` is the canonical turn used for retry/share/feedback/contribution.
      * `displayText` is an optional concise UI projection (for attachment turns).
      *
@@ -12066,9 +13765,13 @@
         if (typeof displayText === 'string' && displayText !== text) {
             entry.displayText = displayText.slice(0, _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS);
         }
-        if (role === 'user' && turnMeta && Array.isArray(turnMeta.attachments)) {
-            var turnAttachments = _sanitizeTurnAttachmentSummaries(turnMeta.attachments);
-            if (turnAttachments.length) entry.attachments = turnAttachments;
+        if (role === 'user' && turnMeta) {
+            var resourceSource = turnMeta.resources || turnMeta.attachments;
+            var resourceManifest = _sanitizeTurnResourceManifest(
+                resourceSource,
+                _TURN_RESOURCE_LIVE_MAX_ITEMS
+            );
+            if (resourceManifest.totalCount) entry.resources = resourceManifest;
         }
         _transcript.push(entry);
 
@@ -12209,6 +13912,12 @@
                 ? (_feedbackStore[answerIndex] || null)
                 : null;
 
+            var resources = m.role === 'user'
+                ? _sanitizeTurnResourceManifest(
+                    m.resources || m.attachments,
+                    _TURN_RESOURCE_LIVE_MAX_ITEMS
+                )
+                : null;
             records.push({
                 turn_index:            turnIndex,
                 message_index:         messageIndex,
@@ -12222,6 +13931,7 @@
                 feedback_rating_value: fb     ? fb.ratingValue : null,
                 feedback_rating_label: fb     ? fb.ratingLabel : null,
                 feedback_message:      fb     ? (fb.message || null) : null,
+                resources:             resources && resources.totalCount ? resources : null,
                 session_id:            sessionId,
                 page_url:              safePage,
             });
@@ -12243,7 +13953,12 @@
             if (r.role === 'user') {
                 current = {
                     turn_index: r.turn_index,
-                    user: { text: r.text, ts: r.ts, ts_iso: r.ts_iso },
+                    user: {
+                        text: r.text,
+                        ts: r.ts,
+                        ts_iso: r.ts_iso,
+                        resources: r.resources || null
+                    },
                     assistant: null,
                 };
                 turns.push(current);
@@ -12274,7 +13989,7 @@
      * enter Share/download payloads. Conversation/model text remains untrusted
      * data and is not altered by this function.
      *
-     * @returns {Object|null} schema-v2 snapshot, or null when empty.
+     * @returns {Object|null} schema-v2.1 snapshot, or null when empty.
      */
     function _normalizeConversationContentOptions(options) {
         var src = (options && typeof options === 'object') ? options : {};
@@ -12350,7 +14065,7 @@
      * are not user-disableable.
      *
      * @param {Object} [options]
-     * @returns {Object|null} schema-v2 snapshot, or null when empty.
+     * @returns {Object|null} schema-v2.1 snapshot, or null when empty.
      */
     function _buildConversationSnapshot(options) {
         if (_transcript.length === 0) return null;
@@ -12393,7 +14108,7 @@
         });
 
         return {
-            schema_version: '2.0',
+            schema_version: '2.1',
             session: {
                 id:              sessionId,
                 page_url:        opt.includeSafeSourcePage ? pageUrl : null,
@@ -12428,12 +14143,12 @@
     /**
      * Export the conversation as a pandas-ready JSON file.
      *
-     * Output schema (``schema_version: "2.0"``):
+     * Output schema (``schema_version: "2.1"``):
      *
      * .. code-block:: text
      *
      *     {
-     *       "schema_version": "2.0",
+     *       "schema_version": "2.1",
      *       "session":  { id, page_url, page_title, assistant_name,
      *                     exported_at, exported_at_iso },
      *       "turns":    [{ turn_index, user: {...}, assistant: {...} }],
@@ -12508,6 +14223,55 @@
      *   invoking this function; the empty-string return is a safety net, not
      *   the primary guard.
      */
+    function _resourceManifestSummaryText(manifest) {
+        var m = _sanitizeTurnResourceManifest(manifest, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        if (!m.totalCount) return '';
+        return 'Resources used for this question: ' + m.totalCount +
+            ' · included ' + m.includedCount +
+            ' · local-only/not-sent ' + m.localOnlyCount;
+    }
+
+    function _resourceManifestTextLines(manifest) {
+        var m = _sanitizeTurnResourceManifest(manifest, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        if (!m.totalCount) return [];
+        var lines = ['[' + _resourceManifestSummaryText(m) + ']'];
+        m.items.forEach(function (item) {
+            if (!item) return;
+            lines.push('- [' + String(item.badge || _attachmentExtension(item.name)) + '] ' +
+                _attachmentSafeName(item.name) +
+                (item.status ? ' — ' + String(item.status) : ''));
+        });
+        if (m.omittedCount) {
+            lines.push('- … ' + m.omittedCount +
+                ' resource metadata row' + (m.omittedCount === 1 ? '' : 's') +
+                ' omitted from restored state');
+        }
+        return lines;
+    }
+
+    function _resourceManifestHtml(manifest) {
+        var m = _sanitizeTurnResourceManifest(manifest, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        if (!m.totalCount) return '';
+        var rows = '';
+        m.items.forEach(function (item) {
+            if (!item) return;
+            rows += '<li class="resource-card">' +
+                '<span class="resource-badge">' + _escapeHtml(String(item.badge || _attachmentExtension(item.name))) + '</span>' +
+                '<span class="resource-name">' + _escapeHtml(_attachmentSafeName(item.name)) + '</span>' +
+                (item.status ? '<span class="resource-status">' + _escapeHtml(String(item.status)) + '</span>' : '') +
+                '</li>';
+        });
+        if (m.omittedCount) {
+            rows += '<li class="resource-card resource-card--omitted">' +
+                '<span class="resource-name">… ' + m.omittedCount + ' resource metadata row' +
+                (m.omittedCount === 1 ? '' : 's') + ' omitted from restored state</span></li>';
+        }
+        return '<section class="msg__resources" aria-label="Resources used for this question">' +
+            '<div class="resource-summary">' + _escapeHtml(_resourceManifestSummaryText(m)) + '</div>' +
+            '<ul class="resource-list">' + rows + '</ul>' +
+            '</section>';
+    }
+
     function _buildConvHtmlString(snapshot) {
         var snap = snapshot || _buildConversationSnapshot();
         if (!snap) return '';
@@ -12533,6 +14297,7 @@
                 var tsUser = r.ts ? _htmlTimeFmt(r.ts) : '';
                 turnsHtml +=
                     '<article class="msg msg--user">' +
+                        _resourceManifestHtml(r.resources) +
                         '<div class="msg__bubble">' + _escapeHtml(String(r.text || '')) + '</div>' +
                         (tsUser ? '<footer class="msg__meta"><time>' + _escapeHtml(tsUser) + '</time></footer>' : '') +
                     '</article>';
@@ -12641,6 +14406,11 @@
                   (r.model_provider ? ' · ' + r.model_provider : '') + ']'
                 : '';
             lines.push('[' + who + ']' + ts + mdl);
+            if (r.role === 'user' && r.resources) {
+                _resourceManifestTextLines(r.resources).forEach(function (line) {
+                    lines.push(line);
+                });
+            }
             lines.push(String(r.text || ''));
             lines.push('');
         });
@@ -12657,7 +14427,7 @@
      * Returns
      * -------
      * string
-     *     Complete UTF-8 JSON document (schema_version 2.0).
+     *     Complete UTF-8 JSON document (schema_version 2.1).
      *     Returns ``''`` when the transcript is empty.
      *
      * Notes
@@ -12739,13 +14509,24 @@
         });
     }
 
+    function _tomlWriteResourceManifest(lines, tablePath, manifest) {
+        var m = _sanitizeTurnResourceManifest(manifest, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        if (!m.totalCount) return;
+        lines.push('[' + tablePath + ']');
+        _tomlWriteFields(lines, m, { items: true });
+        m.items.forEach(function (item) {
+            lines.push('[[' + tablePath + '.items]]');
+            _tomlWriteFields(lines, item || {});
+        });
+    }
+
     function _buildConvTomlString(snapshot) {
         var snap = snapshot || _buildConversationSnapshot();
         if (!snap) return '';
         var lines = [
             '# AI Assistant conversation export',
-            '# schema v2 semantics: omitted optional values represent null',
-            'schema_version = ' + _tomlString(snap.schema_version || '2.0'),
+            '# schema v2.1 semantics: omitted optional values represent null',
+            'schema_version = ' + _tomlString(snap.schema_version || '2.1'),
             '',
             '[session]'
         ];
@@ -12756,7 +14537,8 @@
             if (turn && turn.turn_index != null) lines.push('turn_index = ' + String(turn.turn_index));
             if (turn && turn.user) {
                 lines.push('[turns.user]');
-                _tomlWriteFields(lines, turn.user);
+                _tomlWriteFields(lines, turn.user, { resources: true });
+                _tomlWriteResourceManifest(lines, 'turns.user.resources', turn.user.resources);
             }
             if (turn && turn.assistant) {
                 lines.push('[turns.assistant]');
@@ -12766,7 +14548,8 @@
 
         (snap.records || []).forEach(function (record) {
             lines.push('', '[[records]]');
-            _tomlWriteFields(lines, record || {});
+            _tomlWriteFields(lines, record || {}, { resources: true });
+            _tomlWriteResourceManifest(lines, 'records.resources', record && record.resources);
         });
         return lines.join('\n') + '\n';
     }
@@ -12906,6 +14689,14 @@
 '.msg--user{align-self:flex-end;max-width:82%;display:flex;flex-direction:column;align-items:flex-end}\n' +
 '.msg--user .msg__bubble{background:var(--user-bg);color:var(--user-tx);border-radius:var(--r) var(--r) .25rem var(--r);padding:.75rem 1rem;white-space:pre-wrap;word-break:break-word;font-size:.9375rem}\n' +
 '.msg--user .msg__meta{margin-top:.25rem;font-size:.75rem;color:var(--tx3)}\n' +
+'.msg__resources{width:100%;max-width:100%;margin:0 0 .45rem;text-align:left}\n' +
+'.resource-summary{font-size:.72rem;color:var(--tx2);margin:0 0 .3rem;padding:0 .15rem}\n' +
+'.resource-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.25rem;width:100%}\n' +
+'.resource-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.15rem .45rem;align-items:center;padding:.4rem .55rem;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);font-size:.72rem;color:var(--tx2)}\n' +
+'.resource-badge{grid-row:1 / span 2;font-size:.62rem;font-weight:700;letter-spacing:.04em;color:var(--model-tx);background:var(--model-bg);border-radius:.3rem;padding:.1rem .3rem}\n' +
+'.resource-name{min-width:0;color:var(--tx);font-weight:500;overflow-wrap:anywhere}\n' +
+'.resource-status{font-size:.66rem;color:var(--tx3);overflow-wrap:anywhere}\n' +
+'.resource-card--omitted{display:block;font-style:italic;color:var(--tx3)}\n' +
 '.msg--ai{display:flex;gap:.75rem;align-self:flex-start;max-width:90%;width:100%}\n' +
 '.msg__avatar{flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--tx2);margin-top:.15rem;letter-spacing:.03em}\n' +
 '.msg__body{flex:1;min-width:0}\n' +
@@ -15034,7 +16825,7 @@
                 undefined,
                 m.ts,
                 m.text,
-                { attachments: m.attachments }
+                { resources: m.resources || m.attachments }
             );
         });
         body.scrollTop = body.scrollHeight;
@@ -29415,7 +31206,7 @@
 
     function _normalizeShareSnapshot(snapshot) {
         if (!snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return null;
-        if (snapshot.schema_version !== '2.0') return null;
+        if (snapshot.schema_version !== '2.0' && snapshot.schema_version !== '2.1') return null;
         if (!snapshot.session || typeof snapshot.session !== 'object' || Array.isArray(snapshot.session)) return null;
         if (!Array.isArray(snapshot.records) || snapshot.records.length > 10000) return null;
 
@@ -29457,6 +31248,17 @@
             if (ratingValue != null && typeof ratingValue !== 'number' && typeof ratingValue !== 'string' && typeof ratingValue !== 'boolean') return null;
             if ([text,ts,tsIso,modelId,modelProvider,modelName,ratingLabel,feedbackMessage].some(function (v) { return v === undefined; })) return null;
 
+            var resources = null;
+            if (r.resources != null) {
+                if (r.role !== 'user' || !r.resources || typeof r.resources !== 'object' || Array.isArray(r.resources)) return null;
+                if (!Array.isArray(r.resources.items) || r.resources.items.length > _TURN_RESOURCE_LIVE_MAX_ITEMS) return null;
+                if (_safeTurnResourceTotal(r.resources.totalCount) > _TURN_RESOURCE_LIVE_MAX_ITEMS) return null;
+                resources = _sanitizeTurnResourceManifest(r.resources, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+                if (resources.totalCount > _TURN_RESOURCE_LIVE_MAX_ITEMS ||
+                        resources.itemCount > resources.totalCount ||
+                        resources.omittedCount > resources.totalCount) return null;
+            }
+
             records.push({
                 turn_index: _num(r.turn_index, true),
                 message_index: _num(r.message_index, true),
@@ -29470,6 +31272,7 @@
                 feedback_rating_value: ratingValue == null ? null : ratingValue,
                 feedback_rating_label: ratingLabel,
                 feedback_message: feedbackMessage,
+                resources: resources && resources.totalCount ? resources : null,
                 session_id: sid,
                 page_url: safePage,
             });
@@ -29478,7 +31281,7 @@
         }
 
         return {
-            schema_version: '2.0',
+            schema_version: '2.1',
             session: {
                 id: sid,
                 page_url: safePage,
@@ -31260,7 +33063,7 @@
             out.push(Object.assign({}, item, {
                 key: 'file:' + index + ':' + String(item.name || 'attachment'),
                 sourceUrl: '', contextRole: 'file', _skillComposerIndex: index,
-                text: typeof item.text === 'string' ? item.text : ''
+                text: ''
             }));
         });
         return out;
@@ -31282,6 +33085,10 @@
                 catch (_) { item.text = ''; }
             }
             item = Object.assign({}, item, { _skillRole: role });
+            if ((!item.text || !String(item.text).trim()) && item.kind === 'text' && item.file) {
+                try { item.text = await _readAttachmentText(item.file, _ATTACHMENT_MAX_READ_BYTES); }
+                catch (_) { item.text = ''; }
+            }
             if (typeof item.text === 'string' && item.text.trim()) {
                 resolved.push(item); continue;
             }
@@ -33426,7 +35233,7 @@
         var attachmentDropTitle = document.createElement('strong');
         attachmentDropTitle.textContent = 'Drop files to add';
         var attachmentDropHint = document.createElement('span');
-        attachmentDropHint.textContent = 'Up to ' + _ATTACHMENT_MAX_FILES + ' files · local preview first · bounded safe text may be included only when you send';
+        attachmentDropHint.textContent = 'Up to ' + _ATTACHMENT_MAX_FILES + ' staged files · folders and ZIPs inventory first · bounded safe text may be included only when you send';
         attachmentDropCard.appendChild(attachmentDropIcon);
         attachmentDropCard.appendChild(attachmentDropTitle);
         attachmentDropCard.appendChild(attachmentDropHint);
@@ -33636,6 +35443,16 @@
         attachInput.tabIndex = -1;
         attachInput.setAttribute('aria-hidden', 'true');
 
+        var folderInput = document.createElement('input');
+        folderInput.type = 'file';
+        folderInput.id = 'ai-assistant-panel-folder-input';
+        folderInput.className = 'ai-assistant-panel-file-input';
+        folderInput.multiple = true;
+        folderInput.setAttribute('webkitdirectory', '');
+        folderInput.setAttribute('directory', '');
+        folderInput.tabIndex = -1;
+        folderInput.setAttribute('aria-hidden', 'true');
+
         var attachMenu = document.createElement('div');
         attachMenu.className = 'ai-assistant-panel-attach-menu';
         attachMenu.id = 'ai-assistant-panel-attach-menu';
@@ -33724,6 +35541,14 @@
             '<span class="ai-assistant-panel-attach-menu-copy"><strong>Add files or photos</strong><small>Choose files or drag them into the assistant. Bounded safe text may be included on send; other files stay local.</small></span>' +
             '<span class="ai-assistant-panel-attach-menu-shortcut" aria-hidden="true"><kbd>Alt</kbd><kbd>U</kbd></span>';
         attachMenu.appendChild(uploadItem);
+
+        var folderItem = document.createElement('button');
+        folderItem.type = 'button';
+        folderItem.className = 'ai-assistant-panel-attach-menu-item';
+        folderItem.setAttribute('role', 'menuitem');
+        folderItem.innerHTML = '<span class="ai-assistant-panel-attach-menu-icon" aria-hidden="true">' + ICONS.plus + '</span>' +
+            '<span class="ai-assistant-panel-attach-menu-copy"><strong>Add folder</strong><small>Inventory a folder locally, then explicitly choose which files to stage. No file contents are read during inventory.</small></span>';
+        attachMenu.appendChild(folderItem);
 
         // Skills — inline submenu before Integration.  The disclosure mirrors
         // modern agent UIs without spawning a second floating popover that can
@@ -34251,6 +36076,18 @@
             attachInput.click();
         }
 
+        function _openFolderPicker() {
+            _closeAttachMenu(false);
+            folderInput.value = '';
+            try {
+                if (typeof folderInput.showPicker === 'function') {
+                    folderInput.showPicker();
+                    return;
+                }
+            } catch (_e) {}
+            folderInput.click();
+        }
+
         attachBtn.addEventListener('click', function () {
             _hapticFeedback([8]);
             if (attachMenu.getAttribute('data-open') === 'true') _closeAttachMenu(false);
@@ -34345,6 +36182,7 @@
             });
         }
         uploadItem.addEventListener('click', _openAttachmentPicker);
+        folderItem.addEventListener('click', _openFolderPicker);
         integrationItem.addEventListener('click', function () {
             _closeAttachMenu(false);
             if (!_feedbackDomIntegrationEnabled) {
@@ -34364,6 +36202,15 @@
             try { files = Array.prototype.slice.call(attachInput.files || []); } catch (_e) {}
             attachInput.value = '';
             if (files.length) _queueComposerFiles(files);
+        });
+        folderInput.addEventListener('change', function () {
+            var files = [];
+            try { files = Array.prototype.slice.call(folderInput.files || []); } catch (_e) {}
+            var label = files.length && files[0] && files[0].webkitRelativePath
+                ? String(files[0].webkitRelativePath).split('/')[0]
+                : 'Folder';
+            folderInput.value = '';
+            if (files.length) _queueDirectoryFileListImport(files, label);
         });
         attachMenu.addEventListener('keydown', function (e) {
             var items = _attachMenuVisibleItems();
@@ -34418,10 +36265,10 @@
             _positionAttachmentDropOverlay();
             var full = _composerAttachments.length >= _ATTACHMENT_MAX_FILES;
             attachmentDropOverlay.setAttribute('data-full', full ? 'true' : 'false');
-            attachmentDropTitle.textContent = full ? 'Attachment limit reached' : 'Drop files to add';
+            attachmentDropTitle.textContent = full ? 'Composer full · ZIP/folder inventory still available' : 'Drop files, folders, or ZIPs';
             attachmentDropHint.textContent = full
-                ? 'Remove an attachment before dropping another file.'
-                : 'Up to ' + _ATTACHMENT_MAX_FILES + ' files · local preview first · bounded safe text may be included only when you send';
+                ? 'Direct files need a free slot. You may still inspect a folder or ZIP inventory, then remove files before importing selected entries.'
+                : 'Up to ' + _ATTACHMENT_MAX_FILES + ' staged files · folders and ZIPs inventory first · bounded safe text may be included only when you send';
             attachmentDropOverlay.hidden = false;
             panel.setAttribute('data-attachment-drag', 'true');
         }
@@ -34443,7 +36290,10 @@
         panel.addEventListener('dragover', function (e) {
             if (!_attachmentDragHasFiles(e)) return;
             e.preventDefault();
-            if (e.dataTransfer) e.dataTransfer.dropEffect = _composerAttachments.length < _ATTACHMENT_MAX_FILES ? 'copy' : 'none';
+            // Keep the drop target active even when the composer is full:
+            // folders/ZIPs may still be inventoried safely without consuming a
+            // staged-file slot. Ordinary files are rejected by the staging cap.
+            if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
             if (attachmentDropOverlay.hidden) _showAttachmentDropOverlay();
         });
         panel.addEventListener('dragleave', function () {
@@ -34454,12 +36304,15 @@
             if (!_attachmentDragHasFiles(e)) return;
             e.preventDefault();
             e.stopPropagation();
+            // FileSystemEntry objects must be captured synchronously while the
+            // DataTransfer is still live; traversal itself then happens under
+            // the bounded local inventory queue.
             var dropped = _attachmentFilesFromDrop(e.dataTransfer);
             _hideAttachmentDropOverlay();
-            if (dropped.skippedDirectories) {
-                showNotification('Folders are not attached. Drop individual files instead.', false);
-            }
             if (dropped.files.length) _queueComposerFiles(dropped.files);
+            if (dropped.directoryEntries && dropped.directoryEntries.length) {
+                _queueDirectoryEntryImport(dropped.directoryEntries);
+            }
         });
         document.addEventListener('dragend', _hideAttachmentDropOverlay, true);
         window.addEventListener('blur', _hideAttachmentDropOverlay);
@@ -34474,6 +36327,7 @@
 
         attachWrap.appendChild(attachBtn);
         attachWrap.appendChild(attachInput);
+        attachWrap.appendChild(folderInput);
         attachWrap.appendChild(attachMenu);
         footerActions.appendChild(attachWrap);
 
@@ -40443,12 +42297,12 @@
             // A user turn owns the one-shot file provenance that was consumed by
             // this question. File contents are never reconstructed here; only
             // bounded metadata is rendered above the question text.
-            var liveTurnResources = Array.isArray(turnMeta && turnMeta.attachments)
-                ? turnMeta.attachments : [];
-            var turnAttachments = liveTurnResources.length
-                ? liveTurnResources.slice(0, _TURN_ATTACHMENT_SUMMARY_MAX_ITEMS)
-                : _sanitizeTurnAttachmentSummaries(turnMeta && turnMeta.attachments);
-            if (turnAttachments.length) {
+            var turnResourceManifest = _sanitizeTurnResourceManifest(
+                (turnMeta && (turnMeta.resources || turnMeta.attachments)),
+                _TURN_RESOURCE_LIVE_MAX_ITEMS
+            );
+            var turnAttachments = turnResourceManifest.items.slice(0, _TURN_RESOURCE_VISIBLE_MAX_ITEMS);
+            if (turnResourceManifest.totalCount) {
                 bubble.setAttribute('data-has-turn-attachments', 'true');
                 var files = document.createElement('div');
                 // Reuse the exact composer attachment-strip anatomy so files and
@@ -40456,7 +42310,7 @@
                 files.className = 'ai-assistant-panel-attachments ai-assistant-panel-user-turn-attachments';
                 files.setAttribute('aria-label', 'Files and pages used for this question');
                 files.setAttribute('data-scroll-bound', 'true');
-                files.setAttribute('data-attachment-count', String(turnAttachments.length));
+                files.setAttribute('data-attachment-count', String(turnResourceManifest.totalCount));
 
                 turnAttachments.forEach(function (item) {
                     if (!item) return;
@@ -40498,6 +42352,31 @@
                     tile.appendChild(preview);
                     files.appendChild(tile);
                 });
+                var hiddenTurnResourceCount = Math.max(0, turnResourceManifest.totalCount - turnAttachments.length);
+                if (hiddenTurnResourceCount) {
+                    var moreTile = document.createElement('div');
+                    moreTile.className = 'ai-assistant-panel-attachment-tile ai-assistant-panel-attachment-more-tile';
+                    var more = document.createElement('button');
+                    more.type = 'button';
+                    more.className = 'ai-assistant-panel-attachment-card ai-assistant-panel-attachment-more-card';
+                    more.setAttribute('aria-label', 'Review ' + hiddenTurnResourceCount + ' more resource entries');
+                    var moreBody = document.createElement('span');
+                    moreBody.className = 'ai-assistant-panel-attachment-card-body';
+                    var moreCount = document.createElement('strong');
+                    moreCount.className = 'ai-assistant-panel-attachment-more-count';
+                    moreCount.textContent = '+' + hiddenTurnResourceCount + ' more';
+                    var moreMeta = document.createElement('span');
+                    moreMeta.className = 'ai-assistant-panel-attachment-card-meta';
+                    moreMeta.textContent = turnResourceManifest.complete ? 'Open resource manager' : 'Restored metadata is compact';
+                    moreBody.appendChild(moreCount);
+                    moreBody.appendChild(moreMeta);
+                    more.appendChild(moreBody);
+                    more.addEventListener('click', function () {
+                        _openAttachmentManager(more, turnResourceManifest);
+                    });
+                    moreTile.appendChild(more);
+                    files.appendChild(moreTile);
+                }
                 _bindAttachmentTrayScrolling(files);
                 bubble.appendChild(files);
             }
@@ -40837,16 +42716,7 @@
         var sendBtn = document.getElementById('ai-assistant-panel-send');
         if (!input) return;
 
-        // FileReader-based staging is asynchronous. Do not allow a message
-        // to leave while a just-selected/dropped file is still being prepared;
-        // otherwise the visible user intent and canonical outbound context can
-        // diverge. The user remains in control and sends explicitly once ready.
-        if (_attachmentStagePending > 0) {
-            showNotification('Attachments are still being prepared. Send when preparation finishes.', false);
-            return;
-        }
-
-        // FileReader-based staging is asynchronous. Do not allow a message
+        // Metadata staging is serialized. Do not allow a message
         // to leave while a just-selected/dropped file is still being prepared;
         // otherwise the visible user intent and canonical outbound context can
         // diverge. The user remains in control and sends explicitly once ready.
@@ -40880,7 +42750,15 @@
                 : 'Skill Generator opened. Describe what the skill should enable.', true);
             return;
         }
-        var attachmentText = _composerEffectiveAttachmentContext();
+        var attachmentRevision = _attachmentMutationRevision;
+        var attachmentSnapshot = _composerAttachments.slice();
+        var attachmentPlan = await _prepareComposerEffectiveAttachmentPlan(attachmentSnapshot);
+        if (attachmentRevision !== _attachmentMutationRevision) {
+            showNotification('Attachments changed while preparing this request. Review the visible batch and send again.', false);
+            input.focus();
+            return;
+        }
+        var attachmentText = attachmentPlan.text;
         if (!rawText && !attachmentText) return;
 
         var cfg = _cfg();
@@ -40922,6 +42800,7 @@
             }
             questionText = privacyDecision.value.user_message;
             attachmentText = privacyDecision.value.attachment_context || '';
+            attachmentPlan.text = attachmentText;
             preparedPageContext.text = privacyDecision.value.page_context;
             if (privacyDecision.action === 'redact') {
                 showNotification('Flagged values redacted before sending', false);
@@ -40934,9 +42813,15 @@
         if (!preparedPageContext) {
             preparedPageContext = await _privacyPrepareDocumentationContext(cfg);
         }
+        if (attachmentRevision !== _attachmentMutationRevision) {
+            showNotification('Attachments changed while preparing this request. Review the visible batch and send again.', false);
+            input.focus();
+            return;
+        }
 
+        attachmentPlan.text = attachmentText;
         var requestQuestion = _composeQuestionWithAttachments(questionText, attachmentText);
-        var turnAttachments = _composerTurnAttachmentSnapshot(attachmentText, preparedPageContext);
+        var turnAttachments = _composerTurnAttachmentSnapshot(attachmentPlan, preparedPageContext);
 
         // ── Cancel any in-flight request before starting a new one ───────
         // Without this, rapid submits fire multiple concurrent fetches; the

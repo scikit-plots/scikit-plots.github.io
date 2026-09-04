@@ -20257,3 +20257,361 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
         flex-basis: 104px;
     }
 }
+
+
+/* Run 111 — scalable attachment batch summary + metadata-first resource manager. */
+.ai-assistant-panel-attachment-batch-summary {
+    flex: 0 0 auto;
+    width: min(280px, calc(100vw - 2rem));
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    padding: 0.72rem 0.78rem;
+    border: 1px dashed color-mix(in srgb, var(--pst-color-primary, #2980b9) 38%, var(--pst-color-border, #d8dce1));
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 4%, var(--pst-color-surface, #fff));
+}
+.ai-assistant-panel-attachment-batch-summary-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+}
+.ai-assistant-panel-attachment-batch-summary-copy strong {
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+.ai-assistant-panel-attachment-batch-summary-copy span {
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.64rem;
+    line-height: 1.3;
+}
+.ai-assistant-panel-attachment-batch-summary-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+}
+.ai-assistant-panel-attachment-batch-summary-actions button,
+.ai-assistant-panel-attachment-manager-btn,
+.ai-assistant-panel-attachment-manager-clear {
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 7px;
+    background: var(--pst-color-surface, #fff);
+    color: var(--pst-color-text-base, #1f2328);
+    padding: 0.34rem 0.52rem;
+    font: inherit;
+    font-size: 0.66rem;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.ai-assistant-panel-attachment-batch-summary-actions button:hover,
+.ai-assistant-panel-attachment-manager-btn:hover,
+.ai-assistant-panel-attachment-manager-clear:hover {
+    background: rgba(128, 128, 128, 0.1);
+}
+.ai-assistant-panel-attachment-more-card {
+    border-style: dashed;
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 3%, var(--pst-color-surface, #fff));
+}
+.ai-assistant-panel-attachment-more-count {
+    margin: auto 0 0;
+    font-size: 0.78rem;
+    line-height: 1.2;
+}
+
+.ai-assistant-panel-attachment-manager-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483646;
+    display: grid;
+    place-items: center;
+    padding: max(0.5rem, env(safe-area-inset-top, 0px))
+             max(0.5rem, env(safe-area-inset-right, 0px))
+             max(0.5rem, env(safe-area-inset-bottom, 0px))
+             max(0.5rem, env(safe-area-inset-left, 0px));
+    background: rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(2px);
+    overscroll-behavior: contain;
+}
+.ai-assistant-panel-attachment-manager-layer[hidden] { display: none !important; }
+.ai-assistant-panel-attachment-manager {
+    width: min(820px, 100%);
+    max-height: min(82dvh, 760px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 12px;
+    background: var(--pst-color-surface, #fff);
+    color: var(--pst-color-text-base, #1f2328);
+    box-shadow: 0 18px 52px rgba(0,0,0,.28), 0 3px 10px rgba(0,0,0,.13);
+}
+.ai-assistant-panel-attachment-manager-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.82rem 0.9rem 0.7rem;
+    border-bottom: 1px solid var(--pst-color-border, #d8dce1);
+}
+.ai-assistant-panel-attachment-manager-head h3 {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.3;
+}
+.ai-assistant-panel-attachment-manager-count {
+    margin: 0.18rem 0 0;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.66rem;
+}
+.ai-assistant-panel-attachment-manager-close {
+    width: 1.9rem;
+    height: 1.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+.ai-assistant-panel-attachment-manager-close:hover { background: rgba(128,128,128,.12); }
+.ai-assistant-panel-attachment-manager-close svg { width: 1rem; height: 1rem; }
+.ai-assistant-panel-attachment-manager-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(130px, auto);
+    gap: 0.55rem;
+    padding: 0.7rem 0.9rem;
+}
+.ai-assistant-panel-attachment-manager-search,
+.ai-assistant-panel-attachment-manager-filter {
+    min-width: 0;
+    height: 2.15rem;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 7px;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    padding: 0 0.62rem;
+    font: inherit;
+    font-size: 0.72rem;
+}
+.ai-assistant-panel-attachment-manager-omitted {
+    margin: 0 0.9rem 0.55rem;
+    padding: 0.48rem 0.6rem;
+    border-radius: 7px;
+    background: rgba(245, 158, 11, 0.10);
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.67rem;
+    line-height: 1.4;
+}
+.ai-assistant-panel-attachment-manager-list {
+    min-height: 8rem;
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 0 0.9rem 0.7rem;
+    scrollbar-width: thin;
+    overscroll-behavior: contain;
+}
+.ai-assistant-panel-attachment-manager-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.58rem 0.1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
+}
+.ai-assistant-panel-attachment-manager-info {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+.ai-assistant-panel-attachment-manager-badge {
+    flex: 0 0 auto;
+    max-width: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(128,128,128,.11);
+    padding: 0.16rem 0.42rem;
+    font-size: 0.59rem;
+    font-weight: 700;
+}
+.ai-assistant-panel-attachment-manager-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+}
+.ai-assistant-panel-attachment-manager-copy strong {
+    overflow-wrap: anywhere;
+    font-size: 0.72rem;
+    line-height: 1.3;
+}
+.ai-assistant-panel-attachment-manager-copy span {
+    color: var(--pst-color-text-muted, #71717a);
+    overflow-wrap: anywhere;
+    font-size: 0.63rem;
+    line-height: 1.35;
+}
+.ai-assistant-panel-attachment-manager-actions {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 0.35rem;
+}
+.ai-assistant-panel-attachment-manager-btn--danger,
+.ai-assistant-panel-attachment-manager-clear {
+    color: var(--pst-color-danger, #b42318);
+}
+.ai-assistant-panel-attachment-manager-foot {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.65rem 0.9rem 0.8rem;
+    border-top: 1px solid var(--pst-color-border, #d8dce1);
+}
+.ai-assistant-panel-attachment-manager-empty {
+    margin: 1.5rem 0;
+    text-align: center;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.72rem;
+}
+@media (max-width: 640px) {
+    .ai-assistant-panel-attachment-manager-controls { grid-template-columns: 1fr; }
+    .ai-assistant-panel-attachment-manager-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .ai-assistant-panel-attachment-manager-actions { width: 100%; }
+    .ai-assistant-panel-attachment-manager-actions button { flex: 1 1 0; }
+}
+
+
+/* Run 112 — verified, local-only browser PDF preview. */
+.ai-assistant-panel-attachment-preview-pdf-note {
+    margin-top: 0;
+    padding: 0.52rem 0.62rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-primary, #2980b9) 24%, var(--pst-color-border, #d8dce1));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 5%, transparent);
+}
+.ai-assistant-panel-attachment-preview-pdf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0.55rem 0;
+}
+.ai-assistant-panel-attachment-preview-pdf {
+    width: 100%;
+    min-height: min(62dvh, 36rem);
+    height: min(62dvh, 36rem);
+    display: block;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 8px;
+    background: rgba(128,128,128,.05);
+}
+@media (max-width: 640px) {
+    .ai-assistant-panel-attachment-preview-pdf {
+        min-height: calc(100dvh - 12.5rem);
+        height: calc(100dvh - 12.5rem);
+    }
+}
+
+/* Run 113 — bounded directory / ZIP inventory and explicit import selection. */
+.ai-assistant-panel-attachment-import {
+    width: min(900px, 100%);
+}
+.ai-assistant-panel-attachment-import-notice {
+    margin: 0.7rem 0.9rem 0;
+    padding: 0.52rem 0.62rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-primary, #2980b9) 24%, var(--pst-color-border, #d8dce1));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 5%, transparent);
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.66rem;
+    line-height: 1.4;
+}
+.ai-assistant-panel-attachment-import-selection-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0 0.9rem 0.65rem;
+}
+.ai-assistant-panel-attachment-import-selection-actions button,
+.ai-assistant-panel-attachment-import-add {
+    min-height: 2rem;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 7px;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    padding: 0.3rem 0.64rem;
+    font: inherit;
+    font-size: 0.68rem;
+    cursor: pointer;
+}
+.ai-assistant-panel-attachment-import-selection-actions button:hover,
+.ai-assistant-panel-attachment-import-add:hover:not(:disabled) {
+    background: rgba(128,128,128,.12);
+}
+.ai-assistant-panel-attachment-import-selection-actions button:disabled,
+.ai-assistant-panel-attachment-import-add:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+.ai-assistant-panel-attachment-import-row {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.58rem 0.1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
+    cursor: pointer;
+}
+.ai-assistant-panel-attachment-import-row[data-rejected="true"] {
+    opacity: .62;
+    cursor: not-allowed;
+}
+.ai-assistant-panel-attachment-import-row input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--pst-color-primary, #2980b9);
+}
+.ai-assistant-panel-attachment-import-selected {
+    min-width: 0;
+    flex: 1 1 auto;
+    margin: 0;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.66rem;
+    line-height: 1.35;
+}
+.ai-assistant-panel-attachment-import .ai-assistant-panel-attachment-manager-foot {
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.ai-assistant-panel-attachment-import-add {
+    flex: 0 0 auto;
+    background: var(--pst-color-primary, #2980b9);
+    border-color: var(--pst-color-primary, #2980b9);
+    color: #fff;
+    font-weight: 650;
+}
+.ai-assistant-panel-attachment-import-add:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 88%, #000);
+}
+@media (max-width: 640px) {
+    .ai-assistant-panel-attachment-import-row {
+        grid-template-columns: auto auto minmax(0, 1fr);
+        align-items: start;
+    }
+    .ai-assistant-panel-attachment-import .ai-assistant-panel-attachment-manager-foot {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .ai-assistant-panel-attachment-import-add { width: 100%; }
+}
