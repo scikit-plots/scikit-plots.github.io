@@ -20491,7 +20491,7 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 }
 
 
-/* Run 112 — verified, local-only browser PDF preview. */
+/* Run 114 — verified local PDF actions without native plug-in iframes. */
 .ai-assistant-panel-attachment-preview-pdf-note {
     margin-top: 0;
     padding: 0.52rem 0.62rem;
@@ -20505,20 +20505,20 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     gap: 0.45rem;
     margin: 0.55rem 0;
 }
-.ai-assistant-panel-attachment-preview-pdf {
-    width: 100%;
-    min-height: min(62dvh, 36rem);
-    height: min(62dvh, 36rem);
-    display: block;
-    border: 1px solid var(--pst-color-border, #d8dce1);
+.ai-assistant-panel-attachment-preview-pdf-safe {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+    padding: 0.7rem 0.75rem;
+    border: 1px dashed var(--pst-color-border, #d8dce1);
     border-radius: 8px;
-    background: rgba(128,128,128,.05);
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 94%, var(--pst-color-primary, #2980b9));
 }
-@media (max-width: 640px) {
-    .ai-assistant-panel-attachment-preview-pdf {
-        min-height: calc(100dvh - 12.5rem);
-        height: calc(100dvh - 12.5rem);
-    }
+.ai-assistant-panel-attachment-preview-pdf-safe p {
+    margin: 0;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.74rem;
+    line-height: 1.45;
 }
 
 /* Run 113 — bounded directory / ZIP inventory and explicit import selection. */
@@ -20614,4 +20614,19 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
         flex-direction: column;
     }
     .ai-assistant-panel-attachment-import-add { width: 100%; }
+}
+
+/* Run 122 — bounded historical/composer Resource Manager pagination. */
+.ai-assistant-panel-attachment-manager-paging {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    padding: 0 0.9rem 0.55rem;
+}
+.ai-assistant-panel-attachment-manager-paging button:disabled {
+    opacity: .45;
+    cursor: default;
+}
+@media (max-width: 640px) {
+    .ai-assistant-panel-attachment-manager-paging button { flex: 1 1 0; }
 }

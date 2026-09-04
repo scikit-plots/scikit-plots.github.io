@@ -448,6 +448,8 @@
                 out.message = 'Bounded response streaming is unavailable in this transport.';
             } else if (message === 'AI_RESPONSE_LINE_TOO_LARGE') {
                 out.message = 'AI streaming response contained an oversized SSE line.';
+            } else if (message === 'AI_STUB_MODE_MISMATCH') {
+                out.message = 'Selected stub mode did not match the proxy response.';
             } else {
                 out.message = 'AI request failed with a bounded diagnostic code.';
             }
@@ -558,6 +560,9 @@
         }
         if (d.code === 'AI_RESPONSE_INVALID_JSON') {
             return 'The AI endpoint returned a response that could not be parsed as valid JSON.';
+        }
+        if (d.code === 'AI_STUB_MODE_MISMATCH') {
+            return 'The selected stub mode did not match the proxy response. The proxy appears stale or incompatible; update or restart it before trusting Stub · mirror diagnostics.';
         }
         return 'Sorry, the AI request could not be completed. Please retry.';
     }
@@ -10533,7 +10538,12 @@
     var _ATTACHMENT_MAX_FILE_CONTEXT_CHARS = 12000;
     var _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES = 12 * 1024 * 1024;
     var _ATTACHMENT_PDF_SIGNATURE_BYTES = 8;
-    var _ATTACHMENT_PDF_INLINE_MAX_BYTES = 64 * 1024 * 1024;
+    // Native PDF plug-ins embedded in blob-backed iframes are browser/profile
+    // dependent and have caused panel lock-ups. PDF preview therefore never
+    // embeds a native viewer inside the assistant. Verified PDFs open in the
+    // browser's top-level viewer on an explicit user gesture, with Download as
+    // the deterministic fallback.
+    var _ATTACHMENT_PDF_OPEN_URL_TTL_MS = 60 * 1000;
     var _ATTACHMENT_MAX_TEXT_CHARS = 48000;
     var _ATTACHMENT_THUMBNAIL_NORMAL_MAX = 24;
     var _ATTACHMENT_THUMBNAIL_LARGE_MAX = 8;
@@ -10543,6 +10553,8 @@
     // never read from directory files and ZIP payload bytes are never inflated
     // until the reader explicitly selects entries in the import manager.
     var _ATTACHMENT_IMPORT_MAX_ENTRIES = 4096;
+    var _ATTACHMENT_IMPORT_MAX_OUTSTANDING = 8;
+    var _ATTACHMENT_IMPORT_MAX_DIRECTORY_OUTSTANDING = 2;
     var _ATTACHMENT_IMPORT_MAX_PATH_CHARS = 1024;
     var _ATTACHMENT_DIRECTORY_MAX_DEPTH = 24;
     var _ATTACHMENT_ZIP_EOCD_TAIL_BYTES = 22 + 65535;
@@ -10554,7 +10566,37 @@
     var _ATTACHMENT_ZIP_EXT_RE = /\.zip$/i;
 
     function _attachmentSafeName(value) {
-        return String(value || 'file').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 240) || 'file';
+        // Preserve ordinary Unicode (including Arabic/Hebrew letters) while
+        // neutralising invisible direction-format controls that can make a
+        // filename appear to have a different extension or reading order.
+        return String(value || 'file')
+            .replace(/[\u0000-\u001f\u007f\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, ' ')
+            // File.name is normally a basename, but synthetic File objects and
+            // test/browser adapters can provide path-like names. Never let path
+            // separators gain authority in a local download filename or badge.
+            .replace(/[\\/]+/g, ' ')
+            .trim().slice(0, 240) || 'file';
+    }
+
+    var _attachmentActiveReaders = new Set();
+
+    function _attachmentTrackReader(reader) {
+        if (reader && typeof reader === 'object') _attachmentActiveReaders.add(reader);
+        return reader;
+    }
+
+    function _attachmentUntrackReader(reader) {
+        try { _attachmentActiveReaders.delete(reader); } catch (_e) {}
+    }
+
+    function _attachmentAbortActiveReaders() {
+        var readers = Array.from(_attachmentActiveReaders);
+        _attachmentActiveReaders.clear();
+        readers.forEach(function (reader) {
+            try {
+                if (reader && typeof reader.abort === 'function' && reader.readyState === 1) reader.abort();
+            } catch (_e) {}
+        });
     }
 
     function _attachmentIsImage(file) {
@@ -10667,12 +10709,14 @@
         }
         return new Promise(function (resolve, reject) {
             if (typeof FileReader !== 'function') { reject(new Error('ATTACHMENT_READER_UNAVAILABLE')); return; }
-            var reader = new FileReader();
+            var reader = _attachmentTrackReader(new FileReader());
             reader.onload = function () {
+                _attachmentUntrackReader(reader);
                 try { resolve(new Uint8Array(reader.result || new ArrayBuffer(0))); }
                 catch (_e) { reject(new Error('ATTACHMENT_READ_FAILED')); }
             };
-            reader.onerror = function () { reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.onerror = function () { _attachmentUntrackReader(reader); reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.onabort = function () { _attachmentUntrackReader(reader); reject(new Error('ATTACHMENT_READ_ABORTED')); };
             reader.readAsArrayBuffer(blob);
         });
     }
@@ -10707,7 +10751,11 @@
         return entry;
     }
 
-    async function _inspectZipArchive(file) {
+    async function _inspectZipArchive(file, shouldCancel) {
+        function assertLive() {
+            if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+        }
+        assertLive();
         if (!file || !_attachmentIsZipCandidate(file)) throw new Error('ZIP_NOT_CANDIDATE');
         var size = Math.max(0, Number(file.size) || 0);
         if (size < 22) throw new Error('ZIP_EOCD_MISSING');
@@ -10717,6 +10765,7 @@
         var tailLength = Math.min(size, 22);
         var tailStart = size - tailLength;
         var tail = await _readAttachmentBlobSlice(file, tailStart, tailLength);
+        assertLive();
         var tailView = new DataView(tail.buffer, tail.byteOffset, tail.byteLength);
         var eocdIndex = tail.length >= 22 && _zipU32(tailView, tail.length - 22) === 0x06054b50 &&
             _zipU16(tailView, tail.length - 2) === 0 ? tail.length - 22 : -1;
@@ -10724,6 +10773,7 @@
             tailLength = Math.min(size, _ATTACHMENT_ZIP_EOCD_TAIL_BYTES);
             tailStart = size - tailLength;
             tail = await _readAttachmentBlobSlice(file, tailStart, tailLength);
+            assertLive();
             tailView = new DataView(tail.buffer, tail.byteOffset, tail.byteLength);
             for (var p = tail.length - 22; p >= 0; p--) {
                 if (_zipU32(tailView, p) === 0x06054b50) {
@@ -10746,6 +10796,7 @@
         if (centralSize > _ATTACHMENT_ZIP_MAX_CENTRAL_DIRECTORY_BYTES) throw new Error('ZIP_CENTRAL_DIRECTORY_TOO_LARGE');
         if (centralOffset > eocdAbsolute || centralSize > eocdAbsolute - centralOffset) throw new Error('ZIP_CENTRAL_DIRECTORY_BOUNDS');
         var central = await _readAttachmentBlobSlice(file, centralOffset, centralSize);
+        assertLive();
         var view = new DataView(central.buffer, central.byteOffset, central.byteLength);
         var offset = 0;
         var entries = [];
@@ -10753,6 +10804,7 @@
         var localOffsets = Object.create(null);
         var rejectedCount = 0;
         for (var i = 0; i < totalEntries; i++) {
+            assertLive();
             if (offset + 46 > central.length || _zipU32(view, offset) !== 0x02014b50) throw new Error('ZIP_CENTRAL_DIRECTORY_MALFORMED');
             var versionMadeBy = _zipU16(view, offset + 4);
             var flags = _zipU16(view, offset + 8);
@@ -10845,7 +10897,11 @@
         });
     }
 
-    async function _inventoryDirectoryEntries(rootEntries) {
+    async function _inventoryDirectoryEntries(rootEntries, shouldCancel) {
+        function assertLive() {
+            if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('DIRECTORY_CANCELLED');
+        }
+        assertLive();
         var roots = Array.prototype.slice.call(rootEntries || []).filter(function (entry) { return entry && entry.isDirectory; });
         var queue = roots.map(function (entry) {
             return { entry: entry, path: _attachmentSafeName(entry.name || 'folder'), depth: 0 };
@@ -10854,15 +10910,18 @@
         var rejectedCount = 0;
         var truncated = false;
         while (queue.length && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES) {
+            assertLive();
             var current = queue.shift();
             if (!current || current.depth > _ATTACHMENT_DIRECTORY_MAX_DEPTH) { rejectedCount++; continue; }
             var reader;
             try { reader = current.entry.createReader(); } catch (_e) { rejectedCount++; continue; }
             var finished = false;
             while (!finished && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES) {
+                assertLive();
                 var batch;
                 try { batch = await _directoryReadBatch(reader); }
                 catch (_e2) { rejectedCount++; break; }
+                assertLive();
                 if (!batch || !batch.length) { finished = true; break; }
                 var filePromises = [];
                 for (var i = 0; i < batch.length; i++) {
@@ -10883,6 +10942,7 @@
                     }
                 }
                 var resolved = await Promise.all(filePromises);
+                assertLive();
                 for (var j = 0; j < resolved.length && entries.length < _ATTACHMENT_IMPORT_MAX_ENTRIES; j++) {
                     if (resolved[j]) entries.push(resolved[j]);
                 }
@@ -10909,53 +10969,155 @@
     }
 
     var _zipCrcTable = null;
-    function _zipCrc32(bytes) {
-        if (!_zipCrcTable) {
-            _zipCrcTable = new Uint32Array(256);
-            for (var n = 0; n < 256; n++) {
-                var c = n;
-                for (var k = 0; k < 8; k++) c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
-                _zipCrcTable[n] = c >>> 0;
-            }
+    function _zipEnsureCrcTable() {
+        if (_zipCrcTable) return _zipCrcTable;
+        _zipCrcTable = new Uint32Array(256);
+        for (var n = 0; n < 256; n++) {
+            var c = n;
+            for (var k = 0; k < 8; k++) c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+            _zipCrcTable[n] = c >>> 0;
         }
-        var crc = 0xffffffff;
-        for (var i = 0; i < bytes.length; i++) crc = _zipCrcTable[(crc ^ bytes[i]) & 0xff] ^ (crc >>> 8);
-        return (crc ^ 0xffffffff) >>> 0;
+        return _zipCrcTable;
     }
 
-    async function _zipInflateBounded(blob, expectedSize) {
-        if (typeof DecompressionStream !== 'function') throw new Error('ZIP_DEFLATE_UNAVAILABLE');
-        var stream;
-        try { stream = blob.stream().pipeThrough(new DecompressionStream('deflate-raw')); }
-        catch (_e) { throw new Error('ZIP_DEFLATE_UNAVAILABLE'); }
+    function _zipCrc32Update(crc, bytes) {
+        var table = _zipEnsureCrcTable();
+        var value = crc >>> 0;
+        for (var i = 0; i < bytes.length; i++) value = table[(value ^ bytes[i]) & 0xff] ^ (value >>> 8);
+        return value >>> 0;
+    }
+
+    function _zipCrc32(bytes) {
+        return (_zipCrc32Update(0xffffffff, bytes) ^ 0xffffffff) >>> 0;
+    }
+
+    async function _zipVerifyStoredBlob(blob, expectedSize, expectedCrc32, shouldCancel) {
+        if (!blob) throw new Error('ZIP_READ_FAILED');
+        var expected = Math.max(0, Math.floor(Number(expectedSize) || 0));
+        if (expected > _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES) throw new Error('ZIP_OUTPUT_LIMIT');
+        if (Number(blob.size) !== expected) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+        if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+
+        // Stored ZIP payload bytes are already the final bytes. Verify them in
+        // a bounded stream without collecting a second 64 MiB copy, then keep
+        // the original Blob slice as the staged payload.
+        if (typeof blob.stream === 'function') {
+            var reader = blob.stream().getReader();
+            var total = 0;
+            var crc = 0xffffffff;
+            try {
+                while (true) {
+                    if (typeof shouldCancel === 'function' && shouldCancel()) {
+                        try { await reader.cancel('ZIP_CANCELLED'); } catch (_ignoreCancelStored0) {}
+                        throw new Error('ZIP_CANCELLED');
+                    }
+                    var result = await reader.read();
+                    if (typeof shouldCancel === 'function' && shouldCancel()) {
+                        try { await reader.cancel('ZIP_CANCELLED'); } catch (_ignoreCancelStored1) {}
+                        throw new Error('ZIP_CANCELLED');
+                    }
+                    if (result.done) break;
+                    var value = result.value instanceof Uint8Array ? result.value : new Uint8Array(result.value || 0);
+                    if (value.byteLength > expected - total) {
+                        try { await reader.cancel('ZIP_OUTPUT_LIMIT'); } catch (_ignoreCancelStored2) {}
+                        throw new Error('ZIP_OUTPUT_LIMIT');
+                    }
+                    total += value.byteLength;
+                    crc = _zipCrc32Update(crc, value);
+                }
+            } finally {
+                try { reader.releaseLock(); } catch (_eStored) {}
+            }
+            if (total !== expected) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+            if (((crc ^ 0xffffffff) >>> 0) !== (expectedCrc32 >>> 0)) throw new Error('ZIP_CRC_MISMATCH');
+            return blob;
+        }
+
+        // Legacy fallback is still bounded to one entry and preserves all
+        // verification semantics, though it cannot avoid the temporary copy.
+        if (typeof blob.arrayBuffer !== 'function') throw new Error('ZIP_READ_FAILED');
+        var buffer = await blob.arrayBuffer();
+        if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+        var bytes = new Uint8Array(buffer);
+        if (bytes.byteLength !== expected) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+        if (_zipCrc32(bytes) !== (expectedCrc32 >>> 0)) throw new Error('ZIP_CRC_MISMATCH');
+        return blob;
+    }
+
+    async function _zipReadExactStream(stream, expectedSize, shouldCancel) {
+        var expected = Math.max(0, Math.floor(Number(expectedSize) || 0));
+        if (expected > _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES) throw new Error('ZIP_OUTPUT_LIMIT');
+        if (!stream || typeof stream.getReader !== 'function') throw new Error('ZIP_STREAM_UNAVAILABLE');
+        if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+
+        // Allocate the already-bounded central-directory size exactly once.
+        // The former chunks[] + final copy briefly held almost 2x the
+        // uncompressed entry size (up to ~128 MiB for a 64 MiB entry).
+        var out = new Uint8Array(expected);
+        var written = 0;
         var reader = stream.getReader();
-        var chunks = [];
-        var total = 0;
         try {
             while (true) {
+                if (typeof shouldCancel === 'function' && shouldCancel()) {
+                    try { await reader.cancel('ZIP_CANCELLED'); } catch (_ignoreCancel0) {}
+                    throw new Error('ZIP_CANCELLED');
+                }
                 var result = await reader.read();
+                if (typeof shouldCancel === 'function' && shouldCancel()) {
+                    try { await reader.cancel('ZIP_CANCELLED'); } catch (_ignoreCancel1) {}
+                    throw new Error('ZIP_CANCELLED');
+                }
                 if (result.done) break;
                 var value = result.value instanceof Uint8Array ? result.value : new Uint8Array(result.value || 0);
-                total += value.byteLength;
-                if (total > expectedSize || total > _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES) {
-                    try { await reader.cancel('ZIP_OUTPUT_LIMIT'); } catch (_ignoreCancel) {}
+                if (value.byteLength > expected - written) {
+                    try { await reader.cancel('ZIP_OUTPUT_LIMIT'); } catch (_ignoreCancel2) {}
                     throw new Error('ZIP_OUTPUT_LIMIT');
                 }
-                chunks.push(value);
+                out.set(value, written);
+                written += value.byteLength;
             }
         } finally {
             try { reader.releaseLock(); } catch (_e2) {}
         }
-        if (total !== expectedSize) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
-        var out = new Uint8Array(total);
-        var pos = 0;
-        chunks.forEach(function (chunk) { out.set(chunk, pos); pos += chunk.byteLength; });
+        if (written !== expected) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
         return out;
     }
 
-    async function _extractZipEntry(job, entry) {
+    async function _zipInflateBounded(blob, expectedSize, shouldCancel) {
+        if (typeof DecompressionStream !== 'function') throw new Error('ZIP_DEFLATE_UNAVAILABLE');
+        if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+        var stream;
+        try { stream = blob.stream().pipeThrough(new DecompressionStream('deflate-raw')); }
+        catch (_e) { throw new Error('ZIP_DEFLATE_UNAVAILABLE'); }
+        return _zipReadExactStream(stream, expectedSize, shouldCancel);
+    }
+
+    async function _zipReadStoredBounded(blob, expectedSize, shouldCancel) {
+        if (!blob) throw new Error('ZIP_READ_FAILED');
+        if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+        // Modern Blob streams make even a stored 64 MiB ZIP entry actively
+        // cancellable. Older engines fall back to one bounded arrayBuffer read.
+        if (typeof blob.stream === 'function') {
+            return _zipReadExactStream(blob.stream(), expectedSize, shouldCancel);
+        }
+        var expected = Math.max(0, Math.floor(Number(expectedSize) || 0));
+        if (expected > _ATTACHMENT_ZIP_MAX_ENTRY_UNCOMPRESSED_BYTES) throw new Error('ZIP_OUTPUT_LIMIT');
+        if (typeof blob.arrayBuffer !== 'function') throw new Error('ZIP_READ_FAILED');
+        var stored = await blob.arrayBuffer();
+        if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+        var bytes = new Uint8Array(stored);
+        if (bytes.byteLength !== expected) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+        return bytes;
+    }
+
+    async function _extractZipEntry(job, entry, shouldCancel) {
+        function assertLive() {
+            if (typeof shouldCancel === 'function' && shouldCancel()) throw new Error('ZIP_CANCELLED');
+        }
         if (!job || !job.file || !entry || entry.rejected || !entry.selectable) throw new Error('ZIP_ENTRY_NOT_SELECTABLE');
+        assertLive();
         var head = await _readAttachmentBlobSlice(job.file, entry.localHeaderOffset, 30);
+        assertLive();
         var view = new DataView(head.buffer, head.byteOffset, head.byteLength);
         if (_zipU32(view, 0) !== 0x04034b50) throw new Error('ZIP_LOCAL_HEADER_MALFORMED');
         var localFlags = _zipU16(view, 6);
@@ -10966,6 +11128,7 @@
         if (localMethod !== entry.compressionMethod) throw new Error('ZIP_METHOD_MISMATCH');
         if ((localFlags & 0x0809) !== (entry.flags & 0x0809)) throw new Error('ZIP_FLAGS_MISMATCH');
         var localNameBytes = await _readAttachmentBlobSlice(job.file, entry.localHeaderOffset + 30, nameLength);
+        assertLive();
         var localName = _zipDecodeName(localNameBytes, !!(localFlags & 0x0800));
         var localSafePath = _attachmentSafeRelativePath(localName);
         if (!localSafePath || _attachmentPathAlias(localSafePath) !== _attachmentPathAlias(entry.relativePath)) {
@@ -10977,23 +11140,35 @@
             throw new Error('ZIP_ENTRY_DATA_BOUNDS');
         }
         var compressedBlob = job.file.slice(dataStart, dataEnd);
-        var bytes;
+        var payload;
         if (entry.compressionMethod === 0) {
-            var stored = await compressedBlob.arrayBuffer();
-            bytes = new Uint8Array(stored);
-            if (bytes.length !== entry.size) throw new Error('ZIP_UNCOMPRESSED_SIZE_MISMATCH');
+            payload = await _zipVerifyStoredBlob(compressedBlob, entry.size, entry.crc32, shouldCancel);
+            assertLive();
         } else if (entry.compressionMethod === 8) {
-            bytes = await _zipInflateBounded(compressedBlob, entry.size);
+            var bytes = await _zipInflateBounded(compressedBlob, entry.size, shouldCancel);
+            assertLive();
+            if (_zipCrc32(bytes) !== (entry.crc32 >>> 0)) throw new Error('ZIP_CRC_MISMATCH');
+            payload = new Blob([bytes]);
         } else {
             throw new Error('ZIP_UNSUPPORTED_COMPRESSION');
         }
-        if (_zipCrc32(bytes) !== (entry.crc32 >>> 0)) throw new Error('ZIP_CRC_MISMATCH');
         var filename = entry.relativePath.split('/').pop() || entry.name || 'file';
         var mime = _attachmentGuessMimeFromName(filename);
         var file;
-        if (typeof File === 'function') file = new File([bytes], filename, { type: mime, lastModified: Date.now() });
-        else {
-            file = new Blob([bytes], { type: mime });
+        if (entry.compressionMethod === 0 && payload && typeof payload.slice === 'function') {
+            // Preserve the verified source-backed slice instead of wrapping a
+            // full copied Uint8Array. Blob.slice normally shares backing data.
+            file = payload.slice(0, payload.size, mime);
+            try {
+                Object.defineProperty(file, 'name', { value: filename, configurable: true });
+                Object.defineProperty(file, 'lastModified', { value: Date.now(), configurable: true });
+            } catch (_storedNameError) {
+                if (typeof File === 'function') file = new File([payload], filename, { type: mime, lastModified: Date.now() });
+            }
+        } else if (typeof File === 'function') {
+            file = new File([payload], filename, { type: mime, lastModified: Date.now() });
+        } else {
+            file = new Blob([payload], { type: mime });
             try { Object.defineProperty(file, 'name', { value: filename, configurable: true }); } catch (_e) { file.name = filename; }
         }
         return { file: file, relativePath: entry.relativePath, sourceKind: 'zip', archiveName: job.name };
@@ -11074,18 +11249,21 @@
             try {
                 if (typeof file.slice === 'function') source = file.slice(0, cap);
             } catch (_e) {}
-            var reader = new FileReader();
+            var reader = _attachmentTrackReader(new FileReader());
             reader.onload = function () {
+                _attachmentUntrackReader(reader);
                 var text = String(reader.result == null ? '' : reader.result);
-                // NUL-heavy input is almost certainly binary despite its label.
+                // A NUL byte is not valid ordinary prose/source text. Reject even
+                // sparse NULs so a mislabeled binary cannot evade a percentage
+                // threshold simply by padding the surrounding sample.
                 var sample = text.slice(0, 4096);
-                var nulCount = (sample.match(/\u0000/g) || []).length;
-                if (sample.length && nulCount > Math.max(2, sample.length * 0.01)) {
+                if (sample.indexOf('\u0000') !== -1) {
                     reject(new Error('ATTACHMENT_BINARY_CONTENT')); return;
                 }
                 resolve(text);
             };
-            reader.onerror = function () { reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.onerror = function () { _attachmentUntrackReader(reader); reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.onabort = function () { _attachmentUntrackReader(reader); reject(new Error('ATTACHMENT_READ_ABORTED')); };
             reader.readAsText(source, 'utf-8');
         });
     }
@@ -11106,12 +11284,14 @@
             if (typeof FileReader !== 'function') {
                 reject(new Error('ATTACHMENT_READ_FAILED')); return;
             }
-            var reader = new FileReader();
+            var reader = _attachmentTrackReader(new FileReader());
             reader.onload = function () {
+                _attachmentUntrackReader(reader);
                 try { resolve(new Uint8Array(reader.result || new ArrayBuffer(0)).slice(0, cap)); }
                 catch (_e) { reject(new Error('ATTACHMENT_READ_FAILED')); }
             };
-            reader.onerror = function () { reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.onerror = function () { _attachmentUntrackReader(reader); reject(new Error('ATTACHMENT_READ_FAILED')); };
+            reader.onabort = function () { _attachmentUntrackReader(reader); reject(new Error('ATTACHMENT_READ_ABORTED')); };
             reader.readAsArrayBuffer(source);
         });
     }
@@ -11139,30 +11319,52 @@
         return item.pdfVerifyPromise;
     }
 
+    function _openVerifiedLocalPdf(item) {
+        if (!item || item.kind !== 'pdf' || item.pdfVerified !== true || !item.file) return false;
+        if (typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function' ||
+                typeof document === 'undefined' || !document.body) return false;
+        var href = '';
+        try { href = URL.createObjectURL(item.file); } catch (_e) { return false; }
+        if (!href) return false;
+        var opened = false;
+        try {
+            // One synchronous anchor navigation is more predictable than
+            // window.open()+fallback: with `noopener`, some browsers return a
+            // null WindowProxy even when the tab was successfully created.
+            var a = document.createElement('a');
+            a.href = href;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            opened = true;
+        } catch (_e2) { opened = false; }
+        // Keep the navigation blob alive long enough for browsers/WebViews that
+        // resolve a new-tab blob URL asynchronously, then release it.
+        setTimeout(function () {
+            try { URL.revokeObjectURL(href); } catch (_e3) {}
+        }, _ATTACHMENT_PDF_OPEN_URL_TTL_MS);
+        return opened;
+    }
+
     function _openLocalPdf(item) {
         if (!item || item.kind !== 'pdf') return;
+        // The Open button is only rendered after signature verification, keeping
+        // this path synchronous so popup blockers preserve the user gesture.
+        if (item.pdfVerified === true) {
+            if (!_openVerifiedLocalPdf(item)) {
+                showNotification('This browser could not open its local PDF viewer. Use Download instead.', false);
+            }
+            return;
+        }
         _ensurePdfSignature(item).then(function (valid) {
             if (!valid) {
                 showNotification('PDF preview blocked because the local file did not pass the PDF signature check.', false);
                 return;
             }
-            var href = _attachmentEnsureObjectUrl(item);
-            if (!href || typeof document === 'undefined') {
-                showNotification('This browser could not create a local PDF view.', false);
-                return;
-            }
-            try {
-                var a = document.createElement('a');
-                a.href = href;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-                a.style.display = 'none';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            } catch (_e) {
-                showNotification('This browser could not open the local PDF view.', false);
-            }
+            showNotification('PDF verified. Press Open local PDF again to open it with your browser viewer.', true);
         });
     }
 
@@ -11198,9 +11400,11 @@
         } catch (_e) {
             showNotification('This browser could not create a local download for ' + _attachmentSafeName(item.name) + '.', false);
         } finally {
+            // Safari/WebView download navigation may resolve the blob after the
+            // click task. Immediate revocation is racy, so keep it briefly.
             if (href) setTimeout(function () {
                 try { URL.revokeObjectURL(href); } catch (_e2) {}
-            }, 0);
+            }, 30 * 1000);
         }
     }
 
@@ -11307,6 +11511,210 @@
     var _TURN_RESOURCE_LIVE_MAX_ITEMS = 512;
     var _TURN_RESOURCE_PERSIST_MAX_ITEMS = 24;
     var _TURN_RESOURCE_VISIBLE_MAX_ITEMS = 32;
+
+    // Memory-only preview authority for already-sent turns. Persisted/exported
+    // manifests remain immutable metadata and never contain File/Blob handles.
+    // A bounded FIFO keeps recent local previews useful without allowing a
+    // 100+/huge-file conversation to pin unbounded binary data in memory.
+    var _TURN_RESOURCE_RUNTIME_MAX_BINARY_ITEMS = 12;
+    var _TURN_RESOURCE_RUNTIME_MAX_BINARY_BYTES = 96 * 1024 * 1024;
+    var _TURN_RESOURCE_RUNTIME_MAX_FILE_BYTES = 64 * 1024 * 1024;
+    var _TURN_RESOURCE_RUNTIME_MAX_TEXT_CHARS = 2 * 1024 * 1024;
+    var _turnResourceRuntimeQueue = [];
+    var _turnResourceRuntimeBytes = 0;
+    var _turnResourceRuntimeTextQueue = [];
+    var _turnResourceRuntimeTextChars = 0;
+
+    function _turnResourceRuntimeKey(item) {
+        if (!item || typeof item !== 'object') return '';
+        return [
+            String(item.kind || 'file'),
+            String(item.relativePath || item.sourceUrl || item.name || ''),
+            String(Math.max(0, Number(item.size) || 0))
+        ].join('\n').slice(0, 1600);
+    }
+
+    function _refreshOpenAttachmentPreviewForRuntime(runtime) {
+        var st = _attachmentPreviewState;
+        if (!runtime || !st || !st.item || st.item._runtimeAuthority !== runtime ||
+                !st.layer || st.layer.hidden) return;
+        if (st.meta) st.meta.textContent = _attachmentPreviewMeta(st.item);
+        _renderAttachmentPreviewBody(st.item);
+    }
+
+    function _releaseTurnResourceRuntimeItem(item) {
+        if (!item || typeof item !== 'object') return;
+        _attachmentRevokeObjectUrl(item);
+        if (item.file) {
+            _turnResourceRuntimeBytes = Math.max(0, _turnResourceRuntimeBytes - (Number(item._runtimeBytes) || 0));
+            delete item.file;
+            item._runtimeBytes = 0;
+            item.runtimeEvicted = true;
+        }
+        _refreshOpenAttachmentPreviewForRuntime(item);
+    }
+
+    function _releaseTurnResourceRuntimeText(item) {
+        if (!item || typeof item !== 'object' || typeof item.previewText !== 'string') return;
+        _turnResourceRuntimeTextChars = Math.max(0,
+            _turnResourceRuntimeTextChars - (Number(item._runtimeTextChars) || item.previewText.length || 0));
+        delete item.previewText;
+        item._runtimeTextChars = 0;
+        item.runtimeTextEvicted = true;
+        _refreshOpenAttachmentPreviewForRuntime(item);
+    }
+
+    function _cacheTurnResourceRuntimeText(runtime, text) {
+        if (!runtime || typeof runtime !== 'object') return;
+        var next = String(text || '').slice(0, _ATTACHMENT_MAX_PREVIEW_BYTES);
+        var priorChars = typeof runtime.previewText === 'string'
+            ? (Number(runtime._runtimeTextChars) || runtime.previewText.length || 0) : 0;
+        if (priorChars) _turnResourceRuntimeTextChars = Math.max(0, _turnResourceRuntimeTextChars - priorChars);
+        runtime.previewText = next;
+        runtime._runtimeTextChars = next.length;
+        runtime.runtimeTextEvicted = false;
+        _turnResourceRuntimeTextChars += runtime._runtimeTextChars;
+        if (_turnResourceRuntimeTextQueue.indexOf(runtime) < 0) _turnResourceRuntimeTextQueue.push(runtime);
+        _trimTurnResourceRuntime();
+    }
+
+    function _trimTurnResourceRuntime() {
+        while (_turnResourceRuntimeQueue.length > _TURN_RESOURCE_RUNTIME_MAX_BINARY_ITEMS ||
+                _turnResourceRuntimeBytes > _TURN_RESOURCE_RUNTIME_MAX_BINARY_BYTES) {
+            var victim = _turnResourceRuntimeQueue.shift();
+            _releaseTurnResourceRuntimeItem(victim);
+        }
+        while (_turnResourceRuntimeTextChars > _TURN_RESOURCE_RUNTIME_MAX_TEXT_CHARS &&
+                _turnResourceRuntimeTextQueue.length) {
+            var textVictim = _turnResourceRuntimeTextQueue.shift();
+            _releaseTurnResourceRuntimeText(textVictim);
+        }
+    }
+
+    function _releaseTurnResourceRuntime(runtime) {
+        if (!runtime || !Array.isArray(runtime.items)) return;
+        runtime.items.forEach(function (item) {
+            var idx = _turnResourceRuntimeQueue.indexOf(item);
+            if (idx >= 0) _turnResourceRuntimeQueue.splice(idx, 1);
+            var textIdx = _turnResourceRuntimeTextQueue.indexOf(item);
+            if (textIdx >= 0) _turnResourceRuntimeTextQueue.splice(textIdx, 1);
+            _releaseTurnResourceRuntimeItem(item);
+            _releaseTurnResourceRuntimeText(item);
+        });
+    }
+
+    function _releaseAllTurnResourceRuntime() {
+        _turnResourceRuntimeQueue.slice().forEach(_releaseTurnResourceRuntimeItem);
+        _turnResourceRuntimeTextQueue.slice().forEach(_releaseTurnResourceRuntimeText);
+        _turnResourceRuntimeQueue = [];
+        _turnResourceRuntimeBytes = 0;
+        _turnResourceRuntimeTextQueue = [];
+        _turnResourceRuntimeTextChars = 0;
+        _transcript.forEach(function (entry) {
+            if (entry && entry.resourceRuntime) delete entry.resourceRuntime;
+        });
+    }
+
+    function _buildTurnResourceRuntime(items) {
+        var source = Array.isArray(items) ? items : [];
+        var rows = [];
+        for (var i = 0; i < source.length && rows.length < _TURN_RESOURCE_LIVE_MAX_ITEMS; i++) {
+            var live = _turnResourceLiveView(source[i]);
+            if (!live) continue;
+            var runtime = {
+                key: _turnResourceRuntimeKey(live),
+                turnScoped: true,
+                kind: live.kind,
+                name: live.name,
+                size: Math.max(0, Number(live.size) || 0),
+                rasterPreview: live.rasterPreview === true,
+                pdfVerified: live.pdfVerified === true,
+                previewError: typeof live.previewError === 'string' ? live.previewError.slice(0, 96) : '',
+                previewTruncated: live.previewTruncated === true,
+                lineCount: Math.max(0, Number(live.lineCount) || 0)
+            };
+            if (typeof live.previewText === 'string') {
+                _cacheTurnResourceRuntimeText(runtime, live.previewText);
+            }
+            if (live.file && runtime.size <= _TURN_RESOURCE_RUNTIME_MAX_FILE_BYTES) {
+                runtime.file = live.file;
+                runtime.type = typeof live.type === 'string' ? live.type.slice(0, 120) : '';
+                runtime._runtimeBytes = runtime.size;
+                _turnResourceRuntimeBytes += runtime._runtimeBytes;
+                _turnResourceRuntimeQueue.push(runtime);
+                _trimTurnResourceRuntime();
+            } else if (live.file) {
+                runtime.runtimeEvicted = true;
+            }
+            rows.push(runtime);
+        }
+        return { items: rows };
+    }
+
+    function _turnResourceBindRuntime(row, runtime) {
+        if (!row || !runtime || typeof runtime !== 'object') return row;
+        var runtimeKey = runtime.key || _turnResourceRuntimeKey(runtime);
+        if (runtimeKey && runtimeKey !== _turnResourceRuntimeKey(row)) return row;
+
+        // Runtime preview authority must remain revocable. Do NOT copy File/Blob
+        // handles or preview strings onto a render row: card/manager event
+        // listeners can outlive the cache entry and would pin those copied
+        // capabilities after `_trimTurnResourceRuntime()` evicts them. Live,
+        // non-enumerable accessors keep UI capability truth attached to the
+        // evictable runtime object while persistence/export stays metadata-only.
+        function live(name, fallback, setter) {
+            try {
+                Object.defineProperty(row, name, {
+                    configurable: true,
+                    enumerable: false,
+                    get: function () {
+                        var value = runtime[name];
+                        return value === undefined ? fallback : value;
+                    },
+                    set: function (value) {
+                        if (typeof setter === 'function') setter(value);
+                        else runtime[name] = value;
+                    }
+                });
+            } catch (_) {}
+        }
+        live('file', undefined);
+        live('previewText', undefined, function (value) { _cacheTurnResourceRuntimeText(runtime, value); });
+        live('objectUrl', '');
+        live('rasterPreview', false);
+        live('pdfVerified', false);
+        live('previewError', '');
+        live('previewTruncated', false);
+        live('runtimeEvicted', false);
+        live('runtimeTextEvicted', false);
+        live('lineCount', Math.max(0, Number(row.lineCount) || 0));
+        live('type', typeof row.type === 'string' ? row.type : '');
+        try {
+            Object.defineProperty(row, '_runtimeAuthority', {
+                configurable: true, enumerable: false, value: runtime
+            });
+        } catch (_) {}
+        try {
+            Object.defineProperty(row, 'turnScoped', {
+                configurable: true,
+                enumerable: false,
+                value: true
+            });
+        } catch (_) { row.turnScoped = true; }
+        return row;
+    }
+
+    function _turnResourceRenderManifest(value, runtimeSource) {
+        var manifest = _sanitizeTurnResourceManifest(value, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        var runtimeItems = [];
+        if (runtimeSource && Array.isArray(runtimeSource.items)) runtimeItems = runtimeSource.items;
+        else if (Array.isArray(runtimeSource)) runtimeItems = runtimeSource;
+        else if (Array.isArray(value)) runtimeItems = value;
+        for (var i = 0; i < manifest.items.length && i < runtimeItems.length; i++) {
+            _turnResourceBindRuntime(manifest.items[i], runtimeItems[i]);
+        }
+        return manifest;
+    }
 
     function _sanitizeTurnAttachmentSummaries(items, maxItems) {
         if (!Array.isArray(items)) return [];
@@ -11449,6 +11857,9 @@
         }
         if (item.file) summary.file = item.file;
         summary.rasterPreview = item.rasterPreview === true;
+        summary.pdfVerified = item.pdfVerified === true;
+        summary.previewError = typeof item.previewError === 'string' ? item.previewError.slice(0, 96) : '';
+        summary.previewTruncated = item.previewTruncated === true;
         summary.type = typeof item.type === 'string' ? item.type.slice(0, 120) : '';
         return summary;
     }
@@ -11623,9 +12034,18 @@
         clearSelection: null,
         queue: [],
         active: null,
+        reservations: Object.create(null),
+        queueFullNotified: false,
+        directoryFullNotified: false,
+        queuedNoticeShown: false,
         trigger: null,
-        busy: false
+        busy: false,
+        page: 0,
+        pageSize: 200,
+        prevPage: null,
+        nextPage: null
     };
+    var _attachmentImportReservationSeq = 0;
 
     function _attachmentImportEntryFromDescriptor(descriptor, index) {
         var file = descriptor && descriptor.file ? descriptor.file : descriptor;
@@ -11749,21 +12169,42 @@
         });
     }
 
+    function _attachmentImportPageRows() {
+        var st = _attachmentImportState;
+        var matches = _attachmentImportVisibleEntries();
+        var pageSize = Math.max(25, Math.min(500, Number(st.pageSize) || 200));
+        var pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
+        st.page = Math.max(0, Math.min(pageCount - 1, Math.floor(Number(st.page) || 0)));
+        var start = st.page * pageSize;
+        return {
+            matches: matches,
+            rows: matches.slice(start, start + pageSize),
+            pageSize: pageSize,
+            pageCount: pageCount,
+            page: st.page,
+            start: start
+        };
+    }
+
     function _renderAttachmentImportList() {
         var st = _attachmentImportState;
         var job = st.active;
         if (!st.layer || st.layer.hidden || !job || !st.list) return;
-        var rows = _attachmentImportVisibleEntries();
+        var pageInfo = _attachmentImportPageRows();
+        var rows = pageInfo.rows;
         var selectedCount = job.entries.reduce(function (n, entry) { return n + (entry && entry.selected === true ? 1 : 0); }, 0);
         var selectedBytes = job.entries.reduce(function (n, entry) { return n + (entry && entry.selected === true ? Math.max(0, Number(entry.size) || 0) : 0); }, 0);
         var selectableCount = job.entries.reduce(function (n, entry) { return n + (entry && entry.selectable && !entry.rejected ? 1 : 0); }, 0);
         var composerRoom = Math.max(0, _ATTACHMENT_MAX_FILES - _composerAttachments.length);
         if (st.title) st.title.textContent = job.kind === 'zip' ? 'Choose ZIP entries' : 'Choose folder files';
         if (st.count) {
-            st.count.textContent = rows.length + ' shown · ' + job.entries.length + ' files · ' + selectableCount + ' eligible' +
+            st.count.textContent = rows.length + ' shown · ' + pageInfo.matches.length + ' matching · ' + job.entries.length + ' files · ' + selectableCount + ' eligible' +
+                (pageInfo.pageCount > 1 ? ' · page ' + (pageInfo.page + 1) + '/' + pageInfo.pageCount : '') +
                 (job.rejectedCount ? ' · ' + job.rejectedCount + ' blocked' : '') +
                 (job.truncated ? ' · inventory truncated' : '');
         }
+        if (st.prevPage) st.prevPage.disabled = st.busy || pageInfo.page <= 0;
+        if (st.nextPage) st.nextPage.disabled = st.busy || pageInfo.page >= pageInfo.pageCount - 1;
         if (st.selected) st.selected.textContent = selectedCount + ' selected · ' + _formatByteSize(selectedBytes) + ' · ' +
             composerRoom + ' composer slots available';
         if (st.add) st.add.disabled = !selectedCount || !composerRoom || st.busy;
@@ -11814,11 +12255,29 @@
         });
     }
 
+    function _clearAttachmentImportRenderedRows() {
+        var st = _attachmentImportState;
+        if (st.list) {
+            while (st.list.firstChild) st.list.removeChild(st.list.firstChild);
+        }
+        if (st.count) st.count.textContent = '';
+        if (st.selected) st.selected.textContent = '';
+    }
+
     function _attachmentImportAdvance(discardActive) {
         var st = _attachmentImportState;
         if (discardActive !== false) st.active = null;
-        if (!st.active && st.queue.length) st.active = st.queue.shift();
+        if (!st.active && st.queue.length) {
+            st.active = st.queue.shift();
+            if (!st.queue.length) st.queuedNoticeShown = false;
+        }
         if (!st.active) {
+            st.queuedNoticeShown = false;
+            st.directoryFullNotified = false;
+            // Hidden DOM must not retain row listeners/entry objects after the
+            // last inventory is discarded. Directory rows can otherwise keep
+            // local File capabilities alive even though no UI can reach them.
+            _clearAttachmentImportRenderedRows();
             if (st.layer) { st.layer.hidden = true; st.layer.setAttribute('data-open', 'false'); }
             var trigger = st.trigger;
             st.trigger = null;
@@ -11827,6 +12286,7 @@
             }
             return;
         }
+        st.page = 0;
         if (st.search) st.search.value = '';
         if (st.filter) st.filter.value = 'all';
         if (st.layer) { st.layer.hidden = false; st.layer.setAttribute('data-open', 'true'); }
@@ -11834,8 +12294,98 @@
         requestAnimationFrame(function () { if (st.search) st.search.focus(); });
     }
 
-    function _enqueueAttachmentImportJob(job, trigger) {
-        if (!job || !Array.isArray(job.entries)) return;
+    function _attachmentImportReservationCount() {
+        var reservations = _attachmentImportState.reservations || Object.create(null);
+        return Object.keys(reservations).length;
+    }
+
+    function _attachmentImportOutstandingCount() {
+        var st = _attachmentImportState;
+        return (st.active ? 1 : 0) + st.queue.length + _attachmentImportReservationCount();
+    }
+
+    function _attachmentImportQueueFullNotice() {
+        var st = _attachmentImportState;
+        if (st.queueFullNotified) return;
+        st.queueFullNotified = true;
+        showNotification(
+            'Import inventory queue is full (' + _ATTACHMENT_IMPORT_MAX_OUTSTANDING + '). Finish or close an open inventory, then try again.',
+            false
+        );
+    }
+
+    function _attachmentImportKindOutstandingCount(kind) {
+        var st = _attachmentImportState;
+        var target = String(kind || '');
+        var count = st.active && st.active.kind === target ? 1 : 0;
+        st.queue.forEach(function (job) { if (job && job.kind === target) count++; });
+        Object.keys(st.reservations || Object.create(null)).forEach(function (token) {
+            if (String(token).slice(String(token).lastIndexOf(':') + 1) === target) count++;
+        });
+        return count;
+    }
+
+    function _attachmentImportDirectoryFullNotice() {
+        var st = _attachmentImportState;
+        if (st.directoryFullNotified) return;
+        st.directoryFullNotified = true;
+        showNotification(
+            'Two folder inventories are already open or queued. Finish or close one before adding another folder.',
+            false
+        );
+    }
+
+    function _reserveAttachmentImportInventory(kind) {
+        var normalizedKind = String(kind || 'import');
+        if (_attachmentImportOutstandingCount() >= _ATTACHMENT_IMPORT_MAX_OUTSTANDING) {
+            _attachmentImportQueueFullNotice();
+            return null;
+        }
+        if (normalizedKind === 'directory' &&
+                _attachmentImportKindOutstandingCount('directory') >= _ATTACHMENT_IMPORT_MAX_DIRECTORY_OUTSTANDING) {
+            _attachmentImportDirectoryFullNotice();
+            return null;
+        }
+        _attachmentImportState.queueFullNotified = false;
+        if (normalizedKind === 'directory') _attachmentImportState.directoryFullNotified = false;
+        var token = String(++_attachmentImportReservationSeq) + ':' + normalizedKind;
+        _attachmentImportState.reservations[token] = true;
+        return token;
+    }
+
+    function _releaseAttachmentImportReservation(token) {
+        if (!token) return false;
+        var reservations = _attachmentImportState.reservations || Object.create(null);
+        if (!Object.prototype.hasOwnProperty.call(reservations, token)) return false;
+        var kind = String(token).slice(String(token).lastIndexOf(':') + 1);
+        delete reservations[token];
+        if (kind === 'directory' &&
+                _attachmentImportKindOutstandingCount('directory') < _ATTACHMENT_IMPORT_MAX_DIRECTORY_OUTSTANDING) {
+            _attachmentImportState.directoryFullNotified = false;
+        }
+        return true;
+    }
+
+    function _enqueueAttachmentImportJob(job, trigger, reservationToken) {
+        if (!job || !Array.isArray(job.entries)) {
+            _releaseAttachmentImportReservation(reservationToken);
+            return false;
+        }
+        // Trade an in-flight reservation for one active/queued slot on the
+        // single JS thread. Direct callers still obey the same hard ceiling.
+        _releaseAttachmentImportReservation(reservationToken);
+        if (job.kind === 'directory' &&
+                _attachmentImportKindOutstandingCount('directory') >= _ATTACHMENT_IMPORT_MAX_DIRECTORY_OUTSTANDING) {
+            _attachmentImportDirectoryFullNotice();
+            return false;
+        }
+        if (_attachmentImportOutstandingCount() < _ATTACHMENT_IMPORT_MAX_OUTSTANDING) {
+            _attachmentImportState.queueFullNotified = false;
+        }
+        if (_attachmentImportOutstandingCount() >= _ATTACHMENT_IMPORT_MAX_OUTSTANDING) {
+            _attachmentImportQueueFullNotice();
+            return false;
+        }
         var st = _ensureAttachmentImportLayer();
         if (!st.active) {
             st.active = job;
@@ -11843,32 +12393,49 @@
             _attachmentImportAdvance(false);
         } else {
             st.queue.push(job);
-            showNotification('Another import inventory is queued behind the one already open.', false);
+            if (!st.queuedNoticeShown) {
+                st.queuedNoticeShown = true;
+                showNotification('Additional import inventories are queued behind the one already open.', false);
+            }
         }
+        return true;
     }
 
     function _clearAttachmentImportJobs() {
         var st = _attachmentImportState;
         st.queue = [];
         st.active = null;
+        // Replace the table rather than zeroing a counter: late finally()
+        // releases from invalidated generations cannot decrement new work.
+        st.reservations = Object.create(null);
+        st.queueFullNotified = false;
+        st.directoryFullNotified = false;
+        st.queuedNoticeShown = false;
         st.busy = false;
         st.trigger = null;
+        st.page = 0;
+        _clearAttachmentImportRenderedRows();
         if (st.layer) { st.layer.hidden = true; st.layer.setAttribute('data-open', 'false'); }
     }
 
     function _queueZipImport(file, generation) {
         var expectedGeneration = generation == null ? _attachmentStageGeneration : generation;
+        var reservation = _reserveAttachmentImportInventory('zip');
+        if (!reservation) return Promise.resolve(false);
         _attachmentStagePending++;
         _updateAttachmentStageUi();
         var batch = _attachmentStageQueue.then(async function () {
             if (expectedGeneration !== _attachmentStageGeneration) return;
             try {
-                var info = await _inspectZipArchive(file);
+                var info = await _inspectZipArchive(file, function () { return expectedGeneration !== _attachmentStageGeneration; });
                 if (expectedGeneration !== _attachmentStageGeneration) return;
-                _enqueueAttachmentImportJob(_attachmentZipImportJob(info));
+                if (!_enqueueAttachmentImportJob(_attachmentZipImportJob(info), null, reservation)) return;
+                reservation = null;
                 showNotification('ZIP inventory ready. Select entries explicitly before anything is extracted.', true);
             } catch (err) {
                 if (expectedGeneration !== _attachmentStageGeneration) return;
+                _releaseAttachmentImportReservation(reservation);
+                reservation = null;
                 // A malformed/unsupported archive is still useful as a local
                 // artifact. It is staged as local-only and can never enter the
                 // model request merely because ZIP parsing failed.
@@ -11882,6 +12449,7 @@
         }).catch(function () {
             if (expectedGeneration === _attachmentStageGeneration) showNotification('The ZIP inventory could not be prepared locally.', false);
         }).finally(function () {
+            _releaseAttachmentImportReservation(reservation);
             if (expectedGeneration === _attachmentStageGeneration) {
                 _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
                 _updateAttachmentStageUi();
@@ -11895,18 +12463,22 @@
         var roots = Array.prototype.slice.call(rootEntries || []);
         if (!roots.length) return Promise.resolve();
         var expectedGeneration = generation == null ? _attachmentStageGeneration : generation;
+        var reservation = _reserveAttachmentImportInventory('directory');
+        if (!reservation) return Promise.resolve(false);
         _attachmentStagePending++;
         _updateAttachmentStageUi();
         var batch = _attachmentStageQueue.then(async function () {
             if (expectedGeneration !== _attachmentStageGeneration) return;
-            var inventory = await _inventoryDirectoryEntries(roots);
+            var inventory = await _inventoryDirectoryEntries(roots, function () { return expectedGeneration !== _attachmentStageGeneration; });
             if (expectedGeneration !== _attachmentStageGeneration) return;
             var rootLabel = label || roots.map(function (entry) { return entry && entry.name; }).filter(Boolean).join(', ') || 'Folder';
-            _enqueueAttachmentImportJob(_attachmentDirectoryImportJob(inventory, rootLabel));
+            if (!_enqueueAttachmentImportJob(_attachmentDirectoryImportJob(inventory, rootLabel), null, reservation)) return;
+            reservation = null;
             showNotification('Folder inventory ready. Select files explicitly before staging them.', true);
         }).catch(function () {
             if (expectedGeneration === _attachmentStageGeneration) showNotification('This folder could not be inventoried safely.', false);
         }).finally(function () {
+            _releaseAttachmentImportReservation(reservation);
             if (expectedGeneration === _attachmentStageGeneration) {
                 _attachmentStagePending = Math.max(0, _attachmentStagePending - 1);
                 _updateAttachmentStageUi();
@@ -11917,15 +12489,18 @@
     }
 
     function _queueDirectoryFileListImport(fileList, label, generation) {
+        var reservation = _reserveAttachmentImportInventory('directory');
+        if (!reservation) return Promise.resolve(false);
         var inventory = _inventoryDirectoryFileList(fileList);
         var job = _attachmentDirectoryImportJob(inventory, label || 'Folder');
         if (!job.entries.length) {
+            _releaseAttachmentImportReservation(reservation);
             showNotification('No safely addressable files were found in that folder.', false);
-            return Promise.resolve();
+            return Promise.resolve(false);
         }
-        _enqueueAttachmentImportJob(job);
+        if (!_enqueueAttachmentImportJob(job, null, reservation)) return Promise.resolve(false);
         showNotification('Folder inventory ready. Select files explicitly before staging them.', true);
-        return Promise.resolve();
+        return Promise.resolve(true);
     }
 
     function _queueAttachmentImportCommit(job) {
@@ -11965,7 +12540,9 @@
                     }
                     claimedTotal += entry.size;
                     try {
-                        descriptors.push(await _extractZipEntry(job, entry));
+                        descriptors.push(await _extractZipEntry(job, entry, function () {
+                            return generation !== _attachmentStageGeneration;
+                        }));
                     } catch (err) {
                         failed++;
                         entry.reason = err && err.message ? String(err.message) : 'ZIP_EXTRACTION_FAILED';
@@ -12031,7 +12608,9 @@
         actions.className = 'ai-assistant-panel-attachment-import-selection-actions';
         var selectAll = document.createElement('button'); selectAll.type = 'button'; selectAll.textContent = 'Select shown eligible';
         var clearSelection = document.createElement('button'); clearSelection.type = 'button'; clearSelection.textContent = 'Clear selection';
-        actions.appendChild(selectAll); actions.appendChild(clearSelection);
+        var prevPage = document.createElement('button'); prevPage.type = 'button'; prevPage.textContent = 'Previous'; prevPage.setAttribute('aria-label', 'Previous import inventory page');
+        var nextPage = document.createElement('button'); nextPage.type = 'button'; nextPage.textContent = 'Next'; nextPage.setAttribute('aria-label', 'Next import inventory page');
+        actions.appendChild(selectAll); actions.appendChild(clearSelection); actions.appendChild(prevPage); actions.appendChild(nextPage);
         var list = document.createElement('div');
         list.className = 'ai-assistant-panel-attachment-manager-list ai-assistant-panel-attachment-import-list'; list.setAttribute('role', 'group');
         var foot = document.createElement('footer'); foot.className = 'ai-assistant-panel-attachment-manager-foot';
@@ -12050,8 +12629,8 @@
             if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
             else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
         });
-        search.addEventListener('input', _renderAttachmentImportList);
-        filter.addEventListener('change', _renderAttachmentImportList);
+        search.addEventListener('input', function () { st.page = 0; _renderAttachmentImportList(); });
+        filter.addEventListener('change', function () { st.page = 0; _renderAttachmentImportList(); });
         selectAll.addEventListener('click', function () {
             var room = Math.max(0, _ATTACHMENT_MAX_FILES - _composerAttachments.length);
             var selectedNow = st.active ? st.active.entries.reduce(function (n, entry) { return n + (entry && entry.selected ? 1 : 0); }, 0) : 0;
@@ -12059,7 +12638,7 @@
             var zipBytes = st.active && st.active.kind === 'zip' ? st.active.entries.reduce(function (n, entry) {
                 return n + (entry && entry.selected ? Math.max(0, Number(entry.size) || 0) : 0);
             }, 0) : 0;
-            _attachmentImportVisibleEntries().forEach(function (entry) {
+            _attachmentImportPageRows().rows.forEach(function (entry) {
                 if (!remaining || !entry.selectable || entry.rejected || entry.selected) return;
                 var size = Math.max(0, Number(entry.size) || 0);
                 if (st.active && st.active.kind === 'zip' && size > _ATTACHMENT_ZIP_MAX_SELECTED_UNCOMPRESSED_BYTES - zipBytes) return;
@@ -12073,9 +12652,12 @@
             if (st.active) st.active.entries.forEach(function (entry) { if (entry) entry.selected = false; });
             _renderAttachmentImportList();
         });
+        prevPage.addEventListener('click', function () { st.page = Math.max(0, st.page - 1); _renderAttachmentImportList(); });
+        nextPage.addEventListener('click', function () { st.page = st.page + 1; _renderAttachmentImportList(); });
         add.addEventListener('click', function () { if (st.active) _queueAttachmentImportCommit(st.active); });
         st.layer=layer; st.dialog=dialog; st.title=title; st.count=count; st.search=search; st.filter=filter;
         st.list=list; st.selected=selected; st.add=add; st.selectAll=selectAll; st.clearSelection=clearSelection;
+        st.prevPage=prevPage; st.nextPage=nextPage;
         return st;
     }
 
@@ -12146,21 +12728,48 @@
         if (item.kind === 'page') {
             parts.push(item.contextRole === 'current' ? 'Current page · staged for next question only' : 'Pinned page · saved source staged for next question only');
             if (item.lineCount) parts.push(item.lineCount + ' line' + (item.lineCount === 1 ? '' : 's'));
-            parts.push('Markdown');
+            parts.push(typeof item.previewText === 'string' ? 'Markdown preview' : 'Markdown metadata');
             return parts.join(' · ');
         }
         parts.push(_formatByteSize(item.size || 0));
         if (item.lineCount) parts.push(item.lineCount + ' preview line' + (item.lineCount === 1 ? '' : 's'));
-        if (item.kind === 'image') parts.push('Local image preview');
-        else if (item.kind === 'pdf') {
-            parts.push(item.pdfVerified === true ? 'Verified local PDF' : 'Local PDF preview');
+        if (item.kind === 'image') {
+            parts.push(item.file ? 'Local image preview' : 'Local image metadata only');
+        } else if (item.kind === 'pdf') {
+            if (item.file) parts.push(item.pdfVerified === true ? 'Verified local PDF' : 'Local PDF · signature not yet verified');
+            else if (item.runtimeEvicted === true) parts.push('Local PDF bytes released');
+            else parts.push('PDF metadata only');
             parts.push('Not included in model request');
         } else if (item.kind === 'text') {
-            parts.push('Bounded local preview');
+            if (typeof item.previewText === 'string') parts.push('Bounded local preview');
+            else if (item.file) parts.push('Bounded local preview available on demand');
+            else if (item.runtimeTextEvicted === true) parts.push('Bounded text preview released');
+            else parts.push('Text metadata only');
             parts.push(item.sendEligible === false ? 'Not included in model request' : 'Bounded excerpt may be read on Send');
-        } else if (item.kind === 'archive') parts.push('Local archive only · nested archives are not opened automatically');
-        else if (item.kind === 'file') parts.push('Local file only');
+        } else if (item.kind === 'archive') parts.push(item.file ? 'Local archive only · nested archives are not opened automatically' : 'Archive metadata only');
+        else if (item.kind === 'file') parts.push(item.file ? 'Local file only' : 'Local file metadata only');
         return parts.join(' · ');
+    }
+
+    // UI capability truth: a historical manifest may remember what a resource
+    // was without retaining the local bytes required to preview/open/download
+    // it. Labels therefore derive from runtime authority, not kind alone.
+    function _attachmentHasPreviewAuthority(item) {
+        if (!item) return false;
+        if (item.kind === 'page') return typeof item.previewText === 'string';
+        if (item.kind === 'text') return typeof item.previewText === 'string' || !!item.file;
+        if (item.kind === 'image') return !!item.file && item.rasterPreview === true &&
+            (Number(item.size) || 0) <= _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES;
+        if (item.kind === 'pdf') return !!item.file;
+        return false;
+    }
+
+    function _attachmentInteractionLabel(item) {
+        return _attachmentHasPreviewAuthority(item) ? 'Preview' : 'Details';
+    }
+
+    function _attachmentInteractionAria(item) {
+        return _attachmentInteractionLabel(item) + ' ' + _attachmentSafeName(item && item.name);
     }
 
     function _positionAttachmentPreviewLayer() {
@@ -12381,7 +12990,7 @@
     }
 
     function _appendLocalPdfActions(parent, item) {
-        if (!parent || !item) return;
+        if (!parent || !item || !item.file || item.pdfVerified !== true) return;
         var actions = document.createElement('div');
         actions.className = 'ai-assistant-panel-attachment-preview-pdf-actions';
         var open = document.createElement('button');
@@ -12424,7 +13033,7 @@
             }
         }
 
-        if (item && item.kind === 'pdf' && item.pdfVerified !== true && !item.previewError) {
+        if (item && item.kind === 'pdf' && item.file && item.pdfVerified !== true && !item.previewError) {
             var pdfLoading = document.createElement('p');
             pdfLoading.className = 'ai-assistant-panel-attachment-preview-note';
             pdfLoading.textContent = 'Verifying the local PDF signature…';
@@ -12439,38 +13048,33 @@
             return;
         }
 
-        if (item && item.kind === 'pdf' && item.pdfVerified === true) {
+        if (item && item.kind === 'pdf' && item.pdfVerified === true && item.file) {
             var pdfNote = document.createElement('p');
             pdfNote.className = 'ai-assistant-panel-attachment-preview-note ai-assistant-panel-attachment-preview-pdf-note';
             pdfNote.textContent = 'Local PDF preview only. No PDF text is extracted or sent to the model.';
             st.body.appendChild(pdfNote);
             _appendLocalPdfActions(st.body, item);
 
-            if ((Number(item.size) || 0) <= _ATTACHMENT_PDF_INLINE_MAX_BYTES) {
-                var pdfUrl = _attachmentEnsureObjectUrl(item);
-                if (pdfUrl) {
-                    var frame = document.createElement('iframe');
-                    frame.className = 'ai-assistant-panel-attachment-preview-pdf';
-                    frame.src = pdfUrl;
-                    frame.title = 'Local PDF preview: ' + _attachmentSafeName(item.name);
-                    frame.setAttribute('sandbox', 'allow-same-origin');
-                    frame.setAttribute('referrerpolicy', 'no-referrer');
-                    frame.setAttribute('loading', 'lazy');
-                    st.body.appendChild(frame);
-                    return;
+            var pdfViewer = document.createElement('div');
+            pdfViewer.className = 'ai-assistant-panel-attachment-preview-pdf-safe';
+            var pdfViewerTitle = document.createElement('strong');
+            pdfViewerTitle.textContent = 'Browser PDF viewer';
+            var pdfViewerText = document.createElement('p');
+            var nativeHint = '';
+            try {
+                if (typeof navigator !== 'undefined' && navigator.pdfViewerEnabled === false) {
+                    nativeHint = ' This browser reports that its built-in PDF viewer is disabled.';
                 }
-            }
-
-            var pdfLarge = document.createElement('p');
-            pdfLarge.className = 'ai-assistant-panel-attachment-preview-note';
-            pdfLarge.textContent = (Number(item.size) || 0) > _ATTACHMENT_PDF_INLINE_MAX_BYTES
-                ? 'This PDF is larger than the 64 MiB automatic inline-view limit. Use Open local PDF to decode it explicitly in a browser tab.'
-                : 'This browser could not create the inline local PDF viewer. Use Open local PDF instead.';
-            st.body.appendChild(pdfLarge);
+            } catch (_e) {}
+            pdfViewerText.textContent =
+                'Inline native PDF plug-ins are intentionally not embedded in the assistant because blob-backed PDF iframes can fail or lock the panel in some browser/profile combinations. Open the verified local file in a separate browser tab, or download it.' + nativeHint;
+            pdfViewer.appendChild(pdfViewerTitle);
+            pdfViewer.appendChild(pdfViewerText);
+            st.body.appendChild(pdfViewer);
             return;
         }
 
-        if (item && item.kind === 'text' && typeof item.previewText !== 'string' && !item.previewError) {
+        if (item && item.kind === 'text' && item.file && typeof item.previewText !== 'string' && !item.previewError) {
             var loading = document.createElement('p');
             loading.className = 'ai-assistant-panel-attachment-preview-note';
             loading.textContent = 'Preparing a bounded local preview…';
@@ -12514,6 +13118,10 @@
         var msg = document.createElement('p');
         if (item && item.kind === 'image' && item.rasterPreview === true && item.size > _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES) {
             msg.textContent = _attachmentSafeName(item.name) + ' (' + _formatByteSize(item.size || 0) + ') is too large for an automatic inline image preview.';
+        } else if (item && item.kind === 'pdf' && !item.file && item.runtimeEvicted === true) {
+            msg.textContent = 'The local bytes for ' + _attachmentSafeName(item.name) + ' were released from the bounded historical preview cache. PDF metadata remains available.';
+        } else if (item && item.kind === 'pdf' && !item.file) {
+            msg.textContent = _attachmentSafeName(item.name) + ' is available as historical metadata only. Local PDF bytes are intentionally not persisted across reloads.';
         } else if (item && item.kind === 'pdf' && item.previewError === 'ATTACHMENT_PDF_SIGNATURE') {
             msg.textContent = _attachmentSafeName(item.name) + ' is labeled as PDF but does not begin with a valid %PDF- signature. The local PDF viewer was blocked.';
         } else if (item && item.kind === 'pdf' && item.previewError) {
@@ -12535,10 +13143,20 @@
             dl.innerHTML = '<span aria-hidden="true">↓</span><span>Download</span>';
             dl.addEventListener('click', function () { _downloadAttachmentItem(item); });
             fallback.appendChild(dl);
+        } else if (item && item.turnScoped === true && item.kind === 'text' && item.runtimeTextEvicted === true) {
+            var textEvicted = document.createElement('p');
+            textEvicted.className = 'ai-assistant-panel-attachment-preview-note';
+            textEvicted.textContent = 'This turn is still in memory, but its bounded text preview was released to keep historical preview memory bounded. Metadata remains available.';
+            fallback.appendChild(textEvicted);
+        } else if (item && item.turnScoped === true && item.runtimeEvicted === true) {
+            var evicted = document.createElement('p');
+            evicted.className = 'ai-assistant-panel-attachment-preview-note';
+            evicted.textContent = 'This turn is still in memory, but its local binary preview was released to keep attachment memory bounded. Metadata remains available.';
+            fallback.appendChild(evicted);
         } else if (item && item.turnScoped !== true) {
             var retained = document.createElement('p');
             retained.className = 'ai-assistant-panel-attachment-preview-note';
-            retained.textContent = 'This historical turn keeps metadata only; the original local preview was not persisted.';
+            retained.textContent = 'This restored historical turn keeps metadata only. Local file bytes are intentionally never persisted across reloads.';
             fallback.appendChild(retained);
         }
         st.body.appendChild(fallback);
@@ -12613,12 +13231,17 @@
         trigger: null,
         mode: 'composer',
         manifest: null,
+        runtime: null,
         search: null,
         filter: null,
         count: null,
         list: null,
         omitted: null,
-        clear: null
+        clear: null,
+        page: 0,
+        pageSize: 100,
+        prevPage: null,
+        nextPage: null
     };
 
     function _closeAttachmentManager(restoreFocus) {
@@ -12629,7 +13252,15 @@
         var trigger = st.trigger;
         st.trigger = null;
         st.manifest = null;
+        st.runtime = null;
         st.mode = 'composer';
+        st.page = 0;
+        // Destroy rendered rows/listeners immediately. Historical render rows
+        // can hold live accessors into memory-only runtime capabilities; hiding
+        // the manager must not keep those rows (or their runtime objects) alive.
+        if (st.list) while (st.list.firstChild) st.list.removeChild(st.list.firstChild);
+        if (st.count) st.count.textContent = '';
+        if (st.omitted) { st.omitted.hidden = true; st.omitted.textContent = ''; }
         if (restoreFocus !== false && trigger && typeof trigger.focus === 'function') {
             try { trigger.focus(); } catch (_) {}
         }
@@ -12638,7 +13269,7 @@
     function _attachmentManagerSourceManifest() {
         var st = _attachmentManagerState;
         if (st.mode === 'turn') {
-            return _sanitizeTurnResourceManifest(st.manifest, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+            return _turnResourceRenderManifest(st.manifest, st.runtime);
         }
         return _buildTurnResourceManifest(_contextShelfItems(), _TURN_RESOURCE_LIVE_MAX_ITEMS);
     }
@@ -12688,30 +13319,47 @@
         _renderAttachmentManagerList();
     }
 
+    function _attachmentManagerPageRows(manifest) {
+        var st = _attachmentManagerState;
+        var source = manifest && Array.isArray(manifest.items) ? manifest.items : [];
+        var query = st.search ? String(st.search.value || '').trim().toLowerCase() : '';
+        var filter = st.filter ? String(st.filter.value || 'all') : 'all';
+        var matches = source.filter(function (item) {
+            if (!_attachmentManagerFilterMatch(item, filter)) return false;
+            if (!query) return true;
+            var hay = [
+                item.name, item.relativePath, item.path, item.type,
+                item.badge, item.kind, item.status
+            ].filter(Boolean).join('\n').toLowerCase();
+            return hay.indexOf(query) >= 0;
+        });
+        var pageSize = Math.max(25, Math.min(200, Number(st.pageSize) || 100));
+        var pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
+        st.page = Math.max(0, Math.min(pageCount - 1, Math.floor(Number(st.page) || 0)));
+        var start = st.page * pageSize;
+        return {
+            matches: matches,
+            rows: matches.slice(start, start + pageSize),
+            pageSize: pageSize,
+            pageCount: pageCount,
+            page: st.page,
+            start: start
+        };
+    }
+
     function _renderAttachmentManagerList() {
         var st = _attachmentManagerState;
         if (!st.layer || st.layer.hidden || !st.list) return;
         var manifest = _attachmentManagerSourceManifest();
-        var query = st.search ? String(st.search.value || '').trim().toLowerCase() : '';
-        var filter = st.filter ? String(st.filter.value || 'all') : 'all';
-        var rows = manifest.items.filter(function (item) {
-            if (!_attachmentManagerFilterMatch(item, filter)) return false;
-            if (!query) return true;
-            var hay = [
-                item.name,
-                item.relativePath,
-                item.path,
-                item.type,
-                item.badge,
-                item.kind,
-                item.status
-            ].filter(Boolean).join('\n').toLowerCase();
-            return hay.indexOf(query) >= 0;
-        });
+        var pageInfo = _attachmentManagerPageRows(manifest);
+        var rows = pageInfo.rows;
         if (st.count) {
-            st.count.textContent = rows.length + ' shown · ' + manifest.totalCount + ' total' +
+            st.count.textContent = rows.length + ' shown · ' + pageInfo.matches.length + ' matching · ' + manifest.totalCount + ' total' +
+                (pageInfo.pageCount > 1 ? ' · page ' + (pageInfo.page + 1) + '/' + pageInfo.pageCount : '') +
                 (manifest.complete ? '' : ' · restored metadata incomplete');
         }
+        if (st.prevPage) st.prevPage.disabled = pageInfo.page <= 0;
+        if (st.nextPage) st.nextPage.disabled = pageInfo.page >= pageInfo.pageCount - 1;
         if (st.omitted) {
             st.omitted.hidden = !manifest.omittedCount;
             st.omitted.textContent = manifest.omittedCount
@@ -12758,7 +13406,7 @@
             var preview = document.createElement('button');
             preview.type = 'button';
             preview.className = 'ai-assistant-panel-attachment-manager-btn';
-            preview.textContent = 'Preview';
+            preview.textContent = _attachmentInteractionLabel(item);
             preview.addEventListener('click', function () { _openAttachmentPreview(item, preview); });
             actions.appendChild(preview);
 
@@ -12842,6 +13490,21 @@
         controls.appendChild(search);
         controls.appendChild(filter);
 
+        var paging = document.createElement('div');
+        paging.className = 'ai-assistant-panel-attachment-manager-paging';
+        var prevPage = document.createElement('button');
+        prevPage.type = 'button';
+        prevPage.className = 'ai-assistant-panel-attachment-manager-btn';
+        prevPage.textContent = 'Previous';
+        prevPage.setAttribute('aria-label', 'Previous resource manager page');
+        var nextPage = document.createElement('button');
+        nextPage.type = 'button';
+        nextPage.className = 'ai-assistant-panel-attachment-manager-btn';
+        nextPage.textContent = 'Next';
+        nextPage.setAttribute('aria-label', 'Next resource manager page');
+        paging.appendChild(prevPage);
+        paging.appendChild(nextPage);
+
         var omitted = document.createElement('p');
         omitted.className = 'ai-assistant-panel-attachment-manager-omitted';
         omitted.hidden = true;
@@ -12861,6 +13524,7 @@
 
         dialog.appendChild(head);
         dialog.appendChild(controls);
+        dialog.appendChild(paging);
         dialog.appendChild(omitted);
         dialog.appendChild(list);
         dialog.appendChild(foot);
@@ -12890,8 +13554,10 @@
                 e.preventDefault(); first.focus();
             }
         });
-        search.addEventListener('input', _renderAttachmentManagerList);
-        filter.addEventListener('change', _renderAttachmentManagerList);
+        search.addEventListener('input', function () { st.page = 0; _renderAttachmentManagerList(); });
+        filter.addEventListener('change', function () { st.page = 0; _renderAttachmentManagerList(); });
+        prevPage.addEventListener('click', function () { st.page = Math.max(0, st.page - 1); _renderAttachmentManagerList(); });
+        nextPage.addEventListener('click', function () { st.page = st.page + 1; _renderAttachmentManagerList(); });
 
         st.layer = layer;
         st.dialog = dialog;
@@ -12901,14 +13567,17 @@
         st.list = list;
         st.omitted = omitted;
         st.clear = clear;
+        st.prevPage = prevPage;
+        st.nextPage = nextPage;
         return st;
     }
 
-    function _openAttachmentManager(trigger, manifest) {
+    function _openAttachmentManager(trigger, manifest, runtime) {
         var st = _ensureAttachmentManagerLayer();
         st.trigger = trigger || document.activeElement;
         st.mode = manifest ? 'turn' : 'composer';
         st.manifest = manifest || null;
+        st.runtime = runtime || null;
         if (st.search) st.search.value = '';
         if (st.filter) st.filter.value = 'all';
         if (st.clear) st.clear.hidden = st.mode !== 'composer';
@@ -12990,7 +13659,7 @@
             var preview = document.createElement('button');
             preview.type = 'button';
             preview.className = 'ai-assistant-panel-attachment-card';
-            preview.setAttribute('aria-label', 'Preview ' + _attachmentSafeName(item.name));
+            preview.setAttribute('aria-label', _attachmentInteractionAria(item));
             preview.title = _attachmentSafeName(item.name);
 
             if (item.kind === 'image' && item.rasterPreview === true && item.size <= _ATTACHMENT_IMAGE_PREVIEW_MAX_BYTES) {
@@ -13265,6 +13934,7 @@
     }
 
     function _clearComposerAttachments() {
+        _attachmentAbortActiveReaders();
         _attachmentStageGeneration++;
         _attachmentMutationRevision++;
         _attachmentStageQueue = Promise.resolve();
@@ -13579,6 +14249,8 @@
                     else delete row.resources;
                     delete row.attachments;
                 }
+                // File/Blob handles and preview strings are page-memory-only.
+                delete row.resourceRuntime;
                 return row;
             });
             _ssSet(_TRANSCRIPT_KEY, JSON.stringify(persisted));
@@ -13771,7 +14443,12 @@
                 resourceSource,
                 _TURN_RESOURCE_LIVE_MAX_ITEMS
             );
-            if (resourceManifest.totalCount) entry.resources = resourceManifest;
+            if (resourceManifest.totalCount) {
+                entry.resources = resourceManifest;
+                entry.resourceRuntime = _buildTurnResourceRuntime(
+                    Array.isArray(resourceSource) ? resourceSource : (resourceSource && resourceSource.items)
+                );
+            }
         }
         _transcript.push(entry);
 
@@ -13780,6 +14457,10 @@
         // a simple slice from the left is safe — the welcome screen is not in
         // the transcript array, only actual message turns.
         if (_transcript.length > maxTurns) {
+            var removedEntries = _transcript.slice(0, _transcript.length - maxTurns);
+            removedEntries.forEach(function (oldEntry) {
+                if (oldEntry && oldEntry.resourceRuntime) _releaseTurnResourceRuntime(oldEntry.resourceRuntime);
+            });
             _transcript = _transcript.slice(_transcript.length - maxTurns);
         }
 
@@ -13806,6 +14487,7 @@
         _consumedPageContextUrls = Object.create(null);
         _consumedPageContextUrlsLoaded = true;
         _ssDel(_CONSUMED_PAGE_CONTEXT_KEY);
+        _releaseAllTurnResourceRuntime();
         _transcript       = [];
         _feedbackGivenSet = new Set();
         _feedbackStore    = {};                  // v2 — clears all submitted ratings
@@ -16825,7 +17507,7 @@
                 undefined,
                 m.ts,
                 m.text,
-                { resources: m.resources || m.attachments }
+                { resources: m.resources || m.attachments, resourceRuntime: m.resourceRuntime || null }
             );
         });
         body.scrollTop = body.scrollHeight;
@@ -42297,9 +42979,11 @@
             // A user turn owns the one-shot file provenance that was consumed by
             // this question. File contents are never reconstructed here; only
             // bounded metadata is rendered above the question text.
-            var turnResourceManifest = _sanitizeTurnResourceManifest(
-                (turnMeta && (turnMeta.resources || turnMeta.attachments)),
-                _TURN_RESOURCE_LIVE_MAX_ITEMS
+            var turnResourceSource = turnMeta && (turnMeta.resources || turnMeta.attachments);
+            var turnResourceRuntime = turnMeta && turnMeta.resourceRuntime;
+            var turnResourceManifest = _turnResourceRenderManifest(
+                turnResourceSource,
+                turnResourceRuntime || turnResourceSource
             );
             var turnAttachments = turnResourceManifest.items.slice(0, _TURN_RESOURCE_VISIBLE_MAX_ITEMS);
             if (turnResourceManifest.totalCount) {
@@ -42322,7 +43006,7 @@
                     var preview = document.createElement('button');
                     preview.type = 'button';
                     preview.className = 'ai-assistant-panel-attachment-card';
-                    preview.setAttribute('aria-label', 'Preview ' + _attachmentSafeName(item.name));
+                    preview.setAttribute('aria-label', _attachmentInteractionAria(item));
                     preview.title = _attachmentSafeName(item.name);
 
                     var cardBody = document.createElement('span');
@@ -42372,7 +43056,7 @@
                     moreBody.appendChild(moreMeta);
                     more.appendChild(moreBody);
                     more.addEventListener('click', function () {
-                        _openAttachmentManager(more, turnResourceManifest);
+                        _openAttachmentManager(more, turnResourceManifest, turnResourceRuntime || { items: turnAttachments });
                     });
                     moreTile.appendChild(more);
                     files.appendChild(moreTile);
@@ -42701,7 +43385,10 @@
             undefined,
             _transcript[_transcript.length - 1].ts,
             (typeof recordText === 'string' ? recordText : text),
-            turnMeta
+            role === 'user' ? {
+                resources: _transcript[_transcript.length - 1].resources,
+                resourceRuntime: _transcript[_transcript.length - 1].resourceRuntime
+            } : turnMeta
         );
         // _renderBubble already appended: bubble → action row → feedback block.
         // No further DOM manipulation needed here.
@@ -43264,40 +43951,8 @@
         }
 
         var data = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
-        var reply = '';
-
-        if (isAnthropic) {
-            // Anthropic /v1/messages response shape: {content: [{type,text}]}
-            if (Array.isArray(data.content)) {
-                reply = data.content
-                    .filter(function (b) { return b && b.type === 'text'; })
-                    .map(function (b) { return b.text; })
-                    .join('\n').trim();
-            }
-        } else {
-            // OpenAI /v1/chat/completions shape: {choices:[{message:{content}}]}
-            if (Array.isArray(data.choices) && data.choices.length > 0) {
-                var msg = data.choices[0].message;
-                reply = (msg && typeof msg.content === 'string')
-                    ? msg.content.trim() : '';
-            }
-            // Anthropic-shape fallback: proxy wraps an Anthropic response
-            // verbatim even when provider is not 'anthropic'.
-            if (!reply && Array.isArray(data.content)) {
-                reply = data.content
-                    .filter(function (b) { return b && b.type === 'text'; })
-                    .map(function (b) { return b.text; })
-                    .join('\n').trim();
-            }
-        }
-
-        // Generic fallback: simpler shim proxies return a flat {reply|answer|text}.
-        if (!reply) {
-            reply = (typeof data.reply  === 'string' && data.reply)  ||
-                    (typeof data.answer === 'string' && data.answer) ||
-                    (typeof data.text   === 'string' && data.text)   || '';
-        }
-
+        var reply = _extractPanelReply(data, isAnthropic);
+        reply = _requireStubReplyCompatibility(reply, data, activeModel);
         _appendPanelMessage(reply || '(no response)', 'assistant');
     }
 
@@ -43323,26 +43978,8 @@
         var contentType = response.headers.get('content-type') || '';
         if (contentType.indexOf('text/event-stream') === -1 || !response.body) {
             var data2 = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
-            var reply2 = '';
-            // OpenAI shape
-            if (Array.isArray(data2.choices) && data2.choices.length > 0) {
-                var m2 = data2.choices[0].message;
-                reply2 = (m2 && typeof m2.content === 'string')
-                    ? m2.content.trim() : '';
-            }
-            // Anthropic shape fallback (proxy forwarded Anthropic verbatim)
-            if (!reply2 && Array.isArray(data2.content)) {
-                reply2 = data2.content
-                    .filter(function (b) { return b && b.type === 'text'; })
-                    .map(function (b) { return b.text; })
-                    .join('\n').trim();
-            }
-            // Generic shim fallback
-            if (!reply2) {
-                reply2 = (typeof data2.reply  === 'string' && data2.reply)  ||
-                         (typeof data2.answer === 'string' && data2.answer) ||
-                         (typeof data2.text   === 'string' && data2.text)   || '';
-            }
+            var reply2 = _extractPanelReply(data2, provider === 'anthropic');
+            reply2 = _requireStubReplyCompatibility(reply2, data2, activeModel);
             _appendPanelMessage(reply2 || '(no response)', 'assistant');
             return;
         }
@@ -43364,7 +44001,8 @@
             _log('warn', '[ai-assistant] ReadableStream.getReader() failed; JSON fallback', readerErr);
             try {
                 var fbData = await _readResponseJsonBounded(response.clone(), _CHAT_RESPONSE_MAX_BYTES).catch(function () { return {}; });
-                var fbReply = (fbData && (fbData.reply || fbData.answer || fbData.text)) || '';
+                var fbReply = _extractPanelReply(fbData, provider === 'anthropic');
+                fbReply = _requireStubReplyCompatibility(fbReply, fbData, activeModel);
                 _appendPanelMessage(fbReply || '(no response)', 'assistant');
             } catch (_fbErr) {
                 _appendPanelMessage('(streaming unavailable in this browser)', 'assistant');
@@ -43374,6 +44012,8 @@
         var decoder = new TextDecoder();
         var sseBuf = '';
         var streamBytes = 0;
+        var streamStubMeta = null;
+        var validatingStub = _isBuiltInStubModel(activeModel);
         // Track the current SSE event type (RFC 6455 §10.1):
         // Lines beginning with "event:" set the event type for the NEXT
         // "data:" line.  Reset to "message" after each dispatch.
@@ -43440,13 +44080,24 @@
                         }
                         try {
                             var parsed = JSON.parse(ln.slice(6));
+                            if (parsed && (parsed.stub_report || parsed.model)) {
+                                streamStubMeta = {
+                                    stub_report: parsed.stub_report || (streamStubMeta && streamStubMeta.stub_report) || null,
+                                    model: parsed.model || (streamStubMeta && streamStubMeta.model) || ''
+                                };
+                            }
                             var delta = parsed.choices && parsed.choices[0] && parsed.choices[0].delta;
                             if (delta && typeof delta.content === 'string') {
                                 accumulated += delta.content;
-                                streamBubble.innerHTML = _mdToHtml(accumulated);
-                                streamBubble.setAttribute('data-raw', accumulated);
-                                _enhanceCodeBlocks(streamBubble);
-                                if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
+                                // Stub diagnostics are small and security-sensitive. Buffer
+                                // them until identity validation so a stale mirror→echo reply
+                                // never flashes as trusted diagnostic output.
+                                if (!validatingStub) {
+                                    streamBubble.innerHTML = _mdToHtml(accumulated);
+                                    streamBubble.setAttribute('data-raw', accumulated);
+                                    _enhanceCodeBlocks(streamBubble);
+                                    if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
+                                }
                             }
                         } catch (_pe) {}
                         sseEventType = 'message';
@@ -43501,6 +44152,20 @@
             }
         } finally {
             try { reader.releaseLock(); } catch (_) {}
+        }
+
+        if (validatingStub) {
+            try {
+                accumulated = _requireStubReplyCompatibility(accumulated, streamStubMeta || {}, activeModel);
+            } catch (stubCompatibilityErr) {
+                if (streamBubble && streamBubble.parentNode) {
+                    streamBubble.parentNode.removeChild(streamBubble);
+                }
+                _appendPanelMessage(_requestFailureDisplayText(stubCompatibilityErr), 'error');
+                return;
+            }
+            streamBubble.innerHTML = _mdToHtml(accumulated || '(no response)');
+            streamBubble.setAttribute('data-raw', accumulated || '(no response)');
         }
 
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
@@ -43605,6 +44270,96 @@
             }
         }
         if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
+    }
+
+    /**
+     * Extract assistant text from every response shape the panel accepts.
+     * Keep this parser shared by non-streaming and streaming fallbacks so a
+     * browser transport quirk cannot silently change response semantics.
+     */
+    function _extractPanelReply(data, preferAnthropic) {
+        data = data && typeof data === 'object' ? data : {};
+        var reply = '';
+        if (preferAnthropic && Array.isArray(data.content)) {
+            reply = data.content
+                .filter(function (b) { return b && b.type === 'text'; })
+                .map(function (b) { return b.text; })
+                .join('\n').trim();
+        }
+        if (!reply && Array.isArray(data.choices) && data.choices.length > 0) {
+            var msg = data.choices[0] && data.choices[0].message;
+            reply = (msg && typeof msg.content === 'string') ? msg.content.trim() : '';
+        }
+        if (!reply && Array.isArray(data.content)) {
+            reply = data.content
+                .filter(function (b) { return b && b.type === 'text'; })
+                .map(function (b) { return b.text; })
+                .join('\n').trim();
+        }
+        if (!reply) {
+            reply = (typeof data.reply === 'string' && data.reply) ||
+                    (typeof data.answer === 'string' && data.answer) ||
+                    (typeof data.text === 'string' && data.text) || '';
+        }
+        return String(reply || '');
+    }
+
+    /**
+     * Built-in stubs are diagnostic fixtures, so their identity is part of
+     * the trust contract. A stale proxy must never pass an echo response off
+     * as the request-chain mirror merely because it reflected model=stub/mirror.
+     */
+    function _stubReplyCompatibility(reply, responseMeta, activeModel) {
+        var text = String(reply == null ? '' : reply);
+        if (!_isBuiltInStubModel(activeModel)) return { ok: true, text: text, warning: '' };
+
+        var expectedMode = _stubModeName(activeModel);
+        var expectedModel = activeModel && typeof activeModel.model === 'string'
+            ? activeModel.model.trim().toLowerCase() : '';
+        var meta = responseMeta && typeof responseMeta === 'object' ? responseMeta : {};
+        var report = meta.stub_report && typeof meta.stub_report === 'object'
+            ? meta.stub_report : {};
+        var observedMode = typeof report.mode === 'string' ? report.mode.trim().toLowerCase() : '';
+        var observedModel = typeof report.model === 'string' ? report.model.trim().toLowerCase() :
+            (typeof meta.model === 'string' ? meta.model.trim().toLowerCase() : '');
+        var mismatch = false;
+
+        if (observedMode && observedMode !== expectedMode) mismatch = true;
+        if (observedModel && observedModel.indexOf('stub/') === 0) {
+            var observedModelMode = _stubModeName({ model: observedModel });
+            if (observedModelMode !== expectedMode) mismatch = true;
+            if ((expectedMode === 'error' || expectedMode === 'slow') &&
+                    expectedModel && observedModel !== expectedModel) mismatch = true;
+        }
+
+        // Text is checked too: old proxy implementations can reflect the new
+        // model id while falling through to their old echo handler.
+        if (expectedMode === 'mirror' && !/^\s*\*\*Stub mirror(?:\b|\s*·)/i.test(text)) mismatch = true;
+        if (expectedMode === 'echo' && !/^\s*\*\*Stub echo(?:\b|\s*·)/i.test(text)) mismatch = true;
+
+        if (mismatch) {
+            return { ok: false, text: '', warning: '', code: 'AI_STUB_MODE_MISMATCH' };
+        }
+
+        var warning = '';
+        if (expectedMode === 'echo') {
+            var modesMatch = /available(?:\s+local)?\s+modes:\s*([^\n]+)/i.exec(text);
+            if (modesMatch && !/\bmirror\b/i.test(modesMatch[1])) {
+                warning = 'Compatibility warning: this proxy advertises a legacy stub mode set that does not include `mirror`. Update or restart the proxy before using Stub · mirror diagnostics.';
+                text += '\n\n> ' + warning;
+            }
+        }
+        return { ok: true, text: text, warning: warning };
+    }
+
+    function _requireStubReplyCompatibility(reply, responseMeta, activeModel) {
+        var result = _stubReplyCompatibility(reply, responseMeta, activeModel);
+        if (!result.ok) {
+            var err = new Error(result.code || 'AI_STUB_MODE_MISMATCH');
+            err.code = result.code || 'AI_STUB_MODE_MISMATCH';
+            throw err;
+        }
+        return result.text;
     }
 
     function _stubUsesLocalFallback(cfg, model) {
