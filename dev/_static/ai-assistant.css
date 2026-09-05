@@ -1520,7 +1520,7 @@
 
 .ai-assistant-pdf-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: stretch;
     width: 100%;
     min-width: 0;
@@ -20629,4 +20629,369 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 }
 @media (max-width: 640px) {
     .ai-assistant-panel-attachment-manager-paging button { flex: 1 1 0; }
+}
+
+.ai-assistant-panel-attachment-preview-media-wrap {
+    display: grid;
+    gap: .6rem;
+    width: 100%;
+    min-width: 0;
+}
+
+.ai-assistant-panel-attachment-preview-media {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: min(62dvh, 36rem);
+    border-radius: .7rem;
+    background: #000;
+}
+
+.ai-assistant-panel-attachment-preview-media:is(audio) {
+    min-height: 3rem;
+    background: transparent;
+}
+
+/* Run 140 — reader-authorized selective ZIP edit workspace. */
+.ai-assistant-panel-attachment-preview-zip-edit {
+    border-color: color-mix(in srgb, var(--pst-color-primary, #2980b9) 45%, var(--pst-color-border, #d8dce1));
+}
+.ai-assistant-panel-zip-edit {
+    width: min(980px, 100%);
+    max-height: min(92dvh, 900px);
+}
+.ai-assistant-panel-zip-edit-notice {
+    display: grid;
+    gap: 0.22rem;
+    margin: 0.72rem 0.9rem 0;
+    padding: 0.62rem 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-primary, #2980b9) 28%, var(--pst-color-border, #d8dce1));
+    border-radius: 9px;
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 5%, var(--pst-color-surface, #fff));
+    font-size: 0.69rem;
+    line-height: 1.42;
+}
+.ai-assistant-panel-zip-edit-notice span {
+    color: var(--pst-color-text-muted, #71717a);
+}
+.ai-assistant-panel-zip-edit-list {
+    min-height: 10rem;
+    max-height: min(32dvh, 300px);
+}
+.ai-assistant-panel-zip-edit-row {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.58rem 0.1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
+    cursor: pointer;
+}
+.ai-assistant-panel-zip-edit-row[data-disabled="true"] {
+    opacity: .58;
+    cursor: not-allowed;
+}
+.ai-assistant-panel-zip-edit-row input[type="checkbox"],
+.ai-assistant-panel-zip-edit-consent input[type="checkbox"],
+.ai-assistant-panel-zip-edit-review input[type="checkbox"],
+.ai-assistant-panel-zip-edit-proposal-head input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--pst-color-primary, #2980b9);
+}
+.ai-assistant-panel-zip-edit-request,
+.ai-assistant-panel-zip-edit-proposals {
+    display: grid;
+    gap: 0.58rem;
+    padding: 0.72rem 0.9rem;
+    border-top: 1px solid var(--pst-color-border, #d8dce1);
+}
+.ai-assistant-panel-zip-edit-request > label:first-child {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 650;
+}
+.ai-assistant-panel-zip-edit-request textarea {
+    width: 100%;
+    min-height: 4.5rem;
+    max-height: 12rem;
+    resize: vertical;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 8px;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    padding: 0.58rem 0.62rem;
+    font: inherit;
+    font-size: 0.72rem;
+    line-height: 1.45;
+}
+.ai-assistant-panel-zip-edit-consent,
+.ai-assistant-panel-zip-edit-review {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 0.48rem;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.67rem;
+    line-height: 1.4;
+    cursor: pointer;
+}
+.ai-assistant-panel-zip-edit-primary,
+.ai-assistant-panel-zip-edit-proposals-head button {
+    min-height: 2.08rem;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 8px;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    padding: 0.36rem 0.7rem;
+    font: inherit;
+    font-size: 0.69rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+.ai-assistant-panel-zip-edit-primary {
+    justify-self: start;
+    border-color: var(--pst-color-primary, #2980b9);
+    background: var(--pst-color-primary, #2980b9);
+    color: #fff;
+}
+.ai-assistant-panel-zip-edit-primary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--pst-color-primary, #2980b9) 88%, #000);
+}
+.ai-assistant-panel-zip-edit-proposals-head button:hover:not(:disabled) {
+    background: rgba(128,128,128,.11);
+}
+.ai-assistant-panel-zip-edit-primary:disabled,
+.ai-assistant-panel-zip-edit-proposals-head button:disabled {
+    opacity: .48;
+    cursor: not-allowed;
+}
+.ai-assistant-panel-zip-edit-proposals-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+}
+.ai-assistant-panel-zip-edit-proposal-list {
+    display: grid;
+    gap: 0.62rem;
+}
+.ai-assistant-panel-zip-edit-proposal {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 9px;
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 97%, var(--pst-color-primary, #2980b9));
+}
+.ai-assistant-panel-zip-edit-proposal-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 0.5rem;
+    padding: 0.58rem 0.65rem;
+    cursor: pointer;
+}
+.ai-assistant-panel-zip-edit-proposal-head > span {
+    min-width: 0;
+    display: grid;
+    gap: 0.12rem;
+}
+.ai-assistant-panel-zip-edit-proposal-head strong {
+    overflow-wrap: anywhere;
+    font-size: 0.7rem;
+}
+.ai-assistant-panel-zip-edit-proposal-head small {
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: 0.61rem;
+    line-height: 1.35;
+}
+.ai-assistant-panel-zip-edit-diff {
+    max-height: 18rem;
+    margin: 0;
+    overflow: auto;
+    padding: 0.68rem;
+    border-top: 1px solid var(--pst-color-border, #d8dce1);
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 94%, #000);
+    color: inherit;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 0.66rem;
+    line-height: 1.42;
+    tab-size: 4;
+}
+.ai-assistant-panel-zip-edit-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.68rem 0.9rem 0.82rem;
+    border-top: 1px solid var(--pst-color-border, #d8dce1);
+}
+.ai-assistant-panel-zip-edit-status {
+    min-width: 0;
+    margin: 0;
+    color: var(--pst-color-text-muted, #71717a);
+    overflow-wrap: anywhere;
+    font-size: 0.66rem;
+    line-height: 1.4;
+}
+.ai-assistant-panel-zip-edit-status[data-tone="error"] { color: var(--pst-color-danger, #b42318); }
+.ai-assistant-panel-zip-edit-status[data-tone="ok"] { color: var(--pst-color-success, #1f7a4d); }
+.ai-assistant-panel-zip-edit-status[data-tone="working"] { color: var(--pst-color-primary, #2980b9); }
+
+/* Run 144 — ephemeral provider-artifact lifecycle controls. */
+.ai-assistant-panel-zip-edit-cancel-generation {
+    min-height: 2rem;
+    padding: 0.38rem 0.68rem;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 0.45rem;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.68rem;
+    cursor: pointer;
+}
+.ai-assistant-panel-zip-edit-cancel-generation:not([disabled]):hover {
+    border-color: var(--pst-color-primary, #2980b9);
+}
+.ai-assistant-panel-zip-edit-proposal[data-lifecycle-state="applied"] {
+    opacity: 0.82;
+}
+.ai-assistant-panel-zip-edit-layer [disabled] { cursor: not-allowed; }
+@media (max-width: 640px) {
+    .ai-assistant-panel-zip-edit {
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    }
+    .ai-assistant-panel-zip-edit-row { align-items: start; }
+    .ai-assistant-panel-zip-edit-proposals-head,
+    .ai-assistant-panel-zip-edit-foot {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    .ai-assistant-panel-zip-edit-proposals-head { display: grid; }
+    .ai-assistant-panel-zip-edit-primary,
+    .ai-assistant-panel-zip-edit-proposals-head button { width: 100%; justify-self: stretch; }
+}
+
+/* Run 141 — typed ZIP edit inputs: editable SVG + capability-gated media references. */
+.ai-assistant-panel-zip-edit-row[data-lane="svg"] .ai-assistant-panel-attachment-manager-badge {
+    border-style: double;
+}
+.ai-assistant-panel-zip-edit-row[data-lane="media-reference"] .ai-assistant-panel-attachment-manager-badge {
+    border-style: dashed;
+}
+.ai-assistant-panel-zip-edit-row[data-lane="media-reference"] .ai-assistant-panel-attachment-manager-copy > span {
+    font-style: italic;
+}
+
+/* Run 142 — reader-supplied binary replacement review lane. */
+.ai-assistant-panel-zip-edit-row {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+}
+.ai-assistant-panel-zip-edit-row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .35rem;
+}
+.ai-assistant-panel-zip-edit-row-actions button,
+.ai-assistant-panel-zip-edit-binary-actions button {
+    min-height: 1.85rem;
+    border: 1px solid var(--pst-color-border, #d8dce1);
+    border-radius: 7px;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    padding: .28rem .52rem;
+    font: inherit;
+    font-size: .63rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+.ai-assistant-panel-zip-edit-row-actions button:hover:not(:disabled),
+.ai-assistant-panel-zip-edit-binary-actions button:hover:not(:disabled) {
+    background: rgba(128,128,128,.1);
+}
+.ai-assistant-panel-zip-edit-row[data-lane="binary-local"] .ai-assistant-panel-attachment-manager-badge {
+    border-style: solid;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--pst-color-success, #1f7a4d) 45%, transparent);
+}
+.ai-assistant-panel-zip-edit-proposal[data-lane="binary-local"] {
+    border-color: color-mix(in srgb, var(--pst-color-success, #1f7a4d) 36%, var(--pst-color-border, #d8dce1));
+}
+.ai-assistant-panel-zip-edit-binary-review {
+    display: grid;
+    gap: .5rem;
+    padding: .62rem;
+    border-top: 1px solid var(--pst-color-border, #d8dce1);
+}
+.ai-assistant-panel-zip-edit-binary-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+}
+.ai-assistant-panel-zip-edit-binary-side {
+    min-width: 0;
+    margin: 0;
+    padding: .45rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 96%, #000);
+}
+.ai-assistant-panel-zip-edit-binary-side figcaption {
+    margin-bottom: .4rem;
+    color: var(--pst-color-text-muted, #71717a);
+    overflow-wrap: anywhere;
+    font-size: .61rem;
+    line-height: 1.35;
+}
+.ai-assistant-panel-zip-edit-binary-side img,
+.ai-assistant-panel-zip-edit-binary-side video {
+    display: block;
+    width: 100%;
+    max-height: 16rem;
+    object-fit: contain;
+    border-radius: 6px;
+    background: rgba(128,128,128,.08);
+}
+.ai-assistant-panel-zip-edit-binary-side audio {
+    width: 100%;
+    min-height: 2.8rem;
+}
+.ai-assistant-panel-zip-edit-binary-note {
+    margin: 0;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: .62rem;
+    line-height: 1.4;
+}
+.ai-assistant-panel-zip-edit-binary-actions {
+    display: flex;
+    gap: .4rem;
+    padding: 0 .62rem .62rem;
+}
+@media (max-width: 640px) {
+    .ai-assistant-panel-zip-edit-row {
+        grid-template-columns: auto auto minmax(0, 1fr);
+    }
+    .ai-assistant-panel-zip-edit-row-actions {
+        grid-column: 2 / -1;
+        justify-content: stretch;
+    }
+    .ai-assistant-panel-zip-edit-row-actions button { width: 100%; }
+    .ai-assistant-panel-zip-edit-binary-pair { grid-template-columns: 1fr; }
+    .ai-assistant-panel-zip-edit-binary-actions { display: grid; grid-template-columns: 1fr; }
+}
+
+/* Run 143 — explicitly advertised provider-generated binary candidates. */
+.ai-assistant-panel-zip-edit-row[data-lane="binary-provider"] .ai-assistant-panel-attachment-manager-badge {
+    border-style: double;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--pst-color-accent, #6f42c1) 42%, transparent);
+}
+.ai-assistant-panel-zip-edit-proposal[data-lane="binary-provider"] {
+    border-color: color-mix(in srgb, var(--pst-color-accent, #6f42c1) 34%, var(--pst-color-border, #d8dce1));
+}
+.ai-assistant-panel-zip-edit-generate {
+    border-style: double !important;
 }
