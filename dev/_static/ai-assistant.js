@@ -567,6 +567,12 @@
         if (d.code === 'REMOTE_RESPONSE_STREAM_UNAVAILABLE') {
             return 'This browser transport cannot safely read the AI response. Try a modern browser or compatible proxy.';
         }
+        if (d.code === 'AI_STREAM_BROKEN_PIPE') {
+            return 'The streaming connection closed unexpectedly before a response arrived. Please retry.';
+        }
+        if (d.code === 'AI_STREAM_SERVER_ERROR') {
+            return 'The AI server reported a streaming error. Please retry.';
+        }
         if (d.code === 'AI_RESPONSE_INVALID_JSON') {
             return 'The AI endpoint returned a response that could not be parsed as valid JSON.';
         }
@@ -1534,6 +1540,49 @@
     var _panelActiveRequestController = null;
 
     /**
+     * Turn-owned cancellation authority independent of AbortController and UI.
+     * A token is invalidated by Stop, Clear, or a newer submit. Async continuations
+     * must prove they still own this exact object before mutating transcript/DOM.
+     * @type {{id:number,cancelled:boolean}|null}
+     */
+    var _panelRequestTokenSeq = 0;
+    var _panelActiveRequestToken = null;
+
+    /**
+     * Reader for the live SSE body, paired with the activity that owns it.
+     * Fetch abort is not reliable in every legacy/embedded browser; cancelling
+     * the ReadableStream reader gives Stop/Clear a second, turn-scoped teardown
+     * path and prevents a pending reader.read() from pinning the composer.
+     * @type {{reader: object, activity: object}|null}
+     */
+    var _panelActiveStreamOwner = null;
+
+    function _panelTurnAbortError() {
+        var err = new Error('AI_REQUEST_CANCELLED');
+        err.name = 'AbortError';
+        return err;
+    }
+
+    /** Fail closed when an async continuation no longer owns the live turn. */
+    function _panelTurnEnsureActive(activity, controller, token) {
+        if (token && (token.cancelled || _panelActiveRequestToken !== token)) throw _panelTurnAbortError();
+        if (activity && activity.state === 'cancelled') throw _panelTurnAbortError();
+        if (controller && controller.signal && controller.signal.aborted) throw _panelTurnAbortError();
+    }
+
+    function _panelUnlockComposerAfterCancel() {
+        var input = document.getElementById('ai-assistant-panel-input');
+        var sendBtn = document.getElementById('ai-assistant-panel-send');
+        var body = document.getElementById('ai-assistant-panel-body');
+        if (body) _hideTypingIndicator(body);
+        if (input) input.disabled = false;
+        if (sendBtn) sendBtn.disabled = _attachmentStagePending > 0;
+        _updateAttachmentStageUi();
+        _updateSendBtnState();
+        if (input && typeof input.focus === 'function') input.focus();
+    }
+
+    /**
      * Stop the current live model response without closing the panel UI.
      * Returns true while cancellation is pending as well, so repeated Escape
      * presses cannot fall through and close the panel before AbortError settles.
@@ -1542,13 +1591,34 @@
      */
     function _stopActivePanelResponse() {
         var controller = _panelActiveRequestController;
-        if (!controller) return false;
+        var activity = _activeTurnActivity;
+        var token = _panelActiveRequestToken;
+        var hadActive = !!token || !!controller || !!(activity && activity.state === 'running');
+        if (!hadActive) return false;
+        if (token) token.cancelled = true;
+        if (activity && activity.state === 'running') {
+            activity.cancelReason = 'reader';
+            _activityAddStep(activity, {
+                id: 'reader-stop', kind: 'warning', state: 'done', label: 'Stopped by reader'
+            });
+            _activityFinish(activity, 'cancelled');
+        }
+        var streamOwner = _panelActiveStreamOwner;
+        if (streamOwner && (!activity || streamOwner.activity === activity)) {
+            try {
+                var cancelled = streamOwner.reader && streamOwner.reader.cancel
+                    ? streamOwner.reader.cancel('AI_REQUEST_CANCELLED') : null;
+                if (cancelled && typeof cancelled.catch === 'function') cancelled.catch(function () {});
+            } catch (_) {}
+        }
+        _panelUnlockComposerAfterCancel();
+        if (!controller) return true;
         try {
             if (controller.signal && controller.signal.aborted) return true;
             controller.abort();
             return true;
         } catch (_) {
-            return false;
+            return true;
         }
     }
 
@@ -1688,6 +1758,8 @@
         shareAns: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',
         // ── Phase B additions — mirror _ICON_META in _static/__init__.py ──
         model:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>',
+        // Two-way switch icon used by the quick model changer in answer menus.
+        switchModel: '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.78 1.22a.75.75 0 0 1 0 1.06L2.56 3.5h10.19A3.25 3.25 0 0 1 16 6.75v.5a.75.75 0 0 1-1.5 0v-.5A1.75 1.75 0 0 0 12.75 5H2.56l1.22 1.22a.75.75 0 0 1-1.06 1.06l-2.5-2.5a.75.75 0 0 1 0-1.06l2.5-2.5a.75.75 0 0 1 1.06 0ZM13.44 11l-1.22-1.22a.75.75 0 0 1 1.06-1.06l2.5 2.5a.75.75 0 0 1 0 1.06l-2.5 2.5a.75.75 0 1 1-1.06-1.06l1.22-1.22H3.25A3.25 3.25 0 0 1 0 9.25v-.5a.75.75 0 0 1 1.5 0v.5c0 .966.784 1.75 1.75 1.75h10.19Z" fill="currentColor"/></svg>',
         terms:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>',
         share:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
         menu:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
@@ -2368,9 +2440,14 @@
         // Must happen first so inner backtick/asterisk patterns are not
         // processed by the inline rules below.
         var codeBlocks = [];
-        var result = text.replace(/```(\w*)\n?([\s\S]*?)```/g, function (_, lang, code) {
+        var result = text.replace(/```([^\n`]*)\n?([\s\S]*?)```/g, function (_, info, code) {
             var idx = codeBlocks.length;
-            codeBlocks.push({ lang: lang || '', code: code });
+            var parsedInfo = _parseCodeFenceInfo(info || '');
+            codeBlocks.push({
+                lang: parsedInfo.lang || '',
+                artifactPath: parsedInfo.path || '',
+                code: code
+            });
             return '\x00CB' + idx + '\x00';   // null-byte placeholder (safe)
         });
 
@@ -2503,12 +2580,16 @@
         result = result.replace(/\x00CB(\d+)\x00/g, function (_, idx) {
             var cb = codeBlocks[+idx];
             var langAttr = cb.lang ? ' data-lang="' + _escapeHtml(cb.lang) + '"' : '';
+            var artifactAttr = cb.artifactPath
+                ? ' data-artifact-path="' + _escapeHtml(cb.artifactPath) + '"' : '';
             var langBadge = cb.lang
                 ? '<span class="ai-md-code-lang">' + _escapeHtml(cb.lang) + '</span>'
                 : '';
             // The code content was NOT escaped in step 2 (it was extracted
-            // before escaping).  We escape it now.
-            return '<pre class="ai-md-pre"' + langAttr + '>' +
+            // before escaping).  We escape it now.  `data-artifact-path` is
+            // accepted only after strict relative-path validation above and is
+            // never interpreted as HTML or a URL.
+            return '<pre class="ai-md-pre"' + langAttr + artifactAttr + '>' +
                 langBadge +
                 '<code>' + _escapeHtml(cb.code) + '</code></pre>';
         });
@@ -2595,24 +2676,28 @@
      *
      * @param {HTMLElement} root  Bubble element to scan (not the whole panel).
      */
-    function _appendArtifactCards(root) {
-        if (!root) { return; }
-        if (root.querySelector('.ai-md-artifact-list')) { return; }   // already done
+    function _appendArtifactCards(root, activity) {
+        if (!root) { return []; }
+        var explicitKeys = _syncExplicitCodeArtifacts(root, activity);
+        if (root.querySelector('.ai-md-artifact-list')) { return explicitKeys; }   // already done
         var wraps = root.querySelectorAll('.ai-md-pre-wrap');
-        if (!wraps.length) { return; }
+        if (!wraps.length) { return explicitKeys; }
 
         var list = document.createElement('div');
         list.className = 'ai-md-artifact-list';
 
         // Collected alongside each card so "Download all" (below) can
         // trigger the exact same per-file downloads in sequence, rather
-        // than a second, separate code path.
+        // than a second, separate code path. Explicit file fences are owned by
+        // the latest-revision Changed files surface instead of this snippet list.
         var files = [];
 
         wraps.forEach(function (wrap, i) {
             var pre = wrap.querySelector('pre.ai-md-pre');
             var codeEl = pre && pre.querySelector('code');
             if (!codeEl) { return; }
+            var artifactPath = _generatedArtifactSafePath(pre.getAttribute('data-artifact-path') || '');
+            if (artifactPath) { return; }
 
             var lang = (pre.getAttribute('data-lang') || '').toLowerCase();
             var ext = _LANG_EXT[lang] || 'txt';
@@ -2658,19 +2743,12 @@
             list.appendChild(card);
         });
 
-        // "Download all" — only worth showing once there's more than one
-        // file; a single-artifact answer already has its one card above.
-        //
-        // Bundles into one real .zip via _buildZipBlob (vendored inline —
-        // see its own doc comment for why not a CDN library). One
-        // download, one file, matching what a user actually expects from
-        // "download all" — not N separate browser download prompts.
         if (files.length > 1) {
             var allBtn = document.createElement('button');
             allBtn.type = 'button';
             allBtn.className = 'ai-md-artifact-download-all-btn';
             allBtn.setAttribute('aria-label', 'Download all ' + files.length + ' files as a zip');
-            allBtn.innerHTML = ICONS.exportTxt;   // ICONS constant — safe.
+            allBtn.innerHTML = ICONS.exportTxt;
             var allLbl = document.createElement('span');
             allLbl.textContent = 'Download all';
             allBtn.appendChild(allLbl);
@@ -2683,9 +2761,8 @@
             list.appendChild(allBtn);
         }
 
-        if (list.children.length) {
-            root.appendChild(list);
-        }
+        if (list.children.length) root.appendChild(list);
+        return explicitKeys;
     }
 
     // ── Turndown 7.1.2: vendored inline ──────────────────────────────────────
@@ -16616,6 +16693,31 @@
      *   reappears every time the user starts a new chat session.
      */
     function clearConversation() {
+        var clearingController = _fetchAbortController;
+        if (_panelActiveRequestToken) _panelActiveRequestToken.cancelled = true;
+        _panelActiveRequestToken = null;
+        if (_activeTurnActivity && _activeTurnActivity.state === 'running') {
+            _activeTurnActivity.cancelReason = 'conversation-cleared';
+            _activityAddStep(_activeTurnActivity, {
+                id: 'conversation-cleared', kind: 'warning', state: 'done', label: 'Stopped because the conversation was cleared'
+            });
+            _activityFinish(_activeTurnActivity, 'cancelled');
+        }
+        if (_panelActiveStreamOwner) {
+            try {
+                var clearCancel = _panelActiveStreamOwner.reader && _panelActiveStreamOwner.reader.cancel
+                    ? _panelActiveStreamOwner.reader.cancel('AI_CONVERSATION_CLEARED') : null;
+                if (clearCancel && typeof clearCancel.catch === 'function') clearCancel.catch(function () {});
+            } catch (_) {}
+            _panelActiveStreamOwner = null;
+        }
+        if (clearingController) {
+            try { clearingController.abort(); } catch (_) {}
+        }
+        if (_panelActiveRequestController === clearingController) _panelActiveRequestController = null;
+        if (_fetchAbortController === clearingController) _fetchAbortController = null;
+        _generatedArtifactLedger = Object.create(null);
+        _generatedArtifactRefs = Object.create(null);
         _pageContextConversationGeneration += 1;
         _pageContextPinRevisions = Object.create(null);
         _consumedPageContextUrls = Object.create(null);
@@ -19136,9 +19238,20 @@
         var secondaryBody = wrapper.querySelector(
             '.ai-assistant-panel-bubble-action-more-secondary'
         );
+        var modelToggle = wrapper.querySelector(
+            '.ai-assistant-panel-bubble-action--model-toggle'
+        );
+        var modelBody = wrapper.querySelector(
+            '.ai-assistant-panel-bubble-model-list'
+        );
 
         if (rootMenu) rootMenu.setAttribute('data-open', 'false');
         if (rootToggle) rootToggle.setAttribute('aria-expanded', 'false');
+        if (modelToggle) modelToggle.setAttribute('aria-expanded', 'false');
+        if (modelBody) {
+            modelBody.setAttribute('data-open', 'false');
+            modelBody.hidden = true;
+        }
         if (secondaryToggle) secondaryToggle.setAttribute('aria-expanded', 'false');
         if (secondaryBody) {
             secondaryBody.setAttribute('data-open', 'false');
@@ -19234,7 +19347,190 @@
         menu.setAttribute('role', 'menu');
         menu.setAttribute('data-open', 'false');
 
-        // ── Retry — FIRST item in the menu (re-submits the paired question) ─────
+        // ── Quick model switcher — FIRST item when multi-model UI exists ────
+        // This is deliberately an inline disclosure inside the already
+        // boundary-aware answer menu, not a second floating popup.  It exposes
+        // a compact subset of the canonical runtime model list and delegates
+        // full editing/search to Model Configuration.
+        var quickModels = _quickModelCandidates(_cfg());
+        if (quickModels.length) {
+            menu.classList.add('ai-assistant-panel-bubble-action-more-menu--has-models');
+            var modelListId = 'ai-assistant-panel-bubble-model-list-' +
+                (shareOpts && isFinite(shareOpts.answerIndex)
+                    ? String(shareOpts.answerIndex)
+                    : _strHash(String(answerText || '')));
+            var modelToggle = document.createElement('button');
+            modelToggle.className =
+                'ai-assistant-panel-bubble-action ' +
+                'ai-assistant-panel-bubble-action--model-toggle';
+            modelToggle.type = 'button';
+            modelToggle.setAttribute('role', 'menuitem');
+            modelToggle.setAttribute('aria-expanded', 'false');
+            modelToggle.setAttribute('aria-controls', modelListId);
+            modelToggle.setAttribute('aria-label', 'Change model for the next message');
+            modelToggle.innerHTML = ICONS.switchModel;
+            var modelToggleLabel = document.createElement('span');
+            modelToggleLabel.textContent = 'Change model';
+            var modelChevron = document.createElement('span');
+            modelChevron.className = 'ai-assistant-panel-bubble-action-more-chevron';
+            modelChevron.setAttribute('aria-hidden', 'true');
+            modelChevron.innerHTML = ICONS.chevronDown;
+            modelToggle.appendChild(modelToggleLabel);
+            modelToggle.appendChild(modelChevron);
+            menu.appendChild(modelToggle);
+
+            var modelList = document.createElement('div');
+            modelList.className = 'ai-assistant-panel-bubble-model-list';
+            modelList.id = modelListId;
+            modelList.setAttribute('role', 'group');
+            modelList.setAttribute('aria-label', 'Try a different model');
+            modelList.setAttribute('data-open', 'false');
+            modelList.hidden = true;
+
+            var modelHeading = document.createElement('div');
+            modelHeading.className = 'ai-assistant-panel-bubble-model-heading';
+            modelHeading.textContent = 'Try a different model';
+            modelList.appendChild(modelHeading);
+
+            var activeQuickId = _getActiveModelId(quickModels);
+            // Keep the active model visible even when the configured list is
+            // much longer than the compact six-item quick surface.
+            var quickDisplayModels = [];
+            var activeQuickModel = _findModel(quickModels, activeQuickId);
+            if (activeQuickModel) quickDisplayModels.push(activeQuickModel);
+            quickModels.forEach(function (candidate) {
+                if (quickDisplayModels.length >= 6) return;
+                if (!activeQuickModel || candidate.id !== activeQuickModel.id) {
+                    quickDisplayModels.push(candidate);
+                }
+            });
+            quickDisplayModels.forEach(function (m) {
+                var modelBtn = document.createElement('button');
+                modelBtn.className = 'ai-assistant-panel-bubble-model-option';
+                modelBtn.type = 'button';
+                modelBtn.setAttribute('role', 'menuitemradio');
+                modelBtn.setAttribute('aria-checked', m.id === activeQuickId ? 'true' : 'false');
+                modelBtn.setAttribute('data-model-id', m.id);
+
+                var providerDot = document.createElement('span');
+                providerDot.className = 'ai-assistant-panel-bubble-model-provider';
+                providerDot.setAttribute('aria-hidden', 'true');
+                var providerColor = _providerColor(m.provider || '');
+                if (providerColor) providerDot.style.background = providerColor;
+                modelBtn.appendChild(providerDot);
+
+                var modelCopy = document.createElement('span');
+                modelCopy.className = 'ai-assistant-panel-bubble-model-copy';
+                var modelTitle = document.createElement('strong');
+                modelTitle.textContent = m.label || m.id;
+                var modelMeta = document.createElement('small');
+                var modelWire = String(m.model || m.id || '');
+                var providerLabel = _quickModelProviderLabel(m.provider || '');
+                modelMeta.textContent = providerLabel && modelWire
+                    ? providerLabel + ' · ' + modelWire
+                    : (providerLabel || modelWire);
+                modelCopy.appendChild(modelTitle);
+                if (modelMeta.textContent) modelCopy.appendChild(modelMeta);
+                modelBtn.appendChild(modelCopy);
+
+                var selectedMark = document.createElement('span');
+                selectedMark.className = 'ai-assistant-panel-bubble-model-check';
+                selectedMark.setAttribute('aria-hidden', 'true');
+                selectedMark.innerHTML = ICONS.checkAns;
+                modelBtn.appendChild(selectedMark);
+
+                modelBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (_selectQuickModel(m.id)) {
+                        modelList.querySelectorAll('.ai-assistant-panel-bubble-model-option')
+                            .forEach(function (other) {
+                                other.setAttribute('aria-checked',
+                                    other.getAttribute('data-model-id') === m.id ? 'true' : 'false');
+                            });
+                    }
+                    _closeBubbleMoreWrapper(wrapper, false);
+                });
+                modelList.appendChild(modelBtn);
+            });
+
+            var configBtn = document.createElement('button');
+            configBtn.className =
+                'ai-assistant-panel-bubble-model-option ' +
+                'ai-assistant-panel-bubble-model-config';
+            configBtn.type = 'button';
+            configBtn.setAttribute('role', 'menuitem');
+            configBtn.innerHTML = ICONS.model;
+            var configCopy = document.createElement('span');
+            configCopy.className = 'ai-assistant-panel-bubble-model-copy';
+            var configTitle = document.createElement('strong');
+            configTitle.textContent = quickModels.length > 6
+                ? 'View all ' + quickModels.length + ' models…'
+                : 'Model configuration…';
+            var configMeta = document.createElement('small');
+            configMeta.textContent = 'Search, edit, or add models';
+            configCopy.appendChild(configTitle);
+            configCopy.appendChild(configMeta);
+            configBtn.appendChild(configCopy);
+            configBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var opener = toggleBtn;
+                _closeBubbleMoreWrapper(wrapper, false);
+                try {
+                    _dispatchAssistantEvent(new CustomEvent(
+                        'ai-assistant-open-model-configuration',
+                        { detail: { opener: opener, source: 'answer-actions' } }
+                    ));
+                } catch (_) {}
+            });
+            modelList.appendChild(configBtn);
+            menu.appendChild(modelList);
+
+            modelToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var open = modelToggle.getAttribute('aria-expanded') !== 'true';
+                modelToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                modelList.setAttribute('data-open', open ? 'true' : 'false');
+                modelList.hidden = !open;
+                if (open) {
+                    // Selection can change from the header/footer or another
+                    // answer menu after this bubble was rendered. Refresh the
+                    // active checkmark from canonical runtime authority every
+                    // time the disclosure opens.
+                    var currentModels = _quickModelCandidates(_cfg());
+                    var currentId = _getActiveModelId(currentModels);
+                    modelList.querySelectorAll('.ai-assistant-panel-bubble-model-option[data-model-id]')
+                        .forEach(function (option) {
+                            option.setAttribute('aria-checked',
+                                option.getAttribute('data-model-id') === currentId ? 'true' : 'false');
+                        });
+                    var selected = modelList.querySelector(
+                        '.ai-assistant-panel-bubble-model-option[aria-checked="true"]'
+                    );
+                    if (selected && typeof selected.focus === 'function') {
+                        try { selected.focus({ preventScroll: true }); }
+                        catch (_) { try { selected.focus(); } catch (_e) {} }
+                    }
+                }
+                _schedulePinnedFeedbackPopupPosition();
+            });
+
+            modelList.addEventListener('keydown', function (e) {
+                if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) return;
+                var items = Array.prototype.slice.call(
+                    modelList.querySelectorAll('button:not([disabled])')
+                );
+                if (!items.length) return;
+                e.preventDefault();
+                var idx = items.indexOf(document.activeElement);
+                if (e.key === 'Home') idx = 0;
+                else if (e.key === 'End') idx = items.length - 1;
+                else if (e.key === 'ArrowDown') idx = idx < 0 ? 0 : (idx + 1) % items.length;
+                else idx = idx < 0 ? items.length - 1 : (idx - 1 + items.length) % items.length;
+                items[idx].focus();
+            });
+        }
+
+        // ── Retry — follows the model switcher when available ─────────────
         if (retryOpts && retryOpts.question) {
             (function (q) {
                 var retryMenuBtn = document.createElement('button');
@@ -19556,6 +19852,66 @@
     }
 
     /**
+     * Return truthful first-message privacy copy for the current runtime.
+     * Site owners may override the sentence with plain text when their proxy
+     * has a separately verified anonymity/retention/training guarantee.  The
+     * built-in default never invents a provider promise.
+     */
+    function _firstMessagePrivacyText() {
+        var cfg = _cfg();
+        var custom = typeof cfg.panelChatPrivacyText === 'string'
+            ? cfg.panelChatPrivacyText.trim() : '';
+        if (custom) return custom;
+        var active = _getActiveModel(cfg);
+        if (!cfg.panelApiEnabled || _stubUsesLocalFallback(cfg, active)) {
+            return 'Local chat. This conversation stays in this browser tab; this model reply makes no network request.';
+        }
+        return 'Privacy boundary: your message and selected page context may be sent to the configured AI endpoint. Retention and AI-training policies depend on that provider.';
+    }
+
+    /** Build the compact DuckDuckGo-inspired status row shown once chat starts. */
+    function _buildFirstMessagePrivacyBanner() {
+        var cfg = _cfg();
+        if (cfg.panelChatPrivacyBanner === false) return null;
+        var banner = document.createElement('div');
+        banner.className = 'ai-assistant-panel-chat-privacy';
+        banner.setAttribute('role', 'note');
+
+        var icon = document.createElement('span');
+        icon.className = 'ai-assistant-panel-chat-privacy-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = ICONS.privacy;
+        banner.appendChild(icon);
+
+        var copy = document.createElement('span');
+        copy.className = 'ai-assistant-panel-chat-privacy-copy';
+        copy.appendChild(document.createTextNode(_firstMessagePrivacyText() + ' '));
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'ai-assistant-panel-chat-privacy-more';
+        more.textContent = (typeof cfg.panelChatPrivacyMoreText === 'string' &&
+            cfg.panelChatPrivacyMoreText.trim()) || 'More information';
+        more.addEventListener('click', function () {
+            try {
+                _dispatchAssistantEvent(new CustomEvent(
+                    'ai-assistant-open-privacy',
+                    { detail: { opener: more, source: 'first-message-banner' } }
+                ));
+            } catch (_) {}
+        });
+        copy.appendChild(more);
+        banner.appendChild(copy);
+        return banner;
+    }
+
+    function _ensureFirstMessagePrivacyBanner(body) {
+        if (!body || body.querySelector('.ai-assistant-panel-chat-privacy')) return;
+        var banner = _buildFirstMessagePrivacyBanner();
+        if (!banner) return;
+        body.insertBefore(banner, body.firstChild || null);
+    }
+
+    /**
      * Render the initial welcome + quick-suggestion chips into the body.
      * Extracted so clearConversation() can rebuild without duplicating logic.
      * @param {HTMLElement} body
@@ -19634,6 +19990,7 @@
      * @param {HTMLElement} body
      */
     function _replayTranscript(body) {
+        if (_transcript.length) _ensureFirstMessagePrivacyBanner(body);
         _transcript.forEach(function (m) {
             _renderBubble(
                 body,
@@ -20257,12 +20614,14 @@
     }
 
     function _positionBubbleMoreMenuWithinPanelBody(menu) {
+        var hasModels = !!(menu && menu.classList &&
+            menu.classList.contains('ai-assistant-panel-bubble-action-more-menu--has-models'));
         _positionAnchoredPopupWithinPanelBody(menu, {
             activeAttr: 'data-open',
             activeValue: 'true',
             wrapperSelector: '.ai-assistant-panel-bubble-action-more',
-            minWidth: 144,
-            maxWidth: 220,
+            minWidth: hasModels ? 224 : 144,
+            maxWidth: hasModels ? 320 : 220,
             horizontalAlign: 'start'
         });
     }
@@ -25121,6 +25480,50 @@
         return null;
     }
 
+    /** Return the canonical runtime model list used by quick switching. */
+    function _quickModelCandidates(cfg) {
+        if (!cfg) return [];
+        var builtins = Array.isArray(cfg.panelApiModels) ? cfg.panelApiModels : [];
+        _MODEL_STORE.registerBuiltin(builtins);
+        return _MODEL_STORE.applyOverrides(builtins).filter(function (m) {
+            return m && !m.disabled && !_MODEL_STORE.isHiddenBuiltin(m.id);
+        }).concat(_MODEL_STORE.applyOverrides(_MODEL_STORE.listCustom()).filter(function (m) {
+            return m && !m.disabled;
+        }));
+    }
+
+    function _quickModelProviderLabel(provider) {
+        var p = String(provider || '').trim();
+        if (!p) return '';
+        var known = {
+            openai: 'OpenAI', anthropic: 'Anthropic', huggingface: 'Hugging Face',
+            google: 'Google', gemini: 'Google', mistral: 'Mistral',
+            groq: 'Groq', cerebras: 'Cerebras', custom: 'Custom'
+        };
+        return known[p.toLowerCase()] || p;
+    }
+
+    /**
+     * Select a quick-menu model through the same runtime authority and change
+     * event consumed by the model sheet, footer picker, effort controls, and
+     * request builder.  Disabled/removed/unknown ids fail closed.
+     */
+    function _selectQuickModel(id) {
+        var models = _quickModelCandidates(_cfg());
+        var m = _findModel(models, id);
+        if (!m) return false;
+        _setActiveModelId(m.id);
+        try {
+            _dispatchAssistantEvent(new CustomEvent(
+                'ai-assistant-model-change',
+                { detail: { id: m.id, provider: m.provider, model: m.model } }
+            ));
+        } catch (_) {}
+        _syncInlinePickers(m.id);
+        _syncModelSheet(m.id);
+        return true;
+    }
+
     /**
      * Resolve the model object that should be used for the current turn.
      * Returns an object with the same {id, provider, model, endpoint, ...}
@@ -25829,14 +26232,21 @@
      * No endpoint, model id, request body or provider error text is logged.
      */
     async function _fetchWithReasoningFallback(
-            endpoint, options, fallbackBody, activeModel) {
+            endpoint, options, fallbackBody, activeModel, shouldContinue) {
         var primaryBody = options && options.body;
         var canFallback = typeof fallbackBody === 'string' &&
             fallbackBody && fallbackBody !== primaryBody;
         var response;
+        function ensureContinuation() {
+            if (typeof shouldContinue === 'function' && shouldContinue() === false) {
+                throw _panelTurnAbortError();
+            }
+        }
 
+        ensureContinuation();
         try {
             response = await _fetch(endpoint, options);
+            ensureContinuation();
         } catch (primaryErr) {
             if (!canFallback || (primaryErr && primaryErr.name === 'AbortError')) {
                 throw primaryErr;
@@ -25844,6 +26254,7 @@
 
             // Network close / broken-pipe style failure before an HTTP
             // response: make one and only one provider-default retry.
+            ensureContinuation();
             var pipeRetryOptions = {};
             Object.keys(options || {}).forEach(function (key) {
                 pipeRetryOptions[key] = options[key];
@@ -25851,11 +26262,13 @@
             pipeRetryOptions.body = fallbackBody;
             try {
                 var pipeRetry = await _fetch(endpoint, pipeRetryOptions);
+                ensureContinuation();
                 if (pipeRetry && pipeRetry.ok) {
                     _openReasoningCircuit(activeModel, 'reasoning-pipe-fallback');
                     return pipeRetry;
                 }
-            } catch (_) {
+            } catch (pipeRetryErr) {
+                if (pipeRetryErr && pipeRetryErr.name === 'AbortError') throw pipeRetryErr;
                 // Preserve the primary failure; never recurse/retry again.
             }
             throw primaryErr;
@@ -25866,6 +26279,7 @@
         }
 
         // Schema/validation rejection: retry once without optional reasoning.
+        ensureContinuation();
         var retryOptions = {};
         Object.keys(options || {}).forEach(function (key) {
             retryOptions[key] = options[key];
@@ -25873,11 +26287,13 @@
         retryOptions.body = fallbackBody;
         try {
             var retried = await _fetch(endpoint, retryOptions);
+            ensureContinuation();
             if (retried && retried.ok) {
                 _openReasoningCircuit(activeModel, 'reasoning-http-fallback');
                 return retried;
             }
-        } catch (_) {
+        } catch (retryErr) {
+            if (retryErr && retryErr.name === 'AbortError') throw retryErr;
             // The base retry failed; return the original HTTP response so the
             // caller reports only its status, never either provider body.
         }
@@ -40013,6 +40429,16 @@
         }());
 
         privacyLink.addEventListener('click', function () { _openSheet(privacySheet); });
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document)
+            .addEventListener('ai-assistant-open-privacy', function (event) {
+                var detail = (event && event.detail) || {};
+                _openSheet(privacySheet, detail.opener || document.activeElement);
+            });
+        (typeof _assistantEvents !== 'undefined' ? _assistantEvents : document)
+            .addEventListener('ai-assistant-open-model-configuration', function (event) {
+                var detail = (event && event.detail) || {};
+                _openSheet(modelSheet, detail.opener || document.activeElement);
+            });
         if (termsLink && termsSheet) {
             termsLink.addEventListener('click', function () { _openSheet(termsSheet); });
         }
@@ -45339,7 +45765,9 @@
             _enhanceCodeBlocks(bubble);
             _makeSectionsCollapsible(bubble);
             _typesetMath(bubble);
-            _appendArtifactCards(bubble);
+            var bubbleActivity = turnMeta && turnMeta.activity ? turnMeta.activity : null;
+            var bubbleChangedFiles = _appendArtifactCards(bubble, bubbleActivity);
+            _appendChangedFileSummary(bubble, bubbleChangedFiles, bubbleActivity);
         } else if (role === 'user') {
             // A user turn owns the one-shot file provenance that was consumed by
             // this question. File contents are never reconstructed here; only
@@ -45664,6 +46092,694 @@
         }
     }
 
+    // ── Run 172: user-visible turn activity + latest generated-file ledger ────
+    //
+    // This surface intentionally exposes *observable work* and explicitly
+    // provider-supplied PUBLIC summaries only. It is not a chain-of-thought
+    // viewer and never asks a provider for hidden reasoning tokens. The
+    // timeline is useful because readers can see context preparation,
+    // network/tool activity, file revisions, verification, warnings and
+    // cancellation without conflating those events with private model state.
+    var _TURN_ACTIVITY_MAX_STEPS = 48;
+    var _TURN_ACTIVITY_LABEL_MAX_CHARS = 180;
+    var _TURN_ACTIVITY_DETAIL_MAX_CHARS = 2000;
+    var _TURN_ACTIVITY_FILE_MAX_BYTES = 256 * 1024;
+    var _TURN_ACTIVITY_FILE_TOTAL_MAX_BYTES = 1024 * 1024;
+    var _TURN_ACTIVITY_FILE_SESSION_TOTAL_MAX_BYTES = 8 * 1024 * 1024;
+    var _TURN_ACTIVITY_FILE_MAX_COUNT = 24;
+    var _turnActivitySeq = 0;
+    var _activeTurnActivity = null;
+    var _generatedArtifactLedger = Object.create(null);
+    var _generatedArtifactRefs = Object.create(null);
+
+    function _activityBoundedText(value, maxChars) {
+        if (typeof value !== 'string') return '';
+        var text = value.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '').trim();
+        return text.length > maxChars ? text.slice(0, maxChars) + '\u2026' : text;
+    }
+
+    function _activityElapsedLabel(ms) {
+        var seconds = Math.max(0, Number(ms) || 0) / 1000;
+        if (seconds < 1) return '<1s';
+        if (seconds < 60) return Math.round(seconds) + 's';
+        var minutes = Math.floor(seconds / 60);
+        var remain = Math.round(seconds - minutes * 60);
+        return minutes + 'm' + (remain ? ' ' + remain + 's' : '');
+    }
+
+    function _activitySummaryText(st) {
+        if (!st) return 'Working\u2026';
+        var elapsed = _activityElapsedLabel((st.endedAt || Date.now()) - st.startedAt);
+        if (st.state === 'running') return 'Working\u2026';
+        if (st.state === 'cancelled') return 'Stopped after ' + elapsed;
+        if (st.state === 'error') return 'Stopped with an error after ' + elapsed;
+        var bits = [];
+        if (st.commandCount) bits.push('Ran ' + st.commandCount + ' command' + (st.commandCount === 1 ? '' : 's'));
+        var fileCount = Object.keys(st.changedFileKeys || {}).length;
+        if (fileCount) bits.push((st.fileRevisionCount > fileCount ? 'updated ' : 'changed ') + fileCount + ' file' + (fileCount === 1 ? '' : 's'));
+        if (!bits.length) return 'Worked for ' + elapsed;
+        return bits.join(', ') + ' \u00b7 ' + elapsed;
+    }
+
+    function _activitySetOpen(st, open) {
+        if (!st || !st.root) return;
+        open = !!open;
+        st.open = open;
+        st.root.toggleAttribute('data-open', open);
+        if (st.toggle) st.toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (st.panel) st.panel.hidden = !open;
+    }
+
+    function _activityRefreshSummary(st) {
+        if (!st || !st.summary) return;
+        st.summary.textContent = _activitySummaryText(st);
+        if (st.root) st.root.setAttribute('data-state', st.state || 'running');
+        if (st.stop) st.stop.hidden = st.state !== 'running';
+    }
+
+    function _activityStepIndicator(state, kind) {
+        if (state === 'error') return '!';
+        if (state === 'done') return '\u2713';
+        if (kind === 'file') return '\u25a1';
+        if (kind === 'warning') return '!';
+        return '\u2022';
+    }
+
+    function _activityAddStep(st, spec) {
+        if (!st || !st.list || !spec || st.stepCount >= _TURN_ACTIVITY_MAX_STEPS) return null;
+        var label = _activityBoundedText(spec.label, _TURN_ACTIVITY_LABEL_MAX_CHARS);
+        if (!label) return null;
+        var id = _activityBoundedText(spec.id || '', 120) || ('step-' + (++st.localSeq));
+        var existing = st.steps[id];
+        var kind = ['plan','status','network','search','command','file','verify','warning','summary'].indexOf(spec.kind) >= 0 ? spec.kind : 'status';
+        var state = ['running','done','error','cancelled'].indexOf(spec.state) >= 0 ? spec.state : 'done';
+        var detail = _activityBoundedText(spec.detail || '', _TURN_ACTIVITY_DETAIL_MAX_CHARS);
+        if (existing) {
+            existing.label.textContent = label;
+            existing.indicator.textContent = _activityStepIndicator(state, kind);
+            existing.row.setAttribute('data-state', state);
+            existing.row.setAttribute('data-kind', kind);
+            if (existing.detail) {
+                existing.detail.textContent = detail;
+                existing.detail.hidden = !detail;
+            } else if (detail) {
+                var nextDetail = document.createElement('div');
+                nextDetail.className = 'ai-assistant-panel-activity-step-detail';
+                nextDetail.textContent = detail;
+                existing.row.querySelector('.ai-assistant-panel-activity-step-content').appendChild(nextDetail);
+                existing.detail = nextDetail;
+            }
+            return existing;
+        }
+        var row = document.createElement('div');
+        row.className = 'ai-assistant-panel-activity-step';
+        row.setAttribute('data-state', state);
+        row.setAttribute('data-kind', kind);
+        var indicator = document.createElement('span');
+        indicator.className = 'ai-assistant-panel-activity-step-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.textContent = _activityStepIndicator(state, kind);
+        var content = document.createElement('div');
+        content.className = 'ai-assistant-panel-activity-step-content';
+        var labelEl = document.createElement('span');
+        labelEl.className = 'ai-assistant-panel-activity-step-label';
+        labelEl.textContent = label;
+        content.appendChild(labelEl);
+        var detailEl = null;
+        if (detail) {
+            detailEl = document.createElement('div');
+            detailEl.className = 'ai-assistant-panel-activity-step-detail';
+            detailEl.textContent = detail;
+            content.appendChild(detailEl);
+        }
+        row.appendChild(indicator);
+        row.appendChild(content);
+        st.list.appendChild(row);
+        var rec = { row: row, indicator: indicator, label: labelEl, detail: detailEl };
+        st.steps[id] = rec;
+        st.stepCount += 1;
+        if (kind === 'command' && !spec._updateOnly) st.commandCount += 1;
+        return rec;
+    }
+
+    function _generatedArtifactSafePath(value) {
+        if (typeof value !== 'string') return '';
+        var path = value.trim();
+        if (!path || path.length > 512 || path.indexOf('\\') !== -1) return '';
+        // Reuse the attachment path boundary so generated previews reject the
+        // same traversal, control/bidi and per-component path hazards. Keep
+        // backslashes rejected rather than normalized: endpoint/file metadata
+        // must name one unambiguous relative path.
+        return _attachmentSafeRelativePath(path);
+    }
+
+    function _generatedArtifactSessionBytes(excludePath) {
+        var total = 0;
+        Object.keys(_generatedArtifactLedger).forEach(function (key) {
+            if (key === excludePath) return;
+            var entry = _generatedArtifactLedger[key];
+            if (_generatedArtifactIsAvailable(entry)) total += _utf8ByteLength(entry.content || '');
+        });
+        return total;
+    }
+
+    function _generatedArtifactMakeRetentionUnavailable(entry, reason) {
+        if (!_generatedArtifactIsAvailable(entry)) return 0;
+        var freed = _utf8ByteLength(entry.content || '');
+        entry.content = null;
+        entry.state = 'unavailable';
+        entry.reason = reason || 'Preview was evicted from this browser session.';
+        entry.sourceLabel = 'preview unavailable';
+        entry.retentionEvictedAt = Date.now();
+        _generatedArtifactRefreshRefs(entry.key);
+        return freed;
+    }
+
+    function _generatedArtifactEnsureSessionBudget(path, incomingBytes, st) {
+        var current = _generatedArtifactSessionBytes(path);
+        if (current + incomingBytes <= _TURN_ACTIVITY_FILE_SESSION_TOTAL_MAX_BYTES) return true;
+        var candidates = Object.keys(_generatedArtifactLedger).map(function (key) {
+            return _generatedArtifactLedger[key];
+        }).filter(function (entry) {
+            return entry && entry.path !== path && _generatedArtifactIsAvailable(entry);
+        }).sort(function (a, b) {
+            return (Number(a.updatedAt) || 0) - (Number(b.updatedAt) || 0);
+        });
+        var evicted = 0;
+        for (var i = 0; i < candidates.length && current + incomingBytes > _TURN_ACTIVITY_FILE_SESSION_TOTAL_MAX_BYTES; i++) {
+            current = Math.max(0, current - _generatedArtifactMakeRetentionUnavailable(
+                candidates[i], 'Preview was evicted to keep generated-file memory within the session limit.'));
+            evicted += 1;
+        }
+        if (evicted) {
+            _activityAddStep(st, {
+                id: 'generated-file-session-eviction-' + Date.now(), kind: 'warning', state: 'done',
+                label: 'Released older file preview' + (evicted === 1 ? '' : 's') + ' to stay within the session limit',
+                detail: evicted + ' older retained preview' + (evicted === 1 ? ' was' : 's were') + ' made unavailable; links will not fall back to stale bytes.'
+            });
+        }
+        return current + incomingBytes <= _TURN_ACTIVITY_FILE_SESSION_TOTAL_MAX_BYTES;
+    }
+
+    function _generatedArtifactIsAvailable(entry) {
+        return !!(entry && entry.state === 'available' && typeof entry.content === 'string');
+    }
+
+    function _generatedArtifactStateLabel(entry) {
+        if (!entry) return 'unavailable';
+        if (entry.state === 'removed') return 'removed';
+        if (entry.state === 'unavailable') return 'preview unavailable';
+        return entry.sourceLabel || 'latest preview';
+    }
+
+    function _generatedArtifactPreviewItem(entry) {
+        var lines = entry.content ? entry.content.split(/\r?\n/).length : 0;
+        return {
+            kind: 'text',
+            name: entry.path,
+            previewText: entry.content,
+            size: _utf8ByteLength(entry.content || ''),
+            lineCount: lines,
+            status: 'Latest revision r' + entry.revision + ' \u00b7 ' + _generatedArtifactStateLabel(entry),
+            badge: 'FILE',
+            sendEligible: false,
+            turnScoped: false
+        };
+    }
+
+    function _generatedArtifactOpenLatest(key, trigger) {
+        var entry = _generatedArtifactLedger[key];
+        if (!entry) {
+            showNotification('That generated file is no longer retained in this session.', true);
+            return;
+        }
+        if (!_generatedArtifactIsAvailable(entry)) {
+            showNotification('Latest revision r' + entry.revision + ' of ' + entry.path + ' is ' + _generatedArtifactStateLabel(entry) + (entry.reason ? ': ' + entry.reason : '.'), true);
+            return;
+        }
+        _openAttachmentPreview(_generatedArtifactPreviewItem(entry), trigger);
+    }
+
+    function _generatedArtifactDownloadLatest(key) {
+        var entry = _generatedArtifactLedger[key];
+        if (!_generatedArtifactIsAvailable(entry)) {
+            if (entry) showNotification('Latest revision r' + entry.revision + ' of ' + entry.path + ' cannot be downloaded because it is ' + _generatedArtifactStateLabel(entry) + '.', true);
+            return;
+        }
+        var filename = entry.path.split('/').pop() || 'generated-file.txt';
+        _downloadBlob(entry.content, entry.mediaType || 'text/plain', filename);
+    }
+
+    function _generatedArtifactRefreshRefs(key) {
+        var entry = _generatedArtifactLedger[key];
+        var refs = _generatedArtifactRefs[key] || [];
+        var kept = [];
+        refs.forEach(function (ref) {
+            if (!ref || !ref.el || !document.contains(ref.el)) return;
+            kept.push(ref);
+            var stateLabel = _generatedArtifactStateLabel(entry);
+            if (ref.meta) ref.meta.textContent = 'Latest r' + entry.revision + ' \u00b7 ' + stateLabel;
+            ref.el.toggleAttribute('data-artifact-unavailable', !_generatedArtifactIsAvailable(entry));
+            ref.el.setAttribute('aria-label', 'Open latest ' + entry.path + ', revision ' + entry.revision + ', ' + stateLabel);
+            ref.el.title = 'Latest revision r' + entry.revision + ' \u00b7 ' + stateLabel;
+        });
+        _generatedArtifactRefs[key] = kept;
+        document.querySelectorAll('[data-ai-artifact-download-key]').forEach(function (button) {
+            if (button.getAttribute('data-ai-artifact-download-key') !== key) return;
+            var ok = _generatedArtifactIsAvailable(entry);
+            button.toggleAttribute('data-artifact-unavailable', !ok);
+            button.setAttribute('aria-label', (ok ? 'Download latest ' : 'Latest revision unavailable for ') + entry.path);
+            button.title = ok ? ('Download latest revision r' + entry.revision) : ('Latest r' + entry.revision + ' is ' + stateLabel);
+        });
+    }
+
+    function _generatedArtifactBindLatest(key, el, meta) {
+        if (!key || !el) return;
+        if (!_generatedArtifactRefs[key]) _generatedArtifactRefs[key] = [];
+        _generatedArtifactRefs[key].push({ el: el, meta: meta || null });
+        el.setAttribute('data-ai-artifact-key', key);
+        el.addEventListener('click', function () { _generatedArtifactOpenLatest(key, el); });
+        _generatedArtifactRefreshRefs(key);
+    }
+
+    function _activityAddArtifactStep(st, entry, verb) {
+        if (!st || !st.list || !entry) return;
+        var row = document.createElement('div');
+        row.className = 'ai-assistant-panel-activity-step ai-assistant-panel-activity-file-step';
+        row.setAttribute('data-state', entry.state === 'available' ? 'done' : (entry.state === 'removed' ? 'cancelled' : 'error'));
+        row.setAttribute('data-kind', 'file');
+        var indicator = document.createElement('span');
+        indicator.className = 'ai-assistant-panel-activity-step-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.textContent = entry.state === 'available' ? '\u25a1' : '!';
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'ai-assistant-panel-activity-file-link';
+        var label = document.createElement('span');
+        label.className = 'ai-assistant-panel-activity-step-label';
+        label.textContent = (verb || 'Updated file') + ': ' + entry.path;
+        var meta = document.createElement('span');
+        meta.className = 'ai-assistant-panel-activity-file-meta';
+        button.appendChild(label);
+        button.appendChild(meta);
+        row.appendChild(indicator);
+        row.appendChild(button);
+        if (st.stepCount < _TURN_ACTIVITY_MAX_STEPS) {
+            st.list.appendChild(row);
+            st.stepCount += 1;
+            _generatedArtifactBindLatest(entry.key, button, meta);
+        }
+    }
+
+    function _generatedArtifactPublishState(path, st, opts) {
+        opts = opts || {};
+        var old = _generatedArtifactLedger[path];
+        var state = opts.state === 'removed' ? 'removed' : 'unavailable';
+        var reason = _activityBoundedText(opts.reason || (state === 'removed' ? 'The latest revision was removed.' : 'The latest revision could not be retained for preview.'), 300);
+        var entry = {
+            key: path,
+            path: path,
+            content: null,
+            mediaType: _activityBoundedText(opts.mediaType || (old && old.mediaType) || 'text/plain', 120) || 'text/plain',
+            language: _activityBoundedText(opts.language || (old && old.language) || '', 40),
+            revision: old ? old.revision + 1 : 1,
+            state: state,
+            reason: reason,
+            source: opts.source === 'endpoint' ? 'endpoint' : 'answer',
+            sourceLabel: state === 'removed' ? 'removed' : 'preview unavailable',
+            updatedAt: Date.now()
+        };
+        _generatedArtifactLedger[path] = entry;
+        if (st) {
+            var priorBytes = st.fileBytesByKey[path] || 0;
+            st.filePreviewBytes = Math.max(0, st.filePreviewBytes - priorBytes);
+            st.fileBytesByKey[path] = 0;
+            st.changedFileKeys[path] = true;
+            st.fileRevisionCount += 1;
+            _activityAddArtifactStep(st, entry, state === 'removed' ? 'Removed file' : 'Latest preview unavailable');
+        }
+        _generatedArtifactRefreshRefs(path);
+        return entry;
+    }
+
+    function _registerGeneratedArtifact(spec, st) {
+        if (_cfg().panelGeneratedFilePreview === false || !spec) return null;
+        var path = _generatedArtifactSafePath(spec.path);
+        if (!path) return null;
+        var operation = _activityBoundedText(spec.operation || spec.status || '', 40).toLowerCase();
+        if (operation === 'delete' || operation === 'deleted' || operation === 'remove' || operation === 'removed') {
+            return _generatedArtifactPublishState(path, st, {
+                state: 'removed', source: spec.source, mediaType: spec.mediaType, language: spec.language,
+                reason: 'The latest revision was reported as removed.'
+            });
+        }
+        if (typeof spec.content !== 'string') {
+            return _generatedArtifactPublishState(path, st, {
+                state: 'unavailable', source: spec.source, mediaType: spec.mediaType, language: spec.language,
+                reason: 'The latest revision did not include previewable text content.'
+            });
+        }
+        var content = spec.content;
+        var bytes = _utf8ByteLength(content);
+        if (bytes > _TURN_ACTIVITY_FILE_MAX_BYTES) {
+            _activityAddStep(st, { kind: 'warning', state: 'done', label: 'Latest file preview exceeds limit', detail: path + ' exceeds the 256 KiB per-file preview limit; stale earlier content was invalidated.' });
+            return _generatedArtifactPublishState(path, st, {
+                state: 'unavailable', source: spec.source, mediaType: spec.mediaType, language: spec.language,
+                reason: 'Preview exceeds the 256 KiB per-file limit.'
+            });
+        }
+        if (st) {
+            var oldBytesForTurn = st.fileBytesByKey[path] || 0;
+            var prospective = st.filePreviewBytes - oldBytesForTurn + bytes;
+            var newPathForTurn = !st.changedFileKeys[path];
+            if ((newPathForTurn && Object.keys(st.changedFileKeys).length >= _TURN_ACTIVITY_FILE_MAX_COUNT) ||
+                    prospective > _TURN_ACTIVITY_FILE_TOTAL_MAX_BYTES) {
+                _activityAddStep(st, { kind: 'warning', state: 'done', label: 'Generated-file preview limit reached', detail: path + ' could not be retained; stale earlier content was invalidated.' });
+                // If this path already had a retained revision, the rejected new
+                // revision becomes authoritative unavailable state. Never fall
+                // back to stale bytes and call them "latest".
+                if (_generatedArtifactLedger[path]) {
+                    return _generatedArtifactPublishState(path, st, {
+                        state: 'unavailable', source: spec.source, mediaType: spec.mediaType, language: spec.language,
+                        reason: 'The per-turn generated-file preview budget was exceeded.'
+                    });
+                }
+                return null;
+            }
+            st.filePreviewBytes = prospective;
+            st.fileBytesByKey[path] = bytes;
+        }
+        if (!_generatedArtifactEnsureSessionBudget(path, bytes, st)) {
+            _activityAddStep(st, {
+                kind: 'warning', state: 'done', label: 'Generated-file session preview limit reached',
+                detail: path + ' could not be retained; the latest state remains authoritative and stale earlier bytes were discarded.'
+            });
+            return _generatedArtifactPublishState(path, st, {
+                state: 'unavailable', source: spec.source, mediaType: spec.mediaType, language: spec.language,
+                reason: 'The session-wide generated-file preview budget was exceeded.'
+            });
+        }
+        var old = _generatedArtifactLedger[path];
+        var mediaType = _activityBoundedText(spec.mediaType || (old && old.mediaType) || 'text/plain', 120) || 'text/plain';
+        if (_generatedArtifactIsAvailable(old) && old.content === content && old.mediaType === mediaType) {
+            if (st) st.changedFileKeys[path] = true;
+            return old;
+        }
+        var entry = {
+            key: path,
+            path: path,
+            content: content,
+            mediaType: mediaType,
+            language: _activityBoundedText(spec.language || '', 40),
+            revision: old ? old.revision + 1 : 1,
+            state: 'available',
+            reason: '',
+            source: spec.source === 'endpoint' ? 'endpoint' : 'answer',
+            sourceLabel: spec.source === 'endpoint' ? 'endpoint-reported preview' : 'answer-generated preview',
+            updatedAt: Date.now()
+        };
+        _generatedArtifactLedger[path] = entry;
+        if (st) {
+            st.changedFileKeys[path] = true;
+            st.fileRevisionCount += 1;
+            _activityAddArtifactStep(st, entry, old ? 'Updated file preview' : 'Created file preview');
+        }
+        _generatedArtifactRefreshRefs(path);
+        return entry;
+    }
+
+    function _activityIngestArtifactEvent(st, payload) {
+        if (!st || !payload || typeof payload !== 'object' || Array.isArray(payload)) return;
+        _registerGeneratedArtifact({
+            path: payload.path,
+            content: payload.content,
+            mediaType: payload.media_type || payload.mediaType || 'text/plain',
+            language: payload.language || '',
+            operation: payload.operation || payload.status || '',
+            source: 'endpoint'
+        }, st);
+    }
+
+    function _activityIngestWireEvent(st, payload) {
+        if (!st || !payload || typeof payload !== 'object' || Array.isArray(payload)) return;
+        var kind = _activityBoundedText(payload.kind || 'status', 40).toLowerCase();
+        // Hidden chain-of-thought/reasoning tokens are not a valid activity
+        // kind. A proxy that wants to show a user-facing explanation must send
+        // an explicit public `summary` event instead.
+        if (kind === 'thinking' || kind === 'reasoning' || kind === 'chain_of_thought') kind = 'summary';
+
+        // Endpoint-supplied activity is deliberately public UI metadata, not a
+        // privileged debug channel. Run the same conservative secret-pattern
+        // redactor used by contribution/privacy surfaces before anything is
+        // inserted into the DOM. Never echo the matched value itself.
+        var publicLabel = _redactSecrets(String(payload.label || payload.summary || ''));
+        var publicDetail = _redactSecrets(String(payload.detail || ''));
+        if ((publicLabel.findings.length || publicDetail.findings.length) && !st.publicEventRedactionNoted) {
+            st.publicEventRedactionNoted = true;
+            _activityAddStep(st, {
+                id: 'public-activity-redaction', kind: 'warning', state: 'done',
+                label: 'Sensitive token pattern redacted from activity metadata'
+            });
+        }
+        _activityAddStep(st, {
+            id: payload.id,
+            kind: kind,
+            state: payload.state,
+            label: publicLabel.text,
+            detail: publicDetail.text
+        });
+        _activityRefreshSummary(st);
+    }
+
+    function _activityIngestResponseMetadata(st, data) {
+        if (!st || !data || typeof data !== 'object') return;
+        var steps = Array.isArray(data.activity) ? data.activity.slice(0, _TURN_ACTIVITY_MAX_STEPS) : [];
+        steps.forEach(function (row) { _activityIngestWireEvent(st, row); });
+        var files = Array.isArray(data.artifacts) ? data.artifacts.slice(0, _TURN_ACTIVITY_FILE_MAX_COUNT) : [];
+        files.forEach(function (row) { _activityIngestArtifactEvent(st, row); });
+    }
+
+    function _startTurnActivity(body, opts) {
+        opts = opts || {};
+        var st = {
+            id: 'activity-' + (++_turnActivitySeq),
+            startedAt: Date.now(), endedAt: null, state: 'running', open: true,
+            steps: Object.create(null), stepCount: 0, localSeq: 0, commandCount: 0,
+            changedFileKeys: Object.create(null), fileRevisionCount: 0,
+            filePreviewBytes: 0, fileBytesByKey: Object.create(null)
+        };
+        // Keep the turn state even when the visualization is disabled. File
+        // budgets and cancellation are security/resource invariants, not UI
+        // features; disabling the timeline must not disable those guards.
+        if (!body || _cfg().panelActivityTimeline === false) {
+            _activeTurnActivity = st;
+            return st;
+        }
+        var root = document.createElement('section');
+        root.className = 'ai-assistant-panel-activity';
+        root.setAttribute('data-state', 'running');
+        root.setAttribute('data-open', 'true');
+        root.setAttribute('aria-label', 'Assistant activity');
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-activity-head';
+        var toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'ai-assistant-panel-activity-toggle';
+        toggle.setAttribute('aria-expanded', 'true');
+        var icon = document.createElement('span');
+        icon.className = 'ai-assistant-panel-activity-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = ICONS.pulse;
+        var summary = document.createElement('span');
+        summary.className = 'ai-assistant-panel-activity-summary';
+        summary.textContent = 'Working\u2026';
+        var caret = document.createElement('span');
+        caret.className = 'ai-assistant-panel-activity-caret';
+        caret.setAttribute('aria-hidden', 'true');
+        caret.innerHTML = ICONS.chevronDown;
+        toggle.appendChild(icon); toggle.appendChild(summary); toggle.appendChild(caret);
+        var stop = document.createElement('button');
+        stop.type = 'button';
+        stop.className = 'ai-assistant-panel-activity-stop';
+        stop.textContent = 'Stop';
+        stop.setAttribute('aria-label', 'Stop current assistant response');
+        head.appendChild(toggle); head.appendChild(stop);
+        var panel = document.createElement('div');
+        panel.className = 'ai-assistant-panel-activity-panel';
+        var note = document.createElement('p');
+        note.className = 'ai-assistant-panel-activity-note';
+        note.textContent = 'Shows observable request, tool, verification, and file activity plus endpoint-supplied public summaries. Hidden model reasoning is never displayed.';
+        var list = document.createElement('div');
+        list.className = 'ai-assistant-panel-activity-list';
+        panel.appendChild(note); panel.appendChild(list);
+        root.appendChild(head); root.appendChild(panel);
+        st.root = root; st.toggle = toggle; st.summary = summary; st.stop = stop; st.panel = panel; st.list = list;
+        toggle.addEventListener('click', function () { _activitySetOpen(st, !st.open); });
+        stop.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _stopActivePanelResponse();
+        });
+        body.appendChild(root);
+        var contextBits = [];
+        if (opts.resourceCount) contextBits.push(opts.resourceCount + ' selected resource' + (opts.resourceCount === 1 ? '' : 's'));
+        if (opts.hasPageContext) contextBits.push('visible documentation context');
+        _activityAddStep(st, {
+            id: 'context', kind: 'status', state: 'done', label: 'Prepared request context',
+            detail: contextBits.length ? contextBits.join(' \u00b7 ') : 'No additional file/page context was attached.'
+        });
+        var modelLabel = _activityBoundedText(opts.modelLabel || 'selected model', 120) || 'selected model';
+        _activityAddStep(st, { id: 'model', kind: 'network', state: 'running', label: 'Contacting ' + modelLabel });
+        _activeTurnActivity = st;
+        body.scrollTop = body.scrollHeight;
+        return st;
+    }
+
+    function _activityResponseStarted(st) {
+        if (!st || st.state !== 'running') return;
+        _activityAddStep(st, { id: 'model', kind: 'network', state: 'done', label: 'Connected to selected model' });
+        _activityAddStep(st, { id: 'response', kind: 'status', state: 'running', label: 'Receiving response' });
+    }
+
+    function _activityResponseCompleted(st) {
+        if (!st || st.state !== 'running') return;
+        _activityAddStep(st, { id: 'response', kind: 'status', state: 'done', label: 'Response received' });
+    }
+
+    function _activityFinish(st, state) {
+        if (!st || st.state !== 'running') return;
+        st.state = state || 'done';
+        st.endedAt = Date.now();
+        if (st.state === 'error') {
+            _activityAddStep(st, { id: 'request-error', kind: 'warning', state: 'error', label: 'Request did not complete' });
+        }
+        _activityRefreshSummary(st);
+        if (_cfg().panelActivityAutoCollapse !== false && st.state === 'done') _activitySetOpen(st, false);
+        if (_activeTurnActivity === st) _activeTurnActivity = null;
+    }
+
+    function _parseCodeFenceInfo(info) {
+        info = typeof info === 'string' ? info.trim() : '';
+        var lang = '';
+        var langMatch = info.match(/^([A-Za-z0-9_+.-]+)/);
+        if (langMatch) lang = langMatch[1];
+        var path = '';
+        var fileMatch = info.match(/(?:^|\s)(?:file|filename|path)=(?:"([^"]+)"|'([^']+)'|([^\s]+))/i);
+        if (fileMatch) path = _generatedArtifactSafePath(fileMatch[1] || fileMatch[2] || fileMatch[3] || '');
+        return { lang: lang, path: path };
+    }
+
+    function _syncExplicitCodeArtifacts(root, st) {
+        var keys = [];
+        if (!root || _cfg().panelGeneratedFilePreview === false) return keys;
+        root.querySelectorAll('.ai-md-pre[data-artifact-path]').forEach(function (pre) {
+            var path = _generatedArtifactSafePath(pre.getAttribute('data-artifact-path') || '');
+            var code = pre.querySelector('code');
+            if (!path || !code) return;
+            var entry = _registerGeneratedArtifact({
+                path: path,
+                content: code.textContent,
+                language: pre.getAttribute('data-lang') || '',
+                mediaType: 'text/plain',
+                source: 'answer'
+            }, st);
+            if (entry && keys.indexOf(entry.key) === -1) keys.push(entry.key);
+        });
+        return keys;
+    }
+
+    function _appendChangedFileSummary(root, keys, st) {
+        if (!root || _cfg().panelGeneratedFilePreview === false) return;
+        if (root.querySelector('.ai-assistant-panel-changed-files')) return;
+        var combined = [];
+        (keys || []).forEach(function (key) { if (combined.indexOf(key) === -1) combined.push(key); });
+        if (st) Object.keys(st.changedFileKeys || {}).forEach(function (key) { if (combined.indexOf(key) === -1) combined.push(key); });
+        combined = combined.filter(function (key) { return !!_generatedArtifactLedger[key]; });
+        if (!combined.length) return;
+        var section = document.createElement('section');
+        section.className = 'ai-assistant-panel-changed-files';
+        section.setAttribute('aria-label', 'Changed files');
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-changed-files-head';
+        var title = document.createElement('strong');
+        title.textContent = 'Changed files';
+        var hint = document.createElement('span');
+        hint.textContent = combined.length + ' \u00b7 every link opens the latest revision';
+        head.appendChild(title); head.appendChild(hint);
+        section.appendChild(head);
+        var list = document.createElement('div');
+        list.className = 'ai-assistant-panel-changed-files-list';
+        combined.forEach(function (key) {
+            var entry = _generatedArtifactLedger[key];
+            var row = document.createElement('div');
+            row.className = 'ai-assistant-panel-changed-file';
+            var preview = document.createElement('button');
+            preview.type = 'button';
+            preview.className = 'ai-assistant-panel-changed-file-preview';
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-panel-changed-file-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.innerHTML = ICONS.terms;
+            var copy = document.createElement('span');
+            copy.className = 'ai-assistant-panel-changed-file-copy';
+            var name = document.createElement('span');
+            name.className = 'ai-assistant-panel-changed-file-name';
+            name.textContent = entry.path;
+            var meta = document.createElement('span');
+            meta.className = 'ai-assistant-panel-changed-file-meta';
+            copy.appendChild(name); copy.appendChild(meta);
+            var open = document.createElement('span');
+            open.className = 'ai-assistant-panel-changed-file-open';
+            open.textContent = 'Preview';
+            preview.appendChild(icon); preview.appendChild(copy); preview.appendChild(open);
+            _generatedArtifactBindLatest(key, preview, meta);
+            var download = document.createElement('button');
+            download.type = 'button';
+            download.className = 'ai-assistant-panel-changed-file-download';
+            download.textContent = 'Download';
+            download.setAttribute('data-ai-artifact-download-key', key);
+            download.setAttribute('aria-label', 'Download latest ' + entry.path);
+            download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
+            row.appendChild(preview); row.appendChild(download);
+            _generatedArtifactRefreshRefs(key);
+            list.appendChild(row);
+        });
+        section.appendChild(list);
+        if (combined.length > 1) {
+            var all = document.createElement('button');
+            all.type = 'button';
+            all.className = 'ai-assistant-panel-changed-files-download-all';
+            all.textContent = 'Download all latest files';
+            all.addEventListener('click', function () {
+                var unavailable = 0;
+                var aliases = Object.create(null);
+                var aliasCollision = '';
+                var files = combined.map(function (key) {
+                    var entry = _generatedArtifactLedger[key];
+                    if (!_generatedArtifactIsAvailable(entry)) { unavailable += 1; return null; }
+                    var alias = _attachmentPathAlias(entry.path);
+                    if (!alias || (aliases[alias] && aliases[alias] !== entry.path)) {
+                        aliasCollision = entry.path;
+                        return null;
+                    }
+                    aliases[alias] = entry.path;
+                    return { name: entry.path, content: entry.content };
+                }).filter(Boolean);
+                if (aliasCollision) {
+                    showNotification('Download all blocked because changed-file paths collide on a portable filesystem. Download the files individually instead.', true);
+                    return;
+                }
+                if (!files.length) {
+                    showNotification('No latest changed-file revisions are currently previewable/downloadable.', true);
+                    return;
+                }
+                if (unavailable) showNotification(unavailable + ' unavailable latest file revision' + (unavailable === 1 ? ' was' : 's were') + ' skipped.', false);
+                _downloadBlob(_buildZipBlob(files), 'application/zip', 'changed-files-' + _isoFileStamp() + '.zip');
+            });
+            section.appendChild(all);
+        }
+        root.appendChild(section);
+    }
+
     // ── Typing indicator ──────────────────────────────────────────────────────
 
     /**
@@ -45721,11 +46837,17 @@
         var body = document.getElementById('ai-assistant-panel-body');
         if (!body) return;
 
-        // Remove welcome + suggestions on first real message.
+        // Remove onboarding UI on the first real message.  Page-help used to
+        // survive this transition, leaving "Explain this page" above an active
+        // transcript; it is onboarding, not conversation state.
+        var firstRealMessage = _transcript.length === 0;
         var welcome = body.querySelector('.ai-assistant-panel-welcome');
         if (welcome) welcome.remove();
         var suggestions = body.querySelector('.ai-assistant-panel-suggestions');
         if (suggestions) suggestions.remove();
+        var pageHelp = body.querySelector('.ai-assistant-pagehelp');
+        if (pageHelp) pageHelp.remove();
+        if (firstRealMessage) _ensureFirstMessagePrivacyBanner(body);
 
         // Capture active model for assistant messages.
         // Each transcript entry carries the model that generated it — enables
@@ -45883,8 +47005,25 @@
         // the pending fetch() to reject with AbortError — caught in the
         // catch block below and silently ignored (no error bubble shown for
         // intentional cancellations).
-        if (_fetchAbortController) {
-            _fetchAbortController.abort();
+        if (_panelActiveRequestToken) _panelActiveRequestToken.cancelled = true;
+        if (_panelActiveStreamOwner) {
+            try {
+                var supersedeCancel = _panelActiveStreamOwner.reader && _panelActiveStreamOwner.reader.cancel
+                    ? _panelActiveStreamOwner.reader.cancel('AI_REQUEST_SUPERSEDED') : null;
+                if (supersedeCancel && typeof supersedeCancel.catch === 'function') supersedeCancel.catch(function () {});
+            } catch (_) {}
+            _panelActiveStreamOwner = null;
+        }
+        if (_fetchAbortController || (_activeTurnActivity && _activeTurnActivity.state === 'running')) {
+            if (_activeTurnActivity && _activeTurnActivity.state === 'running') {
+                _activeTurnActivity.cancelReason = 'superseded';
+                _activityAddStep(_activeTurnActivity, {
+                    id: 'superseded', kind: 'warning', state: 'done',
+                    label: 'Stopped because a newer request started'
+                });
+                _activityFinish(_activeTurnActivity, 'cancelled');
+            }
+            if (_fetchAbortController) { try { _fetchAbortController.abort(); } catch (_) {} }
         }
         _fetchAbortController = (window.AI_COMPAT && typeof window.AI_COMPAT.createAbortController === 'function')
             ? window.AI_COMPAT.createAbortController()
@@ -45892,6 +47031,8 @@
         // Capture identity for this submit.  A later submit may replace the
         // module-level controller before this request reaches its finally block.
         var requestController = _fetchAbortController;
+        var requestToken = { id: ++_panelRequestTokenSeq, cancelled: false };
+        _panelActiveRequestToken = requestToken;
 
         // Stop speech if active
         _stopSpeechRecognition();
@@ -45900,6 +47041,14 @@
 
         _appendPanelMessage(questionText, 'user', requestQuestion, {
             attachments: turnAttachments
+        });
+        var body = document.getElementById('ai-assistant-panel-body');
+        var activityModel = _getActiveModel(cfg);
+        var turnActivity = _startTurnActivity(body, {
+            resourceCount: Array.isArray(turnAttachments) ? turnAttachments.length : 0,
+            hasPageContext: !!(preparedPageContext && typeof preparedPageContext.text === 'string' && preparedPageContext.text.trim()),
+            modelLabel: activityModel && (activityModel.label || activityModel.model || activityModel.id)
+                ? (activityModel.label || activityModel.model || activityModel.id) : 'selected model'
         });
         input.value = '';
         // Every selected context source is one-turn transport state. Current-page
@@ -45911,32 +47060,40 @@
         input.disabled = true;
         if (sendBtn) sendBtn.disabled = true;
 
-        // ── Typing indicator ──────────────────────────────────────────────
-        var body = document.getElementById('ai-assistant-panel-body');
-        if (body) { _showTypingIndicator(body); }
+        // ── Activity timeline / legacy typing fallback ───────────────────
+        // Run 172 replaces the opaque three-dot wait state with an expandable,
+        // reader-auditable activity surface. Sites can disable it and retain the
+        // pre-existing typing dots with zero request-protocol change.
+        if ((!turnActivity || !turnActivity.root) && body) { _showTypingIndicator(body); }
 
         try {
+            _panelActiveRequestController = requestController;
             if (cfg.panelApiEnabled) {
-                _panelActiveRequestController = requestController;
-                await _panelApiCall(requestQuestion, cfg, preparedPageContext, rawResources);
+                await _panelApiCall(requestQuestion, cfg, preparedPageContext, rawResources, turnActivity, requestController, requestToken);
             } else {
+                _activityResponseStarted(turnActivity);
                 var localActiveModel = _getActiveModel(cfg);
                 if (_isBuiltInStubModel(localActiveModel)) {
                     await _panelLocalStubReply(
-                        requestQuestion, cfg, preparedPageContext, localActiveModel
+                        requestQuestion, cfg, preparedPageContext, localActiveModel, turnActivity, requestController, requestToken
                     );
                 } else {
-                    await _panelStubReply(requestQuestion);
+                    await _panelStubReply(requestQuestion, turnActivity, requestController, requestToken);
                 }
             }
+            _activityResponseCompleted(turnActivity);
+            _activityFinish(turnActivity, 'done');
         } catch (err) {
             // AbortError is thrown when _fetchAbortController.abort() is
             // called (i.e. the user submitted a new question before this
             // one completed).  Do NOT show an error bubble for intentional
             // cancellations — the new question's handler will show its own reply.
             if (err && err.name === 'AbortError') {
-                // Intentional cancellation — swallow silently.
+                // Intentional cancellation — preserve the activity row so the
+                // reader can see that work stopped rather than silently vanishing.
+                _activityFinish(turnActivity, 'cancelled');
             } else {
+                _activityFinish(turnActivity, 'error');
                 _log('error', '[ai-assistant][request] AI request failed.', err);
                 _appendPanelMessage(
                     _requestFailureDisplayText(err),
@@ -45944,15 +47101,22 @@
                 );
             }
         } finally {
+            var stillOwnsPanelRequest = _panelActiveRequestToken === requestToken;
             if (_panelActiveRequestController === requestController) {
                 _panelActiveRequestController = null;
             }
-            if (body) _hideTypingIndicator(body);
-            input.disabled = false;
-            if (sendBtn) sendBtn.disabled = _attachmentStagePending > 0;
-            _updateAttachmentStageUi();
-            _updateSendBtnState();
-            input.focus();
+            if (stillOwnsPanelRequest) _panelActiveRequestToken = null;
+            if (_fetchAbortController === requestController) _fetchAbortController = null;
+            // A superseded/cleared predecessor must never unlock, focus, or
+            // remove the typing state belonging to a newer turn.
+            if (stillOwnsPanelRequest) {
+                if (body) _hideTypingIndicator(body);
+                input.disabled = false;
+                if (sendBtn) sendBtn.disabled = _attachmentStagePending > 0;
+                _updateAttachmentStageUi();
+                _updateSendBtnState();
+                input.focus();
+            }
         }
     }
 
@@ -45979,7 +47143,7 @@
      *       endpoint = "https://hf-proxy.<subdomain>.workers.dev"
      *       provider = "huggingface" | "cloudflare"
      *
-     *   Option C — local dev_proxy.py (development only, never deploy):
+     *   Option C — local maintenance dev proxy (development only, never deploy):
      *       endpoint = "http://localhost:8787/v1/chat/completions"
      *       provider = "huggingface"
      *
@@ -46072,7 +47236,7 @@
         return form;
     }
 
-    async function _panelApiCall(question, cfg, preparedPageContext, rawResources) {
+    async function _panelApiCall(question, cfg, preparedPageContext, rawResources, activity, requestController, requestToken) {
         // ── 1. Resolve active model and endpoint ──────────────────────────
         var activeModel = _getActiveModel(cfg);
         var endpoint = '';
@@ -46108,7 +47272,7 @@
         // a proxy exists they deliberately travel through it; without one they
         // fall back to the browser-local deterministic responder.
         if (!endpoint && _isBuiltInStubModel(activeModel)) {
-            await _panelLocalStubReply(question, cfg, preparedPageContext, activeModel);
+            await _panelLocalStubReply(question, cfg, preparedPageContext, activeModel, activity, requestController, requestToken);
             return;
         }
         if (!endpoint) {
@@ -46121,7 +47285,8 @@
                 '       endpoint: "https://<org>-ai-proxy.hf.space/v1/chat/completions"\n' +
                 '  B) Cloudflare Worker (100k req/day free):\n' +
                 '       endpoint: "https://hf-proxy.<subdomain>.workers.dev"\n' +
-                '  C) Local dev only — run dev_proxy.py on port 8787:\n' +
+                '  C) Local dev only — run the maintenance dev proxy on port 8787:\n' +
+                '       python maintenances/_externals/_sphinx_ext/_sphinx_ai_assistant/_maintenance/tools/dev_proxy.py\n' +
                 '       endpoint: "http://localhost:8787/v1/chat/completions"\n\n' +
                 'Set ai_assistant_panel_api_url (single-model) or add an\n' +
                 '"endpoint" key to each ai_assistant_panel_api_models entry.'
@@ -46136,6 +47301,7 @@
         // `handleAIPanelSubmit` prepares this before transcript/network mutation.
         // Keep a defensive fallback for direct/internal callers of _panelApiCall.
         var prepared = preparedPageContext || await _privacyPrepareDocumentationContext(cfg);
+        _panelTurnEnsureActive(activity, requestController, requestToken);
         var requestResources = Array.isArray(rawResources) ? rawResources : [];
 
         // FIX Issue 7: configurable token and context limits.
@@ -46168,6 +47334,11 @@
             'sections, and LaTeX (\\(...\\) / \\[...\\]) renders as math. If ' +
             'asked about downloading, copying, or reading a long answer, ' +
             'mention these rather than saying it isn\'t possible.';
+        if (cfg.panelGeneratedFilePreview !== false) {
+            panelCapabilities += ' When returning a complete file, you may annotate its fenced code block with ' +
+                '`file=relative/path` after the language (for example ```python file=src/example.py). ' +
+                'That creates a browser preview/download entry; it does not mean the file was applied to a repository.';
+        }
         // Credentials and invisible controls were neutralised before the
         // reader's preflight decision.  Announce automatic page-secret redaction
         // here so the existing user-visible behaviour is preserved.
@@ -46208,12 +47379,14 @@
         // Security authority is negotiated, never guessed from the provider
         // label or URL. Bundled proxies advertise this contract from /health.
         var proxyContract = await _chatContractDiscover(endpoint);
+        _panelTurnEnsureActive(activity, requestController, requestToken);
         var useStructuredProxy = (proxyContract === _CHAT_CONTRACT_V1);
         if (requestResources.length && !useStructuredProxy) {
             throw new Error('AI_RESOURCE_PROXY_REQUIRED');
         }
         if (requestResources.length) {
             var resourceCaps = await _resourceTransportDiscover(endpoint, modelName);
+            _panelTurnEnsureActive(activity, requestController, requestToken);
             if (!resourceCaps || resourceCaps.multipart !== true) {
                 throw new Error('AI_RESOURCE_CAPABILITIES_UNAVAILABLE');
             }
@@ -46388,12 +47561,13 @@
             }
             await _panelApiCallStreaming(
                 endpoint, JSON.stringify(sb), provider,
-                streamFallbackBody, activeModel);
+                streamFallbackBody, activeModel, activity, requestController, requestToken);
             return;
         }
 
         // ── 6. Non-streaming path ─────────────────────────────────────────
         var response;
+        _panelTurnEnsureActive(activity, requestController, requestToken);
         if (requestResources.length) {
             // Browser FormData owns the multipart boundary. Never set Content-Type
             // manually and never base64 raw resources into the JSON metadata.
@@ -46402,41 +47576,58 @@
             response = await _fetch(endpoint, {
                 method: 'POST',
                 body: resourceForm,
-                signal: _fetchAbortController ? _fetchAbortController.signal : undefined
+                signal: requestController ? requestController.signal : undefined
             });
         } else {
             response = await _fetchWithReasoningFallback(endpoint, {
                 method:  'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body:    body,
-                signal:  _fetchAbortController ? _fetchAbortController.signal : undefined,
-            }, reasoningFallbackBody, activeModel);
+                signal:  requestController ? requestController.signal : undefined,
+            }, reasoningFallbackBody, activeModel, function () {
+                return !(requestToken && (requestToken.cancelled || _panelActiveRequestToken !== requestToken));
+            });
         }
+
+        _panelTurnEnsureActive(activity, requestController, requestToken);
 
         if (!response.ok) {
             // Read only a tiny proxy-owned diagnostic envelope. Provider bodies
             // are never trusted or echoed; unknown shapes collapse to status.
-            throw await _responseFailureError(response);
+            var responseError = await _responseFailureError(response);
+            _panelTurnEnsureActive(activity, requestController, requestToken);
+            throw responseError;
         }
 
+        _activityResponseStarted(activity);
         var data = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
+        _panelTurnEnsureActive(activity, requestController, requestToken);
+        _activityIngestResponseMetadata(activity, data);
         var reply = _extractPanelReply(data, isAnthropic);
         reply = _requireStubReplyCompatibility(reply, data, activeModel);
-        _appendPanelMessage(reply || '(no response)', 'assistant');
+        _appendPanelMessage(reply || '(no response)', 'assistant', undefined, { activity: activity });
+        _activityResponseCompleted(activity);
     }
 
     async function _panelApiCallStreaming(
-            endpoint, bodyStr, provider, fallbackBodyStr, activeModel) {
+            endpoint, bodyStr, provider, fallbackBodyStr, activeModel, activity, requestController, requestToken) {
         var response = await _fetchWithReasoningFallback(endpoint, {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    bodyStr,
-            signal:  _fetchAbortController ? _fetchAbortController.signal : undefined,
-        }, fallbackBodyStr, activeModel);
+            signal:  requestController ? requestController.signal : undefined,
+        }, fallbackBodyStr, activeModel, function () {
+            return !(requestToken && (requestToken.cancelled || _panelActiveRequestToken !== requestToken));
+        });
+
+        _panelTurnEnsureActive(activity, requestController, requestToken);
 
         if (!response.ok) {
-            throw await _responseFailureError(response);
+            var streamResponseError = await _responseFailureError(response);
+            _panelTurnEnsureActive(activity, requestController, requestToken);
+            throw streamResponseError;
         }
+        _activityResponseStarted(activity);
 
         // ── Graceful fallback: proxy returned JSON instead of SSE ─────────
         // Some hosting platforms (certain PaaS providers, ZeroGPU cold-start
@@ -46447,9 +47638,12 @@
         var contentType = response.headers.get('content-type') || '';
         if (contentType.indexOf('text/event-stream') === -1 || !response.body) {
             var data2 = await _readResponseJsonBounded(response, _CHAT_RESPONSE_MAX_BYTES);
+            _panelTurnEnsureActive(activity, requestController, requestToken);
+            _activityIngestResponseMetadata(activity, data2);
             var reply2 = _extractPanelReply(data2, provider === 'anthropic');
             reply2 = _requireStubReplyCompatibility(reply2, data2, activeModel);
-            _appendPanelMessage(reply2 || '(no response)', 'assistant');
+            _appendPanelMessage(reply2 || '(no response)', 'assistant', undefined, { activity: activity });
+            _activityResponseCompleted(activity);
             return;
         }
 
@@ -46464,17 +47658,26 @@
         var reader;
         try {
             reader = response.body.getReader();
+            _panelActiveStreamOwner = { reader: reader, activity: activity };
         } catch (readerErr) {
             // Some browsers (iOS Safari 14.0, partial ReadableStream) report a
             // non-null body but throw on getReader(). Fall back to JSON parsing.
+            // The provisional streaming bubble must be removed first so the
+            // fallback cannot leave an empty/orphan assistant row behind.
+            if (streamBubble && streamBubble.parentNode) streamBubble.parentNode.removeChild(streamBubble);
+            _panelTurnEnsureActive(activity, requestController, requestToken);
             _log('warn', '[ai-assistant] ReadableStream.getReader() failed; JSON fallback', readerErr);
             try {
                 var fbData = await _readResponseJsonBounded(response.clone(), _CHAT_RESPONSE_MAX_BYTES).catch(function () { return {}; });
+                _panelTurnEnsureActive(activity, requestController, requestToken);
+                _activityIngestResponseMetadata(activity, fbData);
                 var fbReply = _extractPanelReply(fbData, provider === 'anthropic');
                 fbReply = _requireStubReplyCompatibility(fbReply, fbData, activeModel);
-                _appendPanelMessage(fbReply || '(no response)', 'assistant');
+                _appendPanelMessage(fbReply || '(no response)', 'assistant', undefined, { activity: activity });
+                _activityResponseCompleted(activity);
             } catch (_fbErr) {
-                _appendPanelMessage('(streaming unavailable in this browser)', 'assistant');
+                _panelTurnEnsureActive(activity, requestController, requestToken);
+                _appendPanelMessage('(streaming unavailable in this browser)', 'assistant', undefined, { activity: activity });
             }
             return;
         }
@@ -46490,7 +47693,9 @@
 
         try {
             while (true) {
+                _panelTurnEnsureActive(activity, requestController, requestToken);
                 var chk = await reader.read();
+                _panelTurnEnsureActive(activity, requestController, requestToken);
                 if (chk.done) break;
                 streamBytes += Number(chk.value && (chk.value.byteLength || chk.value.length) || 0);
                 if (streamBytes > _CHAT_RESPONSE_MAX_BYTES) {
@@ -46521,6 +47726,24 @@
                         continue;
                     }
                     if (ln.indexOf('data: ') === 0) {
+                        if (sseEventType === 'activity' || sseEventType === 'assistant.activity' ||
+                                sseEventType === 'artifact' || sseEventType === 'assistant.artifact') {
+                            try {
+                                var publicEvent = JSON.parse(ln.slice(6));
+                                if (sseEventType === 'artifact' || sseEventType === 'assistant.artifact') {
+                                    _activityIngestArtifactEvent(activity, publicEvent);
+                                } else {
+                                    _activityIngestWireEvent(activity, publicEvent);
+                                }
+                            } catch (_activityParseError) {
+                                _activityAddStep(activity, {
+                                    kind: 'warning', state: 'done',
+                                    label: 'Ignored malformed public activity event'
+                                });
+                            }
+                            sseEventType = 'message';
+                            continue;
+                        }
                         // An SSE error payload can contain private provider,
                         // routing or account details, so never parse it into a
                         // reader-visible message or log it verbatim. If this
@@ -46534,7 +47757,7 @@
                                     streamBubble.parentNode.removeChild(streamBubble);
                                 }
                                 await _panelApiCallStreaming(
-                                    endpoint, fallbackBodyStr, provider, null, activeModel);
+                                    endpoint, fallbackBodyStr, provider, null, activeModel, activity, requestController, requestToken);
                                 _openReasoningCircuit(activeModel, 'reasoning-sse-fallback');
                                 return;
                             }
@@ -46543,9 +47766,7 @@
                             if (streamBubble && streamBubble.parentNode) {
                                 streamBubble.parentNode.removeChild(streamBubble);
                             }
-                            _appendPanelMessage(
-                                'The AI server reported an error. Please retry.', 'error');
-                            return;
+                            throw new Error('AI_STREAM_SERVER_ERROR');
                         }
                         try {
                             var parsed = JSON.parse(ln.slice(6));
@@ -46565,6 +47786,12 @@
                                     streamBubble.innerHTML = _mdToHtml(accumulated);
                                     streamBubble.setAttribute('data-raw', accumulated);
                                     _enhanceCodeBlocks(streamBubble);
+                                    // As soon as a complete fenced file appears, publish its
+                                    // bounded preview into the latest-revision ledger. This is
+                                    // independent of the final answer cards, so a reader can
+                                    // inspect a generated file while the rest of the response
+                                    // is still arriving.
+                                    _syncExplicitCodeArtifacts(streamBubble, activity);
                                     if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
                                 }
                             }
@@ -46574,16 +47801,32 @@
                 }
             }
         } catch (streamErr) {
-            if (streamErr && streamErr.name === 'AbortError') throw streamErr;
+            if ((requestToken && (requestToken.cancelled || _panelActiveRequestToken !== requestToken)) ||
+                    (activity && activity.state === 'cancelled') ||
+                    (requestController && requestController.signal && requestController.signal.aborted)) {
+                streamErr = _panelTurnAbortError();
+            }
+            if (streamErr && streamErr.name === 'AbortError') {
+                try { await reader.cancel('AI_REQUEST_CANCELLED'); } catch (_) {}
+                // Intentional stop/supersede/clear must never leave a half-open
+                // streaming bubble or later record an out-of-order partial turn.
+                if (streamBubble && streamBubble.parentNode) streamBubble.parentNode.removeChild(streamBubble);
+                throw streamErr;
+            }
             if (streamErr && (streamErr.message === 'AI_RESPONSE_TOO_LARGE' ||
                     streamErr.message === 'AI_RESPONSE_LINE_TOO_LARGE')) {
                 try { await reader.cancel(); } catch (_) {}
                 _log('warn', '[ai-assistant][stream] Response stopped at the browser safety limit.');
                 if (!accumulated) {
                     if (streamBubble && streamBubble.parentNode) streamBubble.parentNode.removeChild(streamBubble);
-                    _appendPanelMessage('The AI response exceeded the browser safety limit.', 'error');
-                    return;
+                    throw streamErr;
                 }
+                _activityAddStep(activity, {
+                    id: 'stream-limit', kind: 'warning', state: 'error',
+                    label: 'Response stopped at the browser safety limit',
+                    detail: 'The visible partial answer was preserved; no automatic retry was attempted.'
+                });
+                _activityFinish(activity, 'error');
                 _appendPanelMessage('The AI response was stopped at the browser safety limit; the partial answer above was preserved.', 'error');
                 // Preserve visible partial output, but never retry a response-limit failure.
             } else {
@@ -46599,7 +47842,7 @@
                     streamBubble.parentNode.removeChild(streamBubble);
                 }
                 await _panelApiCallStreaming(
-                    endpoint, fallbackBodyStr, provider, null, activeModel);
+                    endpoint, fallbackBodyStr, provider, null, activeModel, activity, requestController, requestToken);
                 _openReasoningCircuit(activeModel, 'reasoning-stream-fallback');
                 return;
             }
@@ -46610,18 +47853,24 @@
                 if (streamBubble && streamBubble.parentNode) {
                     streamBubble.parentNode.removeChild(streamBubble);
                 }
-                _appendPanelMessage(
-                    'The streaming connection closed unexpectedly. Please retry.',
-                    'error');
-                return;
+                throw new Error('AI_STREAM_BROKEN_PIPE');
             }
+            _activityAddStep(activity, {
+                id: 'stream-broken-pipe', kind: 'warning', state: 'error',
+                label: 'Streaming connection interrupted',
+                detail: 'The visible partial answer was preserved; no automatic retry was attempted.'
+            });
+            _activityFinish(activity, 'error');
             // Preserve already-visible partial output instead of replacing it
             // with provider/error text. The normal finalization below records
             // exactly what the reader already saw.
             }
         } finally {
+            if (_panelActiveStreamOwner && _panelActiveStreamOwner.reader === reader) _panelActiveStreamOwner = null;
             try { reader.releaseLock(); } catch (_) {}
         }
+
+        _panelTurnEnsureActive(activity, requestController, requestToken);
 
         if (validatingStub) {
             try {
@@ -46637,6 +47886,7 @@
             streamBubble.setAttribute('data-raw', accumulated || '(no response)');
         }
 
+        _panelTurnEnsureActive(activity, requestController, requestToken);
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
         // Collapsible sections applied ONCE here, post-completion — not on
         // every chunk during the loop above. See _makeSectionsCollapsible's
@@ -46648,7 +47898,9 @@
         _enhanceCodeBlocks(streamBubble);
         _makeSectionsCollapsible(streamBubble);
         _typesetMath(streamBubble);
-        _appendArtifactCards(streamBubble);
+        var streamChangedFiles = _appendArtifactCards(streamBubble, activity);
+        _appendChangedFileSummary(streamBubble, streamChangedFiles, activity);
+        _activityResponseCompleted(activity);
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
         var _streamModelInfo = _getActiveModel(_cfg());
@@ -46904,7 +48156,26 @@
         return '- injection indicators in ' + label + ': ' + (kinds.length ? kinds.join(', ') : 'none');
     }
 
-    async function _panelLocalStubReply(question, cfg, preparedPageContext, activeModel) {
+    function _panelTurnDelay(ms, activity, controller, requestToken) {
+        ms = Math.max(0, Math.floor(Number(ms) || 0));
+        return new Promise(function (resolve, reject) {
+            var started = Date.now();
+            function tick() {
+                if ((requestToken && (requestToken.cancelled || _panelActiveRequestToken !== requestToken)) ||
+                        (activity && activity.state === 'cancelled') ||
+                        (controller && controller.signal && controller.signal.aborted)) {
+                    reject(_panelTurnAbortError());
+                    return;
+                }
+                var remain = ms - (Date.now() - started);
+                if (remain <= 0) { resolve(); return; }
+                setTimeout(tick, Math.min(50, remain));
+            }
+            tick();
+        });
+    }
+
+    async function _panelLocalStubReply(question, cfg, preparedPageContext, activeModel, activity, controller, requestToken) {
         var mode = _stubModeName(activeModel);
         var arg = _stubModeArg(activeModel);
         var delay = 120;
@@ -46912,7 +48183,7 @@
             var requested = parseInt(arg || '1500', 10);
             delay = Number.isFinite(requested) ? Math.max(0, Math.min(requested, 60000)) : 1500;
         }
-        await new Promise(function (resolve) { setTimeout(resolve, delay); });
+        await _panelTurnDelay(delay, activity, controller, requestToken);
 
         if (mode === 'error') {
             var status = parseInt(arg || '503', 10);
@@ -46923,19 +48194,20 @@
             throw err;
         }
         if (mode === 'slow') {
-            _appendPanelMessage('Delayed stub reply (' + delay + ' ms). No network request or inference was performed.', 'assistant');
+            _appendPanelMessage('Delayed stub reply (' + delay + ' ms). No network request or inference was performed.', 'assistant', undefined, { activity: activity });
             return;
         }
         if (mode === 'qa') {
-            _appendPanelMessage(_localStubQa(question), 'assistant');
+            _appendPanelMessage(_localStubQa(question), 'assistant', undefined, { activity: activity });
             return;
         }
         if (mode === 'hostile') {
-            _appendPanelMessage(_LOCAL_HOSTILE_STUB_REPLY, 'assistant');
+            _appendPanelMessage(_LOCAL_HOSTILE_STUB_REPLY, 'assistant', undefined, { activity: activity });
             return;
         }
         if (mode === 'mirror') {
             var prepared = preparedPageContext || await _privacyPrepareDocumentationContext(cfg || {});
+            _panelTurnEnsureActive(activity, controller, requestToken);
             var pageText = prepared && typeof prepared.text === 'string' ? prepared.text : '';
             var descriptor = '';
             try {
@@ -46986,7 +48258,7 @@
                 _localMirrorSecurityLine('page context', pageScan) + '\n\n' +
                 '**Available stub modes**\n\n' +
                 '`echo`, `mirror`, `error`, `hostile`, `qa`, `slow`',
-                'assistant'
+                'assistant', undefined, { activity: activity }
             );
             return;
         }
@@ -46996,12 +48268,12 @@
             '- proxy endpoint: `not configured`\n' +
             '- user message chars: `' + String(question || '').length + '`\n' +
             '- available local modes: `echo`, `mirror`, `error`, `hostile`, `qa`, `slow`',
-            'assistant'
+            'assistant', undefined, { activity: activity }
         );
     }
 
-    async function _panelStubReply(_question) {
-        await new Promise(function (resolve) { setTimeout(resolve, 400); });
+    async function _panelStubReply(_question, activity, controller, requestToken) {
+        await _panelTurnDelay(400, activity, controller, requestToken);
         _appendPanelMessage(
             'This AI assistant panel is running in stub mode (no live API calls).\n\n' +
             'To enable live responses, set in conf.py:\n' +
@@ -47012,9 +48284,9 @@
             'Free proxy options (zero ongoing cost):\n' +
             '  A) HuggingFace Space (CPU, always on) — deploy app.py + Dockerfile\n' +
             '  B) Cloudflare Worker (100 000 req/day) — deploy worker.js\n' +
-            '  C) Local dev_proxy.py (development only) — run on port 8787\n' +
+            '  C) Local maintenance dev proxy (development only) — port 8787\n' +
             '  D) HuggingFace ZeroGPU Space (free shared GPU, self-host the model)',
-            'assistant'
+            'assistant', undefined, { activity: activity }
         );
     }
 
