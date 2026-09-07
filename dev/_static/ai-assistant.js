@@ -9126,6 +9126,51 @@
         return JSON.stringify(stable);
     }
 
+    function _feedbackReviewModelAttribution(raw) {
+        if (!raw || typeof raw !== 'object') return null;
+        if (typeof raw.provider !== 'string' || typeof raw.model !== 'string') return null;
+        var provider = raw.provider.trim();
+        var model = raw.model.trim();
+        if (!provider || !model || provider.length > 128 || model.length > 512) return null;
+        if (/[\u0000-\u001F\u007F]/.test(provider + model)) return null;
+        var id = (typeof raw.id === 'string' && raw.id) ? raw.id.slice(0, 256) : null;
+        if (id && /[\u0000-\u001F\u007F]/.test(id)) id = null;
+        return { id: id, provider: provider, model: model };
+    }
+
+    function _feedbackReviewArtifactFilename(role) {
+        var stamp = _isoFileStamp();
+        if (role === 'request-json') {
+            return 'ai-feedback-review-request-json-' + stamp + '.json';
+        }
+        if (role === 'cloud-projection-jsonl') {
+            return 'ai-feedback-review-cloud-projection-jsonl-' + stamp + '.jsonl';
+        }
+        return 'ai-feedback-review-' + stamp + '.json';
+    }
+
+    function _contributionModelAttribution(raw) {
+        return _feedbackReviewModelAttribution(raw);
+    }
+
+    function _contributionArtifactScopeSlug(scope) {
+        if (scope === 'qa') return 'single-pair';
+        if (scope === 'rated') return 'rated-answers';
+        return 'whole-conversation';
+    }
+
+    function _contributionArtifactFilename(scope, role) {
+        var stamp = _isoFileStamp();
+        var scopeSlug = _contributionArtifactScopeSlug(scope);
+        if (role === 'request-json') {
+            return 'ai-contribution-' + scopeSlug + '-request-json-' + stamp + '.json';
+        }
+        if (role === 'cloud-projection-jsonl') {
+            return 'ai-contribution-' + scopeSlug + '-cloud-projection-jsonl-' + stamp + '.jsonl';
+        }
+        return 'ai-contribution-' + scopeSlug + '-' + stamp + '.json';
+    }
+
     function _feedbackReviewPayload(detail) {
         detail = detail || {};
         var answerIndex = typeof detail.answerIndex === 'number' ? detail.answerIndex : null;
@@ -9159,8 +9204,8 @@
             message: String(detail.message || '').slice(0, _CONTRIBUTION_NOTE_MAX_CHARS),
             query: String((qa && qa.query) || detail.query || '').slice(0, _CONTRIBUTION_MAX_MESSAGE_CHARS),
             answer: String((qa && qa.answer) || detail.answer || '').slice(0, _CONTRIBUTION_MAX_MESSAGE_CHARS),
-            model: model,
-            page: detail.page || '',
+            model: _feedbackReviewModelAttribution(model),
+            page: _sanitizePage(String(detail.page || '')),
             ts: detail.ts || (qa && qa.ts) || Date.now()
         };
         if (!_feedbackReviewContentOptions) {
@@ -9495,12 +9540,7 @@
                     role: 'assistant',
                     content: m.text,
                     ts: m.ts || null,
-                    model: m.model ? {
-                        id: m.model.id || null,
-                        provider: m.model.provider || null,
-                        model: m.model.model || null,
-                        label: m.model.label || null,
-                    } : null,
+                    model: _contributionModelAttribution(m.model),
                     feedback: fb ? {
                         feedbackId: fb.feedbackId || null,
                         feedbackChainId: fb.feedbackChainId || null,
@@ -9584,7 +9624,7 @@
         var opt = Object.assign(_reviewContentPreset('contribution', 'complete'), options || {});
         var out = JSON.parse(JSON.stringify(payload));
         if (!opt.includeSafeSourcePage) out.page = '';
-        if (!opt.includeModel) out.model = null;
+        out.model = opt.includeModel ? _contributionModelAttribution(out.model) : null;
         (out.records || []).forEach(function (rec) {
             if (!rec || typeof rec !== 'object') return;
             if (!opt.includeTimestamps) rec.ts = null;
@@ -9594,7 +9634,7 @@
                     if (!msg || typeof msg !== 'object') return;
                     if (!opt.includeTimestamps) msg.ts = null;
                     if (msg.role === 'assistant') {
-                        if (!opt.includeModel) msg.model = null;
+                        msg.model = opt.includeModel ? _contributionModelAttribution(msg.model) : null;
                         if (!opt.includeRatings) msg.feedback = null;
                     }
                 });
@@ -9663,7 +9703,7 @@
             page: _sanitizePage(((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''))),
             // Q&A records retain the existing envelope-level model contract.
             // Conversation records carry model evidence per assistant message.
-            model: normalizedScope === 'conversation' ? null : _buildModelInfo(cfg),
+            model: normalizedScope === 'conversation' ? null : _contributionModelAttribution(_buildModelInfo(cfg)),
             records: records,
         }, contentOptions);
     }
@@ -11994,6 +12034,31 @@
             complete: value.complete === true && omittedCount === 0 && totalCount === rows.length,
             items: rows
         };
+    }
+
+    /**
+     * Reduce resource provenance to the Share-safe metadata contract.
+     *
+     * Local conversation exports may retain richer device-local provenance, but
+     * any portable/server-backed Share removes filesystem/custom-scheme source
+     * URLs.  HTTP(S) source URLs are kept only when the user explicitly enabled
+     * the Safe source URLs option for the reviewed Share snapshot.
+     */
+    function _sanitizeShareResourceManifest(value, includeSourceUrls) {
+        var m = _sanitizeTurnResourceManifest(value, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+        var allowUrls = includeSourceUrls === true;
+        m.items = m.items.map(function (source) {
+            var item = Object.assign({}, source || {});
+            if (item.kind === 'page') {
+                var safe = allowUrls ? _sanitizePage(String(item.sourceUrl || '')) : '';
+                item.sourceUrl = /^https?:\/\//i.test(safe) ? safe : '';
+            }
+            return item;
+        });
+        m.itemCount = m.items.length;
+        m.omittedCount = Math.max(_safeTurnResourceTotal(m.omittedCount), Math.max(0, m.totalCount - m.itemCount));
+        m.complete = m.complete === true && m.omittedCount === 0 && m.totalCount === m.itemCount;
+        return m;
     }
 
     function _compactTurnResourceManifest(value) {
@@ -16897,6 +16962,9 @@
         return turns;
     }
 
+    var _CONVERSATION_SCHEMA_VERSION = '2.1';
+    var _SHARE_ACCEPTED_CONVERSATION_SCHEMA_VERSIONS = { '2.0': true, '2.1': true };
+
     /**
      * Build the canonical conversation snapshot consumed by every serializer.
      *
@@ -16996,10 +17064,12 @@
         var pageTitle = ((typeof _pageTitle === 'function') ? _pageTitle() : ((typeof document !== 'undefined' && document.title) ? String(document.title) : ''));
         var now       = Date.now();
         var sessionId = opt.includeSessionId ? _sessionId : null;
-        var records   = _buildExportRecords(
-            opt.includeSafeSourcePage ? pageUrl : null,
-            sessionId
-        );
+        // Build from the local canonical record source, then apply destination
+        // privacy below.  Passing null into _buildExportRecords intentionally
+        // means "resolve current page", so do not use it as an omission signal.
+        var records   = _buildExportRecords(pageUrl, sessionId);
+        var sharePageUrl = opt.sharePolicy && opt.includeSafeSourcePage && /^https?:\/\//i.test(pageUrl)
+            ? pageUrl : null;
 
         records = records.filter(function (r) {
             return opt.includeErrors || !r || r.role !== 'error';
@@ -17020,16 +17090,23 @@
                 r.feedback_rating_label = null;
                 r.feedback_message = null;
             }
+            if (opt.sharePolicy && r.role === 'user' && r.resources) {
+                // Source URLs are all-or-nothing with the reviewed source-URL
+                // option.  If the current page itself is non-HTTP(S), fail
+                // closed and remove page-resource URLs too.
+                r.resources = _sanitizeShareResourceManifest(r.resources, !!sharePageUrl);
+            }
             if (!opt.includeSessionId) { r.session_id = null; }
-            if (!opt.includeSafeSourcePage) { r.page_url = null; }
+            if (opt.sharePolicy) r.page_url = sharePageUrl;
+            else if (!opt.includeSafeSourcePage) r.page_url = null;
             return r;
         });
 
         return {
-            schema_version: '2.1',
+            schema_version: _CONVERSATION_SCHEMA_VERSION,
             session: {
                 id:              sessionId,
-                page_url:        opt.includeSafeSourcePage ? pageUrl : null,
+                page_url:        opt.sharePolicy ? sharePageUrl : (opt.includeSafeSourcePage ? pageUrl : null),
                 page_title:      opt.includePageTitle ? pageTitle : null,
                 assistant_name:  aiName,
                 exported_at:     opt.includeTimestamps ? now : null,
@@ -17085,6 +17162,19 @@
         _downloadConversationFormat('json');
     }
 
+    /** Human-facing conversation artifact filename with explicit lifecycle provenance.
+     *
+     * Local Save filenames include a timestamp because they are user-owned snapshots.
+     * Global Share filenames are stable and deliberately omit the Share capability/UUID.
+     */
+    function _conversationArtifactFilename(role, fmt) {
+        var meta = _getExportFormat(fmt);
+        if (!meta) return 'ai-conversation-export.txt';
+        var normalizedRole = role === 'global-share' ? 'global-share' : 'local-save';
+        var stamp = normalizedRole === 'local-save' ? '-' + _isoFileStamp() : '';
+        return 'ai-conversation-' + normalizedRole + '-' + meta.fmt + stamp + meta.ext;
+    }
+
     /** One registry-owned serializer path for every direct download. */
     function _downloadConversationFormat(fmt) {
         if (_transcript.length === 0) {
@@ -17102,7 +17192,7 @@
             showNotification('Nothing to export yet', true);
             return;
         }
-        var filename = 'ai-conversation-' + _isoFileStamp() + meta.ext;
+        var filename = _conversationArtifactFilename('local-save', meta.fmt);
         _downloadBlob(content, meta.mime, filename);
         _registerManagedConversationArtifact({
             kind: 'download',
@@ -17308,12 +17398,12 @@
         var title = session.assistant_name || 'AI Assistant';
         var lines = [
             title + ' — conversation export',
-            'Page: ' + (session.page_url || ''),
-            'Exported: ' + (session.exported_at_iso || new Date().toISOString()),
-            '',
-            '----------------------------------------',
-            '',
+            'Schema: ' + (snap.schema_version || _CONVERSATION_SCHEMA_VERSION),
         ];
+        if (session.page_title) lines.push('Page title: ' + session.page_title);
+        if (session.page_url) lines.push('Page: ' + session.page_url);
+        if (session.exported_at_iso) lines.push('Exported: ' + session.exported_at_iso);
+        lines.push('', '----------------------------------------', '');
         (snap.records || []).forEach(function (r) {
             if (!r) return;
             var who = r.role === 'user' ? 'You'
@@ -17329,6 +17419,16 @@
                 _resourceManifestTextLines(r.resources).forEach(function (line) {
                     lines.push(line);
                 });
+            }
+            if ((r.role === 'assistant' || r.role === 'error') &&
+                    (r.feedback_rating_label || r.feedback_rating_value != null)) {
+                var ratingBits = [];
+                if (r.feedback_rating_label) ratingBits.push(String(r.feedback_rating_label));
+                if (r.feedback_rating_value != null) ratingBits.push(String(r.feedback_rating_value));
+                lines.push('[Rating: ' + ratingBits.join(' · ') + ']');
+            }
+            if ((r.role === 'assistant' || r.role === 'error') && r.feedback_message) {
+                lines.push('[Feedback: ' + String(r.feedback_message) + ']');
             }
             lines.push(String(r.text || ''));
             lines.push('');
@@ -17445,7 +17545,7 @@
         var lines = [
             '# AI Assistant conversation export',
             '# schema v2.1 semantics: omitted optional values represent null',
-            'schema_version = ' + _tomlString(snap.schema_version || '2.1'),
+            'schema_version = ' + _tomlString(snap.schema_version || _CONVERSATION_SCHEMA_VERSION),
             '',
             '[session]'
         ];
@@ -17969,7 +18069,7 @@
             fmt: 'json', label: 'JSON',
             hint: 'Structured · pandas / APIs',
             desc: 'Complete structured snapshot for pandas, APIs, tests, and model pipelines.',
-            shareDesc: 'Structured JSON snapshot (schema v2.0 · pandas-ready).',
+            shareDesc: 'Structured JSON snapshot (schema v2.1 · pandas-ready · v2.0 import-compatible).',
             mime: 'application/json;charset=utf-8', ext: '.json',
             buildStr: function (snapshot) { return _buildConvJsonString(snapshot); },
             icon: ICONS.exportJson,
@@ -32487,22 +32587,22 @@
         var previewTitle = document.createElement('div');
         previewTitle.className = 'ai-assistant-panel-payload-view-title';
         var previewStrong = document.createElement('strong');
-        previewStrong.textContent = 'Saved JSONL';
+        previewStrong.textContent = 'Cloud projection JSONL';
         var previewBadge = document.createElement('span');
         previewBadge.className = 'ai-assistant-panel-payload-badge';
-        previewBadge.textContent = 'readable view';
+        previewBadge.textContent = 'pre-save projection';
         previewTitle.appendChild(previewStrong);
         previewTitle.appendChild(previewBadge);
         previewHead.appendChild(previewTitle);
         previewPanel.appendChild(previewHead);
         var previewHelp = document.createElement('p');
         previewHelp.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
-        previewHelp.textContent = 'Readable expanded view of the canonical JSONL row(s). Copy/Download still emits strict one-JSON-object-per-line NDJSON; <server-assigned> and <receipt-id> remain placeholders until save time.';
+        previewHelp.textContent = 'Readable projection of the canonical cloud/provider JSONL row(s). Copy/Download emits strict one-JSON-object-per-line NDJSON; only <server-assigned> and <receipt-id> placeholders are filled by cloud authority after submission.';
         previewPanel.appendChild(previewHelp);
         var preview = document.createElement('pre');
         preview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-payload-code';
         preview.id = 'ai-assistant-panel-contribution-preview-json';
-        preview.setAttribute('aria-label', 'Contribution canonical saved JSONL readable preview');
+        preview.setAttribute('aria-label', 'Contribution cloud projection JSONL readable preview');
         preview.setAttribute('tabindex', '0');
         preview.dataset.size = 'medium';
         previewPanel.appendChild(preview);
@@ -32538,8 +32638,8 @@
             inspectBtn.tabIndex = jsonOn ? -1 : 0;
             copyPayloadBtn.textContent = jsonOn ? '⎘ Copy JSON' : '⎘ Copy JSONL';
             downloadPayloadBtn.textContent = jsonOn ? '↓ Download JSON' : '↓ Download JSONL';
-            copyPayloadBtn.setAttribute('aria-label', jsonOn ? 'Copy contribution request JSON' : 'Copy contribution saved JSONL');
-            downloadPayloadBtn.setAttribute('aria-label', jsonOn ? 'Download contribution request JSON' : 'Download contribution saved JSONL');
+            copyPayloadBtn.setAttribute('aria-label', jsonOn ? 'Copy contribution request JSON' : 'Copy contribution cloud projection JSONL');
+            downloadPayloadBtn.setAttribute('aria-label', jsonOn ? 'Download contribution request JSON' : 'Download contribution cloud projection JSONL');
             _syncContributionInspectorSize(_currentPayload(false));
         }
         _wirePayloadFormatTabs(formatTabs, savedStructureBtn, inspectBtn, savedStructurePanel, previewPanel, _setContributionInspectFormat);
@@ -32556,7 +32656,7 @@
         var consentCheck = document.createElement('input');
         consentCheck.type = 'checkbox';
         var consentText = document.createElement('span');
-        consentText.textContent = 'I understand that the selected content, ratings, optional notes, model labels, and selected safe metadata will be submitted for review and possible training/evaluation use. Submissions enter quarantine first.';
+        consentText.textContent = 'I understand that the selected content, ratings, optional notes, minimized model identifiers, and selected safe metadata will be submitted for review and possible training/evaluation use. Submissions enter quarantine first.';
         consent.appendChild(consentCheck); consent.appendChild(consentText);
         submitSection.appendChild(consent);
 
@@ -33031,17 +33131,17 @@
             var feedbackPreviewTitle = document.createElement('div');
             feedbackPreviewTitle.className = 'ai-assistant-panel-payload-view-title';
             var feedbackPreviewStrong = document.createElement('strong');
-            feedbackPreviewStrong.textContent = 'Saved JSONL';
+            feedbackPreviewStrong.textContent = 'Cloud projection JSONL';
             var feedbackPreviewBadge = document.createElement('span');
             feedbackPreviewBadge.className = 'ai-assistant-panel-payload-badge';
-            feedbackPreviewBadge.textContent = 'readable view';
+            feedbackPreviewBadge.textContent = 'pre-save projection';
             feedbackPreviewTitle.appendChild(feedbackPreviewStrong);
             feedbackPreviewTitle.appendChild(feedbackPreviewBadge);
             feedbackPreviewHead.appendChild(feedbackPreviewTitle);
             feedbackPreviewPanel.appendChild(feedbackPreviewHead);
             var feedbackJsonlHint = document.createElement('p');
             feedbackJsonlHint.className = 'ai-assistant-panel-contribution-hint ai-assistant-panel-storage-preview-hint';
-            feedbackJsonlHint.textContent = 'Expanded local view of the canonical feedback-review JSONL row. Copy/Download keeps strict NDJSON. <server-assigned> and <receipt-id> are the only pre-save placeholders.';
+            feedbackJsonlHint.textContent = 'Expanded local projection of the canonical cloud feedback-review JSONL row. Copy/Download keeps strict NDJSON. <server-assigned> and <receipt-id> are the only cloud-owned placeholders.';
             feedbackPreviewPanel.appendChild(feedbackJsonlHint);
             var feedbackPreview = document.createElement('pre');
             feedbackPreview.className = 'ai-assistant-panel-contribution-preview ai-assistant-panel-feedback-preview ai-assistant-panel-payload-code';
@@ -33107,8 +33207,8 @@
                 feedbackInspectBtn.tabIndex = jsonOn ? -1 : 0;
                 feedbackCopyBtn.textContent = jsonOn ? '⎘ Copy JSON' : '⎘ Copy JSONL';
                 feedbackDownloadBtn.textContent = jsonOn ? '↓ Download JSON' : '↓ Download JSONL';
-                feedbackCopyBtn.setAttribute('aria-label', jsonOn ? 'Copy feedback review request JSON' : 'Copy feedback review saved JSONL');
-                feedbackDownloadBtn.setAttribute('aria-label', jsonOn ? 'Download feedback review request JSON' : 'Download feedback review saved JSONL');
+                feedbackCopyBtn.setAttribute('aria-label', jsonOn ? 'Copy feedback review request JSON' : 'Copy feedback review cloud-projection JSONL');
+                feedbackDownloadBtn.setAttribute('aria-label', jsonOn ? 'Download feedback review request JSON' : 'Download feedback review cloud-projection JSONL');
                 var state = _feedbackWorkspacePayloadState();
                 _syncFeedbackInspectorSize(state.payload, state.issue);
             }
@@ -33128,20 +33228,20 @@
                     _copyContributionText(JSON.stringify(state.payload, null, 2), 'Feedback review request JSON copied locally. Nothing was submitted.');
                     return;
                 }
-                _copyContributionText(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'Projected feedback-review JSONL copied locally. Nothing was submitted.');
+                _copyContributionText(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'Cloud-projection feedback-review JSONL copied locally. Nothing was submitted.');
             });
             feedbackDownloadBtn.addEventListener('click', function () {
                 var state = _feedbackWorkspacePayloadState();
                 if (!state.payload || state.issue) return;
                 if (feedbackInspectFormat === 'json') {
                     _downloadBlob(JSON.stringify(state.payload, null, 2), 'application/json',
-                        'ai-feedback-review-request-' + _isoFileStamp() + '.json');
-                    showNotification('Feedback review request JSON saved locally. Nothing was submitted.', false);
+                        _feedbackReviewArtifactFilename('request-json'));
+                    showNotification('Request JSON saved locally. Filename identifies the JSON request tab; nothing was submitted.', false);
                     return;
                 }
                 _downloadBlob(_jsonlPreview(_feedbackSavedJsonStructure(state.payload)), 'application/x-ndjson',
-                    'ai-feedback-review-saved-projection-' + _isoFileStamp() + '.jsonl');
-                showNotification('Projected feedback-review JSONL saved locally. Nothing was submitted.', false);
+                    _feedbackReviewArtifactFilename('cloud-projection-jsonl'));
+                showNotification('Cloud-projection JSONL saved locally. Filename identifies the JSONL projection tab; nothing was submitted.', false);
             });
 
             // 5) Lifecycle only. Quick/detailed rating saves already own
@@ -33474,20 +33574,20 @@
                 _copyContributionText(JSON.stringify(payload, null, 2), 'Contribution request JSON copied locally. Nothing was submitted.');
                 return;
             }
-            _copyContributionText(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'Projected contribution JSONL copied locally. Nothing was submitted.');
+            _copyContributionText(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'Contribution cloud projection JSONL copied locally. Nothing was submitted.');
         });
         downloadPayloadBtn.addEventListener('click', function () {
             var payload = _currentPayload();
             if (!payload) return;
             if (contributionInspectFormat === 'json') {
                 _downloadBlob(JSON.stringify(payload, null, 2), 'application/json',
-                    'ai-contribution-request-' + _isoFileStamp() + '.json');
+                    _contributionArtifactFilename(selectedScope, 'request-json'));
                 showNotification('Contribution request JSON saved locally. Nothing was submitted.', false);
                 return;
             }
             _downloadBlob(_jsonlPreview(_contributionSavedJsonStructure(payload)), 'application/x-ndjson',
-                'ai-contribution-saved-projection-' + _isoFileStamp() + '.jsonl');
-            showNotification('Projected contribution JSONL saved locally. Nothing was submitted.', false);
+                _contributionArtifactFilename(selectedScope, 'cloud-projection-jsonl'));
+            showNotification('Contribution cloud projection JSONL saved locally. Nothing was submitted.', false);
         });
         noteInput.addEventListener('input', function () {
             noteCounter.textContent = noteInput.value.length + ' / ' + _CONTRIBUTION_NOTE_MAX_CHARS;
@@ -34669,7 +34769,7 @@
 
     function _normalizeShareSnapshot(snapshot) {
         if (!snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return null;
-        if (snapshot.schema_version !== '2.0' && snapshot.schema_version !== '2.1') return null;
+        if (!_SHARE_ACCEPTED_CONVERSATION_SCHEMA_VERSIONS[snapshot.schema_version]) return null;
         if (!snapshot.session || typeof snapshot.session !== 'object' || Array.isArray(snapshot.session)) return null;
         if (!Array.isArray(snapshot.records) || snapshot.records.length > 10000) return null;
 
@@ -34686,7 +34786,8 @@
         var srcSession = snapshot.session;
         var pageIn = _str(srcSession.page_url, 8192, true);
         if (pageIn === undefined) return null;
-        var safePage = pageIn === '<page-redacted>' ? '<page-redacted>' : _sanitizePage(pageIn || '');
+        var normalizedPage = _sanitizePage(pageIn || '');
+        var safePage = /^https?:\/\//i.test(normalizedPage) ? normalizedPage : null;
         var sid = _str(srcSession.id, 512, true);
         var title = _str(srcSession.page_title, 8192, true);
         var aiName = _str(srcSession.assistant_name, 1024, true);
@@ -34716,7 +34817,7 @@
                 if (r.role !== 'user' || !r.resources || typeof r.resources !== 'object' || Array.isArray(r.resources)) return null;
                 if (!Array.isArray(r.resources.items) || r.resources.items.length > _TURN_RESOURCE_LIVE_MAX_ITEMS) return null;
                 if (_safeTurnResourceTotal(r.resources.totalCount) > _TURN_RESOURCE_LIVE_MAX_ITEMS) return null;
-                resources = _sanitizeTurnResourceManifest(r.resources, _TURN_RESOURCE_LIVE_MAX_ITEMS);
+                resources = _sanitizeShareResourceManifest(r.resources, !!safePage);
                 if (resources.totalCount > _TURN_RESOURCE_LIVE_MAX_ITEMS ||
                         resources.itemCount > resources.totalCount ||
                         resources.omittedCount > resources.totalCount) return null;
@@ -34744,7 +34845,7 @@
         }
 
         return {
-            schema_version: '2.1',
+            schema_version: _CONVERSATION_SCHEMA_VERSION,
             session: {
                 id: sid,
                 page_url: safePage,
@@ -34832,7 +34933,7 @@
         });
         var initialMeta = _getExportFormat(initialFmt) || _getExportFormat('html') || liveFormats[0];
         var selectedFmt = initialMeta ? initialMeta.fmt : 'html';
-        var selectedDestination = 'local';
+        var selectedDestination = 'download';
         var contentPreset = 'standard';
         var contentOptions = _conversationContentPreset('standard');
         var boundConversationId = _getConversationId();
@@ -35067,12 +35168,12 @@
         headLeft.className = 'ai-assistant-conv-share-head-left';
         var hStrong = document.createElement('strong');
         hStrong.id = 'ai-assistant-conv-share-title';
-        hStrong.textContent = 'Share conversation';
+        hStrong.textContent = 'Save or share conversation';
         var fmtBadge = document.createElement('span');
         fmtBadge.className = 'ai-assistant-conv-share-fmt-badge';
         headLeft.appendChild(hStrong);
         headLeft.appendChild(fmtBadge);
-        var closeBtn = _createIconBtn('conv-share-close', 'Close Share conversation', ICONS.close);
+        var closeBtn = _createIconBtn('conv-share-close', 'Close Save or share conversation', ICONS.close);
         closeBtn.addEventListener('click', function () { sheet.setAttribute('data-open', 'false'); });
         var hamBtn = _buildSheetHamburgerBtn(sheet, 'conv-share');
         if (hamBtn) head.appendChild(hamBtn);
@@ -35085,7 +35186,7 @@
 
         var intro = document.createElement('p');
         intro.className = 'ai-assistant-conv-share-subnote ai-assistant-conv-share-v2-intro';
-        intro.textContent = 'Create a local preview, a portable self-contained data link, or an expiring cloud-backed Global link.';
+        intro.textContent = 'Choose one format, then save it locally, preview it, create a portable no-server link, or publish an expiring Global link.';
         body.appendChild(intro);
 
         var summary = document.createElement('div');
@@ -35156,6 +35257,9 @@
             destWrap.appendChild(b);
             return b;
         }
+        _makeDestination('download', 'Save file',
+            'Download the selected format to this device.',
+            'Local file · nothing is uploaded · device-owned after save');
         _makeDestination('local', 'Local preview',
             'Open a temporary preview in this browser.',
             'Nothing is uploaded · removable from this page');
@@ -35225,7 +35329,7 @@
             ['includeRatings','Ratings and feedback'],
             ['includeErrors','Error messages'],
             ['includePageTitle','Page title'],
-            ['includeSafeSourcePage','Safe source page'],
+            ['includeSafeSourcePage','Safe source URLs'],
             ['includeSessionId','Session identifier']
         ].forEach(function (item) {
             var lab = document.createElement('label');
@@ -35236,7 +35340,7 @@
         });
         var locked = document.createElement('p');
         locked.className = 'ai-assistant-conv-share-locked';
-        locked.textContent = '🔒 URL query, fragment, credentials, and local filesystem paths are always removed from Share output.';
+        locked.textContent = '🔒 Share output keeps source URLs only when enabled, strips query/fragment/credentials, and never exports local filesystem/custom-scheme paths.';
         customGrid.appendChild(locked);
         contentSection.panel.appendChild(customGrid);
 
@@ -35248,14 +35352,6 @@
         var sizeNote = document.createElement('p');
         sizeNote.className = 'ai-assistant-conv-share-session-note';
         advanced.panel.appendChild(sizeNote);
-        var downloadBtn = document.createElement('button');
-        downloadBtn.type = 'button'; downloadBtn.className = 'ai-assistant-conv-share-action-btn';
-        downloadBtn.textContent = 'Download current snapshot';
-        advanced.panel.appendChild(downloadBtn);
-        var downloadNote = document.createElement('p');
-        downloadNote.className = 'ai-assistant-conv-share-session-note';
-        downloadNote.textContent = 'Downloaded files leave this page’s control. Delete them later from your browser Downloads or device file manager.';
-        advanced.panel.appendChild(downloadNote);
         var clearLegacyBtn = document.createElement('button');
         clearLegacyBtn.type = 'button'; clearLegacyBtn.className = 'ai-assistant-conv-share-action-btn';
         clearLegacyBtn.textContent = 'Delete legacy local Share artifacts';
@@ -35440,7 +35536,7 @@
             globalUnavailable.style.display = available ? 'none' : '';
             globalUnavailable.textContent = available
                 ? '' : 'Global Share is not configured. Configure a Share endpoint in Endpoint Configuration.';
-            if (!available && selectedDestination === 'global') _selectDestination('local');
+            if (!available && selectedDestination === 'global') _selectDestination('download');
         }
 
         function _selectDestination(key) {
@@ -35668,9 +35764,12 @@
                 var strong = document.createElement('strong');
                 strong.textContent = artifact.kind === 'global' ? 'Global link'
                     : artifact.kind === 'self_contained' ? 'Self-contained link'
-                    : artifact.kind === 'download' ? 'Downloaded artifact' : 'Local preview';
+                    : artifact.kind === 'download' ? 'Local save' : 'Local preview';
                 var meta = document.createElement('span');
-                meta.textContent = (artifact.format || '').toUpperCase() + ' · ' + (artifact.lifecycle || '');
+                var provenanceName = artifact.filename || (artifact.kind === 'global'
+                    ? _conversationArtifactFilename('global-share', artifact.format) : '');
+                meta.textContent = (artifact.format || '').toUpperCase() +
+                    (provenanceName ? ' · ' + provenanceName : '') + ' · ' + (artifact.lifecycle || '');
                 text.appendChild(strong); text.appendChild(meta); row.appendChild(text);
                 var terminalGlobal = artifact.kind === 'global' && ['revoked','expired'].indexOf(artifact.state) >= 0;
                 if (artifact.url && (artifact.kind === 'global' || artifact.kind === 'self_contained' || artifact.kind === 'local') && !terminalGlobal) {
@@ -35751,7 +35850,14 @@
                 removeResultBtn.textContent = 'Dismiss';
                 return;
             }
-            if (resultState.kind === 'local') {
+            if (resultState.kind === 'download') {
+                resultTitle.textContent = 'File saved';
+                resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · device-local file';
+                resultNote.textContent = stale
+                    ? 'Conversation or options changed. The saved file still contains the earlier reviewed snapshot.'
+                    : 'The file has left this page’s control. Delete it later from browser Downloads or your device file manager. Forget only removes this local activity record.';
+                removeResultBtn.textContent = 'Forget';
+            } else if (resultState.kind === 'local') {
                 resultTitle.textContent = 'Preview ready';
                 resultMeta.textContent = resultState.format.toUpperCase() + ' · ' + _formatByteSize(resultState.bytes) + ' · temporary · browser-local';
                 resultNote.textContent = stale
@@ -35831,7 +35937,9 @@
         });
 
         function _updatePrimaryLabel() {
-            if (selectedDestination === 'local') primaryBtn.textContent = 'Open preview';
+            var meta = _currentMeta();
+            if (selectedDestination === 'download') primaryBtn.textContent = 'Save ' + (meta ? meta.label : 'file');
+            else if (selectedDestination === 'local') primaryBtn.textContent = 'Open preview';
             else if (selectedDestination === 'self_contained') primaryBtn.textContent = 'Create link';
             else primaryBtn.textContent = (_globalShareState && _globalShareState.editToken) ? 'Update global link' : 'Create global link';
         }
@@ -35854,12 +35962,24 @@
             var meta = _currentMeta(); if (!meta) return;
             var recoveringGlobal = selectedDestination === 'global' && _pendingGlobalCreate && resultState && resultState.phase === 'outcome_unknown';
             var destinationLabel = selectedDestination === 'global' ? 'the configured Global Share service'
-                : selectedDestination === 'self_contained' ? 'a self-contained link' : 'a temporary local preview';
+                : selectedDestination === 'self_contained' ? 'a self-contained link'
+                : selectedDestination === 'download' ? 'a local device file' : 'a temporary local preview';
             var snapshot = recoveringGlobal ? _pendingGlobalCreate.snapshot : await _reviewShareSnapshot(destinationLabel);
             if (!snapshot) return;
             if (recoveringGlobal && _pendingGlobalCreate.format !== meta.fmt) meta = _getExportFormat(_pendingGlobalCreate.format) || meta;
             var content = meta.buildStr(snapshot); if (!content) return;
             var bytes = _utf8ByteLength(content);
+
+            if (selectedDestination === 'download') {
+                var filename = _conversationArtifactFilename('local-save', meta.fmt);
+                _downloadBlob(content, meta.mime, filename);
+                var saved = _addArtifact({ kind: 'download', filename: filename, bytes: bytes, format: meta.fmt,
+                    lifecycle: 'external device file · delete with file manager' });
+                resultState = { kind: 'download', artifactId: saved.id, filename: filename, bytes: bytes, format: meta.fmt, stale: false };
+                _renderArtifacts(); _renderResult();
+                showNotification(meta.label + ' saved locally as ' + filename + '. The file is controlled by your device.', false);
+                return;
+            }
 
             if (selectedDestination === 'local') {
                 try {
@@ -35954,11 +36074,11 @@
                     conversationId: opConversationId, format: meta.fmt }, 'active');
                 var existing = managedArtifacts.find(function (a) { return a.kind === 'global' && a.uuid === uuid; });
                 if (existing) Object.assign(existing, { url: url, editToken: editToken, expiresAt: _globalShareState.expiresAt,
-                    snapshot: snapshot, bytes: bytes, format: meta.fmt, state: 'active', ledgerId: ledger && ledger.ledgerId,
+                    snapshot: snapshot, bytes: bytes, format: meta.fmt, filename: _conversationArtifactFilename('global-share', meta.fmt), state: 'active', ledgerId: ledger && ledger.ledgerId,
                     lifecycle: editToken ? 'active · server-revocable' : 'active · read-only' });
                 else existing = _addArtifact({ kind: 'global', uuid: uuid, url: url, editToken: editToken,
                     expiresAt: _globalShareState.expiresAt, snapshot: snapshot, bytes: bytes, format: meta.fmt,
-                    state: 'active', ledgerId: ledger && ledger.ledgerId,
+                    filename: _conversationArtifactFilename('global-share', meta.fmt), state: 'active', ledgerId: ledger && ledger.ledgerId,
                     lifecycle: editToken ? 'active · server-revocable' : 'active · read-only' });
                 _pendingGlobalCreate = null;
                 resultState = { kind: 'global', phase: 'ready', artifactId: existing.id, url: url, bytes: bytes, format: meta.fmt,
@@ -36008,16 +36128,6 @@
             }
         });
 
-        downloadBtn.addEventListener('click', function () {
-            var snapshot = _currentSnapshot(); var meta = _currentMeta();
-            if (!snapshot || !meta) return;
-            var content = meta.buildStr(snapshot); if (!content) return;
-            var filename = 'ai-conversation-' + _isoFileStamp() + meta.ext;
-            _downloadBlob(content, meta.mime, filename);
-            _addArtifact({ kind: 'download', filename: filename, bytes: _utf8ByteLength(content), format: meta.fmt,
-                lifecycle: 'external device file · delete with file manager' });
-            showNotification(meta.label + ' downloaded. The saved file is controlled by your device.', false);
-        });
         clearLegacyBtn.addEventListener('click', function () {
             _idbClearShares(function (ok) {
                 showNotification(ok ? 'Legacy local Share artifacts deleted' : 'Could not clear legacy local Share storage', !ok);
