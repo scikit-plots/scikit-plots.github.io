@@ -2823,8 +2823,7 @@
             var card = document.createElement('button');
             card.type = 'button';
             card.className = 'ai-md-artifact-card';
-            card.setAttribute('aria-label', 'Download ' + filename);
-            card.title = 'Download ' + filename;
+
             // Promotion control is built here and appended after the card, so a
             // reader can give an anonymous fragment an identity at the moment
             // they realise they want to keep working on it.
@@ -2870,13 +2869,45 @@
             info.appendChild(typeEl);
             card.appendChild(info);
 
-            var dlLabel = document.createElement('span');
-            dlLabel.className = 'ai-md-artifact-download-label';
-            dlLabel.textContent = 'Download';
-            card.appendChild(dlLabel);
-
-            (function (codeElRef, fname) {
+            // The big card previews; the small Download control downloads.
+            //
+            // Previously the whole card downloaded, so the only way to see what
+            // a snippet contained was to put a file on disk and open it. A
+            // quick check before committing to a download is what a reader
+            // wants most of the time, and it is the cheaper of the two actions
+            // to get wrong.
+            //
+            // Download is therefore a SIBLING button, not a span inside the
+            // card: a button nested in a button is invalid, and browsers
+            // resolve it by ignoring one of the two click targets -- which one
+            // varies. Siblings also give the download control its own focus
+            // stop and its own accessible name.
+            (function (codeText, fname, label) {
+                card.setAttribute('aria-label', 'Preview ' + fname);
+                card.title = 'Preview ' + fname + ' \u2014 download is the button beside it';
                 card.addEventListener('click', function () {
+                    _openAttachmentPreview({
+                        kind: 'text',
+                        name: fname,
+                        previewText: codeText,
+                        size: _utf8ByteLength(codeText || ''),
+                        lineCount: codeText ? codeText.split(/\r?\n/).length : 0,
+                        status: label + ' \u00b7 answer snippet \u00b7 not a tracked file',
+                        badge: 'SNIPPET',
+                        sendEligible: false,
+                        turnScoped: true
+                    }, card);
+                });
+            }(codeEl ? codeEl.textContent : '', filename, typeLabel));
+
+            var dlBtn = document.createElement('button');
+            dlBtn.type = 'button';
+            dlBtn.className = 'ai-md-artifact-download-label';
+            dlBtn.textContent = 'Download';
+            dlBtn.setAttribute('aria-label', 'Download ' + filename);
+            dlBtn.title = 'Download ' + filename;
+            (function (codeElRef, fname) {
+                dlBtn.addEventListener('click', function () {
                     _downloadBlob(codeElRef.textContent, 'text/plain', fname);
                 });
             }(codeEl, filename));
@@ -2885,6 +2916,7 @@
             var cardRow = document.createElement('span');
             cardRow.className = 'ai-md-artifact-row';
             cardRow.appendChild(card);
+            cardRow.appendChild(dlBtn);
             cardRow.appendChild(snippetMenu);
             list.appendChild(cardRow);
         });

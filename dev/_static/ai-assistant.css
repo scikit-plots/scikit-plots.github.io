@@ -21930,3 +21930,27 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     color: inherit;
 }
 .ai-md-artifact-overflow svg { width: 1rem; height: 1rem; }
+
+/* Snippet row: preview card, then a distinct Download control, then ⋮.
+   Download was a span inside the card button. A button nested in a button is
+   invalid and browsers drop one of the two click targets — which one varies —
+   so it is a sibling now, with its own focus stop and accessible name. */
+.ai-md-artifact-row { display: flex; gap: .35rem; }
+.ai-md-artifact-card { flex: 1 1 auto; min-width: 0; cursor: pointer; }
+button.ai-md-artifact-download-label {
+    flex: 0 0 auto;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 8px;
+    padding: .45rem .6rem;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    font: inherit;
+    font-size: .62rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+button.ai-md-artifact-download-label:hover,
+button.ai-md-artifact-download-label:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+}
