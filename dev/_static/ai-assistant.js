@@ -17767,6 +17767,13 @@
         if (session.page_title) lines.push('Page title: ' + session.page_title);
         if (session.page_url) lines.push('Page: ' + session.page_url);
         if (session.exported_at_iso) lines.push('Exported: ' + session.exported_at_iso);
+        // Emitted whenever the snapshot carries it, exactly like every field
+        // above. The snapshot has already had the reader's review applied, so
+        // a format that drops a field the reader chose to include is deciding
+        // for them -- and quietly, since the same export in JSON, YAML, TOML or
+        // HTML carried it. Every other session field here follows the same
+        // if-present rule; this one was simply missing from the list.
+        if (session.id) lines.push('Session: ' + session.id);
         lines.push('', '----------------------------------------', '');
         (snap.records || []).forEach(function (r) {
             if (!r) return;
