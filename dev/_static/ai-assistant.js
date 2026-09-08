@@ -19960,13 +19960,22 @@
             modelList.appendChild(modelHeading);
 
             var activeQuickId = _getActiveModelId(quickModels);
-            // Keep the active model visible even when the configured list is
-            // much longer than the compact six-item quick surface.
+            // Every configured model, active one first.
+            //
+            // This kept the first six and dropped the rest in silence. With a
+            // twelve-model configuration the reader saw six and had no way to
+            // tell that from a six-model configuration -- the menu is titled
+            // "Try a different model" and was quietly answering "these six".
+            // Nothing distinguished the shown from the hidden either: the cut
+            // fell wherever the configured order happened to put it.
+            //
+            // Length is a scrolling problem, not a truncation problem. The
+            // list is height-clamped and scrolls, so a long configuration
+            // costs a scroll rather than six missing entries.
             var quickDisplayModels = [];
             var activeQuickModel = _findModel(quickModels, activeQuickId);
             if (activeQuickModel) quickDisplayModels.push(activeQuickModel);
             quickModels.forEach(function (candidate) {
-                if (quickDisplayModels.length >= 6) return;
                 if (!activeQuickModel || candidate.id !== activeQuickModel.id) {
                     quickDisplayModels.push(candidate);
                 }
@@ -21188,6 +21197,32 @@
             wrapperSelector: '.ai-assistant-fbk-float-wrapper',
             minWidth: 190,
             maxWidth: 250,
+            horizontalAlign: 'end'
+        });
+    }
+
+    /**
+     * Keep a file overflow menu inside the panel body.
+     *
+     * The menu was placed by CSS alone -- `inset-inline-end: 0; top: 100%` --
+     * which is correct only when there happens to be room below and to the
+     * left. A file row near the bottom of the body, or a narrow panel, pushed
+     * the menu past the edge where it was clipped or scrolled out of reach,
+     * and the reader could not get to Save as, Patch or Continue at all.
+     *
+     * The panel already solves this for the bubble action menu and the
+     * feedback popup. Reusing that routine means the file menu flips and
+     * clamps by the same rules rather than acquiring a third set -- and
+     * inherits the transformed/scaled-panel correction, which a fresh
+     * implementation would have got wrong before anyone noticed.
+     */
+    function _positionFileMenuWithinPanelBody(menu) {
+        _positionAnchoredPopupWithinPanelBody(menu, {
+            activeAttr: 'data-open',
+            activeValue: 'true',
+            wrapperSelector: '.ai-assistant-panel-changed-file-primary,.ai-md-artifact-row',
+            minWidth: 180,
+            maxWidth: 280,
             horizontalAlign: 'end'
         });
     }
@@ -47906,6 +47941,10 @@
         if (rec.btn) rec.btn.setAttribute('aria-expanded', 'false');
         document.removeEventListener('click', rec.onDocClick, true);
         document.removeEventListener('keydown', rec.onKeyDown, true);
+        if (rec.onReflow) {
+            if (rec.scroller) rec.scroller.removeEventListener('scroll', rec.onReflow, true);
+            window.removeEventListener('resize', rec.onReflow);
+        }
     }
 
     /**
@@ -47995,10 +48034,23 @@
                 }
             };
             btn.parentNode.appendChild(menu);
+            menu.setAttribute('data-open', 'true');
             btn.setAttribute('aria-expanded', 'true');
+            // Measured after insertion: the routine reads the rendered box, so
+            // placing before the menu is in the document would size it from
+            // nothing and clamp everything to the top-left corner.
+            _positionFileMenuWithinPanelBody(menu);
             _fileMenuOpen = rec;
+            rec.onReflow = function () { _positionFileMenuWithinPanelBody(menu); };
             document.addEventListener('click', rec.onDocClick, true);
             document.addEventListener('keydown', rec.onKeyDown, true);
+            // A menu anchored to a row inside a scrolling body has to follow
+            // that row, or it detaches from its trigger the moment the reader
+            // scrolls -- which is exactly when a long file list is being read.
+            var scroller = document.getElementById('ai-assistant-panel-body');
+            if (scroller) scroller.addEventListener('scroll', rec.onReflow, true);
+            window.addEventListener('resize', rec.onReflow);
+            rec.scroller = scroller;
             var first = menu.querySelector('.ai-assistant-panel-changed-file-menu-item');
             if (first && typeof first.focus === 'function') first.focus();
         });
