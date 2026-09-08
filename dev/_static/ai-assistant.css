@@ -21908,3 +21908,25 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
+
+/* Snippet card: one card that downloads, one ⋮ for everything else — the same
+   shape as a tracked-file card, so the two surfaces teach the same gesture. */
+.ai-md-artifact-row { position: relative; align-items: stretch; }
+.ai-md-artifact-overflow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 2rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 8px;
+    background: var(--pst-color-surface, #fff);
+    color: var(--pst-color-text-muted, #71717a);
+    cursor: pointer;
+}
+.ai-md-artifact-overflow:hover,
+.ai-md-artifact-overflow:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+    color: inherit;
+}
+.ai-md-artifact-overflow svg { width: 1rem; height: 1rem; }

@@ -2828,16 +2828,28 @@
             // Promotion control is built here and appended after the card, so a
             // reader can give an anonymous fragment an identity at the moment
             // they realise they want to keep working on it.
-            var promote = document.createElement('button');
-            promote.type = 'button';
-            promote.className = 'ai-md-artifact-promote';
-            promote.textContent = 'Save as file\u2026';
-            promote.setAttribute('aria-label', 'Track ' + filename + ' as a file with revisions');
-            promote.title = 'Track as a file: revisions, diffs, patch export, continue editing';
-            (function (codeText, langTag, suggestedName) {
-                promote.addEventListener('click', function () {
-                    _promoteSnippetToFile(root, codeText, langTag, suggestedName);
-                });
+            // Same shape as a tracked-file card: one card that downloads, one
+            // ⋮ for everything else. The snippet card previously carried a
+            // second full-width "Save as file…" button, which read as a peer
+            // of Download and made a two-snippet answer four buttons wide.
+            var snippetMenu = (function (codeText, langTag, suggestedName) {
+                return _buildOverflowMenu('More options for ' + suggestedName, [
+                    { label: 'Save as a tracked file\u2026',
+                      hint: 'Gives it revisions, diffs and patch export',
+                      run: function () {
+                          _promoteSnippetToFile(root, codeText, langTag, suggestedName);
+                      } },
+                    { label: 'Download as\u2026',
+                      hint: 'Download under a name you choose',
+                      run: function () {
+                          var raw = window.prompt(
+                              'Download this snippet as\\n\\nThe name is used for the ' +
+                              'download only; nothing is tracked.', suggestedName);
+                          if (raw === null) return;
+                          var chosen = _artifactNameSlugPreservingExtension(raw) || suggestedName;
+                          _downloadBlob(codeText, 'text/plain', chosen);
+                      } }
+                ], 'ai-md-artifact-overflow');
             }(codeEl ? codeEl.textContent : '', lang, filename));
 
             var iconWrap = document.createElement('span');
@@ -2873,7 +2885,7 @@
             var cardRow = document.createElement('span');
             cardRow.className = 'ai-md-artifact-row';
             cardRow.appendChild(card);
-            cardRow.appendChild(promote);
+            cardRow.appendChild(snippetMenu);
             list.appendChild(cardRow);
         });
 
@@ -47740,11 +47752,24 @@
      * @param {Object} entry Ledger entry, for labelling only.
      * @returns {HTMLElement}
      */
-    function _buildFileOverflow(key, entry) {
+    /**
+     * Build a ⋮ trigger and its menu.
+     *
+     * One builder, every caller. The snippet card and the tracked-file card
+     * were about to grow two near-identical menus with two sets of focus,
+     * Escape and outside-click handling -- and the second copy is where the
+     * keyboard support quietly goes missing.
+     *
+     * @param {string} ariaLabel  Full sentence naming what the menu acts on.
+     * @param {Array<{label: string, hint: string, run: Function}>} items
+     * @param {string} [className] Trigger class, for per-surface sizing.
+     * @returns {HTMLElement}
+     */
+    function _buildOverflowMenu(ariaLabel, items, className) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'ai-assistant-panel-changed-file-overflow';
-        btn.setAttribute('aria-label', 'More options for ' + entry.path);
+        btn.className = className || 'ai-assistant-panel-changed-file-overflow';
+        btn.setAttribute('aria-label', ariaLabel);
         btn.setAttribute('aria-haspopup', 'menu');
         btn.setAttribute('aria-expanded', 'false');
         btn.title = 'More options';
@@ -47759,20 +47784,11 @@
             var menu = document.createElement('div');
             menu.className = 'ai-assistant-panel-changed-file-menu';
             menu.setAttribute('role', 'menu');
-            menu.setAttribute('aria-label', 'Actions for ' + entry.path);
+            menu.setAttribute('aria-label', ariaLabel);
 
             // Extendable by design: one list, one shape. A future action is a
             // row here rather than another button on the card.
-            [
-                { label: 'Open in a sheet', hint: 'Full view with line numbers',
-                  run: function () { _generatedArtifactOpenSheet(key); } },
-                { label: 'Save as\u2026', hint: 'Download under a name you choose',
-                  run: function () { _generatedArtifactSaveAs(key); } },
-                { label: 'Download patch', hint: 'Apply with git am',
-                  run: function () { _generatedArtifactDownloadPatch(key); } },
-                { label: 'Continue editing', hint: 'Attach to your next message',
-                  run: function () { _generatedArtifactContinueEditing(key); } }
-            ].forEach(function (item) {
+            items.forEach(function (item) {
                 var row = document.createElement('button');
                 row.type = 'button';
                 row.className = 'ai-assistant-panel-changed-file-menu-item';
@@ -47814,6 +47830,20 @@
             if (first && typeof first.focus === 'function') first.focus();
         });
         return btn;
+    }
+
+    /** The tracked-file menu: everything the card no longer shows as a button. */
+    function _buildFileOverflow(key, entry) {
+        return _buildOverflowMenu('More options for ' + entry.path, [
+            { label: 'Open in a sheet', hint: 'Full view with line numbers',
+              run: function () { _generatedArtifactOpenSheet(key); } },
+            { label: 'Save as\u2026', hint: 'Download under a name you choose',
+              run: function () { _generatedArtifactSaveAs(key); } },
+            { label: 'Download patch', hint: 'Apply with git am',
+              run: function () { _generatedArtifactDownloadPatch(key); } },
+            { label: 'Continue editing', hint: 'Attach to your next message',
+              run: function () { _generatedArtifactContinueEditing(key); } }
+        ]);
     }
 
     /**
