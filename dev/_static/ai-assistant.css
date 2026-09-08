@@ -9458,25 +9458,43 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 
 /* One stable sheet, compact in-sheet format switcher. */
 .ai-assistant-conv-share-format-switcher {
-    display: flex;
-    align-items: center;
+    /*
+     * Wraps into rows rather than scrolling.
+     *
+     * Horizontal scrolling hid tabs behind an edge: TOML sat off-screen with
+     * nothing indicating it existed, and a format the reader cannot see is a
+     * format they will not choose. Wrapping shows all five at every width --
+     * 5 across, then 4, 3, 2, 1 as the panel narrows.
+     *
+     * `auto-fit` with a `1fr` maximum keeps every tab the same width, so the
+     * rows line up as a grid instead of ragged flex lines. Tracks that have no
+     * item collapse, so a trailing row of two sits at the two columns it
+     * occupies rather than one tab stretching across the whole row -- the
+     * orphan problem R173T36 fixed for the destination cards, avoided here by
+     * construction rather than by choosing a fixed column count.
+     *
+     * `min(6rem, 100%)` in the minimum is what stops a single column from
+     * exceeding a very narrow container: a bare 6rem minimum would overflow
+     * below 6rem of width, which is exactly the case wrapping exists for.
+     */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(6rem, 100%), 1fr));
+    align-items: stretch;
     gap: 4px;
     padding: 8px 12px 7px;
     border-bottom: 1px solid var(--color-border, #d0d7de);
     flex-shrink: 0;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    /* `overflow-x: auto` alone does nothing here: a flex item's default
-       `min-width: auto` refuses to shrink below its content, so the switcher
-       grew to fit all five tabs and widened the sheet instead of scrolling.
-       `min-width: 0` is what actually lets the overflow engage. */
     min-width: 0;
     max-width: 100%;
-    overscroll-behavior-x: contain;
 }
-/* Tabs keep their size and scroll; squashing them would truncate the format
-   names, which are the only thing distinguishing one tab from another. */
-.ai-assistant-conv-share-format-switcher > * { flex: 0 0 auto; }
+/* Tabs fill their track and centre their label, so equal-width cells read as
+   equal choices. Names are never squashed: the track has a floor, and below it
+   the grid drops a column instead of shrinking the tabs. */
+.ai-assistant-conv-share-format-switcher > * {
+    min-width: 0;
+    text-align: center;
+    justify-content: center;
+}
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-format-switcher,
 .dark .ai-assistant-conv-share-format-switcher {
@@ -18564,7 +18582,10 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
      sizes each card to its own content rather than to the tallest. */
   .ai-assistant-conv-share-destinations { grid-template-columns:1fr; grid-auto-rows:auto; }
   .ai-assistant-conv-share-custom-grid { grid-template-columns:1fr; }
-  .ai-assistant-conv-share-format-switcher { overflow-x:auto; flex-wrap:nowrap; }
+  /* The narrow-panel override forced the old scrolling behaviour back on.
+     The grid already reaches one column per row on its own, so this rule now
+     only has to stop being wrong. */
+  .ai-assistant-conv-share-format-switcher { overflow-x:visible; }
   .ai-assistant-conv-share-artifact { align-items:flex-start; flex-wrap:wrap; }
 }
 
