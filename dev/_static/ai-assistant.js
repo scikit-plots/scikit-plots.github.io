@@ -15637,6 +15637,12 @@
             pre.className = 'ai-assistant-panel-attachment-preview-code';
             pre.textContent = item.previewText;
             st.body.appendChild(pre);
+            // Every preview is numbered, not only the inline file sheet. A
+            // reader asking for a change at a particular line needs to be able
+            // to read that line number off the thing they are looking at --
+            // and the overlay is where a long file is actually read.
+            _buildLineNumberedSheet(pre, item.previewText,
+                'ai-md-file-sheet ai-assistant-panel-attachment-preview-sheet');
             if (item.kind === 'text') {
                 var note = document.createElement('p');
                 note.className = 'ai-assistant-panel-attachment-preview-note';
@@ -49003,6 +49009,44 @@
         return keys;
     }
 
+    /**
+     * Wrap a `<pre>` in a sheet with a line-number gutter beside it.
+     *
+     * The numbers live in their own element and never enter the `<pre>`.
+     * Prefixing each line is the usual shortcut and it poisons every copy,
+     * every download and every patch taken from the block -- a reader who
+     * selects the whole sheet must get the file, not the file with a number
+     * welded to each line.
+     *
+     * `aria-hidden` keeps the gutter out of the accessibility tree, because a
+     * screen reader announcing "one import sys two import os" is worse than no
+     * numbers at all; `user-select: none` and `pointer-events: none` in the
+     * stylesheet keep it out of selections and clicks.
+     *
+     * @param {HTMLElement} pre  Block to wrap, in place if it has a parent.
+     * @param {string} text      Content the numbers are counted from.
+     * @param {string} sheetCls  Sheet class for the surface's own styling.
+     * @returns {HTMLElement} The sheet element containing gutter and pre.
+     */
+    function _buildLineNumberedSheet(pre, text, sheetCls) {
+        var lines = text ? String(text).split(/\r\n|\r|\n/).length : 0;
+        var sheet = document.createElement('div');
+        sheet.className = sheetCls || 'ai-md-file-sheet';
+        var gutter = document.createElement('div');
+        gutter.className = 'ai-md-file-gutter';
+        gutter.setAttribute('aria-hidden', 'true');
+        var numbers = [];
+        for (var ln = 1; ln <= lines; ln++) numbers.push(ln);
+        gutter.textContent = numbers.join('\n');
+        gutter.style.setProperty('--ai-gutter-digits', String(String(lines).length));
+        var parent = pre.parentNode;
+        var next = pre.nextSibling;
+        sheet.appendChild(gutter);
+        sheet.appendChild(pre);
+        if (parent) parent.insertBefore(sheet, next);
+        return sheet;
+    }
+
     // ── In-place file preview instead of a whole-file mirror ──────────────
     //
     // When an answer returns a complete file, the panel used to print the
@@ -49088,18 +49132,10 @@
             // patch made from the block. Here `<code>` still holds exactly the
             // file's bytes, and the gutter is `aria-hidden` and unselectable,
             // so selecting the whole sheet yields the file and nothing else.
-            var sheet = document.createElement('div');
-            sheet.className = 'ai-md-file-sheet';
-            var gutter = document.createElement('div');
-            gutter.className = 'ai-md-file-gutter';
-            gutter.setAttribute('aria-hidden', 'true');
-            var digits = String(lines).length;
-            var numbers = [];
-            for (var ln = 1; ln <= lines; ln++) numbers.push(ln);
-            gutter.textContent = numbers.join('\n');
-            gutter.style.setProperty('--ai-gutter-digits', String(digits));
-            sheet.appendChild(gutter);
-            sheet.appendChild(wrap);
+            // Same builder as the overlay preview. Two gutters would drift in
+            // exactly the properties that are invisible until they are wrong:
+            // the aria-hidden, the digit width, the line counting.
+            var sheet = _buildLineNumberedSheet(wrap, text, 'ai-md-file-sheet');
             body.appendChild(sheet);
             wrap.setAttribute('data-ai-file-disclosure', 'true');
             wrap.setAttribute('data-ai-file-lines', String(lines));

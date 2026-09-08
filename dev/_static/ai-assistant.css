@@ -4902,6 +4902,22 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
      * plain body-weight text that happens to have a chevron next to it. */
     font-weight: 700;
     font-size: 1.02em;
+    /*
+     * Stronger than body text, not merely bolder.
+     *
+     * The summary inherited the bubble's own `--pst-color-text-base`, so a
+     * section title differed from the paragraph under it only by weight and
+     * 2% of size. Against a tinted bubble that is not enough separation for a
+     * heading a reader is meant to scan by.
+     *
+     * "Darker" is the light-theme direction only. On a dark bubble, darker
+     * text means *less* contrast against the background, so the dark rule
+     * moves the other way -- toward white. What is shared between the themes
+     * is the intent (more contrast than body text), not the direction, and
+     * writing it as one token per theme keeps that explicit rather than
+     * hiding a reversal inside a colour literal.
+     */
+    color: var(--ai-section-title-color, inherit);
     padding: 0.2rem 0.3rem;
     margin: 0 -0.3rem;   /* offset the padding so text still aligns visually */
     border-radius: 6px;
@@ -22414,4 +22430,95 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-assistant-panel-changed-files-series .ai-md-artifact-btn-icon svg {
     width: .95em;
     height: .95em;
+}
+
+/* ── Toggle switches in forced-colours modes ───────────────────────────────
+   The PDF switch already had this treatment; the panel switch and the shared
+   mic switch did not. In a forced-colours mode author colours are discarded,
+   so a track drawn as `rgba(0,0,0,.22)` and a thumb drawn white both collapse
+   toward the system background: the switch becomes a pill with no visible
+   state, and on/off is exactly what a switch has to communicate.
+
+   System keywords are used rather than fixed colours, because that is what
+   forced-colours modes honour. */
+@media (forced-colors: active) {
+    .ai-assistant-mic-toggle-track,
+    .ai-assistant-panel-mode-switch .ai-assistant-panel-toggle-track {
+        border: 1px solid ButtonText;
+        background: Canvas;
+    }
+    .ai-assistant-mic-popup-toggle[aria-pressed="true"] .ai-assistant-mic-toggle-track,
+    .ai-assistant-mic-popup-toggle[aria-checked="true"] .ai-assistant-mic-toggle-track,
+    .ai-assistant-panel-mode-switch[aria-checked="true"] .ai-assistant-panel-toggle-track {
+        background: Highlight;
+    }
+    .ai-assistant-mic-toggle-thumb,
+    .ai-assistant-panel-mode-switch .ai-assistant-panel-toggle-thumb {
+        background: ButtonText;
+        /* The thumb's drop shadow is also discarded, so the border is what
+           keeps it distinguishable once the track is filled with Highlight. */
+        box-shadow: none;
+        border: 1px solid Canvas;
+        box-sizing: border-box;
+    }
+    .ai-assistant-mic-popup-toggle[aria-pressed="true"] .ai-assistant-mic-toggle-thumb,
+    .ai-assistant-mic-popup-toggle[aria-checked="true"] .ai-assistant-mic-toggle-thumb,
+    .ai-assistant-panel-mode-switch[aria-checked="true"] .ai-assistant-panel-toggle-thumb {
+        background: HighlightText;
+    }
+}
+
+/* The overlay preview uses the same sheet and gutter as the inline file view,
+   so a line number means the same thing wherever the reader is looking. Only
+   the container differs: the overlay scrolls its own body, so the sheet fills
+   it rather than sitting inside a disclosure. */
+.ai-assistant-panel-attachment-preview-sheet {
+    width: 100%;
+    min-width: 0;
+    border-radius: 8px;
+}
+.ai-assistant-panel-attachment-preview-sheet .ai-assistant-panel-attachment-preview-code {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+/* The gutter must share the code's line box or the numbers drift line by line;
+   inheriting both values is what keeps them aligned as either changes. */
+.ai-assistant-panel-attachment-preview-sheet .ai-md-file-gutter {
+    font-size: inherit;
+    line-height: inherit;
+}
+.ai-assistant-panel-attachment-preview-sheet,
+.ai-assistant-panel-attachment-preview-sheet .ai-assistant-panel-attachment-preview-code {
+    font-size: .72rem;
+    line-height: 1.5;
+}
+
+
+/* ── Section title contrast ────────────────────────────────────────────────
+   Derived from the theme's own text colour rather than set to a literal, so a
+   site that retints its text keeps its titles in the same family. Mixing
+   toward the extreme adds contrast against the bubble in whichever direction
+   that theme's background lies. */
+:root {
+    --ai-section-title-color: color-mix(in srgb, var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a)) 86%, #000 14%);
+}
+[data-bs-theme="dark"],
+.dark {
+    --ai-section-title-color: color-mix(in srgb, var(--pst-color-text-base, var(--color-foreground-primary, #e6e6e6)) 86%, #fff 14%);
+}
+/* The chevron stays quieter than the title it belongs to: it is an affordance,
+   not part of the heading, and matching the title's weight made the row read
+   as two emphasised things. */
+.ai-md-section-chevron { color: var(--pst-color-text-muted, #71717a); }
+.ai-assistant-panel-bubble--assistant summary.ai-md-section-summary:hover .ai-md-section-chevron {
+    color: inherit;
+}
+@media (forced-colors: active) {
+    /* color-mix results are discarded; the title falls back to the system
+       text colour rather than to whatever the mix last computed. */
+    .ai-assistant-panel-bubble--assistant summary.ai-md-section-summary,
+    .ai-md-section-chevron { color: CanvasText; }
 }
