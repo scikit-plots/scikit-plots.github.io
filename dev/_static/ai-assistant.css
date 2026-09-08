@@ -22023,3 +22023,68 @@ button.ai-md-artifact-download-label:focus-visible {
 .ai-md-artifact-group > .ai-assistant-panel-changed-file-download:focus-visible {
     background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
 }
+
+/* ── Presented files inherit the snippet-card look ─────────────────────────
+   The preview segment now uses the snippet card's own classes, so these rules
+   only cover what genuinely differs: the state line is refreshed at click time
+   from the ledger and can be empty, and the row must not collapse when it is. */
+.ai-assistant-panel-changed-file-preview .ai-md-artifact-type:empty { display: none; }
+.ai-assistant-panel-changed-file-preview .ai-md-artifact-name {
+    display: flex;
+    align-items: baseline;
+    gap: .1rem;
+    min-width: 0;
+}
+/* Long repository paths truncate from the START: the filename at the end is
+   what identifies the file, and clipping it leaves every row reading
+   "scikit-plots/user_guide/impute/…". */
+.ai-assistant-panel-changed-file-preview .ai-md-artifact-name > :first-child,
+.ai-assistant-panel-changed-file-preview .ai-md-artifact-name {
+    direction: ltr;
+}
+.ai-assistant-panel-changed-file-preview .ai-md-artifact-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Footer: the bulk pair reads as the wide version of a file row. */
+.ai-assistant-panel-changed-files-footer > .ai-md-artifact-group { flex: 1 1 100%; }
+.ai-md-artifact-group > .ai-assistant-panel-changed-files-download-all {
+    flex: 1 1 auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    text-align: center;
+}
+.ai-md-artifact-group > .ai-assistant-panel-changed-files-series {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+.ai-md-artifact-group > .ai-assistant-panel-changed-files-download-all:hover,
+.ai-md-artifact-group > .ai-assistant-panel-changed-files-download-all:focus-visible,
+.ai-md-artifact-group > .ai-assistant-panel-changed-files-series:hover,
+.ai-md-artifact-group > .ai-assistant-panel-changed-files-series:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
+}
+
+/* The type line carries a short badge and, beside it, the live revision/state
+   text the ledger refreshes at click time. Both may be empty at different
+   moments, so neither may leave a gap on its own. */
+.ai-assistant-panel-changed-file-preview .ai-md-artifact-type {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    min-width: 0;
+}
+.ai-assistant-panel-changed-file-preview .ai-assistant-panel-changed-file-meta {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ai-assistant-panel-changed-file-preview .ai-assistant-panel-changed-file-meta:empty,
+.ai-assistant-panel-changed-file-preview .ai-assistant-panel-changed-file-badge:empty {
+    display: none;
+}

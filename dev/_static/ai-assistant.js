@@ -48743,38 +48743,50 @@
             row.className = 'ai-assistant-panel-changed-file';
             var preview = document.createElement('button');
             preview.type = 'button';
-            preview.className = 'ai-assistant-panel-changed-file-preview';
+            // Built from the same classes as a snippet card, not a lookalike.
+            // The two surfaces previously carried parallel class trees styled
+            // to match; keeping them in step then meant editing two stylesheets
+            // in the same way, and they had already diverged -- this one had
+            // grown a trailing "Preview" word, a badge after the metadata, and
+            // a different truncation point for the same filename.
+            preview.className = 'ai-md-artifact-card ai-assistant-panel-changed-file-preview';
+            preview.setAttribute('aria-label', 'Preview ' + entry.path);
+            preview.title = 'Preview ' + entry.path +
+                ' \u2014 download is the button beside it';
             var icon = document.createElement('span');
-            icon.className = 'ai-assistant-panel-changed-file-icon';
+            icon.className = 'ai-md-artifact-icon';
             icon.setAttribute('aria-hidden', 'true');
             icon.innerHTML = ICONS.terms;
             var copy = document.createElement('span');
-            copy.className = 'ai-assistant-panel-changed-file-copy';
+            copy.className = 'ai-md-artifact-info';
             var name = document.createElement('span');
-            name.className = 'ai-assistant-panel-changed-file-name';
+            name.className = 'ai-md-artifact-name';
             name.textContent = entry.path;
-            var meta = document.createElement('span');
-            meta.className = 'ai-assistant-panel-changed-file-meta';
-            copy.appendChild(name);
-            // Sits next to the filename, before the revision/state line, so
-            // the size of the change reads at the same glance as what changed.
-            var diffStat = _diffStatElement(entry);
-            if (diffStat) name.appendChild(diffStat);
-            copy.appendChild(meta);
-            // A short type badge does what a filename extension does at a
-            // glance -- and unlike the extension it survives truncation of a
-            // long path, which is the case that actually needs it.
+            // The revision/state line the ledger keeps up to date at click
+            // time; it sits where a snippet card shows its type.
+            var typeLine = document.createElement('span');
+            typeLine.className = 'ai-md-artifact-type';
+            // A short type badge does what an extension does at a glance, and
+            // unlike the extension it survives truncation of a long path --
+            // the case that actually needs it. It sits where a snippet card
+            // shows its type, with the live revision/state line beside it.
             var badge = document.createElement('span');
             badge.className = 'ai-assistant-panel-changed-file-badge';
             var dot = entry.path.lastIndexOf('.');
             var ext = (dot > 0 && dot < entry.path.length - 1)
                 ? entry.path.slice(dot + 1) : '';
             badge.textContent = (ext || 'file').slice(0, 6).toUpperCase();
-            copy.appendChild(badge);
-            var open = document.createElement('span');
-            open.className = 'ai-assistant-panel-changed-file-open';
-            open.textContent = 'Preview';
-            preview.appendChild(icon); preview.appendChild(copy); preview.appendChild(open);
+            typeLine.appendChild(badge);
+            var meta = document.createElement('span');
+            meta.className = 'ai-assistant-panel-changed-file-meta';
+            typeLine.appendChild(meta);
+            copy.appendChild(name);
+            // Beside the filename, so the size of the change reads at the same
+            // glance as what changed.
+            var diffStat = _diffStatElement(entry);
+            if (diffStat) name.appendChild(diffStat);
+            copy.appendChild(typeLine);
+            preview.appendChild(icon); preview.appendChild(copy);
             _generatedArtifactBindLatest(key, preview, meta);
             var download = document.createElement('button');
             download.type = 'button';
@@ -48825,7 +48837,6 @@
         var footer = document.createElement('div');
         footer.className = 'ai-assistant-panel-changed-files-footer';
         footerRef = footer;
-        footer.appendChild(series);
         section.appendChild(footer);
         if (combined.length > 1) {
             var all = document.createElement('button');
@@ -48858,7 +48869,16 @@
                 if (unavailable) showNotification(unavailable + ' unavailable latest file revision' + (unavailable === 1 ? ' was' : 's were') + ' skipped.', false);
                 _downloadBlob(_buildZipBlob(files), 'application/zip', 'changed-files-' + _isoFileStamp() + '.zip');
             });
-            footer.appendChild(all);
+            // Download all is the big segment; Download patch series is the
+            // narrow one beside it -- the same shape as a file row, so the
+            // footer reads as the bulk version of the control above it rather
+            // than as two loose buttons.
+            footer.appendChild(_buildArtifactSegmentGroup(
+                'All ' + combined.length + ' presented files', all, series));
+        } else {
+            // One file: the per-row controls already cover it, so only the
+            // patch export is worth repeating here.
+            footer.appendChild(series);
         }
         root.appendChild(section);
     }
