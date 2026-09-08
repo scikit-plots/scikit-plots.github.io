@@ -21562,3 +21562,76 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     font-size: .68rem;
     line-height: 1.45;
 }
+
+/* ── In-place file preview ──────────────────────────────────────────────────
+   A complete file collapses to a row that names and sizes it, and opens in
+   place. The chat body keeps the answer's reasoning readable; the file is one
+   click away and never moves to another surface. */
+.ai-md-file-disclosure-head {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    width: 100%;
+    margin: .5rem 0 0;
+    padding: .45rem .6rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 96%, #808080 4%);
+    color: inherit;
+    font: inherit;
+    font-size: .68rem;
+    text-align: start;
+    cursor: pointer;
+}
+.ai-md-file-disclosure-head:hover,
+.ai-md-file-disclosure-head:focus-visible {
+    border-color: color-mix(in srgb, var(--pst-color-border, #d8dce1) 100%, transparent);
+}
+.ai-md-file-disclosure-caret {
+    flex: 0 0 auto;
+    transition: transform .12s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .ai-md-file-disclosure-caret { transition: none; }
+}
+.ai-md-file-disclosure-head[aria-expanded="true"] .ai-md-file-disclosure-caret {
+    transform: rotate(90deg);
+}
+.ai-md-file-disclosure-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+.ai-md-file-disclosure-meta {
+    flex: 0 0 auto;
+    color: var(--pst-color-text-muted, #71717a);
+    font-variant-numeric: tabular-nums;
+}
+.ai-md-file-disclosure-body[hidden] { display: none; }
+
+/* The presented-files summary collapses too, so a long answer ends in one
+   line rather than a stack of cards. */
+.ai-assistant-panel-changed-files-head {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+.ai-assistant-panel-changed-files-caret {
+    display: inline-block;
+    margin-inline-end: .3rem;
+    transition: transform .12s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-changed-files-caret { transition: none; }
+}
+.ai-assistant-panel-changed-files-head[aria-expanded="true"] .ai-assistant-panel-changed-files-caret {
+    transform: rotate(90deg);
+}
+.ai-assistant-panel-changed-files-list[hidden] { display: none; }

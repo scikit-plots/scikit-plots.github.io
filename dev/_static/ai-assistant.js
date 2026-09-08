@@ -2789,6 +2789,11 @@
         // the latest-revision Changed files surface instead of this snippet list.
         var files = [];
 
+        // Collapse complete files before the cards are built. Called here and
+        // only here: _appendArtifactCards runs once after the stream finishes,
+        // whereas the per-chunk sync would re-wrap a file on every chunk.
+        _collapseArtifactPreBlocks(root);
+
         // Blocks carrying an explicit `file=` path are owned by the File
         // drafts surface, so the contextual namer only ever sees, and only
         // ever counts, the unnamed remainder. Counting the full list here
@@ -47968,6 +47973,95 @@
         return keys;
     }
 
+    // ── In-place file preview instead of a whole-file mirror ──────────────
+    //
+    // When an answer returns a complete file, the panel used to print the
+    // entire file into the chat body. For a 600-line `index.rst` that buries
+    // the reasoning under a wall of text the reader has already seen, pushes
+    // the file controls off-screen, and makes a three-file answer unreadable.
+    //
+    // The file is not hidden -- it is collapsed to a row that names it, sizes
+    // it, and opens in place. Nothing moves to another surface, nothing is
+    // fetched again, and the disclosure holds the very same `<pre>` the
+    // markdown renderer produced, so copy, download and artifact-path
+    // behaviour are untouched by construction.
+    //
+    // Short files stay open: collapsing eight lines costs a click and saves
+    // nothing.
+    var _FILE_PREVIEW_COLLAPSE_MIN_LINES = 24;
+
+    function _collapseArtifactPreBlocks(root) {
+        if (!root || typeof root.querySelectorAll !== 'function') return 0;
+        var wraps;
+        try { wraps = root.querySelectorAll('.ai-md-pre-wrap'); }
+        catch (_) { return 0; }
+        var collapsed = 0;
+        Array.prototype.forEach.call(wraps, function (wrap) {
+            if (wrap.getAttribute('data-ai-file-disclosure') === 'true') return;
+            var pre = wrap.querySelector('pre.ai-md-pre');
+            var code = pre && pre.querySelector('code');
+            if (!pre || !code) return;
+            var path = _generatedArtifactSafePath(pre.getAttribute('data-artifact-path') || '');
+            // Only complete, path-bearing files collapse. An anonymous snippet
+            // is usually the point of the answer, not a byproduct of it.
+            if (!path) return;
+            var text = code.textContent || '';
+            var lines = text ? text.split(/\r\n|\r|\n/).length : 0;
+            if (lines < _FILE_PREVIEW_COLLAPSE_MIN_LINES) return;
+
+            var entry = _generatedArtifactLedger[path];
+            var body = document.createElement('div');
+            body.className = 'ai-md-file-disclosure-body';
+            body.id = 'ai-file-preview-' + (++_FILE_DISCLOSURE_SEQ);
+            body.hidden = true;
+
+            var head = document.createElement('button');
+            head.type = 'button';
+            head.className = 'ai-md-file-disclosure-head';
+            head.setAttribute('aria-expanded', 'false');
+            head.setAttribute('aria-controls', body.id);
+
+            var caret = document.createElement('span');
+            caret.className = 'ai-md-file-disclosure-caret';
+            caret.setAttribute('aria-hidden', 'true');
+            caret.textContent = '\u203a';
+
+            var name = document.createElement('span');
+            name.className = 'ai-md-file-disclosure-name';
+            name.textContent = path;
+
+            var meta = document.createElement('span');
+            meta.className = 'ai-md-file-disclosure-meta';
+            meta.textContent = lines + (lines === 1 ? ' line' : ' lines');
+
+            head.appendChild(caret);
+            head.appendChild(name);
+            var stat = _diffStatElement(entry);
+            if (stat) head.appendChild(stat);
+            head.appendChild(meta);
+
+            // The label is a full sentence for assistive technology; the row's
+            // visual parts are individually meaningless out of order.
+            head.setAttribute('aria-label',
+                'Preview ' + path + ', ' + lines + (lines === 1 ? ' line' : ' lines') +
+                (entry ? ', revision r' + _artifactContentRevision(entry) : ''));
+
+            wrap.parentNode.insertBefore(head, wrap);
+            wrap.parentNode.insertBefore(body, wrap);
+            body.appendChild(wrap);
+            wrap.setAttribute('data-ai-file-disclosure', 'true');
+
+            head.addEventListener('click', function () {
+                var open = head.getAttribute('aria-expanded') === 'true';
+                head.setAttribute('aria-expanded', open ? 'false' : 'true');
+                body.hidden = open;
+            });
+            collapsed += 1;
+        });
+        return collapsed;
+    }
+    var _FILE_DISCLOSURE_SEQ = 0;
+
     function _appendChangedFileSummary(root, keys, st) {
         if (!root || _cfg().panelGeneratedFilePreview === false) return;
         if (root.querySelector('.ai-assistant-panel-changed-files')) return;
@@ -47978,17 +48072,38 @@
         if (!combined.length) return;
         var section = document.createElement('section');
         section.className = 'ai-assistant-panel-changed-files';
-        section.setAttribute('aria-label', 'Changed files');
-        var head = document.createElement('div');
+        section.setAttribute('aria-label', 'Presented files');
+        // "Changed files" claimed more than had happened: nothing outside this
+        // browser changed. "Presented" says what the panel actually did, and
+        // the hint keeps the draft status attached to the count rather than
+        // relegating it to a tooltip nobody opens.
+        var head = document.createElement('button');
+        head.type = 'button';
         head.className = 'ai-assistant-panel-changed-files-head';
+        head.setAttribute('aria-expanded', 'true');
+        var listId = 'ai-presented-files-' + (++_FILE_DISCLOSURE_SEQ);
+        head.setAttribute('aria-controls', listId);
+        var headCaret = document.createElement('span');
+        headCaret.className = 'ai-assistant-panel-changed-files-caret';
+        headCaret.setAttribute('aria-hidden', 'true');
+        headCaret.textContent = '\u203a';
         var title = document.createElement('strong');
-        title.textContent = 'Changed files';
+        title.textContent = 'Presented ' + combined.length +
+            (combined.length === 1 ? ' file' : ' files');
         var hint = document.createElement('span');
-        hint.textContent = combined.length + ' \u00b7 every link opens the latest revision';
-        head.appendChild(title); head.appendChild(hint);
+        hint.textContent = 'drafts, not applied \u00b7 links open the latest revision';
+        head.appendChild(headCaret); head.appendChild(title); head.appendChild(hint);
         section.appendChild(head);
+        var seriesRef = null;
         var list = document.createElement('div');
         list.className = 'ai-assistant-panel-changed-files-list';
+        list.id = listId;
+        head.addEventListener('click', function () {
+            var open = head.getAttribute('aria-expanded') === 'true';
+            head.setAttribute('aria-expanded', open ? 'false' : 'true');
+            list.hidden = open;
+            if (seriesRef) seriesRef.hidden = open;
+        });
         combined.forEach(function (key) {
             var entry = _generatedArtifactLedger[key];
             var row = document.createElement('div');
@@ -48056,6 +48171,7 @@
         // series is still the right artifact for a reader who applies changes
         // with `git am` rather than by hand.
         var series = document.createElement('button');
+        seriesRef = series;
         series.type = 'button';
         series.className = 'ai-assistant-panel-changed-files-series';
         series.textContent = 'Download patch series';
