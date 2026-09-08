@@ -21943,7 +21943,10 @@ button.ai-md-artifact-download-label {
     border-radius: 8px;
     padding: .45rem .6rem;
     background: var(--pst-color-surface, #fff);
-    color: inherit;
+    /* Colour comes from the shared accent rule at the end of this sheet, not
+       from `inherit` -- an earlier version set it here and, being later in the
+       cascade than the bubble-scoped accent, silently made the one control
+       that already had the right colour lose it. */
     font: inherit;
     font-size: .62rem;
     font-weight: 600;
@@ -22087,4 +22090,56 @@ button.ai-md-artifact-download-label:focus-visible {
 .ai-assistant-panel-changed-file-preview .ai-assistant-panel-changed-file-meta:empty,
 .ai-assistant-panel-changed-file-preview .ai-assistant-panel-changed-file-badge:empty {
     display: none;
+}
+
+
+/* ── Artifact accent ───────────────────────────────────────────────────────
+   One token, one selector list. These four controls are the same idea in four
+   places -- take this file -- and were drifting apart: the snippet download
+   label carried the theme accent, the presented-file download and the bulk
+   download inherited body text, and the section heading was plain bold.
+
+   Defined as a variable rather than repeating the fallback chain, so a theme
+   that sets `--pst-color-primary` moves all of them together and a future
+   fifth control opts in by adding its selector here rather than by copying
+   three levels of `var()` fallback. */
+:root {
+    --ai-artifact-accent: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+[data-bs-theme="dark"] {
+    /* The light accent fails contrast on a dark surface, so the dark theme
+       carries its own value rather than reusing one that is merely readable. */
+    --ai-artifact-accent: #93c5fd;
+}
+button.ai-md-artifact-download-label,
+.ai-assistant-panel-changed-file-download,
+.ai-assistant-panel-changed-files-download-all,
+.ai-assistant-panel-changed-files-head strong {
+    color: var(--ai-artifact-accent);
+}
+/* Hover and focus keep the accent: a control that loses its colour on hover
+   reads as disabling itself at the moment the reader commits to it. */
+button.ai-md-artifact-download-label:hover,
+button.ai-md-artifact-download-label:focus-visible,
+.ai-assistant-panel-changed-file-download:hover,
+.ai-assistant-panel-changed-file-download:focus-visible,
+.ai-assistant-panel-changed-files-download-all:hover,
+.ai-assistant-panel-changed-files-download-all:focus-visible {
+    color: var(--ai-artifact-accent);
+}
+/* The heading is a label, not a control: same colour, no pointer affordance. */
+.ai-assistant-panel-changed-files-head strong {
+    font-weight: 700;
+    letter-spacing: .01em;
+}
+@media (forced-colors: active) {
+    /* Forced-colours modes discard the accent entirely. Every one of these
+       controls is a real button or a heading, so the meaning survives in the
+       element itself rather than in the hue. */
+    button.ai-md-artifact-download-label,
+    .ai-assistant-panel-changed-file-download,
+    .ai-assistant-panel-changed-files-download-all,
+    .ai-assistant-panel-changed-files-head strong {
+        color: LinkText;
+    }
 }
