@@ -48241,7 +48241,38 @@
      * reporting the count it had at that moment, which is the same class of
      * staleness that made the menu toggle unusable.
      */
+    /**
+     * Write the label that describes what the next click will do.
+     *
+     * Read from the live count rather than captured at build time: a control
+     * built once keeps its opening label, which is exactly how the menu toggle
+     * became unusable in R173T27.
+     */
+    function _applyContinueAllLabel(btn) {
+        if (!btn) return;
+        var total = Math.max(0, Number(btn.getAttribute('data-ai-continue-all-total')) || 0);
+        var queued = _continuationCount();
+        if (queued) {
+            btn.textContent = 'Remove all ' + queued +
+                (queued === 1 ? ' attached file' : ' attached files');
+            btn.setAttribute('aria-label',
+                'Remove all ' + queued + ' attached files from your next message');
+            btn.title = 'Detach every file currently travelling with your next message';
+        } else {
+            btn.textContent = 'Continue editing all ' + total + ' files';
+            btn.setAttribute('aria-label',
+                'Attach all ' + total + ' presented files to your next message');
+            btn.title = 'Attach as many as this endpoint accepts per request';
+        }
+    }
+
     function _refreshContinuationTray() {
+        // Named for the tray it started as, but it now refreshes every surface
+        // that describes the queue. One refresh point, called by every
+        // operation that changes the queue, is the only arrangement that has
+        // survived contact with this feature.
+        var buttons = document.querySelectorAll('.ai-assistant-panel-changed-files-continue-all');
+        Array.prototype.forEach.call(buttons, _applyContinueAllLabel);
         var trays = document.querySelectorAll('.ai-assistant-panel-changed-files-tray');
         var n = _continuationCount();
         Array.prototype.forEach.call(trays, function (tray) {
@@ -48956,16 +48987,11 @@
             trayText.textContent = trayCount +
                 (trayCount === 1 ? ' file travels' : ' files travel') +
                 ' with your next message';
-            var clear = document.createElement('button');
-            clear.type = 'button';
-            clear.className = 'ai-assistant-panel-changed-files-tray-clear';
-            clear.textContent = 'Clear';
-            clear.setAttribute('aria-label', 'Remove all attached files from your next message');
-            clear.addEventListener('click', function () {
-                _generatedArtifactClearContinuations();
-                tray.remove();
-            });
-            tray.appendChild(trayText); tray.appendChild(clear);
+            // Status only. Clearing lives on the footer control now, and two
+            // buttons for one action is the duplication this section has spent
+            // several checkpoints removing. With a single file there is no
+            // footer control and the row's own menu offers Stop continuing.
+            tray.appendChild(trayText);
             section.appendChild(tray);
         }
         var footerRef = null;
@@ -49088,14 +49114,20 @@
         // multi-file review, and doing it by hand means discovering the
         // per-request cap only by hitting it.
         if (many) {
+            // One control, two directions. Attaching several files is easy;
+            // detaching them was not -- the queue had to be dismantled one
+            // menu at a time, and the reader who wanted none of it had the
+            // most work to do. The control now says what the next click does,
+            // which is also why it cannot be built once and left alone.
             var contAll = document.createElement('button');
             contAll.type = 'button';
             contAll.className = 'ai-assistant-panel-changed-files-continue-all';
-            contAll.textContent = 'Continue editing all ' + combined.length + ' files';
-            contAll.setAttribute('aria-label',
-                'Attach all ' + combined.length + ' presented files to your next message');
-            contAll.title = 'Attach as many as this endpoint accepts per request';
-            contAll.addEventListener('click', _generatedArtifactContinueAll);
+            contAll.setAttribute('data-ai-continue-all-total', String(combined.length));
+            contAll.addEventListener('click', function () {
+                if (_continuationCount()) _generatedArtifactClearContinuations();
+                else _generatedArtifactContinueAll();
+            });
+            _applyContinueAllLabel(contAll);
             footer.appendChild(contAll);
         }
         section.appendChild(footer);
