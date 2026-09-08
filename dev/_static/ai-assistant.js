@@ -2844,6 +2844,47 @@
         return group;
     }
 
+    /**
+     * Number every remaining code block in a finished answer.
+     *
+     * `_collapseArtifactPreBlocks` numbers the complete files it collapses.
+     * This numbers what is left -- short files, and every snippet that never
+     * declared a path -- so a reader can cite a line in any block they are
+     * looking at rather than only in the ones large enough to have been
+     * collapsed.
+     *
+     * Runs at finalization for the same reason the collapse does: on the
+     * per-chunk path it would wrap a block whose fence is still arriving and
+     * re-wrap it on every chunk.
+     *
+     * Idempotent through the sheet marker, so a re-render cannot nest one
+     * sheet inside another.
+     */
+    function _numberRemainingCodeBlocks(root) {
+        if (!root || typeof root.querySelectorAll !== 'function') return 0;
+        var wraps;
+        try { wraps = root.querySelectorAll('.ai-md-pre-wrap'); }
+        catch (_) { return 0; }
+        var numbered = 0;
+        Array.prototype.forEach.call(wraps, function (wrap) {
+            if (wrap.getAttribute('data-ai-line-numbered') === 'true') return;
+            // Already inside a sheet from the collapse pass.
+            if (wrap.parentNode && wrap.parentNode.classList &&
+                    wrap.parentNode.classList.contains('ai-md-file-sheet')) {
+                wrap.setAttribute('data-ai-line-numbered', 'true');
+                return;
+            }
+            var pre = wrap.querySelector('pre.ai-md-pre');
+            var code = pre && pre.querySelector('code');
+            if (!pre || !code) return;
+            _buildLineNumberedSheet(wrap, code.textContent || '',
+                'ai-md-file-sheet ai-md-snippet-sheet');
+            wrap.setAttribute('data-ai-line-numbered', 'true');
+            numbered += 1;
+        });
+        return numbered;
+    }
+
     function _appendArtifactCards(root, activity) {
         if (!root) { return []; }
         var explicitKeys = _syncExplicitCodeArtifacts(root, activity);
@@ -2864,6 +2905,8 @@
         // only here: _appendArtifactCards runs once after the stream finishes,
         // whereas the per-chunk sync would re-wrap a file on every chunk.
         _collapseArtifactPreBlocks(root);
+        // Everything the collapse pass did not already put in a sheet.
+        _numberRemainingCodeBlocks(root);
 
         // Blocks carrying an explicit `file=` path are owned by the File
         // drafts surface, so the contextual namer only ever sees, and only

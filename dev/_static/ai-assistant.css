@@ -22522,3 +22522,27 @@ button.ai-md-artifact-download-label:focus-visible,
     .ai-assistant-panel-bubble--assistant summary.ai-md-section-summary,
     .ai-md-section-chevron { color: CanvasText; }
 }
+
+/* Snippet sheets: the same gutter as a file sheet, lighter chrome.
+   A snippet is part of the prose around it, not a document in its own right,
+   so it keeps the code block's own border radius and does not gain the file
+   sheet's squared top edge (which exists to meet a disclosure header). */
+.ai-md-snippet-sheet {
+    border-radius: 8px;
+    border-top: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
+    margin: .4rem 0;
+}
+.ai-md-snippet-sheet .ai-md-pre-wrap { margin: 0; }
+/* The gutter shares the code's line box here too. Restating the values would
+   let them drift apart the moment either side is retuned, and drift shows up
+   as numbers sliding out of line with their rows. */
+.ai-md-snippet-sheet .ai-md-gutter,
+.ai-md-snippet-sheet .ai-md-file-gutter {
+    font-size: inherit;
+    line-height: inherit;
+}
+.ai-md-snippet-sheet,
+.ai-md-snippet-sheet .ai-md-pre {
+    font-size: .72rem;
+    line-height: 1.5;
+}
