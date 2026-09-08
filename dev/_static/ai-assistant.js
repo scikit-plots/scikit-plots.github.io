@@ -2915,8 +2915,23 @@
 
             var cardRow = document.createElement('span');
             cardRow.className = 'ai-md-artifact-row';
-            cardRow.appendChild(card);
-            cardRow.appendChild(dlBtn);
+            // Preview and Download read as one control with a divider between
+            // them, not as two buttons that happen to sit together. They stay
+            // two real <button> elements -- a button inside a button is invalid
+            // and browsers drop one of the two click targets -- so the joining
+            // is presentational, and `role="group"` with a name is what tells
+            // assistive technology the two belong to the same artifact.
+            var group = document.createElement('span');
+            group.className = 'ai-md-artifact-group';
+            group.setAttribute('role', 'group');
+            group.setAttribute('aria-label', filename);
+            group.appendChild(card);
+            var sep = document.createElement('span');
+            sep.className = 'ai-md-artifact-sep';
+            sep.setAttribute('aria-hidden', 'true');
+            group.appendChild(sep);
+            group.appendChild(dlBtn);
+            cardRow.appendChild(group);
             cardRow.appendChild(snippetMenu);
             list.appendChild(cardRow);
         });

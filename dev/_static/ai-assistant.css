@@ -21954,3 +21954,43 @@ button.ai-md-artifact-download-label:hover,
 button.ai-md-artifact-download-label:focus-visible {
     background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
 }
+
+/* ── Snippet artifact: one segmented control ───────────────────────────────
+   Preview and Download read as a single control with a divider, not as two
+   buttons that happen to sit together. They remain two real <button> elements
+   — nesting one inside the other is invalid HTML and browsers drop one of the
+   two click targets — so the joining is purely presentational, and role=group
+   with a name is what carries the relationship to assistive technology. */
+.ai-md-artifact-group {
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 10px;
+    background: var(--pst-color-surface, #fff);
+    overflow: hidden;
+}
+.ai-md-artifact-group:focus-within {
+    border-color: color-mix(in srgb, var(--pst-color-border, #d8dce1) 100%, transparent);
+}
+/* Both segments shed their own chrome; the group owns the border and radius. */
+.ai-md-artifact-group > .ai-md-artifact-card,
+.ai-md-artifact-group > button.ai-md-artifact-download-label {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    margin: 0;
+}
+.ai-md-artifact-group > .ai-md-artifact-card:hover,
+.ai-md-artifact-group > button.ai-md-artifact-download-label:hover {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
+}
+/* The divider is a real element rather than a border on a segment: a border
+   would move or vanish with whichever segment is hovered or focused. */
+.ai-md-artifact-sep {
+    flex: 0 0 1px;
+    align-self: stretch;
+    margin: .35rem 0;
+    background: color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
+}
