@@ -21796,3 +21796,67 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 .ai-assistant-panel-changed-file-more:hover,
 .ai-assistant-panel-changed-file-more:focus-visible { color: inherit; }
 .ai-assistant-panel-changed-file-secondary[hidden] { display: none; }
+
+/* ── File card: preview fills, then download, then ⋮ ───────────────────────
+   Preview and Download are what almost every reader wants. Everything else is
+   behind one menu — the same affordance the panel subbar already uses, so a
+   reader who has met it once has met it here. */
+.ai-assistant-panel-changed-file-primary {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    position: relative;
+}
+.ai-assistant-panel-changed-file-overflow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 8px;
+    background: var(--pst-color-surface, #fff);
+    color: var(--pst-color-text-muted, #71717a);
+    cursor: pointer;
+}
+.ai-assistant-panel-changed-file-overflow:hover,
+.ai-assistant-panel-changed-file-overflow:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+    color: inherit;
+}
+.ai-assistant-panel-changed-file-overflow svg { width: 1rem; height: 1rem; }
+.ai-assistant-panel-changed-file-menu {
+    position: absolute;
+    inset-inline-end: 0;
+    top: calc(100% + .25rem);
+    z-index: 30;
+    display: grid;
+    gap: .1rem;
+    min-width: 13rem;
+    padding: .25rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 90%, transparent);
+    border-radius: 10px;
+    background: var(--pst-color-surface, #fff);
+    box-shadow: 0 6px 20px rgb(0 0 0 / .12);
+}
+.ai-assistant-panel-changed-file-menu-item {
+    display: grid;
+    gap: .05rem;
+    padding: .4rem .5rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+.ai-assistant-panel-changed-file-menu-item:hover,
+.ai-assistant-panel-changed-file-menu-item:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 90%, #808080 10%);
+}
+.ai-assistant-panel-changed-file-menu-label { font-size: .68rem; font-weight: 600; }
+.ai-assistant-panel-changed-file-menu-hint {
+    font-size: .58rem;
+    color: var(--pst-color-text-muted, #71717a);
+}
+/* Download-all reads as covering every card above it, so it is centred rather
+   than left-aligned like a peer of the per-card actions. */
+.ai-assistant-panel-changed-files-download-all { flex: 1 1 100%; text-align: center; }

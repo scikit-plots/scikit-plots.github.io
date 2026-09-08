@@ -47621,7 +47621,7 @@
         };
     }
 
-    function _generatedArtifactOpenLatest(key, trigger) {
+    function _generatedArtifactOpenLatest(key, trigger, opts) {
         var entry = _generatedArtifactLedger[key];
         if (!entry) {
             showNotification('That generated file is no longer retained in this session.', true);
@@ -47631,7 +47631,12 @@
             showNotification('Latest revision r' + entry.revision + ' of ' + entry.path + ' is ' + _generatedArtifactStateLabel(entry) + (entry.reason ? ': ' + entry.reason : '.'), true);
             return;
         }
-        _openAttachmentPreview(_generatedArtifactPreviewItem(entry), trigger);
+        var item = _generatedArtifactPreviewItem(entry);
+        // Sheet mode is the same viewer asked to show everything. A second
+        // viewer could disagree with the first about what the file contains,
+        // which is the one thing a preview must never do.
+        if (opts && opts.sheet) item.sheet = true;
+        _openAttachmentPreview(item, trigger);
     }
 
     function _generatedArtifactDownloadLatest(key) {
@@ -47642,6 +47647,133 @@
         }
         var filename = entry.path.split('/').pop() || 'generated-file.txt';
         _downloadBlob(entry.content, entry.mediaType || 'text/plain', filename);
+    }
+
+    // ── Per-file overflow menu ────────────────────────────────────────────
+    //
+    // The card had grown to five visible controls. Preview and Download are
+    // what almost every reader wants; the rest are for readers who already
+    // know they want them. Rather than a second disclosure row, everything
+    // else moves behind one ⋮ menu, which is the same affordance the panel
+    // subbar already uses -- a reader who has met it once has met it here.
+    //
+    // "Open in a sheet" lives here deliberately. Quick preview answers most
+    // questions, and the full sheet is for the cases it does not: a long file,
+    // a multi-step review, a small screen. Offering both as equal peers would
+    // make the reader choose before they know which they need.
+    var _fileMenuOpen = null;
+
+    function _closeFileMenu() {
+        if (!_fileMenuOpen) return;
+        var rec = _fileMenuOpen;
+        _fileMenuOpen = null;
+        if (rec.menu && rec.menu.parentNode) rec.menu.parentNode.removeChild(rec.menu);
+        if (rec.btn) rec.btn.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', rec.onDocClick, true);
+        document.removeEventListener('keydown', rec.onKeyDown, true);
+    }
+
+    /**
+     * Build the ⋮ control for one tracked file.
+     *
+     * @param {string} key   Ledger key.
+     * @param {Object} entry Ledger entry, for labelling only.
+     * @returns {HTMLElement}
+     */
+    function _buildFileOverflow(key, entry) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ai-assistant-panel-changed-file-overflow';
+        btn.setAttribute('aria-label', 'More options for ' + entry.path);
+        btn.setAttribute('aria-haspopup', 'menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.title = 'More options';
+        btn.innerHTML = ICONS.overflowV;  // ICONS constant, not user content.
+
+        btn.addEventListener('click', function (ev) {
+            ev.stopPropagation();
+            var wasOpen = _fileMenuOpen && _fileMenuOpen.btn === btn;
+            _closeFileMenu();
+            if (wasOpen) return;
+
+            var menu = document.createElement('div');
+            menu.className = 'ai-assistant-panel-changed-file-menu';
+            menu.setAttribute('role', 'menu');
+            menu.setAttribute('aria-label', 'Actions for ' + entry.path);
+
+            // Extendable by design: one list, one shape. A future action is a
+            // row here rather than another button on the card.
+            [
+                { label: 'Open in a sheet', hint: 'Full view with line numbers',
+                  run: function () { _generatedArtifactOpenSheet(key); } },
+                { label: 'Save as\u2026', hint: 'Download under a name you choose',
+                  run: function () { _generatedArtifactSaveAs(key); } },
+                { label: 'Download patch', hint: 'Apply with git am',
+                  run: function () { _generatedArtifactDownloadPatch(key); } },
+                { label: 'Continue editing', hint: 'Attach to your next message',
+                  run: function () { _generatedArtifactContinueEditing(key); } }
+            ].forEach(function (item) {
+                var row = document.createElement('button');
+                row.type = 'button';
+                row.className = 'ai-assistant-panel-changed-file-menu-item';
+                row.setAttribute('role', 'menuitem');
+                var lab = document.createElement('span');
+                lab.className = 'ai-assistant-panel-changed-file-menu-label';
+                lab.textContent = item.label;
+                var hint = document.createElement('span');
+                hint.className = 'ai-assistant-panel-changed-file-menu-hint';
+                hint.textContent = item.hint;
+                row.appendChild(lab); row.appendChild(hint);
+                row.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    _closeFileMenu();
+                    item.run();
+                });
+                menu.appendChild(row);
+            });
+
+            var rec = {
+                btn: btn, menu: menu,
+                onDocClick: function (e) {
+                    if (!menu.contains(e.target) && e.target !== btn) _closeFileMenu();
+                },
+                onKeyDown: function (e) {
+                    if (e.key !== 'Escape') return;
+                    // Focus returns to the trigger: closing a menu with the
+                    // keyboard must not strand focus at the top of the page.
+                    _closeFileMenu();
+                    if (typeof btn.focus === 'function') btn.focus();
+                }
+            };
+            btn.parentNode.appendChild(menu);
+            btn.setAttribute('aria-expanded', 'true');
+            _fileMenuOpen = rec;
+            document.addEventListener('click', rec.onDocClick, true);
+            document.addEventListener('keydown', rec.onKeyDown, true);
+            var first = menu.querySelector('.ai-assistant-panel-changed-file-menu-item');
+            if (first && typeof first.focus === 'function') first.focus();
+        });
+        return btn;
+    }
+
+    /**
+     * Open a tracked file as a full sheet rather than the quick preview.
+     *
+     * Reuses the attachment preview surface the quick preview already uses, so
+     * this is the same viewer asked to show everything -- not a second viewer
+     * that could disagree with the first about what the file contains.
+     */
+    function _generatedArtifactOpenSheet(key) {
+        var entry = _generatedArtifactLedger[key];
+        if (!_generatedArtifactIsAvailable(entry)) {
+            if (entry) {
+                showNotification('Revision r' + _artifactContentRevision(entry) + ' of ' +
+                    entry.path + ' is ' + _generatedArtifactStateLabel(entry) +
+                    ', so it cannot be opened.', true);
+            }
+            return;
+        }
+        _generatedArtifactOpenLatest(key, null, { sheet: true });
     }
 
     /**
@@ -48483,68 +48615,16 @@
             download.setAttribute('data-ai-artifact-download-key', key);
             download.setAttribute('aria-label', 'Download latest ' + entry.path + ' under its own name');
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
-            var saveAs = document.createElement('button');
-            saveAs.type = 'button';
-            saveAs.className = 'ai-assistant-panel-changed-file-saveas';
-            saveAs.textContent = 'Save as\u2026';
-            saveAs.setAttribute('data-ai-artifact-saveas-key', key);
-            saveAs.setAttribute('aria-label', 'Save ' + entry.path + ' under a name you choose');
-            saveAs.title = 'Download under a filename you choose';
-            saveAs.addEventListener('click', function () { _generatedArtifactSaveAs(key); });
-
             var primary = document.createElement('div');
             primary.className = 'ai-assistant-panel-changed-file-primary';
             primary.appendChild(preview);
             primary.appendChild(download);
-            primary.appendChild(saveAs);
+            primary.appendChild(_buildFileOverflow(key, entry));
             row.appendChild(primary);
-            // Preview, Download and Save as… cover what almost every reader
-            // wants. Patch and Continue are for readers who already know they
-            // want them, and five visible buttons per file made the whole
-            // block read as a control panel rather than a result. They move
-            // behind one disclosure that names them plainly.
-            var secondary = document.createElement('div');
-            secondary.className = 'ai-assistant-panel-changed-file-secondary';
-            secondary.hidden = true;
-            var moreId = 'ai-file-more-' + (++_FILE_DISCLOSURE_SEQ);
-            secondary.id = moreId;
-            var more = document.createElement('button');
-            more.type = 'button';
-            more.className = 'ai-assistant-panel-changed-file-more';
-            more.textContent = 'Patch \u00b7 Continue';
-            more.setAttribute('aria-expanded', 'false');
-            more.setAttribute('aria-controls', moreId);
-            more.setAttribute('aria-label',
-                'More actions for ' + entry.path + ': git patch, continue editing');
-            more.addEventListener('click', function () {
-                var open = more.getAttribute('aria-expanded') === 'true';
-                more.setAttribute('aria-expanded', open ? 'false' : 'true');
-                secondary.hidden = open;
-            });
-            row.appendChild(more);
-            row.appendChild(secondary);
             // Patch export sits beside the plain download rather than replacing
             // it: a reader who just wants the file should not have to know what
             // `git am` is, and a reader who tracks changes should not have to
             // diff by hand.
-            var patch = document.createElement('button');
-            patch.type = 'button';
-            patch.className = 'ai-assistant-panel-changed-file-patch';
-            patch.textContent = 'Patch';
-            patch.setAttribute('data-ai-artifact-patch-key', key);
-            patch.setAttribute('aria-label', 'Download ' + entry.path + ' as a git patch');
-            patch.title = 'Download as a git patch (apply with git am)';
-            patch.addEventListener('click', function () { _generatedArtifactDownloadPatch(key); });
-            secondary.appendChild(patch);
-            var cont = document.createElement('button');
-            cont.type = 'button';
-            cont.className = 'ai-assistant-panel-changed-file-continue';
-            cont.textContent = 'Continue';
-            cont.setAttribute('data-ai-artifact-continue-key', key);
-            cont.setAttribute('aria-label', 'Continue editing ' + entry.path + ' in your next message');
-            cont.title = 'Attach the latest revision to your next message';
-            cont.addEventListener('click', function () { _generatedArtifactContinueEditing(key); });
-            secondary.appendChild(cont);
             _generatedArtifactRefreshRefs(key);
             list.appendChild(row);
         });
