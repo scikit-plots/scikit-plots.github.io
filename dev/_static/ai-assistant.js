@@ -47473,7 +47473,15 @@
     // The server neither resolves nor trusts these values -- it holds no copy
     // of the reader's file. They travel inside the validated envelope so that
     // *this* side can compare them against the ledger when the answer lands.
-    var _WORKING_FILE_FALLBACK = { maxFiles: 1, maxFileChars: 12000, maxTotalChars: 12000 };
+    // Used only before discovery has told us the endpoint's real limits.
+    //
+    // `maxFiles: 1` was the wrong kind of caution. Guessing high risks a
+    // rejected request the reader can see and retry; guessing low silently
+    // dropped every file but one from "Continue editing all", which looks like
+    // a broken button rather than a limit. These mirror the server's own
+    // defaults, and anything beyond them is rejected by the server with a
+    // message naming the bound -- a visible failure instead of a quiet one.
+    var _WORKING_FILE_FALLBACK = { maxFiles: 4, maxFileChars: 48000, maxTotalChars: 96000 };
 
     function _workingFileCapsParse(wf) {
         if (!wf || typeof wf !== 'object') return null;
@@ -47837,6 +47845,16 @@
      * @returns {HTMLElement}
      */
     function _buildOverflowMenu(ariaLabel, items, className) {
+        // `items` may be a function, and for any menu whose contents depend on
+        // state it must be. Passing an array freezes the menu at row-build
+        // time: a Continue/Stop toggle built then still read "Stop continuing"
+        // after the file had been dropped, so the next click stopped an
+        // already-stopped continuation and the file appeared impossible to
+        // re-add. Evaluated per open, the label always describes the state the
+        // reader is actually in.
+        var resolveItems = (typeof items === 'function')
+            ? items
+            : function () { return items; };
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = className || 'ai-assistant-panel-changed-file-overflow';
@@ -47859,7 +47877,7 @@
 
             // Extendable by design: one list, one shape. A future action is a
             // row here rather than another button on the card.
-            items.forEach(function (item) {
+            resolveItems().forEach(function (item) {
                 var row = document.createElement('button');
                 row.type = 'button';
                 row.className = 'ai-assistant-panel-changed-file-menu-item';
@@ -47905,7 +47923,7 @@
 
     /** The tracked-file menu: everything the card no longer shows as a button. */
     function _buildFileOverflow(key, entry) {
-        return _buildOverflowMenu('More options for ' + entry.path, [
+        return _buildOverflowMenu('More options for ' + entry.path, function () { return [
             { label: 'Open in a sheet', hint: 'Full view with line numbers',
               run: function () { _generatedArtifactOpenSheet(key); } },
             { label: 'Save as\u2026', hint: 'Download under a name you choose',
@@ -47917,7 +47935,7 @@
                     run: function () { _generatedArtifactStopContinuing(key); } }
                 : { label: 'Continue editing', hint: 'Attach to your next message',
                     run: function () { _generatedArtifactContinueEditing(key); } }
-        ]);
+        ]; });
     }
 
     /**
@@ -48135,6 +48153,7 @@
 
         _workingFileContinuations[entry.key] = Date.now();
         _generatedArtifactRefreshRefs(entry.key);
+        _refreshContinuationTray();
         if (!quiet) {
             _primeComposerForContinuation();
             showNotification(entry.path + ' r' + _artifactContentRevision(entry) +
@@ -48143,14 +48162,60 @@
         return true;
     }
 
+    /**
+     * Unstage the composer attachment a fallback continuation created.
+     *
+     * Deleting only the registry key left the bytes staged, so a "dropped"
+     * file still travelled with the next message and re-adding it staged a
+     * second copy. Stop has to undo everything Continue did, or it is not a
+     * stop.
+     */
+    function _unstageContinuationAttachment(path) {
+        if (!Array.isArray(_composerAttachments)) return;
+        for (var i = _composerAttachments.length - 1; i >= 0; i--) {
+            var item = _composerAttachments[i];
+            if (item && item.sourceKind === 'working-file' &&
+                    (item.relativePath === path || item.name === path.split('/').pop())) {
+                _removeComposerResourceItem(item);
+                break;
+            }
+        }
+    }
+
     /** Drop one file from the next message. */
     function _generatedArtifactStopContinuing(key) {
         var entry = _generatedArtifactLedger[key];
         if (!_workingFileContinuations[key]) return;
         delete _workingFileContinuations[key];
+        if (entry) _unstageContinuationAttachment(entry.path);
         _generatedArtifactRefreshRefs(key);
+        _refreshContinuationTray();
         showNotification((entry ? entry.path : 'That file') +
             ' will not travel with your next message.', false);
+    }
+
+    /**
+     * Keep the tray honest after any change to the queue.
+     *
+     * The tray is built when the section renders; without this it kept
+     * reporting the count it had at that moment, which is the same class of
+     * staleness that made the menu toggle unusable.
+     */
+    function _refreshContinuationTray() {
+        var trays = document.querySelectorAll('.ai-assistant-panel-changed-files-tray');
+        var n = _continuationCount();
+        Array.prototype.forEach.call(trays, function (tray) {
+            var text = tray.querySelector('span');
+            if (n) {
+                tray.hidden = false;
+                if (text) {
+                    text.textContent = n + (n === 1 ? ' file travels' : ' files travel') +
+                        ' with your next message';
+                }
+            } else {
+                tray.hidden = true;
+            }
+        });
     }
 
     /** Drop every queued file. */
@@ -48158,9 +48223,12 @@
         var n = _continuationCount();
         if (!n) return;
         Object.keys(_workingFileContinuations).forEach(function (key) {
+            var e = _generatedArtifactLedger[key];
             delete _workingFileContinuations[key];
+            if (e) _unstageContinuationAttachment(e.path);
             _generatedArtifactRefreshRefs(key);
         });
+        _refreshContinuationTray();
         showNotification(n + (n === 1 ? ' file' : ' files') +
             ' removed from your next message.', false);
     }
@@ -48195,6 +48263,7 @@
             return;
         }
         _primeComposerForContinuation();
+        _refreshContinuationTray();
         var parts = [];
         if (added) parts.push(added + (added === 1 ? ' file' : ' files') + ' attached');
         if (skipped) {
