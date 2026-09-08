@@ -9466,7 +9466,17 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     flex-shrink: 0;
     overflow-x: auto;
     scrollbar-width: thin;
+    /* `overflow-x: auto` alone does nothing here: a flex item's default
+       `min-width: auto` refuses to shrink below its content, so the switcher
+       grew to fit all five tabs and widened the sheet instead of scrolling.
+       `min-width: 0` is what actually lets the overflow engage. */
+    min-width: 0;
+    max-width: 100%;
+    overscroll-behavior-x: contain;
 }
+/* Tabs keep their size and scroll; squashing them would truncate the format
+   names, which are the only thing distinguishing one tab from another. */
+.ai-assistant-conv-share-format-switcher > * { flex: 0 0 auto; }
 
 [data-bs-theme="dark"] .ai-assistant-conv-share-format-switcher,
 .dark .ai-assistant-conv-share-format-switcher {
@@ -18469,6 +18479,15 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-conv-share-summary { font-size:.78rem; color:var(--pst-color-text-muted,#667085); font-weight:600; }
 .ai-assistant-conv-share-warning { border:1px solid rgba(217,119,6,.35); border-radius:.6rem; background:rgba(245,158,11,.08); padding:.55rem .7rem; text-align:left; font:inherit; font-size:.76rem; cursor:pointer; color:inherit; }
 .ai-assistant-conv-share-section-title { margin-top:.2rem; font-size:.72rem; font-weight:750; letter-spacing:.055em; text-transform:uppercase; opacity:.68; }
+/* A section title directly after the format preview needs real separation.
+   `.2rem` was tuned for a title following ordinary text; after a bordered,
+   full-height preview host it read as a caption belonging to the preview
+   rather than as the heading of the next section. */
+.ai-assistant-conv-share-format-host + .ai-assistant-conv-share-section-title,
+.ai-assistant-conv-share-format-preview + .ai-assistant-conv-share-section-title {
+    margin-top: 1rem;
+}
+.ai-assistant-conv-share-format-host { margin-bottom: .15rem; }
 /* Two columns, not three.
    There are four destinations, so a three-column track always produced a
    3 + 1 row: three cards of one width and a fourth, alone, stretched to the
@@ -18521,7 +18540,17 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
 .ai-assistant-conv-share-result-meta { font-size:.72rem; opacity:.7; }
 .ai-assistant-conv-share-result-actions { display:flex; flex-wrap:wrap; gap:.4rem; }
 .ai-assistant-conv-share-artifacts { display:flex; flex-direction:column; gap:.4rem; }
-.ai-assistant-conv-share-artifact { display:flex; align-items:center; gap:.45rem; border:1px solid rgba(127,127,127,.18); border-radius:.65rem; padding:.5rem .55rem; }
+/* The row is a flex line whose action buttons (Copy link, Open, Download) do
+   not shrink, so on a narrow panel they pushed the row wider than its
+   container instead of moving. `min-width:0` lets the row shrink inside its
+   own flex parent, and wrapping sends the buttons to a second line rather
+   than off the edge -- the artifact name is what identifies the row and must
+   not be the thing that gets pushed out. */
+.ai-assistant-conv-share-artifact { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem; min-width:0; max-width:100%; border:1px solid rgba(127,127,127,.18); border-radius:.65rem; padding:.5rem .55rem; }
+/* Below the wrap point the text claims the whole first line, so the buttons
+   land beneath it as a group rather than one per line. */
+.ai-assistant-conv-share-artifact-text { flex:1 1 12rem; }
+.ai-assistant-conv-share-artifact .ai-assistant-conv-share-action-btn { flex:0 0 auto; }
 .ai-assistant-conv-share-artifact-text { min-width:0; flex:1; display:flex; flex-direction:column; gap:.1rem; }
 .ai-assistant-conv-share-artifact-text strong { font-size:.76rem; }
 .ai-assistant-conv-share-artifact-text span { font-size:.66rem; opacity:.68; overflow-wrap:anywhere; }
