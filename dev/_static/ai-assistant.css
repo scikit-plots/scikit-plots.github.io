@@ -21722,3 +21722,77 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
         justify-self: start;
     }
 }
+
+/* ── File-editing sheet: code with a line-number gutter ────────────────────
+   The numbers are a sibling of the code, never a prefix inside it. Prefixing
+   is the usual shortcut and it poisons every copy, download and patch taken
+   from the block; here `<code>` still holds exactly the file's bytes.
+
+   `user-select: none` keeps the gutter out of a drag-selection, and
+   `aria-hidden` keeps it out of the accessibility tree — a screen reader
+   reading "one import two sys three" would be worse than no numbers at all. */
+.ai-md-file-sheet {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
+    border-top: 0;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+.ai-md-file-gutter {
+    flex: 0 0 auto;
+    box-sizing: content-box;
+    width: calc(var(--ai-gutter-digits, 2) * 1ch);
+    padding: .6rem .5rem .6rem .6rem;
+    border-inline-end: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 94%, #808080 6%);
+    color: var(--pst-color-text-muted, #71717a);
+    font-family: var(--pst-font-family-monospace, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font-size: .72rem;
+    line-height: 1.5;
+    text-align: end;
+    white-space: pre;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+    tab-size: 1;
+}
+.ai-md-file-sheet .ai-md-pre-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+}
+/* The gutter is aligned by sharing the code block's line box, so any change to
+   one must change the other. Kept adjacent here for exactly that reason. */
+.ai-md-file-sheet .ai-md-pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding: .6rem;
+    font-size: .72rem;
+    line-height: 1.5;
+}
+.ai-md-file-disclosure-head[aria-expanded="true"] {
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+}
+
+/* One quiet disclosure instead of two more buttons per file. Five visible
+   controls made the block read as a control panel rather than a result. */
+.ai-assistant-panel-changed-file-more {
+    align-self: start;
+    border: 0;
+    background: transparent;
+    padding: .1rem .2rem;
+    color: var(--pst-color-text-muted, #71717a);
+    font: inherit;
+    font-size: .58rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 2px;
+}
+.ai-assistant-panel-changed-file-more:hover,
+.ai-assistant-panel-changed-file-more:focus-visible { color: inherit; }
+.ai-assistant-panel-changed-file-secondary[hidden] { display: none; }

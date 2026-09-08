@@ -16847,6 +16847,8 @@
                         (e.role !== 'user' && e.role !== 'assistant' && e.role !== 'error')) {
                     throw new Error('invalid transcript entry');
                 }
+                var restoredActivity = (e.role === 'assistant')
+                    ? _activityRestoreSummary(e.activity) : null;
                 var model = null;
                 if (e.role === 'assistant' && e.model && typeof e.model === 'object' && !Array.isArray(e.model)) {
                     model = {};
@@ -16867,7 +16869,8 @@
                     displayText: displayText,
                     resources: resources.totalCount ? resources : undefined,
                     ts: Number.isFinite(Number(e.ts)) ? Number(e.ts) : null,
-                    model: model
+                    model: model,
+                    activity: restoredActivity || undefined
                 });
             }
             _transcript = restored;
@@ -16934,6 +16937,13 @@
         };
         if (typeof displayText === 'string' && displayText !== text) {
             entry.displayText = displayText.slice(0, _TRANSCRIPT_RESTORE_MAX_TEXT_CHARS);
+        }
+        if (role === 'assistant' && turnMeta && turnMeta.activity) {
+            // Captured at record time, when the rows are final. Capturing
+            // earlier would persist a half-finished timeline; later would race
+            // the next turn reusing the live object.
+            var activitySummary = _activityPersistSummary(turnMeta.activity);
+            if (activitySummary) entry.activity = activitySummary;
         }
         if (role === 'user' && turnMeta) {
             var resourceSource = turnMeta.resources || turnMeta.attachments;
@@ -18846,9 +18856,78 @@
      * @param {function} [onSuccess]  Called only after a confirmed copy
      *   (Clipboard API resolved, or execCommand succeeded) — never on failure.
      */
+    // ── data-raw without duplicated file bodies ───────────────────────────
+    //
+    // `data-raw` preserves the answer's markdown for copy, share and export.
+    // For a snippet answer that is exactly right: the fenced code IS the
+    // answer, and a few dozen lines cost nothing.
+    //
+    // For a file-editing answer it is waste with consequences. A 600-line
+    // `index.rst` is then held three times -- in the rendered `<pre>`, in
+    // `data-raw`, and in the artifact ledger -- and the `data-raw` copy is the
+    // one that is also serialized into session storage with the transcript,
+    // where it competes with the persistence budget for bytes nobody reads.
+    //
+    // So file bodies are elided to a marker and rehydrated on demand. The
+    // ledger already owns those bytes and already resolves the latest
+    // revision; reading them back at copy time is a lookup, not a second copy.
+    var _RAW_FILE_MARKER_PREFIX = '\u27e6ai-assistant:file-body ';
+    var _RAW_FILE_MARKER_SUFFIX = '\u27e7';
+    var _RAW_ELIDE_MIN_CHARS = 2000;
+
+    /**
+     * Replace complete-file bodies in answer markdown with a short marker.
+     *
+     * Only bodies that both declare a path and are large enough to matter are
+     * elided: below the threshold the marker costs more than the text it
+     * replaces, and an anonymous snippet has no ledger entry to rehydrate from.
+     */
+    function _elideFileBodiesForRaw(markdown) {
+        if (typeof markdown !== 'string' || markdown.length < _RAW_ELIDE_MIN_CHARS) {
+            return markdown;
+        }
+        return markdown.replace(/(`{3,})([^\n`]*)\n?([\s\S]*?)\1/g,
+            function (whole, fence, info, body) {
+                var parsed = _parseCodeFenceInfo(info || '');
+                var path = _generatedArtifactSafePath(parsed && parsed.path ? parsed.path : '');
+                if (!path || body.length < _RAW_ELIDE_MIN_CHARS) return whole;
+                // No newline after the marker: the captured body already
+                // carries its own line terminator, and adding one here made
+                // the round-trip gain a blank line before the closing fence.
+                // A body that ends without a newline round-trips too, because
+                // the marker stands exactly where the body stood.
+                return fence + (info || '') + '\n' +
+                    _RAW_FILE_MARKER_PREFIX + path + _RAW_FILE_MARKER_SUFFIX + fence;
+            });
+    }
+
+    /**
+     * Answer markdown with any elided file bodies restored.
+     *
+     * Rehydrates from the ledger, then from the rendered `<pre>` still in the
+     * bubble, and only then leaves the marker in place -- a visible marker is
+     * better than silently shipping an empty file body into an export.
+     */
+    function _bubbleRawText(bubbleEl, fallback) {
+        var raw = (bubbleEl && bubbleEl.getAttribute('data-raw')) || fallback || '';
+        if (raw.indexOf(_RAW_FILE_MARKER_PREFIX) === -1) return raw;
+        return raw.replace(
+            /\u27e6ai-assistant:file-body ([^\u27e7\n]+)\u27e7/g,
+            function (marker, path) {
+                var entry = _generatedArtifactLedger[path];
+                if (entry && typeof entry.content === 'string') return entry.content;
+                if (bubbleEl && typeof bubbleEl.querySelector === 'function') {
+                    var pre = bubbleEl.querySelector(
+                        'pre.ai-md-pre[data-artifact-path="' + String(path).replace(/"/g, '\\"') + '"]');
+                    var code = pre && pre.querySelector('code');
+                    if (code) return code.textContent || '';
+                }
+                return marker;
+            });
+    }
+
     function copyAnswer(text, bubbleEl, onSuccess) {
-        var raw = (bubbleEl && bubbleEl.getAttribute('data-raw')) || text;
-        copyToClipboard(raw, false, onSuccess);
+        copyToClipboard(_bubbleRawText(bubbleEl, text), false, onSuccess);
     }
 
     /**
@@ -19189,7 +19268,7 @@
      *   swallowed (user cancelled share sheet — no error toast needed).
      */
     function _shareAnswer(answerText, questionText, bubbleEl, btn, answerIndex) {
-        var raw    = (bubbleEl && bubbleEl.getAttribute('data-raw')) || answerText;
+        var raw    = _bubbleRawText(bubbleEl, answerText);
         var cfg    = _cfg();
         var aiName = cfg.panelTitle || 'AI Assistant';
         var pageUrl = ((typeof _pageUrl === 'function') ? _pageUrl() : ((typeof location !== 'undefined') ? location.href : ''));
@@ -20356,7 +20435,11 @@
                 undefined,
                 m.ts,
                 m.text,
-                { resources: m.resources || m.attachments, resourceRuntime: m.resourceRuntime || null }
+                {
+                    resources: m.resources || m.attachments,
+                    resourceRuntime: m.resourceRuntime || null,
+                    restoredActivity: m.activity || null
+                }
             );
         });
         body.scrollTop = body.scrollHeight;
@@ -46235,12 +46318,18 @@
         var bubble = document.createElement('div');
         bubble.className = 'ai-assistant-panel-bubble ai-assistant-panel-bubble--' + role;
 
+        if (role === 'assistant' && turnMeta && turnMeta.restoredActivity) {
+            var restoredEl = _renderRestoredActivity(turnMeta.restoredActivity);
+            if (restoredEl) body.appendChild(restoredEl);
+        }
         if (role === 'assistant') {
             // Render markdown for assistant replies — safe because _mdToHtml
             // escapes all text before applying pattern replacements and only
             // emits known-safe tags.  bubble is NOT user-controlled.
             bubble.innerHTML = _mdToHtml(text);
-            bubble.setAttribute('data-raw', text);  // preserve for copy/export
+            // Elided, not omitted: copy/share/export rehydrate through
+            // _bubbleRawText, so fidelity is unchanged and the bytes are held once.
+            bubble.setAttribute('data-raw', _elideFileBodiesForRaw(text));
             _enhanceCodeBlocks(bubble);
             _makeSectionsCollapsible(bubble);
             _typesetMath(bubble);
@@ -46707,6 +46796,173 @@
         st.stepCount += 1;
         if (kind === 'command' && !spec._updateOnly) st.commandCount += 1;
         return rec;
+    }
+
+    // ── Activity that survives a reload ───────────────────────────────────
+    //
+    // The activity timeline is how a reader checks what a turn actually did:
+    // what context was prepared, which files were presented, what was
+    // verified. On reload it vanished entirely, so a remembered conversation
+    // came back as answers with no account of how they were produced -- the
+    // one part a sceptical reader most wants to re-read.
+    //
+    // What is persisted is a SUMMARY, not the live state. The live object owns
+    // budgets, cancellation and file byte accounting, none of which mean
+    // anything after the page is gone; carrying them would persist a
+    // controller that can no longer control anything.
+    //
+    // It is bounded twice over -- step count, label and detail lengths -- for
+    // the same reason the transcript is: this rides in session storage next to
+    // it, and the persistence budget is shared, not per-feature.
+    var _ACTIVITY_PERSIST_MAX_STEPS = 12;
+    var _ACTIVITY_PERSIST_LABEL_CHARS = 120;
+    var _ACTIVITY_PERSIST_DETAIL_CHARS = 240;
+    var _ACTIVITY_STEP_KINDS = ['status', 'command', 'file', 'verify', 'note'];
+    var _ACTIVITY_STEP_STATES = ['done', 'running', 'error', 'skipped'];
+
+    /**
+     * Bounded, serializable summary of a finished turn's activity.
+     *
+     * Reads the rendered rows rather than the internal step map: the rows are
+     * exactly what the reader saw, and reconstructing from internal state
+     * risks persisting something that was never displayed.
+     *
+     * @returns {Array|null} Step summaries, or null when there is nothing to keep.
+     */
+    function _activityPersistSummary(st) {
+        if (!st || !st.list || typeof st.list.querySelectorAll !== 'function') return null;
+        var rows;
+        try { rows = st.list.querySelectorAll('.ai-assistant-panel-activity-step'); }
+        catch (_) { return null; }
+        var out = [];
+        for (var i = 0; i < rows.length && out.length < _ACTIVITY_PERSIST_MAX_STEPS; i++) {
+            var row = rows[i];
+            var labelEl = row.querySelector('.ai-assistant-panel-activity-step-label');
+            var detailEl = row.querySelector('.ai-assistant-panel-activity-step-detail');
+            var label = _activityBoundedText(labelEl ? labelEl.textContent : '',
+                _ACTIVITY_PERSIST_LABEL_CHARS);
+            if (!label) continue;
+            var item = {
+                kind: row.getAttribute('data-kind') || 'status',
+                state: row.getAttribute('data-state') || 'done',
+                label: label
+            };
+            var detail = _activityBoundedText(detailEl ? detailEl.textContent : '',
+                _ACTIVITY_PERSIST_DETAIL_CHARS);
+            if (detail) item.detail = detail;
+            out.push(item);
+        }
+        return out.length ? out : null;
+    }
+
+    /**
+     * Validate a persisted summary read back from session storage.
+     *
+     * Session storage is same-origin but not trustworthy: any script on the
+     * page can write to it. Everything here is re-checked against the same
+     * enumerations the live renderer uses, so a tampered record can only ever
+     * produce a shorter or emptier timeline, never a different kind of one.
+     */
+    function _activityRestoreSummary(raw) {
+        if (!Array.isArray(raw)) return null;
+        var out = [];
+        for (var i = 0; i < raw.length && out.length < _ACTIVITY_PERSIST_MAX_STEPS; i++) {
+            var e = raw[i];
+            if (!e || typeof e !== 'object' || typeof e.label !== 'string') continue;
+            var label = _activityBoundedText(e.label, _ACTIVITY_PERSIST_LABEL_CHARS);
+            if (!label) continue;
+            var item = {
+                kind: _ACTIVITY_STEP_KINDS.indexOf(e.kind) === -1 ? 'status' : e.kind,
+                state: _ACTIVITY_STEP_STATES.indexOf(e.state) === -1 ? 'done' : e.state,
+                label: label
+            };
+            if (typeof e.detail === 'string') {
+                var detail = _activityBoundedText(e.detail, _ACTIVITY_PERSIST_DETAIL_CHARS);
+                if (detail) item.detail = detail;
+            }
+            out.push(item);
+        }
+        return out.length ? out : null;
+    }
+
+    /**
+     * Render a restored timeline: the same markup, without the live controls.
+     *
+     * No Stop button and no running state. The turn is over, and a control
+     * that cannot act is worse than an absent one -- it invites a click that
+     * does nothing. `data-state="done"` says so to CSS and to anything reading
+     * the DOM.
+     */
+    function _renderRestoredActivity(steps) {
+        if (!steps || !steps.length || _cfg().panelActivityTimeline === false) return null;
+        var root = document.createElement('section');
+        root.className = 'ai-assistant-panel-activity';
+        root.setAttribute('data-state', 'done');
+        root.setAttribute('data-open', 'false');
+        root.setAttribute('data-restored', 'true');
+        root.setAttribute('aria-label', 'Assistant activity');
+
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-activity-head';
+        var toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'ai-assistant-panel-activity-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        var icon = document.createElement('span');
+        icon.className = 'ai-assistant-panel-activity-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = ICONS.pulse;
+        var summary = document.createElement('span');
+        summary.className = 'ai-assistant-panel-activity-summary';
+        summary.textContent = steps.length + (steps.length === 1 ? ' step' : ' steps');
+        var caret = document.createElement('span');
+        caret.className = 'ai-assistant-panel-activity-caret';
+        caret.setAttribute('aria-hidden', 'true');
+        caret.innerHTML = ICONS.chevronDown;
+        toggle.appendChild(icon); toggle.appendChild(summary); toggle.appendChild(caret);
+        head.appendChild(toggle);
+
+        var panel = document.createElement('div');
+        panel.className = 'ai-assistant-panel-activity-panel';
+        panel.hidden = true;
+        var note = document.createElement('p');
+        note.className = 'ai-assistant-panel-activity-note';
+        note.textContent = 'Restored from this browser session. Live details such as timings are not kept.';
+        var list = document.createElement('div');
+        list.className = 'ai-assistant-panel-activity-list';
+        steps.forEach(function (step) {
+            var row = document.createElement('div');
+            row.className = 'ai-assistant-panel-activity-step';
+            row.setAttribute('data-state', step.state);
+            row.setAttribute('data-kind', step.kind);
+            var indicator = document.createElement('span');
+            indicator.className = 'ai-assistant-panel-activity-step-indicator';
+            indicator.setAttribute('aria-hidden', 'true');
+            indicator.textContent = _activityStepIndicator(step.state, step.kind);
+            var content = document.createElement('div');
+            content.className = 'ai-assistant-panel-activity-step-content';
+            var labelEl = document.createElement('span');
+            labelEl.className = 'ai-assistant-panel-activity-step-label';
+            labelEl.textContent = step.label;
+            content.appendChild(labelEl);
+            if (step.detail) {
+                var detailEl = document.createElement('div');
+                detailEl.className = 'ai-assistant-panel-activity-step-detail';
+                detailEl.textContent = step.detail;
+                content.appendChild(detailEl);
+            }
+            row.appendChild(indicator); row.appendChild(content);
+            list.appendChild(row);
+        });
+        panel.appendChild(note); panel.appendChild(list);
+        root.appendChild(head); root.appendChild(panel);
+        toggle.addEventListener('click', function () {
+            var open = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+            root.setAttribute('data-open', open ? 'false' : 'true');
+            panel.hidden = open;
+        });
+        return root;
     }
 
     // ── Revision diff statistics ──────────────────────────────────────────
@@ -48102,8 +48358,31 @@
 
             wrap.parentNode.insertBefore(head, wrap);
             wrap.parentNode.insertBefore(body, wrap);
-            body.appendChild(wrap);
+
+            // File-editing mode reads like an editor sheet: a line-number
+            // gutter beside the code rather than inside it.
+            //
+            // The numbers live in their OWN element, never interleaved into
+            // the `<code>`. Prefixing each line with its number is the usual
+            // shortcut and it poisons every copy, every download and every
+            // patch made from the block. Here `<code>` still holds exactly the
+            // file's bytes, and the gutter is `aria-hidden` and unselectable,
+            // so selecting the whole sheet yields the file and nothing else.
+            var sheet = document.createElement('div');
+            sheet.className = 'ai-md-file-sheet';
+            var gutter = document.createElement('div');
+            gutter.className = 'ai-md-file-gutter';
+            gutter.setAttribute('aria-hidden', 'true');
+            var digits = String(lines).length;
+            var numbers = [];
+            for (var ln = 1; ln <= lines; ln++) numbers.push(ln);
+            gutter.textContent = numbers.join('\n');
+            gutter.style.setProperty('--ai-gutter-digits', String(digits));
+            sheet.appendChild(gutter);
+            sheet.appendChild(wrap);
+            body.appendChild(sheet);
             wrap.setAttribute('data-ai-file-disclosure', 'true');
+            wrap.setAttribute('data-ai-file-lines', String(lines));
 
             head.addEventListener('click', function () {
                 var open = head.getAttribute('aria-expanded') === 'true';
@@ -48219,8 +48498,30 @@
             primary.appendChild(download);
             primary.appendChild(saveAs);
             row.appendChild(primary);
+            // Preview, Download and Save as… cover what almost every reader
+            // wants. Patch and Continue are for readers who already know they
+            // want them, and five visible buttons per file made the whole
+            // block read as a control panel rather than a result. They move
+            // behind one disclosure that names them plainly.
             var secondary = document.createElement('div');
             secondary.className = 'ai-assistant-panel-changed-file-secondary';
+            secondary.hidden = true;
+            var moreId = 'ai-file-more-' + (++_FILE_DISCLOSURE_SEQ);
+            secondary.id = moreId;
+            var more = document.createElement('button');
+            more.type = 'button';
+            more.className = 'ai-assistant-panel-changed-file-more';
+            more.textContent = 'Patch \u00b7 Continue';
+            more.setAttribute('aria-expanded', 'false');
+            more.setAttribute('aria-controls', moreId);
+            more.setAttribute('aria-label',
+                'More actions for ' + entry.path + ': git patch, continue editing');
+            more.addEventListener('click', function () {
+                var open = more.getAttribute('aria-expanded') === 'true';
+                more.setAttribute('aria-expanded', open ? 'false' : 'true');
+                secondary.hidden = open;
+            });
+            row.appendChild(more);
             row.appendChild(secondary);
             // Patch export sits beside the plain download rather than replacing
             // it: a reader who just wants the file should not have to know what
@@ -49389,7 +49690,7 @@
                                 // never flashes as trusted diagnostic output.
                                 if (!validatingStub) {
                                     streamBubble.innerHTML = _mdToHtml(accumulated);
-                                    streamBubble.setAttribute('data-raw', accumulated);
+                                    streamBubble.setAttribute('data-raw', _elideFileBodiesForRaw(accumulated));
                                     _enhanceCodeBlocks(streamBubble);
                                     // As soon as a complete fenced file appears, publish its
                                     // bounded preview into the latest-revision ledger. This is
@@ -49488,7 +49789,7 @@
                 return;
             }
             streamBubble.innerHTML = _mdToHtml(accumulated || '(no response)');
-            streamBubble.setAttribute('data-raw', accumulated || '(no response)');
+            streamBubble.setAttribute('data-raw', _elideFileBodiesForRaw(accumulated) || '(no response)');
         }
 
         _panelTurnEnsureActive(activity, requestController, requestToken);
