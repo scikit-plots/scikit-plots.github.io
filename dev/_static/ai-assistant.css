@@ -21453,3 +21453,62 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 .ai-assistant-panel-changed-file-download[data-artifact-unavailable] {
     opacity: .72;
 }
+
+/* ── Revision diff statistics ───────────────────────────────────────────────
+   `+20` / `−10` beside a file draft's name, so the size of a change reads at
+   a glance instead of requiring a preview.
+
+   Colour is never the only carrier of meaning: the sign character is part of
+   the text, and the surrounding wrapper holds a full sentence in aria-label.
+   Both hues are also chosen to stay legible for the common red/green
+   deficiencies -- the removal tone leans warm-red rather than pure red, and
+   the addition tone leans teal rather than pure green, which keeps the two
+   distinguishable by hue *and* by lightness. */
+:root {
+    --ai-diff-add-rgb: 13, 148, 136;    /* #0d9488 teal-600 */
+    --ai-diff-del-rgb: 220, 38, 38;     /* #dc2626 red-600  */
+}
+[data-bs-theme="dark"] {
+    --ai-diff-add-rgb: 45, 212, 191;    /* #2dd4bf teal-400 */
+    --ai-diff-del-rgb: 248, 113, 113;   /* #f87171 red-400  */
+}
+.ai-assistant-panel-diff-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .3rem;
+    margin-inline-start: .42rem;
+    font-size: .62rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.ai-assistant-panel-diff-stat-add { color: rgb(var(--ai-diff-add-rgb)); }
+.ai-assistant-panel-diff-stat-del { color: rgb(var(--ai-diff-del-rgb)); }
+@media (forced-colors: active) {
+    /* Forced-colours modes discard the hues entirely; the +/− signs and the
+       aria-label are what remain, which is why neither is decorative. */
+    .ai-assistant-panel-diff-stat-add,
+    .ai-assistant-panel-diff-stat-del { color: CanvasText; }
+}
+
+/* Patch export button — same affordance weight as Download, so neither reads
+   as the primary action. `git am` is offered, never assumed. */
+.ai-assistant-panel-changed-file-patch {
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 8px;
+    padding: .45rem .55rem;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    font: inherit;
+    font-size: .62rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.ai-assistant-panel-changed-file-patch:hover,
+.ai-assistant-panel-changed-file-patch:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+}
+.ai-assistant-panel-changed-file {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+}

@@ -2439,8 +2439,18 @@
         // ── 1. Extract fenced code blocks → placeholders ──────────────────
         // Must happen first so inner backtick/asterisk patterns are not
         // processed by the inline rules below.
+        // The opening run length is captured and back-referenced so a fence
+        // closes only on a run of the same length. The previous pattern
+        // hardcoded exactly three backticks, which silently truncated any
+        // generated file that legitimately CONTAINS a fence -- the ordinary
+        // case for this panel, whose whole job is editing Markdown and reST
+        // documentation full of code-block examples. A model wrapping
+        // `guide.md` in four backticks had its file cut at the first inner
+        // ``` and the truncated head was registered as the complete file.
+        // CommonMark defines exactly this rule; matching it is a return to
+        // the standard, not a local dialect.
         var codeBlocks = [];
-        var result = text.replace(/```([^\n`]*)\n?([\s\S]*?)```/g, function (_, info, code) {
+        var result = text.replace(/(`{3,})([^\n`]*)\n?([\s\S]*?)\1/g, function (_, fence, info, code) {
             var idx = codeBlocks.length;
             var parsedInfo = _parseCodeFenceInfo(info || '');
             codeBlocks.push({
@@ -2676,6 +2686,93 @@
      *
      * @param {HTMLElement} root  Bubble element to scan (not the whole panel).
      */
+
+    // ── Contextual artifact naming ────────────────────────────────────────
+    //
+    // Generated code used to download as `snippet-1.py` / `snippet-<stamp>.py`
+    // regardless of what it was. Every save therefore needed a manual rename
+    // before it meant anything, and two answers in one session produced two
+    // files whose names said nothing about which was which.
+    //
+    // The name is derived deterministically from context the reader can
+    // already see -- the nearest preceding heading in the same answer, else
+    // the question that produced it -- so the same answer always yields the
+    // same filename. It is a *suggested download name* only: it never becomes
+    // a ledger key, never merges two blocks into one logical file, and an
+    // explicit `file=` path always outranks it (those blocks are owned by the
+    // File drafts surface and never reach this function).
+    var _ARTIFACT_NAME_MAX_CHARS = 48;
+    var _ARTIFACT_NAME_RESERVED = /^(?:con|prn|aux|nul|com[1-9]|lpt[1-9])$/i;
+
+    function _artifactNameSlug(value) {
+        var text = String(value == null ? '' : value)
+            .normalize ? String(value == null ? '' : value).normalize('NFKD') : String(value == null ? '' : value);
+        text = text.toLowerCase()
+            .replace(/[\u0000-\u001f\u007f-\u009f\u200b-\u200f\u2028\u2029\u202a-\u202e\u2066-\u2069]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+            .slice(0, _ARTIFACT_NAME_MAX_CHARS)
+            .replace(/-+$/g, '');
+        if (!text || _ARTIFACT_NAME_RESERVED.test(text)) return '';
+        return text;
+    }
+
+    /** Nearest heading text preceding `wrap` inside the same answer bubble. */
+    function _artifactNameFromHeading(root, wrap) {
+        if (!root || !wrap || typeof root.querySelectorAll !== 'function') return '';
+        var nodes;
+        try { nodes = root.querySelectorAll('h1,h2,h3,h4,h5,h6,.ai-md-pre-wrap'); }
+        catch (_) { return ''; }
+        var heading = '';
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i] === wrap) break;
+            if (/^H[1-6]$/.test(nodes[i].tagName || '')) heading = nodes[i].textContent || '';
+        }
+        return _artifactNameSlug(heading);
+    }
+
+    /** Most recent user question in this conversation, slugified. */
+    function _artifactNameFromQuestion() {
+        try {
+            for (var i = _transcript.length - 1; i >= 0; i--) {
+                var entry = _transcript[i];
+                if (entry && entry.role === 'user' && typeof entry.text === 'string') {
+                    return _artifactNameSlug(entry.text);
+                }
+            }
+        } catch (_) {}
+        return '';
+    }
+
+    /**
+     * Suggested download filename for one unnamed code block.
+     *
+     * @param {HTMLElement} root  Answer bubble being scanned.
+     * @param {HTMLElement} wrap  The block's `.ai-md-pre-wrap` wrapper.
+     * @param {string} lang       Fence language tag, may be empty.
+     * @param {string} ext        Extension already resolved from `_LANG_EXT`.
+     * @param {number} index      Zero-based position among unnamed blocks.
+     * @param {number} total      Count of unnamed blocks in this answer.
+     * @returns {string} A filename that is always non-empty and extension-correct.
+     */
+    function _artifactContextualFilename(root, wrap, lang, ext, index, total) {
+        var base = _artifactNameFromHeading(root, wrap) || _artifactNameFromQuestion();
+        var langSlug = _artifactNameSlug(lang);
+        if (!base) base = langSlug ? langSlug + '-snippet' : 'snippet';
+        // Disambiguate only when the answer actually holds several unnamed
+        // blocks; a single block gets the clean name.
+        var suffix = (total > 1) ? ('-' + (index + 1)) : '';
+        // Reserve the suffix's room BEFORE truncating the base. Truncating the
+        // joined string instead dropped the index whenever the base already
+        // filled the budget, so every block in a long-question answer resolved
+        // to one identical filename -- silently overwriting on download, which
+        // is the exact collision this resolver exists to prevent.
+        var room = Math.max(1, _ARTIFACT_NAME_MAX_CHARS - suffix.length);
+        var stem = base.slice(0, room).replace(/-+$/g, '') + suffix;
+        if (!stem || stem === suffix) stem = 'snippet' + suffix;
+        return stem + '.' + ext;
+    }
+
     function _appendArtifactCards(root, activity) {
         if (!root) { return []; }
         var explicitKeys = _syncExplicitCodeArtifacts(root, activity);
@@ -2692,6 +2789,19 @@
         // the latest-revision Changed files surface instead of this snippet list.
         var files = [];
 
+        // Blocks carrying an explicit `file=` path are owned by the File
+        // drafts surface, so the contextual namer only ever sees, and only
+        // ever counts, the unnamed remainder. Counting the full list here
+        // would number a lone snippet "-2" because a named file preceded it.
+        var unnamedTotal = 0;
+        wraps.forEach(function (wrap) {
+            var namedPre = wrap.querySelector('pre.ai-md-pre');
+            if (!namedPre || !namedPre.querySelector('code')) return;
+            if (_generatedArtifactSafePath(namedPre.getAttribute('data-artifact-path') || '')) return;
+            unnamedTotal += 1;
+        });
+        var unnamedIndex = 0;
+
         wraps.forEach(function (wrap, i) {
             var pre = wrap.querySelector('pre.ai-md-pre');
             var codeEl = pre && pre.querySelector('code');
@@ -2702,7 +2812,8 @@
             var lang = (pre.getAttribute('data-lang') || '').toLowerCase();
             var ext = _LANG_EXT[lang] || 'txt';
             var typeLabel = lang ? (lang.charAt(0).toUpperCase() + lang.slice(1)) : 'Text';
-            var filename = 'snippet-' + (i + 1) + '.' + ext;
+            var filename = _artifactContextualFilename(root, wrap, lang, ext, unnamedIndex, unnamedTotal);
+            unnamedIndex += 1;
 
             var card = document.createElement('button');
             card.type = 'button';
@@ -18727,6 +18838,13 @@
      */
     // Language → file extension, for the per-block download button.
     // Falls back to .txt for anything not listed rather than guessing.
+    // Language tag -> file extension.  An unmapped tag falls back to `.txt`,
+    // which is correct for genuinely unknown languages and wrong for a
+    // language this project actually documents: an `rst` answer was being
+    // saved as `snippet-1.txt` on a site whose sources are reStructuredText.
+    // Treat this as a maintained allowlist of the formats this documentation
+    // toolchain emits -- Sphinx sources, Cython, packaging and config files --
+    // not as a generic highlighter table.
     var _LANG_EXT = {
         python: 'py', py: 'py', javascript: 'js', js: 'js', typescript: 'ts',
         ts: 'ts', jsx: 'jsx', tsx: 'tsx', json: 'json', yaml: 'yaml',
@@ -18735,7 +18853,19 @@
         'c++': 'cpp', java: 'java', go: 'go', rust: 'rs', rs: 'rs',
         ruby: 'rb', rb: 'rb', php: 'php', xml: 'xml', markdown: 'md',
         md: 'md', toml: 'toml', ini: 'ini', dockerfile: 'Dockerfile',
-        r: 'r', kotlin: 'kt', swift: 'swift'
+        r: 'r', kotlin: 'kt', swift: 'swift',
+        // Sphinx/reST sources -- the documentation format this panel ships on.
+        rst: 'rst', rest: 'rst', restructuredtext: 'rst',
+        // Cython and typed Python surfaces used across this project.
+        cython: 'pyx', pyx: 'pyx', pxd: 'pxd', pyi: 'pyi',
+        // Config/data formats that otherwise silently became `.txt`.
+        cfg: 'cfg', conf: 'conf', properties: 'properties',
+        csv: 'csv', tsv: 'tsv', jsonc: 'jsonc', jsonl: 'jsonl',
+        mjs: 'mjs', cjs: 'cjs', svg: 'svg', tex: 'tex', bib: 'bib',
+        // Patch text is routinely emitted by review answers.
+        diff: 'diff', patch: 'patch',
+        make: 'mk', makefile: 'Makefile', cmake: 'cmake',
+        text: 'txt', plaintext: 'txt', txt: 'txt'
     };
 
     function _enhanceCodeBlocks(root) {
@@ -18788,9 +18918,17 @@
                     dlBtn.addEventListener('click', function () {
                         var lang = (preRef.getAttribute('data-lang') || '').toLowerCase();
                         var ext  = _LANG_EXT[lang] || 'txt';
-                        var stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+                        // Same resolver as the end-of-answer cards, so the
+                        // toolbar button and the card for one block never
+                        // disagree about what the file is called. An explicit
+                        // `file=` path still wins outright.
+                        var explicitPath = _generatedArtifactSafePath(
+                            preRef.getAttribute('data-artifact-path') || '');
+                        var wrapRef = preRef.parentNode;
+                        var rootRef = wrapRef && wrapRef.parentNode;
                         _downloadBlob(codeElRef.textContent, 'text/plain',
-                            'snippet-' + stamp + '.' + ext);
+                            explicitPath || _artifactContextualFilename(
+                                rootRef, wrapRef, lang, ext, 0, 1));
                     });
                 }(codeEl, pre));
                 toolbar.appendChild(dlBtn);
@@ -46332,6 +46470,359 @@
         return rec;
     }
 
+    // ── Revision diff statistics ──────────────────────────────────────────
+    //
+    // A file card that says only "Latest revision r3" tells the reader a
+    // change happened but not how big it was, so every revision looks
+    // equally significant and a one-word tweak is indistinguishable from a
+    // rewrite. These two integers are the smallest honest summary: lines
+    // added and lines removed relative to the immediately preceding
+    // revision of the same path.
+    //
+    // Computed ONCE at registration and stored as numbers, never by keeping
+    // the previous revision's bytes around. Retaining old content to diff on
+    // demand would multiply this panel's memory ceiling by the revision
+    // count and hand the eviction logic a second, competing owner.
+    //
+    // Determinism matters more than minimality here: the same pair of
+    // revisions must always report the same numbers, in any browser, or the
+    // figure is not evidence. Common prefix/suffix lines are trimmed first
+    // (which resolves the overwhelmingly common append/edit-in-place case
+    // exactly), then an LCS runs over the remaining core within a fixed
+    // budget. Above that budget the core is compared as line multisets --
+    // still exact for "how many lines are not matched by an identical line
+    // on the other side", still deterministic, and never a heuristic guess.
+    var _DIFF_STAT_MAX_LINES = 20000;
+    var _DIFF_STAT_LCS_BUDGET = 4000000;
+
+    function _diffStatSplitLines(text) {
+        if (typeof text !== 'string' || text === '') return [];
+        var lines = text.split(/\r\n|\r|\n/);
+        // A trailing newline terminates the last line rather than starting an
+        // empty one; counting it would report +1 for every file that ends
+        // properly.
+        if (lines.length && lines[lines.length - 1] === '') lines.pop();
+        return lines;
+    }
+
+    function _diffStatMultiset(before, after) {
+        var counts = Object.create(null), i, key;
+        for (i = 0; i < before.length; i++) {
+            key = '\u0000' + before[i];
+            counts[key] = (counts[key] || 0) + 1;
+        }
+        var added = 0;
+        for (i = 0; i < after.length; i++) {
+            key = '\u0000' + after[i];
+            if (counts[key] > 0) { counts[key] -= 1; } else { added += 1; }
+        }
+        var matched = after.length - added;
+        return { added: added, removed: before.length - matched, exact: false };
+    }
+
+    function _diffStatLcs(before, after) {
+        var n = before.length, m = after.length;
+        var prev = new Int32Array(m + 1), cur = new Int32Array(m + 1), i, j, tmp;
+        for (i = 1; i <= n; i++) {
+            cur[0] = 0;
+            for (j = 1; j <= m; j++) {
+                cur[j] = (before[i - 1] === after[j - 1])
+                    ? prev[j - 1] + 1
+                    : (prev[j] >= cur[j - 1] ? prev[j] : cur[j - 1]);
+            }
+            tmp = prev; prev = cur; cur = tmp;
+        }
+        var common = prev[m];
+        return { added: m - common, removed: n - common, exact: true };
+    }
+
+    /**
+     * Count lines added and removed between two revisions of one file.
+     *
+     * @param {string|null} beforeText  Previous revision content, or null/'' for a new file.
+     * @param {string} afterText        New revision content.
+     * @returns {{added: number, removed: number, exact: boolean}}
+     *          `exact` is false only when the changed core exceeded the LCS
+     *          budget and the multiset comparison was used instead.
+     */
+    function _diffLineStat(beforeText, afterText) {
+        var before = _diffStatSplitLines(beforeText);
+        var after = _diffStatSplitLines(afterText);
+        if (before.length > _DIFF_STAT_MAX_LINES || after.length > _DIFF_STAT_MAX_LINES) {
+            return _diffStatMultiset(before, after);
+        }
+        if (!before.length) return { added: after.length, removed: 0, exact: true };
+        if (!after.length) return { added: 0, removed: before.length, exact: true };
+
+        var start = 0;
+        var maxStart = Math.min(before.length, after.length);
+        while (start < maxStart && before[start] === after[start]) start += 1;
+        var endB = before.length, endA = after.length;
+        while (endB > start && endA > start && before[endB - 1] === after[endA - 1]) {
+            endB -= 1; endA -= 1;
+        }
+        var coreB = before.slice(start, endB);
+        var coreA = after.slice(start, endA);
+        if (!coreB.length) return { added: coreA.length, removed: 0, exact: true };
+        if (!coreA.length) return { added: 0, removed: coreB.length, exact: true };
+        if (coreB.length * coreA.length > _DIFF_STAT_LCS_BUDGET) {
+            return _diffStatMultiset(coreB, coreA);
+        }
+        return _diffStatLcs(coreB, coreA);
+    }
+
+    /** Build the `+N −M` element pair, or null when nothing changed. */
+    function _diffStatElement(entry) {
+        if (!entry || !entry.diff) return null;
+        var added = Math.max(0, Number(entry.diff.added) || 0);
+        var removed = Math.max(0, Number(entry.diff.removed) || 0);
+        if (!added && !removed) return null;
+        var wrap = document.createElement('span');
+        wrap.className = 'ai-assistant-panel-diff-stat';
+        // One accessible sentence on the wrapper; the coloured numbers inside
+        // are decorative to a screen reader, so colour never carries meaning
+        // on its own. The sign characters do that job for sighted readers too.
+        var label = added + (added === 1 ? ' line added' : ' lines added') + ', ' +
+            removed + (removed === 1 ? ' line removed' : ' lines removed');
+        if (entry.diff.exact === false) label += ' (approximate for a very large file)';
+        wrap.setAttribute('aria-label', label);
+        wrap.title = label;
+        if (added) {
+            var plus = document.createElement('span');
+            plus.className = 'ai-assistant-panel-diff-stat-add';
+            plus.setAttribute('aria-hidden', 'true');
+            plus.textContent = '+' + added;
+            wrap.appendChild(plus);
+        }
+        if (removed) {
+            var minus = document.createElement('span');
+            minus.className = 'ai-assistant-panel-diff-stat-del';
+            minus.setAttribute('aria-hidden', 'true');
+            minus.textContent = '\u2212' + removed;
+            wrap.appendChild(minus);
+        }
+        return wrap;
+    }
+
+    // ── Unified diff + git-compatible patch export ────────────────────────
+    //
+    // Why this exists instead of a server-side git service
+    // ---------------------------------------------------
+    // Git-style tracking is genuinely wanted here: stable identity, a parent
+    // per revision, real diffs, revert. What is NOT wanted is a proxy that
+    // stores the reader's document content in order to provide it. That would
+    // move this panel's privacy boundary from "the current message and the
+    // context you selected" to "everything you have ever edited", require
+    // per-reader identity where today there is none, and put a working tree
+    // plus hook execution inside a request handler.
+    //
+    // So the panel emits git's *interchange format* instead of running git.
+    // A revision chain with parent pointers and content hashes is git's data
+    // model; a `git am` mailbox is how that model crosses a boundary. The
+    // reader applies it in their own repository, with their own identity, and
+    // the server never holds a byte of it.
+    //
+    // Hunk generation reuses the same prefix/suffix trim as the diff stat so
+    // the two can never disagree about what changed. Above the budget the
+    // patch degrades to a whole-file replacement, which is still a *correct*
+    // patch -- coarser, never wrong -- and says so in its own body.
+    var _DIFF_HUNK_LCS_BUDGET = 1440000;   // ~1200 x 1200 changed core lines
+    var _DIFF_HUNK_CONTEXT = 3;
+
+    function _diffBacktrack(before, after) {
+        var n = before.length, m = after.length;
+        // Full DP table is required to recover the edit script (the stat path
+        // needs only the final length and uses two rows).
+        var dp = new Int32Array((n + 1) * (m + 1));
+        var i, j, w = m + 1;
+        for (i = n - 1; i >= 0; i--) {
+            for (j = m - 1; j >= 0; j--) {
+                dp[i * w + j] = (before[i] === after[j])
+                    ? dp[(i + 1) * w + (j + 1)] + 1
+                    : Math.max(dp[(i + 1) * w + j], dp[i * w + (j + 1)]);
+            }
+        }
+        var ops = [];
+        i = 0; j = 0;
+        while (i < n && j < m) {
+            if (before[i] === after[j]) { ops.push([' ', before[i]]); i++; j++; }
+            else if (dp[(i + 1) * w + j] >= dp[i * w + (j + 1)]) { ops.push(['-', before[i]]); i++; }
+            else { ops.push(['+', after[j]]); j++; }
+        }
+        while (i < n) { ops.push(['-', before[i]]); i++; }
+        while (j < m) { ops.push(['+', after[j]]); j++; }
+        return ops;
+    }
+
+    function _diffOps(before, after) {
+        var start = 0, maxStart = Math.min(before.length, after.length);
+        while (start < maxStart && before[start] === after[start]) start += 1;
+        var endB = before.length, endA = after.length;
+        while (endB > start && endA > start && before[endB - 1] === after[endA - 1]) {
+            endB -= 1; endA -= 1;
+        }
+        var coreB = before.slice(start, endB), coreA = after.slice(start, endA);
+        var ops = [], k;
+        for (k = 0; k < start; k++) ops.push([' ', before[k]]);
+        if (coreB.length * coreA.length > _DIFF_HUNK_LCS_BUDGET) {
+            // Coarse but correct: replace the changed core wholesale.
+            for (k = 0; k < coreB.length; k++) ops.push(['-', coreB[k]]);
+            for (k = 0; k < coreA.length; k++) ops.push(['+', coreA[k]]);
+            ops.coarse = true;
+        } else {
+            var core = _diffBacktrack(coreB, coreA);
+            for (k = 0; k < core.length; k++) ops.push(core[k]);
+        }
+        for (k = endB; k < before.length; k++) ops.push([' ', before[k]]);
+        return ops;
+    }
+
+    /**
+     * Build unified-diff hunks for one file revision pair.
+     *
+     * @param {string|null} beforeText  Previous content; null/'' means new file.
+     * @param {string} afterText        Current content.
+     * @returns {{body: string, added: number, removed: number, coarse: boolean, newFile: boolean}}
+     */
+    function _diffUnified(beforeText, afterText) {
+        var before = _diffStatSplitLines(beforeText);
+        var after = _diffStatSplitLines(afterText);
+        var newFile = !before.length;
+        var ops = _diffOps(before, after);
+
+        // Line numbers for every op position, computed once. Deriving them
+        // while emitting hunks is what produced overlapping ranges in the
+        // first implementation: trailing context was counted into one hunk and
+        // then walked over again as the next hunk's leading context, so hunk 2
+        // started on a line hunk 1 had already claimed and `git am` rejected
+        // the patch. Precomputing removes the possibility entirely.
+        var oldAt = new Int32Array(ops.length + 1);
+        var newAt = new Int32Array(ops.length + 1);
+        var i, oldLine = 1, newLine = 1, added = 0, removed = 0;
+        for (i = 0; i < ops.length; i++) {
+            oldAt[i] = oldLine; newAt[i] = newLine;
+            if (ops[i][0] === ' ') { oldLine++; newLine++; }
+            else if (ops[i][0] === '-') { oldLine++; removed++; }
+            else { newLine++; added++; }
+        }
+        oldAt[ops.length] = oldLine; newAt[ops.length] = newLine;
+
+        var changes = [];
+        for (i = 0; i < ops.length; i++) if (ops[i][0] !== ' ') changes.push(i);
+        if (!changes.length) {
+            return { body: '', added: 0, removed: 0, coarse: !!ops.coarse, newFile: newFile };
+        }
+
+        // Group changes into hunks, merging any two whose separation is within
+        // twice the context width -- the standard rule, and the reason two
+        // hunks can never share a line.
+        var groups = [], current = [changes[0], changes[0]];
+        for (i = 1; i < changes.length; i++) {
+            if (changes[i] - current[1] <= _DIFF_HUNK_CONTEXT * 2) { current[1] = changes[i]; }
+            else { groups.push(current); current = [changes[i], changes[i]]; }
+        }
+        groups.push(current);
+
+        var hunks = groups.map(function (g) {
+            var from = Math.max(0, g[0] - _DIFF_HUNK_CONTEXT);
+            var to = Math.min(ops.length - 1, g[1] + _DIFF_HUNK_CONTEXT);
+            var lines = [], oldCount = 0, newCount = 0, k;
+            for (k = from; k <= to; k++) {
+                lines.push(ops[k][0] + ops[k][1]);
+                if (ops[k][0] !== '+') oldCount++;
+                if (ops[k][0] !== '-') newCount++;
+            }
+            // A zero-length side is addressed by the line *before* it, which is
+            // what `@@ -0,0` means for a file created from nothing.
+            var oldStart = oldCount ? oldAt[from] : Math.max(0, oldAt[from] - 1);
+            var newStart = newCount ? newAt[from] : Math.max(0, newAt[from] - 1);
+            return '@@ -' + oldStart + ',' + oldCount +
+                ' +' + newStart + ',' + newCount + ' @@\n' + lines.join('\n');
+        });
+
+        return {
+            body: hunks.join('\n') + '\n',
+            added: added, removed: removed,
+            coarse: !!ops.coarse, newFile: newFile
+        };
+    }
+
+    function _patchSafeSubjectText(value) {
+        return String(value == null ? '' : value)
+            .replace(/[\r\n]+/g, ' ')
+            .replace(/[\u0000-\u001f\u007f]/g, '')
+            .trim()
+            .slice(0, 72);
+    }
+
+    /**
+     * Render one revision as a `git am`-compatible mailbox patch.
+     *
+     * Deliberately omits the `index <blob>..<blob>` line: computing git blob
+     * SHA-1s in the browser would require an async digest for a value that
+     * `git apply` and `git am` do not need for text patches, and a wrong or
+     * invented index line would make an otherwise valid patch fail to apply.
+     *
+     * The author is the panel, never the reader: this file has no identity for
+     * the person using it and must not fabricate one. The reader's own git
+     * records who applied it.
+     */
+    function _gitPatchText(entry, opts) {
+        opts = opts || {};
+        if (!entry || typeof entry.content !== 'string') return '';
+        var baseContent = (entry.base && typeof entry.base.content === 'string')
+            ? entry.base.content : null;
+        var diff = _diffUnified(baseContent, entry.content);
+        var path = entry.path;
+        var oldPath = diff.newFile ? '/dev/null' : ('a/' + path);
+        var subject = _patchSafeSubjectText(opts.subject ||
+            ((diff.newFile ? 'Add ' : 'Update ') + path)) || 'Update file';
+
+        var head = [
+            'From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001',
+            'From: sphinx-ai-assistant <ai-assistant@localhost>',
+            'Date: ' + new Date().toUTCString(),
+            'Subject: [PATCH] ' + subject,
+            '',
+            'Generated in the browser by the documentation assistant panel.',
+            'This patch was NOT applied to any repository; applying it is your',
+            'own explicit action.',
+            ''
+        ];
+        if (diff.newFile) {
+            head.push('The previous revision was not retained in this browser session, so');
+            head.push('the file is emitted in full rather than as an incremental change.');
+            head.push('');
+        } else {
+            head.push('Base: revision r' + entry.base.revision + ' \u2192 r' + entry.revision + '.');
+            head.push('');
+        }
+        if (diff.coarse) {
+            head.push('The changed region exceeded the in-browser diff budget, so it is');
+            head.push('expressed as a whole-region replacement rather than minimal hunks.');
+            head.push('');
+        }
+        head.push('---');
+
+        var fileHead = [
+            'diff --git a/' + path + ' b/' + path
+        ];
+        if (diff.newFile) fileHead.push('new file mode 100644');
+        fileHead.push('--- ' + oldPath);
+        fileHead.push('+++ b/' + path);
+
+        return head.join('\n') + '\n' + fileHead.join('\n') + '\n' + diff.body +
+            '-- \n2.0.0\n';
+    }
+
+    /** Suggested filename for a revision patch: stable, ordered, portable. */
+    function _gitPatchFilename(entry) {
+        var stem = _artifactNameSlug(entry.path.replace(/\//g, '-')) || 'file';
+        var seq = String(Math.max(1, Number(entry.revision) || 1));
+        while (seq.length < 4) seq = '0' + seq;
+        return seq + '-' + stem + '.patch';
+    }
+
     function _generatedArtifactSafePath(value) {
         if (typeof value !== 'string') return '';
         var path = value.trim();
@@ -46343,20 +46834,35 @@
         return _attachmentSafeRelativePath(path);
     }
 
+    function _generatedArtifactEntryBytes(entry) {
+        if (!_generatedArtifactIsAvailable(entry)) return 0;
+        var total = _utf8ByteLength(entry.content || '');
+        // The retained previous revision is charged to the same budget. A
+        // second, uncounted owner of retained bytes would make the session
+        // ceiling a number that no longer describes what is held.
+        if (entry.base && typeof entry.base.content === 'string') {
+            total += _utf8ByteLength(entry.base.content);
+        }
+        return total;
+    }
+
     function _generatedArtifactSessionBytes(excludePath) {
         var total = 0;
         Object.keys(_generatedArtifactLedger).forEach(function (key) {
             if (key === excludePath) return;
-            var entry = _generatedArtifactLedger[key];
-            if (_generatedArtifactIsAvailable(entry)) total += _utf8ByteLength(entry.content || '');
+            total += _generatedArtifactEntryBytes(_generatedArtifactLedger[key]);
         });
         return total;
     }
 
     function _generatedArtifactMakeRetentionUnavailable(entry, reason) {
         if (!_generatedArtifactIsAvailable(entry)) return 0;
-        var freed = _utf8ByteLength(entry.content || '');
+        var freed = _generatedArtifactEntryBytes(entry);
         entry.content = null;
+        // Drop the retained base with the content. A base kept alive after its
+        // successor was evicted would let a patch be generated from bytes the
+        // ledger has already declared unavailable.
+        entry.base = null;
         entry.state = 'unavailable';
         entry.reason = reason || 'Preview was evicted from this browser session.';
         entry.sourceLabel = 'preview unavailable';
@@ -46402,6 +46908,18 @@
         return entry.sourceLabel || 'latest preview';
     }
 
+    /** Text form of the diff stat for status lines and aria labels. */
+    function _generatedArtifactDiffSuffix(entry) {
+        if (!entry || !entry.diff) return '';
+        var added = Math.max(0, Number(entry.diff.added) || 0);
+        var removed = Math.max(0, Number(entry.diff.removed) || 0);
+        if (!added && !removed) return '';
+        var parts = [];
+        if (added) parts.push('+' + added);
+        if (removed) parts.push('\u2212' + removed);
+        return ' \u00b7 ' + parts.join(' ');
+    }
+
     function _generatedArtifactPreviewItem(entry) {
         var lines = entry.content ? entry.content.split(/\r?\n/).length : 0;
         return {
@@ -46410,7 +46928,8 @@
             previewText: entry.content,
             size: _utf8ByteLength(entry.content || ''),
             lineCount: lines,
-            status: 'Latest revision r' + entry.revision + ' \u00b7 ' + _generatedArtifactStateLabel(entry),
+            status: 'Latest revision r' + entry.revision + _generatedArtifactDiffSuffix(entry) +
+                ' \u00b7 ' + _generatedArtifactStateLabel(entry),
             badge: 'FILE',
             sendEligible: false,
             turnScoped: false
@@ -46438,6 +46957,24 @@
         }
         var filename = entry.path.split('/').pop() || 'generated-file.txt';
         _downloadBlob(entry.content, entry.mediaType || 'text/plain', filename);
+    }
+
+    function _generatedArtifactDownloadPatch(key) {
+        var entry = _generatedArtifactLedger[key];
+        if (!_generatedArtifactIsAvailable(entry)) {
+            if (entry) {
+                showNotification('A patch cannot be produced for ' + entry.path +
+                    ' because revision r' + entry.revision + ' is ' +
+                    _generatedArtifactStateLabel(entry) + '.', true);
+            }
+            return;
+        }
+        var text = _gitPatchText(entry);
+        if (!text) {
+            showNotification('A patch could not be produced for ' + entry.path + '.', true);
+            return;
+        }
+        _downloadBlob(text, 'text/x-patch', _gitPatchFilename(entry));
     }
 
     function _generatedArtifactRefreshRefs(key) {
@@ -46601,6 +47138,20 @@
             content: content,
             mediaType: mediaType,
             language: _activityBoundedText(spec.language || '', 40),
+            // Diffed against the previous revision's bytes while they are
+            // still in hand. `old.content` is null once a revision has been
+            // evicted or was never previewable, and _diffLineStat treats that
+            // as a new file rather than inventing a comparison.
+            diff: _diffLineStat(old && old.content, content),
+            baseRevision: old ? old.revision : 0,
+            // Retained only when the predecessor is still available AND small
+            // enough to sit inside the same per-file ceiling as the content
+            // itself. When it is not retained, patch export degrades to a
+            // whole-file emission that says so, rather than inventing a base.
+            base: (_generatedArtifactIsAvailable(old) &&
+                   _utf8ByteLength(old.content) <= _TURN_ACTIVITY_FILE_MAX_BYTES)
+                ? { revision: old.revision, content: old.content }
+                : null,
             revision: old ? old.revision + 1 : 1,
             state: 'available',
             reason: '',
@@ -46836,7 +47387,12 @@
             name.textContent = entry.path;
             var meta = document.createElement('span');
             meta.className = 'ai-assistant-panel-changed-file-meta';
-            copy.appendChild(name); copy.appendChild(meta);
+            copy.appendChild(name);
+            // Sits next to the filename, before the revision/state line, so
+            // the size of the change reads at the same glance as what changed.
+            var diffStat = _diffStatElement(entry);
+            if (diffStat) name.appendChild(diffStat);
+            copy.appendChild(meta);
             var open = document.createElement('span');
             open.className = 'ai-assistant-panel-changed-file-open';
             open.textContent = 'Preview';
@@ -46850,6 +47406,19 @@
             download.setAttribute('aria-label', 'Download latest ' + entry.path);
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
             row.appendChild(preview); row.appendChild(download);
+            // Patch export sits beside the plain download rather than replacing
+            // it: a reader who just wants the file should not have to know what
+            // `git am` is, and a reader who tracks changes should not have to
+            // diff by hand.
+            var patch = document.createElement('button');
+            patch.type = 'button';
+            patch.className = 'ai-assistant-panel-changed-file-patch';
+            patch.textContent = 'Patch';
+            patch.setAttribute('data-ai-artifact-patch-key', key);
+            patch.setAttribute('aria-label', 'Download ' + entry.path + ' as a git patch');
+            patch.title = 'Download as a git patch (apply with git am)';
+            patch.addEventListener('click', function () { _generatedArtifactDownloadPatch(key); });
+            row.appendChild(patch);
             _generatedArtifactRefreshRefs(key);
             list.appendChild(row);
         });
