@@ -21724,6 +21724,16 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 }
 /* The footer is one action strip: patch series, and a download-all that spans
    the full width so it reads as covering every card above it. */
+.ai-assistant-panel-changed-files,
+.ai-md-artifact-list {
+    /* Measured by the @container rules below. The panel is resizable and can
+       be maximized or embedded, so its rendered width and the viewport's are
+       different numbers -- a media query here would collapse labels on a wide
+       panel inside a narrow window, and keep them on a narrow panel inside a
+       wide one. */
+    container-type: inline-size;
+    container-name: ai-artifact-surface;
+}
 .ai-assistant-panel-changed-files-footer {
     display: flex;
     flex-wrap: wrap;
@@ -22285,4 +22295,73 @@ button.ai-md-artifact-download-label:focus-visible,
     top: 0;
     z-index: 1;
     background: var(--pst-color-surface, #fff);
+}
+
+/* Icon-and-label buttons. The glyph is aria-hidden and the accessible name
+   comes from aria-label, so the icon is decoration in the strict sense: remove
+   it and nothing announced changes. */
+.ai-md-artifact-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin-inline-end: .4rem;
+    vertical-align: -.15em;
+}
+.ai-md-artifact-btn-icon svg { width: .85em; height: .85em; }
+.ai-md-artifact-btn-label { min-width: 0; }
+/* The footer pair centres its contents, so the icon travels with the label
+   rather than pinning to the left edge of a full-width button. */
+.ai-assistant-panel-changed-files-download-all,
+.ai-assistant-panel-changed-files-series,
+.ai-assistant-panel-changed-files-continue-all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ── Icon-only download controls on a narrow panel ─────────────────────────
+   Below 22rem of surface width the label is dropped and the glyph carries the
+   button. That is safe only because every one of these already has a full
+   `aria-label` and `title`: the accessible name never changes, so a screen
+   reader announces "Download latest docs/index.rst under its own name" at
+   every width, and a pointer user gets the same sentence on hover.
+
+   Dropping the label is preferable to letting it truncate: "Downl…" is a worse
+   affordance than a recognisable glyph, and truncation would also squeeze the
+   filename beside it, which is the part that identifies the row. */
+@container ai-artifact-surface (max-width: 22rem) {
+    .ai-md-artifact-download-label .ai-md-artifact-btn-label,
+    .ai-assistant-panel-changed-file-download .ai-md-artifact-btn-label,
+    .ai-assistant-panel-changed-files-download-all .ai-md-artifact-btn-label,
+    .ai-assistant-panel-changed-files-series .ai-md-artifact-btn-label {
+        /* clip, not display:none — the label stays in the layout box for
+           `title` and keeps the button's hit area from collapsing to the
+           glyph's width, which would make it hard to hit on a touch screen. */
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+    .ai-md-artifact-download-label .ai-md-artifact-btn-icon,
+    .ai-assistant-panel-changed-file-download .ai-md-artifact-btn-icon,
+    .ai-assistant-panel-changed-files-download-all .ai-md-artifact-btn-icon,
+    .ai-assistant-panel-changed-files-series .ai-md-artifact-btn-icon {
+        margin-inline-end: 0;
+    }
+    /* Minimum target size is kept even with no text to widen the button. */
+    .ai-md-artifact-download-label,
+    .ai-assistant-panel-changed-file-download {
+        min-width: 2.25rem;
+        justify-content: center;
+    }
+}
+/* The Git mark is the one glyph that is a brand rather than an operation, so
+   it keeps a slightly larger optical size against the arrow icons. */
+.ai-assistant-panel-changed-files-series .ai-md-artifact-btn-icon svg {
+    width: .95em;
+    height: .95em;
 }

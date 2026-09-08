@@ -1720,6 +1720,14 @@
         // Filled 16x16 glyph; inline SVG inherits currentColor (dark-mode safe).
         // Mirror of new-chat-compose.svg / _SVG_NEW_CHAT_COMPOSE in _static/__init__.py.
         newChatCompose: '<svg viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M13.75 10c0-2.389-.983-4.131-1.696-5.08-.19.437-.74 1.33-2.054 1.33-.765 0-1.3-.334-1.643-.712-.306-.338-.455-.706-.513-.902l-.01-.037c-.097-.36-.176-.738-.253-1.079-.079-.35-.159-.676-.262-.98-.108-.318-.24-.6-.412-.844-.865 1.82-2.002 3.05-2.899 4.151C2.98 7.111 2.25 8.22 2.25 10c0 1.545.923 2.955 2.374 3.831-.074-.277-.115-.565-.123-.855l-.001-.104c0-.957.522-1.784 1.107-2.472.58-.685 1.352-1.371 1.952-1.968l.024-.022c.245-.22.622-.213.858.022.613.61 1.372 1.31 1.956 2.012.575.691 1.103 1.52 1.103 2.428l-.001.104c-.008.29-.049.578-.123.855 1.45-.876 2.374-2.286 2.374-3.831M15 10c0 2.817-2.241 5.046-5.036 5.756l-.133.032c-.297.07-.601-.085-.72-.366-.118-.28-.016-.607.242-.77l.053-.035c.528-.362.824-.967.843-1.674l.001-.07c0-.443-.271-.977-.814-1.63-.416-.5-.92-.99-1.438-1.494-.52.5-1.019.965-1.438 1.46-.533.627-.81 1.164-.81 1.663l.001.071c.02.73.335 1.353.896 1.71.258.163.36.488.241.77-.114.272-.403.425-.691.371l-.028-.006C3.313 15.116 1 12.862 1 10c0-2.22.957-3.611 2.039-4.941C4.119 3.73 5.305 2.473 6.104.4l.014-.033c.073-.16.21-.284.38-.338.181-.057.378-.03.536.076l.074.05c.756.533 1.148 1.26 1.394 1.983.126.37.218.75.299 1.107.083.368.152.703.24 1.03l.008.026c.025.074.096.245.235.398.142.157.356.301.716.301.34 0 .537-.111.66-.222.137-.123.216-.277.26-.385l.012-.036c.03-.094.063-.263.101-.478.018-.1.04-.221.063-.312.009-.035.03-.123.075-.208.013-.026.082-.165.242-.263.097-.06.24-.109.408-.088.142.017.248.078.319.135l.028.023.049.046C12.6 3.575 15 5.996 15 10"/></svg>',
+        // Git logomark, from the official asset. `fill="currentColor"` rather
+        // than one of the three published fixed-colour variants: the button
+        // already carries the accent token, which has a light and a dark value
+        // and a forced-colours fallback, so inheriting gives correct contrast
+        // in every theme from one asset. Shipping white/black/orange copies
+        // would mean choosing between them at runtime and getting the
+        // forced-colours case wrong.
+        gitMark:'<svg viewBox="0 0 78 78" width="14" height="14" fill="currentColor" aria-hidden="true"><path transform="translate(10 10) rotate(-45 29 29)" d="M5,58c-2.76142,0 -5,-2.23858 -5,-5v-48c0,-2.76142 2.23858,-5 5,-5h33v12.54404c-2.06553,0.94801 -3.5,3.03446 -3.5,5.45596c0,0.73514 0.13221,1.43941 0.37415,2.09031l-15.28384,15.28384c-0.6509,-0.24194 -1.35517,-0.37415 -2.09031,-0.37415c-3.31371,0 -6,2.68629 -6,6c0,3.31371 2.68629,6 6,6c3.31371,0 6,-2.68629 6,-6c0,-0.73514 -0.13221,-1.43941 -0.37415,-2.09031l14.87415,-14.87415l0,11.50851c-2.06553,0.94801 -3.5,3.03446 -3.5,5.45596c0,3.31371 2.68629,6 6,6c3.31371,0 6,-2.68629 6,-6c0,-2.42149 -1.43447,-4.50795 -3.5,-5.45596l0,-12.08808c2.06553,-0.94801 3.5,-3.03446 3.5,-5.45596c0,-2.42149 -1.43447,-4.50795 -3.5,-5.45596l0,-12.54404h10c2.76142,0 5,2.23858 5,5v48c0,2.76142 -2.23858,5 -5,5z"/></svg>',
         exportTxt:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
         // Pencil — Edit & resend a previous question.
         editAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
@@ -2793,6 +2801,35 @@
      * @param {HTMLElement} secondary Small segment (download).
      * @returns {HTMLElement}
      */
+    /**
+     * Give a button a leading icon and a text label.
+     *
+     * `innerHTML` is used for the glyph because ICONS entries are build-time
+     * constants in this file, never user or model content -- the same
+     * treatment every other icon in the panel gets. The label goes in its own
+     * element afterwards, so the accessible name comes from `aria-label` and
+     * the glyph never becomes part of the announced text.
+     *
+     * @param {HTMLElement} btn   Button to decorate, in place.
+     * @param {string} iconSvg    Entry from ICONS.
+     * @param {string} labelText  Visible label.
+     * @returns {HTMLElement} The same button.
+     */
+    function _decorateIconButton(btn, iconSvg, labelText) {
+        if (!btn) return btn;
+        var glyph = document.createElement('span');
+        glyph.className = 'ai-md-artifact-btn-icon';
+        glyph.setAttribute('aria-hidden', 'true');
+        glyph.innerHTML = iconSvg;      // ICONS constant, not user content.
+        btn.textContent = '';
+        btn.appendChild(glyph);
+        var label = document.createElement('span');
+        label.className = 'ai-md-artifact-btn-label';
+        label.textContent = labelText;
+        btn.appendChild(label);
+        return btn;
+    }
+
     function _buildArtifactSegmentGroup(ariaLabel, primary, secondary) {
         var group = document.createElement('span');
         group.className = 'ai-md-artifact-group';
@@ -2937,7 +2974,7 @@
             var dlBtn = document.createElement('button');
             dlBtn.type = 'button';
             dlBtn.className = 'ai-md-artifact-download-label';
-            dlBtn.textContent = 'Download';
+            _decorateIconButton(dlBtn, ICONS.exportTxt, 'Download');
             dlBtn.setAttribute('aria-label', 'Download ' + filename);
             dlBtn.title = 'Download ' + filename;
             (function (codeElRef, fname) {
@@ -2965,10 +3002,7 @@
             allBtn.type = 'button';
             allBtn.className = 'ai-md-artifact-download-all-btn';
             allBtn.setAttribute('aria-label', 'Download all ' + files.length + ' files as a zip');
-            allBtn.innerHTML = ICONS.exportTxt;
-            var allLbl = document.createElement('span');
-            allLbl.textContent = 'Download all';
-            allBtn.appendChild(allLbl);
+            _decorateIconButton(allBtn, ICONS.exportTxt, 'Download all');
             allBtn.addEventListener('click', function () {
                 var zipBlob = _buildZipBlob(files.map(function (f) {
                     return { name: f.filename, content: f.content };
@@ -49197,7 +49231,7 @@
             var download = document.createElement('button');
             download.type = 'button';
             download.className = 'ai-assistant-panel-changed-file-download';
-            download.textContent = 'Download';
+            _decorateIconButton(download, ICONS.exportTxt, 'Download');
             download.setAttribute('data-ai-artifact-download-key', key);
             download.setAttribute('aria-label', 'Download latest ' + entry.path + ' under its own name');
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
@@ -49237,7 +49271,8 @@
         var series = document.createElement('button');
         series.type = 'button';
         series.className = 'ai-assistant-panel-changed-files-series';
-        series.textContent = many ? 'Download patch series' : 'Download patch';
+        _decorateIconButton(series, ICONS.gitMark,
+            many ? 'Download patch series' : 'Download patch');
         series.setAttribute('aria-label', many
             ? 'Download all ' + combined.length + ' tracked files as one git patch series'
             : 'Download ' + _generatedArtifactLedger[combined[0]].path + ' as a git patch');
@@ -49274,7 +49309,8 @@
             var all = document.createElement('button');
             all.type = 'button';
             all.className = 'ai-assistant-panel-changed-files-download-all';
-            all.textContent = 'Download all ' + combined.length + ' files';
+            _decorateIconButton(all, ICONS.exportTxt,
+                'Download all ' + combined.length + ' files');
             all.addEventListener('click', function () {
                 var unavailable = 0;
                 var aliases = Object.create(null);
