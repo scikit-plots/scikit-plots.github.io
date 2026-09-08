@@ -47388,6 +47388,60 @@
         _downloadBlob(entry.content, entry.mediaType || 'text/plain', filename);
     }
 
+    /**
+     * Download a tracked file under a name the reader chooses.
+     *
+     * Deliberately a *download alias*, not a rename. The ledger is keyed by
+     * path and every control resolves the latest revision through that key;
+     * letting a save dialog rewrite it would orphan the revision chain, the
+     * diff base, the patch header and any binding an in-flight request holds.
+     * So the file keeps its identity and the reader gets the bytes under
+     * whatever filename suits their filesystem.
+     */
+    function _generatedArtifactSaveAs(key) {
+        var entry = _generatedArtifactLedger[key];
+        if (!_generatedArtifactIsAvailable(entry)) {
+            if (entry) {
+                showNotification('Revision r' + _artifactContentRevision(entry) + ' of ' +
+                    entry.path + ' is ' + _generatedArtifactStateLabel(entry) +
+                    ', so it cannot be saved.', true);
+            }
+            return;
+        }
+        var suggested = entry.path.split('/').pop() || 'generated-file.txt';
+        var raw = window.prompt(
+            'Save ' + entry.path + ' as\n\n' +
+            'This downloads the current bytes under a name you choose. The ' +
+            'tracked file keeps its own path, so revisions and patches still ' +
+            'line up.',
+            suggested);
+        if (raw === null) return;
+        var chosen = _artifactNameSlugPreservingExtension(raw) || suggested;
+        _downloadBlob(entry.content, entry.mediaType || 'text/plain', chosen);
+    }
+
+    /**
+     * Sanitize a reader-supplied download filename, keeping its extension.
+     *
+     * The slug rules that protect derived names apply here too -- a save
+     * dialog is still a path a browser will act on -- but the extension is
+     * preserved rather than slugged away, because that is usually the only
+     * part the reader actually cared about typing.
+     */
+    function _artifactNameSlugPreservingExtension(value) {
+        var text = String(value == null ? '' : value).trim();
+        // Strip any directory the reader typed: this writes to their download
+        // folder, and a path here would be a claim the panel cannot honour.
+        text = text.split(/[\\/]/).pop() || '';
+        var dot = text.lastIndexOf('.');
+        var stem = dot > 0 ? text.slice(0, dot) : text;
+        var ext = dot > 0 ? text.slice(dot + 1) : '';
+        var safeStem = _artifactNameSlug(stem);
+        var safeExt = _artifactNameSlug(ext);
+        if (!safeStem) return '';
+        return safeExt ? safeStem + '.' + safeExt : safeStem;
+    }
+
     // ── Snippet -> working file, and continuing a file across turns ───────
     //
     // The rendered panel showed the shape of the problem plainly: two code
@@ -48148,11 +48202,22 @@
             download.className = 'ai-assistant-panel-changed-file-download';
             download.textContent = 'Download';
             download.setAttribute('data-ai-artifact-download-key', key);
-            download.setAttribute('aria-label', 'Download latest ' + entry.path);
+            download.setAttribute('aria-label', 'Download latest ' + entry.path + ' under its own name');
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
+            var saveAs = document.createElement('button');
+            saveAs.type = 'button';
+            saveAs.className = 'ai-assistant-panel-changed-file-saveas';
+            saveAs.textContent = 'Save as\u2026';
+            saveAs.setAttribute('data-ai-artifact-saveas-key', key);
+            saveAs.setAttribute('aria-label', 'Save ' + entry.path + ' under a name you choose');
+            saveAs.title = 'Download under a filename you choose';
+            saveAs.addEventListener('click', function () { _generatedArtifactSaveAs(key); });
+
             var primary = document.createElement('div');
             primary.className = 'ai-assistant-panel-changed-file-primary';
-            primary.appendChild(preview); primary.appendChild(download);
+            primary.appendChild(preview);
+            primary.appendChild(download);
+            primary.appendChild(saveAs);
             row.appendChild(primary);
             var secondary = document.createElement('div');
             secondary.className = 'ai-assistant-panel-changed-file-secondary';

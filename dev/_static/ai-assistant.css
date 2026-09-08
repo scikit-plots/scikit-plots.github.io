@@ -21682,3 +21682,43 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 }
 .ai-assistant-panel-changed-files-footer[hidden] { display: none; }
 .ai-assistant-panel-changed-files-download-all { flex: 1 1 100%; }
+
+/* ── Presented-file card: preview | download | save as ─────────────────────
+   Three columns, and the preview claims all the room left over. The card body
+   IS the preview target, so the whole block is the affordance rather than a
+   small word at its end — the same shape as an attachment tile, opening the
+   same full overlay. */
+.ai-assistant-panel-changed-file-primary {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+}
+.ai-assistant-panel-changed-file-preview {
+    min-height: 3.1rem;
+    align-items: center;
+}
+.ai-assistant-panel-changed-file-saveas {
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 8px;
+    padding: .45rem .55rem;
+    background: var(--pst-color-surface, #fff);
+    color: inherit;
+    font: inherit;
+    font-size: .62rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.ai-assistant-panel-changed-file-saveas:hover,
+.ai-assistant-panel-changed-file-saveas:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+}
+@media (max-width: 420px) {
+    /* Three actions plus a filename do not fit a narrow panel. The filename is
+       the part that identifies the card, so it keeps the full width and the
+       actions wrap beneath it rather than being clipped. */
+    .ai-assistant-panel-changed-file-primary {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .ai-assistant-panel-changed-file-primary > button:not(.ai-assistant-panel-changed-file-preview) {
+        justify-self: start;
+    }
+}
