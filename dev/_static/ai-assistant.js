@@ -47912,8 +47912,11 @@
               run: function () { _generatedArtifactSaveAs(key); } },
             { label: 'Download patch', hint: 'Apply with git am',
               run: function () { _generatedArtifactDownloadPatch(key); } },
-            { label: 'Continue editing', hint: 'Attach to your next message',
-              run: function () { _generatedArtifactContinueEditing(key); } }
+            _workingFileContinuations[key]
+                ? { label: 'Stop continuing', hint: 'Remove from your next message',
+                    run: function () { _generatedArtifactStopContinuing(key); } }
+                : { label: 'Continue editing', hint: 'Attach to your next message',
+                    run: function () { _generatedArtifactContinueEditing(key); } }
         ]);
     }
 
@@ -48072,44 +48075,148 @@
      * concerned, and giving it a private channel would put its bytes outside
      * the preflight that tells the reader what is about to be sent.
      */
-    function _generatedArtifactContinueEditing(key) {
+    // Remembered from the last successful discovery so a Continue click can
+    // tell, before any request is built, whether the endpoint will carry
+    // working files itself.
+    var _lastWorkingFileCaps = null;
+
+    function _continuationCount() {
+        return Object.keys(_workingFileContinuations).length;
+    }
+
+    /**
+     * Queue a tracked file to travel with the next message.
+     *
+     * Queuing is intent, not transport. On an endpoint that accepts
+     * `working_files` the request builder reads this registry and sends each
+     * file bound to its revision and digest -- so staging a composer
+     * attachment here as well sent the same bytes twice, once unbound. That
+     * doubled the token cost of every continued file and gave the model two
+     * copies to reconcile, which is worse than either copy alone.
+     *
+     * The attachment path remains for endpoints that cannot take working
+     * files, where it is the only way the bytes travel at all.
+     */
+    function _generatedArtifactContinueEditing(key, opts) {
         var entry = _generatedArtifactLedger[key];
+        var quiet = opts && opts.quiet;
         if (!_generatedArtifactIsAvailable(entry)) {
-            if (entry) {
-                showNotification('Revision r' + _artifactContentRevision(entry) + ' of ' + entry.path +
-                    ' is ' + _generatedArtifactStateLabel(entry) +
+            if (entry && !quiet) {
+                showNotification('Revision r' + _artifactContentRevision(entry) + ' of ' +
+                    entry.path + ' is ' + _generatedArtifactStateLabel(entry) +
                     ', so it cannot be continued.', true);
             }
-            return;
+            return false;
         }
-        var name = entry.path.split('/').pop() || 'file.txt';
-        var file;
-        try {
-            file = new File([entry.content], name, {
-                type: entry.mediaType || 'text/plain'
-            });
-        } catch (_) {
-            showNotification('This browser cannot stage the file for continuation.', true);
-            return;
-        }
-        // relativePath preserves the directory the reader chose, so a follow-up
-        // answer can address docs/index.rst rather than a bare index.rst.
-        _stageComposerFiles([{
-            file: file,
-            relativePath: entry.path,
-            sourceKind: 'working-file'
-        }], _attachmentStageGeneration);
+        if (_workingFileContinuations[entry.key]) return true;
 
-        var input = document.getElementById('ai-assistant-panel-input');
-        if (input && !String(input.value || '').trim()) {
-            input.value = 'Continue editing ' + entry.path + ' (revision r' +
-                entry.revision + '). Return the complete updated file.';
+        if (!_lastWorkingFileCaps) {
+            // No working-file support discovered: fall back to staging the
+            // bytes as an ordinary attachment, which is bounded and previewed
+            // by the same pipeline any upload uses.
+            var name = entry.path.split('/').pop() || 'file.txt';
+            var file;
+            try {
+                file = new File([entry.content], name, {
+                    type: entry.mediaType || 'text/plain'
+                });
+            } catch (_) {
+                if (!quiet) {
+                    showNotification('This browser cannot stage the file for continuation.', true);
+                }
+                return false;
+            }
+            _stageComposerFiles([{
+                file: file,
+                relativePath: entry.path,
+                sourceKind: 'working-file'
+            }], _attachmentStageGeneration);
         }
-        if (input && typeof input.focus === 'function') input.focus();
+
         _workingFileContinuations[entry.key] = Date.now();
-        showNotification(
-            entry.path + ' r' + _artifactContentRevision(entry) +
-            ' is attached to your next message and bound to that revision.', false);
+        _generatedArtifactRefreshRefs(entry.key);
+        if (!quiet) {
+            _primeComposerForContinuation();
+            showNotification(entry.path + ' r' + _artifactContentRevision(entry) +
+                ' will travel with your next message, bound to that revision.', false);
+        }
+        return true;
+    }
+
+    /** Drop one file from the next message. */
+    function _generatedArtifactStopContinuing(key) {
+        var entry = _generatedArtifactLedger[key];
+        if (!_workingFileContinuations[key]) return;
+        delete _workingFileContinuations[key];
+        _generatedArtifactRefreshRefs(key);
+        showNotification((entry ? entry.path : 'That file') +
+            ' will not travel with your next message.', false);
+    }
+
+    /** Drop every queued file. */
+    function _generatedArtifactClearContinuations() {
+        var n = _continuationCount();
+        if (!n) return;
+        Object.keys(_workingFileContinuations).forEach(function (key) {
+            delete _workingFileContinuations[key];
+            _generatedArtifactRefreshRefs(key);
+        });
+        showNotification(n + (n === 1 ? ' file' : ' files') +
+            ' removed from your next message.', false);
+    }
+
+    /**
+     * Queue every available tracked file, up to the endpoint's own limits.
+     *
+     * Continuing several files one menu at a time is the common case for a
+     * multi-file review, and doing it by hand means the reader discovers the
+     * per-request cap only by hitting it. Queuing in one action reports what
+     * fitted and what did not, before the request is built rather than after
+     * it is rejected.
+     */
+    function _generatedArtifactContinueAll() {
+        var limits = _lastWorkingFileCaps || _WORKING_FILE_FALLBACK;
+        var keys = Object.keys(_generatedArtifactLedger).sort();
+        var added = 0, skipped = 0, chars = 0, i;
+        for (i = 0; i < keys.length; i++) {
+            var entry = _generatedArtifactLedger[keys[i]];
+            if (!_generatedArtifactIsAvailable(entry)) { skipped++; continue; }
+            if (_workingFileContinuations[entry.key]) { chars += entry.content.length; continue; }
+            if (_continuationCount() >= limits.maxFiles) { skipped++; continue; }
+            if (entry.content.length > limits.maxFileChars) { skipped++; continue; }
+            if (chars + entry.content.length > limits.maxTotalChars) { skipped++; continue; }
+            if (_generatedArtifactContinueEditing(entry.key, { quiet: true })) {
+                chars += entry.content.length;
+                added++;
+            } else { skipped++; }
+        }
+        if (!added && !skipped) {
+            showNotification('Every tracked file is already attached to your next message.', false);
+            return;
+        }
+        _primeComposerForContinuation();
+        var parts = [];
+        if (added) parts.push(added + (added === 1 ? ' file' : ' files') + ' attached');
+        if (skipped) {
+            // Named, not silently dropped: a reader who cannot see what was
+            // left out cannot tell a short answer from an incomplete request.
+            parts.push(skipped + (skipped === 1 ? ' file' : ' files') +
+                ' left out (unavailable, or beyond this endpoint\u2019s per-request limits)');
+        }
+        showNotification(parts.join(' \u00b7 ') + '.', !!skipped && !added);
+    }
+
+    /** Put a neutral instruction in an empty composer, never over the reader's. */
+    function _primeComposerForContinuation() {
+        var input = document.getElementById('ai-assistant-panel-input');
+        if (!input) return;
+        if (!String(input.value || '').trim()) {
+            var n = _continuationCount();
+            input.value = n === 1
+                ? 'Continue editing the attached file. Return the complete updated file.'
+                : 'Continue editing the ' + n + ' attached files. Return each complete updated file.';
+        }
+        if (typeof input.focus === 'function') input.focus();
     }
 
     /**
@@ -48727,6 +48834,31 @@
         hint.textContent = 'drafts, not applied \u00b7 links open the latest revision';
         head.appendChild(headCaret); head.appendChild(title); head.appendChild(hint);
         section.appendChild(head);
+
+        // A queue the reader cannot see is a queue they cannot manage. This
+        // says what is attached and offers the one action that is awkward
+        // through per-file menus: dropping all of it.
+        var trayCount = _continuationCount();
+        if (trayCount) {
+            var tray = document.createElement('div');
+            tray.className = 'ai-assistant-panel-changed-files-tray';
+            tray.setAttribute('role', 'status');
+            var trayText = document.createElement('span');
+            trayText.textContent = trayCount +
+                (trayCount === 1 ? ' file travels' : ' files travel') +
+                ' with your next message';
+            var clear = document.createElement('button');
+            clear.type = 'button';
+            clear.className = 'ai-assistant-panel-changed-files-tray-clear';
+            clear.textContent = 'Clear';
+            clear.setAttribute('aria-label', 'Remove all attached files from your next message');
+            clear.addEventListener('click', function () {
+                _generatedArtifactClearContinuations();
+                tray.remove();
+            });
+            tray.appendChild(trayText); tray.appendChild(clear);
+            section.appendChild(tray);
+        }
         var footerRef = null;
         var list = document.createElement('div');
         list.className = 'ai-assistant-panel-changed-files-list';
@@ -48842,6 +48974,21 @@
         var footer = document.createElement('div');
         footer.className = 'ai-assistant-panel-changed-files-footer';
         footerRef = footer;
+
+        // Queuing several files one menu at a time is the common case for a
+        // multi-file review, and doing it by hand means discovering the
+        // per-request cap only by hitting it.
+        if (many) {
+            var contAll = document.createElement('button');
+            contAll.type = 'button';
+            contAll.className = 'ai-assistant-panel-changed-files-continue-all';
+            contAll.textContent = 'Continue editing all ' + combined.length + ' files';
+            contAll.setAttribute('aria-label',
+                'Attach all ' + combined.length + ' presented files to your next message');
+            contAll.title = 'Attach as many as this endpoint accepts per request';
+            contAll.addEventListener('click', _generatedArtifactContinueAll);
+            footer.appendChild(contAll);
+        }
         section.appendChild(footer);
         if (many) {
             var all = document.createElement('button');
@@ -49495,6 +49642,7 @@
         var proxyCaps = await _chatContractDiscover(endpoint);
         _panelTurnEnsureActive(activity, requestController, requestToken);
         var proxyContract = proxyCaps ? proxyCaps.contract : '';
+        _lastWorkingFileCaps = (proxyCaps && proxyCaps.workingFiles) || null;
         var useStructuredProxy = (proxyContract === _CHAT_CONTRACT_V1 ||
                                   proxyContract === _CHAT_CONTRACT_V2);
         if (requestResources.length && !useStructuredProxy) {

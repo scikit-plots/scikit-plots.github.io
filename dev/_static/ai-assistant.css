@@ -22160,3 +22160,53 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-assistant-panel-changed-files-series.ai-assistant-panel-changed-files-solo:focus-visible {
     background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
 }
+
+/* ── Continuation tray ─────────────────────────────────────────────────────
+   A queue the reader cannot see is a queue they cannot manage. The tray is a
+   status line, not a control strip: it states what will travel and offers the
+   one action that is awkward through per-file menus. */
+.ai-assistant-panel-changed-files-tray {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: .35rem 0 .1rem;
+    padding: .35rem .55rem;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--ai-artifact-accent) 10%, transparent);
+    font-size: .62rem;
+}
+.ai-assistant-panel-changed-files-tray > span { flex: 1 1 auto; min-width: 0; }
+.ai-assistant-panel-changed-files-tray-clear {
+    flex: 0 0 auto;
+    border: 0;
+    background: transparent;
+    padding: .1rem .25rem;
+    color: var(--ai-artifact-accent);
+    font: inherit;
+    font-size: .62rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 2px;
+}
+.ai-assistant-panel-changed-files-continue-all {
+    flex: 1 1 100%;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 10px;
+    padding: .5rem .6rem;
+    background: var(--pst-color-surface, #fff);
+    color: var(--ai-artifact-accent);
+    font: inherit;
+    font-size: .62rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+.ai-assistant-panel-changed-files-continue-all:hover,
+.ai-assistant-panel-changed-files-continue-all:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
+}
+@media (forced-colors: active) {
+    .ai-assistant-panel-changed-files-tray-clear,
+    .ai-assistant-panel-changed-files-continue-all { color: LinkText; }
+}
