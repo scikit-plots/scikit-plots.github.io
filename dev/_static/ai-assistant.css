@@ -21635,3 +21635,50 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     transform: rotate(90deg);
 }
 .ai-assistant-panel-changed-files-list[hidden] { display: none; }
+
+/* ── Presented-file cards ───────────────────────────────────────────────────
+   Preview and Download are the two actions most readers want, so they own the
+   card's primary row. Patch and Continue sit on a quieter second line: still
+   one click away, but no longer competing for the same visual weight. */
+.ai-assistant-panel-changed-file {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    grid-template-columns: none;
+}
+.ai-assistant-panel-changed-file-primary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: .35rem;
+}
+.ai-assistant-panel-changed-file-secondary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    padding-inline-start: .2rem;
+}
+.ai-assistant-panel-changed-file-secondary:empty { display: none; }
+.ai-assistant-panel-changed-file-badge {
+    display: inline-block;
+    margin-inline-start: .4rem;
+    padding: .05rem .3rem;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
+    border-radius: 4px;
+    color: var(--pst-color-text-muted, #71717a);
+    font-size: .55rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+/* The footer is one action strip: patch series, and a download-all that spans
+   the full width so it reads as covering every card above it. */
+.ai-assistant-panel-changed-files-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-top: .45rem;
+}
+.ai-assistant-panel-changed-files-footer[hidden] { display: none; }
+.ai-assistant-panel-changed-files-download-all { flex: 1 1 100%; }

@@ -48094,7 +48094,7 @@
         hint.textContent = 'drafts, not applied \u00b7 links open the latest revision';
         head.appendChild(headCaret); head.appendChild(title); head.appendChild(hint);
         section.appendChild(head);
-        var seriesRef = null;
+        var footerRef = null;
         var list = document.createElement('div');
         list.className = 'ai-assistant-panel-changed-files-list';
         list.id = listId;
@@ -48102,7 +48102,7 @@
             var open = head.getAttribute('aria-expanded') === 'true';
             head.setAttribute('aria-expanded', open ? 'false' : 'true');
             list.hidden = open;
-            if (seriesRef) seriesRef.hidden = open;
+            if (footerRef) footerRef.hidden = open;
         });
         combined.forEach(function (key) {
             var entry = _generatedArtifactLedger[key];
@@ -48128,6 +48128,16 @@
             var diffStat = _diffStatElement(entry);
             if (diffStat) name.appendChild(diffStat);
             copy.appendChild(meta);
+            // A short type badge does what a filename extension does at a
+            // glance -- and unlike the extension it survives truncation of a
+            // long path, which is the case that actually needs it.
+            var badge = document.createElement('span');
+            badge.className = 'ai-assistant-panel-changed-file-badge';
+            var dot = entry.path.lastIndexOf('.');
+            var ext = (dot > 0 && dot < entry.path.length - 1)
+                ? entry.path.slice(dot + 1) : '';
+            badge.textContent = (ext || 'file').slice(0, 6).toUpperCase();
+            copy.appendChild(badge);
             var open = document.createElement('span');
             open.className = 'ai-assistant-panel-changed-file-open';
             open.textContent = 'Preview';
@@ -48140,7 +48150,13 @@
             download.setAttribute('data-ai-artifact-download-key', key);
             download.setAttribute('aria-label', 'Download latest ' + entry.path);
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
-            row.appendChild(preview); row.appendChild(download);
+            var primary = document.createElement('div');
+            primary.className = 'ai-assistant-panel-changed-file-primary';
+            primary.appendChild(preview); primary.appendChild(download);
+            row.appendChild(primary);
+            var secondary = document.createElement('div');
+            secondary.className = 'ai-assistant-panel-changed-file-secondary';
+            row.appendChild(secondary);
             // Patch export sits beside the plain download rather than replacing
             // it: a reader who just wants the file should not have to know what
             // `git am` is, and a reader who tracks changes should not have to
@@ -48153,7 +48169,7 @@
             patch.setAttribute('aria-label', 'Download ' + entry.path + ' as a git patch');
             patch.title = 'Download as a git patch (apply with git am)';
             patch.addEventListener('click', function () { _generatedArtifactDownloadPatch(key); });
-            row.appendChild(patch);
+            secondary.appendChild(patch);
             var cont = document.createElement('button');
             cont.type = 'button';
             cont.className = 'ai-assistant-panel-changed-file-continue';
@@ -48162,28 +48178,45 @@
             cont.setAttribute('aria-label', 'Continue editing ' + entry.path + ' in your next message');
             cont.title = 'Attach the latest revision to your next message';
             cont.addEventListener('click', function () { _generatedArtifactContinueEditing(key); });
-            row.appendChild(cont);
+            secondary.appendChild(cont);
             _generatedArtifactRefreshRefs(key);
             list.appendChild(row);
         });
         section.appendChild(list);
+        // File events are already the activity timeline's job. A presentation
+        // that exists only in the answer body is invisible to a reader who
+        // consults the timeline to see what the turn actually did.
+        if (st) {
+            _activityAddStep(st, {
+                id: 'presented-files', kind: 'file', state: 'done',
+                label: 'Presented ' + combined.length +
+                    (combined.length === 1 ? ' file' : ' files'),
+                detail: combined.map(function (key) {
+                    var e = _generatedArtifactLedger[key];
+                    return e.path + ' r' + _artifactContentRevision(e);
+                }).join(' \u00b7 ')
+            });
+        }
         // Series export is offered whenever anything is tracked: a single-file
         // series is still the right artifact for a reader who applies changes
         // with `git am` rather than by hand.
         var series = document.createElement('button');
-        seriesRef = series;
         series.type = 'button';
         series.className = 'ai-assistant-panel-changed-files-series';
         series.textContent = 'Download patch series';
         series.setAttribute('aria-label', 'Download every tracked file as one git patch series');
         series.title = 'One mailbox applying every tracked file in order (git am)';
         series.addEventListener('click', _generatedArtifactDownloadPatchSeries);
-        section.appendChild(series);
+        var footer = document.createElement('div');
+        footer.className = 'ai-assistant-panel-changed-files-footer';
+        footerRef = footer;
+        footer.appendChild(series);
+        section.appendChild(footer);
         if (combined.length > 1) {
             var all = document.createElement('button');
             all.type = 'button';
             all.className = 'ai-assistant-panel-changed-files-download-all';
-            all.textContent = 'Download all latest files';
+            all.textContent = 'Download all ' + combined.length + ' files';
             all.addEventListener('click', function () {
                 var unavailable = 0;
                 var aliases = Object.create(null);
@@ -48210,7 +48243,7 @@
                 if (unavailable) showNotification(unavailable + ' unavailable latest file revision' + (unavailable === 1 ? ' was' : 's were') + ' skipped.', false);
                 _downloadBlob(_buildZipBlob(files), 'application/zip', 'changed-files-' + _isoFileStamp() + '.zip');
             });
-            section.appendChild(all);
+            footer.appendChild(all);
         }
         root.appendChild(section);
     }
