@@ -2820,6 +2820,20 @@
             card.className = 'ai-md-artifact-card';
             card.setAttribute('aria-label', 'Download ' + filename);
             card.title = 'Download ' + filename;
+            // Promotion control is built here and appended after the card, so a
+            // reader can give an anonymous fragment an identity at the moment
+            // they realise they want to keep working on it.
+            var promote = document.createElement('button');
+            promote.type = 'button';
+            promote.className = 'ai-md-artifact-promote';
+            promote.textContent = 'Save as file\u2026';
+            promote.setAttribute('aria-label', 'Track ' + filename + ' as a file with revisions');
+            promote.title = 'Track as a file: revisions, diffs, patch export, continue editing';
+            (function (codeText, langTag, suggestedName) {
+                promote.addEventListener('click', function () {
+                    _promoteSnippetToFile(root, codeText, langTag, suggestedName);
+                });
+            }(codeEl ? codeEl.textContent : '', lang, filename));
 
             var iconWrap = document.createElement('span');
             iconWrap.className = 'ai-md-artifact-icon';
@@ -2851,7 +2865,11 @@
             }(codeEl, filename));
             files.push({ filename: filename, content: codeEl.textContent });
 
-            list.appendChild(card);
+            var cardRow = document.createElement('span');
+            cardRow.className = 'ai-md-artifact-row';
+            cardRow.appendChild(card);
+            cardRow.appendChild(promote);
+            list.appendChild(cardRow);
         });
 
         if (files.length > 1) {
@@ -14721,7 +14739,11 @@
             var context = _zipEditBuildModelContext(modelRows, referenceRows);
             var userMessage = _zipEditBuildUserMessage(sourceRows, referenceRows, modelInstruction);
             var chatContract = await _chatContractDiscover(st.target.endpoint);
-            if (chatContract !== _CHAT_CONTRACT_V1) throw new Error('ZIP_EDIT_CHAT_CONTRACT_REQUIRED');
+            var chatContractId = chatContract && typeof chatContract === 'object'
+                ? chatContract.contract : chatContract;
+            if (chatContractId !== _CHAT_CONTRACT_V1 && chatContractId !== _CHAT_CONTRACT_V2) {
+                throw new Error('ZIP_EDIT_CHAT_CONTRACT_REQUIRED');
+            }
             if (referenceRows.length && (!st.resourceCaps || !_resourceExecutionAvailable(st.resourceCaps, st.target.model))) {
                 throw new Error('ZIP_EDIT_MEDIA_ROUTE_UNAVAILABLE');
             }
@@ -16338,6 +16360,9 @@
 
     /** sessionStorage key for the persisted transcript. */
     var _TRANSCRIPT_KEY = 'ai-assistant-transcript';
+    // Written with every successful transcript save; compared on restore so a
+    // conversation the browser silently truncated can be identified as such.
+    var _TRANSCRIPT_COUNT_KEY = 'ai-assistant-transcript-count';
 
     /**
      * Set of answer indices (0-based) for which feedback has been submitted
@@ -16594,7 +16619,7 @@
             _saveConsumedPageContexts();
             if (_conversationId) _ssSet(_CONVERSATION_ID_KEY, _conversationId);
         } else {
-            _ssDel(_TRANSCRIPT_KEY);
+            _ssDel(_TRANSCRIPT_KEY); _ssDel(_TRANSCRIPT_COUNT_KEY);
             _ssDel(_CONVERSATION_ID_KEY);
             _ssDel(_FEEDBACK_STATE_KEY);
             _ssDel(_PINNED_PAGE_CONTEXT_KEY);
@@ -16611,8 +16636,21 @@
     function _ssGet(key) {
         try { return sessionStorage.getItem(key); } catch (_) { return null; }
     }
+    /**
+     * Write to session storage, reporting whether the write actually landed.
+     *
+     * The previous version swallowed every failure. That is defensible for a
+     * cache and indefensible for the transcript: quota exhaustion, private
+     * browsing and disabled storage all fail here, and the panel went on
+     * showing "Remember conversation" switched on while nothing survived a
+     * reload. A switch that describes a capability the browser is refusing is
+     * worse than no switch, because the reader stops taking their own notes.
+     *
+     * @returns {boolean} True when the value was stored.
+     */
     function _ssSet(key, val) {
-        try { sessionStorage.setItem(key, val); } catch (_) { /* ignore */ }
+        try { sessionStorage.setItem(key, val); return true; }
+        catch (_) { return false; }
     }
     function _ssDel(key) {
         try { sessionStorage.removeItem(key); } catch (_) { /* ignore */ }
@@ -16640,8 +16678,61 @@
                 delete row.resourceRuntime;
                 return row;
             });
-            _ssSet(_TRANSCRIPT_KEY, JSON.stringify(persisted));
-        } catch (_) {}
+            var stored = _ssSet(_TRANSCRIPT_KEY, JSON.stringify(persisted));
+            if (stored) {
+                // An integrity marker, not a duplicate of the data. On reload,
+                // a transcript shorter than its own marker says means the
+                // browser dropped turns -- which otherwise looks exactly like
+                // a complete conversation and is the more dangerous of the two
+                // failures, because nothing about it appears wrong.
+                _ssSet(_TRANSCRIPT_COUNT_KEY, String(persisted.length));
+                _persistenceReportHealthy();
+            } else {
+                _persistenceReportUnavailable('quota');
+            }
+        } catch (_) {
+            _persistenceReportUnavailable('serialization');
+        }
+    }
+
+    // ── Persistence health ────────────────────────────────────────────────
+    var _persistenceUnavailableNotified = false;
+
+    function _persistenceReportHealthy() {
+        _persistenceUnavailableNotified = false;
+    }
+
+    /**
+     * Tell the reader once that this conversation will not survive a reload.
+     *
+     * Once per condition, never per keystroke: a warning that repeats becomes
+     * noise and is dismissed along with the ones that matter. The panel keeps
+     * working from memory either way -- this reports a lost guarantee, not a
+     * broken feature.
+     */
+    function _persistenceReportUnavailable(reason) {
+        if (_persistenceUnavailableNotified) return;
+        _persistenceUnavailableNotified = true;
+        var detail = (reason === 'serialization')
+            ? 'this conversation could not be serialized for storage'
+            : 'browser storage is full, disabled, or unavailable in private browsing';
+        showNotification(
+            'This conversation is available for as long as the page stays open, but it will not ' +
+            'survive a reload \u2014 ' + detail + '.', true);
+    }
+
+    /**
+     * Compare a restored transcript against the count that was written with it.
+     *
+     * @returns {number} Turns the browser dropped, or 0.
+     */
+    function _persistenceRestoredShortfall(restoredLength) {
+        var raw = _ssGet(_TRANSCRIPT_COUNT_KEY);
+        if (raw === null || raw === undefined || raw === '') return 0;
+        var expected = Number(raw);
+        if (!isFinite(expected) || expected <= 0) return 0;
+        var missing = Math.floor(expected) - Math.max(0, Number(restoredLength) || 0);
+        return missing > 0 ? missing : 0;
     }
 
     function _saveFeedbackState() {
@@ -16731,11 +16822,15 @@
      * Defensive: any malformed entry is dropped, never thrown.
      */
     function _loadTranscript() {
-        if (!_persistEnabled()) { _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); return; }
+        if (!_persistEnabled()) {
+            _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); _ssDel(_TRANSCRIPT_COUNT_KEY);
+            return;
+        }
         var raw = _ssGet(_TRANSCRIPT_KEY);
         if (!raw) return;
         if (raw.length > _TRANSCRIPT_RESTORE_MAX_STORAGE_CHARS) {
-            _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); return;
+            _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); _ssDel(_TRANSCRIPT_COUNT_KEY);
+            return;
         }
         try {
             var arr = JSON.parse(raw);
@@ -16771,8 +16866,19 @@
                 });
             }
             _transcript = restored;
+            // A truncated restore looks exactly like a complete conversation,
+            // which is why it is the failure worth naming. Reported once, and
+            // only when the marker proves turns are missing.
+            var missing = _persistenceRestoredShortfall(restored.length);
+            if (missing) {
+                showNotification(
+                    missing + ' earlier turn' + (missing === 1 ? '' : 's') +
+                    ' could not be restored \u2014 browser storage dropped ' +
+                    (missing === 1 ? 'it' : 'them') + '. What is shown above is incomplete.', true);
+            }
         } catch (_) {
-            _transcript = []; _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY);
+            _transcript = [];
+            _ssDel(_TRANSCRIPT_KEY); _ssDel(_CONVERSATION_ID_KEY); _ssDel(_TRANSCRIPT_COUNT_KEY);
         }
     }
 
@@ -19777,8 +19883,11 @@
                     'ai-assistant-panel-bubble-action--retry';
                 retryMenuBtn.type = 'button';
                 retryMenuBtn.setAttribute('role', 'menuitem');
-                retryMenuBtn.setAttribute('aria-label', 'Retry this answer');
-                retryMenuBtn.title = 'Retry — re-send the same question';
+                retryMenuBtn.setAttribute('aria-label', 'Ask this question again with the current context');
+                // Same correction as the user-bubble control: the question is
+                // re-sent, the request is rebuilt. "The same question" is true;
+                // "the same request" would not be.
+                retryMenuBtn.title = 'Ask again \u2014 the question is re-sent and the request is rebuilt from the current context';
                 // Swapped from ICONS.retry (single-arrow feather glyph) to the
                 // clearer two-arrow sync Octicon — see ICONS.syncRetry above.
                 retryMenuBtn.innerHTML = ICONS.syncRetry;
@@ -20104,7 +20213,12 @@
         if (!cfg.panelApiEnabled || _stubUsesLocalFallback(cfg, active)) {
             return 'Local chat. This conversation stays in this browser tab; this model reply makes no network request.';
         }
-        return 'Privacy boundary: your message and selected page context may be sent to the configured AI endpoint. Retention and AI-training policies depend on that provider.';
+        // Once an endpoint can accept bounded history, the old sentence is no
+        // longer the whole truth, and a privacy notice that understates what
+        // leaves the browser is worse than none. What actually went with each
+        // request is named per turn in that turn's activity receipt; this
+        // notice states the boundary, the receipt states the instance.
+        return 'Privacy boundary: your message, selected page context, and — when the endpoint supports it — a bounded number of recent turns from this conversation may be sent to the configured AI endpoint. Each turn\u2019s activity panel names exactly what was sent. Retention and AI-training policies depend on that provider.';
     }
 
     /** Build the compact DuckDuckGo-inspired status row shown once chat starts. */
@@ -26876,6 +26990,99 @@
     var _CHAT_CONTRACT_KEY_PREFIX = 'ai-assistant-chat-contract:';
     var _CHAT_RESOURCE_KEY_PREFIX = 'ai-assistant-resource-capabilities:';
     var _CHAT_CONTRACT_V1 = 'scikitplot-chat-v1';
+    var _CHAT_CONTRACT_V2 = 'scikitplot-chat-v2';
+
+    // Bounds used only until /health supplies the server's own. They are the
+    // conservative floor, never a negotiation position: exceeding a real
+    // server bound is an error there, not a truncation, so guessing high would
+    // turn a recoverable local decision into a failed request.
+    var _CHAT_HISTORY_FALLBACK = { maxTurns: 6, maxTurnChars: 2000, maxTotalChars: 12000 };
+
+    /**
+     * Parse the server's advertised chat-request capability.
+     *
+     * Returns the newest contract the server accepts that this client also
+     * knows, plus the history bounds it published. A server that advertises
+     * only the legacy `contract` string still resolves to v1, so an older
+     * proxy keeps working with no special case at the call site.
+     */
+    function _chatRequestCapsParse(chat) {
+        if (!chat || typeof chat !== 'object') return null;
+        var offered = [];
+        if (Array.isArray(chat.contracts)) {
+            for (var i = 0; i < chat.contracts.length && i < 8; i++) {
+                if (typeof chat.contracts[i] === 'string') offered.push(chat.contracts[i]);
+            }
+        }
+        if (typeof chat.contract === 'string' && offered.indexOf(chat.contract) === -1) {
+            offered.push(chat.contract);
+        }
+        var contract = '';
+        if (offered.indexOf(_CHAT_CONTRACT_V2) !== -1) contract = _CHAT_CONTRACT_V2;
+        else if (offered.indexOf(_CHAT_CONTRACT_V1) !== -1) contract = _CHAT_CONTRACT_V1;
+        if (!contract) return null;
+
+        var bounds = null;
+        var h = chat.history;
+        if (contract === _CHAT_CONTRACT_V2 && h && typeof h === 'object') {
+            var turns = Number(h.max_turns), tc = Number(h.max_turn_chars), total = Number(h.max_total_chars);
+            if (turns > 0 && tc > 0 && total > 0) {
+                bounds = {
+                    // Clamp to the server's numbers; never exceed them, and
+                    // never expand a smaller server bound upward.
+                    maxTurns: Math.min(Math.floor(turns), 32),
+                    maxTurnChars: Math.min(Math.floor(tc), 32000),
+                    maxTotalChars: Math.min(Math.floor(total), 128000)
+                };
+            }
+        }
+        var wf = (contract === _CHAT_CONTRACT_V2)
+            ? _workingFileCapsParse(chat.working_files) : null;
+        // v2 without usable bounds falls back to v1 semantics rather than
+        // sending history against limits it cannot see.
+        if (contract === _CHAT_CONTRACT_V2 && !bounds) contract = _CHAT_CONTRACT_V1;
+        return { contract: contract, history: bounds, workingFiles: wf };
+    }
+
+    /**
+     * Build bounded conversation history for the next request.
+     *
+     * Newest-first selection, oldest-first emission: when the budget cannot
+     * hold everything, the turns nearest the question are the ones worth
+     * keeping, but the model must still read them in the order they happened.
+     *
+     * Nothing is summarised or elided mid-turn. A turn that does not fit whole
+     * is dropped whole, and the count of dropped turns is returned so the
+     * activity surface can say what was left out. Silent truncation here would
+     * recreate exactly the failure this contract exists to fix: an answer that
+     * looks informed and is not.
+     */
+    function _chatHistoryForRequest(bounds, excludeLatestUser) {
+        var limits = bounds || _CHAT_HISTORY_FALLBACK;
+        var source = Array.isArray(_transcript) ? _transcript : [];
+        var end = source.length;
+        // The current question is sent as `user_message`; including it in
+        // history too would duplicate it in the prompt.
+        if (excludeLatestUser) {
+            while (end > 0 && source[end - 1] && source[end - 1].role !== 'user') end--;
+            if (end > 0) end--;
+        }
+        var picked = [], total = 0, dropped = 0;
+        for (var i = end - 1; i >= 0; i--) {
+            var entry = source[i];
+            if (!entry || (entry.role !== 'user' && entry.role !== 'assistant')) continue;
+            var text = typeof entry.text === 'string' ? entry.text : '';
+            if (!text) continue;
+            if (picked.length >= limits.maxTurns) { dropped++; continue; }
+            if (text.length > limits.maxTurnChars) { dropped++; continue; }
+            if (total + text.length > limits.maxTotalChars) { dropped++; continue; }
+            total += text.length;
+            picked.push({ role: entry.role, content: text });
+        }
+        picked.reverse();
+        return { turns: picked, chars: total, dropped: dropped };
+    }
+
     var _RESOURCE_MODALITIES = ['text','image','animated_image','vector_image','audio','video','document','archive','data','binary'];
     var _RESOURCE_ROUTES = ['native','tool','extract','context','unsupported'];
     var _RESOURCE_AUTO_ROUTE_ORDER = ['native','tool','extract','context'];
@@ -27110,11 +27317,12 @@
      * a custom endpoint may use the same OpenAI-compatible path.
      *
      * @param {string} endpoint
-     * @returns {Promise<string>} Contract id or ''.
+     * @returns {Promise<{contract: string, history: Object|null}>} Negotiated
+     *     contract id (`''` when none) and the server's history bounds.
      */
     async function _chatContractDiscover(endpoint) {
         var origin = _capsOrigin(endpoint);
-        if (!origin) return '';
+        if (!origin) return { contract: '', history: null, workingFiles: null };
         var key = _CHAT_CONTRACT_KEY_PREFIX + origin;
         var cached = _ssGet(key);
         if (cached !== null && cached !== undefined && cached !== '') {
@@ -27122,7 +27330,26 @@
                 var rec = JSON.parse(cached);
                 if (rec && typeof rec.t === 'number' &&
                         Date.now() - rec.t <= _CAPS_TTL_MS) {
-                    return rec.v === _CHAT_CONTRACT_V1 ? _CHAT_CONTRACT_V1 : '';
+                    // Cached records predating v2 hold a bare contract string;
+                    // reading them as v1 keeps a warm session working across
+                    // the upgrade instead of forcing a re-probe.
+                    if (rec.v && typeof rec.v === 'object') {
+                        return _chatRequestCapsParse({
+                            contracts: [rec.v.contract],
+                            history: rec.v.history ? {
+                                max_turns: rec.v.history.maxTurns,
+                                max_turn_chars: rec.v.history.maxTurnChars,
+                                max_total_chars: rec.v.history.maxTotalChars
+                            } : null,
+                            working_files: rec.v.workingFiles ? {
+                                max_files: rec.v.workingFiles.maxFiles,
+                                max_file_chars: rec.v.workingFiles.maxFileChars,
+                                max_total_chars: rec.v.workingFiles.maxTotalChars,
+                                digest: 'sha256'
+                            } : null
+                        }) || { contract: '', history: null, workingFiles: null };
+                    }
+                    return { contract: rec.v === _CHAT_CONTRACT_V1 ? _CHAT_CONTRACT_V1 : '', history: null, workingFiles: null };
                 }
             } catch (_) {}
         }
@@ -27137,20 +27364,19 @@
                 signal: ctrl ? ctrl.signal : undefined
             });
             if (timer) { clearTimeout(timer); timer = null; }
-            if (!res || !res.ok) return '';
+            if (!res || !res.ok) return { contract: '', history: null, workingFiles: null };
             var text = await _readResponseTextBounded(res, _CAPS_MAX_BYTES);
-            if (typeof text !== 'string') return '';
+            if (typeof text !== 'string') return { contract: '', history: null, workingFiles: null };
             var doc = JSON.parse(text);
             var caps = doc && typeof doc === 'object' ? doc.capabilities : null;
             var chat = caps && typeof caps === 'object' ? caps.chat_request : null;
-            var contract = chat && chat.contract === _CHAT_CONTRACT_V1
-                ? _CHAT_CONTRACT_V1 : '';
+            var negotiated = _chatRequestCapsParse(chat);
             var resourceCaps = _resourceTransportCapsParse(caps && caps.resource_transport);
-            _ssSet(key, JSON.stringify({ t: Date.now(), v: contract || false }));
+            _ssSet(key, JSON.stringify({ t: Date.now(), v: negotiated || false }));
             _ssSet(_CHAT_RESOURCE_KEY_PREFIX + origin, JSON.stringify({ t: Date.now(), v: resourceCaps || false }));
-            return contract;
+            return negotiated || { contract: '', history: null, workingFiles: null };
         } catch (_) {
-            return '';
+            return { contract: '', history: null, workingFiles: null };
         } finally {
             if (timer) clearTimeout(timer);
         }
@@ -46170,8 +46396,10 @@
             var userRetryBtn = document.createElement('button');
             userRetryBtn.type = 'button';
             userRetryBtn.className = 'ai-assistant-panel-bubble-action ai-assistant-panel-bubble-action--retry';
-            userRetryBtn.setAttribute('aria-label', 'Retry — resend this question as-is');
-            userRetryBtn.title = 'Retry — resend this question as-is';
+            // Not "as-is": the text is identical, the request is not. Naming
+            // the current context is the only claim this panel can support.
+            userRetryBtn.setAttribute('aria-label', 'Ask this question again with the current context');
+            userRetryBtn.title = 'Ask again with the current context \u2014 history, working files and page context as they are now';
             userRetryBtn.innerHTML = ICONS.syncRetry;   // ICONS constant — safe.
             (function (canonicalQuestion) {
                 userRetryBtn.addEventListener('click', function () {
@@ -46181,6 +46409,8 @@
                     input.value = replay.question;
                     _setComposerReplayAttachmentContext(replay.attachmentContext);
                     _updateSendBtnState();
+                    var drift = _turnContextDrift(replay.question);
+                    if (drift) showNotification(drift, false);
                     handleAIPanelSubmit();
                 });
             }(typeof canonicalText === 'string' ? canonicalText : text));
@@ -46358,6 +46588,10 @@
     var _turnActivitySeq = 0;
     var _activeTurnActivity = null;
     var _generatedArtifactLedger = Object.create(null);
+    // Files the reader explicitly asked to continue, keyed by ledger key with
+    // the click timestamp as the value. Explicit opt-in only: a tracked file
+    // is not automatically part of every later question.
+    var _workingFileContinuations = Object.create(null);
     var _generatedArtifactRefs = Object.create(null);
 
     function _activityBoundedText(value, maxChars) {
@@ -46794,7 +47028,7 @@
             head.push('the file is emitted in full rather than as an incremental change.');
             head.push('');
         } else {
-            head.push('Base: revision r' + entry.base.revision + ' \u2192 r' + entry.revision + '.');
+            head.push('Base: revision r' + entry.base.revision + ' \u2192 r' + _artifactContentRevision(entry) + '.');
             head.push('');
         }
         if (diff.coarse) {
@@ -46818,9 +47052,199 @@
     /** Suggested filename for a revision patch: stable, ordered, portable. */
     function _gitPatchFilename(entry) {
         var stem = _artifactNameSlug(entry.path.replace(/\//g, '-')) || 'file';
-        var seq = String(Math.max(1, Number(entry.revision) || 1));
+        var seq = String(Math.max(1, _artifactContentRevision(entry) || 1));
         while (seq.length < 4) seq = '0' + seq;
         return seq + '-' + stem + '.patch';
+    }
+
+
+    // ── Working files on the wire, and stale-response protection ──────────
+    //
+    // A file continued across turns needs more than its bytes: it needs the
+    // revision and digest the request was built from. Without that binding,
+    // a slow answer generated from r3 silently commits as r5 after the reader
+    // has already moved to r4, and the file they end up with is not the file
+    // either party thought they were producing.
+    //
+    // The server neither resolves nor trusts these values -- it holds no copy
+    // of the reader's file. They travel inside the validated envelope so that
+    // *this* side can compare them against the ledger when the answer lands.
+    var _WORKING_FILE_FALLBACK = { maxFiles: 1, maxFileChars: 12000, maxTotalChars: 12000 };
+
+    function _workingFileCapsParse(wf) {
+        if (!wf || typeof wf !== 'object') return null;
+        var files = Number(wf.max_files), fc = Number(wf.max_file_chars), total = Number(wf.max_total_chars);
+        if (!(files > 0 && fc > 0 && total > 0)) return null;
+        // Only SHA-256 is understood. An endpoint advertising a different
+        // digest gets no working files rather than a digest it did not ask
+        // for under a field name that says sha256.
+        if (wf.digest && wf.digest !== 'sha256') return null;
+        return {
+            maxFiles: Math.min(Math.floor(files), 8),
+            maxFileChars: Math.min(Math.floor(fc), 200000),
+            maxTotalChars: Math.min(Math.floor(total), 400000)
+        };
+    }
+
+    /** Lowercase hex SHA-256 of a string, or '' when the browser cannot. */
+    async function _sha256Hex(text) {
+        try {
+            if (!(typeof crypto !== 'undefined' && crypto.subtle && typeof TextEncoder === 'function')) {
+                return '';
+            }
+            var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+            var bytes = new Uint8Array(buf), out = '';
+            for (var i = 0; i < bytes.length; i++) {
+                out += (bytes[i] < 16 ? '0' : '') + bytes[i].toString(16);
+            }
+            return out;
+        } catch (_) {
+            return '';
+        }
+    }
+
+    /**
+     * Select tracked files to send, newest revision first, within bounds.
+     *
+     * Only files the reader explicitly continued are eligible. Sending every
+     * tracked file would quietly turn an unrelated question into a multi-file
+     * request and spend the reader's context budget without being asked.
+     */
+    async function _workingFilesForRequest(bounds) {
+        var limits = bounds || _WORKING_FILE_FALLBACK;
+        var keys = Object.keys(_workingFileContinuations);
+        var chosen = [], total = 0, skipped = 0, i;
+        keys.sort(function (a, b) {
+            return (_workingFileContinuations[b] || 0) - (_workingFileContinuations[a] || 0);
+        });
+        for (i = 0; i < keys.length; i++) {
+            var entry = _generatedArtifactLedger[keys[i]];
+            if (!_generatedArtifactIsAvailable(entry)) { skipped++; continue; }
+            if (chosen.length >= limits.maxFiles) { skipped++; continue; }
+            if (entry.content.length > limits.maxFileChars) { skipped++; continue; }
+            if (total + entry.content.length > limits.maxTotalChars) { skipped++; continue; }
+            var digest = await _sha256Hex(entry.content);
+            // No digest means no binding, and an unbound working file cannot
+            // be checked for staleness later. Sending it anyway would produce
+            // the appearance of protection without the substance.
+            if (!digest) { skipped++; continue; }
+            total += entry.content.length;
+            chosen.push({
+                key: entry.key,
+                wire: {
+                    path: entry.path,
+                    revision: Math.max(0, _artifactContentRevision(entry)),
+                    sha256: digest,
+                    content: entry.content
+                }
+            });
+        }
+        return { files: chosen, chars: total, skipped: skipped };
+    }
+
+    /**
+     * Decide whether an answer still owns the file revision it was built from.
+     *
+     * Called at registration time, before a new revision is minted.
+     */
+    function _workingFileBindingIsCurrent(binding) {
+        if (!binding) return true;
+        var entry = _generatedArtifactLedger[binding.key];
+        if (!entry) return true;
+        // Compared on content, not on ledger events: an eviction that fired
+        // mid-request did not change the file the answer was built from.
+        return _artifactContentRevision(entry) === Number(binding.revision);
+    }
+
+    /**
+     * The revision number that describes this file's CONTENT.
+     *
+     * `revision` is a ledger event counter: it advances when a preview is
+     * evicted or a file is removed, neither of which changes a byte. Showing
+     * that number to a reader as "r5" implies four content changes that did
+     * not happen, and binding staleness to it would reject a perfectly current
+     * answer because an unrelated eviction happened to fire mid-request.
+     *
+     * Records written before the split carry no `contentRevision`; falling
+     * back to `revision` keeps them readable rather than renumbering history.
+     */
+
+    // ── Per-turn context receipt ──────────────────────────────────────────
+    //
+    // "Retry - resend this question as-is" was accurate when a request was the
+    // question and nothing else. It stopped being accurate the moment history
+    // and working files began travelling with it: identical text now produces
+    // a materially different request depending on how many turns have
+    // accumulated and which revision each file sits at.
+    //
+    // Two honest options existed. Retain a byte-for-byte snapshot of every
+    // turn's assembled context so exact replay is real, or stop claiming it.
+    // Snapshots would multiply session storage by the transcript length to
+    // support one button, and would keep page text and file contents alive
+    // long after the reader finished with them -- a retention decision taken
+    // on their behalf for a convenience they never asked for.
+    //
+    // So the receipt records what a turn was built FROM, as counts and
+    // identifiers rather than bytes, and the control states what it will
+    // actually do. A button that tells the truth about a smaller capability
+    // is worth more than one that overstates a larger one.
+    var _TURN_CONTEXT_RECEIPTS = [];
+    var _TURN_CONTEXT_RECEIPT_MAX = 32;
+
+    function _recordTurnContextReceipt(receipt) {
+        if (!receipt) return;
+        _TURN_CONTEXT_RECEIPTS.push(receipt);
+        // A receipt is a convenience, never load-bearing; the oldest go first.
+        while (_TURN_CONTEXT_RECEIPTS.length > _TURN_CONTEXT_RECEIPT_MAX) {
+            _TURN_CONTEXT_RECEIPTS.shift();
+        }
+    }
+
+    /** Newest receipt recorded for exactly this question text, if any. */
+    function _turnContextReceiptFor(question) {
+        var want = String(question == null ? '' : question);
+        for (var i = _TURN_CONTEXT_RECEIPTS.length - 1; i >= 0; i--) {
+            if (_TURN_CONTEXT_RECEIPTS[i].question === want) return _TURN_CONTEXT_RECEIPTS[i];
+        }
+        return null;
+    }
+
+    /**
+     * Describe how the context differs from what that question last used.
+     *
+     * Matched on the question text so the sentence always describes a request
+     * that really happened. No receipt means no claim: the notice is omitted
+     * rather than guessed at.
+     *
+     * @returns {string} A reader-facing sentence, or '' when nothing changed.
+     */
+    function _turnContextDrift(question) {
+        var r = _turnContextReceiptFor(question);
+        if (!r) return '';
+        var parts = [];
+        var nowTurns = Array.isArray(_transcript) ? _transcript.length : 0;
+        if (typeof r.transcriptLength === 'number' && nowTurns !== r.transcriptLength) {
+            var delta = nowTurns - r.transcriptLength;
+            parts.push(delta > 0
+                ? (delta + ' later turn' + (delta === 1 ? '' : 's') + ' now exist')
+                : 'the conversation is shorter than it was');
+        }
+        (r.workingFiles || []).forEach(function (wf) {
+            var entry = _generatedArtifactLedger[wf.key];
+            if (!entry) { parts.push(wf.path + ' is no longer tracked'); return; }
+            var now = _artifactContentRevision(entry);
+            if (now !== wf.revision) {
+                parts.push(wf.path + ' is now r' + now + ' (was r' + wf.revision + ')');
+            }
+        });
+        if (!parts.length) return '';
+        return 'Context has changed since it was last asked: ' + parts.join('; ') + '.';
+    }
+
+    function _artifactContentRevision(entry) {
+        if (!entry) return 0;
+        return (typeof entry.contentRevision === 'number')
+            ? entry.contentRevision : (Number(entry.revision) || 0);
     }
 
     function _generatedArtifactSafePath(value) {
@@ -46928,7 +47352,7 @@
             previewText: entry.content,
             size: _utf8ByteLength(entry.content || ''),
             lineCount: lines,
-            status: 'Latest revision r' + entry.revision + _generatedArtifactDiffSuffix(entry) +
+            status: 'Latest revision r' + _artifactContentRevision(entry) + _generatedArtifactDiffSuffix(entry) +
                 ' \u00b7 ' + _generatedArtifactStateLabel(entry),
             badge: 'FILE',
             sendEligible: false,
@@ -46959,12 +47383,161 @@
         _downloadBlob(entry.content, entry.mediaType || 'text/plain', filename);
     }
 
+    // ── Snippet -> working file, and continuing a file across turns ───────
+    //
+    // The rendered panel showed the shape of the problem plainly: two code
+    // blocks, fifteen `snippet-` references, and zero `data-artifact-path`.
+    // When a model does not declare `file=`, everything it writes stays an
+    // anonymous fragment -- it cannot be tracked, diffed, patched, or
+    // continued, no matter how good the naming heuristic gets.
+    //
+    // So identity becomes something the reader can confer. Promoting a snippet
+    // gives it a path, which admits it to the same ledger every declared file
+    // uses: revisions, +/- statistics, patch export, latest-state resolution.
+    // Nothing downstream needs a second code path, because a promoted snippet
+    // IS a generated file from that moment on.
+    //
+    // Continuing a file reuses the composer attachment pipeline rather than
+    // inventing a second context channel. The bounds, classification,
+    // transport rules and privacy preflight that already govern an uploaded
+    // file then govern this too, automatically and by construction.
+
+    function _promotePathPrompt(suggested) {
+        var raw = window.prompt(
+            'Save as a tracked file.\n\n' +
+            'Enter a repository-relative path. The file then gains revisions, ' +
+            'diffs and patch export, and can be continued in later questions.',
+            suggested || '');
+        if (raw === null) return null;
+        var path = _generatedArtifactSafePath(String(raw).trim());
+        if (!path) {
+            showNotification('That path cannot be used. Give a relative path with no "..", no leading slash and no drive letter.', true);
+            return null;
+        }
+        return path;
+    }
+
+    /**
+     * Promote an unnamed code block into a tracked working file.
+     *
+     * @param {string} code       Block contents.
+     * @param {string} lang       Fence language tag, used only to suggest a path.
+     * @param {string} suggested  Contextual filename already derived for download.
+     */
+    function _promoteSnippetToFile(root, code, lang, suggested) {
+        var path = _promotePathPrompt(suggested);
+        if (!path) return;
+        var existing = _generatedArtifactLedger[path];
+        if (existing && existing.content === code) {
+            showNotification(path + ' already tracks exactly this content at revision r' + existing.revision + '.', false);
+            return;
+        }
+        // Deliberately routed through the ordinary registration path: a
+        // promoted snippet that collides with an existing path becomes the
+        // next revision of that file, which is what a reader who typed the
+        // same path twice means. Silent merge is only wrong when the name was
+        // *derived*; here the reader chose it.
+        var entry = _registerGeneratedArtifact({
+            path: path,
+            content: code,
+            language: lang || '',
+            origin: 'promoted-snippet'
+        });
+        if (!entry) {
+            showNotification('That file could not be tracked.', true);
+            return;
+        }
+        showNotification(
+            path + ' is now tracked at revision r' + _artifactContentRevision(entry) +
+            '. It is a browser draft only and has not been written anywhere.', false);
+        // Surfaces in this answer when it has no file section yet; otherwise
+        // the existing section's refs already resolve latest state for it.
+        _appendChangedFileSummary(root, [entry.key]);
+        _generatedArtifactRefreshRefs(entry.key);
+    }
+
+    /**
+     * Stage the latest revision of a tracked file as context for the next turn.
+     *
+     * Reuses the composer attachment pipeline on purpose. A working file is an
+     * ordinary bounded text attachment as far as transport and privacy are
+     * concerned, and giving it a private channel would put its bytes outside
+     * the preflight that tells the reader what is about to be sent.
+     */
+    function _generatedArtifactContinueEditing(key) {
+        var entry = _generatedArtifactLedger[key];
+        if (!_generatedArtifactIsAvailable(entry)) {
+            if (entry) {
+                showNotification('Revision r' + _artifactContentRevision(entry) + ' of ' + entry.path +
+                    ' is ' + _generatedArtifactStateLabel(entry) +
+                    ', so it cannot be continued.', true);
+            }
+            return;
+        }
+        var name = entry.path.split('/').pop() || 'file.txt';
+        var file;
+        try {
+            file = new File([entry.content], name, {
+                type: entry.mediaType || 'text/plain'
+            });
+        } catch (_) {
+            showNotification('This browser cannot stage the file for continuation.', true);
+            return;
+        }
+        // relativePath preserves the directory the reader chose, so a follow-up
+        // answer can address docs/index.rst rather than a bare index.rst.
+        _stageComposerFiles([{
+            file: file,
+            relativePath: entry.path,
+            sourceKind: 'working-file'
+        }], _attachmentStageGeneration);
+
+        var input = document.getElementById('ai-assistant-panel-input');
+        if (input && !String(input.value || '').trim()) {
+            input.value = 'Continue editing ' + entry.path + ' (revision r' +
+                entry.revision + '). Return the complete updated file.';
+        }
+        if (input && typeof input.focus === 'function') input.focus();
+        _workingFileContinuations[entry.key] = Date.now();
+        showNotification(
+            entry.path + ' r' + _artifactContentRevision(entry) +
+            ' is attached to your next message and bound to that revision.', false);
+    }
+
+    /**
+     * Export every tracked file as one `git am`-able series.
+     *
+     * A concatenated mailbox is what git itself produces for a range, so a
+     * multi-file turn applies as an ordered set of commits rather than as
+     * several downloads the reader has to sequence by hand.
+     */
+    function _generatedArtifactDownloadPatchSeries() {
+        var keys = Object.keys(_generatedArtifactLedger).sort();
+        var parts = [], skipped = 0;
+        keys.forEach(function (key) {
+            var entry = _generatedArtifactLedger[key];
+            if (!_generatedArtifactIsAvailable(entry)) { skipped++; return; }
+            var text = _gitPatchText(entry, {
+                subject: (entry.base ? 'Update ' : 'Add ') + entry.path
+            });
+            if (text) parts.push(text); else skipped++;
+        });
+        if (!parts.length) {
+            showNotification('There are no available file revisions to export as a patch series.', true);
+            return;
+        }
+        if (skipped) {
+            showNotification(skipped + ' file revision(s) were omitted because they are not available.', false);
+        }
+        _downloadBlob(parts.join('\n'), 'text/x-patch', 'ai-assistant-changes.patch');
+    }
+
     function _generatedArtifactDownloadPatch(key) {
         var entry = _generatedArtifactLedger[key];
         if (!_generatedArtifactIsAvailable(entry)) {
             if (entry) {
                 showNotification('A patch cannot be produced for ' + entry.path +
-                    ' because revision r' + entry.revision + ' is ' +
+                    ' because revision r' + _artifactContentRevision(entry) + ' is ' +
                     _generatedArtifactStateLabel(entry) + '.', true);
             }
             return;
@@ -47050,6 +47623,8 @@
             mediaType: _activityBoundedText(opts.mediaType || (old && old.mediaType) || 'text/plain', 120) || 'text/plain',
             language: _activityBoundedText(opts.language || (old && old.language) || '', 40),
             revision: old ? old.revision + 1 : 1,
+            // Unchanged on purpose: losing a preview is not an edit.
+            contentRevision: _artifactContentRevision(old),
             state: state,
             reason: reason,
             source: opts.source === 'endpoint' ? 'endpoint' : 'answer',
@@ -47143,7 +47718,8 @@
             // evicted or was never previewable, and _diffLineStat treats that
             // as a new file rather than inventing a comparison.
             diff: _diffLineStat(old && old.content, content),
-            baseRevision: old ? old.revision : 0,
+            baseRevision: old ? _artifactContentRevision(old) : 0,
+            contentRevision: old ? _artifactContentRevision(old) + 1 : 1,
             // Retained only when the predecessor is still available AND small
             // enough to sit inside the same per-file ceiling as the content
             // itself. When it is not retained, patch export degrades to a
@@ -47329,6 +47905,37 @@
         return { lang: lang, path: path };
     }
 
+    /** Binding this turn declared for `path`, if any. */
+    function _turnWorkingFileBinding(st, path) {
+        var list = st && st.workingFileBindings;
+        if (!Array.isArray(list)) return null;
+        for (var i = 0; i < list.length; i++) {
+            if (list[i] && list[i].path === path) return list[i];
+        }
+        return null;
+    }
+
+    /**
+     * Present an answer that lost its claim on a file, without discarding it.
+     *
+     * The reader may still want these bytes -- they are a real answer to a
+     * real question. What they must not be is silently promoted over a newer
+     * revision, so the block stays readable and downloadable and says exactly
+     * why it was not committed.
+     */
+    function _markStaleAnswerCandidate(pre, path, binding, current) {
+        var wrap = pre && pre.parentNode;
+        if (!wrap || wrap.querySelector('.ai-md-stale-candidate')) return;
+        var note = document.createElement('p');
+        note.className = 'ai-md-stale-candidate';
+        note.setAttribute('role', 'status');
+        note.textContent = 'Not applied to ' + path + '. This answer was generated from revision r' +
+            binding.revision + ', but ' + path + ' is now at revision r' +
+            (current ? _artifactContentRevision(current) : binding.revision) +
+            '. Compare it before using it \u2014 it has not replaced the newer revision.';
+        wrap.appendChild(note);
+    }
+
     function _syncExplicitCodeArtifacts(root, st) {
         var keys = [];
         if (!root || _cfg().panelGeneratedFilePreview === false) return keys;
@@ -47336,6 +47943,19 @@
             var path = _generatedArtifactSafePath(pre.getAttribute('data-artifact-path') || '');
             var code = pre.querySelector('code');
             if (!path || !code) return;
+            // Stale-response protection. If this answer was generated from a
+            // revision the ledger has since moved past, the answer does not
+            // own the file any more. It is surfaced as a candidate the reader
+            // can compare, never committed as the next revision -- otherwise a
+            // slow reply built from r3 lands as r5 over the reader's own r4,
+            // and the file they keep is one neither party authored.
+            var binding = _turnWorkingFileBinding(st, path);
+            if (binding && !_workingFileBindingIsCurrent(binding)) {
+                var current = _generatedArtifactLedger[binding.key];
+                _markStaleAnswerCandidate(pre, path, binding, current);
+                if (st) st.staleWorkingFiles = (st.staleWorkingFiles || 0) + 1;
+                return;
+            }
             var entry = _registerGeneratedArtifact({
                 path: path,
                 content: code.textContent,
@@ -47419,10 +48039,30 @@
             patch.title = 'Download as a git patch (apply with git am)';
             patch.addEventListener('click', function () { _generatedArtifactDownloadPatch(key); });
             row.appendChild(patch);
+            var cont = document.createElement('button');
+            cont.type = 'button';
+            cont.className = 'ai-assistant-panel-changed-file-continue';
+            cont.textContent = 'Continue';
+            cont.setAttribute('data-ai-artifact-continue-key', key);
+            cont.setAttribute('aria-label', 'Continue editing ' + entry.path + ' in your next message');
+            cont.title = 'Attach the latest revision to your next message';
+            cont.addEventListener('click', function () { _generatedArtifactContinueEditing(key); });
+            row.appendChild(cont);
             _generatedArtifactRefreshRefs(key);
             list.appendChild(row);
         });
         section.appendChild(list);
+        // Series export is offered whenever anything is tracked: a single-file
+        // series is still the right artifact for a reader who applies changes
+        // with `git am` rather than by hand.
+        var series = document.createElement('button');
+        series.type = 'button';
+        series.className = 'ai-assistant-panel-changed-files-series';
+        series.textContent = 'Download patch series';
+        series.setAttribute('aria-label', 'Download every tracked file as one git patch series');
+        series.title = 'One mailbox applying every tracked file in order (git am)';
+        series.addEventListener('click', _generatedArtifactDownloadPatchSeries);
+        section.appendChild(series);
         if (combined.length > 1) {
             var all = document.createElement('button');
             all.type = 'button';
@@ -48057,9 +48697,13 @@
 
         // Security authority is negotiated, never guessed from the provider
         // label or URL. Bundled proxies advertise this contract from /health.
-        var proxyContract = await _chatContractDiscover(endpoint);
+        var historyPlan = null;
+        var workingFileBindings = null;
+        var proxyCaps = await _chatContractDiscover(endpoint);
         _panelTurnEnsureActive(activity, requestController, requestToken);
-        var useStructuredProxy = (proxyContract === _CHAT_CONTRACT_V1);
+        var proxyContract = proxyCaps ? proxyCaps.contract : '';
+        var useStructuredProxy = (proxyContract === _CHAT_CONTRACT_V1 ||
+                                  proxyContract === _CHAT_CONTRACT_V2);
         if (requestResources.length && !useStructuredProxy) {
             throw new Error('AI_RESOURCE_PROXY_REQUIRED');
         }
@@ -48139,7 +48783,7 @@
             }
             if (safePage && safePage !== '<page-redacted>') descriptorParts.push(safePage);
             bodyObj = {
-                contract: _CHAT_CONTRACT_V1,
+                contract: proxyContract,
                 model: modelName,
                 user_message: question,
                 context: {
@@ -48152,6 +48796,74 @@
                 stream: false,
                 resources: requestResources.map(_resourceDescriptorForWire)
             };
+            // History rides only on v2, and only within the bounds the server
+            // published. The server fences it as untrusted data and never
+            // promotes it to native role turns; this side's job is simply to
+            // stay inside the declared limits and to say what it sent.
+            if (proxyContract === _CHAT_CONTRACT_V2) {
+                historyPlan = _chatHistoryForRequest(proxyCaps && proxyCaps.history, true);
+                if (historyPlan.turns.length) bodyObj.history = historyPlan.turns;
+                // The context step was written before negotiation finished, so
+                // it is rewritten here with what is actually being sent. The
+                // panel previously said "Prepared request context" and left the
+                // reader to assume the conversation went with it; naming the
+                // turn count -- and what was left out -- is the difference
+                // between a claim and a receipt.
+                var historyBits = [];
+                if (requestResources.length) {
+                    historyBits.push(requestResources.length + ' selected resource' +
+                        (requestResources.length === 1 ? '' : 's'));
+                }
+                if (_redacted.text) historyBits.push('visible documentation context');
+                historyBits.push(historyPlan.turns.length
+                    ? historyPlan.turns.length + ' recent conversation turn' +
+                      (historyPlan.turns.length === 1 ? '' : 's') +
+                      ' (~' + Math.round(historyPlan.chars / 100) / 10 + 'k characters)'
+                    : 'no earlier conversation turns');
+                if (historyPlan.dropped) {
+                    historyBits.push(historyPlan.dropped + ' earlier turn' +
+                        (historyPlan.dropped === 1 ? '' : 's') +
+                        ' omitted to stay within the endpoint limits');
+                }
+                var wfPlan = await _workingFilesForRequest(proxyCaps && proxyCaps.workingFiles);
+                _panelTurnEnsureActive(activity, requestController, requestToken);
+                if (wfPlan.files.length) {
+                    bodyObj.working_files = wfPlan.files.map(function (f) { return f.wire; });
+                    // The binding travels with the turn, not with the ledger:
+                    // it describes what THIS request was built from.
+                    workingFileBindings = wfPlan.files.map(function (f) {
+                        return { key: f.key, path: f.wire.path, revision: f.wire.revision, sha256: f.wire.sha256 };
+                    });
+                    // Carried on the activity state because that object is the
+                    // one thing already threaded from request assembly through
+                    // to artifact registration for this turn.
+                    if (activity) activity.workingFileBindings = workingFileBindings;
+                    _recordTurnContextReceipt({
+                        at: Date.now(),
+                        question: question,
+                        contract: proxyContract,
+                        historyTurns: historyPlan ? historyPlan.turns.length : 0,
+                        historyDropped: historyPlan ? historyPlan.dropped : 0,
+                        transcriptLength: Array.isArray(_transcript) ? _transcript.length : 0,
+                        resources: requestResources.length,
+                        workingFiles: workingFileBindings.map(function (b) {
+                            return { key: b.key, path: b.path, revision: b.revision };
+                        })
+                    });
+                    historyBits.push(wfPlan.files.length + ' working file' +
+                        (wfPlan.files.length === 1 ? '' : 's') + ' (' +
+                        wfPlan.files.map(function (f) { return f.wire.path + ' r' + f.wire.revision; }).join(', ') + ')');
+                }
+                if (wfPlan.skipped) {
+                    historyBits.push(wfPlan.skipped + ' working file' +
+                        (wfPlan.skipped === 1 ? '' : 's') + ' omitted (too large, unavailable, or undigestible)');
+                }
+                _activityAddStep(activity, {
+                    id: 'context', kind: 'status', state: 'done',
+                    label: 'Prepared request context',
+                    detail: historyBits.join(' \u00b7 ')
+                });
+            }
         } else if (isAnthropic) {
             bodyObj = {
                 model:      modelName,

@@ -21512,3 +21512,53 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 .ai-assistant-panel-changed-file {
     grid-template-columns: minmax(0, 1fr) auto auto;
 }
+
+/* Snippet promotion and working-file continuation.
+   Both are secondary to the primary Download/Preview action: a reader who
+   only wants the bytes should never have to read past them. */
+.ai-md-artifact-row { display: flex; align-items: stretch; gap: .35rem; min-width: 0; }
+.ai-md-artifact-row .ai-md-artifact-card { flex: 1 1 auto; min-width: 0; }
+.ai-md-artifact-promote,
+.ai-assistant-panel-changed-file-continue,
+.ai-assistant-panel-changed-files-series {
+    border: 1px dashed color-mix(in srgb, var(--pst-color-border, #d8dce1) 82%, transparent);
+    border-radius: 8px;
+    padding: .45rem .55rem;
+    background: transparent;
+    color: var(--pst-color-text-muted, #71717a);
+    font: inherit;
+    font-size: .62rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.ai-md-artifact-promote:hover, .ai-md-artifact-promote:focus-visible,
+.ai-assistant-panel-changed-file-continue:hover,
+.ai-assistant-panel-changed-file-continue:focus-visible,
+.ai-assistant-panel-changed-files-series:hover,
+.ai-assistant-panel-changed-files-series:focus-visible {
+    border-style: solid;
+    color: inherit;
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+}
+.ai-assistant-panel-changed-files-series { justify-self: start; margin-top: .1rem; }
+.ai-assistant-panel-changed-file {
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+}
+@media (max-width: 420px) {
+    /* Four controls do not fit a narrow panel; the row wraps instead of
+       clipping the filename, which is the part that identifies the file. */
+    .ai-assistant-panel-changed-file { grid-template-columns: minmax(0, 1fr) auto; }
+}
+
+/* A generated file that lost its claim on the tracked revision. Presented, not
+   hidden: the bytes are still a real answer, they simply did not win. */
+.ai-md-stale-candidate {
+    margin: .4rem 0 0;
+    padding: .45rem .6rem;
+    border-inline-start: 3px solid rgb(var(--ai-diff-del-rgb, 220, 38, 38));
+    border-radius: 0 6px 6px 0;
+    background: color-mix(in srgb, rgb(var(--ai-diff-del-rgb, 220, 38, 38)) 8%, transparent);
+    font-size: .68rem;
+    line-height: 1.45;
+}
