@@ -21994,3 +21994,32 @@ button.ai-md-artifact-download-label:focus-visible {
     margin: .35rem 0;
     background: color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
 }
+
+/* The Presented files section uses the same segmented control as the snippet
+   cards above it. Only the outer grid differs: the group takes the room the
+   overflow menu leaves, and the preview segment takes the room inside it. */
+.ai-assistant-panel-changed-file-primary {
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+.ai-assistant-panel-changed-file-primary > .ai-md-artifact-group {
+    min-width: 0;
+}
+.ai-md-artifact-group > .ai-assistant-panel-changed-file-preview {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+.ai-md-artifact-group > .ai-assistant-panel-changed-file-download {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+.ai-md-artifact-group > .ai-assistant-panel-changed-file-preview:hover,
+.ai-md-artifact-group > .ai-assistant-panel-changed-file-preview:focus-visible,
+.ai-md-artifact-group > .ai-assistant-panel-changed-file-download:hover,
+.ai-md-artifact-group > .ai-assistant-panel-changed-file-download:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
+}

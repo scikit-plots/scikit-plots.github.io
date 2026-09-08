@@ -2773,6 +2773,40 @@
         return stem + '.' + ext;
     }
 
+    /**
+     * Join two actions on one artifact into a single segmented control.
+     *
+     * Used by both artifact surfaces -- the snippet cards inside an answer and
+     * the Presented files section beneath it. They are the same control on the
+     * same kind of object, and a reader meets them minutes apart; two
+     * implementations would drift in exactly the details that are hard to see
+     * and easy to get wrong.
+     *
+     * The two segments stay two real <button> elements. Nesting one inside the
+     * other is invalid HTML and browsers resolve it by dropping one of the two
+     * click targets, with which one varying by engine. The joining is
+     * presentational; `role="group"` with a name is what carries the
+     * relationship to assistive technology.
+     *
+     * @param {string} ariaLabel  Names the artifact both segments act on.
+     * @param {HTMLElement} primary   Large segment (preview).
+     * @param {HTMLElement} secondary Small segment (download).
+     * @returns {HTMLElement}
+     */
+    function _buildArtifactSegmentGroup(ariaLabel, primary, secondary) {
+        var group = document.createElement('span');
+        group.className = 'ai-md-artifact-group';
+        group.setAttribute('role', 'group');
+        group.setAttribute('aria-label', ariaLabel);
+        group.appendChild(primary);
+        var sep = document.createElement('span');
+        sep.className = 'ai-md-artifact-sep';
+        sep.setAttribute('aria-hidden', 'true');
+        group.appendChild(sep);
+        group.appendChild(secondary);
+        return group;
+    }
+
     function _appendArtifactCards(root, activity) {
         if (!root) { return []; }
         var explicitKeys = _syncExplicitCodeArtifacts(root, activity);
@@ -2921,17 +2955,7 @@
             // and browsers drop one of the two click targets -- so the joining
             // is presentational, and `role="group"` with a name is what tells
             // assistive technology the two belong to the same artifact.
-            var group = document.createElement('span');
-            group.className = 'ai-md-artifact-group';
-            group.setAttribute('role', 'group');
-            group.setAttribute('aria-label', filename);
-            group.appendChild(card);
-            var sep = document.createElement('span');
-            sep.className = 'ai-md-artifact-sep';
-            sep.setAttribute('aria-hidden', 'true');
-            group.appendChild(sep);
-            group.appendChild(dlBtn);
-            cardRow.appendChild(group);
+            cardRow.appendChild(_buildArtifactSegmentGroup(filename, card, dlBtn));
             cardRow.appendChild(snippetMenu);
             list.appendChild(cardRow);
         });
@@ -48761,8 +48785,9 @@
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
             var primary = document.createElement('div');
             primary.className = 'ai-assistant-panel-changed-file-primary';
-            primary.appendChild(preview);
-            primary.appendChild(download);
+            // Same segmented control as a snippet card: preview and download
+            // are two things you do to one artifact, not two peers.
+            primary.appendChild(_buildArtifactSegmentGroup(entry.path, preview, download));
             primary.appendChild(_buildFileOverflow(key, entry));
             row.appendChild(primary);
             // Patch export sits beside the plain download rather than replacing
