@@ -15806,8 +15806,41 @@
         return true;
     }
 
+    /**
+     * Drop a continuation whose staged chip has just been removed.
+     *
+     * The chip and the working-file registry are two views of one intent, and
+     * the reader can act on either. Removing the chip without clearing the
+     * registry left the file registered as continuing: inert on an endpoint
+     * that cannot carry working files, and on one that can, a file the reader
+     * had explicitly removed travelling anyway, bound to a revision, as though
+     * they had asked for it.
+     */
+    function _syncContinuationForRemovedItem(item) {
+        if (!item || item.sourceKind !== 'working-file') return;
+        var path = item.relativePath ||
+            (typeof item.name === 'string' ? item.name : '');
+        if (!path) return;
+        var keys = Object.keys(_workingFileContinuations);
+        for (var i = 0; i < keys.length; i++) {
+            var entry = _generatedArtifactLedger[keys[i]];
+            if (!entry) continue;
+            if (entry.path === path || entry.path.split('/').pop() === path) {
+                delete _workingFileContinuations[keys[i]];
+                _generatedArtifactRefreshRefs(keys[i]);
+                break;
+            }
+        }
+        _refreshContinuationTray();
+    }
+
     function _removeComposerResourceItem(item) {
         if (!item) return false;
+        // Runs before the item is detached, while its descriptor is still
+        // readable. Reached from the chip's close button, the attachment
+        // manager, and the Stop continuing menu item -- every path a reader
+        // can take to the same intent.
+        _syncContinuationForRemovedItem(item);
         var previewItem = _attachmentPreviewState.item;
         if (previewItem === item || (
             item.kind === 'page' && previewItem && previewItem.kind === 'page' &&
@@ -48128,28 +48161,35 @@
         }
         if (_workingFileContinuations[entry.key]) return true;
 
-        if (!_lastWorkingFileCaps) {
-            // No working-file support discovered: fall back to staging the
-            // bytes as an ordinary attachment, which is bounded and previewed
-            // by the same pipeline any upload uses.
-            var name = entry.path.split('/').pop() || 'file.txt';
-            var file;
-            try {
-                file = new File([entry.content], name, {
-                    type: entry.mediaType || 'text/plain'
-                });
-            } catch (_) {
-                if (!quiet) {
-                    showNotification('This browser cannot stage the file for continuation.', true);
-                }
-                return false;
+        // Staged for every endpoint, not only those without working-file
+        // support. Two representations of "this travels with my next message"
+        // -- a registry and a chip, each authoritative on some endpoints --
+        // could not be kept in step by hand: removing the chip left the
+        // registry set, and on a working-file endpoint no chip existed at all,
+        // so files travelled with nothing in the composer to show for it.
+        //
+        // The chip is now the visible truth on every endpoint. It already has
+        // preview, remove, the attachment manager and the privacy preflight
+        // built around it; the registry rides alongside it and is kept in sync
+        // from one place. The double-send this could cause is prevented where
+        // it belongs -- at request build, where the transport is chosen.
+        var name = entry.path.split('/').pop() || 'file.txt';
+        var file;
+        try {
+            file = new File([entry.content], name, {
+                type: entry.mediaType || 'text/plain'
+            });
+        } catch (_) {
+            if (!quiet) {
+                showNotification('This browser cannot stage the file for continuation.', true);
             }
-            _stageComposerFiles([{
-                file: file,
-                relativePath: entry.path,
-                sourceKind: 'working-file'
-            }], _attachmentStageGeneration);
+            return false;
         }
+        _stageComposerFiles([{
+            file: file,
+            relativePath: entry.path,
+            sourceKind: 'working-file'
+        }], _attachmentStageGeneration);
 
         _workingFileContinuations[entry.key] = Date.now();
         _generatedArtifactRefreshRefs(entry.key);
@@ -49839,6 +49879,37 @@
                 _panelTurnEnsureActive(activity, requestController, requestToken);
                 if (wfPlan.files.length) {
                     bodyObj.working_files = wfPlan.files.map(function (f) { return f.wire; });
+                    // The same file is staged as a chip so the reader can see
+                    // and remove it. Sending that chip's bytes as a resource
+                    // too would transmit the file twice -- once bound to its
+                    // revision and digest, once unbound -- doubling its token
+                    // cost and giving the model two copies to reconcile.
+                    //
+                    // Suppressed here rather than by not staging, because the
+                    // transport is only known at this point: the chip must
+                    // exist before the endpoint has been negotiated.
+                    var carried = Object.create(null);
+                    wfPlan.files.forEach(function (f) { carried[f.wire.path] = true; });
+                    var beforeCount = bodyObj.resources.length;
+                    bodyObj.resources = bodyObj.resources.filter(function (res) {
+                        var p = res && (res.relative_path || res.relativePath || res.name);
+                        return !(p && carried[p]);
+                    });
+                    // The multipart body is built from requestResources, not
+                    // from bodyObj.resources, so dropping only the descriptor
+                    // would have left the bytes uploading with nothing in the
+                    // request describing them -- a worse state than the
+                    // duplicate it was meant to remove.
+                    requestResources = requestResources.filter(function (row) {
+                        var p = row && (row.relative_path || row.relativePath || row.name);
+                        return !(p && carried[p]);
+                    });
+                    var suppressed = beforeCount - bodyObj.resources.length;
+                    if (suppressed) {
+                        historyBits.push(suppressed + ' duplicate attachment' +
+                            (suppressed === 1 ? '' : 's') +
+                            ' omitted (carried as bound working files instead)');
+                    }
                     // The binding travels with the turn, not with the ledger:
                     // it describes what THIS request was built from.
                     workingFileBindings = wfPlan.files.map(function (f) {
