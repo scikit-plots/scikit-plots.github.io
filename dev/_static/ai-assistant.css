@@ -22143,3 +22143,20 @@ button.ai-md-artifact-download-label:focus-visible,
         color: LinkText;
     }
 }
+
+/* A one-file footer is a single action, so there is nothing to segment. It
+   still spans the section and wears the group's chrome, so it reads as the
+   same kind of control it becomes when a second file arrives — a reader should
+   not have to relearn the footer because an answer produced one file. */
+.ai-assistant-panel-changed-files-series.ai-assistant-panel-changed-files-solo {
+    flex: 1 1 100%;
+    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
+    border-radius: 10px;
+    padding: .5rem .6rem;
+    background: var(--pst-color-surface, #fff);
+    text-align: center;
+}
+.ai-assistant-panel-changed-files-series.ai-assistant-panel-changed-files-solo:hover,
+.ai-assistant-panel-changed-files-series.ai-assistant-panel-changed-files-solo:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
+}

@@ -48824,21 +48824,26 @@
                 }).join(' \u00b7 ')
             });
         }
-        // Series export is offered whenever anything is tracked: a single-file
-        // series is still the right artifact for a reader who applies changes
-        // with `git am` rather than by hand.
+        // Patch export is offered whenever anything is tracked. The wording
+        // follows the count: a "series" of one file is just a patch, and
+        // naming it a series makes a reader look for the other files.
+        var many = combined.length > 1;
         var series = document.createElement('button');
         series.type = 'button';
         series.className = 'ai-assistant-panel-changed-files-series';
-        series.textContent = 'Download patch series';
-        series.setAttribute('aria-label', 'Download every tracked file as one git patch series');
-        series.title = 'One mailbox applying every tracked file in order (git am)';
+        series.textContent = many ? 'Download patch series' : 'Download patch';
+        series.setAttribute('aria-label', many
+            ? 'Download all ' + combined.length + ' tracked files as one git patch series'
+            : 'Download ' + _generatedArtifactLedger[combined[0]].path + ' as a git patch');
+        series.title = many
+            ? 'One mailbox applying every tracked file in order (git am)'
+            : 'Apply with git am';
         series.addEventListener('click', _generatedArtifactDownloadPatchSeries);
         var footer = document.createElement('div');
         footer.className = 'ai-assistant-panel-changed-files-footer';
         footerRef = footer;
         section.appendChild(footer);
-        if (combined.length > 1) {
+        if (many) {
             var all = document.createElement('button');
             all.type = 'button';
             all.className = 'ai-assistant-panel-changed-files-download-all';
@@ -48876,8 +48881,12 @@
             footer.appendChild(_buildArtifactSegmentGroup(
                 'All ' + combined.length + ' presented files', all, series));
         } else {
-            // One file: the per-row controls already cover it, so only the
-            // patch export is worth repeating here.
+            // One file: there is nothing to bundle, so the footer is a single
+            // action rather than a pair. It still spans the section and wears
+            // the group's chrome, so the row reads as the same kind of control
+            // it becomes when a second file arrives -- a reader should not
+            // have to relearn the footer when an answer produces two files.
+            series.classList.add('ai-assistant-panel-changed-files-solo');
             footer.appendChild(series);
         }
         root.appendChild(section);
