@@ -48266,11 +48266,40 @@
         }
     }
 
+    // Coalesces the nested refreshes a bulk operation would otherwise cause:
+    // clearing N files calls the removal path N times, and each of those
+    // reaches this function.
+    var _continuationRefreshDepth = 0;
+
     function _refreshContinuationTray() {
-        // Named for the tray it started as, but it now refreshes every surface
-        // that describes the queue. One refresh point, called by every
-        // operation that changes the queue, is the only arrangement that has
-        // survived contact with this feature.
+        // Named for the tray it started as; it now refreshes every surface that
+        // describes the queue.
+        //
+        // Four surfaces answer "what travels with my next message": the
+        // composer chips, the attachment manager, this section's tray, and the
+        // bulk control. Each mutation used to refresh whichever ones its author
+        // remembered -- which is why clearing the queue emptied the registry
+        // and left every chip on screen, and why the menu and the button each
+        // went stale in their own checkpoint.
+        //
+        // One function refreshes all four, and every mutation calls it. That is
+        // the only arrangement that has survived contact with this feature.
+        if (_continuationRefreshDepth > 0) return;
+        _continuationRefreshDepth++;
+        try {
+            _refreshContinuationSurfaces();
+        } finally {
+            _continuationRefreshDepth--;
+        }
+    }
+
+    function _refreshContinuationSurfaces() {
+        // The chips and the manager read from `_composerAttachments`, which the
+        // removal path mutates without redrawing: its own callers did that,
+        // and a caller that forgot left the state changed and the screen
+        // unchanged.
+        try { _renderComposerAttachments(); } catch (_) {}
+        try { _renderAttachmentManagerList(); } catch (_) {}
         var buttons = document.querySelectorAll('.ai-assistant-panel-changed-files-continue-all');
         Array.prototype.forEach.call(buttons, _applyContinueAllLabel);
         var trays = document.querySelectorAll('.ai-assistant-panel-changed-files-tray');
@@ -48293,12 +48322,19 @@
     function _generatedArtifactClearContinuations() {
         var n = _continuationCount();
         if (!n) return;
-        Object.keys(_workingFileContinuations).forEach(function (key) {
-            var e = _generatedArtifactLedger[key];
-            delete _workingFileContinuations[key];
-            if (e) _unstageContinuationAttachment(e.path);
-            _generatedArtifactRefreshRefs(key);
-        });
+        // Held down for the whole sweep so the surfaces are drawn once, from
+        // the final state, rather than N times from intermediate ones.
+        _continuationRefreshDepth++;
+        try {
+            Object.keys(_workingFileContinuations).forEach(function (key) {
+                var e = _generatedArtifactLedger[key];
+                delete _workingFileContinuations[key];
+                if (e) _unstageContinuationAttachment(e.path);
+                _generatedArtifactRefreshRefs(key);
+            });
+        } finally {
+            _continuationRefreshDepth--;
+        }
         _refreshContinuationTray();
         showNotification(n + (n === 1 ? ' file' : ' files') +
             ' removed from your next message.', false);
