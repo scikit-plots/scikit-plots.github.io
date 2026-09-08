@@ -21860,3 +21860,51 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 /* Download-all reads as covering every card above it, so it is centred rather
    than left-aligned like a peer of the per-card actions. */
 .ai-assistant-panel-changed-files-download-all { flex: 1 1 100%; text-align: center; }
+
+/* ── Restored activity: list visible, details on request ───────────────────
+   After a reload the reader has lost every other cue about what happened, so
+   the step list is open. What stays collapsed is each step's detail — the
+   shape is recoverable at a glance, the specifics on request. */
+.ai-assistant-panel-activity[data-restored="true"] .ai-assistant-panel-activity-note {
+    margin: 0 0 .4rem;
+    font-size: .58rem;
+    color: var(--pst-color-text-muted, #71717a);
+}
+.ai-assistant-panel-activity-step-toggle {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+.ai-assistant-panel-activity-step-caret {
+    flex: 0 0 auto;
+    margin-inline-start: auto;
+    color: var(--pst-color-text-muted, #71717a);
+    transition: transform .12s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-activity-step-caret { transition: none; }
+}
+.ai-assistant-panel-activity-step-toggle[aria-expanded="true"] .ai-assistant-panel-activity-step-caret {
+    transform: rotate(90deg);
+}
+.ai-assistant-panel-activity-step-detail[hidden] { display: none; }
+/* A command detail is a command. Reading one as prose invites misreading it —
+   nothing here executes anything, but the shape should not suggest otherwise. */
+.ai-assistant-panel-activity-step-detail--code {
+    margin-top: .25rem;
+    padding: .35rem .45rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+    font-family: var(--pst-font-family-monospace, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font-size: .62rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}

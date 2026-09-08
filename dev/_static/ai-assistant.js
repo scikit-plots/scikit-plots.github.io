@@ -46842,6 +46842,18 @@
             var label = _activityBoundedText(labelEl ? labelEl.textContent : '',
                 _ACTIVITY_PERSIST_LABEL_CHARS);
             if (!label) continue;
+            var statEl = row.querySelector('.ai-assistant-panel-diff-stat');
+            if (statEl) {
+                // A DOM element cannot be serialized, but its aria-label is the
+                // same sentence a screen reader already gets. Folding it into
+                // the label keeps a restored row saying what the live row said.
+                var statText = _activityBoundedText(
+                    statEl.getAttribute('aria-label') || statEl.textContent || '', 48);
+                if (statText && label.indexOf(statText) === -1) {
+                    label = _activityBoundedText(label + ' \u2014 ' + statText,
+                        _ACTIVITY_PERSIST_LABEL_CHARS);
+                }
+            }
             var item = {
                 kind: row.getAttribute('data-kind') || 'status',
                 state: row.getAttribute('data-state') || 'done',
@@ -46898,7 +46910,7 @@
         var root = document.createElement('section');
         root.className = 'ai-assistant-panel-activity';
         root.setAttribute('data-state', 'done');
-        root.setAttribute('data-open', 'false');
+        root.setAttribute('data-open', 'true');
         root.setAttribute('data-restored', 'true');
         root.setAttribute('aria-label', 'Assistant activity');
 
@@ -46907,14 +46919,23 @@
         var toggle = document.createElement('button');
         toggle.type = 'button';
         toggle.className = 'ai-assistant-panel-activity-toggle';
-        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
         var icon = document.createElement('span');
         icon.className = 'ai-assistant-panel-activity-icon';
         icon.setAttribute('aria-hidden', 'true');
         icon.innerHTML = ICONS.pulse;
         var summary = document.createElement('span');
         summary.className = 'ai-assistant-panel-activity-summary';
-        summary.textContent = steps.length + (steps.length === 1 ? ' step' : ' steps');
+        // "3 steps" says nothing a reader wanted to know. Naming the outcome --
+        // how many files, how many steps -- is what makes the collapsed row
+        // worth reading without opening it.
+        var fileSteps = steps.filter(function (st) { return st.kind === 'file'; }).length;
+        var summaryBits = [];
+        if (fileSteps) {
+            summaryBits.push(fileSteps + (fileSteps === 1 ? ' file' : ' files'));
+        }
+        summaryBits.push(steps.length + (steps.length === 1 ? ' step' : ' steps'));
+        summary.textContent = summaryBits.join(' \u00b7 ');
         var caret = document.createElement('span');
         caret.className = 'ai-assistant-panel-activity-caret';
         caret.setAttribute('aria-hidden', 'true');
@@ -46924,7 +46945,12 @@
 
         var panel = document.createElement('div');
         panel.className = 'ai-assistant-panel-activity-panel';
-        panel.hidden = true;
+        // Open on restore, unlike a live turn. After a reload the reader has
+        // lost every other cue about what happened; making them click twice to
+        // see the list is the wrong default. What stays collapsed is each
+        // step's DETAIL -- the shape is recoverable at a glance, the specifics
+        // on request.
+        panel.hidden = false;
         var note = document.createElement('p');
         note.className = 'ai-assistant-panel-activity-note';
         note.textContent = 'Restored from this browser session. Live details such as timings are not kept.';
@@ -46941,15 +46967,49 @@
             indicator.textContent = _activityStepIndicator(step.state, step.kind);
             var content = document.createElement('div');
             content.className = 'ai-assistant-panel-activity-step-content';
-            var labelEl = document.createElement('span');
-            labelEl.className = 'ai-assistant-panel-activity-step-label';
-            labelEl.textContent = step.label;
-            content.appendChild(labelEl);
+
             if (step.detail) {
+                // A step with a detail is its own disclosure. Every detail
+                // expanded at once is a wall; every detail hidden behind one
+                // outer toggle is all-or-nothing. Per-step is the only shape
+                // that lets a reader inspect exactly the step they doubt.
+                var stepId = 'ai-activity-step-' + (++_FILE_DISCLOSURE_SEQ);
+                var stepBtn = document.createElement('button');
+                stepBtn.type = 'button';
+                stepBtn.className = 'ai-assistant-panel-activity-step-toggle';
+                stepBtn.setAttribute('aria-expanded', 'false');
+                stepBtn.setAttribute('aria-controls', stepId);
+                var stepLabel = document.createElement('span');
+                stepLabel.className = 'ai-assistant-panel-activity-step-label';
+                stepLabel.textContent = step.label;
+                var stepCaret = document.createElement('span');
+                stepCaret.className = 'ai-assistant-panel-activity-step-caret';
+                stepCaret.setAttribute('aria-hidden', 'true');
+                stepCaret.textContent = '\u203a';
+                stepBtn.appendChild(stepLabel); stepBtn.appendChild(stepCaret);
                 var detailEl = document.createElement('div');
                 detailEl.className = 'ai-assistant-panel-activity-step-detail';
+                detailEl.id = stepId;
+                detailEl.hidden = true;
+                // A command step's detail is a command, and reading a command
+                // as prose invites misreading it. Monospace, preserved
+                // whitespace, and never executed by anything here.
+                if (step.kind === 'command') {
+                    detailEl.classList.add('ai-assistant-panel-activity-step-detail--code');
+                }
                 detailEl.textContent = step.detail;
+                stepBtn.addEventListener('click', function () {
+                    var open = stepBtn.getAttribute('aria-expanded') === 'true';
+                    stepBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+                    detailEl.hidden = open;
+                });
+                content.appendChild(stepBtn);
                 content.appendChild(detailEl);
+            } else {
+                var labelEl = document.createElement('span');
+                labelEl.className = 'ai-assistant-panel-activity-step-label';
+                labelEl.textContent = step.label;
+                content.appendChild(labelEl);
             }
             row.appendChild(indicator); row.appendChild(content);
             list.appendChild(row);
@@ -48048,6 +48108,13 @@
         var meta = document.createElement('span');
         meta.className = 'ai-assistant-panel-activity-file-meta';
         button.appendChild(label);
+        // The size of the change belongs on the timeline row, not only on the
+        // file card further down: a reader scanning the timeline to see what a
+        // turn did should not have to scroll to learn whether "Updated file"
+        // meant a typo or a rewrite. Same element builder as the card, so the
+        // two can never disagree about the numbers.
+        var stat = _diffStatElement(entry);
+        if (stat) button.appendChild(stat);
         button.appendChild(meta);
         row.appendChild(indicator);
         row.appendChild(button);
@@ -49890,7 +49957,14 @@
         // v2: capture model info before _recordMessage so it is stored in
         // the transcript entry for export and share-payload attribution.
         var _streamModelInfo = _getActiveModel(_cfg());
-        _recordMessage('assistant', accumulated || '(no response)', _streamModelInfo);
+        // The activity object is passed HERE, and this is the whole reason the
+        // timeline survives a reload. R173T15 added the persistence and its
+        // gate asserted that `entry.activity = activitySummary` existed in the
+        // source -- but nothing asserted that a caller ever supplied
+        // `turnMeta.activity`, and none did, so the feature stored nothing.
+        // The gate now drives _recordMessage for real rather than reading it.
+        _recordMessage('assistant', accumulated || '(no response)', _streamModelInfo,
+            null, { activity: activity });
         // Read the timestamp just stored — same single-threaded guarantee as
         // _appendPanelMessage: the last _transcript entry is this streamed reply.
         var streamTs = _transcript[_transcript.length - 1].ts;
