@@ -17347,6 +17347,22 @@
         };
     }
 
+    /**
+     * Default content preset for a share destination.
+     *
+     * A local device file and a published link have different exposure, so
+     * they get different defaults. Anything that leaves the device keeps the
+     * privacy-lighter default; a file the reader keeps gets the provenance
+     * that makes a transcript worth keeping.
+     *
+     * @param {string} destination  ``download`` | ``local`` | ``self_contained`` | ``global``
+     * @returns {string} Preset name for :func:`_conversationContentPreset`.
+     */
+    function _conversationPresetForDestination(destination) {
+        return (destination === 'download' || destination === 'local')
+            ? 'complete' : 'standard';
+    }
+
     /** Resolve one named content preset into canonical snapshot options. */
     function _conversationContentPreset(name) {
         var key = String(name || 'standard').toLowerCase();
@@ -35502,8 +35518,23 @@
         var initialMeta = _getExportFormat(initialFmt) || _getExportFormat('html') || liveFormats[0];
         var selectedFmt = initialMeta ? initialMeta.fmt : 'html';
         var selectedDestination = 'download';
-        var contentPreset = 'standard';
-        var contentOptions = _conversationContentPreset('standard');
+        // The default destination is a local device file, so the default
+        // content preset follows it.
+        //
+        // `standard` exists to protect a *published* artifact: it strips
+        // timestamps, model attribution, the session id and the source page.
+        // Applied to a local download it protects nobody -- the reader already
+        // has the conversation on screen -- and removes exactly the provenance
+        // a saved transcript is kept for. A real export produced a file whose
+        // every ts, ts_iso, model_id, model_provider, model_name, session_id
+        // and page_url was null, while the panel told the reader the file was
+        // controlled by their device.
+        //
+        // Changing the preset, not the redaction: the review screen still
+        // shows what will be included and the reader can still choose
+        // `standard` or `minimal`. Nothing is added behind their back.
+        var contentPreset = _conversationPresetForDestination('download');
+        var contentOptions = _conversationContentPreset(contentPreset);
         var boundConversationId = _getConversationId();
         var resultState = null;
         var managedArtifacts = _managedConversationArtifacts;
@@ -36109,7 +36140,20 @@
 
         function _selectDestination(key) {
             if (!destinationButtons[key] || destinationButtons[key].disabled) return false;
-            if (selectedDestination !== key) { selectedDestination = key; _markStale(); }
+            if (selectedDestination !== key) {
+                selectedDestination = key;
+                // A reader who has picked a preset keeps it; one who has not
+                // gets the default for where the file is now going, because
+                // the exposure changed under them.
+                if (contentPreset !== 'custom') {
+                    var next = _conversationPresetForDestination(key);
+                    if (next !== contentPreset) {
+                        contentPreset = next;
+                        contentOptions = _conversationContentPreset(next);
+                    }
+                }
+                _markStale();
+            }
             sheet.setAttribute('data-destination', key);
             Object.keys(destinationButtons).forEach(function (k) {
                 destinationButtons[k].setAttribute('aria-pressed', k === key ? 'true' : 'false');
