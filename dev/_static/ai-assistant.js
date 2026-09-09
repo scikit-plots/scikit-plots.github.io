@@ -15341,7 +15341,164 @@
         st.dialog.style.top = top + 'px';
     }
 
+    // ── Preview window: move, resize, minimise, maximise ──────────────────
+    //
+    // The header already carried `data-drag-handle="true"` with no behaviour
+    // behind it anywhere in the file -- an attribute promising something
+    // nothing kept.
+    //
+    // Geometry is remembered for the session but not persisted. A reader who
+    // moves the window once usually wants it there for the next file too;
+    // carrying that across page loads is a different decision, and storing
+    // window coordinates in the same budget as the transcript is not obviously
+    // worth a turn of history.
+    var _previewWindow = { mode: 'normal', geom: null, restore: null };
+    var _PREVIEW_MIN_W = 320;
+    var _PREVIEW_MIN_H = 180;
+    //: How much of the window must remain on screen. Enough that the header --
+    //: which carries every control including close -- can always be grabbed
+    //: again. A window draggable somewhere it cannot be dragged back from is a
+    //: window the reader has lost.
+    var _PREVIEW_KEEP_VISIBLE = 64;
+
+    function _previewViewport() {
+        return {
+            w: Math.max(1, window.innerWidth || document.documentElement.clientWidth || 1),
+            h: Math.max(1, window.innerHeight || document.documentElement.clientHeight || 1)
+        };
+    }
+
+    /** Clamp a proposed geometry so the header stays reachable. */
+    function _previewClamp(geom) {
+        var v = _previewViewport();
+        var w = Math.max(_PREVIEW_MIN_W, Math.min(geom.width, v.w));
+        var h = Math.max(_PREVIEW_MIN_H, Math.min(geom.height, v.h));
+        return {
+            width: w,
+            height: h,
+            left: Math.min(Math.max(geom.left, _PREVIEW_KEEP_VISIBLE - w), v.w - _PREVIEW_KEEP_VISIBLE),
+            top: Math.min(Math.max(geom.top, 0), Math.max(0, v.h - _PREVIEW_KEEP_VISIBLE))
+        };
+    }
+
+    /**
+     * Write geometry to the dialog.
+     *
+     * Setting explicit coordinates means dropping the centring transform: with
+     * it still applied every position would be offset by half the window's own
+     * size, which reads as the window jumping away from the pointer on the
+     * first drag.
+     */
+    function _previewApplyGeom(dialog, geom) {
+        if (!dialog) return;
+        if (!geom) {
+            dialog.style.left = ''; dialog.style.top = '';
+            dialog.style.width = ''; dialog.style.height = '';
+            dialog.style.transform = '';
+            return;
+        }
+        var g = _previewClamp(geom);
+        dialog.style.left = g.left + 'px';
+        dialog.style.top = g.top + 'px';
+        dialog.style.width = g.width + 'px';
+        dialog.style.height = g.height + 'px';
+        dialog.style.transform = 'none';
+        _previewWindow.geom = g;
+    }
+
+    /** Current on-screen geometry, whether centred or explicitly placed. */
+    function _previewReadGeom(dialog) {
+        var r = dialog.getBoundingClientRect();
+        return { left: r.left, top: r.top, width: r.width, height: r.height };
+    }
+
+    function _previewSetMode(mode) {
+        var st = _attachmentPreviewState;
+        var dialog = st.dialog;
+        if (!dialog) return;
+        var v = _previewViewport();
+        if (mode === 'maximized') {
+            // Remember where it was, or restoring drops the reader back to a
+            // centred default they did not choose.
+            if (_previewWindow.mode !== 'maximized') {
+                _previewWindow.restore = _previewWindow.geom || _previewReadGeom(dialog);
+            }
+            _previewApplyGeom(dialog, { left: 8, top: 8, width: v.w - 16, height: v.h - 16 });
+        } else if (mode === 'minimized') {
+            if (_previewWindow.mode !== 'minimized') {
+                _previewWindow.restore = _previewWindow.geom || _previewReadGeom(dialog);
+            }
+            var g = _previewWindow.restore;
+            _previewApplyGeom(dialog, { left: g.left, top: g.top, width: g.width, height: _PREVIEW_MIN_H });
+        } else if (_previewWindow.restore) {
+            _previewApplyGeom(dialog, _previewWindow.restore);
+        }
+        _previewWindow.mode = mode;
+        dialog.setAttribute('data-window-mode', mode);
+        if (st.minBtn) {
+            st.minBtn.setAttribute('aria-pressed', mode === 'minimized' ? 'true' : 'false');
+        }
+        if (st.maxBtn) {
+            st.maxBtn.setAttribute('aria-pressed', mode === 'maximized' ? 'true' : 'false');
+            st.maxBtn.setAttribute('aria-label',
+                mode === 'maximized' ? 'Restore preview size' : 'Maximise preview');
+        }
+    }
+
+    /** Pointer-drag the window by its header. */
+    function _previewBindDrag(dialog, header) {
+        var active = null;
+        header.addEventListener('pointerdown', function (ev) {
+            // Buttons in the header are controls, not handles.
+            if (ev.button !== 0 || (ev.target && ev.target.closest &&
+                    ev.target.closest('button'))) return;
+            var start = _previewReadGeom(dialog);
+            active = { x: ev.clientX, y: ev.clientY, geom: start };
+            // Capture so the drag survives the pointer leaving the header --
+            // otherwise a fast drag drops the window wherever it lost contact.
+            try { header.setPointerCapture(ev.pointerId); } catch (_) {}
+            dialog.setAttribute('data-dragging', 'true');
+            ev.preventDefault();
+        });
+        header.addEventListener('pointermove', function (ev) {
+            if (!active) return;
+            _previewApplyGeom(dialog, {
+                left: active.geom.left + (ev.clientX - active.x),
+                top: active.geom.top + (ev.clientY - active.y),
+                width: active.geom.width,
+                height: active.geom.height
+            });
+            if (_previewWindow.mode === 'maximized') _previewWindow.mode = 'normal';
+        });
+        function end(ev) {
+            if (!active) return;
+            active = null;
+            try { header.releasePointerCapture(ev.pointerId); } catch (_) {}
+            dialog.removeAttribute('data-dragging');
+        }
+        header.addEventListener('pointerup', end);
+        header.addEventListener('pointercancel', end);
+        // Double-click is the affordance readers already expect from a title
+        // bar, and it costs no additional control.
+        header.addEventListener('dblclick', function (ev) {
+            if (ev.target && ev.target.closest && ev.target.closest('button')) return;
+            _previewSetMode(_previewWindow.mode === 'maximized' ? 'normal' : 'maximized');
+        });
+    }
+
+    /** Reset window mode on close; geometry survives, mode does not. */
+    function _previewResetMode() {
+        if (_previewWindow.mode === 'minimized') {
+            // A minimised window reopening as a title bar looks like a broken
+            // preview. Position is a preference; collapsed is a transient
+            // state, and reopening is a new intent to read the file.
+            if (_previewWindow.restore) _previewWindow.geom = _previewWindow.restore;
+            _previewWindow.mode = 'normal';
+        }
+    }
+
     function _closeAttachmentPreview(restoreFocus) {
+        _previewResetMode();
         var st = _attachmentPreviewState;
         if (!st.layer) return;
         st.layer.hidden = true;
@@ -15399,6 +15556,43 @@
 
         var close = document.createElement('button');
         close.type = 'button';
+        // Minimise and maximise sit before Close, in the order a reader expects
+        // from a title bar. Close stays last so its position never moves as the
+        // other two change label.
+        var minBtn = document.createElement('button');
+        minBtn.type = 'button';
+        minBtn.className = 'ai-assistant-panel-attachment-preview-window-btn';
+        minBtn.setAttribute('aria-label', 'Minimise preview');
+        minBtn.setAttribute('aria-pressed', 'false');
+        minBtn.title = 'Minimise';
+        minBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="18" x2="18" y2="18"></line></svg>';
+        minBtn.addEventListener('click', function () {
+            _previewSetMode(_previewWindow.mode === 'minimized' ? 'normal' : 'minimized');
+        });
+
+        var maxBtn = document.createElement('button');
+        maxBtn.type = 'button';
+        maxBtn.className = 'ai-assistant-panel-attachment-preview-window-btn';
+        maxBtn.setAttribute('aria-label', 'Maximise preview');
+        maxBtn.setAttribute('aria-pressed', 'false');
+        maxBtn.title = 'Maximise';
+        maxBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg>';
+        maxBtn.addEventListener('click', function () {
+            _previewSetMode(_previewWindow.mode === 'maximized' ? 'normal' : 'maximized');
+        });
+
+        header.appendChild(minBtn);
+        header.appendChild(maxBtn);
+        _attachmentPreviewState.minBtn = minBtn;
+        _attachmentPreviewState.maxBtn = maxBtn;
+        _previewBindDrag(dialog, header);
+        // A window left half off-screen after the viewport shrinks is one the
+        // reader cannot reach; re-clamping on resize keeps it recoverable.
+        window.addEventListener('resize', function () {
+            if (_previewWindow.geom) _previewApplyGeom(dialog, _previewWindow.geom);
+        });
+
+        var close = document.createElement('button');
         close.className = 'ai-assistant-panel-attachment-preview-close';
         close.setAttribute('aria-label', 'Close attachment preview');
         close.innerHTML = ICONS.close;

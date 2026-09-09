@@ -21859,6 +21859,14 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
    reading "one import two sys three" would be worse than no numbers at all. */
 .ai-md-file-sheet {
     display: flex;
+    /* The sheet is the scroll container: gutter and code grow to their natural
+       height inside it and move under one scrollbar. When the code scrolled
+       itself instead, the gutter -- which had no max-height -- rendered every
+       line of the file, stretching a 5543-line preview to the length of the
+       file while the two slid out of step. */
+    max-height: min(70vh, 28rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     align-items: stretch;
     gap: 0;
     border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
@@ -22545,4 +22553,101 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-md-snippet-sheet .ai-md-pre {
     font-size: .72rem;
     line-height: 1.5;
+}
+
+/* ── Numbered sheets own the scroll, and never wrap ────────────────────────
+   Two faults, both introduced by putting a gutter beside a block that already
+   scrolled itself.
+
+   1. The `<pre>` carried `max-height` + `overflow: auto`, so it scrolled
+      inside a fixed box while the gutter — with neither — rendered every line
+      of the file at full height. A 5543-line preview stretched the dialog to
+      the length of the file, and the numbers slid out of step with the code
+      the moment either scrolled.
+
+      The sheet is the scroll container now. Gutter and code grow to their
+      natural height inside it and scroll in lockstep, because they are moved
+      by the same scrollbar rather than by two.
+
+   2. `white-space: pre-wrap` is wrong wherever numbers are shown. A logical
+      line that wraps to three visual rows occupies three line boxes in the
+      code and one in the gutter, so every number after the first wrapped line
+      is wrong. Numbered code does not wrap; it scrolls horizontally instead,
+      and the gutter stays put because that scroll belongs to the code alone. */
+.ai-md-file-sheet > .ai-md-file-gutter {
+    /* Stays with the code as the sheet scrolls vertically, and stays put as
+       the code scrolls horizontally, because only the code overflows on x. */
+    flex: 0 0 auto;
+    align-self: stretch;
+}
+.ai-md-file-sheet .ai-md-pre,
+.ai-md-file-sheet .ai-assistant-panel-attachment-preview-code {
+    max-height: none;
+    overflow-y: visible;
+    overflow-x: auto;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+/* The preview overlay's body already scrolls; a sheet scrolling inside it
+   would give the reader two vertical scrollbars for one document. The sheet
+   defers, and the body remains the single scroller. */
+.ai-assistant-panel-attachment-preview-body > .ai-md-file-sheet {
+    max-height: none;
+    overflow-y: visible;
+}
+
+/* ── Preview window controls ───────────────────────────────────────────────
+   The dialog is movable by its header, resizable from its corner and can be
+   minimised or maximised. Geometry is written as explicit left/top/width/height
+   once the reader moves it, which is why the centring transform is dropped at
+   that point rather than fought with. */
+.ai-assistant-panel-attachment-preview-head {
+    cursor: grab;
+    touch-action: none;          /* or a drag becomes a page scroll on touch */
+    user-select: none;
+    align-items: flex-start;
+    gap: .25rem;
+}
+.ai-assistant-panel-attachment-preview[data-dragging="true"] .ai-assistant-panel-attachment-preview-head {
+    cursor: grabbing;
+}
+.ai-assistant-panel-attachment-preview {
+    /* Native corner resize: no JS, correct keyboard and pointer behaviour for
+       free, and it already works because the dialog sets `overflow: hidden`. */
+    resize: both;
+    min-width: 320px;
+    min-height: 180px;
+}
+.ai-assistant-panel-attachment-preview[data-window-mode="minimized"] {
+    resize: none;
+}
+.ai-assistant-panel-attachment-preview[data-window-mode="minimized"] .ai-assistant-panel-attachment-preview-body {
+    display: none;
+}
+.ai-assistant-panel-attachment-preview-window-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--pst-color-text-muted, #71717a);
+    cursor: pointer;
+}
+.ai-assistant-panel-attachment-preview-window-btn:hover,
+.ai-assistant-panel-attachment-preview-window-btn:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 88%, #808080 12%);
+    color: inherit;
+}
+.ai-assistant-panel-attachment-preview-window-btn[aria-pressed="true"] {
+    color: var(--ai-artifact-accent);
+}
+.ai-assistant-panel-attachment-preview-window-btn svg { width: 1rem; height: 1rem; }
+@media (forced-colors: active) {
+    .ai-assistant-panel-attachment-preview-window-btn { color: ButtonText; }
+    .ai-assistant-panel-attachment-preview-window-btn[aria-pressed="true"] { color: Highlight; }
 }
