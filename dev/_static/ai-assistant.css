@@ -22886,7 +22886,19 @@ button.ai-md-artifact-download-label:focus-visible,
 /* Collapsed: the row shrinks to the banner's glyph. The text is clipped rather
    than removed so the banner keeps its hit area and its accessible name is
    untouched -- the button still announces "Speak with your assistant". */
-.ai-assistant-panel-speak-row[data-collapsed="true"] { justify-content: flex-start; }
+/*
+ * Collapsed, the row sits at the trailing edge.
+ *
+ * It becomes a single small target whose only purpose is to be pressed, and on
+ * a phone the trailing edge is where the thumb already rests -- the leading
+ * edge is the far corner for a right-handed one-handed grip. The expanded form
+ * stays leading-aligned because it is text to read, and text starts where the
+ * reader's eye does.
+ *
+ * `flex-end` rather than `right`, so a right-to-left interface gets the
+ * mirrored placement without a second rule.
+ */
+.ai-assistant-panel-speak-row[data-collapsed="true"] { justify-content: flex-end; }
 .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner {
     flex: 0 0 auto;
 }
@@ -22938,4 +22950,69 @@ button.ai-md-artifact-download-label:focus-visible,
 }
 @media (forced-colors: active) {
     .ai-assistant-panel-speak-toggle { color: ButtonText; }
+}
+
+/* ── Collapsed, the row stops costing a row ────────────────────────────────
+   Collapsed the hint is one icon, and it was still holding a full-width flex
+   line with empty space beside it. The transcript now takes that width: the
+   pill floats at the bottom-trailing corner of the panel and the row it used
+   to occupy is gone from the flow.
+
+   The trade is stated rather than hidden: a floating control can cover the
+   last line of a message, so the transcript keeps a small end padding while
+   the hint is collapsed. That padding is smaller than the row it replaces, so
+   the transcript gains height as well as width — but it is not free, and
+   pretending otherwise would mean a pill that sometimes sits on top of the
+   final line of an answer. */
+.ai-assistant-panel:has(.ai-assistant-panel-speak-row[data-collapsed="true"]) .ai-assistant-panel-body {
+    padding-bottom: 2.25rem;
+}
+/*
+ * Zero-height, lifted -- not absolutely positioned.
+ *
+ * The previous attempt used `position: absolute; bottom: calc(100% + …)` on
+ * the assumption that the footer was the positioning ancestor. It is not: the
+ * row is `panel.appendChild(speakRow)`, a sibling of the footer and a child of
+ * the panel, so `100%` resolved against the panel's full height and the pill
+ * was pushed clear off the top of it. It did not move; it left.
+ *
+ * Collapsing the row's own height to zero and lifting its contents needs no
+ * positioning ancestor at all. The row keeps its place in the panel's column,
+ * between the transcript and the footer, so the pill always lands just above
+ * the composer however tall the composer has grown -- which is the property
+ * the absolute version was reaching for and got wrong.
+ */
+.ai-assistant-panel-speak-row[data-collapsed="true"] {
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    overflow: visible;
+    z-index: 3;
+    position: relative;
+}
+.ai-assistant-panel-speak-row[data-collapsed="true"] > * {
+    /* Lifted fully above its own zero-height box, into the space the
+       transcript's end padding reserves for it. */
+    transform: translateY(-100%);
+}
+/* A backdrop, because the pill now sits over transcript text rather than over
+   panel background. Without it the glyph competes with whatever is behind it. */
+.ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
+.ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle {
+    background: var(--pst-color-surface, #fff);
+    box-shadow: 0 1px 6px rgb(0 0 0 / .16);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
+[data-bs-theme="dark"] .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle,
+.dark .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
+.dark .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle {
+    background: #2b2f36;
+    box-shadow: 0 1px 6px rgb(0 0 0 / .5);
+}
+@media (forced-colors: active) {
+    .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
+    .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle {
+        border: 1px solid ButtonText;
+        background: Canvas;
+    }
 }

@@ -17492,9 +17492,21 @@
         if (!body) return;
         body.innerHTML = '';
         _renderWelcome(body);
-        // Restore speak banner — _dismissSpeakBanner() sets inline display:none
-        // when the user sends a message; clear it so the banner is visible again
-        // on a fresh conversation exactly as it was on first page load.
+        // Restore the speak hint. `_dismissSpeakBanner()` collapses the row when
+        // the reader sends a message; a cleared conversation is a fresh start,
+        // so it expands again exactly as on first load. The inline display is
+        // also cleared, for a hint put away by the older code path before this
+        // panel was rebuilt.
+        var speakRowEl = document.querySelector('.ai-assistant-panel-speak-row');
+        if (speakRowEl) {
+            speakRowEl.setAttribute('data-collapsed', 'false');
+            var speakToggleEl = speakRowEl.querySelector('.ai-assistant-panel-speak-toggle');
+            if (speakToggleEl) {
+                speakToggleEl.setAttribute('aria-expanded', 'true');
+                speakToggleEl.setAttribute('aria-label', 'Collapse the speak hint');
+                speakToggleEl.title = 'Collapse hint';
+            }
+        }
         var banner = document.getElementById('ai-assistant-panel-speak-banner');
         if (banner) { banner.style.display = ''; }
         var input = document.getElementById('ai-assistant-panel-input');
@@ -46825,7 +46837,35 @@
     }
 
     /** Dismiss the speak-with-assistant banner (one-time, on first interaction). */
+    /**
+     * Put the speak hint away once the reader has started talking to the panel.
+     *
+     * This used to hide the banner element with `display: none`. Since R173T55
+     * the banner sits inside a row alongside a collapse toggle, so hiding it
+     * left the toggle behind on its own -- a control whose only purpose is to
+     * show and hide something that was no longer there. Expanding it produced
+     * an empty row, because the thing it expands had been removed rather than
+     * collapsed.
+     *
+     * Collapsing the row is what the reader's own toggle does, so the automatic
+     * path and the manual one now reach the same state and either can undo the
+     * other. The mic pill stays available, which is the whole point of R173T55:
+     * the hint is put away, never destroyed.
+     */
     function _dismissSpeakBanner() {
+        var row = document.querySelector('.ai-assistant-panel-speak-row');
+        if (row) {
+            row.setAttribute('data-collapsed', 'true');
+            var toggle = row.querySelector('.ai-assistant-panel-speak-toggle');
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Show the speak hint');
+                toggle.title = 'Show hint';
+            }
+            return;
+        }
+        // No row: an older layout, or the hint was never built. Fall back to
+        // the element itself so this never becomes a no-op.
         var banner = document.getElementById('ai-assistant-panel-speak-banner');
         if (banner) banner.style.display = 'none';
     }
