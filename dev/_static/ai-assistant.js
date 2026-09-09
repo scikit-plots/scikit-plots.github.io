@@ -15371,8 +15371,12 @@
     /** Clamp a proposed geometry so the header stays reachable. */
     function _previewClamp(geom) {
         var v = _previewViewport();
-        var w = Math.max(_PREVIEW_MIN_W, Math.min(geom.width, v.w));
-        var h = Math.max(_PREVIEW_MIN_H, Math.min(geom.height, v.h));
+        // The floor is itself capped by the viewport. Written the other way
+        // round, `Math.max(320, …)` wins on a 280px screen and the window is
+        // sized wider than the display it is on -- the minimum meant to keep
+        // the controls usable instead pushes them off the edge.
+        var w = Math.max(Math.min(_PREVIEW_MIN_W, v.w), Math.min(geom.width, v.w));
+        var h = Math.max(Math.min(_PREVIEW_MIN_H, v.h), Math.min(geom.height, v.h));
         return {
             width: w,
             height: h,
@@ -15581,8 +15585,6 @@
             _previewSetMode(_previewWindow.mode === 'maximized' ? 'normal' : 'maximized');
         });
 
-        header.appendChild(minBtn);
-        header.appendChild(maxBtn);
         _attachmentPreviewState.minBtn = minBtn;
         _attachmentPreviewState.maxBtn = maxBtn;
         _previewBindDrag(dialog, header);
@@ -15599,7 +15601,43 @@
         close.addEventListener('click', function () { _closeAttachmentPreview(true); });
 
         header.appendChild(heading);
-        header.appendChild(close);
+        // One controls group, appended after the heading.
+        //
+        // Minimise and maximise were appended at their construction site,
+        // which ran before the heading was added, so the title bar rendered as
+        // "minimise maximise title close": the window controls split around
+        // the thing they act on, and Close separated from its two peers.
+        //
+        // Grouping them is what stops that recurring. With three siblings in a
+        // container the order is stated in one place, and adding a fourth
+        // control cannot land it on the far side of the title by accident.
+        // A chevron menu for actions on the file itself, kept separate from the
+        // three window controls beside it: one group acts on the document, the
+        // other on the window showing it, and merging them would make Close
+        // look like a peer of Download.
+        //
+        // Built from the shared menu so it inherits the keyboard behaviour --
+        // Escape returning focus to the trigger, outside-click dismissal, one
+        // menu open at a time -- rather than growing a fourth copy of it.
+        var docMenu = _buildOverflowMenu('File actions', function () {
+            var it = _attachmentPreviewState.item;
+            if (!it) return [];
+            return [
+                { label: 'Download', hint: 'Save this file as it is previewed',
+                  run: function () {
+                      _downloadBlob(it.previewText || '', 'text/plain',
+                          _artifactNameSlugPreservingExtension(it.name || '') || 'preview.txt');
+                  } }
+            ];
+        }, 'ai-assistant-panel-attachment-preview-menu-btn', ICONS.chevronDown);
+
+        var controls = document.createElement('div');
+        controls.className = 'ai-assistant-panel-attachment-preview-controls';
+        controls.appendChild(docMenu);
+        controls.appendChild(minBtn);
+        controls.appendChild(maxBtn);
+        controls.appendChild(close);
+        header.appendChild(controls);
         dialog.appendChild(header);
 
         var body = document.createElement('div');
@@ -16758,6 +16796,11 @@
 
     /** sessionStorage key for the persisted transcript. */
     var _TRANSCRIPT_KEY = 'ai-assistant-transcript';
+    //: Whether the speak hint is collapsed to its icon. Read on build so the
+    //: reader's choice survives the next panel open in the same session.
+    //: Collapsed, never removed: a hint that can only be destroyed is one a
+    //: reader will not risk putting away.
+    var _SPEAK_HINT_COLLAPSED_KEY = 'ai-assistant-speak-hint-collapsed';
     // Written with every successful transcript save; compared on restore so a
     // conversation the browser silently truncated can be identified as such.
     var _TRANSCRIPT_COUNT_KEY = 'ai-assistant-transcript-count';
@@ -31552,7 +31595,17 @@
             _debouncedRender();
         });
 
-        // Escape key: clear search when a query is active.
+        // Escape clears an active search filter, and stops there.
+        //
+        // This is a rung on the Escape ladder documented in the shortcuts
+        // sheet, and it was missing from that description: a reader pressing
+        // Escape to leave a filtered sheet saw the panel stay open and read it
+        // as Escape not working, when it had in fact cleared a filter they
+        // were not looking at. The ladder now names this step.
+        //
+        // The guard matters: with no query the handler does nothing and the
+        // event continues to the dispatcher, so Escape on an unfiltered sheet
+        // closes it rather than being swallowed here.
         _input.addEventListener('keydown', function (e) {
             if ((e.key === 'Escape' || e.keyCode === 27) && _query) {
                 e.stopPropagation();
@@ -35032,7 +35085,7 @@
             shortcutRow('Minimize panel', chord.split('+').map(function (t) { return t.trim(); }));
         }
         shortcutRow('Close AI Assistant', ['Escape'],
-            'Escape first stops microphone capture or a live response, then closes the lightest open menu, popup, or sheet; otherwise it closes the AI Assistant.');
+            'Escape first stops microphone capture or a live response, then clears an active search filter, then closes the lightest open menu, popup, or sheet; otherwise it closes the AI Assistant.');
         sectionTitle('Composer');
         shortcutRow('Send message', ['Enter']);
         shortcutRow('New line', ['Shift', 'Enter']);
@@ -39788,6 +39841,60 @@
                 _micRequiresHeldActivation = false;
                 _toggleSpeechRecognition();
             });
+
+            // ── Collapsible, not dismissable ──────────────────────────────
+            //
+            // R173T52 made this hint removable and remembered the removal. That
+            // was the wrong shape: the row is onboarding for a shortcut, and
+            // once removed there was no way back to it short of a new session.
+            // A hint that can only ever be destroyed is one a reader will not
+            // risk putting away.
+            //
+            // Collapsed it keeps the mic glyph and the affordance, at the width
+            // of one icon:
+            //
+            //     expanded    [ 🎤  Speak with your assistant   Space   ‹ ]
+            //     collapsed   [ 🎤 › ]
+            //
+            // Nothing is lost, so there is nothing to regret, and the row costs
+            // almost no height either way.
+            //
+            // A sibling button, not a nested one -- a button inside a button is
+            // invalid and browsers drop one of the two click targets.
+            var speakRow = document.createElement('div');
+            speakRow.className = 'ai-assistant-panel-speak-row';
+            speakRow.appendChild(speakBannerEl);
+
+            var speakToggle = document.createElement('button');
+            speakToggle.type = 'button';
+            speakToggle.className = 'ai-assistant-panel-speak-toggle';
+            speakToggle.innerHTML = ICONS.chevronDown;
+
+            function _applySpeakCollapsed(collapsed) {
+                speakRow.setAttribute('data-collapsed', collapsed ? 'true' : 'false');
+                // `aria-expanded` describes the hint the button controls, and
+                // the label says which way the next press goes -- a control
+                // announcing only its current state leaves a screen-reader user
+                // guessing what activating it does.
+                speakToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                speakToggle.setAttribute('aria-label',
+                    collapsed ? 'Show the speak hint' : 'Collapse the speak hint');
+                speakToggle.title = collapsed ? 'Show hint' : 'Collapse hint';
+            }
+
+            speakToggle.addEventListener('click', function (ev) {
+                ev.stopPropagation();
+                var collapsed = speakRow.getAttribute('data-collapsed') === 'true';
+                _applySpeakCollapsed(!collapsed);
+                // Session-scoped: a reader who collapsed it once should not
+                // have to again on the next answer, and a new visit is a new
+                // reader as far as this panel can tell.
+                _ssSet(_SPEAK_HINT_COLLAPSED_KEY, collapsed ? '0' : '1');
+            });
+
+            _applySpeakCollapsed(_ssGet(_SPEAK_HINT_COLLAPSED_KEY) === '1');
+            speakRow.appendChild(speakToggle);
+            speakBannerEl = speakRow;
         }
 
         // ── Footer ────────────────────────────────────────────────────────────
@@ -48244,7 +48351,7 @@
      * @param {string} [className] Trigger class, for per-surface sizing.
      * @returns {HTMLElement}
      */
-    function _buildOverflowMenu(ariaLabel, items, className) {
+    function _buildOverflowMenu(ariaLabel, items, className, iconSvg) {
         // `items` may be a function, and for any menu whose contents depend on
         // state it must be. Passing an array freezes the menu at row-build
         // time: a Continue/Stop toggle built then still read "Stop continuing"
@@ -48262,7 +48369,9 @@
         btn.setAttribute('aria-haspopup', 'menu');
         btn.setAttribute('aria-expanded', 'false');
         btn.title = 'More options';
-        btn.innerHTML = ICONS.overflowV;  // ICONS constant, not user content.
+        // ICONS constant, not user content. Defaulted rather than required so
+        // the three existing callers keep the ⋮ they were written against.
+        btn.innerHTML = iconSvg || ICONS.overflowV;
 
         btn.addEventListener('click', function (ev) {
             ev.stopPropagation();

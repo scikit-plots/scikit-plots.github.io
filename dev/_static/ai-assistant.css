@@ -1061,7 +1061,20 @@
     display: flex;
     flex-direction: column;    /* Claude-style: textarea on top, action bar below */
     align-items: stretch;
-    flex: 1 1 auto;
+    /*
+     * `flex-basis: 100%` claims the whole first line.
+     *
+     * With `auto` the composer only had its own row because the note and the
+     * credit each carried `width: 100%` and were pushed off it. R173T50 made
+     * those two shrinkable so they could share a row with each other -- and on
+     * a wide panel that let all three fit on one line, putting the composer
+     * beside its own small print.
+     *
+     * Stating the composer's basis makes its row independent of what the
+     * elements after it happen to be sized at: the two rows are now a property
+     * of the composer, not a side effect of the footnotes not fitting.
+     */
+    flex: 1 1 100%;
     min-width: 0;              /* attachment strip must scroll, never widen footer */
     max-width: 100%;
     border: 1px solid var(
@@ -22650,4 +22663,279 @@ button.ai-md-artifact-download-label:focus-visible,
 @media (forced-colors: active) {
     .ai-assistant-panel-attachment-preview-window-btn { color: ButtonText; }
     .ai-assistant-panel-attachment-preview-window-btn[aria-pressed="true"] { color: Highlight; }
+}
+
+/* The three window controls sit together at the trailing edge, after the
+   title. Grouping them keeps their order in one place and keeps Close beside
+   its peers rather than separated from them by the heading. */
+.ai-assistant-panel-attachment-preview-controls {
+    display: flex;
+    align-items: center;
+    gap: .15rem;
+    flex: 0 0 auto;
+    margin-inline-start: auto;
+}
+/* The heading takes the room the controls leave, and truncates rather than
+   pushing them off the edge: a long filename must never displace Close. */
+.ai-assistant-panel-attachment-preview-heading {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.ai-assistant-panel-attachment-preview-title,
+.ai-assistant-panel-attachment-preview-meta {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Close keeps the same box as its neighbours so the group reads as one row of
+   equal controls rather than two shapes side by side. */
+.ai-assistant-panel-attachment-preview-controls .ai-assistant-panel-attachment-preview-close {
+    flex: 0 0 auto;
+    width: 1.85rem;
+    height: 1.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Window controls: both themes, explicitly ──────────────────────────────
+   The hover mix falls back to `#fff` when a site does not define
+   `--pst-color-surface`, which on a dark page produces a near-white wash under
+   a light glyph. The dark rule states its own values rather than relying on a
+   token the host may never set. */
+[data-bs-theme="dark"] .ai-assistant-panel-attachment-preview-window-btn,
+.dark .ai-assistant-panel-attachment-preview-window-btn {
+    color: var(--pst-color-text-muted, #9aa4b2);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-attachment-preview-window-btn:hover,
+[data-bs-theme="dark"] .ai-assistant-panel-attachment-preview-window-btn:focus-visible,
+.dark .ai-assistant-panel-attachment-preview-window-btn:hover,
+.dark .ai-assistant-panel-attachment-preview-window-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    color: #e6e6e6;
+}
+
+/* ── Touch and small screens ───────────────────────────────────────────────
+   A movable, corner-resizable window is a pointer idea. On a phone there is no
+   hover to reveal the resize corner, the corner itself is smaller than a
+   fingertip, and a window dragged by a finger is easy to strand and hard to
+   recover.
+
+   So below 640px the preview stops pretending to be a window and becomes what
+   a full-screen sheet already is on that form factor: it fills the viewport,
+   cannot be dragged, and cannot be resized. Minimise and maximise stay, because
+   collapsing to the title bar is still useful for glancing at the page behind.
+
+   Keyed on `pointer: coarse` as well as width, since a touch laptop has the
+   same fingertip problem at any width. */
+@media (max-width: 640px), (pointer: coarse) {
+    .ai-assistant-panel-attachment-preview {
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        max-height: 100%;
+        transform: none !important;
+        border-radius: 0;
+        resize: none;
+        min-width: 0;
+    }
+    .ai-assistant-panel-attachment-preview-head {
+        cursor: default;
+        touch-action: auto;      /* the header scrolls the page again */
+    }
+    .ai-assistant-panel-attachment-preview[data-window-mode="minimized"] {
+        top: auto !important;
+        bottom: 0;
+        height: auto !important;
+    }
+    /* Fingertip-sized controls: 1.85rem is comfortable for a mouse and small
+       for a thumb, and these three sit adjacent to each other. */
+    .ai-assistant-panel-attachment-preview-window-btn,
+    .ai-assistant-panel-attachment-preview-menu-btn,
+    .ai-assistant-panel-attachment-preview-controls .ai-assistant-panel-attachment-preview-close {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .ai-assistant-panel-attachment-preview-controls { gap: .35rem; }
+}
+
+/* ── Footer: disclaimer and credit share one row ───────────────────────────
+   Both carried `width: 100%`, so each claimed a full line of a wrapping flex
+   row and the footer spent two rows on two short pieces of small print.
+
+   They now share one line: the note takes the room left over, the credit takes
+   what it needs. Below the point where both fit, the note goes back to a full
+   line and the credit sits under it — stacked because it does not fit, not
+   because it is laid out that way by default.
+
+   Measured on the footer's own inline size rather than the viewport: this
+   panel is resizable and can be docked or maximized, so its width and the
+   window's are different numbers. */
+.ai-assistant-panel-footer {
+    container-type: inline-size;
+    container-name: ai-panel-footer;
+    row-gap: 0.15rem;
+    column-gap: 0.5rem;
+}
+.ai-assistant-panel-footer-note {
+    width: auto;
+    flex: 1 1 15rem;
+    min-width: 0;
+    text-align: start;
+    /*
+     * Never truncated, never hidden behind hover.
+     *
+     * A notice that the assistant can be wrong is the one piece of text in
+     * this panel a reader most needs to have seen, and hover reveals nothing
+     * on a touch screen. Clipping it to one line and offering the rest on
+     * hover would make it look tidier and mean less. It wraps instead.
+     */
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+}
+.ai-assistant-panel-footer-credit {
+    width: auto;
+    flex: 0 1 auto;
+    margin-inline-start: auto;
+    margin-top: 0.35rem;
+    text-align: end;
+    align-self: center;
+    white-space: nowrap;
+}
+@container ai-panel-footer (max-width: 26rem) {
+    /* Not enough width for both: the note reclaims the line and the credit --
+       the less important of the two -- moves below it and re-centres. */
+    .ai-assistant-panel-footer-note { flex-basis: 100%; text-align: center; }
+    .ai-assistant-panel-footer-credit {
+        flex-basis: 100%;
+        margin-inline-start: 0;
+        margin-top: 0.1rem;
+        text-align: center;
+    }
+}
+
+/* ── Preview title bar: file actions ───────────────────────────────────────
+   The chevron opens actions on the file; the three controls beside it act on
+   the window showing it. Kept as two groups because merging them would make
+   Close read as a peer of Download. */
+.ai-assistant-panel-attachment-preview-menu-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--pst-color-text-muted, #71717a);
+    cursor: pointer;
+}
+.ai-assistant-panel-attachment-preview-menu-btn:hover,
+.ai-assistant-panel-attachment-preview-menu-btn:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 88%, #808080 12%);
+    color: inherit;
+}
+[data-bs-theme="dark"] .ai-assistant-panel-attachment-preview-menu-btn,
+.dark .ai-assistant-panel-attachment-preview-menu-btn {
+    color: var(--pst-color-text-muted, #9aa4b2);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-attachment-preview-menu-btn:hover,
+[data-bs-theme="dark"] .ai-assistant-panel-attachment-preview-menu-btn:focus-visible,
+.dark .ai-assistant-panel-attachment-preview-menu-btn:hover,
+.dark .ai-assistant-panel-attachment-preview-menu-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    color: #e6e6e6;
+}
+/* Rotation is driven from aria-expanded, so the glyph cannot disagree with the
+   state a screen reader is told. */
+.ai-assistant-panel-attachment-preview-menu-btn svg {
+    width: 1rem;
+    height: 1rem;
+    transition: transform .12s ease-out;
+}
+.ai-assistant-panel-attachment-preview-menu-btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-attachment-preview-menu-btn svg { transition: none; }
+}
+@media (forced-colors: active) {
+    .ai-assistant-panel-attachment-preview-menu-btn { color: ButtonText; }
+}
+
+/* ── Speak hint: collapsible to its icon ───────────────────────────────────
+   The hint points at the mic, which is in the footer either way, so the row
+   buys discoverability rather than access. Collapsed it keeps the glyph and
+   the affordance at the width of one icon -- nothing is lost, so there is
+   nothing for a reader to regret putting away. */
+.ai-assistant-panel-speak-row {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    margin: 0 0.75rem 0.5rem;
+}
+.ai-assistant-panel-speak-row .ai-assistant-panel-speak-banner {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;              /* the row owns the spacing now */
+}
+/* Collapsed: the row shrinks to the banner's glyph. The text is clipped rather
+   than removed so the banner keeps its hit area and its accessible name is
+   untouched -- the button still announces "Speak with your assistant". */
+.ai-assistant-panel-speak-row[data-collapsed="true"] { justify-content: flex-start; }
+.ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner {
+    flex: 0 0 auto;
+}
+.ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner span,
+.ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner kbd {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+.ai-assistant-panel-speak-toggle {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--pst-color-text-muted, #71717a);
+    cursor: pointer;
+}
+.ai-assistant-panel-speak-toggle:hover,
+.ai-assistant-panel-speak-toggle:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 88%, #808080 12%);
+    color: inherit;
+}
+[data-bs-theme="dark"] .ai-assistant-panel-speak-toggle:hover,
+[data-bs-theme="dark"] .ai-assistant-panel-speak-toggle:focus-visible,
+.dark .ai-assistant-panel-speak-toggle:hover,
+.dark .ai-assistant-panel-speak-toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    color: #e6e6e6;
+}
+/* The chevron points the way the next press goes, rotated from the announced
+   state so the glyph and `aria-expanded` cannot disagree. */
+.ai-assistant-panel-speak-toggle svg {
+    width: .85rem;
+    height: .85rem;
+    transition: transform .12s ease-out;
+    transform: rotate(90deg);
+}
+.ai-assistant-panel-speak-toggle[aria-expanded="true"] svg { transform: rotate(-90deg); }
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-speak-toggle svg { transition: none; }
+}
+@media (forced-colors: active) {
+    .ai-assistant-panel-speak-toggle { color: ButtonText; }
 }
