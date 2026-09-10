@@ -2956,12 +2956,12 @@
             // of Download and made a two-snippet answer four buttons wide.
             var snippetMenu = (function (codeText, langTag, suggestedName) {
                 return _buildOverflowMenu('More options for ' + suggestedName, [
-                    { label: 'Save as a tracked file\u2026',
+                    { icon: ICONS.terms, label: 'Save as a tracked file\u2026',
                       hint: 'Gives it revisions, diffs and patch export',
                       run: function () {
                           _promoteSnippetToFile(root, codeText, langTag, suggestedName);
                       } },
-                    { label: 'Download as\u2026',
+                    { icon: ICONS.exportTxt, label: 'Download as\u2026',
                       hint: 'Download under a name you choose',
                       run: function () {
                           var raw = window.prompt(
@@ -15632,7 +15632,7 @@
             var it = _attachmentPreviewState.item;
             if (!it) return [];
             return [
-                { label: 'Download', hint: 'Save this file as it is previewed',
+                { label: 'Download', hint: 'Save this file as it is previewed', icon: ICONS.exportTxt,
                   run: function () {
                       _downloadBlob(it.previewText || '', 'text/plain',
                           _artifactNameSlugPreservingExtension(it.name || '') || 'preview.txt');
@@ -48661,13 +48661,27 @@
                 row.type = 'button';
                 row.className = 'ai-assistant-panel-changed-file-menu-item';
                 row.setAttribute('role', 'menuitem');
+                // Optional leading glyph, aria-hidden: the accessible name is
+                // the label text, and an announced icon would read as part of
+                // it. Items without one still align, because the gutter is
+                // reserved rather than collapsed -- a half-indented list is
+                // harder to scan than one with no icons at all.
+                var iconWrap = document.createElement('span');
+                iconWrap.className = 'ai-assistant-panel-changed-file-menu-icon';
+                iconWrap.setAttribute('aria-hidden', 'true');
+                if (item.icon) iconWrap.innerHTML = item.icon;  // ICONS constant.
+                row.appendChild(iconWrap);
+
+                var text = document.createElement('span');
+                text.className = 'ai-assistant-panel-changed-file-menu-text';
                 var lab = document.createElement('span');
                 lab.className = 'ai-assistant-panel-changed-file-menu-label';
                 lab.textContent = item.label;
                 var hint = document.createElement('span');
                 hint.className = 'ai-assistant-panel-changed-file-menu-hint';
                 hint.textContent = item.hint;
-                row.appendChild(lab); row.appendChild(hint);
+                text.appendChild(lab); text.appendChild(hint);
+                row.appendChild(text);
                 row.addEventListener('click', function (e) {
                     e.stopPropagation();
                     _closeFileMenu();
@@ -48728,16 +48742,16 @@
     /** The tracked-file menu: everything the card no longer shows as a button. */
     function _buildFileOverflow(key, entry) {
         return _buildOverflowMenu('More options for ' + entry.path, function () { return [
-            { label: 'Open in a sheet', hint: 'Full view with line numbers',
+            { label: 'Open in a sheet', hint: 'Full view with line numbers', icon: ICONS.terms,
               run: function () { _generatedArtifactOpenSheet(key); } },
-            { label: 'Save as\u2026', hint: 'Download under a name you choose',
+            { label: 'Save as\u2026', hint: 'Download under a name you choose', icon: ICONS.exportTxt,
               run: function () { _generatedArtifactSaveAs(key); } },
-            { label: 'Download patch', hint: 'Apply with git am',
+            { label: 'Download patch', hint: 'Apply with git am', icon: ICONS.gitMark,
               run: function () { _generatedArtifactDownloadPatch(key); } },
             _workingFileContinuations[key]
-                ? { label: 'Stop continuing', hint: 'Remove from your next message',
+                ? { label: 'Stop continuing', hint: 'Remove from your next message', icon: ICONS.close,
                     run: function () { _generatedArtifactStopContinuing(key); } }
-                : { label: 'Continue editing', hint: 'Attach to your next message',
+                : { label: 'Continue editing', hint: 'Attach to your next message', icon: ICONS.chevronDown,
                     run: function () { _generatedArtifactContinueEditing(key); } }
         ]; });
     }
