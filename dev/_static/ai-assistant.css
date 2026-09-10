@@ -17361,6 +17361,14 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     position: relative;
 }
 
+.ai-assistant-panel-model-action-host {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
 .ai-assistant-panel-model-actions {
     display: flex;
     flex-direction: column;
@@ -17368,7 +17376,7 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     justify-content: center;
     gap: 0.08rem;
     flex: 0 0 auto;
-    margin-left: auto;
+    margin: 0;
 }
 
 .ai-assistant-panel-model-edit-btn,
@@ -17588,14 +17596,15 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        margin: 0;
     }
 
     .ai-assistant-panel-model-actions {
         display: none;
         position: absolute;
         z-index: 12;
-        top: calc(100% - 0.28rem);
-        right: 0.5rem;
+        top: calc(100% + 0.24rem);
+        right: 0;
         min-width: 8.5rem;
         margin: 0;
         padding: 0.3rem;
@@ -17621,6 +17630,12 @@ a.ai-assistant-panel-ep-card-detail-url:focus-visible {
     .ai-assistant-panel-model-row[data-actions-open="true"]
         .ai-assistant-panel-model-actions {
         display: flex;
+    }
+
+    .ai-assistant-panel-model-action-host[data-actions-placement="top"]
+        .ai-assistant-panel-model-actions {
+        top: auto;
+        bottom: calc(100% + 0.24rem);
     }
 
     .ai-assistant-panel-model-actions
@@ -23112,7 +23127,8 @@ button.ai-md-artifact-download-label:focus-visible,
     height: 1.75rem;
     border: 0;
     border-radius: 999px;
-    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
     color: var(--pst-color-text-muted, #71717a);
     cursor: pointer;
 }
@@ -23137,10 +23153,28 @@ button.ai-md-artifact-download-label:focus-visible,
 /* The chevron points the way the next press goes, rotated from the announced
    state so the glyph and `aria-expanded` cannot disagree. */
 .ai-assistant-panel-speak-toggle svg {
+    display: block;
     width: .85rem;
     height: .85rem;
+    color: inherit;
+    stroke: currentColor;
     transition: transform .12s ease-out;
     transform: rotate(90deg);
+}
+/* Touch has no dependable hover state.  The chevron therefore owns a
+   readable resting colour instead of relying on hover/focus to reveal it. */
+@media (hover: none), (pointer: coarse) {
+    .ai-assistant-panel-speak-toggle {
+        color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2328));
+    }
+    [data-bs-theme="dark"] .ai-assistant-panel-speak-toggle,
+    .dark .ai-assistant-panel-speak-toggle {
+        color: var(--pst-color-text-base, var(--color-foreground-primary, #e6e6e6));
+    }
+    .ai-assistant-panel-speak-toggle svg {
+        width: 1rem;
+        height: 1rem;
+    }
 }
 .ai-assistant-panel-speak-toggle[aria-expanded="true"] svg { transform: rotate(-90deg); }
 @media (prefers-reduced-motion: reduce) {

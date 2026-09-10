@@ -30697,11 +30697,19 @@
             // <500 px turns the same controls into the vertical-ellipsis
             // popover. Keeping one DOM/handler path prevents mobile and desktop
             // model-management semantics from drifting.
+            // Keep the mobile disclosure trigger and its popover in one
+            // positioning context.  Anchoring the popover to the full model
+            // row made it drift far below the ellipsis on tall rows because
+            // the row also contains badges, model ids, descriptions and bars.
+            var actionHost = document.createElement('div');
+            actionHost.className = 'ai-assistant-panel-model-action-host';
+            row.appendChild(actionHost);
+
             var actionsWrap = document.createElement('div');
             actionsWrap.className = 'ai-assistant-panel-model-actions';
             actionsWrap.setAttribute('aria-label',
                 'Actions for ' + (m.label || m.id));
-            row.appendChild(actionsWrap);
+            actionHost.appendChild(actionsWrap);
 
             function _setActionContent(btn, glyph, labelText) {
                 // Short, non-sensitive label used by the >=500 px floating
@@ -30728,7 +30736,50 @@
             menuBtn.setAttribute('aria-expanded', 'false');
             menuBtn.title = 'Model actions';
             menuBtn.textContent = '\u22ee'; // U+22EE VERTICAL ELLIPSIS
-            row.appendChild(menuBtn);
+            actionHost.appendChild(menuBtn);
+
+            function _syncActionMenuPlacement() {
+                // Prefer opening below the trigger.  When the visible scroll
+                // boundary cannot fit the menu there, flip it above.  Measure
+                // after [data-actions-open] reveals the popover so its actual
+                // height (Edit/Delete or Edited/Delete/Reset) is respected.
+                actionHost.removeAttribute('data-actions-placement');
+                if (row.getAttribute('data-actions-open') !== 'true' ||
+                        typeof actionsWrap.getBoundingClientRect !== 'function' ||
+                        typeof actionHost.getBoundingClientRect !== 'function') {
+                    return;
+                }
+
+                var hostRect = actionHost.getBoundingClientRect();
+                var menuRect = actionsWrap.getBoundingClientRect();
+                var viewportHeight = (typeof window !== 'undefined' &&
+                    window.innerHeight) ||
+                    (document.documentElement && document.documentElement.clientHeight) ||
+                    0;
+                var boundaryTop = 0;
+                var boundaryBottom = viewportHeight;
+                var scrollHost = row.closest
+                    ? row.closest('.ai-assistant-panel-sheet-scroll')
+                    : null;
+                if (scrollHost &&
+                        typeof scrollHost.getBoundingClientRect === 'function') {
+                    var scrollRect = scrollHost.getBoundingClientRect();
+                    boundaryTop = Math.max(boundaryTop, scrollRect.top);
+                    if (boundaryBottom) {
+                        boundaryBottom = Math.min(boundaryBottom, scrollRect.bottom);
+                    } else {
+                        boundaryBottom = scrollRect.bottom;
+                    }
+                }
+
+                if (!boundaryBottom) return;
+                var needed = menuRect.height + 8;
+                var below = boundaryBottom - hostRect.bottom;
+                var above = hostRect.top - boundaryTop;
+                if (below < needed && above > below) {
+                    actionHost.setAttribute('data-actions-placement', 'top');
+                }
+            }
 
             function _setActionMenuOpen(open) {
                 var isOpen = !!open;
@@ -30744,10 +30795,18 @@
                             '.ai-assistant-panel-model-menu-btn'
                         );
                         if (otherMenu) otherMenu.setAttribute('aria-expanded', 'false');
+                        var otherHost = opened[oi].querySelector(
+                            '.ai-assistant-panel-model-action-host'
+                        );
+                        if (otherHost) {
+                            otherHost.removeAttribute('data-actions-placement');
+                        }
                     }
                     row.setAttribute('data-actions-open', 'true');
+                    _syncActionMenuPlacement();
                 } else {
                     row.removeAttribute('data-actions-open');
+                    actionHost.removeAttribute('data-actions-placement');
                 }
                 menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             }
