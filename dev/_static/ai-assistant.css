@@ -3816,6 +3816,18 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
  *   the minimum value that preserves the same visual result after the
  *   "stay on current page" fix. */
 .ai-assistant-panel-hamburger {
+    /* Bounded by the panel it hangs in. Without a limit its lower entries ran
+       past the bottom edge on a small panel, with nothing to scroll and no
+       indication they existed.
+
+       `100%` is right here, unlike the shared popup menus: this one is
+       absolutely positioned INSIDE the panel, so the percentage resolves
+       against the panel's own box and tracks a resize with no JavaScript. The
+       `vh` term still matters for a panel taller than the window -- the screen
+       clips what the panel does not. */
+    max-height: min(calc(100% - 3.3rem - 0.75rem), 80vh);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     z-index: 1021;        /* above sheets (99999); was 5 when sheet was pre-dismissed */
     position: absolute;
     top: 3.3rem;            /* below the header (0.75 + 1.75 content + 0.75 + 1px border) */
@@ -21977,7 +21989,11 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     position: absolute;
     inset-inline-end: 0;
     top: calc(100% + .25rem);
-    max-height: min(60vh, 22rem);
+    /* Bounded by the viewport, because the screen is what clips the menu --
+       a panel-relative unit would let a maximized panel produce a menu taller
+       than the display. `20rem` caps it on a tall screen, where half the
+       viewport is a menu long enough to lose the trigger it belongs to. */
+    max-height: min(50vh, 20rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     z-index: 30;
@@ -22596,7 +22612,23 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-md-file-sheet .ai-md-pre,
 .ai-md-file-sheet .ai-assistant-panel-attachment-preview-code {
     max-height: none;
-    overflow-y: visible;
+    /*
+     * `hidden`, not `visible`.
+     *
+     * CSS promotes a `visible` axis to `auto` when the other axis is not
+     * visible. With `overflow-x: auto` for long lines, `overflow-y: visible`
+     * therefore computed to `auto` and the block became a scroll container on
+     * BOTH axes -- silently, and only for files whose lines happen to be long.
+     *
+     * A scroll container that cannot scroll vertically still swallows the
+     * wheel, and `overscroll-behavior: contain` on the sheet stopped the
+     * gesture chaining out to the page. The reader could not scroll the
+     * document with the pointer over a wide code block.
+     *
+     * `hidden` clips nothing here: the block has no height limit, so its box
+     * already fits its content. It only stops the promotion.
+     */
+    overflow-y: hidden;
     overflow-x: auto;
     white-space: pre;
     overflow-wrap: normal;
@@ -22608,6 +22640,10 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-assistant-panel-attachment-preview-body > .ai-md-file-sheet {
     max-height: none;
     overflow-y: visible;
+    /* This sheet does not scroll -- the overlay body does -- so it must not
+       claim the wheel. `contain` is for the sheets that own a scrollbar; here
+       it would trap the gesture in an element with nothing to scroll. */
+    overscroll-behavior: auto;
 }
 
 /* ── Preview window controls ───────────────────────────────────────────────
@@ -23015,4 +23051,149 @@ button.ai-md-artifact-download-label:focus-visible,
         border: 1px solid ButtonText;
         background: Canvas;
     }
+}
+
+/* ── Model picker: primary action plus its own options chevron ─────────────
+   The same shape the mic uses — a primary control with a narrow chevron beside
+   it — so a reader who has met one has met the other. The two are joined
+   visually but remain two buttons, because they do two different things and a
+   nested button is invalid markup besides. */
+.ai-assistant-panel-inline-picker-wrapper {
+    display: inline-flex;
+    align-items: stretch;
+    min-width: 0;
+}
+.ai-assistant-panel-inline-picker-wrapper .ai-assistant-panel-inline-model-picker {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    min-width: 0;
+}
+.ai-assistant-panel-inline-picker-more {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    border: 0;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    background: transparent;
+    color: var(--pst-color-text-muted, #71717a);
+    cursor: pointer;
+}
+/* A hairline between them, so the pair reads as one control with two targets
+   rather than two buttons that happen to touch. */
+.ai-assistant-panel-inline-picker-more::before {
+    content: "";
+    align-self: center;
+    width: 1px;
+    height: 1.1em;
+    margin-inline-end: .25rem;
+    background: color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
+}
+.ai-assistant-panel-inline-picker-more:hover,
+.ai-assistant-panel-inline-picker-more:focus-visible {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 88%, #808080 12%);
+    color: inherit;
+}
+[data-bs-theme="dark"] .ai-assistant-panel-inline-picker-more:hover,
+[data-bs-theme="dark"] .ai-assistant-panel-inline-picker-more:focus-visible,
+.dark .ai-assistant-panel-inline-picker-more:hover,
+.dark .ai-assistant-panel-inline-picker-more:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    color: #e6e6e6;
+}
+.ai-assistant-panel-inline-picker-more svg {
+    width: .8rem;
+    height: .8rem;
+    transition: transform .12s ease-out;
+}
+.ai-assistant-panel-inline-picker-more[aria-expanded="true"] svg { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-inline-picker-more svg { transition: none; }
+}
+@media (forced-colors: active) {
+    .ai-assistant-panel-inline-picker-more { color: ButtonText; }
+}
+
+/* ── Shared menu: never taller than the screen ─────────────────────────────
+   Placement flips the menu above its trigger when there is no room below, but
+   a twelve-model list is taller than the space either way. Bounding it by the
+   viewport is what stops the last items being cut off, and it holds whatever
+   the panel has been resized to because `vh` measures the screen rather than
+   the panel.
+
+   `20rem` caps it on a tall desktop screen, where half the viewport would be a
+   menu long enough to lose the trigger it belongs to. */
+/* Coarse pointers get more of the screen: a thumb scrolls a long list more
+   readily than it reaches a menu that has been flipped and clamped. */
+@media (pointer: coarse) {
+    .ai-assistant-panel-changed-file-menu { max-height: min(60vh, 24rem); }
+}
+
+/* The menu's box must include its own border and padding in the height the
+   placement routine measures and bounds, or the computed max-height clips the
+   content by exactly the chrome. */
+.ai-assistant-panel-changed-file-menu {
+    box-sizing: border-box;
+    /*
+     * As wide as its longest row, no wider.
+     *
+     * A fixed width made short menus look padded and truncated the long labels
+     * in the model list -- the one place where the label is the information.
+     * `max-content` sizes to the longest row instead.
+     *
+     * It needs a ceiling, which the placement routine supplies as an inline
+     * `max-width` computed from the same panel-and-viewport bounds that limit
+     * the height. A CSS-only cap would have to guess a panel width, and this
+     * panel is resizable.
+     */
+    width: max-content;
+}
+/* Rows fill the menu rather than sizing it: with `max-content` a row that sets
+   its own width would decide the menu's, and the widest hint would win over
+   the widest label. */
+.ai-assistant-panel-changed-file-menu-item {
+    width: 100%;
+    box-sizing: border-box;
+}
+/* The hint is secondary text and must not be what makes a menu wide. It wraps
+   at the width the labels established. */
+.ai-assistant-panel-changed-file-menu-hint {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* ── Shared menu, under the name of what it is ─────────────────────────────
+   `.ai-assistant-panel-changed-file-menu` is the legacy name, kept because it
+   is in the shipped DOM. It is named after one of four callers, so a rule
+   written for "the file menu" silently restyled the preview and the model
+   picker too. New rules use `.ai-assistant-menu`, which is what the builder
+   actually produces, and the two are applied together so nothing that selects
+   the old name breaks. */
+.ai-assistant-menu[data-placement="above"] { transform-origin: bottom center; }
+.ai-assistant-menu[data-placement="below"] { transform-origin: top center; }
+/* Surface-specific overrides go through the caller's own class rather than the
+   shared one, so changing a menu on one surface cannot reach the others. */
+.ai-assistant-panel-attachment-preview .ai-assistant-menu { z-index: 41; }
+
+/* ── Hamburger menu: bounded by the panel it hangs in ──────────────────────
+   It had no height bound at all, so on a small panel its lower entries ran
+   past the bottom edge with nothing to scroll and no indication they existed.
+
+   `100%` is the right unit here, unlike the shared popup menus. This one is
+   absolutely positioned *inside* the panel, so a percentage resolves against
+   the panel's own box and tracks a resize with no JavaScript. `3.3rem` is the
+   offset it already sits at, and the second term leaves the bottom margin.
+
+   The `vh` term still matters for a panel taller than the window: the screen
+   clips what the panel does not. */
+/* A submenu opened inside it scrolls with it rather than establishing a second
+   scroll region: two nested scrollers in a menu this size means a reader can
+   scroll the wrong one. */
+.ai-assistant-panel-hamburger[data-more-open="true"] { overscroll-behavior: contain; }
+@media (pointer: coarse) {
+    /* Same reasoning as the shared menus: a thumb scrolls a long list more
+       readily than it reaches a clamped one. */
+    .ai-assistant-panel-hamburger { max-height: min(calc(100% - 3.3rem - 0.75rem), 85vh); }
 }

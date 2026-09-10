@@ -1573,7 +1573,16 @@
     function _panelUnlockComposerAfterCancel() {
         var input = document.getElementById('ai-assistant-panel-input');
         var sendBtn = document.getElementById('ai-assistant-panel-send');
-        var body = document.getElementById('ai-assistant-panel-body');
+        // Boundary defaults to the transcript, but a caller may widen it.
+        //
+        // The transcript is right for a menu that has room in it. On a short
+        // panel it is not: the menu was clamped to whatever height the body
+        // happened to have -- 181px in one report -- and its lower rows became
+        // unreachable. A menu with items you cannot see is worse than one that
+        // overlaps the composer.
+        var body = (opts && opts.boundarySelector)
+            ? document.querySelector(opts.boundarySelector)
+            : document.getElementById('ai-assistant-panel-body');
         if (body) _hideTypingIndicator(body);
         if (input) input.disabled = false;
         if (sendBtn) sendBtn.disabled = _attachmentStagePending > 0;
@@ -21548,11 +21557,172 @@
      * inherits the transformed/scaled-panel correction, which a fresh
      * implementation would have got wrong before anyone noticed.
      */
+    /**
+     * Place a menu against its own trigger, clamped to the viewport.
+     *
+     * Replaces the panel-body clamp for these menus. That routine measures
+     * against `.ai-assistant-panel-body`, and a trigger in the footer sits
+     * outside it: no side "fits", so the fallback clamped the menu into the
+     * body's own box and it appeared in the middle of the panel, unattached to
+     * the button that opened it.
+     *
+     * `position: fixed` is what makes this reliable. The triggers live in four
+     * different subtrees -- artifact rows, the composer footer, the preview
+     * dialog -- with different overflow and transform ancestors, and R173T58
+     * is the cost of assuming a containing block. Fixed coordinates have only
+     * one containing block: the viewport, which is also the thing that clips
+     * the menu.
+     *
+     * @param {HTMLElement} menu Already inserted, so it can be measured.
+     * @param {HTMLElement} btn  The trigger to sit against.
+     */
+    function _positionMenuNearTrigger(menu, btn) {
+        if (!menu || !btn || typeof btn.getBoundingClientRect !== 'function') return;
+        var margin = 8;
+        //: Below this, a floor costs more than the overlap it avoids.
+        var _MENU_MIN_USABLE_H = 200;
+        var vw = Math.max(1, window.innerWidth || document.documentElement.clientWidth || 1);
+        var vh = Math.max(1, window.innerHeight || document.documentElement.clientHeight || 1);
+
+        // Bounded by the panel, not only by the screen.
+        //
+        // A narrow panel inside a wide window has plenty of viewport beside it,
+        // so a viewport clamp let the menu spill onto the page: a list that
+        // belongs to a control in the panel, drawn over the documentation
+        // behind it and reading as part of neither.
+        //
+        // The bound is the intersection of the two. The panel is what the menu
+        // should stay inside; the viewport is what would clip it if the panel
+        // extends past the screen, which it does when the panel is taller than
+        // the window.
+        var bounds = { left: 0, top: 0, right: vw, bottom: vh };
+        // The nearest enclosing surface, not always the panel.
+        //
+        // A menu opened from the preview dialog was bounded by the panel: the
+        // dialog is a floating window of its own, frequently wider and placed
+        // elsewhere, so the menu was clamped to a box its trigger was not in.
+        // The observed `max-width: 1193px` on a preview menu is that -- a
+        // ceiling from the wrong surface.
+        //
+        // Ordered nearest-first, so a menu inside the preview picks the dialog
+        // and one in the transcript picks the panel.
+        var panel = (typeof btn.closest === 'function')
+            ? (btn.closest('.ai-assistant-panel-attachment-preview') ||
+               btn.closest('.ai-assistant-panel'))
+            : null;
+        if (panel && typeof panel.getBoundingClientRect === 'function') {
+            var pr = panel.getBoundingClientRect();
+            // Only when the panel has a real box: a display:none or
+            // zero-height ancestor would otherwise clamp everything into a
+            // point, which is worse than not clamping at all.
+            if (pr.width > 0 && pr.height > 0) {
+                bounds.left = Math.max(bounds.left, pr.left);
+                bounds.top = Math.max(bounds.top, pr.top);
+                bounds.right = Math.min(bounds.right, pr.right);
+                bounds.bottom = Math.min(bounds.bottom, pr.bottom);
+            }
+        }
+
+        menu.style.position = 'fixed';
+        menu.style.maxHeight = '';
+        menu.style.maxWidth = '';
+        menu.style.left = '0px';
+        menu.style.top = '0px';
+
+        // The composer is a floor, not empty space.
+        //
+        // `.ai-assistant-panel-bubble-action-more-menu` has always been bounded
+        // this way -- it clamps within `.ai-assistant-panel-body`, which ends
+        // where the footer begins -- and it reads better for it. A menu drawn
+        // over the composer looks like it belongs to the composer, and hides
+        // the draft the reader is about to send.
+        //
+        // Only for triggers ABOVE the footer. The model picker's own trigger
+        // lives inside it, and a bound above its own button would leave that
+        // menu nowhere to go.
+        var t = btn.getBoundingClientRect();
+        var footerEl = (panel && typeof panel.querySelector === 'function')
+            ? panel.querySelector('.ai-assistant-panel-footer') : null;
+        if (footerEl && typeof footerEl.getBoundingClientRect === 'function') {
+            var fr = footerEl.getBoundingClientRect();
+            // Applied only while it leaves a usable menu.
+            //
+            // Keeping a menu clear of the composer is a readability
+            // preference; showing all of its rows is not. Below a usable
+            // minimum the floor is dropped and the menu may cover the composer
+            // -- overlapping an input the reader is not using beats hiding
+            // choices they are trying to make.
+            if (fr.height > 0 && t.bottom <= fr.top &&
+                    (fr.top - bounds.top) >= _MENU_MIN_USABLE_H) {
+                bounds.bottom = Math.min(bounds.bottom, fr.top);
+            }
+        }
+
+        // Width constrained before measuring, or the rect read below is the
+        // unconstrained one and every later calculation uses a box the menu
+        // will never actually have. `max-content` lets a menu be as wide as its
+        // longest label; this is what stops that from exceeding the panel.
+        menu.style.maxWidth = Math.max(160, (bounds.right - bounds.left) - margin * 2) + 'px';
+
+        var m = menu.getBoundingClientRect();
+
+        // Where the menu's own coordinate origin actually is.
+        //
+        // R173T62 assumed `position: fixed` resolves against the viewport. It
+        // does not when an ancestor has a `transform`, and the panel has one --
+        // `transform: translateY(0) scale(1)` on the open state. A transformed
+        // ancestor becomes the containing block for fixed descendants too, so
+        // viewport coordinates from `getBoundingClientRect()` were being
+        // written into a different coordinate space and the menu landed at an
+        // offset that grew with the panel's position.
+        //
+        // Measuring the menu while pinned at (0,0) gives that origin in
+        // viewport terms, whatever the containing block turns out to be. Every
+        // coordinate below is computed in viewport space and converted once,
+        // at the end -- so this is correct with a transform, without one, and
+        // if the panel gains or drops one later.
+        var origin = { left: m.left, top: m.top };
+        var below = bounds.bottom - t.bottom - margin;
+        var above = t.top - bounds.top - margin;
+
+        // Whichever side has room; when neither does, the larger one, with the
+        // menu bounded to it so the list scrolls instead of overflowing.
+        var placeAbove = (m.height > below) && (above > below);
+        var space = Math.max(120, placeAbove ? above : below);
+        if (m.height > space) menu.style.maxHeight = space + 'px';
+
+        var h = Math.min(m.height, space);
+        var top = placeAbove ? Math.max(bounds.top + margin, t.top - h - 4)
+                             : Math.min(bounds.bottom - h - margin, t.bottom + 4);
+
+        // Aligned to the trigger's trailing edge, then clamped -- so a menu
+        // wider than the space beside it slides along the viewport rather than
+        // hanging off it.
+        var left = t.right - m.width;
+        left = Math.min(
+            Math.max(bounds.left + margin, left),
+            Math.max(bounds.left + margin, bounds.right - m.width - margin));
+
+        // Viewport coordinates converted into the containing block's space.
+        menu.style.left = Math.round(left - origin.left) + 'px';
+        menu.style.top = Math.round(Math.max(bounds.top + margin, top) - origin.top) + 'px';
+        menu.setAttribute('data-placement', placeAbove ? 'above' : 'below');
+    }
+
     function _positionFileMenuWithinPanelBody(menu) {
         _positionAnchoredPopupWithinPanelBody(menu, {
             activeAttr: 'data-open',
             activeValue: 'true',
-            wrapperSelector: '.ai-assistant-panel-changed-file-primary,.ai-md-artifact-row',
+            // Every surface that opens one of these menus, not just the two it
+            // was written for. The model picker lives in the footer, so with
+            // only the artifact-row selectors here the routine found no anchor
+            // and a twelve-item list ran off the bottom of the screen.
+            wrapperSelector: [
+                '.ai-assistant-panel-changed-file-primary',
+                '.ai-md-artifact-row',
+                '.ai-assistant-panel-inline-picker-wrapper',
+                '.ai-assistant-panel-attachment-preview-controls'
+            ].join(','),
             minWidth: 180,
             maxWidth: 280,
             horizontalAlign: 'end'
@@ -21566,6 +21736,10 @@
             activeAttr: 'data-open',
             activeValue: 'true',
             wrapperSelector: '.ai-assistant-panel-bubble-action-more',
+            // The panel, not the transcript: this menu carries the model
+            // list, the longest in the panel, and a short body left its
+            // last entries off the bottom.
+            boundarySelector: '.ai-assistant-panel',
             minWidth: hasModels ? 224 : 144,
             maxWidth: hasModels ? 320 : 220,
             horizontalAlign: 'start'
@@ -40977,7 +41151,40 @@
         // Inline model picker (Claude-bar style): [model ▾?]
         // Returns null when no models are configured or panelInlineModelPicker=false.
         var inlinePicker = _buildInlineModelPicker();
-        if (inlinePicker) footerActionsRight.appendChild(inlinePicker);
+        if (inlinePicker) {
+            // A second, narrow control beside the picker -- the same shape the
+            // mic already uses (`ai-assistant-mic-expand-wrapper`: a primary
+            // action with its own options chevron next to it).
+            //
+            // The picker itself is unchanged and still opens the full model
+            // sheet, where a model is chosen deliberately from a list with
+            // descriptions. The chevron is for the other case: swapping to a
+            // model the reader already knows, without leaving the composer.
+            // Two intents, two targets, rather than one control that has to
+            // guess which was meant.
+            //
+            // `inlinePicker` stays the button, not the wrapper: the sync code
+            // below writes `aria-expanded` on it, and a wrapper would have
+            // silently swallowed that.
+            var pickerWrap = document.createElement('div');
+            pickerWrap.className = 'ai-assistant-panel-inline-picker-wrapper';
+            pickerWrap.appendChild(inlinePicker);
+
+            var quickModelBtn = _buildOverflowMenu('Try a different model', function () {
+                var live = _quickModelCandidates(_cfg());
+                var currentId = _getActiveModelId(live);
+                return live.map(function (m) {
+                    return {
+                        label: (m.id === currentId ? '\u2713 ' : '') + (m.label || m.id),
+                        hint: m.id === currentId ? 'Current model' : (m.provider || ''),
+                        run: function () { _setActiveModelId(m.id); }
+                    };
+                });
+            }, 'ai-assistant-panel-inline-picker-more', ICONS.chevronDown);
+            pickerWrap.appendChild(quickModelBtn);
+
+            footerActionsRight.appendChild(pickerWrap);
+        }
 
         // Microphone button (shown only when speech is supported): [🎤 mic?]
         //
@@ -48420,7 +48627,19 @@
             if (wasOpen) return;
 
             var menu = document.createElement('div');
-            menu.className = 'ai-assistant-panel-changed-file-menu';
+            // Two class names on purpose.
+            //
+            // `ai-assistant-menu` is what this builder actually makes: a menu,
+            // used by file rows, snippet rows, the preview title bar and the
+            // model picker. The shared styling hangs off it.
+            //
+            // `ai-assistant-panel-changed-file-menu` is kept because it is the
+            // name in the shipped DOM and in every existing rule; removing it
+            // would be a silent breaking change for anyone selecting on it. But
+            // it is named after one caller, so styling "the file menu" was
+            // restyling three unrelated surfaces -- which is exactly the
+            // confusion reported. New rules go on the neutral name.
+            menu.className = 'ai-assistant-menu ai-assistant-panel-changed-file-menu';
             menu.setAttribute('role', 'menu');
             menu.setAttribute('aria-label', ariaLabel);
 
@@ -48449,7 +48668,19 @@
             var rec = {
                 btn: btn, menu: menu,
                 onDocClick: function (e) {
-                    if (!menu.contains(e.target) && e.target !== btn) _closeFileMenu();
+                    // `contains`, not identity.
+                    //
+                    // This runs on `document` in the CAPTURE phase, so it sees
+                    // a click before the trigger's own handler does. The
+                    // trigger holds an `<svg>`, so a click lands on the glyph
+                    // and `e.target !== btn` was true: pressing the open
+                    // trigger closed the menu here, and the trigger's handler
+                    // then found nothing open and reopened it. The menu could
+                    // be opened and never closed from its own button.
+                    //
+                    // `btn.contains` covers the button and everything drawn
+                    // inside it, which is what "clicked the trigger" means.
+                    if (!menu.contains(e.target) && !btn.contains(e.target)) _closeFileMenu();
                 },
                 onKeyDown: function (e) {
                     if (e.key !== 'Escape') return;
@@ -48465,9 +48696,9 @@
             // Measured after insertion: the routine reads the rendered box, so
             // placing before the menu is in the document would size it from
             // nothing and clamp everything to the top-left corner.
-            _positionFileMenuWithinPanelBody(menu);
+            _positionMenuNearTrigger(menu, btn);
             _fileMenuOpen = rec;
-            rec.onReflow = function () { _positionFileMenuWithinPanelBody(menu); };
+            rec.onReflow = function () { _positionMenuNearTrigger(menu, btn); };
             document.addEventListener('click', rec.onDocClick, true);
             document.addEventListener('keydown', rec.onKeyDown, true);
             // A menu anchored to a row inside a scrolling body has to follow
