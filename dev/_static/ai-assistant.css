@@ -2248,6 +2248,25 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     background: var(--pst-color-surface, var(--color-background-secondary, #f0f1f3));
 }
 .ai-assistant-panel-bubble-model-list {
+    /*
+     * No scroller of its own inside the answer menu.
+     *
+     * It had `max-height: min(50vh, 18rem)` and `overflow-y: auto`, which is
+     * right for a list standing alone and wrong for one nested in a menu that
+     * is itself bounded. On a short panel the outer menu was clamped to ~180px
+     * while this list claimed up to 288px: two scroll regions, one inside the
+     * other, and the inner one took the wheel. The outer menu could not be
+     * scrolled to reveal the list, and the list could not be scrolled into
+     * view -- so no model was reachable at all.
+     *
+     * One scroller wins: the outer menu, which is the element the placement
+     * routine measures and bounds. This is the same rule R173T46 established
+     * for numbered sheets -- a gutter beside a block that already scrolled --
+     * arriving in a second place.
+     */
+    max-height: none;
+    overflow-y: visible;
+    overscroll-behavior: auto;
     display: none;
     flex-direction: column;
     gap: 0.12rem;
@@ -22385,11 +22404,6 @@ button.ai-md-artifact-download-label:focus-visible,
    than by dropping entries. The clamp is generous enough that ordinary
    configurations never scroll at all, and `contain` stops a flick inside the
    list from scrolling the transcript behind it. */
-.ai-assistant-panel-bubble-model-list {
-    max-height: min(50vh, 18rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-}
 .ai-assistant-panel-bubble-model-list[hidden] { display: none; }
 /* The heading stays put while the options scroll under it, so a reader who has
    scrolled still knows what the list is. */
@@ -22817,7 +22831,15 @@ button.ai-md-artifact-download-label:focus-visible,
 }
 .ai-assistant-panel-footer-note {
     width: auto;
-    flex: 1 1 15rem;
+    /*
+     * A 10rem basis, not 15rem.
+     *
+     * The basis is what decides when two columns stop fitting. At 15rem the
+     * pair gave up and stacked while there was still room for two narrow
+     * columns of wrapped text -- the footer jumped from one row to three at a
+     * width where it could have used two.
+     */
+    flex: 1 1 10rem;
     min-width: 0;
     text-align: start;
     /*
@@ -22839,9 +22861,35 @@ button.ai-md-artifact-download-label:focus-visible,
     margin-top: 0.35rem;
     text-align: end;
     align-self: center;
-    white-space: nowrap;
+    /*
+     * Wraps, except through the project name.
+     *
+     * `nowrap` made the credit an unbreakable ~11rem block, so the column pair
+     * failed as soon as the note could not also fit beside it -- the credit
+     * was deciding the layout for both. Allowed to wrap, "Powered by" and the
+     * link can sit on two lines and the pair survives to a much smaller panel.
+     *
+     * The link itself keeps `nowrap`: breaking a project name across lines
+     * makes it look like two words, and it is short enough that it never needs
+     * to break.
+     */
+    white-space: normal;
 }
-@container ai-panel-footer (max-width: 26rem) {
+.ai-assistant-panel-footer-credit-link { white-space: nowrap; }
+/*
+ * Three regimes, two of them side by side.
+ *
+ *   wide     | long text            short text |
+ *   medium   | long   |  short |   (both wrapped into columns)
+ *   tiny     | long text |
+ *            | short text |
+ *
+ * The stack is the last resort rather than the second option: below 20rem two
+ * columns of a few words each are narrower than the words themselves, and the
+ * note -- which is the part that must be read -- would wrap to five or six
+ * lines to make room for a credit.
+ */
+@container ai-panel-footer (max-width: 20rem) {
     /* Not enough width for both: the note reclaims the line and the credit --
        the less important of the two -- moves below it and re-centres. */
     .ai-assistant-panel-footer-note { flex-basis: 100%; text-align: center; }
@@ -22912,8 +22960,25 @@ button.ai-md-artifact-download-label:focus-visible,
     display: flex;
     align-items: center;
     gap: .25rem;
-    margin: 0 0.75rem 0.5rem;
+    /*
+     * Zero height in BOTH states, contents lifted clear.
+     *
+     * Collapsed it already worked this way (R173T58): the transcript took the
+     * row and the space beside the pill showed the conversation through it.
+     * Expanded it was still an in-flow row, so that same space was panel
+     * background -- opaque, with nothing behind it.
+     *
+     * The difference between the two states is now what is drawn, not whether
+     * the row occupies a line.
+     */
+    height: 0;
+    min-height: 0;
+    margin: 0 0.75rem;
+    overflow: visible;
+    position: relative;
+    z-index: 3;
 }
+.ai-assistant-panel-speak-row > * { transform: translateY(-100%); }
 .ai-assistant-panel-speak-row .ai-assistant-panel-speak-banner {
     flex: 1 1 auto;
     min-width: 0;
@@ -22948,6 +23013,19 @@ button.ai-md-artifact-download-label:focus-visible,
     white-space: nowrap;
 }
 .ai-assistant-panel-speak-toggle {
+    /*
+     * The same ground as the banner beside it, at every width.
+     *
+     * Collapsed, both ends already carried a surface (R173T57). Expanded, the
+     * banner was a filled pill and the toggle was bare and transparent, so one
+     * end of the row looked like a control and the other like a glyph resting
+     * next to it. The row itself stays transparent either way -- what changed
+     * is that both ends now read as the same kind of thing.
+     */
+    background-color: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f5f5f5)
+    );
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
@@ -22959,6 +23037,12 @@ button.ai-md-artifact-download-label:focus-visible,
     background: transparent;
     color: var(--pst-color-text-muted, #71717a);
     cursor: pointer;
+}
+/* Matched heights, so the pair sits on one baseline rather than a pill beside a
+   smaller circle. */
+.ai-assistant-panel-speak-row[data-collapsed="false"] .ai-assistant-panel-speak-toggle {
+    align-self: stretch;
+    min-height: 100%;
 }
 .ai-assistant-panel-speak-toggle:hover,
 .ai-assistant-panel-speak-toggle:focus-visible {
@@ -23000,9 +23084,6 @@ button.ai-md-artifact-download-label:focus-visible,
    the transcript gains height as well as width — but it is not free, and
    pretending otherwise would mean a pill that sometimes sits on top of the
    final line of an answer. */
-.ai-assistant-panel:has(.ai-assistant-panel-speak-row[data-collapsed="true"]) .ai-assistant-panel-body {
-    padding-bottom: 2.25rem;
-}
 /*
  * Zero-height, lifted -- not absolutely positioned.
  *
@@ -23018,14 +23099,6 @@ button.ai-md-artifact-download-label:focus-visible,
  * the composer however tall the composer has grown -- which is the property
  * the absolute version was reaching for and got wrong.
  */
-.ai-assistant-panel-speak-row[data-collapsed="true"] {
-    height: 0;
-    min-height: 0;
-    margin: 0;
-    overflow: visible;
-    z-index: 3;
-    position: relative;
-}
 .ai-assistant-panel-speak-row[data-collapsed="true"] > * {
     /* Lifted fully above its own zero-height box, into the space the
        transcript's end padding reserves for it. */
@@ -23069,16 +23142,34 @@ button.ai-md-artifact-download-label:focus-visible,
     min-width: 0;
 }
 .ai-assistant-panel-inline-picker-more {
+    /* Safari and Firefox each apply their own button chrome, which shows as a
+       different height beside the picker. */
+    -webkit-appearance: none;
+    appearance: none;
+    /* Removes the ~300ms delay and the grey flash on iOS Safari and Android
+       Chrome, both of which read as a control that did not respond. */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 1.6rem;
-    border: 0;
     border-start-start-radius: 0;
     border-end-start-radius: 0;
+    /* Same tokens as the picker it is joined to: one segmented control drawn
+       from one set of values. It was transparent with a border only on touch,
+       so at rest on a desktop the pair read as a bordered button with a bare
+       glyph stuck to it. The shared edge is dropped so the two have one
+       outline rather than two meeting in the middle. */
     background: transparent;
-    color: var(--pst-color-text-muted, #71717a);
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.3))
+    );
+    border-inline-start: 0;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
+    transition: color 0.15s ease, background-color 0.15s ease;
     cursor: pointer;
 }
 /* A hairline between them, so the pair reads as one control with two targets
@@ -23196,4 +23287,111 @@ button.ai-md-artifact-download-label:focus-visible,
     /* Same reasoning as the shared menus: a thumb scrolls a long list more
        readily than it reaches a clamped one. */
     .ai-assistant-panel-hamburger { max-height: min(calc(100% - 3.3rem - 0.75rem), 85vh); }
+}
+
+/* ── Model chevron on touch devices ────────────────────────────────────────
+   1.6rem with a transparent background is a fine cursor target and a poor
+   thumb one, and on touch there is no hover to reveal that it is a control at
+   all. It ends up both hard to hit and hard to notice — the two failures
+   compounding, since a control you cannot see is one you will not aim at. */
+/* Resting visibility, so it does not depend on a hover that never happens. */
+[data-bs-theme="dark"] .ai-assistant-panel-inline-picker-more,
+.dark .ai-assistant-panel-inline-picker-more {
+    color: var(--pst-color-text-muted, #9aa4b2);
+}
+@media (pointer: coarse) {
+    .ai-assistant-panel-inline-picker-more {
+        /* 44px: the smallest target the platform guidelines call comfortable,
+           and the size a thumb actually hits without aiming. */
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        width: auto;
+        /* Given a resting ground, since hover cannot supply one. */
+        background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
+        color: inherit;
+    }
+    [data-bs-theme="dark"] .ai-assistant-panel-inline-picker-more,
+    .dark .ai-assistant-panel-inline-picker-more {
+        background: rgba(255, 255, 255, 0.10);
+        color: #e6e6e6;
+    }
+    .ai-assistant-panel-inline-picker-more svg { width: 1.1rem; height: 1.1rem; }
+    /* The divider is decoration at this size and only narrows the target. */
+    .ai-assistant-panel-inline-picker-more::before { display: none; }
+    /* The picker beside it grows to match, or the pair looks broken. */
+    .ai-assistant-panel-inline-picker-wrapper .ai-assistant-panel-inline-model-picker {
+        min-height: 2.75rem;
+    }
+}
+/* Pressed state, which on touch is the only feedback there is. */
+.ai-assistant-panel-inline-picker-more:active {
+    background: color-mix(in srgb, var(--pst-color-surface, #fff) 84%, #808080 16%);
+}
+@media (forced-colors: active) {
+    .ai-assistant-panel-inline-picker-more { border: 1px solid ButtonText; }
+}
+
+/* ── Footer actions: the enlarged chevron must not crowd the mic ───────────
+   R173T74 gave the chevron a 44px target on coarse pointers. In a row with
+   `gap: 0.1rem` and no wrapping that pushed it into the microphone beside it:
+   two adjacent controls, both thumb-sized, with almost nothing between them —
+   the reader aims at one and hits the other.
+
+   The gap grows with the targets rather than being fixed, and the picker pair
+   may wrap to its own line before either control is squeezed. Wrapping is the
+   right failure here: two rows of reachable controls beats one row of
+   overlapping ones. */
+@media (pointer: coarse) {
+    .ai-assistant-panel-footer-actions-right {
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        row-gap: 0.35rem;
+    }
+    .ai-assistant-panel-inline-picker-wrapper { min-width: 0; }
+    /* The mic keeps a target of its own: it is the control the enlarged
+       chevron was encroaching on. */
+    .ai-assistant-panel-footer-btn--mic {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        flex: 0 0 auto;
+    }
+}
+
+/* ── The expanded hint floats too ──────────────────────────────────────────
+   Collapsed it was lifted out of the flow (R173T58) so the transcript took the
+   row and the space beside the pill showed the conversation through it.
+   Expanded it was still an in-flow row, so that same space was panel
+   background: opaque, and nothing behind it.
+
+   Both states now behave the same way. The difference between them is what is
+   drawn, not whether the row occupies a line. */
+/* The transcript reserves the room in both states, not only when collapsed --
+   a floating control that covers the last line of an answer is the cost, and
+   it has to be paid whichever form the control is in. */
+.ai-assistant-panel:has(.ai-assistant-panel-speak-row) .ai-assistant-panel-body {
+    padding-bottom: 2.75rem;
+}
+
+/* ── The chevron shares the picker's ground ────────────────────────────────
+   The two are joined into one segmented control, so they should be drawn from
+   one set of tokens. The chevron was transparent with a border of its own only
+   on touch, which made the pair read as a bordered button with a bare glyph
+   stuck to it -- most visibly at rest on a desktop, where nothing hovered.
+
+   Same background and same border token as the picker; the shared edge is
+   removed so the pair has one outline rather than two meeting in the middle. */
+/* The hairline between them is the picker's own border edge, so the separate
+   pseudo-element divider is no longer needed and would double it. */
+.ai-assistant-panel-inline-picker-wrapper .ai-assistant-panel-inline-model-picker {
+    border-inline-end: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.3))
+    );
+}
+.ai-assistant-panel-inline-picker-more::before { display: none; }
+/* Hover follows the picker's, so hovering either half lights the same way. */
+.ai-assistant-panel-inline-picker-more:hover,
+.ai-assistant-panel-inline-picker-more:focus-visible {
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
 }

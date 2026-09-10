@@ -20408,6 +20408,17 @@
                 modelToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
                 modelList.setAttribute('data-open', open ? 'true' : 'false');
                 modelList.hidden = !open;
+                // Re-place the menu now that its content height has changed.
+                //
+                // The placement routine ran when the menu opened, with this
+                // list collapsed, and wrote a `max-height` for that content.
+                // Expanding the list made the menu taller than the bound it was
+                // given, so the new rows sat below a clamp computed before they
+                // existed. A disclosure that changes a bounded element's height
+                // has to tell whatever computed the bound.
+                var ownerMenu = modelList.closest &&
+                    modelList.closest('.ai-assistant-panel-bubble-action-more-menu');
+                if (ownerMenu) _positionBubbleMoreMenuWithinPanelBody(ownerMenu);
                 if (open) {
                     // Selection can change from the header/footer or another
                     // answer menu after this bubble was rendered. Refresh the
