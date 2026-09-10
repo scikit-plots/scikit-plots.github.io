@@ -33878,28 +33878,67 @@
         var workspacePanes = Object.create(null);
         var activeWorkspaceTab = 'contribution';
 
-        function _workspaceButton(key, label) {
+        function _workspaceButton(key, label, iconSvg) {
             var btn = document.createElement('button');
             btn.type = 'button';
+            btn.id = 'ai-assistant-panel-feedback-workspace-tab-' + key;
             btn.className = 'ai-assistant-conv-share-format-btn';
             btn.setAttribute('role', 'tab');
+            btn.setAttribute('aria-controls', 'ai-assistant-panel-feedback-workspace-pane-' + key);
             btn.dataset.workspaceTab = key;
-            btn.textContent = label;
+
+            // Match the proven Conversation export format-tab composition:
+            // one decorative glyph plus one text label.  The shared icon class
+            // keeps all tab glyphs on the same 14px baseline and currentColor
+            // means selected/hover/dark/forced-colour states stay inherited.
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-conv-share-format-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.innerHTML = iconSvg;
+            var text = document.createElement('span');
+            text.textContent = label;
+            btn.appendChild(icon);
+            btn.appendChild(text);
+
             btn.addEventListener('click', function () { _setWorkspaceTab(key); });
             workspaceButtons[key] = btn;
             workspaceTabs.appendChild(btn);
             return btn;
         }
-        _workspaceButton('feedback', 'Feedback');
-        _workspaceButton('contribution', 'Dataset contribution');
-        _workspaceButton('activity', 'Activity');
+        _workspaceButton('feedback', 'Feedback', ICONS.commentDiscussion);
+        _workspaceButton('contribution', 'Dataset contribution', ICONS.dataset);
+        _workspaceButton('activity', 'Activity', ICONS.pulse);
+
+        // Horizontal tabs use the expected roving-arrow interaction.  Click,
+        // programmatic selection, and keyboard selection all converge on
+        // `_setWorkspaceTab`, keeping aria-selected/tabindex/pane visibility in
+        // one authority instead of parallel state paths.
+        workspaceTabs.addEventListener('keydown', function (event) {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            var order = ['feedback', 'contribution', 'activity'];
+            var currentKey = event.target && event.target.dataset
+                ? event.target.dataset.workspaceTab : '';
+            var currentIndex = order.indexOf(currentKey);
+            if (currentIndex < 0) return;
+            var nextIndex = currentIndex;
+            if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + order.length) % order.length;
+            else if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % order.length;
+            else if (event.key === 'Home') nextIndex = 0;
+            else if (event.key === 'End') nextIndex = order.length - 1;
+            event.preventDefault();
+            var nextKey = order[nextIndex];
+            _setWorkspaceTab(nextKey);
+            workspaceButtons[nextKey].focus();
+        });
         sheet.appendChild(workspaceTabs);
 
         function _workspacePane(key) {
             var pane = document.createElement('div');
             pane.className = 'ai-assistant-panel-feedback-workspace-pane';
+            pane.id = 'ai-assistant-panel-feedback-workspace-pane-' + key;
             pane.dataset.workspacePane = key;
             pane.setAttribute('role', 'tabpanel');
+            pane.setAttribute('aria-labelledby', 'ai-assistant-panel-feedback-workspace-tab-' + key);
             workspacePanes[key] = pane;
             sheet.appendChild(pane);
             return pane;
@@ -36952,28 +36991,31 @@
                 meta.textContent = (artifact.format || '').toUpperCase() +
                     (provenanceName ? ' · ' + provenanceName : '') + ' · ' + (artifact.lifecycle || '');
                 text.appendChild(strong); text.appendChild(meta); row.appendChild(text);
+                var actions = document.createElement('div');
+                actions.className = 'ai-assistant-conv-share-artifact-actions';
+                row.appendChild(actions);
                 var terminalGlobal = artifact.kind === 'global' && ['revoked','expired'].indexOf(artifact.state) >= 0;
                 if (artifact.url && (artifact.kind === 'global' || artifact.kind === 'self_contained' || artifact.kind === 'local') && !terminalGlobal) {
                     var copyLink = document.createElement('button'); copyLink.type = 'button'; copyLink.className = 'ai-assistant-conv-share-action-btn';
                     copyLink.textContent = 'Copy link'; copyLink.disabled = !!artifact.busy;
-                    copyLink.addEventListener('click', function () { copyToClipboard(artifact.url, false); }); row.appendChild(copyLink);
+                    copyLink.addEventListener('click', function () { copyToClipboard(artifact.url, false); }); actions.appendChild(copyLink);
                 }
                 if (artifact.url && artifact.kind !== 'download' && !terminalGlobal) {
                     var open = document.createElement('button'); open.type = 'button'; open.className = 'ai-assistant-conv-share-action-btn';
                     open.textContent = 'Open'; open.disabled = !!artifact.busy;
-                    open.addEventListener('click', function () { _openArtifact(artifact); }); row.appendChild(open);
+                    open.addEventListener('click', function () { _openArtifact(artifact); }); actions.appendChild(open);
                 }
                 if (artifact.kind === 'global' && artifact.url && !terminalGlobal) {
                     var check = document.createElement('button'); check.type = 'button'; check.className = 'ai-assistant-conv-share-action-btn';
                     check.textContent = artifact.busy ? 'Checking…' : 'Check status'; check.disabled = !!artifact.busy;
-                    check.addEventListener('click', function () { _checkGlobalArtifactStatus(artifact); }); row.appendChild(check);
+                    check.addEventListener('click', function () { _checkGlobalArtifactStatus(artifact); }); actions.appendChild(check);
                 }
                 var remove = document.createElement('button'); remove.type = 'button'; remove.className = 'ai-assistant-conv-share-action-btn';
                 remove.disabled = !!artifact.busy;
                 remove.textContent = artifact.kind === 'global'
                     ? (artifact.editToken && !terminalGlobal ? 'Revoke' : 'Forget')
                     : artifact.kind === 'local' ? 'Remove' : artifact.kind === 'download' ? 'Forget' : 'Remove';
-                remove.addEventListener('click', function () { _removeArtifact(artifact); }); row.appendChild(remove);
+                remove.addEventListener('click', function () { _removeArtifact(artifact); }); actions.appendChild(remove);
                 // A reason-unknown 404 may retain a live edit capability. Revoke
                 // can therefore keep failing with 404; provide an explicit local
                 // Forget escape hatch without mislabeling it as remote deletion.
@@ -36982,7 +37024,7 @@
                     forgetUnavailable.type = 'button'; forgetUnavailable.className = 'ai-assistant-conv-share-action-btn';
                     forgetUnavailable.textContent = 'Forget'; forgetUnavailable.disabled = !!artifact.busy;
                     forgetUnavailable.addEventListener('click', function () { _forgetGlobalArtifactRecord(artifact); });
-                    row.appendChild(forgetUnavailable);
+                    actions.appendChild(forgetUnavailable);
                 }
                 artifactsList.appendChild(row);
             });
