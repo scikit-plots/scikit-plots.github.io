@@ -164,7 +164,18 @@
     /* when left sided, Avoid vertical cutting on the right side due to width. */
     /* transform: translate(-70px, 0); */
 
-    background-color: var(--ai-speak-toggle-surface);
+    /*
+     * The top-level toolbar dropdown owns its surface token.  Do not borrow
+     * `--ai-speak-toggle-surface`: that token is scoped to the in-panel speak
+     * control and therefore is undefined here.  An undefined custom property
+     * makes background-color invalid at computed-value time and the initial
+     * transparent background leaks through.
+     */
+    --ai-assistant-dropdown-surface: var(
+        --pst-color-surface,
+        var(--color-background-primary, #fff)
+    );
+    background-color: var(--ai-assistant-dropdown-surface, #fff);
     border: 1px solid var(
         --pst-color-border,
         var(--color-foreground-border, #e1e4e5)
@@ -177,7 +188,9 @@
     pointer-events: auto;
 }
 
-[data-bs-theme="dark"] .ai-assistant-dropdown {
+:is([data-theme="dark"], [data-mode="dark"], [data-bs-theme="dark"], .dark)
+    .ai-assistant-dropdown {
+    --ai-assistant-dropdown-surface: var(--pst-color-surface, #29313d);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.45),
                 0  4px  6px -2px rgba(0, 0, 0, 0.30);
 }
