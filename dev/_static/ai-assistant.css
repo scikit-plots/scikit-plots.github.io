@@ -21661,27 +21661,6 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     text-align: right;
 }
 .ai-assistant-panel-changed-files-list { display: grid; gap: .35rem; }
-.ai-assistant-panel-changed-file {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: stretch;
-    gap: .35rem;
-}
-.ai-assistant-panel-changed-file-preview {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    gap: .5rem;
-    min-width: 0;
-    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
-    border-radius: 8px;
-    padding: .45rem .52rem;
-    background: var(--pst-color-surface, #fff);
-    color: inherit;
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-}
 .ai-assistant-panel-changed-file-preview:hover,
 .ai-assistant-panel-changed-file-preview:focus-visible {
     border-color: color-mix(in srgb, var(--pst-color-primary, #4f46e5) 38%, var(--pst-color-border, #d8dce1));
@@ -21719,7 +21698,6 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     .ai-assistant-panel-activity { margin-left: .08rem; margin-right: .08rem; }
     .ai-assistant-panel-changed-files-head { align-items: flex-start; flex-direction: column; gap: .15rem; }
     .ai-assistant-panel-changed-files-head span { text-align: left; }
-    .ai-assistant-panel-changed-file { grid-template-columns: 1fr; }
     .ai-assistant-panel-changed-file-download { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -21777,35 +21755,10 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     .ai-assistant-panel-diff-stat-del { color: CanvasText; }
 }
 
-/* Patch export button — same affordance weight as Download, so neither reads
-   as the primary action. `git am` is offered, never assumed. */
-.ai-assistant-panel-changed-file-patch {
-    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
-    border-radius: 8px;
-    padding: .45rem .55rem;
-    background: var(--pst-color-surface, #fff);
-    color: inherit;
-    font: inherit;
-    font-size: .62rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-}
-.ai-assistant-panel-changed-file-patch:hover,
-.ai-assistant-panel-changed-file-patch:focus-visible {
-    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
-}
-.ai-assistant-panel-changed-file {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-}
-
-/* Snippet promotion and working-file continuation.
-   Both are secondary to the primary Download/Preview action: a reader who
-   only wants the bytes should never have to read past them. */
+/* Snippet promotion and bulk patch export are secondary actions. */
 .ai-md-artifact-row { display: flex; align-items: stretch; gap: .35rem; min-width: 0; }
 .ai-md-artifact-row .ai-md-artifact-card { flex: 1 1 auto; min-width: 0; }
 .ai-md-artifact-promote,
-.ai-assistant-panel-changed-file-continue,
 .ai-assistant-panel-changed-files-series {
     border: 1px dashed color-mix(in srgb, var(--pst-color-border, #d8dce1) 82%, transparent);
     border-radius: 8px;
@@ -21819,8 +21772,6 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     white-space: nowrap;
 }
 .ai-md-artifact-promote:hover, .ai-md-artifact-promote:focus-visible,
-.ai-assistant-panel-changed-file-continue:hover,
-.ai-assistant-panel-changed-file-continue:focus-visible,
 .ai-assistant-panel-changed-files-series:hover,
 .ai-assistant-panel-changed-files-series:focus-visible {
     border-style: solid;
@@ -21828,14 +21779,6 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
 }
 .ai-assistant-panel-changed-files-series { justify-self: start; margin-top: .1rem; }
-.ai-assistant-panel-changed-file {
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
-}
-@media (max-width: 420px) {
-    /* Four controls do not fit a narrow panel; the row wraps instead of
-       clipping the filename, which is the part that identifies the file. */
-    .ai-assistant-panel-changed-file { grid-template-columns: minmax(0, 1fr) auto; }
-}
 
 /* A generated file that lost its claim on the tracked revision. Presented, not
    hidden: the bytes are still a real answer, they simply did not win. */
@@ -21923,28 +21866,25 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 .ai-assistant-panel-changed-files-list[hidden] { display: none; }
 
 /* ── Presented-file cards ───────────────────────────────────────────────────
-   Preview and Download are the two actions most readers want, so they own the
-   card's primary row. Patch and Continue sit on a quieter second line: still
-   one click away, but no longer competing for the same visual weight. */
+   One layout authority only. The shared artifact group owns Preview + Download;
+   the overflow trigger is the only peer beside it:
+
+       [ icon + filename/meta | Download ] [ ⋮ ]
+
+   Extra file actions live in the overflow menu, so they never create another
+   primary-row column or compete with the filename. */
 .ai-assistant-panel-changed-file {
     display: flex;
     flex-direction: column;
     gap: .3rem;
-    grid-template-columns: none;
 }
 .ai-assistant-panel-changed-file-primary {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: stretch;
     gap: .35rem;
+    position: relative;
 }
-.ai-assistant-panel-changed-file-secondary {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .35rem;
-    padding-inline-start: .2rem;
-}
-.ai-assistant-panel-changed-file-secondary:empty { display: none; }
 .ai-assistant-panel-changed-file-badge {
     display: inline-block;
     margin-inline-start: .4rem;
@@ -21979,46 +21919,6 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 .ai-assistant-panel-changed-files-footer[hidden] { display: none; }
 .ai-assistant-panel-changed-files-download-all { flex: 1 1 100%; }
 
-/* ── Presented-file card: preview | download | save as ─────────────────────
-   Three columns, and the preview claims all the room left over. The card body
-   IS the preview target, so the whole block is the affordance rather than a
-   small word at its end — the same shape as an attachment tile, opening the
-   same full overlay. */
-.ai-assistant-panel-changed-file-primary {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-}
-.ai-assistant-panel-changed-file-preview {
-    min-height: 3.1rem;
-    align-items: center;
-}
-.ai-assistant-panel-changed-file-saveas {
-    border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
-    border-radius: 8px;
-    padding: .45rem .55rem;
-    background: var(--pst-color-surface, #fff);
-    color: inherit;
-    font: inherit;
-    font-size: .62rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-}
-.ai-assistant-panel-changed-file-saveas:hover,
-.ai-assistant-panel-changed-file-saveas:focus-visible {
-    background: color-mix(in srgb, var(--pst-color-surface, #fff) 92%, #808080 8%);
-}
-@media (max-width: 420px) {
-    /* Three actions plus a filename do not fit a narrow panel. The filename is
-       the part that identifies the card, so it keeps the full width and the
-       actions wrap beneath it rather than being clipped. */
-    .ai-assistant-panel-changed-file-primary {
-        grid-template-columns: minmax(0, 1fr);
-    }
-    .ai-assistant-panel-changed-file-primary > button:not(.ai-assistant-panel-changed-file-preview) {
-        justify-self: start;
-    }
-}
-
 /* ── File-editing sheet: code with a line-number gutter ────────────────────
    The numbers are a sibling of the code, never a prefix inside it. Prefixing
    is the usual shortcut and it poisons every copy, download and patch taken
@@ -22035,14 +21935,17 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
        line of the file, stretching a 5543-line preview to the length of the
        file while the two slid out of step. */
     max-height: min(70vh, 28rem);
+    /* A real file sheet owns bounded vertical scrolling. Keep the axes
+       explicit: an `overflow: hidden` shorthand here used to silently erase
+       overflow-y:auto while leaving overscroll containment behind. */
     overflow-y: auto;
+    overflow-x: hidden;
     overscroll-behavior: contain;
     align-items: stretch;
     gap: 0;
     border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
     border-top: 0;
     border-radius: 0 0 8px 8px;
-    overflow: hidden;
 }
 .ai-md-file-gutter {
     flex: 0 0 auto;
@@ -22082,33 +21985,9 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     margin-bottom: 0;
 }
 
-/* One quiet disclosure instead of two more buttons per file. Five visible
-   controls made the block read as a control panel rather than a result. */
-.ai-assistant-panel-changed-file-more {
-    align-self: start;
-    border: 0;
-    background: transparent;
-    padding: .1rem .2rem;
-    color: var(--pst-color-text-muted, #71717a);
-    font: inherit;
-    font-size: .58rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline dotted;
-    text-underline-offset: 2px;
-}
-.ai-assistant-panel-changed-file-more:hover,
-.ai-assistant-panel-changed-file-more:focus-visible { color: inherit; }
-.ai-assistant-panel-changed-file-secondary[hidden] { display: none; }
-
-/* ── File card: preview fills, then download, then ⋮ ───────────────────────
-   Preview and Download are what almost every reader wants. Everything else is
-   behind one menu — the same affordance the panel subbar already uses, so a
-   reader who has met it once has met it here. */
-.ai-assistant-panel-changed-file-primary {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-    position: relative;
-}
+/* ── Presented-file overflow menu ─────────────────────────────────────────
+   The segmented preview/download group is the primary control. Everything
+   else stays behind one menu beside that group. */
 .ai-assistant-panel-changed-file-overflow {
     display: inline-flex;
     align-items: center;
@@ -22306,6 +22185,14 @@ button.ai-md-artifact-download-label:focus-visible {
     background: transparent;
     margin: 0;
 }
+.ai-md-artifact-group > .ai-md-artifact-card {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+}
+.ai-md-artifact-group > button.ai-md-artifact-download-label {
+    flex: 0 0 auto;
+}
 .ai-md-artifact-group > .ai-md-artifact-card:hover,
 .ai-md-artifact-group > button.ai-md-artifact-download-label:hover {
     background: color-mix(in srgb, var(--pst-color-surface, #fff) 93%, #808080 7%);
@@ -22319,27 +22206,11 @@ button.ai-md-artifact-download-label:focus-visible {
     background: color-mix(in srgb, var(--pst-color-border, #d8dce1) 70%, transparent);
 }
 
-/* The Presented files section uses the same segmented control as the snippet
-   cards above it. Only the outer grid differs: the group takes the room the
-   overflow menu leaves, and the preview segment takes the room inside it. */
-.ai-assistant-panel-changed-file-primary {
-    grid-template-columns: minmax(0, 1fr) auto;
-}
+/* Presented files inherit the exact segmented-control geometry above. The
+   outer grid only needs to guarantee that the shared group may shrink beside
+   its overflow trigger. */
 .ai-assistant-panel-changed-file-primary > .ai-md-artifact-group {
     min-width: 0;
-}
-.ai-md-artifact-group > .ai-assistant-panel-changed-file-preview {
-    flex: 1 1 auto;
-    min-width: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-}
-.ai-md-artifact-group > .ai-assistant-panel-changed-file-download {
-    flex: 0 0 auto;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
 }
 .ai-md-artifact-group > .ai-assistant-panel-changed-file-preview:hover,
 .ai-md-artifact-group > .ai-assistant-panel-changed-file-preview:focus-visible,
@@ -22756,6 +22627,20 @@ button.ai-md-artifact-download-label:focus-visible,
     border-radius: 8px;
     border-top: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 80%, transparent);
     margin: .4rem 0;
+    /* Inline answer snippets belong to the conversation's scroll flow. They
+       must never become a second vertical scroller just because they reuse
+       the numbered file-sheet structure. A wheel, trackpad or vertical touch
+       gesture over code therefore continues the chat/page naturally.
+
+       Horizontal ownership stays with the inner <pre>; `overflow: visible`
+       here also removes the scroll-container/overscroll trap created by the
+       generic file-sheet contract. */
+    max-height: none;
+    overflow: visible;
+    overscroll-behavior: auto;
+    /* Preserve the rounded visual crop without turning this wrapper back into
+       an overflow container. */
+    clip-path: inset(0 round 8px);
 }
 .ai-md-snippet-sheet .ai-md-pre-wrap { margin: 0; }
 /* The gutter shares the code's line box here too. Restating the values would
@@ -22770,6 +22655,14 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-md-snippet-sheet .ai-md-pre {
     font-size: .72rem;
     line-height: 1.5;
+}
+/* The code cell owns only horizontal movement. Explicitly allow both pan axes
+   so touch/tablet browsers can route vertical motion to the conversation while
+   a deliberate horizontal drag still pans a long line. No wheel interceptor is
+   needed: native scroll chaining is the intended behaviour. */
+.ai-md-snippet-sheet .ai-md-pre {
+    overscroll-behavior-y: auto;
+    touch-action: pan-x pan-y pinch-zoom;
 }
 
 /* ── Numbered sheets own the scroll, and never wrap ────────────────────────

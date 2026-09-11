@@ -50028,10 +50028,11 @@
             _generatedArtifactBindLatest(key, preview, meta);
             var download = document.createElement('button');
             download.type = 'button';
-            download.className = 'ai-assistant-panel-changed-file-download';
+            download.className = 'ai-md-artifact-download-label ai-assistant-panel-changed-file-download';
             _decorateIconButton(download, ICONS.exportTxt, 'Download');
             download.setAttribute('data-ai-artifact-download-key', key);
             download.setAttribute('aria-label', 'Download latest ' + entry.path + ' under its own name');
+            download.title = 'Download latest ' + entry.path + ' under its own name';
             download.addEventListener('click', function () { _generatedArtifactDownloadLatest(key); });
             var primary = document.createElement('div');
             primary.className = 'ai-assistant-panel-changed-file-primary';
