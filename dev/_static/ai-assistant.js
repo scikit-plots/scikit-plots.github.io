@@ -2954,25 +2954,8 @@
             // ⋮ for everything else. The snippet card previously carried a
             // second full-width "Save as file…" button, which read as a peer
             // of Download and made a two-snippet answer four buttons wide.
-            var snippetMenu = (function (codeText, langTag, suggestedName) {
-                return _buildOverflowMenu('More options for ' + suggestedName, [
-                    { icon: ICONS.terms, label: 'Save as a tracked file\u2026',
-                      hint: 'Gives it revisions, diffs and patch export',
-                      run: function () {
-                          _promoteSnippetToFile(root, codeText, langTag, suggestedName);
-                      } },
-                    { icon: ICONS.exportTxt, label: 'Download as\u2026',
-                      hint: 'Download under a name you choose',
-                      run: function () {
-                          var raw = window.prompt(
-                              'Download this snippet as\\n\\nThe name is used for the ' +
-                              'download only; nothing is tracked.', suggestedName);
-                          if (raw === null) return;
-                          var chosen = _artifactNameSlugPreservingExtension(raw) || suggestedName;
-                          _downloadBlob(codeText, 'text/plain', chosen);
-                      } }
-                ], 'ai-md-artifact-overflow');
-            }(codeEl ? codeEl.textContent : '', lang, filename));
+            var snippetMenu = _buildSnippetOverflow(
+                root, card, codeEl ? codeEl.textContent : '', lang, filename, typeLabel);
 
             var iconWrap = document.createElement('span');
             iconWrap.className = 'ai-md-artifact-icon';
@@ -48859,9 +48842,9 @@
         return btn;
     }
 
-    /** The tracked-file menu: everything the card no longer shows as a button. */
-    function _buildFileOverflow(key, entry) {
-        return _buildOverflowMenu('More options for ' + entry.path, function () { return [
+    /** Shared tracked-file action list, used by Presented files and promoted snippets. */
+    function _fileOverflowItems(key) {
+        return [
             { label: 'Open in a sheet', hint: 'Full view with line numbers', icon: ICONS.terms,
               run: function () { _generatedArtifactOpenSheet(key); } },
             { label: 'Save as\u2026', hint: 'Download under a name you choose', icon: ICONS.exportTxt,
@@ -48873,7 +48856,79 @@
                     run: function () { _generatedArtifactStopContinuing(key); } }
                 : { label: 'Continue editing', hint: 'Attach to your next message', icon: ICONS.chevronDown,
                     run: function () { _generatedArtifactContinueEditing(key); } }
-        ]; });
+        ];
+    }
+
+    /**
+     * Build the answer-snippet overflow with the same workflow grammar as a
+     * tracked file, without pretending an anonymous snippet already has a
+     * repository path or patch base.
+     *
+     * Before promotion: inspect -> save -> track -> continue. Continue first
+     * asks for the path it requires, then stages that tracked revision. After
+     * promotion the same trigger resolves `_fileOverflowItems`, so the menu
+     * itself graduates with the artifact instead of teaching a second model.
+     */
+    function _buildSnippetOverflow(root, card, codeText, langTag, suggestedName, typeLabel) {
+        var promotedKey = null;
+
+        function promotedEntry() {
+            var entry = promotedKey && _generatedArtifactLedger[promotedKey];
+            return _generatedArtifactIsAvailable(entry) ? entry : null;
+        }
+
+        function trackSnippet() {
+            var entry = _promoteSnippetToFile(root, codeText, langTag, suggestedName);
+            if (entry) promotedKey = entry.key;
+            return entry;
+        }
+
+        function snippetPreviewItem() {
+            return {
+                kind: 'text',
+                name: suggestedName,
+                previewText: codeText,
+                size: _utf8ByteLength(codeText || ''),
+                lineCount: codeText ? codeText.split(/\r?\n/).length : 0,
+                status: typeLabel + ' \u00b7 answer snippet \u00b7 not a tracked file',
+                badge: 'SNIPPET',
+                sendEligible: false,
+                turnScoped: true,
+                sheet: true
+            };
+        }
+
+        return _buildOverflowMenu('More options for ' + suggestedName, function () {
+            var entry = promotedEntry();
+            if (entry) return _fileOverflowItems(entry.key);
+            return [
+                { label: 'Open in a sheet', hint: 'Full view with line numbers', icon: ICONS.terms,
+                  run: function () { _openAttachmentPreview(snippetPreviewItem(), card); } },
+                { label: 'Save as\u2026', hint: 'Download under a name you choose', icon: ICONS.exportTxt,
+                  run: function () {
+                      var raw = window.prompt(
+                          'Download this snippet as\n\nThe name is used for the ' +
+                          'download only; nothing is tracked.', suggestedName);
+                      if (raw === null) return;
+                      var chosen = _artifactNameSlugPreservingExtension(raw) || suggestedName;
+                      _downloadBlob(codeText, 'text/plain', chosen);
+                  } },
+                { label: 'Track as file\u2026', hint: 'Add revisions, diffs and patch export', icon: ICONS.gitMark,
+                  run: function () { trackSnippet(); } },
+                { label: 'Continue editing', hint: 'Track it, then attach to your next message', icon: ICONS.chevronDown,
+                  run: function () {
+                      var tracked = trackSnippet();
+                      if (tracked) _generatedArtifactContinueEditing(tracked.key);
+                  } }
+            ];
+        }, 'ai-md-artifact-overflow');
+    }
+
+    /** The tracked-file menu: everything the card no longer shows as a button. */
+    function _buildFileOverflow(key, entry) {
+        return _buildOverflowMenu('More options for ' + entry.path, function () {
+            return _fileOverflowItems(key);
+        });
     }
 
     /**
@@ -48997,7 +49052,7 @@
         var existing = _generatedArtifactLedger[path];
         if (existing && existing.content === code) {
             showNotification(path + ' already tracks exactly this content at revision r' + existing.revision + '.', false);
-            return;
+            return existing;
         }
         // Deliberately routed through the ordinary registration path: a
         // promoted snippet that collides with an existing path becomes the
@@ -49021,6 +49076,7 @@
         // the existing section's refs already resolve latest state for it.
         _appendChangedFileSummary(root, [entry.key]);
         _generatedArtifactRefreshRefs(entry.key);
+        return entry;
     }
 
     /**

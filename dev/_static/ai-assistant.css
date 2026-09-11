@@ -164,10 +164,7 @@
     /* when left sided, Avoid vertical cutting on the right side due to width. */
     /* transform: translate(-70px, 0); */
 
-    background-color: var(
-        --pst-color-surface,
-        var(--color-background-primary, #fff)
-    );
+    background-color: var(--ai-speak-toggle-surface);
     border: 1px solid var(
         --pst-color-border,
         var(--color-foreground-border, #e1e4e5)
@@ -22014,7 +22011,9 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     border: 1px solid color-mix(in srgb, var(--pst-color-border, #d8dce1) 78%, transparent);
     border-radius: 8px;
     background: var(--pst-color-surface, #fff);
-    color: var(--pst-color-text-muted, #71717a);
+    color: var(--ai-speak-toggle-ink);
+    opacity: 1;
+    visibility: visible;
     cursor: pointer;
 }
 .ai-assistant-panel-changed-file-overflow:hover,
@@ -23046,24 +23045,29 @@ button.ai-md-artifact-download-label:focus-visible,
     align-items: center;
     gap: .25rem;
     /*
-     * Zero height in BOTH states, contents lifted clear.
+     * R173T96 — keep a REAL paint box on mobile hardware.
      *
-     * Collapsed it already worked this way (R173T58): the transcript took the
-     * row and the space beside the pill showed the conversation through it.
-     * Expanded it was still an in-flow row, so that same space was panel
-     * background -- opaque, with nothing behind it.
+     * The earlier zero-height row translated every child upward by -100%.
+     * Hit-testing was reliable, but some mobile/WebKit compositors could lose
+     * the painted SVG while the invisible button remained clickable: a
+     * transformed SVG inside a transformed child overflowing a zero-height
+     * flex container is an unnecessarily fragile layer tree.
      *
-     * The difference between the two states is now what is drawn, not whether
-     * the row occupies a line.
+     * Give the row a normal ~control-height box and cancel that flow cost with
+     * an equal negative block-start margin.  The transcript still reclaims the
+     * space (its end padding already reserves the floating control), but the
+     * button and SVG now paint in ordinary layout coordinates with no parent
+     * translate transform.
      */
-    height: 0;
-    min-height: 0;
-    margin: 0 0.75rem;
+    min-height: 2rem;
+    height: auto;
+    margin: -2rem 0.75rem 0;
     overflow: visible;
     position: relative;
     z-index: 3;
+    isolation: isolate;
 }
-.ai-assistant-panel-speak-row > * { transform: translateY(-100%); }
+.ai-assistant-panel-speak-row > * { transform: none; }
 .ai-assistant-panel-speak-row .ai-assistant-panel-speak-banner {
     flex: 1 1 auto;
     min-width: 0;
@@ -23099,6 +23103,21 @@ button.ai-md-artifact-download-label:focus-visible,
 }
 .ai-assistant-panel-speak-toggle {
     /*
+     * Surface/ink are a semantic pair.  `on-surface` is deliberately used
+     * instead of a generic text or accent token: this control is literally
+     * drawn on `--pst-color-surface`, and PyData publishes the matching ink.
+     * The hard fallbacks keep the control readable even in partial/custom
+     * theme integrations.
+     */
+    --ai-speak-toggle-surface: var(
+        --pst-color-surface,
+        var(--color-background-primary, #f3f4f5)
+    );
+    --ai-speak-toggle-ink: var(
+        --pst-color-on-surface,
+        var(--pst-color-text-base, var(--color-foreground-primary, #222832))
+    );
+    /*
      * The same ground as the banner beside it, at every width.
      *
      * Collapsed, both ends already carried a surface (R173T57). Expanded, the
@@ -23107,10 +23126,7 @@ button.ai-md-artifact-download-label:focus-visible,
      * next to it. The row itself stays transparent either way -- what changed
      * is that both ends now read as the same kind of thing.
      */
-    background-color: var(
-        --pst-color-surface,
-        var(--color-background-primary, #fff)
-    );
+    background-color: var(--ai-speak-toggle-surface);
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
@@ -23121,7 +23137,9 @@ button.ai-md-artifact-download-label:focus-visible,
     border-radius: 999px;
     -webkit-appearance: none;
     appearance: none;
-    color: var(--pst-color-text-muted, #71717a);
+    color: var(--ai-speak-toggle-ink);
+    opacity: 1;
+    visibility: visible;
     cursor: pointer;
 }
 /* Matched heights, so the pair sits on one baseline rather than a pill beside a
@@ -23135,20 +23153,22 @@ button.ai-md-artifact-download-label:focus-visible,
 .ai-assistant-panel-speak-toggle:active {
     background: color-mix(
         in srgb,
-        var(--pst-color-surface, var(--color-background-primary, #fff)) 88%,
-        var(--pst-color-text-base, var(--color-foreground-primary, #1f2328)) 12%
+        var(--ai-speak-toggle-surface) 88%,
+        var(--ai-speak-toggle-ink) 12%
     );
     /* Never inherit here: touch browsers can keep :hover after a tap. */
-    color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2328));
+    color: var(--ai-speak-toggle-ink);
 }
-[data-bs-theme="dark"] .ai-assistant-panel-speak-toggle:hover,
-[data-bs-theme="dark"] .ai-assistant-panel-speak-toggle:focus-visible,
-[data-bs-theme="dark"] .ai-assistant-panel-speak-toggle:active,
-.dark .ai-assistant-panel-speak-toggle:hover,
-.dark .ai-assistant-panel-speak-toggle:focus-visible,
-.dark .ai-assistant-panel-speak-toggle:active {
-    background: rgba(255, 255, 255, 0.12);
-    color: #e6e6e6;
+/* PyData uses data-theme/data-mode; Bootstrap integrations may use
+   data-bs-theme and older hosts may still expose a .dark ancestor. */
+:is([data-theme="dark"], [data-mode="dark"], [data-bs-theme="dark"], .dark)
+    .ai-assistant-panel-speak-toggle:hover,
+:is([data-theme="dark"], [data-mode="dark"], [data-bs-theme="dark"], .dark)
+    .ai-assistant-panel-speak-toggle:focus-visible,
+:is([data-theme="dark"], [data-mode="dark"], [data-bs-theme="dark"], .dark)
+    .ai-assistant-panel-speak-toggle:active {
+    background: color-mix(in srgb, var(--ai-speak-toggle-surface) 82%, var(--ai-speak-toggle-ink) 18%);
+    color: var(--ai-speak-toggle-ink);
 }
 /* The chevron points the way the next press goes, rotated from the announced
    state so the glyph and `aria-expanded` cannot disagree. */
@@ -23156,24 +23176,35 @@ button.ai-md-artifact-download-label:focus-visible,
     display: block;
     width: .85rem;
     height: .85rem;
-    color: inherit;
-    stroke: currentColor;
+    color: var(--ai-speak-toggle-ink);
+    fill: none;
+    stroke: var(--ai-speak-toggle-ink);
+    stroke-width: 2.25;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
     transition: transform .12s ease-out;
     transform: rotate(90deg);
+}
+.ai-assistant-panel-speak-toggle svg * {
+    vector-effect: non-scaling-stroke;
 }
 /* Touch has no dependable hover state.  The chevron therefore owns a
    readable resting colour instead of relying on hover/focus to reveal it. */
 @media (hover: none), (pointer: coarse) {
     .ai-assistant-panel-speak-toggle {
-        color: var(--pst-color-text-base, var(--color-foreground-primary, #1f2328));
-    }
-    [data-bs-theme="dark"] .ai-assistant-panel-speak-toggle,
-    .dark .ai-assistant-panel-speak-toggle {
-        color: var(--pst-color-text-base, var(--color-foreground-primary, #e6e6e6));
+        /* Do not wait for hover to reveal the control on touch hardware. */
+        color: var(--ai-speak-toggle-ink);
+        min-width: 2rem;
+        min-height: 2rem;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
     .ai-assistant-panel-speak-toggle svg {
         width: 1rem;
         height: 1rem;
+        color: var(--ai-speak-toggle-ink);
+        stroke: var(--ai-speak-toggle-ink);
     }
 }
 .ai-assistant-panel-speak-toggle[aria-expanded="true"] svg { transform: rotate(-90deg); }
@@ -23181,40 +23212,28 @@ button.ai-md-artifact-download-label:focus-visible,
     .ai-assistant-panel-speak-toggle svg { transition: none; }
 }
 @media (forced-colors: active) {
-    .ai-assistant-panel-speak-toggle { color: ButtonText; }
+    .ai-assistant-panel-speak-toggle {
+        --ai-speak-toggle-surface: Canvas;
+        --ai-speak-toggle-ink: ButtonText;
+        color: ButtonText;
+        border: 1px solid ButtonText;
+        forced-color-adjust: auto;
+    }
+    .ai-assistant-panel-speak-toggle svg {
+        color: ButtonText;
+        stroke: ButtonText;
+    }
 }
 
-/* ── Collapsed, the row stops costing a row ────────────────────────────────
-   Collapsed the hint is one icon, and it was still holding a full-width flex
-   line with empty space beside it. The transcript now takes that width: the
-   pill floats at the bottom-trailing corner of the panel and the row it used
-   to occupy is gone from the flow.
-
-   The trade is stated rather than hidden: a floating control can cover the
-   last line of a message, so the transcript keeps a small end padding while
-   the hint is collapsed. That padding is smaller than the row it replaces, so
-   the transcript gains height as well as width — but it is not free, and
-   pretending otherwise would mean a pill that sometimes sits on top of the
-   final line of an answer. */
-/*
- * Zero-height, lifted -- not absolutely positioned.
- *
- * The previous attempt used `position: absolute; bottom: calc(100% + …)` on
- * the assumption that the footer was the positioning ancestor. It is not: the
- * row is `panel.appendChild(speakRow)`, a sibling of the footer and a child of
- * the panel, so `100%` resolved against the panel's full height and the pill
- * was pushed clear off the top of it. It did not move; it left.
- *
- * Collapsing the row's own height to zero and lifting its contents needs no
- * positioning ancestor at all. The row keeps its place in the panel's column,
- * between the transcript and the footer, so the pill always lands just above
- * the composer however tall the composer has grown -- which is the property
- * the absolute version was reaching for and got wrong.
- */
+/* ── Collapsed row: floating without transformed paint layers ──────────────
+   The transcript keeps a small end padding for the hint.  R173T96 preserves
+   the same effective zero-flow-cost placement with a positive-height row plus
+   an equal negative block-start margin.  Unlike the old zero-height/translate
+   version, the button and SVG retain ordinary paint boxes on mobile GPUs. */
 .ai-assistant-panel-speak-row[data-collapsed="true"] > * {
-    /* Lifted fully above its own zero-height box, into the space the
-       transcript's end padding reserves for it. */
-    transform: translateY(-100%);
+    /* R173T96: no transform-based lift.  The row's negative margin performs
+       the flow offset while children retain a stable positive paint box. */
+    transform: none;
 }
 /* A backdrop, because the pill now sits over transcript text rather than over
    panel background. Without it the glyph competes with whatever is behind it. */
@@ -23223,11 +23242,12 @@ button.ai-md-artifact-download-label:focus-visible,
     background: var(--pst-color-surface, #fff);
     box-shadow: 0 1px 6px rgb(0 0 0 / .16);
 }
-[data-bs-theme="dark"] .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
-[data-bs-theme="dark"] .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle,
-.dark .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
-.dark .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle {
-    background: #2b2f36;
+:is([data-theme="dark"], [data-mode="dark"], [data-bs-theme="dark"], .dark)
+    .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-banner,
+:is([data-theme="dark"], [data-mode="dark"], [data-bs-theme="dark"], .dark)
+    .ai-assistant-panel-speak-row[data-collapsed="true"] .ai-assistant-panel-speak-toggle {
+    background: var(--pst-color-surface, #29313d);
+    color: var(--pst-color-on-surface, #f3f4f5);
     box-shadow: 0 1px 6px rgb(0 0 0 / .5);
 }
 @media (forced-colors: active) {
