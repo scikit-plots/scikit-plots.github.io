@@ -19684,8 +19684,27 @@
             chevron.innerHTML = ICONS.chevronDown;   // ICONS constant — safe.
             summary.appendChild(chevron);
             var titleSpan = document.createElement('span');
+            titleSpan.className = 'ai-md-section-title';
             titleSpan.textContent = h.textContent;
             summary.appendChild(titleSpan);
+
+            // A disclosure should explain its action without making screen
+            // readers repeat state that native <details>/<summary> already
+            // exposes.  Keep the hint visual-only and let CSS swap the words
+            // from the authoritative [open] state -- no second JS state
+            // machine can drift from the element itself.
+            var actionHint = document.createElement('span');
+            actionHint.className = 'ai-md-section-action-hint';
+            actionHint.setAttribute('aria-hidden', 'true');
+            var hideHint = document.createElement('span');
+            hideHint.className = 'ai-md-section-action ai-md-section-action--hide';
+            hideHint.textContent = 'Hide section';
+            actionHint.appendChild(hideHint);
+            var showHint = document.createElement('span');
+            showHint.className = 'ai-md-section-action ai-md-section-action--show';
+            showHint.textContent = 'Show section';
+            actionHint.appendChild(showHint);
+            summary.appendChild(actionHint);
             details.appendChild(summary);
 
             // Move every sibling up to (not including) the next top-level
