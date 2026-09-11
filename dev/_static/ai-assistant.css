@@ -21660,7 +21660,11 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     font-size: .6rem;
     text-align: right;
 }
-.ai-assistant-panel-changed-files-list { display: grid; gap: .35rem; }
+.ai-assistant-panel-changed-files-list {
+    display: grid;
+    gap: .35rem;
+    min-width: 0;
+}
 .ai-assistant-panel-changed-file-preview:hover,
 .ai-assistant-panel-changed-file-preview:focus-visible {
     border-color: color-mix(in srgb, var(--pst-color-primary, #4f46e5) 38%, var(--pst-color-border, #d8dce1));
@@ -21696,9 +21700,6 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
 .ai-assistant-panel-changed-files-download-all { justify-self: start; }
 @media (max-width: 560px) {
     .ai-assistant-panel-activity { margin-left: .08rem; margin-right: .08rem; }
-    .ai-assistant-panel-changed-files-head { align-items: flex-start; flex-direction: column; gap: .15rem; }
-    .ai-assistant-panel-changed-files-head span { text-align: left; }
-    .ai-assistant-panel-changed-file-download { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
     .ai-assistant-panel-activity-caret { transition: none; }
@@ -21877,12 +21878,14 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
     display: flex;
     flex-direction: column;
     gap: .3rem;
+    min-width: 0;
 }
 .ai-assistant-panel-changed-file-primary {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: stretch;
     gap: .35rem;
+    min-width: 0;
     position: relative;
 }
 .ai-assistant-panel-changed-file-badge {
@@ -21909,6 +21912,21 @@ textarea.ai-assistant-panel-skill-input { min-height:4.25rem; resize:vertical; f
        wide one. */
     container-type: inline-size;
     container-name: ai-artifact-surface;
+}
+
+/* T95 — Presented-file responsiveness follows the component, not the viewport.
+   Older CSS made the Download segment `width:100%` at <=560px, which was only
+   valid when Download lived on its own row. Inside the segmented artifact
+   group that width consumes the whole group and collapses Preview toward zero.
+   The group now keeps the same [preview | separator | download] geometry at
+   every width; only labels compact via the artifact-surface queries below. */
+@container ai-artifact-surface (max-width: 35rem) {
+    .ai-assistant-panel-changed-files-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: .15rem;
+    }
+    .ai-assistant-panel-changed-files-head span { text-align: left; }
 }
 .ai-assistant-panel-changed-files-footer {
     display: flex;
