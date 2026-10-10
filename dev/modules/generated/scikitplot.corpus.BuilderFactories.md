@@ -1,6 +1,6 @@
 # BuilderFactories[#](#builderfactories "Link to this heading")
 
-class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1331)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
+class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **downloader\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1331)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
 :   Component factory callables for [`FactoryCorpusBuilder`](scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder").
 
     Each factory replaces the corresponding lazy-creation method in
@@ -40,6 +40,9 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
 
             ```
 
+        ****downloader\_factory****callable or None, optional
+        :   Factory for URL downloaders. Called for each downloadable URL.
+
         ****normalizer\_factory****callable or None, optional
         :   Factory for the
             `NormalizationPipeline`.
@@ -72,6 +75,7 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
     :   * ****reader\_factory**** (**Callable****[****...****,** **Any****]** **|** **None**)
         * ****chunker\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
         * ****filter\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
+        * ****downloader\_factory**** (**Callable****[****...****,** **Any****]** **|** **None**)
         * ****normalizer\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
         * ****enricher\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
         * ****embedding\_engine\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
@@ -96,13 +100,15 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
         return DocumentReader.create(source, chunker=chunker, default_language=lang)
 
     factories = BuilderFactories(reader_factory=smart_reader_factory)
-    builder = FactoryCorpusBuilder(factories=factories)
+    builder = CorpusBuilder(factories=factories)
     result = builder.build("./data/")
 
     ```
     Go BackOpen In Tab
 
     chunker\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.chunker_factory "Link to this definition")
+
+    downloader\_factory: Callable[..., Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.downloader_factory "Link to this definition")
 
     embedding\_engine\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.embedding_engine_factory "Link to this definition")
 

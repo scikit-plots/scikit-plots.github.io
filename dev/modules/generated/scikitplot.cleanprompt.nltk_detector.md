@@ -1,6 +1,6 @@
 # nltk\_detector[#](#nltk-detector "Link to this heading")
 
-scikitplot.cleanprompt.nltk\_detector(**labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **language='en'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_nltk.py#L615)[#](#scikitplot.cleanprompt.nltk_detector "Link to this definition")
+scikitplot.cleanprompt.nltk\_detector(**labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **language='en'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_nltk.py#L615)[#](#scikitplot.cleanprompt.nltk_detector "Link to this definition")
 :   Build an [`NltkDetector`](scikitplot.cleanprompt.NltkDetector.html#scikitplot.cleanprompt.NltkDetector "scikitplot.cleanprompt.NltkDetector").
 
     Parameters:

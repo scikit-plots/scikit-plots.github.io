@@ -1,6 +1,6 @@
 # DiscoveryOutcome[#](#discoveryoutcome "Link to this heading")
 
-class scikitplot.corpus.DiscoveryOutcome(**source**, **status**, **count=0**, **reason=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_catalog.py#L81)[#](#scikitplot.corpus.DiscoveryOutcome "Link to this definition")
+class scikitplot.corpus.DiscoveryOutcome(**source**, **status**, **count=0**, **reason=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L81)[#](#scikitplot.corpus.DiscoveryOutcome "Link to this definition")
 :   What happened when one source was asked for its components.
 
     Parameters:
@@ -28,6 +28,6 @@ class scikitplot.corpus.DiscoveryOutcome(**source**, **status**, **count=0**, **
 
     reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.DiscoveryOutcome.reason "Link to this definition")
 
-    source: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_catalog.py#L81)[#](#scikitplot.corpus.DiscoveryOutcome.source "Link to this definition")
+    source: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L81)[#](#scikitplot.corpus.DiscoveryOutcome.source "Link to this definition")
 
-    status: [DiscoveryStatus](scikitplot.corpus.DiscoveryStatus.html#scikitplot.corpus.DiscoveryStatus "scikitplot.corpus._catalog.DiscoveryStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_catalog.py#L81)[#](#scikitplot.corpus.DiscoveryOutcome.status "Link to this definition")
+    status: [DiscoveryStatus](scikitplot.corpus.DiscoveryStatus.html#scikitplot.corpus.DiscoveryStatus "scikitplot.corpus._catalog.DiscoveryStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L81)[#](#scikitplot.corpus.DiscoveryOutcome.status "Link to this definition")

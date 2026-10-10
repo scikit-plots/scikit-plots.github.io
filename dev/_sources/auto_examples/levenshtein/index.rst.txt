@@ -1,0 +1,174 @@
+
+
+.. _sphx_glr_auto_examples_levenshtein:
+
+.. _levenshtein_examples:
+
+Levenshtein
+===========
+
+.. currentmodule:: scikitplot.levenshtein
+
+These examples form a small learning path for exact edit distance and fuzzy
+ranking. They are deterministic, local and network-free.
+
+.. code-block:: text
+
+   two sequences
+        ↓
+   unit-cost edit distance
+        ↓
+   normalized similarity
+        ↓
+   optional ranking / cutoff
+        ↓
+   actual backend provenance
+
+Start here
+----------
+
+1. **Basics** — the classic ``kitten`` → ``sitting`` distance and normalized
+   metrics.
+2. **Backends** — inspect internal, RapidFuzz, explicit GPL and pure-Python
+   capabilities without requiring any optional backend to be installed.
+3. **Ranking** — stable ties, ``limit``, ``score_cutoff`` and object ``key``.
+4. **Sequences** — bytes, token sequences and explicit Unicode normalization.
+5. **Corpus** — use Levenshtein as a deterministic local Corpus retrieval
+   scorer.
+
+Reliability rules
+-----------------
+
+Every script:
+
+- uses only local literal data;
+- performs no network access or downloads;
+- has a pure-Python path;
+- asserts the result it demonstrates;
+- does not turn a wrong distance into a skip.
+
+An unavailable optional accelerator can be reported as unavailable. Metric
+correctness cannot be skipped.
+
+Backend note
+------------
+
+``auto`` never chooses the external GPL ``Levenshtein`` backend. The examples
+do not require it.
+
+The gallery demonstrates the facade contract rather than benchmarking one
+machine's accelerator installation.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Inspect backend capability without making optional accelerators mandatory.">
+
+.. only:: html
+
+  .. image:: /auto_examples/levenshtein/images/thumb/sphx_glr_plot_levenshtein_backends_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/levenshtein/plot_levenshtein_backends_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Backend discovery and safe fallback</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compute raw and normalized unit-cost edit distance.">
+
+.. only:: html
+
+  .. image:: /auto_examples/levenshtein/images/thumb/sphx_glr_plot_levenshtein_basics_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/levenshtein/plot_levenshtein_basics_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Levenshtein basics</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Build a local deterministic retrieval scorer without making Corpus an import requirement of the Levenshtein facade.">
+
+.. only:: html
+
+  .. image:: /auto_examples/levenshtein/images/thumb/sphx_glr_plot_levenshtein_corpus_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/levenshtein/plot_levenshtein_corpus_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Use Levenshtein with Corpus</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Use stable normalized-similarity ranking with a semantic cutoff.">
+
+.. only:: html
+
+  .. image:: /auto_examples/levenshtein/images/thumb/sphx_glr_plot_levenshtein_ranking_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/levenshtein/plot_levenshtein_ranking_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rank fuzzy matches</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Levenshtein distance is not restricted to prose strings, and preprocessing is an application choice rather than hidden facade behavior.">
+
+.. only:: html
+
+  .. image:: /auto_examples/levenshtein/images/thumb/sphx_glr_plot_levenshtein_sequences_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/levenshtein/plot_levenshtein_sequences_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sequences and explicit normalization</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/levenshtein/plot_levenshtein_backends_script
+   /auto_examples/levenshtein/plot_levenshtein_basics_script
+   /auto_examples/levenshtein/plot_levenshtein_corpus_script
+   /auto_examples/levenshtein/plot_levenshtein_ranking_script
+   /auto_examples/levenshtein/plot_levenshtein_sequences_script
+

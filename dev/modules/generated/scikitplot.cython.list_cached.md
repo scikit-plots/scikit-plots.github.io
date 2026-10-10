@@ -1,6 +1,6 @@
 # list\_cached[#](#list-cached "Link to this heading")
 
-scikitplot.cython.list\_cached(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_public.py#L853)[#](#scikitplot.cython.list_cached "Link to this definition")
+scikitplot.cython.list\_cached(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_public.py#L853)[#](#scikitplot.cython.list_cached "Link to this definition")
 :   List cached **module** entries.
 
     Parameters:

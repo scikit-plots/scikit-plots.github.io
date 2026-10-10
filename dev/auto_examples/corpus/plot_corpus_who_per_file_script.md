@@ -994,15 +994,15 @@ Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-typ
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
-
-[Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
-
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
 [Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
 
-Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+
+[Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
+
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 

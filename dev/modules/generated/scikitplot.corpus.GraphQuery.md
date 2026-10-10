@@ -1,6 +1,6 @@
 # GraphQuery[#](#graphquery "Link to this heading")
 
-class scikitplot.corpus.GraphQuery(**seeds=()**, **max\_seed\_nodes=32**, **max\_hops=2**, **max\_neighbors\_per\_node=64**, **max\_total\_nodes=512**, **max\_total\_edges=2048**, **allowed\_relation\_types=None**, **deadline\_seconds=None**, **max\_evidence=None**, **min\_trust=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_graph.py#L201)[#](#scikitplot.corpus.GraphQuery "Link to this definition")
+class scikitplot.corpus.GraphQuery(**seeds=()**, **max\_seed\_nodes=32**, **max\_hops=2**, **max\_neighbors\_per\_node=64**, **max\_total\_nodes=512**, **max\_total\_edges=2048**, **allowed\_relation\_types=None**, **deadline\_seconds=None**, **max\_evidence=None**, **min\_trust=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_graph.py#L201)[#](#scikitplot.corpus.GraphQuery "Link to this definition")
 :   A bounded traversal request.
 
     Parameters:

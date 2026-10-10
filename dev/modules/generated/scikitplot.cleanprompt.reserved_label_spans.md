@@ -1,6 +1,6 @@
 # reserved\_label\_spans[#](#reserved-label-spans "Link to this heading")
 
-scikitplot.cleanprompt.reserved\_label\_spans(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_engine.py#L98)[#](#scikitplot.cleanprompt.reserved_label_spans "Link to this definition")
+scikitplot.cleanprompt.reserved\_label\_spans(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_engine.py#L98)[#](#scikitplot.cleanprompt.reserved_label_spans "Link to this definition")
 :   Find substrings of `text` that already match the placeholder grammar.
 
     Parameters:

@@ -1,6 +1,6 @@
 # CleanPlan[#](#cleanplan "Link to this heading")
 
-class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**, **custom=()**, **conflict='error'**, **profile=None**, **core=True**, **style='placeholder'**, **keep=()**, **roles=()**, **infer\_roles=False**, **ner='none'**, **language='en'**, **hide=()**, **allow=()**, **remember=True**, **configured=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L95)[#](#scikitplot.cleanprompt.CleanPlan "Link to this definition")
+class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**, **custom=()**, **conflict='error'**, **profile=None**, **core=True**, **style='placeholder'**, **keep=()**, **roles=()**, **infer\_roles=False**, **ner='none'**, **language='en'**, **hide=()**, **allow=()**, **remember=True**, **pattern\_risk=None**, **surrogates=None**, **configured=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L96)[#](#scikitplot.cleanprompt.CleanPlan "Link to this definition")
 :   Everything a cleaner needs to know, and nothing it discovers.
 
     Parameters:
@@ -51,6 +51,19 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
             in another file, in the next turn — not only where a pattern or field
             rule finds it again.
 
+        ****pattern\_risk****{‘warn’, ‘ignore’, ‘refuse’} or None
+        :   What a custom pattern with a catastrophic-backtracking shape does.
+            `None` (default) defers to `CLEANPROMPT_PATTERN_RISK`, else
+            `'warn'`. Pin `'refuse'` in a team plan file to make the check a
+            gate.
+
+        ****surrogates****str or None
+        :   Path of a custom surrogate set
+            (`_surrogate_sets`) whose names replace
+            the built-in ones. Requires `style='surrogate'`. The set’s identity
+            joins the fingerprint, so editing the set file makes a saved plan
+            stale.
+
     Parameters:
     :   * ****packs**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
         * ****formats**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
@@ -67,6 +80,8 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
         * ****hide**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
         * ****allow**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
         * ****remember**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****pattern\_risk**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****surrogates**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****configured**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
 
     Notes
@@ -75,20 +90,26 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
     its canonical form does not depend on iteration order: every collection is
     sorted when it enters, by [`FluentCleanPrompt`](scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt.FluentCleanPrompt").
 
+    `pattern_risk` and `surrogates` are left out of [`as_dict`](#scikitplot.cleanprompt.CleanPlan.as_dict "scikitplot.cleanprompt.CleanPlan.as_dict") while
+    they are `None`, so every plan saved before the fields existed keeps its
+    fingerprint (`I12`): adding a setting must not invalidate approved plan
+    files.
+
     allow: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.cleanprompt.CleanPlan.allow "Link to this definition")
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L159)[#](#scikitplot.cleanprompt.CleanPlan.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L178)[#](#scikitplot.cleanprompt.CleanPlan.as_dict "Link to this definition")
     :   Return the plan as plain data.
 
         Returns:
         :   dict
             :   JSON-safe. `configured` is left out: it records how the plan was
-                built, not what it means.
+                built, not what it means. `pattern_risk` and `surrogates` are
+                left out while they are `None`.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    catalog()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L197)[#](#scikitplot.cleanprompt.CleanPlan.catalog "Link to this definition")
+    catalog()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L219)[#](#scikitplot.cleanprompt.CleanPlan.catalog "Link to this definition")
     :   Return the catalog this plan resolves against.
 
         Returns:
@@ -106,7 +127,7 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
 
     custom: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.cleanprompt.CleanPlan.custom "Link to this definition")
 
-    fingerprint()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L259)[#](#scikitplot.cleanprompt.CleanPlan.fingerprint "Link to this definition")
+    fingerprint()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L369)[#](#scikitplot.cleanprompt.CleanPlan.fingerprint "Link to this definition")
     :   Return a digest of the selection and the definitions it resolves to.
 
         Returns:
@@ -122,7 +143,7 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
 
     formats: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ('all',)[#](#scikitplot.cleanprompt.CleanPlan.formats "Link to this definition")
 
-    formats\_selection()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L189)[#](#scikitplot.cleanprompt.CleanPlan.formats_selection "Link to this definition")
+    formats\_selection()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L211)[#](#scikitplot.cleanprompt.CleanPlan.formats_selection "Link to this definition")
     :   Return `formats` in the form `Catalog.resolve_formats` takes.
 
         Return type:
@@ -140,11 +161,40 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
 
     packs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ('auto',)[#](#scikitplot.cleanprompt.CleanPlan.packs "Link to this definition")
 
-    packs\_selection()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L181)[#](#scikitplot.cleanprompt.CleanPlan.packs_selection "Link to this definition")
+    packs\_selection()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L203)[#](#scikitplot.cleanprompt.CleanPlan.packs_selection "Link to this definition")
     :   Return `packs` in the form `Catalog.resolve_packs` takes.
 
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
+
+    pattern\_findings()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L261)[#](#scikitplot.cleanprompt.CleanPlan.pattern_findings "Link to this definition")
+    :   Return every pattern-risk finding in this plan’s custom packs.
+
+        Returns:
+        :   list of PackFinding
+            :   Accepted findings included (`accepted` set), so a review can
+                list what was waived. Built-in packs are proven clean by the test
+                suite and are not analysed.
+
+        Return type:
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")
+
+    pattern\_risk: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.CleanPlan.pattern_risk "Link to this definition")
+
+    pattern\_risk\_mode()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L276)[#](#scikitplot.cleanprompt.CleanPlan.pattern_risk_mode "Link to this definition")
+    :   Return the pattern-risk mode in force for this plan.
+
+        Returns:
+        :   str
+            :   `pattern_risk` when set, else `CLEANPROMPT_PATTERN_RISK`, else
+                `'warn'`.
+
+        Raises:
+        :   ValueError
+            :   If the mode, set or from the environment, is not a known one.
+
+        Return type:
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     profile: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.CleanPlan.profile "Link to this definition")
 
@@ -154,7 +204,23 @@ class scikitplot.cleanprompt.CleanPlan(**packs=('auto',)**, **formats=('all',)**
 
     style: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'placeholder'[#](#scikitplot.cleanprompt.CleanPlan.style "Link to this definition")
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_plan.py#L212)[#](#scikitplot.cleanprompt.CleanPlan.validate "Link to this definition")
+    surrogate\_set()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L237)[#](#scikitplot.cleanprompt.CleanPlan.surrogate_set "Link to this definition")
+    :   Return the plan’s custom surrogate set, loaded and validated, or None.
+
+        Returns:
+        :   SurrogateSet or None
+            :   `None` when the plan names no set.
+
+        Raises:
+        :   PackError
+            :   If the set document is invalid.
+
+            CleanPromptError
+            :   If the file is missing, too large, or of an unknown type.
+
+    surrogates: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.CleanPlan.surrogates "Link to this definition")
+
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_plan.py#L293)[#](#scikitplot.cleanprompt.CleanPlan.validate "Link to this definition")
     :   Return every problem with this plan, without raising.
 
         Returns:

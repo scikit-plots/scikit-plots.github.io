@@ -1,11 +1,18 @@
 # load\_custom[#](#load-custom "Link to this heading")
 
-scikitplot.cleanprompt.load\_custom(**paths**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_custom.py#L140)[#](#scikitplot.cleanprompt.load_custom "Link to this definition")
+scikitplot.cleanprompt.load\_custom(**paths**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_custom.py#L141)[#](#scikitplot.cleanprompt.load_custom "Link to this definition")
 :   Load user definitions from one or more files into a catalog of their own.
 
     Parameters:
     :   ****paths****path or iterable of paths
         :   `.yaml`, `.yml` or `.json` files.
+
+        ****pattern\_risk****{‘warn’, ‘ignore’, ‘refuse’}, optional
+        :   What to do when a pattern has a shape that can backtrack
+            catastrophically (`_pattern_risk`).
+            Defaults to `CLEANPROMPT_PATTERN_RISK`, else `'warn'`. A pattern
+            marked `risk: accepted` in its pack is never warned about or
+            refused.
 
     Returns:
     :   Catalog
@@ -15,14 +22,24 @@ scikitplot.cleanprompt.load\_custom(**paths**)[[source]](https://github.com/scik
 
     Raises:
     :   PackError
-        :   If any definition is invalid, listing every problem in it.
+        :   If any definition is invalid, listing every problem in it, or
+            `pattern_risk` is `'refuse'` and a pattern has an open finding.
 
         CleanPromptError
         :   If a file is missing, too large, of an unknown type, or two files
             define the same name.
 
+        ValueError
+        :   If `pattern_risk` (or the environment variable) is not a mode.
+
+    Warns:
+    :   PatternRiskWarning
+        :   Under `'warn'`, once per open finding, with rewrites and the ways to
+            accept or silence it.
+
     Parameters:
-    :   ****paths**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]**)
+    :   * ****paths**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]**)
+        * ****pattern\_risk**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   **Catalog**

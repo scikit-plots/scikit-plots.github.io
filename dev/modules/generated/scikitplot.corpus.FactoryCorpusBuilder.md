@@ -1,6 +1,6 @@
 # FactoryCorpusBuilder[#](#factorycorpusbuilder "Link to this heading")
 
-class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factories=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1438)[#](#scikitplot.corpus.FactoryCorpusBuilder "Link to this definition")
+class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factories=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1443)[#](#scikitplot.corpus.FactoryCorpusBuilder "Link to this definition")
 :   [`CorpusBuilder`](scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus._corpus_builder.CorpusBuilder") extended with
     pluggable component factories.
 
@@ -23,14 +23,15 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
 
     Notes
 
-    ****User note:**** Use [`FactoryCorpusBuilder`](#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder") when you need to
-    inject components that cannot be described by configuration alone —
-    custom readers with per-source state, enrichers backed by remote APIs,
-    embedding engines with non-standard initialisation, etc.
+    ****User note:**** New code can pass [`BuilderFactories`](scikitplot.corpus.BuilderFactories.html#scikitplot.corpus.BuilderFactories "scikitplot.corpus.BuilderFactories") directly to
+    [`CorpusBuilder`](scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus._corpus_builder.CorpusBuilder"). This facade is
+    retained for compatibility and delegates to the same native construction
+    seams; it no longer owns a second customization mechanism.
 
-    ****Developer note:**** Factory injection is performed by overriding the
-    private `_get_*` lazy-init methods inherited from
-    [`CorpusBuilder`](scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus._corpus_builder.CorpusBuilder").
+    ****Developer note:**** Factory injection is owned natively by the wrapped
+    builder’s protected construction seams (`_get_*` / `_make_*`). Reader,
+    filter and downloader factories therefore affect every ingestion branch
+    without monkey-patching bound methods.
 
     Examples
 
@@ -53,7 +54,7 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
     ```
     Go BackOpen In Tab
 
-    add(**input\_path**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1588)[#](#scikitplot.corpus.FactoryCorpusBuilder.add "Link to this definition")
+    add(**input\_path**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1537)[#](#scikitplot.corpus.FactoryCorpusBuilder.add "Link to this definition")
     :   Add sources to existing corpus — delegates to inner builder.
 
         Parameters:
@@ -63,7 +64,7 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    build(**input\_path**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1582)[#](#scikitplot.corpus.FactoryCorpusBuilder.build "Link to this definition")
+    build(**input\_path**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1531)[#](#scikitplot.corpus.FactoryCorpusBuilder.build "Link to this definition")
     :   Build corpus — delegates to inner builder with factory overrides.
 
         Parameters:
@@ -73,13 +74,13 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1632)[#](#scikitplot.corpus.FactoryCorpusBuilder.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1581)[#](#scikitplot.corpus.FactoryCorpusBuilder.close "Link to this definition")
     :   Clean up temporary files.
 
         Return type:
         :   None
 
-    export(**path**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1628)[#](#scikitplot.corpus.FactoryCorpusBuilder.export "Link to this definition")
+    export(**path**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1577)[#](#scikitplot.corpus.FactoryCorpusBuilder.export "Link to this definition")
     :   Export documents to file.
 
         Parameters:
@@ -89,7 +90,7 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    search(**query**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1592)[#](#scikitplot.corpus.FactoryCorpusBuilder.search "Link to this definition")
+    search(**query**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1541)[#](#scikitplot.corpus.FactoryCorpusBuilder.search "Link to this definition")
     :   Search corpus — delegates to inner builder.
 
         Parameters:
@@ -99,31 +100,31 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    to\_huggingface()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1616)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_huggingface "Link to this definition")
+    to\_huggingface()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1565)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_huggingface "Link to this definition")
     :   Export as HuggingFace Dataset.
 
         Return type:
         :   Any
 
-    to\_jsonl()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1624)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_jsonl "Link to this definition")
+    to\_jsonl()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1573)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_jsonl "Link to this definition")
     :   Export as JSONL lines.
 
         Return type:
         :   Any
 
-    to\_langchain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1596)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_langchain "Link to this definition")
+    to\_langchain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1545)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_langchain "Link to this definition")
     :   Export as LangChain documents.
 
         Return type:
         :   Any
 
-    to\_langchain\_retriever()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1600)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_langchain_retriever "Link to this definition")
+    to\_langchain\_retriever()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1549)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_langchain_retriever "Link to this definition")
     :   Create LangChain retriever.
 
         Return type:
         :   Any
 
-    to\_langgraph\_state(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1604)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_langgraph_state "Link to this definition")
+    to\_langgraph\_state(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1553)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_langgraph_state "Link to this definition")
     :   Export as LangGraph state.
 
         Parameters:
@@ -132,7 +133,7 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    to\_mcp\_resources(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1608)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_resources "Link to this definition")
+    to\_mcp\_resources(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1557)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_resources "Link to this definition")
     :   Export as MCP resources.
 
         Parameters:
@@ -141,7 +142,7 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    to\_mcp\_tool\_result(**query**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1612)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_tool_result "Link to this definition")
+    to\_mcp\_tool\_result(**query**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1561)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_mcp_tool_result "Link to this definition")
     :   Search and format as MCP tool result.
 
         Parameters:
@@ -151,7 +152,7 @@ class scikitplot.corpus.FactoryCorpusBuilder(**config=None**, **\***, **factorie
         Return type:
         :   Any
 
-    to\_rag\_tuples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1620)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_rag_tuples "Link to this definition")
+    to\_rag\_tuples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_custom_hooks.py#L1569)[#](#scikitplot.corpus.FactoryCorpusBuilder.to_rag_tuples "Link to this definition")
     :   Export as RAG tuples.
 
         Return type:

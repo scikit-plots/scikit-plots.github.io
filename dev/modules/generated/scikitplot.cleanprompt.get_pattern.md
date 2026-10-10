@@ -1,6 +1,6 @@
 # get\_pattern[#](#get-pattern "Link to this heading")
 
-scikitplot.cleanprompt.get\_pattern(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_patterns.py#L605)[#](#scikitplot.cleanprompt.get_pattern "Link to this definition")
+scikitplot.cleanprompt.get\_pattern(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_patterns.py#L610)[#](#scikitplot.cleanprompt.get_pattern "Link to this definition")
 :   Return one pattern specification by kind.
 
     Parameters:

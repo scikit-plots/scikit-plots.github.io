@@ -487,15 +487,15 @@ Related examples
 
 [Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
+
+[Customize Corpus backends and readiness policies](plot_corpus_backend_policy_script.html)
+
+Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 
-Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
-
-[Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
-
-Compare Corpus Chunking Strategies on OCR Text![](../../_images/sphx_glr_plot_cleanprompt_packs_formats_script_thumb.png)
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_cleanprompt_packs_formats_script_thumb.png)
 
 [Cleanprompt Packs and Formats: Records, Configs and Whole Folders](../cleanprompt/plot_cleanprompt_packs_formats_script.html)
 

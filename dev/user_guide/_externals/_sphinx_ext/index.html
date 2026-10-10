@@ -21,10 +21,10 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:35:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:37Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-
+<script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/_externals/_sphinx_ext/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
     <title>Bundled Sphinx extensions (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
@@ -63,6 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/principles-ticker.css" />
@@ -101,6 +102,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="../../../_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="../../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="../../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -673,7 +675,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../corpus/index.html">Corpus</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/readers_and_backends.html">Readers, backends, and readiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/fluent_and_policies.html">Fluent configuration and policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/customization.html">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/downloads_and_network.html">Downloads and network boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/formats_and_export.html">Formats, structured evidence, and export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/security_and_limits.html">Security and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../corpus/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -690,6 +704,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../impute/index.html">Impute</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/how_it_works.html">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/performance_and_limits.html">Performance and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../logging/index.html">Logging</a></li>
@@ -839,6 +866,288 @@ stack, but the leading underscore is significant.  Treat them as experimental
 integration APIs rather than as the stable plotting API of Scikit-Plots.
 Pin Scikit-Plots when a documentation deployment depends on their exact
 configuration or generated markup.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 docutils">
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>ansi-sanitizer</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_ansi_sanitizer/index.html">ANSI Sanitizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_ansi_sanitizer/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_ansi_sanitizer/index.html#plain-string-use">Plain-string use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_ansi_sanitizer/index.html#why-this-is-narrower-than-a-generic-regex">Why this is narrower than a generic regex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_ansi_sanitizer/index.html#when-not-to-use-it">When not to use it</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>pydata-component-list</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_pydata_component_list/index.html">PyData Component List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_pydata_component_list/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pydata_component_list/index.html#what-the-directive-reads">What the directive reads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pydata_component_list/index.html#failure-behavior">Failure behavior</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-ai-assistant</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_ai_assistant/index.html">Sphinx AI Assistant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#start-with-the-smallest-deployment">Start with the smallest deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#deployment-levels">Deployment levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#core-configuration">Core configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#canonical-markdown-versus-browser-copy">Canonical Markdown versus browser copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#live-model-requests-keep-authority-server-side">Live model requests: keep authority server-side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#conversation-persistence">Conversation persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#feedback-ownership">Feedback ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_assistant/index.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-ai-learn</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_ai_learn/index.html">Sphinx AI Learn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#build-time-guarantees">Build-time guarantees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#important-configuration">Important configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#canonical-content-contracts">Canonical content contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#generated-directives">Generated directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#include-versus-toctree-composition">Include versus toctree composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_ai_learn/index.html#validation-failures">Validation failures</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-collection</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_collection/index.html">Sphinx Collection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_collection/index.html#why-it-exists">Why it exists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_collection/index.html#programmatic-use">Programmatic use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_collection/index.html#bounded-yaml-contract">Bounded YAML contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_collection/index.html#generated-browser-assets">Generated browser assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_collection/index.html#progressive-enhancement">Progressive enhancement</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-feedback</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_feedback/index.html">Sphinx Feedback</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_feedback/index.html#enable-page-feedback">Enable page feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_feedback/index.html#automatic-placement-and-explicit-mounts">Automatic placement and explicit mounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_feedback/index.html#core-configuration">Core configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_feedback/index.html#privacy-and-authority-boundary">Privacy and authority boundary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_feedback/index.html#standalone-service">Standalone service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_feedback/index.html#relationship-to-ai-assistant-feedback">Relationship to AI Assistant feedback</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-gallery-grid</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_gallery_grid/index.html">Sphinx Gallery Grid</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#minimal-gallery">Minimal gallery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#file-backed-gallery">File-backed gallery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#build-time-selection">Build-time selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#interactive-reader-controls">Interactive reader controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#presentation-customization">Presentation customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#input-safety">Input safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_grid/index.html#myst-documents">MyST documents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-jupyterlite</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_gallery_jupyterlite/index.html">Sphinx-Gallery JupyterLite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_jupyterlite/index.html#enable-the-release-version-hook">Enable the release-version hook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_jupyterlite/index.html#connect-it-to-sphinx-gallery">Connect it to Sphinx-Gallery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_jupyterlite/index.html#notebook-modification-function"><code class="docutils literal notranslate"><span class="pre">notebook_modification_function</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_jupyterlite/index.html#reset-others"><code class="docutils literal notranslate"><span class="pre">reset_others</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_gallery_jupyterlite/index.html#customization-boundary">Customization boundary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-jinja</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_jinja_render/index.html">Sphinx Jinja Render</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_jinja_render/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_jinja_render/index.html#rst-templates">RST templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_jinja_render/index.html#repl-url">REPL URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_jinja_render/index.html#reliability-note">Reliability note</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>sphinx-llm</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_llm/index.html">Sphinx LLM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_llm/index.html#intended-output-model">Intended output model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_llm/index.html#basic-registration">Basic registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_llm/index.html#semantic-directives">Semantic directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_llm/index.html#configuration-groups">Configuration groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_llm/index.html#coexistence-with-ai-assistant">Coexistence with AI Assistant</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>youtu.be-core</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_youtube_core/index.html">Sphinx YouTube Core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_core/index.html#reference-parsing">Reference parsing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_core/index.html#player-option-contract">Player option contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_core/index.html#what-this-layer-deliberately-does-not-own">What this layer deliberately does not own</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>youtu.be-gallery</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinx_youtube_gallery/index.html">Sphinx YouTube Gallery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#inline-video-catalog">Inline video catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#file-backed-catalog">File-backed catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#channel-views">Channel views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#build-time-query-versus-browser-controls">Build-time query versus browser controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#player-customization">Player customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinx_youtube_gallery/index.html#network-boundary">Network boundary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>youtu.be</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_sphinxcontrib_youtube/index.html">Sphinx Video Directives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_sphinxcontrib_youtube/index.html#enable-it">Enable it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinxcontrib_youtube/index.html#youtube-example">YouTube example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinxcontrib_youtube/index.html#shared-player-options">Shared player options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinxcontrib_youtube/index.html#thumbnail-downloads-are-opt-in">Thumbnail downloads are opt-in</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_sphinxcontrib_youtube/index.html#other-builders">Other builders</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <section id="how-to-enable-an-extension">
 <h2>How to enable an extension<a class="headerlink" href="#how-to-enable-an-extension" title="Link to this heading">#</a></h2>
 <p>Use the installed Scikit-Plots namespace in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
@@ -957,8 +1266,6 @@ equivalent to a successful zero/empty result.</p></li>
 </ul>
 <p>The child guides call out additional boundaries where they are part of the
 implemented contract.</p>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 </section>
 
@@ -1075,7 +1382,7 @@ implemented contract.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

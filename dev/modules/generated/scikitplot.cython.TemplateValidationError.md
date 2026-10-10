@@ -1,6 +1,6 @@
 # TemplateValidationError[#](#templatevalidationerror "Link to this heading")
 
-exception scikitplot.cython.TemplateValidationError[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L113)[#](#scikitplot.cython.TemplateValidationError "Link to this definition")
+exception scikitplot.cython.TemplateValidationError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_templates_api.py#L113)[#](#scikitplot.cython.TemplateValidationError "Link to this definition")
 :   Raised when template metadata fails strict schema validation.
 
     Annotation:

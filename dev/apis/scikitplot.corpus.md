@@ -639,7 +639,7 @@ Class inheritance
 |  |  |
 | --- | --- |
 | [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus") | Materialized operational view of a validated [`CorpusPlan`](../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan"). |
-| [`RuntimePolicy`](../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") | Execution policy applied by [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus"). |
+| [`RuntimePolicy`](../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") | Execution-boundary policy applied by [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus"). |
 | [`materialize_plan`](../modules/generated/scikitplot.corpus.materialize_plan.html#scikitplot.corpus.materialize_plan "scikitplot.corpus.materialize_plan") | Resolve a validated [`CorpusPlan`](../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan") into runtime components. |
 
 ## Samples for Corpus Usage[#](#samples-for-corpus-usage "Link to this heading")

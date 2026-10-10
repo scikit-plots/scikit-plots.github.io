@@ -1,6 +1,6 @@
 # InvestigationOutcome[#](#investigationoutcome "Link to this heading")
 
-class scikitplot.corpus.InvestigationOutcome(**status**, **stop\_reason**, **hits=()**, **signals=None**, **session=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L407)[#](#scikitplot.corpus.InvestigationOutcome "Link to this definition")
+class scikitplot.corpus.InvestigationOutcome(**status**, **stop\_reason**, **hits=()**, **signals=None**, **session=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L407)[#](#scikitplot.corpus.InvestigationOutcome "Link to this definition")
 :   The result of a bounded investigation.
 
     Parameters:
@@ -16,11 +16,11 @@ class scikitplot.corpus.InvestigationOutcome(**status**, **stop\_reason**, **hit
 
     signals: [SufficiencySignals](scikitplot.corpus.SufficiencySignals.html#scikitplot.corpus.SufficiencySignals "scikitplot.corpus._agentic.SufficiencySignals") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.InvestigationOutcome.signals "Link to this definition")
 
-    status: [InvestigationStatus](scikitplot.corpus.InvestigationStatus.html#scikitplot.corpus.InvestigationStatus "scikitplot.corpus._agentic.InvestigationStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L407)[#](#scikitplot.corpus.InvestigationOutcome.status "Link to this definition")
+    status: [InvestigationStatus](scikitplot.corpus.InvestigationStatus.html#scikitplot.corpus.InvestigationStatus "scikitplot.corpus._agentic.InvestigationStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L407)[#](#scikitplot.corpus.InvestigationOutcome.status "Link to this definition")
 
-    stop\_reason: [StopReason](scikitplot.corpus.StopReason.html#scikitplot.corpus.StopReason "scikitplot.corpus._agentic.StopReason")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L407)[#](#scikitplot.corpus.InvestigationOutcome.stop_reason "Link to this definition")
+    stop\_reason: [StopReason](scikitplot.corpus.StopReason.html#scikitplot.corpus.StopReason "scikitplot.corpus._agentic.StopReason")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L407)[#](#scikitplot.corpus.InvestigationOutcome.stop_reason "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L417)[#](#scikitplot.corpus.InvestigationOutcome.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L417)[#](#scikitplot.corpus.InvestigationOutcome.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

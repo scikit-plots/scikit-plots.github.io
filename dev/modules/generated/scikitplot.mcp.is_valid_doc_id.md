@@ -1,6 +1,6 @@
 # is\_valid\_doc\_id[#](#is-valid-doc-id "Link to this heading")
 
-scikitplot.mcp.is\_valid\_doc\_id(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mcp/_core.py#L95)[#](#scikitplot.mcp.is_valid_doc_id "Link to this definition")
+scikitplot.mcp.is\_valid\_doc\_id(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_core.py#L95)[#](#scikitplot.mcp.is_valid_doc_id "Link to this definition")
 :   Return whether `value` is an acceptable document identifier.
 
     Parameters:

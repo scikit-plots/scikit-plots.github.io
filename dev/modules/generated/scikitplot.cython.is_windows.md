@@ -1,6 +1,6 @@
 # is\_windows[#](#is-windows "Link to this heading")
 
-scikitplot.cython.is\_windows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_profiles.py#L180)[#](#scikitplot.cython.is_windows "Link to this definition")
+scikitplot.cython.is\_windows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_profiles.py#L180)[#](#scikitplot.cython.is_windows "Link to this definition")
 :   Return `True` if the host operating system is native Windows.
 
     > **Warning**

@@ -1,6 +1,6 @@
 # resolve\_model[#](#resolve-model "Link to this heading")
 
-scikitplot.cleanprompt.resolve\_model(**language='en'**, **size='sm'**, **explicit=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_languages.py#L180)[#](#scikitplot.cleanprompt.resolve_model "Link to this definition")
+scikitplot.cleanprompt.resolve\_model(**language='en'**, **size='sm'**, **explicit=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_languages.py#L180)[#](#scikitplot.cleanprompt.resolve_model "Link to this definition")
 :   Resolve a language and size into a spaCy model name.
 
     Parameters:

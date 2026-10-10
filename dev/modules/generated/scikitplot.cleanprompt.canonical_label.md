@@ -1,6 +1,6 @@
 # canonical\_label[#](#canonical-label "Link to this heading")
 
-scikitplot.cleanprompt.canonical\_label(**label**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_engines.py#L348)[#](#scikitplot.cleanprompt.canonical_label "Link to this definition")
+scikitplot.cleanprompt.canonical\_label(**label**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_engines.py#L348)[#](#scikitplot.cleanprompt.canonical_label "Link to this definition")
 :   Map an engine’s entity label onto the canonical vocabulary.
 
     Parameters:

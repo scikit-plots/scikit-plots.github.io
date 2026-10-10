@@ -1,6 +1,6 @@
 # FluentCorpus[#](#fluentcorpus "Link to this heading")
 
-class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L402)[#](#scikitplot.corpus.FluentCorpus "Link to this definition")
+class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L404)[#](#scikitplot.corpus.FluentCorpus "Link to this definition")
 :   Immutable fluent builder over a [`CorpusPlan`](scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan").
 
     Notes
@@ -29,7 +29,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
     Parameters:
     :   ****plan**** ([**CorpusPlan**](scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan") **|** **None**)
 
-    build()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L479)[#](#scikitplot.corpus.FluentCorpus.build "Link to this definition")
+    build()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L680)[#](#scikitplot.corpus.FluentCorpus.build "Link to this definition")
     :   Validate and return the plan, raising on any problem.
 
         Raises:
@@ -46,7 +46,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         [`materialize`](#scikitplot.corpus.FluentCorpus.materialize "scikitplot.corpus.FluentCorpus.materialize"), so a caller can still inspect, compare and serialise
         a plan without constructing operational state.
 
-    chunker(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.chunker "Link to this definition")
+    chunker(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.chunker "Link to this definition")
     :   Configure the chunker.
 
         Parameters:
@@ -74,7 +74,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    config(**domain**, **value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L449)[#](#scikitplot.corpus.FluentCorpus.config "Link to this definition")
+    config(**domain**, **value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L609)[#](#scikitplot.corpus.FluentCorpus.config "Link to this definition")
     :   Set one configuration domain by name.
 
         Parameters:
@@ -85,7 +85,31 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    embedder(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.embedder "Link to this definition")
+    configure(**config=None**, **\***, **conflict='error'**, **\*\*fragments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L462)[#](#scikitplot.corpus.FluentCorpus.configure "Link to this definition")
+    :   Set several domains atomically using the normal conflict contract.
+
+        Domains are applied in canonical [`CONFIG_DOMAINS`](scikitplot.corpus.CONFIG_DOMAINS.html#scikitplot.corpus.CONFIG_DOMAINS "scikitplot.corpus.CONFIG_DOMAINS") order, never in
+        mapping insertion order; fluent configuration therefore remains
+        declarative and order-independent.
+
+        Parameters:
+        :   * ****config**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****conflict**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****fragments**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+
+        Return type:
+        :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
+
+    diff(**other**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L649)[#](#scikitplot.corpus.FluentCorpus.diff "Link to this definition")
+    :   Describe domain/stage differences without constructing components.
+
+        Parameters:
+        :   ****other**** ([**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus") **|** [**CorpusPlan**](scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus._plan.CorpusPlan"))
+
+        Return type:
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
+
+    embedder(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.embedder "Link to this definition")
     :   Configure the embedder.
 
         Parameters:
@@ -113,7 +137,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    enricher(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.enricher "Link to this definition")
+    enricher(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.enricher "Link to this definition")
     :   Configure the enricher.
 
         Parameters:
@@ -141,7 +165,13 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    export(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.export "Link to this definition")
+    explain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L639)[#](#scikitplot.corpus.FluentCorpus.explain "Link to this definition")
+    :   Return a JSON-compatible explanation of configuration and validity.
+
+        Return type:
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
+
+    export(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.export "Link to this definition")
     :   Configure the export.
 
         Parameters:
@@ -169,7 +199,22 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    index(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.index "Link to this definition")
+    classmethod from\_config(**config=None**, **\***, **stages=None**, **\*\*fragments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L430)[#](#scikitplot.corpus.FluentCorpus.from_config "Link to this definition")
+    :   Generate a fluent plan from a user mapping plus keyword fragments.
+
+        This is the data-driven counterpart to chained setters. It is useful for
+        configuration files, notebooks and generated experiment matrices while
+        preserving the same canonical conflict/validation rules.
+
+        Parameters:
+        :   * ****config**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****stages**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]** **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****fragments**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+
+        Return type:
+        :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
+
+    index(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.index "Link to this definition")
     :   Configure the index.
 
         Parameters:
@@ -197,7 +242,22 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    materialize(**\***, **policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L500)[#](#scikitplot.corpus.FluentCorpus.materialize "Link to this definition")
+    iter\_variants(**\***, **max\_variants=256**, **\*\*choices**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L552)[#](#scikitplot.corpus.FluentCorpus.iter_variants "Link to this definition")
+    :   Lazily generate a deterministic bounded configuration grid.
+
+        The full Cartesian size is validated **before** the first value is
+        yielded. This preserves the existing safety bound while letting
+        callers stream variants into CI/tuning loops without materializing
+        every [`FluentCorpus`](#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") instance at once.
+
+        Parameters:
+        :   * ****max\_variants**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****choices**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+
+        Return type:
+        :   [**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")[[**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")]
+
+    materialize(**\***, **policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L701)[#](#scikitplot.corpus.FluentCorpus.materialize "Link to this definition")
     :   Validate this plan and construct a [`RuntimeCorpus`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
 
         Unlike the fluent setters, materialization is an operational boundary:
@@ -206,13 +266,13 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         [`RuntimeCorpus.run`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus.run "scikitplot.corpus.RuntimeCorpus.run") or [`RuntimeCorpus.add`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus.add "scikitplot.corpus.RuntimeCorpus.add") is called.
 
         Parameters:
-        :   * ****policy**** ([**RuntimePolicy**](scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") **|** **None**)
+        :   * ****policy**** ([**RuntimePolicy**](scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **Mapping****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]** **|** **None**)
             * ****registry**** ([**ComponentRegistry**](scikitplot.corpus.ComponentRegistry.html#scikitplot.corpus.ComponentRegistry "scikitplot.corpus.ComponentRegistry") **|** **None**)
 
         Return type:
         :   [RuntimeCorpus](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus")
 
-    normalizer(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.normalizer "Link to this definition")
+    normalizer(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.normalizer "Link to this definition")
     :   Configure the normalizer.
 
         Parameters:
@@ -240,13 +300,13 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L471)[#](#scikitplot.corpus.FluentCorpus.plan "Link to this definition")
+    plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L631)[#](#scikitplot.corpus.FluentCorpus.plan "Link to this definition")
     :   Return the canonical plan this builder describes.
 
         Return type:
         :   [**CorpusPlan**](scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus._plan.CorpusPlan")
 
-    reader(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.reader "Link to this definition")
+    reader(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.reader "Link to this definition")
     :   Configure the reader.
 
         Parameters:
@@ -274,7 +334,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_chunker(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_chunker "Link to this definition")
+    replace\_chunker(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_chunker "Link to this definition")
     :   Replace the chunker, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -289,7 +349,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_embedder(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_embedder "Link to this definition")
+    replace\_embedder(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_embedder "Link to this definition")
     :   Replace the embedder, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -304,7 +364,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_enricher(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_enricher "Link to this definition")
+    replace\_enricher(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_enricher "Link to this definition")
     :   Replace the enricher, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -319,7 +379,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_export(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_export "Link to this definition")
+    replace\_export(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_export "Link to this definition")
     :   Replace the export, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -334,7 +394,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_index(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_index "Link to this definition")
+    replace\_index(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_index "Link to this definition")
     :   Replace the index, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -349,7 +409,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_normalizer(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_normalizer "Link to this definition")
+    replace\_normalizer(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_normalizer "Link to this definition")
     :   Replace the normalizer, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -364,7 +424,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_reader(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_reader "Link to this definition")
+    replace\_reader(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_reader "Link to this definition")
     :   Replace the reader, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -379,7 +439,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_retrieval(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_retrieval "Link to this definition")
+    replace\_retrieval(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_retrieval "Link to this definition")
     :   Replace the retrieval, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -394,7 +454,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_source(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_source "Link to this definition")
+    replace\_source(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_source "Link to this definition")
     :   Replace the source, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -409,7 +469,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    replace\_storage(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L557)[#](#scikitplot.corpus.FluentCorpus.replace_storage "Link to this definition")
+    replace\_storage(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758)[#](#scikitplot.corpus.FluentCorpus.replace_storage "Link to this definition")
     :   Replace the storage, whether or not one is already configured.
 
         The explicit counterpart to the error-by-default rule: the
@@ -424,7 +484,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    retrieval(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.retrieval "Link to this definition")
+    retrieval(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.retrieval "Link to this definition")
     :   Configure the retrieval.
 
         Parameters:
@@ -452,7 +512,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    source(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.source "Link to this definition")
+    source(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.source "Link to this definition")
     :   Configure the source.
 
         Parameters:
@@ -480,7 +540,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    stages(**\*stages**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L455)[#](#scikitplot.corpus.FluentCorpus.stages "Link to this definition")
+    stages(**\*stages**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L615)[#](#scikitplot.corpus.FluentCorpus.stages "Link to this definition")
     :   Set an explicit pipeline stage order.
 
         Notes
@@ -496,7 +556,7 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    storage(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L526)[#](#scikitplot.corpus.FluentCorpus.storage "Link to this definition")
+    storage(**value**, **\***, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727)[#](#scikitplot.corpus.FluentCorpus.storage "Link to this definition")
     :   Configure the storage.
 
         Parameters:
@@ -524,11 +584,43 @@ class scikitplot.corpus.FluentCorpus(**plan=None**)[[source]](https://github.com
         Return type:
         :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_plan.py#L475)[#](#scikitplot.corpus.FluentCorpus.validate "Link to this definition")
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L635)[#](#scikitplot.corpus.FluentCorpus.validate "Link to this definition")
     :   Return cross-fragment problems, empty when coherent.
 
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**ErrorRecord**](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord")]
+
+    variants(**\***, **max\_variants=256**, **\*\*choices**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L575)[#](#scikitplot.corpus.FluentCorpus.variants "Link to this definition")
+    :   Materialize [`iter_variants`](#scikitplot.corpus.FluentCorpus.iter_variants "scikitplot.corpus.FluentCorpus.iter_variants") as a convenience tuple.
+
+        Use [`iter_variants`](#scikitplot.corpus.FluentCorpus.iter_variants "scikitplot.corpus.FluentCorpus.iter_variants") when the consumer itself is streaming or when
+        constructing every variant object at once is unnecessary.
+
+        Parameters:
+        :   * ****max\_variants**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****choices**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+
+        Return type:
+        :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus"), …]
+
+    with\_overrides(**config=None**, **\*\*fragments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L494)[#](#scikitplot.corpus.FluentCorpus.with_overrides "Link to this definition")
+    :   Return a copy with explicit multi-domain replacements.
+
+        Parameters:
+        :   * ****config**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****fragments**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+
+        Return type:
+        :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
+
+    without(**\*domains**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L502)[#](#scikitplot.corpus.FluentCorpus.without "Link to this definition")
+    :   Return a copy with selected configuration domains removed.
+
+        Parameters:
+        :   ****domains**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+
+        Return type:
+        :   [**FluentCorpus**](#scikitplot.corpus.FluentCorpus "scikitplot.corpus._plan.FluentCorpus")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

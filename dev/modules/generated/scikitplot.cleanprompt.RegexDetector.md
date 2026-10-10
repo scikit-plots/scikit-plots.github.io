@@ -1,6 +1,6 @@
 # RegexDetector[#](#regexdetector "Link to this heading")
 
-class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_detectors.py#L140)[#](#scikitplot.cleanprompt.RegexDetector "Link to this definition")
+class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_detectors.py#L140)[#](#scikitplot.cleanprompt.RegexDetector "Link to this definition")
 :   Detector backed by one entry of the pattern library.
 
     Parameters:
@@ -76,7 +76,7 @@ class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.co
     confidence[#](#scikitplot.cleanprompt.RegexDetector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_detectors.py#L222)[#](#scikitplot.cleanprompt.RegexDetector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_detectors.py#L222)[#](#scikitplot.cleanprompt.RegexDetector.detect "Link to this definition")
     :   Yield one span per accepted match.
 
         Parameters:

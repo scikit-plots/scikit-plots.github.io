@@ -1,6 +1,6 @@
 # validate\_hierarchy[#](#validate-hierarchy "Link to this heading")
 
-scikitplot.corpus.validate\_hierarchy(**documents**, **\***, **max\_depth=64**, **require\_parent\_present=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_hierarchy.py#L121)[#](#scikitplot.corpus.validate_hierarchy "Link to this definition")
+scikitplot.corpus.validate\_hierarchy(**documents**, **\***, **max\_depth=64**, **require\_parent\_present=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_hierarchy.py#L121)[#](#scikitplot.corpus.validate_hierarchy "Link to this definition")
 :   Check referential integrity, cycles and depth of the hierarchy.
 
     Parameters:

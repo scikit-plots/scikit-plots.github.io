@@ -1,6 +1,6 @@
 # read\_template[#](#read-template "Link to this heading")
 
-scikitplot.cython.read\_template(**template\_id**, **\***, **kind=None**, **encoding='utf-8'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L567)[#](#scikitplot.cython.read_template "Link to this definition")
+scikitplot.cython.read\_template(**template\_id**, **\***, **kind=None**, **encoding='utf-8'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_templates_api.py#L567)[#](#scikitplot.cython.read_template "Link to this definition")
 :   Read template source text.
 
     Parameters:

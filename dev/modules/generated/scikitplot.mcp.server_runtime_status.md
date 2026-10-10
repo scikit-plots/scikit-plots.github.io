@@ -1,6 +1,6 @@
 # server\_runtime\_status[#](#server-runtime-status "Link to this heading")
 
-scikitplot.mcp.server\_runtime\_status()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mcp/_capabilities.py#L295)[#](#scikitplot.mcp.server_runtime_status "Link to this definition")
+scikitplot.mcp.server\_runtime\_status()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_capabilities.py#L295)[#](#scikitplot.mcp.server_runtime_status "Link to this definition")
 :   Report, ****without importing the MCP SDK****, whether the protocol server can
     run in this interpreter — so callers can degrade gracefully to the SDK-free
     retrieval layer instead of catching an exception from [`create_server`](scikitplot.mcp.create_server.html#scikitplot.mcp.create_server "scikitplot.mcp.create_server").

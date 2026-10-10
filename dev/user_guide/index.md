@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261010.de98219 - October 10, 2026 02:14 UTC
+ 0.5.dev0+git.20261010.c24961d - October 10, 2026 21:35 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -8,16 +8,7 @@
 
 * [ANNoy](annoy/index.html)
   * [Vector Similarity Search](annoy/annoy_index_vector_database.html)
-    * [Vector similarity search](annoy/annoy_index_vector_database.html#vector-similarity-search)
-    * [Vector database vs “vector index library”](annoy/annoy_index_vector_database.html#vector-database-vs-vector-index-library)
-    * [Pros and cons of vector search](annoy/annoy_index_vector_database.html#pros-and-cons-of-vector-search)
-    * [5 practical tips](annoy/annoy_index_vector_database.html#practical-tips)
-    * [Open source options](annoy/annoy_index_vector_database.html#open-source-options)
-    * [How to choose (simple rules)](annoy/annoy_index_vector_database.html#how-to-choose-simple-rules)
   * [Index Inheritance](annoy/annoy_index_inheritance_diagrams.html)
-    * [Index + mixins](annoy/annoy_index_inheritance_diagrams.html#index-mixins)
-    * [Mixins only (independence + MRO scan)](annoy/annoy_index_inheritance_diagrams.html#mixins-only-independence-mro-scan)
-    * [Notes and Limitations](annoy/annoy_index_inheritance_diagrams.html#notes-and-limitations)
   * [ANNoy Cython](annoy/_annoy.html)
   * [Public Python API](annoy/index.html#public-python-api)
   * [Workflow](annoy/index.html#workflow)
@@ -31,15 +22,8 @@
 
 * [Metric Performance](api/index.html)
   * [Decomposition](api/decomposition.html)
-    * [Principal Component Analysis (PCA)](api/decomposition.html#principal-component-analysis-pca)
   * [Estimators](api/estimators.html)
-    * [Regressor Model](api/estimators.html#regressor-model)
-    * [Classifier Model](api/estimators.html#classifier-model)
-    * [Cluster Model](api/estimators.html#cluster-model)
   * [Metrics](api/metrics.html)
-    * [Regression metrics](api/metrics.html#regression-metrics)
-    * [Classification metrics](api/metrics.html#classification-metrics)
-    * [Clustering metrics](api/metrics.html#clustering-metrics)
 **pseudonymization engine for LLM**
 
 * [CleanPrompt](cleanprompt/index.html)
@@ -47,35 +31,22 @@
   * [Thirty seconds](cleanprompt/index.html#thirty-seconds)
   * [Which surface should I use?](cleanprompt/index.html#which-surface-should-i-use)
   * [How this guide is organised](cleanprompt/index.html#how-this-guide-is-organised)
-    * [Getting started](cleanprompt/getting_started.html)
-    * [How it works](cleanprompt/how_it_works.html)
-    * [The Python API](cleanprompt/python_api.html)
-    * [The command line](cleanprompt/command_line.html)
-    * [Names, organisations and places](cleanprompt/entity_detection.html)
-    * [Files, records, packs and plans](cleanprompt/files_and_packs.html)
-    * [Models, tools and agents](cleanprompt/agents_and_models.html)
-    * [The web page and containers](cleanprompt/web_and_containers.html)
-    * [What it protects, and what it does not](cleanprompt/security_and_limits.html)
-    * [Troubleshooting and questions](cleanprompt/troubleshooting.html)
 **remarks citation generation**
 
 * [Corpus](corpus/index.html)
-  * [Corpus (Remarks Citation) Generation](corpus/index.html#corpus-remarks-citation-generation)
-  * [Quick start](corpus/index.html#quick-start)
-  * [Optional backend outcomes](corpus/index.html#optional-backend-outcomes)
+  * [The whole idea in one picture](corpus/index.html#the-whole-idea-in-one-picture)
+  * [Thirty seconds](corpus/index.html#thirty-seconds)
+  * [Which surface should I use?](corpus/index.html#which-surface-should-i-use)
+  * [How this guide is organised](corpus/index.html#how-this-guide-is-organised)
 **live, on demand generation**
 
 * [Cython](cython/index.html)
   * [Instant PKG/MOD Generation](cython/index.html#instant-pkg-mod-generation)
-    * [Cython templates](cython/_templates/templates_index.html)
 **decile-wise analysis**
 
 * [Decile-Wise Performance](decile/index.html)
   * [KeyToDataScience](decile/kds.html)
-    * [kds Plots](decile/kds.html#kds-plots)
   * [ModelPlotPy](decile/modelplotpy.html)
-    * [ModelPlotPy Plots](decile/modelplotpy.html#modelplotpy-plots)
-    * [modelplotpy financial](decile/modelplotpy.html#modelplotpy-financial)
 **data imputation**
 
 * [Impute](impute/index.html)
@@ -86,6 +57,11 @@
   * [Mechanism](impute/index.html#mechanism)
   * [Notes](impute/index.html#notes)
   * [Comparison](impute/index.html#comparison)
+**edit distance / fuzzy matching**
+
+* [Levenshtein](levenshtein/index.html)
+  * [Scope](levenshtein/index.html#scope)
+  * [Examples](levenshtein/index.html#examples)
 **logging system**
 
 * [Logging](logging/index.html)
@@ -125,13 +101,6 @@
   * [Reliable operation](mcp/index.html#reliable-operation)
   * [Useful runtime controls](mcp/index.html#useful-runtime-controls)
   * [Common problems](mcp/index.html#common-problems)
-    * [The command appears to hang](mcp/index.html#the-command-appears-to-hang)
-    * [The health check passes but search is wrong](mcp/index.html#the-health-check-passes-but-search-is-wrong)
-    * [My JSONL file is rejected](mcp/index.html#my-jsonl-file-is-rejected)
-    * [No documentation matches](mcp/index.html#no-documentation-matches)
-    * [The top result is relevant but the claim is still wrong](mcp/index.html#the-top-result-is-relevant-but-the-claim-is-still-wrong)
-    * [A non-local HTTP bind is refused](mcp/index.html#a-non-local-http-bind-is-refused)
-    * [A production container rebuilds on import](mcp/index.html#a-production-container-rebuilds-on-import)
   * [Designed to grow without changing the basic workflow](mcp/index.html#designed-to-grow-without-changing-the-basic-workflow)
   * [Keep the user guide simple](mcp/index.html#keep-the-user-guide-simple)
   * [Where to go next](mcp/index.html#where-to-go-next)
@@ -159,7 +128,6 @@
   * [Retrieval, scoring, and diagnostics](rank_bm25/index.html#retrieval-scoring-and-diagnostics)
   * [Stable identities and result binding](rank_bm25/index.html#stable-identities-and-result-binding)
   * [Persistence and reproducibility](rank_bm25/index.html#persistence-and-reproducibility)
-    * [Build identity](rank_bm25/index.html#build-identity)
   * [Performance choices](rank_bm25/index.html#performance-choices)
   * [Failure modes worth handling](rank_bm25/index.html#failure-modes-worth-handling)
   * [Public surface and provenance](rank_bm25/index.html#public-surface-and-provenance)
@@ -175,7 +143,6 @@
 * [Stats](stats/index.html)
   * [Astrostatistics Tools (experimental)](stats/index.html#astrostatistics-tools-experimental)
   * [Tweedie Distribution (generalized family)](stats/index.html#tweedie-distribution-generalized-family)
-    * [Common Applications](stats/index.html#common-applications)
 **tensorflow keras**
 
 * [Visualkeras](visualkeras/index.html)

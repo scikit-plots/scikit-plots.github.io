@@ -21,10 +21,10 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:35:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:39Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-
+<script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/cleanprompt/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
     <title>CleanPrompt User Guide &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
@@ -63,6 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
@@ -101,6 +102,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="../../_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -673,7 +675,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../corpus/index.html">Corpus</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/readers_and_backends.html">Readers, backends, and readiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/fluent_and_policies.html">Fluent configuration and policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/customization.html">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/downloads_and_network.html">Downloads and network boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/formats_and_export.html">Formats, structured evidence, and export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/security_and_limits.html">Security and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -690,6 +704,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/how_it_works.html">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging</a></li>
@@ -951,6 +978,14 @@ python<span class="w"> </span>-m<span class="w"> </span>scikitplot.cleanprompt<s
 <h2>How this guide is organised<a class="headerlink" href="#how-this-guide-is-organised" title="Link to this heading">#</a></h2>
 <p>Read the first two pages in order; after that, go to the page for the job in
 front of you.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 docutils">
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>getting-started</strong></p>
+</div>
+<div class="sd-card-body docutils">
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
@@ -961,57 +996,183 @@ front of you.</p>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#where-to-next">Where to next</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>how</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="how_it_works.html">How it works</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="how_it_works.html#detect">1. Detect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_it_works.html#detect">1. Detect</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_it_works.html#a-second-reading-the-detection-view">A second reading: the detection view</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="how_it_works.html#resolve">2. Resolve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_it_works.html#assign">3. Assign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_it_works.html#rewrite">4. Rewrite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_it_works.html#restore">5. Restore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_it_works.html#placeholders-or-surrogates">Placeholders or surrogates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_it_works.html#placeholders-or-surrogates">Placeholders or surrogates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_it_works.html#your-own-invented-names">Your own invented names</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="how_it_works.html#the-guarantees-in-plain-words">The guarantees, in plain words</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>python</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="python_api.html">The Python API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="python_api.html#one-exchange-encode-and-decode">One exchange: <code class="docutils literal notranslate"><span class="pre">encode</span></code> and <code class="docutils literal notranslate"><span class="pre">decode</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html#one-exchange-encode-and-decode">One exchange: <code class="docutils literal notranslate"><span class="pre">encode</span></code> and <code class="docutils literal notranslate"><span class="pre">decode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python_api.html#what-encode-can-be-told">What <code class="docutils literal notranslate"><span class="pre">encode</span></code> can be told</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_api.html#profiles">Profiles</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="python_api.html#a-conversation-session">A conversation: <code class="docutils literal notranslate"><span class="pre">Session</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_api.html#full-control-redactor-and-restore">Full control: <code class="docutils literal notranslate"><span class="pre">Redactor</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html#full-control-redactor-and-restore">Full control: <code class="docutils literal notranslate"><span class="pre">Redactor</span></code> and <code class="docutils literal notranslate"><span class="pre">restore</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python_api.html#a-policy-is-data">A policy is data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_api.html#your-own-detector">Your own detector</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="python_api.html#diagnosis-in-python">Diagnosis in Python</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>cli</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="command_line.html">The command line</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#the-commands">The commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#giving-it-text">Giving it text</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#the-option-grammar">The option grammar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line.html#the-vault-on-the-command-line">The vault on the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#the-vault-on-the-command-line">The vault on the command line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#where-it-lives">Where it lives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#append-or-overwrite">Append or overwrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#ending-a-conversation">Ending a conversation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="command_line.html#encryption">Encryption</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#reading-a-reply">Reading a reply</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#exit-status">Exit status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#a-ci-gate">A CI gate</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>entity</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="entity_detection.html">Names, organisations and places</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="entity_detection.html#the-two-engines">The two engines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="entity_detection.html#installed-is-not-ready">Installed is not ready</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entity_detection.html#installed-is-not-ready">Installed is not ready</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="entity_detection.html#how-readiness-is-decided">How readiness is decided</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entity_detection.html#in-python">In Python</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="entity_detection.html#languages-and-model-sizes">Languages and model sizes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="entity_detection.html#when-the-engines-disagree">When the engines disagree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="entity_detection.html#behind-a-proxy">Behind a proxy</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>files</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="files_and_packs.html">Files, records, packs and plans</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#packs-and-formats">Packs and formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#a-plan-for-a-set-of-files">A plan for a set of files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#a-plan-for-a-set-of-files">A plan for a set of files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="files_and_packs.html#notebooks-and-modules">Notebooks and modules</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#pinning-a-team-s-configuration">Pinning a team’s configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#your-own-pack">Your own pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#your-own-pack">Your own pack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="files_and_packs.html#a-pack-file-is-trusted-like-code">A pack file is trusted like code</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="files_and_packs.html#before-sending-a-record-to-a-model">Before sending a record to a model</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>agents</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="agents_and_models.html">Models, tools and agents</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="agents_and_models.html#a-gate-in-front-of-any-client">A gate in front of any client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents_and_models.html#a-gate-in-front-of-any-client">A gate in front of any client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents_and_models.html#streamed-replies">Streamed replies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents_and_models.html#tool-calls-are-an-exit">Tool calls are an exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents_and_models.html#tool-results-are-documents">Tool results are documents</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="agents_and_models.html#command-line-models">Command-line models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agents_and_models.html#agents-without-code-mcp">Agents without code: MCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agents_and_models.html#logging-without-leaking">Logging without leaking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agents_and_models.html#what-a-guard-does-not-do">What a guard does not do</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>web</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="web_and_containers.html">The web page and containers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="web_and_containers.html#how-it-keeps-your-data">How it keeps your data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="web_and_containers.html#who-can-reach-it">Who can reach it</a></li>
@@ -1019,12 +1180,38 @@ front of you.</p>
 <li class="toctree-l2"><a class="reference internal" href="web_and_containers.html#the-terminal-session">The terminal session</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>security</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="security_and_limits.html">What it protects, and what it does not</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html#what-is-guaranteed">What is guaranteed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html#what-is-not-guaranteed">What is not guaranteed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html#things-you-are-trusted-with">Things you are trusted with</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>troubleshooting</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting and questions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#when-output-is-surprising">When output is surprising</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#questions">Questions</a></li>
@@ -1032,6 +1219,11 @@ front of you.</p>
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <p>The executable gallery, <a class="reference internal" href="../../auto_examples/cleanprompt/index.html#cleanprompt-examples"><span class="std std-ref">Cleanprompt</span></a>, follows the same path with
 code you can run: basics, the command line, the Python API, notebooks, then
@@ -1101,7 +1293,9 @@ moderate and advanced topics, recipes, packs and formats, and agents.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-whole-idea-in-one-picture">The whole idea in one picture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thirty-seconds">Thirty seconds</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-surface-should-i-use">Which surface should I use?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-guide-is-organised">How this guide is organised</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-guide-is-organised">How this guide is organised</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -1160,7 +1354,7 @@ moderate and advanced topics, recipes, packs and formats, and agents.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

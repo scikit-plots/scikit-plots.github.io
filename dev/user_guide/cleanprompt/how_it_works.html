@@ -21,10 +21,10 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:35:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:39Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-
+<script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/cleanprompt/how_it_works","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
     <title>How it works &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
@@ -63,6 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
@@ -101,6 +102,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="../../_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -673,7 +675,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../corpus/index.html">Corpus</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/readers_and_backends.html">Readers, backends, and readiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/fluent_and_policies.html">Fluent configuration and policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/customization.html">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/downloads_and_network.html">Downloads and network boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/formats_and_export.html">Formats, structured evidence, and export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/security_and_limits.html">Security and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -690,6 +704,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/how_it_works.html">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging</a></li>
@@ -952,6 +979,63 @@ on, or by chance <em>be</em> real.</p>
 or one that contains a value the conversation holds; after a bounded search it
 falls back to a placeholder. The style is part of the placeholder grammar, so
 a vault written in one style is refused, not half-read, by the other.</p>
+<section id="your-own-invented-names">
+<span id="cleanprompt-surrogate-sets"></span><h3>Your own invented names<a class="headerlink" href="#your-own-invented-names" title="Link to this heading">#</a></h3>
+<p>The built-in names are English-sounding. <code class="docutils literal notranslate"><span class="pre">Marion</span> <span class="pre">Holt</span></code> in a Finnish or
+Turkish paragraph reads oddly, and a model may comment on it. A <strong>surrogate
+set</strong> is a small file with your own lists:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># nordic.yaml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nordic</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nordic-sounding invented names.</span>
+<span class="nt">kinds</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">PERSON</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">first</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Aino</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Eero</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Liv</span><span class="p p-Indicator">],</span><span class="nt"> last</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Halvorsen</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Lindgren</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Virtanen</span><span class="p p-Indicator">]}</span>
+<span class="w">  </span><span class="nt">ORG</span><span class="p">:</span><span class="w">    </span><span class="p p-Indicator">{</span><span class="nt">first</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Fjord</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Norrsken</span><span class="p p-Indicator">],</span><span class="nt"> second</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Data</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Logistik</span><span class="p p-Indicator">]}</span>
+<span class="w">  </span><span class="nt">GPE</span><span class="p">:</span><span class="w">    </span><span class="p p-Indicator">[</span><span class="nv">Granvik</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Solberga</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cleanprompt<span class="w"> </span>encode<span class="w"> </span>--ner<span class="w"> </span>--style<span class="w"> </span>surrogate<span class="w"> </span>--surrogates<span class="w"> </span>nordic.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"Ada Lovelace met Grace Hopper at the Acme Corporation in Paris"</span>
+<span class="c1"># Aino Halvorsen met Eero Virtanen at Fjord Data in Granvik</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PERSON</span></code> and <code class="docutils literal notranslate"><span class="pre">ORG</span></code> take two lists, which are combined so that
+consecutive people do not share a surname. <code class="docutils literal notranslate"><span class="pre">GPE</span></code>, <code class="docutils literal notranslate"><span class="pre">LOC</span></code> and <code class="docutils literal notranslate"><span class="pre">FAC</span></code>
+take one list. A kind the set leaves out uses the built-in names.</p></li>
+<li><p>E-mail addresses, telephone numbers and links are always built by
+CleanPrompt in their reserved forms, and credentials and identifiers always
+keep placeholders. A set that lists <code class="docutils literal notranslate"><span class="pre">EMAIL</span></code>, <code class="docutils literal notranslate"><span class="pre">PHONE</span></code>, <code class="docutils literal notranslate"><span class="pre">URL</span></code> or any
+other kind is refused, with the reason.</p></li>
+<li><p>Each entry must read as a name, and no two entries may look alike:
+letters, spaces and <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">-</span> <span class="pre">.</span></code> and the typographic apostrophe, 1–64
+characters, starting and ending with a letter. Combining marks may follow
+a letter, at most two in a row. Full-width, circled and other
+drawn-differently forms of a letter are refused, an entry must be in one
+script (so a Cyrillic <code class="docutils literal notranslate"><span class="pre">\u0410</span></code> cannot pass for a Latin <code class="docutils literal notranslate"><span class="pre">A</span></code>), and
+spellings that differ only in how a letter and its marks were typed are
+stored once, composed. Digits, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, brackets and invisible
+characters (zero-width characters, variation selectors, fillers) are
+refused. So is an entry that a default core pattern or a built-in pack
+pattern would detect, since the next encode would hide the stand-in
+itself. Combined names (<code class="docutils literal notranslate"><span class="pre">Aino</span> <span class="pre">Halvorsen</span></code>) are checked again when they
+are issued.</p></li>
+<li><p><strong>Choose names that are not ordinary words.</strong> <code class="docutils literal notranslate"><span class="pre">decode</span></code> restores a
+stand-in wherever it appears in the reply. An entry such as <code class="docutils literal notranslate"><span class="pre">The</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Ash</span></code> would turn every <code class="docutils literal notranslate"><span class="pre">The</span></code> in the model’s answer into your value.
+The built-in names are chosen to be unusual for this reason.</p></li>
+<li><p>Every rule above still applies: no stand-in already in the text, none
+issued twice, none containing a value the conversation holds. When a set
+runs out of names, the remaining values get placeholders.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--surrogates</span></code> without <code class="docutils literal notranslate"><span class="pre">--style</span> <span class="pre">surrogate</span></code> is refused. The flag never
+switches the style on by itself.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decode</span></code> needs no set file. The vault records which set wrote it, as
+<code class="docutils literal notranslate"><span class="pre">name&#64;version#digest</span></code>, and the digest changes when any entry changes. To
+continue an existing vault with <code class="docutils literal notranslate"><span class="pre">--vault-mode</span> <span class="pre">append</span></code> (<code class="docutils literal notranslate"><span class="pre">encode</span></code>’s
+default), pass the same <code class="docutils literal notranslate"><span class="pre">--style</span></code> and set again: appending with another
+style or set is refused, so one vault never mixes two kinds of stand-in.</p></li>
+</ul>
+</section>
 </section>
 <section id="the-guarantees-in-plain-words">
 <h2>The guarantees, in plain words<a class="headerlink" href="#the-guarantees-in-plain-words" title="Link to this heading">#</a></h2>
@@ -1066,7 +1150,10 @@ detector detect anything; see <a class="reference internal" href="security_and_l
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign">3. Assign</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rewrite">4. Rewrite</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restore">5. Restore</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholders-or-surrogates">Placeholders or surrogates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholders-or-surrogates">Placeholders or surrogates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-own-invented-names">Your own invented names</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-guarantees-in-plain-words">The guarantees, in plain words</a></li>
 </ul>
   </nav></div>
@@ -1126,7 +1213,7 @@ detector detect anything; see <a class="reference internal" href="security_and_l
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

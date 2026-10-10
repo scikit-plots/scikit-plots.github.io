@@ -1,6 +1,6 @@
 # register\_cached\_artifact\_path[#](#register-cached-artifact-path "Link to this heading")
 
-scikitplot.cython.register\_cached\_artifact\_path(**artifact\_path**, **\***, **module\_name**, **cache\_dir=None**, **copy=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_public.py#L922)[#](#scikitplot.cython.register_cached_artifact_path "Link to this definition")
+scikitplot.cython.register\_cached\_artifact\_path(**artifact\_path**, **\***, **module\_name**, **cache\_dir=None**, **copy=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_public.py#L922)[#](#scikitplot.cython.register_cached_artifact_path "Link to this definition")
 :   Register an existing compiled extension artifact on disk, then import it.
 
     Parameters:

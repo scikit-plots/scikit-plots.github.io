@@ -1,6 +1,6 @@
 # resolve\_engine[#](#resolve-engine "Link to this heading")
 
-scikitplot.cleanprompt.resolve\_engine(**mode='auto'**, **language='en'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_engines.py#L712)[#](#scikitplot.cleanprompt.resolve_engine "Link to this definition")
+scikitplot.cleanprompt.resolve\_engine(**mode='auto'**, **language='en'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_engines.py#L712)[#](#scikitplot.cleanprompt.resolve_engine "Link to this definition")
 :   Resolve an engine mode into the engines that will actually run.
 
     Parameters:

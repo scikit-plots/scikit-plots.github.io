@@ -1,19 +1,39 @@
 # RuntimePolicy[#](#runtimepolicy "Link to this heading")
 
-class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_runtime.py#L46)[#](#scikitplot.corpus.RuntimePolicy "Link to this definition")
-:   Execution policy applied by [`RuntimeCorpus`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
-
-    Parameters:
-    :   ****allow\_network****bool, optional
-        :   Allow `http://` / `https://` sources at execution time. The
-            offline-safe default is `False`. This policy is checked before the
-            existing reader/URL security layer; it does not replace SSRF, redirect,
-            size, timeout, or archive protections.
+class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_runtime.py#L47)[#](#scikitplot.corpus.RuntimePolicy "Link to this definition")
+:   Execution-boundary policy applied by [`RuntimeCorpus`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
 
     Parameters:
     :   ****allow\_network**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     allow\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.RuntimePolicy.allow_network "Link to this definition")
+
+    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_runtime.py#L71)[#](#scikitplot.corpus.RuntimePolicy.from_config "Link to this definition")
+    :   Build from JSON/YAML-shaped data, rejecting unknown fields.
+
+        Parameters:
+        :   ****config**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+
+        Return type:
+        :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
+
+    classmethod networked()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_runtime.py#L62)[#](#scikitplot.corpus.RuntimePolicy.networked "Link to this definition")
+    :   Return a policy that explicitly permits URL source execution.
+
+        Return type:
+        :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
+
+    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_runtime.py#L57)[#](#scikitplot.corpus.RuntimePolicy.offline "Link to this definition")
+    :   Return the default local-only execution policy.
+
+        Return type:
+        :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
+
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_runtime.py#L67)[#](#scikitplot.corpus.RuntimePolicy.to_dict "Link to this definition")
+    :   Return a JSON-compatible representation.
+
+        Return type:
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

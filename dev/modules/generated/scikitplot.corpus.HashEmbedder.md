@@ -1,6 +1,6 @@
 # HashEmbedder[#](#hashembedder "Link to this heading")
 
-class scikitplot.corpus.HashEmbedder(**dimension=1024**, **token\_pattern="[^\\W\\d\_]+(?:['’][^\\W\\d\_]+)\*"**, **lowercase=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_hashing.py#L34)[#](#scikitplot.corpus.HashEmbedder "Link to this definition")
+class scikitplot.corpus.HashEmbedder(**dimension=1024**, **token\_pattern="[^\\W\\d\_]+(?:['’][^\\W\\d\_]+)\*"**, **lowercase=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embeddings/_hashing.py#L34)[#](#scikitplot.corpus.HashEmbedder "Link to this definition")
 :   Embed text with deterministic signed feature hashing.
 
     Parameters:
@@ -43,7 +43,7 @@ class scikitplot.corpus.HashEmbedder(**dimension=1024**, **token\_pattern="[^\\W
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_hashing.py#L89)[#](#scikitplot.corpus.HashEmbedder.__call__ "Link to this definition")
+    \_\_call\_\_(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embeddings/_hashing.py#L89)[#](#scikitplot.corpus.HashEmbedder.__call__ "Link to this definition")
     :   Return a normalized `float32` matrix for `texts`.
 
         Parameters:

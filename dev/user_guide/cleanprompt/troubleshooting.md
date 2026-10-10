@@ -83,8 +83,28 @@ use.
 
 ****A custom pattern made a run hang.****
 :   Python’s regular expressions backtrack, and a pattern with nested
-    repetition can take exponential time on a near-match. Rewrite it with
-    bounded repetition ([A pack file is trusted like code](files_and_packs.html#cleanprompt-pack-trust)).
+    repetition can take exponential time on a near-match. Such patterns are
+    reported when they load; `cleanprompt packs --pack-file FILE --check`
+    lists them with rewrites ([A pack file is trusted like code](files_and_packs.html#cleanprompt-pack-trust)).
+
+****A ``warning: … nested-quantifier`` line appears when my pack loads.****
+:   The pack loaded and the run continues; the warning goes to standard
+    error, so standard output is unchanged. Rewrite the pattern as the
+    warning suggests. If you are sure its inputs are safe, mark it
+    `risk: accepted` with a `risk_reason` in the pack. Use
+    `--pattern-risk ignore` to silence the check for one run, or
+    `refuse` to make findings stop the run.
+
+****``–surrogates`` is refused.****
+:   It needs `--style surrogate`; the set only changes which names are used.
+    A set that lists `EMAIL`, `PHONE`, `URL` or a credential kind is
+    refused because those forms are fixed ([Your own invented names](how_it_works.html#cleanprompt-surrogate-sets)).
+
+****Encoding says “Appending would mix two kinds of stand-in”.****
+:   The vault was written with another `--style` or surrogate set; the
+    message names it. Pass the same options again, or start a new vault with
+    `--vault-mode overwrite` or another `--vault`. Decoding never needs
+    the set file.
 
 ## Examples and API reference[#](#examples-and-api-reference "Link to this heading")
 

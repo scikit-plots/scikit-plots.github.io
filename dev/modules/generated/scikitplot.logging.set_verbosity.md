@@ -1,6 +1,6 @@
 # set\_verbosity[#](#set-verbosity "Link to this heading")
 
-scikitplot.logging.set\_verbosity(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1355)[#](#scikitplot.logging.set_verbosity "Link to this definition")
+scikitplot.logging.set\_verbosity(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/logging/_logging.py#L1355)[#](#scikitplot.logging.set_verbosity "Link to this definition")
 :   Set the verbosity level.
 
     Parameters:

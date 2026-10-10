@@ -1,6 +1,6 @@
 # WhitespaceNormalizer[#](#whitespacenormalizer "Link to this heading")
 
-class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **strip=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_normalizer.py#L215)[#](#scikitplot.corpus.WhitespaceNormalizer "Link to this definition")
+class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **strip=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_normalizer.py#L215)[#](#scikitplot.corpus.WhitespaceNormalizer "Link to this definition")
 :   Collapse runs of whitespace and optionally strip leading/trailing space.
 
     Parameters:
@@ -29,7 +29,7 @@ class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **str
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_normalizer.py#L245)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_normalizer.py#L245)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_doc "Link to this definition")
     :   Collapse whitespace in the document text.
 
         Parameters:

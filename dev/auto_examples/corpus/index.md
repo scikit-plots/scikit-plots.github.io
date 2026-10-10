@@ -23,23 +23,32 @@ pip install scikit-plots[corpus]
 ## Start here[#](#start-here "Link to this heading")
 
 1. ****Configure Corpus declaratively**** — learn `FluentCorpus`, immutable
-   plans, validation, branching, fingerprints, and the `materialize()`
-   boundary.
-2. ****Build and search a real Hamlet corpus**** — use
+   plans, validation, branching, fingerprints, bounded lazy configuration
+   variants, and the `materialize()` boundary.
+2. ****Compose policy families explicitly**** — use `CorpusPolicyBundle`
+   for reusable local/strict/networked/docs presets without collapsing runtime,
+   backend, downloader, and per-document error semantics.
+3. ****Customize optional backends safely**** — preflight the exact reader chain,
+   inspect readiness, order backends with `BackendPolicy`, and plug in a
+   user-side `ASRBackend` without model downloads.
+4. ****Use lexical edit distance**** — use `scikitplot.levenshtein` directly
+   and as a deterministic Corpus retrieval scorer.
+5. ****Build and search a real Hamlet corpus**** — use
    `RuntimeCorpus` end to end: `run()`, `add()`, storage, retrieval,
    export, and lifecycle.
-3. ****Compare chunking strategies**** — compare sentence, word, fixed-window, and
+6. ****Compare chunking strategies**** — compare sentence, word, fixed-window, and
    morphological semantic chunking on the same OCR text.
-4. ****Process an MP3**** — learn audio provenance and companion-transcript
+7. ****Process an MP3**** — learn audio provenance and companion-transcript
    precedence without requiring Whisper in the normal gallery path.
-5. ****Process a mixed-media ZIP**** — inspect archive-member routing,
+8. ****Process a mixed-media ZIP**** — inspect archive-member routing,
    `archive.zip/member.ext` provenance, and per-extension reader settings.
-6. ****Process a YouTube transcript**** — execute a deterministic local proxy,
+9. ****Process a YouTube transcript**** — execute a deterministic local proxy,
    configure the real YouTube reader, and keep the live transcript request
    explicit and optional.
-7. ****Build a multi-source WHO corpus**** — see the explicit stage-by-stage
-   integration path, partial source success, keyword retrieval, adapters, and
-   where `CorpusBuilder` fits.
+10. ****Build a multi-source WHO corpus**** — see the explicit stage-by-stage
+
+> integration path, partial source success, keyword retrieval, adapters, and
+> where `CorpusBuilder` fits.
 
 ## Which API should I use?[#](#which-api-should-i-use "Link to this heading")
 
@@ -60,6 +69,9 @@ configuration-only examples.
 | Example | Normal path | Optional capability | Behavior when unavailable |
 | --- | --- | --- | --- |
 | FluentCorpus basics | local/core | none | not applicable |
+| Policy bundle | local/core | none | composes existing policies; performs no I/O by itself |
+| Backend policy and custom ASR | local/core | none; capability probes only | preflight and execution use the same candidate chain; no model is loaded or downloaded by preflight |
+| Levenshtein retrieval | bundled/pure Python | RapidFuzz acceleration | facade remains importable through safe fallback |
 | Hamlet RuntimeCorpus | local/core + NumPy | native Annoy branch | configuration only; not built |
 | OCR chunking comparison | local image | Tesseract, NLTK | explicit `SKIP` for unavailable capability |
 | MP3 ingestion | MP3 + local SRT companion | NLTK, Whisper | optional sections `SKIP` |
@@ -109,7 +121,11 @@ environment.
 
 [Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
+
+[Customize Corpus backends and readiness policies](plot_corpus_backend_policy_script.html)
+
+Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
 
 [Configure Corpus with FluentCorpus](plot_corpus_fluent_corpus_script.html)
 
@@ -129,7 +145,15 @@ Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_gl
 
 [Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 
-Compare Corpus Chunking Strategies on OCR Text![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Compare Corpus Chunking Strategies on OCR Text![](../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
+
+[Use Levenshtein distance with Corpus retrieval](plot_corpus_levenshtein_script.html)
+
+Use Levenshtein distance with Corpus retrieval![](../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png)
+
+[Compose Corpus policies without hiding boundaries](plot_corpus_policy_bundle_script.html)
+
+Compose Corpus policies without hiding boundaries![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 

@@ -565,15 +565,15 @@ Related examples
 
 [Comparing DummyCode Encoder with Other Encoders](../preprocessing/plot_dummy_code_encoder.html)
 
-Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_precision_script_thumb.png)
-
-[Precision annoy.AnnoyIndex with examples](../annoy/plot_precision_script.html)
-
-Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
+Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
 
 [plot\_feature\_importances with examples](../classification/plot_feature_importances_script.html)
 
-plot\_feature\_importances with examples![](../../_images/sphx_glr_plot_mman_thumb.png)
+plot\_feature\_importances with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+
+[Precision annoy.AnnoyIndex with examples](../annoy/plot_precision_script.html)
+
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mman_thumb.png)
 
 [Memory-Mapping Showcase – Basic / Medium / Advanced](../memmap/plot_mman.html)
 

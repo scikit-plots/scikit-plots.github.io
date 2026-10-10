@@ -516,7 +516,7 @@ A language whose model is not installed is reported, not guessed at:
           │ ... (238 more)
       exit │ 0
 
-    CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'doctor', '--lang', 'de', '--format', 'json'], returncode=0, stdout='{\n  "headline": "12 structural detectors are active. Names, organisations and places are NOT being detected.",\n  "healthy": false,\n  "tiers": {\n    "ner": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "spacy",\n      "version": "3.8.16",\n      "supported": "spacy>=3.4,<5",\n      "detail": "spacy 3.8.16 satisfies spacy>=3.4,<5",\n      "install_hint": "pip install \\"spacy>=3.4,<5\\"",\n      "purpose": "named-entity detection"\n    },\n    "nltk": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "nltk",\n      "version": "3.10.3",\n      "supported": "nltk>=3.6,<4",\n      "detail": "nltk 3.10.3 satisfies nltk>=3.6,<4",\n      "install_hint": "pip install \\"nltk>=3.6,<4\\"",\n      "purpose": "named-entity detection without spaCy (English only)"\n    },\n    "web": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "flask",\n      "version": "3.1.3",\n      "supported": "flask>=2.2,<4",\n      "detail": "flask 3.1.3 satisfies flask>=2.2,<4",\n      "install_hint": "pip install \\"flask>=2.2,<4\\"",\n      "purpose": "the local web interface"\n    },\n    "crypto": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "cryptography",\n      "version": "50.0.2",\n      "supported": "cryptography>=41",\n      "detail": "cryptography 50.0.2 satisfies cryptography>=41",\n      "install_hint": "pip install \\"cryptography>=41\\"",\n      "purpose": "the Fernet vault cipher (--cipher fernet); encryption itself needs no tier"\n    }\n  },\n  "detection": {\n    "active_kinds": [\n      "AWS_ACCESS_KEY",\n      "CREDIT_CARD",\n      "EMAIL",\n      "IBAN",\n      "IPV4",\n      "IPV6",\n      "JWT",\n      "MAC",\n      "PHONE",\n      "PRIVATE_KEY",\n      "SSN_US",\n      "URL"\n    ],\n    "inactive_kinds": [\n      "TITLE_CASE"\n    ],\n    "ner_active": false,\n    "ner_requested": false,\n    "ner_ready": false,\n    "ner_error": null,\n    "ner_remedy": null,\n    "total_patterns": 13\n  },\n  "blind_spots": [\n    {\n      "category": "Names, organisations, places and other named entities",\n      "reason": "named-entity detection is not running, and no regular expression can recognise a person\'s name",\n      "remedy": "spaCy is installed with its model; enable it for this run (--ner on the command line, or add spacy_detector() to the registry)",\n      "examples": [\n        "a person\'s full name",\n        "a company or institution",\n        "a city or country"\n      ],\n      "severity": "high"\n    },\n    {\n      "category": "Capitalised multi-word names (partial cover)",\n      "reason": "the TITLE_CASE pattern is available but not enabled; it finds runs of capitalised words without needing spaCy, at the cost of false positives",\n      "remedy": "add TITLE_CASE to the detection kinds (--kinds ... TITLE_CASE), or use --suggest to review candidates and hide them explicitly",\n      "examples": [\n        "Mustafa Kemal",\n        "Acme Corporation"\n      ],\n      "severity": "medium"\n    },\n    {\n      "category": "Disabled structural patterns",\n      "reason": "1 built-in pattern(s) are not enabled: TITLE_CASE",\n      "remedy": "drop --kinds to enable every built-in pattern",\n      "examples": [\n        "TITLE_CASE"\n      ],\n      "severity": "medium"\n    }\n  ],\n  "entity_engines": {\n    "mode": "auto",\n    "language": "de",\n    "selected": [],\n    "ready": true,\n    "engines": {\n      "spacy": {\n        "installed": true,\n        "language_supported": true,\n        "assets_checked": true,\n        "assets_ready": false,\n        "ready": false,\n        "status": "MISCONFIGURED",\n        "reason": "spaCy is installed but model \'de_core_news_sm\' is not",\n        "remedy": "python -m spacy download de_core_news_sm",\n        "model": "de_core_news_sm",\n        "missing": [],\n        "version": "3.8.16",\n        "usable": false,\n        "languages": [\n          "*"\n        ],\n        "needs_model": true,\n        "summary": "statistical models, many languages, best quality",\n        "install_hint": "pip install \\"spacy>=3.4,<5\\"",\n        "detail": "spaCy is installed but model \'de_core_news_sm\' is not"\n      },\n      "nltk": {\n        "installed": true,\n        "language_supported": false,\n        "assets_checked": false,\n        "assets_ready": null,\n        "ready": false,\n        "status": "MISCONFIGURED",\n        "reason": "nltk does not support language \'de\'; it handles en",\n        "remedy": "choose another engine for \'de\' (--ner-engine spacy)",\n        "model": null,\n        "missing": [],\n        "version": "3.10.3",\n        "usable": false,\n        "languages": [\n          "en"\n        ],\n        "needs_model": true,\n        "summary": "classic chunker, English only, small download",\n        "install_hint": "pip install \\"nltk>=3.6,<4\\"",\n        "detail": "nltk does not support language \'de\'; it handles en"\n      }\n    },\n    "canonical_labels": [\n      "PERSON",\n      "ORG",\n      "GPE",\n      "LOC",\n      "FAC",\n      "NORP",\n      "EVENT",\n      "WORK_OF_ART",\n      "PRODUCT",\n      "LAW",\n      "LANGUAGE",\n      "MISC"\n    ]\n  },\n  "nltk_corpora": {\n    "checked": false\n  },\n  "languages": {\n    "requested": "de",\n    "supported": true,\n    "model": "de_core_news_sm",\n    "model_installed": false,\n    "model_version": null,\n    "install_hint": "python -m spacy download de_core_news_sm",\n    "resolution": {\n      "language": "de",\n      "requested_size": "sm",\n      "resolved_size": "sm",\n      "fallback": false\n    },\n    "installed_models": {\n      "en_core_web_sm": "3.8.0"\n    },\n    "supported_languages": {\n      "ca": "Catalan",\n      "da": "Danish",\n      "de": "German",\n      "el": "Greek",\n      "en": "English",\n      "es": "Spanish",\n      "fi": "Finnish",\n      "fr": "French",\n      "hr": "Croatian",\n      "it": "Italian",\n      "ja": "Japanese",\n      "ko": "Korean",\n      "lt": "Lithuanian",\n      "mk": "Macedonian",\n      "nb": "Norwegian Bokmal",\n      "nl": "Dutch",\n      "pl": "Polish",\n      "pt": "Portuguese",\n      "ro": "Romanian",\n      "ru": "Russian",\n      "sl": "Slovenian",\n      "sv": "Swedish",\n      "uk": "Ukrainian",\n      "zh": "Chinese"\n    }\n  },\n  "configuration": {\n    "profile": null,\n    "config_file": null,\n    "ner_engine": "auto",\n    "language": "de",\n    "model_size": "sm",\n    "policy_fingerprint": "33ad5234bfede14e",\n    "grammar_fingerprint": "0e7c5e996585e57b",\n    "vault_path": "/tmp/scikitplot-cleanprompt-moderate-prz_qnny/vault.json",\n    "vault_exists": true,\n    "case_insensitive": false,\n    "overlap": "LONGEST_WINS",\n    "allow": [],\n    "limits": {\n      "max_input_chars": 1000000,\n      "max_spans": 100000,\n      "max_entries": 50000,\n      "max_literal_terms": 10000,\n      "max_literal_length": 4096\n    }\n  },\n  "environment": {\n    "python": "3.12.15",\n    "platform": "linux",\n    "cli_frontend": "click",\n    "vault_key_set": false,\n    "web_secret_key_set": false\n  },\n  "status": "degraded"\n}\n', stderr='')
+    CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'doctor', '--lang', 'de', '--format', 'json'], returncode=0, stdout='{\n  "headline": "12 structural detectors are active. Names, organisations and places are NOT being detected.",\n  "healthy": false,\n  "tiers": {\n    "ner": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "spacy",\n      "version": "3.8.16",\n      "supported": "spacy>=3.4,<5",\n      "detail": "spacy 3.8.16 satisfies spacy>=3.4,<5",\n      "install_hint": "pip install \\"spacy>=3.4,<5\\"",\n      "purpose": "named-entity detection"\n    },\n    "nltk": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "nltk",\n      "version": "3.10.3",\n      "supported": "nltk>=3.6,<4",\n      "detail": "nltk 3.10.3 satisfies nltk>=3.6,<4",\n      "install_hint": "pip install \\"nltk>=3.6,<4\\"",\n      "purpose": "named-entity detection without spaCy (English only)"\n    },\n    "web": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "flask",\n      "version": "3.1.3",\n      "supported": "flask>=2.2,<4",\n      "detail": "flask 3.1.3 satisfies flask>=2.2,<4",\n      "install_hint": "pip install \\"flask>=2.2,<4\\"",\n      "purpose": "the local web interface"\n    },\n    "crypto": {\n      "status": "AVAILABLE",\n      "available": true,\n      "distribution": "cryptography",\n      "version": "50.0.2",\n      "supported": "cryptography>=41",\n      "detail": "cryptography 50.0.2 satisfies cryptography>=41",\n      "install_hint": "pip install \\"cryptography>=41\\"",\n      "purpose": "the Fernet vault cipher (--cipher fernet); encryption itself needs no tier"\n    }\n  },\n  "detection": {\n    "active_kinds": [\n      "AWS_ACCESS_KEY",\n      "CREDIT_CARD",\n      "EMAIL",\n      "IBAN",\n      "IPV4",\n      "IPV6",\n      "JWT",\n      "MAC",\n      "PHONE",\n      "PRIVATE_KEY",\n      "SSN_US",\n      "URL"\n    ],\n    "inactive_kinds": [\n      "TITLE_CASE"\n    ],\n    "ner_active": false,\n    "ner_requested": false,\n    "ner_ready": false,\n    "ner_error": null,\n    "ner_remedy": null,\n    "total_patterns": 13\n  },\n  "blind_spots": [\n    {\n      "category": "Names, organisations, places and other named entities",\n      "reason": "named-entity detection is not running, and no regular expression can recognise a person\'s name",\n      "remedy": "spaCy is installed with its model; enable it for this run (--ner on the command line, or add spacy_detector() to the registry)",\n      "examples": [\n        "a person\'s full name",\n        "a company or institution",\n        "a city or country"\n      ],\n      "severity": "high"\n    },\n    {\n      "category": "Capitalised multi-word names (partial cover)",\n      "reason": "the TITLE_CASE pattern is available but not enabled; it finds runs of capitalised words without needing spaCy, at the cost of false positives",\n      "remedy": "add TITLE_CASE to the detection kinds (--kinds ... TITLE_CASE), or use --suggest to review candidates and hide them explicitly",\n      "examples": [\n        "Mustafa Kemal",\n        "Acme Corporation"\n      ],\n      "severity": "medium"\n    },\n    {\n      "category": "Disabled structural patterns",\n      "reason": "1 built-in pattern(s) are not enabled: TITLE_CASE",\n      "remedy": "drop --kinds to enable every built-in pattern",\n      "examples": [\n        "TITLE_CASE"\n      ],\n      "severity": "medium"\n    }\n  ],\n  "entity_engines": {\n    "mode": "auto",\n    "language": "de",\n    "selected": [],\n    "ready": true,\n    "engines": {\n      "spacy": {\n        "installed": true,\n        "language_supported": true,\n        "assets_checked": true,\n        "assets_ready": false,\n        "ready": false,\n        "status": "MISCONFIGURED",\n        "reason": "spaCy is installed but model \'de_core_news_sm\' is not",\n        "remedy": "python -m spacy download de_core_news_sm",\n        "model": "de_core_news_sm",\n        "missing": [],\n        "version": "3.8.16",\n        "usable": false,\n        "languages": [\n          "*"\n        ],\n        "needs_model": true,\n        "summary": "statistical models, many languages, best quality",\n        "install_hint": "pip install \\"spacy>=3.4,<5\\"",\n        "detail": "spaCy is installed but model \'de_core_news_sm\' is not"\n      },\n      "nltk": {\n        "installed": true,\n        "language_supported": false,\n        "assets_checked": false,\n        "assets_ready": null,\n        "ready": false,\n        "status": "MISCONFIGURED",\n        "reason": "nltk does not support language \'de\'; it handles en",\n        "remedy": "choose another engine for \'de\' (--ner-engine spacy)",\n        "model": null,\n        "missing": [],\n        "version": "3.10.3",\n        "usable": false,\n        "languages": [\n          "en"\n        ],\n        "needs_model": true,\n        "summary": "classic chunker, English only, small download",\n        "install_hint": "pip install \\"nltk>=3.6,<4\\"",\n        "detail": "nltk does not support language \'de\'; it handles en"\n      }\n    },\n    "canonical_labels": [\n      "PERSON",\n      "ORG",\n      "GPE",\n      "LOC",\n      "FAC",\n      "NORP",\n      "EVENT",\n      "WORK_OF_ART",\n      "PRODUCT",\n      "LAW",\n      "LANGUAGE",\n      "MISC"\n    ]\n  },\n  "nltk_corpora": {\n    "checked": false\n  },\n  "languages": {\n    "requested": "de",\n    "supported": true,\n    "model": "de_core_news_sm",\n    "model_installed": false,\n    "model_version": null,\n    "install_hint": "python -m spacy download de_core_news_sm",\n    "resolution": {\n      "language": "de",\n      "requested_size": "sm",\n      "resolved_size": "sm",\n      "fallback": false\n    },\n    "installed_models": {\n      "en_core_web_sm": "3.8.0"\n    },\n    "supported_languages": {\n      "ca": "Catalan",\n      "da": "Danish",\n      "de": "German",\n      "el": "Greek",\n      "en": "English",\n      "es": "Spanish",\n      "fi": "Finnish",\n      "fr": "French",\n      "hr": "Croatian",\n      "it": "Italian",\n      "ja": "Japanese",\n      "ko": "Korean",\n      "lt": "Lithuanian",\n      "mk": "Macedonian",\n      "nb": "Norwegian Bokmal",\n      "nl": "Dutch",\n      "pl": "Polish",\n      "pt": "Portuguese",\n      "ro": "Romanian",\n      "ru": "Russian",\n      "sl": "Slovenian",\n      "sv": "Swedish",\n      "uk": "Ukrainian",\n      "zh": "Chinese"\n    }\n  },\n  "configuration": {\n    "profile": null,\n    "config_file": null,\n    "ner_engine": "auto",\n    "language": "de",\n    "model_size": "sm",\n    "policy_fingerprint": "33ad5234bfede14e",\n    "grammar_fingerprint": "0e7c5e996585e57b",\n    "vault_path": "/tmp/scikitplot-cleanprompt-moderate-ashl6pq3/vault.json",\n    "vault_exists": true,\n    "case_insensitive": false,\n    "overlap": "LONGEST_WINS",\n    "allow": [],\n    "limits": {\n      "max_input_chars": 1000000,\n      "max_spans": 100000,\n      "max_entries": 50000,\n      "max_literal_terms": 10000,\n      "max_literal_length": 4096\n    }\n  },\n  "environment": {\n    "python": "3.12.15",\n    "platform": "linux",\n    "cli_frontend": "click",\n    "vault_key_set": false,\n    "web_secret_key_set": false\n  },\n  "status": "degraded"\n}\n', stderr='')
 
 
 
@@ -731,7 +731,7 @@ and does not guarantee.
           │   note: this unlinks the file. On a journalling filesystem or an SSD the bytes may survive; use --encrypt with a key you hold for values that must not be recoverable.
       exit │ 0
 
-    CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'forget', '--force'], returncode=0, stdout='', stderr='deleted /tmp/scikitplot-cleanprompt-moderate-prz_qnny/vault.json\n  it held 1 value(s): EMAIL=1\n  note: this unlinks the file. On a journalling filesystem or an SSD the bytes may survive; use --encrypt with a key you hold for values that must not be recoverable.\n')
+    CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'forget', '--force'], returncode=0, stdout='', stderr='deleted /tmp/scikitplot-cleanprompt-moderate-ashl6pq3/vault.json\n  it held 1 value(s): EMAIL=1\n  note: this unlinks the file. On a journalling filesystem or an SSD the bytes may survive; use --encrypt with a key you hold for values that must not be recoverable.\n')
 
 
 
@@ -775,12 +775,12 @@ is not.
 
     placeholder: [PERSON-1] at Northwind Logistics in Ankara mailed [EMAIL-1] from [IPV4-1] about card [CREDIT_CARD-1]; call [PHONE-1].
 
-    surrogate  : Devin Nakamura at Northwind Logistics in Ankara mailed marion.holt@example.invalid from [IPV4-1] about card [CREDIT_CARD-1]; call +1 555 0100.
+    surrogate  : Devin Nakamura at Northwind Logistics in Ankara mailed devin.nakamura@example.invalid from [IPV4-1] about card [CREDIT_CARD-1]; call +1 555 0100.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 403-431
+.. GENERATED FROM PYTHON SOURCE LINES 403-422
 
 Note which kinds kept their placeholder.  A plausible-looking card number or
 access key is a hazard rather than a convenience: a person could act on it,
@@ -791,27 +791,18 @@ The generated contact details are reserved forms and cannot reach anybody —
 ``example.invalid`` is reserved permanently by :rfc:`2606` and the telephone
 numbers come from the North American fiction block.
 
-One thing in that output looks alarming and is not.  The address became
-``marion.holt@example.invalid`` while the sentence happens to contain a
-Marion Holt, which reads like a leak.  It is a collision: a surrogate is
-chosen from a fixed bank by its **ordinal**, never from the value it
-replaces, so the first invented address is that one whatever the input was.
-The original address was ``ada@example.com`` and it is in the vault, not in
-the text.
-
-What produced the coincidence is that both banks are ordered the same way, so
-the first invented person and the local part of the first invented address
-come from the same entry.  Collision avoidance is by **exact string**: the
-person became *Devin Nakamura* because ``Marion Holt`` occurs verbatim in the
-source, while ``marion.holt@example.invalid`` does not and so was kept.
-
-That is a readability wart rather than a disclosure, and the check below is
-the one that matters: the surrogate depends only on the kind and the ordinal,
-never on the value.
+A stand-in is chosen from a fixed list by its **ordinal**, never from the
+value it replaces, and it is never one that would show a value the text
+holds. The first invented person, *Marion Holt*, was skipped because the
+sentence really contains a Marion Holt. The first invented address,
+``marion.holt@example.invalid``, was skipped for the same reason: written
+with a dot it is still that name (``CP-105``; before round 26 only a
+one-word name was caught this way). Both moved on to the next entry, which
+is why the person and the address now share it.
 
 The round trip is exact either way:
 
-.. GENERATED FROM PYTHON SOURCE LINES 431-444
+.. GENERATED FROM PYTHON SOURCE LINES 422-435
 
 .. code-block:: Python
 
@@ -843,13 +834,13 @@ The round trip is exact either way:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 445-448
+.. GENERATED FROM PYTHON SOURCE LINES 436-439
 
 The style is part of the **grammar**, not of the wider policy, so a vault
 written in one style cannot be read as the other.  That is deliberate: the
 two produce entirely different stand-ins for the same value.
 
-.. GENERATED FROM PYTHON SOURCE LINES 448-456
+.. GENERATED FROM PYTHON SOURCE LINES 439-447
 
 .. code-block:: Python
 
@@ -874,12 +865,12 @@ two produce entirely different stand-ins for the same value.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 457-459
+.. GENERATED FROM PYTHON SOURCE LINES 448-450
 
 On the command line, ``decode`` reads the style back out of the vault, so a
 surrogate conversation needs no extra argument on the way home.
 
-.. GENERATED FROM PYTHON SOURCE LINES 459-463
+.. GENERATED FROM PYTHON SOURCE LINES 450-454
 
 .. code-block:: Python
 
@@ -907,12 +898,82 @@ surrogate conversation needs no extra argument on the way home.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 464-466
+.. GENERATED FROM PYTHON SOURCE LINES 455-463
+
+Your own invented names
+^^^^^^^^^^^^^^^^^^^^^^^
+The built-in names are English-sounding. A **surrogate set** supplies your
+own lists, for a language or a fictional cast your team recognises. The set
+can change only names: e-mail addresses, telephone numbers and links keep
+their reserved forms, and credentials keep placeholders. The vault records
+the set by its identity (``name@version#digest``), so ``decode`` needs no
+set file, and editing any entry gives a new identity.
+
+.. GENERATED FROM PYTHON SOURCE LINES 463-503
+
+.. code-block:: Python
+
+
+    from scikitplot.cleanprompt import load_surrogate_set  # noqa: E402
+
+    set_path = _HOME / "nordic.json"
+    set_path.write_text(
+        json.dumps(
+            {
+                "name": "nordic",
+                "version": 1,
+                "summary": "Nordic-sounding invented names.",
+                "kinds": {
+                    "PERSON": {
+                        "first": ["Aino", "Eero", "Liv"],
+                        "last": ["Halvorsen", "Lindgren", "Virtanen"],
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    nordic = load_surrogate_set(set_path)
+    print("set identity:", nordic.identity)
+
+    local = DEFAULT_POLICY.evolve(tag_style=TagStyle(style="surrogate", surrogate_set=nordic))
+    named = Redactor(policy=local).redact(SAMPLE, extra_terms=["Marion Holt"], extra_kind="PERSON")
+    print("with the set:", named.text)
+    assert restore(named.text, named.vault, policy=local).text == SAMPLE
+
+    # A set that tries to invent a contact form is refused, with the reason.
+    try:
+        from scikitplot.cleanprompt import PackError  # noqa: E402
+
+        set_path.write_text(
+            json.dumps({"name": "bad", "version": 1, "summary": "x", "kinds": {"EMAIL": ["Aino"]}}),
+            encoding="utf-8",
+        )
+        load_surrogate_set(set_path)
+    except PackError as exc:
+        print("refused:", exc.problems[0][:72], "...")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    set identity: nordic@1#a6d43cca8bda5762
+    with the set: Aino Halvorsen at Northwind Logistics in Ankara mailed devin.nakamura@example.invalid from [IPV4-1] about card [CREDIT_CARD-1]; call +1 555 0100.
+    refused: kinds.EMAIL: e-mail addresses, telephone numbers and links are always bu ...
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 504-506
 
 10. Cleanup
 -----------
 
-.. GENERATED FROM PYTHON SOURCE LINES 466-474
+.. GENERATED FROM PYTHON SOURCE LINES 506-514
 
 .. code-block:: Python
 
@@ -942,7 +1003,7 @@ surrogate conversation needs no extra argument on the way home.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 475-481
+.. GENERATED FROM PYTHON SOURCE LINES 515-521
 
 .. tags::
 
@@ -954,7 +1015,7 @@ surrogate conversation needs no extra argument on the way home.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 17.467 seconds)
+   **Total running time of the script:** (0 minutes 17.164 seconds)
 
 
 .. _sphx_glr_download_auto_examples_cleanprompt_plot_cleanprompt_moderate_script.py:

@@ -78,8 +78,15 @@ it as you would a password.
 
 ****Pack files.**** A custom pattern runs on every document; validation cannot
 prove it finishes quickly, and a pattern with nested repetition can
-backtrack catastrophically. Load pack files only from people you would accept
-code from ([A pack file is trusted like code](files_and_packs.html#cleanprompt-pack-trust)).
+backtrack catastrophically. Such shapes are reported when a pack loads (a
+warning by default; `--pattern-risk refuse` makes it a gate), but the check
+cannot prove a pattern fast. Load pack files only from people you would
+accept code from ([A pack file is trusted like code](files_and_packs.html#cleanprompt-pack-trust)).
+
+****Surrogate sets.**** A custom set changes only which invented **names** are
+used. It cannot give a surrogate to a credential or identifier, and it cannot
+change the reserved forms of e-mail addresses, telephone numbers and links
+([Your own invented names](how_it_works.html#cleanprompt-surrogate-sets)).
 
 ****The web page.**** It has no authentication. It binds loopback by default,
 refuses other addresses unless acknowledged, and refuses debug mode off

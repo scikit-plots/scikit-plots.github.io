@@ -1,6 +1,6 @@
 # TagStyle[#](#tagstyle "Link to this heading")
 
-class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separator='-'**, **uppercase\_kind=True**, **style='placeholder'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_policy.py#L91)[#](#scikitplot.cleanprompt.TagStyle "Link to this definition")
+class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separator='-'**, **uppercase\_kind=True**, **style='placeholder'**, **surrogates=None**, **surrogate\_set=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L91)[#](#scikitplot.cleanprompt.TagStyle "Link to this definition")
 :   The placeholder grammar.
 
     Parameters:
@@ -27,6 +27,17 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
             digest before reading a vault. A vault written in one style therefore
             cannot be silently read as the other.
 
+        ****surrogates****str, optional
+        :   The identity (`name@version#digest16`) of the custom surrogate set
+            whose names this grammar issues. Filled in from `surrogate_set`
+            when that is given; recorded in a vault, so `decode` needs no set
+            file. Requires `style='surrogate'`.
+
+        ****surrogate\_set****SurrogateSet, optional
+        :   The set itself (`_surrogate_sets`),
+            needed to **issue** stand-ins. Not compared, not serialised: restoring
+            reads stand-ins from the vault and needs only `surrogates`.
+
     Raises:
     :   PolicyError
         :   If any part is empty, or if the suffix could begin inside a label and
@@ -38,6 +49,8 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         * ****separator**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****uppercase\_kind**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****style**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****surrogates**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****surrogate\_set**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
     Notes
 
@@ -61,7 +74,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
     ```
     Go BackOpen In Tab
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_policy.py#L363)[#](#scikitplot.cleanprompt.TagStyle.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L410)[#](#scikitplot.cleanprompt.TagStyle.as_dict "Link to this definition")
     :   Return a JSON-safe dictionary of this style.
 
         Returns:
@@ -95,7 +108,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         Type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    lenient\_pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_policy.py#L229)[#](#scikitplot.cleanprompt.TagStyle.lenient_pattern "Link to this definition")
+    lenient\_pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L276)[#](#scikitplot.cleanprompt.TagStyle.lenient_pattern "Link to this definition")
     :   Return a recogniser that also matches labels a model has rewritten.
 
         Returns:
@@ -177,7 +190,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         ```
         Go BackOpen In Tab
 
-    normalize(**candidate**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_policy.py#L326)[#](#scikitplot.cleanprompt.TagStyle.normalize "Link to this definition")
+    normalize(**candidate**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L373)[#](#scikitplot.cleanprompt.TagStyle.normalize "Link to this definition")
     :   Return the canonical label that a rewritten one was meant to be.
 
         Parameters:
@@ -217,7 +230,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         ```
         Go BackOpen In Tab
 
-    pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_policy.py#L207)[#](#scikitplot.cleanprompt.TagStyle.pattern "Link to this definition")
+    pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L254)[#](#scikitplot.cleanprompt.TagStyle.pattern "Link to this definition")
     :   Return the compiled recogniser for labels of this grammar.
 
         Returns:
@@ -238,7 +251,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
 
     prefix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '['[#](#scikitplot.cleanprompt.TagStyle.prefix "Link to this definition")
 
-    render(**kind**, **ordinal**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_policy.py#L167)[#](#scikitplot.cleanprompt.TagStyle.render "Link to this definition")
+    render(**kind**, **ordinal**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L214)[#](#scikitplot.cleanprompt.TagStyle.render "Link to this definition")
     :   Render one placeholder label.
 
         Parameters:
@@ -269,6 +282,10 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
     style: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'placeholder'[#](#scikitplot.cleanprompt.TagStyle.style "Link to this definition")
 
     suffix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ']'[#](#scikitplot.cleanprompt.TagStyle.suffix "Link to this definition")
+
+    surrogate\_set: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.TagStyle.surrogate_set "Link to this definition")
+
+    surrogates: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.TagStyle.surrogates "Link to this definition")
 
     uppercase\_kind: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.cleanprompt.TagStyle.uppercase_kind "Link to this definition")
 

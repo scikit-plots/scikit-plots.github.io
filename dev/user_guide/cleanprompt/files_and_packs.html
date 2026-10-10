@@ -21,10 +21,10 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:35:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:39Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-
+<script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/cleanprompt/files_and_packs","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
     <title>Files, records, packs and plans &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
@@ -63,6 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
@@ -101,6 +102,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="../../_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -673,7 +675,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../corpus/index.html">Corpus</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/readers_and_backends.html">Readers, backends, and readiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/fluent_and_policies.html">Fluent configuration and policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/customization.html">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/downloads_and_network.html">Downloads and network boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/formats_and_export.html">Formats, structured evidence, and export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/security_and_limits.html">Security and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -690,6 +704,19 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/how_it_works.html">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging</a></li>
@@ -946,13 +973,107 @@ error unless <code class="docutils literal notranslate"><span class="pre">--repl
 <p>Validation proves that a pattern means what its examples say. It cannot prove
 that the pattern finishes quickly on every input. Python’s <a class="reference external" href="https://docs.python.org/3/library/re.html#module-re" title="(in Python v3.15)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">re</span></code></a> engine
 backtracks, so a pattern with nested repetition — <code class="docutils literal notranslate"><span class="pre">^(a+)+$</span></code>, <code class="docutils literal notranslate"><span class="pre">(x*)*</span></code>,
-<code class="docutils literal notranslate"><span class="pre">(x|x)+</span></code> — can take time that doubles with each extra character of a
-near-match, and a single document can stall a run. A length limit on pattern
-source exists, and it is not a defence against this.</p>
-<p>So treat a pack file like code you would run:</p>
+<code class="docutils literal notranslate"><span class="pre">(x|xx)+</span></code> — can take time that doubles with each extra character of a
+near-match, and a single document can stall a run.</p>
+<p><strong>Every custom pattern is checked for those shapes when it loads.</strong> The check
+reads the pattern and reports three of them:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 26.0%" />
+<col style="width: 30.0%" />
+<col style="width: 44.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Finding</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Rewrite</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nested-quantifier</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(\w+\s?)*</span></code></p></td>
+<td><p>end each repetition with a required separator, <code class="docutils literal notranslate"><span class="pre">(\w+\s)*\w*</span></code>; on
+Python 3.11+, make the inner part possessive, <code class="docutils literal notranslate"><span class="pre">(\w++\s?)*</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overlapping-alternation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(a|ab)+</span></code></p></td>
+<td><p>factor the shared start, <code class="docutils literal notranslate"><span class="pre">(?:ab?)+</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">adjacent-quantifiers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\d+\d+</span></code></p></td>
+<td><p>merge them, <code class="docutils literal notranslate"><span class="pre">\d{2,}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>By default it <strong>warns</strong>, and the pack still loads. The warning goes to
+standard error and names the file, the pack and the pattern. It also lists
+the rewrites and the ways to proceed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>warning: tickets.yaml: pack tickets, pattern TICKET: nested-quantifier (high) in `(?:[A-Z]+\d*)+`: ...
+  - drop the outer repetition when the group adds nothing: `(x+)+` matches exactly what `x+` matches
+  - end each repetition with a required separator the inner part cannot match, ...
+  - accept this pattern in its pack: add `risk: accepted` and a `risk_reason:` ...
+  - silence the check for this run: --pattern-risk ignore ...
+  - make findings fatal: --pattern-risk refuse ...
+</pre></div>
+</div>
+<p>You decide what happens next, at the level that fits:</p>
+<ul>
+<li><p><strong>for one pattern</strong> — accept it in its pack, with the reason next to it.
+Both keys are required, and an accepted pattern is never warned about or
+refused:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">patterns</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TICKET</span>
+<span class="w">    </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b(?:[A-Z]+\d*)+-\d+\b'</span>
+<span class="w">    </span><span class="nt">intent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A ticket id.</span>
+<span class="w">    </span><span class="nt">examples_yes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'ABC-12'</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">risk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accepted</span>
+<span class="w">    </span><span class="nt">risk_reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs are single ticket ids, never prose</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>for one run</strong> — <code class="docutils literal notranslate"><span class="pre">--pattern-risk</span> <span class="pre">ignore</span></code> (load quietly), <code class="docutils literal notranslate"><span class="pre">warn</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">refuse</span></code> (stop before any text is read). It works on <code class="docutils literal notranslate"><span class="pre">packs</span></code>, <code class="docutils literal notranslate"><span class="pre">batch</span></code>,
+<code class="docutils literal notranslate"><span class="pre">plan</span></code>, <code class="docutils literal notranslate"><span class="pre">ask</span></code> and <code class="docutils literal notranslate"><span class="pre">mcp</span></code>;</p></li>
+<li><p><strong>for a team</strong> — <code class="docutils literal notranslate"><span class="pre">pattern_risk:</span> <span class="pre">refuse</span></code> saved in a plan file. A plan
+fixes every choice, so <code class="docutils literal notranslate"><span class="pre">--pattern-risk</span></code> cannot be combined with
+<code class="docutils literal notranslate"><span class="pre">--plan</span></code>;</p></li>
+<li><p><strong>for a machine or a CI job</strong> — <code class="docutils literal notranslate"><span class="pre">CLEANPROMPT_PATTERN_RISK=refuse</span></code>. It
+applies when neither a flag nor a plan sets the mode.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cleanprompt</span> <span class="pre">packs</span> <span class="pre">--pack-file</span> <span class="pre">tickets.yaml</span> <span class="pre">--check</span></code> lists every finding
+under <code class="docutils literal notranslate"><span class="pre">pattern_risk</span></code>, accepted ones included with their reason, so a review
+can see what was accepted.</p>
+<p>In Python, findings are <code class="xref py py-class docutils literal notranslate"><span class="pre">PatternRiskWarning</span></code>, a <a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#UserWarning" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserWarning</span></code></a>.
+<code class="docutils literal notranslate"><span class="pre">warnings.simplefilter(&quot;error&quot;,</span> <span class="pre">PatternRiskWarning)</span></code> makes them fatal in a
+test suite, and <code class="docutils literal notranslate"><span class="pre">load_custom(paths,</span> <span class="pre">pattern_risk=&quot;refuse&quot;)</span></code> does the same
+for one call. <code class="xref py py-func docutils literal notranslate"><span class="pre">analyse_pattern</span></code> checks a single pattern.</p>
+<p>The check reads the pattern the way Python runs it. Verbose patterns
+(<code class="docutils literal notranslate"><span class="pre">flags:</span> <span class="pre">[VERBOSE]</span></code> or <code class="docutils literal notranslate"><span class="pre">(?x)</span></code>) are checked without their whitespace and
+comments. Inline <code class="docutils literal notranslate"><span class="pre">(?i)</span></code> and <code class="docutils literal notranslate"><span class="pre">(?s)</span></code> and escaped characters such as
+<code class="docutils literal notranslate"><span class="pre">\x41</span></code> are taken into account. A group repeated with more than three choices
+(<code class="docutils literal notranslate"><span class="pre">{1,40}</span></code>) counts as repeated, and a fixed count (<code class="docutils literal notranslate"><span class="pre">{4}</span></code>) does not. Inside
+a repeated group, any part that can vary in length (<code class="docutils literal notranslate"><span class="pre">\w{1,3}</span></code>, <code class="docutils literal notranslate"><span class="pre">\.?</span></code>)
+can trade characters with the next repetition, and a group whose parts are
+all optional separates nothing.
+Possessive and atomic forms (<code class="docutils literal notranslate"><span class="pre">\w++</span></code>, <code class="docutils literal notranslate"><span class="pre">(?&gt;\w+)</span></code>, Python 3.11+) give
+nothing back, so they are not reported.</p>
+<p>The check is a warning, not a proof. It reports shapes known to backtrack
+badly; it can report a shape that is harmless on the inputs a pattern will
+really see (that is what <code class="docutils literal notranslate"><span class="pre">risk:</span> <span class="pre">accepted</span></code> is for); and it cannot prove that
+a pattern is fast. Two runs separated only by an optional character
+(<code class="docutils literal notranslate"><span class="pre">\s*:?\s*</span></code>) are not reported: they cost at most quadratic time, and
+policy limits already bound every span. A pattern the check cannot read
+(a scoped <code class="docutils literal notranslate"><span class="pre">(?x:...)</span></code> group, a conditional group) is reported as
+<code class="docutils literal notranslate"><span class="pre">not-analysed</span></code>, never passed as safe. The built-in patterns produce no
+findings, and every verdict above was checked against measured run time.
+A random-pattern fuzz found no pattern the check passes that was slow; of
+the patterns it reports, roughly a third to a half were measurably slow on
+generic near-miss inputs. The rest may be harmless, or slow only on inputs
+shaped for them. That uncertainty is why the default is <em>warn</em>.</p>
+<p>So keep treating a pack file like code you would run:</p>
 <ul class="simple">
 <li><p>load pack files only from people you would accept code from;</p></li>
-<li><p>review every new pattern for nested repetition;</p></li>
 <li><p>prefer bounded forms (<code class="docutils literal notranslate"><span class="pre">\d{6}</span></code> rather than <code class="docutils literal notranslate"><span class="pre">\d+</span></code>) wherever an identifier
 has a fixed shape — they are also more precise;</p></li>
 <li><p>keep the <code class="docutils literal notranslate"><span class="pre">intent</span></code> and examples honest, because they are what a reviewer
@@ -1088,7 +1209,7 @@ the corpus side of that workflow.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # spacy\_detector[#](#spacy-detector "Link to this heading")
 
-scikitplot.cleanprompt.spacy\_detector(**model=None**, **labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **language='en'**, **size='sm'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_ner.py#L329)[#](#scikitplot.cleanprompt.spacy_detector "Link to this definition")
+scikitplot.cleanprompt.spacy\_detector(**model=None**, **labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **language='en'**, **size='sm'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_ner.py#L329)[#](#scikitplot.cleanprompt.spacy_detector "Link to this definition")
 :   Build a [`NerDetector`](scikitplot.cleanprompt.NerDetector.html#scikitplot.cleanprompt.NerDetector "scikitplot.cleanprompt.NerDetector").
 
     Parameters:

@@ -1,6 +1,6 @@
 # SessionStore[#](#sessionstore "Link to this heading")
 
-class scikitplot.cleanprompt.SessionStore(**ttl\_seconds=3600**, **max\_sessions=256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_app.py#L79)[#](#scikitplot.cleanprompt.SessionStore "Link to this definition")
+class scikitplot.cleanprompt.SessionStore(**ttl\_seconds=3600**, **max\_sessions=256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_app.py#L79)[#](#scikitplot.cleanprompt.SessionStore "Link to this definition")
 :   Bounded, expiring, server-side store of vaults.
 
     Parameters:
@@ -47,7 +47,7 @@ class scikitplot.cleanprompt.SessionStore(**ttl\_seconds=3600**, **max\_sessions
     ```
     Go BackOpen In Tab
 
-    drop(**token**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_app.py#L193)[#](#scikitplot.cleanprompt.SessionStore.drop "Link to this definition")
+    drop(**token**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_app.py#L193)[#](#scikitplot.cleanprompt.SessionStore.drop "Link to this definition")
     :   Remove and clear the vault for `token`, if present.
 
         Parameters:
@@ -56,7 +56,7 @@ class scikitplot.cleanprompt.SessionStore(**ttl\_seconds=3600**, **max\_sessions
         Return type:
         :   None
 
-    get(**token**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_app.py#L169)[#](#scikitplot.cleanprompt.SessionStore.get "Link to this definition")
+    get(**token**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_app.py#L169)[#](#scikitplot.cleanprompt.SessionStore.get "Link to this definition")
     :   Return the vault for `token`, refreshing its expiry.
 
         Parameters:
@@ -73,7 +73,7 @@ class scikitplot.cleanprompt.SessionStore(**ttl\_seconds=3600**, **max\_sessions
         Return type:
         :   [**Vault**](scikitplot.cleanprompt.Vault.html#scikitplot.cleanprompt.Vault "scikitplot.cleanprompt._vault.Vault") | None
 
-    put(**vault**, **token=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_app.py#L140)[#](#scikitplot.cleanprompt.SessionStore.put "Link to this definition")
+    put(**vault**, **token=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_app.py#L140)[#](#scikitplot.cleanprompt.SessionStore.put "Link to this definition")
     :   Store `vault` and return its token.
 
         Parameters:

@@ -1,6 +1,6 @@
 # template\_root[#](#template-root "Link to this heading")
 
-scikitplot.cython.template\_root()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L433)[#](#scikitplot.cython.template_root "Link to this definition")
+scikitplot.cython.template\_root()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_templates_api.py#L433)[#](#scikitplot.cython.template_root "Link to this definition")
 :   Return the on-disk template root directory.
 
     Returns:

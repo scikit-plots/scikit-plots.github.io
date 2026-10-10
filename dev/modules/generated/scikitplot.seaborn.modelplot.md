@@ -1,6 +1,6 @@
 # modelplot[#](#modelplot "Link to this heading")
 
-scikitplot.seaborn.modelplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **x\_estimator=None**, **kind=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **cbar=True**, **cbar\_ax=None**, **cbar\_kws=None**, **text\_kws=None**, **image\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/seaborn/_model.py#L788)[#](#scikitplot.seaborn.modelplot "Link to this definition")
+scikitplot.seaborn.modelplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **x\_estimator=None**, **kind=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **cbar=True**, **cbar\_ax=None**, **cbar\_kws=None**, **text\_kws=None**, **image\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/seaborn/_model.py#L788)[#](#scikitplot.seaborn.modelplot "Link to this definition")
 :   Model Instance and/or Attributes Visualization.
 
     Supported attributes:

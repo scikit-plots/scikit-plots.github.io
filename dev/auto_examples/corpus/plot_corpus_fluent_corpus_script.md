@@ -54,7 +54,6 @@ first plan is used only to demonstrate configuration identity; it is not
 materialized.
 
 ```
-import os
 import tempfile
 from pathlib import Path
 
@@ -66,21 +65,6 @@ from scikitplot.corpus import (
     ParagraphChunkerConfig,
     RuntimePolicy,
 )
-
-# os.environ["SCIKITPLOT_GALLERY_RUN_ASR"] = "1"
-# os.environ["SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS"] = "1"
-_RUN_ASR = os.environ.get("SCIKITPLOT_GALLERY_RUN_ASR", "1").strip().lower() in {
-    "1",
-    "true",
-    "yes",
-    "on",
-}
-_SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS = os.getenv("SCIKITPLOT_CORPUS_ALLOW_DOWNLOADS", "1").strip().lower() in {
-    "1",
-    "true",
-    "yes",
-    "on",
-}
 
 basic = FluentCorpus().embedder("E").storage("S")
 
@@ -622,6 +606,84 @@ PRODUCTION-SHAPE
 
 ```
 
+## Build a plan from user-side configuration data[#](#build-a-plan-from-user-side-configuration-data "Link to this heading")
+
+`from_config` and `configure` are useful at application boundaries where
+configuration comes from TOML/YAML/JSON, a CLI, or a settings UI. They use
+the same canonical conflict and validation rules as fluent method calls.
+
+```
+from_mapping = FluentCorpus.from_config(
+    {
+        "reader": "auto",
+        "chunker": ParagraphChunkerConfig(min_length=1, max_length=500),
+        "storage": "memory",
+    }
+)
+
+print("from mapping:", from_mapping.plan().configured)
+print("explain:", from_mapping.explain())
+
+```
+```
+from mapping: ['reader', 'chunker', 'storage']
+explain: {'fingerprint': 'd6c707cfcc318e81b3512ba20416ef585211b42c4debbb32ade9e07134f4e9c8', 'configured': ['reader', 'chunker', 'storage'], 'stages': ['read', 'normalize', 'chunk', 'enrich', 'embed', 'store', 'retrieve'], 'fragments': {'reader': "str('auto')", 'chunker': 'ParagraphChunkerConfig(min_length=1,max_length=500,overlap=0,strip_whitespace=True,include_offsets=True,merge_short=False,multilang_config=None)', 'storage': "str('memory')"}, 'ingest_fingerprint': 'b0ad97040f650dfdd3ab97d4023ff200a4fd71d9415679e700dfffdf009a350f', 'query_fingerprint': '29e0a7bdaf6f2062e3f728b8f10d4e047c8ecd135270b7436bbf24b5bea51c59', 'valid': True, 'problems': []}
+
+```
+
+## Apply several settings atomically and compare plans[#](#apply-several-settings-atomically-and-compare-plans "Link to this heading")
+
+`configure` applies multiple domains in canonical order. `with_overrides`
+makes intentional replacement explicit, while `without` creates a branch
+with selected domains removed.
+
+```
+configured = FluentCorpus().configure(reader="auto", storage="memory")
+overridden = configured.with_overrides(storage="sqlite")
+stripped = overridden.without("storage")
+
+print("configured:", configured.plan().configured)
+print("diff:", configured.diff(overridden))
+print("without storage:", stripped.plan().configured)
+
+```
+```
+configured: ['reader', 'storage']
+diff: {'changed': {'storage': {'left': "str('memory')", 'right': "str('sqlite')"}}, 'stages_changed': False, 'left_stages': ['read', 'normalize', 'chunk', 'enrich', 'embed', 'store', 'retrieve'], 'right_stages': ['read', 'normalize', 'chunk', 'enrich', 'embed', 'store', 'retrieve'], 'left_fingerprint': '8c0c3c02f1556d294affd0c68ec2b0385d6302cb030c997b60295edeb4786470', 'right_fingerprint': '19b3afb1939df4ff4156b6c073fa3972c3033f9b21fdcb0b9054c81130dc9c9f'}
+without storage: ['reader']
+
+```
+
+## Generate a bounded configuration matrix[#](#generate-a-bounded-configuration-matrix "Link to this heading")
+
+`variants` is a deterministic configuration generator, not a hidden search
+engine. It refuses an empty choice and bounds the Cartesian product before
+creating plans, which makes tuning/test matrices explicit and reproducible.
+
+```
+variant_base = FluentCorpus().reader("auto")
+variants = variant_base.variants(
+    storage=("memory", "sqlite"),
+    retrieval=("keyword", "hybrid"),
+    max_variants=8,
+)
+
+for variant in variants:
+    plan = variant.plan()
+    print(plan.fingerprint, plan.get("storage"), plan.get("retrieval"))
+
+assert len(variants) == 4
+assert len({variant.plan().fingerprint for variant in variants}) == 4
+
+```
+```
+3c9ceb957fe00ea10c58136809d5ae10352ea28635ec812c00f07012075dd4d1 memory keyword
+39977a5febe5dcbc140e6482ba39850a43d84a8c15d2d25b8bbb09a9f13b038b memory hybrid
+92949fe32d673214adcb31eb0b06e0486356a0276221cccc6056114fd27b9c92 sqlite keyword
+33dd391fb1b19014fc46c6998ad7f673d00678b7d7162b69ca263eed05ffc687 sqlite hybrid
+
+```
+
 ## Optional-capability rule for the rest of the Corpus gallery[#](#optional-capability-rule-for-the-rest-of-the-corpus-gallery "Link to this heading")
 
 This example intentionally has no optional dependency in its executed path.
@@ -646,7 +708,30 @@ owns the stateful execution lifecycle once a plan is materialized.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.019 seconds)
+## Generate bounded tuning variants lazily[#](#generate-bounded-tuning-variants-lazily "Link to this heading")
+
+`iter_variants` proves the full Cartesian-product bound before yielding the
+first plan, then materializes plans one at a time in canonical domain order.
+
+```
+variant_source = FluentCorpus().storage("memory")
+variant_iter = variant_source.iter_variants(
+    max_variants=4,
+    chunker=["sentence", "paragraph"],
+    retrieval=["lexical", "hybrid"],
+)
+variant_fingerprints = [item.plan().fingerprint for item in variant_iter]
+print("variant fingerprints:", variant_fingerprints)
+assert len(variant_fingerprints) == 4
+assert len(set(variant_fingerprints)) == 4
+
+```
+```
+variant fingerprints: ['3e79673a12b5ff2d0b43b1d537332a1c9f1c89c699f4ba98c4085a18f193a03e', '05c9ee9179c373e034d9e07626b0733488fdf850ebb821ec086f674109758fe8', '3c1d11133284a5400b315ce83c727bfdaa228efbb3774bb6eebee1eac4e2a0e5', '8061ea00b3cc8260eaaa5db09128b015886382995b6eccc007238a615377b505']
+
+```
+
+****Total running time of the script:**** (0 minutes 0.025 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)
 
@@ -670,10 +755,10 @@ Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_gl
 
 [Build and Search a Real Hamlet Corpus with FluentCorpus](plot_corpus_fluent_hamlet_retrieval_script_v2.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
 
-[Browse and compile templates](../cython/plot_01_browse_and_compile_templates.html)
+[Customize Corpus backends and readiness policies](plot_corpus_backend_policy_script.html)
 
-Browse and compile templates
+Customize Corpus backends and readiness policies
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

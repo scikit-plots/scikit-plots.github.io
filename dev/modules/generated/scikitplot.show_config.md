@@ -1,6 +1,6 @@
 # show\_config[#](#show-config "Link to this heading")
 
-scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/config/__config__.py#L189)[#](#scikitplot.show_config "Link to this definition")
+scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/config/__config__.py#L189)[#](#scikitplot.show_config "Link to this definition")
 :   Show libraries and system information on which SciPy was built
     and is being used
 

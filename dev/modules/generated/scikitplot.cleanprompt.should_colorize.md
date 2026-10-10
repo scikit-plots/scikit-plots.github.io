@@ -1,6 +1,6 @@
 # should\_colorize[#](#should-colorize "Link to this heading")
 
-scikitplot.cleanprompt.should\_colorize(**stream=None**, **color=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_render.py#L57)[#](#scikitplot.cleanprompt.should_colorize "Link to this definition")
+scikitplot.cleanprompt.should\_colorize(**stream=None**, **color=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_render.py#L57)[#](#scikitplot.cleanprompt.should_colorize "Link to this definition")
 :   Decide whether to emit terminal colour.
 
     Parameters:

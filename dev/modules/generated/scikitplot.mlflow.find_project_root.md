@@ -1,6 +1,6 @@
 # find\_project\_root[#](#find-project-root "Link to this heading")
 
-scikitplot.mlflow.find\_project\_root(**start=None**, **\***, **markers=None**, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L284)[#](#scikitplot.mlflow.find_project_root "Link to this definition")
+scikitplot.mlflow.find\_project\_root(**start=None**, **\***, **markers=None**, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mlflow/_project.py#L284)[#](#scikitplot.mlflow.find_project_root "Link to this definition")
 :   Find a project root directory deterministically.
 
     Parameters:

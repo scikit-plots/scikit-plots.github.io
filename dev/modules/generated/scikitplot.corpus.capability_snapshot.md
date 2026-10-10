@@ -1,6 +1,6 @@
 # capability\_snapshot[#](#capability-snapshot "Link to this heading")
 
-scikitplot.corpus.capability\_snapshot(**extra\_distributions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_capabilities.py#L219)[#](#scikitplot.corpus.capability_snapshot "Link to this definition")
+scikitplot.corpus.capability\_snapshot(**extra\_distributions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L244)[#](#scikitplot.corpus.capability_snapshot "Link to this definition")
 :   Return a read-only snapshot of the runtime corpus capabilities.
 
     Parameters:
@@ -29,7 +29,7 @@ scikitplot.corpus.capability\_snapshot(**extra\_distributions=()**)[[source]](ht
                 packages (plus any **extra\_distributions**).
 
     Parameters:
-    :   ****extra\_distributions**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+    :   ****extra\_distributions**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
 
     Return type:
     :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]

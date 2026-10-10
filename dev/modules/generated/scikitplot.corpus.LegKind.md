@@ -1,18 +1,18 @@
 # LegKind[#](#legkind "Link to this heading")
 
-class scikitplot.corpus.LegKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_retrieval.py#L133)[#](#scikitplot.corpus.LegKind "Link to this definition")
+class scikitplot.corpus.LegKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L133)[#](#scikitplot.corpus.LegKind "Link to this definition")
 :   Which evidence path a leg represents.
 
-    DENSE = 'dense'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.DENSE "Link to this definition")
+    DENSE = 'dense'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.DENSE "Link to this definition")
     :   Vector similarity over embeddings.
 
-    GRAPH = 'graph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.GRAPH "Link to this definition")
+    GRAPH = 'graph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.GRAPH "Link to this definition")
     :   Relationship traversal.
 
-    LEXICAL = 'lexical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.LEXICAL "Link to this definition")
+    LEXICAL = 'lexical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.LEXICAL "Link to this definition")
     :   Keyword / BM25 matching.
 
-    METADATA = 'metadata'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.METADATA "Link to this definition")
+    METADATA = 'metadata'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegKind.METADATA "Link to this definition")
     :   Attribute filtering.
 
     capitalize(**/**)[#](#scikitplot.corpus.LegKind.capitalize "Link to this definition")

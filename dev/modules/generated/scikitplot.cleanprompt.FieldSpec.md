@@ -1,6 +1,6 @@
 # FieldSpec[#](#fieldspec "Link to this heading")
 
-class scikitplot.cleanprompt.FieldSpec(**names**, **kind**, **role='field'**, **suffix=True**, **span='line'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_packs.py#L238)[#](#scikitplot.cleanprompt.FieldSpec "Link to this definition")
+class scikitplot.cleanprompt.FieldSpec(**names**, **kind**, **role='field'**, **suffix=True**, **span='line'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_packs.py#L244)[#](#scikitplot.cleanprompt.FieldSpec "Link to this definition")
 :   A field whose value is sensitive wherever it appears in a record.
 
     Parameters:
@@ -39,9 +39,9 @@ class scikitplot.cleanprompt.FieldSpec(**names**, **kind**, **role='field'**, **
         * ****suffix**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****span**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
-    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_packs.py#L238)[#](#scikitplot.cleanprompt.FieldSpec.kind "Link to this definition")
+    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_packs.py#L244)[#](#scikitplot.cleanprompt.FieldSpec.kind "Link to this definition")
 
-    names: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_packs.py#L238)[#](#scikitplot.cleanprompt.FieldSpec.names "Link to this definition")
+    names: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_packs.py#L244)[#](#scikitplot.cleanprompt.FieldSpec.names "Link to this definition")
 
     role: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'field'[#](#scikitplot.cleanprompt.FieldSpec.role "Link to this definition")
 

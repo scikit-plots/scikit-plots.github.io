@@ -1,6 +1,6 @@
 # select\_backend[#](#select-backend "Link to this heading")
 
-scikitplot.corpus.select\_backend(**name='auto'**, **\***, **index\_kwargs=None**, **annoy\_metric='angular'**, **annoy\_n\_trees=10**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_backends.py#L686)[#](#scikitplot.corpus.select_backend "Link to this definition")
+scikitplot.corpus.select\_backend(**name='auto'**, **\***, **index\_kwargs=None**, **annoy\_metric='angular'**, **annoy\_n\_trees=10**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L686)[#](#scikitplot.corpus.select_backend "Link to this definition")
 :   Construct an ANN backend by name.
 
     Parameters:

@@ -573,15 +573,15 @@ Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [model-wo
 
 Related examples
 
-![](../../_images/sphx_glr_plot_cleanprompt_recipes_script_thumb.png)
-
-[Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../cleanprompt/plot_cleanprompt_recipes_script.html)
-
-Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](../corpus/plot_corpus_who_per_file_script.html)
 
-Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_cleanprompt_guard_agents_script_thumb.png)
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_cleanprompt_recipes_script_thumb.png)
+
+[Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../cleanprompt/plot_cleanprompt_recipes_script.html)
+
+Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents![](../../_images/sphx_glr_plot_cleanprompt_guard_agents_script_thumb.png)
 
 [Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves](../cleanprompt/plot_cleanprompt_guard_agents_script.html)
 

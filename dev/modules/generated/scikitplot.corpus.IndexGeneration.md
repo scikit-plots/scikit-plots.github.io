@@ -1,6 +1,6 @@
 # IndexGeneration[#](#indexgeneration "Link to this heading")
 
-class scikitplot.corpus.IndexGeneration(**schema\_version**, **embedding\_manifest\_id**, **document\_digest**, **backend**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration "Link to this definition")
+class scikitplot.corpus.IndexGeneration(**schema\_version**, **embedding\_manifest\_id**, **document\_digest**, **backend**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration "Link to this definition")
 :   Identity of one built index.
 
     Parameters:
@@ -37,19 +37,19 @@ class scikitplot.corpus.IndexGeneration(**schema\_version**, **embedding\_manife
     ```
     Go BackOpen In Tab
 
-    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.backend "Link to this definition")
+    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.backend "Link to this definition")
 
     property document\_count: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.IndexGeneration.document_count "Link to this definition")
     :   Number of documents indexed, read from the digest prefix.
 
-    document\_digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.document_digest "Link to this definition")
+    document\_digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.document_digest "Link to this definition")
 
-    embedding\_manifest\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.embedding_manifest_id "Link to this definition")
+    embedding\_manifest\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.embedding_manifest_id "Link to this definition")
 
     property fingerprint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.IndexGeneration.fingerprint "Link to this definition")
     :   Stable content-derived identifier, 16 hex characters.
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L174)[#](#scikitplot.corpus.IndexGeneration.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L174)[#](#scikitplot.corpus.IndexGeneration.from_dict "Link to this definition")
     :   Rebuild from [`to_dict`](#scikitplot.corpus.IndexGeneration.to_dict "scikitplot.corpus.IndexGeneration.to_dict") output.
 
         Raises:
@@ -63,7 +63,7 @@ class scikitplot.corpus.IndexGeneration(**schema\_version**, **embedding\_manife
         Return type:
         :   [**IndexGeneration**](#scikitplot.corpus.IndexGeneration "scikitplot.corpus._generation.IndexGeneration")
 
-    matches(**other**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L164)[#](#scikitplot.corpus.IndexGeneration.matches "Link to this definition")
+    matches(**other**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L164)[#](#scikitplot.corpus.IndexGeneration.matches "Link to this definition")
     :   Whether `other` describes the same index.
 
         Parameters:
@@ -72,9 +72,9 @@ class scikitplot.corpus.IndexGeneration(**schema\_version**, **embedding\_manife
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    schema\_version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.schema_version "Link to this definition")
+    schema\_version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L115)[#](#scikitplot.corpus.IndexGeneration.schema_version "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_generation.py#L168)[#](#scikitplot.corpus.IndexGeneration.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_generation.py#L168)[#](#scikitplot.corpus.IndexGeneration.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping including the fingerprint.
 
         Return type:

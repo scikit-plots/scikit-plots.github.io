@@ -1,6 +1,6 @@
 # WritingSystemAdapter[#](#writingsystemadapter "Link to this heading")
 
-class scikitplot.corpus.WritingSystemAdapter(**config=None**, **\***, **extra\_strategies=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_writing_system.py#L1367)[#](#scikitplot.corpus.WritingSystemAdapter "Link to this definition")
+class scikitplot.corpus.WritingSystemAdapter(**config=None**, **\***, **extra\_strategies=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L1367)[#](#scikitplot.corpus.WritingSystemAdapter "Link to this definition")
 :   Dispatch per-script segmentation to the correct strategy.
 
     Receives a list of [`ScriptSpan`](scikitplot.corpus.ScriptSpan.html#scikitplot.corpus.ScriptSpan "scikitplot.corpus.ScriptSpan") objects (produced by
@@ -62,7 +62,7 @@ class scikitplot.corpus.WritingSystemAdapter(**config=None**, **\***, **extra\_s
     ```
     Go BackOpen In Tab
 
-    adapt(**spans**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_writing_system.py#L1488)[#](#scikitplot.corpus.WritingSystemAdapter.adapt "Link to this definition")
+    adapt(**spans**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L1488)[#](#scikitplot.corpus.WritingSystemAdapter.adapt "Link to this definition")
     :   Segment **spans** using the per-script strategy registry.
 
         Parameters:
@@ -80,7 +80,7 @@ class scikitplot.corpus.WritingSystemAdapter(**config=None**, **\***, **extra\_s
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    adapt\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_writing_system.py#L1549)[#](#scikitplot.corpus.WritingSystemAdapter.adapt_text "Link to this definition")
+    adapt\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L1549)[#](#scikitplot.corpus.WritingSystemAdapter.adapt_text "Link to this definition")
     :   Use convenience method: segment plain **text** end-to-end.
 
         Runs [`ScriptSegmenter`](scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter "scikitplot.corpus.ScriptSegmenter") internally, then calls [`adapt`](#scikitplot.corpus.WritingSystemAdapter.adapt "scikitplot.corpus.WritingSystemAdapter.adapt").

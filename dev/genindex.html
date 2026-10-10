@@ -12,7 +12,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:35:15Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:47Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 
@@ -54,6 +54,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="_static/styles/principles-ticker.css" />
@@ -92,6 +93,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -824,6 +826,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy.allow_disable_security_middleware">allow_disable_security_middleware (scikitplot.mlflow.SecurityPolicy attribute)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.CustomDownloader.html#scikitplot.corpus.CustomDownloader.allow_external_output">allow_external_output (scikitplot.corpus.CustomDownloader attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy.allow_network">allow_network (scikitplot.corpus.RuntimePolicy attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader.allow_private_networks">allow_private_networks (scikitplot.corpus.WebReader attribute)</a>
@@ -890,10 +894,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig.annoy_n_trees">annoy_n_trees (scikitplot.corpus.RetrievalConfig attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig.annoy_search_k">annoy_search_k (scikitplot.corpus.RetrievalConfig attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.AnnoyBackend.html#scikitplot.corpus.AnnoyBackend">AnnoyBackend (class in scikitplot.corpus)</a>
 </li>
       <li><a href="modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex">AnnoyIndex (in module scikitplot.annoy)</a>
@@ -988,6 +992,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.Guard.html#scikitplot.cleanprompt.Guard.ask">ask() (scikitplot.cleanprompt.Guard method)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.asr_backends">asr_backends (scikitplot.corpus.AudioReader attribute)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader.asr_backends">(scikitplot.corpus.VideoReader attribute)</a>
+</li>
+      </ul></li>
       <li><a href="modules/generated/scikitplot.mcp.assert_capability_vocabulary_matches_corpus.html#scikitplot.mcp.assert_capability_vocabulary_matches_corpus">assert_capability_vocabulary_matches_corpus() (in module scikitplot.mcp)</a>
 </li>
       <li><a href="modules/generated/scikitplot.mcp.assert_matches_corpus.html#scikitplot.mcp.assert_matches_corpus">assert_matches_corpus() (in module scikitplot.mcp)</a>
@@ -1092,6 +1102,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.backend_name">backend_name (scikitplot.corpus.RetrievalIndex property)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.backend_policy">backend_policy (scikitplot.corpus.AudioReader attribute)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader.backend_policy">(scikitplot.corpus.VideoReader attribute)</a>
+</li>
+      </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.ALTOReader.html#scikitplot.corpus.ALTOReader.backend_reports">backend_reports (scikitplot.corpus.ALTOReader property)</a>
 
       <ul>
@@ -1198,10 +1214,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy.blocked_env_key_prefixes">blocked_env_key_prefixes (scikitplot.mlflow.SecurityPolicy attribute)</a>
 </li>
-      <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.BLOG">BLOG (scikitplot.corpus.SourceType attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.BLOG">BLOG (scikitplot.corpus.SourceType attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.mcp.Bm25Retriever.html#scikitplot.mcp.Bm25Retriever">Bm25Retriever (class in scikitplot.mcp)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.ANSI.html#scikitplot.cleanprompt.ANSI.BOLD">BOLD (scikitplot.cleanprompt.ANSI attribute)</a>
@@ -1410,6 +1426,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.ErrorCategory.html#scikitplot.corpus.ErrorCategory.CAPABILITY">CAPABILITY (scikitplot.corpus.ErrorCategory attribute)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.capability_registry">capability_registry (scikitplot.corpus.AudioReader attribute)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader.capability_registry">(scikitplot.corpus.VideoReader attribute)</a>
+</li>
+      </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.capability_snapshot.html#scikitplot.corpus.capability_snapshot">capability_snapshot() (in module scikitplot.corpus)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.CapabilityReport.html#scikitplot.cleanprompt.CapabilityReport">CapabilityReport (class in scikitplot.cleanprompt)</a>
@@ -2153,6 +2175,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.ComponentSpec.html#scikitplot.corpus.ComponentSpec.config_type">config_type (scikitplot.corpus.ComponentSpec attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.ConfigConflictError.html#scikitplot.corpus.ConfigConflictError">ConfigConflictError</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.configure">configure() (scikitplot.corpus.FluentCorpus method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan.configured">configured (scikitplot.cleanprompt.CleanPlan attribute)</a>
 
@@ -2916,6 +2940,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.DictionaryBoundaryStrategy.html#scikitplot.corpus.DictionaryBoundaryStrategy">DictionaryBoundaryStrategy (class in scikitplot.corpus)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.diff">diff() (scikitplot.corpus.FluentCorpus method)</a>
+</li>
       <li><a href="modules/generated/scikitplot.corpus.AnnoyBackend.html#scikitplot.corpus.AnnoyBackend.dimension">dimension (scikitplot.corpus.AnnoyBackend property)</a>
 
       <ul>
@@ -3036,6 +3062,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.download_max_retries">download_max_retries (scikitplot.corpus.BuilderConfig attribute)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.download_policy">download_policy (scikitplot.corpus.BuilderConfig attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.download_retry_backoff">download_retry_backoff (scikitplot.corpus.BuilderConfig attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.download_timeout">download_timeout (scikitplot.corpus.BuilderConfig attribute)</a>
@@ -3043,6 +3071,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.download_url.html#scikitplot.corpus.download_url">download_url() (in module scikitplot.corpus)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind.DOWNLOADABLE">DOWNLOADABLE (scikitplot.corpus.URLKind attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.BuilderFactories.html#scikitplot.corpus.BuilderFactories.downloader_factory">downloader_factory (scikitplot.corpus.BuilderFactories attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig.downloader_kwargs">downloader_kwargs (scikitplot.corpus.BuilderConfig attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult">DownloadResult (class in scikitplot.corpus)</a>
 </li>
@@ -3382,6 +3414,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.cython.Stability.html#scikitplot.cython.Stability.endswith">(scikitplot.cython.Stability method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.CustomDownloader.html#scikitplot.corpus.CustomDownloader.enforce_max_bytes">enforce_max_bytes (scikitplot.corpus.CustomDownloader attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.LLMTrainingExporter.html#scikitplot.corpus.LLMTrainingExporter.engine">engine (scikitplot.corpus.LLMTrainingExporter attribute)</a>
@@ -3612,6 +3646,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.cython.Stability.html#scikitplot.cython.Stability.EXPERIMENTAL">EXPERIMENTAL (scikitplot.cython.Stability attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cexperimental._cy_cexperimental.expit.html#scikitplot.cexperimental._cy_cexperimental.expit">expit() (in module scikitplot.cexperimental._cy_cexperimental)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.explain">explain() (scikitplot.corpus.FluentCorpus method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle.export">export() (scikitplot.cleanprompt.Handle method)</a>
 
@@ -4107,10 +4143,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.externals._probscale.fit_line.html#scikitplot.externals._probscale.fit_line">fit_line() (in module scikitplot.externals._probscale)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen.fit_loc_scale">fit_loc_scale() (scikitplot.externals._tweedie.tweedie_gen method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy.fit_transform">fit_transform() (scikitplot.annoy.Annoy method)</a>
 
       <ul>
@@ -4377,6 +4413,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.annoy.IndexIOMixin.html#scikitplot.annoy.IndexIOMixin.from_bytes">(scikitplot.annoy.IndexIOMixin class method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.from_config">from_config() (scikitplot.corpus.FluentCorpus class method)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy.from_config">(scikitplot.corpus.RuntimePolicy class method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/generated/scikitplot.mcp.CorpusAnnoyRetriever.html#scikitplot.mcp.CorpusAnnoyRetriever.from_corpus_annoy">from_corpus_annoy() (scikitplot.mcp.CorpusAnnoyRetriever class method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.mcp.Bm25Retriever.html#scikitplot.mcp.Bm25Retriever.from_corpus_sqlite">from_corpus_sqlite() (scikitplot.mcp.Bm25Retriever class method)</a>
@@ -4469,6 +4511,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.mcp.SearchDocsOutput.html#scikitplot.mcp.SearchDocsOutput.from_orm">(scikitplot.mcp.SearchDocsOutput class method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader.from_policy">from_policy() (scikitplot.corpus.AnyDownloader class method)</a>
+</li>
       <li><a href="modules/generated/scikitplot.corpus.ALTOReader.html#scikitplot.corpus.ALTOReader.from_url">from_url() (scikitplot.corpus.ALTOReader class method)</a>
 
       <ul>
@@ -6405,6 +6449,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.cython.iter_package_entries.html#scikitplot.cython.iter_package_entries">iter_package_entries() (in module scikitplot.cython)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.iter_variants">iter_variants() (scikitplot.corpus.FluentCorpus method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -8144,6 +8190,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.NerDetector.html#scikitplot.cleanprompt.NerDetector">NerDetector (class in scikitplot.cleanprompt)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy.networked">networked() (scikitplot.corpus.RuntimePolicy class method)</a>
+</li>
       <li><a href="modules/generated/scikitplot.cython.CacheStats.html#scikitplot.cython.CacheStats.newest_mtime_utc">newest_mtime_utc (scikitplot.cython.CacheStats attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.NEWS">NEWS (scikitplot.corpus.SourceType attribute)</a>
@@ -8317,6 +8365,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader.ocr_lang">ocr_lang (scikitplot.corpus.ImageReader attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan.of">of() (scikitplot.corpus.CorpusPlan class method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy.offline">offline() (scikitplot.corpus.RuntimePolicy class method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.StorageQuery.html#scikitplot.corpus.StorageQuery.offset">offset (scikitplot.corpus.StorageQuery attribute)</a>
 </li>
@@ -8628,6 +8678,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </ul></li>
       <li><a href="modules/generated/scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle.pattern">pattern() (scikitplot.cleanprompt.TagStyle method)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan.pattern_findings">pattern_findings() (scikitplot.cleanprompt.CleanPlan method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan.pattern_risk">pattern_risk (scikitplot.cleanprompt.CleanPlan attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt.pattern_risk">pattern_risk() (scikitplot.cleanprompt.FluentCleanPrompt method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan.pattern_risk_mode">pattern_risk_mode() (scikitplot.cleanprompt.CleanPlan method)</a>
+</li>
       <li><a href="modules/generated/scikitplot.cleanprompt.PATTERNS.html#scikitplot.cleanprompt.PATTERNS">PATTERNS (in module scikitplot.cleanprompt)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.PackSpec.html#scikitplot.cleanprompt.PackSpec.patterns">patterns (scikitplot.cleanprompt.PackSpec attribute)</a>
@@ -8707,7 +8765,17 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <li><a href="modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt.plan">plan() (scikitplot.cleanprompt.FluentCleanPrompt method)</a>
 
       <ul>
+        <li><a href="modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader.plan">(scikitplot.corpus.AnyDownloader method)</a>
+</li>
         <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.plan">(scikitplot.corpus.FluentCorpus method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader.plan_all">plan_all() (scikitplot.corpus.AnyDownloader method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends">plan_asr_backends() (scikitplot.corpus.AudioReader method)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader.plan_asr_backends">(scikitplot.corpus.VideoReader method)</a>
 </li>
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus.plan_fingerprint">plan_fingerprint (scikitplot.corpus.RuntimeCorpus property)</a>
@@ -8718,14 +8786,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.cython.RuntimeCapabilities.html#scikitplot.cython.RuntimeCapabilities.platform">(scikitplot.cython.RuntimeCapabilities attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.cython.platform_capabilities.html#scikitplot.cython.platform_capabilities">platform_capabilities() (in module scikitplot.cython)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cython.PlatformCapabilities.html#scikitplot.cython.PlatformCapabilities">PlatformCapabilities (class in scikitplot.cython)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cython.CompilerCapabilities.html#scikitplot.cython.CompilerCapabilities.platforms">platforms (scikitplot.cython.CompilerCapabilities attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.PLAY">PLAY (scikitplot.corpus.SourceType attribute)</a>
 </li>
       <li><a href="modules/generated/scikitplot.experimental._doremi.play_waveform.html#scikitplot.experimental._doremi.play_waveform">play_waveform() (in module scikitplot.experimental._doremi)</a>
@@ -9930,6 +9998,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.cython.Stability.html#scikitplot.cython.Stability.rindex">(scikitplot.cython.Stability method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.PatternSpec.html#scikitplot.cleanprompt.PatternSpec.risk_reason">risk_reason (scikitplot.cleanprompt.PatternSpec attribute)</a>
+</li>
       <li><a href="modules/generated/scikitplot.cleanprompt.CapabilityStatus.html#scikitplot.cleanprompt.CapabilityStatus.rjust">rjust() (scikitplot.cleanprompt.CapabilityStatus method)</a>
 
       <ul>
@@ -12262,6 +12332,18 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.corpus.SemantemeInfo.html#scikitplot.corpus.SemantemeInfo.surface">surface (scikitplot.corpus.SemantemeInfo attribute)</a>
 </li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle.surrogate_set">surrogate_set (scikitplot.cleanprompt.TagStyle attribute)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan.surrogate_set">surrogate_set() (scikitplot.cleanprompt.CleanPlan method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan.surrogates">surrogates (scikitplot.cleanprompt.CleanPlan attribute)</a>
+
+      <ul>
+        <li><a href="modules/generated/scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle.surrogates">(scikitplot.cleanprompt.TagStyle attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt.surrogates">surrogates() (scikitplot.cleanprompt.FluentCleanPrompt method)</a>
+</li>
       <li><a href="modules/generated/scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner.survey_tree">survey_tree() (scikitplot.cleanprompt.Cleaner method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.CapabilityStatus.html#scikitplot.cleanprompt.CapabilityStatus.swapcase">swapcase() (scikitplot.cleanprompt.CapabilityStatus method)</a>
@@ -12618,6 +12700,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
         <li><a href="modules/generated/scikitplot.corpus.PreprocessingTrace.html#scikitplot.corpus.PreprocessingTrace.to_dict">(scikitplot.corpus.PreprocessingTrace method)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.RetrievalResponse.html#scikitplot.corpus.RetrievalResponse.to_dict">(scikitplot.corpus.RetrievalResponse method)</a>
+</li>
+        <li><a href="modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy.to_dict">(scikitplot.corpus.RuntimePolicy method)</a>
 </li>
         <li><a href="modules/generated/scikitplot.corpus.SemantemeInfo.html#scikitplot.corpus.SemantemeInfo.to_dict">(scikitplot.corpus.SemantemeInfo method)</a>
 </li>
@@ -13252,10 +13336,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy.validate_path">validate_path() (scikitplot.mlflow.SecurityPolicy method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html#scikitplot.api._utils.validate_plotting_kwargs">validate_plotting_kwargs() (in module scikitplot.api._utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy.validate_server_config">validate_server_config() (scikitplot.mlflow.SecurityPolicy method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy.validate_session_config">validate_session_config() (scikitplot.mlflow.SecurityPolicy method)</a>
@@ -13285,6 +13369,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       </ul></li>
       <li><a href="modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen.var">var() (scikitplot.externals._tweedie.tweedie_gen method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.variants">variants() (scikitplot.corpus.FluentCorpus method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.cleanprompt.Vault.html#scikitplot.cleanprompt.Vault">Vault (class in scikitplot.cleanprompt)</a>
 </li>
@@ -13410,10 +13496,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       <li><a href="modules/generated/scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit">WindowUnit (class in scikitplot.corpus)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.cleanprompt.with_custom.html#scikitplot.cleanprompt.with_custom">with_custom() (in module scikitplot.cleanprompt)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/generated/scikitplot.corpus.EmbeddingManifest.html#scikitplot.corpus.EmbeddingManifest.with_dimension">with_dimension() (scikitplot.corpus.EmbeddingManifest method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.MultilangChunkMeta.html#scikitplot.corpus.MultilangChunkMeta.with_embedding">with_embedding() (scikitplot.corpus.MultilangChunkMeta method)</a>
@@ -13423,6 +13509,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </li>
       </ul></li>
       <li><a href="modules/generated/scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk.with_metadata">with_metadata() (scikitplot.corpus.Chunk method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.with_overrides">with_overrides() (scikitplot.corpus.FluentCorpus method)</a>
+</li>
+      <li><a href="modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.without">without() (scikitplot.corpus.FluentCorpus method)</a>
 </li>
       <li><a href="modules/generated/scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy.WORD">WORD (scikitplot.corpus.ChunkingStrategy attribute)</a>
 </li>
@@ -13656,7 +13746,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

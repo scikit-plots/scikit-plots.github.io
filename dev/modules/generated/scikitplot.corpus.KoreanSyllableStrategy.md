@@ -1,6 +1,6 @@
 # KoreanSyllableStrategy[#](#koreansyllablestrategy "Link to this heading")
 
-class scikitplot.corpus.KoreanSyllableStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_writing_system.py#L786)[#](#scikitplot.corpus.KoreanSyllableStrategy "Link to this definition")
+class scikitplot.corpus.KoreanSyllableStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L786)[#](#scikitplot.corpus.KoreanSyllableStrategy "Link to this definition")
 :   Space-delimited word segmentation for Korean Hangul.
 
     Korean uses spaces to delimit **eojeols** (spacing units). Each eojeol is
@@ -12,7 +12,7 @@ class scikitplot.corpus.KoreanSyllableStrategy[[source]](https://github.com/scik
     Parameters:
     :   ****(none)****
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_writing_system.py#L818)[#](#scikitplot.corpus.KoreanSyllableStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L818)[#](#scikitplot.corpus.KoreanSyllableStrategy.segment "Link to this definition")
     :   Segment Korean **span** by eojeol (space) or syllable.
 
         Parameters:

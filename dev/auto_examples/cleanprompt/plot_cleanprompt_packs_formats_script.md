@@ -40,12 +40,16 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import warnings
 import zipfile
 from pathlib import Path
 
 from scikitplot.cleanprompt import (
     CleanPromptError,
     FluentCleanPrompt,
+    PackError,
+    PatternRiskWarning,
+    analyse_pattern,
     builtin_catalog,
     encode,
     load_custom,
@@ -231,10 +235,10 @@ run on every document you encode with it. Validation checks that they mean
 what their examples say; it cannot prove that one finishes quickly on every
 input. Python’s `re` backtracks, so a pattern such as `^(a+)+$` takes
 time that doubles with each extra character of a near-match — a document
-could stall the run. So: load pack files only from people you would accept
-code from, review a new pattern for nested repetition (`(x+)+`,
-`(x*)*`, `(x|x)+`), and prefer a bounded form (`\d{6}` rather than
-`\d+`) wherever the identifier has a fixed shape — as the one below does.
+could stall the run. Such shapes are reported when the pack loads (shown
+right after this pack). Load pack files only from people you would accept
+code from, and prefer a bounded form (`\d{6}` rather than `\d+`)
+wherever the identifier has a fixed shape — as the one below does.
 
 ```
 hr_pack = {
@@ -284,6 +288,59 @@ badge_id,full_name
 Visitor badge: [EMPLOYEE-1] signed in.
 
 YAML loads the same: True
+
+```
+
+****A pattern that could stall a run is reported when it loads.**** This ticket
+pattern repeats `[A-Z]+` inside a repeated group with nothing required
+between repetitions, so a near-miss such as `AAAA...A!` can be split in
+exponentially many ways. The default is to **warn**: the pack loads, and the
+warning names the pack and pattern, suggests rewrites, and lists the ways to
+proceed. `pattern_risk="refuse"` (`--pattern-risk refuse`) stops instead,
+and `risk: accepted` with a `risk_reason` in the pack accepts one
+pattern deliberately.
+
+```
+risky = {
+    "name": "tickets",
+    "version": 1,
+    "summary": "Ticket ids.",
+    "patterns": [
+        {
+            "kind": "TICKET",
+            "pattern": r"\b(?:[A-Z]+\d*)+-\d+\b",
+            "intent": "A ticket id.",
+            "examples_yes": ["ABC-12"],
+        }
+    ],
+}
+risky_path = _HOME / "tickets.json"
+risky_path.write_text(json.dumps(risky), encoding="utf-8")
+with warnings.catch_warnings(record=True) as caught:
+    warnings.simplefilter("always", PatternRiskWarning)
+    load_custom(risky_path)
+(finding,) = [w for w in caught if w.category is PatternRiskWarning]
+print(str(finding.message).splitlines()[0][:110])
+
+try:
+    load_custom(risky_path, pattern_risk="refuse")
+except PackError as exc:
+    print("refused:", exc.problems[0][:70], "...")
+
+risky["patterns"][0].update(risk="accepted", risk_reason="inputs are single ticket ids")
+risky_path.write_text(json.dumps(risky), encoding="utf-8")
+with warnings.catch_warnings():
+    warnings.simplefilter("error", PatternRiskWarning)
+    load_custom(risky_path, pattern_risk="refuse")  # accepted: silent, even under refuse
+print("accepted in the pack: loads silently")
+print("a rewrite for plain ids such as ABC-12 is clean:", analyse_pattern(r"\b[A-Z]+\d*-\d+\b") == ())
+
+```
+```
+tickets.json: pack tickets, pattern TICKET: nested-quantifier (high) in `(?:[A-Z]+\d*)+`: a repetition of `[A-
+refused: tickets.json: pack tickets, pattern TICKET: nested-quantifier (high) i ...
+accepted in the pack: loads silently
+a rewrite for plain ids such as ABC-12 is clean: True
 
 ```
 
@@ -452,6 +509,7 @@ assert (_HOME / "cli-back" / "patient.json").read_text(encoding="utf-8") == RECO
 $ cleanprompt packs --check
   problems: -
   compiled: matches the YAML
+  pattern_risk: -
   status: ok
   exit 0
 $ cleanprompt batch <workspace>/project --out <workspace>/cli-safe --pack all -f json
@@ -488,7 +546,7 @@ Temporary workspace cleaned: True
 
 Tags: [model-workflow: cleanprompt](../../_tags/model-workflow-cleanprompt.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.223 seconds)
+****Total running time of the script:**** (0 minutes 2.083 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo3.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo3.svg)](../../lite/lab/index.html?path=auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.ipynb)
 

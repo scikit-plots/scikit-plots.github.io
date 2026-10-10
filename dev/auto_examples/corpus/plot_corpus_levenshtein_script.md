@@ -1,0 +1,149 @@
+> **Note**
+> [Go to the end](#sphx-glr-download-auto-examples-corpus-plot-corpus-levenshtein-script-py)
+to download the full example code or to run this example in your browser via JupyterLite or Binder.
+
+# Use Levenshtein distance with Corpus retrieval[#](#use-levenshtein-distance-with-corpus-retrieval "Link to this heading")
+
+`scikitplot.levenshtein` is an always-importable facade for edit distance.
+It prefers the bundled Scikit-Plots implementation, can use the MIT-licensed
+RapidFuzz package when available, and retains a dependency-free Python
+fallback. The separately licensed `Levenshtein` package is available only
+when explicitly requested.
+
+Edit distance is lexical, not semantic. It is particularly useful for OCR
+variants, spelling variants, identifiers, short labels, and deterministic
+retrieval fallbacks. `score_cutoff` is backend-neutral normalized similarity,
+so low-quality candidates can be rejected consistently across accelerators.
+
+```
+# Authors: The scikit-plots developers
+# SPDX-License-Identifier: BSD-3-Clause
+
+from __future__ import annotations
+
+from scikitplot import levenshtein
+from scikitplot.corpus import CorpusDocument, RetrievalConfig
+
+```
+
+## Basic distance[#](#basic-distance "Link to this heading")
+
+```
+print("kitten -> sitting:", levenshtein.distance("kitten", "sitting"))
+print("active backend:", levenshtein.backend_info())
+assert levenshtein.distance("kitten", "sitting") == 3
+
+```
+```
+kitten -> sitting: 3
+active backend: BackendInfo(name='internal', available=True, version=None, license='MIT', implementation='scikitplot.cexternals._editdistance', reason=None)
+
+```
+
+## Rank noisy lexical variants[#](#rank-noisy-lexical-variants "Link to this heading")
+
+```
+choices = [
+    "Scikit-Plots",
+    "scikit plot",
+    "science plots",
+    "scikit-learn",
+]
+
+for match in levenshtein.rank(
+    "scikit plots",
+    choices,
+    score_cutoff=0.55,
+):
+    print(match.choice, round(match.similarity, 3), match.distance)
+
+```
+```
+scikit plot 0.917 1
+Scikit-Plots 0.75 3
+science plots 0.692 4
+
+```
+
+## Adapt the scorer to Corpus[#](#adapt-the-scorer-to-corpus "Link to this heading")
+
+The adapter is lazy: importing `scikitplot.levenshtein` does not import
+Corpus. When used with Corpus it returns normal `RetrievalHit` records
+with explicit lexical provenance.
+
+```
+documents = [
+    CorpusDocument(
+        doc_id="a",
+        input_path="memory://a",
+        chunk_index=0,
+        text="hemoglobin concentration",
+        normalized_text="hemoglobin concentration",
+    ),
+    CorpusDocument(
+        doc_id="b",
+        input_path="memory://b",
+        chunk_index=0,
+        text="haemoglobin concentration",
+        normalized_text="haemoglobin concentration",
+    ),
+    CorpusDocument(
+        doc_id="c",
+        input_path="memory://c",
+        chunk_index=0,
+        text="platelet count",
+        normalized_text="platelet count",
+    ),
+]
+
+scorer = levenshtein.make_corpus_scorer(score_cutoff=0.60)
+hits = scorer(
+    "hemoglobin concentration",
+    documents,
+    RetrievalConfig(top_k=3),
+)
+
+for hit in hits:
+    print(hit.rank, hit.doc.doc_id, round(hit.score, 3), hit.backend)
+
+assert hits[0].doc.doc_id == "a"
+assert hits[0].backend.startswith("levenshtein:")
+
+```
+```
+0 a 1.0 levenshtein:internal
+1 b 0.96 levenshtein:internal
+
+```
+
+****Total running time of the script:**** (0 minutes 0.007 seconds)
+
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_levenshtein_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_levenshtein_script.ipynb)
+
+[`Download Jupyter notebook: plot_corpus_levenshtein_script.ipynb`](../../_downloads/7036d463d456305a7e8fe2824182f943/plot_corpus_levenshtein_script.ipynb)
+
+[`Download Python source code: plot_corpus_levenshtein_script.py`](../../_downloads/2d5ef288086ef72413cf033aaa0f0fa4/plot_corpus_levenshtein_script.py)
+
+[`Download zipped: plot_corpus_levenshtein_script.zip`](../../_downloads/efd5a4cdddbad3787a819d67836eb4e4/plot_corpus_levenshtein_script.zip)
+
+Related examples
+
+![](../../_images/sphx_glr_plot_levenshtein_corpus_script_thumb.png)
+
+[Use Levenshtein with Corpus](../levenshtein/plot_levenshtein_corpus_script.html)
+
+Use Levenshtein with Corpus![](../../_images/sphx_glr_plot_levenshtein_sequences_script_thumb.png)
+
+[Sequences and explicit normalization](../levenshtein/plot_levenshtein_sequences_script.html)
+
+Sequences and explicit normalization![](../../_images/sphx_glr_plot_levenshtein_basics_script_thumb.png)
+
+[Levenshtein basics](../levenshtein/plot_levenshtein_basics_script.html)
+
+Levenshtein basics![](../../_images/sphx_glr_plot_levenshtein_backends_script_thumb.png)
+
+[Backend discovery and safe fallback](../levenshtein/plot_levenshtein_backends_script.html)
+
+Backend discovery and safe fallback
+
+[Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

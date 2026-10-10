@@ -1,6 +1,6 @@
 🤗 Welcome to Scikit-plots 101
   
- 0.5.dev0+git.20261010.de98219 - October 10, 2026 02:14 UTC
+ 0.5.dev0+git.20261010.c24961d - October 10, 2026 21:35 UTC
 
 # Introduction[#](#introduction "Link to this heading")
 
@@ -8,7 +8,7 @@
 
 * [Installation](../install/installation.html)
   * [Installing the latest release](../install/installation.html#installing-the-latest-release)
-  * [Installing A lightweight version](../install/installation.html#installing-a-lightweight-version)
+  * [Installing A lightweight version `scikit-plots-x`](../install/installation.html#installing-a-lightweight-version-scikit-plots-x)
   * [Dependencies](../install/installation.html#dependencies)
 **Quickstart Tutorial**
 

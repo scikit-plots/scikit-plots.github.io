@@ -1,6 +1,6 @@
 # describe\_engines[#](#describe-engines "Link to this heading")
 
-scikitplot.cleanprompt.describe\_engines(**language='en'**, **mode='auto'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_engines.py#L791)[#](#scikitplot.cleanprompt.describe_engines "Link to this definition")
+scikitplot.cleanprompt.describe\_engines(**language='en'**, **mode='auto'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_engines.py#L791)[#](#scikitplot.cleanprompt.describe_engines "Link to this definition")
 :   Report every engine’s readiness, and what `mode` would select.
 
     Parameters:

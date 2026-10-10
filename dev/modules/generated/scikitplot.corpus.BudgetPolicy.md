@@ -1,6 +1,6 @@
 # BudgetPolicy[#](#budgetpolicy "Link to this heading")
 
-class scikitplot.corpus.BudgetPolicy(**max\_iterations=4**, **max\_retrieval\_calls=8**, **max\_subqueries=8**, **max\_evidence\_documents=64**, **max\_graph\_expansions=4**, **max\_wall\_time\_seconds=30.0**, **max\_context\_tokens=None**, **max\_model\_tokens=None**, **token\_counter=None**, **\_iterations=0**, **\_retrieval\_calls=0**, **\_subqueries=0**, **\_graph\_expansions=0**, **\_started=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L111)[#](#scikitplot.corpus.BudgetPolicy "Link to this definition")
+class scikitplot.corpus.BudgetPolicy(**max\_iterations=4**, **max\_retrieval\_calls=8**, **max\_subqueries=8**, **max\_evidence\_documents=64**, **max\_graph\_expansions=4**, **max\_wall\_time\_seconds=30.0**, **max\_context\_tokens=None**, **max\_model\_tokens=None**, **token\_counter=None**, **\_iterations=0**, **\_retrieval\_calls=0**, **\_subqueries=0**, **\_graph\_expansions=0**, **\_started=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L111)[#](#scikitplot.corpus.BudgetPolicy "Link to this definition")
 :   Deterministic, decrementing limits on an investigation.
 
     Parameters:
@@ -61,7 +61,7 @@ class scikitplot.corpus.BudgetPolicy(**max\_iterations=4**, **max\_retrieval\_ca
     factor – a budget that **appears** enforced and is not, which is the same
     silent-partial-evidence shape found elsewhere in this codebase.
 
-    check(**\***, **evidence\_count=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L176)[#](#scikitplot.corpus.BudgetPolicy.check "Link to this definition")
+    check(**\***, **evidence\_count=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L176)[#](#scikitplot.corpus.BudgetPolicy.check "Link to this definition")
     :   Return a record naming the exhausted budget, or `None`.
 
         Notes
@@ -75,13 +75,13 @@ class scikitplot.corpus.BudgetPolicy(**max\_iterations=4**, **max\_retrieval\_ca
         Return type:
         :   [**ErrorRecord**](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord") | None
 
-    debit\_iteration()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L216)[#](#scikitplot.corpus.BudgetPolicy.debit_iteration "Link to this definition")
+    debit\_iteration()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L216)[#](#scikitplot.corpus.BudgetPolicy.debit_iteration "Link to this definition")
     :   Record one loop iteration.
 
         Return type:
         :   None
 
-    debit\_retrieval()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L220)[#](#scikitplot.corpus.BudgetPolicy.debit_retrieval "Link to this definition")
+    debit\_retrieval()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L220)[#](#scikitplot.corpus.BudgetPolicy.debit_retrieval "Link to this definition")
     :   Record one retrieval call.
 
         Return type:
@@ -103,13 +103,13 @@ class scikitplot.corpus.BudgetPolicy(**max\_iterations=4**, **max\_retrieval\_ca
 
     max\_wall\_time\_seconds: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = 30.0[#](#scikitplot.corpus.BudgetPolicy.max_wall_time_seconds "Link to this definition")
 
-    spent()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L224)[#](#scikitplot.corpus.BudgetPolicy.spent "Link to this definition")
+    spent()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L224)[#](#scikitplot.corpus.BudgetPolicy.spent "Link to this definition")
     :   Return what has been consumed so far.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    start()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L159)[#](#scikitplot.corpus.BudgetPolicy.start "Link to this definition")
+    start()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L159)[#](#scikitplot.corpus.BudgetPolicy.start "Link to this definition")
     :   Begin the wall-clock budget.
 
         Return type:
@@ -117,7 +117,7 @@ class scikitplot.corpus.BudgetPolicy(**max\_iterations=4**, **max\_retrieval\_ca
 
     token\_counter: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BudgetPolicy.token_counter "Link to this definition")
 
-    unenforceable()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_agentic.py#L163)[#](#scikitplot.corpus.BudgetPolicy.unenforceable "Link to this definition")
+    unenforceable()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L163)[#](#scikitplot.corpus.BudgetPolicy.unenforceable "Link to this definition")
     :   Budgets this policy cannot enforce, declared rather than assumed.
 
         Return type:

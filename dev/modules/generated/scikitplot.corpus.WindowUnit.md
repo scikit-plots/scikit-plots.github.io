@@ -1,11 +1,11 @@
 # WindowUnit[#](#windowunit "Link to this heading")
 
-class scikitplot.corpus.WindowUnit(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_fixed_window.py#L88)[#](#scikitplot.corpus.WindowUnit "Link to this definition")
+class scikitplot.corpus.WindowUnit(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_fixed_window.py#L88)[#](#scikitplot.corpus.WindowUnit "Link to this definition")
 :   Unit of measurement for window size and step.
 
-    CHARS = 'chars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_fixed_window.py#L)[#](#scikitplot.corpus.WindowUnit.CHARS "Link to this definition")
+    CHARS = 'chars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_fixed_window.py#L)[#](#scikitplot.corpus.WindowUnit.CHARS "Link to this definition")
 
-    TOKENS = 'tokens'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_fixed_window.py#L)[#](#scikitplot.corpus.WindowUnit.TOKENS "Link to this definition")
+    TOKENS = 'tokens'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_fixed_window.py#L)[#](#scikitplot.corpus.WindowUnit.TOKENS "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.WindowUnit.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

@@ -21,10 +21,10 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:32:53Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:41:44Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-
+<script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"auto_examples/corpus/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
     <title>Corpus &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
@@ -63,6 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
@@ -101,6 +102,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="../../_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -685,11 +687,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_backend_policy_script.html">Customize Corpus backends and readiness policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v2.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_levenshtein_script.html">Use Levenshtein distance with Corpus retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_policy_bundle_script.html">Compose Corpus policies without hiding boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
@@ -725,6 +730,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_backends_script.html">Backend discovery and safe fallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_basics_script.html">Levenshtein basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_corpus_script.html">Use Levenshtein with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_ranking_script.html">Rank fuzzy matches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_sequences_script.html">Sequences and explicit normalization</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -879,8 +892,16 @@ span.prompt1:before {
 <h2>Start here<a class="headerlink" href="#start-here" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Configure Corpus declaratively</strong> — learn <code class="xref py py-class docutils literal notranslate"><span class="pre">FluentCorpus</span></code>, immutable
-plans, validation, branching, fingerprints, and the <code class="docutils literal notranslate"><span class="pre">materialize()</span></code>
-boundary.</p></li>
+plans, validation, branching, fingerprints, bounded lazy configuration
+variants, and the <code class="docutils literal notranslate"><span class="pre">materialize()</span></code> boundary.</p></li>
+<li><p><strong>Compose policy families explicitly</strong> — use <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code>
+for reusable local/strict/networked/docs presets without collapsing runtime,
+backend, downloader, and per-document error semantics.</p></li>
+<li><p><strong>Customize optional backends safely</strong> — preflight the exact reader chain,
+inspect readiness, order backends with <code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code>, and plug in a
+user-side <code class="xref py py-class docutils literal notranslate"><span class="pre">ASRBackend</span></code> without model downloads.</p></li>
+<li><p><strong>Use lexical edit distance</strong> — use <code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code> directly
+and as a deterministic Corpus retrieval scorer.</p></li>
 <li><p><strong>Build and search a real Hamlet corpus</strong> — use
 <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeCorpus</span></code> end to end: <code class="docutils literal notranslate"><span class="pre">run()</span></code>, <code class="docutils literal notranslate"><span class="pre">add()</span></code>, storage, retrieval,
 export, and lifecycle.</p></li>
@@ -893,10 +914,12 @@ precedence without requiring Whisper in the normal gallery path.</p></li>
 <li><p><strong>Process a YouTube transcript</strong> — execute a deterministic local proxy,
 configure the real YouTube reader, and keep the live transcript request
 explicit and optional.</p></li>
-<li><p><strong>Build a multi-source WHO corpus</strong> — see the explicit stage-by-stage
-integration path, partial source success, keyword retrieval, adapters, and
-where <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> fits.</p></li>
+<li><p><strong>Build a multi-source WHO corpus</strong> — see the explicit stage-by-stage</p></li>
 </ol>
+<blockquote>
+<div><p>integration path, partial source success, keyword retrieval, adapters, and
+where <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> fits.</p>
+</div></blockquote>
 </section>
 <section id="which-api-should-i-use">
 <h2>Which API should I use?<a class="headerlink" href="#which-api-should-i-use" title="Link to this heading">#</a></h2>
@@ -955,33 +978,49 @@ configuration-only examples.</p>
 <td><p>none</p></td>
 <td><p>not applicable</p></td>
 </tr>
-<tr class="row-odd"><td><p>Hamlet RuntimeCorpus</p></td>
+<tr class="row-odd"><td><p>Policy bundle</p></td>
+<td><p>local/core</p></td>
+<td><p>none</p></td>
+<td><p>composes existing policies; performs no I/O by itself</p></td>
+</tr>
+<tr class="row-even"><td><p>Backend policy and custom ASR</p></td>
+<td><p>local/core</p></td>
+<td><p>none; capability probes only</p></td>
+<td><p>preflight and execution use the same candidate chain; no model is loaded
+or downloaded by preflight</p></td>
+</tr>
+<tr class="row-odd"><td><p>Levenshtein retrieval</p></td>
+<td><p>bundled/pure Python</p></td>
+<td><p>RapidFuzz acceleration</p></td>
+<td><p>facade remains importable through safe fallback</p></td>
+</tr>
+<tr class="row-even"><td><p>Hamlet RuntimeCorpus</p></td>
 <td><p>local/core + NumPy</p></td>
 <td><p>native Annoy branch</p></td>
 <td><p>configuration only; not built</p></td>
 </tr>
-<tr class="row-even"><td><p>OCR chunking comparison</p></td>
+<tr class="row-odd"><td><p>OCR chunking comparison</p></td>
 <td><p>local image</p></td>
 <td><p>Tesseract, NLTK</p></td>
 <td><p>explicit <code class="docutils literal notranslate"><span class="pre">SKIP</span></code> for unavailable capability</p></td>
 </tr>
-<tr class="row-odd"><td><p>MP3 ingestion</p></td>
+<tr class="row-even"><td><p>MP3 ingestion</p></td>
 <td><p>MP3 + local SRT companion</p></td>
 <td><p>NLTK, Whisper</p></td>
 <td><p>optional sections <code class="docutils literal notranslate"><span class="pre">SKIP</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Mixed-media ZIP</p></td>
+<tr class="row-odd"><td><p>Mixed-media ZIP</p></td>
 <td><p>local archive</p></td>
 <td><p>PDF/OCR/Whisper readers</p></td>
 <td><p>individual optional member capability may produce no documents;
 archive-security failures still fail</p></td>
 </tr>
-<tr class="row-odd"><td><p>YouTube transcript</p></td>
+<tr class="row-even"><td><p>YouTube transcript</p></td>
 <td><p>local synthetic proxy</p></td>
 <td><p>youtube-transcript-api + network, NLTK</p></td>
 <td><p>live/optional sections <code class="docutils literal notranslate"><span class="pre">SKIP</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>WHO multi-source integration</p></td>
+<tr class="row-odd"><td><p>WHO multi-source integration</p></td>
 <td><p>local sidecars only</p></td>
 <td><p>PDF/OCR/Whisper</p></td>
 <td><p>each unavailable source reports <code class="docutils literal notranslate"><span class="pre">SKIP</span></code>; successful evidence remains</p></td>
@@ -1027,6 +1066,9 @@ environment.</p>
 <div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the audio ingestion path without making a documentation build depend on a speech model download."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">Process an MP3 with Corpus</span></a></p>
   <div class="sphx-glr-thumbnail-title">Process an MP3 with Corpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Optional packages are not a single yes/no capability.  A package may be installed while its model or system asset is missing, a policy may select a backend that has not run yet, and a successful fallback may be deliberately reported as degraded."><img alt="" src="../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png" />
+<p><a class="reference internal" href="plot_corpus_backend_policy_script.html"><span class="doc">Customize Corpus backends and readiness policies</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Customize Corpus backends and readiness policies</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="FluentCorpus is an immutable configuration facade for building a canonical CorpusPlan and, when requested, materializing that plan as a RuntimeCorpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_fluent_corpus_script.html"><span class="doc">Configure Corpus with FluentCorpus</span></a></p>
   <div class="sphx-glr-thumbnail-title">Configure Corpus with FluentCorpus</div>
@@ -1042,6 +1084,12 @@ environment.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example asks one focused question:"><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">Compare Corpus Chunking Strategies on OCR Text</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compare Corpus Chunking Strategies on OCR Text</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="scikitplot.levenshtein is an always-importable facade for edit distance. It prefers the bundled Scikit-Plots implementation, can use the MIT-licensed RapidFuzz package when available, and retains a dependency-free Python fallback.  The separately licensed Levenshtein package is available only when explicitly requested."><img alt="" src="../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png" />
+<p><a class="reference internal" href="plot_corpus_levenshtein_script.html"><span class="doc">Use Levenshtein distance with Corpus retrieval</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Use Levenshtein distance with Corpus retrieval</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example keeps the four policy dimensions separate while using CorpusPolicyBundle as a reusable configuration container.  It performs no network request and loads no optional model."><img alt="" src="../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png" />
+<p><a class="reference internal" href="plot_corpus_policy_bundle_script.html"><span class="doc">Compose Corpus policies without hiding boundaries</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compose Corpus policies without hiding boundaries</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This is the broad, explicit integration showcase for scikitplot.corpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">Build a Multi-Source WHO Corpus</span></a></p>
   <div class="sphx-glr-thumbnail-title">Build a Multi-Source WHO Corpus</div>
@@ -1124,7 +1172,7 @@ environment.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

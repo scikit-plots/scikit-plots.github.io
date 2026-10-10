@@ -193,6 +193,19 @@ Redactor(policy=surrogate).redact("Mail ada@example.com").text
 
 ```
 
+For your own invented names, load a surrogate set
+([Your own invented names](how_it_works.html#cleanprompt-surrogate-sets)) and attach it to the grammar, or name it
+in a plan:
+
+```
+from scikitplot.cleanprompt import FluentCleanPrompt, TagStyle, load_surrogate_set
+
+names = load_surrogate_set("nordic.yaml")  # validated; names.identity is recorded
+style = TagStyle(style="surrogate", surrogate_set=names)
+cleaner = FluentCleanPrompt().style("surrogate").surrogates("nordic.yaml").materialize()
+
+```
+
 Its fields are `kinds`, `allow`, `tag_style` (the placeholder grammar and
 style), `overlap` (an [`OverlapStrategy`](../../modules/generated/scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy "scikitplot.cleanprompt.OverlapStrategy")), `limits` (input size,
 span and term bounds; exceeding one raises), `case_insensitive`,

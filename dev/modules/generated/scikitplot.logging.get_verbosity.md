@@ -1,6 +1,6 @@
 # get\_verbosity[#](#get-verbosity "Link to this heading")
 
-scikitplot.logging.get\_verbosity()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1330)[#](#scikitplot.logging.get_verbosity "Link to this definition")
+scikitplot.logging.get\_verbosity()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/logging/_logging.py#L1330)[#](#scikitplot.logging.get_verbosity "Link to this definition")
 :   Return the current verbosity level.
 
     Returns:

@@ -1,6 +1,6 @@
 # restoration\_note[#](#restoration-note "Link to this heading")
 
-scikitplot.cleanprompt.restoration\_note(**result**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_render.py#L205)[#](#scikitplot.cleanprompt.restoration_note "Link to this definition")
+scikitplot.cleanprompt.restoration\_note(**result**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_render.py#L205)[#](#scikitplot.cleanprompt.restoration_note "Link to this definition")
 :   Return a one-line, secret-free description of a restoration.
 
     Parameters:

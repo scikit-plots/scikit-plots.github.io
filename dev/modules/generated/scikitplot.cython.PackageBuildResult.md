@@ -1,6 +1,6 @@
 # PackageBuildResult[#](#packagebuildresult "Link to this heading")
 
-class scikitplot.cython.PackageBuildResult(**package\_name=''**, **key=''**, **build\_dir=<factory>**, **results=<factory>**, **used\_cache=False**, **created\_utc=None**, **fingerprint=None**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_result.py#L191)[#](#scikitplot.cython.PackageBuildResult "Link to this definition")
+class scikitplot.cython.PackageBuildResult(**package\_name=''**, **key=''**, **build\_dir=<factory>**, **results=<factory>**, **used\_cache=False**, **created\_utc=None**, **fingerprint=None**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_result.py#L191)[#](#scikitplot.cython.PackageBuildResult "Link to this definition")
 :   Result of compiling/importing a **package** of extension modules.
 
     A “package build” compiles multiple Cython extension modules in a single

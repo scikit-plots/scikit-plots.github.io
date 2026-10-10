@@ -88,60 +88,97 @@ python -m scikitplot.cleanprompt decode "I will contact [EMAIL-1]."
 Read the first two pages in order; after that, go to the page for the job in
 front of you.
 
+**getting-started**
+
 * [Getting started](getting_started.html)
   * [Install](getting_started.html#install)
   * [Check what is active](getting_started.html#check-what-is-active)
   * [The loop, once, in the terminal](getting_started.html#the-loop-once-in-the-terminal)
   * [The loop, once, in Python](getting_started.html#the-loop-once-in-python)
   * [Where to next](getting_started.html#where-to-next)
+**how**
+
 * [How it works](how_it_works.html)
   * [1. Detect](how_it_works.html#detect)
+    * [A second reading: the detection view](how_it_works.html#a-second-reading-the-detection-view)
   * [2. Resolve](how_it_works.html#resolve)
   * [3. Assign](how_it_works.html#assign)
   * [4. Rewrite](how_it_works.html#rewrite)
   * [5. Restore](how_it_works.html#restore)
   * [Placeholders or surrogates](how_it_works.html#placeholders-or-surrogates)
+    * [Your own invented names](how_it_works.html#your-own-invented-names)
   * [The guarantees, in plain words](how_it_works.html#the-guarantees-in-plain-words)
+**python**
+
 * [The Python API](python_api.html)
   * [One exchange: `encode` and `decode`](python_api.html#one-exchange-encode-and-decode)
+    * [What `encode` can be told](python_api.html#what-encode-can-be-told)
+    * [Profiles](python_api.html#profiles)
   * [A conversation: `Session`](python_api.html#a-conversation-session)
   * [Full control: `Redactor` and `restore`](python_api.html#full-control-redactor-and-restore)
+    * [A policy is data](python_api.html#a-policy-is-data)
+    * [Your own detector](python_api.html#your-own-detector)
   * [Diagnosis in Python](python_api.html#diagnosis-in-python)
+**cli**
+
 * [The command line](command_line.html)
   * [The commands](command_line.html#the-commands)
   * [Giving it text](command_line.html#giving-it-text)
   * [The option grammar](command_line.html#the-option-grammar)
   * [The vault on the command line](command_line.html#the-vault-on-the-command-line)
+    * [Where it lives](command_line.html#where-it-lives)
+    * [Append or overwrite](command_line.html#append-or-overwrite)
+    * [Ending a conversation](command_line.html#ending-a-conversation)
+    * [Encryption](command_line.html#encryption)
   * [Reading a reply](command_line.html#reading-a-reply)
   * [Exit status](command_line.html#exit-status)
   * [A CI gate](command_line.html#a-ci-gate)
+**entity**
+
 * [Names, organisations and places](entity_detection.html)
   * [The two engines](entity_detection.html#the-two-engines)
   * [Installed is not ready](entity_detection.html#installed-is-not-ready)
+    * [How readiness is decided](entity_detection.html#how-readiness-is-decided)
+    * [In Python](entity_detection.html#in-python)
   * [Languages and model sizes](entity_detection.html#languages-and-model-sizes)
   * [When the engines disagree](entity_detection.html#when-the-engines-disagree)
   * [Behind a proxy](entity_detection.html#behind-a-proxy)
+**files**
+
 * [Files, records, packs and plans](files_and_packs.html)
   * [Packs and formats](files_and_packs.html#packs-and-formats)
   * [A plan for a set of files](files_and_packs.html#a-plan-for-a-set-of-files)
+    * [Notebooks and modules](files_and_packs.html#notebooks-and-modules)
   * [Pinning a team’s configuration](files_and_packs.html#pinning-a-team-s-configuration)
   * [Your own pack](files_and_packs.html#your-own-pack)
+    * [A pack file is trusted like code](files_and_packs.html#a-pack-file-is-trusted-like-code)
   * [Before sending a record to a model](files_and_packs.html#before-sending-a-record-to-a-model)
+**agents**
+
 * [Models, tools and agents](agents_and_models.html)
   * [A gate in front of any client](agents_and_models.html#a-gate-in-front-of-any-client)
+    * [Streamed replies](agents_and_models.html#streamed-replies)
+    * [Tool calls are an exit](agents_and_models.html#tool-calls-are-an-exit)
+    * [Tool results are documents](agents_and_models.html#tool-results-are-documents)
   * [Command-line models](agents_and_models.html#command-line-models)
   * [Agents without code: MCP](agents_and_models.html#agents-without-code-mcp)
   * [Logging without leaking](agents_and_models.html#logging-without-leaking)
   * [What a guard does not do](agents_and_models.html#what-a-guard-does-not-do)
+**web**
+
 * [The web page and containers](web_and_containers.html)
   * [How it keeps your data](web_and_containers.html#how-it-keeps-your-data)
   * [Who can reach it](web_and_containers.html#who-can-reach-it)
   * [Container files](web_and_containers.html#container-files)
   * [The terminal session](web_and_containers.html#the-terminal-session)
+**security**
+
 * [What it protects, and what it does not](security_and_limits.html)
   * [What is guaranteed](security_and_limits.html#what-is-guaranteed)
   * [What is not guaranteed](security_and_limits.html#what-is-not-guaranteed)
   * [Things you are trusted with](security_and_limits.html#things-you-are-trusted-with)
+**troubleshooting**
+
 * [Troubleshooting and questions](troubleshooting.html)
   * [When output is surprising](troubleshooting.html#when-output-is-surprising)
   * [Questions](troubleshooting.html#questions)

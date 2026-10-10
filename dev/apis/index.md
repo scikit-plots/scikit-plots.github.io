@@ -1,6 +1,6 @@
 🌱 Scikit-plots APIs
   
- 0.5.dev0+git.20261010.de98219 - October 10, 2026 02:14 UTC
+ 0.5.dev0+git.20261010.c24961d - October 10, 2026 21:35 UTC
 
 # APIs Reference[#](#apis-reference "Link to this heading")
 
@@ -381,7 +381,7 @@ reference on concepts repeated across the APIs, see glossary-index.
 | [`Retriever`](../modules/generated/scikitplot.corpus.Retriever.html#scikitplot.corpus.Retriever "scikitplot.corpus.Retriever") | Base class for an independent evidence path.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`fuse_by_rank`](../modules/generated/scikitplot.corpus.fuse_by_rank.html#scikitplot.corpus.fuse_by_rank "scikitplot.corpus.fuse_by_rank") | Combine leg results by reciprocal rank fusion.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus") | Materialized operational view of a validated [`CorpusPlan`](../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan").  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
-| [`RuntimePolicy`](../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") | Execution policy applied by [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
+| [`RuntimePolicy`](../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") | Execution-boundary policy applied by [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`materialize_plan`](../modules/generated/scikitplot.corpus.materialize_plan.html#scikitplot.corpus.materialize_plan "scikitplot.corpus.materialize_plan") | Resolve a validated [`CorpusPlan`](../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan") into runtime components.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`HAMLET_TEXT`](../modules/generated/scikitplot.corpus.HAMLET_TEXT.html#scikitplot.corpus.HAMLET_TEXT "scikitplot.corpus.HAMLET_TEXT") | str(object=’’) -> str  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`SectionType`](../modules/generated/scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus.SectionType") | Semantic label for the role of a text chunk within its source document.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |

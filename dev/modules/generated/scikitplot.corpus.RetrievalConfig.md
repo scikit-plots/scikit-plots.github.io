@@ -1,6 +1,6 @@
 # RetrievalConfig[#](#retrievalconfig "Link to this heading")
 
-class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
+class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -111,7 +111,7 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
 
     hybrid\_alpha: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
 
-    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
 
     keyword\_threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
 
@@ -139,8 +139,16 @@ Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_gl
 
 [Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
+
+[Use Levenshtein distance with Corpus retrieval](../../auto_examples/corpus/plot_corpus_levenshtein_script.html)
+
+Use Levenshtein distance with Corpus retrieval![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](../../auto_examples/corpus/plot_corpus_who_per_file_script.html)
 
-Build a Multi-Source WHO Corpus
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_levenshtein_corpus_script_thumb.png)
+
+[Use Levenshtein with Corpus](../../auto_examples/levenshtein/plot_levenshtein_corpus_script.html)
+
+Use Levenshtein with Corpus

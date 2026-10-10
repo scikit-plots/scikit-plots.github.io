@@ -21,10 +21,10 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:33:10Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:42:04Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
-
+<script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"install/installation","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
     <title>Installing scikit-plots &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
@@ -63,6 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sk-collection.css?v=3e0ab7e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=68bd592b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=0c681824" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/principles-ticker.css" />
@@ -101,6 +102,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             true;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script defer="defer" src="../_static/sphinx-feedback.js?v=3aa7b581"></script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <script src="../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
@@ -932,20 +934,62 @@ compiling from source. This is particularly important for certain configurations
 such as running Linux on a Raspberry Pi.</p>
 </section>
 </section>
-<section id="installing-a-lightweight-version">
-<h2>Installing A lightweight version<a class="headerlink" href="#installing-a-lightweight-version" title="Link to this heading">#</a></h2>
+<section id="installing-a-lightweight-version-scikit-plots-x">
+<h2>Installing A lightweight version <code class="docutils literal notranslate"><span class="pre">scikit-plots-x</span></code><a class="headerlink" href="#installing-a-lightweight-version-scikit-plots-x" title="Link to this heading">#</a></h2>
 <p>🔜🚀 <a class="reference external" href="https://github.com/scikit-plots/scikit-plots#----by-----github-urls---">README.md</a>
 A lightweight version that is designed to be used in environments where you want to minimize the size of the package.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-annoy<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/annoy</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-cleanprompt<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/cleanprompt</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-corpus<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/corpus</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-cython<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/cython</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-mcp<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/mcp</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-mlflow<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/mlflow</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-rank-bm25<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/rank-bm25</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-skinny<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/skinny</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-sphinx-ext<span class="w"> </span>@<span class="w"> </span>git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/sphinx-ext</span>
+<ul class="simple">
+<li><p><a class="reference external" href="https://anaconda.org/channels/scikit-plots-wheels-staging-nightly">https://anaconda.org/channels/scikit-plots-wheels-staging-nightly</a></p></li>
+</ul>
+<section id="scikit-plots-skinny">
+<h3>scikit-plots-skinny<a class="headerlink" href="#scikit-plots-skinny" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>⚠️ <code class="docutils literal notranslate"><span class="pre">scikit-plots-skinny</span></code> as base required/dependency remaining <code class="docutils literal notranslate"><span class="pre">scikit-plots-x</span></code>.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-skinny@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/skinny</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-skinny</span>
 </pre></div></div></section>
+<section id="scikit-plots-annoy">
+<h3>scikit-plots-annoy<a class="headerlink" href="#scikit-plots-annoy" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-annoy@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/annoy</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-annoy</span>
+</pre></div></div></section>
+<section id="scikit-plots-cleanprompt">
+<h3>scikit-plots-cleanprompt<a class="headerlink" href="#scikit-plots-cleanprompt" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-cleanprompt@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/cleanprompt</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-cleanprompt</span>
+</pre></div></div></section>
+<section id="scikit-plots-corpus">
+<h3>scikit-plots-corpus<a class="headerlink" href="#scikit-plots-corpus" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-corpus@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/corpus</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-corpus</span>
+</pre></div></div></section>
+<section id="scikit-plots-cython">
+<h3>scikit-plots-cython<a class="headerlink" href="#scikit-plots-cython" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-cython@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/cython</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-cython</span>
+</pre></div></div></section>
+<section id="scikit-plots-mcp">
+<h3>scikit-plots-mcp<a class="headerlink" href="#scikit-plots-mcp" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-mcp@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/mcp</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-mcp</span>
+</pre></div></div></section>
+<section id="scikit-plots-mlflow">
+<h3>scikit-plots-mlflow<a class="headerlink" href="#scikit-plots-mlflow" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-mlflow@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/mlflow</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-mlflow</span>
+</pre></div></div></section>
+<section id="scikit-plots-rank-bm25">
+<h3>scikit-plots-rank-bm25<a class="headerlink" href="#scikit-plots-rank-bm25" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-rank-bm25@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/rank-bm25</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-rank-bm25</span>
+</pre></div></div></section>
+<section id="scikit-plots-sphinx-ext">
+<h3>scikit-plots-sphinx-ext<a class="headerlink" href="#scikit-plots-sphinx-ext" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots-sphinx-ext@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory<span class="o">=</span>libs/sphinx-ext</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots-sphinx-ext</span>
+</pre></div></div></section>
+</section>
 <section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h2>
 <p>Mandatory dependencies should be installed automatically if you install Matplotlib using
@@ -1054,7 +1098,18 @@ reference and troubleshooting.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-dependencies">Installing Dependencies</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-a-lightweight-version">Installing A lightweight version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-a-lightweight-version-scikit-plots-x">Installing A lightweight version <code class="docutils literal notranslate"><span class="pre">scikit-plots-x</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-skinny">scikit-plots-skinny</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-annoy">scikit-plots-annoy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-cleanprompt">scikit-plots-cleanprompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-corpus">scikit-plots-corpus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-cython">scikit-plots-cython</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-mcp">scikit-plots-mcp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-mlflow">scikit-plots-mlflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-rank-bm25">scikit-plots-rank-bm25</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-plots-sphinx-ext">scikit-plots-sphinx-ext</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a><ul class="nav section-nav flex-column">
 </ul>
 </li>
@@ -1116,7 +1171,7 @@ reference and troubleshooting.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
       <br/>
     
   </p>

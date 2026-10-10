@@ -1,6 +1,6 @@
 # \_split\_cjk\_chars\_legacy[#](#split-cjk-chars-legacy "Link to this heading")
 
-scikitplot.corpus.\_split\_cjk\_chars\_legacy(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1396)[#](#scikitplot.corpus._split_cjk_chars_legacy "Link to this definition")
+scikitplot.corpus.\_split\_cjk\_chars\_legacy(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1396)[#](#scikitplot.corpus._split_cjk_chars_legacy "Link to this definition")
 :   Legacy codepoint-level CJK splitting (pre-Layer-0 implementation).
 
     Kept as a fallback when the `regex` library is not installed.

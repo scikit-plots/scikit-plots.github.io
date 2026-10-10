@@ -1,6 +1,6 @@
 # list\_available\_backends[#](#list-available-backends "Link to this heading")
 
-scikitplot.corpus.list\_available\_backends()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_backends.py#L677)[#](#scikitplot.corpus.list_available_backends "Link to this definition")
+scikitplot.corpus.list\_available\_backends()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L677)[#](#scikitplot.corpus.list_available_backends "Link to this definition")
 :   Return the canonical names of currently importable backends.
 
     Return type:

@@ -1,6 +1,6 @@
 # with\_custom[#](#with-custom "Link to this heading")
 
-scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cleanprompt/_custom.py#L194)[#](#scikitplot.cleanprompt.with_custom "Link to this definition")
+scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_custom.py#L220)[#](#scikitplot.cleanprompt.with_custom "Link to this definition")
 :   Return the built-in catalog with custom definitions merged in.
 
     Parameters:
@@ -14,6 +14,9 @@ scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None
         ****base****Catalog, optional
         :   Defaults to `builtin_catalog`.
 
+        ****pattern\_risk****{‘warn’, ‘ignore’, ‘refuse’}, optional
+        :   Passed to [`load_custom`](scikitplot.cleanprompt.load_custom.html#scikitplot.cleanprompt.load_custom "scikitplot.cleanprompt.load_custom").
+
     Returns:
     :   Catalog
         :   Validated as a whole, including every `requires`.
@@ -22,6 +25,7 @@ scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None
     :   * ****paths**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]** **|** **None**)
         * ****conflict**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****base**** (**Catalog** **|** **None**)
+        * ****pattern\_risk**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   **Catalog**

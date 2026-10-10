@@ -1,6 +1,6 @@
 # descendants[#](#descendants "Link to this heading")
 
-scikitplot.corpus.descendants(**documents**, **doc\_id**, **\***, **max\_depth=64**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_hierarchy.py#L264)[#](#scikitplot.corpus.descendants "Link to this definition")
+scikitplot.corpus.descendants(**documents**, **doc\_id**, **\***, **max\_depth=64**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_hierarchy.py#L264)[#](#scikitplot.corpus.descendants "Link to this definition")
 :   Yield all descendants of `doc_id`, breadth-first.
 
     Parameters:
