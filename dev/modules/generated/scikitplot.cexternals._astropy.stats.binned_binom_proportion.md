@@ -1,6 +1,6 @@
 # binned\_binom\_proportion[#](#binned-binom-proportion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.binned\_binom\_proportion(**x**, **success**, **bins=10**, **range=None**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L298)[#](#scikitplot.cexternals._astropy.stats.binned_binom_proportion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.binned\_binom\_proportion(**x**, **success**, **bins=10**, **range=None**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L298)[#](#scikitplot.cexternals._astropy.stats.binned_binom_proportion "Link to this definition")
 :   Binomial proportion and confidence interval in bins of a continuous
     variable `x`.
 
@@ -64,13 +64,13 @@ scikitplot.cexternals.\_astropy.stats.binned\_binom\_proportion(**x**, **success
     Parameters:
     :   * ****x**** (**ArrayLike**)
         * ****success**** (**ArrayLike**)
-        * ****bins**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **ArrayLike**)
-        * ****range**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]** **|** **None**)
-        * ****confidence\_level**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'wilson'****,** **'jeffreys'****,** **'flat'****,** **'wald'****]**)
+        * ****bins**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **ArrayLike**)
+        * ****range**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** **None**)
+        * ****confidence\_level**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'wilson'****,** **'jeffreys'****,** **'flat'****,** **'wald'****]**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[**NDArray**, **NDArray**, **NDArray**, **NDArray**]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[**NDArray**, **NDArray**, **NDArray**, **NDArray**]
 
     > **See also**
     > [`binom_conf_interval`](scikitplot.cexternals._astropy.stats.binom_conf_interval.html#scikitplot.cexternals._astropy.stats.binom_conf_interval "scikitplot.cexternals._astropy.stats.binom_conf_interval")

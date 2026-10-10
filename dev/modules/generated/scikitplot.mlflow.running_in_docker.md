@@ -1,6 +1,6 @@
 # running\_in\_docker[#](#running-in-docker "Link to this heading")
 
-scikitplot.mlflow.running\_in\_docker()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_container.py#L19)[#](#scikitplot.mlflow.running_in_docker "Link to this definition")
+scikitplot.mlflow.running\_in\_docker()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_container.py#L19)[#](#scikitplot.mlflow.running_in_docker "Link to this definition")
 :   Detect whether the current process is running in a Docker container.
 
     Returns:
@@ -8,7 +8,7 @@ scikitplot.mlflow.running\_in\_docker()[[source]](https://github.com/scikit-plot
         :   True if the file `/.dockerenv` exists, else False.
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
     Notes
 

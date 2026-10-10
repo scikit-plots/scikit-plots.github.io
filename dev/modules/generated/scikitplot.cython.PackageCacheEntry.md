@@ -1,6 +1,6 @@
 # PackageCacheEntry[#](#packagecacheentry "Link to this heading")
 
-class scikitplot.cython.PackageCacheEntry(**key=''**, **build\_dir=PosixPath('.')**, **package\_name=''**, **modules=()**, **artifacts=()**, **created\_utc=None**, **fingerprint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_cache.py#L178)[#](#scikitplot.cython.PackageCacheEntry "Link to this definition")
+class scikitplot.cython.PackageCacheEntry(**key=''**, **build\_dir=PosixPath('.')**, **package\_name=''**, **modules=()**, **artifacts=()**, **created\_utc=None**, **fingerprint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_cache.py#L178)[#](#scikitplot.cython.PackageCacheEntry "Link to this definition")
 :   A compiled **package** cache entry (multi-module build).
 
     Parameters:
@@ -26,31 +26,31 @@ class scikitplot.cython.PackageCacheEntry(**key=''**, **build\_dir=PosixPath('.'
         :   Runtime fingerprint used when building this artifact (if available).
 
     Parameters:
-    :   * ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****package\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****modules**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]**)
-        * ****artifacts**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")**,** **...****]**)
-        * ****created\_utc**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****fingerprint**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+    :   * ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****package\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****modules**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
+        * ****artifacts**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**,** **...****]**)
+        * ****created\_utc**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****fingerprint**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
-    artifacts: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"), ...][#](#scikitplot.cython.PackageCacheEntry.artifacts "Link to this definition")
+    artifacts: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"), ...][#](#scikitplot.cython.PackageCacheEntry.artifacts "Link to this definition")
     :   !! processed by numpydoc !!
 
-    build\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.cython.PackageCacheEntry.build_dir "Link to this definition")
+    build\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.cython.PackageCacheEntry.build_dir "Link to this definition")
     :   !! processed by numpydoc !!
 
-    created\_utc: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.PackageCacheEntry.created_utc "Link to this definition")
+    created\_utc: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.PackageCacheEntry.created_utc "Link to this definition")
     :   !! processed by numpydoc !!
 
-    fingerprint: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.PackageCacheEntry.fingerprint "Link to this definition")
+    fingerprint: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.PackageCacheEntry.fingerprint "Link to this definition")
     :   !! processed by numpydoc !!
 
-    key: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.PackageCacheEntry.key "Link to this definition")
+    key: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.PackageCacheEntry.key "Link to this definition")
     :   !! processed by numpydoc !!
 
-    modules: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...][#](#scikitplot.cython.PackageCacheEntry.modules "Link to this definition")
+    modules: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cython.PackageCacheEntry.modules "Link to this definition")
     :   !! processed by numpydoc !!
 
-    package\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.PackageCacheEntry.package_name "Link to this definition")
+    package\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.PackageCacheEntry.package_name "Link to this definition")
     :   !! processed by numpydoc !!

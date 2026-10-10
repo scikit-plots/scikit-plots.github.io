@@ -1,6 +1,6 @@
 # fold\_intervals[#](#fold-intervals "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.fold\_intervals(**intervals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L1534)[#](#scikitplot.cexternals._astropy.stats.fold_intervals "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.fold\_intervals(**intervals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L1534)[#](#scikitplot.cexternals._astropy.stats.fold_intervals "Link to this definition")
 :   Fold the weighted intervals to the interval (0,1).
 
     Convert a list of intervals (ai, bi, wi) to a list of non-overlapping
@@ -28,7 +28,7 @@ scikitplot.cexternals.\_astropy.stats.fold\_intervals(**intervals**)[[source]](h
             associated with that interval.
 
     Parameters:
-    :   ****intervals**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
+    :   ****intervals**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]****]**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[**NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")], **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[**NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")], **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]]

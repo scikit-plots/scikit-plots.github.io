@@ -1,6 +1,6 @@
 # CApiCompiler[#](#capicompiler "Link to this heading")
 
-class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L1125)[#](#scikitplot.cython.CApiCompiler "Link to this definition")
+class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L1124)[#](#scikitplot.cython.CApiCompiler "Link to this definition")
 :   Built-in custom compiler: NumPy C-API projects.
 
     Wraps the Cython+setuptools pipeline with automatic NumPy include
@@ -40,7 +40,7 @@ class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/s
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **extra\_sources=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L1172)[#](#scikitplot.cython.CApiCompiler.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **extra\_sources=None**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L1171)[#](#scikitplot.cython.CApiCompiler.__call__ "Link to this definition")
     :   Compile a Cython+NumPy C-API extension.
 
         Parameters:
@@ -81,22 +81,22 @@ class scikitplot.cython.CApiCompiler[[source]](https://github.com/scikit-plots/s
             :   If compilation fails.
 
         Parameters:
-        :   * ****source**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-            * ****module\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****extra\_sources**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")**]** **|** **None**)
-            * ****include\_dirs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_compile\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_link\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****source**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+            * ****module\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****extra\_sources**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]** **|** **None**)
+            * ****include\_dirs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_compile\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_link\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
-    property capabilities: CompilerCapabilities[#](#scikitplot.cython.CApiCompiler.capabilities "Link to this definition")
+    property capabilities: [CompilerCapabilities](scikitplot.cython.CompilerCapabilities.html#scikitplot.cython.CompilerCapabilities "scikitplot.cython._custom_compiler.CompilerCapabilities")[#](#scikitplot.cython.CApiCompiler.capabilities "Link to this definition")
     :   C (Python C-API extensions).
 
         Type:
         :   Declared capabilities
 
-    name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'custom\_c\_api'[#](#scikitplot.cython.CApiCompiler.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'custom\_c\_api'[#](#scikitplot.cython.CApiCompiler.name "Link to this definition")

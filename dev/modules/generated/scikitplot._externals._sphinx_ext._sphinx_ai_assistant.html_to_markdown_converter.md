@@ -1,6 +1,6 @@
 # html\_to\_markdown\_converter[#](#html-to-markdown-converter "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.html\_to\_markdown\_converter(**html\_content**, **strip\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3471)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.html\_to\_markdown\_converter(**html\_content**, **strip\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3796)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter "Link to this definition")
 :   Convert an HTML string to Markdown using the Sphinx-tuned converter.
 
     Parameters:
@@ -22,11 +22,11 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.html\_to\_markdown\
         :   If `markdownify` is not installed.
 
     Parameters:
-    :   * ****html\_content**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****strip\_tags**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   * ****html\_content**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****strip\_tags**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Notes
 

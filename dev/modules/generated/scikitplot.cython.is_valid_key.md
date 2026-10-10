@@ -1,6 +1,6 @@
 # is\_valid\_key[#](#is-valid-key "Link to this heading")
 
-scikitplot.cython.is\_valid\_key(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_cache.py#L114)[#](#scikitplot.cython.is_valid_key "Link to this definition")
+scikitplot.cython.is\_valid\_key(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_cache.py#L114)[#](#scikitplot.cython.is_valid_key "Link to this definition")
 :   Return True if `key` is a valid cache key.
 
     Parameters:
@@ -12,7 +12,7 @@ scikitplot.cython.is\_valid\_key(**key**)[[source]](https://github.com/scikit-pl
         :   True if `key` is a 64-character hex digest.
 
     Parameters:
-    :   ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")

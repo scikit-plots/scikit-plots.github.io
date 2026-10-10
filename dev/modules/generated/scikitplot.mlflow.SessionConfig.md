@@ -1,6 +1,6 @@
 # SessionConfig[#](#sessionconfig "Link to this heading")
 
-class scikitplot.mlflow.SessionConfig(**tracking\_uri=None**, **public\_tracking\_uri=None**, **registry\_uri=None**, **env\_file=None**, **extra\_env=None**, **startup\_timeout\_s=30.0**, **ensure\_reachable=False**, **experiment\_name=None**, **create\_experiment\_if\_missing=True**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_config.py#L22)[#](#scikitplot.mlflow.SessionConfig "Link to this definition")
+class scikitplot.mlflow.SessionConfig(**tracking\_uri=None**, **public\_tracking\_uri=None**, **registry\_uri=None**, **env\_file=None**, **extra\_env=None**, **startup\_timeout\_s=30.0**, **ensure\_reachable=False**, **experiment\_name=None**, **create\_experiment\_if\_missing=True**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_config.py#L22)[#](#scikitplot.mlflow.SessionConfig "Link to this definition")
 :   Session-level configuration for `scikitplot.mlflow.session`.
 
     Parameters:
@@ -54,17 +54,17 @@ class scikitplot.mlflow.SessionConfig(**tracking\_uri=None**, **public\_tracking
         :   If `startup_timeout_s` is not positive.
 
     Parameters:
-    :   * ****tracking\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****public\_tracking\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****registry\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****env\_file**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****extra\_env**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****startup\_timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****ensure\_reachable**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****experiment\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****create\_experiment\_if\_missing**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****default\_run\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_run\_tags**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   * ****tracking\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****public\_tracking\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****registry\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****env\_file**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****extra\_env**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****startup\_timeout\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****ensure\_reachable**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****experiment\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****create\_experiment\_if\_missing**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****default\_run\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_run\_tags**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Notes
 
@@ -74,24 +74,24 @@ class scikitplot.mlflow.SessionConfig(**tracking\_uri=None**, **public\_tracking
     3) `.env` file (fills missing keys only)
     4) defaults
 
-    create\_experiment\_if\_missing: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.mlflow.SessionConfig.create_experiment_if_missing "Link to this definition")
+    create\_experiment\_if\_missing: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.mlflow.SessionConfig.create_experiment_if_missing "Link to this definition")
 
-    default\_run\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.default_run_name "Link to this definition")
+    default\_run\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.default_run_name "Link to this definition")
 
-    default\_run\_tags: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.default_run_tags "Link to this definition")
+    default\_run\_tags: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.default_run_tags "Link to this definition")
 
-    ensure\_reachable: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.SessionConfig.ensure_reachable "Link to this definition")
+    ensure\_reachable: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.SessionConfig.ensure_reachable "Link to this definition")
 
-    env\_file: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.env_file "Link to this definition")
+    env\_file: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.env_file "Link to this definition")
 
-    experiment\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.experiment_name "Link to this definition")
+    experiment\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.experiment_name "Link to this definition")
 
-    extra\_env: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.extra_env "Link to this definition")
+    extra\_env: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.extra_env "Link to this definition")
 
-    public\_tracking\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.public_tracking_uri "Link to this definition")
+    public\_tracking\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.public_tracking_uri "Link to this definition")
 
-    registry\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.registry_uri "Link to this definition")
+    registry\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.registry_uri "Link to this definition")
 
-    startup\_timeout\_s: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 30.0[#](#scikitplot.mlflow.SessionConfig.startup_timeout_s "Link to this definition")
+    startup\_timeout\_s: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 30.0[#](#scikitplot.mlflow.SessionConfig.startup_timeout_s "Link to this definition")
 
-    tracking\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.SessionConfig.tracking_uri "Link to this definition")
+    tracking\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.SessionConfig.tracking_uri "Link to this definition")

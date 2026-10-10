@@ -1,6 +1,6 @@
 # session[#](#session "Link to this heading")
 
-scikitplot.mlflow.session(**\***, **config=None**, **server=None**, **start\_server=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_session.py#L316)[#](#scikitplot.mlflow.session "Link to this definition")
+scikitplot.mlflow.session(**\***, **config=None**, **server=None**, **start\_server=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_session.py#L325)[#](#scikitplot.mlflow.session "Link to this definition")
 :   Create a strict, context-managed MLflow session.
 
     Parameters:
@@ -14,7 +14,7 @@ scikitplot.mlflow.session(**\***, **config=None**, **server=None**, **start\_ser
         :   If True, spawns an ephemeral `mlflow server` subprocess and tears it down on exit.
 
     Returns:
-    :   Iterator[MlflowHandle]
+    :   Generator[MlflowHandle, None, None]
         :   A handle that proxies `mlflow` and exposes session-bound helpers.
 
     Raises:
@@ -40,10 +40,10 @@ scikitplot.mlflow.session(**\***, **config=None**, **server=None**, **start\_ser
     Parameters:
     :   * ****config**** ([**SessionConfig**](scikitplot.mlflow.SessionConfig.html#scikitplot.mlflow.SessionConfig "scikitplot.mlflow._config.SessionConfig") **|** **None**)
         * ****server**** ([**ServerConfig**](scikitplot.mlflow.ServerConfig.html#scikitplot.mlflow.ServerConfig "scikitplot.mlflow._config.ServerConfig") **|** **None**)
-        * ****start\_server**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****start\_server**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.14)")[[**MlflowHandle**](scikitplot.mlflow.MlflowHandle.html#scikitplot.mlflow.MlflowHandle "scikitplot.mlflow._session.MlflowHandle")]
+    :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[**MlflowHandle**](scikitplot.mlflow.MlflowHandle.html#scikitplot.mlflow.MlflowHandle "scikitplot.mlflow._session.MlflowHandle"), None, None]
 
     Notes
 

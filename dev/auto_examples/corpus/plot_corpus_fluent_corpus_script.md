@@ -4,9 +4,9 @@ to download the full example code or to run this example in your browser via Jup
 
 # Configure Corpus with FluentCorpus[#](#configure-corpus-with-fluentcorpus "Link to this heading")
 
-`FluentCorpus` is an immutable configuration facade for building a
-canonical `CorpusPlan` and, when requested, materializing that plan as a
-`RuntimeCorpus`.
+[`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") is an immutable configuration facade for building a
+canonical [`CorpusPlan`](../../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan") and, when requested, materializing that plan as a
+[`RuntimeCorpus`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
 
 Use this example to learn the configuration model before moving to larger
 retrieval/media showcases.
@@ -16,8 +16,8 @@ retrieval/media showcases.
 * how configuration domains compose without depending on call order,
 * how duplicate configuration is detected and replaced intentionally,
 * how plans are validated, fingerprinted, and serialized,
-* how `FluentCorpus.build` remains the validated-plan boundary,
-* how `FluentCorpus.materialize` creates operational runtime state,
+* how [`FluentCorpus.build`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.build "scikitplot.corpus.FluentCorpus.build") remains the validated-plan boundary,
+* how [`FluentCorpus.materialize`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.materialize "scikitplot.corpus.FluentCorpus.materialize") creates operational runtime state,
 * where source processing actually begins.
 
 ## Executed path[#](#executed-path "Link to this heading")
@@ -91,7 +91,7 @@ print("storage:", basic.plan().get("storage"))
 
 ```
 ```
-<FluentCorpus configured=[embedder, storage] 637758af50710957>
+<FluentCorpus configured=[embedder, storage] f475feee02830fe6632786982154836d3bbef241e55525ef8038f486ead058a7>
 configured: ['embedder', 'storage']
 embedder: E
 storage: S
@@ -114,8 +114,8 @@ print("backward fingerprint:", backward.plan().fingerprint)
 ```
 ```
 same plan: True
-forward fingerprint: 637758af50710957
-backward fingerprint: 637758af50710957
+forward fingerprint: f475feee02830fe6632786982154836d3bbef241e55525ef8038f486ead058a7
+backward fingerprint: f475feee02830fe6632786982154836d3bbef241e55525ef8038f486ead058a7
 
 ```
 
@@ -186,7 +186,7 @@ print(dynamic.plan().configured)
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 315139ce7f6faace>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] caa980f5c69c740d026bad6ecf84a2cf79b316baf768f7b6b9ee5109cba414c6>
 ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 
 ```
@@ -206,7 +206,7 @@ print("validation problems:", embedding_only.validate())
 
 ```
 ```
-<FluentCorpus configured=[embedder] 25be69c966330fa3>
+<FluentCorpus configured=[embedder] ccd503e6da022ef2286b2432550c6316eba7c38cffa1433734307f5c1e28049e>
 configured: ['embedder']
 validation problems: []
 
@@ -365,7 +365,7 @@ for problem in problems:
 ```
 ```
 code: PLAN_INDEX_WITHOUT_EMBEDDER
-message: a vector index is configured but no embedder is; the index would have no vectors to build from
+message: a vector index is configured but no embedder is; the index would have no vectors to build from. If this index is lexical, declare requires_vectors=False on the fragment.
 stage: plan
 
 ```
@@ -481,7 +481,7 @@ except ValueError as exc:
 
 ```
 ```
-materialization rejected invalid plan: invalid corpus plan: [validation/PLAN_INDEX_WITHOUT_EMBEDDER] plan: a vector index is configured but no embedder is; the index would have no vectors to build from
+materialization rejected invalid plan: invalid corpus plan: [validation/PLAN_INDEX_WITHOUT_EMBEDDER] plan: a vector index is configured but no embedder is; the index would have no vectors to build from. If this index is lexical, declare requires_vectors=False on the fragment.
 
 ```
 
@@ -503,9 +503,9 @@ print("A == C:", plan_a == plan_c)
 
 ```
 ```
-A: af29c4a720e95a19
-B: af29c4a720e95a19
-C: 3a6ecaac9a5eb82a
+A: bc669606dbc102ee5601a2168dc50db092d3569c4fd351c9991de630690ea891
+B: bc669606dbc102ee5601a2168dc50db092d3569c4fd351c9991de630690ea891
+C: a0a75a19a72310c520ac5a9d91966d025e018e3dec515ef877948958621d00ca
 A == B: True
 A == C: False
 
@@ -528,7 +528,7 @@ for name, description in payload["fragments"].items():
 
 ```
 ```
-fingerprint: 0ba300b891ed9431
+fingerprint: e00588ac5b3866220b1b8fef65c8ea4ae888cc14d411fd87b18f622d2b763c38
 configured: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 stages: ['read', 'normalize', 'chunk', 'enrich', 'embed', 'store', 'retrieve']
 fragments:
@@ -612,12 +612,12 @@ for name, builder in [
 ```
 DEVELOPMENT
   valid: True
-  fingerprint: 7778ad910bffbc3d
+  fingerprint: d6c707cfcc318e81b3512ba20416ef585211b42c4debbb32ade9e07134f4e9c8
   configured: ['reader', 'chunker', 'storage']
 
 PRODUCTION-SHAPE
   valid: True
-  fingerprint: fc58cff3175b3006
+  fingerprint: 0597f7d8a8e760bf8cdc191ad206503c1534a0d098972ef7018a3bb34fba9418
   configured: ['reader', 'chunker', 'embedder', 'storage', 'index', 'retrieval', 'export']
 
 ```
@@ -646,9 +646,9 @@ owns the stateful execution lifecycle once a plan is materialized.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.017 seconds)
+****Total running time of the script:**** (0 minutes 0.019 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)
 
 [`Download Jupyter notebook: plot_corpus_fluent_corpus_script.ipynb`](../../_downloads/d5cc88ee112c0c13c4f604c6a7de487e/plot_corpus_fluent_corpus_script.ipynb)
 

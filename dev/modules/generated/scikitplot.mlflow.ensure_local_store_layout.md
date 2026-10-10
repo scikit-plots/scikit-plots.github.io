@@ -1,6 +1,6 @@
 # ensure\_local\_store\_layout[#](#ensure-local-store-layout "Link to this heading")
 
-scikitplot.mlflow.ensure\_local\_store\_layout(**\***, **backend\_store\_uri**, **default\_artifact\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L468)[#](#scikitplot.mlflow.ensure_local_store_layout "Link to this definition")
+scikitplot.mlflow.ensure\_local\_store\_layout(**\***, **backend\_store\_uri**, **default\_artifact\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L468)[#](#scikitplot.mlflow.ensure_local_store_layout "Link to this definition")
 :   Ensure local backend/artifact directories exist.
 
     Parameters:
@@ -14,8 +14,8 @@ scikitplot.mlflow.ensure\_local\_store\_layout(**\***, **backend\_store\_uri**, 
     :   None
 
     Parameters:
-    :   * ****backend\_store\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_artifact\_root**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****backend\_store\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_artifact\_root**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   None

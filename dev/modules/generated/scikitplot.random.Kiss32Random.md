@@ -1,6 +1,6 @@
 # Kiss32Random[#](#kiss32random "Link to this heading")
 
-class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
+class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
 :   32-bit KISS RNG with complete serialization support.
 
     Period: ~2^121 (suitable for <16M data points)
@@ -106,7 +106,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         ```
         Go BackOpen In Tab
 
-    flip(**self**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.flip "Link to this definition")
+    flip(**self**) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.random.Kiss32Random.flip "Link to this definition")
     :   Generate random binary value (0 or 1).
 
         Returns:
@@ -137,7 +137,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
     classmethod from\_dict(**cls**, **data**)[#](#scikitplot.random.Kiss32Random.from_dict "Link to this definition")
     :   Alias for deserialize().
 
-    static get\_default\_seed() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.get_default_seed "Link to this definition")
+    static get\_default\_seed() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.random.Kiss32Random.get_default_seed "Link to this definition")
     :   Get default seed value.
 
         Returns:
@@ -145,7 +145,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
             :   Default seed (123456789)
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
         Examples
 
@@ -271,7 +271,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
     lock[#](#scikitplot.random.Kiss32Random.lock "Link to this definition")
     :   !! processed by numpydoc !!
 
-    static normalize\_seed(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.normalize_seed "Link to this definition")
+    static normalize\_seed(**int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.random.Kiss32Random.normalize_seed "Link to this definition")
     :   Normalize seed to valid non-zero value.
 
         Parameters:
@@ -283,10 +283,10 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
             :   Normalized seed (original if non-zero, else default\_seed)
 
         Parameters:
-        :   ****seed**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****seed**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
         Notes
 
@@ -304,7 +304,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         ```
         Go BackOpen In Tab
 
-    reset(**self**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.reset "Link to this definition")
+    reset(**self**, **int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.random.Kiss32Random.reset "Link to this definition")
     :   Reset RNG state with new seed.
 
         Parameters:
@@ -316,7 +316,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
             :   If seed out of range
 
         Parameters:
-        :   ****seed**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****seed**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
         :   None
@@ -339,7 +339,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         ```
         Go BackOpen In Tab
 
-    reset\_default(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.reset_default "Link to this definition")
+    reset\_default(**self**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.random.Kiss32Random.reset_default "Link to this definition")
     :   Reset to default seed.
 
         Equivalent to reset(default\_seed).
@@ -424,7 +424,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         ```
         Go BackOpen In Tab
 
-    set\_seed(**self**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.set_seed "Link to this definition")
+    set\_seed(**self**, **int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.random.Kiss32Random.set_seed "Link to this definition")
     :   Set new seed (alias for reset).
 
         Parameters:
@@ -432,7 +432,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
             :   New seed value
 
         Parameters:
-        :   ****seed**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****seed**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
         :   None
@@ -468,3 +468,11 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
     to\_dict(**self**)[#](#scikitplot.random.Kiss32Random.to_dict "Link to this definition")
     :   Alias for serialize().
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
+
+[Enhanced KISS Random Generator - Complete Usage Examples](../../auto_examples/random/plot_kiss_random.html)
+
+Enhanced KISS Random Generator - Complete Usage Examples

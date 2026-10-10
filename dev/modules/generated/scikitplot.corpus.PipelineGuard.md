@@ -1,6 +1,6 @@
 # PipelineGuard[#](#pipelineguard "Link to this heading")
 
-class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L2753)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
+class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L2818)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
 :   Wrap any document stream with resilience, deduplication, and checkpointing.
 
     [`PipelineGuard`](#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard") is a thin, composable layer you place around
@@ -44,11 +44,11 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
 
     Parameters:
     :   * ****policy**** (**Any** **|** **None**)
-        * ****dedup**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****checkpoint\_path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****checkpoint\_every**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_retries**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****retry\_delay**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+        * ****dedup**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****checkpoint\_path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****checkpoint\_every**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_retries**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****retry\_delay**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
 
     Notes
 
@@ -106,7 +106,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     ```
     Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L3012)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L3077)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
     :   Flush and close the checkpoint file handle.
 
         Notes
@@ -117,7 +117,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         Return type:
         :   None
 
-    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L2906)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
+    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L2971)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
     :   Iterate **source** with resilience, dedup, and checkpoint.
 
         Parameters:
@@ -130,10 +130,10 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
             :   Documents that passed dedup and error policy filters.
 
         Parameters:
-        :   ****source**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   ****source**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), None, None]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"), None, None]
 
         Notes
 
@@ -141,7 +141,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         [`iter`](#scikitplot.corpus.PipelineGuard.iter "scikitplot.corpus.PipelineGuard.iter"). Call [`close`](#scikitplot.corpus.PipelineGuard.close "scikitplot.corpus.PipelineGuard.close") (or use as context manager) to
         ensure the file is flushed and closed.
 
-    property stats: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")][#](#scikitplot.corpus.PipelineGuard.stats "Link to this definition")
+    property stats: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][#](#scikitplot.corpus.PipelineGuard.stats "Link to this definition")
     :   yielded, skipped (dedup), errors.
 
         Type:

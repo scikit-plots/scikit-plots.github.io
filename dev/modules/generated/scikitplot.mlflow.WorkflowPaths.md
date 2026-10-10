@@ -1,6 +1,6 @@
 # WorkflowPaths[#](#workflowpaths "Link to this heading")
 
-class scikitplot.mlflow.WorkflowPaths(**\_project\_root**, **\_config\_dir**, **\_toml\_path**, **\_yaml\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_workflow.py#L35)[#](#scikitplot.mlflow.WorkflowPaths "Link to this definition")
+class scikitplot.mlflow.WorkflowPaths(**\_project\_root**, **\_config\_dir**, **\_toml\_path**, **\_yaml\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_workflow.py#L35)[#](#scikitplot.mlflow.WorkflowPaths "Link to this definition")
 :   Standardized project config paths used by the workflow.
 
     Attributes:
@@ -17,19 +17,19 @@ class scikitplot.mlflow.WorkflowPaths(**\_project\_root**, **\_config\_dir**, **
         :   YAML config path.
 
     Parameters:
-    :   * ****\_project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****\_config\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****\_toml\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****\_yaml\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+    :   * ****\_project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****\_config\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****\_toml\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****\_yaml\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
 
-    property config\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.mlflow.WorkflowPaths.config_dir "Link to this definition")
+    property config\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.mlflow.WorkflowPaths.config_dir "Link to this definition")
     :   Configuration directory (typically `<project_root>/configs`).
 
-    property project\_root: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.mlflow.WorkflowPaths.project_root "Link to this definition")
+    property project\_root: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.mlflow.WorkflowPaths.project_root "Link to this definition")
     :   Project root directory.
 
-    property toml\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.mlflow.WorkflowPaths.toml_path "Link to this definition")
+    property toml\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.mlflow.WorkflowPaths.toml_path "Link to this definition")
     :   TOML config path.
 
-    property yaml\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.mlflow.WorkflowPaths.yaml_path "Link to this definition")
+    property yaml\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.mlflow.WorkflowPaths.yaml_path "Link to this definition")
     :   YAML config path.

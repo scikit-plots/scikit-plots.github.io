@@ -1,6 +1,6 @@
 # to\_jsonl[#](#to-jsonl "Link to this heading")
 
-scikitplot.corpus.to\_jsonl(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L482)[#](#scikitplot.corpus.to_jsonl "Link to this definition")
+scikitplot.corpus.to\_jsonl(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L482)[#](#scikitplot.corpus.to_jsonl "Link to this definition")
 :   Yield documents as newline-delimited JSON strings.
 
     Parameters:
@@ -12,10 +12,10 @@ scikitplot.corpus.to\_jsonl(**documents**)[[source]](https://github.com/scikit-p
         :   One JSON object per line (no trailing newline).
 
     Parameters:
-    :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+    :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
     Return type:
-    :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Notes
 

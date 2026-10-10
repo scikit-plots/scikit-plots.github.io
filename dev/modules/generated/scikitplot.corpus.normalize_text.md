@@ -1,6 +1,6 @@
 # normalize\_text[#](#normalize-text "Link to this heading")
 
-scikitplot.corpus.normalize\_text(**text**, **\***, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_normalizers/_text_normalizer.py#L273)[#](#scikitplot.corpus.normalize_text "Link to this definition")
+scikitplot.corpus.normalize\_text(**text**, **\***, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_text_normalizer.py#L273)[#](#scikitplot.corpus.normalize_text "Link to this definition")
 :   Normalise **text** according to **config**.
 
     Parameters:
@@ -16,11 +16,11 @@ scikitplot.corpus.normalize\_text(**text**, **\***, **config=None**)[[source]](h
             `config.min_length`.
 
     Parameters:
-    :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****config**** ([**TextNormalizerConfig**](scikitplot.corpus.TextNormalizerConfig.html#scikitplot.corpus.TextNormalizerConfig "scikitplot.corpus._normalizers._text_normalizer.TextNormalizerConfig") **|** **None**)
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | None
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | None
 
     Examples
 

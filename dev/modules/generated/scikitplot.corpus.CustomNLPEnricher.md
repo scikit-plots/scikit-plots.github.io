@@ -1,6 +1,6 @@
 # CustomNLPEnricher[#](#customnlpenricher "Link to this heading")
 
-class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L638)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
+class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L639)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
 :   `NLPEnricher` extended with
     fully-replaceable NLP backends.
 
@@ -64,7 +64,7 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L723)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L724)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances using custom or
         built-in backends per stage.
 
@@ -80,7 +80,7 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
 
         Parameters:
         :   * ****documents**** (**Sequence****[****Any****]**)
-            * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+            * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[Any]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[Any]

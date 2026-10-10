@@ -1,6 +1,6 @@
 # graph\_view[#](#graph-view "Link to this heading")
 
-scikitplot.visualkeras.graph\_view(**model**, **to\_file=None**, **color\_map=None**, **node\_size=50**, **background\_fill='white'**, **padding=10**, **layer\_spacing=250**, **node\_spacing=10**, **connector\_fill='gray'**, **connector\_width=1**, **ellipsize\_after=10**, **inout\_as\_tensor=True**, **show\_neurons=True**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/visualkeras/_graph.py#L120)[#](#scikitplot.visualkeras.graph_view "Link to this definition")
+scikitplot.visualkeras.graph\_view(**model**, **to\_file=None**, **color\_map=None**, **node\_size=50**, **background\_fill='white'**, **padding=10**, **layer\_spacing=250**, **node\_spacing=10**, **connector\_fill='gray'**, **connector\_width=1**, **ellipsize\_after=10**, **inout\_as\_tensor=True**, **show\_neurons=True**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/visualkeras/_graph.py#L120)[#](#scikitplot.visualkeras.graph_view "Link to this definition")
 :   Generates an architectural visualization for a given linear Keras
     [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") model
     (i.e., one input and output tensor for each layer) in graph style.
@@ -129,25 +129,33 @@ scikitplot.visualkeras.graph\_view(**model**, **to\_file=None**, **color\_map=No
             Added in version 0.4.0: The `verbose` parameter was added to control logging and user feedback verbosity.
 
     Parameters:
-    :   * ****to\_file**** (**Optional****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+    :   * ****to\_file**** (**Optional****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
         * ****color\_map**** (**Optional****[****"dict"****]**)
-        * ****node\_size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        * ****node\_size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****background\_fill**** (**any**)
-        * ****padding**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****layer\_spacing**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****node\_spacing**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        * ****padding**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****layer\_spacing**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****node\_spacing**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****connector\_fill**** (**any**)
-        * ****connector\_width**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****ellipsize\_after**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****inout\_as\_tensor**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****show\_neurons**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****backend**** (**Optional****[****Union****[**[**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")**,**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-        * ****show\_os\_viewer**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****show\_fig**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****save\_fig**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****save\_fig\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****connector\_width**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****ellipsize\_after**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****inout\_as\_tensor**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****show\_neurons**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****backend**** (**Optional****[****Union****[**[**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**,**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+        * ****show\_os\_viewer**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****show\_fig**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****save\_fig**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****save\_fig\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****verbose**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev498+gadecc563e)")
+    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_dl_ann_dense_thumb.png)
+
+[visualkeras: Spam Dense example](../../auto_examples/visualkeras/plot_dl_ann_dense.html)
+
+visualkeras: Spam Dense example

@@ -1,6 +1,6 @@
 # TextNormalizerConfig[#](#textnormalizerconfig "Link to this heading")
 
-class scikitplot.corpus.TextNormalizerConfig(**unicode\_form='NFKC'**, **expand\_ligatures=True**, **fix\_hyphenation=True**, **collapse\_whitespace=True**, **strip\_control\_chars=True**, **lowercase=False**, **min\_length=1**, **custom\_pipeline=<factory>**, **steps=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_normalizers/_text_normalizer.py#L68)[#](#scikitplot.corpus.TextNormalizerConfig "Link to this definition")
+class scikitplot.corpus.TextNormalizerConfig(**unicode\_form='NFKC'**, **expand\_ligatures=True**, **fix\_hyphenation=True**, **collapse\_whitespace=True**, **strip\_control\_chars=True**, **lowercase=False**, **min\_length=1**, **custom\_pipeline=<factory>**, **steps=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_text_normalizer.py#L68)[#](#scikitplot.corpus.TextNormalizerConfig "Link to this definition")
 :   Configuration for [`TextNormalizer`](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer").
 
     Parameters:
@@ -47,15 +47,15 @@ class scikitplot.corpus.TextNormalizerConfig(**unicode\_form='NFKC'**, **expand\
             `"custom"`. Used by [`TextNormalizer.normalize`](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer.normalize "scikitplot.corpus.TextNormalizer.normalize").
 
     Parameters:
-    :   * ****unicode\_form**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'NFC'****,** **'NFD'****,** **'NFKC'****,** **'NFKD'****,** **''****]**)
-        * ****expand\_ligatures**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****fix\_hyphenation**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****collapse\_whitespace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****strip\_control\_chars**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****lowercase**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****min\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****custom\_pipeline**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** **...****]**)
-        * ****steps**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]** **|** **None**)
+    :   * ****unicode\_form**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'NFC'****,** **'NFD'****,** **'NFKC'****,** **'NFKD'****,** **''****]**)
+        * ****expand\_ligatures**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****fix\_hyphenation**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****collapse\_whitespace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****strip\_control\_chars**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****lowercase**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****min\_length**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****custom\_pipeline**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** **...****]**)
+        * ****steps**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]** **|** **None**)
 
     Notes
 
@@ -69,19 +69,19 @@ class scikitplot.corpus.TextNormalizerConfig(**unicode\_form='NFKC'**, **expand\
     normalization behavior. It remains excluded from
     `__hash__` while represented as a mutable list.
 
-    collapse\_whitespace: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.TextNormalizerConfig.collapse_whitespace "Link to this definition")
+    collapse\_whitespace: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.TextNormalizerConfig.collapse_whitespace "Link to this definition")
 
-    custom\_pipeline: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_normalizers/_text_normalizer.py#L68)[#](#scikitplot.corpus.TextNormalizerConfig.custom_pipeline "Link to this definition")
+    custom\_pipeline: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_text_normalizer.py#L68)[#](#scikitplot.corpus.TextNormalizerConfig.custom_pipeline "Link to this definition")
 
-    expand\_ligatures: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.TextNormalizerConfig.expand_ligatures "Link to this definition")
+    expand\_ligatures: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.TextNormalizerConfig.expand_ligatures "Link to this definition")
 
-    fix\_hyphenation: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.TextNormalizerConfig.fix_hyphenation "Link to this definition")
+    fix\_hyphenation: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.TextNormalizerConfig.fix_hyphenation "Link to this definition")
 
-    lowercase: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.TextNormalizerConfig.lowercase "Link to this definition")
+    lowercase: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.TextNormalizerConfig.lowercase "Link to this definition")
 
-    min\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 1[#](#scikitplot.corpus.TextNormalizerConfig.min_length "Link to this definition")
+    min\_length: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 1[#](#scikitplot.corpus.TextNormalizerConfig.min_length "Link to this definition")
 
-    steps: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.TextNormalizerConfig.steps "Link to this definition")
+    steps: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.TextNormalizerConfig.steps "Link to this definition")
     :   Ordered list of normalisation step names to apply.
 
         When `None` (default), the list is derived automatically from the
@@ -121,9 +121,9 @@ class scikitplot.corpus.TextNormalizerConfig(**unicode\_form='NFKC'**, **expand\
         `"custom"` :
         :   Apply `custom_pipeline` callables.
 
-    strip\_control\_chars: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.TextNormalizerConfig.strip_control_chars "Link to this definition")
+    strip\_control\_chars: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.TextNormalizerConfig.strip_control_chars "Link to this definition")
 
-    unicode\_form: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['NFC', 'NFD', 'NFKC', 'NFKD', ''] = 'NFKC'[#](#scikitplot.corpus.TextNormalizerConfig.unicode_form "Link to this definition")
+    unicode\_form: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['NFC', 'NFD', 'NFKC', 'NFKD', ''] = 'NFKC'[#](#scikitplot.corpus.TextNormalizerConfig.unicode_form "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

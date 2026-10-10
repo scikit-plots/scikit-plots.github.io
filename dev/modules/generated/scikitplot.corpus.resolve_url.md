@@ -1,6 +1,6 @@
 # resolve\_url[#](#resolve-url "Link to this heading")
 
-scikitplot.corpus.resolve\_url(**url**, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L765)[#](#scikitplot.corpus.resolve_url "Link to this definition")
+scikitplot.corpus.resolve\_url(**url**, **kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L766)[#](#scikitplot.corpus.resolve_url "Link to this definition")
 :   Resolve a provider-specific URL to a direct-download URL.
 
     Parameters:
@@ -25,11 +25,11 @@ scikitplot.corpus.resolve\_url(**url**, **kind=None**)[[source]](https://github.
         :   If the URL cannot be resolved (e.g. malformed Google Drive link).
 
     Parameters:
-    :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****kind**** ([**URLKind**](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind "scikitplot.corpus._url_handler.URLKind") **|** **None**)
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Examples
 

@@ -1,6 +1,6 @@
 # build\_lock[#](#build-lock "Link to this heading")
 
-scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_lock.py#L93)[#](#scikitplot.cython.build_lock "Link to this definition")
+scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll\_s=0.05**, **stale\_after\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_lock.py#L93)[#](#scikitplot.cython.build_lock "Link to this definition")
 :   Acquire an exclusive build lock via atomic directory creation.
 
     Parameters:
@@ -21,7 +21,7 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
             `max(timeout_s, _DEFAULT_STALE_AFTER_S)`.
 
     Returns:
-    :   Iterator[None]
+    :   Generator[None, None, None]
         :   Context manager that yields once the lock is held.
 
     Raises:
@@ -33,13 +33,13 @@ scikitplot.cython.build\_lock(**lock\_dir**, **\***, **timeout\_s=60.0**, **poll
             `stale_after_s <= 0`.
 
     Parameters:
-    :   * ****lock\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****poll\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****stale\_after\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
+    :   * ****lock\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****timeout\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****poll\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****stale\_after\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.14)")[None]
+    :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[None, None, None]
 
     Notes
 

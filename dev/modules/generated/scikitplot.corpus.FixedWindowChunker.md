@@ -1,6 +1,6 @@
 # FixedWindowChunker[#](#fixedwindowchunker "Link to this heading")
 
-class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_fixed_window.py#L259)[#](#scikitplot.corpus.FixedWindowChunker "Link to this definition")
+class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_fixed_window.py#L260)[#](#scikitplot.corpus.FixedWindowChunker "Link to this definition")
 :   Produce fixed-size sliding-window chunks over a document.
 
     Handles all scripts via `detect_script` and
@@ -16,7 +16,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
 
     Parameters:
     :   * ****config**** ([**FixedWindowChunkerConfig**](scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig "scikitplot.corpus.FixedWindowChunkerConfig") **|** **None**)
-        * ****multilang\_config**** (**MultilangConfig** **|** **None**)
+        * ****multilang\_config**** ([**MultilangConfig**](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") **|** **None**)
 
     Notes
 
@@ -27,7 +27,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
     slices), which is safe for RAG pipelines that only need byte-aligned
     embedding windows.
 
-    ****Developer note:**** Inherits `MultilangMixin`. Every chunk
+    ****Developer note:**** Inherits [`MultilangMixin`](scikitplot.corpus.MultilangMixin.html#scikitplot.corpus.MultilangMixin "scikitplot.corpus.MultilangMixin"). Every chunk
     produced by [`chunk`](#scikitplot.corpus.FixedWindowChunker.chunk "scikitplot.corpus.FixedWindowChunker.chunk") carries `metadata["multilang"]` when
     `multilang_config.enabled=True`.
 
@@ -46,7 +46,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L783)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -71,13 +71,13 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
                 compatibility with `EmbeddedChunk`.
 
         Parameters:
-        :   * ****chunk**** (**Chunk**)
-            * ****vector**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
-            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****chunk**** ([**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk"))
+            * ****vector**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   **Chunk**
+        :   [**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")
 
         Notes
 
@@ -91,7 +91,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L840)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -117,15 +117,15 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
             :   If `len(chunks) != len(vectors)`.
 
         Parameters:
-        :   * ****chunks**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****Chunk****]**)
-            * ****vectors**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
-            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****chunks**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")**]**)
+            * ****vectors**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]****]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**Chunk**]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_fixed_window.py#L349)[#](#scikitplot.corpus.FixedWindowChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_fixed_window.py#L350)[#](#scikitplot.corpus.FixedWindowChunker.chunk "Link to this definition")
     :   Split **text** into fixed-window chunks.
 
         Parameters:
@@ -150,14 +150,14 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
             :   If **text** is empty or whitespace-only.
 
         Parameters:
-        :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****doc\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   **ChunkResult**
+        :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_fixed_window.py#L452)[#](#scikitplot.corpus.FixedWindowChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_fixed_window.py#L453)[#](#scikitplot.corpus.FixedWindowChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -182,12 +182,12 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
             :   If **doc\_ids** length mismatches **texts**.
 
         Parameters:
-        :   * ****texts**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****doc\_ids**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****texts**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****doc\_ids**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**ChunkResult**]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")]
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

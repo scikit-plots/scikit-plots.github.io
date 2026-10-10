@@ -17,7 +17,7 @@ Ensure that the correct python.pythonPath is set in your `.vscode/settings.json`
 Matplotlib uses the [pytest](https://docs.pytest.org/en/stable/) framework.
 
 The tests are in `lib/matplotlib/tests`, and customizations to the pytest
-testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.12.0.dev498+gadecc563e)").
+testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)").
 
 ## Requirements[#](#requirements "Link to this heading")
 
@@ -64,14 +64,14 @@ pytest lib/matplotlib/tests/test_simplification.py::test_clipping
 If you want to use `pytest` as a module (via `python -m pytest`), then you will need
 to avoid clashes between `pytest`’s import mode and Python’s search path:
 
-* On more recent Python, you may [`disable "unsafe import paths"`](https://docs.python.org/3/using/cmdline.html#cmdoption-P "(in Python v3.14)")
+* On more recent Python, you may [`disable "unsafe import paths"`](https://docs.python.org/3/using/cmdline.html#cmdoption-P "(in Python v3.15)")
   (i.e., stop adding the current directory to the import path) with the `-P` argument:
 
   ```
   python -P -m pytest
 
   ```
-* On older Python, you may enable [`isolated mode`](https://docs.python.org/3/using/cmdline.html#cmdoption-I "(in Python v3.14)")
+* On older Python, you may enable [`isolated mode`](https://docs.python.org/3/using/cmdline.html#cmdoption-I "(in Python v3.15)")
   (which stops adding the current directory to the import path, but has other
   repercussions):
 

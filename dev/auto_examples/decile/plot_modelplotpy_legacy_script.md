@@ -170,8 +170,8 @@ ps = obj.plotting_scope(
 ```
 ```
 Default scope value no_comparison selected, single evaluation line will be plotted.
-The label with smallest class is term deposit
-Target class term deposit, dataset test_data and model random_forest.
+The label with smallest class is yes
+Target class yes, dataset test_data and model random_forest.
 
 ```
 
@@ -222,10 +222,10 @@ what % of the actual target class observations can we expect to target?
 ax = mp.plot_cumgains(ps, highlight_ntile=3, save_fig=True)
 
 ```
-![Cumulative gains, model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_001.png)
+![Cumulative gains, model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_001.png)
 ```
 When we select 30 with the highest probability according to model random_forest, this selection holds 93% of
-all term deposit cases in dataset test_data.
+all yes cases in dataset test_data.
 
 ```
 
@@ -243,10 +243,10 @@ how many times better is that than using no model at all?
 ax = mp.plot_cumlift(ps, highlight_ntile=3, save_fig=True)
 
 ```
-![Cumulative lift, model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_002.png)
+![Cumulative lift, model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_002.png)
 ```
 When we select 30 with the highest probability according to model random_forest in dataset test_data,
-this selection for target class term deposit is 3.13 times than selecting without a model.
+this selection for target class yes is 3.13 times than selecting without a model.
 
 ```
 
@@ -266,9 +266,9 @@ what is the expected % of target class observations in that decile?
 ax = mp.plot_response(ps, highlight_ntile=3, save_fig=True)
 
 ```
-![Response, model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_003.png)
+![Response, model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_003.png)
 ```
-When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 13% .
+When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 13% .
 
 ```
 
@@ -285,9 +285,9 @@ what is the expected % of target class observations in the selection?
 ax = mp.plot_cumresponse(ps, highlight_ntile=3, save_fig=True)
 
 ```
-![Cumulative response, model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_004.png)
+![Cumulative response, model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_004.png)
 ```
-When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35% .
+When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 35% .
 
 ```
 
@@ -307,7 +307,7 @@ ax = mp.plot_all(
 )
 
 ```
-![model: random_forest & dataset: test_data & target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response](../../_images/sphx_glr_plot_modelplotpy_legacy_script_005.png)
+![model: random_forest & dataset: test_data & target class: yes, Cumulative gains, Cumulative lift, Response, Cumulative response](../../_images/sphx_glr_plot_modelplotpy_legacy_script_005.png)
 
 ## Financial Implications[#](#financial-implications "Link to this heading")
 
@@ -340,9 +340,9 @@ ax = mp.plot_roi(
 )
 
 ```
-![Return on Investment (ROI), model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_006.png)
+![Return on Investment (ROI), model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_006.png)
 ```
-When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected roi is 70.
+When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the expected roi is 70.
 
 ```
 
@@ -368,9 +368,9 @@ ax = mp.plot_costsrevs(
 )
 
 ```
-![Costs / Revenues, model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_007.png)
+![Costs / Revenues, model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_007.png)
 ```
-When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the revenue is 64950.
+When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the revenue is 64950.
 
 ```
 
@@ -395,9 +395,9 @@ ax = mp.plot_profit(
 )
 
 ```
-![Profit, model: random_forest & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_008.png)
+![Profit, model: random_forest & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_008.png)
 ```
-When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected profit is 26880.
+When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the expected profit is 26880.
 
 ```
 
@@ -420,12 +420,12 @@ ps2 = obj.plotting_scope(scope="compare_models", select_dataset_label=["test_dat
 ax = mp.plot_cumresponse(ps2, highlight_ntile=3, save_fig=True)
 
 ```
-![Cumulative response, Scope: comparing models & dataset: test_data & target class: term deposit](../../_images/sphx_glr_plot_modelplotpy_legacy_script_009.png)
+![Cumulative response, Scope: comparing models & dataset: test_data & target class: yes](../../_images/sphx_glr_plot_modelplotpy_legacy_script_009.png)
 ```
 compare models
-The label with smallest class is ['term deposit']
-When we select decile 3 from model multinomial_logit in dataset test_data the percentage of term deposit cases in the selection is 33% .
-When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35% .
+The label with smallest class is ['yes']
+When we select decile 3 from model multinomial_logit in dataset test_data the percentage of yes cases in the selection is 33% .
+When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 35% .
 
 ```
 ```
@@ -447,9 +447,9 @@ or [jurriaan.nagelkerke](mailto:jurriaan.nagelkerke%40gmail.com).
 
 Happy modelplotting!
 
-****Total running time of the script:**** (0 minutes 10.368 seconds)
+****Total running time of the script:**** (0 minutes 9.744 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_legacy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_legacy_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo7.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_legacy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo7.svg)](../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_legacy_script.ipynb)
 
 [`Download Jupyter notebook: plot_modelplotpy_legacy_script.ipynb`](../../_downloads/8382eda9b62f1e9d7c880bc3067ac1d4/plot_modelplotpy_legacy_script.ipynb)
 
@@ -463,18 +463,18 @@ Related examples
 
 [Introduction to modelplotpy](plot_modelplotpy_script.html)
 
-Introduction to modelplotpy![](../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png)
+Introduction to modelplotpy![](../../_images/sphx_glr_plot_ks_statistic_script_thumb.png)
 
-[Comparing DummyCode Encoder with Other Encoders](../preprocessing/plot_dummy_code_encoder.html)
+[plot\_ks\_statistic with examples](plot_ks_statistic_script.html)
 
-Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
+plot\_ks\_statistic with examples![](../../_images/sphx_glr_plot_lift_script_thumb.png)
 
-[plot\_feature\_importances with examples](../classification/plot_feature_importances_script.html)
+[plot\_lift with examples](plot_lift_script.html)
 
-plot\_feature\_importances with examples![](../../_images/sphx_glr_plot_calibration_script_thumb.png)
+plot\_lift with examples![](../../_images/sphx_glr_plot_cumulative_gain_script_thumb.png)
 
-[plot\_calibration with examples](../calibration/plot_calibration_script.html)
+[plot\_cumulative\_gain with examples](plot_cumulative_gain_script.html)
 
-plot\_calibration with examples
+plot\_cumulative\_gain with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

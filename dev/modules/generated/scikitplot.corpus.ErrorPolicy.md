@@ -1,10 +1,10 @@
 # ErrorPolicy[#](#errorpolicy "Link to this heading")
 
-class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L208)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
+class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L209)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
 :   Per-document error handling **behaviour** for [`PipelineGuard`](scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard").
 
     > **See also**
-    > `scikitplot.corpus._diagnostics.ErrorRecord`
+    > [`scikitplot.corpus._diagnostics.ErrorRecord`](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord")
     :   what `COLLECT` and `FALLBACK` produce.
 
     Notes
@@ -20,7 +20,7 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
     | `fallback` | degrade to a declared alternative, keeping a record |
 
     ****Developer-focused.**** This enum controls **behaviour only**. Logging is
-    orthogonal and is configured through the standard [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)") module.
+    orthogonal and is configured through the standard [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") module.
 
     A former `LOG` member was deleted (ADR-R02-001, ADR-C22). It took the
     **same** dispatch branch as `SKIP` and differed only in whether a
@@ -44,27 +44,27 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
     ```
     Go BackOpen In Tab
 
-    COLLECT = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.COLLECT "Link to this definition")
-    :   Discard and continue, recording a structured `ErrorRecord`.
+    COLLECT = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.COLLECT "Link to this definition")
+    :   Discard and continue, recording a structured [`ErrorRecord`](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus.ErrorRecord").
 
         This is the policy to choose when a caller wants to know **what** failed
         without stopping the run – the case `SKIP` cannot express and the former
         `LOG` expressed only as unstructured text.
 
-    FALLBACK = 'fallback'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.FALLBACK "Link to this definition")
+    FALLBACK = 'fallback'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.FALLBACK "Link to this definition")
     :   Degrade to a declared alternative and record that the degradation happened.
 
-        A `FALLBACK` that produces no `ErrorRecord` is invalid: an
+        A `FALLBACK` that produces no [`ErrorRecord`](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus.ErrorRecord") is invalid: an
         unobservable fallback is the “plausible success after altered execution”
         shape this codebase has repeatedly been bitten by.
 
-    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
+    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
     :   Propagate exceptions immediately (default, strictest).
 
-    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
+    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
     :   Retry transient failures up to `max_retries` times, then `COLLECT`.
 
-    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
+    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
     :   Discard failing documents and continue, keeping no record.
 
     capitalize(**/**)[#](#scikitplot.corpus.ErrorPolicy.capitalize "Link to this definition")
@@ -81,7 +81,7 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -99,7 +99,7 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -110,22 +110,22 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -257,14 +257,14 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -333,7 +333,7 @@ class scikitplot.corpus.ErrorPolicy(**\*values**)[[source]](https://github.com/s
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ErrorPolicy.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ErrorPolicy.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

@@ -1,6 +1,6 @@
 # log\_if[#](#log-if "Link to this heading")
 
-scikitplot.logging.log\_if(**level**, **msg**, **condition**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/logging.py#L1585)[#](#scikitplot.logging.log_if "Link to this definition")
+scikitplot.logging.log\_if(**level**, **msg**, **condition**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1605)[#](#scikitplot.logging.log_if "Link to this definition")
 :   Log only if a condition is True.
 
     Parameters:
@@ -20,9 +20,9 @@ scikitplot.logging.log\_if(**level**, **msg**, **condition**, **\*args**, **\*\*
         :   Passed to the underlying logger.
 
     Parameters:
-    :   * ****level**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****msg**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****condition**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****level**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****msg**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****condition**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****args**** (**any**)
         * ****kwargs**** (**any**)
 

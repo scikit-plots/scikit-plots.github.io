@@ -15,50 +15,69 @@ not pull in Sphinx, BeautifulSoup, markdownify, or any other heavy
 dependency. Only the specific submodule that is accessed at runtime
 triggers its own import chain.
 
-#### Submodules[#](#submodules "Link to this heading")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_gallery\_grid[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_gallery_grid/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_gallery_grid "Link to this definition")
+:   Theme-independent owner of the public `gallery-grid` directive.
 
-\_sphinx\_ai\_assistant
-:   AI-assistant Sphinx extension (markdown export, llms.txt, AI chat
-    links). Copied and adapted from `mlazag/sphinx-ai-assistant`
-    (MIT licence). Requires Sphinx ≥ 5 at **call time**, not at import
-    time.
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_collection[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_collection/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_collection "Link to this definition")
+:   Shared filtering, grouping, browser metadata and live-control engine used
+    by collection-style directives.
 
-\_sphinx\_jinja\_render
-:   URL helper Sphinx extension. Provides RST template preprocessing
-    (Jinja2 `.rst.template` → `.rst`) and JupyterLite REPL URL
-    injection into HTML page contexts.
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_youtube\_core[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_youtube_core/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_youtube_core "Link to this definition")
+:   Dependency-free YouTube URL grammar and player option primitives.
+
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_youtube\_gallery[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_youtube_gallery/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_youtube_gallery "Link to this definition")
+:   Typed YouTube video/channel adapter that renders through `gallery-grid`.
+
+scikitplot.\_externals.\_sphinx\_ext.\_pydata\_component\_list[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_pydata_component_list/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._pydata_component_list "Link to this definition")
+:   PyData Sphinx Theme-specific owner of the public `component-list`
+    inventory directive.
+
+scikitplot.\_externals.\_sphinx\_ext.\_sphinxcontrib\_youtube[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinxcontrib_youtube/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinxcontrib_youtube "Link to this definition")
+:   Vendored standalone YouTube/Vimeo/PeerTube player directives used by the
+    gallery adapter.
 
 Notes
 
-**Users:** To register an extension in a Sphinx project, add the full
-dotted path to `extensions` in `conf.py`:
+**Stable/released use:** register extensions through the installed Scikit-plots
+namespace:
 
 ```
 extensions = [
-    "scikitplot._externals._sphinx_ext._sphinx_ai_assistant",
-    "scikitplot._externals._sphinx_ext._sphinx_jinja_render",
+    "scikitplot._externals._sphinx_ext._sphinx_youtube_gallery",
 ]
 
 ```
 
-**Developers:** To add a new private Sphinx extension submodule, append
-its name to `_PRIVATE_SUBMODULES`. No other change is required for
-lazy loading.
+**Development/test use:** a documentation checkout may expose this exact package
+tree as the standalone `_sphinx_ext` namespace. Child modules are intentionally
+written with relative imports, so their implementation is identical in both
+layouts. The documentation bootstrap must select one authority before loading
+any child and must never mix the two namespaces in one Sphinx application.
+
+`SPHINX_EXT_STACK_API` is the cross-extension compatibility handshake used by
+documentation projects that can switch authorities. Release the whole private
+extension stack together when this API changes.
+
+**Developers:** Add bundled extensions to `_CORE_PRIVATE_SUBMODULES`.
+Known sibling extensions that are intentionally outside this replacement may
+be listed in `_OPTIONAL_PRIVATE_SUBMODULES` and are exposed only when they
+actually exist. `__all__` stays empty on purpose: star-importing a private
+extension namespace would eagerly load Sphinx-dependent children. `dir()`
+still exposes the lazy registry for introspection.
 
 Examples
 
 Try it in your browser!
 ```
->>> # Safe: no Sphinx needed yet
->>> from scikitplot._externals import _sphinx_ext
->>> # Sphinx imported here, on demand:
->>> ai = _sphinx_ext._sphinx_ai_assistant
->>> jr = _sphinx_ext._sphinx_jinja_render
+>>> # Safe: no Sphinx needed yet.
+>>> import _sphinx_ext
+>>> sorted(name for name in _sphinx_ext._PRIVATE_SUBMODULES if name.startswith("_sphinx_"))[:2]
+['_sphinx_collection', '_sphinx_gallery_grid']
 
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [Sphinx Ext (experimental)](../user_guide/_externals/_sphinx_ext/index.html#externals-sphinx-ext-index) section for further details.
+****User guide.**** See the [Bundled Sphinx extensions (experimental)](../user_guide/_externals/_sphinx_ext/index.html#id1) section for further details.
 
 ## Sphinx AI Extension[#](#module-scikitplot._externals._sphinx_ext._sphinx_ai_assistant "Link to this heading")
 
@@ -137,7 +156,7 @@ name the alternative; never substitute convenience output and report success.
 A reader who chose the published file and silently received a browser conversion
 has been given the wrong answer confidently, which is worse than an error.
 
-### Surfaces[#](#surfaces "Link to this heading")
+Surfaces:
 
 ```
 Control                   Reader gets              Source           Build
@@ -163,7 +182,7 @@ ai_assistant_copy_mode_toggle = True  # False pins the mode, hides the switch
 
 ```
 
-### Build pipeline[#](#build-pipeline "Link to this heading")
+Build pipeline:
 
 ```
 Sphinx
@@ -195,7 +214,7 @@ stack; this one has to understand HTML. That is the reason this extension needs
 no sibling producer, and the reason its dependency surface is: zero module-scope
 non-stdlib imports, with `bs4`/`markdownify` optional and `find_spec`-gated.
 
-### Directive fidelity (planned, not yet implemented)[#](#directive-fidelity-planned-not-yet-implemented "Link to this heading")
+Directive fidelity (planned, not yet implemented):
 
 Conversion is currently generic HTML→Markdown. Better semantic fidelity is
 planned for the markup emitted by:
@@ -287,7 +306,7 @@ print(stats)  # {"generated": 42, "skipped": 3, "errors": 0}
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [Sphinx AI Extensions (experimental) ✨](../user_guide/_externals/_sphinx_ext/_sphinx_ai_assistant/index.html#externals-sphinx-ext-sphinx-ai-assistant-index) section for further details.
+****User guide.**** See the [Sphinx AI Assistant](../user_guide/_externals/_sphinx_ext/_sphinx_ai_assistant/index.html#id1) section for further details.
 
 |  |  |
 | --- | --- |

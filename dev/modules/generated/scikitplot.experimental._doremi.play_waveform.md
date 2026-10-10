@@ -1,6 +1,6 @@
 # play\_waveform[#](#play-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
 :   Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.
 
     Parameters:
@@ -46,11 +46,11 @@ scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file
 
     Parameters:
     :   * ****music**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
-        * ****rate**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****file\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****blocking**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****backend**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****save\_generated**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****rate**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****file\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****blocking**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****backend**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****save\_generated**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   None

@@ -9,7 +9,7 @@ machine-learning model exploration.
 
 ****User guide.**** See the [Seaborn](../user_guide/seaborn/index.html#seaborn-index) section for further details.
 
-## .scikitplot via Seaborn[#](#scikitplot-via-seaborn "Link to this heading")
+## .api into .seaborn[#](#api-into-seaborn "Link to this heading")
 
 ****User guide.**** See the [AUC Plot (experimental)](../user_guide/seaborn/index.html#aucplot-index) and [Eval Plot (experimental)](../user_guide/seaborn/index.html#evalplot-index) sections for further details.
 
@@ -17,8 +17,9 @@ machine-learning model exploration.
 | --- | --- |
 | [`aucplot`](../modules/generated/scikitplot.seaborn.aucplot.html#scikitplot.seaborn.aucplot "scikitplot.seaborn.aucplot") | Plot PR or ROC curves with a seaborn-like API. |
 | [`evalplot`](../modules/generated/scikitplot.seaborn.evalplot.html#scikitplot.seaborn.evalplot "scikitplot.seaborn.evalplot") | Visualization of the Confusion Matrix [[Ra7e29df24177-1]](../modules/generated/scikitplot.seaborn.evalplot.html#ra7e29df24177-1) alongside a text report showing key classification metrics. |
+| [`modelplot`](../modules/generated/scikitplot.seaborn.modelplot.html#scikitplot.seaborn.modelplot "scikitplot.seaborn.modelplot") | Model Instance and/or Attributes Visualization. |
 
-## .kds to SeabornX[#](#module-scikitplot.seaborn._decile "Link to this heading")
+## .decile.kds into .seaborn[#](#module-scikitplot.seaborn._decile "Link to this heading")
 
 Decile-based [[2]](#r6204c41bfff9-2) model evaluation module (Lift, Gains, KS statistics).
 

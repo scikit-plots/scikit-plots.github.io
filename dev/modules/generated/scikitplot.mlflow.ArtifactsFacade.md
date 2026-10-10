@@ -1,6 +1,6 @@
 # ArtifactsFacade[#](#artifactsfacade "Link to this heading")
 
-class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_facade.py#L30)[#](#scikitplot.mlflow.ArtifactsFacade "Link to this definition")
+class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_facade.py#L30)[#](#scikitplot.mlflow.ArtifactsFacade "Link to this definition")
 :   Artifact helper facade bound to a specific MLflow client/URI.
 
     Parameters:
@@ -11,8 +11,8 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         :   MLflow client bound to the session tracking URI.
 
     Parameters:
-    :   * ****mlflow\_module**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****client**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+    :   * ****mlflow\_module**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****client**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
     Notes
 
@@ -24,9 +24,9 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
     This avoids accidental use of a **different** tracking URI (e.g., when a new client is
     constructed without explicit configuration).
 
-    client: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.mlflow.ArtifactsFacade.client "Link to this definition")
+    client: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.mlflow.ArtifactsFacade.client "Link to this definition")
 
-    download(**run\_id**, **artifact\_path**, **dst\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_facade.py#L76)[#](#scikitplot.mlflow.ArtifactsFacade.download "Link to this definition")
+    download(**run\_id**, **artifact\_path**, **dst\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_facade.py#L76)[#](#scikitplot.mlflow.ArtifactsFacade.download "Link to this definition")
     :   Download an artifact from a run.
 
         Parameters:
@@ -48,12 +48,12 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
             :   If no compatible artifact download API is available.
 
         Parameters:
-        :   * ****run\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****artifact\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****dst\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****run\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****artifact\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****dst\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
         Notes
 
@@ -61,7 +61,7 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         which applies the same preference order: modern public API first, then
         session-bound client fallback.
 
-    list(**run\_id**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_facade.py#L56)[#](#scikitplot.mlflow.ArtifactsFacade.list "Link to this definition")
+    list(**run\_id**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_facade.py#L56)[#](#scikitplot.mlflow.ArtifactsFacade.list "Link to this definition")
     :   List artifacts for a run.
 
         Parameters:
@@ -76,13 +76,13 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
             :   List of artifact infos (type depends on MLflow version).
 
         Parameters:
-        :   * ****run\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****artifact\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****run\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****artifact\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    log\_file(**local\_path**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_facade.py#L117)[#](#scikitplot.mlflow.ArtifactsFacade.log_file "Link to this definition")
+    log\_file(**local\_path**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_facade.py#L117)[#](#scikitplot.mlflow.ArtifactsFacade.log_file "Link to this definition")
     :   Log a local file as an artifact.
 
         Parameters:
@@ -96,13 +96,13 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         :   None
 
         Parameters:
-        :   * ****local\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-            * ****artifact\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****local\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+            * ****artifact\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   None
 
-    log\_files(**local\_paths**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_facade.py#L140)[#](#scikitplot.mlflow.ArtifactsFacade.log_files "Link to this definition")
+    log\_files(**local\_paths**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_facade.py#L140)[#](#scikitplot.mlflow.ArtifactsFacade.log_files "Link to this definition")
     :   Log multiple local files as artifacts.
 
         Parameters:
@@ -116,10 +116,10 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         :   None
 
         Parameters:
-        :   * ****local\_paths**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")**]**)
-            * ****artifact\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****local\_paths**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]**)
+            * ****artifact\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   None
 
-    mlflow\_module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.mlflow.ArtifactsFacade.mlflow_module "Link to this definition")
+    mlflow\_module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.mlflow.ArtifactsFacade.mlflow_module "Link to this definition")

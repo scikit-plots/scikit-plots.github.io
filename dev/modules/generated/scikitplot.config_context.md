@@ -1,6 +1,6 @@
 # config\_context[#](#config-context "Link to this heading")
 
-scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
+scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/config/_config.py#L241)[#](#scikitplot.config_context "Link to this definition")
 :   Context manager for global scikit-plots configuration.
 
     Parameters:
@@ -60,6 +60,9 @@ scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=No
 
     Yields:
     :   None.
+
+    Return type:
+    :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[None, None, None]
 
     > **See also**
     > [`set_config`](scikitplot.set_config.html#scikitplot.set_config "scikitplot.set_config")

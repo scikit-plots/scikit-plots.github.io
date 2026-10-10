@@ -1,6 +1,6 @@
 # error\_log[#](#error-log "Link to this heading")
 
-scikitplot.logging.error\_log(**error\_msg**, **\*args**, **level=40**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/logging.py#L1455)[#](#scikitplot.logging.error_log "Link to this definition")
+scikitplot.logging.error\_log(**error\_msg**, **\*args**, **level=40**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1475)[#](#scikitplot.logging.error_log "Link to this definition")
 :   Log an error-like message at a specified level.
 
     Parameters:
@@ -18,7 +18,7 @@ scikitplot.logging.error\_log(**error\_msg**, **\*args**, **level=40**, **\*\*kw
 
     Parameters:
     :   * ****args**** (**any**)
-        * ****level**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****level**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****kwargs**** (**any**)
 
     Return type:

@@ -1,6 +1,6 @@
 # generate\_sphinx\_template\_docs[#](#generate-sphinx-template-docs "Link to this heading")
 
-scikitplot.cython.generate\_sphinx\_template\_docs(**output\_dir**, **\***, **title='Cython templates'**, **include\_python=True**, **include\_cython=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L1101)[#](#scikitplot.cython.generate_sphinx_template_docs "Link to this definition")
+scikitplot.cython.generate\_sphinx\_template\_docs(**output\_dir**, **\***, **title='Cython templates'**, **include\_python=True**, **include\_cython=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L1102)[#](#scikitplot.cython.generate_sphinx_template_docs "Link to this definition")
 :   Generate Sphinx `.rst` pages listing templates and their usage.
 
     This function does ****not**** import any `.pyx` code. It uses metadata files
@@ -24,10 +24,10 @@ scikitplot.cython.generate\_sphinx\_template\_docs(**output\_dir**, **\***, **ti
         :   Paths of generated `.rst` files.
 
     Parameters:
-    :   * ****output\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****include\_python**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****include\_cython**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****output\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****include\_python**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****include\_cython**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")]

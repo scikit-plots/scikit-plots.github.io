@@ -1,6 +1,6 @@
 # pybind11\_only\_prereqs[#](#pybind11-only-prereqs "Link to this heading")
 
-scikitplot.cython.pybind11\_only\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L623)[#](#scikitplot.cython.pybind11_only_prereqs "Link to this definition")
+scikitplot.cython.pybind11\_only\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L623)[#](#scikitplot.cython.pybind11_only_prereqs "Link to this definition")
 :   Check prerequisites pybind11 only.
 
     Only pybind11 is required. Cython and setuptools are NOT required
@@ -11,7 +11,7 @@ scikitplot.cython.pybind11\_only\_prereqs()[[source]](https://github.com/scikit-
         :   Keys: `pybind11`.
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Notes
 

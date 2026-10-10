@@ -1,6 +1,6 @@
 # ALTOReader[#](#altoreader "Link to this heading")
 
-class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **granularity='block'**, **max\_file\_bytes=5368709120**, **xml\_encoding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_alto.py#L529)[#](#scikitplot.corpus.ALTOReader "Link to this definition")
+class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **granularity='block'**, **max\_file\_bytes=5368709120**, **xml\_encoding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_alto.py#L541)[#](#scikitplot.corpus.ALTOReader "Link to this definition")
 :   ALTO XML reader for scanned document archives.
 
     Reads a ZIP archive containing one ALTO XML file per page, extracts
@@ -70,18 +70,18 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         :   If a ZIP entry contains a ZipSlip `..` path traversal sequence.
 
     Parameters:
-    :   * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+    :   * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
         * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
         * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
-        * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****source\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****custom\_extractor**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
-        * ****custom\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****granularity**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****max\_file\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****xml\_encoding**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****filename\_override**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****source\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****custom\_extractor**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
+        * ****custom\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****granularity**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****max\_file\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****xml\_encoding**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     > **See also**
     > `scikitplot.corpus._readers.PDFReader`
@@ -155,15 +155,35 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
     ```
     Go BackOpen In Tab
 
-    chunker: [ChunkerBase](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.chunker "Link to this definition")
+    property backend\_reports: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], ...][#](#scikitplot.corpus.ALTOReader.backend_reports "Link to this definition")
+    :   Return structured optional-backend reports from the current run.
+
+        Reports are JSON-compatible dictionaries. They intentionally retain
+        exception **type/message strings** rather than live exception objects,
+        so fail-soft readers remain observable without retaining traceback
+        object graphs. [`get_documents`](#scikitplot.corpus.ALTOReader.get_documents "scikitplot.corpus.ALTOReader.get_documents") clears old reports at the start
+        of each run.
+
+        Returns:
+        :   tuple of dict
+            :   One report per backend operation that opted into central
+                orchestration. Empty when no optional backend operation ran.
+
+    chunker: [ChunkerBase](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.chunker "Link to this definition")
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L1542)[#](#scikitplot.corpus.ALTOReader.create "Link to this definition")
+    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L932)[#](#scikitplot.corpus.ALTOReader.clear_backend_reports "Link to this definition")
+    :   Clear structured optional-backend reports on this reader instance.
+
+        Return type:
+        :   None
+
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L1607)[#](#scikitplot.corpus.ALTOReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
-        [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") objects — in any order. URL strings (those
+        [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") objects — in any order. URL strings (those
         starting with `http://` or `https://`) are automatically
         detected and routed to [`from_url`](#scikitplot.corpus.ALTOReader.from_url "scikitplot.corpus.ALTOReader.from_url"); everything else is treated
         as a local file path and dispatched by extension via the registry.
@@ -179,8 +199,8 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
                   collapses the double-slash (`https://` → `https:/`) and
                   breaks URL detection.
                 * `str` not matching the URL pattern — treated as a local
-                  file path and converted to [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") internally.
-                * [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") — always treated as a local file path
+                  file path and converted to [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") internally.
+                * [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") — always treated as a local file path
                   and dispatched by extension via the reader registry.
 
                 Pass a single value for the common case; pass multiple values
@@ -248,21 +268,21 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
 
             TypeError
             :   If any element of **input\_path** is not a `str` or
-                [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
+                [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)").
 
         Parameters:
-        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") **|** **None**)
-            * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") **|** **None****]** **|** **None**)
-            * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****collection\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****doi**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****isbn**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****filename\_override**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****default\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") **|** **None****]** **|** **None**)
+            * ****source\_title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_author**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_date**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****collection\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****doi**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****isbn**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
             * ****kwargs**** (**Any**)
 
         Return type:
@@ -272,7 +292,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
 
         ****URL auto-detection:**** A `str` element is treated as a URL when
         it matches `^https?://` (case-insensitive). All other strings
-        and all [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") objects are treated as local file
+        and all [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") objects are treated as local file
         paths. This means you no longer need to call [`from_url`](#scikitplot.corpus.ALTOReader.from_url "scikitplot.corpus.ALTOReader.from_url")
         explicitly — just pass the URL string to [`create`](#scikitplot.corpus.ALTOReader.create "scikitplot.corpus.ALTOReader.create").
 
@@ -291,8 +311,8 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
 
         ****Reader-specific kwargs**** (forwarded via `**kwargs`):
 
-        * `transcribe=True`, `whisper_model="small"` → [`AudioReader`](scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus.AudioReader"),
-          [`VideoReader`](scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader "scikitplot.corpus.VideoReader")
+        * `transcribe=True`, `whisper_model="small"`, `strict=False` →
+          [`AudioReader`](scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus.AudioReader"), [`VideoReader`](scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader "scikitplot.corpus.VideoReader")
         * `backend="easyocr"` → [`ImageReader`](scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader "scikitplot.corpus.ImageReader")
         * `prefer_backend="pypdf"` → [`PDFReader`](scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader "scikitplot.corpus.PDFReader")
         * `classify=True`, `classifier=fn` → [`AudioReader`](scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus.AudioReader")
@@ -332,7 +352,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    custom\_extractor: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.custom_extractor "Link to this definition")
+    custom\_extractor: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.custom_extractor "Link to this definition")
     :   User-supplied extraction callable that ****replaces**** [`get_raw_chunks`](#scikitplot.corpus.ALTOReader.get_raw_chunks "scikitplot.corpus.ALTOReader.get_raw_chunks")
         entirely for this reader instance.
 
@@ -381,7 +401,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_alto.py#L529)[#](#scikitplot.corpus.ALTOReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_alto.py#L541)[#](#scikitplot.corpus.ALTOReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.ALTOReader.custom_extractor "scikitplot.corpus.ALTOReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -398,10 +418,10 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    default\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.default_language "Link to this definition")
+    default\_language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.default_language "Link to this definition")
     :   ISO 639-1 language code to assign when the source has no language info.
 
-    property file\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ALTOReader.file_name "Link to this definition")
+    property file\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ALTOReader.file_name "Link to this definition")
     :   Effective filename used in document labels.
 
         Returns `filename_override` when set; otherwise returns
@@ -423,7 +443,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_alto.py#L529)[#](#scikitplot.corpus.ALTOReader.file_type "Link to this definition")
+    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_alto.py#L541)[#](#scikitplot.corpus.ALTOReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
         dot). E.g. `".txt"`, `".xml"`, `".zip"`.
 
@@ -431,7 +451,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         (plural) instead. ****Exactly one**** of `file_type` or `file_types`
         must be defined on every concrete subclass.
 
-    file\_types: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")] = None[#](#scikitplot.corpus.ALTOReader.file_types "Link to this definition")
+    file\_types: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")] = None[#](#scikitplot.corpus.ALTOReader.file_types "Link to this definition")
     :   List of file extensions this reader handles (lowercase, leading dot).
         Use instead of `file_type` when a single reader class should be
         registered for several extensions — e.g. an image reader for
@@ -440,13 +460,13 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         When both `file_type` and `file_types` are defined on the same
         class, `file_types` takes precedence and `file_type` is ignored.
 
-    filename\_override: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.filename_override "Link to this definition")
+    filename\_override: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.filename_override "Link to this definition")
     :   Override for the `input_path` label in generated documents.
 
-    filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.filter_ "Link to this definition")
+    filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L1859)[#](#scikitplot.corpus.ALTOReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L1924)[#](#scikitplot.corpus.ALTOReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -512,19 +532,19 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
             :   If the manifest format is not recognised.
 
         Parameters:
-        :   * ****manifest\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+        :   * ****manifest\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
-            * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****default\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
             * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None**)
-            * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****collection\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****doi**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****isbn**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****encoding**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+            * ****source\_title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_author**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_date**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****collection\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****doi**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****isbn**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****encoding**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
         :   **\_MultiSourceReader**
@@ -573,7 +593,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L2055)[#](#scikitplot.corpus.ALTOReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L2120)[#](#scikitplot.corpus.ALTOReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -636,18 +656,18 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
                 `scikitplot.corpus._readers` has not been imported yet).
 
         Parameters:
-        :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") **|** **None**)
-            * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****filename\_override**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****default\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
             * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus.SourceType") **|** **None**)
-            * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****collection\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****doi**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****isbn**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****source\_title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_author**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****source\_date**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****collection\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****doi**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****isbn**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
             * ****kwargs**** (**Any**)
 
         Return type:
@@ -674,7 +694,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L1116)[#](#scikitplot.corpus.ALTOReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L1178)[#](#scikitplot.corpus.ALTOReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -695,7 +715,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
             :   If the input file is missing or the format is invalid.
 
         Return type:
-        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"), None, None]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"), None, None]
 
         Notes
 
@@ -719,7 +739,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_alto.py#L691)[#](#scikitplot.corpus.ALTOReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_alto.py#L703)[#](#scikitplot.corpus.ALTOReader.get_raw_chunks "Link to this definition")
     :   Iterate over ALTO XML pages in the ZIP and yield text chunks.
 
         Each XML file in the archive is treated as one page, processed in
@@ -761,13 +781,13 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
             :   If the file is not a valid ZIP archive.
 
         Return type:
-        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], None, None]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], None, None]
 
-    granularity: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'block'[#](#scikitplot.corpus.ALTOReader.granularity "Link to this definition")
+    granularity: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'block'[#](#scikitplot.corpus.ALTOReader.granularity "Link to this definition")
     :   Chunking granularity within each ALTO page. One of `"block"`,
         `"line"`, or `"page"`. Default: `"block"`.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_alto.py#L529)[#](#scikitplot.corpus.ALTOReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_alto.py#L541)[#](#scikitplot.corpus.ALTOReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -775,13 +795,13 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         original URL string. `validate_input()` is overridden in those
         subclasses to skip the file-existence check.
 
-    max\_file\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5368709120[#](#scikitplot.corpus.ALTOReader.max_file_bytes "Link to this definition")
+    max\_file\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 5368709120[#](#scikitplot.corpus.ALTOReader.max_file_bytes "Link to this definition")
     :   5 GB.
 
         Type:
         :   Maximum ZIP file size in bytes. Default
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_alto.py#L529)[#](#scikitplot.corpus.ALTOReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_alto.py#L541)[#](#scikitplot.corpus.ALTOReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -789,7 +809,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         Populated by [`create`](#scikitplot.corpus.ALTOReader.create "scikitplot.corpus.ALTOReader.create") / [`from_url`](#scikitplot.corpus.ALTOReader.from_url "scikitplot.corpus.ALTOReader.from_url") from their keyword
         arguments.
 
-    source\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.source_uri "Link to this definition")
+    source\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.source_uri "Link to this definition")
     :   Original URI for URL-based readers (web pages, YouTube videos).
 
         Set this to the full URL string when `input_path` is a synthetic
@@ -808,7 +828,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L1431)[#](#scikitplot.corpus.ALTOReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L1496)[#](#scikitplot.corpus.ALTOReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -817,7 +837,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
                 shallow copy so callers cannot accidentally mutate the registry.
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")[[**DocumentReader**](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus._base.DocumentReader")]]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [type](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)")[[**DocumentReader**](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus._base.DocumentReader")]]
 
         Examples
 
@@ -830,7 +850,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L1413)[#](#scikitplot.corpus.ALTOReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L1478)[#](#scikitplot.corpus.ALTOReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -839,7 +859,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
                 E.g. `['.pdf', '.txt', '.xml', '.zip']`.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
         Examples
 
@@ -851,7 +871,7 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L931)[#](#scikitplot.corpus.ALTOReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L966)[#](#scikitplot.corpus.ALTOReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:
@@ -879,6 +899,6 @@ class scikitplot.corpus.ALTOReader(**input\_path**, **chunker=None**, **filter\_
         ```
         Go BackOpen In Tab
 
-    xml\_encoding: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ALTOReader.xml_encoding "Link to this definition")
+    xml\_encoding: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ALTOReader.xml_encoding "Link to this definition")
     :   Force a specific encoding for XML member decoding. `None` uses the
         XML declaration or UTF-8. Default: `None`.

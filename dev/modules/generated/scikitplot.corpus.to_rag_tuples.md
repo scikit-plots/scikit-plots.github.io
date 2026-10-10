@@ -1,6 +1,6 @@
 # to\_rag\_tuples[#](#to-rag-tuples "Link to this heading")
 
-scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L444)[#](#scikitplot.corpus.to_rag_tuples "Link to this definition")
+scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L444)[#](#scikitplot.corpus.to_rag_tuples "Link to this definition")
 :   Convert documents to `(text, metadata, embedding)` tuples.
 
     Parameters:
@@ -13,10 +13,10 @@ scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/sc
             Compatible with most vector store `upsert` interfaces.
 
     Parameters:
-    :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+    :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]
 
     Notes
 

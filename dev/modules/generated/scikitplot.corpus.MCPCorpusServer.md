@@ -1,6 +1,6 @@
 # MCPCorpusServer[#](#mcpcorpusserver "Link to this heading")
 
-class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **server\_name='corpus-search'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L620)[#](#scikitplot.corpus.MCPCorpusServer "Link to this definition")
+class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **server\_name='corpus-search'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L620)[#](#scikitplot.corpus.MCPCorpusServer "Link to this definition")
 :   MCP server adapter for corpus search.
 
     Provides a structured interface for building MCP servers that
@@ -19,7 +19,7 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
     Parameters:
     :   * ****index**** (**Any**)
         * ****embedding\_fn**** (**Any**)
-        * ****server\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****server\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Notes
 
@@ -49,7 +49,7 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
     Model Context Protocol,
     <https://modelcontextprotocol.io/>
 
-    handle\_resource(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L712)[#](#scikitplot.corpus.MCPCorpusServer.handle_resource "Link to this definition")
+    handle\_resource(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L712)[#](#scikitplot.corpus.MCPCorpusServer.handle_resource "Link to this definition")
     :   Handle an MCP `resources/read` request.
 
         Returns:
@@ -57,12 +57,12 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
             :   MCP resource, or `None` if not found.
 
         Parameters:
-        :   ****doc\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | None
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | None
 
-    handle\_search(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L684)[#](#scikitplot.corpus.MCPCorpusServer.handle_search "Link to this definition")
+    handle\_search(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L684)[#](#scikitplot.corpus.MCPCorpusServer.handle_search "Link to this definition")
     :   Handle an MCP `tools/call` request.
 
         Returns:
@@ -70,14 +70,14 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
             :   MCP tool result.
 
         Parameters:
-        :   * ****query**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****top\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****match\_mode**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****query**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****top\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****match\_mode**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    list\_tools()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L726)[#](#scikitplot.corpus.MCPCorpusServer.list_tools "Link to this definition")
+    list\_tools()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L726)[#](#scikitplot.corpus.MCPCorpusServer.list_tools "Link to this definition")
     :   Return MCP tool definitions for this server.
 
         Returns:
@@ -85,7 +85,7 @@ class scikitplot.corpus.MCPCorpusServer(**index**, **embedding\_fn=None**, **ser
             :   Tool schemas compatible with MCP `tools/list`.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

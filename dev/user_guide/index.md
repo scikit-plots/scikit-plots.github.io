@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20260824.c8953a1 - August 24, 2026 15:07 UTC
+ 0.5.dev0+git.20261010.de98219 - October 10, 2026 02:14 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -40,11 +40,29 @@
     * [Regression metrics](api/metrics.html#regression-metrics)
     * [Classification metrics](api/metrics.html#classification-metrics)
     * [Clustering metrics](api/metrics.html#clustering-metrics)
+**pseudonymization engine for LLM**
+
+* [CleanPrompt](cleanprompt/index.html)
+  * [The whole idea in one picture](cleanprompt/index.html#the-whole-idea-in-one-picture)
+  * [Thirty seconds](cleanprompt/index.html#thirty-seconds)
+  * [Which surface should I use?](cleanprompt/index.html#which-surface-should-i-use)
+  * [How this guide is organised](cleanprompt/index.html#how-this-guide-is-organised)
+    * [Getting started](cleanprompt/getting_started.html)
+    * [How it works](cleanprompt/how_it_works.html)
+    * [The Python API](cleanprompt/python_api.html)
+    * [The command line](cleanprompt/command_line.html)
+    * [Names, organisations and places](cleanprompt/entity_detection.html)
+    * [Files, records, packs and plans](cleanprompt/files_and_packs.html)
+    * [Models, tools and agents](cleanprompt/agents_and_models.html)
+    * [The web page and containers](cleanprompt/web_and_containers.html)
+    * [What it protects, and what it does not](cleanprompt/security_and_limits.html)
+    * [Troubleshooting and questions](cleanprompt/troubleshooting.html)
 **remarks citation generation**
 
 * [Corpus](corpus/index.html)
   * [Corpus (Remarks Citation) Generation](corpus/index.html#corpus-remarks-citation-generation)
   * [Quick start](corpus/index.html#quick-start)
+  * [Optional backend outcomes](corpus/index.html#optional-backend-outcomes)
 **live, on demand generation**
 
 * [Cython](cython/index.html)
@@ -131,6 +149,21 @@
 **random generator**
 
 * [Random](random/index.html)
+**lexical document ranking**
+
+* [Rank-BM25](rank_bm25/index.html)
+  * [Installation](rank_bm25/index.html#installation)
+  * [Quick start: bind results to document identities](rank_bm25/index.html#quick-start-bind-results-to-document-identities)
+  * [Choose a BM25 recipe](rank_bm25/index.html#choose-a-bm25-recipe)
+  * [Tokenization is part of correctness](rank_bm25/index.html#tokenization-is-part-of-correctness)
+  * [Retrieval, scoring, and diagnostics](rank_bm25/index.html#retrieval-scoring-and-diagnostics)
+  * [Stable identities and result binding](rank_bm25/index.html#stable-identities-and-result-binding)
+  * [Persistence and reproducibility](rank_bm25/index.html#persistence-and-reproducibility)
+    * [Build identity](rank_bm25/index.html#build-identity)
+  * [Performance choices](rank_bm25/index.html#performance-choices)
+  * [Failure modes worth handling](rank_bm25/index.html#failure-modes-worth-handling)
+  * [Public surface and provenance](rank_bm25/index.html#public-surface-and-provenance)
+  * [See also](rank_bm25/index.html#see-also)
 **seaborn based**
 
 * [Seaborn](seaborn/index.html)

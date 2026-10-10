@@ -1,6 +1,6 @@
 # signal\_to\_noise\_oir\_ccd[#](#signal-to-noise-oir-ccd "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **source\_eps**, **sky\_eps**, **dark\_eps**, **rd**, **npix**, **gain=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L947)[#](#scikitplot.cexternals._astropy.stats.signal_to_noise_oir_ccd "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **source\_eps**, **sky\_eps**, **dark\_eps**, **rd**, **npix**, **gain=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L947)[#](#scikitplot.cexternals._astropy.stats.signal_to_noise_oir_ccd "Link to this definition")
 :   Computes the signal to noise ratio for source being observed in the
     optical/IR using a CCD.
 
@@ -41,13 +41,13 @@ scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **sourc
         :   Signal to noise ratio calculated from the inputs
 
     Parameters:
-    :   * ****t**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **NDArray**)
-        * ****source\_eps**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****sky\_eps**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****dark\_eps**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****rd**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****npix**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****gain**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+    :   * ****t**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **NDArray**)
+        * ****source\_eps**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****sky\_eps**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****dark\_eps**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****rd**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****npix**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****gain**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | **NDArray**
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**

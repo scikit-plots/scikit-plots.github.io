@@ -1,6 +1,6 @@
 # DedupLinesNormalizer[#](#deduplinesnormalizer "Link to this heading")
 
-class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_normalizers/_normalizer.py#L431)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
+class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_normalizer.py#L432)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
 :   Remove exact duplicate lines while preserving first-occurrence order.
 
     Useful for de-noising OCR output and web-scraped text which often
@@ -17,8 +17,8 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
             structural lines. Default: `0`.
 
     Parameters:
-    :   * ****ignore\_whitespace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****min\_line\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****ignore\_whitespace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****min\_line\_length**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Examples
 
@@ -32,7 +32,7 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_normalizers/_normalizer.py#L469)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_normalizers/_normalizer.py#L470)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
     :   Remove duplicate lines from the document text.
 
         Parameters:

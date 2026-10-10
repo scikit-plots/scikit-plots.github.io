@@ -1,6 +1,6 @@
 # is\_safe\_path[#](#is-safe-path "Link to this heading")
 
-scikitplot.cython.is\_safe\_path(**path**, **\***, **allow\_absolute=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_security.py#L334)[#](#scikitplot.cython.is_safe_path "Link to this definition")
+scikitplot.cython.is\_safe\_path(**path**, **\***, **allow\_absolute=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_security.py#L384)[#](#scikitplot.cython.is_safe_path "Link to this definition")
 :   Return `True` when a filesystem path does not contain traversal sequences.
 
     Parameters:
@@ -15,11 +15,11 @@ scikitplot.cython.is\_safe\_path(**path**, **\***, **allow\_absolute=False**)[[s
         :   `True` if the path passes all checks, `False` otherwise.
 
     Parameters:
-    :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****allow\_absolute**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****allow\_absolute**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
     Notes
 

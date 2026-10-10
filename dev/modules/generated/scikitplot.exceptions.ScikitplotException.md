@@ -1,11 +1,11 @@
 # ScikitplotException[#](#scikitplotexception "Link to this heading")
 
-exception scikitplot.exceptions.ScikitplotException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/exceptions.py#L369)[#](#scikitplot.exceptions.ScikitplotException "Link to this definition")
+exception scikitplot.exceptions.ScikitplotException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/exceptions.py#L369)[#](#scikitplot.exceptions.ScikitplotException "Link to this definition")
 :   Generic exception thrown to surface failure information about external-facing operations.
 
     The error message associated with this exception may be exposed to clients
     in HTTP responses for debugging purposes. If the error text is sensitive,
-    raise a generic [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception "(in Python v3.14)") object instead.
+    raise a generic [`Exception`](https://docs.python.org/3/builtins/exceptions.html#Exception "(in Python v3.15)") object instead.
 
     Parameters:
     :   ****message****str or Exception
@@ -35,14 +35,14 @@ exception scikitplot.exceptions.ScikitplotException(**message**, **error\_code=0
     Notes
 
     ****User note**** – catch this class (or its subclasses) when you need to
-    distinguish scikit-plots operational errors from other [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception "(in Python v3.14)")
+    distinguish scikit-plots operational errors from other [`Exception`](https://docs.python.org/3/builtins/exceptions.html#Exception "(in Python v3.15)")
     types.
 
     ****Developer note**** – `error_code` is stored verbatim; do not apply
     integer-only logic elsewhere in the codebase without first checking its
     type. The `try/except` that previously guarded the attribute assignment
-    was dead code (attribute assignment never raises [`ValueError`](https://docs.python.org/3/library/exceptions.html#ValueError "(in Python v3.14)") or
-    [`TypeError`](https://docs.python.org/3/library/exceptions.html#TypeError "(in Python v3.14)")) and has been removed.
+    was dead code (attribute assignment never raises [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)") or
+    [`TypeError`](https://docs.python.org/3/builtins/exceptions.html#TypeError "(in Python v3.15)")) and has been removed.
 
     Annotation:
     :   Unrecognized objtype: `exception`

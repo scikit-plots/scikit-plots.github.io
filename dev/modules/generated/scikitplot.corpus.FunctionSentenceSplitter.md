@@ -1,6 +1,6 @@
 # FunctionSentenceSplitter[#](#functionsentencesplitter "Link to this heading")
 
-class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L363)[#](#scikitplot.corpus.FunctionSentenceSplitter "Link to this definition")
+class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L363)[#](#scikitplot.corpus.FunctionSentenceSplitter "Link to this definition")
 :   Wrap any `Callable[[str], list[str]]` as a [`SentenceSplitterProtocol`](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol").
 
     Parameters:
@@ -11,8 +11,8 @@ class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[sou
         :   Human-readable name for logging and `repr`.
 
     Parameters:
-    :   * ****fn**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-        * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****fn**** (**Callable****[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+        * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Examples
 
@@ -25,7 +25,7 @@ class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[sou
     ```
     Go BackOpen In Tab
 
-    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L393)[#](#scikitplot.corpus.FunctionSentenceSplitter.split "Link to this definition")
+    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L393)[#](#scikitplot.corpus.FunctionSentenceSplitter.split "Link to this definition")
     :   Split **text** into sentences.
 
         Parameters:
@@ -41,7 +41,7 @@ class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[sou
             :   If the wrapped callable does not return a list.
 
         Parameters:
-        :   ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]

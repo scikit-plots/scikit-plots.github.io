@@ -56,42 +56,42 @@ df.info()
 
 ```
 ```
-<class 'pandas.core.frame.DataFrame'>
+<class 'pandas.DataFrame'>
 RangeIndex: 116 entries, 0 to 115
 Data columns (total 29 columns):
  #   Column                   Non-Null Count  Dtype
 ---  ------                   --------------  -----
- 0   id                       116 non-null    object
+ 0   id                       116 non-null    str
  1   price                    116 non-null    float64
- 2   make                     116 non-null    object
- 3   model                    116 non-null    object
- 4   model_version            115 non-null    object
- 5   registration_date        116 non-null    object
+ 2   make                     116 non-null    str
+ 3   model                    116 non-null    str
+ 4   model_version            115 non-null    str
+ 5   registration_date        116 non-null    str
  6   mileage_km_raw           116 non-null    float64
- 7   vehicle_type             116 non-null    object
- 8   body_type                116 non-null    object
- 9   fuel_category            116 non-null    object
- 10  primary_fuel             57 non-null     object
- 11  transmission             114 non-null    object
+ 7   vehicle_type             116 non-null    str
+ 8   body_type                116 non-null    str
+ 9   fuel_category            116 non-null    str
+ 10  primary_fuel             57 non-null     str
+ 11  transmission             114 non-null    str
  12  power_kw                 116 non-null    float64
  13  power_hp                 116 non-null    float64
  14  nr_seats                 112 non-null    float64
  15  nr_doors                 111 non-null    float64
- 16  country_code             116 non-null    object
- 17  zip                      116 non-null    object
- 18  city                     115 non-null    object
+ 16  country_code             116 non-null    str
+ 17  zip                      116 non-null    str
+ 18  city                     115 non-null    str
  19  latitude                 116 non-null    float64
  20  longitude                116 non-null    float64
  21  is_used                  116 non-null    bool
  22  seller_is_dealer         116 non-null    bool
- 23  offer_type               116 non-null    object
- 24  description              113 non-null    object
- 25  equipment_comfort        116 non-null    object
- 26  equipment_entertainment  116 non-null    object
- 27  equipment_extra          116 non-null    object
- 28  equipment_safety         116 non-null    object
-dtypes: bool(2), float64(8), object(19)
-memory usage: 24.8+ KB
+ 23  offer_type               116 non-null    str
+ 24  description              113 non-null    str
+ 25  equipment_comfort        116 non-null    str
+ 26  equipment_entertainment  116 non-null    str
+ 27  equipment_extra          116 non-null    str
+ 28  equipment_safety         116 non-null    str
+dtypes: bool(2), float64(8), str(19)
+memory usage: 491.3 KB
 
 ```
 
@@ -327,14 +327,14 @@ Pipeline(steps=[('columntransformer',
                                                   TargetEncoder(target_type='continuous'),
                                                   Index(['equipment_safety', 'equipment_comfort', 'equipment_extra',
        'equipment_entertainment', 'model'],
-      dtype='object')),
+      dtype='str')),
                                                  ('low_cardinality',
                                                   OrdinalEncoder(handle_unknown='use_encoded_value',
                                                                  unknown_value=-1),
-                                                  Index(['make', 'body_type', 'fuel_category'], dtype='object'))],
+                                                  Index(['make', 'body_type', 'fuel_category'], dtype='str'))],
                                    verbose_feature_names_out=False)),
                 ('histgradientboostingregressor',
-                 HistGradientBoostingRegressor(categorical_features=Index(['make', 'body_type', 'fuel_category'], dtype='object'),
+                 HistGradientBoostingRegressor(categorical_features=Index(['make', 'body_type', 'fuel_category'], dtype='str'),
                                                random_state=0))])
 ```
 ****In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook.   
@@ -369,7 +369,7 @@ passthroughhigh\_cardinality
 ```
 Index(['equipment_safety', 'equipment_comfort', 'equipment_extra',
        'equipment_entertainment', 'model'],
-      dtype='object')
+      dtype='str')
 ```
 TargetEncoder[?Documentation for TargetEncoder](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html)
 Parameters
@@ -379,13 +379,13 @@ Parameters
 |  | [target\_type target\_type: {"auto", "continuous", "binary", "multiclass"}, default="auto"  Type of target.  - `"auto"` : Type of target is inferred with  :func:`~sklearn.utils.multiclass.type\_of\_target`. - `"continuous"` : Continuous target - `"binary"` : Binary target - `"multiclass"` : Multiclass target  .. note::  The type of target inferred with `"auto"` may not be the desired target  type used for modeling. For example, if the target consisted of integers  between 0 and 100, then :func:`~sklearn.utils.multiclass.type\_of\_target`  will infer the target as `"multiclass"`. In this case, setting  `target\_type="continuous"` will specify the target as a regression  problem. The `target\_type\_` attribute gives the target type used by the  encoder.  .. versionchanged:: 1.4  Added the option 'multiclass'.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=target_type,-%7B%22auto%22%2C%20%22continuous%22%2C%20%22binary%22%2C%20%22multiclass%22%7D%2C%20default%3D%22auto%22) | 'continuous' |
 |  | [categories categories: "auto" or list of shape (n\_features,) of array-like, default="auto"  Categories (unique values) per feature:  - `"auto"` : Determine categories automatically from the training data. - list : `categories[i]` holds the categories expected in the i-th column. The  passed categories should not mix strings and numeric values within a single  feature, and should be sorted in case of numeric values.  The used categories are stored in the `categories\_` fitted attribute.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=categories,-%22auto%22%20or%20list%20of%20shape%20%28n_features%2C%29%20of%20array-like%2C%20default%3D%22auto%22) | 'auto' |
 |  | [smooth smooth: "auto" or float, default="auto"  The amount of mixing of the target mean conditioned on the value of the category with the global target mean. A larger `smooth` value will put more weight on the global target mean. If `"auto"`, then `smooth` is set to an empirical Bayes estimate.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=smooth,-%22auto%22%20or%20float%2C%20default%3D%22auto%22) | 'auto' |
-|  | [cv cv: int, cross-validation generator or an iterable, default=None  Determines the splitting strategy used in the internal :term:`cross fitting` during :meth:`fit\_transform`. Splitters where each sample index doesn't appear in the validation fold exactly once, raise a `ValueError`. Possible inputs for cv are:  - `None`, to use a 5-fold cross-validation chosen internally based on  `target\_type`, - integer, to specify the number of folds for the cross-validation chosen  internally based on `target\_type`, - :term:`CV splitter` that does not repeat samples across validation folds, - an iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if `target\_type` is `"continuous"`, :class:`KFold` is used, otherwise :class:`StratifiedKFold` is used.  Refer :ref:`User Guide <cross\_validation>` for more information on cross-validation strategies.  .. versionchanged:: 1.9  Cross-validation generators and iterables can also be passed as `cv`.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3DNone) | 5 |
+|  | [cv cv: int, cross-validation generator or an iterable, default=5  Determines the splitting strategy used in the internal :term:`cross fitting` during :meth:`fit\_transform`. Splitters where each sample index doesn't appear in the validation fold exactly once, raise a `ValueError`. Possible inputs for cv are:  - `None`, to use a 5-fold cross-validation chosen internally based on  `target\_type`, - integer, to specify the number of folds for the cross-validation chosen  internally based on `target\_type`, - :term:`CV splitter` that does not repeat samples across validation folds, - an iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if `target\_type` is `"continuous"`, :class:`KFold` is used, otherwise :class:`StratifiedKFold` is used.  Refer :ref:`User Guide <cross\_validation>` for more information on cross-validation strategies.  .. versionchanged:: 1.9  Cross-validation generators and iterables can also be passed as `cv`.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3D5) | 5 |
 |  | [shuffle shuffle: bool, default=True  Whether to shuffle the data in :meth:`fit\_transform` before splitting into folds. Note that the samples within each split will not be shuffled. Only applies if `cv` is an int or `None`. If `cv` is a cross-validation generator or an iterable, `shuffle` is ignored.  .. deprecated:: 1.9  `shuffle` is deprecated and will be removed in 1.11. Pass a cross-validation  generator as `cv` argument to specify the shuffling instead.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=shuffle,-bool%2C%20default%3DTrue) | 'deprecated' |
 |  | [random\_state random\_state: int, RandomState instance or None, default=None  When `shuffle` is True, `random\_state` affects the ordering of the indices, which controls the randomness of each fold. Otherwise, this parameter has no effect. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random\_state>`.  .. deprecated:: 1.9  `random\_state` is deprecated and will be removed in 1.11. Pass a  cross-validation generator as `cv` argument to specify the random state of  the shuffling instead.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=random_state,-int%2C%20RandomState%20instance%20or%20None%2C%20default%3DNone) | 'deprecated' |
 
 low\_cardinality
 ```
-Index(['make', 'body_type', 'fuel_category'], dtype='object')
+Index(['make', 'body_type', 'fuel_category'], dtype='str')
 ```
 OrdinalEncoder[?Documentation for OrdinalEncoder](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)
 Parameters
@@ -405,7 +405,7 @@ Parameters
 
 |  |  |  |
 | --- | --- | --- |
-|  | [categorical\_features categorical\_features: array-like of {bool, int, str} of shape (n\_features) or shape (n\_categorical\_features,), default='from\_dtype'  Indicates the categorical features.  - None : no feature will be considered categorical. - boolean array-like : boolean mask indicating categorical features. - integer array-like : integer indices indicating categorical  features. - str array-like: names of categorical features (assuming the training  data has feature names). - `"from\_dtype"`: dataframe columns with dtype "Categorical" and "Enum" are  considered to be categorical features. The input must be a dataframe that  is supported by narwhals (or supports it): :func:`narwhals.from\_native` must  work. This is the case, for instance, for pandas and polars DataFrames.  For each categorical feature, there must be at most `max\_bins` unique categories. Negative values for categorical features encoded as numeric dtypes are treated as missing values. All categorical values are converted to floating point numbers. This means that categorical values of 1.0 and 1 are treated as the same category.  Read more in the :ref:`User Guide <categorical\_support\_gbdt>` and :ref:`sphx\_glr\_auto\_examples\_ensemble\_plot\_gradient\_boosting\_categorical.py`.  .. versionadded:: 0.24  .. versionchanged:: 1.2  Added support for feature names.  .. versionchanged:: 1.4  Added `"from\_dtype"` option.  .. versionchanged:: 1.6  The default value changed from `None` to `"from\_dtype"`.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#:~:text=categorical_features,-array-like%20of%20%7Bbool%2C%20int%2C%20str%7D%20of%20shape%20%28n_features%29%20%20%20%20%20%20%20%20%20%20%20%20%20or%20shape%20%28n_categorical_features%2C%29%2C%20default%3D%27from_dtype%27) | Index(['make'...type='object') |
+|  | [categorical\_features categorical\_features: array-like of {bool, int, str} of shape (n\_features) or shape (n\_categorical\_features,), default='from\_dtype'  Indicates the categorical features.  - None : no feature will be considered categorical. - boolean array-like : boolean mask indicating categorical features. - integer array-like : integer indices indicating categorical  features. - str array-like: names of categorical features (assuming the training  data has feature names). - `"from\_dtype"`: dataframe columns with dtype "Categorical" and "Enum" are  considered to be categorical features. The input must be a dataframe that  is supported by narwhals (or supports it): :func:`narwhals.from\_native` must  work. This is the case, for instance, for pandas and polars DataFrames.  For each categorical feature, there must be at most `max\_bins` unique categories. Negative values for categorical features encoded as numeric dtypes are treated as missing values. All categorical values are converted to floating point numbers. This means that categorical values of 1.0 and 1 are treated as the same category.  Read more in the :ref:`User Guide <categorical\_support\_gbdt>` and :ref:`sphx\_glr\_auto\_examples\_ensemble\_plot\_gradient\_boosting\_categorical.py`.  .. versionadded:: 0.24  .. versionchanged:: 1.2  Added support for feature names.  .. versionchanged:: 1.4  Added `"from\_dtype"` option.  .. versionchanged:: 1.6  The default value changed from `None` to `"from\_dtype"`.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#:~:text=categorical_features,-array-like%20of%20%7Bbool%2C%20int%2C%20str%7D%20of%20shape%20%28n_features%29%20%20%20%20%20%20%20%20%20%20%20%20%20or%20shape%20%28n_categorical_features%2C%29%2C%20default%3D%27from_dtype%27) | Index(['make'..., dtype='str') |
 |  | [random\_state random\_state: int, RandomState instance or None, default=None  Pseudo-random number generator to control the subsampling in the binning process, and the train/validation data split if early stopping is enabled. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random\_state>`.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#:~:text=random_state,-int%2C%20RandomState%20instance%20or%20None%2C%20default%3DNone) | 0 |
 |  | [loss loss: {'squared\_error', 'absolute\_error', 'gamma', 'poisson', 'quantile'}, default='squared\_error'  The loss function to use in the boosting process. Note that the "squared error", "gamma" and "poisson" losses actually implement "half least squares loss", "half gamma deviance" and "half poisson deviance" to simplify the computation of the gradient. Furthermore, "gamma" and "poisson" losses internally use a log-link, "gamma" requires ``y > 0`` and "poisson" requires ``y >= 0``. "quantile" uses the pinball loss.  .. versionchanged:: 0.23  Added option 'poisson'.  .. versionchanged:: 1.1  Added option 'quantile'.  .. versionchanged:: 1.3  Added option 'gamma'.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#:~:text=loss,-%7B%27squared_error%27%2C%20%27absolute_error%27%2C%20%27gamma%27%2C%20%27poisson%27%2C%20%27quantile%27%7D%2C%20%20%20%20%20%20%20%20%20%20%20%20%20default%3D%27squared_error%27) | 'squared\_error' |
 |  | [quantile quantile: float, default=None  If loss is "quantile", this parameter specifies which quantile to be estimated and must be between 0 and 1.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#:~:text=quantile,-float%2C%20default%3DNone) | None |
@@ -484,9 +484,9 @@ Pipeline(steps=[('columntransformer',
                                                  ('low_cardinality',
                                                   OrdinalEncoder(handle_unknown='use_encoded_value',
                                                                  unknown_value=-1),
-                                                  Index(['make', 'body_type', 'fuel_category'], dtype='object')),
+                                                  Index(['make', 'body_type', 'fuel_category'], dtype='str')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=<function <lambda> at 0x74f68bf97240>,
+                                                  DummyCodeEncoder(sep=<function <lambda> at 0x7dcb4db2e7a0>,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -536,13 +536,13 @@ Parameters
 |  | [target\_type target\_type: {"auto", "continuous", "binary", "multiclass"}, default="auto"  Type of target.  - `"auto"` : Type of target is inferred with  :func:`~sklearn.utils.multiclass.type\_of\_target`. - `"continuous"` : Continuous target - `"binary"` : Binary target - `"multiclass"` : Multiclass target  .. note::  The type of target inferred with `"auto"` may not be the desired target  type used for modeling. For example, if the target consisted of integers  between 0 and 100, then :func:`~sklearn.utils.multiclass.type\_of\_target`  will infer the target as `"multiclass"`. In this case, setting  `target\_type="continuous"` will specify the target as a regression  problem. The `target\_type\_` attribute gives the target type used by the  encoder.  .. versionchanged:: 1.4  Added the option 'multiclass'.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=target_type,-%7B%22auto%22%2C%20%22continuous%22%2C%20%22binary%22%2C%20%22multiclass%22%7D%2C%20default%3D%22auto%22) | 'continuous' |
 |  | [categories categories: "auto" or list of shape (n\_features,) of array-like, default="auto"  Categories (unique values) per feature:  - `"auto"` : Determine categories automatically from the training data. - list : `categories[i]` holds the categories expected in the i-th column. The  passed categories should not mix strings and numeric values within a single  feature, and should be sorted in case of numeric values.  The used categories are stored in the `categories\_` fitted attribute.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=categories,-%22auto%22%20or%20list%20of%20shape%20%28n_features%2C%29%20of%20array-like%2C%20default%3D%22auto%22) | 'auto' |
 |  | [smooth smooth: "auto" or float, default="auto"  The amount of mixing of the target mean conditioned on the value of the category with the global target mean. A larger `smooth` value will put more weight on the global target mean. If `"auto"`, then `smooth` is set to an empirical Bayes estimate.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=smooth,-%22auto%22%20or%20float%2C%20default%3D%22auto%22) | 'auto' |
-|  | [cv cv: int, cross-validation generator or an iterable, default=None  Determines the splitting strategy used in the internal :term:`cross fitting` during :meth:`fit\_transform`. Splitters where each sample index doesn't appear in the validation fold exactly once, raise a `ValueError`. Possible inputs for cv are:  - `None`, to use a 5-fold cross-validation chosen internally based on  `target\_type`, - integer, to specify the number of folds for the cross-validation chosen  internally based on `target\_type`, - :term:`CV splitter` that does not repeat samples across validation folds, - an iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if `target\_type` is `"continuous"`, :class:`KFold` is used, otherwise :class:`StratifiedKFold` is used.  Refer :ref:`User Guide <cross\_validation>` for more information on cross-validation strategies.  .. versionchanged:: 1.9  Cross-validation generators and iterables can also be passed as `cv`.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3DNone) | 5 |
+|  | [cv cv: int, cross-validation generator or an iterable, default=5  Determines the splitting strategy used in the internal :term:`cross fitting` during :meth:`fit\_transform`. Splitters where each sample index doesn't appear in the validation fold exactly once, raise a `ValueError`. Possible inputs for cv are:  - `None`, to use a 5-fold cross-validation chosen internally based on  `target\_type`, - integer, to specify the number of folds for the cross-validation chosen  internally based on `target\_type`, - :term:`CV splitter` that does not repeat samples across validation folds, - an iterable yielding (train, test) splits as arrays of indices.  For integer/None inputs, if `target\_type` is `"continuous"`, :class:`KFold` is used, otherwise :class:`StratifiedKFold` is used.  Refer :ref:`User Guide <cross\_validation>` for more information on cross-validation strategies.  .. versionchanged:: 1.9  Cross-validation generators and iterables can also be passed as `cv`.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3D5) | 5 |
 |  | [shuffle shuffle: bool, default=True  Whether to shuffle the data in :meth:`fit\_transform` before splitting into folds. Note that the samples within each split will not be shuffled. Only applies if `cv` is an int or `None`. If `cv` is a cross-validation generator or an iterable, `shuffle` is ignored.  .. deprecated:: 1.9  `shuffle` is deprecated and will be removed in 1.11. Pass a cross-validation  generator as `cv` argument to specify the shuffling instead.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=shuffle,-bool%2C%20default%3DTrue) | 'deprecated' |
 |  | [random\_state random\_state: int, RandomState instance or None, default=None  When `shuffle` is True, `random\_state` affects the ordering of the indices, which controls the randomness of each fold. Otherwise, this parameter has no effect. Pass an int for reproducible output across multiple function calls. See :term:`Glossary <random\_state>`.  .. deprecated:: 1.9  `random\_state` is deprecated and will be removed in 1.11. Pass a  cross-validation generator as `cv` argument to specify the random state of  the shuffling instead.](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=random_state,-int%2C%20RandomState%20instance%20or%20None%2C%20default%3DNone) | 'deprecated' |
 
 low\_cardinality
 ```
-Index(['make', 'body_type', 'fuel_category'], dtype='object')
+Index(['make', 'body_type', 'fuel_category'], dtype='str')
 ```
 OrdinalEncoder[?Documentation for OrdinalEncoder](https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)
 Parameters
@@ -566,7 +566,7 @@ Parameters
 
 |  |  |  |
 | --- | --- | --- |
-|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x74f68bf97240> |
+|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x7dcb4db2e7a0> |
 |  | [sparse\_output sparse\_output: bool, default=True  When ``True``, it returns a :class:`scipy.sparse.csr\_matrix`, i.e. a sparse matrix in "Compressed Sparse Row" (CSR) format.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sparse_output,-bool%2C%20default%3DTrue) | False |
 |  | [columns columns: list-like, default=None  Column names in the DataFrame to be encoded. If `columns` is None then all the columns with `object`, `string`, or `category` dtype will be converted.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=columns,-list-like%2C%20default%3DNone) | None |
 |  | [regex regex: bool, default=True  Use regex to split on (e.g., "a,b|C;") by ``sep`` like:  - ``pattern=r'\s\*[,;|]\s\*'``](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=regex,-bool%2C%20default%3DTrue) | False |
@@ -692,9 +692,9 @@ can be explained as follows:
   encoding and binning works as a good regularizing strategy against
   overfitting while not limiting the expressiveness of the pipeline too much.
 
-****Total running time of the script:**** (0 minutes 6.247 seconds)
+****Total running time of the script:**** (0 minutes 5.382 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)
+[![Launch binder](../../_images/binder_badge_logo15.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo15.svg)](../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)
 
 [`Download Jupyter notebook: plot_dummy_code_encoder.ipynb`](../../_downloads/b60e8cf9ed29a75b75a5c2d955c8471f/plot_dummy_code_encoder.ipynb)
 
@@ -704,7 +704,11 @@ can be explained as follows:
 
 Related examples
 
-![](../../_images/sphx_glr_plot_decileplot_script_thumb.png)
+![](../../_images/sphx_glr_plot_cleanprompt_notebooks_script_thumb.png)
+
+[Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data](../cleanprompt/plot_cleanprompt_notebooks_script.html)
+
+Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data![](../../_images/sphx_glr_plot_decileplot_script_thumb.png)
 
 [plot\_decileplot\_script with examples](../seaborn/plot_decileplot_script.html)
 
@@ -716,10 +720,6 @@ plot\_aucplot\_script with examples![](../../_images/sphx_glr_plot_evalplot_scri
 
 [plot\_evalplot\_script with examples](../seaborn/plot_evalplot_script.html)
 
-plot\_evalplot\_script with examples![](../../_images/sphx_glr_plot_feature_importances_script_thumb.png)
-
-[plot\_feature\_importances with examples](../classification/plot_feature_importances_script.html)
-
-plot\_feature\_importances with examples
+plot\_evalplot\_script with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

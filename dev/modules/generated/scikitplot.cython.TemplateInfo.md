@@ -1,6 +1,6 @@
 # TemplateInfo[#](#templateinfo "Link to this heading")
 
-class scikitplot.cython.TemplateInfo(**template\_id=''**, **path=PosixPath('.')**, **meta\_path=None**, **category=''**, **language=''**, **level=''**, **summary=''**, **description=''**, **requires\_numpy=False**, **requires\_cpp=False**, **demo\_calls=()**, **support\_paths=()**, **extra\_sources=()**, **tags=()**, **schema\_version=1**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L114)[#](#scikitplot.cython.TemplateInfo "Link to this definition")
+class scikitplot.cython.TemplateInfo(**template\_id=''**, **path=PosixPath('.')**, **meta\_path=None**, **category=''**, **language=''**, **level=''**, **summary=''**, **description=''**, **requires\_numpy=False**, **requires\_cpp=False**, **demo\_calls=()**, **support\_paths=()**, **extra\_sources=()**, **tags=()**, **schema\_version=1**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L117)[#](#scikitplot.cython.TemplateInfo "Link to this definition")
 :   Structured metadata for a template.
 
     All attributes have defaults to keep Sphinx tooling and linkcode resolvers
@@ -57,67 +57,67 @@ class scikitplot.cython.TemplateInfo(**template\_id=''**, **path=PosixPath('.')*
         :   Raw metadata mapping (full JSON), for advanced use.
 
     Parameters:
-    :   * ****template\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****meta\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****category**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****level**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****summary**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****description**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****requires\_numpy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****requires\_cpp**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****demo\_calls**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****,** **...****]**)
-        * ****support\_paths**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]**)
-        * ****extra\_sources**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]**)
-        * ****tags**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]**)
-        * ****schema\_version**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****meta**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+    :   * ****template\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****meta\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****category**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****level**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****summary**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****description**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****requires\_numpy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****requires\_cpp**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****demo\_calls**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]****,** **...****]**)
+        * ****support\_paths**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
+        * ****extra\_sources**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
+        * ****tags**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
+        * ****schema\_version**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****meta**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
-    category: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.category "Link to this definition")
+    category: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.category "Link to this definition")
     :   !! processed by numpydoc !!
 
-    demo\_calls: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], ...][#](#scikitplot.cython.TemplateInfo.demo_calls "Link to this definition")
+    demo\_calls: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], ...][#](#scikitplot.cython.TemplateInfo.demo_calls "Link to this definition")
     :   !! processed by numpydoc !!
 
-    description: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.description "Link to this definition")
+    description: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.description "Link to this definition")
     :   !! processed by numpydoc !!
 
-    extra\_sources: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...][#](#scikitplot.cython.TemplateInfo.extra_sources "Link to this definition")
+    extra\_sources: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cython.TemplateInfo.extra_sources "Link to this definition")
     :   !! processed by numpydoc !!
 
-    language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.language "Link to this definition")
+    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.language "Link to this definition")
     :   !! processed by numpydoc !!
 
-    level: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.level "Link to this definition")
+    level: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.level "Link to this definition")
     :   !! processed by numpydoc !!
 
-    meta: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][#](#scikitplot.cython.TemplateInfo.meta "Link to this definition")
+    meta: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][#](#scikitplot.cython.TemplateInfo.meta "Link to this definition")
     :   !! processed by numpydoc !!
 
-    meta\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.meta_path "Link to this definition")
+    meta\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.meta_path "Link to this definition")
     :   !! processed by numpydoc !!
 
-    path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.path "Link to this definition")
+    path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.path "Link to this definition")
     :   !! processed by numpydoc !!
 
-    requires\_cpp: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.requires_cpp "Link to this definition")
+    requires\_cpp: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.requires_cpp "Link to this definition")
     :   !! processed by numpydoc !!
 
-    requires\_numpy: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.requires_numpy "Link to this definition")
+    requires\_numpy: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.requires_numpy "Link to this definition")
     :   !! processed by numpydoc !!
 
-    schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.schema_version "Link to this definition")
+    schema\_version: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.schema_version "Link to this definition")
     :   !! processed by numpydoc !!
 
-    summary: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.summary "Link to this definition")
+    summary: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.summary "Link to this definition")
     :   !! processed by numpydoc !!
 
-    support\_paths: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...][#](#scikitplot.cython.TemplateInfo.support_paths "Link to this definition")
+    support\_paths: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cython.TemplateInfo.support_paths "Link to this definition")
     :   !! processed by numpydoc !!
 
-    tags: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...][#](#scikitplot.cython.TemplateInfo.tags "Link to this definition")
+    tags: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cython.TemplateInfo.tags "Link to this definition")
     :   !! processed by numpydoc !!
 
-    template\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.TemplateInfo.template_id "Link to this definition")
+    template\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.TemplateInfo.template_id "Link to this definition")
     :   !! processed by numpydoc !!

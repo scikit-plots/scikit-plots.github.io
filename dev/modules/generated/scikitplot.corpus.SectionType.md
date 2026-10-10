@@ -1,6 +1,6 @@
 # SectionType[#](#sectiontype "Link to this heading")
 
-class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L277)[#](#scikitplot.corpus.SectionType "Link to this definition")
+class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L278)[#](#scikitplot.corpus.SectionType "Link to this definition")
 :   Semantic label for the role of a text chunk within its source document.
 
     Notes
@@ -34,64 +34,64 @@ class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/s
     ```
     Go BackOpen In Tab
 
-    ABSTRACT = 'abstract'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ABSTRACT "Link to this definition")
+    ABSTRACT = 'abstract'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ABSTRACT "Link to this definition")
     :   Research-paper abstract — distinguishable from body for citation matching.
 
-    ACKNOWLEDGEMENTS = 'acknowledgements'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ACKNOWLEDGEMENTS "Link to this definition")
+    ACKNOWLEDGEMENTS = 'acknowledgements'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.ACKNOWLEDGEMENTS "Link to this definition")
     :   Acknowledgements section — typically excluded from content matching.
 
-    CAPTION = 'caption'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CAPTION "Link to this definition")
+    CAPTION = 'caption'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CAPTION "Link to this definition")
     :   Caption attached to a non-figure element (table caption, etc.).
 
-    CODE = 'code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CODE "Link to this definition")
+    CODE = 'code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.CODE "Link to this definition")
     :   Source-code or pre-formatted block.
 
-    DIALOGUE = 'dialogue'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.DIALOGUE "Link to this definition")
+    DIALOGUE = 'dialogue'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.DIALOGUE "Link to this definition")
     :   Speaker turn in a dramatic or screenplay source.
 
-    FIGURE = 'figure'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FIGURE "Link to this definition")
+    FIGURE = 'figure'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FIGURE "Link to this definition")
     :   Figure caption or alt-text associated with an image.
 
-    FOOTNOTE = 'footnote'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FOOTNOTE "Link to this definition")
+    FOOTNOTE = 'footnote'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.FOOTNOTE "Link to this definition")
     :   Footnote content extracted below the main body.
 
-    HEADER = 'header'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.HEADER "Link to this definition")
+    HEADER = 'header'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.HEADER "Link to this definition")
     :   Page or section header (running head, masthead, etc.).
 
-    LIST\_ITEM = 'list\_item'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LIST_ITEM "Link to this definition")
+    LIST\_ITEM = 'list\_item'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LIST_ITEM "Link to this definition")
     :   Bullet-list or numbered-list item — distinct from paragraph prose.
 
-    LYRICS = 'lyrics'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LYRICS "Link to this definition")
+    LYRICS = 'lyrics'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.LYRICS "Link to this definition")
     :   Song lyrics line from an LRC or lyrics file — distinct from prose.
 
-    METADATA = 'metadata'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.METADATA "Link to this definition")
+    METADATA = 'metadata'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.METADATA "Link to this definition")
     :   Document-level metadata (author, date, abstract, etc.).
 
-    REFERENCES = 'references'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.REFERENCES "Link to this definition")
+    REFERENCES = 'references'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.REFERENCES "Link to this definition")
     :   Reference list — should typically be excluded from semantic matching.
 
-    SIDEBAR = 'sidebar'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.SIDEBAR "Link to this definition")
+    SIDEBAR = 'sidebar'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.SIDEBAR "Link to this definition")
     :   Editorial pull-quote, sidebar, or callout box.
 
-    STAGE\_DIRECTION = 'stage\_direction'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.STAGE_DIRECTION "Link to this definition")
+    STAGE\_DIRECTION = 'stage\_direction'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.STAGE_DIRECTION "Link to this definition")
     :   Dramatic stage direction, e.g. `[Enter Hamlet]` — not narrative content.
 
-    TABLE = 'table'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TABLE "Link to this definition")
+    TABLE = 'table'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TABLE "Link to this definition")
     :   Tabular data rendered as a text chunk.
 
-    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TEXT "Link to this definition")
+    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TEXT "Link to this definition")
     :   Body text — the primary content of the document.
 
-    TITLE = 'title'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TITLE "Link to this definition")
+    TITLE = 'title'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TITLE "Link to this definition")
     :   Document or section title / heading.
 
-    TRANSCRIPT = 'transcript'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TRANSCRIPT "Link to this definition")
+    TRANSCRIPT = 'transcript'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.TRANSCRIPT "Link to this definition")
     :   Machine-generated ASR transcription (Whisper, etc.) — not human-written.
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.UNKNOWN "Link to this definition")
     :   Section type could not be determined.
 
-    VERSE = 'verse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.VERSE "Link to this definition")
+    VERSE = 'verse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SectionType.VERSE "Link to this definition")
     :   Poetic line or stanza — metric/phonetic matching differs from prose.
 
     capitalize(**/**)[#](#scikitplot.corpus.SectionType.capitalize "Link to this definition")
@@ -108,7 +108,7 @@ class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/s
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -126,7 +126,7 @@ class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/s
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -137,22 +137,22 @@ class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/s
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -284,14 +284,14 @@ class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/s
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -360,7 +360,7 @@ class scikitplot.corpus.SectionType(**\*values**)[[source]](https://github.com/s
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.SectionType.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.SectionType.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

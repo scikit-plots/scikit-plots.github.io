@@ -1,6 +1,6 @@
 # histogram[#](#histogram "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None**, **weights=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/histogram.py#L108)[#](#scikitplot.cexternals._astropy.stats.histogram "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None**, **weights=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/histogram.py#L108)[#](#scikitplot.cexternals._astropy.stats.histogram "Link to this definition")
 :   Enhanced histogram function, providing adaptive binnings.
 
     This is a histogram function that enables the use of more sophisticated
@@ -43,12 +43,12 @@ scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None
 
     Parameters:
     :   * ****a**** (**ArrayLike**)
-        * ****bins**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]** **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'blocks'****,** **'knuth'****,** **'scott'****,** **'freedman'****]** **|** **None**)
-        * ****range**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]** **|** **None**)
+        * ****bins**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'blocks'****,** **'knuth'****,** **'scott'****,** **'freedman'****]** **|** **None**)
+        * ****range**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** **None**)
         * ****weights**** (**ArrayLike** **|** **None**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[**NDArray**, **NDArray**]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[**NDArray**, **NDArray**]
 
     > **See also**
     > [`numpy.histogram`](https://numpy.org/devdocs/reference/generated/numpy.histogram.html#numpy.histogram "(in NumPy v2.6.dev0)")

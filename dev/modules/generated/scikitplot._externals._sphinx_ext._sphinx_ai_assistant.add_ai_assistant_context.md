@@ -1,6 +1,6 @@
 # add\_ai\_assistant\_context[#](#add-ai-assistant-context "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\_context(**app**, **pagename**, **templatename**, **context**, **doctree**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L5555)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\_context(**app**, **pagename**, **templatename**, **context**, **doctree**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L6378)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context "Link to this definition")
 :   Inject AI-assistant configuration into each HTML page’s template context.
 
     Registered with Sphinx’s `html-page-context` event in `setup`.
@@ -26,9 +26,9 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\
 
     Parameters:
     :   * ****app**** (**Sphinx**)
-        * ****pagename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****templatename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****context**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
+        * ****pagename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****templatename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****context**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]**)
         * ****doctree**** (**Any**)
 
     Return type:

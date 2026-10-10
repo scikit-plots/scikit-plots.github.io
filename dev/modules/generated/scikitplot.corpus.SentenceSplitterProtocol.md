@@ -1,6 +1,6 @@
 # SentenceSplitterProtocol[#](#sentencesplitterprotocol "Link to this heading")
 
-class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L180)[#](#scikitplot.corpus.SentenceSplitterProtocol "Link to this definition")
+class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L180)[#](#scikitplot.corpus.SentenceSplitterProtocol "Link to this definition")
 :   Structural protocol for sentence segmenters.
 
     Any object with a `split(text: str) -> list[str]` method satisfies
@@ -19,7 +19,7 @@ class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[so
     ```
     Go BackOpen In Tab
 
-    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L196)[#](#scikitplot.corpus.SentenceSplitterProtocol.split "Link to this definition")
+    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L196)[#](#scikitplot.corpus.SentenceSplitterProtocol.split "Link to this definition")
     :   Split **text** into sentences.
 
         Parameters:
@@ -31,7 +31,7 @@ class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[so
             :   Sentence strings.
 
         Parameters:
-        :   ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]

@@ -1,6 +1,6 @@
 # export\_documents[#](#export-documents "Link to this heading")
 
-scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_export/_export.py#L145)[#](#scikitplot.corpus.export_documents "Link to this definition")
+scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_export/_export.py#L146)[#](#scikitplot.corpus.export_documents "Link to this definition")
 :   Export a list of documents to `output_path` in the given format.
 
     Parameters:
@@ -50,15 +50,15 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**,
             written.
 
     Parameters:
-    :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
-        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+    :   * ****documents**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
+        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
         * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat"))
-        * ****include\_embedding**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****json\_indent**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****parquet\_compression**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****include\_embedding**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****json\_indent**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****parquet\_compression**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
     > **See also**
     > [`scikitplot.corpus._schema.ExportFormat`](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat")

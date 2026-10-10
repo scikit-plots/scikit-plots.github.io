@@ -7,8 +7,8 @@ The current showcase connects three public submodules:
 
 `scikitplot.corpus`
 :   builds deterministic local evidence with
-    `HAMLET_TEXT` and
-    `HashEmbedder`.
+    [`HAMLET_TEXT`](../../modules/generated/scikitplot.corpus.HAMLET_TEXT.html#scikitplot.corpus.HAMLET_TEXT "scikitplot.corpus.HAMLET_TEXT") and
+    [`HashEmbedder`](../../modules/generated/scikitplot.corpus.HashEmbedder.html#scikitplot.corpus.HashEmbedder "scikitplot.corpus.HashEmbedder").
 
 `scikitplot.annoy`
 :   provides the optional native approximate-nearest-neighbor backend.

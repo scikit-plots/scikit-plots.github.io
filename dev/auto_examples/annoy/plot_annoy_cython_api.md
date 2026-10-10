@@ -475,10 +475,10 @@ neighbors, distances
 
 ```
 ```
-/home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/sphinx_gallery/gen_rst.py:891: FutureWarning: The default metric will be removed in a future version. Please pass metric='angular' explicitly.
+/home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/sphinx_gallery/gen_rst.py:962: FutureWarning: The default metric will be removed in a future version. Please pass metric='angular' explicitly.
   exec(self.code, self.fake_main.__dict__)
 
-([0, 65, 476, 981, 402, 357, 383, 855, 536, 356], [0.0, 1.226282000541687, 1.2381523847579956, 1.257232904434204, 1.2612382173538208, 1.2627588510513306, 1.2671492099761963, 1.2771812677383423, 1.2899912595748901, 1.3070663213729858])
+([0, 839, 606, 608, 719, 886, 747, 397, 133, 285], [0.0, 1.2519322633743286, 1.2767598628997803, 1.2767969369888306, 1.2824223041534424, 1.2829668521881104, 1.2881382703781128, 1.2979265451431274, 1.2998511791229248, 1.3004546165466309])
 
 ```
 ```
@@ -518,7 +518,7 @@ with index.clone() as idx:
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.053 seconds)
+****Total running time of the script:**** (0 minutes 0.097 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_cython_api.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_cython_api.ipynb)
 
@@ -534,15 +534,15 @@ Related examples
 
 [annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
 
-annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+
+[Mmap annoy.AnnoyIndex with examples](plot_mmap_script.html)
+
+Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
 
 [Index (cython) python-api benchmark with examples](plot_annoy_cython_0benchmark.html)
 
-Index (cython) python-api benchmark with examples![](../../_images/sphx_glr_plot_Annoy_python_api_thumb.png)
-
-[annoy.Index python-api with examples](plot_Annoy_python_api.html)
-
-annoy.Index python-api with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+Index (cython) python-api benchmark with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
 
 [Precision annoy.AnnoyIndex with examples](plot_precision_script.html)
 

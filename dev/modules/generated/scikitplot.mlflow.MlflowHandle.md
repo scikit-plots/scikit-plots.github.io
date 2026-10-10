@@ -1,6 +1,6 @@
 # MlflowHandle[#](#mlflowhandle "Link to this heading")
 
-class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, **\_registry\_uri**, **\_ui\_url**, **\_client**, **\_artifacts**, **\_models**, **server=None**, **version=None**, **experiment\_name=None**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_session.py#L157)[#](#scikitplot.mlflow.MlflowHandle "Link to this definition")
+class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, **\_registry\_uri**, **\_ui\_url**, **\_client**, **\_artifacts**, **\_models**, **server=None**, **version=None**, **experiment\_name=None**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_session.py#L162)[#](#scikitplot.mlflow.MlflowHandle "Link to this definition")
 :   A handle that proxies the upstream `mlflow` module while adding session context.
 
     Attributes:
@@ -41,18 +41,18 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
         :   Default tags applied by [`start_run`](#scikitplot.mlflow.MlflowHandle.start_run "scikitplot.mlflow.MlflowHandle.start_run") wrapper.
 
     Parameters:
-    :   * ****\_mlflow\_module**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****\_tracking\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****\_registry\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****\_ui\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****\_client**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+    :   * ****\_mlflow\_module**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****\_tracking\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****\_registry\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****\_ui\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****\_client**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
         * ****\_artifacts**** ([**ArtifactsFacade**](scikitplot.mlflow.ArtifactsFacade.html#scikitplot.mlflow.ArtifactsFacade "scikitplot.mlflow._facade.ArtifactsFacade"))
         * ****\_models**** ([**ModelsFacade**](scikitplot.mlflow.ModelsFacade.html#scikitplot.mlflow.ModelsFacade "scikitplot.mlflow._facade.ModelsFacade"))
         * ****server**** ([**SpawnedServer**](scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer "scikitplot.mlflow._server.SpawnedServer") **|** **None**)
-        * ****version**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
-        * ****experiment\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_run\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_run\_tags**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****version**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
+        * ****experiment\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_run\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_run\_tags**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Notes
 
@@ -66,20 +66,20 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
         :   ArtifactsFacade
             :   Facade providing artifact helpers (log/list/download, etc.).
 
-    property client: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[#](#scikitplot.mlflow.MlflowHandle.client "Link to this definition")
+    property client: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[#](#scikitplot.mlflow.MlflowHandle.client "Link to this definition")
     :   MLflow client bound to the session.
 
         Returns:
         :   Any
             :   Instance compatible with `mlflow.tracking.MlflowClient`.
 
-    default\_run\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowHandle.default_run_name "Link to this definition")
+    default\_run\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.MlflowHandle.default_run_name "Link to this definition")
 
-    default\_run\_tags: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowHandle.default_run_tags "Link to this definition")
+    default\_run\_tags: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.MlflowHandle.default_run_tags "Link to this definition")
 
-    experiment\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowHandle.experiment_name "Link to this definition")
+    experiment\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.MlflowHandle.experiment_name "Link to this definition")
 
-    property mlflow\_module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[#](#scikitplot.mlflow.MlflowHandle.mlflow_module "Link to this definition")
+    property mlflow\_module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[#](#scikitplot.mlflow.MlflowHandle.mlflow_module "Link to this definition")
     :   Imported `mlflow` module for this session.
 
     property models: [ModelsFacade](scikitplot.mlflow.ModelsFacade.html#scikitplot.mlflow.ModelsFacade "scikitplot.mlflow._facade.ModelsFacade")[#](#scikitplot.mlflow.MlflowHandle.models "Link to this definition")
@@ -89,12 +89,12 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
         :   ModelsFacade
             :   Facade providing model registry helpers.
 
-    property registry\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.mlflow.MlflowHandle.registry_uri "Link to this definition")
+    property registry\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.mlflow.MlflowHandle.registry_uri "Link to this definition")
     :   Optional registry URI used for this session.
 
-    server: [SpawnedServer](scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer "scikitplot.mlflow._server.SpawnedServer") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowHandle.server "Link to this definition")
+    server: [SpawnedServer](scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer "scikitplot.mlflow._server.SpawnedServer") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.MlflowHandle.server "Link to this definition")
 
-    start\_run(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_session.py#L270)[#](#scikitplot.mlflow.MlflowHandle.start_run "Link to this definition")
+    start\_run(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_session.py#L275)[#](#scikitplot.mlflow.MlflowHandle.start_run "Link to this definition")
     :   Start an MLflow run and apply session defaults.
 
         Parameters:
@@ -105,7 +105,7 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
             :   Keyword args forwarded to `mlflow.start_run`.
 
         Returns:
-        :   Iterator[Any]
+        :   Generator[Any, None, None]
             :   Context manager yielding the active run object.
 
         Raises:
@@ -113,11 +113,11 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
             :   Propagates underlying MLflow errors.
 
         Parameters:
-        :   * ****args**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****args**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"), None, None]
 
         Notes
 
@@ -127,10 +127,10 @@ class scikitplot.mlflow.MlflowHandle(**\_mlflow\_module**, **\_tracking\_uri**, 
 
         This wrapper does not modify MLflow global state beyond the active run tags.
 
-    property tracking\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.mlflow.MlflowHandle.tracking_uri "Link to this definition")
+    property tracking\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.mlflow.MlflowHandle.tracking_uri "Link to this definition")
     :   Resolved tracking URI used for this session.
 
-    property ui\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.mlflow.MlflowHandle.ui_url "Link to this definition")
+    property ui\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.mlflow.MlflowHandle.ui_url "Link to this definition")
     :   Human-facing URL for opening the MLflow UI.
 
-    version: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.MlflowHandle.version "Link to this definition")
+    version: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.MlflowHandle.version "Link to this definition")

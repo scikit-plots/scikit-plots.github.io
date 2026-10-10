@@ -1,6 +1,6 @@
 # WordChunker[#](#wordchunker "Link to this heading")
 
-class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L1068)[#](#scikitplot.corpus.WordChunker "Link to this definition")
+class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L1068)[#](#scikitplot.corpus.WordChunker "Link to this definition")
 :   Process a document at word level, producing normalised token chunks.
 
     Each output `Chunk` contains:
@@ -28,7 +28,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
     Parameters:
     :   * ****config**** ([**WordChunkerConfig**](scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig "scikitplot.corpus.WordChunkerConfig") **|** **None**)
         * ****gensim\_dictionary**** (**Any** **|** **None**)
-        * ****multilang\_config**** (**MultilangConfig** **|** **None**)
+        * ****multilang\_config**** ([**MultilangConfig**](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") **|** **None**)
 
     Notes
 
@@ -38,7 +38,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
     semanteme analysis dict, preprocessing audit trail, and raw-vs-normalised
     text comparison in every chunk.
 
-    ****Developer note:**** Inherits `MultilangMixin`. Token-level
+    ****Developer note:**** Inherits [`MultilangMixin`](scikitplot.corpus.MultilangMixin.html#scikitplot.corpus.MultilangMixin "scikitplot.corpus.MultilangMixin"). Token-level
     metadata (`token_count`, `stopword_count`, `unique_token_count`)
     is computed directly from the processed token list and forwarded to
     `_ml_build_meta`.
@@ -56,7 +56,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L783)[#](#scikitplot.corpus.WordChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.WordChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -81,13 +81,13 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
                 compatibility with `EmbeddedChunk`.
 
         Parameters:
-        :   * ****chunk**** (**Chunk**)
-            * ****vector**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
-            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****chunk**** ([**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk"))
+            * ****vector**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   **Chunk**
+        :   [**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")
 
         Notes
 
@@ -101,7 +101,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L840)[#](#scikitplot.corpus.WordChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.WordChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -127,15 +127,15 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
             :   If `len(chunks) != len(vectors)`.
 
         Parameters:
-        :   * ****chunks**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****Chunk****]**)
-            * ****vectors**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
-            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****chunks**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")**]**)
+            * ****vectors**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]****]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**Chunk**]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    static build\_gensim\_dictionary(**token\_lists**, **no\_below=2**, **no\_above=0.9**, **keep\_n=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L1533)[#](#scikitplot.corpus.WordChunker.build_gensim_dictionary "Link to this definition")
+    static build\_gensim\_dictionary(**token\_lists**, **no\_below=2**, **no\_above=0.9**, **keep\_n=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L1533)[#](#scikitplot.corpus.WordChunker.build_gensim_dictionary "Link to this definition")
     :   Build a `gensim.corpora.Dictionary` from token lists.
 
         Parameters:
@@ -164,15 +164,15 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
             :   If **token\_lists** is empty.
 
         Parameters:
-        :   * ****token\_lists**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-            * ****no\_below**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****no\_above**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-            * ****keep\_n**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+        :   * ****token\_lists**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+            * ****no\_below**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****no\_above**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+            * ****keep\_n**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L1397)[#](#scikitplot.corpus.WordChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L1397)[#](#scikitplot.corpus.WordChunker.chunk "Link to this definition")
     :   Process **text** into word-level chunks.
 
         Parameters:
@@ -197,14 +197,14 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
             :   If **text** is empty or whitespace-only.
 
         Parameters:
-        :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****doc\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   **ChunkResult**
+        :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L1484)[#](#scikitplot.corpus.WordChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L1484)[#](#scikitplot.corpus.WordChunker.chunk_batch "Link to this definition")
     :   Process a list of documents into word-level chunks.
 
         Parameters:
@@ -229,14 +229,14 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
             :   If **doc\_ids** length mismatches **texts**.
 
         Parameters:
-        :   * ****texts**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****doc\_ids**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****texts**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****doc\_ids**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**ChunkResult**]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")]
 
-    static vocabulary\_stats(**token\_lists**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L1586)[#](#scikitplot.corpus.WordChunker.vocabulary_stats "Link to this definition")
+    static vocabulary\_stats(**token\_lists**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L1586)[#](#scikitplot.corpus.WordChunker.vocabulary_stats "Link to this definition")
     :   Compute vocabulary statistics over a corpus.
 
         Parameters:
@@ -254,10 +254,10 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
             :   If **token\_lists** is empty.
 
         Parameters:
-        :   ****token\_lists**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
+        :   ****token\_lists**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

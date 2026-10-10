@@ -1,6 +1,6 @@
 # extract\_archive[#](#extract-archive "Link to this heading")
 
-scikitplot.corpus.extract\_archive(**archive\_path**, **output\_path**, **\***, **supported\_extensions=None**, **max\_files=10000**, **max\_total\_bytes=2147483648**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_archive_handler.py#L223)[#](#scikitplot.corpus.extract_archive "Link to this definition")
+scikitplot.corpus.extract\_archive(**archive\_path**, **output\_path**, **\***, **supported\_extensions=None**, **max\_files=10000**, **max\_total\_bytes=2147483648**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_archive_handler.py#L224)[#](#scikitplot.corpus.extract_archive "Link to this definition")
 :   Extract an archive to a destination directory.
 
     Parameters:
@@ -43,14 +43,14 @@ scikitplot.corpus.extract\_archive(**archive\_path**, **output\_path**, **\***, 
         :   If the archive cannot be opened.
 
     Parameters:
-    :   * ****archive\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****output\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****supported\_extensions**** ([**frozenset**](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****max\_files**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_total\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****archive\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****output\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****supported\_extensions**** ([**frozenset**](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****max\_files**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_total\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")]
 
     Notes
 

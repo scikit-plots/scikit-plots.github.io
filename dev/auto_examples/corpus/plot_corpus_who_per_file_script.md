@@ -26,7 +26,7 @@ This file intentionally uses the lower-level public components so the stage
 boundaries and per-source partial-success behavior are visible. For higher
 level orchestration, use [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder"); for reusable immutable
 configuration and a stateful runtime lifecycle, use
-`FluentCorpus` / `RuntimeCorpus`.
+[`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") / [`RuntimeCorpus`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
 
 ## Optional capability rule[#](#optional-capability-rule "Link to this heading")
 
@@ -465,6 +465,7 @@ else:
         collection_id=_COLLECTION_ID,
         transcribe=True,
         whisper_model="base",
+        strict=False,
     )
     _record(
         "audio ASR",
@@ -474,12 +475,14 @@ else:
 
 ```
 ```
+/home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+  warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 ✓ audio ASR: 5 documents [OK]
   [0] source_type=audio input='can-people-afford-to-pay-for-health-care.mp3'
       title: Can people afford to pay for health care? (podcast)
       time: 0.0s → 6.0s
-      confidence: 0.854
-      text: 'Can people afford to pay for health care in Europe?'
+      confidence: 0.833
+      text: 'Can people afford to pay for healthcare in Europe?'
 
 ```
 
@@ -685,21 +688,21 @@ PHASE 5 — SEARCH
 
 KEYWORD: 'catastrophic health spending Greece'
 status=success hits=3
-  [1] score=5.7230 source='Financial Protection Review: Greece Summary'
+  [1] score=6.1729 source='Financial Protection Review: Greece Summary'
       'Can people afford  to pay for health care?  New evidence on  financial protection  in Greece: summar'
-  [2] score=5.2795 source='Financial Protection Review: Greece Summary'
+  [2] score=5.7109 source='Financial Protection Review: Greece Summary'
       'Fig. 2. Breakdown of catastrophic  health spending by type of health  care and consumption quintile '
-  [3] score=4.4449 source='Financial Protection Review: Greece Summary'
+  [3] score=4.9020 source='Financial Protection Review: Greece Summary'
       'Fig. 3. Households with catastrophic  health spending and out-of-pocket  payments as a share of curr'
 
 KEYWORD: 'out-of-pocket payments medicines'
 status=success hits=3
-  [1] score=6.5389 source='Financial Protection Review: Greece Summary'
+  [1] score=6.5382 source='Financial Protection Review: Greece Summary'
       'Fig. 3. Households with catastrophic  health spending and out-of-pocket  payments as a share of curr'
-  [2] score=6.4360 source='Financial Protection Review: Greece Summary'
+  [2] score=6.4352 source='Financial Protection Review: Greece Summary'
       'Fig. 2. Breakdown of catastrophic  health spending by type of health  care and consumption quintile '
-  [3] score=3.6609 source='Can people afford to pay for health care? (podcast)'
-      "When people have to pay out of pocket for health care and they can't afford it,"
+  [3] score=3.6752 source='Can people afford to pay for health care? (podcast)'
+      "When people have to pay out of pocket for healthcare and they can't afford it,"
 
 STRICT: 'dental care'
 status=success hits=3
@@ -979,9 +982,9 @@ Use:
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 5.180 seconds)
+****Total running time of the script:**** (0 minutes 5.268 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 
 [`Download Jupyter notebook: plot_corpus_who_per_file_script.ipynb`](../../_downloads/9466f181166917995d30d548ac0003b5/plot_corpus_who_per_file_script.ipynb)
 
@@ -991,15 +994,15 @@ Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-typ
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
-
-Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
 
 [Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+
+[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
+
+Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 

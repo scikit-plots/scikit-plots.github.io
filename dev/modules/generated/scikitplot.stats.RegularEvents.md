@@ -1,6 +1,6 @@
 # RegularEvents[#](#regularevents "Link to this heading")
 
-class scikitplot.stats.RegularEvents(**dt**, **p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L498)[#](#scikitplot.stats.RegularEvents "Link to this definition")
+class scikitplot.stats.RegularEvents(**dt**, **p0=0.05**, **gamma=None**, **ncp\_prior=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L498)[#](#scikitplot.stats.RegularEvents "Link to this definition")
 :   Bayesian blocks fitness for regular events.
 
     This is for data which has a fundamental “tick” length, so that all
@@ -28,22 +28,22 @@ class scikitplot.stats.RegularEvents(**dt**, **p0=0.05**, **gamma=None**, **ncp\
             ignored.
 
     Parameters:
-    :   * ****dt**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****p0**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****gamma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
-        * ****ncp\_prior**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
+    :   * ****dt**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****p0**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****gamma**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
+        * ****ncp\_prior**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
 
-    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.RegularEvents.compute_ncp_prior "Link to this definition")
+    compute\_ncp\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L327)[#](#scikitplot.stats.RegularEvents.compute_ncp_prior "Link to this definition")
     :   If `ncp_prior` is not explicitly defined, compute it from `gamma`
         or `p0`.
 
         Parameters:
-        :   ****N**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****N**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+        :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
-    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.RegularEvents.fit "Link to this definition")
+    fit(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L342)[#](#scikitplot.stats.RegularEvents.fit "Link to this definition")
     :   Fit the Bayesian Blocks model given the specified fitness function.
 
         Parameters:
@@ -63,20 +63,20 @@ class scikitplot.stats.RegularEvents(**dt**, **p0=0.05**, **gamma=None**, **ncp\
         Parameters:
         :   * ****t**** (**ArrayLike**)
             * ****x**** (**ArrayLike** **|** **None**)
-            * ****sigma**** (**ArrayLike** **|** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
+            * ****sigma**** (**ArrayLike** **|** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
+        :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
-    fitness(**T\_k**, **N\_k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L545)[#](#scikitplot.stats.RegularEvents.fitness "Link to this definition")
+    fitness(**T\_k**, **N\_k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L545)[#](#scikitplot.stats.RegularEvents.fitness "Link to this definition")
     :   Parameters:
-        :   * ****T\_k**** (**NDArray****[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
-            * ****N\_k**** (**NDArray****[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
+        :   * ****T\_k**** (**NDArray****[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]**)
+            * ****N\_k**** (**NDArray****[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]**)
 
         Return type:
-        :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
+        :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
-    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.RegularEvents.p0_prior "Link to this definition")
+    p0\_prior(**N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L310)[#](#scikitplot.stats.RegularEvents.p0_prior "Link to this definition")
     :   Empirical prior, parametrized by the false alarm probability `p0`.
 
         See eq. 21 in Scargle (2013).
@@ -86,12 +86,12 @@ class scikitplot.stats.RegularEvents(**dt**, **p0=0.05**, **gamma=None**, **ncp\
         from <https://arxiv.org/abs/1304.2818>
 
         Parameters:
-        :   ****N**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****N**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+        :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
-    validate\_input(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L534)[#](#scikitplot.stats.RegularEvents.validate_input "Link to this definition")
+    validate\_input(**t**, **x=None**, **sigma=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L534)[#](#scikitplot.stats.RegularEvents.validate_input "Link to this definition")
     :   Validate inputs to the model.
 
         Parameters:
@@ -111,7 +111,7 @@ class scikitplot.stats.RegularEvents(**dt**, **p0=0.05**, **gamma=None**, **ncp\
         Parameters:
         :   * ****t**** (**ArrayLike**)
             * ****x**** (**ArrayLike** **|** **None**)
-            * ****sigma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **ArrayLike** **|** **None**)
+            * ****sigma**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **ArrayLike** **|** **None**)
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[**NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")], **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")], **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
+        :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[**NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")], **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")], **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]]

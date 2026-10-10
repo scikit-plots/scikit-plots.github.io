@@ -1,6 +1,6 @@
 # get\_sentence\_splitter[#](#get-sentence-splitter "Link to this heading")
 
-scikitplot.corpus.get\_sentence\_splitter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L768)[#](#scikitplot.corpus.get_sentence_splitter "Link to this definition")
+scikitplot.corpus.get\_sentence\_splitter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L768)[#](#scikitplot.corpus.get_sentence_splitter "Link to this definition")
 :   Retrieve a registered sentence splitter by name.
 
     Parameters:
@@ -16,7 +16,7 @@ scikitplot.corpus.get\_sentence\_splitter(**name**)[[source]](https://github.com
         :   If **name** has not been registered.
 
     Parameters:
-    :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**SentenceSplitterProtocol**](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus._chunkers._custom_tokenizer.SentenceSplitterProtocol")

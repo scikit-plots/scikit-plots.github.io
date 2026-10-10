@@ -1,6 +1,6 @@
 # list\_package\_examples[#](#list-package-examples "Link to this heading")
 
-scikitplot.cython.list\_package\_examples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L909)[#](#scikitplot.cython.list_package_examples "Link to this definition")
+scikitplot.cython.list\_package\_examples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L909)[#](#scikitplot.cython.list_package_examples "Link to this definition")
 :   List available multi-module package examples.
 
     Returns:
@@ -8,4 +8,4 @@ scikitplot.cython.list\_package\_examples()[[source]](https://github.com/scikit-
         :   Package example names under `_templates/package_examples`.
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]

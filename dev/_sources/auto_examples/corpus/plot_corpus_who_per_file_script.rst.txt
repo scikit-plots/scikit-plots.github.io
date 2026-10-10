@@ -607,7 +607,7 @@ To execute Whisper manually:
 
    SCIKITPLOT_GALLERY_RUN_ASR=1 python plot_corpus_who_per_file_script.py
 
-.. GENERATED FROM PYTHON SOURCE LINES 398-431
+.. GENERATED FROM PYTHON SOURCE LINES 398-432
 
 .. code-block:: Python
 
@@ -636,6 +636,7 @@ To execute Whisper manually:
             collection_id=_COLLECTION_ID,
             transcribe=True,
             whisper_model="base",
+            strict=False,
         )
         _record(
             "audio ASR",
@@ -652,23 +653,25 @@ To execute Whisper manually:
 
  .. code-block:: none
 
+    /home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+      warnings.warn("FP16 is not supported on CPU; using FP32 instead")
     ✓ audio ASR: 5 documents [OK]
       [0] source_type=audio input='can-people-afford-to-pay-for-health-care.mp3'
           title: Can people afford to pay for health care? (podcast)
           time: 0.0s → 6.0s
-          confidence: 0.854
-          text: 'Can people afford to pay for health care in Europe?'
+          confidence: 0.833
+          text: 'Can people afford to pay for healthcare in Europe?'
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 432-435
+.. GENERATED FROM PYTHON SOURCE LINES 433-436
 
 Ingestion summary
 -----------------
 This is the key partial-success view: every source keeps its own status.
 
-.. GENERATED FROM PYTHON SOURCE LINES 435-458
+.. GENERATED FROM PYTHON SOURCE LINES 436-459
 
 .. code-block:: Python
 
@@ -723,14 +726,14 @@ This is the key partial-success view: every source keeps its own status.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 459-463
+.. GENERATED FROM PYTHON SOURCE LINES 460-464
 
 Phase 2 — normalize
 -------------------
 Normalization creates a stable text representation while retaining the
 original evidence in ``CorpusDocument.text``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 463-483
+.. GENERATED FROM PYTHON SOURCE LINES 464-484
 
 .. code-block:: Python
 
@@ -775,14 +778,14 @@ original evidence in ``CorpusDocument.text``.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 484-488
+.. GENERATED FROM PYTHON SOURCE LINES 485-489
 
 Phase 3 — dependency-free lexical enrichment
 ---------------------------------------------
 SIMPLE tokenization + frequency keywords are enough for the BM25 demonstration.
 Stopword removal is disabled so this phase does not require NLTK data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 488-509
+.. GENERATED FROM PYTHON SOURCE LINES 489-510
 
 .. code-block:: Python
 
@@ -828,14 +831,14 @@ Stopword removal is disabled so this phase does not require NLTK data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 510-514
+.. GENERATED FROM PYTHON SOURCE LINES 511-515
 
 Phase 4 — build a keyword index
 -------------------------------
 Dense embeddings are intentionally not required in this broad integration
 example.  Keyword retrieval keeps the executed path portable.
 
-.. GENERATED FROM PYTHON SOURCE LINES 514-534
+.. GENERATED FROM PYTHON SOURCE LINES 515-535
 
 .. code-block:: Python
 
@@ -877,14 +880,14 @@ example.  Keyword retrieval keeps the executed path portable.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 535-539
+.. GENERATED FROM PYTHON SOURCE LINES 536-540
 
 Phase 5 — search one index under two policies
 ---------------------------------------------
 ``keyword`` ranks lexical relevance.  ``strict`` performs exact-text matching.
 Search policy can change without rebuilding this lexical corpus.
 
-.. GENERATED FROM PYTHON SOURCE LINES 539-574
+.. GENERATED FROM PYTHON SOURCE LINES 540-575
 
 .. code-block:: Python
 
@@ -938,21 +941,21 @@ Search policy can change without rebuilding this lexical corpus.
 
     KEYWORD: 'catastrophic health spending Greece'
     status=success hits=3
-      [1] score=5.7230 source='Financial Protection Review: Greece Summary'
+      [1] score=6.1729 source='Financial Protection Review: Greece Summary'
           'Can people afford  to pay for health care?  New evidence on  financial protection  in Greece: summar'
-      [2] score=5.2795 source='Financial Protection Review: Greece Summary'
+      [2] score=5.7109 source='Financial Protection Review: Greece Summary'
           'Fig. 2. Breakdown of catastrophic  health spending by type of health  care and consumption quintile '
-      [3] score=4.4449 source='Financial Protection Review: Greece Summary'
+      [3] score=4.9020 source='Financial Protection Review: Greece Summary'
           'Fig. 3. Households with catastrophic  health spending and out-of-pocket  payments as a share of curr'
 
     KEYWORD: 'out-of-pocket payments medicines'
     status=success hits=3
-      [1] score=6.5389 source='Financial Protection Review: Greece Summary'
+      [1] score=6.5382 source='Financial Protection Review: Greece Summary'
           'Fig. 3. Households with catastrophic  health spending and out-of-pocket  payments as a share of curr'
-      [2] score=6.4360 source='Financial Protection Review: Greece Summary'
+      [2] score=6.4352 source='Financial Protection Review: Greece Summary'
           'Fig. 2. Breakdown of catastrophic  health spending by type of health  care and consumption quintile '
-      [3] score=3.6609 source='Can people afford to pay for health care? (podcast)'
-          "When people have to pay out of pocket for health care and they can't afford it,"
+      [3] score=3.6752 source='Can people afford to pay for health care? (podcast)'
+          "When people have to pay out of pocket for healthcare and they can't afford it,"
 
     STRICT: 'dental care'
     status=success hits=3
@@ -966,7 +969,7 @@ Search policy can change without rebuilding this lexical corpus.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 575-580
+.. GENERATED FROM PYTHON SOURCE LINES 576-581
 
 Phase 6 — adapt by user goal
 ----------------------------
@@ -974,7 +977,7 @@ The adapters all consume the same canonical CorpusDocument collection.  They
 are grouped here by *why* a user would choose them rather than presented as a
 flat list of unrelated conversions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 580-584
+.. GENERATED FROM PYTHON SOURCE LINES 581-585
 
 .. code-block:: Python
 
@@ -998,14 +1001,14 @@ flat list of unrelated conversions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 585-589
+.. GENERATED FROM PYTHON SOURCE LINES 586-590
 
 6A. Agent/framework handoff — LangChain and LangGraph
 -----------------------------------------------------
 These adapters are dependency-soft by design: when LangChain is unavailable,
 equivalent plain-Python structures are returned.
 
-.. GENERATED FROM PYTHON SOURCE LINES 589-612
+.. GENERATED FROM PYTHON SOURCE LINES 590-613
 
 .. code-block:: Python
 
@@ -1050,14 +1053,14 @@ equivalent plain-Python structures are returned.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 613-617
+.. GENERATED FROM PYTHON SOURCE LINES 614-618
 
 6B. Protocol handoff — MCP
 --------------------------
 MCP resources expose addressable evidence.  The server adapter reuses the
 same RetrievalIndex when one is available.
 
-.. GENERATED FROM PYTHON SOURCE LINES 617-640
+.. GENERATED FROM PYTHON SOURCE LINES 618-641
 
 .. code-block:: Python
 
@@ -1104,12 +1107,12 @@ same RetrievalIndex when one is available.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 641-643
+.. GENERATED FROM PYTHON SOURCE LINES 642-644
 
 6C. Data/RAG interchange — HuggingFace, RAG tuples, JSONL
 ----------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 643-664
+.. GENERATED FROM PYTHON SOURCE LINES 644-665
 
 .. code-block:: Python
 
@@ -1153,7 +1156,7 @@ same RetrievalIndex when one is available.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 665-675
+.. GENERATED FROM PYTHON SOURCE LINES 666-676
 
 Where CorpusBuilder fits
 ------------------------
@@ -1166,7 +1169,7 @@ keep those variables synchronized manually.
 
 Creating the configuration below performs no source I/O and needs no model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 675-715
+.. GENERATED FROM PYTHON SOURCE LINES 676-716
 
 .. code-block:: Python
 
@@ -1227,7 +1230,7 @@ Creating the configuration below performs no source I/O and needs no model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 716-726
+.. GENERATED FROM PYTHON SOURCE LINES 717-727
 
 Where FluentCorpus / RuntimeCorpus fits
 ---------------------------------------
@@ -1240,7 +1243,7 @@ coherent runtime generation.  Therefore this broad “some sources may fail,
 keep the rest” scenario is a particularly natural fit for ``CorpusBuilder``
 or explicit source-by-source orchestration.
 
-.. GENERATED FROM PYTHON SOURCE LINES 729-748
+.. GENERATED FROM PYTHON SOURCE LINES 730-749
 
 Live source usage — explicit, code-only
 ---------------------------------------
@@ -1262,12 +1265,12 @@ dependency are part of the intended runtime.
 URL validation, redirects, download limits, and SSRF policy remain owned by
 the Corpus URL/reader layer; this gallery does not bypass them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 751-753
+.. GENERATED FROM PYTHON SOURCE LINES 752-754
 
 Final summary
 -------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 753-773
+.. GENERATED FROM PYTHON SOURCE LINES 754-774
 
 .. code-block:: Python
 
@@ -1316,7 +1319,7 @@ Final summary
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 774-783
+.. GENERATED FROM PYTHON SOURCE LINES 775-784
 
 Takeaway
 --------
@@ -1328,7 +1331,7 @@ Use:
 * ``CorpusBuilder`` for broad heterogeneous partial-success workflows,
 * ``FluentCorpus`` + ``RuntimeCorpus`` for reusable declarative runtime plans.
 
-.. GENERATED FROM PYTHON SOURCE LINES 786-792
+.. GENERATED FROM PYTHON SOURCE LINES 787-793
 
 .. tags::
 
@@ -1340,7 +1343,7 @@ Use:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.180 seconds)
+   **Total running time of the script:** (0 minutes 5.268 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_who_per_file_script.py:

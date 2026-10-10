@@ -1,6 +1,6 @@
 # akaike\_info\_criterion\_lsq[#](#akaike-info-criterion-lsq "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/info_theory.py#L327)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/info_theory.py#L327)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq "Link to this definition")
 :   Computes the Akaike Information Criterion assuming that the observations
     are Gaussian distributed.
 
@@ -37,12 +37,12 @@ scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\
         :   Akaike Information Criterion.
 
     Parameters:
-    :   * ****ssr**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****n\_params**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****n\_samples**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****ssr**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****n\_params**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****n\_samples**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
     References
 

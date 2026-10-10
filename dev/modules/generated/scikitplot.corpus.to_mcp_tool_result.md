@@ -1,6 +1,6 @@
 # to\_mcp\_tool\_result[#](#to-mcp-tool-result "Link to this heading")
 
-scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='corpus\_search'**, **is\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L324)[#](#scikitplot.corpus.to_mcp_tool_result "Link to this definition")
+scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='corpus\_search'**, **is\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L324)[#](#scikitplot.corpus.to_mcp_tool_result "Link to this definition")
 :   Format documents as an MCP `tools/call` response.
 
     Parameters:
@@ -18,12 +18,12 @@ scikitplot.corpus.to\_mcp\_tool\_result(**documents**, **\***, **tool\_name='cor
         :   MCP tool result with `content` array and `isError` flag.
 
     Parameters:
-    :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****tool\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****is\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****tool\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****is\_error**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Notes
 

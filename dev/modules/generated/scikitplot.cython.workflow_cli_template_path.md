@@ -1,6 +1,6 @@
 # workflow\_cli\_template\_path[#](#workflow-cli-template-path "Link to this heading")
 
-scikitplot.cython.workflow\_cli\_template\_path()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L852)[#](#scikitplot.cython.workflow_cli_template_path "Link to this definition")
+scikitplot.cython.workflow\_cli\_template\_path()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L852)[#](#scikitplot.cython.workflow_cli_template_path "Link to this definition")
 :   Return the workflow CLI template path.
 
     Returns:
@@ -8,6 +8,6 @@ scikitplot.cython.workflow\_cli\_template\_path()[[source]](https://github.com/s
         :   Path to `_templates/workflow/cli.py`.
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
  On this page[Edit on GitHub](https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/modules/generated/scikitplot.cython.workflow_cli_template_path.rst)[Show Source](../../_sources/modules/generated/scikitplot.cython.workflow_cli_template_path.rst.txt)

@@ -1,6 +1,6 @@
 # classify\_url[#](#classify-url "Link to this heading")
 
-scikitplot.corpus.classify\_url(**url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L379)[#](#scikitplot.corpus.classify_url "Link to this definition")
+scikitplot.corpus.classify\_url(**url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L380)[#](#scikitplot.corpus.classify_url "Link to this definition")
 :   Classify a URL into one of the known [`URLKind`](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind "scikitplot.corpus.URLKind") categories.
 
     Parameters:
@@ -16,7 +16,7 @@ scikitplot.corpus.classify\_url(**url**)[[source]](https://github.com/scikit-plo
         :   If **url** does not start with `http://` or `https://`.
 
     Parameters:
-    :   ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**URLKind**](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind "scikitplot.corpus._url_handler.URLKind")

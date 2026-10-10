@@ -1,6 +1,6 @@
 # IndexIOMixin[#](#indexiomixin "Link to this heading")
 
-class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L47)[#](#scikitplot.annoy.IndexIOMixin "Link to this definition")
+class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L194)[#](#scikitplot.annoy.IndexIOMixin "Link to this definition")
 :   Mixin adding explicit Annoy-native persistence helpers.
 
     The concrete class must provide low-level Annoy methods, typically from the
@@ -18,7 +18,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
     * [`save_bundle`](#scikitplot.annoy.IndexIOMixin.save_bundle "scikitplot.annoy.IndexIOMixin.save_bundle") / [`load_bundle`](#scikitplot.annoy.IndexIOMixin.load_bundle "scikitplot.annoy.IndexIOMixin.load_bundle") require `to_json` /
       `from_json` (compose with [`MetaMixin`](scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy._mixins._meta.MetaMixin")).
 
-    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L316)[#](#scikitplot.annoy.IndexIOMixin.from_bytes "Link to this definition")
+    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L626)[#](#scikitplot.annoy.IndexIOMixin.from_bytes "Link to this definition")
     :   Construct a new index and load it from serialized bytes.
 
         Parameters:
@@ -49,10 +49,10 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
             :   If the backend does not provide `deserialize`.
 
         Parameters:
-        :   * ****data**** ([**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)") **|** [**bytearray**](https://docs.python.org/3/library/stdtypes.html#bytearray "(in Python v3.14)") **|** [**memoryview**](https://docs.python.org/3/library/stdtypes.html#memoryview "(in Python v3.14)"))
-            * ****f**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****metric**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****data**** ([**bytes**](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)") **|** [**bytearray**](https://docs.python.org/3/builtins/stdtypes.html#bytearray "(in Python v3.15)") **|** [**memoryview**](https://docs.python.org/3/builtins/stdtypes.html#memoryview "(in Python v3.15)"))
+            * ****f**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****metric**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
@@ -66,42 +66,69 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
         For `data` if fed `to_bytes(format='native') required params
         ``f``, `metric`.
 
-    classmethod load\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L209)[#](#scikitplot.annoy.IndexIOMixin.load_bundle "Link to this definition")
-    :   Load a directory bundle created by [`save_bundle`](#scikitplot.annoy.IndexIOMixin.save_bundle "scikitplot.annoy.IndexIOMixin.save_bundle").
+    classmethod load\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L481)[#](#scikitplot.annoy.IndexIOMixin.load_bundle "Link to this definition")
+    :   Load a bundle published by [`save_bundle`](#scikitplot.annoy.IndexIOMixin.save_bundle "scikitplot.annoy.IndexIOMixin.save_bundle").
 
         Parameters:
-        :   ****manifest\_filename****
-            :   Filename for the metadata manifest inside the directory.
+        :   ****directory****str or path-like
+            :   Bundle directory.
 
-            ****index\_filename****
-            :   Filename for the Annoy index inside the directory.
+            ****manifest\_filename****str, optional
+            :   Name of the manifest inside the bundle.
 
-            ****prefault****
+            ****index\_filename****str or None, optional
+            :   Name of the index member inside the bundle. `None` (the
+                default) takes the name the manifest records, which is the one the
+                bundle was saved with; a bundle whose manifest records none has
+                `index.ann`.
+
+            ****prefault****bool or None, optional
             :   Forwarded to [`load_index`](#scikitplot.annoy.IndexIOMixin.load_index "scikitplot.annoy.IndexIOMixin.load_index").
 
         Returns:
-        :   index
-            :   Newly constructed index.
+        :   Self
+            :   An index with its vectors loaded and ready to query.
 
         Raises:
-        :   TypeError
-            :   If `from_json` is not available (compose with [`MetaMixin`](scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy._mixins._meta.MetaMixin")).
+        :   OSError
+            :   If a member is missing or unreadable.
+
+            ValueError
+            :   If a member name is not a plain file name, or the manifest is of
+                a bundle format this version does not read.
 
             TypeError
-            :   If `from_json` returns an unexpected type.
-
-            OSError
-            :   On filesystem failures.
+            :   If the manifest is not a JSON object.
 
         Parameters:
-        :   * ****manifest\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****index\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****directory**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**os.PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****manifest\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****index\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
 
-    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L109)[#](#scikitplot.annoy.IndexIOMixin.load_index "Link to this definition")
+        Notes
+
+        ****User.**** A bundle is loaded from where it is. Nothing in the manifest
+        can make this method read a file outside `directory`.
+
+        ****Developer.**** This previously did not load the index at all: the
+        `load_index` call was commented out and both `index_filename` and
+        `prefault` were marked unused, so the vectors arrived only as a side
+        effect of the manifest carrying an absolute path recorded at save time.
+        A bundle that had been moved therefore failed, and naming a different
+        index file had no effect whatsoever. Members are now resolved relative
+        to the bundle, which is what makes it relocatable, and the index is
+        loaded here rather than by accident.
+
+        The manifest is read once, as data. Its description of the index
+        (dimension, metric, parameters) goes through `from_metadata` with
+        `load=False`, so a location recorded by an older writer is never
+        opened; such a location is reported at INFO and otherwise ignored.
+
+    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L256)[#](#scikitplot.annoy.IndexIOMixin.load_index "Link to this definition")
     :   Load (mmap) an Annoy index file into this object.
 
         Parameters:
@@ -126,47 +153,85 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
             :   If loading fails (backend or filesystem).
 
         Parameters:
-        :   * ****f**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****metric**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **PathLike****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****f**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****metric**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **PathLike****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
 
-    save\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L164)[#](#scikitplot.annoy.IndexIOMixin.save_bundle "Link to this definition")
-    :   Save a **directory bundle** containing metadata + the index file.
-
-        The bundle contains:
-        - `manifest.json`: metadata payload produced by `to_json`
-        - `index.ann`: Annoy index produced by [`save_index`](#scikitplot.annoy.IndexIOMixin.save_index "scikitplot.annoy.IndexIOMixin.save_index")
+    save\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L311)[#](#scikitplot.annoy.IndexIOMixin.save_bundle "Link to this definition")
+    :   Publish a **directory bundle** holding the metadata and the index.
 
         Parameters:
-        :   ****manifest\_filename****
-            :   Filename for the metadata manifest inside the directory.
+        :   ****directory****str or path-like
+            :   Bundle directory. Created if absent, replaced if present.
 
-            ****index\_filename****
-            :   Filename for the Annoy index inside the directory.
+            ****manifest\_filename, index\_filename****str, optional
+            :   Member names **inside** the bundle. They are never resolved against
+                the process working directory.
 
-            ****prefault****
+            ****prefault****bool or None, optional
             :   Forwarded to [`save_index`](#scikitplot.annoy.IndexIOMixin.save_index "scikitplot.annoy.IndexIOMixin.save_index").
 
-        Raises:
-        :   TypeError
-            :   If `to_json` is not available (compose with [`MetaMixin`](scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy._mixins._meta.MetaMixin")).
+        Returns:
+        :   list of str
+            :   Absolute paths of the published members, manifest first.
 
-            OSError
-            :   On filesystem failures.
+        Raises:
+        :   OSError
+            :   If the bundle could not be written. Nothing is published in that
+                case: a failed save leaves any previous bundle exactly as it was.
 
         Parameters:
-        :   * ****manifest\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****index\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****directory**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****manifest\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****index\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L70)[#](#scikitplot.annoy.IndexIOMixin.save_index "Link to this definition")
+        Notes
+
+        ****User.**** A bundle is self-contained and relocatable: move it, copy it,
+        or publish it, and [`load_bundle`](#scikitplot.annoy.IndexIOMixin.load_bundle "scikitplot.annoy.IndexIOMixin.load_bundle") reads it from wherever it is.
+
+        After a successful save this index is backed by the published index
+        file (`on_disk_path` names it). After a failed save it holds the
+        same vectors and trees as before, in memory.
+
+        ****Developer.**** This previously took two filenames and no directory, so
+        the defaults resolved against the process working directory and two
+        callers using them overwrote each other. It also wrote the index and
+        then the manifest in place, so a failure between the two left an index
+        no loader could find. Both are fixed the same way the corpus artifact
+        fixes them: build a candidate, then swap, so nothing is destroyed before
+        a complete replacement exists.
+
+        The backend’s `save` memory-maps the file it wrote, so once the
+        index member exists the index is backed by a file **inside the
+        candidate**. POSIX lets a directory be renamed or removed with a mapped
+        file in it; Windows does not (`PermissionError: [WinError 5]` on the
+        swap, seen in the Windows job of run 37555382019). The order below
+        works on both, so there is one code path:
+
+        1. write both members into the candidate;
+        2. release the mapping (`unload`), swap the directories, map the
+           published index (`load`);
+        3. on any failure after step 1, take the index back into memory
+           (`serialize`, `unload`, `deserialize`) **before** the candidate
+           is removed, so the object keeps its contents and nothing of the
+           candidate is in use when it is deleted.
+
+        The manifest records no file-system location and names the index
+        member (see `_bundle_manifest`): it describes the bundle, wherever
+        the bundle is. Steps and failures are logged on
+        `scikitplot.annoy._mixins._io`: DEBUG for each step, WARNING when a
+        failed publication is undone.
+
+    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L217)[#](#scikitplot.annoy.IndexIOMixin.save_index "Link to this definition")
     :   Persist the Annoy index to disk.
 
         Parameters:
@@ -184,13 +249,13 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
             :   For filesystem-level failures.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **PathLike****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **PathLike****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
 
-    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L261)[#](#scikitplot.annoy.IndexIOMixin.to_bytes "Link to this definition")
+    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L571)[#](#scikitplot.annoy.IndexIOMixin.to_bytes "Link to this definition")
     :   Serialize the built index to bytes (backend `serialize`).
 
         Parameters:
@@ -221,7 +286,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
             :   If the backend returns non-bytes-like data.
 
         Return type:
-        :   [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")
+        :   [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")
 
         Notes
 

@@ -148,20 +148,20 @@ else:
 ```
 ```
 Workflows: ['churn_basic']
-Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmperzxw06a/workflow_copy
+Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmpvsvgqkc4/workflow_copy
 Files: ['cli.py', 'hpo.py', 'predict.py', 'train.py']
 
 Run:
-  python /home/circleci/repo/galleries/examples/cython/tmperzxw06a/workflow_copy/cli.py train --help
-  python /home/circleci/repo/galleries/examples/cython/tmperzxw06a/workflow_copy/cli.py hpo --help
-  python /home/circleci/repo/galleries/examples/cython/tmperzxw06a/workflow_copy/cli.py predict --help
+  python /home/circleci/repo/galleries/examples/cython/tmpvsvgqkc4/workflow_copy/cli.py train --help
+  python /home/circleci/repo/galleries/examples/cython/tmpvsvgqkc4/workflow_copy/cli.py hpo --help
+  python /home/circleci/repo/galleries/examples/cython/tmpvsvgqkc4/workflow_copy/cli.py predict --help
 
 Single-module extension imported from copied folder:
   m.square(12) = 144
-Compiling /home/circleci/.cache/scikitplot/cython/c184670bdcdf818b90eebea1aae40344b24a08784d509e00f25b3859ec7369f8/wf_ext_pkg/alpha.pyx because it changed.
-Compiling /home/circleci/.cache/scikitplot/cython/c184670bdcdf818b90eebea1aae40344b24a08784d509e00f25b3859ec7369f8/wf_ext_pkg/beta.pyx because it changed.
-[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/c184670bdcdf818b90eebea1aae40344b24a08784d509e00f25b3859ec7369f8/wf_ext_pkg/alpha.pyx
-[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/c184670bdcdf818b90eebea1aae40344b24a08784d509e00f25b3859ec7369f8/wf_ext_pkg/beta.pyx
+Compiling /home/circleci/.cache/scikitplot/cython/a84dbe1d2558f5d2aaa73571960dfbbfc4770008589f582d654cf5d82ab37f79/wf_ext_pkg/alpha.pyx because it changed.
+Compiling /home/circleci/.cache/scikitplot/cython/a84dbe1d2558f5d2aaa73571960dfbbfc4770008589f582d654cf5d82ab37f79/wf_ext_pkg/beta.pyx because it changed.
+[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/a84dbe1d2558f5d2aaa73571960dfbbfc4770008589f582d654cf5d82ab37f79/wf_ext_pkg/alpha.pyx
+[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/a84dbe1d2558f5d2aaa73571960dfbbfc4770008589f582d654cf5d82ab37f79/wf_ext_pkg/beta.pyx
 
 Package extension imported from copied folder:
   alpha.inc(10) = 11
@@ -171,9 +171,9 @@ Package extension imported from copied folder:
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.618 seconds)
+****Total running time of the script:**** (0 minutes 1.765 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
+[![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
 
 [`Download Jupyter notebook: plot_09_workflow_templates_cli.ipynb`](../../_downloads/182d7c659be2410f39d6c11870cd0fc2/plot_09_workflow_templates_cli.ipynb)
 

@@ -1,6 +1,6 @@
 # get\_logger[#](#get-logger "Link to this heading")
 
-scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/logging.py#L1134)[#](#scikitplot.logging.get_logger "Link to this definition")
+scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1154)[#](#scikitplot.logging.get_logger "Link to this definition")
 :   Return SP (scikitplot) logger instance.
 
     Returns:
@@ -8,14 +8,14 @@ scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/sciki
         :   An instance of the Python logging library Logger.
 
     Return type:
-    :   [**Logger**](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.14)")
+    :   [**Logger**](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.15)")
 
     > **See also**
     > [`scikitplot.logger`](scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger")
     :   An alias of [`logging`](../../apis/scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") module, providing logging functionality.
 
-    [`logging.getLogger`](https://docs.python.org/3/library/logging.html#logging.getLogger "(in Python v3.14)")
-    :   Standard library function to retrieve [`logging.Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.14)") instance. For more: <https://docs.python.org/3/library/logging.html>
+    [`logging.getLogger`](https://docs.python.org/3/library/logging.html#logging.getLogger "(in Python v3.15)")
+    :   Standard library function to retrieve [`logging.Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.15)") instance. For more: <https://docs.python.org/3/library/logging.html>
 
     Notes
 

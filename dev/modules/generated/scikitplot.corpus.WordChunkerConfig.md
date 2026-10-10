@@ -1,6 +1,6 @@
 # WordChunkerConfig[#](#wordchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**, **custom\_tokenizer=None**, **stemmer=StemmingBackend.NONE**, **custom\_stemmer=None**, **lemmatizer=LemmatizationBackend.NONE**, **custom\_lemmatizer=None**, **stopwords=StopwordSource.BUILTIN**, **custom\_stopwords=None**, **spacy\_model=None**, **nltk\_language='english'**, **lowercase=True**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **remove\_numbers=False**, **min\_token\_length=2**, **max\_token\_length=None**, **ngram\_range=(1, 1)**, **chunk\_by='document'**, **include\_offsets=False**, **build\_gensim\_corpus=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L294)[#](#scikitplot.corpus.WordChunkerConfig "Link to this definition")
+class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**, **custom\_tokenizer=None**, **stemmer=StemmingBackend.NONE**, **custom\_stemmer=None**, **lemmatizer=LemmatizationBackend.NONE**, **custom\_lemmatizer=None**, **stopwords=StopwordSource.BUILTIN**, **custom\_stopwords=None**, **spacy\_model=None**, **nltk\_language='english'**, **lowercase=True**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **remove\_numbers=False**, **min\_token\_length=2**, **max\_token\_length=None**, **ngram\_range=(1, 1)**, **chunk\_by='document'**, **include\_offsets=False**, **build\_gensim\_corpus=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L294)[#](#scikitplot.corpus.WordChunkerConfig "Link to this definition")
 :   Configuration for [`WordChunker`](scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker "scikitplot.corpus.WordChunker").
 
     Parameters:
@@ -83,26 +83,26 @@ class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**,
 
     Parameters:
     :   * ****tokenizer**** ([**TokenizerBackend**](scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend "scikitplot.corpus._chunkers._word.TokenizerBackend"))
-        * ****custom\_tokenizer**** ([**TokenizerProtocol**](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.TokenizerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]** **|** **None**)
+        * ****custom\_tokenizer**** ([**TokenizerProtocol**](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.TokenizerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]** **|** **None**)
         * ****stemmer**** ([**StemmingBackend**](scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend "scikitplot.corpus._chunkers._word.StemmingBackend"))
-        * ****custom\_stemmer**** ([**StemmerProtocol**](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****custom\_stemmer**** ([**StemmerProtocol**](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
         * ****lemmatizer**** ([**LemmatizationBackend**](scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus._chunkers._word.LemmatizationBackend"))
-        * ****custom\_lemmatizer**** ([**LemmatizerProtocol**](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None****]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****custom\_lemmatizer**** ([**LemmatizerProtocol**](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None****]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
         * ****stopwords**** ([**StopwordSource**](scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource "scikitplot.corpus._chunkers._word.StopwordSource"))
-        * ****custom\_stopwords**** ([**frozenset**](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****spacy\_model**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****nltk\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****lowercase**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****remove\_punctuation**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****strip\_unicode\_punctuation**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****remove\_numbers**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****min\_token\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_token\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****ngram\_range**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]**)
-        * ****chunk\_by**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'document'****,** **'sentence'****]**)
-        * ****include\_offsets**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****build\_gensim\_corpus**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****multilang\_config**** (**MultilangConfig** **|** **None**)
+        * ****custom\_stopwords**** ([**frozenset**](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****spacy\_model**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****nltk\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****lowercase**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****remove\_punctuation**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****strip\_unicode\_punctuation**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****remove\_numbers**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****min\_token\_length**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_token\_length**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****ngram\_range**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]**)
+        * ****chunk\_by**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'document'****,** **'sentence'****]**)
+        * ****include\_offsets**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****build\_gensim\_corpus**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****multilang\_config**** ([**MultilangConfig**](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus._chunkers._multilang_mixin.MultilangConfig") **|** **None**)
 
     Notes
 
@@ -122,30 +122,30 @@ class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**,
     identical settings but different callable objects are treated as equal
     for caching purposes. Compare callables explicitly when identity matters.
 
-    build\_gensim\_corpus: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.WordChunkerConfig.build_gensim_corpus "Link to this definition")
+    build\_gensim\_corpus: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.WordChunkerConfig.build_gensim_corpus "Link to this definition")
 
-    chunk\_by: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['document', 'sentence'] = 'document'[#](#scikitplot.corpus.WordChunkerConfig.chunk_by "Link to this definition")
+    chunk\_by: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['document', 'sentence'] = 'document'[#](#scikitplot.corpus.WordChunkerConfig.chunk_by "Link to this definition")
 
-    custom\_lemmatizer: [LemmatizerProtocol](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_lemmatizer "Link to this definition")
+    custom\_lemmatizer: [LemmatizerProtocol](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")], [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_lemmatizer "Link to this definition")
 
-    custom\_stemmer: [StemmerProtocol](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_stemmer "Link to this definition")
+    custom\_stemmer: [StemmerProtocol](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_stemmer "Link to this definition")
 
-    custom\_stopwords: [frozenset](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_stopwords "Link to this definition")
+    custom\_stopwords: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_stopwords "Link to this definition")
 
-    custom\_tokenizer: [TokenizerProtocol](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.TokenizerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_tokenizer "Link to this definition")
+    custom\_tokenizer: [TokenizerProtocol](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.TokenizerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.custom_tokenizer "Link to this definition")
 
-    include\_offsets: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.WordChunkerConfig.include_offsets "Link to this definition")
+    include\_offsets: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.WordChunkerConfig.include_offsets "Link to this definition")
 
-    lemmatizer: [LemmatizationBackend](scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus._chunkers._word.LemmatizationBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.lemmatizer "Link to this definition")
+    lemmatizer: [LemmatizationBackend](scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus._chunkers._word.LemmatizationBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.lemmatizer "Link to this definition")
 
-    lowercase: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.WordChunkerConfig.lowercase "Link to this definition")
+    lowercase: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.WordChunkerConfig.lowercase "Link to this definition")
 
-    max\_token\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.max_token_length "Link to this definition")
+    max\_token\_length: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.max_token_length "Link to this definition")
 
-    min\_token\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2[#](#scikitplot.corpus.WordChunkerConfig.min_token_length "Link to this definition")
+    min\_token\_length: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 2[#](#scikitplot.corpus.WordChunkerConfig.min_token_length "Link to this definition")
 
-    multilang\_config: MultilangConfig | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.multilang_config "Link to this definition")
-    :   Multilang feature flags (`MultilangConfig` or `None`).
+    multilang\_config: [MultilangConfig](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus._chunkers._multilang_mixin.MultilangConfig") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.multilang_config "Link to this definition")
+    :   Multilang feature flags ([`MultilangConfig`](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") or `None`).
 
         When set, each word chunk is enriched with a
         `chunk.metadata["multilang"]` dict containing script detection,
@@ -153,9 +153,9 @@ class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**,
         preprocessing trace, raw text, stopword counts, timing, and other
         provenance fields.
 
-    ngram\_range: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")] = (1, 1)[#](#scikitplot.corpus.WordChunkerConfig.ngram_range "Link to this definition")
+    ngram\_range: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")] = (1, 1)[#](#scikitplot.corpus.WordChunkerConfig.ngram_range "Link to this definition")
 
-    nltk\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = 'english'[#](#scikitplot.corpus.WordChunkerConfig.nltk_language "Link to this definition")
+    nltk\_language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = 'english'[#](#scikitplot.corpus.WordChunkerConfig.nltk_language "Link to this definition")
     :   Language(s) for NLTK stopwords, Snowball stemmer, and NLTK tokenizer.
 
         Accepts:
@@ -169,19 +169,19 @@ class scikitplot.corpus.WordChunkerConfig(**tokenizer=TokenizerBackend.SIMPLE**,
         as `"chilean_spanish"`, `"new_zealand_english"`, and `"ottoman_turkish"`
         are resolved automatically. 200+ languages via `_language_data`.
 
-    remove\_numbers: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.WordChunkerConfig.remove_numbers "Link to this definition")
+    remove\_numbers: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.WordChunkerConfig.remove_numbers "Link to this definition")
 
-    remove\_punctuation: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.WordChunkerConfig.remove_punctuation "Link to this definition")
+    remove\_punctuation: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.WordChunkerConfig.remove_punctuation "Link to this definition")
 
-    spacy\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WordChunkerConfig.spacy_model "Link to this definition")
+    spacy\_model: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.WordChunkerConfig.spacy_model "Link to this definition")
 
-    stemmer: [StemmingBackend](scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend "scikitplot.corpus._chunkers._word.StemmingBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stemmer "Link to this definition")
+    stemmer: [StemmingBackend](scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend "scikitplot.corpus._chunkers._word.StemmingBackend") = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stemmer "Link to this definition")
 
-    stopwords: [StopwordSource](scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource "scikitplot.corpus._chunkers._word.StopwordSource") = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stopwords "Link to this definition")
+    stopwords: [StopwordSource](scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource "scikitplot.corpus._chunkers._word.StopwordSource") = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.stopwords "Link to this definition")
 
-    strip\_unicode\_punctuation: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.WordChunkerConfig.strip_unicode_punctuation "Link to this definition")
+    strip\_unicode\_punctuation: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.WordChunkerConfig.strip_unicode_punctuation "Link to this definition")
 
-    tokenizer: [TokenizerBackend](scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend "scikitplot.corpus._chunkers._word.TokenizerBackend") = 'simple'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.tokenizer "Link to this definition")
+    tokenizer: [TokenizerBackend](scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend "scikitplot.corpus._chunkers._word.TokenizerBackend") = 'simple'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.WordChunkerConfig.tokenizer "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

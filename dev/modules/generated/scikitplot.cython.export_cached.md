@@ -1,6 +1,6 @@
 # export\_cached[#](#export-cached "Link to this heading")
 
-scikitplot.cython.export\_cached(**key**, **\***, **dest\_dir**, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_public.py#L1147)[#](#scikitplot.cython.export_cached "Link to this definition")
+scikitplot.cython.export\_cached(**key**, **\***, **dest\_dir**, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_public.py#L1175)[#](#scikitplot.cython.export_cached "Link to this definition")
 :   Export a cache entry directory to a destination folder.
 
     Parameters:
@@ -24,9 +24,9 @@ scikitplot.cython.export\_cached(**key**, **\***, **dest\_dir**, **cache\_dir=No
         :   If `key` does not exist in the cache.
 
     Parameters:
-    :   * ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****dest\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****cache\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+    :   * ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****dest\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****cache\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")

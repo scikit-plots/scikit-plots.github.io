@@ -1,6 +1,6 @@
 # register\_compiler[#](#register-compiler "Link to this heading")
 
-scikitplot.cython.register\_compiler(**compiler**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L441)[#](#scikitplot.cython.register_compiler "Link to this definition")
+scikitplot.cython.register\_compiler(**compiler**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L441)[#](#scikitplot.cython.register_compiler "Link to this definition")
 :   Register a custom compiler in the module-level registry.
 
     Parameters:
@@ -20,7 +20,7 @@ scikitplot.cython.register\_compiler(**compiler**, **\***, **overwrite=False**)[
 
     Parameters:
     :   * ****compiler**** ([**CustomCompilerProtocol**](scikitplot.cython.CustomCompilerProtocol.html#scikitplot.cython.CustomCompilerProtocol "scikitplot.cython._custom_compiler.CustomCompilerProtocol"))
-        * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   None

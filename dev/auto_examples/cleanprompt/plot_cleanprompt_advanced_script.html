@@ -1,0 +1,1395 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="Everything in the two earlier examples is a consequence of a small number of properties that the pipeline is built to hold. This example measures them instead of describing them, and then looks at ..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="Everything in the two earlier examples is a consequence of a small number of properties that the pipeline is built to hold. This example measures them instead of describing them, and then looks at ..." name="description"/>
+<script>
+window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
+</script>
+<script>
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T02:32:45Z"}};
+window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
+</script>
+<title>Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop — scikit-plots 0.5.dev0 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=1b5097b8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=f676e775" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=c83e6b79" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sk-collection.css?v=3e0ab7e0" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=68bd592b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=0c681824" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/principles-ticker.css" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+<script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+<script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+<script defer="defer" src="../../_static/ai-assistant-isolation-host.js?v=2c722d0e"></script>
+<script defer="defer" src="../../_static/ai-assistant.js?v=cf902b3a"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js?v=b8b12719"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script defer="defer" src="../../_static/sk-collection.js?v=66f0a5ad"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/cleanprompt/plot_cleanprompt_advanced_script';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<script src="../../_static/scripts/principles-ticker.js?v=becb8dc5"></script>
+<link href="https://scikit-plots.github.io/dev/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.html" rel="canonical"/>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plot_cleanprompt_basics_script.html" rel="next" title="Cleanprompt Basics: Hide a Value, Then Get It Back"/>
+<link href="index.html" rel="prev" title="Cleanprompt"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.5" name="docsearch:version"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
+</head>
+<body data-default-mode="">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle" type="button">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
+    Learn
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../affiliated/index.html">
+    Affiliated Packages
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search" type="button">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<div class="navbar-item">
+<div class="theme-switch-container dropdown pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Color mode">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+</button>
+<ul class="dropdown-menu dropdown-menu-end">
+<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto" type="button"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light" type="button"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark" type="button"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+</ul>
+</div></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search" type="button">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle" type="button">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://scikit-plots-learn.readthedocs.io/en/latest/learn/index.html">
+    Learn
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../affiliated/index.html">
+    Affiliated Packages
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<div class="theme-switch-container dropdown pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Color mode">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+</button>
+<ul class="dropdown-menu dropdown-menu-end">
+<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto" type="button"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light" type="button"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+<li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark" type="button"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+</ul>
+</div></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/pypi-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="visually-hidden">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button" type="button">
+<svg aria-hidden="true" class="pst-icon" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg>
+<span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+<span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/s_compile_cpp.html">Compile and run the C++ Annoy with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Cleanprompt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_basics_script.html">Cleanprompt Basics: Hide a Value, Then Get It Back</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_cli_usage_script.html">Cleanprompt on the Command Line: Single Commands and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_guard_agents_script.html">Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_moderate_script.html">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_notebooks_script.html">Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_packs_formats_script.html">Cleanprompt Packs and Formats: Records, Configs and Whole Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_python_api_script.html">Cleanprompt from Python: Single Calls and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cleanprompt_recipes_script.html">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../random/index.html">Random</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random/plot_kiss_random.html">Enhanced KISS Random Generator - Complete Usage Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rank_bm25/index.html">Rank-BM25</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_persistence_script.html">Persist and Reload a Rank-BM25 Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_quickstart_script.html">Rank-BM25 Quick Start with Stable Document IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_recipes_script.html">Compare the Three Rank-BM25 Scoring Recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_sparse_dense_script.html">Sparse Retrieval and Dense BM25 Diagnostics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../seaborn/index.html">Seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Cleanprompt</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="cleanprompt-advanced-invariants-encryption-and-the-lossy-model-hop">
+<span id="sphx-glr-auto-examples-cleanprompt-plot-cleanprompt-advanced-script-py"></span><h1>Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop<a class="headerlink" href="#cleanprompt-advanced-invariants-encryption-and-the-lossy-model-hop" title="Link to this heading">#</a></h1>
+<p>Everything in the two earlier examples is a consequence of a small number of
+properties that the pipeline is built to hold. This example measures them
+instead of describing them, and then looks at the two places where the design
+has to deal with something it does not control: a disk that keeps what it is
+given, and a language model that rewrites what it is given.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>detect ── assign ── rewrite ──▶ [ the model ] ──▶ restore
+  │         │          │              │              │
+  │         │          │              │              └─ lenient, and reports
+  │         │          │              │                 every repair
+  │         │          │              └─ not controlled: the one hop where
+  │         │          │                 the text can come back different
+  │         │          └─ one pass over the ORIGINAL text, never over a
+  │         │             partially rewritten one
+  │         └─ one stable label per distinct value
+  └─ detectors are pure: they read, they never rewrite — the original
+     text, and a detection view of it mapped back onto the original
+</pre></div>
+</div>
+<p>The encryption section runs with nothing optional installed. The <code class="docutils literal notranslate"><span class="pre">fernet</span></code>
+section reports a specific <code class="docutils literal notranslate"><span class="pre">SKIP</span></code> when <code class="docutils literal notranslate"><span class="pre">cryptography</span></code> is absent.</p>
+<p>Every value below is reserved and cannot reach anybody.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="c1"># Authors: The scikit-plots developers</span><span class="w">
+</span><span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span><span class="w">
+</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">base64</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="w">
+</span><span class="w">
+</span><span class="n">_WORKSPACE</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/library/tempfile.html#tempfile.TemporaryDirectory" title="tempfile.TemporaryDirectory"><span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span></a><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"</span><span class="s2">scikitplot-cleanprompt-advanced-</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="n">_HOME</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="w">
+</span><span class="n">_VAULT</span> <span class="o">=</span> <span class="n">_HOME</span> <span class="o">/</span> <span class="s2">"</span><span class="s2">vault.json</span><span class="s2">"</span><span class="w">
+</span><span class="w">
+</span><a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data reference external" href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="p">[</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">_VAULT</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="k">def</span><span class="w"> </span><span class="nf">_cli</span><span class="p">(</span><span class="p">)</span> <span class="o">-</span><span class="o">&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="p">:</span><span class="w">
+</span>    <span class="n">executable</span> <span class="o">=</span> <a class="sphx-glr-backref-module-shutil sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/shutil.html#shutil.which" title="shutil.which"><span class="n">shutil</span><span class="o">.</span><span class="n">which</span></a><span class="p">(</span><span class="s2">"</span><span class="s2">scikitplot</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span>    <span class="k">if</span> <span class="n">executable</span><span class="p">:</span><span class="w">
+</span>        <span class="k">return</span> <span class="p">[</span><span class="n">executable</span><span class="p">,</span> <span class="s2">"</span><span class="s2">cleanprompt</span><span class="s2">"</span><span class="p">]</span><span class="w">
+</span>    <span class="k">return</span> <span class="p">[</span><a class="sphx-glr-backref-module-sys sphx-glr-backref-type-py-data reference external" href="https://docs.python.org/3/library/sys.html#sys.executable" title="sys.executable"><span class="n">sys</span><span class="o">.</span><span class="n">executable</span></a><span class="p">,</span> <span class="s2">"</span><span class="s2">-m</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">scikitplot.cleanprompt</span><span class="s2">"</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="n">CLI</span> <span class="o">=</span> <span class="n">_cli</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="sd">"""Run one CLI command and show both streams, with paths masked."""</span><span class="w">
+</span>    <span class="n">environment</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data reference external" href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="p">)</span><span class="w">
+</span>    <span class="k">if</span> <span class="n">env</span><span class="p">:</span><span class="w">
+</span>        <span class="n">environment</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">env</span><span class="p">)</span><span class="w">
+</span>    <span class="n">completed</span> <span class="o">=</span> <a class="sphx-glr-backref-module-subprocess sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="subprocess.run"><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span></a><span class="p">(</span><span class="w">
+</span>        <span class="p">[</span><span class="o">*</span><span class="n">CLI</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span>        <span class="nb">input</span><span class="o">=</span><span class="s2">"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w">
+</span>        <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w">
+</span>        <span class="n">env</span><span class="o">=</span><span class="n">environment</span><span class="p">,</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span>    <span class="n">shown</span> <span class="o">=</span> <span class="s2">"</span><span class="s2"> </span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="w">
+</span>        <span class="p">(</span><span class="s1">'</span><span class="s1">"</span><span class="si">{0}</span><span class="s1">"</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">one</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"</span><span class="s2"> </span><span class="s2">"</span> <span class="ow">in</span> <span class="n">one</span> <span class="k">else</span> <span class="n">one</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="w">
+</span>            <span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"</span><span class="s2">&lt;workspace&gt;</span><span class="s2">"</span><span class="w">
+</span>        <span class="p">)</span><span class="w">
+</span>        <span class="k">for</span> <span class="n">one</span> <span class="ow">in</span> <span class="n">arguments</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">$ cleanprompt</span><span class="s2">"</span><span class="p">,</span> <span class="n">shown</span><span class="p">)</span><span class="w">
+</span>    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">stream</span> <span class="ow">in</span> <span class="p">(</span><span class="p">(</span><span class="s2">"</span><span class="s2">out</span><span class="s2">"</span><span class="p">,</span> <span class="n">completed</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span><span class="p">,</span> <span class="p">(</span><span class="s2">"</span><span class="s2">err</span><span class="s2">"</span><span class="p">,</span> <span class="n">completed</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="p">:</span><span class="w">
+</span>            <span class="k">continue</span><span class="w">
+</span>        <span class="n">lines</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"</span><span class="s2">&lt;workspace&gt;</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span>        <span class="k">if</span> <span class="n">limit</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span><span class="w">
+</span>            <span class="n">lines</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="p">:</span><span class="n">limit</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"</span><span class="s2">... (</span><span class="si">{0}</span><span class="s2"> more)</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">-</span> <span class="n">limit</span><span class="p">)</span><span class="p">]</span><span class="w">
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">  </span><span class="si">{0}</span><span class="s2"> │ </span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">      │ </span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">  exit │</span><span class="s2">"</span><span class="p">,</span> <span class="n">completed</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span><span class="w">
+</span>    <span class="k">return</span> <span class="n">completed</span><span class="w">
+</span></pre></div></div>
+<section id="the-invariants-measured">
+<h2>1. The invariants, measured<a class="headerlink" href="#the-invariants-measured" title="Link to this heading">#</a></h2>
+<p>Nine core runtime invariants carry the design (<code class="docutils literal notranslate"><span class="pre">I1</span></code> to <code class="docutils literal notranslate"><span class="pre">I9</span></code> in the
+maintainers’ design notes; the later <code class="docutils literal notranslate"><span class="pre">I10</span></code> to <code class="docutils literal notranslate"><span class="pre">I14</span></code> govern packs,
+formats and committed files rather than a single redaction).  Six of the
+nine can be checked on randomised documents in a few lines, which is what the
+submodule’s own probes do at larger scale; the numbers below are small so the
+example stays fast.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402</span><span class="w">
+</span>    <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="p">,</span><span class="w">
+</span>    <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">,</span><span class="w">
+</span>    <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">,</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="n">FRAGMENTS</span> <span class="o">=</span> <span class="p">[</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">mail ada@example.com</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">call +1 555 0142</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">host 192.0.2.10</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">see https://example.com/report</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">card 4242 4242 4242 4242</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">and nothing sensitive at all</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">IPv6 2001:db8::1</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">then ada@example.com again</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="k">def</span><span class="w"> </span><span class="nf">documents</span><span class="p">(</span><span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20260922</span><span class="p">)</span> <span class="o">-</span><span class="o">&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="sd">"""Build reproducible documents out of the fragments above."""</span><span class="w">
+</span>    <span class="n">generator</span> <span class="o">=</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/library/random.html#random.Random" title="random.Random"><span class="n">random</span><span class="o">.</span><span class="n">Random</span></a><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="w">
+</span>    <span class="n">built</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="w">
+</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span>        <span class="n">chosen</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">FRAGMENTS</span><span class="p">,</span> <span class="n">generator</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">FRAGMENTS</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>        <span class="n">built</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"</span><span class="s2">. </span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chosen</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="s2">.</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span>    <span class="k">return</span> <span class="n">built</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="n">CORPUS</span> <span class="o">=</span> <span class="n">documents</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">documents:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">CORPUS</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>documents: 60
+</pre></div>
+</div>
+<p><strong>I1 — round trip.</strong> Restoring the redacted text returns the original,
+byte for byte.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">failures</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="w">
+</span>            <span class="k">if</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">vault</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <span class="n">text</span><span class="p">]</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I1 round trip          failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">failures</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I1 round trip          failures: 0
+</pre></div>
+</div>
+<p><strong>I2 — no leakage.</strong> No value that was removed appears anywhere in the
+redacted text. This is the property the whole submodule exists for.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">leaks</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="w">
+</span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="p">:</span><span class="w">
+</span>    <span class="n">outcome</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span>    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span><span class="w">
+</span>        <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">original</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">text</span><span class="p">:</span><span class="w">
+</span>            <span class="n">leaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">original</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I2 no leakage          failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">leaks</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">leaks</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I2 no leakage          failures: 0
+</pre></div>
+</div>
+<p><strong>I3 — determinism.</strong> The same input and the same policy give the same
+output, including the labels, in this process and in the next one. Nothing
+depends on <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#hash" title="(in Python v3.15)"><code class="xref py py-func docutils literal notranslate"><span class="pre">hash</span></code></a>, which Python randomises per process.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">unstable</span> <span class="o">=</span> <span class="p">[</span><span class="w">
+</span>    <span class="n">text</span><span class="w">
+</span>    <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="w">
+</span>    <span class="k">if</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I3 determinism         failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unstable</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">unstable</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I3 determinism         failures: 0
+</pre></div>
+</div>
+<p><strong>I5 — disjointness.</strong> The spans that survive overlap arbitration never
+overlap each other. This is what lets the rewrite be a single pass over the
+original text, which in turn is what makes the offsets meaningful: a pass
+that rewrote as it went would invalidate every span after the first.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.default_registry.html#scikitplot.cleanprompt.default_registry" title="scikitplot.cleanprompt.default_registry"><span class="n">default_registry</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.resolve_spans.html#scikitplot.cleanprompt.resolve_spans" title="scikitplot.cleanprompt.resolve_spans"><span class="n">resolve_spans</span></a>  <span class="c1"># noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="n">registry</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.default_registry.html#scikitplot.cleanprompt.default_registry" title="scikitplot.cleanprompt.default_registry"><span class="n">default_registry</span></a><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="n">overlapping</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="w">
+</span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="p">:</span><span class="w">
+</span>    <span class="n">kept</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.resolve_spans.html#scikitplot.cleanprompt.resolve_spans" title="scikitplot.cleanprompt.resolve_spans"><span class="n">resolve_spans</span></a><span class="p">(</span><span class="n">registry</span><span class="o">.</span><span class="n">detect_all</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="p">)</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="w">
+</span>    <span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="p">(</span><span class="n">span</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span><span class="p">)</span> <span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="n">kept</span><span class="p">]</span><span class="w">
+</span>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span>        <span class="n">overlapping</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I5 disjointness        failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">overlapping</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">overlapping</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I5 disjointness        failures: 0
+</pre></div>
+</div>
+<p><strong>I8 — spans index the original text.</strong> Every surviving span, sliced out of
+the text it was found in, is the value the vault holds. An implementation
+that recovered offsets by searching would collapse every repeat of a value
+onto the first occurrence; this asserts that none does.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">misaligned</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="w">
+</span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="p">:</span><span class="w">
+</span>    <span class="n">kept</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.resolve_spans.html#scikitplot.cleanprompt.resolve_spans" title="scikitplot.cleanprompt.resolve_spans"><span class="n">resolve_spans</span></a><span class="p">(</span><span class="n">registry</span><span class="o">.</span><span class="n">detect_all</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="p">)</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="w">
+</span>    <span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="n">kept</span><span class="p">:</span><span class="w">
+</span>        <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="n">span</span><span class="o">.</span><span class="n">start</span> <span class="p">:</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span><span class="p">]</span> <span class="o">!=</span> <span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="p">:</span><span class="w">
+</span>            <span class="n">misaligned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">span</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I8 offset alignment    failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">misaligned</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">misaligned</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I8 offset alignment    failures: 0
+</pre></div>
+</div>
+<p><strong>I6 — idempotence.</strong> Running the pipeline on its own output changes
+nothing. Without it, a placeholder would be detected as a value and wrapped
+again, and the vault would stop describing the text.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">not_idempotent</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="w">
+</span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="p">:</span><span class="w">
+</span>    <span class="n">once</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="w">
+</span>    <span class="n">twice</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">once</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="w">
+</span>    <span class="k">if</span> <span class="n">once</span> <span class="o">!=</span> <span class="n">twice</span><span class="p">:</span><span class="w">
+</span>        <span class="n">not_idempotent</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I6 idempotence         failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">not_idempotent</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">not_idempotent</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I6 idempotence         failures: 0
+</pre></div>
+</div>
+<p><strong>I9 — value identity.</strong> One distinct value gets exactly one label, however
+many times it occurs, and two distinct values never share one.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">collisions</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="w">
+</span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">CORPUS</span><span class="p">:</span><span class="w">
+</span>    <span class="n">outcome</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span>    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">entries</span><span class="p">]</span><span class="w">
+</span>    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">original</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">entries</span><span class="p">]</span><span class="w">
+</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span>        <span class="n">collisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">I9 value identity      failures:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">collisions</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="ow">not</span> <span class="n">collisions</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>I9 value identity      failures: 0
+</pre></div>
+</div>
+</section>
+<section id="overlap-arbitration-chosen-rather-than-inherited">
+<h2>2. Overlap arbitration, chosen rather than inherited<a class="headerlink" href="#overlap-arbitration-chosen-rather-than-inherited" title="Link to this heading">#</a></h2>
+<p>When two detectors claim characters, one has to win, and the choice is a
+policy field rather than registration order.  There is deliberately <strong>no</strong>
+“first wins” strategy: that would make the result depend on the order
+detectors happened to be added, which is exactly the hidden coupling that
+makes a redaction unreproducible.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <span class="n">OverlapError</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy" title="scikitplot.cleanprompt.OverlapStrategy"><span class="n">OverlapStrategy</span></a>  <span class="c1"># noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="n">CLASH</span> <span class="o">=</span> <span class="s2">"</span><span class="s2">Mail ada@example.com about it</span><span class="s2">"</span><span class="w">
+</span><span class="w">
+</span><span class="k">for</span> <span class="n">strategy</span> <span class="ow">in</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy" title="scikitplot.cleanprompt.OverlapStrategy"><span class="n">OverlapStrategy</span></a><span class="p">:</span><span class="w">
+</span>    <span class="n">policy</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">overlap</span><span class="o">=</span><span class="n">strategy</span><span class="p">)</span><span class="w">
+</span>    <span class="k">try</span><span class="p">:</span><span class="w">
+</span>        <span class="n">outcome</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">CLASH</span><span class="p">,</span> <span class="n">extra_terms</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="s2">ada@example.com</span><span class="s2">"</span><span class="p">]</span><span class="p">)</span><span class="w">
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:&lt;14}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">strategy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="k">except</span> <span class="n">OverlapError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span><span class="w">
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:&lt;14}</span><span class="s2"> refused: </span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">strategy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="p">[</span><span class="p">:</span><span class="mi">70</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>LONGEST_WINS   Mail [EMAIL-1] about it
+PRIORITY_WINS  Mail [EMAIL-1] about it
+STRICT         refused: overlapping detections under STRICT policy: 'EMAIL' at [5, 20) and 'CU
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">LONGEST_WINS</span></code> is the default and the safe direction: covering more of the
+text cannot disclose more than covering less.  <code class="docutils literal notranslate"><span class="pre">STRICT</span></code> belongs in a
+pipeline that must <em>prove</em> its detector set is disjoint — it turns a silent
+arbitration into a failed build.</p>
+</section>
+<section id="encrypting-the-vault-without-a-compiled-dependency">
+<h2>3. Encrypting the vault, without a compiled dependency<a class="headerlink" href="#encrypting-the-vault-without-a-compiled-dependency" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">forget</span> <span class="pre">--force</span></code> unlinks the vault, and on a journalling filesystem or an
+SSD that is not the same as destroying it.  For values that must not be
+recoverable, encrypt the vault with a passphrase you hold: the file on disk
+is then useless without it, whatever the filesystem did with the blocks.</p>
+<p>The default cipher needs <strong>nothing installed</strong>.  A vault that could only be
+opened where a compiled dependency happens to be present would have traded
+one risk for another, so the portable construction is built from the standard
+library alone:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>passphrase
+   └─ scrypt  (PBKDF2-HMAC-SHA256 where the interpreter cannot run scrypt)
+         └─ 64 key bytes, split into an encryption key and a MAC key
+               ├─ HMAC-SHA256 counter mode  → keystream → ciphertext
+               └─ HMAC-SHA256 over cipher name ‖ label ‖ nonce ‖ ciphertext
+</pre></div>
+</div>
+<p>Encrypt-then-MAC, with the <strong>label bound into the tag</strong>, so a token cannot be
+moved from one placeholder to another.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="nn">.</span><span class="nn">_vaultcrypt</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402</span><span class="w">
+</span>    <span class="n">CIPHERS</span><span class="p">,</span><span class="w">
+</span>    <span class="n">DEFAULT_CIPHER</span><span class="p">,</span><span class="w">
+</span>    <span class="n">decrypt_mapping</span><span class="p">,</span><span class="w">
+</span>    <span class="n">encrypt_mapping</span><span class="p">,</span><span class="w">
+</span>    <span class="n">new_passphrase</span><span class="p">,</span><span class="w">
+</span>    <span class="n">resolve_cipher</span><span class="p">,</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">ciphers        :</span><span class="s2">"</span><span class="p">,</span> <span class="n">CIPHERS</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">default        :</span><span class="s2">"</span><span class="p">,</span> <span class="n">DEFAULT_CIPHER</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">'</span><span class="s2">auto</span><span class="s2">'</span><span class="s2"> resolves:</span><span class="s2">"</span><span class="p">,</span> <span class="n">resolve_cipher</span><span class="p">(</span><span class="s2">"</span><span class="s2">auto</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span> <span class="s2">"</span><span class="s2">(Fernet when available, else portable)</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>ciphers        : ('auto', 'portable', 'fernet')
+default        : portable
+'auto' resolves: fernet (Fernet when available, else portable)
+</pre></div>
+</div>
+<p>Generate a passphrase with the command line rather than inventing one.  The
+alphabet excludes the characters people confuse when reading aloud:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cleanprompt<span class="w"> </span>doctor<span class="w"> </span>--new-key
+<span class="nb">export</span><span class="w"> </span><span class="nv">CLEANPROMPT_VAULT_KEY</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanprompt<span class="w"> </span>doctor<span class="w"> </span>--new-key<span class="k">)</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p>This example uses a fixed one so the output is reproducible.  Never do that
+with a real vault.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">SAMPLE_KEY</span> <span class="o">=</span> <span class="s2">"</span><span class="s2">SAMPLE-KEY-4TXQ2-DEMO</span><span class="s2">"</span><span class="w">
+</span><span class="w">
+</span><span class="n">generated_passphrase</span> <span class="o">=</span> <span class="n">new_passphrase</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">a generated passphrase has the shape </span><span class="si">{0}</span><span class="s2">, from an alphabet with no </span><span class="s2">"</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">look-alike characters</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">-</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"</span><span class="s2">X</span><span class="s2">"</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">generated_passphrase</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="s2">-</span><span class="s2">"</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>a generated passphrase has the shape XXXXX-XXXXX-XXXXX-XXXXX, from an alphabet with no look-alike characters
+</pre></div>
+</div>
+<p>The properties the construction has to deliver, each checked rather than
+claimed.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">entries</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">encrypt_mapping</span><span class="p">(</span><span class="p">{</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">:</span> <span class="s2">"</span><span class="s2">ada@example.com</span><span class="s2">"</span><span class="p">}</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">kdf       :</span><span class="s2">"</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"</span><span class="s2">name</span><span class="s2">"</span><span class="p">]</span><span class="p">,</span> <span class="s2">"</span><span class="s2">n=</span><span class="si">{0}</span><span class="s2"> r=</span><span class="si">{1}</span><span class="s2"> p=</span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"</span><span class="s2">n</span><span class="s2">"</span><span class="p">]</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"</span><span class="s2">r</span><span class="s2">"</span><span class="p">]</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"</span><span class="s2">p</span><span class="s2">"</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">token     :</span><span class="s2">"</span><span class="p">,</span> <span class="n">entries</span><span class="p">[</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">]</span><span class="p">[</span><span class="p">:</span><span class="mi">44</span><span class="p">]</span><span class="p">,</span> <span class="s2">"</span><span class="s2">...</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">round trip:</span><span class="s2">"</span><span class="p">,</span> <span class="n">decrypt_mapping</span><span class="p">(</span><span class="n">entries</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>kdf       : scrypt n=16384 r=8 p=1
+token     : O/SCuvzw5JIxWWHH+AcnvvWL42brC0iuYlVWj244XC5V ...
+round trip: {'[EMAIL-1]': 'ada@example.com'}
+</pre></div>
+</div>
+<p>Two encryptions of the same value under the same key must differ — that is
+the nonce doing its job — and every way of interfering with a token must be
+refused rather than absorbed.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">first</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">encrypt_mapping</span><span class="p">(</span><span class="p">{</span><span class="s2">"</span><span class="s2">[A-1]</span><span class="s2">"</span><span class="p">:</span> <span class="s2">"</span><span class="s2">same</span><span class="s2">"</span><span class="p">}</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="n">second</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">encrypt_mapping</span><span class="p">(</span><span class="p">{</span><span class="s2">"</span><span class="s2">[A-1]</span><span class="s2">"</span><span class="p">:</span> <span class="s2">"</span><span class="s2">same</span><span class="s2">"</span><span class="p">}</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">two encryptions differ:</span><span class="s2">"</span><span class="p">,</span> <span class="n">first</span> <span class="o">!=</span> <span class="n">second</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="n">raw</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><a class="sphx-glr-backref-module-base64 sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/base64.html#base64.b64decode" title="base64.b64decode"><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span></a><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="n">raw</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^</span><span class="o">=</span> <span class="mh">0x01</span><span class="w">
+</span><span class="n">flipped</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">:</span> <a class="sphx-glr-backref-module-base64 sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/base64.html#base64.b64encode" title="base64.b64encode"><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span></a><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"</span><span class="s2">ascii</span><span class="s2">"</span><span class="p">)</span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="n">ATTACKS</span> <span class="o">=</span> <span class="p">[</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">wrong passphrase</span><span class="s2">"</span><span class="p">,</span> <span class="n">entries</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"</span><span class="s2">NOT-THE-KEY</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">flipped bit</span><span class="s2">"</span><span class="p">,</span> <span class="n">flipped</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">token moved to another label</span><span class="s2">"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"</span><span class="s2">[EMAIL-2]</span><span class="s2">"</span><span class="p">:</span> <span class="n">entries</span><span class="p">[</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">]</span><span class="p">}</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">truncated token</span><span class="s2">"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">:</span> <span class="n">entries</span><span class="p">[</span><span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">]</span><span class="p">[</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="p">}</span><span class="p">,</span> <span class="n">SAMPLE_KEY</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">passphrase</span> <span class="ow">in</span> <span class="n">ATTACKS</span><span class="p">:</span><span class="w">
+</span>    <span class="k">try</span><span class="p">:</span><span class="w">
+</span>        <span class="n">decrypt_mapping</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">passphrase</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="w">
+</span>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"</span><span class="si">{0}</span><span class="s2"> was accepted</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span><span class="w">
+</span>        <span class="k">raise</span><span class="w">
+</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>  <span class="c1"># noqa: BLE001 - the refusal is the assertion</span><span class="w">
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:&lt;30}</span><span class="s2"> refused: </span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="p">[</span><span class="p">:</span><span class="mi">56</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>two encryptions differ: True
+wrong passphrase               refused: vault entry [EMAIL-1] failed authentication: the passphr
+flipped bit                    refused: vault entry [EMAIL-1] failed authentication: the passphr
+token moved to another label   refused: vault entry [EMAIL-2] failed authentication: the passphr
+truncated token                refused: vault entry [EMAIL-1] is truncated
+</pre></div>
+</div>
+<p>What this does <strong>not</strong> claim is that the construction is secure; no example
+could establish that.  What is shown is that it behaves as described and
+fails closed when it is interfered with.</p>
+<p>The same thing from the command line.  <code class="docutils literal notranslate"><span class="pre">CLEANPROMPT_VAULT_KEY</span></code> supplies the
+passphrase non-interactively; without it the command prompts.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">run</span><span class="p">(</span><span class="s2">"</span><span class="s2">forget</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">--force</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="n">run</span><span class="p">(</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">encode</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">--quiet</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">--vault-mode</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">overwrite</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">--encrypt</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">Mail ada@example.com</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>    <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">:</span> <span class="n">SAMPLE_KEY</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="n">document</span> <span class="o">=</span> <a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/json.html#json.loads" title="json.loads"><span class="n">json</span><span class="o">.</span><span class="n">loads</span></a><span class="p">(</span><span class="n">_VAULT</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"</span><span class="s2">utf-8</span><span class="s2">"</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">encrypted :</span><span class="s2">"</span><span class="p">,</span> <span class="n">document</span><span class="p">[</span><span class="s2">"</span><span class="s2">encrypted</span><span class="s2">"</span><span class="p">]</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">cipher    :</span><span class="s2">"</span><span class="p">,</span> <span class="n">document</span><span class="p">[</span><span class="s2">"</span><span class="s2">cipher</span><span class="s2">"</span><span class="p">]</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">on disk   :</span><span class="s2">"</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">"</span><span class="s2">entries</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">[</span><span class="p">:</span><span class="mi">44</span><span class="p">]</span><span class="p">,</span> <span class="s2">"</span><span class="s2">...</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">no value in the file:</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">ada@example.com</span><span class="s2">"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_VAULT</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"</span><span class="s2">utf-8</span><span class="s2">"</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">assert</span> <span class="s2">"</span><span class="s2">ada@example.com</span><span class="s2">"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_VAULT</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"</span><span class="s2">utf-8</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>$ cleanprompt forget --force
+  err │ no vault at &lt;workspace&gt;/vault.json; nothing to forget
+  exit │ 0
+$ cleanprompt encode --quiet --vault-mode overwrite --encrypt "Mail ada@example.com"
+  out │ Mail [EMAIL-1]
+  exit │ 0
+
+encrypted : True
+cipher    : cleanprompt-hmac-v1
+on disk   : yMppFajgQcRsVYqzEOV33qbGqP9dHVk73aB6WFZbWkBJ ...
+no value in the file: True
+</pre></div>
+</div>
+<p>With the passphrase, <code class="docutils literal notranslate"><span class="pre">decode</span></code> works as usual.  Without it, the vault is a
+file of unusable tokens.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">run</span><span class="p">(</span><span class="s2">"</span><span class="s2">decode</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">I wrote to [EMAIL-1].</span><span class="s2">"</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">:</span> <span class="n">SAMPLE_KEY</span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="n">run</span><span class="p">(</span><span class="s2">"</span><span class="s2">decode</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">I wrote to [EMAIL-1].</span><span class="s2">"</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">:</span> <span class="s2">"</span><span class="s2">WRONG-KEY</span><span class="s2">"</span><span class="p">}</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>$ cleanprompt decode "I wrote to [EMAIL-1]."
+  out │ I wrote to ada@example.com.
+  err │ restored 1 placeholder(s)
+  exit │ 0
+$ cleanprompt decode "I wrote to [EMAIL-1]."
+  err │ error: vault entry [EMAIL-1] failed authentication: the passphrase is wrong, or the vault has been modified since it was written
+  exit │ 1
+
+CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'decode', 'I wrote to [EMAIL-1].'], returncode=1, stdout='', stderr='error: vault entry [EMAIL-1] failed authentication: the passphrase is wrong, or the vault has been modified since it was written\n')
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--cipher</span> <span class="pre">fernet</span></code> uses the reviewed AES backend from <code class="docutils literal notranslate"><span class="pre">cryptography</span></code> when
+that tier is installed.  It is not the default, because the default has to
+work everywhere.</p>
+<p>The two ciphers do <strong>not</strong> share a key format, and this is worth seeing
+rather than reading: a portable passphrase is a human-readable string of any
+length, while a Fernet key is exactly 32 bytes in url-safe base64.  Handing
+one to the other is refused with the command that generates the right kind.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.probe.html#scikitplot.cleanprompt.probe" title="scikitplot.cleanprompt.probe"><span class="n">probe</span></a>  <span class="c1"># noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="n">crypto</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.probe.html#scikitplot.cleanprompt.probe" title="scikitplot.cleanprompt.probe"><span class="n">probe</span></a><span class="p">(</span><span class="s2">"</span><span class="s2">crypto</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="k">if</span> <span class="ow">not</span> <span class="n">crypto</span><span class="o">.</span><span class="n">available</span><span class="p">:</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">[SKIP] --cipher fernet: </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">crypto</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="k">else</span><span class="p">:</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">crypto tier:</span><span class="s2">"</span><span class="p">,</span> <span class="n">crypto</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="c1"># The portable passphrase, offered to Fernet: refused, with a remedy.</span><span class="w">
+</span>    <span class="n">run</span><span class="p">(</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">encode</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--quiet</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--vault-mode</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">overwrite</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--encrypt</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--cipher</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">fernet</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">Mail bob@example.com</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">:</span> <span class="n">SAMPLE_KEY</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="c1"># Generate the right kind of key and complete the round trip.</span><span class="w">
+</span>    <span class="n">generated</span> <span class="o">=</span> <a class="sphx-glr-backref-module-subprocess sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run" title="subprocess.run"><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span></a><span class="p">(</span><span class="w">
+</span>        <span class="p">[</span><span class="o">*</span><span class="n">CLI</span><span class="p">,</span> <span class="s2">"</span><span class="s2">doctor</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">--new-key</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">--cipher</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">fernet</span><span class="s2">"</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span>        <span class="nb">input</span><span class="o">=</span><span class="s2">"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w">
+</span>        <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w">
+</span>        <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span>    <span class="n">fernet_key</span> <span class="o">=</span> <span class="n">generated</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span>    <span class="c1"># Print the shape, never the bytes: a key in a documentation build is still</span><span class="w">
+</span>    <span class="c1"># a key, and a gallery page is published.</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">generated Fernet key: </span><span class="si">{0}</span><span class="s2"> characters, url-safe base64, ends </span><span class="s2">'</span><span class="si">{1}</span><span class="s2">'</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="w">
+</span>            <span class="nb">len</span><span class="p">(</span><span class="n">fernet_key</span><span class="p">)</span><span class="p">,</span> <span class="n">fernet_key</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w">
+</span>        <span class="p">)</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="n">run</span><span class="p">(</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">encode</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--quiet</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--vault-mode</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">overwrite</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--encrypt</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">--cipher</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">fernet</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="s2">"</span><span class="s2">Mail bob@example.com</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span>        <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">:</span> <span class="n">fernet_key</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="n">written</span> <span class="o">=</span> <a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/json.html#json.loads" title="json.loads"><span class="n">json</span><span class="o">.</span><span class="n">loads</span></a><span class="p">(</span><span class="n">_VAULT</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"</span><span class="s2">utf-8</span><span class="s2">"</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">cipher on disk:</span><span class="s2">"</span><span class="p">,</span> <span class="n">written</span><span class="p">[</span><span class="s2">"</span><span class="s2">cipher</span><span class="s2">"</span><span class="p">]</span><span class="p">)</span><span class="w">
+</span>    <span class="k">assert</span> <span class="n">written</span><span class="p">[</span><span class="s2">"</span><span class="s2">encrypted</span><span class="s2">"</span><span class="p">]</span> <span class="ow">and</span> <span class="n">written</span><span class="p">[</span><span class="s2">"</span><span class="s2">cipher</span><span class="s2">"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"</span><span class="s2">cleanprompt-hmac-v1</span><span class="s2">"</span><span class="w">
+</span><span class="w">
+</span>    <span class="n">run</span><span class="p">(</span><span class="s2">"</span><span class="s2">decode</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">I wrote to [EMAIL-1].</span><span class="s2">"</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">:</span> <span class="n">fernet_key</span><span class="p">}</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>crypto tier: cryptography 50.0.2 satisfies cryptography&gt;=41
+$ cleanprompt encode --quiet --vault-mode overwrite --encrypt --cipher fernet "Mail bob@example.com"
+  err │ error: CLEANPROMPT_VAULT_KEY is not a valid Fernet key: Fernet key must be 32 url-safe base64-encoded bytes.. Generate a new one with: python -m scikitplot.cleanprompt doctor --new-key
+  exit │ 1
+generated Fernet key: 44 characters, url-safe base64, ends '='
+$ cleanprompt encode --quiet --vault-mode overwrite --encrypt --cipher fernet "Mail bob@example.com"
+  out │ Mail [EMAIL-1]
+  exit │ 0
+cipher on disk: fernet
+$ cleanprompt decode "I wrote to [EMAIL-1]."
+  out │ I wrote to bob@example.com.
+  err │ restored 1 placeholder(s)
+  exit │ 0
+</pre></div>
+</div>
+</section>
+<section id="the-hop-that-is-not-controlled">
+<h2>4. The hop that is not controlled<a class="headerlink" href="#the-hop-that-is-not-controlled" title="Link to this heading">#</a></h2>
+<p>Every invariant above holds across parts this submodule owns.  Restoration is
+the exception: between <code class="docutils literal notranslate"><span class="pre">encode</span></code> and <code class="docutils literal notranslate"><span class="pre">decode</span></code> the text passes through a
+language model, and the original design treated that hop as if it returned
+the bytes it was given.</p>
+<p>It does not.  Measured against realistic replies, a label comes back in eight
+shapes, and exact matching restored the first and missed the rest — while
+reporting <code class="docutils literal notranslate"><span class="pre">restored</span> <span class="pre">0</span> <span class="pre">placeholder(s)</span></code> at exit status <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.encode.html#scikitplot.cleanprompt.encode" title="scikitplot.cleanprompt.encode"><span class="n">encode</span></a>  <span class="c1"># noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="n">issued</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.encode.html#scikitplot.cleanprompt.encode" title="scikitplot.cleanprompt.encode"><span class="n">encode</span></a><span class="p">(</span><span class="s2">"</span><span class="s2">Mail ada@example.com</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="n">SHAPES</span> <span class="o">=</span> <span class="p">[</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">as issued</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[EMAIL-1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">lower-cased</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[email-1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">underscore for the hyphen</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[EMAIL_1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">space for the hyphen</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[EMAIL 1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">Unicode dash</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[EMAIL‑1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">brackets escaped for Markdown</span><span class="s2">"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"</span><span class="s2">\</span><span class="s2">[EMAIL-1</span><span class="s2">\</span><span class="s2">]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">separator escaped for Markdown</span><span class="s2">"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"</span><span class="s2">[EMAIL</span><span class="s2">\</span><span class="s2">_1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">wrapped across a line</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[EMAIL-</span><span class="se">\n</span><span class="s2">1]</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">bold</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">**[EMAIL-1]**</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">(</span><span class="s2">"</span><span class="s2">in a code span</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">`[EMAIL-1]`</span><span class="s2">"</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">spelling</span> <span class="ow">in</span> <span class="n">SHAPES</span><span class="p">:</span><span class="w">
+</span>    <span class="n">outcome</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">(</span><span class="s2">"</span><span class="s2">I wrote to </span><span class="si">{0}</span><span class="s2">.</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spelling</span><span class="p">)</span><span class="p">,</span> <span class="n">issued</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">vault</span><span class="p">)</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="w">
+</span>        <span class="s2">"</span><span class="si">{0:&lt;32}</span><span class="s2"> restored=</span><span class="si">{1!s:&lt;6}</span><span class="s2"> repaired=</span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="w">
+</span>            <span class="n">name</span><span class="p">,</span> <span class="s2">"</span><span class="s2">ada@example.com</span><span class="s2">"</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">outcome</span><span class="o">.</span><span class="n">repaired</span><span class="p">)</span><span class="w">
+</span>        <span class="p">)</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span>    <span class="k">assert</span> <span class="s2">"</span><span class="s2">ada@example.com</span><span class="s2">"</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">text</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>as issued                        restored=True   repaired=False
+lower-cased                      restored=True   repaired=True
+underscore for the hyphen        restored=True   repaired=True
+space for the hyphen             restored=True   repaired=True
+Unicode dash                     restored=True   repaired=True
+brackets escaped for Markdown    restored=True   repaired=True
+separator escaped for Markdown   restored=True   repaired=True
+wrapped across a line            restored=True   repaired=True
+bold                             restored=True   repaired=False
+in a code span                   restored=True   repaired=False
+</pre></div>
+</div>
+<p>The leniency is bounded, and what bounds it is not the pattern.  A lenient
+match is acted on <strong>only</strong> when it resolves to a label the vault actually
+holds, so ordinary prose comes back byte-identical and is not reported as an
+unknown placeholder.</p>
+<p>Without that rule, a leniency wide enough to catch the shapes above would
+rewrite the model’s own writing — a worse failure than the one it fixes.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="k">for</span> <span class="n">prose</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"</span><span class="s2">[note 2]</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[1]</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[figure 3]</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[Table 1]</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[ISO 8601]</span><span class="s2">"</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span>    <span class="n">source</span> <span class="o">=</span> <span class="s2">"</span><span class="s2">See </span><span class="si">{0}</span><span class="s2"> for details.</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prose</span><span class="p">)</span><span class="w">
+</span>    <span class="n">outcome</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">issued</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">vault</span><span class="p">)</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:&lt;12}</span><span class="s2"> unchanged=</span><span class="si">{1!s:&lt;6}</span><span class="s2"> unknown=</span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prose</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">source</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">unknown</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="k">assert</span> <span class="n">outcome</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">source</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[note 2]     unchanged=True   unknown=()
+[1]          unchanged=True   unknown=()
+[figure 3]   unchanged=True   unknown=()
+[Table 1]    unchanged=True   unknown=()
+[ISO 8601]   unchanged=True   unknown=()
+</pre></div>
+</div>
+<p>Two escape hatches, for callers who need the other behaviour:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">lenient=False</span></code> (<code class="docutils literal notranslate"><span class="pre">--exact</span></code>)</dt><dd><p>restore only what was issued verbatim, and repair nothing.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">strict=True</span></code> (<code class="docutils literal notranslate"><span class="pre">--strict</span></code>)</dt><dd><p>turn a placeholder the vault does not hold into an error rather than
+leaving it in the text.</p>
+</dd>
+</dl>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">exact</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">(</span><span class="s2">"</span><span class="s2">I wrote to [email-1].</span><span class="s2">"</span><span class="p">,</span> <span class="n">issued</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">vault</span><span class="p">,</span> <span class="n">lenient</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">lenient=False  restored:</span><span class="s2">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">exact</span><span class="o">.</span><span class="n">restored</span><span class="p">)</span><span class="p">,</span> <span class="s2">"</span><span class="s2"> unknown:</span><span class="s2">"</span><span class="p">,</span> <span class="n">exact</span><span class="o">.</span><span class="n">unknown</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>lenient=False  restored: 0  unknown: ('[email-1]',)
+</pre></div>
+</div>
+<p>And the report that makes a silent failure loud.  A restoration that resolved
+nothing while the vault is non-empty says so, in words that name the next
+thing to check.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restoration_note.html#scikitplot.cleanprompt.restoration_note" title="scikitplot.cleanprompt.restoration_note"><span class="n">restoration_note</span></a>  <span class="c1"># noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restoration_note.html#scikitplot.cleanprompt.restoration_note" title="scikitplot.cleanprompt.restoration_note"><span class="n">restoration_note</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">(</span><span class="s2">"</span><span class="s2">Nothing to restore here.</span><span class="s2">"</span><span class="p">,</span> <span class="n">issued</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">vault</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>restored 0 placeholder(s); 1 vault entr(y/ies) unused
+  nothing was restored: check the reply still contains the placeholders as they were issued
+</pre></div>
+</div>
+</section>
+<section id="values-written-to-slip-past-a-pattern">
+<h2>5. Values written to slip past a pattern<a class="headerlink" href="#values-written-to-slip-past-a-pattern" title="Link to this heading">#</a></h2>
+<p>A value can be written so that it reads the same — to a person and to a
+model — while a regular expression no longer matches it: an invisible
+zero-width space inside an address, full-width letters, a non-breaking space
+or hyphen inside a telephone number.</p>
+<p>The pipeline does not rewrite your text to catch these.  It <em>reads</em> it a
+second time, through a <strong>detection view</strong>: invisible format characters
+removed and compatibility forms folded, with a map from every view position
+back to the original.  A value found in the view is redacted in the
+original, invisible characters included, so the vault keeps exactly what you
+wrote and restoration puts exactly that back.  The view can only add
+detections; it never removes one.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">HIDDEN</span> <span class="o">=</span> <span class="p">[</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">mail ada</span><span class="se">\u200b</span><span class="s2">@example.com</span><span class="s2">"</span><span class="p">,</span>  <span class="c1"># zero-width space inside the address</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">mail </span><span class="se">\uff41</span><span class="se">\uff44</span><span class="se">\uff41</span><span class="se">\uff20</span><span class="se">\uff45</span><span class="se">\uff58</span><span class="se">\uff41</span><span class="se">\uff4d</span><span class="se">\uff50</span><span class="se">\uff4c</span><span class="se">\uff45</span><span class="se">\uff0e</span><span class="se">\uff43</span><span class="se">\uff4f</span><span class="se">\uff4d</span><span class="s2">"</span><span class="p">,</span>  <span class="c1"># full-width</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">call +1 555</span><span class="se">\u00a0</span><span class="s2">0142</span><span class="s2">"</span><span class="p">,</span>  <span class="c1"># non-breaking space</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">call +1</span><span class="se">\u2011</span><span class="s2">555</span><span class="se">\u2011</span><span class="s2">0142</span><span class="s2">"</span><span class="p">,</span>  <span class="c1"># non-breaking hyphens</span><span class="w">
+</span>    <span class="s2">"</span><span class="s2">host 192.0.2.</span><span class="se">\u200b</span><span class="s2">10</span><span class="s2">"</span><span class="p">,</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">HIDDEN</span><span class="p">:</span><span class="w">
+</span>    <span class="n">hidden</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span>    <span class="n">back</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-function reference internal" href="../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore" title="scikitplot.cleanprompt.restore"><span class="n">restore</span></a><span class="p">(</span><span class="n">hidden</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">hidden</span><span class="o">.</span><span class="n">vault</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="w">
+</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:&lt;34}</span><span class="s2"> -&gt; </span><span class="si">{1:&lt;16}</span><span class="s2"> exact round trip: </span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="p">[</span><span class="p">:</span><span class="mi">34</span><span class="p">]</span><span class="p">,</span> <span class="n">hidden</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">back</span> <span class="o">==</span> <span class="n">text</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span>    <span class="k">assert</span> <span class="n">hidden</span><span class="o">.</span><span class="n">entries</span> <span class="ow">and</span> <span class="n">back</span> <span class="o">==</span> <span class="n">text</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'mail ada\u200b@example.com'       -&gt; mail [EMAIL-1]   exact round trip: True
+'mail \uff41\uff44\uff41\uff20\uff -&gt; mail [EMAIL-1]   exact round trip: True
+'call +1 555\xa00142'              -&gt; call [PHONE-1]   exact round trip: True
+'call +1\u2011555\u20110142'       -&gt; call [PHONE-1]   exact round trip: True
+'host 192.0.2.\u200b10'            -&gt; host [IPV4-1]    exact round trip: True
+</pre></div>
+</div>
+<p>What this does <strong>not</strong> cover is worth knowing.  A value spelled with
+look-alike letters from another script (Cyrillic <code class="docutils literal notranslate"><span class="pre">U+0430</span></code> in place of
+Latin <code class="docutils literal notranslate"><span class="pre">a</span></code>) is a different string, not a compatibility form of the same one, and
+is not folded; nor is a value broken up with ordinary spaces or reworded.
+Those are the cases for <code class="docutils literal notranslate"><span class="pre">hide=</span></code> or for entity detection.</p>
+</section>
+<section id="preventing-the-rewrite-rather-than-repairing-it">
+<h2>6. Preventing the rewrite rather than repairing it<a class="headerlink" href="#preventing-the-rewrite-rather-than-repairing-it" title="Link to this heading">#</a></h2>
+<p>Repair is the mitigation.  The prevention is to stop issuing tokens that
+invite rewriting: <code class="docutils literal notranslate"><span class="pre">--style</span> <span class="pre">surrogate</span></code> puts an ordinary-looking value where
+a bracket label would go, and a model has no reason to reformat a name.</p>
+<p>Use both. They fail in different ways, which is the point of having two.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="nn">.</span><span class="nn">cleanprompt</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle" title="scikitplot.cleanprompt.TagStyle"><span class="n">TagStyle</span></a>  <span class="c1"># noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="n">surrogate</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-data reference internal" href="../../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY" title="scikitplot.cleanprompt.DEFAULT_POLICY"><span class="n">DEFAULT_POLICY</span></a><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">tag_style</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle" title="scikitplot.cleanprompt.TagStyle"><span class="n">TagStyle</span></a><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">"</span><span class="s2">surrogate</span><span class="s2">"</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="n">prose</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cleanprompt sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor" title="scikitplot.cleanprompt.Redactor"><span class="n">Redactor</span></a><span class="p">(</span><span class="n">policy</span><span class="o">=</span><span class="n">surrogate</span><span class="p">)</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="s2">"</span><span class="s2">Mail ada@example.com from 192.0.2.10</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">surrogate :</span><span class="s2">"</span><span class="p">,</span> <span class="n">prose</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">no bracket token where the address was:</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[EMAIL</span><span class="s2">"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prose</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">credential kinds keep their placeholder:</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">[IPV4-1]</span><span class="s2">"</span> <span class="ow">in</span> <span class="n">prose</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>surrogate : Mail marion.holt@example.invalid from [IPV4-1]
+no bracket token where the address was: True
+credential kinds keep their placeholder: True
+</pre></div>
+</div>
+</section>
+<section id="cleanup">
+<h2>7. Cleanup<a class="headerlink" href="#cleanup" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">run</span><span class="p">(</span><span class="s2">"</span><span class="s2">forget</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="s2">--force</span><span class="s2">"</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data reference external" href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT</span><span class="s2">"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="w">
+</span><a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data reference external" href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"</span><span class="s2">CLEANPROMPT_VAULT_KEY</span><span class="s2">"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="w">
+</span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">cleanup</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="s2">Temporary workspace cleaned:</span><span class="s2">"</span><span class="p">,</span> <span class="ow">not</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">_WORKSPACE</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>$ cleanprompt forget --force
+  err │ deleted &lt;workspace&gt;/vault.json
+      │   it held 1 value(s): EMAIL=1
+      │   note: this unlinks the file. On a journalling filesystem or an SSD the bytes may survive; use --encrypt with a key you hold for values that must not be recoverable.
+  exit │ 0
+Temporary workspace cleaned: True
+</pre></div>
+</div>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-cleanprompt.html"><span class="doc">model-workflow: cleanprompt</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-advanced.html"><span class="doc">level: advanced</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.709 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A reference for the Python surface, organised as the smallest call that does the job, then what happens when the input is degenerate."><img alt="" src="../../_images/sphx_glr_plot_cleanprompt_python_api_script_thumb.png"/>
+<p><a class="reference internal" href="plot_cleanprompt_python_api_script.html"><span class="doc">Cleanprompt from Python: Single Calls and Edge Cases</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cleanprompt from Python: Single Calls and Edge Cases</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Three things separate a first use of this submodule from a considered one:"><img alt="" src="../../_images/sphx_glr_plot_cleanprompt_moderate_script_thumb.png"/>
+<p><a class="reference internal" href="plot_cleanprompt_moderate_script.html"><span class="doc">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cleanprompt Moderate: Policies, Entities, and the Vault's Lifecycle</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Six complete, working patterns for the places this submodule actually gets used. Each one is short, runs here, and is written so it can be lifted into a project without editing anything but the paths."><img alt="" src="../../_images/sphx_glr_plot_cleanprompt_recipes_script_thumb.png"/>
+<p><a class="reference internal" href="plot_cleanprompt_recipes_script.html"><span class="doc">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A reference for the command line, organised as the ordinary form first, then the things that bite. The second half is the longer one, because the failures a redaction tool can have at the shell are not evenly distributed: almost all of them are about how the text gets in."><img alt="" src="../../_images/sphx_glr_plot_cleanprompt_cli_usage_script_thumb.png"/>
+<p><a class="reference internal" href="plot_cleanprompt_cli_usage_script.html"><span class="doc">Cleanprompt on the Command Line: Single Commands and Edge Cases</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cleanprompt on the Command Line: Single Commands and Edge Cases</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="index.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Cleanprompt</p>
+</div>
+</a>
+<a class="right-next" href="plot_cleanprompt_basics_script.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Cleanprompt Basics: Hide a Value, Then Get It Back</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-invariants-measured">1. The invariants, measured</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-arbitration-chosen-rather-than-inherited">2. Overlap arbitration, chosen rather than inherited</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encrypting-the-vault-without-a-compiled-dependency">3. Encrypting the vault, without a compiled dependency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hop-that-is-not-controlled">4. The hop that is not controlled</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-written-to-slip-past-a-pattern">5. Values written to slip past a pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preventing-the-rewrite-rather-than-repairing-it">6. Preventing the rewrite rather than repairing it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleanup">7. Cleanup</a></li>
+</ul>
+</nav></div>
+<div class="sidebar-secondary-item">
+<div class="sphx-glr-sidebar-component">
+<div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_cleanprompt_advanced_script.py">
+<a download="" href="../../_downloads/2363c5f4b6eff49e4355a82f503390e2/plot_cleanprompt_advanced_script.py">
+<i class="fa-solid fa-download"></i>
+            Download source code
+          </a>
+</div>
+<div class="sphx-glr-sidebar-item sphx-glr-download-jupyter-sidebar" title="plot_cleanprompt_advanced_script.ipynb">
+<a download="" href="../../_downloads/9fbb9481e6b5cde1da11a0f888e97b87/plot_cleanprompt_advanced_script.ipynb">
+<i class="fa-solid fa-download"></i>
+            Download Jupyter notebook
+          </a>
+</div>
+<div class="sphx-glr-sidebar-item sphx-glr-download-zip-sidebar" title="plot_cleanprompt_advanced_script.zip">
+<a download="" href="../../_downloads/1244867a5150ed3dbd0f0c3ca93bc197/plot_cleanprompt_advanced_script.zip">
+<i class="fa-solid fa-download"></i>
+            Download zipped
+          </a>
+</div>
+</div>
+</div>
+<div class="sidebar-secondary-item">
+<div class="sphx-glr-sidebar-component">
+<div class="sphx-glr-sidebar-item lite-badge-sidebar">
+<a href="../../lite/lab/index.html?path=auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb">
+<img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo3.svg"/>
+</a>
+</div>
+<div class="sphx-glr-sidebar-item binder-badge-sidebar">
+<a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb">
+<img alt="Launch binder" src="../../_images/binder_badge_logo3.svg"/>
+</a>
+</div>
+</div>
+</div>
+<div class="sidebar-secondary-item">
+<div class="tocsection editthispage">
+<a href="https://github.com/scikit-plots/scikit-plots/edit/main/docs/source/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.rst">
+<i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+</div>
+</div>
+
+<div class="sidebar-secondary-item"><div title="plot_cleanprompt_advanced_script.py"><a download="" href="../../_downloads/2363c5f4b6eff49e4355a82f503390e2/plot_cleanprompt_advanced_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_cleanprompt_advanced_script.ipynb"><a download="" href="../../_downloads/9fbb9481e6b5cde1da11a0f888e97b87/plot_cleanprompt_advanced_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo3.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo3.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.de98219 2026-10-10T02:14Z.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # PickleMixin[#](#picklemixin "Link to this heading")
 
-class scikitplot.annoy.PickleMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_pickle.py#L173)[#](#scikitplot.annoy.PickleMixin "Link to this definition")
+class scikitplot.annoy.PickleMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_pickle.py#L177)[#](#scikitplot.annoy.PickleMixin "Link to this definition")
 :   Mixin adding pickle support.
 
     Parameters:
@@ -27,8 +27,8 @@ class scikitplot.annoy.PickleMixin[[source]](https://github.com/scikit-plots/sci
     * `"byte"` mode requires a built index (`get_n_trees() > 0`).
     * `"disk"` mode requires an on-disk path (`on_disk_path` or `_on_disk_path`).
 
-    property compress\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['zlib', 'gzip'] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy.PickleMixin.compress_mode "Link to this definition")
+    property compress\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['zlib', 'gzip'] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy.PickleMixin.compress_mode "Link to this definition")
     :   Compression used for `"byte"` pickling by [`PickleMixin`](#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin").
 
-    property pickle\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['auto', 'disk', 'byte'][#](#scikitplot.annoy.PickleMixin.pickle_mode "Link to this definition")
+    property pickle\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['auto', 'disk', 'byte'][#](#scikitplot.annoy.PickleMixin.pickle_mode "Link to this definition")
     :   Persist strategy used by [`PickleMixin`](#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin").

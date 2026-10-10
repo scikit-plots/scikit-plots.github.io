@@ -1,6 +1,6 @@
 # pin[#](#pin "Link to this heading")
 
-scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwrite=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_pins.py#L161)[#](#scikitplot.cython.pin "Link to this definition")
+scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwrite=False**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_pins.py#L160)[#](#scikitplot.cython.pin "Link to this definition")
 :   Pin a cache key under a human-friendly alias.
 
     Parameters:
@@ -28,11 +28,23 @@ scikitplot.cython.pin(**key**, **\***, **alias**, **cache\_dir=None**, **overwri
         :   If alias/key are invalid or a collision occurs without overwrite.
 
     Parameters:
-    :   * ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****alias**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****cache\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****lock\_timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+    :   * ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****alias**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****cache\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****lock\_timeout\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
+
+[Cython quickstart: compile\_and\_load](../../auto_examples/cython/plot_00_quickstart_compile_and_load.html)
+
+Cython quickstart: compile\_and\_load![](../../_images/sphx_glr_plot_04_pin_alias_thumb.png)
+
+[Pin/Alias: stable handles for cached builds](../../auto_examples/cython/plot_04_pin_alias.html)
+
+Pin/Alias: stable handles for cached builds

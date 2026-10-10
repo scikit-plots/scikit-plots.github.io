@@ -1,6 +1,6 @@
 # register\_stemmer[#](#register-stemmer "Link to this heading")
 
-scikitplot.corpus.register\_stemmer(**name**, **stemmer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L789)[#](#scikitplot.corpus.register_stemmer "Link to this definition")
+scikitplot.corpus.register\_stemmer(**name**, **stemmer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L789)[#](#scikitplot.corpus.register_stemmer "Link to this definition")
 :   Register a named [`StemmerProtocol`](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus.StemmerProtocol") implementation.
 
     Parameters:
@@ -11,7 +11,7 @@ scikitplot.corpus.register\_stemmer(**name**, **stemmer**)[[source]](https://git
         :   Stemmer instance.
 
     Parameters:
-    :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****stemmer**** ([**StemmerProtocol**](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol"))
 
     Return type:

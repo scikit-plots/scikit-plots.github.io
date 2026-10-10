@@ -1,6 +1,6 @@
 # ComponentRegistry[#](#componentregistry "Link to this heading")
 
-class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L102)[#](#scikitplot.corpus.ComponentRegistry "Link to this definition")
+class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L103)[#](#scikitplot.corpus.ComponentRegistry "Link to this definition")
 :   Central look-up table for corpus pipeline components.
 
     Stores class references (not instances) for four component types:
@@ -25,7 +25,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
     ```
     Go BackOpen In Tab
 
-    build\_chunker(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L470)[#](#scikitplot.corpus.ComponentRegistry.build_chunker "Link to this definition")
+    build\_chunker(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L471)[#](#scikitplot.corpus.ComponentRegistry.build_chunker "Link to this definition")
     :   Instantiate the chunker registered under `name`.
 
         Parameters:
@@ -43,11 +43,11 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If `name` is not registered.
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
         Examples
 
@@ -58,7 +58,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         ```
         Go BackOpen In Tab
 
-    build\_filter(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L496)[#](#scikitplot.corpus.ComponentRegistry.build_filter "Link to this definition")
+    build\_filter(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L497)[#](#scikitplot.corpus.ComponentRegistry.build_filter "Link to this definition")
     :   Instantiate the filter registered under `name`.
 
         Parameters:
@@ -71,13 +71,13 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         :   FilterBase instance
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    build\_normalizer(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L511)[#](#scikitplot.corpus.ComponentRegistry.build_normalizer "Link to this definition")
+    build\_normalizer(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L512)[#](#scikitplot.corpus.ComponentRegistry.build_normalizer "Link to this definition")
     :   Instantiate the normalizer registered under `name`.
 
         Parameters:
@@ -90,13 +90,13 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         :   NormalizerBase instance
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    get\_chunker(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L263)[#](#scikitplot.corpus.ComponentRegistry.get_chunker "Link to this definition")
+    get\_chunker(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L264)[#](#scikitplot.corpus.ComponentRegistry.get_chunker "Link to this definition")
     :   Return the chunker class registered under `name`.
 
         Parameters:
@@ -112,12 +112,12 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If `name` is not registered.
 
         Parameters:
-        :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
+        :   [type](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)")
 
-    get\_filter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L320)[#](#scikitplot.corpus.ComponentRegistry.get_filter "Link to this definition")
+    get\_filter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L321)[#](#scikitplot.corpus.ComponentRegistry.get_filter "Link to this definition")
     :   Return the filter class registered under `name`.
 
         Parameters:
@@ -131,12 +131,12 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If `name` is not registered.
 
         Parameters:
-        :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
+        :   [type](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)")
 
-    get\_normalizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L437)[#](#scikitplot.corpus.ComponentRegistry.get_normalizer "Link to this definition")
+    get\_normalizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L438)[#](#scikitplot.corpus.ComponentRegistry.get_normalizer "Link to this definition")
     :   Return the normalizer class registered under `name`.
 
         Parameters:
@@ -150,12 +150,12 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If `name` is not registered.
 
         Parameters:
-        :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
+        :   [type](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)")
 
-    get\_reader(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L379)[#](#scikitplot.corpus.ComponentRegistry.get_reader "Link to this definition")
+    get\_reader(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L380)[#](#scikitplot.corpus.ComponentRegistry.get_reader "Link to this definition")
     :   Return the reader class registered under `name`.
 
         Parameters:
@@ -169,36 +169,36 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If `name` is not registered.
 
         Parameters:
-        :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [type](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")
+        :   [type](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)")
 
-    list\_chunkers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L290)[#](#scikitplot.corpus.ComponentRegistry.list_chunkers "Link to this definition")
+    list\_chunkers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L291)[#](#scikitplot.corpus.ComponentRegistry.list_chunkers "Link to this definition")
     :   Return sorted list of registered chunker names.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    list\_filters()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L345)[#](#scikitplot.corpus.ComponentRegistry.list_filters "Link to this definition")
+    list\_filters()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L346)[#](#scikitplot.corpus.ComponentRegistry.list_filters "Link to this definition")
     :   Return sorted list of registered filter names.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    list\_normalizers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L462)[#](#scikitplot.corpus.ComponentRegistry.list_normalizers "Link to this definition")
+    list\_normalizers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L463)[#](#scikitplot.corpus.ComponentRegistry.list_normalizers "Link to this definition")
     :   Return sorted list of registered normalizer names.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    list\_readers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L404)[#](#scikitplot.corpus.ComponentRegistry.list_readers "Link to this definition")
+    list\_readers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L405)[#](#scikitplot.corpus.ComponentRegistry.list_readers "Link to this definition")
     :   Return sorted list of registered reader names / extensions.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    classmethod load\_from\_snapshot(**snapshot**, **\***, **allowed\_module\_prefixes='scikitplot.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L551)[#](#scikitplot.corpus.ComponentRegistry.load_from_snapshot "Link to this definition")
+    classmethod load\_from\_snapshot(**snapshot**, **\***, **allowed\_module\_prefixes='scikitplot.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L552)[#](#scikitplot.corpus.ComponentRegistry.load_from_snapshot "Link to this definition")
     :   Reconstruct a registry from a snapshot.
 
         Parameters:
@@ -225,13 +225,13 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If resolved class does not match expected base type.
 
         Parameters:
-        :   * ****snapshot**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-            * ****allowed\_module\_prefixes**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        :   * ****snapshot**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+            * ****allowed\_module\_prefixes**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
         :   [**ComponentRegistry**](#scikitplot.corpus.ComponentRegistry "scikitplot.corpus._registry._registry.ComponentRegistry")
 
-    register\_builtins()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L144)[#](#scikitplot.corpus.ComponentRegistry.register_builtins "Link to this definition")
+    register\_builtins()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L145)[#](#scikitplot.corpus.ComponentRegistry.register_builtins "Link to this definition")
     :   Register all built-in corpus pipeline components.
 
         Safe to call multiple times — subsequent calls are no-ops.
@@ -247,7 +247,7 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    register\_chunker(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L230)[#](#scikitplot.corpus.ComponentRegistry.register_chunker "Link to this definition")
+    register\_chunker(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L231)[#](#scikitplot.corpus.ComponentRegistry.register_chunker "Link to this definition")
     :   Register a chunker class under `name`.
 
         Parameters:
@@ -270,14 +270,14 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   If `cls` is not a type.
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****cls**** ([**type**](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)"))
-            * ****replace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****cls**** ([**type**](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)"))
+            * ****replace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   None
 
-    register\_filter(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L298)[#](#scikitplot.corpus.ComponentRegistry.register_filter "Link to this definition")
+    register\_filter(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L299)[#](#scikitplot.corpus.ComponentRegistry.register_filter "Link to this definition")
     :   Register a filter class under `name`.
 
         Parameters:
@@ -289,14 +289,14 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
                 [`FilterBase`](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase").
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****cls**** ([**type**](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)"))
-            * ****replace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****cls**** ([**type**](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)"))
+            * ****replace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   None
 
-    register\_normalizer(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L412)[#](#scikitplot.corpus.ComponentRegistry.register_normalizer "Link to this definition")
+    register\_normalizer(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L413)[#](#scikitplot.corpus.ComponentRegistry.register_normalizer "Link to this definition")
     :   Register a normalizer class under `name`.
 
         Parameters:
@@ -311,14 +311,14 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   False
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****cls**** ([**type**](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)"))
-            * ****replace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****cls**** ([**type**](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)"))
+            * ****replace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   None
 
-    register\_reader(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L353)[#](#scikitplot.corpus.ComponentRegistry.register_reader "Link to this definition")
+    register\_reader(**name**, **cls**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L354)[#](#scikitplot.corpus.ComponentRegistry.register_reader "Link to this definition")
     :   Register a reader class under `name` (typically a file extension).
 
         Parameters:
@@ -334,14 +334,14 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
             :   False
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****cls**** ([**type**](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)"))
-            * ****replace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****cls**** ([**type**](https://docs.python.org/3/builtins/functions.html#type "(in Python v3.15)"))
+            * ****replace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   None
 
-    snapshot()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_registry/_registry.py#L530)[#](#scikitplot.corpus.ComponentRegistry.snapshot "Link to this definition")
+    snapshot()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_registry/_registry.py#L531)[#](#scikitplot.corpus.ComponentRegistry.snapshot "Link to this definition")
     :   Return a JSON-safe snapshot of all registered components.
 
         Returns:
@@ -350,4 +350,4 @@ class scikitplot.corpus.ComponentRegistry[[source]](https://github.com/scikit-pl
                 `"normalizers"`. Values: dicts mapping name → class qualname.
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]

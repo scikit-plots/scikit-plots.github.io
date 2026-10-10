@@ -236,8 +236,8 @@ can help them select customers for their term deposit campaign.
  .. code-block:: none
 
     Default scope value no_comparison selected, single evaluation line will be plotted.
-    The label with smallest class is term deposit
-    Target class term deposit, dataset test_data and model random_forest.
+    The label with smallest class is yes
+    Target class yes, dataset test_data and model random_forest.
 
 
 
@@ -302,7 +302,7 @@ what % of the actual target class observations can we expect to target?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_001.png
-   :alt: Cumulative gains, model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Cumulative gains, model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_001.png
    :class: sphx-glr-single-img
 
@@ -312,7 +312,7 @@ what % of the actual target class observations can we expect to target?
  .. code-block:: none
 
     When we select 30 with the highest probability according to model random_forest, this selection holds 93% of
-    all term deposit cases in dataset test_data.
+    all yes cases in dataset test_data.
 
 
 
@@ -349,7 +349,7 @@ how many times better is that than using no model at all?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_002.png
-   :alt: Cumulative lift, model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Cumulative lift, model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_002.png
    :class: sphx-glr-single-img
 
@@ -359,7 +359,7 @@ how many times better is that than using no model at all?
  .. code-block:: none
 
     When we select 30 with the highest probability according to model random_forest in dataset test_data,
-    this selection for target class term deposit is 3.13 times than selecting without a model.
+    this selection for target class yes is 3.13 times than selecting without a model.
 
 
 
@@ -400,7 +400,7 @@ what is the expected % of target class observations in that decile?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_003.png
-   :alt: Response, model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Response, model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_003.png
    :class: sphx-glr-single-img
 
@@ -409,7 +409,7 @@ what is the expected % of target class observations in that decile?
 
  .. code-block:: none
 
-    When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 13% .
+    When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 13% .
 
 
 
@@ -437,7 +437,7 @@ what is the expected % of target class observations in the selection?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_004.png
-   :alt: Cumulative response, model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Cumulative response, model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_004.png
    :class: sphx-glr-single-img
 
@@ -446,7 +446,7 @@ what is the expected % of target class observations in the selection?
 
  .. code-block:: none
 
-    When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35% .
+    When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 35% .
 
 
 
@@ -477,7 +477,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_005.png
-   :alt: model: random_forest & dataset: test_data & target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response
+   :alt: model: random_forest & dataset: test_data & target class: yes, Cumulative gains, Cumulative lift, Response, Cumulative response
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_005.png
    :class: sphx-glr-single-img
 
@@ -532,7 +532,7 @@ what is the expected % return on investment of the campaign?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_006.png
-   :alt: Return on Investment (ROI), model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Return on Investment (ROI), model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_006.png
    :class: sphx-glr-single-img
 
@@ -541,7 +541,7 @@ what is the expected % return on investment of the campaign?
 
  .. code-block:: none
 
-    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected roi is 70.
+    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the expected roi is 70.
 
 
 
@@ -578,7 +578,7 @@ what are the expected revenues and investments of the campaign?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_007.png
-   :alt: Costs / Revenues, model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Costs / Revenues, model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_007.png
    :class: sphx-glr-single-img
 
@@ -587,7 +587,7 @@ what are the expected revenues and investments of the campaign?
 
  .. code-block:: none
 
-    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the revenue is 64950.
+    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the revenue is 64950.
 
 
 
@@ -623,7 +623,7 @@ what is the expected profit of the campaign?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_008.png
-   :alt: Profit, model: random_forest & dataset: test_data & target class: term deposit
+   :alt: Profit, model: random_forest & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_008.png
    :class: sphx-glr-single-img
 
@@ -632,7 +632,7 @@ what is the expected profit of the campaign?
 
  .. code-block:: none
 
-    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected profit is 26880.
+    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the expected profit is 26880.
 
 
 
@@ -667,7 +667,7 @@ was indeed the best choice to select the top-30% customers for a term deposit of
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_009.png
-   :alt: Cumulative response, Scope: comparing models & dataset: test_data & target class: term deposit
+   :alt: Cumulative response, Scope: comparing models & dataset: test_data & target class: yes
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_009.png
    :class: sphx-glr-single-img
 
@@ -677,9 +677,9 @@ was indeed the best choice to select the top-30% customers for a term deposit of
  .. code-block:: none
 
     compare models
-    The label with smallest class is ['term deposit']
-    When we select decile 3 from model multinomial_logit in dataset test_data the percentage of term deposit cases in the selection is 33% .
-    When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35% .
+    The label with smallest class is ['yes']
+    When we select decile 3 from model multinomial_logit in dataset test_data the percentage of yes cases in the selection is 33% .
+    When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 35% .
 
 
 
@@ -717,7 +717,7 @@ Happy modelplotting!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.368 seconds)
+   **Total running time of the script:** (0 minutes 9.744 seconds)
 
 
 .. _sphx_glr_download_auto_examples_decile_plot_modelplotpy_legacy_script.py:

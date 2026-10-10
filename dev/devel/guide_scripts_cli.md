@@ -13,9 +13,9 @@ single argument that holds the `sys.argv` list, except for the script name
 (e.g., `argv[1:]`). It must then be added to the list of entry points in the
 `setup.py` file (see the example below).
 
-Command-line options can be parsed however desired, but the [`argparse`](https://docs.python.org/3/library/argparse.html#module-argparse "(in Python v3.14)")
+Command-line options can be parsed however desired, but the [`argparse`](https://docs.python.org/3/library/argparse.html#module-argparse "(in Python v3.15)")
 module is recommended when possible, due to its simpler and more flexible
-interface relative to the older [`optparse`](https://docs.python.org/3/library/optparse.html#module-optparse "(in Python v3.14)").
+interface relative to the older [`optparse`](https://docs.python.org/3/library/optparse.html#module-optparse "(in Python v3.15)").
 
 ## Example[#](#example "Link to this heading")
 

@@ -1,6 +1,6 @@
 # export\_builtin\_config[#](#export-builtin-config "Link to this heading")
 
-scikitplot.mlflow.export\_builtin\_config(**\***, **fmt='toml'**, **dest\_path=None**, **project\_root=None**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_workflow.py#L133)[#](#scikitplot.mlflow.export_builtin_config "Link to this definition")
+scikitplot.mlflow.export\_builtin\_config(**\***, **fmt='toml'**, **dest\_path=None**, **project\_root=None**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_workflow.py#L133)[#](#scikitplot.mlflow.export_builtin_config "Link to this definition")
 :   Export the built-in demo config into the current project.
 
     Parameters:
@@ -25,10 +25,10 @@ scikitplot.mlflow.export\_builtin\_config(**\***, **fmt='toml'**, **dest\_path=N
         :   If destination exists and overwrite is False.
 
     Parameters:
-    :   * ****fmt**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****dest\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****fmt**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****dest\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")

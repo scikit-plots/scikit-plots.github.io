@@ -1,6 +1,6 @@
 # builtin\_config\_path[#](#builtin-config-path "Link to this heading")
 
-scikitplot.mlflow.builtin\_config\_path(**fmt='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_workflow.py#L78)[#](#scikitplot.mlflow.builtin_config_path "Link to this definition")
+scikitplot.mlflow.builtin\_config\_path(**fmt='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_workflow.py#L78)[#](#scikitplot.mlflow.builtin_config_path "Link to this definition")
 :   Return the path to the built-in demo config shipped with the package.
 
     Parameters:
@@ -19,7 +19,7 @@ scikitplot.mlflow.builtin\_config\_path(**fmt='toml'**)[[source]](https://github
         :   If the built-in config file is missing (packaging error).
 
     Parameters:
-    :   ****fmt**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****fmt**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")

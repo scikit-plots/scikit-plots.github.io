@@ -1,6 +1,6 @@
 # read\_template\_info[#](#read-template-info "Link to this heading")
 
-scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf-8'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L272)[#](#scikitplot.cython.read_template_info "Link to this definition")
+scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf-8'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L269)[#](#scikitplot.cython.read_template_info "Link to this definition")
 :   Read metadata for a template and return a [`TemplateInfo`](scikitplot.cython.TemplateInfo.html#scikitplot.cython.TemplateInfo "scikitplot.cython.TemplateInfo").
 
     Parameters:
@@ -26,9 +26,9 @@ scikitplot.cython.read\_template\_info(**template\_id**, **\***, **encoding='utf
         :   If a metadata file exists but is invalid JSON or invalid shape.
 
     Parameters:
-    :   * ****template\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****encoding**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****template\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****encoding**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   [**TemplateInfo**](scikitplot.cython.TemplateInfo.html#scikitplot.cython.TemplateInfo "scikitplot.cython._templates_api.TemplateInfo")

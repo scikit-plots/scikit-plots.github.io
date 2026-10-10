@@ -153,37 +153,37 @@ for method in ["random", "uniform"]:
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.003774994000195875,
- 'time_mean': 0.00378155139987939,
- 'time_max': 0.003786363999097375,
- 'time_std': 5.0190944070638e-06,
+ 'time_min': 0.003702687999975751,
+ 'time_mean': 0.003719373999774689,
+ 'time_max': 0.0037470649995157146,
+ 'time_std': 1.819378370264651e-05,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.01033129999996163,
- 'time_mean': 0.010407990599924232,
- 'time_max': 0.010519904000830138,
- 'time_std': 8.103905082477781e-05,
+ 'time_min': 0.00957093499982875,
+ 'time_mean': 0.009777135600052134,
+ 'time_max': 0.010093497000525531,
+ 'time_std': 0.000196895122706402,
  'output_mean': 0.4994983951235816,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.004889810999884503,
- 'time_mean': 0.0052095984003244665,
- 'time_max': 0.005840331999934278,
- 'time_std': 0.00039284142507769646,
+ 'time_min': 0.0048086960005093715,
+ 'time_mean': 0.004830752000270877,
+ 'time_max': 0.004850811999858706,
+ 'time_std': 1.7339400325035658e-05,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.012939345000631874,
- 'time_mean': 0.01388220340013504,
- 'time_max': 0.014918553999450523,
- 'time_std': 0.0009002797136406369,
+ 'time_min': 0.011959565999859478,
+ 'time_mean': 0.012056640799892193,
+ 'time_max': 0.012222119999933057,
+ 'time_std': 0.00012875892753115253,
  'output_mean': 0.4994983951235816,
  'output_std': 0.28868033687878636}
 
@@ -404,13 +404,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.76000243 0.02051705 0.77211906 0.25177999 0.7835585 ]
-  integers(0, 100):  [31 13  4 14 71]
-  normal(0, 1):      [-0.27967623 -0.75718921  0.3869079   1.08834878  0.68942753]
-  uniform(10, 20):   [19.86446268 13.3439009  16.79542619 11.85980704 10.78092508]
-  choice(['A','B','C']): ['A' 'C' 'A' 'A' 'B' 'C' 'A' 'A' 'C' 'C']
-  Weighted choice A: 50% (✅ expected ~50%)
-  shuffle([0..9]):   [4 9 8 7 3 0 6 1 2 5]
+  random(5):         [0.63069258 0.01223361 0.63681515 0.74134666 0.53663604]
+  integers(0, 100):  [88 37 82 69 78]
+  normal(0, 1):      [-1.88252611  0.9364274   1.87964717 -1.34855233  0.27573708]
+  uniform(10, 20):   [18.0166309  18.20923563 15.38188855 10.83479025 15.04632177]
+  choice(['A','B','C']): ['C' 'C' 'C' 'A' 'B' 'A' 'B' 'B' 'B' 'B']
+  Weighted choice A: 43% (✅ expected ~50%)
+  shuffle([0..9]):   [5 8 0 1 6 4 3 2 7 9]
 
 ```
 ```
@@ -681,8 +681,8 @@ print(f"Beta(2, 5):           {beta_samples}")
 ======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [1.01947213 1.04894168 2.41444464 1.44645286 1.2019841 ]
-Beta(2, 5):           [0.48879872 0.15928688 0.20368866 0.27790687 0.30479749]
+Exponential(scale=2): [2.99181254 1.14760452 1.65780557 0.99972048 0.53419863]
+Beta(2, 5):           [0.30444403 0.06532269 0.68576174 0.44031146 0.40673686]
 
 ```
 ```
@@ -927,9 +927,9 @@ RECOMMENDED USAGE:
 
 ```
 
-****Total running time of the script:**** (0 minutes 2.559 seconds)
+****Total running time of the script:**** (0 minutes 2.328 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo14.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo14.svg)](../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb)
+[![Launch binder](../../_images/binder_badge_logo16.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo16.svg)](../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb)
 
 [`Download Jupyter notebook: plot_kiss_random.ipynb`](../../_downloads/ce3f634011a2324c237757c468b6c928/plot_kiss_random.ipynb)
 
@@ -943,18 +943,18 @@ Related examples
 
 [Memory-Mapping Showcase – Basic / Medium / Advanced](../memmap/plot_mman.html)
 
-Memory-Mapping Showcase – Basic / Medium / Advanced![](../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png)
+Memory-Mapping Showcase – Basic / Medium / Advanced![](../../_images/sphx_glr_plot_precision_script_thumb.png)
 
-[Comparing DummyCode Encoder with Other Encoders](../preprocessing/plot_dummy_code_encoder.html)
+[Precision annoy.AnnoyIndex with examples](../annoy/plot_precision_script.html)
 
-Comparing DummyCode Encoder with Other Encoders![](../../_images/sphx_glr_plot_gaussian_mixture_models_thumb.png)
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+
+[Mmap annoy.AnnoyIndex with examples](../annoy/plot_mmap_script.html)
+
+Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_gaussian_mixture_models_thumb.png)
 
 [Gaussian Mixture Models — AIC, AICc, and BIC Model Selection](../stats/plot_gaussian_mixture_models.html)
 
-Gaussian Mixture Models — AIC, AICc, and BIC Model Selection![](../../_images/sphx_glr_plot_07_cpp_mode_basics_thumb.png)
-
-[C++ mode basics: cppclass and libcpp containers](../cython/plot_07_cpp_mode_basics.html)
-
-C++ mode basics: cppclass and libcpp containers
+Gaussian Mixture Models — AIC, AICc, and BIC Model Selection
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

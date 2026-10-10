@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_base.py#L77)[#](#scikitplot.annoy.Index "Link to this definition")
+class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_base.py#L78)[#](#scikitplot.annoy.Index "Link to this definition")
 :   High-level ANNoy index composed from mixins.
 
     Parameters:
@@ -16,7 +16,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             If None, behavior depends on `f`:
 
             * If `f > 0`: defaults to `'angular'` (legacy behavior; may emit a
-              [`FutureWarning`](https://docs.python.org/3/library/exceptions.html#FutureWarning "(in Python v3.14)")).
+              [`FutureWarning`](https://docs.python.org/3/builtins/exceptions.html#FutureWarning "(in Python v3.15)")).
             * If `f == 0`: leaves the metric unset (lazy). You may set
               [`metric`](#scikitplot.annoy.Index.metric "scikitplot.annoy.Index.metric") later before construction, or it will default to
               `'angular'` on first [`add_item`](#scikitplot.annoy.Index.add_item "scikitplot.annoy.Index.add_item").
@@ -45,7 +45,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         :   Non-negative integer seed. If set before the index is constructed,
             the seed is stored and applied when the C++ index is created.
             Seed value `0` is treated as “use Annoy’s deterministic default seed”
-            (a [`UserWarning`](https://docs.python.org/3/library/exceptions.html#UserWarning "(in Python v3.14)") is emitted when `0` is explicitly provided).
+            (a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)") is emitted when `0` is explicitly provided).
 
         ****verbose****int or None, optional, default=None
         :   Verbosity level. Values are clamped to the range `[-2, 2]`.
@@ -177,7 +177,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    add\_items(**X**, **ids=None**, **\***, **start\_id=None**, **accept\_sparse='error'**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **order='C'**, **check\_unique\_ids=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_ndarray.py#L376)[#](#scikitplot.annoy.Index.add_items "Link to this definition")
+    add\_items(**X**, **ids=None**, **\***, **start\_id=None**, **accept\_sparse='error'**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **order='C'**, **check\_unique\_ids=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_ndarray.py#L376)[#](#scikitplot.annoy.Index.add_items "Link to this definition")
     :   Add many vectors to the index.
 
         Parameters:
@@ -227,15 +227,15 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
                 invalid, or finiteness policy is violated.
 
         Parameters:
-        :   * ****X**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****start\_id**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****accept\_sparse**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'error'****,** **'toarray'****]**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****order**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'C'****,** **'F'****,** **'A'****,** **'K'****]**)
-            * ****check\_unique\_ids**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****X**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****start\_id**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****accept\_sparse**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'error'****,** **'toarray'****]**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****order**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'C'****,** **'F'****,** **'A'****,** **'K'****]**)
+            * ****check\_unique\_ids**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
@@ -337,7 +337,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    property compress\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['zlib', 'gzip'] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy.Index.compress_mode "Link to this definition")
+    property compress\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['zlib', 'gzip'] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy.Index.compress_mode "Link to this definition")
     :   Compression used for `"byte"` pickling by [`PickleMixin`](scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin").
 
     deserialize(**byte**, **prefault=None**)[#](#scikitplot.annoy.Index.deserialize "Link to this definition")
@@ -555,7 +555,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L316)[#](#scikitplot.annoy.Index.from_bytes "Link to this definition")
+    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L626)[#](#scikitplot.annoy.Index.from_bytes "Link to this definition")
     :   Construct a new index and load it from serialized bytes.
 
         Parameters:
@@ -586,10 +586,10 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If the backend does not provide `deserialize`.
 
         Parameters:
-        :   * ****data**** ([**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)") **|** [**bytearray**](https://docs.python.org/3/library/stdtypes.html#bytearray "(in Python v3.14)") **|** [**memoryview**](https://docs.python.org/3/library/stdtypes.html#memoryview "(in Python v3.14)"))
-            * ****f**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****metric**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****data**** ([**bytes**](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)") **|** [**bytearray**](https://docs.python.org/3/builtins/stdtypes.html#bytearray "(in Python v3.15)") **|** [**memoryview**](https://docs.python.org/3/builtins/stdtypes.html#memoryview "(in Python v3.15)"))
+            * ****f**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****metric**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
@@ -603,17 +603,17 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         For `data` if fed `to_bytes(format='native') required params
         ``f``, `metric`.
 
-    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L425)[#](#scikitplot.annoy.Index.from_json "Link to this definition")
+    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L434)[#](#scikitplot.annoy.Index.from_json "Link to this definition")
     :   Load metadata from JSON and construct an index.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****load**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    classmethod from\_low\_level(**obj**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_base.py#L270)[#](#scikitplot.annoy.Index.from_low_level "Link to this definition")
+    classmethod from\_low\_level(**obj**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_base.py#L281)[#](#scikitplot.annoy.Index.from_low_level "Link to this definition")
     :   Create a new [`Index`](#scikitplot.annoy.Index "scikitplot.annoy.Index") from a low-level instance.
 
         The new object is rebuilt by round-tripping through Annoy’s native
@@ -643,7 +643,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         Parameters:
         :   * ****obj**** ([**Annoy**](scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy "scikitplot.annoy.Annoy"))
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
@@ -668,7 +668,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         This method is deterministic. It always constructs a new index from the
         serialized payload; it does not share low-level state between objects.
 
-    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L256)[#](#scikitplot.annoy.Index.from_metadata "Link to this definition")
+    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L256)[#](#scikitplot.annoy.Index.from_metadata "Link to this definition")
     :   Construct an index from a metadata payload.
 
         Parameters:
@@ -697,11 +697,11 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If backend `set_params`/`load` are missing when required.
 
         Parameters:
-        :   * ****metadata**** ([**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **any****]**)
-            * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****metadata**** ([**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **any****]**)
+            * ****load**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
         > **See also**
         > [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata")
@@ -712,17 +712,17 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         [`from_yaml`](#scikitplot.annoy.Index.from_yaml "scikitplot.annoy.Index.from_yaml")
 
-    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L459)[#](#scikitplot.annoy.Index.from_yaml "Link to this definition")
+    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L468)[#](#scikitplot.annoy.Index.from_yaml "Link to this definition")
     :   Load metadata from YAML and construct an index (requires PyYAML).
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****load**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    get\_distance(**i**, **j**) → [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[#](#scikitplot.annoy.Index.get_distance "Link to this definition")
+    get\_distance(**i**, **j**) → [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[#](#scikitplot.annoy.Index.get_distance "Link to this definition")
     :   Return the distance between two stored items.
 
         Parameters:
@@ -761,7 +761,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If `input_features` is provided but does not match
                 [`feature_names_in_`](#scikitplot.annoy.Index.feature_names_in_ "scikitplot.annoy.Index.feature_names_in_").
 
-    get\_item(**i**) → [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")][#](#scikitplot.annoy.Index.get_item "Link to this definition")
+    get\_item(**i**) → [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")][#](#scikitplot.annoy.Index.get_item "Link to this definition")
     :   Return the stored embedding vector for a given item id.
 
         Parameters:
@@ -779,7 +779,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             IndexError
             :   If `i` is out of range.
 
-    get\_item\_vectors(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **return\_ids=False**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_ndarray.py#L509)[#](#scikitplot.annoy.Index.get_item_vectors "Link to this definition")
+    get\_item\_vectors(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **return\_ids=False**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_ndarray.py#L509)[#](#scikitplot.annoy.Index.get_item_vectors "Link to this definition")
     :   Fetch many vectors as a dense NumPy array.
 
         Parameters:
@@ -816,16 +816,16 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If `ids` is a non-sized iterable and `n_rows` is not provided.
 
         Parameters:
-        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****start**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****stop**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****n\_rows**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****return\_ids**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****start**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****stop**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****n\_rows**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****return\_ids**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`to_numpy`](#scikitplot.annoy.Index.to_numpy "scikitplot.annoy.Index.to_numpy")
@@ -834,7 +834,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`iter_item_vectors`](#scikitplot.annoy.Index.iter_item_vectors "scikitplot.annoy.Index.iter_item_vectors")
         :   Streaming export without allocating a dense matrix.
 
-    get\_n\_items() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.annoy.Index.get_n_items "Link to this definition")
+    get\_n\_items() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.annoy.Index.get_n_items "Link to this definition")
     :   Return the number of stored items in the index.
 
         Returns:
@@ -845,7 +845,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         :   RuntimeError
             :   If the index is not initialized.
 
-    get\_n\_trees() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.annoy.Index.get_n_trees "Link to this definition")
+    get\_n\_trees() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.annoy.Index.get_n_trees "Link to this definition")
     :   Return the number of trees in the current forest.
 
         Returns:
@@ -926,7 +926,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         > [`get_nns_by_item`](#scikitplot.annoy.Index.get_nns_by_item "scikitplot.annoy.Index.get_nns_by_item")
         :   Query by stored item id.
 
-    get\_params(**deep=True**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.annoy.Index.get_params "Link to this definition")
+    get\_params(**deep=True**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.annoy.Index.get_params "Link to this definition")
     :   Return estimator-style parameters (scikit-learn compatibility).
 
         Parameters:
@@ -950,7 +950,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         This is intended to make Annoy behave like a scikit-learn estimator for
         tools such as [`sklearn.base.clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.10)") and parameter grids.
 
-    info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.annoy.Index.info "Link to this definition")
+    info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.annoy.Index.info "Link to this definition")
     :   Return a structured summary of the index.
 
         This method returns a JSON-like Python dictionary that is easier to
@@ -1043,7 +1043,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    iter\_item\_vectors(**ids=None**, **\***, **start=0**, **stop=None**, **with\_ids=True**, **dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_ndarray.py#L605)[#](#scikitplot.annoy.Index.iter_item_vectors "Link to this definition")
+    iter\_item\_vectors(**ids=None**, **\***, **start=0**, **stop=None**, **with\_ids=True**, **dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_ndarray.py#L605)[#](#scikitplot.annoy.Index.iter_item_vectors "Link to this definition")
     :   Iterate vectors without allocating a dense matrix.
 
         Parameters:
@@ -1061,20 +1061,20 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   Each vector is returned as a 1D NumPy array.
 
         Parameters:
-        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****start**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****stop**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****with\_ids**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
+        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****start**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****stop**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****with\_ids**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]]
+        :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]]
 
         > **See also**
         > [`get_item_vectors`](#scikitplot.annoy.Index.get_item_vectors "scikitplot.annoy.Index.get_item_vectors")
         :   Dense export.
 
-    kneighbors(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **include\_distances=True**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_vectors.py#L661)[#](#scikitplot.annoy.Index.kneighbors "Link to this definition")
+    kneighbors(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **include\_distances=True**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_vectors.py#L721)[#](#scikitplot.annoy.Index.kneighbors "Link to this definition")
     :   Find k nearest neighbors for one or more query vectors.
 
         This is a sklearn-like convenience wrapper that returns rectangular arrays.
@@ -1124,18 +1124,18 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If `n_neighbors <= 0` or any query yields too few neighbors after exclusions.
 
         Parameters:
-        :   * ****X**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****include\_distances**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
+        :   * ****X**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****include\_distances**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_vector`](#scikitplot.annoy.Index.query_by_vector "scikitplot.annoy.Index.query_by_vector")
@@ -1144,7 +1144,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`kneighbors_graph`](#scikitplot.annoy.Index.kneighbors_graph "scikitplot.annoy.Index.kneighbors_graph")
         :   CSR kNN graph.
 
-    kneighbors\_graph(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **mode='connectivity'**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='item'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_vectors.py#L769)[#](#scikitplot.annoy.Index.kneighbors_graph "Link to this definition")
+    kneighbors\_graph(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **mode='connectivity'**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='item'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_vectors.py#L829)[#](#scikitplot.annoy.Index.kneighbors_graph "Link to this definition")
     :   Compute the k-neighbors graph (CSR) for query vectors.
 
         Parameters:
@@ -1192,18 +1192,18 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If the backend returns an out-of-range neighbor id.
 
         Parameters:
-        :   * ****X**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****mode**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'connectivity'****,** **'distance'****]**)
-            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
+        :   * ****X**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****mode**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'connectivity'****,** **'distance'****]**)
+            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
         > **See also**
         > [`kneighbors`](#scikitplot.annoy.Index.kneighbors "scikitplot.annoy.Index.kneighbors")
@@ -1248,42 +1248,69 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         The in-memory index must have been constructed with the same dimension
         and metric as the on-disk file.
 
-    classmethod load\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L209)[#](#scikitplot.annoy.Index.load_bundle "Link to this definition")
-    :   Load a directory bundle created by [`save_bundle`](#scikitplot.annoy.Index.save_bundle "scikitplot.annoy.Index.save_bundle").
+    classmethod load\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L481)[#](#scikitplot.annoy.Index.load_bundle "Link to this definition")
+    :   Load a bundle published by [`save_bundle`](#scikitplot.annoy.Index.save_bundle "scikitplot.annoy.Index.save_bundle").
 
         Parameters:
-        :   ****manifest\_filename****
-            :   Filename for the metadata manifest inside the directory.
+        :   ****directory****str or path-like
+            :   Bundle directory.
 
-            ****index\_filename****
-            :   Filename for the Annoy index inside the directory.
+            ****manifest\_filename****str, optional
+            :   Name of the manifest inside the bundle.
 
-            ****prefault****
+            ****index\_filename****str or None, optional
+            :   Name of the index member inside the bundle. `None` (the
+                default) takes the name the manifest records, which is the one the
+                bundle was saved with; a bundle whose manifest records none has
+                `index.ann`.
+
+            ****prefault****bool or None, optional
             :   Forwarded to [`load_index`](#scikitplot.annoy.Index.load_index "scikitplot.annoy.Index.load_index").
 
         Returns:
-        :   index
-            :   Newly constructed index.
+        :   Self
+            :   An index with its vectors loaded and ready to query.
 
         Raises:
-        :   TypeError
-            :   If [`from_json`](#scikitplot.annoy.Index.from_json "scikitplot.annoy.Index.from_json") is not available (compose with [`MetaMixin`](scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy._mixins._meta.MetaMixin")).
+        :   OSError
+            :   If a member is missing or unreadable.
+
+            ValueError
+            :   If a member name is not a plain file name, or the manifest is of
+                a bundle format this version does not read.
 
             TypeError
-            :   If [`from_json`](#scikitplot.annoy.Index.from_json "scikitplot.annoy.Index.from_json") returns an unexpected type.
-
-            OSError
-            :   On filesystem failures.
+            :   If the manifest is not a JSON object.
 
         Parameters:
-        :   * ****manifest\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****index\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****directory**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**os.PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****manifest\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****index\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
 
-    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L109)[#](#scikitplot.annoy.Index.load_index "Link to this definition")
+        Notes
+
+        ****User.**** A bundle is loaded from where it is. Nothing in the manifest
+        can make this method read a file outside `directory`.
+
+        ****Developer.**** This previously did not load the index at all: the
+        `load_index` call was commented out and both `index_filename` and
+        `prefault` were marked unused, so the vectors arrived only as a side
+        effect of the manifest carrying an absolute path recorded at save time.
+        A bundle that had been moved therefore failed, and naming a different
+        index file had no effect whatsoever. Members are now resolved relative
+        to the bundle, which is what makes it relocatable, and the index is
+        loaded here rather than by accident.
+
+        The manifest is read once, as data. Its description of the index
+        (dimension, metric, parameters) goes through `from_metadata` with
+        `load=False`, so a location recorded by an older writer is never
+        opened; such a location is reported at INFO and otherwise ignored.
+
+    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L256)[#](#scikitplot.annoy.Index.load_index "Link to this definition")
     :   Load (mmap) an Annoy index file into this object.
 
         Parameters:
@@ -1308,15 +1335,15 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If loading fails (backend or filesystem).
 
         Parameters:
-        :   * ****f**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****metric**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **PathLike****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****f**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****metric**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **PathLike****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
 
-    memory\_usage() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.annoy.Index.memory_usage "Link to this definition")
+    memory\_usage() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.annoy.Index.memory_usage "Link to this definition")
     :   Approximate memory usage of the index in bytes.
 
         Returns:
@@ -1439,10 +1466,10 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         * Clearing/changing this while an on-disk index is active is disallowed.
           Call [`unload`](#scikitplot.annoy.Index.unload "scikitplot.annoy.Index.unload") first.
 
-    property pickle\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['auto', 'disk', 'byte'][#](#scikitplot.annoy.Index.pickle_mode "Link to this definition")
+    property pickle\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['auto', 'disk', 'byte'][#](#scikitplot.annoy.Index.pickle_mode "Link to this definition")
     :   Persist strategy used by [`PickleMixin`](scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin").
 
-    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.Index.plot_index "Link to this definition")
+    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.Index.plot_index "Link to this definition")
     :   Plot this index as a 2D scatter plot.
 
         This is a thin wrapper around `plot_annoy_index` that uses
@@ -1457,20 +1484,20 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   See `plot_annoy_index`.
 
         Parameters:
-        :   * ****labels**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****projection**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****dims**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]**)
-            * ****center**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****maxabs**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****l2\_normalize**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****plot\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****labels**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****projection**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****dims**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]**)
+            * ****center**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****maxabs**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****l2\_normalize**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****plot\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
         > **See also**
         > `plot_annoy_index`
@@ -1501,7 +1528,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.Index.plot_knn_edges "Link to this definition")
+    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.Index.plot_knn_edges "Link to this definition")
     :   Overlay kNN edges onto an existing 2D index plot.
 
         This is a thin wrapper around `plot_annoy_knn_edges` that uses
@@ -1517,15 +1544,15 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         Parameters:
         :   * ****y2**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
-            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****line\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-            * ****undirected**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****line\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****undirected**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
         > **See also**
         > `plot_annoy_knn_edges`
@@ -1566,7 +1593,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         * This flag does not retroactively change already-loaded mappings.
 
-    query\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_vectors.py#L291)[#](#scikitplot.annoy.Index.query_by_item "Link to this definition")
+    query\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_vectors.py#L351)[#](#scikitplot.annoy.Index.query_by_item "Link to this definition")
     :   Query neighbors by stored item id.
 
         Parameters:
@@ -1609,17 +1636,17 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If `n_neighbors <= 0` or not enough neighbors remain after exclusions.
 
         Parameters:
-        :   * ****item**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****include\_distances**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****item**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****include\_distances**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_vector`](#scikitplot.annoy.Index.query_by_vector "scikitplot.annoy.Index.query_by_vector")
@@ -1632,7 +1659,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         Exclusions are applied deterministically in the order returned by the backend.
 
-    query\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_vectors.py#L472)[#](#scikitplot.annoy.Index.query_by_vector "Link to this definition")
+    query\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_vectors.py#L532)[#](#scikitplot.annoy.Index.query_by_vector "Link to this definition")
     :   Query neighbors by an explicit vector.
 
         Parameters:
@@ -1678,17 +1705,17 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
                 enough neighbors remain after exclusions.
 
         Parameters:
-        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****include\_distances**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****include\_distances**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_item`](#scikitplot.annoy.Index.query_by_item "scikitplot.annoy.Index.query_by_item")
@@ -1703,7 +1730,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         If `exclude_self=True` and no exact `0.0` distance candidate is returned
         in the first position, no additional self-exclusion is applied.
 
-    query\_vectors\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_vectors.py#L400)[#](#scikitplot.annoy.Index.query_vectors_by_item "Link to this definition")
+    query\_vectors\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_vectors.py#L460)[#](#scikitplot.annoy.Index.query_vectors_by_item "Link to this definition")
     :   Query neighbor vectors by stored item id.
 
         This is a convenience wrapper over [`query_by_item`](#scikitplot.annoy.Index.query_by_item "scikitplot.annoy.Index.query_by_item") that materializes
@@ -1730,25 +1757,25 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   Returned when `include_distances=True`.
 
         Parameters:
-        :   * ****item**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****include\_distances**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
+        :   * ****item**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****include\_distances**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_vectors_by_vector`](#scikitplot.annoy.Index.query_vectors_by_vector "scikitplot.annoy.Index.query_vectors_by_vector")
         :   Vector query returning vectors (or ids).
 
-    query\_vectors\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_vectors.py#L583)[#](#scikitplot.annoy.Index.query_vectors_by_vector "Link to this definition")
+    query\_vectors\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_vectors.py#L643)[#](#scikitplot.annoy.Index.query_vectors_by_vector "Link to this definition")
     :   Query neighbor vectors by an explicit vector.
 
         Convenience wrapper over [`query_by_vector`](#scikitplot.annoy.Index.query_by_vector "scikitplot.annoy.Index.query_by_vector"). By default it returns
@@ -1776,19 +1803,19 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   Returned when `include_distances=True`.
 
         Parameters:
-        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****include\_distances**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'allow-nan'****]**)
-            * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
+        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****n\_neighbors**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****include\_distances**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_self**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****exclude\_item\_ids**** ([**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****ensure\_all\_finite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'allow-nan'****]**)
+            * ****copy**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_vectors_by_item`](#scikitplot.annoy.Index.query_vectors_by_item "scikitplot.annoy.Index.query_vectors_by_item")
@@ -1862,7 +1889,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         vectors** (e.g., you do not want to re-read or re-materialize `X`, or you loaded an
         index from disk and only have access to its stored vectors).
 
-    repr\_info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.annoy.Index.repr_info "Link to this definition")
+    repr\_info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.annoy.Index.repr_info "Link to this definition")
     :   Return a dict-like string representation with optional extra fields.
 
         Unlike `__repr__`, this method can include additional fields on demand.
@@ -1910,39 +1937,77 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         The output file will be overwritten if it already exists.
         Use prefault=None to fall back to the stored [`prefault`](#scikitplot.annoy.Index.prefault "scikitplot.annoy.Index.prefault") setting.
 
-    save\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L164)[#](#scikitplot.annoy.Index.save_bundle "Link to this definition")
-    :   Save a **directory bundle** containing metadata + the index file.
-
-        The bundle contains:
-        - `manifest.json`: metadata payload produced by [`to_json`](#scikitplot.annoy.Index.to_json "scikitplot.annoy.Index.to_json")
-        - `index.ann`: Annoy index produced by [`save_index`](#scikitplot.annoy.Index.save_index "scikitplot.annoy.Index.save_index")
+    save\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L311)[#](#scikitplot.annoy.Index.save_bundle "Link to this definition")
+    :   Publish a **directory bundle** holding the metadata and the index.
 
         Parameters:
-        :   ****manifest\_filename****
-            :   Filename for the metadata manifest inside the directory.
+        :   ****directory****str or path-like
+            :   Bundle directory. Created if absent, replaced if present.
 
-            ****index\_filename****
-            :   Filename for the Annoy index inside the directory.
+            ****manifest\_filename, index\_filename****str, optional
+            :   Member names **inside** the bundle. They are never resolved against
+                the process working directory.
 
-            ****prefault****
+            ****prefault****bool or None, optional
             :   Forwarded to [`save_index`](#scikitplot.annoy.Index.save_index "scikitplot.annoy.Index.save_index").
 
-        Raises:
-        :   TypeError
-            :   If [`to_json`](#scikitplot.annoy.Index.to_json "scikitplot.annoy.Index.to_json") is not available (compose with [`MetaMixin`](scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy._mixins._meta.MetaMixin")).
+        Returns:
+        :   list of str
+            :   Absolute paths of the published members, manifest first.
 
-            OSError
-            :   On filesystem failures.
+        Raises:
+        :   OSError
+            :   If the bundle could not be written. Nothing is published in that
+                case: a failed save leaves any previous bundle exactly as it was.
 
         Parameters:
-        :   * ****manifest\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****index\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****directory**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****manifest\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****index\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L70)[#](#scikitplot.annoy.Index.save_index "Link to this definition")
+        Notes
+
+        ****User.**** A bundle is self-contained and relocatable: move it, copy it,
+        or publish it, and [`load_bundle`](#scikitplot.annoy.Index.load_bundle "scikitplot.annoy.Index.load_bundle") reads it from wherever it is.
+
+        After a successful save this index is backed by the published index
+        file (`on_disk_path` names it). After a failed save it holds the
+        same vectors and trees as before, in memory.
+
+        ****Developer.**** This previously took two filenames and no directory, so
+        the defaults resolved against the process working directory and two
+        callers using them overwrote each other. It also wrote the index and
+        then the manifest in place, so a failure between the two left an index
+        no loader could find. Both are fixed the same way the corpus artifact
+        fixes them: build a candidate, then swap, so nothing is destroyed before
+        a complete replacement exists.
+
+        The backend’s `save` memory-maps the file it wrote, so once the
+        index member exists the index is backed by a file **inside the
+        candidate**. POSIX lets a directory be renamed or removed with a mapped
+        file in it; Windows does not (`PermissionError: [WinError 5]` on the
+        swap, seen in the Windows job of run 37555382019). The order below
+        works on both, so there is one code path:
+
+        1. write both members into the candidate;
+        2. release the mapping (`unload`), swap the directories, map the
+           published index (`load`);
+        3. on any failure after step 1, take the index back into memory
+           (`serialize`, `unload`, `deserialize`) **before** the candidate
+           is removed, so the object keeps its contents and nothing of the
+           candidate is in use when it is deleted.
+
+        The manifest records no file-system location and names the index
+        member (see `_bundle_manifest`): it describes the bundle, wherever
+        the bundle is. Steps and failures are logged on
+        `scikitplot.annoy._mixins._io`: DEBUG for each step, WARNING when a
+        failed publication is undone.
+
+    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L217)[#](#scikitplot.annoy.Index.save_index "Link to this definition")
     :   Persist the Annoy index to disk.
 
         Parameters:
@@ -1960,8 +2025,8 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   For filesystem-level failures.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **PathLike****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****prefault**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **PathLike****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****prefault**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   Self
@@ -1985,7 +2050,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
     seed[#](#scikitplot.annoy.Index.seed "Link to this definition")
     :   Random seed override (scikit-learn compatible). None means use Annoy default seed.
 
-    serialize(**format=None**) → [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")[#](#scikitplot.annoy.Index.serialize "Link to this definition")
+    serialize(**format=None**) → [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")[#](#scikitplot.annoy.Index.serialize "Link to this definition")
     :   Serialize the built in-memory index into a byte string.
 
         Parameters:
@@ -2066,11 +2131,11 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         :   ****seed****int or None, optional, default=None
             :   Non-negative integer seed. If called before the index is constructed,
                 the seed is stored and applied when the C++ index is created.
-                Seed value `0` resets to Annoy’s core default seed (with a [`UserWarning`](https://docs.python.org/3/library/exceptions.html#UserWarning "(in Python v3.14)")).
+                Seed value `0` resets to Annoy’s core default seed (with a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)")).
 
                 * If omitted (or None, NULL), the seed is set to Annoy’s default seed.
                 * If 0, clear any pending override and reset to Annoy’s default seed
-                  (a [`UserWarning`](https://docs.python.org/3/library/exceptions.html#UserWarning "(in Python v3.14)") is emitted).
+                  (a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)") is emitted).
 
         Returns:
         :   [`Annoy`](scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy "scikitplot.annoy.Annoy")
@@ -2126,7 +2191,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`set_verbose`](#scikitplot.annoy.Index.set_verbose "scikitplot.annoy.Index.set_verbose")
         :   Set the verbosity level (callable setter).
 
-    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_io.py#L261)[#](#scikitplot.annoy.Index.to_bytes "Link to this definition")
+    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_io.py#L571)[#](#scikitplot.annoy.Index.to_bytes "Link to this definition")
     :   Serialize the built index to bytes (backend `serialize`).
 
         Parameters:
@@ -2157,7 +2222,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If the backend returns non-bytes-like data.
 
         Return type:
-        :   [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")
+        :   [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")
 
         Notes
 
@@ -2167,7 +2232,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         “Canonical” blobs trade load time for portability: deserialization rebuilds
         the index with `n_jobs=1` for deterministic reconstruction.
 
-    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L376)[#](#scikitplot.annoy.Index.to_json "Link to this definition")
+    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L385)[#](#scikitplot.annoy.Index.to_json "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata") to JSON.
 
         Parameters:
@@ -2175,7 +2240,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If provided, write the JSON to this path atomically.
 
             ****indent****
-            :   Indentation level passed to [`json.dumps`](https://docs.python.org/3/library/json.html#json.dumps "(in Python v3.14)").
+            :   Indentation level passed to [`json.dumps`](https://docs.python.org/3/library/json.html#json.dumps "(in Python v3.15)").
 
             ****sort\_keys****
             :   If True, sort keys for stable output.
@@ -2195,15 +2260,15 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If the exported metadata contains non-JSON-serializable values.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****indent**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****sort\_keys**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****ensure\_ascii**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****include\_info**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****indent**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****sort\_keys**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****ensure\_ascii**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****include\_info**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
         > **See also**
         > [`from_json`](#scikitplot.annoy.Index.from_json "scikitplot.annoy.Index.from_json")
@@ -2211,7 +2276,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata")
 
-    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L153)[#](#scikitplot.annoy.Index.to_metadata "Link to this definition")
+    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L153)[#](#scikitplot.annoy.Index.to_metadata "Link to this definition")
     :   Export a serializable metadata payload.
 
         Parameters:
@@ -2240,8 +2305,8 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If a persistence knob (e.g., `pickle_mode`) is not JSON/YAML-serializable.
 
         Parameters:
-        :   * ****include\_info**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****include\_info**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   **IndexMetadata**
@@ -2252,7 +2317,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         [`to_yaml`](#scikitplot.annoy.Index.to_yaml "scikitplot.annoy.Index.to_yaml")
 
-    to\_numpy(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_ndarray.py#L571)[#](#scikitplot.annoy.Index.to_numpy "Link to this definition")
+    to\_numpy(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_ndarray.py#L571)[#](#scikitplot.annoy.Index.to_numpy "Link to this definition")
     :   Export vectors to a dense NumPy array.
 
         > **See also**
@@ -2273,17 +2338,17 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         This is an alias of [`get_item_vectors`](#scikitplot.annoy.Index.get_item_vectors "scikitplot.annoy.Index.get_item_vectors") with `return_ids=False`.
 
         Parameters:
-        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****start**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****stop**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****n\_rows**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****start**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****stop**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****n\_rows**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
-    to\_pandas(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **id\_location='index'**, **id\_name='id'**, **columns=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_ndarray.py#L681)[#](#scikitplot.annoy.Index.to_pandas "Link to this definition")
+    to\_pandas(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **id\_location='index'**, **id\_name='id'**, **columns=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_ndarray.py#L681)[#](#scikitplot.annoy.Index.to_pandas "Link to this definition")
     :   Export vectors to a pandas `DataFrame`.
 
         Parameters:
@@ -2319,18 +2384,18 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If `id_location` is invalid or `columns` length mismatches `f`.
 
         Parameters:
-        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****start**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****stop**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****n\_rows**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****id\_location**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'index'****,** **'column'****,** **'both'****,** **'none'****]**)
-            * ****id\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****columns**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****start**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****stop**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****n\_rows**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****id\_location**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'index'****,** **'column'****,** **'both'****,** **'none'****]**)
+            * ****id\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****columns**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
         > **See also**
         > [`to_numpy`](#scikitplot.annoy.Index.to_numpy "scikitplot.annoy.Index.to_numpy")
@@ -2339,7 +2404,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`to_scipy_csr`](#scikitplot.annoy.Index.to_scipy_csr "scikitplot.annoy.Index.to_scipy_csr")
         :   Export as SciPy CSR.
 
-    to\_scipy\_csr(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_ndarray.py#L642)[#](#scikitplot.annoy.Index.to_scipy_csr "Link to this definition")
+    to\_scipy\_csr(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_ndarray.py#L642)[#](#scikitplot.annoy.Index.to_scipy_csr "Link to this definition")
     :   Export vectors as a SciPy CSR matrix.
 
         Returns:
@@ -2351,15 +2416,15 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   If SciPy is not installed.
 
         Parameters:
-        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****start**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****stop**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****n\_rows**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****ids**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****start**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****stop**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****n\_rows**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+            * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
         > **See also**
         > [`to_numpy`](#scikitplot.annoy.Index.to_numpy "scikitplot.annoy.Index.to_numpy")
@@ -2368,16 +2433,16 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`to_pandas`](#scikitplot.annoy.Index.to_pandas "scikitplot.annoy.Index.to_pandas")
         :   Export as pandas DataFrame.
 
-    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L438)[#](#scikitplot.annoy.Index.to_yaml "Link to this definition")
+    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L447)[#](#scikitplot.annoy.Index.to_yaml "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata") to YAML (requires PyYAML).
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****include\_info**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****include\_info**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     transform(**X**, **\***, **n\_neighbors=5**, **search\_k=-1**, **include\_distances=False**, **return\_labels=False**, **y\_fill\_value=None**, **input\_type='vector'**, **output\_type='vector'**, **exclude\_self=False**, **exclude\_items=None**, **missing\_value=None**)[#](#scikitplot.annoy.Index.transform "Link to this definition")
     :   Transform queries into nearest-neighbor results (ids or vectors; optional distances / labels).
@@ -2603,3 +2668,31 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         Type:
         :   [y\_map](#scikitplot.annoy.Index.y_map "scikitplot.annoy.Index.y_map")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
+
+[annoy.Annoy legacy c-api with examples](../../auto_examples/annoy/plot_Annoy_legacy_c_api.html)
+
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_Annoy_python_api_thumb.png)
+
+[annoy.Index python-api with examples](../../auto_examples/annoy/plot_Annoy_python_api.html)
+
+annoy.Index python-api with examples![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
+
+[annoy.Index to NPY or CSV with examples](../../auto_examples/annoy/plot_annoy_to_NPY_CSV.html)
+
+annoy.Index to NPY or CSV with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+
+[Mmap annoy.AnnoyIndex with examples](../../auto_examples/annoy/plot_mmap_script.html)
+
+Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+
+[Precision annoy.AnnoyIndex with examples](../../auto_examples/annoy/plot_precision_script.html)
+
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+
+[Simple annoy.AnnoyIndex with examples](../../auto_examples/annoy/plot_simple_script.html)
+
+Simple annoy.AnnoyIndex with examples

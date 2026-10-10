@@ -1,6 +1,6 @@
 # bayesian\_blocks[#](#bayesian-blocks "Link to this heading")
 
-scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='events'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67)[#](#scikitplot.stats.bayesian_blocks "Link to this definition")
+scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='events'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67)[#](#scikitplot.stats.bayesian_blocks "Link to this definition")
 :   Compute optimal segmentation of data with Scargle’s Bayesian Blocks.
 
     This is a flexible implementation of the Bayesian Blocks algorithm
@@ -53,11 +53,11 @@ scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='
     Parameters:
     :   * ****t**** (**ArrayLike**)
         * ****x**** (**ArrayLike** **|** **None**)
-        * ****sigma**** (**ArrayLike** **|** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
-        * ****fitness**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'events'****,** **'regular\_events'****,** **'measures'****]** **|** **~scikitplot.cexternals.\_astropy.stats.bayesian\_blocks.FitnessFunc**)
+        * ****sigma**** (**ArrayLike** **|** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
+        * ****fitness**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'events'****,** **'regular\_events'****,** **'measures'****]** **|** **~scikitplot.cexternals.\_astropy.stats.bayesian\_blocks.FitnessFunc**)
 
     Return type:
-    :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
+    :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
     > **See also**
     > [`astropy.stats.histogram`](https://docs.astropy.org/en/latest/api/astropy.stats.histogram.html#astropy.stats.histogram "(in Astropy v8.1)")

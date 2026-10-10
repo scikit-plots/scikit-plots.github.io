@@ -1,6 +1,6 @@
 # URLKind[#](#urlkind "Link to this heading")
 
-class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L329)[#](#scikitplot.corpus.URLKind "Link to this definition")
+class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L330)[#](#scikitplot.corpus.URLKind "Link to this definition")
 :   Classification of a URL for routing to the correct handler.
 
     Attributes:
@@ -39,21 +39,21 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
         :   GitHub blob URL (`github.com/.../blob/...`) — resolve to
             raw URL, then download.
 
-    DOWNLOADABLE = 'downloadable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.DOWNLOADABLE "Link to this definition")
+    DOWNLOADABLE = 'downloadable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.DOWNLOADABLE "Link to this definition")
 
-    GITHUB\_BLOB = 'github\_blob'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_BLOB "Link to this definition")
+    GITHUB\_BLOB = 'github\_blob'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_BLOB "Link to this definition")
 
-    GITHUB\_RAW = 'github\_raw'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_RAW "Link to this definition")
+    GITHUB\_RAW = 'github\_raw'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GITHUB_RAW "Link to this definition")
 
-    GOOGLE\_DRIVE = 'google\_drive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GOOGLE_DRIVE "Link to this definition")
+    GOOGLE\_DRIVE = 'google\_drive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.GOOGLE_DRIVE "Link to this definition")
 
-    WEB\_PAGE = 'web\_page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.WEB_PAGE "Link to this definition")
+    WEB\_PAGE = 'web\_page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.WEB_PAGE "Link to this definition")
 
-    YOUTUBE = 'youtube'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE "Link to this definition")
+    YOUTUBE = 'youtube'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE "Link to this definition")
 
-    YOUTUBE\_CHANNEL = 'youtube\_channel'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_CHANNEL "Link to this definition")
+    YOUTUBE\_CHANNEL = 'youtube\_channel'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_CHANNEL "Link to this definition")
 
-    YOUTUBE\_PLAYLIST = 'youtube\_playlist'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_PLAYLIST "Link to this definition")
+    YOUTUBE\_PLAYLIST = 'youtube\_playlist'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L)[#](#scikitplot.corpus.URLKind.YOUTUBE_PLAYLIST "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.URLKind.capitalize "Link to this definition")
     :   Return a capitalized version of the string.
@@ -69,7 +69,7 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -87,7 +87,7 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -98,22 +98,22 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -245,14 +245,14 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -321,7 +321,7 @@ class scikitplot.corpus.URLKind(**\*values**)[[source]](https://github.com/sciki
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.URLKind.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.URLKind.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

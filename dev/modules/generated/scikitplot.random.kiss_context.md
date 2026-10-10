@@ -55,3 +55,11 @@ scikitplot.random.kiss\_context(**seed=None**, **bit\_width=None**)[#](#scikitpl
 
     ```
     Go BackOpen In Tab
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
+
+[Enhanced KISS Random Generator - Complete Usage Examples](../../auto_examples/random/plot_kiss_random.html)
+
+Enhanced KISS Random Generator - Complete Usage Examples

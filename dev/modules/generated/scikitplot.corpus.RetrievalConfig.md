@@ -1,6 +1,6 @@
 # RetrievalConfig[#](#retrievalconfig "Link to this heading")
 
-class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L142)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
+class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -69,22 +69,22 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
             `None`.
 
     Parameters:
-    :   * ****top\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****match\_mode**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****semantic\_threshold**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****keyword\_threshold**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****hybrid\_alpha**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****rrf\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****use\_normalized\_text**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****case\_sensitive**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****backend**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****index\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****annoy\_n\_trees**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****annoy\_metric**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****annoy\_search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****annoy\_impl**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****annoy\_dtype**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****annoy\_index\_dtype**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****top\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****match\_mode**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****semantic\_threshold**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****keyword\_threshold**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****hybrid\_alpha**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****rrf\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****use\_normalized\_text**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****case\_sensitive**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****backend**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****index\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****annoy\_n\_trees**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****annoy\_metric**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****annoy\_search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****annoy\_impl**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****annoy\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****annoy\_index\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Notes
 
@@ -93,37 +93,37 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
     matching, use `match_mode="strict"`. To force a specific ANN
     library, set e.g. `backend="annoy"` and tune `annoy_n_trees`.
 
-    annoy\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.RetrievalConfig.annoy_dtype "Link to this definition")
+    annoy\_dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalConfig.annoy_dtype "Link to this definition")
 
-    annoy\_impl: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'auto'[#](#scikitplot.corpus.RetrievalConfig.annoy_impl "Link to this definition")
+    annoy\_impl: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'auto'[#](#scikitplot.corpus.RetrievalConfig.annoy_impl "Link to this definition")
 
-    annoy\_index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.RetrievalConfig.annoy_index_dtype "Link to this definition")
+    annoy\_index\_dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalConfig.annoy_index_dtype "Link to this definition")
 
-    annoy\_metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'angular'[#](#scikitplot.corpus.RetrievalConfig.annoy_metric "Link to this definition")
+    annoy\_metric: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'angular'[#](#scikitplot.corpus.RetrievalConfig.annoy_metric "Link to this definition")
 
-    annoy\_n\_trees: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 10[#](#scikitplot.corpus.RetrievalConfig.annoy_n_trees "Link to this definition")
+    annoy\_n\_trees: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 10[#](#scikitplot.corpus.RetrievalConfig.annoy_n_trees "Link to this definition")
 
-    annoy\_search\_k: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = -1[#](#scikitplot.corpus.RetrievalConfig.annoy_search_k "Link to this definition")
+    annoy\_search\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = -1[#](#scikitplot.corpus.RetrievalConfig.annoy_search_k "Link to this definition")
 
-    backend: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = 'auto'[#](#scikitplot.corpus.RetrievalConfig.backend "Link to this definition")
+    backend: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = 'auto'[#](#scikitplot.corpus.RetrievalConfig.backend "Link to this definition")
 
-    case\_sensitive: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.RetrievalConfig.case_sensitive "Link to this definition")
+    case\_sensitive: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.RetrievalConfig.case_sensitive "Link to this definition")
 
-    hybrid\_alpha: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
+    hybrid\_alpha: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
 
-    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L142)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
 
-    keyword\_threshold: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
+    keyword\_threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
 
-    match\_mode: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'semantic'[#](#scikitplot.corpus.RetrievalConfig.match_mode "Link to this definition")
+    match\_mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'semantic'[#](#scikitplot.corpus.RetrievalConfig.match_mode "Link to this definition")
 
-    rrf\_k: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 60[#](#scikitplot.corpus.RetrievalConfig.rrf_k "Link to this definition")
+    rrf\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 60[#](#scikitplot.corpus.RetrievalConfig.rrf_k "Link to this definition")
 
-    semantic\_threshold: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.semantic_threshold "Link to this definition")
+    semantic\_threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.semantic_threshold "Link to this definition")
 
-    top\_k: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 10[#](#scikitplot.corpus.RetrievalConfig.top_k "Link to this definition")
+    top\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 10[#](#scikitplot.corpus.RetrievalConfig.top_k "Link to this definition")
 
-    use\_normalized\_text: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.RetrievalConfig.use_normalized_text "Link to this definition")
+    use\_normalized\_text: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.RetrievalConfig.use_normalized_text "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

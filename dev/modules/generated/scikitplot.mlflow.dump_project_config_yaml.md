@@ -1,6 +1,6 @@
 # dump\_project\_config\_yaml[#](#dump-project-config-yaml "Link to this heading")
 
-scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\***, **profile='local'**, **source\_config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L899)[#](#scikitplot.mlflow.dump_project_config_yaml "Link to this definition")
+scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\***, **profile='local'**, **source\_config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L899)[#](#scikitplot.mlflow.dump_project_config_yaml "Link to this definition")
 :   Write a ProjectConfig to a YAML file.
 
     This function supports two strict modes:
@@ -43,9 +43,17 @@ scikitplot.mlflow.dump\_project\_config\_yaml(**cfg=None**, **path=None**, **\**
 
     Parameters:
     :   * ****cfg**** ([**ProjectConfig**](scikitplot.mlflow.ProjectConfig.html#scikitplot.mlflow.ProjectConfig "scikitplot.mlflow._project.ProjectConfig") **|** **None**)
-        * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****profile**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****source\_config\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****profile**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****source\_config\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_mlflow_thumb.png)
+
+[MLflow](../../auto_examples/mlflow/plot_mlflow.html)
+
+MLflow

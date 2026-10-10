@@ -1,6 +1,6 @@
 # normalize\_mlflow\_store\_values[#](#normalize-mlflow-store-values "Link to this heading")
 
-scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri**, **default\_artifact\_root**, **base\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L421)[#](#scikitplot.mlflow.normalize_mlflow_store_values "Link to this definition")
+scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri**, **default\_artifact\_root**, **base\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L421)[#](#scikitplot.mlflow.normalize_mlflow_store_values "Link to this definition")
 :   Normalize local store values for consistent multi-script usage.
 
     Deterministic normalization rules:
@@ -27,9 +27,9 @@ scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri
         :   Normalized (backend\_store\_uri, default\_artifact\_root).
 
     Parameters:
-    :   * ****backend\_store\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_artifact\_root**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****base\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+    :   * ****backend\_store\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_artifact\_root**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****base\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | None, [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | None]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | None, [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | None]

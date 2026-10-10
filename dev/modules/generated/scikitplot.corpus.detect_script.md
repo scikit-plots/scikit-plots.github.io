@@ -1,6 +1,6 @@
 # detect\_script[#](#detect-script "Link to this heading")
 
-scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L971)[#](#scikitplot.corpus.detect_script "Link to this definition")
+scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L971)[#](#scikitplot.corpus.detect_script "Link to this definition")
 :   Detect the dominant Unicode script in **text**.
 
     Samples up to **sample\_size** characters for efficiency on long documents.
@@ -24,9 +24,9 @@ scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **major
         :   Detected dominant script.
 
     Parameters:
-    :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****sample\_size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****majority\_threshold**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+    :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****sample\_size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****majority\_threshold**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
 
     Return type:
     :   [**ScriptType**](scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType "scikitplot.corpus._chunkers._custom_tokenizer.ScriptType")

@@ -1,6 +1,6 @@
 # binom\_conf\_interval[#](#binom-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L64)[#](#scikitplot.cexternals._astropy.stats.binom_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L64)[#](#scikitplot.cexternals._astropy.stats.binom_conf_interval "Link to this definition")
 :   Binomial proportion confidence interval given k successes,
     n trials.
 
@@ -32,10 +32,10 @@ scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **conf
             and upper limits, respectively, for each element in `k`, `n`.
 
     Parameters:
-    :   * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **NDArray**)
-        * ****n**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **NDArray**)
-        * ****confidence\_level**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'wilson'****,** **'jeffreys'****,** **'flat'****,** **'wald'****]**)
+    :   * ****k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **NDArray**)
+        * ****n**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **NDArray**)
+        * ****confidence\_level**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'wilson'****,** **'jeffreys'****,** **'flat'****,** **'wald'****]**)
 
     Return type:
     :   **NDArray**

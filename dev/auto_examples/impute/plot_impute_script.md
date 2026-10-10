@@ -200,7 +200,7 @@ time_data[0] = T
 
 ```
 ```
-17.772677183151245
+18.390741109848022
 
 ```
 
@@ -229,7 +229,7 @@ time_data[1] = T
 
 ```
 ```
-18.882314682006836
+19.570688486099243
 
 ```
 
@@ -255,7 +255,7 @@ time_data[2] = T
 
 ```
 ```
-20.181179761886597
+20.223670721054077
 
 ```
 
@@ -285,7 +285,7 @@ time_data[3] = T
 
 ```
 ```
-19.54790759086609
+19.188652276992798
 
 ```
 
@@ -319,7 +319,7 @@ time_data[4] = T
 
 ```
 ```
-37.64851713180542
+33.48870372772217
 
 ```
 
@@ -357,7 +357,7 @@ time_data[5] = T
 
 ```
 ```
-20.983198404312134
+19.926194429397583
 
 ```
 
@@ -378,7 +378,7 @@ from scikitplot.impute import ANNImputer
 
 ```
 ```
-0.5.dev0+git.20260808.1a733ef
+0.5.dev0+git.20261010.de98219
 
 ```
 ```
@@ -404,7 +404,7 @@ time_data[6] = T
 
 ```
 ```
-24.26179075241089
+22.344252824783325
 
 ```
 ```
@@ -438,7 +438,7 @@ time_data[7] = T
 
 ```
 ```
-23.910274505615234
+21.597723245620728
 
 ```
 
@@ -549,9 +549,9 @@ neighbor retrieval and degraded imputation quality.
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: impute](../../_tags/model-workflow-impute.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (3 minutes 3.848 seconds)
+****Total running time of the script:**** (2 minutes 55.287 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo8.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo8.svg)](../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo9.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo9.svg)](../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb)
 
 [`Download Jupyter notebook: plot_impute_script.ipynb`](../../_downloads/c017cf42fb7eb47bd929a9e4c52abe5d/plot_impute_script.ipynb)
 

@@ -1,6 +1,6 @@
 # ChunkerBase[#](#chunkerbase "Link to this heading")
 
-class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L234)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
+class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L235)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
 :   Abstract base class for all text chunkers.
 
     A chunker receives a block of raw text (one logical unit from the
@@ -51,7 +51,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
     ```
     Go BackOpen In Tab
 
-    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L352)[#](#scikitplot.corpus.ChunkerBase.assert_modality "Link to this definition")
+    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L353)[#](#scikitplot.corpus.ChunkerBase.assert_modality "Link to this definition")
     :   Raise `ValueError` if this chunker cannot handle **doc\_modality**.
 
         Parameters:
@@ -83,8 +83,8 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
 
         ```
 
-    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L304)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
-    :   Segment `text` into a `ChunkResult`.
+    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L305)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
+    :   Segment `text` into a [`ChunkResult`](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult").
 
         ****CRITICAL-02 (Phase 2):**** Return type unified to `ChunkResult`
         across all implementations. Callers iterate `result.chunks`
@@ -104,7 +104,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
 
         Returns:
         :   ChunkResult
-            :   Ordered list of `Chunk` objects.
+            :   Ordered list of [`Chunk`](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk") objects.
                 Each chunk carries `text`, `start_char`, `end_char`, and
                 `metadata`. The list must be non-empty only when **text**
                 contains meaningful content.
@@ -114,11 +114,11 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
             :   If `text` is `None` (not just empty).
 
         Parameters:
-        :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   **ChunkResult**
+        :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
         Notes
 
@@ -129,11 +129,11 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
         to `ChunkResult`; the pipeline will raise `AttributeError` if
         `chunk_result.chunks` is not accessible.
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")][#](#scikitplot.corpus.ChunkerBase.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")][#](#scikitplot.corpus.ChunkerBase.strategy "Link to this definition")
     :   Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")
         this implementation provides. ****Must**** be defined on every concrete subclass.
 
-    supported\_modalities: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[frozenset](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")[[Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")]] = frozenset({Modality.TEXT})[#](#scikitplot.corpus.ChunkerBase.supported_modalities "Link to this definition")
+    supported\_modalities: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")]] = frozenset({Modality.TEXT})[#](#scikitplot.corpus.ChunkerBase.supported_modalities "Link to this definition")
     :   `{Modality.TEXT}`.
         Subclasses that support additional modalities (e.g. AUDIO transcripts)
         must override this set.
@@ -141,7 +141,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
         Type:
         :   Modalities this chunker can handle. Default
 
-    version: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] = '1.0.0'[#](#scikitplot.corpus.ChunkerBase.version "Link to this definition")
+    version: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = '1.0.0'[#](#scikitplot.corpus.ChunkerBase.version "Link to this definition")
     :   `"1.0.0"`.
         Subclasses must override to reflect their actual version so that corpus
         snapshots remain reproducible after upgrades.

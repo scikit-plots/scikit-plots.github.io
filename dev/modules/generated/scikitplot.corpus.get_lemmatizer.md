@@ -1,6 +1,6 @@
 # get\_lemmatizer[#](#get-lemmatizer "Link to this heading")
 
-scikitplot.corpus.get\_lemmatizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L836)[#](#scikitplot.corpus.get_lemmatizer "Link to this definition")
+scikitplot.corpus.get\_lemmatizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L836)[#](#scikitplot.corpus.get_lemmatizer "Link to this definition")
 :   Retrieve a registered lemmatizer by name.
 
     Parameters:
@@ -16,7 +16,7 @@ scikitplot.corpus.get\_lemmatizer(**name**)[[source]](https://github.com/scikit-
         :   If **name** has not been registered.
 
     Parameters:
-    :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**LemmatizerProtocol**](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol")

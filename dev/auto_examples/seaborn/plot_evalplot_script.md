@@ -253,7 +253,7 @@ Parameters
 |  | [warm\_start warm\_start: bool, default=False  When set to ``True``, reuse the solution of the previous call to fit and add more estimators to the ensemble, otherwise, just fit a whole new forest. See :term:`Glossary <warm\_start>` and :ref:`tree\_ensemble\_warm\_start` for details.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestClassifier.html#:~:text=warm_start,-bool%2C%20default%3DFalse) | False |
 |  | [ccp\_alpha ccp\_alpha: non-negative float, default=0.0  Complexity parameter used for Minimal Cost-Complexity Pruning. The subtree with the largest cost complexity that is smaller than ``ccp\_alpha`` will be chosen. By default, no pruning is performed. See :ref:`minimal\_cost\_complexity\_pruning` for details. See :ref:`sphx\_glr\_auto\_examples\_tree\_plot\_cost\_complexity\_pruning.py` for an example of such pruning.  .. versionadded:: 0.22](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestClassifier.html#:~:text=ccp_alpha,-non-negative%20float%2C%20default%3D0.0) | 0.0 |
 |  | [max\_samples max\_samples: int or float, default=None  If bootstrap is True, the number of samples to draw from X to train each base estimator.  - If None (default), then draw `X.shape[0]` samples irrespective of  `sample\_weight`. - If int, then draw `max\_samples` samples. - If float, then draw `max\_samples \* X.shape[0]` unweighted samples  or `max\_samples \* sample\_weight.sum()` weighted samples.  .. versionadded:: 0.22  .. versionchanged:: 1.9  Float `max\_samples` is relative to `sample\_weight.sum()` instead of  `X.shape[0]` for weighted samples.](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestClassifier.html#:~:text=max_samples,-int%20or%20float%2C%20default%3DNone) | None |
-|  | [monotonic\_cst monotonic\_cst: array-like of int of shape (n\_features), default=None  Indicates the monotonicity constraint to enforce on each feature.  - 1: monotonic increase  - 0: no constraint  - -1: monotonic decrease  If monotonic\_cst is None, no constraints are applied.  Monotonicity constraints are not supported for:  - multiclass classifications (i.e. when `n\_classes > 2`),  - multioutput classifications (i.e. when `n\_outputs\_ > 1`).  The constraints hold over the probability of the positive class.  Read more in the :ref:`User Guide <monotonic\_cst\_gbdt>`.  .. versionadded:: 1.4](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestClassifier.html#:~:text=monotonic_cst,-array-like%20of%20int%20of%20shape%20%28n_features%29%2C%20default%3DNone) | None |
+|  | [monotonic\_cst monotonic\_cst: array-like of int of shape (n\_features,), default=None  Indicates the monotonicity constraint to enforce on each feature.  - 1: monotonically increasing  - 0: no constraint  - -1: monotonically decreasing  If monotonic\_cst is None, no constraints are applied.  Monotonicity constraints are not supported for:  - multiclass classifications (i.e. when `n\_classes > 2`),  - multioutput classifications (i.e. when `n\_outputs\_ > 1`).  The constraints hold over the probability of the positive class.  Read more in the :ref:`User Guide <monotonic\_cst\_gbdt>`.  .. versionadded:: 1.4](https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestClassifier.html#:~:text=monotonic_cst,-array-like%20of%20int%20of%20shape%20%28n_features%2C%29%2C%20default%3DNone) | None |
 
 Fitted attributes
 
@@ -348,9 +348,9 @@ import seaborn as sns
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: eval](../../_tags/plot-type-eval.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.447 seconds)
+****Total running time of the script:**** (0 minutes 2.283 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo16.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_evalplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo16.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_evalplot_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo19.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_evalplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo19.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_evalplot_script.ipynb)
 
 [`Download Jupyter notebook: plot_evalplot_script.ipynb`](../../_downloads/cf3db15d9889b75795312d6766bad1c6/plot_evalplot_script.ipynb)
 
@@ -368,14 +368,14 @@ plot\_decileplot\_script with examples![](../../_images/sphx_glr_plot_aucplot_sc
 
 [plot\_aucplot\_script with examples](plot_aucplot_script.html)
 
-plot\_aucplot\_script with examples![](../../_images/sphx_glr_plot_cumulative_gain_script_thumb.png)
+plot\_aucplot\_script with examples![](../../_images/sphx_glr_plot_precision_recall_script_thumb.png)
 
-[plot\_cumulative\_gain with examples](../decile/plot_cumulative_gain_script.html)
+[plot\_precision\_recall with examples](../classification/plot_precision_recall_script.html)
 
-plot\_cumulative\_gain with examples![](../../_images/sphx_glr_plot_ks_statistic_script_thumb.png)
+plot\_precision\_recall with examples![](../../_images/sphx_glr_plot_roc_script_thumb.png)
 
-[plot\_ks\_statistic with examples](../decile/plot_ks_statistic_script.html)
+[plot\_roc\_curve with examples](../classification/plot_roc_script.html)
 
-plot\_ks\_statistic with examples
+plot\_roc\_curve with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

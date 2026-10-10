@@ -1,6 +1,6 @@
 # FunctionLemmatizer[#](#functionlemmatizer "Link to this heading")
 
-class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L473)[#](#scikitplot.corpus.FunctionLemmatizer "Link to this definition")
+class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L473)[#](#scikitplot.corpus.FunctionLemmatizer "Link to this definition")
 :   Wrap any `Callable[[str, Optional[str]], str]` as a [`LemmatizerProtocol`](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus.LemmatizerProtocol").
 
     Parameters:
@@ -13,8 +13,8 @@ class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](
         :   Human-readable name.
 
     Parameters:
-    :   * ****fn**** (**Callable****[****...****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****fn**** (**Callable****[****...****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Examples
 
@@ -27,7 +27,7 @@ class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](
     ```
     Go BackOpen In Tab
 
-    lemmatize(**word**, **pos=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L526)[#](#scikitplot.corpus.FunctionLemmatizer.lemmatize "Link to this definition")
+    lemmatize(**word**, **pos=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L526)[#](#scikitplot.corpus.FunctionLemmatizer.lemmatize "Link to this definition")
     :   Lemmatize **word** with optional POS hint.
 
         Parameters:
@@ -42,8 +42,8 @@ class scikitplot.corpus.FunctionLemmatizer(**fn**, **name='custom'**)[[source]](
             :   Lemma form.
 
         Parameters:
-        :   * ****word**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****pos**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****word**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****pos**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")

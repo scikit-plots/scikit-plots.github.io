@@ -1,6 +1,6 @@
 # JSONLStorage[#](#jsonlstorage "Link to this heading")
 
-class scikitplot.corpus.JSONLStorage(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L529)[#](#scikitplot.corpus.JSONLStorage "Link to this definition")
+class scikitplot.corpus.JSONLStorage(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L533)[#](#scikitplot.corpus.JSONLStorage "Link to this definition")
 :   Append-friendly JSONL (newline-delimited JSON) flat-file store.
 
     Documents are written one JSON object per line. On construction the
@@ -18,7 +18,7 @@ class scikitplot.corpus.JSONLStorage(**path**)[[source]](https://github.com/scik
         :   Path to the `.jsonl` file. Created if absent.
 
     Parameters:
-    :   ****path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Examples
 
@@ -32,25 +32,25 @@ class scikitplot.corpus.JSONLStorage(**path**)[[source]](https://github.com/scik
     ```
     Go BackOpen In Tab
 
-    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L723)[#](#scikitplot.corpus.JSONLStorage.count "Link to this definition")
+    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L727)[#](#scikitplot.corpus.JSONLStorage.count "Link to this definition")
     :   Return total stored document count in O(1).
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L674)[#](#scikitplot.corpus.JSONLStorage.get "Link to this definition")
+    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L678)[#](#scikitplot.corpus.JSONLStorage.get "Link to this definition")
     :   Retrieve a document by `doc_id`.
 
         Parameters:
         :   ****doc\_id****str
 
         Parameters:
-        :   ****doc\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") | None
 
-    query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L688)[#](#scikitplot.corpus.JSONLStorage.query "Link to this definition")
+    query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L692)[#](#scikitplot.corpus.JSONLStorage.query "Link to this definition")
     :   Filter documents by query parameters.
 
         Full-text search is not supported and is ignored.
@@ -64,7 +64,7 @@ class scikitplot.corpus.JSONLStorage(**path**)[[source]](https://github.com/scik
         Return type:
         :   [**QueryResult**](scikitplot.corpus.QueryResult.html#scikitplot.corpus.QueryResult "scikitplot.corpus._storage._storage.QueryResult")
 
-    save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L617)[#](#scikitplot.corpus.JSONLStorage.save "Link to this definition")
+    save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L621)[#](#scikitplot.corpus.JSONLStorage.save "Link to this definition")
     :   Append or update a document.
 
         If the `doc_id` already exists, the file is rewritten (update
@@ -79,14 +79,14 @@ class scikitplot.corpus.JSONLStorage(**path**)[[source]](https://github.com/scik
         Return type:
         :   None
 
-    save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L652)[#](#scikitplot.corpus.JSONLStorage.save_batch "Link to this definition")
+    save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L656)[#](#scikitplot.corpus.JSONLStorage.save_batch "Link to this definition")
     :   Save a batch, rewriting the file atomically once.
 
         Parameters:
         :   ****docs****sequence of CorpusDocument
 
         Parameters:
-        :   ****docs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
+        :   ****docs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
 
         Return type:
         :   None

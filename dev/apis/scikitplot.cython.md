@@ -15,7 +15,16 @@ low-level Cython packages and modules for immediate use and testing.
 
 ****User guide.**** See the [Cython User Guide](../user_guide/cython/index.html#cython-index) section for further details.
 
-## PKG/MOD Builder[#](#pkg-mod-builder "Link to this heading")
+## API Stability[#](#api-stability "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`API_STABILITY`](../modules/generated/scikitplot.cython.API_STABILITY.html#scikitplot.cython.API_STABILITY "scikitplot.cython.API_STABILITY") | A dict that populates itself from the package `__all__` on first use. |
+| [`Stability`](../modules/generated/scikitplot.cython.Stability.html#scikitplot.cython.Stability "scikitplot.cython.Stability") | Stability tier of a public API symbol. |
+| [`api_stability`](../modules/generated/scikitplot.cython.api_stability.html#scikitplot.cython.api_stability "scikitplot.cython.api_stability") | Return the [`Stability`](../modules/generated/scikitplot.cython.Stability.html#scikitplot.cython.Stability "scikitplot.cython.Stability") tier of a public API symbol. |
+| [`list_api`](../modules/generated/scikitplot.cython.list_api.html#scikitplot.cython.list_api "scikitplot.cython.list_api") | Return the sorted public symbol names in a given stability `tier`. |
+
+## Build an Extension Module (PKG/MOD)[#](#build-an-extension-module-pkg-mod "Link to this heading")
 
 |  |  |
 | --- | --- |
@@ -29,16 +38,19 @@ low-level Cython packages and modules for immediate use and testing.
 
 |  |  |
 | --- | --- |
+| [`CACHE_SCHEMA_VERSION`](../modules/generated/scikitplot.cython.CACHE_SCHEMA_VERSION.html#scikitplot.cython.CACHE_SCHEMA_VERSION "scikitplot.cython.CACHE_SCHEMA_VERSION") | int([x]) -> integer int(x, base=10) -> integer |
 | [`CacheEntry`](../modules/generated/scikitplot.cython.CacheEntry.html#scikitplot.cython.CacheEntry "scikitplot.cython.CacheEntry") | A compiled **module** cache entry. |
 | [`PackageCacheEntry`](../modules/generated/scikitplot.cython.PackageCacheEntry.html#scikitplot.cython.PackageCacheEntry "scikitplot.cython.PackageCacheEntry") | A compiled **package** cache entry (multi-module build). |
 | [`find_entries_by_name`](../modules/generated/scikitplot.cython.find_entries_by_name.html#scikitplot.cython.find_entries_by_name "scikitplot.cython.find_entries_by_name") | Find module cache entries matching an exact module name. |
 | [`find_entry_by_key`](../modules/generated/scikitplot.cython.find_entry_by_key.html#scikitplot.cython.find_entry_by_key "scikitplot.cython.find_entry_by_key") | Find a single **module** cache entry by key. |
 | [`find_package_entry_by_key`](../modules/generated/scikitplot.cython.find_package_entry_by_key.html#scikitplot.cython.find_package_entry_by_key "scikitplot.cython.find_package_entry_by_key") | Find a single **package** cache entry by key. |
+| [`is_meta_schema_compatible`](../modules/generated/scikitplot.cython.is_meta_schema_compatible.html#scikitplot.cython.is_meta_schema_compatible "scikitplot.cython.is_meta_schema_compatible") | Return whether `meta` can be trusted by the current reader. |
 | [`is_valid_key`](../modules/generated/scikitplot.cython.is_valid_key.html#scikitplot.cython.is_valid_key "scikitplot.cython.is_valid_key") | Return True if `key` is a valid cache key. |
 | [`iter_all_entry_dirs`](../modules/generated/scikitplot.cython.iter_all_entry_dirs.html#scikitplot.cython.iter_all_entry_dirs "scikitplot.cython.iter_all_entry_dirs") | Return all cache entry directories whose name is a valid cache key. |
 | [`iter_cache_entries`](../modules/generated/scikitplot.cython.iter_cache_entries.html#scikitplot.cython.iter_cache_entries "scikitplot.cython.iter_cache_entries") | List **module** cache entries found under the cache directory. |
 | [`iter_package_entries`](../modules/generated/scikitplot.cython.iter_package_entries.html#scikitplot.cython.iter_package_entries "scikitplot.cython.iter_package_entries") | List **package** cache entries found under the cache directory. |
 | [`make_cache_key`](../modules/generated/scikitplot.cython.make_cache_key.html#scikitplot.cython.make_cache_key "scikitplot.cython.make_cache_key") | Create a deterministic cache key from a JSON-serializable mapping. |
+| [`meta_schema_version`](../modules/generated/scikitplot.cython.meta_schema_version.html#scikitplot.cython.meta_schema_version "scikitplot.cython.meta_schema_version") | Return the schema version recorded in `meta` (0 if absent/legacy). |
 | [`peek_cache_dir`](../modules/generated/scikitplot.cython.peek_cache_dir.html#scikitplot.cython.peek_cache_dir "scikitplot.cython.peek_cache_dir") | Resolve the cache directory path without creating it. |
 | [`read_meta`](../modules/generated/scikitplot.cython.read_meta.html#scikitplot.cython.read_meta "scikitplot.cython.read_meta") | Read `meta.json` from a build directory. |
 | [`register_artifact_path`](../modules/generated/scikitplot.cython.register_artifact_path.html#scikitplot.cython.register_artifact_path "scikitplot.cython.register_artifact_path") | Register an existing compiled extension artifact into the cache registry. |
@@ -56,6 +68,9 @@ low-level Cython packages and modules for immediate use and testing.
 | [`register_compiler`](../modules/generated/scikitplot.cython.register_compiler.html#scikitplot.cython.register_compiler "scikitplot.cython.register_compiler") | Register a custom compiler in the module-level registry. |
 | [`get_compiler`](../modules/generated/scikitplot.cython.get_compiler.html#scikitplot.cython.get_compiler "scikitplot.cython.get_compiler") | Retrieve a registered custom compiler by name. |
 | [`list_compilers`](../modules/generated/scikitplot.cython.list_compilers.html#scikitplot.cython.list_compilers "scikitplot.cython.list_compilers") | Return sorted list of registered custom compiler names. |
+| [`CompilerCapabilities`](../modules/generated/scikitplot.cython.CompilerCapabilities.html#scikitplot.cython.CompilerCapabilities "scikitplot.cython.CompilerCapabilities") | Versioned, declarative description of a custom compiler's capabilities. |
+| [`compiler_capabilities`](../modules/generated/scikitplot.cython.compiler_capabilities.html#scikitplot.cython.compiler_capabilities "scikitplot.cython.compiler_capabilities") | Return the [`CompilerCapabilities`](../modules/generated/scikitplot.cython.CompilerCapabilities.html#scikitplot.cython.CompilerCapabilities "scikitplot.cython.CompilerCapabilities") a compiler declares. |
+| [`COMPILER_SPEC_VERSION`](../modules/generated/scikitplot.cython.COMPILER_SPEC_VERSION.html#scikitplot.cython.COMPILER_SPEC_VERSION "scikitplot.cython.COMPILER_SPEC_VERSION") | int([x]) -> integer int(x, base=10) -> integer |
 | [`pure_python_prereqs`](../modules/generated/scikitplot.cython.pure_python_prereqs.html#scikitplot.cython.pure_python_prereqs "scikitplot.cython.pure_python_prereqs") | Check prerequisites pure Python, setuptools only. |
 | [`cython_cpp_prereqs`](../modules/generated/scikitplot.cython.cython_cpp_prereqs.html#scikitplot.cython.cython_cpp_prereqs "scikitplot.cython.cython_cpp_prereqs") | Check prerequisites compile C++ via Cython. |
 | [`full_stack_prereqs`](../modules/generated/scikitplot.cython.full_stack_prereqs.html#scikitplot.cython.full_stack_prereqs "scikitplot.cython.full_stack_prereqs") | Check prerequisites full stack setuptools, Cython, pybind11, and NumPy. |
@@ -75,7 +90,7 @@ low-level Cython packages and modules for immediate use and testing.
 | [`cache_stats`](../modules/generated/scikitplot.cython.cache_stats.html#scikitplot.cython.cache_stats "scikitplot.cython.cache_stats") | Compute cache statistics. |
 | [`gc_cache`](../modules/generated/scikitplot.cython.gc_cache.html#scikitplot.cython.gc_cache "scikitplot.cython.gc_cache") | Deterministically garbage-collect cached build entries. |
 
-## Extension Module Loader[#](#extension-module-loader "Link to this heading")
+## Loader Extension Module[#](#loader-extension-module "Link to this heading")
 
 |  |  |
 | --- | --- |
@@ -83,7 +98,7 @@ low-level Cython packages and modules for immediate use and testing.
 | [`import_extension_from_bytes`](../modules/generated/scikitplot.cython.import_extension_from_bytes.html#scikitplot.cython.import_extension_from_bytes "scikitplot.cython.import_extension_from_bytes") | Import an extension module from raw artifact bytes. |
 | [`import_extension_from_path`](../modules/generated/scikitplot.cython.import_extension_from_path.html#scikitplot.cython.import_extension_from_path "scikitplot.cython.import_extension_from_path") | Import an extension module from a filesystem path. |
 
-## Cross-platform Build Lock[#](#cross-platform-build-lock "Link to this heading")
+## Locker Cross-platform Build[#](#locker-cross-platform-build "Link to this heading")
 
 |  |  |
 | --- | --- |
@@ -93,19 +108,29 @@ low-level Cython packages and modules for immediate use and testing.
 
 |  |  |
 | --- | --- |
+| [`PinRegistryError`](../modules/generated/scikitplot.cython.PinRegistryError.html#scikitplot.cython.PinRegistryError "scikitplot.cython.PinRegistryError") | Raised when the pin registry (`pins.json`) is corrupt or unreadable. |
 | [`list_pins`](../modules/generated/scikitplot.cython.list_pins.html#scikitplot.cython.list_pins "scikitplot.cython.list_pins") | List the current alias→key mappings. |
 | [`pin`](../modules/generated/scikitplot.cython.pin.html#scikitplot.cython.pin "scikitplot.cython.pin") | Pin a cache key under a human-friendly alias. |
 | [`resolve_pinned_key`](../modules/generated/scikitplot.cython.resolve_pinned_key.html#scikitplot.cython.resolve_pinned_key "scikitplot.cython.resolve_pinned_key") | Resolve an alias to a cache key. |
 | [`unpin`](../modules/generated/scikitplot.cython.unpin.html#scikitplot.cython.unpin "scikitplot.cython.unpin") | Remove an alias pin. |
 
-## Build Profile Presets[#](#build-profile-presets "Link to this heading")
+## Profile Preset Builder[#](#profile-preset-builder "Link to this heading")
 
 |  |  |
 | --- | --- |
+| [`AppliedProfile`](../modules/generated/scikitplot.cython.AppliedProfile.html#scikitplot.cython.AppliedProfile "scikitplot.cython.AppliedProfile") | Result of applying a profile with user-precedence rules. |
+| [`PlatformCapabilities`](../modules/generated/scikitplot.cython.PlatformCapabilities.html#scikitplot.cython.PlatformCapabilities "scikitplot.cython.PlatformCapabilities") | Declarative contract describing what the current platform supports. |
 | [`ProfileDefaults`](../modules/generated/scikitplot.cython.ProfileDefaults.html#scikitplot.cython.ProfileDefaults "scikitplot.cython.ProfileDefaults") | Normalized defaults produced by resolving a profile. |
+| [`ResolvedToolchain`](../modules/generated/scikitplot.cython.ResolvedToolchain.html#scikitplot.cython.ResolvedToolchain "scikitplot.cython.ResolvedToolchain") | The compiler the build backend **actually** selects (CYTHON-PORT-001). |
+| [`RuntimeCapabilities`](../modules/generated/scikitplot.cython.RuntimeCapabilities.html#scikitplot.cython.RuntimeCapabilities "scikitplot.cython.RuntimeCapabilities") | Declared contract for native-extension runtime lifecycle (CYTHON-ABI-001). |
+| [`UnsupportedRuntimeError`](../modules/generated/scikitplot.cython.UnsupportedRuntimeError.html#scikitplot.cython.UnsupportedRuntimeError "scikitplot.cython.UnsupportedRuntimeError") | Raised when a runtime lifecycle operation is not supported (CYTHON-ABI-001). |
 | [`apply_profile`](../modules/generated/scikitplot.cython.apply_profile.html#scikitplot.cython.apply_profile "scikitplot.cython.apply_profile") | Apply a profile with strict, three-state precedence. |
+| [`check_runtime_supported`](../modules/generated/scikitplot.cython.check_runtime_supported.html#scikitplot.cython.check_runtime_supported "scikitplot.cython.check_runtime_supported") | Fail fast on an unsupported runtime configuration (CYTHON-ABI-001). |
 | [`is_windows`](../modules/generated/scikitplot.cython.is_windows.html#scikitplot.cython.is_windows "scikitplot.cython.is_windows") | Return `True` if the host operating system is native Windows. |
+| [`platform_capabilities`](../modules/generated/scikitplot.cython.platform_capabilities.html#scikitplot.cython.platform_capabilities "scikitplot.cython.platform_capabilities") | Return the [`PlatformCapabilities`](../modules/generated/scikitplot.cython.PlatformCapabilities.html#scikitplot.cython.PlatformCapabilities "scikitplot.cython.PlatformCapabilities") contract for this process. |
 | [`resolve_profile`](../modules/generated/scikitplot.cython.resolve_profile.html#scikitplot.cython.resolve_profile "scikitplot.cython.resolve_profile") | Resolve a profile name to deterministic defaults. |
+| [`resolved_toolchain`](../modules/generated/scikitplot.cython.resolved_toolchain.html#scikitplot.cython.resolved_toolchain "scikitplot.cython.resolved_toolchain") | Return the compiler the build backend actually selects (CYTHON-PORT-001). |
+| [`runtime_capabilities`](../modules/generated/scikitplot.cython.runtime_capabilities.html#scikitplot.cython.runtime_capabilities "scikitplot.cython.runtime_capabilities") | Return the [`RuntimeCapabilities`](../modules/generated/scikitplot.cython.RuntimeCapabilities.html#scikitplot.cython.RuntimeCapabilities "scikitplot.cython.RuntimeCapabilities") contract for this process. |
 
 ## Public API[#](#public-api "Link to this heading")
 
@@ -120,6 +145,7 @@ low-level Cython packages and modules for immediate use and testing.
 | [`compile_and_load_result`](../modules/generated/scikitplot.cython.compile_and_load_result.html#scikitplot.cython.compile_and_load_result "scikitplot.cython.compile_and_load_result") | Compile and import a Cython extension module from source text. |
 | [`cython_import`](../modules/generated/scikitplot.cython.cython_import.html#scikitplot.cython.cython_import "scikitplot.cython.cython_import") | Compile/import a Cython module from a `.pyx` file and return the loaded module. |
 | [`cython_import_all`](../modules/generated/scikitplot.cython.cython_import_all.html#scikitplot.cython.cython_import_all "scikitplot.cython.cython_import_all") | Compile and import all `.pyx` files in a directory. |
+| [`cython_import_all_result`](../modules/generated/scikitplot.cython.cython_import_all_result.html#scikitplot.cython.cython_import_all_result "scikitplot.cython.cython_import_all_result") | Compile and import all `.pyx` files in a directory, with a partial report. |
 | [`cython_import_result`](../modules/generated/scikitplot.cython.cython_import_result.html#scikitplot.cython.cython_import_result "scikitplot.cython.cython_import_result") | Compile/import a Cython module from a `.pyx` file. |
 | [`export_cached`](../modules/generated/scikitplot.cython.export_cached.html#scikitplot.cython.export_cached "scikitplot.cython.export_cached") | Export a cache entry directory to a destination folder. |
 | [`get_cache_dir`](../modules/generated/scikitplot.cython.get_cache_dir.html#scikitplot.cython.get_cache_dir "scikitplot.cython.get_cache_dir") | Resolve (and create) the cache root directory. |
@@ -138,10 +164,13 @@ low-level Cython packages and modules for immediate use and testing.
 | [`register_cached_artifact_bytes`](../modules/generated/scikitplot.cython.register_cached_artifact_bytes.html#scikitplot.cython.register_cached_artifact_bytes "scikitplot.cython.register_cached_artifact_bytes") | Register a compiled extension artifact from bytes and import it. |
 | [`register_cached_artifact_path`](../modules/generated/scikitplot.cython.register_cached_artifact_path.html#scikitplot.cython.register_cached_artifact_path "scikitplot.cython.register_cached_artifact_path") | Register an existing compiled extension artifact on disk, then import it. |
 
-## Result types[#](#result-types "Link to this heading")
+## Result Types[#](#result-types "Link to this heading")
 
 |  |  |
 | --- | --- |
+| [`BatchBuildError`](../modules/generated/scikitplot.cython.BatchBuildError.html#scikitplot.cython.BatchBuildError "scikitplot.cython.BatchBuildError") | Raised by fail-fast batch builds, carrying the partial result. |
+| [`BatchBuildResult`](../modules/generated/scikitplot.cython.BatchBuildResult.html#scikitplot.cython.BatchBuildResult "scikitplot.cython.BatchBuildResult") | Structured result of a batch compile/import (CYTHON-BATCH-001). |
+| [`BatchFailure`](../modules/generated/scikitplot.cython.BatchFailure.html#scikitplot.cython.BatchFailure "scikitplot.cython.BatchFailure") | A single failure within a batch build (CYTHON-BATCH-001). |
 | [`BuildResult`](../modules/generated/scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython.BuildResult") | Result of compiling/importing a single Cython extension module. |
 | [`CacheGCResult`](../modules/generated/scikitplot.cython.CacheGCResult.html#scikitplot.cython.CacheGCResult "scikitplot.cython.CacheGCResult") | Result of a cache garbage-collection operation. |
 | [`CacheStats`](../modules/generated/scikitplot.cython.CacheStats.html#scikitplot.cython.CacheStats "scikitplot.cython.CacheStats") | Cache statistics for the compiled-artifact cache root. |
@@ -160,11 +189,13 @@ low-level Cython packages and modules for immediate use and testing.
 | [`is_safe_path`](../modules/generated/scikitplot.cython.is_safe_path.html#scikitplot.cython.is_safe_path "scikitplot.cython.is_safe_path") | Return `True` when a filesystem path does not contain traversal sequences. |
 | [`validate_build_inputs`](../modules/generated/scikitplot.cython.validate_build_inputs.html#scikitplot.cython.validate_build_inputs "scikitplot.cython.validate_build_inputs") | Validate build inputs against a [`SecurityPolicy`](../modules/generated/scikitplot.cython.SecurityPolicy.html#scikitplot.cython.SecurityPolicy "scikitplot.cython.SecurityPolicy"). |
 
-## Template and workflow assets[#](#template-and-workflow-assets "Link to this heading")
+## Template and Workflow Assets[#](#template-and-workflow-assets "Link to this heading")
 
 |  |  |
 | --- | --- |
+| [`TEMPLATE_SCHEMA_VERSION`](../modules/generated/scikitplot.cython.TEMPLATE_SCHEMA_VERSION.html#scikitplot.cython.TEMPLATE_SCHEMA_VERSION "scikitplot.cython.TEMPLATE_SCHEMA_VERSION") | int([x]) -> integer int(x, base=10) -> integer |
 | [`TemplateInfo`](../modules/generated/scikitplot.cython.TemplateInfo.html#scikitplot.cython.TemplateInfo "scikitplot.cython.TemplateInfo") | Structured metadata for a template. |
+| [`TemplateValidationError`](../modules/generated/scikitplot.cython.TemplateValidationError.html#scikitplot.cython.TemplateValidationError "scikitplot.cython.TemplateValidationError") | Raised when template metadata fails strict schema validation. |
 | [`build_package_example`](../modules/generated/scikitplot.cython.build_package_example.html#scikitplot.cython.build_package_example "scikitplot.cython.build_package_example") | Build and import a multi-module package example and return loaded modules. |
 | [`build_package_example_result`](../modules/generated/scikitplot.cython.build_package_example_result.html#scikitplot.cython.build_package_example_result "scikitplot.cython.build_package_example_result") | Build and import a multi-module **package example** and return a structured result. |
 | [`compile_template`](../modules/generated/scikitplot.cython.compile_template.html#scikitplot.cython.compile_template "scikitplot.cython.compile_template") | Compile and import a Cython template and return the loaded module. |
@@ -182,6 +213,8 @@ low-level Cython packages and modules for immediate use and testing.
 | [`read_template`](../modules/generated/scikitplot.cython.read_template.html#scikitplot.cython.read_template "scikitplot.cython.read_template") | Read template source text. |
 | [`read_template_info`](../modules/generated/scikitplot.cython.read_template_info.html#scikitplot.cython.read_template_info "scikitplot.cython.read_template_info") | Read metadata for a template and return a [`TemplateInfo`](../modules/generated/scikitplot.cython.TemplateInfo.html#scikitplot.cython.TemplateInfo "scikitplot.cython.TemplateInfo"). |
 | [`template_root`](../modules/generated/scikitplot.cython.template_root.html#scikitplot.cython.template_root "scikitplot.cython.template_root") | Return the on-disk template root directory. |
+| [`validate_template_info`](../modules/generated/scikitplot.cython.validate_template_info.html#scikitplot.cython.validate_template_info "scikitplot.cython.validate_template_info") | Strictly validate template metadata against the schema (CYTHON-TPL-002). |
+| [`verify_template_assets`](../modules/generated/scikitplot.cython.verify_template_assets.html#scikitplot.cython.verify_template_assets "scikitplot.cython.verify_template_assets") | Verify every referenced template support asset is actually shipped. |
 | [`workflow_cli_template_path`](../modules/generated/scikitplot.cython.workflow_cli_template_path.html#scikitplot.cython.workflow_cli_template_path "scikitplot.cython.workflow_cli_template_path") | Return the workflow CLI template path. |
 
 ## Small utilities[#](#small-utilities "Link to this heading")

@@ -1,6 +1,6 @@
 # CustomFilter[#](#customfilter "Link to this heading")
 
-class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L282)[#](#scikitplot.corpus.CustomFilter "Link to this definition")
+class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L283)[#](#scikitplot.corpus.CustomFilter "Link to this definition")
 :   Wrap any callable as a [`FilterBase`](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase").
 
     Parameters:
@@ -22,8 +22,8 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
         :   If `fn` is not callable.
 
     Parameters:
-    :   * ****fn**** (**Callable****[****[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")**]****,** [**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")**]**)
-        * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****fn**** (**Callable****[****[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")**]****,** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]**)
+        * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     > **See also**
     > [`scikitplot.corpus._base.DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus._base.DefaultFilter")
@@ -57,7 +57,7 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
     ```
     Go BackOpen In Tab
 
-    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L356)[#](#scikitplot.corpus.CustomFilter.include "Link to this definition")
+    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L357)[#](#scikitplot.corpus.CustomFilter.include "Link to this definition")
     :   Return the result of the user-supplied filter callable.
 
         Parameters:
@@ -72,4 +72,4 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
         :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+        :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")

@@ -6,18 +6,21 @@ Public Annoy Python API for scikitplot.
 
 Spotify ANNoy [[1]](#r9976e86a58f0-1) (Approximate Nearest Neighbors Oh Yeah).
 
-This package exposes ****two layers****:
+This package exposes ****two layers****.
 
 Exports:
 
 1. Low-level C-extension types copied from Spotify’s **annoy** project:
    [`Annoy`](../modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy "scikitplot.cexternals._annoy.Annoy") and [`AnnoyIndex`](../modules/generated/scikitplot.cexternals._annoy.AnnoyIndex.html#scikitplot.cexternals._annoy.AnnoyIndex "scikitplot.cexternals._annoy.AnnoyIndex").
 2. A high-level, mixin-composed wrapper [`Index`](../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index") that:
-   - forwards the complete low-level API deterministically,
-   - adds versioned manifest import/export,
-   - provides explicit index I/O names (`save_index` / `load_index`),
-   - provides safe Python-object persistence helpers (pickling),
-   - adds optional NumPy export and plotting utilities.
+
+* forwards the complete low-level API deterministically,
+* adds versioned manifest import/export,
+* provides explicit index I/O names (`save_index` / `load_index`),
+* provides safe Python-object persistence helpers (pickling),
+* adds optional NumPy export and plotting utilities,
+* decides how many threads build an index from one rule
+  ([`threads_info`](../modules/generated/scikitplot.annoy.threads_info.html#scikitplot.annoy.threads_info "scikitplot.annoy.threads_info"), `SKPLT_ANNOY_THREADS`).
 
 Notes
 
@@ -105,16 +108,17 @@ Class inheritance
 | [`Annoy`](../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy "scikitplot.annoy.Annoy") | Compiled with GCC/Clang. |
 | [`AnnoyIndex`](../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex "scikitplot.annoy.AnnoyIndex") |  |
 | [`Index`](../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index") | High-level ANNoy index composed from mixins. |
+| [`threads_info`](../modules/generated/scikitplot.annoy.threads_info.html#scikitplot.annoy.threads_info "scikitplot.annoy.threads_info") | Describe what decides the number of threads in this process. |
 
 ## ANNoy (cpp based [`Index`](../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index") Mixins)[#](#annoy-cpp-based-index-mixins "Link to this heading")
 
 |  |  |
 | --- | --- |
-| [`CompressMode`](../modules/generated/scikitplot.annoy.CompressMode.html#scikitplot.annoy.CompressMode "scikitplot.annoy.CompressMode") | Compression used for `"byte"` pickling by [`PickleMixin`](../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin"). |
+| [`CompressMode`](../modules/generated/scikitplot.annoy.CompressMode.html#scikitplot.annoy.CompressMode "scikitplot.annoy.CompressMode") |  |
 | [`IndexIOMixin`](../modules/generated/scikitplot.annoy.IndexIOMixin.html#scikitplot.annoy.IndexIOMixin "scikitplot.annoy.IndexIOMixin") | Mixin adding explicit Annoy-native persistence helpers. |
 | [`MetaMixin`](../modules/generated/scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy.MetaMixin") | Mixin that exports and restores index metadata. |
 | [`NDArrayMixin`](../modules/generated/scikitplot.annoy.NDArrayMixin.html#scikitplot.annoy.NDArrayMixin "scikitplot.annoy.NDArrayMixin") | NumPy / SciPy / pandas interoperability for Annoy-like indexes. |
 | [`PickleMixin`](../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin") | Mixin adding pickle support. |
-| [`PickleMode`](../modules/generated/scikitplot.annoy.PickleMode.html#scikitplot.annoy.PickleMode "scikitplot.annoy.PickleMode") | Persistence strategy used by [`PickleMixin`](../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin"). |
+| [`PickleMode`](../modules/generated/scikitplot.annoy.PickleMode.html#scikitplot.annoy.PickleMode "scikitplot.annoy.PickleMode") |  |
 | [`PlottingMixin`](../modules/generated/scikitplot.annoy.PlottingMixin.html#scikitplot.annoy.PlottingMixin "scikitplot.annoy.PlottingMixin") | Mixin that adds convenient plotting methods to high-level Annoy wrappers. |
 | [`VectorOpsMixin`](../modules/generated/scikitplot.annoy.VectorOpsMixin.html#scikitplot.annoy.VectorOpsMixin "scikitplot.annoy.VectorOpsMixin") | User-facing neighbor queries for Annoy-like backends. |

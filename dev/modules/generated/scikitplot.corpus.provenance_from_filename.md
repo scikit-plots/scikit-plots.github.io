@@ -1,6 +1,6 @@
 # provenance\_from\_filename[#](#provenance-from-filename "Link to this heading")
 
-scikitplot.corpus.provenance\_from\_filename(**filename**, **source\_type=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_metadata/_metadata.py#L504)[#](#scikitplot.corpus.provenance_from_filename "Link to this definition")
+scikitplot.corpus.provenance\_from\_filename(**filename**, **source\_type=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_metadata/_metadata.py#L505)[#](#scikitplot.corpus.provenance_from_filename "Link to this definition")
 :   Extract provenance metadata from a source filename using heuristics.
 
     Designed for corpora organised by the Project Gutenberg naming
@@ -23,11 +23,11 @@ scikitplot.corpus.provenance\_from\_filename(**filename**, **source\_type=None**
             `from_file`.
 
     Parameters:
-    :   * ****filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****source\_type**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****source\_type**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Examples
 

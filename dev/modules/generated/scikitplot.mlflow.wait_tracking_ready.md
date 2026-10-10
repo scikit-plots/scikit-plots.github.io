@@ -1,6 +1,6 @@
 # wait\_tracking\_ready[#](#wait-tracking-ready "Link to this heading")
 
-scikitplot.mlflow.wait\_tracking\_ready(**tracking\_uri**, **timeout\_s**, **\***, **server=None**, **poll\_interval\_s=0.2**, **request\_timeout\_s=2.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_readiness.py#L61)[#](#scikitplot.mlflow.wait_tracking_ready "Link to this definition")
+scikitplot.mlflow.wait\_tracking\_ready(**tracking\_uri**, **timeout\_s**, **\***, **server=None**, **poll\_interval\_s=0.2**, **request\_timeout\_s=2.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_readiness.py#L61)[#](#scikitplot.mlflow.wait_tracking_ready "Link to this definition")
 :   Wait until the MLflow tracking REST API responds.
 
     Parameters:
@@ -35,11 +35,11 @@ scikitplot.mlflow.wait\_tracking\_ready(**tracking\_uri**, **timeout\_s**, **\**
         :   If readiness is not reached within `timeout_s`.
 
     Parameters:
-    :   * ****tracking\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+    :   * ****tracking\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****timeout\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
         * ****server**** ([**SpawnedServer**](scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer "scikitplot.mlflow._server.SpawnedServer") **|** **None**)
-        * ****poll\_interval\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****request\_timeout\_s**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+        * ****poll\_interval\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****request\_timeout\_s**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
 
     Return type:
     :   None

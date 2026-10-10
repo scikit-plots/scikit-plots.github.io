@@ -1,6 +1,6 @@
 # probe\_url\_kind[#](#probe-url-kind "Link to this heading")
 
-scikitplot.corpus.probe\_url\_kind(**url**, **\***, **timeout=15**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L492)[#](#scikitplot.corpus.probe_url_kind "Link to this definition")
+scikitplot.corpus.probe\_url\_kind(**url**, **\***, **timeout=15**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L493)[#](#scikitplot.corpus.probe_url_kind "Link to this definition")
 :   Probe a URL with a HEAD request to classify by Content-Type.
 
     Use this when [`classify_url`](scikitplot.corpus.classify_url.html#scikitplot.corpus.classify_url "scikitplot.corpus.classify_url") returns [`URLKind.WEB_PAGE`](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind.WEB_PAGE "scikitplot.corpus.URLKind.WEB_PAGE")
@@ -37,9 +37,9 @@ scikitplot.corpus.probe\_url\_kind(**url**, **\***, **timeout=15**, **skip\_ssrf
         :   If **url** does not start with `http://` or `https://`.
 
     Parameters:
-    :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****timeout**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****skip\_ssrf\_check**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****timeout**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****skip\_ssrf\_check**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   [**URLKind**](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind "scikitplot.corpus._url_handler.URLKind")

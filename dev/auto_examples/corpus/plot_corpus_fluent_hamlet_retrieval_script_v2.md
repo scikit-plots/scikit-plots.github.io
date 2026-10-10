@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # Build and Search a Real Hamlet Corpus with FluentCorpus[#](#build-and-search-a-real-hamlet-corpus-with-fluentcorpus "Link to this heading")
 
 This example uses a real public-domain **Hamlet** excerpt to demonstrate the
-first-class `FluentCorpus` runtime workflow.
+first-class [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") runtime workflow.
 
 The configuration remains declarative:
 
@@ -218,7 +218,7 @@ print("Characters:", len(HAMLET_TEXT))
 
 ```
 ```
-Source: /tmp/scikitplot-hamlet-8823j7mo/hamlet_excerpt.txt
+Source: /tmp/scikitplot-hamlet-n_60szf6/hamlet_excerpt.txt
 Characters: 3819
 
 ```
@@ -370,7 +370,7 @@ print("Validation problems:", fluent.validate())
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 2a5822110cff6d51>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] aea5dad0650e9ac43383e063a169845677c92a60796842443c03c030e32d1dd5>
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 Validation problems: []
 
@@ -379,7 +379,7 @@ Validation problems: []
 ## 6. Materialize without processing the source[#](#materialize-without-processing-the-source "Link to this heading")
 
 `materialize()` constructs operational components and returns
-`RuntimeCorpus`, but it does ****not**** read `plan.source`. That keeps
+[`RuntimeCorpus`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus"), but it does ****not**** read `plan.source`. That keeps
 configuration/materialization separate from execution.
 
 `RuntimePolicy` is also explicit. This gallery forbids network sources,
@@ -398,7 +398,7 @@ print("Index before run:", runtime.index)
 ```
 ```
 Runtime type: RuntimeCorpus
-Plan fingerprint: 2a5822110cff6d51
+Plan fingerprint: aea5dad0650e9ac43383e063a169845677c92a60796842443c03c030e32d1dd5
 Documents before run: 0
 Index before run: None
 
@@ -437,7 +437,7 @@ Stored documents: 12
 Index documents: 12
 Dense index available: True
 Dense backend: bruteforce
-Index generation: b715bbc6120d7094
+Index generation: 39bfcbdf1b164d13
 
 [0] 'THE TRAGEDY OF HAMLET, PRINCE OF DENMARK'
     keywords: ['denmark', 'hamlet', 'prince', 'the', 'tragedy']
@@ -583,7 +583,7 @@ print(exported.read_text(encoding="utf-8").splitlines()[0][:300])
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-8823j7mo/hamlet_corpus.jsonl
+Exported: /tmp/scikitplot-hamlet-n_60szf6/hamlet_corpus.jsonl
 Bytes: 31126
 First JSONL row:
 {"schema_version": "2.0", "doc_id": "778d78ec096f965d", "input_path": "hamlet_excerpt.txt", "chunk_index": 0, "text": "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK", "section_type": "text", "chunking_strategy": "paragraph", "language": null, "char_start": 0, "char_end": 40, "metadata": {}, "source_type"
@@ -702,9 +702,9 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.046 seconds)
+****Total running time of the script:**** (0 minutes 0.047 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.ipynb)
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.ipynb)
 
 [`Download Jupyter notebook: plot_corpus_fluent_hamlet_retrieval_script_v2.ipynb`](../../_downloads/358c3f07986dde041a2a3e971e28468d/plot_corpus_fluent_hamlet_retrieval_script_v2.ipynb)
 

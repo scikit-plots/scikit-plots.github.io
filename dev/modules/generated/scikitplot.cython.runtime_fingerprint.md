@@ -1,6 +1,6 @@
 # runtime\_fingerprint[#](#runtime-fingerprint "Link to this heading")
 
-scikitplot.cython.runtime\_fingerprint(**\***, **cython\_version**, **numpy\_version**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_cache.py#L390)[#](#scikitplot.cython.runtime_fingerprint "Link to this definition")
+scikitplot.cython.runtime\_fingerprint(**\***, **cython\_version**, **numpy\_version**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_cache.py#L420)[#](#scikitplot.cython.runtime_fingerprint "Link to this definition")
 :   Compute a runtime fingerprint for caching correctness.
 
     The fingerprint includes the interpreter, platform, and library versions
@@ -21,11 +21,11 @@ scikitplot.cython.runtime\_fingerprint(**\***, **cython\_version**, **numpy\_ver
         :   Fingerprint mapping.
 
     Parameters:
-    :   * ****cython\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****numpy\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****cython\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****numpy\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Notes
 

@@ -1,6 +1,6 @@
 # ANNImputer[#](#annimputer "Link to this heading")
 
-class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **backend='annoy'**, **index\_access='external'**, **index\_store\_path=None**, **on\_disk\_build=False**, **n\_trees=-1**, **search\_k=-1**, **n\_neighbors=5**, **weights='uniform'**, **metric='angular'**, **initial\_strategy='mean'**, **fill\_value=None**, **copy=True**, **add\_indicator=False**, **keep\_empty\_features=False**, **n\_jobs=None**, **random\_state=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/impute/_ann.py#L109)[#](#scikitplot.impute._ann.ANNImputer "Link to this definition")
+class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **backend='annoy'**, **index\_access='external'**, **index\_store\_path=None**, **on\_disk\_build=False**, **n\_trees=-1**, **search\_k=-1**, **n\_neighbors=5**, **weights='uniform'**, **metric='angular'**, **initial\_strategy='mean'**, **fill\_value=None**, **copy=True**, **add\_indicator=False**, **keep\_empty\_features=False**, **n\_jobs=None**, **random\_state=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/impute/_ann.py#L109)[#](#scikitplot.impute._ann.ANNImputer "Link to this definition")
 :   Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends.
 
     [`ANNImputer`](#scikitplot.impute._ann.ANNImputer "scikitplot.impute._ann.ANNImputer") performs vector-based imputation by querying an
@@ -38,7 +38,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
             * `'voyager'`: use the optional `voyager` package.
 
             When `backend='voyager'` the `voyager` package must be
-            installed. An [`ImportError`](https://docs.python.org/3/library/exceptions.html#ImportError "(in Python v3.14)") is raised otherwise.
+            installed. An [`ImportError`](https://docs.python.org/3/builtins/exceptions.html#ImportError "(in Python v3.15)") is raised otherwise.
 
             Parameters `index_access`, `index_store_path` and
             behave identically for both backends.
@@ -49,7 +49,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
             * `'public'`: [`train_index_`](#scikitplot.impute._ann.ANNImputer.train_index_ "scikitplot.impute._ann.ANNImputer.train_index_") returns the underlying
               ANN index instance (backwards compatible behaviour).
             * `'private'`: Any attempt to access [`train_index_`](#scikitplot.impute._ann.ANNImputer.train_index_ "scikitplot.impute._ann.ANNImputer.train_index_")
-              raises [`AttributeError`](https://docs.python.org/3/library/exceptions.html#AttributeError "(in Python v3.14)"). The index is still used
+              raises [`AttributeError`](https://docs.python.org/3/builtins/exceptions.html#AttributeError "(in Python v3.15)"). The index is still used
               internally during [`transform`](#scikitplot.impute._ann.ANNImputer.transform "scikitplot.impute._ann.ANNImputer.transform"), but is not directly
               exposed to user code.
             * `'external'`: The fitted ANN index is persisted to disk using
@@ -154,7 +154,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
 
             Note that when `backend='voyager'` not support all metrics
             (such as `"manhattan"` or `"hamming"`)
-            with the voyager backend will raise [`ValueError`](https://docs.python.org/3/library/exceptions.html#ValueError "(in Python v3.14)").
+            with the voyager backend will raise [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)").
 
             > **See also**
             > * [`cosine`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cosine.html#scipy.spatial.distance.cosine "(in SciPy v2.0.0.dev)")
@@ -214,7 +214,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
             * during Voyager query construction, passed to
               `Voyager.query`,
             * during imputation, used as the number of worker threads in a
-              [`joblib.Parallel`](https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel "(in joblib v1.6)") loop.
+              [`joblib.Parallel`](https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel "(in joblib v1.7)") loop.
 
             If None usually = 1 worker (sequential).
 
@@ -348,7 +348,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
     ```
     Go BackOpen In Tab
 
-    delete\_external\_index()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/impute/_privacy.py#L318)[#](#scikitplot.impute._ann.ANNImputer.delete_external_index "Link to this definition")
+    delete\_external\_index()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/impute/_privacy.py#L318)[#](#scikitplot.impute._ann.ANNImputer.delete_external_index "Link to this definition")
     :   Delete the external index file referenced by `index_path_`.
 
         This helper removes the file on disk if `index_path_` is
@@ -357,10 +357,10 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         `_get_index_for_runtime` in `index_access='external'`
         mode) will fail until the estimator is re-fitted.
 
-        Any [`OSError`](https://docs.python.org/3/library/exceptions.html#OSError "(in Python v3.14)") raised by [`os.remove`](https://docs.python.org/3/library/os.html#os.remove "(in Python v3.14)") will propagate
+        Any [`OSError`](https://docs.python.org/3/builtins/exceptions.html#OSError "(in Python v3.15)") raised by [`os.remove`](https://docs.python.org/3/library/os.html#os.remove "(in Python v3.15)") will propagate
         to the caller.
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/impute/_ann.py#L1048)[#](#scikitplot.impute._ann.ANNImputer.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/impute/_ann.py#L1048)[#](#scikitplot.impute._ann.ANNImputer.fit "Link to this definition")
     :   Fit the imputer on X and build the underlying ANN index.
 
         This step:
@@ -370,7 +370,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         * builds the backend-specific ANN index, and
         * fits the missing-value indicator (if enabled).
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.impute._ann.ANNImputer.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.impute._ann.ANNImputer.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -391,10 +391,10 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/impute/_ann.py#L1683)[#](#scikitplot.impute._ann.ANNImputer.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/impute/_ann.py#L1683)[#](#scikitplot.impute._ann.ANNImputer.get_feature_names_out "Link to this definition")
     :   Return output feature names, including indicator features if used.
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/../sklearn/utils/_metadata_requests.py#L1737)[#](#scikitplot.impute._ann.ANNImputer.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.impute._ann.ANNImputer.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
         Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") on how the routing
@@ -405,7 +405,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
             :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.impute._ann.ANNImputer.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.impute._ann.ANNImputer.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -417,7 +417,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/../sklearn/utils/_set_output.py#L392)[#](#scikitplot.impute._ann.ANNImputer.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.impute._ann.ANNImputer.set_output "Link to this definition")
     :   Set output container.
 
         Refer to the [user guide](https://scikit-learn.org/dev/modules/df_output_transform.html#df-output-transform "(in scikit-learn v1.10)") for more details
@@ -439,7 +439,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.impute._ann.ANNImputer.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.impute._ann.ANNImputer.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
@@ -459,8 +459,8 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
     :   Optionally expose the fitted ANN index (Annoy or Voyager).
 
         This attribute is only available when `index_access='public'`.
-        For other values, [`AttributeError`](https://docs.python.org/3/library/exceptions.html#AttributeError "(in Python v3.14)") is raised by
+        For other values, [`AttributeError`](https://docs.python.org/3/builtins/exceptions.html#AttributeError "(in Python v3.15)") is raised by
         `OutsourcedIndexMixin._get_index`.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/impute/_ann.py#L1612)[#](#scikitplot.impute._ann.ANNImputer.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/impute/_ann.py#L1612)[#](#scikitplot.impute._ann.ANNImputer.transform "Link to this definition")
     :   Impute missing values in X using approximate nearest neighbors.

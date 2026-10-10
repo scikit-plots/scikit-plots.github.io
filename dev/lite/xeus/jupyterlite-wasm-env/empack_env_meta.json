@@ -34,9 +34,9 @@
     {
       "name": "python_abi",
       "version": "3.13",
-      "build": "8_cp313",
-      "filename_stem": "python_abi-3.13-8_cp313",
-      "filename": "python_abi-3.13-8_cp313.tar.gz",
+      "build": "9_cp313",
+      "filename_stem": "python_abi-3.13-9_cp313",
+      "filename": "python_abi-3.13-9_cp313.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [],
       "subdir": "noarch"
@@ -111,6 +111,19 @@
       "subdir": "emscripten-wasm32"
     },
     {
+      "name": "xeus",
+      "version": "6.0.6",
+      "build": "hc780342_0",
+      "filename_stem": "xeus-6.0.6-hc780342_0",
+      "filename": "xeus-6.0.6-hc780342_0.tar.gz",
+      "channel": "https://prefix.dev/emscripten-forge-4x",
+      "depends": [
+        "emscripten-abi >=4,<5.0a0",
+        "nlohmann_json-abi 3.12.0"
+      ],
+      "subdir": "emscripten-wasm32"
+    },
+    {
       "name": "pyjs-rt",
       "version": "4.0.6",
       "build": "py313h06ab7c0_0",
@@ -120,19 +133,6 @@
       "depends": [
         "emscripten-abi >=4,<5.0a0",
         "python_abi 3.13.* *_cp313"
-      ],
-      "subdir": "emscripten-wasm32"
-    },
-    {
-      "name": "xeus",
-      "version": "6.0.5",
-      "build": "h0b0027f_0",
-      "filename_stem": "xeus-6.0.5-h0b0027f_0",
-      "filename": "xeus-6.0.5-h0b0027f_0.tar.gz",
-      "channel": "https://prefix.dev/emscripten-forge-4x",
-      "depends": [
-        "emscripten-abi >=4,<5.0a0",
-        "nlohmann_json-abi 3.12.0"
       ],
       "subdir": "emscripten-wasm32"
     },
@@ -338,25 +338,26 @@
     },
     {
       "name": "wcwidth",
-      "version": "0.8.2",
-      "build": "pyhd8ed1ab_0",
-      "filename_stem": "wcwidth-0.8.2-pyhd8ed1ab_0",
-      "filename": "wcwidth-0.8.2-pyhd8ed1ab_0.tar.gz",
+      "version": "0.9.1",
+      "build": "pyh5ded981_0",
+      "filename_stem": "wcwidth-0.9.1-pyh5ded981_0",
+      "filename": "wcwidth-0.9.1-pyh5ded981_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
-        "python >=3.10"
+        "python >=3.11",
+        "python"
       ],
       "subdir": "noarch"
     },
     {
       "name": "pure_eval",
-      "version": "0.2.3",
-      "build": "pyhd8ed1ab_1",
-      "filename_stem": "pure_eval-0.2.3-pyhd8ed1ab_1",
-      "filename": "pure_eval-0.2.3-pyhd8ed1ab_1.tar.gz",
+      "version": "0.2.4",
+      "build": "pyhd8ed1ab_0",
+      "filename_stem": "pure_eval-0.2.4-pyhd8ed1ab_0",
+      "filename": "pure_eval-0.2.4-pyhd8ed1ab_0.tar.gz",
       "channel": "https://prefix.dev/conda-forge",
       "depends": [
-        "python >=3.9"
+        "python >=3.11"
       ],
       "subdir": "noarch"
     },
@@ -754,9 +755,9 @@
     {
       "name": "xeus-r",
       "version": "0.11.2",
-      "build": "h01c9e3f_1",
-      "filename_stem": "xeus-r-0.11.2-h01c9e3f_1",
-      "filename": "xeus-r-0.11.2-h01c9e3f_1.tar.gz",
+      "build": "r45h01c9e3f_2",
+      "filename_stem": "xeus-r-0.11.2-r45h01c9e3f_2",
+      "filename": "xeus-r-0.11.2-r45h01c9e3f_2.tar.gz",
       "channel": "https://prefix.dev/emscripten-forge-4x",
       "depends": [
         "r-main-module-abi * vanilla*",
@@ -770,9 +771,9 @@
         "r-rlang",
         "zlib",
         "emscripten-abi >=4,<5.0a0",
-        "nlohmann_json-abi 3.12.0",
         "r-base >=4.5.3,<4.6.0a0",
-        "xeus >=6.0.5,<6.1.0a0"
+        "nlohmann_json-abi 3.12.0",
+        "xeus >=6.0.6,<6.1.0a0"
       ],
       "subdir": "emscripten-wasm32"
     }

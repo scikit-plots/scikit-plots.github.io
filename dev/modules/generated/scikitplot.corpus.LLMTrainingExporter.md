@@ -1,6 +1,6 @@
 # LLMTrainingExporter[#](#llmtrainingexporter "Link to this heading")
 
-class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_prompt='You are a helpful assistant.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1498)[#](#scikitplot.corpus.LLMTrainingExporter "Link to this definition")
+class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_prompt='You are a helpful assistant.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1497)[#](#scikitplot.corpus.LLMTrainingExporter "Link to this definition")
 :   Export a corpus with embeddings to LLM training formats.
 
     Orchestrates the full journey from
@@ -17,8 +17,8 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
             Default: `"You are a helpful assistant."`.
 
     Parameters:
-    :   * ****engine**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
-        * ****default\_system\_prompt**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****engine**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
+        * ****default\_system\_prompt**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Examples
 
@@ -58,11 +58,11 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
     ```
     Go BackOpen In Tab
 
-    default\_system\_prompt: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'You are a helpful assistant.'[#](#scikitplot.corpus.LLMTrainingExporter.default_system_prompt "Link to this definition")
+    default\_system\_prompt: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'You are a helpful assistant.'[#](#scikitplot.corpus.LLMTrainingExporter.default_system_prompt "Link to this definition")
 
-    engine: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.LLMTrainingExporter.engine "Link to this definition")
+    engine: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.LLMTrainingExporter.engine "Link to this definition")
 
-    log\_to\_mlflow(**documents**, **\***, **run\_name=None**, **artifact\_dir='corpus\_embeddings'**, **log\_params=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L2035)[#](#scikitplot.corpus.LLMTrainingExporter.log_to_mlflow "Link to this definition")
+    log\_to\_mlflow(**documents**, **\***, **run\_name=None**, **artifact\_dir='corpus\_embeddings'**, **log\_params=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L2034)[#](#scikitplot.corpus.LLMTrainingExporter.log_to_mlflow "Link to this definition")
     :   Log embedding matrix and metadata as MLflow artifacts.
 
         Parameters:
@@ -85,15 +85,15 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
             :   If `mlflow` is not installed.
 
         Parameters:
-        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
-            * ****run\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****artifact\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****log\_params**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
+            * ****run\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****artifact\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****log\_params**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   None
 
-    to\_embedding\_matrix(**documents**, **\***, **include\_metadata=True**, **output\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1902)[#](#scikitplot.corpus.LLMTrainingExporter.to_embedding_matrix "Link to this definition")
+    to\_embedding\_matrix(**documents**, **\***, **include\_metadata=True**, **output\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1901)[#](#scikitplot.corpus.LLMTrainingExporter.to_embedding_matrix "Link to this definition")
     :   Export embeddings as a `(N, D)` NumPy matrix with metadata.
 
         Parameters:
@@ -126,14 +126,14 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
             :   If any document lacks an embedding and `engine=None`.
 
         Parameters:
-        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
-            * ****include\_metadata**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
+            * ****include\_metadata**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[**NDArray**, [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[**NDArray**, [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    to\_huggingface\_training\_dataset(**documents**, **\***, **tokenizer\_name='gpt2'**, **max\_length=512**, **task='clm'**, **text\_field='text'**, **label\_field=None**, **include\_embeddings=False**, **stride=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1735)[#](#scikitplot.corpus.LLMTrainingExporter.to_huggingface_training_dataset "Link to this definition")
+    to\_huggingface\_training\_dataset(**documents**, **\***, **tokenizer\_name='gpt2'**, **max\_length=512**, **task='clm'**, **text\_field='text'**, **label\_field=None**, **include\_embeddings=False**, **stride=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1734)[#](#scikitplot.corpus.LLMTrainingExporter.to_huggingface_training_dataset "Link to this definition")
     :   Build a HuggingFace `datasets.Dataset` for LLM training.
 
         Parameters:
@@ -185,19 +185,19 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
             :   If `transformers` is not installed.
 
         Parameters:
-        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
-            * ****tokenizer\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****max\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****task**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****text\_field**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****label\_field**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****include\_embeddings**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****stride**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
+            * ****tokenizer\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****max\_length**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****task**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****text\_field**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****label\_field**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****include\_embeddings**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****stride**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    to\_openai\_finetuning\_jsonl(**documents**, **output\_path**, **\***, **system\_prompt=None**, **response\_fn=None**, **user\_field='text'**, **include\_embeddings=False**, **skip\_empty=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1606)[#](#scikitplot.corpus.LLMTrainingExporter.to_openai_finetuning_jsonl "Link to this definition")
+    to\_openai\_finetuning\_jsonl(**documents**, **output\_path**, **\***, **system\_prompt=None**, **response\_fn=None**, **user\_field='text'**, **include\_embeddings=False**, **skip\_empty=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1605)[#](#scikitplot.corpus.LLMTrainingExporter.to_openai_finetuning_jsonl "Link to this definition")
     :   Export documents as OpenAI chat fine-tuning JSONL.
 
         Each line is a valid fine-tuning example:
@@ -247,16 +247,16 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
             :   Path to the written `.jsonl` file.
 
         Parameters:
-        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
-            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****system\_prompt**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****response\_fn**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****user\_field**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****include\_embeddings**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****skip\_empty**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****documents**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]** **|** **None**)
+            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****system\_prompt**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****response\_fn**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****user\_field**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****include\_embeddings**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****skip\_empty**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
         Notes
 

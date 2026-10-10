@@ -1,6 +1,6 @@
 # to\_mcp\_resources[#](#to-mcp-resources "Link to this heading")
 
-scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L271)[#](#scikitplot.corpus.to_mcp_resources "Link to this definition")
+scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L271)[#](#scikitplot.corpus.to_mcp_resources "Link to this definition")
 :   Convert documents to MCP `resources/read` response format.
 
     Parameters:
@@ -16,11 +16,11 @@ scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpu
             `mimeType`, `text`, and `metadata` keys.
 
     Parameters:
-    :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****uri\_prefix**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****uri\_prefix**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]
 
     Notes
 

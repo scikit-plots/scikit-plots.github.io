@@ -1,6 +1,6 @@
 # collect\_header\_dirs[#](#collect-header-dirs "Link to this heading")
 
-scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffixes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L887)[#](#scikitplot.cython.collect_header_dirs "Link to this definition")
+scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffixes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L887)[#](#scikitplot.cython.collect_header_dirs "Link to this definition")
 :   Collect unique directories that contain C/C++ header files.
 
     This complements [`collect_c_api_sources`](scikitplot.cython.collect_c_api_sources.html#scikitplot.cython.collect_c_api_sources "scikitplot.cython.collect_c_api_sources"):
@@ -24,12 +24,12 @@ scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffi
             least one header file.
 
     Parameters:
-    :   * ****paths**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****recursive**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****suffixes**** ([**frozenset**](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   * ****paths**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****recursive**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****suffixes**** ([**frozenset**](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")]
 
     Notes
 

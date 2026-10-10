@@ -1,6 +1,6 @@
 # kuiper\_false\_positive\_probability[#](#kuiper-false-positive-probability "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.kuiper\_false\_positive\_probability(**D**, **N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L1331)[#](#scikitplot.cexternals._astropy.stats.kuiper_false_positive_probability "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.kuiper\_false\_positive\_probability(**D**, **N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L1331)[#](#scikitplot.cexternals._astropy.stats.kuiper_false_positive_probability "Link to this definition")
 :   Compute the false positive probability for the Kuiper statistic.
 
     Uses the set of four formulas described in Paltani 2004; they report
@@ -20,11 +20,11 @@ scikitplot.cexternals.\_astropy.stats.kuiper\_false\_positive\_probability(**D**
         :   The probability of a score this large arising from the null hypothesis.
 
     Parameters:
-    :   * ****D**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****N**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
+    :   * ****D**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****N**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
     Notes
 

@@ -1,6 +1,6 @@
 # resolve\_stopwords[#](#resolve-stopwords "Link to this heading")
 
-scikitplot.corpus.resolve\_stopwords(**lang**, **\***, **default='english'**, **extra=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_language_data.py#L1353)[#](#scikitplot.corpus.resolve_stopwords "Link to this definition")
+scikitplot.corpus.resolve\_stopwords(**lang**, **\***, **default='english'**, **extra=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_language_data.py#L1353)[#](#scikitplot.corpus.resolve_stopwords "Link to this definition")
 :   Return a frozenset of stopwords for one or more languages.
 
     Looks up each language in [`BUILTIN_LANG_STOPWORDS`](scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html#scikitplot.corpus.BUILTIN_LANG_STOPWORDS "scikitplot.corpus.BUILTIN_LANG_STOPWORDS"). Languages
@@ -22,12 +22,12 @@ scikitplot.corpus.resolve\_stopwords(**lang**, **\***, **default='english'**, **
         :   Union of stopwords across all requested languages plus **extra**.
 
     Parameters:
-    :   * ****lang**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****default**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****extra**** ([**frozenset**](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   * ****lang**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****default**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****extra**** ([**frozenset**](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Return type:
-    :   [frozenset](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Examples
 

@@ -1,6 +1,6 @@
 # validate\_plotting\_kwargs[#](#validate-plotting-kwargs "Link to this heading")
 
-scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/api/_utils/validation.py#L196)[#](#scikitplot.api._utils.validate_plotting_kwargs "Link to this definition")
+scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/api/_utils/validation.py#L196)[#](#scikitplot.api._utils.validate_plotting_kwargs "Link to this definition")
 :   Validate the provided axes and figure or create new ones if needed.
 
     This function checks if valid axes and figure objects are provided. If not, it creates
@@ -55,8 +55,8 @@ scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[s
             or a list of Axes objects if multiple subplots are created.
 
     Parameters:
-    :   * ****args**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)"))
-        * ****kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)"))
+    :   * ****args**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)"))
+        * ****kwargs**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)"))
 
     Notes
 

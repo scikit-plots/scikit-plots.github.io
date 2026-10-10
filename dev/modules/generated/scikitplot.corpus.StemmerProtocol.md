@@ -1,6 +1,6 @@
 # StemmerProtocol[#](#stemmerprotocol "Link to this heading")
 
-class scikitplot.corpus.StemmerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L212)[#](#scikitplot.corpus.StemmerProtocol "Link to this definition")
+class scikitplot.corpus.StemmerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L212)[#](#scikitplot.corpus.StemmerProtocol "Link to this definition")
 :   Structural protocol for word stemmers.
 
     Examples
@@ -16,7 +16,7 @@ class scikitplot.corpus.StemmerProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
     ```
     Go BackOpen In Tab
 
-    stem(**word**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L225)[#](#scikitplot.corpus.StemmerProtocol.stem "Link to this definition")
+    stem(**word**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L225)[#](#scikitplot.corpus.StemmerProtocol.stem "Link to this definition")
     :   Return the stem of **word**.
 
         Parameters:
@@ -28,7 +28,7 @@ class scikitplot.corpus.StemmerProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
             :   Stemmed form.
 
         Parameters:
-        :   ****word**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****word**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")

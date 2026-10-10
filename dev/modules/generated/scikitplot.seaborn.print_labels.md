@@ -1,6 +1,6 @@
 # print\_labels[#](#print-labels "Link to this heading")
 
-scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/seaborn/_decile.py#L303)[#](#scikitplot.seaborn.print_labels "Link to this definition")
+scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/seaborn/_decile.py#L303)[#](#scikitplot.seaborn.print_labels "Link to this definition")
 :   Pretty-print the legend of decile table column names.
 
     ```
@@ -42,8 +42,8 @@ scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](http
         :   Indentation for JSON formatting.
 
     Parameters:
-    :   * ****as\_json**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****indent**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****as\_json**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****indent**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
     :   None

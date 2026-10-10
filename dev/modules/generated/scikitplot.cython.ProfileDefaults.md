@@ -1,6 +1,6 @@
 # ProfileDefaults[#](#profiledefaults "Link to this heading")
 
-class scikitplot.cython.ProfileDefaults(**annotate=False**, **compiler\_directives=<factory>**, **extra\_compile\_args=<factory>**, **extra\_link\_args=<factory>**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_profiles.py#L80)[#](#scikitplot.cython.ProfileDefaults "Link to this definition")
+class scikitplot.cython.ProfileDefaults(**annotate=False**, **compiler\_directives=<factory>**, **extra\_compile\_args=<factory>**, **extra\_link\_args=<factory>**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_profiles.py#L80)[#](#scikitplot.cython.ProfileDefaults "Link to this definition")
 :   Normalized defaults produced by resolving a profile.
 
     The instance is frozen and slotted: it is immutable and rejects attribute
@@ -23,11 +23,11 @@ class scikitplot.cython.ProfileDefaults(**annotate=False**, **compiler\_directiv
         :   Optional default language, or `None` to leave unspecified.
 
     Parameters:
-    :   * ****annotate**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****compiler\_directives**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****extra\_compile\_args**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]**)
-        * ****extra\_link\_args**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **...****]**)
-        * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****annotate**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****compiler\_directives**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****extra\_compile\_args**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
+        * ****extra\_link\_args**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
+        * ****language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Notes
 
@@ -40,17 +40,17 @@ class scikitplot.cython.ProfileDefaults(**annotate=False**, **compiler\_directiv
     `requires-python` floor should not be lowered below that without
     removing this argument.
 
-    annotate: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.cython.ProfileDefaults.annotate "Link to this definition")
+    annotate: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.cython.ProfileDefaults.annotate "Link to this definition")
     :   !! processed by numpydoc !!
 
-    compiler\_directives: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][#](#scikitplot.cython.ProfileDefaults.compiler_directives "Link to this definition")
+    compiler\_directives: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][#](#scikitplot.cython.ProfileDefaults.compiler_directives "Link to this definition")
     :   !! processed by numpydoc !!
 
-    extra\_compile\_args: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...][#](#scikitplot.cython.ProfileDefaults.extra_compile_args "Link to this definition")
+    extra\_compile\_args: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cython.ProfileDefaults.extra_compile_args "Link to this definition")
     :   !! processed by numpydoc !!
 
-    extra\_link\_args: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...][#](#scikitplot.cython.ProfileDefaults.extra_link_args "Link to this definition")
+    extra\_link\_args: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cython.ProfileDefaults.extra_link_args "Link to this definition")
     :   !! processed by numpydoc !!
 
-    language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.ProfileDefaults.language "Link to this definition")
+    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.ProfileDefaults.language "Link to this definition")
     :   !! processed by numpydoc !!

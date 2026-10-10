@@ -1,6 +1,6 @@
 # CustomDownloader[#](#customdownloader "Link to this heading")
 
-class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **handler=<object object>**, **handler\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_downloader.py#L409)[#](#scikitplot.corpus.CustomDownloader "Link to this definition")
+class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **handler=<object object>**, **handler\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_downloader.py#L410)[#](#scikitplot.corpus.CustomDownloader "Link to this definition")
 :   Wraps a user-supplied callable as a [`BaseDownloader`](scikitplot.corpus.BaseDownloader.html#scikitplot.corpus.BaseDownloader "scikitplot.corpus.BaseDownloader").
 
     Parameters:
@@ -37,16 +37,16 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
         :   If `handler` is not supplied or not callable.
 
     Parameters:
-    :   * ****input\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****timeout**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****max\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****verify\_ssl**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****block\_private\_ips**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****max\_redirects**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****user\_agent**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****handler**** ([**object**](https://docs.python.org/3/library/functions.html#object "(in Python v3.14)"))
-        * ****handler\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)") **|** **None**)
+    :   * ****input\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****timeout**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****max\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****verify\_ssl**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****block\_private\_ips**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****max\_redirects**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****user\_agent**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****handler**** ([**object**](https://docs.python.org/3/builtins/functions.html#object "(in Python v3.15)"))
+        * ****handler\_kwargs**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)") **|** **None**)
 
     Examples
 
@@ -63,9 +63,9 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
     ```
     Go BackOpen In Tab
 
-    block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.CustomDownloader.block_private_ips "Link to this definition")
+    block\_private\_ips: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.CustomDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.CustomDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.CustomDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -74,7 +74,7 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_downloader.py#L470)[#](#scikitplot.corpus.CustomDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_downloader.py#L471)[#](#scikitplot.corpus.CustomDownloader.download "Link to this definition")
     :   Invoke the user-supplied `handler` and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Returns:
@@ -94,20 +94,20 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
         Return type:
         :   [**DownloadResult**](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus._downloader._base.DownloadResult")
 
-    handler: [object](https://docs.python.org/3/library/functions.html#object "(in Python v3.14)") = <object object>[#](#scikitplot.corpus.CustomDownloader.handler "Link to this definition")
+    handler: [object](https://docs.python.org/3/builtins/functions.html#object "(in Python v3.15)") = <object object>[#](#scikitplot.corpus.CustomDownloader.handler "Link to this definition")
 
-    handler\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CustomDownloader.handler_kwargs "Link to this definition")
+    handler\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CustomDownloader.handler_kwargs "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_downloader.py#L409)[#](#scikitplot.corpus.CustomDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_downloader.py#L410)[#](#scikitplot.corpus.CustomDownloader.input_url "Link to this definition")
 
-    max\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 104857600[#](#scikitplot.corpus.CustomDownloader.max_bytes "Link to this definition")
+    max\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 104857600[#](#scikitplot.corpus.CustomDownloader.max_bytes "Link to this definition")
 
-    max\_redirects: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5[#](#scikitplot.corpus.CustomDownloader.max_redirects "Link to this definition")
+    max\_redirects: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 5[#](#scikitplot.corpus.CustomDownloader.max_redirects "Link to this definition")
 
-    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CustomDownloader.output_path "Link to this definition")
+    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CustomDownloader.output_path "Link to this definition")
 
-    timeout: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 30.0[#](#scikitplot.corpus.CustomDownloader.timeout "Link to this definition")
+    timeout: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 30.0[#](#scikitplot.corpus.CustomDownloader.timeout "Link to this definition")
 
-    user\_agent: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'[#](#scikitplot.corpus.CustomDownloader.user_agent "Link to this definition")
+    user\_agent: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'[#](#scikitplot.corpus.CustomDownloader.user_agent "Link to this definition")
 
-    verify\_ssl: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.CustomDownloader.verify_ssl "Link to this definition")
+    verify\_ssl: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.CustomDownloader.verify_ssl "Link to this definition")

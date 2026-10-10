@@ -39,7 +39,7 @@ Get the root `logger` from `func`:
 
 ```
 > **Note**
-> This module builds on Python’s standard [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)") library.
+> This module builds on Python’s standard [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") library.
 For more information on Python’s logging API, refer to the official
 documentation: <https://docs.python.org/3/library/logging.html>
 

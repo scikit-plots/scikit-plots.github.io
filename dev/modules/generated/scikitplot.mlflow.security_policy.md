@@ -1,6 +1,6 @@
 # security\_policy[#](#security-policy "Link to this heading")
 
-scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_security.py#L724)[#](#scikitplot.mlflow.security_policy "Link to this definition")
+scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_security.py#L724)[#](#scikitplot.mlflow.security_policy "Link to this definition")
 :   Temporarily activate a [`SecurityPolicy`](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow.SecurityPolicy") for a context block.
 
     Parameters:
@@ -14,7 +14,7 @@ scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scik
     :   ****policy**** ([**SecurityPolicy**](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow._security.SecurityPolicy") **|** **None**)
 
     Return type:
-    :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.14)")[None]
+    :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.15)")[None]
 
     > **See also**
     > [`set_security_policy`](scikitplot.mlflow.set_security_policy.html#scikitplot.mlflow.set_security_policy "scikitplot.mlflow.set_security_policy")

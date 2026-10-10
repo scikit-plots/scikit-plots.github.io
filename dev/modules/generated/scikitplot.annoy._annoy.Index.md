@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
+class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**, **str metric: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**, **bool prefault: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False**, **int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**, **int verbose: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**, **int schema\_version: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0**, **str dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
 :   Annoy Approximate Nearest Neighbors Index.
 
     This is a Cython-powered Python wrapper around the Annoy C++ library.
@@ -131,7 +131,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
     ```
     Go BackOpen In Tab
 
-    add\_item(**self**, **item**, **vector**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.add_item "Link to this definition")
+    add\_item(**self**, **item**, **vector**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.add_item "Link to this definition")
     :   Add a vector to the index.
 
         Parameters:
@@ -172,7 +172,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
           distance arithmetic, not the stored/returned values. Do not rely on
           more-than-double input precision being preserved.
 
-    build(**self**, **int n\_trees=-1**, **n\_jobs=None**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.build "Link to this definition")
+    build(**self**, **int n\_trees=-1**, **n\_jobs=None**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.build "Link to this definition")
     :   Build the search forest (releases the GIL; see Concurrency).
 
         Parameters:
@@ -261,7 +261,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   If data format is invalid
 
         Parameters:
-        :   ****data**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
+        :   ****data**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]**)
 
         Return type:
         :   Self
@@ -308,7 +308,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Restored instance
 
         Parameters:
-        :   ****data**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
+        :   ****data**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]**)
 
         Return type:
         :   Self
@@ -404,7 +404,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             RuntimeError
             :   If index not constructed
 
-    get\_n\_items(**self**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.get_n_items "Link to this definition")
+    get\_n\_items(**self**) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.get_n_items "Link to this definition")
     :   Return number of items in the index.
 
         Returns:
@@ -412,9 +412,9 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Number of items added (may be sparse)
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    get\_n\_trees(**self**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.get_n_trees "Link to this definition")
+    get\_n\_trees(**self**) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.get_n_trees "Link to this definition")
     :   Return number of trees in the index.
 
         Returns:
@@ -422,7 +422,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Number of trees (0 if not built)
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
     get\_nns\_by\_item(**self**, **item**, **int n**, **int search\_k=-1**, **bool include\_distances=False**)[#](#scikitplot.annoy._annoy.Index.get_nns_by_item "Link to this definition")
     :   Find nearest neighbors (releases the GIL; safe for concurrent reads).
@@ -520,7 +520,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             ValueError
             :   If n <= 0, or if vector length does not match index dimension f
 
-    get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_params "Link to this definition")
+    get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any][#](#scikitplot.annoy._annoy.Index.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
 
         Parameters:
@@ -532,10 +532,10 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Parameter dictionary with all configuration
 
         Parameters:
-        :   ****deep**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   ****deep**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]
 
         Examples
 
@@ -551,7 +551,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    get\_state(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_state "Link to this definition")
+    get\_state(**self**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any][#](#scikitplot.annoy._annoy.Index.get_state "Link to this definition")
     :   Get complete state dictionary.
 
         Returns:
@@ -562,7 +562,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
                 \* Configuration
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]
 
         Examples
 
@@ -580,7 +580,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    is\_built(**self**) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.is_built "Link to this definition")
+    is\_built(**self**) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.is_built "Link to this definition")
     :   Check if index has been built.
 
         Returns:
@@ -588,9 +588,9 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   True if build() has been called
 
         Return type:
-        :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+        :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    is\_empty(**self**) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.is_empty "Link to this definition")
+    is\_empty(**self**) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.is_empty "Link to this definition")
     :   Check if index has no items.
 
         Returns:
@@ -598,9 +598,9 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   True if no items added
 
         Return type:
-        :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+        :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    load(**self**, **filename**, **bool prefault=False**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.load "Link to this definition")
+    load(**self**, **filename**, **bool prefault=False**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.load "Link to this definition")
     :   Load index from disk file.
 
         Parameters:
@@ -715,7 +715,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    repr\_info(**self**, **bool include\_n\_items=True**, **bool include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.repr_info "Link to this definition")
+    repr\_info(**self**, **bool include\_n\_items=True**, **bool include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.repr_info "Link to this definition")
     :   Rich dictionary-like string representation.
 
         Parameters:
@@ -734,7 +734,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Dictionary-style representation
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
         Examples
 
@@ -746,7 +746,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    save(**self**, **filename**, **bool prefault=False**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.save "Link to this definition")
+    save(**self**, **filename**, **bool prefault=False**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.save "Link to this definition")
     :   Save index to disk file.
 
         Parameters:
@@ -773,7 +773,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
           build `seed` are not written to the native `.ann` format. Use
           `pickle` / `get_state` for a full wrapper-state round-trip.
 
-    serialize(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.serialize "Link to this definition")
+    serialize(**self**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any][#](#scikitplot.annoy._annoy.Index.serialize "Link to this definition")
     :   Serialize to JSON-compatible dictionary.
 
         Returns:
@@ -781,7 +781,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   JSON-serializable state
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]
 
         Examples
 
@@ -831,7 +831,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    set\_seed(**self**, **seed**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_seed "Link to this definition")
+    set\_seed(**self**, **seed**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.set_seed "Link to this definition")
     :   Set random seed for index construction.
 
         Parameters:
@@ -859,7 +859,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
           set\_seed\_w(uint64\_t) bridge is used for all concrete index types.
         * Seed 0 triggers Annoy’s deterministic default (Kiss64Random::default\_seed).
 
-    set\_state(**self, dict state: dict[str, Any]**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_state "Link to this definition")
+    set\_state(**self, dict state: dict[str, Any]**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.set_state "Link to this definition")
     :   Restore state from dictionary.
 
         Parameters:
@@ -867,7 +867,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   State dictionary from get\_state()
 
         Parameters:
-        :   ****state**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
+        :   ****state**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]**)
 
         Return type:
         :   None
@@ -888,7 +888,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    set\_verbose(**self**, **bool v**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_verbose "Link to this definition")
+    set\_verbose(**self**, **bool v**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.set_verbose "Link to this definition")
     :   Enable/disable verbose logging.
 
         Parameters:
@@ -898,7 +898,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Return type:
         :   None
 
-    to\_dict(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.to_dict "Link to this definition")
+    to\_dict(**self**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any][#](#scikitplot.annoy._annoy.Index.to_dict "Link to this definition")
     :   Alias for serialize().
 
         Returns:
@@ -906,9 +906,9 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Serialized state
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]
 
-    unbuild(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.unbuild "Link to this definition")
+    unbuild(**self**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.unbuild "Link to this definition")
     :   Remove all trees to allow adding more items.
 
         Transitions index back to BUILDING state.
@@ -920,7 +920,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Return type:
         :   None
 
-    unload(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.unload "Link to this definition")
+    unload(**self**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.annoy._annoy.Index.unload "Link to this definition")
     :   Unmap memory-mapped files and free memory.
 
         Transitions index to EMPTY state.
@@ -928,3 +928,23 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Return type:
         :   None
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
+
+[annoy.Annoy legacy c-api with examples](../../auto_examples/annoy/plot_Annoy_legacy_c_api.html)
+
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
+
+[Index (cython) python-api benchmark with examples](../../auto_examples/annoy/plot_annoy_cython_0benchmark.html)
+
+Index (cython) python-api benchmark with examples![](../../_images/sphx_glr_plot_annoy_cython_api_thumb.png)
+
+[Index (cython) python-api with examples](../../auto_examples/annoy/plot_annoy_cython_api.html)
+
+Index (cython) python-api with examples![](../../_images/sphx_glr_plot_annoy_cython_hamlet_example_thumb.png)
+
+[Approximate Nearest Neighbors with Annoy — A Hamlet Example](../../auto_examples/annoy/plot_annoy_cython_hamlet_example.html)
+
+Approximate Nearest Neighbors with Annoy — A Hamlet Example

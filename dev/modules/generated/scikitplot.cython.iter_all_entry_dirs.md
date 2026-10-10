@@ -1,6 +1,6 @@
 # iter\_all\_entry\_dirs[#](#iter-all-entry-dirs "Link to this heading")
 
-scikitplot.cython.iter\_all\_entry\_dirs(**cache\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_cache.py#L507)[#](#scikitplot.cython.iter_all_entry_dirs "Link to this definition")
+scikitplot.cython.iter\_all\_entry\_dirs(**cache\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_cache.py#L537)[#](#scikitplot.cython.iter_all_entry_dirs "Link to this definition")
 :   Return all cache entry directories whose name is a valid cache key.
 
     Parameters:
@@ -12,10 +12,10 @@ scikitplot.cython.iter\_all\_entry\_dirs(**cache\_root**)[[source]](https://gith
         :   Entry directory paths, sorted by name for deterministic ordering.
 
     Parameters:
-    :   ****cache\_root**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+    :   ****cache\_root**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")]
 
     Notes
 

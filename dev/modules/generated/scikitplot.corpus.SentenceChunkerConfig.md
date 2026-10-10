@@ -1,6 +1,6 @@
 # SentenceChunkerConfig[#](#sentencechunkerconfig "Link to this heading")
 
-class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**, **min\_length=1**, **overlap=0**, **spacy\_model=None**, **nltk\_language='english'**, **strip\_whitespace=True**, **include\_offsets=True**, **custom\_splitter=None**, **script\_hint=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_sentence.py#L267)[#](#scikitplot.corpus.SentenceChunkerConfig "Link to this definition")
+class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**, **min\_length=1**, **overlap=0**, **spacy\_model=None**, **nltk\_language='english'**, **strip\_whitespace=True**, **include\_offsets=True**, **custom\_splitter=None**, **script\_hint=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_sentence.py#L268)[#](#scikitplot.corpus.SentenceChunkerConfig "Link to this definition")
 :   Configuration for [`SentenceChunker`](scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker").
 
     Parameters:
@@ -33,19 +33,19 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
 
     Parameters:
     :   * ****backend**** ([**SentenceBackend**](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus.SentenceBackend"))
-        * ****min\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****overlap**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****spacy\_model**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****nltk\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****strip\_whitespace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****include\_offsets**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****custom\_splitter**** ([**SentenceSplitterProtocol**](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol") **|** **callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]** **|** **None**)
-        * ****script\_hint**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****multilang\_config**** (**MultilangConfig** **|** **None**)
+        * ****min\_length**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****overlap**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****spacy\_model**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****nltk\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****strip\_whitespace**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****include\_offsets**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****custom\_splitter**** ([**SentenceSplitterProtocol**](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol") **|** **callable****[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]** **|** **None**)
+        * ****script\_hint**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****multilang\_config**** ([**MultilangConfig**](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") **|** **None**)
 
-    backend: [SentenceBackend](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus.SentenceBackend") = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceChunkerConfig.backend "Link to this definition")
+    backend: [SentenceBackend](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus.SentenceBackend") = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceChunkerConfig.backend "Link to this definition")
 
-    custom\_splitter: [SentenceSplitterProtocol](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol") | callable[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.custom_splitter "Link to this definition")
+    custom\_splitter: [SentenceSplitterProtocol](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol") | callable[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.custom_splitter "Link to this definition")
     :   User-supplied splitter for `backend=SentenceBackend.CUSTOM`.
 
         Accepts any object with a `split(text: str) -> list[str]` method
@@ -53,19 +53,19 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
         callable, which is auto-wrapped in
         [`FunctionSentenceSplitter`](scikitplot.corpus.FunctionSentenceSplitter.html#scikitplot.corpus.FunctionSentenceSplitter "scikitplot.corpus._chunkers._custom_tokenizer.FunctionSentenceSplitter").
 
-    include\_offsets: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.SentenceChunkerConfig.include_offsets "Link to this definition")
+    include\_offsets: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.SentenceChunkerConfig.include_offsets "Link to this definition")
 
-    min\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 1[#](#scikitplot.corpus.SentenceChunkerConfig.min_length "Link to this definition")
+    min\_length: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 1[#](#scikitplot.corpus.SentenceChunkerConfig.min_length "Link to this definition")
 
-    multilang\_config: MultilangConfig | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.multilang_config "Link to this definition")
-    :   Multilang feature flags (`MultilangConfig` or `None`).
+    multilang\_config: [MultilangConfig](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.multilang_config "Link to this definition")
+    :   Multilang feature flags ([`MultilangConfig`](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") or `None`).
 
         When set, each sentence chunk is enriched with a
         `chunk.metadata["multilang"]` dict containing script detection,
         grapheme counts, semanteme analysis, preprocessing trace, raw text,
         and timing provenance fields.
 
-    nltk\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = 'english'[#](#scikitplot.corpus.SentenceChunkerConfig.nltk_language "Link to this definition")
+    nltk\_language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = 'english'[#](#scikitplot.corpus.SentenceChunkerConfig.nltk_language "Link to this definition")
     :   Language(s) for the NLTK Punkt sentence tokenizer.
 
         Accepts:
@@ -84,9 +84,9 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
         Supports 200+ languages via `_language_data`. ISO codes, NLTK
         names, and regional aliases (e.g. `"chilean_spanish"`) all resolve.
 
-    overlap: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0[#](#scikitplot.corpus.SentenceChunkerConfig.overlap "Link to this definition")
+    overlap: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0[#](#scikitplot.corpus.SentenceChunkerConfig.overlap "Link to this definition")
 
-    script\_hint: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.script_hint "Link to this definition")
+    script\_hint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.script_hint "Link to this definition")
     :   Optional Unicode script hint for the REGEX backend.
 
         When set to `"multi"` (or any non-`None` value), the REGEX backend
@@ -98,9 +98,9 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
         Valid values: `None` (Latin), `"multi"` (all scripts), or any
         [`ScriptType`](scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType "scikitplot.corpus._chunkers._custom_tokenizer.ScriptType") value string.
 
-    spacy\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.spacy_model "Link to this definition")
+    spacy\_model: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.spacy_model "Link to this definition")
 
-    strip\_whitespace: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.SentenceChunkerConfig.strip_whitespace "Link to this definition")
+    strip\_whitespace: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.SentenceChunkerConfig.strip_whitespace "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

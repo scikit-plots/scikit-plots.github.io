@@ -1,6 +1,6 @@
 # CustomChunker[#](#customchunker "Link to this heading")
 
-class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L131)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
+class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L132)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
 :   Wrap any callable as a [`ChunkerBase`](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase").
 
     The caller provides a `chunk_fn` that accepts `(text: str,
@@ -39,8 +39,8 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
         :   If `chunk_fn` is not callable.
 
     Parameters:
-    :   * ****chunk\_fn**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]****]****,** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]****]**)
-        * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****chunk\_fn**** (**Callable****[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]****]****,** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]****]**)
+        * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     > **See also**
     > [`scikitplot.corpus._base.ChunkerBase`](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase")
@@ -83,7 +83,7 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
     ```
     Go BackOpen In Tab
 
-    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L352)[#](#scikitplot.corpus.CustomChunker.assert_modality "Link to this definition")
+    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L353)[#](#scikitplot.corpus.CustomChunker.assert_modality "Link to this definition")
     :   Raise `ValueError` if this chunker cannot handle **doc\_modality**.
 
         Parameters:
@@ -115,7 +115,7 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
 
         ```
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L235)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L236)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
     :   Delegate to the user-supplied `chunk_fn`.
 
         Parameters:
@@ -137,17 +137,17 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
             :   If `chunk_fn` raises an unexpected exception.
 
         Parameters:
-        :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]** **|** **None**)
+        :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]** **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]
 
-    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
+    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
     :   Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")
         this implementation provides. ****Must**** be defined on every concrete subclass.
 
-    supported\_modalities: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[frozenset](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")[[Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")]] = frozenset({Modality.TEXT})[#](#scikitplot.corpus.CustomChunker.supported_modalities "Link to this definition")
+    supported\_modalities: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")]] = frozenset({Modality.TEXT})[#](#scikitplot.corpus.CustomChunker.supported_modalities "Link to this definition")
     :   `{Modality.TEXT}`.
         Subclasses that support additional modalities (e.g. AUDIO transcripts)
         must override this set.
@@ -155,7 +155,7 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
         Type:
         :   Modalities this chunker can handle. Default
 
-    version: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] = '1.0.0'[#](#scikitplot.corpus.CustomChunker.version "Link to this definition")
+    version: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = '1.0.0'[#](#scikitplot.corpus.CustomChunker.version "Link to this definition")
     :   `"1.0.0"`.
         Subclasses must override to reflect their actual version so that corpus
         snapshots remain reproducible after upgrades.

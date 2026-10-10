@@ -1,6 +1,6 @@
 # is\_safe\_macro\_name[#](#is-safe-macro-name "Link to this heading")
 
-scikitplot.cython.is\_safe\_macro\_name(**name**, **\***, **allow\_reserved=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_security.py#L387)[#](#scikitplot.cython.is_safe_macro_name "Link to this definition")
+scikitplot.cython.is\_safe\_macro\_name(**name**, **\***, **allow\_reserved=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_security.py#L440)[#](#scikitplot.cython.is_safe_macro_name "Link to this definition")
 :   Return `True` when a C preprocessor macro name is safe to define.
 
     Parameters:
@@ -16,11 +16,11 @@ scikitplot.cython.is\_safe\_macro\_name(**name**, **\***, **allow\_reserved=Fals
         :   `True` if the name is safe, `False` otherwise.
 
     Parameters:
-    :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****allow\_reserved**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****allow\_reserved**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
     Notes
 

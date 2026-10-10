@@ -1,6 +1,6 @@
 # to\_langchain\_documents[#](#to-langchain-documents "Link to this heading")
 
-scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_adapters.py#L165)[#](#scikitplot.corpus.to_langchain_documents "Link to this definition")
+scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_adapters.py#L165)[#](#scikitplot.corpus.to_langchain_documents "Link to this definition")
 :   Convert `CorpusDocument` instances to LangChain `Document`.
 
     Parameters:
@@ -13,10 +13,10 @@ scikitplot.corpus.to\_langchain\_documents(**documents**)[[source]](https://gith
             if `langchain_core` is not installed.
 
     Parameters:
-    :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+    :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Notes
 

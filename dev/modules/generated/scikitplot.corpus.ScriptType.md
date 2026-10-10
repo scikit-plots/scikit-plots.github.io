@@ -1,6 +1,6 @@
 # ScriptType[#](#scripttype "Link to this heading")
 
-class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L865)[#](#scikitplot.corpus.ScriptType "Link to this definition")
+class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L865)[#](#scikitplot.corpus.ScriptType "Link to this definition")
 :   Dominant Unicode script detected in a text sample.
 
     Attributes:
@@ -60,59 +60,59 @@ class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/sc
         ****UNKNOWN****
         :   No script characters detected (empty, purely numeric, symbols).
 
-    ARABIC = 'arabic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARABIC "Link to this definition")
+    ARABIC = 'arabic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARABIC "Link to this definition")
 
-    ARMENIAN = 'armenian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARMENIAN "Link to this definition")
+    ARMENIAN = 'armenian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARMENIAN "Link to this definition")
 
-    CJK = 'cjk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CJK "Link to this definition")
+    CJK = 'cjk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CJK "Link to this definition")
 
-    CYRILLIC = 'cyrillic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CYRILLIC "Link to this definition")
+    CYRILLIC = 'cyrillic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CYRILLIC "Link to this definition")
 
-    DEVANAGARI = 'devanagari'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.DEVANAGARI "Link to this definition")
+    DEVANAGARI = 'devanagari'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.DEVANAGARI "Link to this definition")
 
-    EGYPTIAN = 'egyptian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EGYPTIAN "Link to this definition")
+    EGYPTIAN = 'egyptian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EGYPTIAN "Link to this definition")
 
-    EGYPTIAN\_HIEROGLYPHS = 'egyptian\_hieroglyphs'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EGYPTIAN_HIEROGLYPHS "Link to this definition")
+    EGYPTIAN\_HIEROGLYPHS = 'egyptian\_hieroglyphs'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EGYPTIAN_HIEROGLYPHS "Link to this definition")
 
-    EMOJI = 'emoji'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EMOJI "Link to this definition")
+    EMOJI = 'emoji'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EMOJI "Link to this definition")
 
-    ETHIOPIC = 'ethiopic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ETHIOPIC "Link to this definition")
+    ETHIOPIC = 'ethiopic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ETHIOPIC "Link to this definition")
 
-    GEORGIAN = 'georgian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GEORGIAN "Link to this definition")
+    GEORGIAN = 'georgian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GEORGIAN "Link to this definition")
 
-    GREEK = 'greek'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GREEK "Link to this definition")
+    GREEK = 'greek'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GREEK "Link to this definition")
 
-    HAN = 'han'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HAN "Link to this definition")
+    HAN = 'han'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HAN "Link to this definition")
 
-    HANGUL = 'hangul'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HANGUL "Link to this definition")
+    HANGUL = 'hangul'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HANGUL "Link to this definition")
 
-    HEBREW = 'hebrew'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HEBREW "Link to this definition")
+    HEBREW = 'hebrew'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HEBREW "Link to this definition")
 
-    HIRAGANA = 'hiragana'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HIRAGANA "Link to this definition")
+    HIRAGANA = 'hiragana'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HIRAGANA "Link to this definition")
 
-    KATAKANA = 'katakana'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.KATAKANA "Link to this definition")
+    KATAKANA = 'katakana'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.KATAKANA "Link to this definition")
 
-    KHMER = 'khmer'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.KHMER "Link to this definition")
+    KHMER = 'khmer'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.KHMER "Link to this definition")
 
-    LATIN = 'latin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.LATIN "Link to this definition")
+    LATIN = 'latin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.LATIN "Link to this definition")
 
-    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MIXED "Link to this definition")
+    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MIXED "Link to this definition")
 
-    MONGOLIAN = 'mongolian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MONGOLIAN "Link to this definition")
+    MONGOLIAN = 'mongolian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MONGOLIAN "Link to this definition")
 
-    MYANMAR = 'myanmar'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MYANMAR "Link to this definition")
+    MYANMAR = 'myanmar'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MYANMAR "Link to this definition")
 
-    SOUTHEAST\_ASIAN = 'southeast\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTHEAST_ASIAN "Link to this definition")
+    SOUTHEAST\_ASIAN = 'southeast\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTHEAST_ASIAN "Link to this definition")
 
-    SOUTH\_ASIAN = 'south\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTH_ASIAN "Link to this definition")
+    SOUTH\_ASIAN = 'south\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTH_ASIAN "Link to this definition")
 
-    SYMBOLIC = 'symbolic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SYMBOLIC "Link to this definition")
+    SYMBOLIC = 'symbolic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SYMBOLIC "Link to this definition")
 
-    THAI = 'thai'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.THAI "Link to this definition")
+    THAI = 'thai'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.THAI "Link to this definition")
 
-    TIBETAN = 'tibetan'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.TIBETAN "Link to this definition")
+    TIBETAN = 'tibetan'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.TIBETAN "Link to this definition")
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.ScriptType.capitalize "Link to this definition")
     :   Return a capitalized version of the string.
@@ -128,7 +128,7 @@ class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/sc
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -146,7 +146,7 @@ class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/sc
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -157,22 +157,22 @@ class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/sc
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -304,14 +304,14 @@ class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/sc
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -380,7 +380,7 @@ class scikitplot.corpus.ScriptType(**\*values**)[[source]](https://github.com/sc
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ScriptType.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ScriptType.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

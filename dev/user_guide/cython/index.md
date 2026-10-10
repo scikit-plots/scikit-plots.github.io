@@ -34,6 +34,38 @@ m = compile_and_load("def f(int n):\n    return n*n")
 m.f(10)
 
 ```
+
+The new ownership model is:
+
+```
+caller-supplied Python / Cython source
+                |
+                v
+        scikitplot.cython
+                |
+      +----------+-----------+
+      |                      |
+security validation     runtime/toolchain policy
+      |                      |
+      +----------+-----------+
+                |
+        deterministic cache key
+                |
+          per-key lock
+                |
+          staging build
+                |
+      Cython / setuptools
+                |
+          C/C++ compiler
+                |
+        validate artifact
+                |
+          atomic publish
+                |
+        transactional import
+
+```
 **cython templates**
 
 * [Cython templates](_templates/templates_index.html)

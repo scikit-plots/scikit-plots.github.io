@@ -1,6 +1,6 @@
 # pure\_python\_prereqs[#](#pure-python-prereqs "Link to this heading")
 
-scikitplot.cython.pure\_python\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L529)[#](#scikitplot.cython.pure_python_prereqs "Link to this definition")
+scikitplot.cython.pure\_python\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L529)[#](#scikitplot.cython.pure_python_prereqs "Link to this definition")
 :   Check prerequisites pure Python, setuptools only.
 
     No Cython, pybind11, or NumPy is required. Only setuptools (for
@@ -12,7 +12,7 @@ scikitplot.cython.pure\_python\_prereqs()[[source]](https://github.com/scikit-pl
             and either `version: str` or `error: str`.
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Notes
 

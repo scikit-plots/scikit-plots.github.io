@@ -1,6 +1,6 @@
 # get\_project\_markers[#](#get-project-markers "Link to this heading")
 
-scikitplot.mlflow.get\_project\_markers(**\***, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L206)[#](#scikitplot.mlflow.get_project_markers "Link to this definition")
+scikitplot.mlflow.get\_project\_markers(**\***, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L206)[#](#scikitplot.mlflow.get_project_markers "Link to this definition")
 :   Resolve project markers deterministically.
 
     Resolution order:
@@ -18,7 +18,7 @@ scikitplot.mlflow.get\_project\_markers(**\***, **config\_path=None**)[[source]]
         :   Effective marker tuple.
 
     Parameters:
-    :   ****config\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+    :   ****config\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), …]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]

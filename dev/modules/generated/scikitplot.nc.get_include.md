@@ -1,6 +1,6 @@
 # get\_include[#](#get-include "Link to this heading")
 
-scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/nc/__init__.py#L48)[#](#scikitplot.nc.get_include "Link to this definition")
+scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/nc/__init__.py#L48)[#](#scikitplot.nc.get_include "Link to this definition")
 :   Return the absolute path to the NumCpp C++ headers include directory.
 
     Returns:
@@ -8,7 +8,7 @@ scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-pl
         :   Path to the directory containing C and C++ header files.
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Notes
 

@@ -1,6 +1,6 @@
 # generate\_llms\_txt[#](#generate-llms-txt "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt(**app**, **exception**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L4611)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt(**app**, **exception**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L5159)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt "Link to this definition")
 :   Post-build hook: write `llms.txt` listing all generated `.md` URLs.
 
     Registered with Sphinx’s `build-finished` event in `setup`.
@@ -17,7 +17,7 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt
 
     Parameters:
     :   * ****app**** (**Sphinx**)
-        * ****exception**** ([**Exception**](https://docs.python.org/3/library/exceptions.html#Exception "(in Python v3.14)") **|** **None**)
+        * ****exception**** ([**Exception**](https://docs.python.org/3/builtins/exceptions.html#Exception "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   None

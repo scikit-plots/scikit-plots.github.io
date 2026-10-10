@@ -1,6 +1,6 @@
 # RetrievalIndex[#](#retrievalindex "Link to this heading")
 
-class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L413)[#](#scikitplot.corpus.RetrievalIndex "Link to this definition")
+class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L425)[#](#scikitplot.corpus.RetrievalIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -43,10 +43,10 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
     ```
     Go BackOpen In Tab
 
-    property backend\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.corpus.RetrievalIndex.backend_name "Link to this definition")
+    property backend\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.backend_name "Link to this definition")
     :   Name of the active dense ANN backend, or `None` if unbuilt.
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L466)[#](#scikitplot.corpus.RetrievalIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L478)[#](#scikitplot.corpus.RetrievalIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -59,12 +59,12 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
             :   If **documents** is empty.
 
         Parameters:
-        :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+        :   ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
         Return type:
         :   None
 
-    static check\_score\_fusion\_allowed(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L1041)[#](#scikitplot.corpus.RetrievalIndex.check_score_fusion_allowed "Link to this definition")
+    static check\_score\_fusion\_allowed(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L1053)[#](#scikitplot.corpus.RetrievalIndex.check_score_fusion_allowed "Link to this definition")
     :   Whether score-space fusion is defensible for these hits.
 
         Parameters:
@@ -77,10 +77,10 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
                 `None` when it is not and rank fusion must be used.
 
         Parameters:
-        :   ****hits**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.14)")**[**[**RetrievalHit**](scikitplot.corpus.RetrievalHit.html#scikitplot.corpus.RetrievalHit "scikitplot.corpus._similarity._similarity.RetrievalHit")**]**)
+        :   ****hits**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**RetrievalHit**](scikitplot.corpus.RetrievalHit.html#scikitplot.corpus.RetrievalHit "scikitplot.corpus._similarity._similarity.RetrievalHit")**]**)
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | None
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | None
 
         Notes
 
@@ -101,10 +101,10 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         for any non-cosine metric today, which is why the cosine case is the only
         one this returns for.
 
-    property has\_embeddings: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.RetrievalIndex.has_embeddings "Link to this definition")
+    property has\_embeddings: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.has_embeddings "Link to this definition")
     :   Whether dense embeddings are indexed.
 
-    property index\_generation: IndexGeneration | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.corpus.RetrievalIndex.index_generation "Link to this definition")
+    property index\_generation: [IndexGeneration](scikitplot.corpus.IndexGeneration.html#scikitplot.corpus.IndexGeneration "scikitplot.corpus._generation.IndexGeneration") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.index_generation "Link to this definition")
     :   Content-derived identity of the built index.
 
         Returns:
@@ -125,10 +125,10 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         the package, and it turns rebuild-detection into the question a caller
         actually has: **does this index match this content?**
 
-    property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.RetrievalIndex.n_documents "Link to this definition")
+    property n\_documents: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L1184)[#](#scikitplot.corpus.RetrievalIndex.query "Link to this definition")
+    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L1196)[#](#scikitplot.corpus.RetrievalIndex.query "Link to this definition")
     :   Vector-level ANN query returning `(doc_id, score)` pairs.
 
         This is the vector-index seam consumed by
@@ -154,13 +154,13 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
             :   If **vector** dimension mismatches the index or is non-finite.
 
         Parameters:
-        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+        :   * ****vector**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]]
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_similarity/_similarity.py#L703)[#](#scikitplot.corpus.RetrievalIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_similarity.py#L715)[#](#scikitplot.corpus.RetrievalIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:
@@ -179,16 +179,16 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
             :   Hits sorted by descending score, plus a per-leg account of how the
                 search went. The response iterates, indexes and lens like the list
                 of hits it replaced, so `for hit in response` is unchanged; consult
-                `RetrievalResponse.status` to distinguish a complete result
+                [`RetrievalResponse.status`](scikitplot.corpus.RetrievalResponse.html#scikitplot.corpus.RetrievalResponse.status "scikitplot.corpus.RetrievalResponse.status") to distinguish a complete result
                 from a partial one.
 
         Parameters:
-        :   * ****query**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****query**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****config**** ([**RetrievalConfig**](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus._similarity._similarity.RetrievalConfig") **|** **None**)
-            * ****query\_embedding**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
+            * ****query\_embedding**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   **RetrievalResponse**
+        :   [**RetrievalResponse**](scikitplot.corpus.RetrievalResponse.html#scikitplot.corpus.RetrievalResponse "scikitplot.corpus._retrieval.RetrievalResponse")
 
         Notes
 

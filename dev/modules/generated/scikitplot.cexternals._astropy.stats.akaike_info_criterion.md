@@ -1,6 +1,6 @@
 # akaike\_info\_criterion[#](#akaike-info-criterion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/info_theory.py#L218)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/info_theory.py#L218)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion "Link to this definition")
 :   Computes the Akaike Information Criterion (AIC).
 
     Like the Bayesian Information Criterion, the AIC is a measure of
@@ -53,12 +53,12 @@ scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood*
         :   Akaike Information Criterion.
 
     Parameters:
-    :   * ****log\_likelihood**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****n\_params**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****n\_samples**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****log\_likelihood**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****n\_params**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****n\_samples**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
     References
 

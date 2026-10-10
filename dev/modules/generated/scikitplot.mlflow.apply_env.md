@@ -1,6 +1,6 @@
 # apply\_env[#](#apply-env "Link to this heading")
 
-scikitplot.mlflow.apply\_env(**\***, **env\_file**, **extra\_env**, **set\_defaults\_only=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_env.py#L123)[#](#scikitplot.mlflow.apply_env "Link to this definition")
+scikitplot.mlflow.apply\_env(**\***, **env\_file**, **extra\_env**, **set\_defaults\_only=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_env.py#L123)[#](#scikitplot.mlflow.apply_env "Link to this definition")
 :   Apply `.env` and explicit overrides to `os.environ`.
 
     Parameters:
@@ -18,9 +18,9 @@ scikitplot.mlflow.apply\_env(**\***, **env\_file**, **extra\_env**, **set\_defau
         :   If env\_file is provided but does not exist.
 
     Parameters:
-    :   * ****env\_file**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****extra\_env**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****set\_defaults\_only**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****env\_file**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****extra\_env**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****set\_defaults\_only**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   None

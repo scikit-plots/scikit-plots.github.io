@@ -1,6 +1,6 @@
 # show\_config[#](#show-config "Link to this heading")
 
-scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/config/__config__.py#L189)[#](#scikitplot.show_config "Link to this definition")
+scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/config/__config__.py#L189)[#](#scikitplot.show_config "Link to this definition")
 :   Show libraries and system information on which SciPy was built
     and is being used
 
@@ -89,7 +89,7 @@ scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-p
         family: x86_64
         system: linux
     Python Information:
-      path: /home/circleci/.pyenv/versions/3.12.14/bin/python
+      path: /home/circleci/.pyenv/versions/3.12.15/bin/python
       version: '3.12'
 
 

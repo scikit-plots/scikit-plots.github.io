@@ -1,6 +1,6 @@
 # c\_api\_prereqs[#](#c-api-prereqs "Link to this heading")
 
-scikitplot.cython.c\_api\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L650)[#](#scikitplot.cython.c_api_prereqs "Link to this definition")
+scikitplot.cython.c\_api\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L650)[#](#scikitplot.cython.c_api_prereqs "Link to this definition")
 :   Check prerequisites own custom C-API.
 
     Validates Cython (for `.pyx` transpilation), NumPy (for
@@ -12,7 +12,7 @@ scikitplot.cython.c\_api\_prereqs()[[source]](https://github.com/scikit-plots/sc
         :   Keys: `cython`, `numpy`, `setuptools`.
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
     Notes
 

@@ -1,6 +1,6 @@
 # sheet\_converter[#](#sheet-converter "Link to this heading")
 
-scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequency=True**, **return\_mode='dict'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/experimental/_doremi/note.py#L323)[#](#scikitplot.experimental._doremi.sheet_converter "Link to this definition")
+scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequency=True**, **return\_mode='dict'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/experimental/_doremi/note.py#L323)[#](#scikitplot.experimental._doremi.sheet_converter "Link to this definition")
 :   Display parsed notes or note frequencies from a musical sheet.
 
     Parameters:
@@ -26,12 +26,12 @@ scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequen
         :   Formatted note data.
 
     Parameters:
-    :   * ****sheet**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** [**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)") **|** **None**)
-        * ****add\_frequency**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****return\_mode**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'str'****,** **'list'****,** **'dict'****,** **'df'****]**)
+    :   * ****sheet**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)") **|** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)") **|** **None**)
+        * ****add\_frequency**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****return\_mode**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'str'****,** **'list'****,** **'dict'****,** **'df'****]**)
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") | [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)") | **DataFrame**
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)") | [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)") | [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
     Examples
 

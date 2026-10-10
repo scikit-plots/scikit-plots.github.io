@@ -1,13 +1,13 @@
 # CustomTokenizerRegistry[#](#customtokenizerregistry "Link to this heading")
 
-class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L569)[#](#scikitplot.corpus.CustomTokenizerRegistry "Link to this definition")
+class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L569)[#](#scikitplot.corpus.CustomTokenizerRegistry "Link to this definition")
 :   Thread-safe module-level registry for named custom components.
 
     Each registry holds a `dict[str, Protocol]` accessible via module-level
     helpers ([`register_tokenizer`](scikitplot.corpus.register_tokenizer.html#scikitplot.corpus.register_tokenizer "scikitplot.corpus.register_tokenizer"), [`get_tokenizer`](scikitplot.corpus.get_tokenizer.html#scikitplot.corpus.get_tokenizer "scikitplot.corpus.get_tokenizer"), etc.).
 
     All `register`, `get`, `names`, and `__contains__` operations
-    acquire an internal [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.14)") to guarantee safety when
+    acquire an internal [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.15)") to guarantee safety when
     registering from worker threads (e.g. `ThreadPoolExecutor` batch jobs).
 
     Raises:
@@ -15,19 +15,19 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
         :   [`get`](#scikitplot.corpus.CustomTokenizerRegistry.get "scikitplot.corpus.CustomTokenizerRegistry.get") raises `KeyError` when the name is not registered.
 
     Parameters:
-    :   ****kind**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****kind**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Notes
 
     ****User note:**** Register all custom components at application startup, before
     spawning worker threads, to avoid any lock contention in hot paths.
 
-    ****Developer note:**** [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.14)") (reentrant) is used instead of
-    [`threading.Lock`](https://docs.python.org/3/library/threading.html#threading.Lock "(in Python v3.14)") so that the same thread can call `register` from
+    ****Developer note:**** [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.15)") (reentrant) is used instead of
+    [`threading.Lock`](https://docs.python.org/3/library/threading.html#threading.Lock "(in Python v3.15)") so that the same thread can call `register` from
     within a `get` callback without deadlocking. This is safe on CPython,
     PyPy, and GraalPy.
 
-    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L641)[#](#scikitplot.corpus.CustomTokenizerRegistry.get "Link to this definition")
+    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L641)[#](#scikitplot.corpus.CustomTokenizerRegistry.get "Link to this definition")
     :   Retrieve the component registered under **name**.
 
         Parameters:
@@ -43,12 +43,12 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
             :   If **name** has not been registered.
 
         Parameters:
-        :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L668)[#](#scikitplot.corpus.CustomTokenizerRegistry.names "Link to this definition")
+    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L668)[#](#scikitplot.corpus.CustomTokenizerRegistry.names "Link to this definition")
     :   Return all registered names.
 
         Returns:
@@ -56,9 +56,9 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
             :   Sorted list of registered keys.
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    register(**name**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L600)[#](#scikitplot.corpus.CustomTokenizerRegistry.register "Link to this definition")
+    register(**name**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L600)[#](#scikitplot.corpus.CustomTokenizerRegistry.register "Link to this definition")
     :   Register **instance** under **name**.
 
         Parameters:
@@ -76,8 +76,8 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
             :   If **name** is empty.
 
         Parameters:
-        :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****instance**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****instance**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
         :   None

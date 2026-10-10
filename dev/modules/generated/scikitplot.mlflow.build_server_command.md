@@ -1,6 +1,6 @@
 # build\_server\_command[#](#build-server-command "Link to this heading")
 
-scikitplot.mlflow.build\_server\_command(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_server.py#L180)[#](#scikitplot.mlflow.build_server_command "Link to this definition")
+scikitplot.mlflow.build\_server\_command(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_server.py#L180)[#](#scikitplot.mlflow.build_server_command "Link to this definition")
 :   Build a deterministic `mlflow server` command.
 
     Parameters:
@@ -15,7 +15,7 @@ scikitplot.mlflow.build\_server\_command(**cfg**)[[source]](https://github.com/s
     :   ****cfg**** ([**ServerConfig**](scikitplot.mlflow.ServerConfig.html#scikitplot.mlflow.ServerConfig "scikitplot.mlflow._config.ServerConfig"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Notes
 

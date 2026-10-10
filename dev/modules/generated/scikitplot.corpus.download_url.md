@@ -1,6 +1,6 @@
 # download\_url[#](#download-url "Link to this heading")
 
-scikitplot.corpus.download\_url(**url**, **\***, **output\_path=None**, **max\_bytes=524288000**, **timeout=120**, **max\_redirects=10**, **max\_retries=3**, **retry\_backoff=1.0**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L1490)[#](#scikitplot.corpus.download_url "Link to this definition")
+scikitplot.corpus.download\_url(**url**, **\***, **output\_path=None**, **max\_bytes=524288000**, **timeout=120**, **max\_redirects=10**, **max\_retries=3**, **retry\_backoff=1.0**, **skip\_ssrf\_check=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L1491)[#](#scikitplot.corpus.download_url "Link to this definition")
 :   Download a URL to a local file.
 
     Parameters:
@@ -53,17 +53,17 @@ scikitplot.corpus.download\_url(**url**, **\***, **output\_path=None**, **max\_b
         :   If the download exceeds **timeout** seconds.
 
     Parameters:
-    :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****output\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****max\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****timeout**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_redirects**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_retries**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****retry\_backoff**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****skip\_ssrf\_check**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****output\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****max\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****timeout**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_redirects**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_retries**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****retry\_backoff**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****skip\_ssrf\_check**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
     Notes
 

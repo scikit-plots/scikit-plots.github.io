@@ -158,7 +158,7 @@ else:
 ```
 ```
 Template: basic_cython/t01_square_int
-Path: /home/circleci/.pyenv/versions/3.12.13/lib/python3.12/site-packages/scikitplot/cython/_templates/basic_cython/t01_square_int.pyx
+Path: /home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/scikitplot/cython/_templates/basic_cython/t01_square_int.pyx
 
 Source preview:
 
@@ -175,12 +175,12 @@ def square(int n):
 
 
 BuildResult:
-  module_name: scikitplot_cython_27f80730b47a731e
-  key        : 27f80730b47a731ea98d0b45195a1399dd2e9f1432926e05614df4f89558db46
-  artifact   : /home/circleci/.cache/scikitplot/cython/27f80730b47a731ea98d0b45195a1399dd2e9f1432926e05614df4f89558db46/scikitplot_cython_27f80730b47a731e.cpython-312-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_6424d2e0d8d15ade
+  key        : 6424d2e0d8d15ade4b2b6471e0302c24dea5e1057b8e5e142e115da0fc7d2ff5
+  artifact   : /home/circleci/.cache/scikitplot/cython/6424d2e0d8d15ade4b2b6471e0302c24dea5e1057b8e5e142e115da0fc7d2ff5/scikitplot_cython_6424d2e0d8d15ade.cpython-312-x86_64-linux-gnu.so
   used_cache : False
 
-Imported module: scikitplot_cython_27f80730b47a731e
+Imported module: scikitplot_cython_6424d2e0d8d15ade
 Public names: ['square']
 
 No demo_calls declared in template metadata; skipping execution.
@@ -189,9 +189,9 @@ No demo_calls declared in template metadata; skipping execution.
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.686 seconds)
+****Total running time of the script:**** (0 minutes 0.641 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)
+[![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)
 
 [`Download Jupyter notebook: plot_01_browse_and_compile_templates.ipynb`](../../_downloads/a389ff47550de162e8a988982129b8cb/plot_01_browse_and_compile_templates.ipynb)
 

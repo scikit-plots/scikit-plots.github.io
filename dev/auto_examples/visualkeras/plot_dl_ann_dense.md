@@ -81,7 +81,7 @@ img_spam
 ```
 ![plot dl ann dense](../../_images/sphx_glr_plot_dl_ann_dense_001.png)
 ```
-<matplotlib.image.AxesImage object at 0x74f68c975010>
+<matplotlib.image.AxesImage object at 0x7dcb79234dd0>
 
 ```
 ```
@@ -105,7 +105,7 @@ img_spam
 ```
 ![plot dl ann dense](../../_images/sphx_glr_plot_dl_ann_dense_002.png)
 ```
-<matplotlib.image.AxesImage object at 0x74f5f85fa9c0>
+<matplotlib.image.AxesImage object at 0x7dcaf42ee750>
 
 ```
 ```
@@ -129,7 +129,7 @@ img_spam
 ```
 ![plot dl ann dense](../../_images/sphx_glr_plot_dl_ann_dense_003.png)
 ```
-<matplotlib.image.AxesImage object at 0x74f5f8635dc0>
+<matplotlib.image.AxesImage object at 0x7dcaf4313350>
 
 ```
 ```
@@ -153,15 +153,15 @@ img_spam
 ```
 ![plot dl ann dense](../../_images/sphx_glr_plot_dl_ann_dense_004.png)
 ```
-<matplotlib.image.AxesImage object at 0x74f5f8094470>
+<matplotlib.image.AxesImage object at 0x7dcaf42c9c10>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.575 seconds)
+****Total running time of the script:**** (0 minutes 1.151 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_ann_dense.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_ann_dense.ipynb)
+[![Launch binder](../../_images/binder_badge_logo21.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_ann_dense.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo21.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_ann_dense.ipynb)
 
 [`Download Jupyter notebook: plot_dl_ann_dense.ipynb`](../../_downloads/d22c2bc643635d8ee40ce9fec47550ee/plot_dl_ann_dense.ipynb)
 

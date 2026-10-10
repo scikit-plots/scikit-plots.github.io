@@ -1,6 +1,6 @@
 # Annoy[#](#annoy "Link to this heading")
 
-class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
+class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
 :   Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
     Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
@@ -36,7 +36,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
             If None, behavior depends on `f`:
 
             * If `f > 0`: defaults to `'angular'` (legacy behavior; may emit a
-              [`FutureWarning`](https://docs.python.org/3/library/exceptions.html#FutureWarning "(in Python v3.14)")).
+              [`FutureWarning`](https://docs.python.org/3/builtins/exceptions.html#FutureWarning "(in Python v3.15)")).
             * If `f == 0`: leaves the metric unset (lazy). You may set
               [`metric`](#scikitplot.cexternals._annoy.Annoy.metric "scikitplot.cexternals._annoy.Annoy.metric") later before construction, or it will default to
               `'angular'` on first [`add_item`](#scikitplot.cexternals._annoy.Annoy.add_item "scikitplot.cexternals._annoy.Annoy.add_item").
@@ -69,7 +69,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         :   Non-negative integer seed. If set before the index is constructed,
             the seed is stored and applied when the C++ index is created.
             Seed value `0` is treated as "use Annoy’s deterministic default seed"
-            (a [`UserWarning`](https://docs.python.org/3/library/exceptions.html#UserWarning "(in Python v3.14)") is emitted when `0` is explicitly provided).
+            (a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)") is emitted when `0` is explicitly provided).
 
         ****verbose****int or None, optional, default=None
         :   Verbosity level. Values are clamped to the range `[-2, 2]`.
@@ -179,7 +179,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
     * Assigning `None` to [`f`](#scikitplot.cexternals._annoy.Annoy.f "scikitplot.cexternals._annoy.Annoy.f") is not supported. Use `0` for lazy
       inference (this matches `Annoy(f=None, ...)` at construction time).
     * If `metric` is omitted while `f > 0`, the current behavior defaults to
-      `'angular'` and may emit a [`FutureWarning`](https://docs.python.org/3/library/exceptions.html#FutureWarning "(in Python v3.14)"). To avoid warnings and
+      `'angular'` and may emit a [`FutureWarning`](https://docs.python.org/3/builtins/exceptions.html#FutureWarning "(in Python v3.15)"). To avoid warnings and
       future behavior changes, always pass `metric=...` explicitly.
     * Items must be added **before** calling [`build`](#scikitplot.cexternals._annoy.Annoy.build "scikitplot.cexternals._annoy.Annoy.build"). After [`build`](#scikitplot.cexternals._annoy.Annoy.build "scikitplot.cexternals._annoy.Annoy.build"), the
       index becomes read-only; to add more items, call [`unbuild`](#scikitplot.cexternals._annoy.Annoy.unbuild "scikitplot.cexternals._annoy.Annoy.unbuild"), add items
@@ -661,7 +661,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         ```
         Go BackOpen In Tab
 
-    get\_distance(**i**, **j**) → [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.get_distance "Link to this definition")
+    get\_distance(**i**, **j**) → [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.get_distance "Link to this definition")
     :   Return the distance between two stored items.
 
         Parameters:
@@ -700,7 +700,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
             :   If `input_features` is provided but does not match
                 [`feature_names_in_`](#scikitplot.cexternals._annoy.Annoy.feature_names_in_ "scikitplot.cexternals._annoy.Annoy.feature_names_in_").
 
-    get\_item(**i**) → [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")][#](#scikitplot.cexternals._annoy.Annoy.get_item "Link to this definition")
+    get\_item(**i**) → [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")][#](#scikitplot.cexternals._annoy.Annoy.get_item "Link to this definition")
     :   Return the stored embedding vector for a given item id.
 
         Parameters:
@@ -718,7 +718,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
             IndexError
             :   If `i` is out of range.
 
-    get\_n\_items() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.get_n_items "Link to this definition")
+    get\_n\_items() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.get_n_items "Link to this definition")
     :   Return the number of stored items in the index.
 
         Returns:
@@ -729,7 +729,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         :   RuntimeError
             :   If the index is not initialized.
 
-    get\_n\_trees() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.get_n_trees "Link to this definition")
+    get\_n\_trees() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.get_n_trees "Link to this definition")
     :   Return the number of trees in the current forest.
 
         Returns:
@@ -810,7 +810,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         > [`get_nns_by_item`](#scikitplot.cexternals._annoy.Annoy.get_nns_by_item "scikitplot.cexternals._annoy.Annoy.get_nns_by_item")
         :   Query by stored item id.
 
-    get\_params(**deep=True**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.get_params "Link to this definition")
+    get\_params(**deep=True**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.get_params "Link to this definition")
     :   Return estimator-style parameters (scikit-learn compatibility).
 
         Parameters:
@@ -834,7 +834,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         This is intended to make Annoy behave like a scikit-learn estimator for
         tools such as [`sklearn.base.clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.10)") and parameter grids.
 
-    info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.info "Link to this definition")
+    info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.info "Link to this definition")
     :   Return a structured summary of the index.
 
         This method returns a JSON-like Python dictionary that is easier to
@@ -966,7 +966,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         The in-memory index must have been constructed with the same dimension
         and metric as the on-disk file.
 
-    memory\_usage() → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.memory_usage "Link to this definition")
+    memory\_usage() → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.memory_usage "Link to this definition")
     :   Approximate memory usage of the index in bytes.
 
         Returns:
@@ -1169,7 +1169,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         vectors** (e.g., you do not want to re-read or re-materialize `X`, or you loaded an
         index from disk and only have access to its stored vectors).
 
-    repr\_info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.repr_info "Link to this definition")
+    repr\_info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.repr_info "Link to this definition")
     :   Return a dict-like string representation with optional extra fields.
 
         Unlike `__repr__`, this method can include additional fields on demand.
@@ -1236,7 +1236,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
     seed[#](#scikitplot.cexternals._annoy.Annoy.seed "Link to this definition")
     :   Random seed override (scikit-learn compatible). None means use Annoy default seed.
 
-    serialize(**format=None**) → [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.serialize "Link to this definition")
+    serialize(**format=None**) → [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")[#](#scikitplot.cexternals._annoy.Annoy.serialize "Link to this definition")
     :   Serialize the built in-memory index into a byte string.
 
         Parameters:
@@ -1317,11 +1317,11 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         :   ****seed****int or None, optional, default=None
             :   Non-negative integer seed. If called before the index is constructed,
                 the seed is stored and applied when the C++ index is created.
-                Seed value `0` resets to Annoy’s core default seed (with a [`UserWarning`](https://docs.python.org/3/library/exceptions.html#UserWarning "(in Python v3.14)")).
+                Seed value `0` resets to Annoy’s core default seed (with a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)")).
 
                 * If omitted (or None, NULL), the seed is set to Annoy’s default seed.
                 * If 0, clear any pending override and reset to Annoy’s default seed
-                  (a [`UserWarning`](https://docs.python.org/3/library/exceptions.html#UserWarning "(in Python v3.14)") is emitted).
+                  (a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)") is emitted).
 
         Returns:
         :   [`Annoy`](#scikitplot.cexternals._annoy.Annoy "scikitplot.cexternals._annoy.Annoy")
@@ -1601,3 +1601,11 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Type:
         :   [y\_map](#scikitplot.cexternals._annoy.Annoy.y_map "scikitplot.cexternals._annoy.Annoy.y_map")
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
+
+[annoy.Annoy legacy c-api with examples](../../auto_examples/annoy/plot_Annoy_legacy_c_api.html)
+
+annoy.Annoy legacy c-api with examples

@@ -2,6 +2,15 @@
 
 With this tag
 
+* [Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop](../auto_examples/cleanprompt/plot_cleanprompt_advanced_script.html)
+* [Cleanprompt Basics: Hide a Value, Then Get It Back](../auto_examples/cleanprompt/plot_cleanprompt_basics_script.html)
+* [Cleanprompt on the Command Line: Single Commands and Edge Cases](../auto_examples/cleanprompt/plot_cleanprompt_cli_usage_script.html)
+* [Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves](../auto_examples/cleanprompt/plot_cleanprompt_guard_agents_script.html)
+* [Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle](../auto_examples/cleanprompt/plot_cleanprompt_moderate_script.html)
+* [Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data](../auto_examples/cleanprompt/plot_cleanprompt_notebooks_script.html)
+* [Cleanprompt Packs and Formats: Records, Configs and Whole Folders](../auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.html)
+* [Cleanprompt from Python: Single Calls and Edge Cases](../auto_examples/cleanprompt/plot_cleanprompt_python_api_script.html)
+* [Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../auto_examples/cleanprompt/plot_cleanprompt_recipes_script.html)
 * [Process an MP3 with Corpus](../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
 * [Configure Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_corpus_script.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
@@ -14,3 +23,7 @@ With this tag
 * [Serve a Real Hamlet Corpus over MCP with Annoy](../auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.html)
 * [Misc Showcase](../auto_examples/misc/plot_misc_script.html)
 * [MLflow](../auto_examples/mlflow/plot_mlflow.html)
+* [Persist and Reload a Rank-BM25 Index](../auto_examples/rank_bm25/plot_rank_bm25_persistence_script.html)
+* [Rank-BM25 Quick Start with Stable Document IDs](../auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.html)
+* [Compare the Three Rank-BM25 Scoring Recipes](../auto_examples/rank_bm25/plot_rank_bm25_recipes_script.html)
+* [Sparse Retrieval and Dense BM25 Diagnostics](../auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.html)

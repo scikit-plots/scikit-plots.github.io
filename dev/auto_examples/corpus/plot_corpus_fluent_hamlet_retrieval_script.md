@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # Build and Search a Real Hamlet Corpus with FluentCorpus[#](#build-and-search-a-real-hamlet-corpus-with-fluentcorpus "Link to this heading")
 
 This example uses a real public-domain **Hamlet** excerpt to demonstrate the
-first-class `FluentCorpus` runtime workflow.
+first-class [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") runtime workflow.
 
 The configuration remains declarative:
 
@@ -41,10 +41,10 @@ translation and lifecycle directly.
 
 The executed path is intentionally offline and deterministic:
 
-* `HAMLET_TEXT` provides a bundled public-domain sample,
+* [`HAMLET_TEXT`](../../modules/generated/scikitplot.corpus.HAMLET_TEXT.html#scikitplot.corpus.HAMLET_TEXT "scikitplot.corpus.HAMLET_TEXT") provides a bundled public-domain sample,
 * normalization and paragraph chunking use local Corpus components,
-* `SimpleEnricherSpec` configures `SimpleFrequencyEnricher`,
-* `HashEmbedder` provides deterministic local lexical embeddings,
+* [`SimpleEnricherSpec`](../../modules/generated/scikitplot.corpus.SimpleEnricherSpec.html#scikitplot.corpus.SimpleEnricherSpec "scikitplot.corpus.SimpleEnricherSpec") configures [`SimpleFrequencyEnricher`](../../modules/generated/scikitplot.corpus.SimpleFrequencyEnricher.html#scikitplot.corpus.SimpleFrequencyEnricher "scikitplot.corpus.SimpleFrequencyEnricher"),
+* [`HashEmbedder`](../../modules/generated/scikitplot.corpus.HashEmbedder.html#scikitplot.corpus.HashEmbedder "scikitplot.corpus.HashEmbedder") provides deterministic local lexical embeddings,
 * dense retrieval uses the exact `bruteforce` backend,
 * storage uses [`InMemoryStorage`](../../modules/generated/scikitplot.corpus.InMemoryStorage.html#scikitplot.corpus.InMemoryStorage "scikitplot.corpus.InMemoryStorage"),
 * export uses JSONL.
@@ -105,7 +105,7 @@ offline experiments reproducible without copying the same text into every
 gallery file.
 
 The addendum stays local because it exists only to demonstrate
-`RuntimeCorpus.add` later in this example.
+[`RuntimeCorpus.add`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus.add "scikitplot.corpus.RuntimeCorpus.add") later in this example.
 
 ```
 HAMLET_ADDENDUM = """\
@@ -148,9 +148,9 @@ print("Addendum source:", _HAMLET_ADDENDUM_PATH)
 
 ```
 ```
-Initial source: /tmp/scikitplot-hamlet-ahwfnzq9/hamlet_excerpt.txt
+Initial source: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_excerpt.txt
 Initial characters: 3820
-Addendum source: /tmp/scikitplot-hamlet-ahwfnzq9/hamlet_addendum.txt
+Addendum source: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_addendum.txt
 
 ```
 
@@ -239,7 +239,7 @@ print("Validation problems:", fluent.validate())
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 507aca448f7510e3>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] fe2501d0dad5634e4ea827ad55da6610f6bd5fa3afd9b4a2f8a70eb126b038ee>
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 Validation problems: []
 
@@ -248,7 +248,7 @@ Validation problems: []
 ## 5. Materialize with an explicit runtime lifecycle[#](#materialize-with-an-explicit-runtime-lifecycle "Link to this heading")
 
 `materialize()` constructs operational components and returns
-`RuntimeCorpus`, but it does ****not**** read `plan.source`. That keeps
+[`RuntimeCorpus`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus"), but it does ****not**** read `plan.source`. That keeps
 configuration/materialization separate from execution.
 
 `RuntimePolicy` is also explicit. This gallery forbids network sources,
@@ -280,7 +280,7 @@ print("Index before run:", runtime.index)
 ```
 ```
 Runtime type: RuntimeCorpus
-Plan fingerprint: 507aca448f7510e3
+Plan fingerprint: fe2501d0dad5634e4ea827ad55da6610f6bd5fa3afd9b4a2f8a70eb126b038ee
 Documents before run: 0
 Index before run: None
 
@@ -318,7 +318,7 @@ Stored documents: 12
 Index documents: 12
 Dense index available: True
 Dense backend: bruteforce
-Index generation: 5987ceda39d019cd
+Index generation: 597b47bf70700c05
 
 [0] 'THE TRAGEDY OF HAMLET, PRINCE OF DENMARK'
     keywords: ['denmark', 'hamlet', 'prince', 'the', 'tragedy']
@@ -432,8 +432,8 @@ Addendum pipeline documents: 2
 Documents before add: 12
 Documents after add: 14
 Stored documents after add: 14
-Generation before add: 5987ceda39d019cd
-Generation after add: 106622e8245f5305
+Generation before add: 597b47bf70700c05
+Generation after add: afcbdb4ec1e453e2
 Generation changed: True
 Addendum search status: success
 Addendum top hit: POLONIUS. This business is well ended.
@@ -519,7 +519,7 @@ print("Runtime still open after export:", not runtime.closed)
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-ahwfnzq9/hamlet_corpus.jsonl
+Exported: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_corpus.jsonl
 Bytes: 35993
 Exported documents: 14
 First JSONL row:
@@ -628,9 +628,9 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.172 seconds)
+****Total running time of the script:**** (0 minutes 0.048 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)
 
 [`Download Jupyter notebook: plot_corpus_fluent_hamlet_retrieval_script.ipynb`](../../_downloads/a7001b02dde766f2c658ee50a1901895/plot_corpus_fluent_hamlet_retrieval_script.ipynb)
 

@@ -9,16 +9,29 @@ scikitplot.mcp
 
 **User guide.** See the :ref:`mcp-index` section for further details.
 
-.. _mcp_ref-mcp--model-context-protocol:
+.. _mcp_ref-mcp--capabilities:
 
-MCP: Model Context Protocol
----------------------------
+MCP: Capabilities
+-----------------
 
-**User guide.** See the :ref:`mcp-index` section for further details.
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  assert_capability_vocabulary_matches_corpus  
+  effective_server_capabilities  
+  server_capabilities  
+  server_runtime_status
+
+.. _mcp_ref-mcp--core:
+
+MCP: Core
+---------
 
 .. rubric:: Class inheritance
 
-.. inheritance-diagram:: DocsRetriever RetrievedChunk InMemoryBm25Retriever Bm25Retriever CorpusAnnoyRetriever HybridRetriever
+.. inheritance-diagram:: DocsRetriever RetrievedChunk SearchCoordinator
    :parts: 1
    :private-bases:
    :include-subclasses:
@@ -28,13 +41,114 @@ MCP: Model Context Protocol
   :toctree: ../modules/generated/
   :template: base.rst
     
+  DOC_ID_RE  
+  MAX_CHUNK_CHARS  
+  MAX_QUERY_CHARS  
+  MAX_RESOURCE_CHARS  
+  MAX_RESULTS  
+  RESOURCE_METADATA_ALLOWANCE  
   DocsRetriever  
   RetrievedChunk  
-  InMemoryBm25Retriever  
-  Bm25Retriever  
-  CorpusAnnoyRetriever  
-  HybridRetriever  
+  SearchCoordinator  
   build_search_docs_result  
-  builtin_demo_retriever  
-  create_server  
+  is_valid_doc_id
+
+.. _mcp_ref-mcp--corpus-index-retriever:
+
+MCP: Corpus Index Retriever
+---------------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: CorpusAnnoyRetriever CorpusIndexRetriever
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CorpusAnnoyRetriever  
+  CorpusIndexRetriever  
+  Embedder  
+  VectorIndex
+
+.. _mcp_ref-mcp--corpus-hybrid-retriever:
+
+MCP: Corpus Hybrid Retriever
+----------------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: Bm25Retriever HybridRetriever
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  DEFAULT_RRF_K  
+  Bm25Retriever  
+  HybridRetriever  
   reciprocal_rank_fusion
+
+.. _mcp_ref-mcp--demo:
+
+MCP: Demo
+---------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  DemoDocument  
+  InMemoryBm25Retriever  
+  builtin_demo_retriever
+
+.. _mcp_ref-mcp--outcome:
+
+MCP: Outcome
+------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: LegRecord RetrievalOutcome
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CANCELLED  
+  DEGRADED  
+  EMPTY  
+  FAILED  
+  SUCCESS  
+  LegRecord  
+  RetrievalOutcome  
+  assert_matches_corpus  
+  to_corpus_status
+
+.. _mcp_ref-mcp--server:
+
+MCP: Server
+-----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CitationOutput  
+  SearchDocsOutput  
+  SearchService  
+  create_server

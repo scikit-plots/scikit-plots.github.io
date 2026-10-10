@@ -1,6 +1,6 @@
 # set\_project\_markers[#](#set-project-markers "Link to this heading")
 
-scikitplot.mlflow.set\_project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L236)[#](#scikitplot.mlflow.set_project_markers "Link to this definition")
+scikitplot.mlflow.set\_project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L236)[#](#scikitplot.mlflow.set_project_markers "Link to this definition")
 :   Set the module default markers.
 
     Parameters:
@@ -8,7 +8,7 @@ scikitplot.mlflow.set\_project\_markers(**markers**)[[source]](https://github.co
         :   New default markers. If None, resets to [`DEFAULT_PROJECT_MARKERS`](scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html#scikitplot.mlflow.DEFAULT_PROJECT_MARKERS "scikitplot.mlflow.DEFAULT_PROJECT_MARKERS").
 
     Parameters:
-    :   ****markers**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   ****markers**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Return type:
     :   None

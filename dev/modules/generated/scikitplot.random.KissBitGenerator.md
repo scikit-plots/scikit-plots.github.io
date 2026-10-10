@@ -1,6 +1,6 @@
 # KissBitGenerator[#](#kissbitgenerator "Link to this heading")
 
-class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
+class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
 :   NumPy-compatible BitGenerator using KISS algorithm with complete serialization.
 
     Parameters:
@@ -263,7 +263,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         ```
         Go BackOpen In Tab
 
-    spawn(**self**, **int n\_children: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[KissBitGenerator](#scikitplot.random.KissBitGenerator "scikitplot.random.KissBitGenerator")][#](#scikitplot.random.KissBitGenerator.spawn "Link to this definition")
+    spawn(**self**, **int n\_children: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**) → [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[KissBitGenerator](#scikitplot.random.KissBitGenerator "scikitplot.random.KissBitGenerator")][#](#scikitplot.random.KissBitGenerator.spawn "Link to this definition")
     :   Create independent child BitGenerators (NumPy protocol).
 
         Parameters:
@@ -279,10 +279,10 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
             :   If n\_children < 1
 
         Parameters:
-        :   ****n\_children**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****n\_children**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**KissBitGenerator**](#scikitplot.random.KissBitGenerator "scikitplot.random.KissBitGenerator")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**KissBitGenerator**](#scikitplot.random.KissBitGenerator "scikitplot.random.KissBitGenerator")]
 
         Notes
 
@@ -312,3 +312,11 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
     to\_dict(**self**)[#](#scikitplot.random.KissBitGenerator.to_dict "Link to this definition")
     :   Alias for serialize().
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
+
+[Enhanced KISS Random Generator - Complete Usage Examples](../../auto_examples/random/plot_kiss_random.html)
+
+Enhanced KISS Random Generator - Complete Usage Examples

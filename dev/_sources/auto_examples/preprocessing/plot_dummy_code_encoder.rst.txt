@@ -498,42 +498,42 @@ First, we load the "autoscout24" dataset:
 
  .. code-block:: none
 
-    <class 'pandas.core.frame.DataFrame'>
+    <class 'pandas.DataFrame'>
     RangeIndex: 116 entries, 0 to 115
     Data columns (total 29 columns):
      #   Column                   Non-Null Count  Dtype  
     ---  ------                   --------------  -----  
-     0   id                       116 non-null    object 
+     0   id                       116 non-null    str    
      1   price                    116 non-null    float64
-     2   make                     116 non-null    object 
-     3   model                    116 non-null    object 
-     4   model_version            115 non-null    object 
-     5   registration_date        116 non-null    object 
+     2   make                     116 non-null    str    
+     3   model                    116 non-null    str    
+     4   model_version            115 non-null    str    
+     5   registration_date        116 non-null    str    
      6   mileage_km_raw           116 non-null    float64
-     7   vehicle_type             116 non-null    object 
-     8   body_type                116 non-null    object 
-     9   fuel_category            116 non-null    object 
-     10  primary_fuel             57 non-null     object 
-     11  transmission             114 non-null    object 
+     7   vehicle_type             116 non-null    str    
+     8   body_type                116 non-null    str    
+     9   fuel_category            116 non-null    str    
+     10  primary_fuel             57 non-null     str    
+     11  transmission             114 non-null    str    
      12  power_kw                 116 non-null    float64
      13  power_hp                 116 non-null    float64
      14  nr_seats                 112 non-null    float64
      15  nr_doors                 111 non-null    float64
-     16  country_code             116 non-null    object 
-     17  zip                      116 non-null    object 
-     18  city                     115 non-null    object 
+     16  country_code             116 non-null    str    
+     17  zip                      116 non-null    str    
+     18  city                     115 non-null    str    
      19  latitude                 116 non-null    float64
      20  longitude                116 non-null    float64
      21  is_used                  116 non-null    bool   
      22  seller_is_dealer         116 non-null    bool   
-     23  offer_type               116 non-null    object 
-     24  description              113 non-null    object 
-     25  equipment_comfort        116 non-null    object 
-     26  equipment_entertainment  116 non-null    object 
-     27  equipment_extra          116 non-null    object 
-     28  equipment_safety         116 non-null    object 
-    dtypes: bool(2), float64(8), object(19)
-    memory usage: 24.8+ KB
+     23  offer_type               116 non-null    str    
+     24  description              113 non-null    str    
+     25  equipment_comfort        116 non-null    str    
+     26  equipment_entertainment  116 non-null    str    
+     27  equipment_extra          116 non-null    str    
+     28  equipment_safety         116 non-null    str    
+    dtypes: bool(2), float64(8), str(19)
+    memory usage: 491.3 KB
 
 
 
@@ -2755,6 +2755,14 @@ categorical feature in gradient boosting.
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
     }
 
     .features {
@@ -2813,7 +2821,6 @@ categorical feature in gradient boosting.
     }
 
     .features .features-container {
-      max-width: 15em;
       max-height: 10em;
       overflow: auto;
       scrollbar-width: thin;
@@ -2887,14 +2894,14 @@ categorical feature in gradient boosting.
                                                       TargetEncoder(target_type=&#x27;continuous&#x27;),
                                                       Index([&#x27;equipment_safety&#x27;, &#x27;equipment_comfort&#x27;, &#x27;equipment_extra&#x27;,
            &#x27;equipment_entertainment&#x27;, &#x27;model&#x27;],
-          dtype=&#x27;object&#x27;)),
+          dtype=&#x27;str&#x27;)),
                                                      (&#x27;low_cardinality&#x27;,
                                                       OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
                                                                      unknown_value=-1),
-                                                      Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;object&#x27;))],
+                                                      Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;str&#x27;))],
                                        verbose_feature_names_out=False)),
                     (&#x27;histgradientboostingregressor&#x27;,
-                     HistGradientBoostingRegressor(categorical_features=Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;object&#x27;),
+                     HistGradientBoostingRegressor(categorical_features=Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;str&#x27;),
                                                    random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
             <div class="estimator-table">
                 <details>
@@ -2903,10 +2910,11 @@ categorical feature in gradient boosting.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy steps to clipboard"
                      onclick="copyToClipboard('steps',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-steps;"
@@ -2922,10 +2930,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy transform_input to clipboard"
                      onclick="copyToClipboard('transform_input',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-transform_input;"
@@ -2941,10 +2950,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy memory to clipboard"
                      onclick="copyToClipboard('memory',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-memory;"
@@ -2960,10 +2970,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -2989,10 +3000,11 @@ categorical feature in gradient boosting.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy transformers to clipboard"
                      onclick="copyToClipboard('transformers',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-transformers;"
@@ -3008,10 +3020,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose_feature_names_out to clipboard"
                      onclick="copyToClipboard('verbose_feature_names_out',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose_feature_names_out;"
@@ -3027,10 +3040,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy remainder to clipboard"
                      onclick="copyToClipboard('remainder',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-remainder;"
@@ -3046,10 +3060,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy sparse_threshold to clipboard"
                      onclick="copyToClipboard('sparse_threshold',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-sparse_threshold;"
@@ -3065,10 +3080,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_jobs to clipboard"
                      onclick="copyToClipboard('n_jobs',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_jobs;"
@@ -3084,10 +3100,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy transformer_weights to clipboard"
                      onclick="copyToClipboard('transformer_weights',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-transformer_weights;"
@@ -3103,10 +3120,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -3126,7 +3144,7 @@ categorical feature in gradient boosting.
             </div>
         </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>numerical</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__numerical__"><pre>[&#x27;seller_is_dealer&#x27;, &#x27;mileage_km_raw&#x27;, &#x27;power_kw&#x27;, &#x27;power_hp&#x27;, &#x27;latitude&#x27;, &#x27;longitude&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label  "><div><div>passthrough</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__numerical__"><pre></pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>high_cardinality</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__high_cardinality__"><pre>Index([&#x27;equipment_safety&#x27;, &#x27;equipment_comfort&#x27;, &#x27;equipment_extra&#x27;,
            &#x27;equipment_entertainment&#x27;, &#x27;model&#x27;],
-          dtype=&#x27;object&#x27;)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>TargetEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html">?<span>Documentation for TargetEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__high_cardinality__">
+          dtype=&#x27;str&#x27;)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>TargetEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html">?<span>Documentation for TargetEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__high_cardinality__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -3134,10 +3152,11 @@ categorical feature in gradient boosting.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy target_type to clipboard"
                      onclick="copyToClipboard('target_type',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-target_type;"
@@ -3153,10 +3172,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categories to clipboard"
                      onclick="copyToClipboard('categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categories;"
@@ -3172,10 +3192,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy smooth to clipboard"
                      onclick="copyToClipboard('smooth',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-smooth;"
@@ -3191,18 +3212,19 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy cv to clipboard"
                      onclick="copyToClipboard('cv',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-cv;"
-                rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3DNone">
+                rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3D5">
                 cv
                 <span class="param-doc-description"
                 style="position-anchor: --doc-link-cv;">
-                cv: int, cross-validation generator or an iterable, default=None<br><br>Determines the splitting strategy used in the internal :term:`cross fitting`<br>during :meth:`fit_transform`. Splitters where each sample index doesn&#x27;t appear<br>in the validation fold exactly once, raise a `ValueError`.<br>Possible inputs for cv are:<br><br>- `None`, to use a 5-fold cross-validation chosen internally based on<br>    `target_type`,<br>- integer, to specify the number of folds for the cross-validation chosen<br>    internally based on `target_type`,<br>- :term:`CV splitter` that does not repeat samples across validation folds,<br>- an iterable yielding (train, test) splits as arrays of indices.<br><br>For integer/None inputs, if `target_type` is `&quot;continuous&quot;`, :class:`KFold` is<br>used, otherwise :class:`StratifiedKFold` is used.<br><br>Refer :ref:`User Guide &lt;cross_validation&gt;` for more information on<br>cross-validation strategies.<br><br>.. versionchanged:: 1.9<br>    Cross-validation generators and iterables can also be passed as `cv`.</span>
+                cv: int, cross-validation generator or an iterable, default=5<br><br>Determines the splitting strategy used in the internal :term:`cross fitting`<br>during :meth:`fit_transform`. Splitters where each sample index doesn&#x27;t appear<br>in the validation fold exactly once, raise a `ValueError`.<br>Possible inputs for cv are:<br><br>- `None`, to use a 5-fold cross-validation chosen internally based on<br>    `target_type`,<br>- integer, to specify the number of folds for the cross-validation chosen<br>    internally based on `target_type`,<br>- :term:`CV splitter` that does not repeat samples across validation folds,<br>- an iterable yielding (train, test) splits as arrays of indices.<br><br>For integer/None inputs, if `target_type` is `&quot;continuous&quot;`, :class:`KFold` is<br>used, otherwise :class:`StratifiedKFold` is used.<br><br>Refer :ref:`User Guide &lt;cross_validation&gt;` for more information on<br>cross-validation strategies.<br><br>.. versionchanged:: 1.9<br>    Cross-validation generators and iterables can also be passed as `cv`.</span>
             </a>
         </td>
                 <td class="value">5</td>
@@ -3210,10 +3232,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy shuffle to clipboard"
                      onclick="copyToClipboard('shuffle',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-shuffle;"
@@ -3229,10 +3252,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -3250,7 +3274,7 @@ categorical feature in gradient boosting.
                     </table>
                 </details>
             </div>
-        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>low_cardinality</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__"><pre>Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;object&#x27;)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OrdinalEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">?<span>Documentation for OrdinalEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__">
+        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>low_cardinality</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__"><pre>Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;str&#x27;)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OrdinalEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">?<span>Documentation for OrdinalEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -3258,10 +3282,11 @@ categorical feature in gradient boosting.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy handle_unknown to clipboard"
                      onclick="copyToClipboard('handle_unknown',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-handle_unknown;"
@@ -3277,10 +3302,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy unknown_value to clipboard"
                      onclick="copyToClipboard('unknown_value',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-unknown_value;"
@@ -3296,10 +3322,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categories to clipboard"
                      onclick="copyToClipboard('categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categories;"
@@ -3315,10 +3342,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy dtype to clipboard"
                      onclick="copyToClipboard('dtype',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-dtype;"
@@ -3334,10 +3362,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy encoded_missing_value to clipboard"
                      onclick="copyToClipboard('encoded_missing_value',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-encoded_missing_value;"
@@ -3353,10 +3382,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_frequency to clipboard"
                      onclick="copyToClipboard('min_frequency',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_frequency;"
@@ -3372,10 +3402,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_categories to clipboard"
                      onclick="copyToClipboard('max_categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_categories;"
@@ -3401,10 +3432,11 @@ categorical feature in gradient boosting.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categorical_features to clipboard"
                      onclick="copyToClipboard('categorical_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categorical_features;"
@@ -3415,15 +3447,16 @@ categorical feature in gradient boosting.
                 categorical_features: array-like of {bool, int, str} of shape (n_features)             or shape (n_categorical_features,), default=&#x27;from_dtype&#x27;<br><br>Indicates the categorical features.<br><br>- None : no feature will be considered categorical.<br>- boolean array-like : boolean mask indicating categorical features.<br>- integer array-like : integer indices indicating categorical<br>  features.<br>- str array-like: names of categorical features (assuming the training<br>  data has feature names).<br>- `&quot;from_dtype&quot;`: dataframe columns with dtype &quot;Categorical&quot; and &quot;Enum&quot; are<br>  considered to be categorical features. The input must be a dataframe that<br>  is supported by narwhals (or supports it): :func:`narwhals.from_native` must<br>  work. This is the case, for instance, for pandas and polars DataFrames.<br><br>For each categorical feature, there must be at most `max_bins` unique<br>categories. Negative values for categorical features encoded as numeric<br>dtypes are treated as missing values. All categorical values are<br>converted to floating point numbers. This means that categorical values<br>of 1.0 and 1 are treated as the same category.<br><br>Read more in the :ref:`User Guide &lt;categorical_support_gbdt&gt;` and<br>:ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_categorical.py`.<br><br>.. versionadded:: 0.24<br><br>.. versionchanged:: 1.2<br>   Added support for feature names.<br><br>.. versionchanged:: 1.4<br>   Added `&quot;from_dtype&quot;` option.<br><br>.. versionchanged:: 1.6<br>   The default value changed from `None` to `&quot;from_dtype&quot;`.</span>
             </a>
         </td>
-                <td class="value">Index([&#x27;make&#x27;...type=&#x27;object&#x27;)</td>
+                <td class="value">Index([&#x27;make&#x27;..., dtype=&#x27;str&#x27;)</td>
             </tr>
     
 
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -3439,10 +3472,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy loss to clipboard"
                      onclick="copyToClipboard('loss',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-loss;"
@@ -3458,10 +3492,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy quantile to clipboard"
                      onclick="copyToClipboard('quantile',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-quantile;"
@@ -3477,10 +3512,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy learning_rate to clipboard"
                      onclick="copyToClipboard('learning_rate',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-learning_rate;"
@@ -3496,10 +3532,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_iter to clipboard"
                      onclick="copyToClipboard('max_iter',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_iter;"
@@ -3515,10 +3552,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_leaf_nodes to clipboard"
                      onclick="copyToClipboard('max_leaf_nodes',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_leaf_nodes;"
@@ -3534,10 +3572,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_depth to clipboard"
                      onclick="copyToClipboard('max_depth',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_depth;"
@@ -3553,10 +3592,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_samples_leaf to clipboard"
                      onclick="copyToClipboard('min_samples_leaf',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_samples_leaf;"
@@ -3572,10 +3612,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy l2_regularization to clipboard"
                      onclick="copyToClipboard('l2_regularization',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-l2_regularization;"
@@ -3591,10 +3632,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_features to clipboard"
                      onclick="copyToClipboard('max_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_features;"
@@ -3610,10 +3652,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_bins to clipboard"
                      onclick="copyToClipboard('max_bins',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_bins;"
@@ -3629,10 +3672,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy monotonic_cst to clipboard"
                      onclick="copyToClipboard('monotonic_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-monotonic_cst;"
@@ -3648,10 +3692,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy interaction_cst to clipboard"
                      onclick="copyToClipboard('interaction_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-interaction_cst;"
@@ -3667,10 +3712,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy warm_start to clipboard"
                      onclick="copyToClipboard('warm_start',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-warm_start;"
@@ -3686,10 +3732,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy early_stopping to clipboard"
                      onclick="copyToClipboard('early_stopping',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-early_stopping;"
@@ -3705,10 +3752,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy scoring to clipboard"
                      onclick="copyToClipboard('scoring',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-scoring;"
@@ -3724,10 +3772,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy validation_fraction to clipboard"
                      onclick="copyToClipboard('validation_fraction',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-validation_fraction;"
@@ -3743,10 +3792,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_iter_no_change to clipboard"
                      onclick="copyToClipboard('n_iter_no_change',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_iter_no_change;"
@@ -3762,10 +3812,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy tol to clipboard"
                      onclick="copyToClipboard('tol',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-tol;"
@@ -3781,10 +3832,11 @@ categorical feature in gradient boosting.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -4616,6 +4668,14 @@ Finally, we evaluate the pipeline using cross validation and record the results:
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
     }
 
     .features {
@@ -4674,7 +4734,6 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     }
 
     .features .features-container {
-      max-width: 15em;
       max-height: 10em;
       overflow: auto;
       scrollbar-width: thin;
@@ -4750,9 +4809,9 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                                                      (&#x27;low_cardinality&#x27;,
                                                       OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
                                                                      unknown_value=-1),
-                                                      Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;object&#x27;)),
+                                                      Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;str&#x27;)),
                                                      (&#x27;equipment&#x27;,
-                                                      DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x74f68bf97240&gt;,
+                                                      DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x7dcb4db2e7a0&gt;,
                                                                        sparse_output=False),
                                                       [&#x27;equipment_comfort&#x27;,
                                                        &#x27;equipment_entertainment&#x27;,
@@ -4768,10 +4827,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy steps to clipboard"
                      onclick="copyToClipboard('steps',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-steps;"
@@ -4787,10 +4847,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy transform_input to clipboard"
                      onclick="copyToClipboard('transform_input',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-transform_input;"
@@ -4806,10 +4867,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy memory to clipboard"
                      onclick="copyToClipboard('memory',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-memory;"
@@ -4825,10 +4887,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -4854,10 +4917,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy transformers to clipboard"
                      onclick="copyToClipboard('transformers',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-transformers;"
@@ -4873,10 +4937,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose_feature_names_out to clipboard"
                      onclick="copyToClipboard('verbose_feature_names_out',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose_feature_names_out;"
@@ -4892,10 +4957,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy remainder to clipboard"
                      onclick="copyToClipboard('remainder',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-remainder;"
@@ -4911,10 +4977,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy sparse_threshold to clipboard"
                      onclick="copyToClipboard('sparse_threshold',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-sparse_threshold;"
@@ -4930,10 +4997,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_jobs to clipboard"
                      onclick="copyToClipboard('n_jobs',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_jobs;"
@@ -4949,10 +5017,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy transformer_weights to clipboard"
                      onclick="copyToClipboard('transformer_weights',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-transformer_weights;"
@@ -4968,10 +5037,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -4997,10 +5067,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy target_type to clipboard"
                      onclick="copyToClipboard('target_type',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-target_type;"
@@ -5016,10 +5087,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categories to clipboard"
                      onclick="copyToClipboard('categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categories;"
@@ -5035,10 +5107,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy smooth to clipboard"
                      onclick="copyToClipboard('smooth',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-smooth;"
@@ -5054,18 +5127,19 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy cv to clipboard"
                      onclick="copyToClipboard('cv',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-cv;"
-                rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3DNone">
+                rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.TargetEncoder.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20an%20iterable%2C%20default%3D5">
                 cv
                 <span class="param-doc-description"
                 style="position-anchor: --doc-link-cv;">
-                cv: int, cross-validation generator or an iterable, default=None<br><br>Determines the splitting strategy used in the internal :term:`cross fitting`<br>during :meth:`fit_transform`. Splitters where each sample index doesn&#x27;t appear<br>in the validation fold exactly once, raise a `ValueError`.<br>Possible inputs for cv are:<br><br>- `None`, to use a 5-fold cross-validation chosen internally based on<br>    `target_type`,<br>- integer, to specify the number of folds for the cross-validation chosen<br>    internally based on `target_type`,<br>- :term:`CV splitter` that does not repeat samples across validation folds,<br>- an iterable yielding (train, test) splits as arrays of indices.<br><br>For integer/None inputs, if `target_type` is `&quot;continuous&quot;`, :class:`KFold` is<br>used, otherwise :class:`StratifiedKFold` is used.<br><br>Refer :ref:`User Guide &lt;cross_validation&gt;` for more information on<br>cross-validation strategies.<br><br>.. versionchanged:: 1.9<br>    Cross-validation generators and iterables can also be passed as `cv`.</span>
+                cv: int, cross-validation generator or an iterable, default=5<br><br>Determines the splitting strategy used in the internal :term:`cross fitting`<br>during :meth:`fit_transform`. Splitters where each sample index doesn&#x27;t appear<br>in the validation fold exactly once, raise a `ValueError`.<br>Possible inputs for cv are:<br><br>- `None`, to use a 5-fold cross-validation chosen internally based on<br>    `target_type`,<br>- integer, to specify the number of folds for the cross-validation chosen<br>    internally based on `target_type`,<br>- :term:`CV splitter` that does not repeat samples across validation folds,<br>- an iterable yielding (train, test) splits as arrays of indices.<br><br>For integer/None inputs, if `target_type` is `&quot;continuous&quot;`, :class:`KFold` is<br>used, otherwise :class:`StratifiedKFold` is used.<br><br>Refer :ref:`User Guide &lt;cross_validation&gt;` for more information on<br>cross-validation strategies.<br><br>.. versionchanged:: 1.9<br>    Cross-validation generators and iterables can also be passed as `cv`.</span>
             </a>
         </td>
                 <td class="value">5</td>
@@ -5073,10 +5147,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy shuffle to clipboard"
                      onclick="copyToClipboard('shuffle',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-shuffle;"
@@ -5092,10 +5167,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -5113,7 +5189,7 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                     </table>
                 </details>
             </div>
-        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-16" type="checkbox" ><label for="sk-estimator-id-16" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>low_cardinality</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__"><pre>Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;object&#x27;)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-17" type="checkbox" ><label for="sk-estimator-id-17" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OrdinalEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">?<span>Documentation for OrdinalEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__">
+        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-16" type="checkbox" ><label for="sk-estimator-id-16" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>low_cardinality</div></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__"><pre>Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;str&#x27;)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-17" type="checkbox" ><label for="sk-estimator-id-17" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OrdinalEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">?<span>Documentation for OrdinalEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="columntransformer__low_cardinality__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -5121,10 +5197,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy handle_unknown to clipboard"
                      onclick="copyToClipboard('handle_unknown',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-handle_unknown;"
@@ -5140,10 +5217,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy unknown_value to clipboard"
                      onclick="copyToClipboard('unknown_value',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-unknown_value;"
@@ -5159,10 +5237,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categories to clipboard"
                      onclick="copyToClipboard('categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categories;"
@@ -5178,10 +5257,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy dtype to clipboard"
                      onclick="copyToClipboard('dtype',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-dtype;"
@@ -5197,10 +5277,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy encoded_missing_value to clipboard"
                      onclick="copyToClipboard('encoded_missing_value',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-encoded_missing_value;"
@@ -5216,10 +5297,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_frequency to clipboard"
                      onclick="copyToClipboard('min_frequency',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_frequency;"
@@ -5235,10 +5317,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_categories to clipboard"
                      onclick="copyToClipboard('max_categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_categories;"
@@ -5264,10 +5347,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy sep to clipboard"
                      onclick="copyToClipboard('sep',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-sep;"
@@ -5278,15 +5362,16 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                 sep: callable or str, default=&#x27;|&#x27;<br><br>String regex or literal separator to split on (e.g., &quot;a,b,c&quot;).<br><br>- sep=&#x27;,&#x27;,<br>- sep=r&#x27;\s*[,;|]\s*&#x27;,<br>- sep=lambda s: re.split(r&#x27;\s*[,;|]\s*&#x27;, s.lower()),</span>
             </a>
         </td>
-                <td class="value">&lt;function &lt;la...x74f68bf97240&gt;</td>
+                <td class="value">&lt;function &lt;la...x7dcb4db2e7a0&gt;</td>
             </tr>
     
 
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy sparse_output to clipboard"
                      onclick="copyToClipboard('sparse_output',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-sparse_output;"
@@ -5302,10 +5387,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy columns to clipboard"
                      onclick="copyToClipboard('columns',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-columns;"
@@ -5321,10 +5407,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy regex to clipboard"
                      onclick="copyToClipboard('regex',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-regex;"
@@ -5340,10 +5427,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy prefix to clipboard"
                      onclick="copyToClipboard('prefix',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-prefix;"
@@ -5359,10 +5447,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy prefix_sep to clipboard"
                      onclick="copyToClipboard('prefix_sep',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-prefix_sep;"
@@ -5378,10 +5467,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy dummy_na to clipboard"
                      onclick="copyToClipboard('dummy_na',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-dummy_na;"
@@ -5397,10 +5487,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categories to clipboard"
                      onclick="copyToClipboard('categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categories;"
@@ -5416,10 +5507,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy drop to clipboard"
                      onclick="copyToClipboard('drop',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-drop;"
@@ -5435,10 +5527,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy dtype to clipboard"
                      onclick="copyToClipboard('dtype',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-dtype;"
@@ -5454,10 +5547,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy handle_unknown to clipboard"
                      onclick="copyToClipboard('handle_unknown',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-handle_unknown;"
@@ -5473,10 +5567,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_frequency to clipboard"
                      onclick="copyToClipboard('min_frequency',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_frequency;"
@@ -5492,10 +5587,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_categories to clipboard"
                      onclick="copyToClipboard('max_categories',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_categories;"
@@ -5511,10 +5607,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy feature_name_combiner to clipboard"
                      onclick="copyToClipboard('feature_name_combiner',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-feature_name_combiner;"
@@ -5540,10 +5637,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -5559,10 +5657,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy loss to clipboard"
                      onclick="copyToClipboard('loss',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-loss;"
@@ -5578,10 +5677,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy quantile to clipboard"
                      onclick="copyToClipboard('quantile',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-quantile;"
@@ -5597,10 +5697,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy learning_rate to clipboard"
                      onclick="copyToClipboard('learning_rate',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-learning_rate;"
@@ -5616,10 +5717,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_iter to clipboard"
                      onclick="copyToClipboard('max_iter',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_iter;"
@@ -5635,10 +5737,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_leaf_nodes to clipboard"
                      onclick="copyToClipboard('max_leaf_nodes',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_leaf_nodes;"
@@ -5654,10 +5757,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_depth to clipboard"
                      onclick="copyToClipboard('max_depth',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_depth;"
@@ -5673,10 +5777,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_samples_leaf to clipboard"
                      onclick="copyToClipboard('min_samples_leaf',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_samples_leaf;"
@@ -5692,10 +5797,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy l2_regularization to clipboard"
                      onclick="copyToClipboard('l2_regularization',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-l2_regularization;"
@@ -5711,10 +5817,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_features to clipboard"
                      onclick="copyToClipboard('max_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_features;"
@@ -5730,10 +5837,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_bins to clipboard"
                      onclick="copyToClipboard('max_bins',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_bins;"
@@ -5749,10 +5857,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categorical_features to clipboard"
                      onclick="copyToClipboard('categorical_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categorical_features;"
@@ -5768,10 +5877,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy monotonic_cst to clipboard"
                      onclick="copyToClipboard('monotonic_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-monotonic_cst;"
@@ -5787,10 +5897,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy interaction_cst to clipboard"
                      onclick="copyToClipboard('interaction_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-interaction_cst;"
@@ -5806,10 +5917,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy warm_start to clipboard"
                      onclick="copyToClipboard('warm_start',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-warm_start;"
@@ -5825,10 +5937,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy early_stopping to clipboard"
                      onclick="copyToClipboard('early_stopping',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-early_stopping;"
@@ -5844,10 +5957,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy scoring to clipboard"
                      onclick="copyToClipboard('scoring',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-scoring;"
@@ -5863,10 +5977,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy validation_fraction to clipboard"
                      onclick="copyToClipboard('validation_fraction',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-validation_fraction;"
@@ -5882,10 +5997,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_iter_no_change to clipboard"
                      onclick="copyToClipboard('n_iter_no_change',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_iter_no_change;"
@@ -5901,10 +6017,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy tol to clipboard"
                      onclick="copyToClipboard('tol',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-tol;"
@@ -5920,10 +6037,11 @@ Finally, we evaluate the pipeline using cross validation and record the results:
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -6226,7 +6344,7 @@ can be explained as follows:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.247 seconds)
+   **Total running time of the script:** (0 minutes 5.382 seconds)
 
 
 .. _sphx_glr_download_auto_examples_preprocessing_plot_dummy_code_encoder.py:

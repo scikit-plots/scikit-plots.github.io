@@ -1,6 +1,6 @@
 # NLPEnricher[#](#nlpenricher "Link to this heading")
 
-class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_enrichers/_nlp_enricher.py#L528)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
+class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L528)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
 :   Pipeline component that populates NLP enrichment fields on
     [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument").
 
@@ -48,7 +48,7 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_enrichers/_nlp_enricher.py#L579)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_enrichers/_nlp_enricher.py#L579)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances.
 
         Parameters:
@@ -65,11 +65,11 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
             :   New document instances with NLP and metadata fields populated.
 
         Parameters:
-        :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-            * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+            * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
         Notes
 

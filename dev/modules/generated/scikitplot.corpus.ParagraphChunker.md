@@ -1,6 +1,6 @@
 # ParagraphChunker[#](#paragraphchunker "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_paragraph.py#L241)[#](#scikitplot.corpus.ParagraphChunker "Link to this definition")
+class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_paragraph.py#L242)[#](#scikitplot.corpus.ParagraphChunker "Link to this definition")
 :   Split a document into paragraph-level `Chunk` objects.
 
     Paragraph boundaries are blank lines (`\n\n`) — script-universal
@@ -18,7 +18,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
 
     Parameters:
     :   * ****config**** ([**ParagraphChunkerConfig**](scikitplot.corpus.ParagraphChunkerConfig.html#scikitplot.corpus.ParagraphChunkerConfig "scikitplot.corpus.ParagraphChunkerConfig") **|** **None**)
-        * ****multilang\_config**** (**MultilangConfig** **|** **None**)
+        * ****multilang\_config**** ([**MultilangConfig**](scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig "scikitplot.corpus.MultilangConfig") **|** **None**)
 
     Notes
 
@@ -28,7 +28,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
     full preprocessing audit to each chunk. To add embeddings after
     chunking, call [`attach_embedding_batch`](#scikitplot.corpus.ParagraphChunker.attach_embedding_batch "scikitplot.corpus.ParagraphChunker.attach_embedding_batch").
 
-    ****Developer note:**** Inherits `MultilangMixin`. Initialised via
+    ****Developer note:**** Inherits [`MultilangMixin`](scikitplot.corpus.MultilangMixin.html#scikitplot.corpus.MultilangMixin "scikitplot.corpus.MultilangMixin"). Initialised via
     `self._ml_init()`. The `chunk()` method enriches each paragraph
     chunk with a `MultilangChunkMeta` dict stored under
     `chunk.metadata["multilang"]`.
@@ -52,7 +52,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L783)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -77,13 +77,13 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
                 compatibility with `EmbeddedChunk`.
 
         Parameters:
-        :   * ****chunk**** (**Chunk**)
-            * ****vector**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
-            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****chunk**** ([**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk"))
+            * ****vector**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   **Chunk**
+        :   [**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")
 
         Notes
 
@@ -97,7 +97,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_multilang_mixin.py#L840)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -123,15 +123,15 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
             :   If `len(chunks) != len(vectors)`.
 
         Parameters:
-        :   * ****chunks**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****Chunk****]**)
-            * ****vectors**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
-            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        :   * ****chunks**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")**]**)
+            * ****vectors**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]****]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**Chunk**]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_paragraph.py#L339)[#](#scikitplot.corpus.ParagraphChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_paragraph.py#L340)[#](#scikitplot.corpus.ParagraphChunker.chunk "Link to this definition")
     :   Split **text** into paragraph-level chunks.
 
         Parameters:
@@ -156,14 +156,14 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
             :   If **text** is empty or whitespace-only.
 
         Parameters:
-        :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****doc\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   **ChunkResult**
+        :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_paragraph.py#L456)[#](#scikitplot.corpus.ParagraphChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_paragraph.py#L457)[#](#scikitplot.corpus.ParagraphChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -188,12 +188,12 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
             :   If **doc\_ids** length mismatches **texts**.
 
         Parameters:
-        :   * ****texts**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****doc\_ids**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****texts**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****doc\_ids**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**ChunkResult**]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")]
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

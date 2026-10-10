@@ -643,7 +643,7 @@ to `assert str(err).startswith(No such file)` and `assert
 str(err).endswith(or directory)`, respectively, on the raised error
 message `err`.
 For matching multi-line messages you need to pass the `(?s)`
-[flag](https://docs.python.org/3/library/re.html#re-syntax "(in Python v3.14)")
+[flag](https://docs.python.org/3/library/re.html#re-syntax "(in Python v3.15)")
 to the underlying `re.search`, as in the example below:
 
 ```
@@ -809,7 +809,7 @@ The idea is to write usage examples in docstrings that users can enter
 verbatim and check their output against the expected output to confirm that
 they are using the interface properly.
 
-Furthermore, Python includes a [`doctest`](https://docs.python.org/3/library/doctest.html#module-doctest "(in Python v3.14)") module that can detect these
+Furthermore, Python includes a [`doctest`](https://docs.python.org/3/library/doctest.html#module-doctest "(in Python v3.15)") module that can detect these
 doctests and execute them as part of a project’s automated test suite. This
 way we can automatically ensure that all doctest-like examples in our
 docstrings are correct.
@@ -817,7 +817,7 @@ docstrings are correct.
 The Astropy test suite automatically detects and runs any doctests in the
 astropy source code or documentation, or in packages using the Astropy test
 running framework. For example doctests and detailed documentation on how to
-write them, see the full [`doctest`](https://docs.python.org/3/library/doctest.html#module-doctest "(in Python v3.14)") documentation.
+write them, see the full [`doctest`](https://docs.python.org/3/library/doctest.html#module-doctest "(in Python v3.15)") documentation.
 
 For more information on the `pytest-doctestplus` plugin used by Astropy, see
 [pytest-doctestplus](https://pypi.org/project/pytest-doctestplus/).
@@ -949,7 +949,7 @@ ZeroDivisionError: integer division or modulo by zero
 
 This doctest expects an exception with a traceback, but the text of the
 traceback is skipped in the example output–only the first and last lines
-of the output are checked. See the [`doctest`](https://docs.python.org/3/library/doctest.html#module-doctest "(in Python v3.14)") documentation for
+of the output are checked. See the [`doctest`](https://docs.python.org/3/library/doctest.html#module-doctest "(in Python v3.15)") documentation for
 more examples of skipping output.
 
 #### Ignoring all output[#](#ignoring-all-output "Link to this heading")

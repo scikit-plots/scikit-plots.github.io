@@ -6,7 +6,7 @@ to download the full example code or to run this example in your browser via Jup
 
 This example takes a real public-domain text excerpt from William
 Shakespeare’s **Hamlet** and restructures a traditional hand-written retrieval
-workflow around `FluentCorpus`.
+workflow around [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus").
 
 The old mental model is often a sequence of unrelated helper functions:
 
@@ -37,8 +37,8 @@ source
 
 ```
 
-The current `FluentCorpus.build` validates and returns a
-`CorpusPlan`; it does ****not yet materialize or execute**** concrete
+The current [`FluentCorpus.build`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus.build "scikitplot.corpus.FluentCorpus.build") validates and returns a
+[`CorpusPlan`](../../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan"); it does ****not yet materialize or execute**** concrete
 components. To keep this example truthful, a small gallery-local
 `materialize_plan` helper translates the validated plan into the existing
 runtime APIs.
@@ -227,7 +227,7 @@ print("Characters:", len(HAMLET_TEXT))
 
 ```
 ```
-Source: /tmp/scikitplot-hamlet-k1lmrxg_/hamlet_excerpt.txt
+Source: /tmp/scikitplot-hamlet-g4j7rmbr/hamlet_excerpt.txt
 Characters: 3819
 
 ```
@@ -404,7 +404,7 @@ print("Configured domains:", portable.plan().configured)
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 3fe6267b2a4cdba0>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 4180a72984fe24628e2f01b8363253dfd0819eae3efbc2b53da05c3db6da2e19>
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 
 ```
@@ -426,7 +426,7 @@ print("Stages:", plan.effective_stages)
 ```
 ```
 Validation problems: []
-Plan fingerprint: 3fe6267b2a4cdba0
+Plan fingerprint: 4180a72984fe24628e2f01b8363253dfd0819eae3efbc2b53da05c3db6da2e19
 Stages: ('read', 'normalize', 'chunk', 'enrich', 'embed', 'store', 'retrieve')
 
 ```
@@ -506,7 +506,7 @@ print("Index backend requested:", plan.get("index").backend)
 
 ```
 ```
-Pipeline: <scikitplot.corpus._pipeline.CorpusPipeline object at 0x71cc4f867020>
+Pipeline: <scikitplot.corpus._pipeline.CorpusPipeline object at 0x7dcc5876f470>
 Storage: InMemoryStorage(n_docs=0)
 Index backend requested: bruteforce
 
@@ -716,7 +716,7 @@ print(_EXPORT_PATH.read_text(encoding="utf-8").splitlines()[0][:300])
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-k1lmrxg_/hamlet_corpus.jsonl
+Exported: /tmp/scikitplot-hamlet-g4j7rmbr/hamlet_corpus.jsonl
 Bytes: 31126
 First JSONL row:
 {"schema_version": "2.0", "doc_id": "778d78ec096f965d", "input_path": "hamlet_excerpt.txt", "chunk_index": 0, "text": "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK", "section_type": "text", "chunking_strategy": "paragraph", "language": null, "char_start": 0, "char_end": 40, "metadata": {}, "source_type"
@@ -820,9 +820,9 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.041 seconds)
+****Total running time of the script:**** (0 minutes 0.047 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)
 
 [`Download Jupyter notebook: plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb`](../../_downloads/7112a5a51a0bf20e7cf18e51b847135a/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)
 

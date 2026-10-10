@@ -39,10 +39,30 @@ Adapter layer
   LangChainCorpusRetriever  
   MCPCorpusServer
 
-.. _corpus_ref-archive-within-archive:
+.. _corpus_ref-agentic-retrieval-session:
 
-Archive-within-archive
-----------------------
+Agentic Retrieval Session
+-------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  AgenticRetrievalSession  
+  BudgetPolicy  
+  InvestigationOutcome  
+  InvestigationStatus  
+  RoutePlan  
+  StopReason  
+  SufficiencySignals  
+  route  
+  run_investigation
+
+.. _corpus_ref-archive-within-archive-handler:
+
+Archive within Archive Handler
+------------------------------
 
 .. autosummary::
   :nosignatures:
@@ -51,6 +71,19 @@ Archive-within-archive
     
   extract_archive  
   is_archive
+
+.. _corpus_ref-artifact-handler:
+
+Artifact Handler
+----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  ANNIndexArtifact  
+  ArtifactError
 
 .. _corpus_ref-base-classes:
 
@@ -76,6 +109,37 @@ Base Classes
   FilterBase  
   PipelineGuard
 
+.. _corpus_ref-capability-status:
+
+Capability Status
+-----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CapabilityStatus  
+  capability_snapshot  
+  distribution_version  
+  probe_backend
+
+.. _corpus_ref-component-spec:
+
+Component Spec
+--------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  ComponentCatalog  
+  ComponentSpec  
+  DiscoveryOutcome  
+  DiscoveryStatus  
+  component_catalog
+
 .. _corpus_ref-chunkers:
 
 Chunkers
@@ -86,9 +150,11 @@ Chunkers
   :toctree: ../modules/generated/
   :template: base.rst
     
+  ChunkedTextList  
   ChunkerBridge  
   FixedWindowChunkerBridge  
   ParagraphChunkerBridge  
+  SemanticChunkerBridge  
   SentenceChunkerBridge  
   WordChunkerBridge  
   bridge_chunker  
@@ -116,7 +182,10 @@ Chunkers
   is_cjk_char  
   is_rtl_char  
   split_cjk_chars  
+  _split_cjk_chars_legacy  
   MULTI_SCRIPT_SENTENCE_RE_PATTERN  
+  ScriptSpan  
+  ScriptSegmenter  
   FixedWindowChunker  
   FixedWindowChunkerConfig  
   WindowUnit  
@@ -129,17 +198,38 @@ Chunkers
   resolve_stopwords  
   iso_to_nltk  
   nltk_to_iso  
+  MultilangConfig  
+  MultilangMixin  
   ParagraphChunker  
   ParagraphChunkerConfig  
+  SemanticBackend  
+  SemanticChunker  
+  SemanticChunkerConfig  
   SentenceBackend  
   SentenceChunker  
   SentenceChunkerConfig  
+  _validate_text_input  
   LemmatizationBackend  
   StemmingBackend  
   StopwordSource  
   TokenizerBackend  
   WordChunker  
-  WordChunkerConfig
+  WordChunkerConfig  
+  ArabicMorphologicalStrategy  
+  CJKCharacterStrategy  
+  DeterminativeGroupStrategy  
+  DictionaryBoundaryStrategy  
+  EthiopicStrategy  
+  GraphemeClusterStrategy  
+  IndicAksharaStrategy  
+  JapaneseStrategy  
+  KoreanSyllableStrategy  
+  MongolianStrategy  
+  SegmentationStrategy  
+  SpacePunctuationStrategy  
+  TibetanStrategy  
+  WritingSystemAdapter  
+  WritingSystemAdapterConfig
 
 .. _corpus_ref-corpus-builder:
 
@@ -183,6 +273,19 @@ Custom Hooks
   HookableCorpusPipeline  
   PipelineHooks
 
+.. _corpus_ref-diagnostic-error-record:
+
+Diagnostic Error Record
+-----------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  ErrorCategory  
+  ErrorRecord
+
 .. _corpus_ref-downloader:
 
 Downloader
@@ -222,11 +325,25 @@ Embeddings
   DEFAULT_CACHE_DIR  
   DEFAULT_MODEL  
   EmbeddingEngine  
+  HashEmbedder  
   DEFAULT_AUDIO_MODEL  
   DEFAULT_IMAGE_MODEL  
   DEFAULT_TEXT_MODEL  
   LLMTrainingExporter  
   MultimodalEmbeddingEngine
+
+.. _corpus_ref-embedding-manifest:
+
+Embedding Manifest
+------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  EmbeddingManifest  
+  IncompatibleEmbeddingsError
 
 .. _corpus_ref-enricher:
 
@@ -240,7 +357,9 @@ Enricher
     
   BUILTIN_STOPWORDS  
   EnricherConfig  
-  NLPEnricher
+  NLPEnricher  
+  SimpleEnricherSpec  
+  SimpleFrequencyEnricher
 
 .. _corpus_ref-export:
 
@@ -254,6 +373,77 @@ Export
     
   export_documents  
   load_documents
+
+.. _corpus_ref-filter--backend-neutral--expressions:
+
+Filter (backend-neutral) Expressions
+------------------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  And  
+  Eq  
+  Exists  
+  Filter  
+  FilterCapability  
+  In  
+  Not  
+  NotEq  
+  NotIn  
+  Or  
+  Range  
+  UnsupportedOperatorError
+
+.. _corpus_ref-generator-index:
+
+Generator Index
+---------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  IndexGeneration  
+  derive_generation
+
+.. _corpus_ref-graph-node:
+
+Graph Node
+----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  EdgeTrust  
+  GraphEdge  
+  GraphNode  
+  GraphQuery  
+  GraphResponse  
+  NodeKind  
+  RelationType  
+  derive_graph
+
+.. _corpus_ref-hierarchy-report:
+
+Hierarchy Report
+----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  HierarchyReport  
+  ancestors  
+  children  
+  descendants  
+  validate_hierarchy
 
 .. _corpus_ref-metadata:
 
@@ -281,6 +471,7 @@ Normalizers
   :template: base.rst
     
   DedupLinesNormalizer  
+  GraphemeClusterNormalizer  
   HTMLStripNormalizer  
   LanguageDetectionNormalizer  
   LowercaseNormalizer  
@@ -313,6 +504,28 @@ Pipeline
   PipelineResult  
   create_corpus
 
+.. _corpus_ref-plan-fluent-facade:
+
+Plan Fluent Facade
+------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: CorpusPlan FluentCorpus
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CONFIG_DOMAINS  
+  ConfigConflictError  
+  CorpusPlan  
+  FluentCorpus
+
 .. _corpus_ref-readers:
 
 Readers
@@ -344,6 +557,7 @@ Readers
   YouTubeReader  
   TEIReader  
   XMLReader  
+  ArchiveNestingError  
   ZipReader
 
 .. _corpus_ref-registry:
@@ -359,19 +573,65 @@ Registry
   ComponentRegistry  
   registry
 
-.. _corpus_ref-similarity:
+.. _corpus_ref-retrieval-response:
 
-Similarity
-----------
+Retrieval Response
+------------------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
     
-  RetrievalConfig  
-  RetrievalHit  
-  RetrievalIndex
+  LegKind  
+  LegOutcome  
+  LegStatus  
+  RetrievalResponse  
+  RetrievalStatus
+
+.. _corpus_ref-retriever:
+
+Retriever
+---------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  DenseRetriever  
+  GraphRetriever  
+  LegContribution  
+  LegResult  
+  LexicalRetriever  
+  Retriever  
+  fuse_by_rank
+
+.. _corpus_ref-runtime-policy:
+
+Runtime Policy
+--------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  RuntimeCorpus  
+  RuntimePolicy  
+  materialize_plan
+
+.. _corpus_ref-samples-for-corpus-usage:
+
+Samples for Corpus Usage
+------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  HAMLET_TEXT
 
 .. _corpus_ref-schema:
 
@@ -391,9 +651,30 @@ Schema
   Modality  
   ErrorPolicy  
   CorpusDocument  
-  _PROMOTED_RAW_KEYS  
   documents_to_pandas  
   documents_to_polars
+
+.. _corpus_ref-similarity-backend:
+
+Similarity Backend
+------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  DEFAULT_BACKEND_ORDER  
+  AnnoyBackend  
+  BruteForceBackend  
+  FaissBackend  
+  VectorIndexBackend  
+  VoyagerBackend  
+  list_available_backends  
+  select_backend  
+  RetrievalConfig  
+  RetrievalHit  
+  RetrievalIndex
 
 .. _corpus_ref-source:
 
@@ -426,6 +707,7 @@ Storage
   :toctree: ../modules/generated/
   :template: base.rst
     
+  FilterSupport  
   InMemoryStorage  
   JSONLStorage  
   QueryResult  
@@ -433,10 +715,57 @@ Storage
   StorageBase  
   StorageQuery
 
-.. _corpus_ref-url:
+.. _corpus_ref-type-contracts:
 
-URL
----
+Type Contracts
+--------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  MetadataDict  
+  CharOffset  
+  TokenId  
+  BowVector  
+  EmbeddingVector  
+  DocumentStatus  
+  ContentType  
+  StorageBackend  
+  NormalizerType  
+  Chunk  
+  ChunkResult  
+  ChunkerConfig  
+  SourceConfig  
+  NormalizerConfigBase  
+  StorageConfig  
+  PipelineStep  
+  PipelineConfig  
+  EmbeddedChunk  
+  RetrievalQuery  
+  ChunkHit  
+  CorpusRecord  
+  ChunkerProtocol  
+  NormalizerProtocol  
+  SourceProtocol  
+  StorageProtocol  
+  ChunkerRegistration  
+  ValidationError  
+  ValidationResult  
+  TrainingExample  
+  TrainingDataset  
+  ToolCallInput  
+  ToolCallResult  
+  SemantemeInfo  
+  PreprocessingStep  
+  PreprocessingTrace  
+  MultilangChunkMeta
+
+.. _corpus_ref-url-handler:
+
+URL Handler
+-----------
 
 .. autosummary::
   :nosignatures:

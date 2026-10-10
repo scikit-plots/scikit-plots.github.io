@@ -1,6 +1,6 @@
 # kuiper\_two[#](#kuiper-two "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.kuiper\_two(**data1**, **data2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L1494)[#](#scikitplot.cexternals._astropy.stats.kuiper_two "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.kuiper\_two(**data1**, **data2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L1494)[#](#scikitplot.cexternals._astropy.stats.kuiper_two "Link to this definition")
 :   Compute the Kuiper statistic to compare two samples.
 
     Parameters:
@@ -26,4 +26,4 @@ scikitplot.cexternals.\_astropy.stats.kuiper\_two(**data1**, **data2**)[[source]
         * ****data2**** (**ArrayLike**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"), [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]

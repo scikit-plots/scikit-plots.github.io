@@ -406,7 +406,7 @@ annoy.__version__, dir(annoy), dir(annoy.Annoy)
 
 ```
 ```
-('2.0.0+git.20251130.8a7e82cb537053926b0ac6ec132b9ccc875af40c', ['Annoy', 'AnnoyIndex', 'CompressMode', 'Index', 'IndexIOMixin', 'MetaMixin', 'NDArrayMixin', 'PickleMixin', 'PickleMode', 'PlottingMixin', 'VectorOpsMixin', '__all__', '__author__', '__author_email__', '__builtins__', '__cached__', '__doc__', '__file__', '__git_hash__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_annoy', '_base', '_metadata', '_mixins', '_utils', 'annotations', 'annoylib'], ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__sklearn_clone__', '__sklearn_is_fitted__', '__sklearn_tags__', '__str__', '__subclasshook__', '_f', '_metric_id', '_on_disk_path', '_prefault', '_repr_html_', '_schema_version', '_y', '_y_map', 'add_item', 'build', 'deserialize', 'f', 'feature_names_in_', 'fit', 'fit_transform', 'get_distance', 'get_feature_names_out', 'get_item', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'get_params', 'info', 'load', 'memory_usage', 'metric', 'n_features', 'n_features_', 'n_features_in_', 'n_features_out_', 'n_neighbors', 'on_disk_build', 'on_disk_path', 'prefault', 'random_state', 'rebuild', 'repr_info', 'save', 'schema_version', 'seed', 'serialize', 'set_params', 'set_seed', 'set_verbose', 'set_verbosity', 'transform', 'unbuild', 'unload', 'verbose', 'y', 'y_map'])
+('2.0.0+git.20251130.8a7e82cb537053926b0ac6ec132b9ccc875af40c', ['Annoy', 'AnnoyIndex', 'CompressMode', 'Index', 'IndexIOMixin', 'MetaMixin', 'NDArrayMixin', 'PickleMixin', 'PickleMode', 'PlottingMixin', 'VectorOpsMixin', '__all__', '__author__', '__author_email__', '__builtins__', '__cached__', '__doc__', '__file__', '__git_hash__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_annoy', '_base', '_metadata', '_mixins', '_threads', '_utils', 'annotations', 'annoylib', 'threads_info'], ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__sklearn_clone__', '__sklearn_is_fitted__', '__sklearn_tags__', '__str__', '__subclasshook__', '_f', '_metric_id', '_on_disk_path', '_prefault', '_repr_html_', '_schema_version', '_y', '_y_map', 'add_item', 'build', 'deserialize', 'f', 'feature_names_in_', 'fit', 'fit_transform', 'get_distance', 'get_feature_names_out', 'get_item', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'get_params', 'info', 'load', 'memory_usage', 'metric', 'n_features', 'n_features_', 'n_features_in_', 'n_features_out_', 'n_neighbors', 'on_disk_build', 'on_disk_path', 'prefault', 'random_state', 'rebuild', 'repr_info', 'save', 'schema_version', 'seed', 'serialize', 'set_params', 'set_seed', 'set_verbose', 'set_verbosity', 'transform', 'unbuild', 'unload', 'verbose', 'y', 'y_map'])
 
 ```
 ```
@@ -427,11 +427,12 @@ print(annoy.__doc__)
 ```
 scikitplot.annoy
 ================
+
 Public Annoy Python API for scikitplot.
 
 Spotify ANNoy [1]_ (Approximate Nearest Neighbors Oh Yeah).
 
-This package exposes **two layers**:
+This package exposes **two layers**.
 
 Exports:
 
@@ -439,11 +440,14 @@ Exports:
    :class:`~scikitplot.cexternals._annoy.Annoy` and :class:`~scikitplot.cexternals._annoy.AnnoyIndex`.
 
 2. A high-level, mixin-composed wrapper :class:`~scikitplot.annoy.Index` that:
-   - forwards the complete low-level API deterministically,
-   - adds versioned manifest import/export,
-   - provides explicit index I/O names (``save_index`` / ``load_index``),
-   - provides safe Python-object persistence helpers (pickling),
-   - adds optional NumPy export and plotting utilities.
+
+- forwards the complete low-level API deterministically,
+- adds versioned manifest import/export,
+- provides explicit index I/O names (``save_index`` / ``load_index``),
+- provides safe Python-object persistence helpers (pickling),
+- adds optional NumPy export and plotting utilities,
+- decides how many threads build an index from one rule
+  (:func:`~scikitplot.annoy.threads_info`, ``SKPLT_ANNOY_THREADS``).
 
 Notes
 -----
@@ -1490,7 +1494,7 @@ hamming [[[0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0], [0.0, 0.0, 1.0, 0.
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (2 minutes 13.720 seconds)
+****Total running time of the script:**** (2 minutes 16.749 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_Annoy_python_api.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_Annoy_python_api.ipynb)
 
@@ -1506,11 +1510,7 @@ Related examples
 
 [annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
 
-annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
-
-[annoy.Index to NPY or CSV with examples](plot_annoy_to_NPY_CSV.html)
-
-annoy.Index to NPY or CSV with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
 
 [Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
 
@@ -1518,6 +1518,10 @@ Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script
 
 [Mmap annoy.AnnoyIndex with examples](plot_mmap_script.html)
 
-Mmap annoy.AnnoyIndex with examples
+Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
+
+[annoy.Index to NPY or CSV with examples](plot_annoy_to_NPY_CSV.html)
+
+annoy.Index to NPY or CSV with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

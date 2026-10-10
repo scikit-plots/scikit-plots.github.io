@@ -1,6 +1,6 @@
 # bayesian\_info\_criterion[#](#bayesian-info-criterion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/info_theory.py#L24)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/info_theory.py#L24)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "Link to this definition")
 :   Computes the Bayesian Information Criterion (BIC) given the log of the
     likelihood function evaluated at the estimated (or analytically derived)
     parameters, the number of parameters, and the number of samples.
@@ -58,12 +58,12 @@ scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihoo
         :   Bayesian Information Criterion.
 
     Parameters:
-    :   * ****log\_likelihood**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****n\_params**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****n\_samples**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****log\_likelihood**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****n\_params**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****n\_samples**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
     References
 

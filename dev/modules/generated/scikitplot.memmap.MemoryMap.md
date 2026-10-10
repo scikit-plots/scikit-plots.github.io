@@ -123,7 +123,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ```
         Go BackOpen In Tab
 
-    close(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.close "Link to this definition")
+    close(**self**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.close "Link to this definition")
     :   Close the memory mapping.
 
         Unmaps the region and releases resources.
@@ -156,7 +156,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ```
         Go BackOpen In Tab
 
-    static create\_anonymous(**int size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0x3**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2**) → [MemoryMap](#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.MemoryMap.create_anonymous "Link to this definition")
+    static create\_anonymous(**int size: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **int prot: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0x3**, **int flags: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 2**) → [MemoryMap](#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.MemoryMap.create_anonymous "Link to this definition")
     :   Create anonymous memory mapping (not backed by file).
 
         Parameters:
@@ -183,9 +183,9 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
             :   If mapping allocation fails
 
         Parameters:
-        :   * ****size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****prot**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****flags**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   * ****size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****prot**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****flags**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
         :   [**MemoryMap**](#scikitplot.memmap.MemoryMap "scikitplot.memmap._memmap.mem_map.MemoryMap")
@@ -215,7 +215,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ```
         Go BackOpen In Tab
 
-    static create\_file\_mapping(**int fd: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int offset: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 1**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2**) → [MemoryMap](#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.MemoryMap.create_file_mapping "Link to this definition")
+    static create\_file\_mapping(**int fd: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **int offset: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **int size: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **int prot: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 1**, **int flags: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 2**) → [MemoryMap](#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.MemoryMap.create_file_mapping "Link to this definition")
     :   Create file-backed memory mapping.
 
         Parameters:
@@ -248,11 +248,11 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
             :   If mapping allocation fails
 
         Parameters:
-        :   * ****fd**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****offset**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****prot**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****flags**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   * ****fd**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****offset**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****prot**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****flags**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
         :   [**MemoryMap**](#scikitplot.memmap.MemoryMap "scikitplot.memmap._memmap.mem_map.MemoryMap")
@@ -288,7 +288,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         Type:
         :   [MemoryMap.is\_valid](#scikitplot.memmap.MemoryMap.is_valid "scikitplot.memmap.MemoryMap.is_valid")
 
-    mlock(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.mlock "Link to this definition")
+    mlock(**self**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.mlock "Link to this definition")
     :   Lock mapped pages in physical memory (prevent swapping).
 
         Raises:
@@ -324,7 +324,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ```
         Go BackOpen In Tab
 
-    mprotect(**self**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.mprotect "Link to this definition")
+    mprotect(**self**, **int prot: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.mprotect "Link to this definition")
     :   Change memory protection of mapped region.
 
         Parameters:
@@ -339,7 +339,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
             :   If mprotect() fails
 
         Parameters:
-        :   ****prot**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****prot**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
         :   None
@@ -355,7 +355,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ```
         Go BackOpen In Tab
 
-    msync(**self**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.msync "Link to this definition")
+    msync(**self**, **int flags: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 2**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.msync "Link to this definition")
     :   Synchronize mapped region with backing storage.
 
         Parameters:
@@ -371,7 +371,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
             :   If msync() fails
 
         Parameters:
-        :   ****flags**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****flags**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
         :   None
@@ -393,7 +393,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ```
         Go BackOpen In Tab
 
-    munlock(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.munlock "Link to this definition")
+    munlock(**self**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.munlock "Link to this definition")
     :   Unlock mapped pages (allow the kernel to swap them out again).
 
         Raises:
@@ -446,7 +446,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         Type:
         :   [MemoryMap.page\_size](#scikitplot.memmap.MemoryMap.page_size "scikitplot.memmap.MemoryMap.page_size")
 
-    read(**self**, **int size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int offset: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**) → [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.read "Link to this definition")
+    read(**self**, **int size: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **int offset: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0**) → [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.read "Link to this definition")
     :   Read bytes from mapped region.
 
         Parameters:
@@ -465,11 +465,11 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
             :   If mapping is closed or parameters are invalid
 
         Parameters:
-        :   * ****size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****offset**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   * ****size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****offset**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")
+        :   [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")
 
         Examples
 
@@ -500,7 +500,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         Type:
         :   [MemoryMap.size](#scikitplot.memmap.MemoryMap.size "scikitplot.memmap.MemoryMap.size")
 
-    write(**self**, **bytes data: [bytes](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)")**, **int offset: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.write "Link to this definition")
+    write(**self**, **bytes data: [bytes](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)")**, **int offset: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0**) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.memmap.MemoryMap.write "Link to this definition")
     :   Write bytes to mapped region.
 
         Parameters:
@@ -519,11 +519,11 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
             :   If mapping is closed, not writable, or parameters invalid
 
         Parameters:
-        :   * ****data**** ([**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)"))
-            * ****offset**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   * ****data**** ([**bytes**](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)"))
+            * ****offset**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
         Examples
 
@@ -536,3 +536,11 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         ```
         Go BackOpen In Tab
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_mman_thumb.png)
+
+[Memory-Mapping Showcase – Basic / Medium / Advanced](../../auto_examples/memmap/plot_mman.html)
+
+Memory-Mapping Showcase – Basic / Medium / Advanced

@@ -1,6 +1,6 @@
 # infer\_extension[#](#infer-extension "Link to this heading")
 
-scikitplot.corpus.infer\_extension(**headers**, **url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_url_handler.py#L1418)[#](#scikitplot.corpus.infer_extension "Link to this definition")
+scikitplot.corpus.infer\_extension(**headers**, **url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_url_handler.py#L1419)[#](#scikitplot.corpus.infer_extension "Link to this definition")
 :   Infer a file extension from HTTP response headers and URL path.
 
     Public wrapper around `_infer_extension_from_headers`. Call
@@ -31,11 +31,11 @@ scikitplot.corpus.infer\_extension(**headers**, **url**)[[source]](https://githu
             Returns `".bin"` if nothing can be inferred.
 
     Parameters:
-    :   * ****headers**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****headers**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Examples
 

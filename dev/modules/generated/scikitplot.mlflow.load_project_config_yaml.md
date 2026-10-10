@@ -1,6 +1,6 @@
 # load\_project\_config\_yaml[#](#load-project-config-yaml "Link to this heading")
 
-scikitplot.mlflow.load\_project\_config\_yaml(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L803)[#](#scikitplot.mlflow.load_project_config_yaml "Link to this definition")
+scikitplot.mlflow.load\_project\_config\_yaml(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L803)[#](#scikitplot.mlflow.load_project_config_yaml "Link to this definition")
 :   Load project MLflow config from a YAML file.
 
     Parameters:
@@ -28,9 +28,9 @@ scikitplot.mlflow.load\_project\_config\_yaml(**path**, **\***, **profile='local
         :   If the YAML does not parse to a mapping.
 
     Parameters:
-    :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****profile**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+    :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****profile**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   [**ProjectConfig**](scikitplot.mlflow.ProjectConfig.html#scikitplot.mlflow.ProjectConfig "scikitplot.mlflow._project.ProjectConfig")

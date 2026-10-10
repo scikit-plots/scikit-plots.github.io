@@ -1,6 +1,6 @@
 # kuiper[#](#kuiper "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.kuiper(**data**, **cdf=<function <lambda>>**, **args=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L1417)[#](#scikitplot.cexternals._astropy.stats.kuiper "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.kuiper(**data**, **cdf=<function <lambda>>**, **args=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L1417)[#](#scikitplot.cexternals._astropy.stats.kuiper "Link to this definition")
 :   Compute the Kuiper statistic.
 
     Use the Kuiper statistic version of the Kolmogorov-Smirnov test to
@@ -33,11 +33,11 @@ scikitplot.cexternals.\_astropy.stats.kuiper(**data**, **cdf=<function <lambda>>
 
     Parameters:
     :   * ****data**** (**ArrayLike**)
-        * ****cdf**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.14)"))
-        * ****args**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** **None**)
+        * ****cdf**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.15)"))
+        * ****args**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"), [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
     Notes
 

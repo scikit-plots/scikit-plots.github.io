@@ -1,6 +1,6 @@
 # get\_stemmer[#](#get-stemmer "Link to this heading")
 
-scikitplot.corpus.get\_stemmer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L802)[#](#scikitplot.corpus.get_stemmer "Link to this definition")
+scikitplot.corpus.get\_stemmer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L802)[#](#scikitplot.corpus.get_stemmer "Link to this definition")
 :   Retrieve a registered stemmer by name.
 
     Parameters:
@@ -16,7 +16,7 @@ scikitplot.corpus.get\_stemmer(**name**)[[source]](https://github.com/scikit-plo
         :   If **name** has not been registered.
 
     Parameters:
-    :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**StemmerProtocol**](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol")

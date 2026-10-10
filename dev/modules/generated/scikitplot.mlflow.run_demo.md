@@ -1,6 +1,6 @@
 # run\_demo[#](#run-demo "Link to this heading")
 
-scikitplot.mlflow.run\_demo(**\***, **profile='local'**, **project\_root=None**, **open\_ui\_seconds=10.0**, **experiment\_name=None**, **fmt='toml'**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_workflow.py#L211)[#](#scikitplot.mlflow.run_demo "Link to this definition")
+scikitplot.mlflow.run\_demo(**\***, **profile='local'**, **project\_root=None**, **open\_ui\_seconds=10.0**, **experiment\_name=None**, **fmt='toml'**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_workflow.py#L211)[#](#scikitplot.mlflow.run_demo "Link to this definition")
 :   Run a beginner-friendly end-to-end demo workflow.
 
     The workflow demonstrates:
@@ -41,12 +41,12 @@ scikitplot.mlflow.run\_demo(**\***, **profile='local'**, **project\_root=None**,
         :   If MLflow is not installed when attempting to start a session.
 
     Parameters:
-    :   * ****profile**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****open\_ui\_seconds**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****experiment\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****fmt**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****profile**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****project\_root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****open\_ui\_seconds**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****experiment\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****fmt**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   [**WorkflowPaths**](scikitplot.mlflow.WorkflowPaths.html#scikitplot.mlflow.WorkflowPaths "scikitplot.mlflow._workflow.WorkflowPaths")

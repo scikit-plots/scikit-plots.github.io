@@ -262,6 +262,48 @@ When using [pip](https://pip.pypa.io/en/stable/), ensure that **binary wheels** 
 compiling from source. This is particularly important for certain configurations,
 such as running Linux on a Raspberry Pi.
 
+## Installing A lightweight version[#](#installing-a-lightweight-version "Link to this heading")
+
+🔜🚀 [README.md](https://github.com/scikit-plots/scikit-plots#----by-----github-urls---)
+A lightweight version that is designed to be used in environments where you want to minimize the size of the package.
+
+```
+pip install scikit-plots-annoy @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/annoy
+
+```
+```
+pip install scikit-plots-cleanprompt @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/cleanprompt
+
+```
+```
+pip install scikit-plots-corpus @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/corpus
+
+```
+```
+pip install scikit-plots-cython @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/cython
+
+```
+```
+pip install scikit-plots-mcp @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/mcp
+
+```
+```
+pip install scikit-plots-mlflow @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/mlflow
+
+```
+```
+pip install scikit-plots-rank-bm25 @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/rank-bm25
+
+```
+```
+pip install scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny
+
+```
+```
+pip install scikit-plots-sphinx-ext @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/sphinx-ext
+
+```
+
 ## Dependencies[#](#dependencies "Link to this heading")
 
 Mandatory dependencies should be installed automatically if you install Matplotlib using

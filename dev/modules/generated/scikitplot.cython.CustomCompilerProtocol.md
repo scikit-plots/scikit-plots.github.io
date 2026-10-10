@@ -1,6 +1,6 @@
 # CustomCompilerProtocol[#](#customcompilerprotocol "Link to this heading")
 
-class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L140)[#](#scikitplot.cython.CustomCompilerProtocol "Link to this definition")
+class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L140)[#](#scikitplot.cython.CustomCompilerProtocol "Link to this definition")
 :   Structural protocol for custom compiler callables.
 
     Any callable that satisfies this protocol can be registered with
@@ -70,16 +70,16 @@ class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[sour
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L211)[#](#scikitplot.cython.CustomCompilerProtocol.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L211)[#](#scikitplot.cython.CustomCompilerProtocol.__call__ "Link to this definition")
     :   Compile **source** and return the artifact path.
 
         Parameters:
-        :   * ****source**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-            * ****module\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****source**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+            * ****module\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
-    name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.CustomCompilerProtocol.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.CustomCompilerProtocol.name "Link to this definition")

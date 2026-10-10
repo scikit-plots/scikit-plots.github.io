@@ -1,12 +1,12 @@
 # build\_package\_from\_paths[#](#build-package-from-paths "Link to this heading")
 
-scikitplot.cython.build\_package\_from\_paths(**modules**, **\***, **package\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_public.py#L1133)[#](#scikitplot.cython.build_package_from_paths "Link to this definition")
+scikitplot.cython.build\_package\_from\_paths(**modules**, **\***, **package\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_public.py#L1161)[#](#scikitplot.cython.build_package_from_paths "Link to this definition")
 :   Build and import a multi-module extension package and return loaded modules.
 
     Parameters:
-    :   * ****modules**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")**]**)
-        * ****package\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+    :   * ****modules**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]**)
+        * ****package\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
     Return type:
-    :   [**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")[[**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.14)")]
+    :   [**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.15)")]

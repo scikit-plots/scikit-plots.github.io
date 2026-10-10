@@ -1,6 +1,6 @@
 # Modality[#](#modality "Link to this heading")
 
-class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L152)[#](#scikitplot.corpus.Modality "Link to this definition")
+class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L153)[#](#scikitplot.corpus.Modality "Link to this definition")
 :   Primary content modality of a [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument").
 
     Notes
@@ -38,19 +38,19 @@ class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scik
     ```
     Go BackOpen In Tab
 
-    AUDIO = 'audio'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.AUDIO "Link to this definition")
+    AUDIO = 'audio'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.AUDIO "Link to this definition")
     :   Audio waveform — `raw_tensor` shape is `(samples,)` float32.
 
-    IMAGE = 'image'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.IMAGE "Link to this definition")
+    IMAGE = 'image'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.IMAGE "Link to this definition")
     :   Raster image tensor — `raw_tensor` shape is `(H, W, C)` uint8.
 
-    MULTIMODAL = 'multimodal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.MULTIMODAL "Link to this definition")
+    MULTIMODAL = 'multimodal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.MULTIMODAL "Link to this definition")
     :   Both `text` and `raw_tensor` are present (e.g. image + OCR).
 
-    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.TEXT "Link to this definition")
+    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.TEXT "Link to this definition")
     :   Plain text content — `raw_tensor` is `None`.
 
-    VIDEO = 'video'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.VIDEO "Link to this definition")
+    VIDEO = 'video'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.VIDEO "Link to this definition")
     :   Video frame tensor — `raw_tensor` shape is `(T, H, W, C)` uint8.
 
     capitalize(**/**)[#](#scikitplot.corpus.Modality.capitalize "Link to this definition")
@@ -67,7 +67,7 @@ class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scik
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.Modality.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.Modality.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -85,7 +85,7 @@ class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scik
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.Modality.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.Modality.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -96,22 +96,22 @@ class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scik
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.Modality.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.Modality.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.Modality.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.Modality.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.Modality.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.Modality.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.Modality.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.Modality.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -243,14 +243,14 @@ class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scik
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.Modality.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.Modality.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.Modality.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.Modality.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -319,7 +319,7 @@ class scikitplot.corpus.Modality(**\*values**)[[source]](https://github.com/scik
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.Modality.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.Modality.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

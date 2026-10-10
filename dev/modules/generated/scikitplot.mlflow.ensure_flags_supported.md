@@ -1,6 +1,6 @@
 # ensure\_flags\_supported[#](#ensure-flags-supported "Link to this heading")
 
-scikitplot.mlflow.ensure\_flags\_supported(**args**, **\***, **supported\_flags**, **context**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_cli_caps.py#L115)[#](#scikitplot.mlflow.ensure_flags_supported "Link to this definition")
+scikitplot.mlflow.ensure\_flags\_supported(**args**, **\***, **supported\_flags**, **context**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_cli_caps.py#L115)[#](#scikitplot.mlflow.ensure_flags_supported "Link to this definition")
 :   Validate that all long-form CLI flags in `args` are supported.
 
     Parameters:
@@ -18,9 +18,9 @@ scikitplot.mlflow.ensure\_flags\_supported(**args**, **\***, **supported\_flags*
         :   If an unsupported flag is found.
 
     Parameters:
-    :   * ****args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****supported\_flags**** ([**frozenset**](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****context**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****supported\_flags**** ([**frozenset**](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****context**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   None

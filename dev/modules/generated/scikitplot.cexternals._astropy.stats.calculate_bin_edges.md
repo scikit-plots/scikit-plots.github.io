@@ -1,6 +1,6 @@
 # calculate\_bin\_edges[#](#calculate-bin-edges "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, **range=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/histogram.py#L25)[#](#scikitplot.cexternals._astropy.stats.calculate_bin_edges "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, **range=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/histogram.py#L25)[#](#scikitplot.cexternals._astropy.stats.calculate_bin_edges "Link to this definition")
 :   Calculate histogram bin edges like `numpy.histogram_bin_edges`.
 
     Parameters:
@@ -30,9 +30,9 @@ scikitplot.cexternals.\_astropy.stats.calculate\_bin\_edges(**a**, **bins=10**, 
 
     Parameters:
     :   * ****a**** (**ArrayLike**)
-        * ****bins**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]** **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'blocks'****,** **'knuth'****,** **'scott'****,** **'freedman'****]** **|** **None**)
-        * ****range**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]** **|** **None**)
+        * ****bins**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** [**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'blocks'****,** **'knuth'****,** **'scott'****,** **'freedman'****]** **|** **None**)
+        * ****range**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** **None**)
         * ****weights**** (**ArrayLike** **|** **None**)
 
     Return type:
-    :   **NDArray**[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")]
+    :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]

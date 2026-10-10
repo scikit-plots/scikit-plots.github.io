@@ -1,6 +1,6 @@
 # BaseDownloader[#](#basedownloader "Link to this heading")
 
-class scikitplot.corpus.BaseDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_base.py#L222)[#](#scikitplot.corpus.BaseDownloader "Link to this definition")
+class scikitplot.corpus.BaseDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_base.py#L223)[#](#scikitplot.corpus.BaseDownloader "Link to this definition")
 :   Abstract base class for all format-specific URL downloaders.
 
     Mirrors the [`DocumentReader`](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus._base.DocumentReader") design —
@@ -49,14 +49,14 @@ class scikitplot.corpus.BaseDownloader(**input\_url**, **output\_path=None**, **
             **output\_path** was supplied by the caller.
 
     Parameters:
-    :   * ****input\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****timeout**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****max\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****verify\_ssl**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****block\_private\_ips**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****max\_redirects**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****user\_agent**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****input\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****timeout**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****max\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****verify\_ssl**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****block\_private\_ips**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****max\_redirects**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****user\_agent**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     > **See also**
     > [`scikitplot.corpus._downloader._web.WebDownloader`](scikitplot.corpus.WebDownloader.html#scikitplot.corpus.WebDownloader "scikitplot.corpus._downloader._web.WebDownloader")
@@ -123,9 +123,9 @@ class scikitplot.corpus.BaseDownloader(**input\_url**, **output\_path=None**, **
     ```
     Go BackOpen In Tab
 
-    block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.BaseDownloader.block_private_ips "Link to this definition")
+    block\_private\_ips: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.BaseDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.BaseDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.BaseDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -134,7 +134,7 @@ class scikitplot.corpus.BaseDownloader(**input\_url**, **output\_path=None**, **
         Return type:
         :   None
 
-    abstractmethod download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_base.py#L392)[#](#scikitplot.corpus.BaseDownloader.download "Link to this definition")
+    abstractmethod download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_base.py#L393)[#](#scikitplot.corpus.BaseDownloader.download "Link to this definition")
     :   Download the resource and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Returns:
@@ -155,16 +155,16 @@ class scikitplot.corpus.BaseDownloader(**input\_url**, **output\_path=None**, **
         Return type:
         :   [**DownloadResult**](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus._downloader._base.DownloadResult")
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_base.py#L222)[#](#scikitplot.corpus.BaseDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_base.py#L223)[#](#scikitplot.corpus.BaseDownloader.input_url "Link to this definition")
 
-    max\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 104857600[#](#scikitplot.corpus.BaseDownloader.max_bytes "Link to this definition")
+    max\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 104857600[#](#scikitplot.corpus.BaseDownloader.max_bytes "Link to this definition")
 
-    max\_redirects: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5[#](#scikitplot.corpus.BaseDownloader.max_redirects "Link to this definition")
+    max\_redirects: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 5[#](#scikitplot.corpus.BaseDownloader.max_redirects "Link to this definition")
 
-    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BaseDownloader.output_path "Link to this definition")
+    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BaseDownloader.output_path "Link to this definition")
 
-    timeout: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 30.0[#](#scikitplot.corpus.BaseDownloader.timeout "Link to this definition")
+    timeout: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 30.0[#](#scikitplot.corpus.BaseDownloader.timeout "Link to this definition")
 
-    user\_agent: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'[#](#scikitplot.corpus.BaseDownloader.user_agent "Link to this definition")
+    user\_agent: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'[#](#scikitplot.corpus.BaseDownloader.user_agent "Link to this definition")
 
-    verify\_ssl: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.BaseDownloader.verify_ssl "Link to this definition")
+    verify\_ssl: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.BaseDownloader.verify_ssl "Link to this definition")

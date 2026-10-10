@@ -1,6 +1,6 @@
 # ServerConfig[#](#serverconfig "Link to this heading")
 
-class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto\_host\_in\_docker=False**, **docker\_host='0.0.0.0'**, **workers=None**, **backend\_store\_uri=None**, **registry\_store\_uri=None**, **default\_artifact\_root=None**, **serve\_artifacts=False**, **no\_serve\_artifacts=False**, **artifacts\_destination=None**, **artifacts\_only=False**, **allowed\_hosts=None**, **cors\_allowed\_origins=None**, **x\_frame\_options=None**, **disable\_security\_middleware=False**, **static\_prefix=None**, **uvicorn\_opts=None**, **gunicorn\_opts=None**, **waitress\_opts=None**, **expose\_prometheus=None**, **app\_name=None**, **dev=False**, **secrets\_cache\_ttl=None**, **secrets\_cache\_max\_size=None**, **strict\_cli\_compat=True**, **extra\_args=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_config.py#L125)[#](#scikitplot.mlflow.ServerConfig "Link to this definition")
+class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto\_host\_in\_docker=False**, **docker\_host='0.0.0.0'**, **workers=None**, **backend\_store\_uri=None**, **registry\_store\_uri=None**, **default\_artifact\_root=None**, **serve\_artifacts=False**, **no\_serve\_artifacts=False**, **artifacts\_destination=None**, **artifacts\_only=False**, **allowed\_hosts=None**, **cors\_allowed\_origins=None**, **x\_frame\_options=None**, **disable\_security\_middleware=False**, **static\_prefix=None**, **uvicorn\_opts=None**, **gunicorn\_opts=None**, **waitress\_opts=None**, **expose\_prometheus=None**, **app\_name=None**, **dev=False**, **secrets\_cache\_ttl=None**, **secrets\_cache\_max\_size=None**, **strict\_cli\_compat=True**, **extra\_args=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_config.py#L125)[#](#scikitplot.mlflow.ServerConfig "Link to this definition")
 :   Configuration that maps directly to `mlflow server` CLI flags.
 
     Parameters:
@@ -94,83 +94,83 @@ class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto
         :   If configuration violates generic constraints (e.g., invalid port).
 
     Parameters:
-    :   * ****host**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****port**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****auto\_host\_in\_docker**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****docker\_host**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****workers**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****backend\_store\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****registry\_store\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****default\_artifact\_root**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****serve\_artifacts**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****no\_serve\_artifacts**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****artifacts\_destination**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****artifacts\_only**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****allowed\_hosts**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****cors\_allowed\_origins**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****x\_frame\_options**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****disable\_security\_middleware**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****static\_prefix**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****uvicorn\_opts**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****gunicorn\_opts**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****waitress\_opts**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****expose\_prometheus**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****app\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****dev**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****secrets\_cache\_ttl**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****secrets\_cache\_max\_size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****strict\_cli\_compat**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****extra\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   * ****host**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****port**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****auto\_host\_in\_docker**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****docker\_host**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****workers**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****backend\_store\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****registry\_store\_uri**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****default\_artifact\_root**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****serve\_artifacts**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****no\_serve\_artifacts**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****artifacts\_destination**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****artifacts\_only**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****allowed\_hosts**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****cors\_allowed\_origins**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****x\_frame\_options**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****disable\_security\_middleware**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****static\_prefix**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****uvicorn\_opts**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****gunicorn\_opts**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****waitress\_opts**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****expose\_prometheus**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****app\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****dev**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****secrets\_cache\_ttl**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****secrets\_cache\_max\_size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****strict\_cli\_compat**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****extra\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
-    allowed\_hosts: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.allowed_hosts "Link to this definition")
+    allowed\_hosts: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.allowed_hosts "Link to this definition")
 
-    app\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.app_name "Link to this definition")
+    app\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.app_name "Link to this definition")
 
-    artifacts\_destination: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.artifacts_destination "Link to this definition")
+    artifacts\_destination: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.artifacts_destination "Link to this definition")
 
-    artifacts\_only: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.ServerConfig.artifacts_only "Link to this definition")
+    artifacts\_only: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.ServerConfig.artifacts_only "Link to this definition")
 
-    auto\_host\_in\_docker: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.ServerConfig.auto_host_in_docker "Link to this definition")
+    auto\_host\_in\_docker: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.ServerConfig.auto_host_in_docker "Link to this definition")
 
-    backend\_store\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.backend_store_uri "Link to this definition")
+    backend\_store\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.backend_store_uri "Link to this definition")
 
-    cors\_allowed\_origins: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.cors_allowed_origins "Link to this definition")
+    cors\_allowed\_origins: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.cors_allowed_origins "Link to this definition")
 
-    default\_artifact\_root: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.default_artifact_root "Link to this definition")
+    default\_artifact\_root: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.default_artifact_root "Link to this definition")
 
-    dev: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.ServerConfig.dev "Link to this definition")
+    dev: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.ServerConfig.dev "Link to this definition")
 
-    disable\_security\_middleware: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.ServerConfig.disable_security_middleware "Link to this definition")
+    disable\_security\_middleware: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.ServerConfig.disable_security_middleware "Link to this definition")
 
-    docker\_host: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = '0.0.0.0'[#](#scikitplot.mlflow.ServerConfig.docker_host "Link to this definition")
+    docker\_host: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '0.0.0.0'[#](#scikitplot.mlflow.ServerConfig.docker_host "Link to this definition")
 
-    expose\_prometheus: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.expose_prometheus "Link to this definition")
+    expose\_prometheus: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.expose_prometheus "Link to this definition")
 
-    extra\_args: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.extra_args "Link to this definition")
+    extra\_args: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.extra_args "Link to this definition")
 
-    gunicorn\_opts: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.gunicorn_opts "Link to this definition")
+    gunicorn\_opts: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.gunicorn_opts "Link to this definition")
 
-    host: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = '127.0.0.1'[#](#scikitplot.mlflow.ServerConfig.host "Link to this definition")
+    host: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '127.0.0.1'[#](#scikitplot.mlflow.ServerConfig.host "Link to this definition")
 
-    no\_serve\_artifacts: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.ServerConfig.no_serve_artifacts "Link to this definition")
+    no\_serve\_artifacts: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.ServerConfig.no_serve_artifacts "Link to this definition")
 
-    port: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5000[#](#scikitplot.mlflow.ServerConfig.port "Link to this definition")
+    port: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 5000[#](#scikitplot.mlflow.ServerConfig.port "Link to this definition")
 
-    registry\_store\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.registry_store_uri "Link to this definition")
+    registry\_store\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.registry_store_uri "Link to this definition")
 
-    secrets\_cache\_max\_size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.secrets_cache_max_size "Link to this definition")
+    secrets\_cache\_max\_size: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.secrets_cache_max_size "Link to this definition")
 
-    secrets\_cache\_ttl: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.secrets_cache_ttl "Link to this definition")
+    secrets\_cache\_ttl: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.secrets_cache_ttl "Link to this definition")
 
-    serve\_artifacts: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.mlflow.ServerConfig.serve_artifacts "Link to this definition")
+    serve\_artifacts: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.mlflow.ServerConfig.serve_artifacts "Link to this definition")
 
-    static\_prefix: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.static_prefix "Link to this definition")
+    static\_prefix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.static_prefix "Link to this definition")
 
-    strict\_cli\_compat: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.mlflow.ServerConfig.strict_cli_compat "Link to this definition")
+    strict\_cli\_compat: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.mlflow.ServerConfig.strict_cli_compat "Link to this definition")
 
-    uvicorn\_opts: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.uvicorn_opts "Link to this definition")
+    uvicorn\_opts: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.uvicorn_opts "Link to this definition")
 
-    validate(**\***, **for\_managed\_tracking**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_config.py#L239)[#](#scikitplot.mlflow.ServerConfig.validate "Link to this definition")
+    validate(**\***, **for\_managed\_tracking**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_config.py#L239)[#](#scikitplot.mlflow.ServerConfig.validate "Link to this definition")
     :   Validate configuration against generic MLflow constraints.
 
         Parameters:
@@ -183,7 +183,7 @@ class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto
             :   If validation fails.
 
         Parameters:
-        :   ****for\_managed\_tracking**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   ****for\_managed\_tracking**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   None
@@ -194,8 +194,8 @@ class scikitplot.mlflow.ServerConfig(**host='127.0.0.1'**, **port=5000**, **auto
         * Exact per-version validation is delegated to MLflow itself; unsupported flags are
           caught separately when `strict_cli_compat=True`.
 
-    waitress\_opts: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.waitress_opts "Link to this definition")
+    waitress\_opts: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.waitress_opts "Link to this definition")
 
-    workers: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.workers "Link to this definition")
+    workers: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.workers "Link to this definition")
 
-    x\_frame\_options: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.mlflow.ServerConfig.x_frame_options "Link to this definition")
+    x\_frame\_options: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.mlflow.ServerConfig.x_frame_options "Link to this definition")

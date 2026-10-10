@@ -1,6 +1,6 @@
 # online\_help[#](#online-help "Link to this heading")
 
-scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.github.io/'**, **search\_page='search.html'**, **new\_window=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/__init__.py#L454)[#](#scikitplot.online_help "Link to this definition")
+scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.github.io/'**, **search\_page='search.html'**, **new\_window=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/__init__.py#L536)[#](#scikitplot.online_help "Link to this definition")
 :   Open the online documentation search page in the default web browser.
 
     Parameters:
@@ -29,13 +29,13 @@ scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.gi
     :   Does not raise — all errors are caught and logged; returns `False`.
 
     Parameters:
-    :   * ****query**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****docs\_root\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****search\_page**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****new\_window**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****query**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****docs\_root\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****search\_page**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****new\_window**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
     Notes
 

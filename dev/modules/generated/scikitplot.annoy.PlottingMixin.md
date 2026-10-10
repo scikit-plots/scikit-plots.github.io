@@ -1,6 +1,6 @@
 # PlottingMixin[#](#plottingmixin "Link to this heading")
 
-class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_plotting.py#L159)[#](#scikitplot.annoy.PlottingMixin "Link to this definition")
+class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_plotting.py#L159)[#](#scikitplot.annoy.PlottingMixin "Link to this definition")
 :   Mixin that adds convenient plotting methods to high-level Annoy wrappers.
 
     The mixin assumes the **host class** is Annoy-like (implements
@@ -21,7 +21,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
       `scikitplot.cexternals._annoy._plotting`.
     * All methods are deterministic given index contents and parameters.
 
-    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.PlottingMixin.plot_index "Link to this definition")
+    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.PlottingMixin.plot_index "Link to this definition")
     :   Plot this index as a 2D scatter plot.
 
         This is a thin wrapper around `plot_annoy_index` that uses
@@ -36,20 +36,20 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
             :   See `plot_annoy_index`.
 
         Parameters:
-        :   * ****labels**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****projection**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****dims**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]**)
-            * ****center**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****maxabs**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****l2\_normalize**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****plot\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****labels**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****projection**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****dims**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]**)
+            * ****center**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****maxabs**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****l2\_normalize**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+            * ****plot\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
         > **See also**
         > `plot_annoy_index`
@@ -80,7 +80,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
         ```
         Go BackOpen In Tab
 
-    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.PlottingMixin.plot_knn_edges "Link to this definition")
+    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.PlottingMixin.plot_knn_edges "Link to this definition")
     :   Overlay kNN edges onto an existing 2D index plot.
 
         This is a thin wrapper around `plot_annoy_knn_edges` that uses
@@ -96,15 +96,15 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
 
         Parameters:
         :   * ****y2**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
-            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-            * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****line\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-            * ****undirected**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+            * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+            * ****k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****ax**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+            * ****line\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****undirected**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
         > **See also**
         > `plot_annoy_knn_edges`

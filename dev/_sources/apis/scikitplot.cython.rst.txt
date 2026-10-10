@@ -9,10 +9,25 @@ scikitplot.cython
 
 **User guide.** See the :ref:`cython-index` section for further details.
 
-.. _cython_ref-pkg-mod-builder:
+.. _cython_ref-api-stability:
 
-PKG/MOD Builder
----------------
+API Stability
+-------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  API_STABILITY  
+  Stability  
+  api_stability  
+  list_api
+
+.. _cython_ref-build-an-extension-module--pkg-mod:
+
+Build an Extension Module (PKG/MOD)
+-----------------------------------
 
 .. autosummary::
   :nosignatures:
@@ -35,16 +50,19 @@ Cache Management
   :toctree: ../modules/generated/
   :template: base.rst
     
+  CACHE_SCHEMA_VERSION  
   CacheEntry  
   PackageCacheEntry  
   find_entries_by_name  
   find_entry_by_key  
   find_package_entry_by_key  
+  is_meta_schema_compatible  
   is_valid_key  
   iter_all_entry_dirs  
   iter_cache_entries  
   iter_package_entries  
   make_cache_key  
+  meta_schema_version  
   peek_cache_dir  
   read_meta  
   register_artifact_path  
@@ -68,6 +86,9 @@ Custom Compiler Protocol
   register_compiler  
   get_compiler  
   list_compilers  
+  CompilerCapabilities  
+  compiler_capabilities  
+  COMPILER_SPEC_VERSION  
   pure_python_prereqs  
   cython_cpp_prereqs  
   full_stack_prereqs  
@@ -93,9 +114,9 @@ Cache Management Utilities
   cache_stats  
   gc_cache
 
-.. _cython_ref-extension-module-loader:
+.. _cython_ref-loader-extension-module:
 
-Extension Module Loader
+Loader Extension Module
 -----------------------
 
 .. autosummary::
@@ -107,10 +128,10 @@ Extension Module Loader
   import_extension_from_bytes  
   import_extension_from_path
 
-.. _cython_ref-cross-platform-build-lock:
+.. _cython_ref-locker-cross-platform-build:
 
-Cross-platform Build Lock
--------------------------
+Locker Cross-platform Build
+---------------------------
 
 .. autosummary::
   :nosignatures:
@@ -129,25 +150,35 @@ Pins/Aliases Registry
   :toctree: ../modules/generated/
   :template: base.rst
     
+  PinRegistryError  
   list_pins  
   pin  
   resolve_pinned_key  
   unpin
 
-.. _cython_ref-build-profile-presets:
+.. _cython_ref-profile-preset-builder:
 
-Build Profile Presets
----------------------
+Profile Preset Builder
+----------------------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
     
+  AppliedProfile  
+  PlatformCapabilities  
   ProfileDefaults  
+  ResolvedToolchain  
+  RuntimeCapabilities  
+  UnsupportedRuntimeError  
   apply_profile  
+  check_runtime_supported  
   is_windows  
-  resolve_profile
+  platform_capabilities  
+  resolve_profile  
+  resolved_toolchain  
+  runtime_capabilities
 
 .. _cython_ref-public-api:
 
@@ -168,6 +199,7 @@ Public API
   compile_and_load_result  
   cython_import  
   cython_import_all  
+  cython_import_all_result  
   cython_import_result  
   export_cached  
   get_cache_dir  
@@ -188,7 +220,7 @@ Public API
 
 .. _cython_ref-result-types:
 
-Result types
+Result Types
 ------------
 
 .. autosummary::
@@ -196,6 +228,9 @@ Result types
   :toctree: ../modules/generated/
   :template: base.rst
     
+  BatchBuildError  
+  BatchBuildResult  
+  BatchFailure  
   BuildResult  
   CacheGCResult  
   CacheStats  
@@ -222,7 +257,7 @@ Security Guards
 
 .. _cython_ref-template-and-workflow-assets:
 
-Template and workflow assets
+Template and Workflow Assets
 ----------------------------
 
 .. autosummary::
@@ -230,7 +265,9 @@ Template and workflow assets
   :toctree: ../modules/generated/
   :template: base.rst
     
+  TEMPLATE_SCHEMA_VERSION  
   TemplateInfo  
+  TemplateValidationError  
   build_package_example  
   build_package_example_result  
   compile_template  
@@ -248,6 +285,8 @@ Template and workflow assets
   read_template  
   read_template_info  
   template_root  
+  validate_template_info  
+  verify_template_assets  
   workflow_cli_template_path
 
 .. _cython_ref-small-utilities:

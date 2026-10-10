@@ -1,6 +1,6 @@
 # resolve\_download\_artifacts[#](#resolve-download-artifacts "Link to this heading")
 
-scikitplot.mlflow.resolve\_download\_artifacts(**mlflow\_module**, **\***, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_compat.py#L52)[#](#scikitplot.mlflow.resolve_download_artifacts "Link to this definition")
+scikitplot.mlflow.resolve\_download\_artifacts(**mlflow\_module**, **\***, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_compat.py#L52)[#](#scikitplot.mlflow.resolve_download_artifacts "Link to this definition")
 :   Resolve a canonical artifact download function across MLflow versions.
 
     Parameters:
@@ -20,11 +20,11 @@ scikitplot.mlflow.resolve\_download\_artifacts(**mlflow\_module**, **\***, **cli
         :   If no supported artifact download API is found.
 
     Parameters:
-    :   * ****mlflow\_module**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****client**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
+    :   * ****mlflow\_module**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****client**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[…], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[…], [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Notes
 

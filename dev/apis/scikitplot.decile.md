@@ -64,6 +64,7 @@ References
 |  |  |
 | --- | --- |
 | [`ModelPlotPy`](../modules/generated/scikitplot.decile.ModelPlotPy.html#scikitplot.decile.ModelPlotPy "scikitplot.decile.ModelPlotPy") | Decile/ntile analysis for sklearn classifiers. |
+| [`summarize_selection`](../modules/generated/scikitplot.decile.summarize_selection.html#scikitplot.decile.summarize_selection "scikitplot.decile.summarize_selection") | Return a standardized summary row per group at a selected ntile. |
 
 ## (Cumulative) Gains, Lift and Response Plots[#](#cumulative-gains-lift-and-response-plots "Link to this heading")
 

@@ -1,6 +1,6 @@
 # find\_entries\_by\_name[#](#find-entries-by-name "Link to this heading")
 
-scikitplot.cython.find\_entries\_by\_name(**cache\_dir**, **module\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_cache.py#L807)[#](#scikitplot.cython.find_entries_by_name "Link to this definition")
+scikitplot.cython.find\_entries\_by\_name(**cache\_dir**, **module\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_cache.py#L837)[#](#scikitplot.cython.find_entries_by_name "Link to this definition")
 :   Find module cache entries matching an exact module name.
 
     Parameters:
@@ -15,8 +15,8 @@ scikitplot.cython.find\_entries\_by\_name(**cache\_dir**, **module\_name**)[[sou
         :   Matching module entries.
 
     Parameters:
-    :   * ****cache\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****module\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****cache\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****module\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**CacheEntry**](scikitplot.cython.CacheEntry.html#scikitplot.cython.CacheEntry "scikitplot.cython._cache.CacheEntry")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**CacheEntry**](scikitplot.cython.CacheEntry.html#scikitplot.cython.CacheEntry "scikitplot.cython._cache.CacheEntry")]

@@ -2,10 +2,18 @@
 
 With this tag
 
+* [Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves](../auto_examples/cleanprompt/plot_cleanprompt_guard_agents_script.html)
+* [Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle](../auto_examples/cleanprompt/plot_cleanprompt_moderate_script.html)
+* [Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data](../auto_examples/cleanprompt/plot_cleanprompt_notebooks_script.html)
+* [Cleanprompt Packs and Formats: Records, Configs and Whole Folders](../auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.html)
+* [Cleanprompt from Python: Single Calls and Edge Cases](../auto_examples/cleanprompt/plot_cleanprompt_python_api_script.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
 * [Build a Multi-Source WHO Corpus](../auto_examples/corpus/plot_corpus_who_per_file_script.html)
+* [Persist and Reload a Rank-BM25 Index](../auto_examples/rank_bm25/plot_rank_bm25_persistence_script.html)
+* [Compare the Three Rank-BM25 Scoring Recipes](../auto_examples/rank_bm25/plot_rank_bm25_recipes_script.html)
+* [Sparse Retrieval and Dense BM25 Diagnostics](../auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.html)
 * [plot\_residuals\_distribution with examples](../auto_examples/regression/plot_residuals_distribution_script.html)
 * [plot\_residuals\_distribution with examples](../auto_examples/stats/plot_residuals_distribution_script.html)
 * [Visualkeras: Spam Classification Conv1D Dense Example](../auto_examples/visualkeras/plot_dl_ann_conv_dense.html)

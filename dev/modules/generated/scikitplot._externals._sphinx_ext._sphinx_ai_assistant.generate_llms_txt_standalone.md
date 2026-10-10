@@ -1,6 +1,6 @@
 # generate\_llms\_txt\_standalone[#](#generate-llms-txt-standalone "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt\_standalone(**md\_root**, **\***, **base\_url=''**, **output\_file=None**, **project\_name='Documentation'**, **max\_entries=None**, **full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L4151)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt\_standalone(**md\_root**, **\***, **base\_url=''**, **output\_file=None**, **project\_name='Documentation'**, **max\_entries=None**, **max\_bytes=None**, **full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L4476)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone "Link to this definition")
 :   Write `llms.txt` from an existing set of `.md` files.
 
     This function is entirely ****Sphinx-free****.
@@ -23,6 +23,9 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt
         ****max\_entries****int or None, optional
         :   Cap on the number of entries. `None` means unlimited.
 
+        ****max\_bytes****int or None, optional
+        :   ai\_assistant\_llms\_txt\_max\_bytes.
+
         ****full\_content****bool, optional
         :   When `True`, embed each page’s Markdown content inline.
 
@@ -38,15 +41,16 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.generate\_llms\_txt
         :   If **md\_root** does not exist.
 
     Parameters:
-    :   * ****md\_root**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****base\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****output\_file**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****project\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****max\_entries**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****full\_content**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****md\_root**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****base\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****output\_file**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****project\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****max\_entries**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****max\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****full\_content**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
     Examples
 

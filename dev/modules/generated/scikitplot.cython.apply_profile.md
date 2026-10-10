@@ -1,6 +1,6 @@
 # apply\_profile[#](#apply-profile "Link to this heading")
 
-scikitplot.cython.apply\_profile(**\***, **profile**, **annotate=None**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_profiles.py#L630)[#](#scikitplot.cython.apply_profile "Link to this definition")
+scikitplot.cython.apply\_profile(**\***, **profile**, **annotate=None**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_profiles.py#L630)[#](#scikitplot.cython.apply_profile "Link to this definition")
 :   Apply a profile with strict, three-state precedence.
 
     Every field follows the same contract:
@@ -45,19 +45,19 @@ scikitplot.cython.apply\_profile(**\***, **profile**, **annotate=None**, **compi
             profile nor the user supplied any.
 
     Parameters:
-    :   * ****profile**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****annotate**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
-        * ****compiler\_directives**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****extra\_compile\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****extra\_link\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****profile**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****annotate**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
+        * ****compiler\_directives**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+        * ****extra\_compile\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****extra\_link\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   **AppliedProfile**
+    :   [**AppliedProfile**](scikitplot.cython.AppliedProfile.html#scikitplot.cython.AppliedProfile "scikitplot.cython._profiles.AppliedProfile")
 
     Notes
 
-    The result is an `AppliedProfile` (a `NamedTuple`), so positional
+    The result is an [`AppliedProfile`](scikitplot.cython.AppliedProfile.html#scikitplot.cython.AppliedProfile "scikitplot.cython.AppliedProfile") (a `NamedTuple`), so positional
     unpacking remains identical to the historical bare-tuple return while adding
     named access. User-supplied flag sequences are normalized to tuples but
     otherwise forwarded verbatim; argument **safety** is enforced by the security

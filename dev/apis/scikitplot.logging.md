@@ -1,6 +1,6 @@
 # scikitplot.logging[#](#module-scikitplot.logging "Link to this heading")
 
-[`logging`](#module-scikitplot.logging "scikitplot.logging") (alias, [`logger`](../modules/generated/scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger")) module provide unified both Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)") and [`logging.Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.14)") utilities.
+[`logging`](#module-scikitplot.logging "scikitplot.logging") (alias, [`logger`](../modules/generated/scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger")) module provide unified both Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") and [`logging.Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.15)") utilities.
 
 View aliases[#](#view-aliases "Link to this dropdown")
 
@@ -24,7 +24,7 @@ and flexibility for large-scale projects.
 Scikit-plots logging helpers, supports vendoring.
 
 Module Dependencies:
-- Python standard library: [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)")
+- Python standard library: [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)")
 
 > **See also**
 > * [python/cpython](https://github.com/python/cpython/blob/main/Lib/logging/__init__.py)
@@ -56,8 +56,8 @@ Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/pyth
 
 |  |  |
 | --- | --- |
-| [`AlwaysStdErrHandler`](../modules/generated/scikitplot.logging.AlwaysStdErrHandler.html#scikitplot.logging.AlwaysStdErrHandler "scikitplot.logging.AlwaysStdErrHandler") | A custom logging handler inherited from [`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "(in Python v3.14)"). |
-| [`GoogleLogFormatter`](../modules/generated/scikitplot.logging.GoogleLogFormatter.html#scikitplot.logging.GoogleLogFormatter "scikitplot.logging.GoogleLogFormatter") | A custom logging formatter inherited from [`Formatter`](https://docs.python.org/3/library/logging.html#logging.Formatter "(in Python v3.14)"). |
+| [`AlwaysStdErrHandler`](../modules/generated/scikitplot.logging.AlwaysStdErrHandler.html#scikitplot.logging.AlwaysStdErrHandler "scikitplot.logging.AlwaysStdErrHandler") | A custom logging handler inherited from [`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "(in Python v3.15)"). |
+| [`GoogleLogFormatter`](../modules/generated/scikitplot.logging.GoogleLogFormatter.html#scikitplot.logging.GoogleLogFormatter "scikitplot.logging.GoogleLogFormatter") | A custom logging formatter inherited from [`Formatter`](https://docs.python.org/3/library/logging.html#logging.Formatter "(in Python v3.15)"). |
 | [`getEffectiveLevel`](../modules/generated/scikitplot.logging.getEffectiveLevel.html#scikitplot.logging.getEffectiveLevel "scikitplot.logging.getEffectiveLevel") | Return the effective level for the scikit-plots logger. |
 | [`get_logger`](../modules/generated/scikitplot.logging.get_logger.html#scikitplot.logging.get_logger "scikitplot.logging.get_logger") | Return SP (scikitplot) logger instance. |
 | [`get_verbosity`](../modules/generated/scikitplot.logging.get_verbosity.html#scikitplot.logging.get_verbosity "scikitplot.logging.get_verbosity") | Return the current verbosity level. |
@@ -75,13 +75,13 @@ Log the message at a predefined logging level.
 | [`log_first_n`](../modules/generated/scikitplot.logging.log_first_n.html#scikitplot.logging.log_first_n "scikitplot.logging.log_first_n") | Log only for the first **n** calls from the same call site. |
 | [`log_if`](../modules/generated/scikitplot.logging.log_if.html#scikitplot.logging.log_if "scikitplot.logging.log_if") | Log only if a condition is True. |
 | [`vlog`](../modules/generated/scikitplot.logging.vlog.html#scikitplot.logging.vlog "scikitplot.logging.vlog") | Log a message at the specified log level. |
-| [`debug`](../modules/generated/debug-func.html#scikitplot.logging.debug "scikitplot.logging.debug") | Log a message at the DEBUG log level. |
-| [`info`](../modules/generated/info-func.html#scikitplot.logging.info "scikitplot.logging.info") | Log a message at the INFO log level. |
-| [`warning`](../modules/generated/warning-func.html#scikitplot.logging.warning "scikitplot.logging.warning") | Log a message at the WARNING log level. |
-| [`warn`](../modules/generated/warn-func.html#scikitplot.logging.warn "scikitplot.logging.warn") | Log a message at the WARN -> WARNING log level. |
-| [`error`](../modules/generated/error-func.html#scikitplot.logging.error "scikitplot.logging.error") | Log a message at the ERROR log level. |
+| [`debug`](../modules/generated/scikitplot.logging.debug-func.html#scikitplot.logging.debug "scikitplot.logging.debug") | Log a message at the DEBUG log level. |
+| [`info`](../modules/generated/scikitplot.logging.info-func.html#scikitplot.logging.info "scikitplot.logging.info") | Log a message at the INFO log level. |
+| [`warning`](../modules/generated/scikitplot.logging.warning-func.html#scikitplot.logging.warning "scikitplot.logging.warning") | Log a message at the WARNING log level. |
+| [`warn`](../modules/generated/scikitplot.logging.warn-func.html#scikitplot.logging.warn "scikitplot.logging.warn") | Log a message at the WARN -> WARNING log level. |
+| [`error`](../modules/generated/scikitplot.logging.error-func.html#scikitplot.logging.error "scikitplot.logging.error") | Log a message at the ERROR log level. |
 | [`error_log`](../modules/generated/scikitplot.logging.error_log.html#scikitplot.logging.error_log "scikitplot.logging.error_log") | Log an error-like message at a specified level. |
 | [`exception`](../modules/generated/scikitplot.logging.exception.html#scikitplot.logging.exception "scikitplot.logging.exception") | Log a message with severity 'ERROR' on the root logger. |
 | [`TaskLevelStatusMessage`](../modules/generated/scikitplot.logging.TaskLevelStatusMessage.html#scikitplot.logging.TaskLevelStatusMessage "scikitplot.logging.TaskLevelStatusMessage") | Compatibility wrapper for legacy call sites. |
-| [`critical`](../modules/generated/critical-func.html#scikitplot.logging.critical "scikitplot.logging.critical") | Log a message at the CRITICAL log level. |
-| [`fatal`](../modules/generated/fatal-func.html#scikitplot.logging.fatal "scikitplot.logging.fatal") | Log a message at the FATAL -> CRITICAL log level. |
+| [`critical`](../modules/generated/scikitplot.logging.critical-func.html#scikitplot.logging.critical "scikitplot.logging.critical") | Log a message at the CRITICAL log level. |
+| [`fatal`](../modules/generated/scikitplot.logging.fatal-func.html#scikitplot.logging.fatal "scikitplot.logging.fatal") | Log a message at the FATAL -> CRITICAL log level. |

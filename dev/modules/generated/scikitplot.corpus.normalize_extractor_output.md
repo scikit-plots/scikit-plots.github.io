@@ -1,6 +1,6 @@
 # normalize\_extractor\_output[#](#normalize-extractor-output "Link to this heading")
 
-scikitplot.corpus.normalize\_extractor\_output(**raw**, **\***, **source\_type=SourceType.UNKNOWN**, **section\_type=SectionType.TEXT**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_readers/_custom.py#L99)[#](#scikitplot.corpus.normalize_extractor_output "Link to this definition")
+scikitplot.corpus.normalize\_extractor\_output(**raw**, **\***, **source\_type=SourceType.UNKNOWN**, **section\_type=SectionType.TEXT**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_readers/_custom.py#L100)[#](#scikitplot.corpus.normalize_extractor_output "Link to this definition")
 :   Coerce an extractor return value to a list of raw chunk dicts.
 
     Every dict in the returned list is guaranteed to contain a `"text"`
@@ -53,12 +53,12 @@ scikitplot.corpus.normalize\_extractor\_output(**raw**, **\***, **source\_type=S
             `"text"` value is not a `str`.
 
     Parameters:
-    :   * ****raw**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+    :   * ****raw**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
         * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType"))
         * ****section\_type**** ([**SectionType**](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus._schema.SectionType"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]
 
     Notes
 

@@ -1,6 +1,6 @@
 # KissSeedSequence[#](#kissseedsequence "Link to this heading")
 
-class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
+class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
 :   Seed sequence compatible with numpy.random.SeedSequence.
 
     Parameters:
@@ -37,10 +37,10 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         :   If entropy has invalid type
 
     Parameters:
-    :   * ****entropy**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **Sequence****[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
-        * ****spawn\_key**** (**Sequence****[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]**)
-        * ****pool\_size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****n\_children\_spawned**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****entropy**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **Sequence****[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** **None**)
+        * ****spawn\_key**** (**Sequence****[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]**)
+        * ****pool\_size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****n\_children\_spawned**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     > **See also**
     > [`Kiss32Random`](scikitplot.random.Kiss32Random.html#scikitplot.random.Kiss32Random "scikitplot.random.Kiss32Random")
@@ -100,7 +100,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
     ```
     Go BackOpen In Tab
 
-    classmethod deserialize(**cls**, **dict data: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**)[#](#scikitplot.random.KissSeedSequence.deserialize "Link to this definition")
+    classmethod deserialize(**cls**, **dict data: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**)[#](#scikitplot.random.KissSeedSequence.deserialize "Link to this definition")
     :   Deserialize from dictionary.
 
         Parameters:
@@ -112,7 +112,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             :   Restored instance
 
         Parameters:
-        :   ****data**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)"))
+        :   ****data**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)"))
 
         Examples
 
@@ -127,13 +127,13 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    classmethod from\_dict(**cls**, **dict data: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**)[#](#scikitplot.random.KissSeedSequence.from_dict "Link to this definition")
+    classmethod from\_dict(**cls**, **dict data: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**)[#](#scikitplot.random.KissSeedSequence.from_dict "Link to this definition")
     :   Alias for deserialize().
 
         Parameters:
-        :   ****data**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)"))
+        :   ****data**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)"))
 
-    generate\_state(**self**, **int n\_words: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **dtype: DTypeLike = np.uint32**) → NDArray[np.uint32 | np.uint64][#](#scikitplot.random.KissSeedSequence.generate_state "Link to this definition")
+    generate\_state(**self**, **int n\_words: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **dtype: DTypeLike = np.uint32**) → NDArray[np.uint32 | np.uint64][#](#scikitplot.random.KissSeedSequence.generate_state "Link to this definition")
     :   Generate state array for RNG initialization.
 
         Parameters:
@@ -153,7 +153,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
                 If dtype is not uint32 or uint64
 
         Parameters:
-        :   * ****n\_words**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   * ****n\_words**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
             * ****dtype**** (**DTypeLike**)
 
         Return type:
@@ -176,7 +176,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.get_params "Link to this definition")
+    get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.random.KissSeedSequence.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
 
         Parameters:
@@ -188,10 +188,10 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             :   Parameter dictionary
 
         Parameters:
-        :   ****deep**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   ****deep**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
         Examples
 
@@ -205,7 +205,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    get\_state(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.get_state "Link to this definition")
+    get\_state(**self**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.random.KissSeedSequence.get_state "Link to this definition")
     :   Get current state as dictionary.
 
         Returns:
@@ -213,7 +213,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             :   Complete state dictionary
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
         Examples
 
@@ -227,7 +227,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    serialize(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.serialize "Link to this definition")
+    serialize(**self**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.random.KissSeedSequence.serialize "Link to this definition")
     :   Serialize to JSON-compatible dict.
 
         Returns:
@@ -235,7 +235,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             :   JSON-serializable state
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
         Examples
 
@@ -272,7 +272,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    set\_state(**self**, **dict state: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.set_state "Link to this definition")
+    set\_state(**self**, **dict state: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**) → [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.random.KissSeedSequence.set_state "Link to this definition")
     :   Set state from dictionary.
 
         Parameters:
@@ -284,7 +284,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             :   If state is invalid
 
         Parameters:
-        :   ****state**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)"))
+        :   ****state**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)"))
 
         Return type:
         :   None
@@ -303,7 +303,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    spawn(**self**, **int n\_children: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.spawn "Link to this definition")
+    spawn(**self**, **int n\_children: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**) → [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[#](#scikitplot.random.KissSeedSequence.spawn "Link to this definition")
     :   Create independent child seed sequences.
 
         Parameters:
@@ -319,10 +319,10 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
             :   If n\_children < 1
 
         Parameters:
-        :   ****n\_children**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+        :   ****n\_children**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")
 
         Notes
 
@@ -371,8 +371,8 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         ```
         Go BackOpen In Tab
 
-    to\_dict(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.to_dict "Link to this definition")
+    to\_dict(**self**) → [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[#](#scikitplot.random.KissSeedSequence.to_dict "Link to this definition")
     :   Alias for serialize().
 
         Return type:
-        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")

@@ -4,7 +4,9 @@
  * fit well into the theme, especially in dark theme; see https://datatables.net/
  */
 .dt-container {
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  /* Fix the selection box for entries per page */
+  /* Fix the search box */ }
   .dt-container select.dt-input {
     padding: 0 !important;
     margin-right: 0.4rem !important; }
@@ -16,19 +18,30 @@
     line-height: normal;
     padding: 0.1rem 0.3rem !important;
     margin-left: 0.4rem !important; }
-  .dt-container table.dataTable th p {
-    margin-bottom: 0; }
-  .dt-container table.dataTable th span.dt-column-order::before, .dt-container table.dataTable th span.dt-column-order::after {
-    color: var(--pst-color-text-base);
-    line-height: 0.7rem !important; }
-  .dt-container table.dataTable td.dt-empty {
-    color: var(--pst-color-text-base) !important; }
-  .dt-container table.dataTable tr:last-child > * {
-    border-bottom: unset !important; }
+  .dt-container table.dataTable {
+    /* Unset bottom border of the last row */ }
+    .dt-container table.dataTable th {
+      /* Avoid table header being too tall */
+      /* Fix the ascending/descending order buttons in the header */ }
+      .dt-container table.dataTable th p {
+        margin-bottom: 0; }
+      .dt-container table.dataTable th span.dt-column-order::before, .dt-container table.dataTable th span.dt-column-order::after {
+        color: var(--pst-color-text-base);
+        line-height: 0.7rem !important; }
+    .dt-container table.dataTable td {
+      /* Fix color of text warning no records found */ }
+      .dt-container table.dataTable td.dt-empty {
+        color: var(--pst-color-text-base) !important; }
+    .dt-container table.dataTable tr:last-child > * {
+      border-bottom: unset !important; }
   .dt-container div.dt-paging button.dt-paging-button {
-    padding: 0 0.5rem; }
+    padding: 0 0.5rem;
+    /* Fix colors of paging buttons */
+    /* Highlight the border of the current selected paging button */ }
     .dt-container div.dt-paging button.dt-paging-button.disabled {
-      color: var(--pst-color-border) !important; }
+      color: var(--pst-color-border) !important;
+      /* Overwrite the !important color assigned by DataTables because we must keep
+         the color of disabled buttons consistent with and without hovering */ }
       .dt-container div.dt-paging button.dt-paging-button.disabled:hover {
         color: var(--pst-color-border) !important; }
     .dt-container div.dt-paging button.dt-paging-button.current, .dt-container div.dt-paging button.dt-paging-button:not(.disabled):not(.current):hover {
@@ -38,6 +51,7 @@
     .dt-container div.dt-paging button.dt-paging-button.current {
       border-color: var(--pst-color-text-base) !important; }
 
+/* Styling the object description cells in the table */
 div.sk-apis-search-desc p {
   margin-bottom: 0; }
 

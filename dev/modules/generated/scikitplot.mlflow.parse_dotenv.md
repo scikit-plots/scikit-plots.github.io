@@ -1,6 +1,6 @@
 # parse\_dotenv[#](#parse-dotenv "Link to this heading")
 
-scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_env.py#L69)[#](#scikitplot.mlflow.parse_dotenv "Link to this definition")
+scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_env.py#L69)[#](#scikitplot.mlflow.parse_dotenv "Link to this definition")
 :   Parse a minimal `.env` file containing KEY=VALUE assignments.
 
     Parameters:
@@ -16,10 +16,10 @@ scikitplot.mlflow.parse\_dotenv(**path**)[[source]](https://github.com/scikit-pl
         :   If the file does not exist.
 
     Parameters:
-    :   ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Notes
 

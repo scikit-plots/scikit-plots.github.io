@@ -1,6 +1,6 @@
 # project\_markers[#](#project-markers "Link to this heading")
 
-scikitplot.mlflow.project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L256)[#](#scikitplot.mlflow.project_markers "Link to this definition")
+scikitplot.mlflow.project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L256)[#](#scikitplot.mlflow.project_markers "Link to this definition")
 :   Temporarily override module default markers for a block.
 
     Parameters:
@@ -11,10 +11,10 @@ scikitplot.mlflow.project\_markers(**markers**)[[source]](https://github.com/sci
     :   None
 
     Parameters:
-    :   ****markers**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+    :   ****markers**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Return type:
-    :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.14)")[None]
+    :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.15)")[None]
 
     Notes
 

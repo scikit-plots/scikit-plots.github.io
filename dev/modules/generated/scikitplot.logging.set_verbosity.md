@@ -1,6 +1,6 @@
 # set\_verbosity[#](#set-verbosity "Link to this heading")
 
-scikitplot.logging.set\_verbosity(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/logging.py#L1335)[#](#scikitplot.logging.set_verbosity "Link to this definition")
+scikitplot.logging.set\_verbosity(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1355)[#](#scikitplot.logging.set_verbosity "Link to this definition")
 :   Set the verbosity level.
 
     Parameters:
@@ -8,7 +8,7 @@ scikitplot.logging.set\_verbosity(**level**)[[source]](https://github.com/scikit
         :   New log level.
 
     Parameters:
-    :   ****level**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****level**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   None

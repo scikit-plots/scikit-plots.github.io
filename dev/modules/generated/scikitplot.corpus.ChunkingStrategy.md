@@ -1,6 +1,6 @@
 # ChunkingStrategy[#](#chunkingstrategy "Link to this heading")
 
-class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L377)[#](#scikitplot.corpus.ChunkingStrategy "Link to this definition")
+class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L378)[#](#scikitplot.corpus.ChunkingStrategy "Link to this definition")
 :   Describes how a [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") was segmented from raw text.
 
     Notes
@@ -21,36 +21,36 @@ class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.
     ```
     Go BackOpen In Tab
 
-    BLOCK = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.BLOCK "Link to this definition")
+    BLOCK = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.BLOCK "Link to this definition")
     :   Format-native block unit (ALTO TextBlock, TEI <p>, HTML <div>, etc.).
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.CUSTOM "Link to this definition")
     :   User-supplied chunking logic; opaque to the standard pipeline.
 
-    FIXED\_WINDOW = 'fixed\_window'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW "Link to this definition")
+    FIXED\_WINDOW = 'fixed\_window'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.FIXED_WINDOW "Link to this definition")
     :   Sliding window of fixed token/character count with configurable overlap.
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.NONE "Link to this definition")
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.NONE "Link to this definition")
     :   No chunking applied — the whole document is one chunk.
 
-    PAGE = 'page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PAGE "Link to this definition")
+    PAGE = 'page'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PAGE "Link to this definition")
     :   One page per chunk, as determined by the source format (PDF, ALTO).
 
-    PARAGRAPH = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PARAGRAPH "Link to this definition")
+    PARAGRAPH = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.PARAGRAPH "Link to this definition")
     :   One paragraph per chunk, split on blank lines (`\n\n`).
 
-    RECURSIVE = 'recursive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.RECURSIVE "Link to this definition")
+    RECURSIVE = 'recursive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.RECURSIVE "Link to this definition")
     :   Hierarchical split that falls back through progressively finer separators.
 
         Added in ADR-C22 for the same reason as [`WORD`](#scikitplot.corpus.ChunkingStrategy.WORD "scikitplot.corpus.ChunkingStrategy.WORD").
 
-    SEMANTIC = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SEMANTIC "Link to this definition")
+    SEMANTIC = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SEMANTIC "Link to this definition")
     :   Boundary detected by semantic similarity shift (topic segmentation).
 
-    SENTENCE = 'sentence'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SENTENCE "Link to this definition")
+    SENTENCE = 'sentence'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.SENTENCE "Link to this definition")
     :   One sentence per chunk, produced by a language-model segmenter.
 
-    WORD = 'word'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.WORD "Link to this definition")
+    WORD = 'word'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ChunkingStrategy.WORD "Link to this definition")
     :   Fixed number of words per chunk, produced by [`WordChunker`](scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker "scikitplot.corpus.WordChunker").
 
         Added in ADR-C22 when the deprecated `ChunkStrategy` shim was deleted: the
@@ -72,7 +72,7 @@ class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -90,7 +90,7 @@ class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -101,22 +101,22 @@ class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -248,14 +248,14 @@ class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -324,7 +324,7 @@ class scikitplot.corpus.ChunkingStrategy(**\*values**)[[source]](https://github.
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ChunkingStrategy.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ChunkingStrategy.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

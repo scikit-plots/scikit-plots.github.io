@@ -1,6 +1,6 @@
 # ExportFormat[#](#exportformat "Link to this heading")
 
-class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L435)[#](#scikitplot.corpus.ExportFormat "Link to this definition")
+class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L436)[#](#scikitplot.corpus.ExportFormat "Link to this definition")
 :   Supported serialisation targets for a completed corpus.
 
     Notes
@@ -19,37 +19,37 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
     ```
     Go BackOpen In Tab
 
-    CSV = 'csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.CSV "Link to this definition")
+    CSV = 'csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.CSV "Link to this definition")
     :   Comma-separated values; universal but loses numpy embedding arrays.
 
-    HUGGINGFACE = 'huggingface'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.HUGGINGFACE "Link to this definition")
+    HUGGINGFACE = 'huggingface'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.HUGGINGFACE "Link to this definition")
     :   HuggingFace `datasets.Dataset` object or saved dataset directory.
 
-    JOBLIB = 'joblib'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JOBLIB "Link to this definition")
+    JOBLIB = 'joblib'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JOBLIB "Link to this definition")
     :   joblib dump — efficient for large numpy arrays inside documents.
 
-    JSON = 'json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSON "Link to this definition")
+    JSON = 'json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSON "Link to this definition")
     :   JSON-lines (one document per line) for maximum interoperability.
 
-    JSONL = 'jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSONL "Link to this definition")
+    JSONL = 'jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSONL "Link to this definition")
     :   Alias for JSON-lines format.
 
-    MLFLOW = 'mlflow'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.MLFLOW "Link to this definition")
+    MLFLOW = 'mlflow'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.MLFLOW "Link to this definition")
     :   MLflow artifact (logs corpus + metadata to active or specified run).
 
-    NUMPY = 'numpy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.NUMPY "Link to this definition")
+    NUMPY = 'numpy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.NUMPY "Link to this definition")
     :   `numpy.savez_compressed` — embeddings only, loses text/metadata.
 
-    PANDAS = 'pandas'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PANDAS "Link to this definition")
+    PANDAS = 'pandas'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PANDAS "Link to this definition")
     :   In-memory `pandas.DataFrame`; returned, not written to disk.
 
-    PARQUET = 'parquet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PARQUET "Link to this definition")
+    PARQUET = 'parquet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PARQUET "Link to this definition")
     :   Column-oriented binary format via `pyarrow` or `polars`.
 
-    PICKLE = 'pickle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PICKLE "Link to this definition")
+    PICKLE = 'pickle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PICKLE "Link to this definition")
     :   Python pickle — fastest round-trip; not portable across Python versions.
 
-    POLARS = 'polars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.POLARS "Link to this definition")
+    POLARS = 'polars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.POLARS "Link to this definition")
     :   In-memory `polars.DataFrame`; returned, not written to disk.
 
     capitalize(**/**)[#](#scikitplot.corpus.ExportFormat.capitalize "Link to this definition")
@@ -66,7 +66,7 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
 
         Padding is done using the specified fill character (default is a space).
 
-    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.count "Link to this definition")
+    count(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.count "Link to this definition")
     :   Return the number of non-overlapping occurrences of substring sub in
         string S[start:end]. Optional arguments start and end are
         interpreted as in slice notation.
@@ -84,7 +84,7 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
             ‘xmlcharrefreplace’ as well as any other name registered with
             codecs.register\_error that can handle UnicodeEncodeErrors.
 
-    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.endswith "Link to this definition")
+    endswith(**suffix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.endswith "Link to this definition")
     :   Return True if S ends with the specified suffix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.
@@ -95,22 +95,22 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
 
         If tabsize is not given, a tab size of 8 characters is assumed.
 
-    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.find "Link to this definition")
+    find(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.find "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.format "Link to this definition")
+    format(**\*args**, **\*\*kwargs**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.format "Link to this definition")
     :   Return a formatted version of S, using substitutions from args and kwargs.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    format\_map(**mapping**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.format_map "Link to this definition")
+    format\_map(**mapping**) → [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.format_map "Link to this definition")
     :   Return a formatted version of S, using substitutions from mapping.
         The substitutions are identified by braces (‘{’ and ‘}’).
 
-    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.index "Link to this definition")
+    index(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.index "Link to this definition")
     :   Return the lowest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -242,14 +242,14 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
         If the optional argument count is given, only the first count occurrences are
         replaced.
 
-    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.rfind "Link to this definition")
+    rfind(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.rfind "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
 
         Return -1 on failure.
 
-    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.rindex "Link to this definition")
+    rindex(**sub**[, **start**[, **end**]]) → [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.rindex "Link to this definition")
     :   Return the highest index in S where substring sub is found,
         such that sub is contained within S[start:end]. Optional
         arguments start and end are interpreted as in slice notation.
@@ -318,7 +318,7 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
         Line breaks are not included in the resulting list unless keepends is given and
         true.
 
-    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.ExportFormat.startswith "Link to this definition")
+    startswith(**prefix**[, **start**[, **end**]]) → [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.ExportFormat.startswith "Link to this definition")
     :   Return True if S starts with the specified prefix, False otherwise.
         With optional start, test S beginning at that position.
         With optional end, stop comparing S at that position.

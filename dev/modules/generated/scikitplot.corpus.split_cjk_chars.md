@@ -1,6 +1,6 @@
 # split\_cjk\_chars[#](#split-cjk-chars "Link to this heading")
 
-scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1318)[#](#scikitplot.corpus.split_cjk_chars "Link to this definition")
+scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1318)[#](#scikitplot.corpus.split_cjk_chars "Link to this definition")
 :   Split **text** into individual CJK character tokens.
 
     Non-CJK runs (Latin words, numbers, spaces) are kept as contiguous
@@ -13,7 +13,7 @@ scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/sciki
     Devanagari conjuncts, and any multi-codepoint grapheme that might
     occur in mixed-script text. When `regex` is unavailable the
     legacy codepoint-level implementation is used automatically via
-    `_split_cjk_chars_legacy`.
+    [`_split_cjk_chars_legacy`](scikitplot.corpus._split_cjk_chars_legacy.html#scikitplot.corpus._split_cjk_chars_legacy "scikitplot.corpus._split_cjk_chars_legacy").
 
     Parameters:
     :   ****text****str
@@ -25,10 +25,10 @@ scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/sciki
         :   Mixed token list; external API is unchanged from the legacy version.
 
     Parameters:
-    :   ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Notes
 
@@ -43,7 +43,7 @@ scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/sciki
     raw codepoints via `for ch in text:`, which is not grapheme-cluster-
     safe. After Layer 0 (GraphemeClusterNormalizer) is applied, use the
     `regex` path. The legacy path is preserved as
-    `_split_cjk_chars_legacy` for environments without `regex`.
+    [`_split_cjk_chars_legacy`](scikitplot.corpus._split_cjk_chars_legacy.html#scikitplot.corpus._split_cjk_chars_legacy "scikitplot.corpus._split_cjk_chars_legacy") for environments without `regex`.
 
     Examples
 

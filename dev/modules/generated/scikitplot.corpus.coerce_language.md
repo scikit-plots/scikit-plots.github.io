@@ -1,6 +1,6 @@
 # coerce\_language[#](#coerce-language "Link to this heading")
 
-scikitplot.corpus.coerce\_language(**lang**, **\***, **default='english'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_language_data.py#L1278)[#](#scikitplot.corpus.coerce_language "Link to this definition")
+scikitplot.corpus.coerce\_language(**lang**, **\***, **default='english'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_language_data.py#L1278)[#](#scikitplot.corpus.coerce_language "Link to this definition")
 :   Normalise any language specifier into a list of canonical NLTK names.
 
     Accepts all three forms used by chunkers and the enricher:
@@ -32,11 +32,11 @@ scikitplot.corpus.coerce\_language(**lang**, **\***, **default='english'**)[[sou
         :   If **lang** is an empty list.
 
     Parameters:
-    :   * ****lang**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****default**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****lang**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****default**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
     Examples
 

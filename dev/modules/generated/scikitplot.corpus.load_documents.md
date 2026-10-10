@@ -1,6 +1,6 @@
 # load\_documents[#](#load-documents "Link to this heading")
 
-scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=False**, **expected\_sha256=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_export/_export.py#L988)[#](#scikitplot.corpus.load_documents "Link to this definition")
+scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=False**, **expected\_sha256=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_export/_export.py#L989)[#](#scikitplot.corpus.load_documents "Link to this definition")
 :   Load [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances
     from a previously exported file.
 
@@ -22,7 +22,7 @@ scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=F
 
         ****expected\_sha256****str or None, optional
         :   When provided, the artifact’s SHA-256 is verified ****before****
-            deserialization; a mismatch raises [`ValueError`](https://docs.python.org/3/library/exceptions.html#ValueError "(in Python v3.14)") before any
+            deserialization; a mismatch raises [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)") before any
             pickle code runs (tamper/wrong-artifact detection). Default `None`.
 
     Returns:
@@ -45,13 +45,13 @@ scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=F
             artifact is rejected rather than returned).
 
     Parameters:
-    :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
-        * ****trusted**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****expected\_sha256**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****trusted**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****expected\_sha256**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")]
+    :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")]
 
     Examples
 

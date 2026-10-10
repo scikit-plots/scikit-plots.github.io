@@ -1,6 +1,6 @@
 # bayesian\_info\_criterion\_lsq[#](#bayesian-info-criterion-lsq "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/info_theory.py#L128)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/info_theory.py#L128)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "Link to this definition")
 :   Computes the Bayesian Information Criterion (BIC) assuming that the
     observations come from a Gaussian distribution.
 
@@ -30,12 +30,12 @@ scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **
     :   ****bic****float
 
     Parameters:
-    :   * ****ssr**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****n\_params**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****n\_samples**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****ssr**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****n\_params**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****n\_samples**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")
 
     References
 

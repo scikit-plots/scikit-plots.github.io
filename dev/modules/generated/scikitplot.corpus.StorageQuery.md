@@ -1,6 +1,6 @@
 # StorageQuery[#](#storagequery "Link to this heading")
 
-class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**, **language=None**, **section\_type=None**, **collection\_id=None**, **parent\_doc\_id=None**, **full\_text=None**, **limit=100**, **offset=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_storage/_storage.py#L78)[#](#scikitplot.corpus.StorageQuery "Link to this definition")
+class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**, **language=None**, **section\_type=None**, **collection\_id=None**, **parent\_doc\_id=None**, **full\_text=None**, **limit=100**, **offset=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_storage/_storage.py#L80)[#](#scikitplot.corpus.StorageQuery "Link to this definition")
 :   Query parameters for [`StorageBase.query`](scikitplot.corpus.StorageBase.html#scikitplot.corpus.StorageBase.query "scikitplot.corpus.StorageBase.query").
 
     Parameters:
@@ -25,9 +25,11 @@ class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**
             children of X” was inexpressible (finding F-R08-02). Default: `None`.
 
         ****full\_text****str or None, optional
-        :   Full-text search string. Supported by `SQLiteStorage` (FTS5)
-            only; ignored by `InMemoryStorage` and `JSONLStorage`.
-            Default: `None`.
+        :   Full-text search string, matched as a whole: native FTS5 phrase
+            matching on `SQLiteStorage`, a case-insensitive substring scan
+            elsewhere (reported as `EMULATED`). Never read as FTS5 syntax. For
+            ranked retrieval by any of the words, use
+            [`SQLiteStorage.search_text`](scikitplot.corpus.SQLiteStorage.html#scikitplot.corpus.SQLiteStorage.search_text "scikitplot.corpus.SQLiteStorage.search_text"). Default: `None`.
 
         ****limit****int, optional
         :   Maximum number of results to return. Default: `100`.
@@ -36,33 +38,33 @@ class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**
         :   Zero-based result offset for pagination. Default: `0`.
 
     Parameters:
-    :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****source\_type**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****section\_type**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****collection\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****parent\_doc\_id**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****full\_text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****limit**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****offset**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****input\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****source\_type**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****section\_type**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****collection\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****parent\_doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****full\_text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****limit**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****offset**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
-    collection\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.collection_id "Link to this definition")
+    collection\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.collection_id "Link to this definition")
 
-    full\_text: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.full_text "Link to this definition")
+    full\_text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.full_text "Link to this definition")
 
-    input\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.input_path "Link to this definition")
+    input\_path: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.input_path "Link to this definition")
 
-    language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.language "Link to this definition")
+    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.language "Link to this definition")
 
-    limit: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 100[#](#scikitplot.corpus.StorageQuery.limit "Link to this definition")
+    limit: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 100[#](#scikitplot.corpus.StorageQuery.limit "Link to this definition")
 
-    offset: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0[#](#scikitplot.corpus.StorageQuery.offset "Link to this definition")
+    offset: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0[#](#scikitplot.corpus.StorageQuery.offset "Link to this definition")
 
-    parent\_doc\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.parent_doc_id "Link to this definition")
+    parent\_doc\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.parent_doc_id "Link to this definition")
 
-    section\_type: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.section_type "Link to this definition")
+    section\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.section_type "Link to this definition")
 
-    source\_type: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.StorageQuery.source_type "Link to this definition")
+    source\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StorageQuery.source_type "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

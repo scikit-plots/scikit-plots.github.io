@@ -1,6 +1,6 @@
 # PackageBuildResult[#](#packagebuildresult "Link to this heading")
 
-class scikitplot.cython.PackageBuildResult(**package\_name=''**, **key=''**, **build\_dir=<factory>**, **results=<factory>**, **used\_cache=False**, **created\_utc=None**, **fingerprint=None**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_result.py#L125)[#](#scikitplot.cython.PackageBuildResult "Link to this definition")
+class scikitplot.cython.PackageBuildResult(**package\_name=''**, **key=''**, **build\_dir=<factory>**, **results=<factory>**, **used\_cache=False**, **created\_utc=None**, **fingerprint=None**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_result.py#L191)[#](#scikitplot.cython.PackageBuildResult "Link to this definition")
 :   Result of compiling/importing a **package** of extension modules.
 
     A “package build” compiles multiple Cython extension modules in a single
@@ -34,42 +34,58 @@ class scikitplot.cython.PackageBuildResult(**package\_name=''**, **key=''**, **b
         :   The full metadata dictionary persisted in `meta.json` for this entry.
 
     Parameters:
-    :   * ****package\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****results**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**BuildResult**](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")**]**)
-        * ****used\_cache**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****created\_utc**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****fingerprint**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****meta**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+    :   * ****package\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****results**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**BuildResult**](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")**]**)
+        * ****used\_cache**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****created\_utc**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****fingerprint**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+        * ****meta**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
-    build\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[#](#scikitplot.cython.PackageBuildResult.build_dir "Link to this definition")
+    property annotation\_html: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")][#](#scikitplot.cython.PackageBuildResult.annotation_html "Link to this definition")
+    :   Absolute paths of the Cython annotation reports, one per module.
+
+        Returns:
+        :   Mapping[str, pathlib.Path]
+            :   Full module name (`"mypkg.mod1"`) to the `.html` file Cython
+                wrote for it, in module name order; empty when the package was
+                built without `annotate=True`. `results[i].annotation_html`
+                gives the same path for one module.
+
+        Notes
+
+        ****User.**** `meta["annotation_html"]` holds the same mapping with paths
+        relative to `build_dir`, and `meta["annotate_html"]` the first of
+        them.
+
+    build\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[#](#scikitplot.cython.PackageBuildResult.build_dir "Link to this definition")
     :   !! processed by numpydoc !!
 
-    created\_utc: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.PackageBuildResult.created_utc "Link to this definition")
+    created\_utc: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.PackageBuildResult.created_utc "Link to this definition")
     :   !! processed by numpydoc !!
 
-    fingerprint: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.PackageBuildResult.fingerprint "Link to this definition")
+    fingerprint: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.PackageBuildResult.fingerprint "Link to this definition")
     :   !! processed by numpydoc !!
 
-    key: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.PackageBuildResult.key "Link to this definition")
+    key: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.PackageBuildResult.key "Link to this definition")
     :   !! processed by numpydoc !!
 
-    meta: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][#](#scikitplot.cython.PackageBuildResult.meta "Link to this definition")
+    meta: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][#](#scikitplot.cython.PackageBuildResult.meta "Link to this definition")
     :   !! processed by numpydoc !!
 
-    property modules: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")[[ModuleType](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.14)")][#](#scikitplot.cython.PackageBuildResult.modules "Link to this definition")
+    property modules: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[ModuleType](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.15)")][#](#scikitplot.cython.PackageBuildResult.modules "Link to this definition")
     :   Loaded modules in the same order as `results`.
 
         Returns:
         :   Sequence[types.ModuleType]
             :   Loaded extension modules.
 
-    package\_name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.cython.PackageBuildResult.package_name "Link to this definition")
+    package\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.cython.PackageBuildResult.package_name "Link to this definition")
     :   !! processed by numpydoc !!
 
-    results: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")[[BuildResult](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")][#](#scikitplot.cython.PackageBuildResult.results "Link to this definition")
+    results: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[BuildResult](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")][#](#scikitplot.cython.PackageBuildResult.results "Link to this definition")
     :   !! processed by numpydoc !!
 
-    used\_cache: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.cython.PackageBuildResult.used_cache "Link to this definition")
+    used\_cache: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.cython.PackageBuildResult.used_cache "Link to this definition")
     :   !! processed by numpydoc !!

@@ -1,6 +1,6 @@
 # SecurityPolicy[#](#securitypolicy "Link to this heading")
 
-class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_include\_dirs=None**, **allow\_shell\_metacharacters=None**, **allow\_reserved\_macros=None**, **allow\_dangerous\_compiler\_args=None**, **max\_source\_bytes=10485760**, **max\_extra\_compile\_args=64**, **max\_extra\_link\_args=64**, **max\_include\_dirs=32**, **max\_libraries=32**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_security.py#L165)[#](#scikitplot.cython.SecurityPolicy "Link to this definition")
+class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_include\_dirs=None**, **allow\_shell\_metacharacters=None**, **allow\_reserved\_macros=None**, **allow\_dangerous\_compiler\_args=None**, **max\_source\_bytes=10485760**, **max\_extra\_compile\_args=64**, **max\_extra\_link\_args=64**, **max\_include\_dirs=32**, **max\_libraries=32**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_security.py#L165)[#](#scikitplot.cython.SecurityPolicy "Link to this definition")
 :   Immutable security policy applied to build inputs before compilation.
 
     Parameters:
@@ -53,16 +53,16 @@ class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_inclu
         :   Maximum number of library names accepted.
 
     Parameters:
-    :   * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****allow\_absolute\_include\_dirs**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
-        * ****allow\_shell\_metacharacters**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
-        * ****allow\_reserved\_macros**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
-        * ****allow\_dangerous\_compiler\_args**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
-        * ****max\_source\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****max\_extra\_compile\_args**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_extra\_link\_args**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_include\_dirs**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_libraries**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****allow\_absolute\_include\_dirs**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
+        * ****allow\_shell\_metacharacters**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
+        * ****allow\_reserved\_macros**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
+        * ****allow\_dangerous\_compiler\_args**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
+        * ****max\_source\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****max\_extra\_compile\_args**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_extra\_link\_args**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_include\_dirs**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_libraries**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     > **See also**
     > [`validate_build_inputs`](scikitplot.cython.validate_build_inputs.html#scikitplot.cython.validate_build_inputs "scikitplot.cython.validate_build_inputs")
@@ -116,34 +116,34 @@ class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_inclu
     ```
     Go BackOpen In Tab
 
-    allow\_absolute\_include\_dirs: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.allow_absolute_include_dirs "Link to this definition")
+    allow\_absolute\_include\_dirs: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.allow_absolute_include_dirs "Link to this definition")
     :   !! processed by numpydoc !!
 
-    allow\_dangerous\_compiler\_args: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.allow_dangerous_compiler_args "Link to this definition")
+    allow\_dangerous\_compiler\_args: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.allow_dangerous_compiler_args "Link to this definition")
     :   !! processed by numpydoc !!
 
-    allow\_reserved\_macros: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.allow_reserved_macros "Link to this definition")
+    allow\_reserved\_macros: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.allow_reserved_macros "Link to this definition")
     :   !! processed by numpydoc !!
 
-    allow\_shell\_metacharacters: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.allow_shell_metacharacters "Link to this definition")
+    allow\_shell\_metacharacters: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.allow_shell_metacharacters "Link to this definition")
     :   !! processed by numpydoc !!
 
-    max\_extra\_compile\_args: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.max_extra_compile_args "Link to this definition")
+    max\_extra\_compile\_args: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.max_extra_compile_args "Link to this definition")
     :   !! processed by numpydoc !!
 
-    max\_extra\_link\_args: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.max_extra_link_args "Link to this definition")
+    max\_extra\_link\_args: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.max_extra_link_args "Link to this definition")
     :   !! processed by numpydoc !!
 
-    max\_include\_dirs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.max_include_dirs "Link to this definition")
+    max\_include\_dirs: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.max_include_dirs "Link to this definition")
     :   !! processed by numpydoc !!
 
-    max\_libraries: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.max_libraries "Link to this definition")
+    max\_libraries: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.max_libraries "Link to this definition")
     :   !! processed by numpydoc !!
 
-    max\_source\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.max_source_bytes "Link to this definition")
+    max\_source\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.max_source_bytes "Link to this definition")
     :   !! processed by numpydoc !!
 
-    classmethod relaxed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_security.py#L292)[#](#scikitplot.cython.SecurityPolicy.relaxed "Link to this definition")
+    classmethod relaxed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_security.py#L292)[#](#scikitplot.cython.SecurityPolicy.relaxed "Link to this definition")
     :   Return a pre-configured policy with all dangerous checks disabled.
 
         > **Warning**
@@ -158,5 +158,5 @@ class scikitplot.cython.SecurityPolicy(**strict=True**, **allow\_absolute\_inclu
         Return type:
         :   [**SecurityPolicy**](#scikitplot.cython.SecurityPolicy "scikitplot.cython._security.SecurityPolicy")
 
-    strict: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.cython.SecurityPolicy.strict "Link to this definition")
+    strict: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.cython.SecurityPolicy.strict "Link to this definition")
     :   !! processed by numpydoc !!

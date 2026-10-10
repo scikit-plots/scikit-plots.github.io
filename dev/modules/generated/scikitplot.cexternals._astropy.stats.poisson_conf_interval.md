@@ -1,6 +1,6 @@
 # poisson\_conf\_interval[#](#poisson-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
 :   Poisson parameter confidence interval given observed counts.
 
     Parameters:
@@ -30,11 +30,11 @@ scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval=
             and upper limits, respectively, for each element in `n`.
 
     Parameters:
-    :   * ****n**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **NDArray**)
-        * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'root-n'****,** **'root-n-0'****,** **'pearson'****,** **'sherpagehrels'****,** **'frequentist-confidence'****,** **'kraft-burrows-nousek'****]**)
-        * ****sigma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****background**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****confidence\_level**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
+    :   * ****n**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **NDArray**)
+        * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'root-n'****,** **'root-n-0'****,** **'pearson'****,** **'sherpagehrels'****,** **'frequentist-confidence'****,** **'kraft-burrows-nousek'****]**)
+        * ****sigma**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****background**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****confidence\_level**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   **NDArray**

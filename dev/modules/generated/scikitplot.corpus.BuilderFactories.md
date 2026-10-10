@@ -1,6 +1,6 @@
 # BuilderFactories[#](#builderfactories "Link to this heading")
 
-class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L1330)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
+class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L1331)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
 :   Component factory callables for [`FactoryCorpusBuilder`](scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder").
 
     Each factory replaces the corresponding lazy-creation method in
@@ -102,14 +102,14 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
     ```
     Go BackOpen In Tab
 
-    chunker\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.chunker_factory "Link to this definition")
+    chunker\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.chunker_factory "Link to this definition")
 
-    embedding\_engine\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.embedding_engine_factory "Link to this definition")
+    embedding\_engine\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.embedding_engine_factory "Link to this definition")
 
-    enricher\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.enricher_factory "Link to this definition")
+    enricher\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.enricher_factory "Link to this definition")
 
-    filter\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.filter_factory "Link to this definition")
+    filter\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.filter_factory "Link to this definition")
 
-    normalizer\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.normalizer_factory "Link to this definition")
+    normalizer\_factory: Callable[[], Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.normalizer_factory "Link to this definition")
 
-    reader\_factory: Callable[..., Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.reader_factory "Link to this definition")
+    reader\_factory: Callable[..., Any] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BuilderFactories.reader_factory "Link to this definition")

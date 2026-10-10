@@ -182,8 +182,8 @@ A Tale of Two Cities by Charles Dickens.
 ```
 ```
 Bundled MP3: /home/circleci/repo/galleries/examples/corpus/data/tale_of_two_cities_01_dickens_64kb.mp3
-Temporary audio: /tmp/scikitplot-audio-gallery-4pr31jkx/tale_of_two_cities_01_dickens_64kb.mp3
-Companion: /tmp/scikitplot-audio-gallery-4pr31jkx/tale_of_two_cities_01_dickens_64kb.srt
+Temporary audio: /tmp/scikitplot-audio-gallery-613s2ghk/tale_of_two_cities_01_dickens_64kb.mp3
+Companion: /tmp/scikitplot-audio-gallery-613s2ghk/tale_of_two_cities_01_dickens_64kb.srt
 
 ```
 
@@ -366,10 +366,11 @@ SCIKITPLOT_GALLERY_RUN_ASR=1 python plot_corpus_a_tale_of_two_cities_mp3_script.
 
 ```
 
-When opted in, the example requires an installed Whisper backend. Model
-availability is then the responsibility of that explicitly enabled runtime;
-an unexpected ASR failure is allowed to surface rather than being mislabeled
-as a missing-package skip.
+When opted in, the reader tries faster-whisper first and then openai-whisper.
+Optional backend failures remain visible as warnings. The gallery keeps the
+default `strict=False` policy so an unavailable or incompatible ASR stack
+yields no transcription chunks instead of failing the entire documentation
+build; use `strict=True` when fail-fast ASR is required.
 
 ```
 whisper_ready, whisper_reason = _probe_whisper_backend()
@@ -395,6 +396,7 @@ else:
         asr_audio,
         transcribe=True,
         whisper_model="base",
+        strict=False,
         default_language="en",
     )
     asr_documents = tuple(asr_reader.get_documents())
@@ -416,10 +418,19 @@ else:
 ```
 ```
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+  0%|                                               | 0.00/139M [00:00<?, ?iB/s]
+ 22%|████████▍                              | 30.0M/139M [00:00<00:00, 314MiB/s]
+ 47%|██████████████████▎                    | 65.2M/139M [00:00<00:00, 347MiB/s]
+ 73%|█████████████████████████████           | 101M/139M [00:00<00:00, 358MiB/s]
+100%|███████████████████████████████████████▉| 138M/139M [00:00<00:00, 373MiB/s]
+100%|████████████████████████████████████████| 139M/139M [00:00<00:00, 362MiB/s]
+/home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+  warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 Whisper documents: 4
-[ASR 0] time=0.0s→8.0s confidence=0.779 text='This is a Libravox Recording. All Libravox recordings are in the public domain.'
-[ASR 1] time=8.0s→13.0s confidence=0.779 text='For more information or to volunteer, please visit Libravox.org.'
-[ASR 2] time=14.0s→21.0s confidence=0.654 text='Recording by Michael Sirwa, Michael.Sirwa.SIROIS.com'
+[ASR 0] time=0.0s→7.0s confidence=0.761 text='This is a Libravox Recording. All Libravox recordings are in the public domain.'
+[ASR 1] time=7.0s→13.0s confidence=0.761 text='For more information or to volunteer, please visit Libravox.org.'
+[ASR 2] time=14.0s→21.0s confidence=0.649 text='Recording by Michael Sirwa, Michael.Sirwa.SIROIS.com'
 
 ```
 
@@ -467,9 +478,9 @@ Temporary audio workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 12.731 seconds)
+****Total running time of the script:**** (0 minutes 7.516 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 
 [`Download Jupyter notebook: plot_corpus_a_tale_of_two_cities_mp3_script.ipynb`](../../_downloads/452f509437bad7949d83b58b8ed4d586/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 
@@ -483,15 +494,15 @@ Related examples
 
 [Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 
-Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
-
-Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 
-Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+
+[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
+
+Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
 [Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 

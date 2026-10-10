@@ -1,6 +1,6 @@
 # import\_extension\_from\_bytes[#](#import-extension-from-bytes "Link to this heading")
 
-scikitplot.cython.import\_extension\_from\_bytes(**data**, **\***, **module\_name**, **artifact\_filename**, **temp\_dir=None**, **key=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_loader.py#L222)[#](#scikitplot.cython.import_extension_from_bytes "Link to this definition")
+scikitplot.cython.import\_extension\_from\_bytes(**data**, **\***, **module\_name**, **artifact\_filename**, **temp\_dir=None**, **key=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_loader.py#L222)[#](#scikitplot.cython.import_extension_from_bytes "Link to this definition")
 :   Import an extension module from raw artifact bytes.
 
     Parameters:
@@ -36,14 +36,14 @@ scikitplot.cython.import\_extension\_from\_bytes(**data**, **\***, **module\_nam
         :   If the module cannot be loaded.
 
     Parameters:
-    :   * ****data**** ([**bytes**](https://docs.python.org/3/library/stdtypes.html#bytes "(in Python v3.14)"))
-        * ****module\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****artifact\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****temp\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+    :   * ****data**** ([**bytes**](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)"))
+        * ****module\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****artifact\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****temp\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.14)")
+    :   [**ModuleType**](https://docs.python.org/3/library/types.html#types.ModuleType "(in Python v3.15)")
 
     Notes
 

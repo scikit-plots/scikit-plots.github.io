@@ -1,6 +1,6 @@
 # is\_rtl\_char[#](#is-rtl-char "Link to this heading")
 
-scikitplot.corpus.is\_rtl\_char(**ch**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1280)[#](#scikitplot.corpus.is_rtl_char "Link to this definition")
+scikitplot.corpus.is\_rtl\_char(**ch**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1280)[#](#scikitplot.corpus.is_rtl_char "Link to this definition")
 :   Return `True` if **ch** belongs to a right-to-left script.
 
     Covers Arabic, Persian, Ottoman, Hebrew, and related blocks.
@@ -14,10 +14,10 @@ scikitplot.corpus.is\_rtl\_char(**ch**)[[source]](https://github.com/scikit-plot
         :   `True` for RTL script characters.
 
     Parameters:
-    :   ****ch**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****ch**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
     Examples
 

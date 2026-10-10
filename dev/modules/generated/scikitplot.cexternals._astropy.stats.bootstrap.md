@@ -1,6 +1,6 @@
 # bootstrap[#](#bootstrap "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **samples=None**, **bootfunc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L998)[#](#scikitplot.cexternals._astropy.stats.bootstrap "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **samples=None**, **bootfunc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L998)[#](#scikitplot.cexternals._astropy.stats.bootstrap "Link to this definition")
 :   Performs bootstrap resampling on numpy arrays.
 
     Bootstrap resampling is used to understand confidence intervals of sample
@@ -35,9 +35,9 @@ scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **sam
 
     Parameters:
     :   * ****data**** (**NDArray**)
-        * ****bootnum**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****samples**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****bootfunc**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.14)") **|** **None**)
+        * ****bootnum**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****samples**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****bootfunc**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.15)") **|** **None**)
 
     Return type:
     :   **NDArray**

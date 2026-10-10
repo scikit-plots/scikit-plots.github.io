@@ -1,6 +1,6 @@
 # MetaMixin[#](#metamixin "Link to this heading")
 
-class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L127)[#](#scikitplot.annoy.MetaMixin "Link to this definition")
+class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L127)[#](#scikitplot.annoy.MetaMixin "Link to this definition")
 :   Mixin that exports and restores index metadata.
 
     The concrete class (or its backend) must implement:
@@ -22,17 +22,17 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
     the `params` mapping contains `on_disk_path`. This is a deterministic
     behavior controlled only by explicit fields.
 
-    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L425)[#](#scikitplot.annoy.MetaMixin.from_json "Link to this definition")
+    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L434)[#](#scikitplot.annoy.MetaMixin.from_json "Link to this definition")
     :   Load metadata from JSON and construct an index.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****load**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L256)[#](#scikitplot.annoy.MetaMixin.from_metadata "Link to this definition")
+    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L256)[#](#scikitplot.annoy.MetaMixin.from_metadata "Link to this definition")
     :   Construct an index from a metadata payload.
 
         Parameters:
@@ -61,11 +61,11 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
             :   If backend `set_params`/`load` are missing when required.
 
         Parameters:
-        :   * ****metadata**** ([**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **any****]**)
-            * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****metadata**** ([**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **any****]**)
+            * ****load**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
         > **See also**
         > [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata")
@@ -76,17 +76,17 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
 
         [`from_yaml`](#scikitplot.annoy.MetaMixin.from_yaml "scikitplot.annoy.MetaMixin.from_yaml")
 
-    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L459)[#](#scikitplot.annoy.MetaMixin.from_yaml "Link to this definition")
+    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L468)[#](#scikitplot.annoy.MetaMixin.from_yaml "Link to this definition")
     :   Load metadata from YAML and construct an index (requires PyYAML).
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****load**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****load**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L376)[#](#scikitplot.annoy.MetaMixin.to_json "Link to this definition")
+    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L385)[#](#scikitplot.annoy.MetaMixin.to_json "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata") to JSON.
 
         Parameters:
@@ -94,7 +94,7 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
             :   If provided, write the JSON to this path atomically.
 
             ****indent****
-            :   Indentation level passed to [`json.dumps`](https://docs.python.org/3/library/json.html#json.dumps "(in Python v3.14)").
+            :   Indentation level passed to [`json.dumps`](https://docs.python.org/3/library/json.html#json.dumps "(in Python v3.15)").
 
             ****sort\_keys****
             :   If True, sort keys for stable output.
@@ -114,15 +114,15 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
             :   If the exported metadata contains non-JSON-serializable values.
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****indent**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****sort\_keys**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****ensure\_ascii**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****include\_info**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****indent**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+            * ****sort\_keys**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****ensure\_ascii**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****include\_info**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
         > **See also**
         > [`from_json`](#scikitplot.annoy.MetaMixin.from_json "scikitplot.annoy.MetaMixin.from_json")
@@ -130,7 +130,7 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
 
         [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata")
 
-    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L153)[#](#scikitplot.annoy.MetaMixin.to_metadata "Link to this definition")
+    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L153)[#](#scikitplot.annoy.MetaMixin.to_metadata "Link to this definition")
     :   Export a serializable metadata payload.
 
         Parameters:
@@ -159,8 +159,8 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
             :   If a persistence knob (e.g., `pickle_mode`) is not JSON/YAML-serializable.
 
         Parameters:
-        :   * ****include\_info**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****include\_info**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   **IndexMetadata**
@@ -171,13 +171,13 @@ class scikitplot.annoy.MetaMixin[[source]](https://github.com/scikit-plots/sciki
 
         [`to_yaml`](#scikitplot.annoy.MetaMixin.to_yaml "scikitplot.annoy.MetaMixin.to_yaml")
 
-    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/annoy/_mixins/_meta.py#L438)[#](#scikitplot.annoy.MetaMixin.to_yaml "Link to this definition")
+    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/annoy/_mixins/_meta.py#L447)[#](#scikitplot.annoy.MetaMixin.to_yaml "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.MetaMixin.to_metadata "scikitplot.annoy.MetaMixin.to_metadata") to YAML (requires PyYAML).
 
         Parameters:
-        :   * ****path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****include\_info**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****strict**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**PathLike**](https://docs.python.org/3/library/os.html#os.PathLike "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****include\_info**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")

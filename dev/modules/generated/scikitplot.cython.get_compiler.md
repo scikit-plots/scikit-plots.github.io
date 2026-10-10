@@ -1,6 +1,6 @@
 # get\_compiler[#](#get-compiler "Link to this heading")
 
-scikitplot.cython.get\_compiler(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L481)[#](#scikitplot.cython.get_compiler "Link to this definition")
+scikitplot.cython.get\_compiler(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L481)[#](#scikitplot.cython.get_compiler "Link to this definition")
 :   Retrieve a registered custom compiler by name.
 
     Parameters:
@@ -16,7 +16,7 @@ scikitplot.cython.get\_compiler(**name**)[[source]](https://github.com/scikit-pl
         :   If no compiler with that name is registered.
 
     Parameters:
-    :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**CustomCompilerProtocol**](scikitplot.cython.CustomCompilerProtocol.html#scikitplot.cython.CustomCompilerProtocol "scikitplot.cython._custom_compiler.CustomCompilerProtocol")

@@ -1,0 +1,51 @@
+# select\_backend[#](#select-backend "Link to this heading")
+
+scikitplot.corpus.select\_backend(**name='auto'**, **\***, **index\_kwargs=None**, **annoy\_metric='angular'**, **annoy\_n\_trees=10**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_similarity/_backends.py#L686)[#](#scikitplot.corpus.select_backend "Link to this definition")
+:   Construct an ANN backend by name.
+
+    Parameters:
+    :   ****name****str or VectorIndexBackend subclass, optional
+        :   `"auto"` (default) resolves the first available backend in
+            [`DEFAULT_BACKEND_ORDER`](scikitplot.corpus.DEFAULT_BACKEND_ORDER.html#scikitplot.corpus.DEFAULT_BACKEND_ORDER "scikitplot.corpus.DEFAULT_BACKEND_ORDER"). An explicit built-in name is honoured
+            or raises if unavailable. A custom [`VectorIndexBackend`](scikitplot.corpus.VectorIndexBackend.html#scikitplot.corpus.VectorIndexBackend "scikitplot.corpus.VectorIndexBackend") subclass
+            may be supplied directly.
+
+        ****index\_kwargs****mapping, optional
+        :   Generic constructor keyword arguments for the selected backend. New
+            code should prefer this mapping instead of adding backend-specific
+            parameters to [`RetrievalConfig`](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig").
+
+        ****annoy\_metric, annoy\_n\_trees, annoy\_search\_k, annoy\_impl, annoy\_dtype, annoy\_index\_dtype****
+        :   Backward-compatible Annoy constructor settings. They are merged only
+            when the resolved backend is [`AnnoyBackend`](scikitplot.corpus.AnnoyBackend.html#scikitplot.corpus.AnnoyBackend "scikitplot.corpus.AnnoyBackend"); generic
+            `index_kwargs` win over default legacy values.
+
+        ****\*\*kwargs****Any
+        :   Compatibility form for generic backend constructor keyword arguments.
+            Conflicting keys between `index_kwargs` and `kwargs` raise.
+
+    Returns:
+    :   VectorIndexBackend
+        :   An unbuilt backend instance.
+
+    Raises:
+    :   ValueError
+        :   If **name** is not a known backend or `"auto"`.
+
+        RuntimeError
+        :   If an explicitly named backend is unavailable, or if `"auto"` finds
+            no available backend (numpy missing).
+
+    Parameters:
+    :   * ****name**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****index\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+        * ****annoy\_metric**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****annoy\_n\_trees**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****annoy\_search\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****annoy\_impl**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****annoy\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****annoy\_index\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+
+    Return type:
+    :   [**VectorIndexBackend**](scikitplot.corpus.VectorIndexBackend.html#scikitplot.corpus.VectorIndexBackend "scikitplot.corpus._similarity._backends.VectorIndexBackend")

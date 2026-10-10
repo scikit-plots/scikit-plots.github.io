@@ -1,6 +1,6 @@
 # save\_waveform\_as\_mp3[#](#save-waveform-as-mp3 "Link to this heading")
 
-scikitplot.experimental.\_doremi.save\_waveform\_as\_mp3(**waveform**, **file\_path='output.mp3'**, **sample\_rate=44100**, **amplitude\_int=32767**, **bitrate='192k'**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/experimental/_doremi/note_io.py#L167)[#](#scikitplot.experimental._doremi.save_waveform_as_mp3 "Link to this definition")
+scikitplot.experimental.\_doremi.save\_waveform\_as\_mp3(**waveform**, **file\_path='output.mp3'**, **sample\_rate=44100**, **amplitude\_int=32767**, **bitrate='192k'**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/experimental/_doremi/note_io.py#L167)[#](#scikitplot.experimental._doremi.save_waveform_as_mp3 "Link to this definition")
 :   Save waveform as an MP3 file using pydub and ffmpeg, with support for mono or stereo.
 
     Parameters:
@@ -29,11 +29,11 @@ scikitplot.experimental.\_doremi.save\_waveform\_as\_mp3(**waveform**, **file\_p
 
     Parameters:
     :   * ****waveform**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
-        * ****file\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****sample\_rate**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****amplitude\_int**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****bitrate**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****file\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****sample\_rate**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****amplitude\_int**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****bitrate**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****metadata**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
 
     Examples
 

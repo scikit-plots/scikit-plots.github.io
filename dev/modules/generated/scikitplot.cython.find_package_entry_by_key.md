@@ -1,6 +1,6 @@
 # find\_package\_entry\_by\_key[#](#find-package-entry-by-key "Link to this heading")
 
-scikitplot.cython.find\_package\_entry\_by\_key(**cache\_dir**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_cache.py#L721)[#](#scikitplot.cython.find_package_entry_by_key "Link to this definition")
+scikitplot.cython.find\_package\_entry\_by\_key(**cache\_dir**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_cache.py#L751)[#](#scikitplot.cython.find_package_entry_by_key "Link to this definition")
 :   Find a single **package** cache entry by key.
 
     Parameters:
@@ -22,8 +22,8 @@ scikitplot.cython.find\_package\_entry\_by\_key(**cache\_dir**, **key**)[[source
         :   If key format is invalid or key corresponds to a module entry.
 
     Parameters:
-    :   * ****cache\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****key**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****cache\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****key**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**PackageCacheEntry**](scikitplot.cython.PackageCacheEntry.html#scikitplot.cython.PackageCacheEntry "scikitplot.cython._cache.PackageCacheEntry")

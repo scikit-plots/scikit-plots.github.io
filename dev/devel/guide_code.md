@@ -99,7 +99,7 @@ errors should follow these rules:
 * For informational and debugging messages, one should always use
   `log.info(message)` and `log.debug(message)`.
 
-The logging system uses the built-in Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)")
+The logging system uses the built-in Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)")
 module. The logger can be imported using:
 
 ```

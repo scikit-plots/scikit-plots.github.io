@@ -1,6 +1,6 @@
 # CorpusPipeline[#](#corpuspipeline "Link to this heading")
 
-class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_pipeline.py#L168)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
+class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_pipeline.py#L196)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
 :   Orchestrates the full corpus ingestion pipeline.
 
     Instantiate once, then call [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") (single file),
@@ -137,13 +137,13 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     :   * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") **|** **None**)
         * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") **|** **None**)
         * ****embedding\_engine**** ([**EmbeddingEngine**](scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine "scikitplot.corpus.EmbeddingEngine") **|** **None**)
-        * ****output\_path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        * ****output\_path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
         * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus.ExportFormat") **|** **None**)
         * ****normalizer**** ([**TextNormalizer**](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer") **|** **None**)
         * ****enricher**** ([**NLPEnricher**](scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher "scikitplot.corpus.NLPEnricher") **|** **None**)
-        * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****progress\_callback**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]****,** **None****]** **|** **None**)
-        * ****reader\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]** **|** **None**)
+        * ****default\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****progress\_callback**** (**Callable****[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]****,** **None****]** **|** **None**)
+        * ****reader\_kwargs**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **Any****]** **|** **None**)
 
     > **See also**
     > `scikitplot.corpus._export.export_documents`
@@ -253,7 +253,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Deprecated since version 0.5.0: Use `pipeline.filter` (no trailing underscore).
         `filter_` will be removed in 0.7.0.
 
-    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_pipeline.py#L453)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_pipeline.py#L481)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
     :   Process a single source and return a [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult").
 
         Accepts a local file path ****or**** an `http(s)://` URL string.
@@ -288,7 +288,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         Raises:
         :   TypeError
-            :   If **input\_path** is not a `str` or [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
+            :   If **input\_path** is not a `str` or [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)").
 
             ValueError
             :   If a local file path does not exist, or no reader is
@@ -299,10 +299,10 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
                 cannot be resolved.
 
         Parameters:
-        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
             * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
-            * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****filename\_override**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
         Return type:
         :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")
@@ -337,7 +337,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_pipeline.py#L851)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_pipeline.py#L888)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources sequentially.
 
         Each item may be a local file path ****or**** an `http(s)://` URL
@@ -350,7 +350,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         :   ****input\_files****list of pathlib.Path or str
             :   Sources to process in order. Each element may be:
 
-                * a [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") or `str` pointing to a local file, or
+                * a [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") or `str` pointing to a local file, or
                 * a `str` starting with `http://` or `https://` (a URL).
 
                 Mixed lists are allowed:
@@ -374,19 +374,19 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Raises:
         :   TypeError
             :   If any element of **input\_files** is not a `str` or
-                [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
+                [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)").
 
             ValueError
             :   Re-raised from `_run_source` when `stop_on_error=True`
                 and a source fails.
 
         Parameters:
-        :   * ****input\_files**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****input\_files**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
             * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
 
         > **See also**
         > [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run")
@@ -424,7 +424,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_pipeline.py#L688)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_pipeline.py#L723)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs.
 
         Accepts a single URL string or a list of URL strings. When a list
@@ -482,13 +482,13 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
             :   If `scikitplot.corpus._readers` has not been imported yet.
 
         Parameters:
-        :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        :   * ****url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
             * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
-            * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+            * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
-        :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
+        :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult") | [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
 
         Examples
 

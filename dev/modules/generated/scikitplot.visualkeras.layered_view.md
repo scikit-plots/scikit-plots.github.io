@@ -1,6 +1,6 @@
 # layered\_view[#](#layered-view "Link to this heading")
 
-scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
+scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
 :   Generates an architectural visualization for a given linear Keras
     [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") model
     (i.e., one input and output tensor for each layer) in a layered style,
@@ -179,40 +179,76 @@ scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**
             Added in version 0.4.0: The `verbose` parameter was added to control logging and user feedback verbosity.
 
     Parameters:
-    :   * ****to\_file**** (**Optional****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****min\_z**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****min\_xy**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_z**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****max\_xy**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****scale\_z**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****scale\_xy**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****type\_ignore**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)"))
-        * ****index\_ignore**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)"))
-        * ****color\_map**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)"))
-        * ****one\_dim\_orientation**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****index\_2d**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)"))
+    :   * ****to\_file**** (**Optional****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****min\_z**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****min\_xy**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_z**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****max\_xy**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****scale\_z**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****scale\_xy**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****type\_ignore**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)"))
+        * ****index\_ignore**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)"))
+        * ****color\_map**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)"))
+        * ****one\_dim\_orientation**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****index\_2d**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)"))
         * ****background\_fill**** (**any**)
-        * ****draw\_volume**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****draw\_reversed**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****padding**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****text\_callable**** (**Optional****[****Union****[****Callable****[****[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** **Layer****]****,** [**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")**]****]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-        * ****text\_vspacing**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****spacing**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****draw\_funnel**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****legend**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****font**** (**Optional****[****Union****[****ImageFont.ImageFont****,** [**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **"any"****]****]****]**)
+        * ****draw\_volume**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****draw\_reversed**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****padding**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****text\_callable**** (**Optional****[****Union****[****Callable****[****[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **Layer****]****,** [**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]****]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+        * ****text\_vspacing**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****spacing**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****draw\_funnel**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****legend**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****font**** (**Optional****[****Union****[****ImageFont.ImageFont****,** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **"any"****]****]****]**)
         * ****font\_color**** (**any**)
-        * ****backend**** (**Optional****[****Union****[**[**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")**,**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-        * ****show\_os\_viewer**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****show\_fig**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****save\_fig**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****save\_fig\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****backend**** (**Optional****[****Union****[**[**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**,**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+        * ****show\_os\_viewer**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****show\_fig**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****save\_fig**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****save\_fig\_filename**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****overwrite**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****verbose**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev498+gadecc563e)")
+    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)")
 
     Notes
 
     This function calls `get_font(font)` internally to normalize the input.
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_dl_ann_conv_dense_thumb.png)
+
+[Visualkeras: Spam Classification Conv1D Dense Example](../../auto_examples/visualkeras/plot_dl_ann_conv_dense.html)
+
+Visualkeras: Spam Classification Conv1D Dense Example![](../../_images/sphx_glr_plot_dl_ann_dense_thumb.png)
+
+[visualkeras: Spam Dense example](../../auto_examples/visualkeras/plot_dl_ann_dense.html)
+
+visualkeras: Spam Dense example![](../../_images/sphx_glr_plot_dl_cnn_autoencoder_thumb.png)
+
+[visualkeras: autoencoder example](../../auto_examples/visualkeras/plot_dl_cnn_autoencoder.html)
+
+visualkeras: autoencoder example![](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_thumb.png)
+
+[visualkeras: custom vgg16 example](../../auto_examples/visualkeras/plot_dl_cnn_custom_vgg16.html)
+
+visualkeras: custom vgg16 example![](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_thumb.png)
+
+[visualkeras: custom vgg16 show dimension example](../../auto_examples/visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html)
+
+visualkeras: custom vgg16 show dimension example![](../../_images/sphx_glr_plot_dl_cnn_efficientnetv2_thumb.png)
+
+[visualkeras: EfficientNetV2 example](../../auto_examples/visualkeras/plot_dl_cnn_efficientnetv2.html)
+
+visualkeras: EfficientNetV2 example![](../../_images/sphx_glr_plot_dl_cnn_resnetv2_thumb.png)
+
+[visualkeras: ResNetV2 example](../../auto_examples/visualkeras/plot_dl_cnn_resnetv2.html)
+
+visualkeras: ResNetV2 example![](../../_images/sphx_glr_plot_dl_cnn_vgg_thumb.png)
+
+[visualkeras: custom VGG example](../../auto_examples/visualkeras/plot_dl_cnn_vgg.html)
+
+visualkeras: custom VGG example

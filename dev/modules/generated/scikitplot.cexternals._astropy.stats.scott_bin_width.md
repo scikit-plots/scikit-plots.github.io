@@ -1,6 +1,6 @@
 # scott\_bin\_width[#](#scott-bin-width "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.scott\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/histogram.py#L171)[#](#scikitplot.cexternals._astropy.stats.scott_bin_width "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.scott\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/histogram.py#L171)[#](#scikitplot.cexternals._astropy.stats.scott_bin_width "Link to this definition")
 :   Return the optimal histogram bin width using Scott’s rule.
 
     Scott’s rule is a normal reference rule: it minimizes the integrated
@@ -23,10 +23,10 @@ scikitplot.cexternals.\_astropy.stats.scott\_bin\_width(**data**, **return\_bins
 
     Parameters:
     :   * ****data**** (**ArrayLike**)
-        * ****return\_bins**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        * ****return\_bins**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"), **NDArray**]
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"), **NDArray**]
 
     > **See also**
     > [`knuth_bin_width`](scikitplot.cexternals._astropy.stats.knuth_bin_width.html#scikitplot.cexternals._astropy.stats.knuth_bin_width "scikitplot.cexternals._astropy.stats.knuth_bin_width")

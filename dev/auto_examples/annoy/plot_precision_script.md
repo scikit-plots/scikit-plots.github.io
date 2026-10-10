@@ -64,7 +64,7 @@ idx.info()
 800 / 1000 = 0.8
 900 / 1000 = 0.9
 
-100%|██████████| 1000/1000 [00:00<00:00, 12929.38it/s]
+100%|██████████| 1000/1000 [00:00<00:00, 10792.95it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 1000, 'n_trees': 200, 'memory_usage_byte': 5722240, 'memory_usage_mib': 5.4571533203125}
 
@@ -139,43 +139,43 @@ precision(q)
   q.set_seed(0)
 
   0%|          | 0/10 [00:00<?, ?it/s]limit: 10        precision:  20.00% avg time: 0.000050s
-limit: 100       precision:  40.00% avg time: 0.000050s
-limit: 1000      precision: 100.00% avg time: 0.000134s
-limit: 10        precision:  35.00% avg time: 0.000047s
-limit: 100       precision:  45.00% avg time: 0.000048s
-limit: 1000      precision: 100.00% avg time: 0.000134s
-limit: 10        precision:  36.67% avg time: 0.000043s
-limit: 100       precision:  53.33% avg time: 0.000048s
-limit: 1000      precision: 100.00% avg time: 0.000139s
-limit: 10        precision:  37.50% avg time: 0.000042s
-limit: 100       precision:  52.50% avg time: 0.000048s
+limit: 100       precision:  40.00% avg time: 0.000049s
+limit: 1000      precision: 100.00% avg time: 0.000130s
+limit: 10        precision:  35.00% avg time: 0.000044s
+limit: 100       precision:  45.00% avg time: 0.000047s
+limit: 1000      precision: 100.00% avg time: 0.000130s
+limit: 10        precision:  36.67% avg time: 0.000041s
+limit: 100       precision:  53.33% avg time: 0.000047s
 limit: 1000      precision: 100.00% avg time: 0.000136s
-limit: 10        precision:  38.00% avg time: 0.000041s
-limit: 100       precision:  54.00% avg time: 0.000051s
-limit: 1000      precision: 100.00% avg time: 0.000135s
-limit: 10        precision:  40.00% avg time: 0.000041s
-limit: 100       precision:  53.33% avg time: 0.000051s
-limit: 1000      precision: 100.00% avg time: 0.000134s
-limit: 10        precision:  38.57% avg time: 0.000042s
-limit: 100       precision:  54.29% avg time: 0.000052s
-limit: 1000      precision: 100.00% avg time: 0.000134s
-limit: 10        precision:  38.75% avg time: 0.000041s
-limit: 100       precision:  52.50% avg time: 0.000051s
+limit: 10        precision:  37.50% avg time: 0.000040s
+limit: 100       precision:  52.50% avg time: 0.000047s
+limit: 1000      precision: 100.00% avg time: 0.000133s
+limit: 10        precision:  38.00% avg time: 0.000046s
+limit: 100       precision:  54.00% avg time: 0.000047s
+limit: 1000      precision: 100.00% avg time: 0.000133s
+limit: 10        precision:  40.00% avg time: 0.000045s
+limit: 100       precision:  53.33% avg time: 0.000047s
+limit: 1000      precision: 100.00% avg time: 0.000131s
+limit: 10        precision:  38.57% avg time: 0.000044s
+limit: 100       precision:  54.29% avg time: 0.000049s
+limit: 1000      precision: 100.00% avg time: 0.000131s
+limit: 10        precision:  38.75% avg time: 0.000044s
+limit: 100       precision:  52.50% avg time: 0.000048s
 limit: 1000      precision: 100.00% avg time: 0.000132s
-limit: 10        precision:  38.89% avg time: 0.000041s
-limit: 100       precision:  54.44% avg time: 0.000052s
-limit: 1000      precision: 100.00% avg time: 0.000132s
-limit: 10        precision:  39.00% avg time: 0.000041s
-limit: 100       precision:  55.00% avg time: 0.000051s
-limit: 1000      precision: 100.00% avg time: 0.000132s
+limit: 10        precision:  38.89% avg time: 0.000043s
+limit: 100       precision:  54.44% avg time: 0.000048s
+limit: 1000      precision: 100.00% avg time: 0.000131s
+limit: 10        precision:  39.00% avg time: 0.000043s
+limit: 100       precision:  55.00% avg time: 0.000052s
+limit: 1000      precision: 100.00% avg time: 0.000133s
 
-100%|██████████| 10/10 [00:00<00:00, 1622.18it/s]
+100%|██████████| 10/10 [00:00<00:00, 1609.17it/s]
 
 ```
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.249 seconds)
+****Total running time of the script:**** (0 minutes 2.691 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_precision_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_precision_script.ipynb)
 
@@ -191,11 +191,7 @@ Related examples
 
 [Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
 
-Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
-
-[annoy.Index to NPY or CSV with examples](plot_annoy_to_NPY_CSV.html)
-
-annoy.Index to NPY or CSV with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
 
 [Mmap annoy.AnnoyIndex with examples](plot_mmap_script.html)
 
@@ -203,6 +199,10 @@ Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_Annoy_legacy_
 
 [annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
 
-annoy.Annoy legacy c-api with examples
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
+
+[annoy.Index to NPY or CSV with examples](plot_annoy_to_NPY_CSV.html)
+
+annoy.Index to NPY or CSV with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

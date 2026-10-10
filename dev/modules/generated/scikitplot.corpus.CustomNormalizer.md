@@ -1,6 +1,6 @@
 # CustomNormalizer[#](#customnormalizer "Link to this heading")
 
-class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_mode=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L390)[#](#scikitplot.corpus.CustomNormalizer "Link to this definition")
+class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_mode=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L391)[#](#scikitplot.corpus.CustomNormalizer "Link to this definition")
 :   Wrap any callable as a `NormalizerBase`.
 
     Parameters:
@@ -32,8 +32,8 @@ class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_
 
     Parameters:
     :   * ****fn**** (**Callable****[****...****,** **Any****]**)
-        * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****text\_mode**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****text\_mode**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     > **See also**
     > `scikitplot.corpus._normalizers.NormalizationPipeline`
@@ -75,7 +75,7 @@ class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_custom_hooks.py#L487)[#](#scikitplot.corpus.CustomNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_custom_hooks.py#L488)[#](#scikitplot.corpus.CustomNormalizer.normalize_doc "Link to this definition")
     :   Apply the user-supplied callable to `doc`.
 
         Parameters:

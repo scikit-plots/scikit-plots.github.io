@@ -1,6 +1,6 @@
 # log\_first\_n[#](#log-first-n "Link to this heading")
 
-scikitplot.logging.log\_first\_n(**level**, **msg**, **n**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/logging.py#L1664)[#](#scikitplot.logging.log_first_n "Link to this definition")
+scikitplot.logging.log\_first\_n(**level**, **msg**, **n**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/logging/_logging.py#L1684)[#](#scikitplot.logging.log_first_n "Link to this definition")
 :   Log only for the first **n** calls from the same call site.
 
     Log ‘msg % args’ at level ‘level’ only first ‘n’ times.
@@ -28,9 +28,9 @@ scikitplot.logging.log\_first\_n(**level**, **msg**, **n**, **\*args**, **\*\*kw
         :   If `n < 1`.
 
     Parameters:
-    :   * ****level**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****msg**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****n**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****level**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****msg**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****n**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****args**** (**any**)
         * ****kwargs**** (**any**)
 

@@ -1,6 +1,6 @@
 # plot\_waveform[#](#plot-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**, **normalize=False**, **title='Audio Waveform (Normalized 440Hz Tone)'**, **figsize=(10, 4)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/experimental/_doremi/waveform_viz.py#L23)[#](#scikitplot.experimental._doremi.plot_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**, **normalize=False**, **title='Audio Waveform (Normalized 440Hz Tone)'**, **figsize=(10, 4)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/experimental/_doremi/waveform_viz.py#L23)[#](#scikitplot.experimental._doremi.plot_waveform "Link to this definition")
 :   Plot the waveform of mono or multi-channel audio data.
 
     Parameters:
@@ -26,9 +26,9 @@ scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**,
 
     Parameters:
     :   * ****data**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
-        * ****sample\_rate**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****normalize**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****sample\_rate**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****normalize**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****title**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Notes
 

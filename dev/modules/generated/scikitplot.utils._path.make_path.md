@@ -1,6 +1,6 @@
 # make\_path[#](#make-path "Link to this heading")
 
-scikitplot.utils.\_path.make\_path(**prefix=''**, **suffix=''**, **ext=''**, **root=PosixPath('scikitplot-artifacts')**, **\***, **by\_day=False**, **add\_secret=False**, **private=False**, **mkdir=True**, **subdir=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/utils/_path.py#L580)[#](#scikitplot.utils._path.make_path "Link to this definition")
+scikitplot.utils.\_path.make\_path(**prefix=''**, **suffix=''**, **ext=''**, **root=PosixPath('scikitplot-artifacts')**, **\***, **by\_day=False**, **add\_secret=False**, **private=False**, **mkdir=True**, **subdir=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/utils/_path.py#L580)[#](#scikitplot.utils._path.make_path "Link to this definition")
 :   Make Convenience wrapper to build a unique path (callable with zero args).
 
     Parameters:
@@ -40,19 +40,19 @@ scikitplot.utils.\_path.make\_path(**prefix=''**, **suffix=''**, **ext=''**, **r
         :   Full path to a unique file location.
 
     Parameters:
-    :   * ****prefix**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****suffix**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****ext**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****root**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****by\_day**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****add\_secret**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****private**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****mkdir**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****subdir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****now**** ([**datetime**](https://docs.python.org/3/library/datetime.html#datetime.datetime "(in Python v3.14)") **|** **None**)
+    :   * ****prefix**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****suffix**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****ext**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****root**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****by\_day**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****add\_secret**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****private**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****mkdir**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****subdir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****now**** ([**datetime**](https://docs.python.org/3/library/datetime.html#datetime.datetime "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
     > **See also**
     > [`PathNamer`](scikitplot.utils._path.PathNamer.html#scikitplot.utils._path.PathNamer "scikitplot.utils._path.PathNamer")

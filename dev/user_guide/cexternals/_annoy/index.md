@@ -207,7 +207,7 @@ Index t(f);  // C++14 compatible
 * <https://pypi.org/project/annoy>
 > **See also**
 > * [`from_low_level`](../../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level "scikitplot.annoy.Index.from_low_level")
-* [`pickle`](https://docs.python.org/3/library/pickle.html#module-pickle "(in Python v3.14)") (Python standard library)
+* [`pickle`](https://docs.python.org/3/library/pickle.html#module-pickle "(in Python v3.15)") (Python standard library)
 * Alternative ANN libraries:
   - [nmslib/hnswlib](https://github.com/nmslib/hnswlib)
   - [spotify/voyager](https://github.com/spotify/voyager)

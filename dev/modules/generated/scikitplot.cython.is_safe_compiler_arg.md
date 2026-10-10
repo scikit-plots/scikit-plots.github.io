@@ -1,6 +1,6 @@
 # is\_safe\_compiler\_arg[#](#is-safe-compiler-arg "Link to this heading")
 
-scikitplot.cython.is\_safe\_compiler\_arg(**arg**, **\***, **allow\_shell\_meta=False**, **allow\_dangerous=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_security.py#L431)[#](#scikitplot.cython.is_safe_compiler_arg "Link to this definition")
+scikitplot.cython.is\_safe\_compiler\_arg(**arg**, **\***, **allow\_shell\_meta=False**, **allow\_dangerous=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_security.py#L484)[#](#scikitplot.cython.is_safe_compiler_arg "Link to this definition")
 :   Return `True` when a compiler argument string is safe to pass.
 
     Parameters:
@@ -18,12 +18,12 @@ scikitplot.cython.is\_safe\_compiler\_arg(**arg**, **\***, **allow\_shell\_meta=
         :   `True` if the argument passes all checks, `False` otherwise.
 
     Parameters:
-    :   * ****arg**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****allow\_shell\_meta**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****allow\_dangerous**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****arg**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****allow\_shell\_meta**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****allow\_dangerous**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+    :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
     Notes
 

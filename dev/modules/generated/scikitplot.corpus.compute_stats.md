@@ -1,6 +1,6 @@
 # compute\_stats[#](#compute-stats "Link to this heading")
 
-scikitplot.corpus.compute\_stats(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_metadata/_metadata.py#L357)[#](#scikitplot.corpus.compute_stats "Link to this definition")
+scikitplot.corpus.compute\_stats(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_metadata/_metadata.py#L358)[#](#scikitplot.corpus.compute_stats "Link to this definition")
 :   Compute aggregate statistics over a document collection.
 
     Parameters:
@@ -12,7 +12,7 @@ scikitplot.corpus.compute\_stats(**docs**)[[source]](https://github.com/scikit-p
         :   Frozen statistics object.
 
     Parameters:
-    :   ****docs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
+    :   ****docs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
 
     Return type:
     :   [**CorpusStats**](scikitplot.corpus.CorpusStats.html#scikitplot.corpus.CorpusStats "scikitplot.corpus._metadata._metadata.CorpusStats")

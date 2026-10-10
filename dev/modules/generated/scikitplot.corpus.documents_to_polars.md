@@ -1,6 +1,6 @@
 # documents\_to\_polars[#](#documents-to-polars "Link to this heading")
 
-scikitplot.corpus.documents\_to\_polars(**docs**, **\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_schema.py#L2806)[#](#scikitplot.corpus.documents_to_polars "Link to this definition")
+scikitplot.corpus.documents\_to\_polars(**docs**, **\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_schema.py#L2807)[#](#scikitplot.corpus.documents_to_polars "Link to this definition")
 :   Convert a list of [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") instances to a
     `polars.DataFrame`.
 
@@ -23,8 +23,8 @@ scikitplot.corpus.documents\_to\_polars(**docs**, **\***, **include\_embedding=F
         :   If `polars` is not installed.
 
     Parameters:
-    :   * ****docs**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")**]**)
-        * ****include\_embedding**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****docs**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")**]**)
+        * ****include\_embedding**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
     :   pl.DataFrame

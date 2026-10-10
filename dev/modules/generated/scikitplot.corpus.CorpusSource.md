@@ -1,6 +1,6 @@
 # CorpusSource[#](#corpussource "Link to this heading")
 
-class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**, **pattern='\*\*/\*'**, **recursive=True**, **extensions=None**, **source\_provenance=<factory>**, **follow\_symlinks=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L165)[#](#scikitplot.corpus.CorpusSource "Link to this definition")
+class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**, **pattern='\*\*/\*'**, **recursive=True**, **extensions=None**, **source\_provenance=<factory>**, **follow\_symlinks=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L166)[#](#scikitplot.corpus.CorpusSource "Link to this definition")
 :   Declarative descriptor for one or more document sources.
 
     [`CorpusSource`](#scikitplot.corpus.CorpusSource "scikitplot.corpus.CorpusSource") is a value object — it describes **where** to
@@ -38,13 +38,13 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
 
     Parameters:
     :   * ****kind**** ([**SourceKind**](scikitplot.corpus.SourceKind.html#scikitplot.corpus.SourceKind "scikitplot.corpus._sources._source.SourceKind"))
-        * ****root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****urls**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-        * ****pattern**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****recursive**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****extensions**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****follow\_symlinks**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****root**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****urls**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+        * ****pattern**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****recursive**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****extensions**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****follow\_symlinks**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     > **See also**
     > [`scikitplot.corpus._pipeline.CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus._pipeline.CorpusPipeline")
@@ -87,7 +87,7 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
     ```
     Go BackOpen In Tab
 
-    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L573)[#](#scikitplot.corpus.CorpusSource.count "Link to this definition")
+    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L574)[#](#scikitplot.corpus.CorpusSource.count "Link to this definition")
     :   Return the total number of entries this source will yield.
 
         > **Warning**
@@ -99,13 +99,13 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
             :   Number of entries.
 
         Return type:
-        :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
+        :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    extensions: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusSource.extensions "Link to this definition")
+    extensions: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CorpusSource.extensions "Link to this definition")
 
-    follow\_symlinks: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.CorpusSource.follow_symlinks "Link to this definition")
+    follow\_symlinks: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.CorpusSource.follow_symlinks "Link to this definition")
 
-    classmethod from\_directory(**directory**, **pattern='\*\*/\*'**, **recursive=True**, **extensions=None**, **source\_provenance=None**, **follow\_symlinks=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L263)[#](#scikitplot.corpus.CorpusSource.from_directory "Link to this definition")
+    classmethod from\_directory(**directory**, **pattern='\*\*/\*'**, **recursive=True**, **extensions=None**, **source\_provenance=None**, **follow\_symlinks=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L264)[#](#scikitplot.corpus.CorpusSource.from_directory "Link to this definition")
     :   Create a source that globs a directory.
 
         Parameters:
@@ -134,17 +134,17 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
         :   CorpusSource
 
         Parameters:
-        :   * ****directory**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****pattern**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****recursive**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****extensions**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-            * ****follow\_symlinks**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        :   * ****directory**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****pattern**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****recursive**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+            * ****extensions**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+            * ****follow\_symlinks**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
         Return type:
         :   [**CorpusSource**](#scikitplot.corpus.CorpusSource "scikitplot.corpus._sources._source.CorpusSource")
 
-    classmethod from\_file(**path**, **source\_provenance=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L237)[#](#scikitplot.corpus.CorpusSource.from_file "Link to this definition")
+    classmethod from\_file(**path**, **source\_provenance=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L238)[#](#scikitplot.corpus.CorpusSource.from_file "Link to this definition")
     :   Create a source for a single local file.
 
         Parameters:
@@ -158,13 +158,13 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
         :   CorpusSource
 
         Parameters:
-        :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
         :   [**CorpusSource**](#scikitplot.corpus.CorpusSource "scikitplot.corpus._sources._source.CorpusSource")
 
-    classmethod from\_manifest(**manifest\_path**, **source\_provenance=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L347)[#](#scikitplot.corpus.CorpusSource.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **source\_provenance=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L348)[#](#scikitplot.corpus.CorpusSource.from_manifest "Link to this definition")
     :   Create a source from a UTF-8 manifest file (one entry per line).
 
         Lines starting with `#` and blank lines are ignored. Each
@@ -185,13 +185,13 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
             :   If the manifest file does not exist.
 
         Parameters:
-        :   * ****manifest\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****manifest\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
         :   [**CorpusSource**](#scikitplot.corpus.CorpusSource "scikitplot.corpus._sources._source.CorpusSource")
 
-    classmethod from\_urls(**urls**, **source\_provenance=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L308)[#](#scikitplot.corpus.CorpusSource.from_urls "Link to this definition")
+    classmethod from\_urls(**urls**, **source\_provenance=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L309)[#](#scikitplot.corpus.CorpusSource.from_urls "Link to this definition")
     :   Create a source from an explicit list of URLs.
 
         Parameters:
@@ -209,13 +209,13 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
             :   If **urls** is empty or any entry is not a valid URL.
 
         Parameters:
-        :   * ****urls**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        :   * ****urls**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
+            * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
         :   [**CorpusSource**](#scikitplot.corpus.CorpusSource "scikitplot.corpus._sources._source.CorpusSource")
 
-    iter\_entries()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L429)[#](#scikitplot.corpus.CorpusSource.iter_entries "Link to this definition")
+    iter\_entries()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L430)[#](#scikitplot.corpus.CorpusSource.iter_entries "Link to this definition")
     :   Yield resolved [`SourceEntry`](scikitplot.corpus.SourceEntry.html#scikitplot.corpus.SourceEntry "scikitplot.corpus.SourceEntry") objects for this source.
 
         The generator is lazy — filesystem access happens per-entry, not
@@ -234,21 +234,21 @@ class scikitplot.corpus.CorpusSource(**kind**, **root=None**, **urls=<factory>**
             :   If a FILE source path does not exist at iteration time.
 
         Return type:
-        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[**SourceEntry**](scikitplot.corpus.SourceEntry.html#scikitplot.corpus.SourceEntry "scikitplot.corpus._sources._source.SourceEntry"), None, None]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[**SourceEntry**](scikitplot.corpus.SourceEntry.html#scikitplot.corpus.SourceEntry "scikitplot.corpus._sources._source.SourceEntry"), None, None]
 
-    kind: [SourceKind](scikitplot.corpus.SourceKind.html#scikitplot.corpus.SourceKind "scikitplot.corpus._sources._source.SourceKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L165)[#](#scikitplot.corpus.CorpusSource.kind "Link to this definition")
+    kind: [SourceKind](scikitplot.corpus.SourceKind.html#scikitplot.corpus.SourceKind "scikitplot.corpus._sources._source.SourceKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L166)[#](#scikitplot.corpus.CorpusSource.kind "Link to this definition")
 
-    pattern: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = '\*\*/\*'[#](#scikitplot.corpus.CorpusSource.pattern "Link to this definition")
+    pattern: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '\*\*/\*'[#](#scikitplot.corpus.CorpusSource.pattern "Link to this definition")
 
-    recursive: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.CorpusSource.recursive "Link to this definition")
+    recursive: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.CorpusSource.recursive "Link to this definition")
 
-    root: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusSource.root "Link to this definition")
+    root: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CorpusSource.root "Link to this definition")
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L165)[#](#scikitplot.corpus.CorpusSource.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L166)[#](#scikitplot.corpus.CorpusSource.source_provenance "Link to this definition")
 
-    urls: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L165)[#](#scikitplot.corpus.CorpusSource.urls "Link to this definition")
+    urls: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L166)[#](#scikitplot.corpus.CorpusSource.urls "Link to this definition")
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_sources/_source.py#L390)[#](#scikitplot.corpus.CorpusSource.validate "Link to this definition")
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_sources/_source.py#L391)[#](#scikitplot.corpus.CorpusSource.validate "Link to this definition")
     :   Assert that this source is internally consistent.
 
         Raises:

@@ -1,0 +1,25 @@
+# HAMLET\_TEXT[#](#hamlet-text "Link to this heading")
+
+scikitplot.corpus.HAMLET\_TEXT = "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK\n\nHAMLET. O that this too too solid flesh would melt,\nThaw, and resolve itself into a dew!\nOr that the Everlasting had not fix'd\nHis canon 'gainst self-slaughter! O God! God!\nHow weary, stale, flat, and unprofitable\nSeem to me all the uses of this world!\nFie on't! ah, fie! 'Tis an unweeded garden\nThat grows to seed. Things rank and gross in nature\nPossess it merely. That it should come to this!\n\nPOLONIUS. Yet here, Laertes? Aboard, aboard, for shame!\nThe wind sits in the shoulder of your sail,\nAnd you are stay'd for. There- my blessing with thee!\nGive thy thoughts no tongue,\nNor any unproportion'd thought his act.\nBe thou familiar, but by no means vulgar;\nThose friends thou hast, and their adoption tried,\nGrapple them unto thy soul with hoops of steel.\nGive every man thy ear, but few thy voice;\nTake each man's censure, but reserve thy judgment.\nThis above all- to thine own self be true,\nAnd it must follow, as the night the day,\nThou canst not then be false to any man.\n\nGHOST. I am thy father's spirit,\nDoom'd for a certain term to walk the night,\nAnd for the day confin'd to fast in fires,\nTill the foul crimes done in my days of nature\nAre burnt and purg'd away.\nI could a tale unfold whose lightest word\nWould harrow up thy soul, freeze thy young blood,\nMake thy two eyes, like stars, start from their spheres.\n\nHAMLET. O all you host of heaven! O earth! What else?\nAnd shall I couple hell? O, fie! Hold, hold, my heart,\nAnd you, my sinews, grow not instant old,\nBut bear me stiffly up. Remember thee!\nAy, thou poor ghost, while memory holds a seat\nIn this distracted globe. Remember thee!\n\nHAMLET. To be, or not to be- that is the question:\nWhether 'tis nobler in the mind to suffer\nThe slings and arrows of outrageous fortune\nOr to take arms against a sea of troubles,\nAnd by opposing end them. To die- to sleep-\nNo more; and by a sleep to say we end\nThe heartache, and the thousand natural shocks\nThat flesh is heir to. 'Tis a consummation\nDevoutly to be wish'd. To die- to sleep.\nTo sleep- perchance to dream: ay, there's the rub!\nFor in that sleep of death what dreams may come,\nWhen we have shuffled off this mortal coil,\nMust give us pause.\n\nOPHELIA. O, what a noble mind is here o'erthrown!\nThe courtier's, soldier's, scholar's, eye, tongue, sword;\nThe expectancy and rose of the fair state,\nThe glass of fashion and the mould of form,\nThe observed of all observers, quite, quite down!\n\nHAMLET. Speak the speech, I pray you, as I pronounced it to\nyou, trippingly on the tongue. But if you mouth it,\nas many of your players do, I had as lief the\ntown crier spoke my lines. Nor do not saw the air\ntoo much with your hand, thus, but use all gently;\nfor in the very torrent, tempest, and, as I may say,\nthe whirlwind of passion, you must acquire and beget\na temperance that may give it smoothness.\n\nKING. O, my offence is rank, it smells to heaven;\nIt hath the primal eldest curse upon't,\nA brother's murder. Pray can I not,\nThough inclination be as sharp as will.\nMy stronger guilt defeats my strong intent,\nAnd, like a man to double business bound,\nI stand in pause where I shall first begin,\nAnd both neglect.\n\nHAMLET. Alas, poor Yorick! I knew him, Horatio. A fellow\nof infinite jest, of most excellent fancy. He hath\nborne me on his back a thousand times; and now, how\nabhorred in my imagination it is!\nWhere be your gibes now? Your gambols? Your songs?\nYour flashes of merriment that were won't to set the table on a roar?\n\nHAMLET. There's a divinity that shapes our ends,\nRough-hew them how we will.\n\nHORATIO. That is most certain.\n\nHAMLET. Not a whit, we defy augury. There's a special\nprovidence in the fall of a sparrow. If it be now,\n'tis not to come; if it be not to come, it will be\nnow; if it be not now, yet it will come.\nThe readiness is all.\n"[#](#scikitplot.corpus.HAMLET_TEXT "Link to this definition")
+:   str(object=’’) -> str
+    str(bytes\_or\_buffer[, encoding[, errors]]) -> str
+
+    Create a new string object from the given object. If encoding or
+    errors is specified, then the object must expose a data buffer
+    that will be decoded using the given encoding and error handler.
+    Otherwise, returns the result of object.\_\_str\_\_() (if defined)
+    or repr(object).
+    encoding defaults to sys.getdefaultencoding().
+    errors defaults to ‘strict’.
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
+
+[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_mcp_corpus_annoy_hamlet_script_thumb.png)
+
+[Serve a Real Hamlet Corpus over MCP with Annoy](../../auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.html)
+
+Serve a Real Hamlet Corpus over MCP with Annoy

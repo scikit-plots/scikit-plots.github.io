@@ -1,6 +1,6 @@
 # YouTubeDownloader[#](#youtubedownloader "Link to this heading")
 
-class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **mode='transcript'**, **language='en'**, **include\_auto\_generated=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_youtube.py#L93)[#](#scikitplot.corpus.YouTubeDownloader "Link to this definition")
+class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **mode='transcript'**, **language='en'**, **include\_auto\_generated=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_youtube.py#L94)[#](#scikitplot.corpus.YouTubeDownloader "Link to this definition")
 :   YouTube content downloader.
 
     Downloads a transcript, audio track, or video from a single YouTube
@@ -47,17 +47,17 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
         :   If `mode` is not one of `"transcript"`, `"audio"`, `"video"`.
 
     Parameters:
-    :   * ****input\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****timeout**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****max\_bytes**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****verify\_ssl**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****block\_private\_ips**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****max\_redirects**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****user\_agent**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****mode**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'transcript'****,** **'audio'****,** **'video'****]**)
-        * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****include\_auto\_generated**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****input\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****timeout**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
+        * ****max\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****verify\_ssl**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****block\_private\_ips**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****max\_redirects**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****user\_agent**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****mode**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'transcript'****,** **'audio'****,** **'video'****]**)
+        * ****language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****include\_auto\_generated**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Notes
 
@@ -103,9 +103,9 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
     ```
     Go BackOpen In Tab
 
-    block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.YouTubeDownloader.block_private_ips "Link to this definition")
+    block\_private\_ips: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.YouTubeDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.YouTubeDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.YouTubeDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -114,7 +114,7 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_youtube.py#L207)[#](#scikitplot.corpus.YouTubeDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_youtube.py#L208)[#](#scikitplot.corpus.YouTubeDownloader.download "Link to this definition")
     :   Download the requested content and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Dispatches to `_download_transcript`,
@@ -136,22 +136,22 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
         Return type:
         :   [**DownloadResult**](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus._downloader._base.DownloadResult")
 
-    include\_auto\_generated: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.YouTubeDownloader.include_auto_generated "Link to this definition")
+    include\_auto\_generated: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.YouTubeDownloader.include_auto_generated "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_downloader/_youtube.py#L93)[#](#scikitplot.corpus.YouTubeDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_downloader/_youtube.py#L94)[#](#scikitplot.corpus.YouTubeDownloader.input_url "Link to this definition")
 
-    language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'en'[#](#scikitplot.corpus.YouTubeDownloader.language "Link to this definition")
+    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'en'[#](#scikitplot.corpus.YouTubeDownloader.language "Link to this definition")
 
-    max\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 104857600[#](#scikitplot.corpus.YouTubeDownloader.max_bytes "Link to this definition")
+    max\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 104857600[#](#scikitplot.corpus.YouTubeDownloader.max_bytes "Link to this definition")
 
-    max\_redirects: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5[#](#scikitplot.corpus.YouTubeDownloader.max_redirects "Link to this definition")
+    max\_redirects: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 5[#](#scikitplot.corpus.YouTubeDownloader.max_redirects "Link to this definition")
 
-    mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['transcript', 'audio', 'video'] = 'transcript'[#](#scikitplot.corpus.YouTubeDownloader.mode "Link to this definition")
+    mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")['transcript', 'audio', 'video'] = 'transcript'[#](#scikitplot.corpus.YouTubeDownloader.mode "Link to this definition")
 
-    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.YouTubeDownloader.output_path "Link to this definition")
+    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.YouTubeDownloader.output_path "Link to this definition")
 
-    timeout: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 30.0[#](#scikitplot.corpus.YouTubeDownloader.timeout "Link to this definition")
+    timeout: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 30.0[#](#scikitplot.corpus.YouTubeDownloader.timeout "Link to this definition")
 
-    user\_agent: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'[#](#scikitplot.corpus.YouTubeDownloader.user_agent "Link to this definition")
+    user\_agent: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'[#](#scikitplot.corpus.YouTubeDownloader.user_agent "Link to this definition")
 
-    verify\_ssl: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.YouTubeDownloader.verify_ssl "Link to this definition")
+    verify\_ssl: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.YouTubeDownloader.verify_ssl "Link to this definition")

@@ -1,6 +1,6 @@
 # Timer[#](#timer "Link to this heading")
 
-class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **logging\_level='info'**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/utils/_time.py#L16)[#](#scikitplot.utils._time.Timer "Link to this definition")
+class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **logging\_level='info'**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/utils/_time.py#L16)[#](#scikitplot.utils._time.Timer "Link to this definition")
 :   Lightweight ⏱ timing context manager with [`logger`](scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger") support.
 
     Examples
@@ -64,7 +64,7 @@ class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **l
     Go BackOpen In Tab
 
     Parameters:
-    :   * ****message**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****precision**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****logging\_level**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****message**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****precision**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****logging\_level**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****verbose**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))

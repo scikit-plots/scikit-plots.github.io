@@ -1,6 +1,6 @@
 # process\_html\_directory[#](#process-html-directory "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.process\_html\_directory(**input\_dir**, **\***, **output\_dir=None**, **selectors=None**, **theme\_preset=None**, **exclude\_patterns=None**, **strip\_tags=None**, **max\_workers=None**, **recursive=True**, **generate\_llms=False**, **base\_url=''**, **llms\_txt\_max\_entries=None**, **llms\_txt\_full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L3734)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.process\_html\_directory(**input\_dir**, **\***, **output\_dir=None**, **selectors=None**, **theme\_preset=None**, **exclude\_patterns=None**, **strip\_tags=None**, **max\_workers=None**, **recursive=True**, **generate\_llms=False**, **base\_url=''**, **llms\_txt\_max\_entries=None**, **llms\_txt\_full\_content=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L4059)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory "Link to this definition")
 :   Walk any HTML directory tree and convert pages to Markdown.
 
     This function is entirely ****Sphinx-free**** and works with any
@@ -67,21 +67,21 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.process\_html\_dire
         :   If `beautifulsoup4` or `markdownify` is not installed.
 
     Parameters:
-    :   * ****input\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****output\_dir**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****selectors**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****theme\_preset**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****exclude\_patterns**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****strip\_tags**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****max\_workers**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****recursive**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****generate\_llms**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****base\_url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****llms\_txt\_max\_entries**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****llms\_txt\_full\_content**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****input\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+        * ****output\_dir**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****selectors**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****theme\_preset**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****exclude\_patterns**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****strip\_tags**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****max\_workers**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****recursive**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****generate\_llms**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****base\_url**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****llms\_txt\_max\_entries**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****llms\_txt\_full\_content**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")]
+    :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")]
 
     Examples
 

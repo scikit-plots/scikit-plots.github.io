@@ -1,6 +1,6 @@
 # sanitize[#](#sanitize "Link to this heading")
 
-scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_utils.py#L17)[#](#scikitplot.cython.sanitize "Link to this definition")
+scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_utils.py#L17)[#](#scikitplot.cython.sanitize "Link to this definition")
 :   Convert an arbitrary string into a valid, collision-resistant module name.
 
     Parameters:
@@ -18,10 +18,10 @@ scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/s
         :   If `name` is not a `str`.
 
     Parameters:
-    :   ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Notes
 

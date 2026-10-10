@@ -1,6 +1,6 @@
 # save\_waveform[#](#save-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='output.wav'**, **ext=None**, **sample\_rate=44100**, **backend=None**, **dtype='float32'**, **normalize=True**, **stereo\_out=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/experimental/_doremi/note_io.py#L39)[#](#scikitplot.experimental._doremi.save_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='output.wav'**, **ext=None**, **sample\_rate=44100**, **backend=None**, **dtype='float32'**, **normalize=True**, **stereo\_out=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/experimental/_doremi/note_io.py#L39)[#](#scikitplot.experimental._doremi.save_waveform "Link to this definition")
 :   Save waveform to an audio file using specified or auto-selected backend.
 
     Parameters:
@@ -42,16 +42,16 @@ scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='outp
 
     Parameters:
     :   * ****waveform**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
-        * ****file\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****ext**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****sample\_rate**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
-        * ****backend**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****dtype**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****normalize**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****stereo\_out**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****file\_path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****ext**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****sample\_rate**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****backend**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****normalize**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****stereo\_out**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Notes
 

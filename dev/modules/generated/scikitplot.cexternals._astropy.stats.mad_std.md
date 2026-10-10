@@ -1,6 +1,6 @@
 # mad\_std[#](#mad-std "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
 :   Calculate a robust standard deviation using the [median absolute deviation (MAD)](https://en.wikipedia.org/wiki/Median_absolute_deviation).
 
     The standard deviation estimator is given by:
@@ -38,12 +38,12 @@ scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=N
 
     Parameters:
     :   * ****data**** (**ArrayLike**)
-        * ****axis**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** **...****]** **|** **None**)
-        * ****func**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.14)") **|** **None**)
-        * ****ignore\_nan**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        * ****axis**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** [**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **...****]** **|** **None**)
+        * ****func**** ([**Callable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.15)") **|** **None**)
+        * ****ignore\_nan**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | **NDArray**
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
     > **See also**
     > `biweight_midvariance`, `biweight_midcovariance`, [`median_absolute_deviation`](scikitplot.cexternals._astropy.stats.median_absolute_deviation.html#scikitplot.cexternals._astropy.stats.median_absolute_deviation "scikitplot.cexternals._astropy.stats.median_absolute_deviation")

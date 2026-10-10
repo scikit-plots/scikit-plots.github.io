@@ -1,6 +1,6 @@
 # build\_package\_example[#](#build-package-example "Link to this heading")
 
-scikitplot.cython.build\_package\_example(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_templates_api.py#L1082)[#](#scikitplot.cython.build_package_example "Link to this definition")
+scikitplot.cython.build\_package\_example(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_templates_api.py#L1083)[#](#scikitplot.cython.build_package_example "Link to this definition")
 :   Build and import a multi-module package example and return loaded modules.
 
     Parameters:
@@ -15,5 +15,5 @@ scikitplot.cython.build\_package\_example(**name**, **\*\*kwargs**)[[source]](ht
         :   Loaded modules.
 
     Parameters:
-    :   * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+    :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))

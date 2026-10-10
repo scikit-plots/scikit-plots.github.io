@@ -1,6 +1,6 @@
 # PybindCompiler[#](#pybindcompiler "Link to this heading")
 
-class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L965)[#](#scikitplot.cython.PybindCompiler "Link to this definition")
+class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L965)[#](#scikitplot.cython.PybindCompiler "Link to this definition")
 :   Built-in custom compiler: pybind11-only projects.
 
     This compiler wraps the standard Cython+setuptools pipeline but
@@ -40,7 +40,7 @@ class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/cython/_custom_compiler.py#L1012)[#](#scikitplot.cython.PybindCompiler.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/cython/_custom_compiler.py#L1012)[#](#scikitplot.cython.PybindCompiler.__call__ "Link to this definition")
     :   Compile a pybind11 C++ extension from source text.
 
         Parameters:
@@ -77,21 +77,21 @@ class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots
             :   If compilation fails.
 
         Parameters:
-        :   * ****source**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-            * ****module\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-            * ****include\_dirs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_compile\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****extra\_link\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****source**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****build\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)"))
+            * ****module\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****include\_dirs**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_compile\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****extra\_link\_args**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+            * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
-        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+        :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
-    property capabilities: CompilerCapabilities[#](#scikitplot.cython.PybindCompiler.capabilities "Link to this definition")
+    property capabilities: [CompilerCapabilities](scikitplot.cython.CompilerCapabilities.html#scikitplot.cython.CompilerCapabilities "scikitplot.cython._custom_compiler.CompilerCapabilities")[#](#scikitplot.cython.PybindCompiler.capabilities "Link to this definition")
     :   C++/pybind11, requires a C++ toolchain.
 
         Type:
         :   Declared capabilities
 
-    name: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'custom\_pybind11'[#](#scikitplot.cython.PybindCompiler.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'custom\_pybind11'[#](#scikitplot.cython.PybindCompiler.name "Link to this definition")

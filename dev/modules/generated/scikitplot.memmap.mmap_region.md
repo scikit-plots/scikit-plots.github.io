@@ -1,6 +1,6 @@
 # mmap\_region[#](#mmap-region "Link to this heading")
 
-scikitplot.memmap.mmap\_region(**int size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0x3**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0x22**, **int fd: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = -1**, **int offset: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**) → [MemoryMap](scikitplot.memmap.MemoryMap.html#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.mmap_region "Link to this definition")
+scikitplot.memmap.mmap\_region(**int size: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**, **int prot: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0x3**, **int flags: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0x22**, **int fd: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = -1**, **int offset: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0**) → [MemoryMap](scikitplot.memmap.MemoryMap.html#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.mmap_region "Link to this definition")
 :   Create a memory-mapped region (convenience function).
 
     Parameters:
@@ -24,11 +24,11 @@ scikitplot.memmap.mmap\_region(**int size: [int](https://docs.python.org/3/libra
         :   New memory mapping
 
     Parameters:
-    :   * ****size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****prot**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****flags**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****fd**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****offset**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****prot**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****flags**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****fd**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****offset**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Return type:
     :   [**MemoryMap**](scikitplot.memmap.MemoryMap.html#scikitplot.memmap.MemoryMap "scikitplot.memmap._memmap.mem_map.MemoryMap")

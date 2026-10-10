@@ -1,6 +1,6 @@
 # DefaultFilter[#](#defaultfilter "Link to this heading")
 
-class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L490)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
+class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L491)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
 :   Standard noise filter ported and improved from remarx’s `include_sentence`.
 
     Rejects a document when ****any**** of the following is true:
@@ -17,8 +17,8 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
         :   Minimum number of non-whitespace characters. Default: `10`.
 
     Parameters:
-    :   * ****min\_words**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-        * ****min\_chars**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
+    :   * ****min\_words**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****min\_chars**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
     Notes
 
@@ -42,7 +42,7 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
     ```
     Go BackOpen In Tab
 
-    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_base.py#L547)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
+    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_base.py#L548)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
     :   Return `True` if `doc` passes all noise checks.
 
         Parameters:
@@ -57,13 +57,13 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
         :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
+        :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
         Notes
 
         Character count is measured on the stripped text to avoid counting
         surrounding whitespace as content.
 
-    min\_chars: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.DefaultFilter.min_chars "Link to this definition")
+    min\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.DefaultFilter.min_chars "Link to this definition")
 
-    min\_words: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.DefaultFilter.min_words "Link to this definition")
+    min\_words: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.DefaultFilter.min_words "Link to this definition")

@@ -1,6 +1,6 @@
 # FunctionTokenizer[#](#functiontokenizer "Link to this heading")
 
-class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L280)[#](#scikitplot.corpus.FunctionTokenizer "Link to this definition")
+class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L280)[#](#scikitplot.corpus.FunctionTokenizer "Link to this definition")
 :   Wrap any `Callable[[str], list[str]]` as a [`TokenizerProtocol`](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus.TokenizerProtocol").
 
     Parameters:
@@ -12,8 +12,8 @@ class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](h
         :   Human-readable name for logging and `repr`.
 
     Parameters:
-    :   * ****fn**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]**)
-        * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+    :   * ****fn**** (**Callable****[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+        * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Notes
 
@@ -48,7 +48,7 @@ class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](h
     ```
     Go BackOpen In Tab
 
-    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L331)[#](#scikitplot.corpus.FunctionTokenizer.tokenize "Link to this definition")
+    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L331)[#](#scikitplot.corpus.FunctionTokenizer.tokenize "Link to this definition")
     :   Tokenize **text** using the wrapped callable.
 
         Parameters:
@@ -64,7 +64,7 @@ class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](h
             :   If the wrapped callable does not return a list.
 
         Parameters:
-        :   ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]

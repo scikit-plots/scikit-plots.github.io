@@ -1,6 +1,6 @@
 # find\_project\_root[#](#find-project-root "Link to this heading")
 
-scikitplot.mlflow.find\_project\_root(**start=None**, **\***, **markers=None**, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/mlflow/_project.py#L284)[#](#scikitplot.mlflow.find_project_root "Link to this definition")
+scikitplot.mlflow.find\_project\_root(**start=None**, **\***, **markers=None**, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/mlflow/_project.py#L284)[#](#scikitplot.mlflow.find_project_root "Link to this definition")
 :   Find a project root directory deterministically.
 
     Parameters:
@@ -23,15 +23,23 @@ scikitplot.mlflow.find\_project\_root(**start=None**, **\***, **markers=None**, 
         :   If no project root can be found by walking to filesystem root.
 
     Parameters:
-    :   * ****start**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****markers**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
-        * ****config\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+    :   * ****start**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
+        * ****markers**** ([**Sequence**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
+        * ****config\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
+    :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
     Notes
 
     Strict rule (no heuristics):
     - Walk upward from `start` until a directory containing any marker is found.
     - If none are found, raise.
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_mlflow_thumb.png)
+
+[MLflow](../../auto_examples/mlflow/plot_mlflow.html)
+
+MLflow

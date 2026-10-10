@@ -1,6 +1,6 @@
 # serialize\_sheet[#](#serialize-sheet "Link to this heading")
 
-scikitplot.experimental.\_doremi.serialize\_sheet(**sheet=None**, **save\_format='json'**, **add\_frequency=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c8953a1/scikitplot/experimental/_doremi/note.py#L394)[#](#scikitplot.experimental._doremi.serialize_sheet "Link to this definition")
+scikitplot.experimental.\_doremi.serialize\_sheet(**sheet=None**, **save\_format='json'**, **add\_frequency=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/de98219d/scikitplot/experimental/_doremi/note.py#L394)[#](#scikitplot.experimental._doremi.serialize_sheet "Link to this definition")
 :   Serialize sheet notes to JSON or YAML string.
 
     Parameters:
@@ -18,12 +18,12 @@ scikitplot.experimental.\_doremi.serialize\_sheet(**sheet=None**, **save\_format
         :   Serialized string in requested save\_format.
 
     Parameters:
-    :   * ****sheet**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** [**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)") **|** **None**)
-        * ****save\_format**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'json'****,** **'yaml'****]**)
-        * ****add\_frequency**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+    :   * ****sheet**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)") **|** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)") **|** **None**)
+        * ****save\_format**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")**[****'json'****,** **'yaml'****]**)
+        * ****add\_frequency**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
+    :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
     Examples
 
