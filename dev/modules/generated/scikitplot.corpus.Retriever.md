@@ -1,6 +1,6 @@
 # Retriever[#](#retriever "Link to this heading")
 
-class scikitplot.corpus.Retriever[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrievers.py#L121)[#](#scikitplot.corpus.Retriever "Link to this definition")
+class scikitplot.corpus.Retriever[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrievers.py#L121)[#](#scikitplot.corpus.Retriever "Link to this definition")
 :   Base class for an independent evidence path.
 
     Notes
@@ -10,10 +10,10 @@ class scikitplot.corpus.Retriever[[source]](https://github.com/scikit-plots/scik
     run says so instead of returning an empty list indistinguishable from a
     genuine zero-hit answer.
 
-    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'lexical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.Retriever.leg "Link to this definition")
+    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'lexical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.Retriever.leg "Link to this definition")
     :   Which evidence path this retriever represents.
 
-    retrieve(**query**, **config**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrievers.py#L135)[#](#scikitplot.corpus.Retriever.retrieve "Link to this definition")
+    retrieve(**query**, **config**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrievers.py#L135)[#](#scikitplot.corpus.Retriever.retrieve "Link to this definition")
     :   Run this leg.
 
         Parameters:

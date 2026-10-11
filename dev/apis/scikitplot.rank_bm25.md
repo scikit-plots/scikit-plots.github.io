@@ -82,9 +82,9 @@ Go BackOpen In Tab
 
 |  |  |
 | --- | --- |
-| `BM25` |  |
-| `BM25Okapi` |  |
-| `BM25L` |  |
-| `BM25Plus` |  |
+| [`BM25`](../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25 "scikitplot.rank_bm25.BM25") |  |
+| [`BM25Okapi`](../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi") |  |
+| [`BM25L`](../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L "scikitplot.rank_bm25.BM25L") |  |
+| [`BM25Plus`](../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus "scikitplot.rank_bm25.BM25Plus") |  |
 
 ## Validation[#](#validation "Link to this heading")

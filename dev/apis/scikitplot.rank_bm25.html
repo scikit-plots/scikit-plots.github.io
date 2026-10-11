@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:15:06Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:03:04Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.rank_bm25","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -110,7 +110,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="scikitplot.seaborn" href="scikitplot.seaborn.html" />
+    <link rel="next" title="BM25" href="../modules/generated/scikitplot.rank_bm25.BM25.html" />
     <link rel="prev" title="uniform" href="../modules/generated/scikitplot.random.uniform.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -1282,7 +1282,20 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.levenshtein.html">scikitplot.levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.BackendInfo.html">BackendInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.Match.html">Match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.available_backends.html">available_backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.backend_info.html">backend_info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.closest.html">closest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.distance.html">distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.make_corpus_scorer.html">make_corpus_scorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.normalized_distance.html">normalized_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.normalized_similarity.html">normalized_similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.rank.html">rank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.levenshtein.similarity.html">similarity</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1455,7 +1468,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">scikitplot.rank_bm25</a></li>
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">scikitplot.rank_bm25</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25.html">BM25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Okapi.html">BM25Okapi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25L.html">BM25L</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Plus.html">BM25Plus</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1523,7 +1542,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1550,9 +1569,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
@@ -1656,8 +1675,8 @@ The most common use case for these algorithms is, as you might have guessed, to 
 </ul>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="d6fd8b6e-04cd-416f-befd-0ddaa23fad92">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d6fd8b6e-04cd-416f-befd-0ddaa23fad92','9cec3aac-28bb-46eb-bf59-9ffeb8732d02','0edd2ccb-a56a-4bf2-874c-c575a1f13d41','../lite/tree/../notebooks/index.html?path=148edb71_70d0_4197_a96e_dbbad05e6d42.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="24921d0c-0969-4fb4-a601-7455fac078ae">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('24921d0c-0969-4fb4-a601-7455fac078ae','518b896d-9286-4f6f-9d15-68879b6566d4','99dee1af-6d66-47b0-922a-5c7cfc69cd38','../lite/tree/../notebooks/index.html?path=6e549710_4115_45f2_9596_ee6d1ec29b97.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Build an index over tokenised documents:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.rank_bm25</span><span class="w"> </span><span class="kn">import</span> <span class="n">BM25Okapi</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
@@ -1698,7 +1717,7 @@ precondition:</p>
 </div>
 </div>
 </div>
-<div id="0edd2ccb-a56a-4bf2-874c-c575a1f13d41" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d6fd8b6e-04cd-416f-befd-0ddaa23fad92','0edd2ccb-a56a-4bf2-874c-c575a1f13d41')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d6fd8b6e-04cd-416f-befd-0ddaa23fad92','0edd2ccb-a56a-4bf2-874c-c575a1f13d41')">Open In Tab</button></div><div id="9cec3aac-28bb-46eb-bf59-9ffeb8732d02" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/rank_bm25/index.html#id1"><span class="std std-ref">BM25 lexical ranking</span></a> section for further details.</p>
+<div id="99dee1af-6d66-47b0-922a-5c7cfc69cd38" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('24921d0c-0969-4fb4-a601-7455fac078ae','99dee1af-6d66-47b0-922a-5c7cfc69cd38')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('24921d0c-0969-4fb4-a601-7455fac078ae','99dee1af-6d66-47b0-922a-5c7cfc69cd38')">Open In Tab</button></div><div id="518b896d-9286-4f6f-9d15-68879b6566d4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/rank_bm25/index.html#id1"><span class="std std-ref">BM25 lexical ranking</span></a> section for further details.</p>
 <section id="rank-bm25-ref-identities-for-a-lexical-build">
 <span id="identities-for-a-lexical-build"></span><h2>Identities for a lexical build<a class="headerlink" href="#rank-bm25-ref-identities-for-a-lexical-build" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -1711,16 +1730,16 @@ precondition:</p>
 <span id="rank-bm25-ref-bm25-variations"></span><h2>BM25 Variations<a class="headerlink" href="#bm25-variations" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25" title="scikitplot.rank_bm25.BM25"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25Okapi</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi" title="scikitplot.rank_bm25.BM25Okapi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25Okapi</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25L</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L" title="scikitplot.rank_bm25.BM25L"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25L</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25Plus</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus" title="scikitplot.rank_bm25.BM25Plus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BM25Plus</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1757,11 +1776,11 @@ precondition:</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.seaborn.html"
+       href="../modules/generated/scikitplot.rank_bm25.BM25.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.seaborn</p>
+        <p class="prev-next-title">BM25</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1805,7 +1824,7 @@ precondition:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
       <br/>
     
   </p>

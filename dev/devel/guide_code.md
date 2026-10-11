@@ -1,4 +1,4 @@
-# Coding Guidelines[#](#coding-guidelines "Link to this heading")
+# [Coding Guidelines](#id1)[#](#coding-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to `astropy`.
@@ -7,7 +7,7 @@ This section describes requirements and guidelines that should be followed both
 by the core package and by coordinated packages, and these are also recommended
 for affiliated packages.
 
-## Interface and Dependencies[#](#interface-and-dependencies "Link to this heading")
+## [Interface and Dependencies](#id2)[#](#interface-and-dependencies "Link to this heading")
 
 * All code must be compatible with the versions of Python indicated by the
   `requires-python` key under `[project]` in the [pyproject.toml](https://github.com/astropy/astropy/blob/main/pyproject.toml) file of the
@@ -47,7 +47,7 @@ for affiliated packages.
   [`astropy.utils`](https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils "(in Astropy v8.1)"), packages should always use that utility instead of
   re-implementing it in `packagename.utils` module.
 
-## Documentation and Testing[#](#documentation-and-testing "Link to this heading")
+## [Documentation and Testing](#id3)[#](#documentation-and-testing "Link to this heading")
 
 * Docstrings must be present for all public classes/methods/functions, and
   must follow the form outlined in the [Documentation Guidelines](guide_document.html) document.
@@ -60,7 +60,7 @@ for affiliated packages.
   possible, and should adhere to the standards set in the [Coding Guidelines](#)
   document.
 
-## Data and Configuration[#](#data-and-configuration "Link to this heading")
+## [Data and Configuration](#id4)[#](#data-and-configuration "Link to this heading")
 
 * Packages can include data in a directory named `data` inside a subpackage
   source directory as long as it is less than about 100 kB. These data should
@@ -79,7 +79,7 @@ for affiliated packages.
   and supply a description sufficient for users to understand what the setting
   changes.
 
-## Standard output, warnings, and errors[#](#standard-output-warnings-and-errors "Link to this heading")
+## [Standard output, warnings, and errors](#id5)[#](#standard-output-warnings-and-errors "Link to this heading")
 
 The built-in `print(...)` function should only be used for output that
 is explicitly requested by the user, for example `print_header(...)`
@@ -107,7 +107,7 @@ from astropy import log
 
 ```
 
-## Coding Style/Conventions[#](#coding-style-conventions "Link to this heading")
+## [Coding Style/Conventions](#id6)[#](#coding-style-conventions "Link to this heading")
 
 * The code should follow the standard [PEP8 Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/).
 
@@ -180,7 +180,7 @@ from astropy import log
 * Command-line scripts should follow the form outlined in the [Command-Line Scripts Guidelines](guide_scripts_cli.html)
   document.
 
-## Unicode guidelines[#](#unicode-guidelines "Link to this heading")
+## [Unicode guidelines](#id7)[#](#unicode-guidelines "Link to this heading")
 
 For maximum compatibility, we need to assume that writing non-ASCII
 characters to the console or to files will not work. However, for
@@ -215,7 +215,7 @@ There is a test helper,
 [`assert_follows_unicode_guidelines`](https://docs.astropy.org/en/latest/api/astropy.tests.helper.assert_follows_unicode_guidelines.html#astropy.tests.helper.assert_follows_unicode_guidelines "(in Astropy v8.1)"),
 to check compliance with the above guidelines.
 
-## Including C Code[#](#including-c-code "Link to this heading")
+## [Including C Code](#id8)[#](#including-c-code "Link to this heading")
 
 * C extensions are only allowed when they provide a significant performance
   enhancement over pure Python, or a robust C library already exists to
@@ -240,7 +240,7 @@ to check compliance with the above guidelines.
   for building the extension via the mechanisms described in
   [C or Cython Extensions Guidelines](guide_ccython.html#building-c-or-cython-extensions).
 
-## Requirements Specific to Affiliated Packages[#](#requirements-specific-to-affiliated-packages "Link to this heading")
+## [Requirements Specific to Affiliated Packages](#id9)[#](#requirements-specific-to-affiliated-packages "Link to this heading")
 
 * Affiliated packages implementing many classes/functions not relevant to
   the affiliated package itself (for example leftover code from a previous
@@ -251,7 +251,7 @@ to check compliance with the above guidelines.
 * The `astropy` root package name should not be used by affiliated
   packages - it is reserved for use by the core package.
 
-## Examples[#](#examples "Link to this heading")
+## [Examples](#id10)[#](#examples "Link to this heading")
 
 This section shows a few examples (not all of which are correct!) to
 illustrate points from the guidelines.

@@ -1,4 +1,4 @@
-# Development Details Guidelines[#](#development-details-guidelines "Link to this heading")
+# [Development Details Guidelines](#id5)[#](#development-details-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to [astropy](https://docs.astropy.org/en/latest/development/development_details.html#).
@@ -6,7 +6,7 @@
 This document contains somewhat-independent sections that provide details on
 topics covered in the [Quickstart Contributing Guidelines](guide_qu_contribute.html#quickstart-contributing) guide.
 
-## Pre-commit[#](#pre-commit "Link to this heading")
+## [Pre-commit](#id6)[#](#pre-commit "Link to this heading")
 
 All of the coding style checks described in [Coding Style/Conventions](guide_code.html#code-style) or [PEP8, as enforced by flake8](guide_code_style_write.html#code-style-write) can be performed automatically
 when you make a git commit using our provided [pre-commit hook](https://pre-commit.com/)
@@ -75,7 +75,7 @@ Again, this will automatically apply the necessary changes to your code if possi
 you with fixing any issues with your code style, see [Fixing coding style issues](maintainers/maintainer_workflow.html#pre-commit-bot) for details
 on how to use this bot.
 
-## The editing workflow[#](#the-editing-workflow "Link to this heading")
+## [The editing workflow](#id7)[#](#the-editing-workflow "Link to this heading")
 
 Conceptually, you will:
 
@@ -136,7 +136,7 @@ Conceptually, you will:
    your changes into a few, smaller, commits rather than one large commit
    that does many things at once. Repeat the steps above as necessary!
 
-## Add a changelog entry[#](#add-a-changelog-entry "Link to this heading")
+## [Add a changelog entry](#id8)[#](#add-a-changelog-entry "Link to this heading")
 
 Add a changelog fragment briefly describing the change you made by creating
 a new file in `docs/changes/<sub-package>/`. The file should be named like
@@ -170,7 +170,7 @@ may not be valid in a future version of Astropy. However, use of
 double-backticks for monospace rendering of module/class/function/argument
 names and the like is encouraged.
 
-## Make a pull request[#](#make-a-pull-request "Link to this heading")
+## [Make a pull request](#id9)[#](#make-a-pull-request "Link to this heading")
 
 A **pull request** on GitHub is a request to merge the changes you have made into
 another repository.
@@ -208,7 +208,7 @@ it into Astropy:
    should also use `[ci skip]` or `[skip ci]` directive in your commit message.
    For usage of pre-commit hooks and directives, see [Pre-commit](#pre-commit) and [Fixing coding style issues](maintainers/maintainer_workflow.html#pre-commit-bot).
 
-## Do Not Create a Merge Commit[#](#do-not-create-a-merge-commit "Link to this heading")
+## [Do Not Create a Merge Commit](#id10)[#](#do-not-create-a-merge-commit "Link to this heading")
 
 If your branch associated with the pull request falls behind the `main`
 branch of [astropy/astropy](https://github.com/astropy/astropy), GitHub might offer you the option
@@ -221,7 +221,7 @@ Instead, in your local checkout, do a `fetch` and then a `rebase`, and
 resolve conflicts as necessary. See [Rebase if necessary](#rebase) and [How to rebase](#howto-rebase)
 for further information.
 
-## Rebase if necessary[#](#rebase-if-necessary "Link to this heading")
+## [Rebase if necessary](#id11)[#](#rebase-if-necessary "Link to this heading")
 
 Rebasing means taking your changes and applying them to the latest
 version of the `main` branch of the official `astropy` repository as though that was the
@@ -282,7 +282,7 @@ conflict with changes that someone else made — than anywhere else. Ask for hel
 need it. Instructions are available on how to [resolve merge conflicts after a Git
 rebase](https://help.github.com/en/articles/resolving-merge-conflicts-after-a-git-rebase).
 
-## Squash if necessary[#](#squash-if-necessary "Link to this heading")
+## [Squash if necessary](#id12)[#](#squash-if-necessary "Link to this heading")
 
 Squashing refers to combining multiple commits into a single commit. This can be done
 using the `git rebase` command or via [Github ‘Squash and merge’](maintainers/maintainer_workflow.html#github-squash-and-merge).
@@ -330,7 +330,7 @@ The last command will open an editor with all your commits, allowing you to
 squash several commits together, rename them, etc. Helpfully, the file you are
 editing has the instructions on what to do.
 
-## How to push[#](#how-to-push "Link to this heading")
+## [How to push](#id13)[#](#how-to-push "Link to this heading")
 
 After using `git rebase` you will still need to push your changes to
 GitHub so that they are visible to others and the pull request can be
@@ -353,7 +353,7 @@ git branch -D tmp
 
 ```
 
-## Troubleshooting the build[#](#troubleshooting-the-build "Link to this heading")
+## [Troubleshooting the build](#id14)[#](#troubleshooting-the-build "Link to this heading")
 
 If when building you get an error directing use of option `-std=c99` or
 `-std=gnu99`, you can try installing with:
@@ -365,7 +365,7 @@ CFLAGS='-std=c99' python -m pip install --editable .
 
 This is necessary for use with CentOS7.
 
-## External C Libraries[#](#external-c-libraries "Link to this heading")
+## [External C Libraries](#id15)[#](#external-c-libraries "Link to this heading")
 
 The `astropy` source ships with the C source code of a number of
 libraries. By default, these internal copies are used to build

@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:15:28Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:03:29Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"auto_examples/rank_bm25/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -891,16 +891,16 @@ model.</p>
 <section id="start-here">
 <h2>Start here<a class="headerlink" href="#start-here" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><strong>Quick start and stable identities</strong> — build a <code class="xref py py-class docutils literal notranslate"><span class="pre">BM25Okapi</span></code> index,
+<li><p><strong>Quick start and stable identities</strong> — build a <a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi" title="scikitplot.rank_bm25.BM25Okapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">BM25Okapi</span></code></a> index,
 retrieve by document ID, see deterministic tie ordering, and verify that an
 out-of-vocabulary query returns no sparse hits.</p></li>
-<li><p><strong>Choose a recipe</strong> — run the same corpus through <code class="xref py py-class docutils literal notranslate"><span class="pre">BM25Okapi</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">BM25L</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">BM25Plus</span></code>; inspect the versioned recipe identity
+<li><p><strong>Choose a recipe</strong> — run the same corpus through <a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi" title="scikitplot.rank_bm25.BM25Okapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">BM25Okapi</span></code></a>,
+<a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L" title="scikitplot.rank_bm25.BM25L"><code class="xref py py-class docutils literal notranslate"><span class="pre">BM25L</span></code></a>, and <a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus" title="scikitplot.rank_bm25.BM25Plus"><code class="xref py py-class docutils literal notranslate"><span class="pre">BM25Plus</span></code></a>; inspect the versioned recipe identity
 and compare rankings without treating one score scale as interchangeable
 with another.</p></li>
 <li><p><strong>Sparse retrieval versus dense diagnostics</strong> — use
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.candidate_count</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_top_ids</span></code>, and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_scores</span></code> for the jobs they actually perform.</p></li>
+<a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.candidate_count" title="scikitplot.rank_bm25.BM25.candidate_count"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.candidate_count</span></code></a>, <a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_top_ids" title="scikitplot.rank_bm25.BM25.get_top_ids"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_top_ids</span></code></a>, and
+<a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_scores" title="scikitplot.rank_bm25.BM25.get_scores"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_scores</span></code></a> for the jobs they actually perform.</p></li>
 <li><p><strong>Save and reload an index</strong> — publish a pre-tokenized index to a temporary
 directory, reload it, and verify that identities and retrieval survive the
 round trip.</p></li>
@@ -942,9 +942,9 @@ other BM25 libraries:</p>
 <ul class="simple">
 <li><p>corpus rows are token sequences unless <code class="docutils literal notranslate"><span class="pre">tokenizer=</span></code> is supplied;</p></li>
 <li><p>stable <code class="docutils literal notranslate"><span class="pre">doc_ids</span></code> are preferred over caller-owned row offsets;</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_top_ids</span></code> uses sparse candidate retrieval and an unknown term
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_top_ids" title="scikitplot.rank_bm25.BM25.get_top_ids"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_top_ids</span></code></a> uses sparse candidate retrieval and an unknown term
 can therefore return an empty result;</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_scores</span></code> is a dense diagnostic vector with one value per
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_scores" title="scikitplot.rank_bm25.BM25.get_scores"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BM25.get_scores</span></code></a> is a dense diagnostic vector with one value per
 corpus row;</p></li>
 <li><p>equal retrieval scores are ordered by original corpus position;</p></li>
 <li><p>exact floating-point values are not used as cross-recipe compatibility
@@ -1052,7 +1052,7 @@ nearest-neighbor vector retrieval.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
       <br/>
     
   </p>

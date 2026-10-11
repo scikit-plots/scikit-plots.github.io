@@ -1,6 +1,6 @@
 # Limits[#](#limits "Link to this heading")
 
-class scikitplot.cleanprompt.Limits(**max\_input\_chars=1000000**, **max\_spans=100000**, **max\_entries=50000**, **max\_literal\_terms=10000**, **max\_literal\_length=4096**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_policy.py#L486)[#](#scikitplot.cleanprompt.Limits "Link to this definition")
+class scikitplot.cleanprompt.Limits(**max\_input\_chars=1000000**, **max\_spans=100000**, **max\_entries=50000**, **max\_literal\_terms=10000**, **max\_literal\_length=4096**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_policy.py#L486)[#](#scikitplot.cleanprompt.Limits "Link to this definition")
 :   Hard bounds on one redaction pass.
 
     Parameters:
@@ -46,7 +46,7 @@ class scikitplot.cleanprompt.Limits(**max\_input\_chars=1000000**, **max\_spans=
     optional spaCy tier, so the base tier and the NER tier fail at the same
     size rather than at two different, surprising ones.
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_policy.py#L546)[#](#scikitplot.cleanprompt.Limits.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_policy.py#L546)[#](#scikitplot.cleanprompt.Limits.as_dict "Link to this definition")
     :   Return a JSON-safe dictionary of these limits.
 
         Returns:

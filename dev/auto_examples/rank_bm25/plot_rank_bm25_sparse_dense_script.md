@@ -5,11 +5,11 @@ to download the full example code or to run this example in your browser via Jup
 # Sparse Retrieval and Dense BM25 Diagnostics[#](#sparse-retrieval-and-dense-bm25-diagnostics "Link to this heading")
 
 Rank-BM25 exposes two deliberately different views of the same query.
-`BM25.get_top_ids` is the retrieval path: it scores documents that contain
-at least one query term. `BM25.get_scores` is a dense diagnostic: it
+[`BM25.get_top_ids`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_top_ids "scikitplot.rank_bm25.BM25.get_top_ids") is the retrieval path: it scores documents that contain
+at least one query term. [`BM25.get_scores`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_scores "scikitplot.rank_bm25.BM25.get_scores") is a dense diagnostic: it
 returns one score for every corpus row, including zeros for non-matches.
 
-Use `BM25.candidate_count` when you need to see how much of the corpus a
+Use [`BM25.candidate_count`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.candidate_count "scikitplot.rank_bm25.BM25.candidate_count") when you need to see how much of the corpus a
 query actually touches.
 
 ```
@@ -115,7 +115,7 @@ Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [pl
 
 ****Total running time of the script:**** (0 minutes 0.003 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.ipynb)
 
 [`Download Jupyter notebook: plot_rank_bm25_sparse_dense_script.ipynb`](../../_downloads/9a455b5178b2c8c2f189b8a93b9a57de/plot_rank_bm25_sparse_dense_script.ipynb)
 

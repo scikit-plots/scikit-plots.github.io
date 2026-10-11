@@ -1,12 +1,12 @@
 # BruteForceBackend[#](#bruteforcebackend "Link to this heading")
 
-class scikitplot.corpus.BruteForceBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L313)[#](#scikitplot.corpus.BruteForceBackend "Link to this definition")
+class scikitplot.corpus.BruteForceBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L313)[#](#scikitplot.corpus.BruteForceBackend "Link to this definition")
 :   Exact cosine similarity via a normalised dot product.
 
     Deterministic and dependency-free beyond `numpy`. Suited to small and
     medium corpora and used as the guaranteed fallback for `backend="auto"`.
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L327)[#](#scikitplot.corpus.BruteForceBackend.build "Link to this definition")
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L327)[#](#scikitplot.corpus.BruteForceBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -21,7 +21,7 @@ class scikitplot.corpus.BruteForceBackend[[source]](https://github.com/scikit-pl
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.BruteForceBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.BruteForceBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -39,7 +39,7 @@ class scikitplot.corpus.BruteForceBackend[[source]](https://github.com/scikit-pl
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.BruteForceBackend.dtype "Link to this definition")
     :   Element type of the indexed vectors.
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.BruteForceBackend.is_available "Link to this definition")
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.BruteForceBackend.is_available "Link to this definition")
     :   Return whether this backend’s optional dependencies are discoverable.
 
         Return type:
@@ -53,7 +53,7 @@ class scikitplot.corpus.BruteForceBackend[[source]](https://github.com/scikit-pl
 
     name: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = 'bruteforce'[#](#scikitplot.corpus.BruteForceBackend.name "Link to this definition")
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L336)[#](#scikitplot.corpus.BruteForceBackend.query "Link to this definition")
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L336)[#](#scikitplot.corpus.BruteForceBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with

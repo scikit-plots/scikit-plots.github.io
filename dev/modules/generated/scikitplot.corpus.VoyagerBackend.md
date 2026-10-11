@@ -1,12 +1,12 @@
 # VoyagerBackend[#](#voyagerbackend "Link to this heading")
 
-class scikitplot.corpus.VoyagerBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L585)[#](#scikitplot.corpus.VoyagerBackend "Link to this definition")
+class scikitplot.corpus.VoyagerBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L585)[#](#scikitplot.corpus.VoyagerBackend "Link to this definition")
 :   ANN backend over a Voyager cosine-space index.
 
     Voyager’s cosine **distance** is `1 - cosine`; cosine similarity is
     recovered as `1 - distance` for the unified contract.
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L599)[#](#scikitplot.corpus.VoyagerBackend.build "Link to this definition")
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L599)[#](#scikitplot.corpus.VoyagerBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -21,7 +21,7 @@ class scikitplot.corpus.VoyagerBackend[[source]](https://github.com/scikit-plots
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.VoyagerBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.VoyagerBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -39,7 +39,7 @@ class scikitplot.corpus.VoyagerBackend[[source]](https://github.com/scikit-plots
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.VoyagerBackend.dtype "Link to this definition")
     :   Element type of the indexed vectors.
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.VoyagerBackend.is_available "Link to this definition")
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.VoyagerBackend.is_available "Link to this definition")
     :   Return whether this backend’s optional dependencies are discoverable.
 
         Return type:
@@ -53,7 +53,7 @@ class scikitplot.corpus.VoyagerBackend[[source]](https://github.com/scikit-plots
 
     name: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = 'voyager'[#](#scikitplot.corpus.VoyagerBackend.name "Link to this definition")
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L609)[#](#scikitplot.corpus.VoyagerBackend.query "Link to this definition")
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L609)[#](#scikitplot.corpus.VoyagerBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with

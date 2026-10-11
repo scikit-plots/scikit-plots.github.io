@@ -1,13 +1,13 @@
-# License[#](#license "Link to this heading")
+# [License](#id5)[#](#license "Link to this heading")
 
 scikit-plots only uses BSD compatible code, and its license is based on
 the [PSF](https://docs.python.org/3/license.html) license. See the Open
 Source Initiative [licenses page](https://opensource.org/licenses) for details on individual
 licenses. Non-BSD compatible licenses (e.g., LGPL) are acceptable in
 scikit-plots toolkits. For a discussion of the motivations behind the
-licencing choice, see [Licenses for contributed code](../devel/guide_code_license.html#license-discussion).
+licencing choice, see [Licenses for contributed code](../devel/guide_code_style_write.html#license-discussion).
 
-## Copyright policy[#](#copyright-policy "Link to this heading")
+## [Copyright policy](#id6)[#](#copyright-policy "Link to this heading")
 
 Reiichiro Nakano began scikit-plot around 2018. But,
 as has always been the case, scikit-plot is the work of many.
@@ -31,7 +31,7 @@ The scikit-plots Development Team is the set of all contributors to the
 scikit-plots project. A full list can be obtained from the git version
 control logs.
 
-## License agreement[#](#license-agreement "Link to this heading")
+## [License agreement](#id7)[#](#license-agreement "Link to this heading")
 
 License agreement for scikit-plots versions 0.3.7 and later[#](#license-agreement-for-scikit-plots-versions-0.3.7-and-later "Link to this dropdown")
 ```
@@ -68,7 +68,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ```
 
-## Bundled software[#](#bundled-software "Link to this heading")
+## [Bundled software](#id8)[#](#bundled-software "Link to this heading")
 
 ### Bundled Licenses[#](#bundled-licenses "Link to this heading")
 
@@ -1412,7 +1412,7 @@ SOFTWARE.
 
 ```
 
-## Third Party[#](#third-party "Link to this heading")
+## [Third Party](#id9)[#](#third-party "Link to this heading")
 
 ### Third Party Licenses[#](#third-party-licenses "Link to this heading")
 

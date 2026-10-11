@@ -1,7 +1,5 @@
 # Python API[#](#python-api "Link to this heading")
 
-
-
 The public surface is intentionally small. Private helpers may depend on
 vendored/upstream seaborn internals and are not compatibility promises.
 

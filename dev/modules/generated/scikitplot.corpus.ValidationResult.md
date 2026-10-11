@@ -1,6 +1,6 @@
 # ValidationResult[#](#validationresult "Link to this heading")
 
-class scikitplot.corpus.ValidationResult(**valid**, **errors=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L942)[#](#scikitplot.corpus.ValidationResult "Link to this definition")
+class scikitplot.corpus.ValidationResult(**valid**, **errors=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L942)[#](#scikitplot.corpus.ValidationResult "Link to this definition")
 :   Aggregate result of a validation pass.
 
     Parameters:
@@ -25,9 +25,9 @@ class scikitplot.corpus.ValidationResult(**valid**, **errors=<factory>**)[[sourc
     ```
     Go BackOpen In Tab
 
-    errors: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[ValidationError](scikitplot.corpus.ValidationError.html#scikitplot.corpus.ValidationError "scikitplot.corpus._types.ValidationError")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L942)[#](#scikitplot.corpus.ValidationResult.errors "Link to this definition")
+    errors: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[ValidationError](scikitplot.corpus.ValidationError.html#scikitplot.corpus.ValidationError "scikitplot.corpus._types.ValidationError")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L942)[#](#scikitplot.corpus.ValidationResult.errors "Link to this definition")
 
-    raise\_if\_invalid(**context=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L963)[#](#scikitplot.corpus.ValidationResult.raise_if_invalid "Link to this definition")
+    raise\_if\_invalid(**context=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L963)[#](#scikitplot.corpus.ValidationResult.raise_if_invalid "Link to this definition")
     :   Raise a `ValueError` if this result is invalid.
 
         Parameters:
@@ -44,4 +44,4 @@ class scikitplot.corpus.ValidationResult(**valid**, **errors=<factory>**)[[sourc
         Return type:
         :   None
 
-    valid: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L942)[#](#scikitplot.corpus.ValidationResult.valid "Link to this definition")
+    valid: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L942)[#](#scikitplot.corpus.ValidationResult.valid "Link to this definition")

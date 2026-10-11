@@ -1,4 +1,4 @@
-# Licenses for contributed code[#](#licenses-for-contributed-code "Link to this heading")
+# [Licenses for contributed code](#id1)[#](#licenses-for-contributed-code "Link to this heading")
 
 scikit-plots only uses BSD compatible code. If you bring in code from
 another project make sure it has a PSF, BSD, MIT or compatible license
@@ -13,7 +13,7 @@ you to distribute the license with it. Non-BSD compatible licenses
 are acceptable in scikit-plots toolkits (e.g., basemap), but make sure you
 clearly state the licenses you are using.
 
-## Why BSD compatible?[#](#why-bsd-compatible "Link to this heading")
+## [Why BSD compatible?](#id2)[#](#why-bsd-compatible "Link to this heading")
 
 The two dominant license variants in the wild are GPL-style and
 BSD-style. There are countless other licenses that place specific

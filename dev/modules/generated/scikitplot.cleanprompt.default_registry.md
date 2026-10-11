@@ -1,6 +1,6 @@
 # default\_registry[#](#default-registry "Link to this heading")
 
-scikitplot.cleanprompt.default\_registry(**kinds=None**, **literal\_terms=None**, **literal\_kind='CUSTOM'**, **word\_boundary=False**, **ignore\_case=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_detectors.py#L638)[#](#scikitplot.cleanprompt.default_registry "Link to this definition")
+scikitplot.cleanprompt.default\_registry(**kinds=None**, **literal\_terms=None**, **literal\_kind='CUSTOM'**, **word\_boundary=False**, **ignore\_case=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_detectors.py#L638)[#](#scikitplot.cleanprompt.default_registry "Link to this definition")
 :   Build a registry from the pattern library, plus optional literal terms.
 
     Parameters:

@@ -1,6 +1,6 @@
 # ANNIndexArtifact[#](#annindexartifact "Link to this heading")
 
-class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**, **doc\_ids**, **backend**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact "Link to this definition")
+class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**, **doc\_ids**, **backend**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact "Link to this definition")
 :   A persisted vector index together with its provenance.
 
     Parameters:
@@ -31,9 +31,9 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
     ****Developer.**** `doc_ids` is a tuple, so an artifact cannot have its
     mapping mutated after the correspondence has been validated.
 
-    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.backend "Link to this definition")
+    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.backend "Link to this definition")
 
-    doc\_id\_for(**ordinal**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L135)[#](#scikitplot.corpus.ANNIndexArtifact.doc_id_for "Link to this definition")
+    doc\_id\_for(**ordinal**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L135)[#](#scikitplot.corpus.ANNIndexArtifact.doc_id_for "Link to this definition")
     :   Resolve a backend row offset to a stable document identity.
 
         Parameters:
@@ -69,11 +69,11 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
         indexing used to accept `-1` and resolve it to the last row, which
         turned a caller’s off-by-one into a plausible wrong document.
 
-    doc\_ids: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.doc_ids "Link to this definition")
+    doc\_ids: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.doc_ids "Link to this definition")
 
-    generation: [IndexGeneration](scikitplot.corpus.IndexGeneration.html#scikitplot.corpus.IndexGeneration "scikitplot.corpus._generation.IndexGeneration")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.generation "Link to this definition")
+    generation: [IndexGeneration](scikitplot.corpus.IndexGeneration.html#scikitplot.corpus.IndexGeneration "scikitplot.corpus._generation.IndexGeneration")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.generation "Link to this definition")
 
-    classmethod generations(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L409)[#](#scikitplot.corpus.ANNIndexArtifact.generations "Link to this definition")
+    classmethod generations(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L409)[#](#scikitplot.corpus.ANNIndexArtifact.generations "Link to this definition")
     :   Return the generation directories retained under `path`.
 
         Parameters:
@@ -91,15 +91,15 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")]
 
-    load\_vectors()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L535)[#](#scikitplot.corpus.ANNIndexArtifact.load_vectors "Link to this definition")
+    load\_vectors()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L535)[#](#scikitplot.corpus.ANNIndexArtifact.load_vectors "Link to this definition")
     :   Return the native payload, or `None` when none was written.
 
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    manifest: [EmbeddingManifest](scikitplot.corpus.EmbeddingManifest.html#scikitplot.corpus.EmbeddingManifest "scikitplot.corpus._embedding_manifest.EmbeddingManifest")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.manifest "Link to this definition")
+    manifest: [EmbeddingManifest](scikitplot.corpus.EmbeddingManifest.html#scikitplot.corpus.EmbeddingManifest "scikitplot.corpus._embedding_manifest.EmbeddingManifest")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.manifest "Link to this definition")
 
-    classmethod open(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L433)[#](#scikitplot.corpus.ANNIndexArtifact.open "Link to this definition")
+    classmethod open(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L433)[#](#scikitplot.corpus.ANNIndexArtifact.open "Link to this definition")
     :   Open the generation the artifact’s pointer currently names.
 
         Parameters:
@@ -121,7 +121,7 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
         Return type:
         :   [**ANNIndexArtifact**](#scikitplot.corpus.ANNIndexArtifact "scikitplot.corpus._artifact.ANNIndexArtifact")
 
-    classmethod open\_generation(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L476)[#](#scikitplot.corpus.ANNIndexArtifact.open_generation "Link to this definition")
+    classmethod open\_generation(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L476)[#](#scikitplot.corpus.ANNIndexArtifact.open_generation "Link to this definition")
     :   Load an artifact, validating its internal consistency.
 
         Raises:
@@ -143,9 +143,9 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
         reason the document schema refuses an unknown major version: a mapping
         that might mean something else is worse than no mapping.
 
-    path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.path "Link to this definition")
+    path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L104)[#](#scikitplot.corpus.ANNIndexArtifact.path "Link to this definition")
 
-    require\_compatible(**manifest=None**, **\***, **documents=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L187)[#](#scikitplot.corpus.ANNIndexArtifact.require_compatible "Link to this definition")
+    require\_compatible(**manifest=None**, **\***, **documents=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L187)[#](#scikitplot.corpus.ANNIndexArtifact.require_compatible "Link to this definition")
     :   Refuse to use this artifact with incompatible inputs.
 
         Parameters:
@@ -177,7 +177,7 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
         reproduce it would defeat the purpose; what must hold is that the
         artifact describes these documents and no others.
 
-    resolve(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L176)[#](#scikitplot.corpus.ANNIndexArtifact.resolve "Link to this definition")
+    resolve(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L176)[#](#scikitplot.corpus.ANNIndexArtifact.resolve "Link to this definition")
     :   Map `(ordinal, score)` pairs to `(doc_id, score)` pairs.
 
         Parameters:
@@ -189,7 +189,7 @@ class scikitplot.corpus.ANNIndexArtifact(**path**, **manifest**, **generation**,
     property row\_count: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.ANNIndexArtifact.row_count "Link to this definition")
     :   Number of rows the sidecar describes.
 
-    classmethod write(**path**, **\***, **documents**, **backend**, **manifest**, **vectors=None**, **generation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_artifact.py#L254)[#](#scikitplot.corpus.ANNIndexArtifact.write "Link to this definition")
+    classmethod write(**path**, **\***, **documents**, **backend**, **manifest**, **vectors=None**, **generation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_artifact.py#L254)[#](#scikitplot.corpus.ANNIndexArtifact.write "Link to this definition")
     :   Publish an artifact atomically.
 
         Parameters:

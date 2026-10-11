@@ -2,7 +2,7 @@
 
 ## Stable ranking[#](#stable-ranking "Link to this heading")
 
-[`rank`](generated/scikitplot.levenshtein.rank.html#scikitplot.levenshtein.rank "scikitplot.levenshtein.rank") orders results by:
+[`rank`](../../modules/generated/scikitplot.levenshtein.rank.html#scikitplot.levenshtein.rank "scikitplot.levenshtein.rank") orders results by:
 
 ```
 highest normalized similarity
@@ -74,7 +74,7 @@ preprocessing.
 
 ## Closest[#](#closest "Link to this heading")
 
-[`closest`](generated/scikitplot.levenshtein.closest.html#scikitplot.levenshtein.closest "scikitplot.levenshtein.closest") is equivalent to ranking with `limit=1`.
+[`closest`](../../modules/generated/scikitplot.levenshtein.closest.html#scikitplot.levenshtein.closest "scikitplot.levenshtein.closest") is equivalent to ranking with `limit=1`.
 
 It returns `None` when:
 

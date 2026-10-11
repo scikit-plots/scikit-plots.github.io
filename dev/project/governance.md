@@ -1,4 +1,4 @@
-# Scikit-plots Governance (Acknowledging) and Decision-Making Processes[#](#scikit-plots-governance-acknowledging-and-decision-making-processes "Link to this heading")
+# [Scikit-plots Governance (Acknowledging) and Decision-Making Processes](#id1)[#](#scikit-plots-governance-acknowledging-and-decision-making-processes "Link to this heading")
 
 The purpose of this document is to formalize the governance process used by the
 scikit-plots project, clarifying how decisions are made and how various
@@ -13,7 +13,7 @@ design and participate in the decision making process. This document describes
 how that participation takes place and how to set about earning merit within
 the project community.
 
-## Roles And Responsibilities[#](#roles-and-responsibilities "Link to this heading")
+## [Roles And Responsibilities](#id2)[#](#roles-and-responsibilities "Link to this heading")
 
 We distinguish between contributors, core contributors, and the technical
 committee. A key distinction between them is their voting rights: contributors
@@ -106,7 +106,7 @@ not actively engage with the TC duties are expected to resign.
 
 The Technical Committee of scikit-plots consists of [muhammed celik](https://github.com/celik-muhammed).
 
-## Decision Making Process[#](#decision-making-process "Link to this heading")
+## [Decision Making Process](#id3)[#](#decision-making-process "Link to this heading")
 
 Decisions about the future of the project are made through discussion with all
 members of the community. All non-sensitive project management discussion takes
@@ -159,7 +159,7 @@ Approval will count as a positive vote, and a “Request Changes” review will
 count as a negative vote. If two-thirds of the cast votes are positive, then
 the governance model change is accepted.
 
-## Enhancement proposals (SPEPs)[#](#enhancement-proposals-speps "Link to this heading")
+## [Enhancement proposals (SPEPs)](#id4)[#](#enhancement-proposals-speps "Link to this heading")
 
 For all votes, a proposal must have been made public and discussed before the
 vote. Such proposal must be a consolidated document, in the form of a

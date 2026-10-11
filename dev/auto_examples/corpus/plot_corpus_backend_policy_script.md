@@ -171,7 +171,7 @@ strict BackendPolicy(name='strict', order=(), include_unlisted=True, allow_fallb
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.007 seconds)
+****Total running time of the script:**** (0 minutes 0.009 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)
 

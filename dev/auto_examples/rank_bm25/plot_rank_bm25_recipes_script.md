@@ -4,8 +4,8 @@ to download the full example code or to run this example in your browser via Jup
 
 # Compare the Three Rank-BM25 Scoring Recipes[#](#compare-the-three-rank-bm25-scoring-recipes "Link to this heading")
 
-Scikit-Plots exposes three concrete BM25 recipes: `BM25Okapi`,
-`BM25L`, and `BM25Plus`. This example runs one corpus and query
+Scikit-Plots exposes three concrete BM25 recipes: [`BM25Okapi`](../../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi"),
+[`BM25L`](../../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L "scikitplot.rank_bm25.BM25L"), and [`BM25Plus`](../../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus "scikitplot.rank_bm25.BM25Plus"). This example runs one corpus and query
 through all three, shows each versioned recipe identifier, and compares result
 ordering without assuming that scores from different formulas share one scale.
 
@@ -120,7 +120,7 @@ Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [pl
 
 ****Total running time of the script:**** (0 minutes 0.003 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)
 
 [`Download Jupyter notebook: plot_rank_bm25_recipes_script.ipynb`](../../_downloads/2b15b18bde602319ca3897ec9e848ef1/plot_rank_bm25_recipes_script.ipynb)
 

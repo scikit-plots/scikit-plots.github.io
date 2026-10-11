@@ -1,4 +1,4 @@
-# Community Management Guidelines[#](#community-management-guidelines "Link to this heading")
+# [Community Management Guidelines](#id5)[#](#community-management-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -26,7 +26,7 @@ Our approach to community engagement is foremost guided by our [Mission Statemen
   by creating educational resources, building third party tools, and building
   informal mentoring networks.
 
-## Official communication channels[#](#official-communication-channels "Link to this heading")
+## [Official communication channels](#id6)[#](#official-communication-channels "Link to this heading")
 
 The Scientific Python community uses various communications platforms to stay
 updated on new features and projects, to contribute by telling us what is on
@@ -76,7 +76,7 @@ media accounts:
   * Introduce yourself - github handle and participation in the community.
   * Describe the reason for wanting to moderate or contribute to social.
 
-## Content guidelines[#](#content-guidelines "Link to this heading")
+## [Content guidelines](#id7)[#](#content-guidelines "Link to this heading")
 
 Communication on official channels, such as the Matplotlib homepage or on
 Matplotlib social accounts, should conform to the following standards. If you
@@ -142,7 +142,7 @@ Visual media in communications should be made as accessible as possible:
   * Do not make bright, strobing images.
   * More guidelines at <https://webaim.org/techniques/images/>.
 
-## Social media[#](#social-media-brand "Link to this heading")
+## [Social media](#id8)[#](#social-media-brand "Link to this heading")
 
 Matplotlib aims for a single voice across all social media platforms to build and
 maintain a consistent brand identity for Matplotlib as an organization. This
@@ -216,7 +216,7 @@ Typically the social media accounts will promote the following:
 
 * John Hunter Excellence in Plotting, submission and winners
 
-## Changing the guidelines[#](#changing-the-guidelines "Link to this heading")
+## [Changing the guidelines](#id9)[#](#changing-the-guidelines "Link to this heading")
 
 As the person tasked with implementing these guidelines, the [community\_manager](https://matplotlib.org/governance/people.html#deputy-project-leads)
 should be alerted to proposed changes. Similarly, specific platform guidelines

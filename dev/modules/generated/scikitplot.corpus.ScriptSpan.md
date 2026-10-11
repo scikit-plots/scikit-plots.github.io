@@ -1,6 +1,6 @@
 # ScriptSpan[#](#scriptspan "Link to this heading")
 
-class scikitplot.corpus.ScriptSpan(**text**, **script**, **direction**, **start**, **end**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan "Link to this definition")
+class scikitplot.corpus.ScriptSpan(**text**, **script**, **direction**, **start**, **end**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan "Link to this definition")
 :   A contiguous span of text in a single Unicode script.
 
     Produced by [`ScriptSegmenter`](scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter "scikitplot.corpus.ScriptSegmenter") from NFC-normalised text.
@@ -51,12 +51,12 @@ class scikitplot.corpus.ScriptSpan(**text**, **script**, **direction**, **start*
     ```
     Go BackOpen In Tab
 
-    direction: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.direction "Link to this definition")
+    direction: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.direction "Link to this definition")
 
-    end: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.end "Link to this definition")
+    end: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.end "Link to this definition")
 
-    script: [ScriptType](scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType "scikitplot.corpus._chunkers._custom_tokenizer.ScriptType")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.script "Link to this definition")
+    script: [ScriptType](scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType "scikitplot.corpus._chunkers._custom_tokenizer.ScriptType")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.script "Link to this definition")
 
-    start: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.start "Link to this definition")
+    start: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.start "Link to this definition")
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1493)[#](#scikitplot.corpus.ScriptSpan.text "Link to this definition")

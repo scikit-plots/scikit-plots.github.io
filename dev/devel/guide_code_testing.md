@@ -1,4 +1,4 @@
-# Code Testing Guidelines[#](#code-testing-guidelines "Link to this heading")
+# [Code Testing Guidelines](#id2)[#](#code-testing-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -17,9 +17,9 @@ Ensure that the correct python.pythonPath is set in your `.vscode/settings.json`
 Matplotlib uses the [pytest](https://docs.pytest.org/en/stable/) framework.
 
 The tests are in `lib/matplotlib/tests`, and customizations to the pytest
-testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)").
+testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.12.0.dev733+gcc7d47175)").
 
-## Requirements[#](#requirements "Link to this heading")
+## [Requirements](#id3)[#](#requirements "Link to this heading")
 
 To run the tests you will need to
 [set up Matplotlib for development](guide_devel_setup.html#installing-for-devs). Note in
@@ -34,7 +34,7 @@ Matplotlib, this is a far less common use case. You still need the
 You have to additionally get the reference images from the repository,
 because they are not distributed with pre-built Matplotlib packages.
 
-## Running the tests[#](#running-the-tests "Link to this heading")
+## [Running the tests](#id4)[#](#running-the-tests "Link to this heading")
 
 In the root directory of your development repository run:
 
@@ -110,7 +110,7 @@ The triage tool allows you to accept or reject test failures and will copy the n
 to the folder where the baseline test images are stored. The triage tool requires that
 [QT](../install/dependencies.html#backend-dependencies) is installed.
 
-## Writing a simple test[#](#writing-a-simple-test "Link to this heading")
+## [Writing a simple test](#id5)[#](#writing-a-simple-test "Link to this heading")
 
 Many elements of Matplotlib can be tested using standard tests. For
 example, here is a test from `matplotlib/tests/test_basic.py`:
@@ -133,7 +133,7 @@ execution (such as created figures or modified `.rcParams`). The pytest fixture
 `matplotlib.testing.conftest.mpl_test_settings` will automatically clean
 these up; there is no need to do anything further.
 
-## Random data in tests[#](#random-data-in-tests "Link to this heading")
+## [Random data in tests](#id6)[#](#random-data-in-tests "Link to this heading")
 
 Random data is a very convenient way to generate data for examples,
 however the randomness is problematic for testing (as the tests
@@ -150,7 +150,7 @@ and then use `rng` when generating the random numbers.
 
 The seed is [John Hunter’s](../project/history.html#project-history) birthday.
 
-## Writing an image comparison test[#](#writing-an-image-comparison-test "Link to this heading")
+## [Writing an image comparison test](#id7)[#](#writing-an-image-comparison-test "Link to this heading")
 
 Writing an image-based test is only slightly more difficult than a simple
 test. The main consideration is that you must specify the “baseline”, or
@@ -233,13 +233,13 @@ See the documentation of `~matplotlib.testing.decorators.image_comparison` and
 `~matplotlib.testing.decorators.check_figures_equal` for additional information
 about their use.
 
-## Creating a new module in matplotlib.tests[#](#creating-a-new-module-in-matplotlib-tests "Link to this heading")
+## [Creating a new module in matplotlib.tests](#id8)[#](#creating-a-new-module-in-matplotlib-tests "Link to this heading")
 
 We try to keep the tests categorized by the primary module they are
 testing. For example, the tests related to the `mathtext.py` module
 are in `test_mathtext.py`.
 
-## Using GitHub Actions for CI[#](#using-github-actions-for-ci "Link to this heading")
+## [Using GitHub Actions for CI](#id9)[#](#using-github-actions-for-ci "Link to this heading")
 
 [GitHub Actions](https://docs.github.com/en/actions) is a hosted CI system
 “in the cloud”.
@@ -261,7 +261,7 @@ You can see the GitHub Actions results at
 [your\_GitHub\_user\_name/matplotlib](https://github.com/your_GitHub_user_name/matplotlib/actions) – here’s [an
 example](https://github.com/QuLogic/matplotlib/actions).
 
-## Using tox[#](#using-tox "Link to this heading")
+## [Using tox](#id10)[#](#using-tox "Link to this heading")
 
 [Tox](https://tox.readthedocs.io/en/latest/) is a tool for running tests
 against multiple Python environments, including multiple versions of Python
@@ -302,7 +302,7 @@ edit this file if you want to add new environments to test (e.g.,
 tests are run. For more info on the `tox.ini` file, see the [Tox
 Configuration Specification](https://tox.readthedocs.io/en/latest/config.html).
 
-## Building old versions of Matplotlib[#](#building-old-versions-of-matplotlib "Link to this heading")
+## [Building old versions of Matplotlib](#id11)[#](#building-old-versions-of-matplotlib "Link to this heading")
 
 When running a `git bisect` to see which commit introduced a certain bug,
 you may (rarely) need to build very old versions of Matplotlib. The following
@@ -310,7 +310,7 @@ constraints need to be taken into account:
 
 * Matplotlib 1.3 (or earlier) requires numpy 1.8 (or earlier).
 
-## Testing released versions of Matplotlib[#](#testing-released-versions-of-matplotlib "Link to this heading")
+## [Testing released versions of Matplotlib](#id12)[#](#testing-released-versions-of-matplotlib "Link to this heading")
 
 Running the tests on an installation of a released version (e.g. PyPI package
 or conda package) also requires additional setup.

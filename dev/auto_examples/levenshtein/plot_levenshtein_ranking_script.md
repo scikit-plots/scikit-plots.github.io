@@ -51,7 +51,7 @@ print("closest:", best.choice)
 
 ****Total running time of the script:**** (0 minutes 0.002 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo22.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/levenshtein/plot_levenshtein_ranking_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo22.svg)](../../lite/lab/index.html?path=auto_examples/levenshtein/plot_levenshtein_ranking_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo10.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/levenshtein/plot_levenshtein_ranking_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo10.svg)](../../lite/lab/index.html?path=auto_examples/levenshtein/plot_levenshtein_ranking_script.ipynb)
 
 [`Download Jupyter notebook: plot_levenshtein_ranking_script.ipynb`](../../_downloads/233621946f9c8f67552bddb877876122/plot_levenshtein_ranking_script.ipynb)
 

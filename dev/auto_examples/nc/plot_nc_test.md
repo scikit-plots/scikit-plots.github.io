@@ -36,7 +36,7 @@ print(nc.__doc__)
 
 ****Total running time of the script:**** (0 minutes 0.001 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo14.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/nc/plot_nc_test.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo14.svg)](../../lite/lab/index.html?path=auto_examples/nc/plot_nc_test.ipynb)
+[![Launch binder](../../_images/binder_badge_logo15.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/nc/plot_nc_test.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo15.svg)](../../lite/lab/index.html?path=auto_examples/nc/plot_nc_test.ipynb)
 
 [`Download Jupyter notebook: plot_nc_test.ipynb`](../../_downloads/2518cee9e69ef25be28fe3717c6c40c2/plot_nc_test.ipynb)
 

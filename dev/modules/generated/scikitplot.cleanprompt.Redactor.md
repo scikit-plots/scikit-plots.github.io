@@ -1,6 +1,6 @@
 # Redactor[#](#redactor "Link to this heading")
 
-class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_engine.py#L349)[#](#scikitplot.cleanprompt.Redactor "Link to this definition")
+class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_engine.py#L349)[#](#scikitplot.cleanprompt.Redactor "Link to this definition")
 :   Reusable, stateless redactor.
 
     Parameters:
@@ -52,7 +52,7 @@ class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[sourc
     policy[#](#scikitplot.cleanprompt.Redactor.policy "Link to this definition")
     :   !! processed by numpydoc !!
 
-    redact(**text**, **extra\_terms=None**, **extra\_kind='CUSTOM'**, **word\_boundary=False**, **seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_engine.py#L405)[#](#scikitplot.cleanprompt.Redactor.redact "Link to this definition")
+    redact(**text**, **extra\_terms=None**, **extra\_kind='CUSTOM'**, **word\_boundary=False**, **seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_engine.py#L405)[#](#scikitplot.cleanprompt.Redactor.redact "Link to this definition")
     :   Replace sensitive values in `text` with stable placeholders.
 
         Parameters:

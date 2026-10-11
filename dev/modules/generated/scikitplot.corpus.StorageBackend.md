@@ -1,6 +1,6 @@
 # StorageBackend[#](#storagebackend "Link to this heading")
 
-class scikitplot.corpus.StorageBackend(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L203)[#](#scikitplot.corpus.StorageBackend "Link to this definition")
+class scikitplot.corpus.StorageBackend(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L203)[#](#scikitplot.corpus.StorageBackend "Link to this definition")
 :   Storage backend identifiers for the corpus store.
 
     Parameters:
@@ -28,21 +28,21 @@ class scikitplot.corpus.StorageBackend(**\*values**)[[source]](https://github.co
         ****FILESYSTEM****
         :   Flat-file JSON/JSONL dump on disk.
 
-    CHROMA = 'chroma'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.CHROMA "Link to this definition")
+    CHROMA = 'chroma'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.CHROMA "Link to this definition")
 
-    FILESYSTEM = 'filesystem'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.FILESYSTEM "Link to this definition")
+    FILESYSTEM = 'filesystem'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.FILESYSTEM "Link to this definition")
 
-    MEMORY = 'memory'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.MEMORY "Link to this definition")
+    MEMORY = 'memory'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.MEMORY "Link to this definition")
 
-    PINECONE = 'pinecone'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.PINECONE "Link to this definition")
+    PINECONE = 'pinecone'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.PINECONE "Link to this definition")
 
-    POSTGRES = 'postgres'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.POSTGRES "Link to this definition")
+    POSTGRES = 'postgres'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.POSTGRES "Link to this definition")
 
-    QDRANT = 'qdrant'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.QDRANT "Link to this definition")
+    QDRANT = 'qdrant'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.QDRANT "Link to this definition")
 
-    SQLITE = 'sqlite'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.SQLITE "Link to this definition")
+    SQLITE = 'sqlite'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.SQLITE "Link to this definition")
 
-    WEAVIATE = 'weaviate'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.WEAVIATE "Link to this definition")
+    WEAVIATE = 'weaviate'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.StorageBackend.WEAVIATE "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.StorageBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

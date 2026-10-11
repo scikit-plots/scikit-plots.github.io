@@ -1,6 +1,6 @@
 # ParagraphChunker[#](#paragraphchunker "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_paragraph.py#L242)[#](#scikitplot.corpus.ParagraphChunker "Link to this definition")
+class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_paragraph.py#L242)[#](#scikitplot.corpus.ParagraphChunker "Link to this definition")
 :   Split a document into paragraph-level `Chunk` objects.
 
     Paragraph boundaries are blank lines (`\n\n`) — script-universal
@@ -52,7 +52,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -97,7 +97,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.ParagraphChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -131,7 +131,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_paragraph.py#L340)[#](#scikitplot.corpus.ParagraphChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_paragraph.py#L340)[#](#scikitplot.corpus.ParagraphChunker.chunk "Link to this definition")
     :   Split **text** into paragraph-level chunks.
 
         Parameters:
@@ -163,7 +163,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**, **multilang\_config=No
         Return type:
         :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_paragraph.py#L457)[#](#scikitplot.corpus.ParagraphChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_paragraph.py#L457)[#](#scikitplot.corpus.ParagraphChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:

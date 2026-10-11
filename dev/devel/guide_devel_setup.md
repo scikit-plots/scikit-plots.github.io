@@ -1,11 +1,11 @@
-# Development Setup Guidelines[#](#development-setup-guidelines "Link to this heading")
+# [Development Setup Guidelines](#id1)[#](#development-setup-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
 
 To set up scikit-plots for development follow these steps:
 
-## [Fork the scikit-plots repository](#id1)[#](#fork-the-scikit-plots-repository "Link to this heading")
+## [Fork the scikit-plots repository](#id2)[#](#fork-the-scikit-plots-repository "Link to this heading")
 
 scikit-plots is hosted at [scikit-plots/scikit-plots.git](https://github.com/scikit-plots/scikit-plots.git). If you
 plan on solving issues or submitting pull requests to the main scikit-plots
@@ -15,7 +15,7 @@ repository, you should first fork this repository by **clicking** the
 This creates a copy of the code under your account on the GitHub server. See [the GitHub
 documentation](https://docs.github.com/get-started/quickstart/fork-a-repo) for more details.
 
-## [Retrieve the latest version of the code](#id2)[#](#retrieve-the-latest-version-of-the-code "Link to this heading")
+## [Retrieve the latest version of the code](#id3)[#](#retrieve-the-latest-version-of-the-code "Link to this heading")
 
 Now that your fork of the repository lives under your GitHub username, you can
 retrieve the most recent version of the source code with one of the following
@@ -76,7 +76,7 @@ For more information on `git` and `GitHub`, see:
 * <https://tacaswell.github.io/think-like-git.html>
 * <https://tom.preston-werner.com/2009/05/19/the-git-parable.html>
 
-## [Create a dedicated environment](#id3)[#](#create-a-dedicated-environment "Link to this heading")
+## [Create a dedicated environment](#id4)[#](#create-a-dedicated-environment "Link to this heading")
 
 You should set up a dedicated environment to decouple your scikit-plots
 development from other Python and scikit-plots installations on your system.
@@ -180,7 +180,7 @@ Use the “Extensions” icon in the activity bar to install the “Live Server�
 extension. Locate the `doc/build/html` folder in the Explorer, right click
 the file you want to open and select “Open with Live Server.”
 
-## [Install external dependencies](#id4)[#](#install-external-dependencies "Link to this heading")
+## [Install external dependencies](#id5)[#](#install-external-dependencies "Link to this heading")
 
 Python dependencies were installed as part of [setting up the environment](#dev-environment).
 Additionally, the following non-Python dependencies must also be installed locally:
@@ -191,7 +191,7 @@ Additionally, the following non-Python dependencies must also be installed local
 For a full list of dependencies, see [Dependencies](../install/dependencies.html#dependencies). External dependencies do not
 need to be installed when working in codespaces.
 
-## [Install scikit-plots in editable mode](#id5)[#](#install-scikit-plots-in-editable-mode "Link to this heading")
+## [Install scikit-plots in editable mode](#id6)[#](#install-scikit-plots-in-editable-mode "Link to this heading")
 
 Install scikit-plots in editable mode from the `scikit-plots` directory using the
 command
@@ -214,7 +214,7 @@ If the installation is not working, please consult the [troubleshooting guide](g
 If the guide does not offer a solution, please reach out via [chat](https://gitter.im/scikit-plots/scikit-plots)
 or [open an issue](index.html#submitting-a-bug-report).
 
-### [Build options](#id6)[#](#build-options "Link to this heading")
+### Build options[#](#build-options "Link to this heading")
 
 If you are working heavily with files that need to be compiled, you may want to
 inspect the compilation log. This can be enabled by setting the environment

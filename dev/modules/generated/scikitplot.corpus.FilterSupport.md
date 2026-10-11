@@ -1,6 +1,6 @@
 # FilterSupport[#](#filtersupport "Link to this heading")
 
-class scikitplot.corpus.FilterSupport(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_storage/_storage.py#L124)[#](#scikitplot.corpus.FilterSupport "Link to this definition")
+class scikitplot.corpus.FilterSupport(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_storage/_storage.py#L124)[#](#scikitplot.corpus.FilterSupport "Link to this definition")
 :   How a backend handled one requested filter.
 
     Notes
@@ -26,13 +26,13 @@ class scikitplot.corpus.FilterSupport(**\*values**)[[source]](https://github.com
     text. The honest answer is “supported by substring scan, not FTS5
     ranking”, and hiding that difference is how F-R07-01 happened.
 
-    EMULATED = 'emulated'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_storage/_storage.py#L)[#](#scikitplot.corpus.FilterSupport.EMULATED "Link to this definition")
+    EMULATED = 'emulated'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_storage/_storage.py#L)[#](#scikitplot.corpus.FilterSupport.EMULATED "Link to this definition")
     :   Executed with equivalent semantics by a fallback path, declared here.
 
-    REJECTED = 'rejected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_storage/_storage.py#L)[#](#scikitplot.corpus.FilterSupport.REJECTED "Link to this definition")
+    REJECTED = 'rejected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_storage/_storage.py#L)[#](#scikitplot.corpus.FilterSupport.REJECTED "Link to this definition")
     :   Refused; the query did not run.
 
-    SUPPORTED = 'supported'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_storage/_storage.py#L)[#](#scikitplot.corpus.FilterSupport.SUPPORTED "Link to this definition")
+    SUPPORTED = 'supported'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_storage/_storage.py#L)[#](#scikitplot.corpus.FilterSupport.SUPPORTED "Link to this definition")
     :   Executed natively by the backend.
 
     capitalize(**/**)[#](#scikitplot.corpus.FilterSupport.capitalize "Link to this definition")

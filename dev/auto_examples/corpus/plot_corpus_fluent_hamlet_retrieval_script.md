@@ -148,9 +148,9 @@ print("Addendum source:", _HAMLET_ADDENDUM_PATH)
 
 ```
 ```
-Initial source: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_excerpt.txt
+Initial source: /tmp/scikitplot-hamlet-1p5thygi/hamlet_excerpt.txt
 Initial characters: 3820
-Addendum source: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_addendum.txt
+Addendum source: /tmp/scikitplot-hamlet-1p5thygi/hamlet_addendum.txt
 
 ```
 
@@ -239,7 +239,7 @@ print("Validation problems:", fluent.validate())
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] fe2501d0dad5634e4ea827ad55da6610f6bd5fa3afd9b4a2f8a70eb126b038ee>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 4debae687955f7f3b023a292facf865487ca42db6f306ebf12d441b519ba4bbe>
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 Validation problems: []
 
@@ -280,7 +280,7 @@ print("Index before run:", runtime.index)
 ```
 ```
 Runtime type: RuntimeCorpus
-Plan fingerprint: fe2501d0dad5634e4ea827ad55da6610f6bd5fa3afd9b4a2f8a70eb126b038ee
+Plan fingerprint: 4debae687955f7f3b023a292facf865487ca42db6f306ebf12d441b519ba4bbe
 Documents before run: 0
 Index before run: None
 
@@ -519,7 +519,7 @@ print("Runtime still open after export:", not runtime.closed)
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_corpus.jsonl
+Exported: /tmp/scikitplot-hamlet-1p5thygi/hamlet_corpus.jsonl
 Bytes: 35993
 Exported documents: 14
 First JSONL row:
@@ -628,7 +628,7 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.048 seconds)
+****Total running time of the script:**** (0 minutes 0.046 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)
 

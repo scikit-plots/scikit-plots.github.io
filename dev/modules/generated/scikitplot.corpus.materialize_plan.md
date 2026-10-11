@@ -1,6 +1,6 @@
 # materialize\_plan[#](#materialize-plan "Link to this heading")
 
-scikitplot.corpus.materialize\_plan(**plan**, **\***, **policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_runtime.py#L579)[#](#scikitplot.corpus.materialize_plan "Link to this definition")
+scikitplot.corpus.materialize\_plan(**plan**, **\***, **policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_runtime.py#L579)[#](#scikitplot.corpus.materialize_plan "Link to this definition")
 :   Resolve a validated [`CorpusPlan`](scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan") into runtime components.
 
     Materialization does not read `plan.source`. It constructs only the

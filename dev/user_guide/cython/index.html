@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:18:09Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:05Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/cython/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -758,20 +758,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.distance.html">scikitplot.levenshtein.distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.similarity.html">scikitplot.levenshtein.similarity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.normalized_distance.html">scikitplot.levenshtein.normalized_distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.normalized_similarity.html">scikitplot.levenshtein.normalized_similarity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.rank.html">scikitplot.levenshtein.rank</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.closest.html">scikitplot.levenshtein.closest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.Match.html">scikitplot.levenshtein.Match</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.backend_info.html">scikitplot.levenshtein.backend_info</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.available_backends.html">scikitplot.levenshtein.available_backends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.BackendInfo.html">scikitplot.levenshtein.BackendInfo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.make_corpus_scorer.html">scikitplot.levenshtein.make_corpus_scorer</a></li>
-</ul>
-</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -1011,16 +997,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 caller-supplied Cython source, resolves a toolchain, builds in a bounded staging
 area, publishes deterministic cache entries, and imports the resulting
 extension.</p>
-<div class="admonition important">
+<div class="video_wrapper" style="aspect-ratio: 16 / 9; max-width: 100%; position: relative; width: 560px">
+<iframe allowfullscreen="true" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/rxy_9I8967Q" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%; max-width: 100%" title="youtube video player">
+</iframe></div><div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Compiling caller-supplied Cython means compiling executable native code. The
 security policy reduces accidental or disallowed build inputs; it is not a
 sandbox for hostile source code. Only compile code you are willing to execute
 with the current process privileges.</p>
 </div>
-<div class="video_wrapper" style="aspect-ratio: 16 / 9; max-width: 100%; position: relative; width: 560px">
-<iframe allowfullscreen="true" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/rxy_9I8967Q" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%; max-width: 100%" title="youtube video player">
-</iframe></div><div class="toctree-wrapper compound">
+<div class="toctree-wrapper compound">
 </div>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
@@ -1219,7 +1205,7 @@ Troubleshooting</div>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
       <br/>
     
   </p>

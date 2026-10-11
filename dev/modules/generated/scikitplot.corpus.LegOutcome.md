@@ -1,6 +1,6 @@
 # LegOutcome[#](#legoutcome "Link to this heading")
 
-class scikitplot.corpus.LegOutcome(**leg**, **status**, **hit\_count=0**, **generation=None**, **backend=None**, **error=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L150)[#](#scikitplot.corpus.LegOutcome "Link to this definition")
+class scikitplot.corpus.LegOutcome(**leg**, **status**, **hit\_count=0**, **generation=None**, **backend=None**, **error=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrieval.py#L150)[#](#scikitplot.corpus.LegOutcome "Link to this definition")
 :   How one evidence path fared.
 
     Parameters:
@@ -48,14 +48,14 @@ class scikitplot.corpus.LegOutcome(**leg**, **status**, **hit\_count=0**, **gene
 
     hit\_count: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0[#](#scikitplot.corpus.LegOutcome.hit_count "Link to this definition")
 
-    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L150)[#](#scikitplot.corpus.LegOutcome.leg "Link to this definition")
+    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrieval.py#L150)[#](#scikitplot.corpus.LegOutcome.leg "Link to this definition")
 
     property ran: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.LegOutcome.ran "Link to this definition")
     :   Whether the leg actually executed.
 
-    status: [LegStatus](scikitplot.corpus.LegStatus.html#scikitplot.corpus.LegStatus "scikitplot.corpus._retrieval.LegStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L150)[#](#scikitplot.corpus.LegOutcome.status "Link to this definition")
+    status: [LegStatus](scikitplot.corpus.LegStatus.html#scikitplot.corpus.LegStatus "scikitplot.corpus._retrieval.LegStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrieval.py#L150)[#](#scikitplot.corpus.LegOutcome.status "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L201)[#](#scikitplot.corpus.LegOutcome.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrieval.py#L201)[#](#scikitplot.corpus.LegOutcome.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

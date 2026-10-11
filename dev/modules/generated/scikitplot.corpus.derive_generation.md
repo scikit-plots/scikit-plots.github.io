@@ -1,6 +1,6 @@
 # derive\_generation[#](#derive-generation "Link to this heading")
 
-scikitplot.corpus.derive\_generation(**documents**, **\***, **backend=None**, **schema\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_generation.py#L200)[#](#scikitplot.corpus.derive_generation "Link to this definition")
+scikitplot.corpus.derive\_generation(**documents**, **\***, **backend=None**, **schema\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_generation.py#L200)[#](#scikitplot.corpus.derive_generation "Link to this definition")
 :   Derive the generation identity for a set of documents.
 
     Parameters:

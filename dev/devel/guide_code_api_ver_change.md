@@ -1,4 +1,4 @@
-# Code API Versioning and Change Guidelines[#](#code-api-versioning-and-change-guidelines "Link to this heading")
+# [Code API Versioning and Change Guidelines](#id5)[#](#code-api-versioning-and-change-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -12,7 +12,7 @@ visualization the user sees; therefore, the appearance of the figure is part of
 the API and any changes, either semantic or aesthetic, are backwards-incompatible
 API changes.
 
-## Add new API and features[#](#add-new-api-and-features "Link to this heading")
+## [Add new API and features](#id6)[#](#add-new-api-and-features "Link to this heading")
 
 Every new function, parameter and attribute that is not explicitly marked as
 private (i.e., starts with an underscore) becomes part of scikit-plots’s public
@@ -27,7 +27,7 @@ take particular care when adding new API:
 * Consider making as many arguments keyword-only as possible. See also
   [API Evolution the Right Way – Add Parameters Compatibly](https://emptysqua.re/blog/api-evolution-the-right-way/#adding-parameters).
 
-## Add or change colormaps, color sequences, and styles[#](#add-or-change-colormaps-color-sequences-and-styles "Link to this heading")
+## [Add or change colormaps, color sequences, and styles](#id7)[#](#add-or-change-colormaps-color-sequences-and-styles "Link to this heading")
 
 Visual changes are considered an API break. Therefore, we generally do not modify
 existing colormaps, color sequences, or styles.
@@ -42,9 +42,9 @@ them. While the decision is case-by-case, evaluation criteria include:
 * evidence of wide spread usage: for example academic papers, industry blogs and
   whitepapers, or inclusion in other visualization libraries or domain specific tools
 * open license: colormaps, sequences, and styles must have a BSD compatible license
-  (see [Licenses for contributed code](guide_code_license.html#license-discussion))
+  (see [Licenses for contributed code](guide_code_style_write.html#license-discussion))
 
-## Deprecate API[#](#deprecate-api "Link to this heading")
+## [Deprecate API](#id8)[#](#deprecate-api "Link to this heading")
 
 API changes in scikit-plots have to be performed following the deprecation process
 below, except in very rare circumstances as deemed necessary by the development
@@ -119,7 +119,7 @@ prevents unexpected breaking of code.
      instead. For removed items that were not in the stub file, only deleting from the
      allowlist is required.
 
-## Announce new and deprecated API[#](#announce-new-and-deprecated-api "Link to this heading")
+## [Announce new and deprecated API](#id9)[#](#announce-new-and-deprecated-api "Link to this heading")
 
 When adding or changing the API in a backward in-compatible way, please add the
 appropriate [versioning directive](#versioning-directives) and document it
@@ -185,7 +185,7 @@ a cross-reference is included in the descriptive text.
 
 #### What’s new notes[#](#what-s-new-notes "Link to this heading")
 
-## Discourage API[#](#discourage-api "Link to this heading")
+## [Discourage API](#id10)[#](#discourage-api "Link to this heading")
 
 We have API that we do not recommend anymore for new code, but that cannot be
 deprecated because its removal would be breaking backward-compatibility and too

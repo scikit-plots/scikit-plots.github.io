@@ -6,8 +6,8 @@ to download the full example code or to run this example in your browser via Jup
 
 A useful lexical-search result should name the document it belongs to, not ask
 its caller to remember which list happened to occupy the same row order as the
-index. This example builds `BM25Okapi` with `doc_ids` and retrieves
-`(document_id, score)` pairs with `BM25.get_top_ids`.
+index. This example builds [`BM25Okapi`](../../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi") with `doc_ids` and retrieves
+`(document_id, score)` pairs with [`BM25.get_top_ids`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_top_ids "scikitplot.rank_bm25.BM25.get_top_ids").
 
 It also checks two small but important contracts: an out-of-vocabulary query
 returns no sparse hits, and equal scores are returned in original corpus order.
@@ -124,7 +124,7 @@ Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [pl
 
 ****Total running time of the script:**** (0 minutes 0.003 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)
 
 [`Download Jupyter notebook: plot_rank_bm25_quickstart_script.ipynb`](../../_downloads/56b16713795f21edf3d747a426821ffa/plot_rank_bm25_quickstart_script.ipynb)
 

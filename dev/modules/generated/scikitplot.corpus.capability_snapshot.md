@@ -1,6 +1,6 @@
 # capability\_snapshot[#](#capability-snapshot "Link to this heading")
 
-scikitplot.corpus.capability\_snapshot(**extra\_distributions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L244)[#](#scikitplot.corpus.capability_snapshot "Link to this definition")
+scikitplot.corpus.capability\_snapshot(**extra\_distributions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_capabilities.py#L244)[#](#scikitplot.corpus.capability_snapshot "Link to this definition")
 :   Return a read-only snapshot of the runtime corpus capabilities.
 
     Parameters:

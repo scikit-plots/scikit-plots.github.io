@@ -1,6 +1,6 @@
 # ValidationError[#](#validationerror "Link to this heading")
 
-class scikitplot.corpus.ValidationError(**field**, **message**, **value=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L923)[#](#scikitplot.corpus.ValidationError "Link to this definition")
+class scikitplot.corpus.ValidationError(**field**, **message**, **value=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L923)[#](#scikitplot.corpus.ValidationError "Link to this definition")
 :   A single validation failure raised during corpus processing.
 
     Parameters:
@@ -18,8 +18,8 @@ class scikitplot.corpus.ValidationError(**field**, **message**, **value=None**)[
         * ****message**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****value**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
-    field: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L923)[#](#scikitplot.corpus.ValidationError.field "Link to this definition")
+    field: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L923)[#](#scikitplot.corpus.ValidationError.field "Link to this definition")
 
-    message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L923)[#](#scikitplot.corpus.ValidationError.message "Link to this definition")
+    message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L923)[#](#scikitplot.corpus.ValidationError.message "Link to this definition")
 
     value: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.corpus.ValidationError.value "Link to this definition")

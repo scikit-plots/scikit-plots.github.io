@@ -59,7 +59,7 @@ reader dispatch separate.
 ## Custom retrieval[#](#custom-retrieval "Link to this heading")
 
 [`CustomRetrievalIndex`](../../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex "scikitplot.corpus.CustomRetrievalIndex") accepts a scorer callback. The independent
-[`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") facade provides [`scikitplot.levenshtein.make_corpus_scorer`](../levenshtein/generated/scikitplot.levenshtein.make_corpus_scorer.html#scikitplot.levenshtein.make_corpus_scorer "scikitplot.levenshtein.make_corpus_scorer")
+[`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") facade provides [`scikitplot.levenshtein.make_corpus_scorer`](../../modules/generated/scikitplot.levenshtein.make_corpus_scorer.html#scikitplot.levenshtein.make_corpus_scorer "scikitplot.levenshtein.make_corpus_scorer")
 for edit-distance ranking without coupling the Levenshtein module back to
 Corpus.
 

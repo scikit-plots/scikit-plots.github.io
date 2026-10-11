@@ -47,9 +47,9 @@ fig = plot_overlapping_colors()
 
 Tags: [plot-type: barh](../../_tags/plot-type-barh.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.278 seconds)
+****Total running time of the script:**** (0 minutes 1.429 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/misc/plot_misc_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/misc/plot_misc_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/misc/plot_misc_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/misc/plot_misc_script.ipynb)
 
 [`Download Jupyter notebook: plot_misc_script.ipynb`](../../_downloads/e71085dfe27337a86e3061926186c620/plot_misc_script.ipynb)
 

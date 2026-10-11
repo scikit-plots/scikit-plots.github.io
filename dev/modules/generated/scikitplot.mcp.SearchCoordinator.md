@@ -1,6 +1,6 @@
 # SearchCoordinator[#](#searchcoordinator "Link to this heading")
 
-class scikitplot.mcp.SearchCoordinator(**retriever**, **\***, **max\_concurrency=4**, **acquire\_timeout\_seconds=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L513)[#](#scikitplot.mcp.SearchCoordinator "Link to this definition")
+class scikitplot.mcp.SearchCoordinator(**retriever**, **\***, **max\_concurrency=4**, **acquire\_timeout\_seconds=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L513)[#](#scikitplot.mcp.SearchCoordinator "Link to this definition")
 :   Validated, concurrency-bounded search orchestration, free of wire models.
 
     This is the Legacy Retrieval tier (Python 3.8+, no `pydantic`, no MCP SDK)
@@ -48,7 +48,7 @@ class scikitplot.mcp.SearchCoordinator(**retriever**, **\***, **max\_concurrency
     `integrations/` to depend on the public Tier-L surface without pulling
     `pydantic` into a base install.
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L623)[#](#scikitplot.mcp.SearchCoordinator.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L623)[#](#scikitplot.mcp.SearchCoordinator.search "Link to this definition")
     :   Run one bounded, validated search and return the neutral result.
 
         Parameters:
@@ -77,7 +77,7 @@ class scikitplot.mcp.SearchCoordinator(**retriever**, **\***, **max\_concurrency
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    validate(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L583)[#](#scikitplot.mcp.SearchCoordinator.validate "Link to this definition")
+    validate(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L583)[#](#scikitplot.mcp.SearchCoordinator.validate "Link to this definition")
     :   Validate and normalise tool arguments.
 
         Parameters:

@@ -1,6 +1,6 @@
 # route[#](#route "Link to this heading")
 
-scikitplot.corpus.route(**query**, **\***, **has\_dense=True**, **has\_graph=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L254)[#](#scikitplot.corpus.route "Link to this definition")
+scikitplot.corpus.route(**query**, **\***, **has\_dense=True**, **has\_graph=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_agentic.py#L254)[#](#scikitplot.corpus.route "Link to this definition")
 :   Choose evidence paths by deterministic rule (autonomy level A1).
 
     Parameters:

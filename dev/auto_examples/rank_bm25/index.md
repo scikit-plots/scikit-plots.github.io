@@ -33,16 +33,16 @@ model.
 
 ## Start here[#](#start-here "Link to this heading")
 
-1. ****Quick start and stable identities**** — build a `BM25Okapi` index,
+1. ****Quick start and stable identities**** — build a [`BM25Okapi`](../../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi") index,
    retrieve by document ID, see deterministic tie ordering, and verify that an
    out-of-vocabulary query returns no sparse hits.
-2. ****Choose a recipe**** — run the same corpus through `BM25Okapi`,
-   `BM25L`, and `BM25Plus`; inspect the versioned recipe identity
+2. ****Choose a recipe**** — run the same corpus through [`BM25Okapi`](../../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi"),
+   [`BM25L`](../../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L "scikitplot.rank_bm25.BM25L"), and [`BM25Plus`](../../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus "scikitplot.rank_bm25.BM25Plus"); inspect the versioned recipe identity
    and compare rankings without treating one score scale as interchangeable
    with another.
 3. ****Sparse retrieval versus dense diagnostics**** — use
-   `BM25.candidate_count`, `BM25.get_top_ids`, and
-   `BM25.get_scores` for the jobs they actually perform.
+   [`BM25.candidate_count`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.candidate_count "scikitplot.rank_bm25.BM25.candidate_count"), [`BM25.get_top_ids`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_top_ids "scikitplot.rank_bm25.BM25.get_top_ids"), and
+   [`BM25.get_scores`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_scores "scikitplot.rank_bm25.BM25.get_scores") for the jobs they actually perform.
 4. ****Save and reload an index**** — publish a pre-tokenized index to a temporary
    directory, reload it, and verify that identities and retrieval survive the
    round trip.
@@ -63,9 +63,9 @@ other BM25 libraries:
 
 * corpus rows are token sequences unless `tokenizer=` is supplied;
 * stable `doc_ids` are preferred over caller-owned row offsets;
-* `BM25.get_top_ids` uses sparse candidate retrieval and an unknown term
+* [`BM25.get_top_ids`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_top_ids "scikitplot.rank_bm25.BM25.get_top_ids") uses sparse candidate retrieval and an unknown term
   can therefore return an empty result;
-* `BM25.get_scores` is a dense diagnostic vector with one value per
+* [`BM25.get_scores`](../../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25.get_scores "scikitplot.rank_bm25.BM25.get_scores") is a dense diagnostic vector with one value per
   corpus row;
 * equal retrieval scores are ordered by original corpus position;
 * exact floating-point values are not used as cross-recipe compatibility

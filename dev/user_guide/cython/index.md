@@ -5,6 +5,7 @@ caller-supplied Cython source, resolves a toolchain, builds in a bounded staging
 area, publishes deterministic cache entries, and imports the resulting
 extension.
 
+
 > **Important**
 > Compiling caller-supplied Cython means compiling executable native code. The
 security policy reduces accidental or disallowed build inputs; it is not a

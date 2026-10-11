@@ -64,7 +64,8 @@ idx.info()
 800 / 1000 = 0.8
 900 / 1000 = 0.9
 
-100%|██████████| 1000/1000 [00:00<00:00, 10792.95it/s]
+100%|█████████▉| 999/1000 [00:00<00:00, 9983.77it/s]
+100%|██████████| 1000/1000 [00:00<00:00, 9925.44it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 1000, 'n_trees': 200, 'memory_usage_byte': 5722240, 'memory_usage_mib': 5.4571533203125}
 
@@ -138,44 +139,44 @@ precision(q)
 /home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:110: UserWarning: seed=0 resets to Annoy's default seed
   q.set_seed(0)
 
-  0%|          | 0/10 [00:00<?, ?it/s]limit: 10        precision:  20.00% avg time: 0.000050s
-limit: 100       precision:  40.00% avg time: 0.000049s
-limit: 1000      precision: 100.00% avg time: 0.000130s
-limit: 10        precision:  35.00% avg time: 0.000044s
-limit: 100       precision:  45.00% avg time: 0.000047s
-limit: 1000      precision: 100.00% avg time: 0.000130s
-limit: 10        precision:  36.67% avg time: 0.000041s
-limit: 100       precision:  53.33% avg time: 0.000047s
-limit: 1000      precision: 100.00% avg time: 0.000136s
-limit: 10        precision:  37.50% avg time: 0.000040s
-limit: 100       precision:  52.50% avg time: 0.000047s
-limit: 1000      precision: 100.00% avg time: 0.000133s
-limit: 10        precision:  38.00% avg time: 0.000046s
-limit: 100       precision:  54.00% avg time: 0.000047s
-limit: 1000      precision: 100.00% avg time: 0.000133s
-limit: 10        precision:  40.00% avg time: 0.000045s
-limit: 100       precision:  53.33% avg time: 0.000047s
-limit: 1000      precision: 100.00% avg time: 0.000131s
-limit: 10        precision:  38.57% avg time: 0.000044s
-limit: 100       precision:  54.29% avg time: 0.000049s
-limit: 1000      precision: 100.00% avg time: 0.000131s
-limit: 10        precision:  38.75% avg time: 0.000044s
-limit: 100       precision:  52.50% avg time: 0.000048s
-limit: 1000      precision: 100.00% avg time: 0.000132s
-limit: 10        precision:  38.89% avg time: 0.000043s
-limit: 100       precision:  54.44% avg time: 0.000048s
-limit: 1000      precision: 100.00% avg time: 0.000131s
-limit: 10        precision:  39.00% avg time: 0.000043s
-limit: 100       precision:  55.00% avg time: 0.000052s
-limit: 1000      precision: 100.00% avg time: 0.000133s
+  0%|          | 0/10 [00:00<?, ?it/s]limit: 10        precision:  20.00% avg time: 0.000068s
+limit: 100       precision:  40.00% avg time: 0.000082s
+limit: 1000      precision: 100.00% avg time: 0.000194s
+limit: 10        precision:  35.00% avg time: 0.000060s
+limit: 100       precision:  45.00% avg time: 0.000073s
+limit: 1000      precision: 100.00% avg time: 0.000180s
+limit: 10        precision:  36.67% avg time: 0.000052s
+limit: 100       precision:  53.33% avg time: 0.000065s
+limit: 1000      precision: 100.00% avg time: 0.000164s
+limit: 10        precision:  37.50% avg time: 0.000050s
+limit: 100       precision:  52.50% avg time: 0.000063s
+limit: 1000      precision: 100.00% avg time: 0.000159s
+limit: 10        precision:  38.00% avg time: 0.000048s
+limit: 100       precision:  54.00% avg time: 0.000062s
+limit: 1000      precision: 100.00% avg time: 0.000156s
+limit: 10        precision:  40.00% avg time: 0.000048s
+limit: 100       precision:  53.33% avg time: 0.000061s
+limit: 1000      precision: 100.00% avg time: 0.000154s
+limit: 10        precision:  38.57% avg time: 0.000047s
+limit: 100       precision:  54.29% avg time: 0.000062s
+limit: 1000      precision: 100.00% avg time: 0.000152s
+limit: 10        precision:  38.75% avg time: 0.000047s
+limit: 100       precision:  52.50% avg time: 0.000064s
+limit: 1000      precision: 100.00% avg time: 0.000151s
+limit: 10        precision:  38.89% avg time: 0.000046s
+limit: 100       precision:  54.44% avg time: 0.000063s
+limit: 1000      precision: 100.00% avg time: 0.000149s
+limit: 10        precision:  39.00% avg time: 0.000046s
+limit: 100       precision:  55.00% avg time: 0.000062s
+limit: 1000      precision: 100.00% avg time: 0.000148s
 
-100%|██████████| 10/10 [00:00<00:00, 1609.17it/s]
+100%|██████████| 10/10 [00:00<00:00, 1399.03it/s]
 
 ```
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.691 seconds)
+****Total running time of the script:**** (0 minutes 3.258 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_precision_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_precision_script.ipynb)
 

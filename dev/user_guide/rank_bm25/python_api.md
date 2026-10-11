@@ -1,7 +1,5 @@
 # Python API[#](#python-api "Link to this heading")
 
-
-
 The base `BM25` owns corpus statistics, validation, sparse candidate
 state, persistence and identity. Instantiate a concrete scorer for normal use.
 

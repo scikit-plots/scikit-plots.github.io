@@ -1,6 +1,6 @@
 # Bm25Retriever[#](#bm25retriever "Link to this heading")
 
-class scikitplot.mcp.Bm25Retriever(**fts\_search**, **doc\_lookup**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_hybrid.py#L312)[#](#scikitplot.mcp.Bm25Retriever "Link to this definition")
+class scikitplot.mcp.Bm25Retriever(**fts\_search**, **doc\_lookup**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L312)[#](#scikitplot.mcp.Bm25Retriever "Link to this definition")
 :   Lexical retriever (FTS/BM25) leg backed by a full-text search seam.
 
     Parameters:
@@ -22,7 +22,7 @@ class scikitplot.mcp.Bm25Retriever(**fts\_search**, **doc\_lookup**, **\***, **s
     BM25 complements dense retrieval on exact tokens — API symbols, flags, error
     messages — that embeddings often blur.
 
-    classmethod from\_corpus\_sqlite(**storage\_path**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_hybrid.py#L410)[#](#scikitplot.mcp.Bm25Retriever.from_corpus_sqlite "Link to this definition")
+    classmethod from\_corpus\_sqlite(**storage\_path**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L410)[#](#scikitplot.mcp.Bm25Retriever.from_corpus_sqlite "Link to this definition")
     :   Build from a corpus SQLite/FTS5 store (import-guarded).
 
         Wires [`scikitplot.corpus.SQLiteStorage.search_text`](scikitplot.corpus.SQLiteStorage.html#scikitplot.corpus.SQLiteStorage.search_text "scikitplot.corpus.SQLiteStorage.search_text"): BM25-ranked
@@ -47,7 +47,7 @@ class scikitplot.mcp.Bm25Retriever(**fts\_search**, **doc\_lookup**, **\***, **s
         Return type:
         :   [**Bm25Retriever**](#scikitplot.mcp.Bm25Retriever "scikitplot.mcp._hybrid.Bm25Retriever")
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_hybrid.py#L342)[#](#scikitplot.mcp.Bm25Retriever.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L342)[#](#scikitplot.mcp.Bm25Retriever.search "Link to this definition")
     :   Run FTS5/BM25 and map hits to [`RetrievedChunk`](scikitplot.mcp.RetrievedChunk.html#scikitplot.mcp.RetrievedChunk "scikitplot.mcp.RetrievedChunk").
 
         Parameters:

@@ -1,6 +1,6 @@
 # RetrievedChunk[#](#retrievedchunk "Link to this heading")
 
-class scikitplot.mcp.RetrievedChunk(**text**, **source\_uri**, **score=0.0**, **doc\_id=''**, **title=''**, **anchor=''**, **extra=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk "Link to this definition")
+class scikitplot.mcp.RetrievedChunk(**text**, **source\_uri**, **score=0.0**, **doc\_id=''**, **title=''**, **anchor=''**, **extra=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk "Link to this definition")
 :   One retrieved passage with the metadata needed to cite it.
 
     This is the boundary type between retrieval (corpus / annoy) and the MCP
@@ -42,12 +42,12 @@ class scikitplot.mcp.RetrievedChunk(**text**, **source\_uri**, **score=0.0**, **
 
     doc\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.mcp.RetrievedChunk.doc_id "Link to this definition")
 
-    extra: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk.extra "Link to this definition")
+    extra: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk.extra "Link to this definition")
 
     score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.mcp.RetrievedChunk.score "Link to this definition")
 
-    source\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk.source_uri "Link to this definition")
+    source\_uri: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk.source_uri "Link to this definition")
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_core.py#L134)[#](#scikitplot.mcp.RetrievedChunk.text "Link to this definition")
 
     title: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.mcp.RetrievedChunk.title "Link to this definition")

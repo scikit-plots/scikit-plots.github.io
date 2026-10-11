@@ -1,6 +1,6 @@
 # TrainingExample[#](#trainingexample "Link to this heading")
 
-class scikitplot.corpus.TrainingExample(**example\_id**, **prompt**, **completion**, **chunk=None**, **metadata=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample "Link to this definition")
+class scikitplot.corpus.TrainingExample(**example\_id**, **prompt**, **completion**, **chunk=None**, **metadata=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample "Link to this definition")
 :   A single example in an LLM fine-tuning dataset.
 
     Parameters:
@@ -34,10 +34,10 @@ class scikitplot.corpus.TrainingExample(**example\_id**, **prompt**, **completio
 
     chunk: [Chunk](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.TrainingExample.chunk "Link to this definition")
 
-    completion: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.completion "Link to this definition")
+    completion: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.completion "Link to this definition")
 
-    example\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.example_id "Link to this definition")
+    example\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.example_id "Link to this definition")
 
-    metadata: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.metadata "Link to this definition")
+    metadata: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.metadata "Link to this definition")
 
-    prompt: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.prompt "Link to this definition")
+    prompt: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L989)[#](#scikitplot.corpus.TrainingExample.prompt "Link to this definition")

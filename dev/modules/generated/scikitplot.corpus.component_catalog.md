@@ -1,6 +1,6 @@
 # component\_catalog[#](#component-catalog "Link to this heading")
 
-scikitplot.corpus.component\_catalog()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L360)[#](#scikitplot.corpus.component_catalog "Link to this definition")
+scikitplot.corpus.component\_catalog()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_catalog.py#L360)[#](#scikitplot.corpus.component_catalog "Link to this definition")
 :   Build a snapshot of every registered component.
 
     Returns:

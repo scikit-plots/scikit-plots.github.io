@@ -1,6 +1,6 @@
 # SemantemeInfo[#](#semantemeinfo "Link to this heading")
 
-class scikitplot.corpus.SemantemeInfo(**surface**, **script=None**, **direction=None**, **morphemes=None**, **lemma=None**, **pos\_tag=None**, **stem=None**, **grapheme\_count=None**, **codepoint\_count=None**, **is\_stopword=None**, **language\_hint=None**, **determinative=None**, **raw\_surface=None**, **embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L1115)[#](#scikitplot.corpus.SemantemeInfo "Link to this definition")
+class scikitplot.corpus.SemantemeInfo(**surface**, **script=None**, **direction=None**, **morphemes=None**, **lemma=None**, **pos\_tag=None**, **stem=None**, **grapheme\_count=None**, **codepoint\_count=None**, **is\_stopword=None**, **language\_hint=None**, **determinative=None**, **raw\_surface=None**, **embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1115)[#](#scikitplot.corpus.SemantemeInfo "Link to this definition")
 :   Rich semantic unit descriptor attached to each multilang chunk.
 
     A **semanteme** is the smallest unit of meaning in a language. Depending
@@ -119,9 +119,9 @@ class scikitplot.corpus.SemantemeInfo(**surface**, **script=None**, **direction=
 
     stem: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.SemantemeInfo.stem "Link to this definition")
 
-    surface: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L1115)[#](#scikitplot.corpus.SemantemeInfo.surface "Link to this definition")
+    surface: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1115)[#](#scikitplot.corpus.SemantemeInfo.surface "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L1195)[#](#scikitplot.corpus.SemantemeInfo.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1195)[#](#scikitplot.corpus.SemantemeInfo.to_dict "Link to this definition")
     :   Serialise to a JSON-safe dict for `chunk.metadata` storage.
 
         Returns:
@@ -132,7 +132,7 @@ class scikitplot.corpus.SemantemeInfo(**surface**, **script=None**, **direction=
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    with\_embedding(**vector**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L1226)[#](#scikitplot.corpus.SemantemeInfo.with_embedding "Link to this definition")
+    with\_embedding(**vector**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1226)[#](#scikitplot.corpus.SemantemeInfo.with_embedding "Link to this definition")
     :   Return a copy of this record with an embedding vector attached.
 
         Parameters:

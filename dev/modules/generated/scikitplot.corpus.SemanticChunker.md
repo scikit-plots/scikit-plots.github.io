@@ -1,6 +1,6 @@
 # SemanticChunker[#](#semanticchunker "Link to this heading")
 
-class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L182)[#](#scikitplot.corpus.SemanticChunker "Link to this definition")
+class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L182)[#](#scikitplot.corpus.SemanticChunker "Link to this definition")
 :   Embedding-aware, writing-system-aware semantic chunker (Layer 3).
 
     Combines Layer 1 ([`ScriptSegmenter`](scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter "scikitplot.corpus._chunkers._custom_tokenizer.ScriptSegmenter")) and
@@ -75,7 +75,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.SemanticChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.SemanticChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -120,7 +120,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.SemanticChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.SemanticChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -154,7 +154,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L492)[#](#scikitplot.corpus.SemanticChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L492)[#](#scikitplot.corpus.SemanticChunker.chunk "Link to this definition")
     :   Segment **text** using Layer 1 → Layer 2 → optional Layer 3.
 
         Parameters:
@@ -199,7 +199,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
         6. EMBEDDING / HYBRID: boundary refinement via cosine similarity.
         7. MultilangMixin: enrich each chunk with MultilangChunkMeta.
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L732)[#](#scikitplot.corpus.SemanticChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L732)[#](#scikitplot.corpus.SemanticChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:

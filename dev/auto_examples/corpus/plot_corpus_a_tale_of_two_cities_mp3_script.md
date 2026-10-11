@@ -182,8 +182,8 @@ A Tale of Two Cities by Charles Dickens.
 ```
 ```
 Bundled MP3: /home/circleci/repo/galleries/examples/corpus/data/tale_of_two_cities_01_dickens_64kb.mp3
-Temporary audio: /tmp/scikitplot-audio-gallery-613s2ghk/tale_of_two_cities_01_dickens_64kb.mp3
-Companion: /tmp/scikitplot-audio-gallery-613s2ghk/tale_of_two_cities_01_dickens_64kb.srt
+Temporary audio: /tmp/scikitplot-audio-gallery-saaly1s0/tale_of_two_cities_01_dickens_64kb.mp3
+Companion: /tmp/scikitplot-audio-gallery-saaly1s0/tale_of_two_cities_01_dickens_64kb.srt
 
 ```
 
@@ -420,11 +420,12 @@ else:
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
   0%|                                               | 0.00/139M [00:00<?, ?iB/s]
- 22%|████████▍                              | 30.0M/139M [00:00<00:00, 314MiB/s]
- 47%|██████████████████▎                    | 65.2M/139M [00:00<00:00, 347MiB/s]
- 73%|█████████████████████████████           | 101M/139M [00:00<00:00, 358MiB/s]
-100%|███████████████████████████████████████▉| 138M/139M [00:00<00:00, 373MiB/s]
-100%|████████████████████████████████████████| 139M/139M [00:00<00:00, 362MiB/s]
+ 15%|█████▉                                 | 21.1M/139M [00:00<00:00, 221MiB/s]
+ 33%|████████████▊                          | 45.4M/139M [00:00<00:00, 241MiB/s]
+ 52%|████████████████████▏                  | 71.5M/139M [00:00<00:00, 256MiB/s]
+ 70%|███████████████████████████▏           | 96.8M/139M [00:00<00:00, 260MiB/s]
+ 89%|███████████████████████████████████▍    | 123M/139M [00:00<00:00, 265MiB/s]
+100%|████████████████████████████████████████| 139M/139M [00:00<00:00, 260MiB/s]
 /home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
   warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 Whisper documents: 4
@@ -478,7 +479,7 @@ Temporary audio workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 7.516 seconds)
+****Total running time of the script:**** (0 minutes 8.972 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 

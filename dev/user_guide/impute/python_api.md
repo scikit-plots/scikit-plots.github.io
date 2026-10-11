@@ -1,7 +1,5 @@
 # Python API[#](#python-api "Link to this heading")
 
-## Stable imports[#](#stable-imports "Link to this heading")
-
 ## Experimental import[#](#experimental-import "Link to this heading")
 
 `ANNImputer` is added only after:

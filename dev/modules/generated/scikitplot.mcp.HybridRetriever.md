@@ -1,6 +1,6 @@
 # HybridRetriever[#](#hybridretriever "Link to this heading")
 
-class scikitplot.mcp.HybridRetriever(**retrievers**, **\***, **weights=None**, **rrf\_k=60**, **fanout=4**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_hybrid.py#L145)[#](#scikitplot.mcp.HybridRetriever "Link to this definition")
+class scikitplot.mcp.HybridRetriever(**retrievers**, **\***, **weights=None**, **rrf\_k=60**, **fanout=4**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L145)[#](#scikitplot.mcp.HybridRetriever "Link to this definition")
 :   Fuse several retrievers into one via Reciprocal Rank Fusion.
 
     Parameters:
@@ -33,7 +33,7 @@ class scikitplot.mcp.HybridRetriever(**retrievers**, **\***, **weights=None**, *
     not take down retrieval. Read-only; results are sanitised downstream by
     `build_search_docs_result`.
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_hybrid.py#L202)[#](#scikitplot.mcp.HybridRetriever.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L202)[#](#scikitplot.mcp.HybridRetriever.search "Link to this definition")
     :   Query every leg, fuse by RRF, and return the top-`k` fused chunks.
 
         Parameters:

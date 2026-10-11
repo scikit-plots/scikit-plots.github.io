@@ -1,12 +1,12 @@
 # FaissBackend[#](#faissbackend "Link to this heading")
 
-class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L534)[#](#scikitplot.corpus.FaissBackend "Link to this definition")
+class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L534)[#](#scikitplot.corpus.FaissBackend "Link to this definition")
 :   ANN backend over a FAISS `IndexFlatIP` on normalised vectors.
 
     Inner product on unit-normalised vectors equals cosine similarity, so the
     raw FAISS score already satisfies the unified contract.
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L548)[#](#scikitplot.corpus.FaissBackend.build "Link to this definition")
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L548)[#](#scikitplot.corpus.FaissBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -21,7 +21,7 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.FaissBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.FaissBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -39,7 +39,7 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.FaissBackend.dtype "Link to this definition")
     :   Element type of the indexed vectors.
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.FaissBackend.is_available "Link to this definition")
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.FaissBackend.is_available "Link to this definition")
     :   Return whether this backend’s optional dependencies are discoverable.
 
         Return type:
@@ -53,7 +53,7 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
 
     name: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = 'faiss'[#](#scikitplot.corpus.FaissBackend.name "Link to this definition")
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L563)[#](#scikitplot.corpus.FaissBackend.query "Link to this definition")
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L563)[#](#scikitplot.corpus.FaissBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with

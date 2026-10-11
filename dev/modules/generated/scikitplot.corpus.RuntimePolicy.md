@@ -1,6 +1,6 @@
 # RuntimePolicy[#](#runtimepolicy "Link to this heading")
 
-class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_runtime.py#L47)[#](#scikitplot.corpus.RuntimePolicy "Link to this definition")
+class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_runtime.py#L47)[#](#scikitplot.corpus.RuntimePolicy "Link to this definition")
 :   Execution-boundary policy applied by [`RuntimeCorpus`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
 
     Parameters:
@@ -8,7 +8,7 @@ class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https:
 
     allow\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.RuntimePolicy.allow_network "Link to this definition")
 
-    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_runtime.py#L71)[#](#scikitplot.corpus.RuntimePolicy.from_config "Link to this definition")
+    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_runtime.py#L71)[#](#scikitplot.corpus.RuntimePolicy.from_config "Link to this definition")
     :   Build from JSON/YAML-shaped data, rejecting unknown fields.
 
         Parameters:
@@ -17,19 +17,19 @@ class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https:
         Return type:
         :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
 
-    classmethod networked()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_runtime.py#L62)[#](#scikitplot.corpus.RuntimePolicy.networked "Link to this definition")
+    classmethod networked()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_runtime.py#L62)[#](#scikitplot.corpus.RuntimePolicy.networked "Link to this definition")
     :   Return a policy that explicitly permits URL source execution.
 
         Return type:
         :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
 
-    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_runtime.py#L57)[#](#scikitplot.corpus.RuntimePolicy.offline "Link to this definition")
+    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_runtime.py#L57)[#](#scikitplot.corpus.RuntimePolicy.offline "Link to this definition")
     :   Return the default local-only execution policy.
 
         Return type:
         :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_runtime.py#L67)[#](#scikitplot.corpus.RuntimePolicy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_runtime.py#L67)[#](#scikitplot.corpus.RuntimePolicy.to_dict "Link to this definition")
     :   Return a JSON-compatible representation.
 
         Return type:

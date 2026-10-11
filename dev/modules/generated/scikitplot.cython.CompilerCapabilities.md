@@ -1,6 +1,6 @@
 # CompilerCapabilities[#](#compilercapabilities "Link to this heading")
 
-class scikitplot.cython.CompilerCapabilities(**name**, **spec\_version=1**, **version=None**, **supported\_languages=frozenset({'c'})**, **platforms=None**, **requires\_cpp=False**, **deterministic=True**, **features=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_custom_compiler.py#L232)[#](#scikitplot.cython.CompilerCapabilities "Link to this definition")
+class scikitplot.cython.CompilerCapabilities(**name**, **spec\_version=1**, **version=None**, **supported\_languages=frozenset({'c'})**, **platforms=None**, **requires\_cpp=False**, **deterministic=True**, **features=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_custom_compiler.py#L232)[#](#scikitplot.cython.CompilerCapabilities "Link to this definition")
 :   Versioned, declarative description of a custom compiler’s capabilities.
 
     A registered compiler may expose one of these (via a `capabilities`
@@ -51,9 +51,9 @@ class scikitplot.cython.CompilerCapabilities(**name**, **spec\_version=1**, **ve
 
     deterministic: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.cython.CompilerCapabilities.deterministic "Link to this definition")
 
-    features: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_custom_compiler.py#L232)[#](#scikitplot.cython.CompilerCapabilities.features "Link to this definition")
+    features: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_custom_compiler.py#L232)[#](#scikitplot.cython.CompilerCapabilities.features "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_custom_compiler.py#L232)[#](#scikitplot.cython.CompilerCapabilities.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_custom_compiler.py#L232)[#](#scikitplot.cython.CompilerCapabilities.name "Link to this definition")
 
     platforms: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cython.CompilerCapabilities.platforms "Link to this definition")
 
@@ -63,7 +63,7 @@ class scikitplot.cython.CompilerCapabilities(**name**, **spec\_version=1**, **ve
 
     supported\_languages: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = frozenset({'c'})[#](#scikitplot.cython.CompilerCapabilities.supported_languages "Link to this definition")
 
-    supports\_language(**language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_custom_compiler.py#L281)[#](#scikitplot.cython.CompilerCapabilities.supports_language "Link to this definition")
+    supports\_language(**language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_custom_compiler.py#L281)[#](#scikitplot.cython.CompilerCapabilities.supports_language "Link to this definition")
     :   Return whether `language` is in [`supported_languages`](#scikitplot.cython.CompilerCapabilities.supported_languages "scikitplot.cython.CompilerCapabilities.supported_languages").
 
         Parameters:
@@ -72,7 +72,7 @@ class scikitplot.cython.CompilerCapabilities(**name**, **spec\_version=1**, **ve
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    supports\_platform(**platform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_custom_compiler.py#L276)[#](#scikitplot.cython.CompilerCapabilities.supports_platform "Link to this definition")
+    supports\_platform(**platform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_custom_compiler.py#L276)[#](#scikitplot.cython.CompilerCapabilities.supports_platform "Link to this definition")
     :   Return whether `platform` (default: current) is supported.
 
         Parameters:

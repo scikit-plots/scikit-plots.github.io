@@ -1,4 +1,4 @@
-# Code Style and Writing Guidelines[#](#code-style-and-writing-guidelines "Link to this heading")
+# [Code Style and Writing Guidelines](#id6)[#](#code-style-and-writing-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -8,9 +8,9 @@ consistency, and maintainability of the code base.
 
 > **API guidelines**
 > If adding new features, changing behavior or function signatures, or removing
-public interfaces, please consult the [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)").
+public interfaces, please consult the [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.12.0.dev733+gcc7d47175)").
 
-## PEP8, as enforced by flake8[#](#pep8-as-enforced-by-flake8 "Link to this heading")
+## [PEP8, as enforced by flake8](#id7)[#](#pep8-as-enforced-by-flake8 "Link to this heading")
 
 Formatting should follow the recommendations of [PEP8](https://peps.python.org/pep-0008/), as enforced by [flake8](https://flake8.pycqa.org/).
 Matplotlib modifies PEP8 to extend the maximum line length to 88
@@ -26,7 +26,7 @@ or your editor may provide integration with it. Note that Matplotlib intentional
 does not use the [black](https://black.readthedocs.io/) auto-formatter ([1](https://github.com/matplotlib/matplotlib/issues/18796)), in particular due to its inability
 to understand the semantics of mathematical expressions ([2](https://github.com/psf/black/issues/148), [3](https://github.com/psf/black/issues/1984)).
 
-## Package imports[#](#package-imports "Link to this heading")
+## [Package imports](#id8)[#](#package-imports "Link to this heading")
 
 Import the following modules using the standard scipy conventions:
 
@@ -45,7 +45,7 @@ matplotlib import rcParams`, but rather access it as `mpl.rcParams`. This
 is because some modules are imported very early, before the `.rcParams`
 singleton is constructed.
 
-## Variable names[#](#variable-names "Link to this heading")
+## [Variable names](#id9)[#](#variable-names "Link to this heading")
 
 When feasible, please use our internal variable naming convention for objects
 of a given class and objects of any child class:
@@ -61,7 +61,7 @@ Generally, denote more than one instance of the same class by adding suffixes to
 the variable names. If a format isn’t specified in the table, use numbers or
 letters as appropriate.
 
-## Type hints[#](#type-hints "Link to this heading")
+## [Type hints](#id10)[#](#type-hints "Link to this heading")
 
 If you add new public API or change public API, update or add the
 corresponding [mypy](https://mypy.readthedocs.io/en/latest/) type hints.
@@ -75,13 +75,13 @@ locally using `tox -e stubtest` and is a part of the [Automated tests](guide_dev
 suite. Type hints for existing functions are also checked by the mypy
 [pre-commit hook](guide_devel_setup.html#pre-commit-hooks).
 
-## New modules and files: installation[#](#new-modules-and-files-installation "Link to this heading")
+## [New modules and files: installation](#id11)[#](#new-modules-and-files-installation "Link to this heading")
 
 * If you have added new files or directories, or reorganized existing ones, make sure the
   new files are included in the `meson.build` in the corresponding directories.
 * New modules **may** be typed inline or using parallel stub file like existing modules.
 
-## C/C++ extensions[#](#c-c-extensions "Link to this heading")
+## [C/C++ extensions](#id12)[#](#c-c-extensions "Link to this heading")
 
 * Extensions may be written in C or C++.
 * Code style should conform to PEP7 (understanding that PEP7 doesn’t
@@ -98,7 +98,7 @@ suite. Type hints for existing functions are also checked by the mypy
   implement new features only if the required changes cannot be made elsewhere
   in the codebase. In particular, avoid making style fixes to it.
 
-## Keyword argument processing[#](#keyword-argument-processing "Link to this heading")
+## [Keyword argument processing](#id13)[#](#keyword-argument-processing "Link to this heading")
 
 Matplotlib makes extensive use of `**kwargs` for pass-through customizations
 from one function to another. A typical example is
@@ -150,7 +150,7 @@ function, and let others pass through. Instead of popping arguments to
 use off `**kwargs`, specify them as keyword-only arguments to the local
 function. This makes it obvious at a glance which arguments will be
 consumed in the function. For example, in
-[`plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)"), `scalex` and `scaley` are
+[`plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.12.0.dev733+gcc7d47175)"), `scalex` and `scaley` are
 local arguments and the rest are passed on as
 `Line2D` keyword arguments:
 
@@ -164,7 +164,7 @@ def plot(self, *args, scalex=True, scaley=True, **kwargs):
 
 ```
 
-## Using logging for debug messages[#](#using-logging-for-debug-messages "Link to this heading")
+## [Using logging for debug messages](#id14)[#](#using-logging-for-debug-messages "Link to this heading")
 
 Matplotlib uses the standard Python `logging` library to write verbose
 warnings, information, and debug messages. Please use it! In all those places
@@ -297,8 +297,13 @@ UserWarning: Attempting to set identical bottom==top
 my_matplotlib_module.set_range(0, 0)  # set range
 
 ```
+> local:
+>
+>
+> depth:
+> :   2
 
-## Licenses for contributed code[#](#licenses-for-contributed-code "Link to this heading")
+## [Licenses for contributed code](#id15)[#](#licenses-for-contributed-code "Link to this heading")
 
 scikit-plots only uses BSD compatible code. If you bring in code from
 another project make sure it has a PSF, BSD, MIT or compatible license
